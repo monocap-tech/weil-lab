@@ -47,6 +47,7 @@ This matrix is intentionally orthogonal to the main mathematical narrative. It d
 | WD-T37 | CONDITIONAL COMPOSITE | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE | Transitive | via WD-T31 and imported ancestry | Recorded in LEAN_STATUS.md; run scope varies | AZ-NEXTJET-LOC; C-ACTUAL-KPH-FLOOR stronger refinement |
 | WD-T38 | CONDITIONAL COMPOSITE | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE | Transitive | via WD-T34–WD-T36 | Recorded in LEAN_STATUS.md; run scope varies | AZ-FIN-WEIL-NULL-EXTENSION |
 | WD-T39 | INTERNAL/CONDITIONAL COMPOSITE | LEAN-CERTIFIED | No load-bearing imported theorem in normalized DAG | — | Recorded in LEAN_STATUS.md; run scope varies | No new interface |
+| WD-T40 | INTERNAL-PROOF / CONDITIONAL on WD-T38 hypotheses | LEAN-BLOCKED | Direct + transitive | EXT-4, EXT-5; via WD-T38 | Exact formal dependency blocker recorded in LEAN_STATUS.md / RPB-67 | Discharges AZ-FIN-WEIL-NULL-EXTENSION negatively |
 
 ### Sharpness examples
 
@@ -78,7 +79,7 @@ This matrix is intentionally orthogonal to the main mathematical narrative. It d
 | EXT-2A | Bombieri finite Weil inertia | WD-T22 |
 | EXT-2B | Bombieri multiplicity/nullity | WD-T23 |
 | EXT-3 | Unit-height zeta zero counting | WD-T28, WD-T31 |
-| EXT-4 | Compact-window geometric explicit formula | WD-T34, WD-T35; arithmetic input to WD-T38 |
-| EXT-5 | Digamma asymptotic | WD-T35 |
+| EXT-4 | Compact-window geometric explicit formula | WD-T34, WD-T35; arithmetic input to WD-T38 and WD-T40 |
+| EXT-5 | Digamma asymptotic | WD-T35, WD-T40 |
 
-Open interfaces are not verification rows because they are not stable Horizon-1 theorems: AZ-NEXTJET-LOC, C-ACTUAL-KPH-FLOOR, and AZ-FIN-WEIL-NULL-EXTENSION.
+Open interfaces are not verification rows because they are not stable theorem IDs. The remaining open interfaces are AZ-NEXTJET-LOC and C-ACTUAL-KPH-FLOOR. AZ-FIN-WEIL-NULL-EXTENSION is resolved negatively by WD-T40.

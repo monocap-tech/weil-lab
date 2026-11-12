@@ -98,6 +98,7 @@ The legacy word **PROVED** in earlier files means “internal proof standing.”
 | WD-T37 | P3-N1…P3-N7 | Fixed-packet persistent negative defect localizes to zero-moment source + weighted near next-jet morphology, stopping at AZ-NEXTJET-LOC | CONDITIONAL COMPOSITE | COMPOSITE-AUDIT-PASSED | [Negative Defect Morphology](NEGATIVE_DEFECT_MORPHOLOGY.md) |
 | WD-T38 | P3-U1…P3-U7 | Attained unit-gain neutral branch gives a carrier-identified compact-window null mode with logarithmic order + threshold-aware finite shifts, stopping at AZ-FIN-WEIL-NULL-EXTENSION | CONDITIONAL COMPOSITE | COMPOSITE-AUDIT-PASSED | [Neutral Defect Morphology](NEUTRAL_DEFECT_MORPHOLOGY.md) |
 | WD-T39 | P3-B1…P3-B7 | Full-coefficient moving escape, unselected-background escape, and fixed full-divisor negative weak limits are distinct compactness morphologies | INTERNAL/CONDITIONAL COMPOSITE | COMPOSITE-AUDIT-PASSED | [Noncompact Background Morphology](NONCOMPACT_BACKGROUND_MORPHOLOGY.md) |
+| WD-T40 | P3-U8 / RPB-64–65 | Gaussian support-gap coercivity excludes strict compact-window Weil null extension for every nonzero WD-T38 neutral physical mode | INTERNAL-PROOF / CONDITIONAL on WD-T38 hypotheses | P4-AUDIT-PASSED | [Neutral Defect Morphology](NEUTRAL_DEFECT_MORPHOLOGY.md) |
 
 ---
 
@@ -143,9 +144,7 @@ These are deliberately not theorem IDs.
 | --- | --- | --- |
 | AZ-NEXTJET-LOC | Actual-zeta control/exclusion of the weighted near next-jet field | WD-T37 |
 | C-ACTUAL-KPH-FLOOR | Stronger special-packet KPH/transversality floor | special refinement of WD-T37 |
-| AZ-FIN-WEIL-NULL-EXTENSION | Exterior support/null-extension theorem for actual unit-gain neutral modes | WD-T38 |
-
-PAP/MTP closure and RH remain outside Horizon 1. These interfaces are downstream stop lines; WD-T37 and WD-T38 do not consume them as premises.
+PAP/MTP closure and RH remain outside Horizon 1. The neutral interface `AZ-FIN-WEIL-NULL-EXTENSION` is no longer open: WD-T40 discharges it negatively under the WD-T38 carrier hypotheses. The remaining rows above are downstream stop lines and are not consumed as premises of WD-T37.
 
 ---
 

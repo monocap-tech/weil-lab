@@ -3,15 +3,15 @@
 
 This document packages the neutral branch of the completed H1-P1/H1-P2 theory.
 
-It does **not** prove that a nonzero neutral mode persists to a larger support.
-
-The theorem stops at the Horizon-1 interface
+The original H1-P3.1 package reduced strict persistence to the Horizon-1 interface
 
 ```math
 \boxed{
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 }
 ```
+
+That historical stop is now discharged negatively by the additive post-audit theorem WD-T40 / P3-U8 below.
 
 ---
 
@@ -773,7 +773,7 @@ The remaining fixed-vector question is whether the zero-extended neutral mode sa
 
 ---
 
-## 11. Exact stop line
+## 11. Historical stop line — superseded by P3-U8
 
 The theorem package ends at
 
@@ -789,11 +789,13 @@ The interface asks:
 >
 > Away from a prime threshold, this asks whether $\mathcal W_c^{\rm ext}\widetilde k$ vanishes on a nontrivial exterior collar. At a threshold, the same question uses the finitely corrected right-limit operator $\mathcal W_{c+}^{\rm ext}$.
 
-The answer is not assumed in H1-P3.1.
+The answer was not assumed in the original H1-P3.1 package.
+
+**Current status:** this historical stop has now been discharged negatively by WD-T40 / P3-U8 below.
 
 ---
 
-## 12. Dependency chain
+## 12. Historical dependency chain through P3-U7
 
 The neutral morphology theorem consumes
 
@@ -849,7 +851,7 @@ whose operator is
 
 with no uniform positive-Sobolev coercive gain supplied by the retained form estimate.
 
-Within this carrier-identified neutral branch, the remaining H1-P3.1 interface is a fixed-vector exterior support/right-limit null-extension problem.
+Within the original H1-P3.1 package, the remaining interface was the fixed-vector exterior support/right-limit null-extension problem. The current post-audit extension P3-U8 / WD-T40 closes that interface negatively under the same carrier hypotheses.
 
 ---
 
@@ -862,3 +864,152 @@ This handoff is historical provenance, not the live project cursor. See [Lean Fo
 \texttt{H1-P3.2 / NONCOMPACT BACKGROUND MORPHOLOGY THEOREM}
 }
 ```
+
+
+---
+
+## 13. Post-audit extension — Gaussian support-gap rigidity
+
+RPB-64/65 supplies a support-rigidity theorem that uses only the carrier-identified compact-window structure already present in P3-U7.
+
+Assume the P3-U7 physical mode
+
+~~~math
+0\ne k,
+\qquad
+\operatorname{supp}k\subseteq[-c,c]
+~~~
+
+satisfies the correct compact-window Weil null equation on some strict enlargement
+
+~~~math
+(-a,a),
+\qquad
+a>c.
+~~~
+
+Let
+
+~~~math
+q
+=
+\mathcal W_a^{\rm ext}\widetilde k
+~~~
+
+with the threshold-corrected right-limit convention when required.
+
+Then
+
+~~~math
+q=0
+\quad
+\text{on }(-a,a),
+~~~
+
+so there is a positive gap between the support of \(k\) and the support of the residual.
+
+For the Gaussian frequency windows
+
+~~~math
+\phi_R^\pm(\eta)
+=
+\exp\!\left(
+-\frac{(\eta\mp R)^2}{R}
+\right),
+~~~
+
+the corresponding physical kernels are modulated Gaussians of width \(R^{-1/2}\). The support gap makes the residual pairing exponentially small.
+
+Meanwhile the exact enlarged scalar symbol obeys
+
+~~~math
+\Psi_a(\eta)
+=
+\log|\eta|
++
+O_a(1),
+~~~
+
+because the prime-power contribution is a finite bounded trigonometric polynomial and the archimedean part has logarithmic asymptotic order.
+
+Therefore, for some \(\kappa>0\),
+
+~~~math
+\boxed{
+(\log R-C_a)
+\int_{\mathbb R}
+\phi_R^\pm(\eta)
+|\widehat k(\eta)|^2\,d\eta
+\le
+Ce^{-\kappa R}.
+}
+~~~
+
+This yields an exponential Fourier weight
+
+~~~math
+\boxed{
+\int_{\mathbb R}
+e^{\alpha|\eta|}
+|\widehat k(\eta)|^2\,d\eta
+<
+\infty
+}
+~~~
+
+for some \(\alpha>0\).
+
+Hence \(k\) extends holomorphically to a horizontal strip. Since \(k\) is compactly supported on the real axis, the identity theorem forces
+
+~~~math
+\boxed{
+k\equiv0,
+}
+~~~
+
+contradiction.
+
+---
+
+### P3-U8 — Gaussian support-gap null-extension exclusion
+
+Under the carrier-identification hypotheses of P3-U2/P3-U7, a nonzero compact-window neutral physical mode cannot satisfy the correct strict enlarged/right-limit Weil null equation on any larger support.
+
+Equivalently,
+
+~~~math
+\boxed{
+\texttt{AZ-FIN-WEIL-NULL-EXTENSION}
+\text{ is discharged negatively.}
+}
+~~~
+
+This includes equality-threshold supports because the threshold correction changes the scalar symbol only by finitely many bounded cosine terms.
+
+**Dependencies:** P3-U7; ZW2-T6 / WD-T34; ZW2-T7 / WD-T35; EXT-4; EXT-5.
+
+**Standing:** INTERNAL-PROOF / CONDITIONAL on the retained WD-T38 carrier hypotheses.
+
+**Verification:** P4-AUDIT-PASSED in RPB-65.
+
+---
+
+## Current neutral-branch determination
+
+The attained fixed-packet neutral branch no longer exits through an open support-rigidity interface.
+
+Under the retained finite-exception unit-gain and carrier-identification hypotheses,
+
+~~~math
+\boxed{
+\text{attained neutral branch}
+\Longrightarrow
+\text{nonzero compact-window null mode}
+\Longrightarrow
+\text{strict null extension impossible}.
+}
+~~~
+
+Thus the attained fixed-packet neutral persistence morphology is excluded.
+
+This does **not** affect the separate negative or noncompact morphology branches.

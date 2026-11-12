@@ -12,19 +12,17 @@ Horizon 1 ends **before** the actual-zeta exclusion problem.
 
 ## Stop boundary
 
-The two primary interfaces out of Horizon 1 are `AZ-NEXTJET-LOC` and `AZ-FIN-WEIL-NULL-EXTENSION`. A stronger special-packet refinement, `C-ACTUAL-KPH-FLOOR`, is tracked alongside them:
+The original Horizon-1 package exposed two primary interfaces: `AZ-NEXTJET-LOC` and `AZ-FIN-WEIL-NULL-EXTENSION`, with `C-ACTUAL-KPH-FLOOR` as a stronger special-packet refinement.
 
-```math
-\boxed{
-\texttt{AZ-NEXTJET-LOC},
-\quad
-\texttt{C-ACTUAL-KPH-FLOOR},
-\quad
-\texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
-}
+Post-Horizon theorem WD-T40 now discharges the neutral interface negatively under the WD-T38 carrier hypotheses. The current boundary state is:
+
+```text
+AZ-NEXTJET-LOC                 OPEN
+C-ACTUAL-KPH-FLOOR             OPEN / stronger special-packet refinement
+AZ-FIN-WEIL-NULL-EXTENSION     DISCHARGED NEGATIVELY BY WD-T40
 ```
 
-Horizon 1 may complete while both primary interfaces and the stronger packetwise refinement remain open.
+Horizon 1 remains complete; WD-T40 is an additive post-audit extension of its stable theorem surface.
 
 ## Phase map
 
@@ -262,13 +260,15 @@ W_ck=0
 }
 ```
 
-The theorem terminates at
+The original theorem package terminated at
 
 ```math
 \boxed{
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 }
 ```
+
+The additive post-Horizon theorem WD-T40 now discharges that interface negatively under the retained WD-T38 carrier hypotheses.
 
 ### P3.2 — Noncompact background morphology
 
@@ -330,11 +330,13 @@ W_ck=0
 
 The theorem explicitly does not infer persistence from logarithmic regularity or from the finite translation structure.
 
-Its stop line is
+Its historical stop line was
 
 ```math
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 ```
+
+Current status: discharged negatively by WD-T40.
 
 ### P3.2 disposition
 
@@ -360,7 +362,7 @@ Therefore **H1-P3 is COMPLETE**.
 
 The stable theorem inventory is now canonical in [Theorem Ledger](THEOREM_LEDGER.md), with dependency/source custody in [Dependency Audit](DEPENDENCY_AUDIT.md).
 
-Historical labels remain immutable aliases. Stable public IDs run from WD-T01 through WD-T39, with separate example and scope namespaces.
+Historical labels remain immutable aliases. Stable public IDs now run from WD-T01 through WD-T40, with WD-T40 added by the post-Horizon RPB promotion audit and with separate example and scope namespaces.
 
 Mathematical standing is now separated from verification status: an internal proof is not described as independently certified until a later audit explicitly promotes it.
 
@@ -378,7 +380,7 @@ The audit applied several narrowing/clarification patches but found no internal 
 
 ### P4.3 disposition
 
-WD-T37 through WD-T39 have completed the Horizon-1 composite morphology audit; see [Composite Morphology Audit](COMPOSITE_MORPHOLOGY_AUDIT.md).
+WD-T37 through WD-T39 completed the Horizon-1 composite morphology audit; see [Composite Morphology Audit](COMPOSITE_MORPHOLOGY_AUDIT.md). WD-T40 is a post-Horizon internal theorem with P4-AUDIT-PASSED status from RPB-65.
 
 The audited packages preserve carrier identification, multiplier uniformity, strict-right prime thresholds, full-coordinate escape requirements, and weak/strong convergence distinctions.
 
@@ -400,11 +402,11 @@ Therefore **H1-P4 is COMPLETE**.
 
 ```math
 \boxed{
-\texttt{HORIZON 1 COMPLETE / POST-H1 CURSOR NOT SELECTED}
+\texttt{HORIZON 1 COMPLETE / RPB-79 WD-T40 ACTUAL WEIL MULTIPLIER REALIZATION}
 }
 ```
 
-LEAN-H1 is exhausted and H1-P5.0 through H1-P5.5 are complete. The final package certificate is [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md). No post-Horizon research program has been started.
+Historical LEAN-H1 is exhausted and H1-P5.0 through H1-P5.5 are complete. The post-WD-T40 package revalidation is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md). The current post-Horizon cursor is RPB-79 / WD-T40 actual Weil multiplier realization.
 
 ---
 

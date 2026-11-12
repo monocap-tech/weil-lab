@@ -518,8 +518,8 @@ Status:
 | Bombieri multiplicity | Bombieri (2000), Lemma 10, p. 210 + proof continuation p. 213 | WD-T23 / T22 convention | SOURCE-PINNED |
 | Bombieri kernel decay | Bombieri (2000), Theorem 6 proof, eq. (7.7), p. 204 | corroborating/contextual after P4.2 | SOURCE-PINNED / NON-LOAD-BEARING |
 | Unit-height zero count | Titchmarsh (1986), Theorem 9.2, eq. (9.2.1), p. 211 | WD-T28, WD-T31 | SOURCE-PINNED |
-| Compact-window formula | Zhu (2026), eqs. (2)–(3), p. 2 | WD-T34, WD-T35, WD-T38 | SOURCE-PINNED |
-| Digamma asymptotic | DLMF 5.11.2 | WD-T35 | SOURCE-PINNED |
+| Compact-window formula | Zhu (2026), eqs. (2)–(3), p. 2 | WD-T34, WD-T35, WD-T38, WD-T40 | SOURCE-PINNED |
+| Digamma asymptotic | DLMF 5.11.2 | WD-T35, WD-T40 | SOURCE-PINNED |
 
 ---
 
@@ -540,3 +540,991 @@ The next audit was the **internal proof transitions** that consume these pins.
 ```
 
 That handoff was subsequently completed in H1-P4.2. It is retained here as provenance, not as the live project cursor.
+
+
+---
+
+## RPB-EXT-A1 — analytic elliptic regularity for analytic wavefront sets
+
+### Source
+
+L. Hörmander,
+*The Analysis of Linear Partial Differential Operators I*,
+2nd ed., Springer, Grundlehren 256,
+Theorem 9.5.1, p. 353.
+
+### Exact input consumed by RPB-43
+
+For an analytic (pseudo)differential operator \(P\),
+
+\`\`\`math
+WF_A(Pu)
+\subseteq
+WF_A(u)
+\subseteq
+\operatorname{Char}(P)
+\cup
+WF_A(Pu).
+\`\`\`
+
+Hence if \(P\) is analytic-elliptic on the conic region under consideration,
+
+\`\`\`math
+WF_A(u)=WF_A(Pu).
+\`\`\`
+
+### RPB specialization
+
+The whole-line compact-window Weil multiplier
+
+\`\`\`math
+\Psi_c(\xi)
+=
+\Re\psi\!\left(\frac14+\frac{i\xi}{2}\right)
+-\log\pi
+-
+\sum_{\log n<2c}
+\frac{2\Lambda(n)}{\sqrt n}\cos(\xi\log n)
+\`\`\`
+
+is real analytic in \(\xi\) and satisfies
+
+\`\`\`math
+\Psi_c(\xi)
+=
+\log|\xi|+O_c(1)
+\qquad
+(|\xi|\to\infty).
+\`\`\`
+
+Thus it is elliptic at high frequency in the analytic pseudodifferential
+sense relevant to analytic wavefront sets.  The compact-window pole/evaluation
+term has finite-dimensional real-analytic range.
+
+Therefore an interior neutral equation with analytic pole datum implies
+interior real analyticity of the neutral core mode.
+
+### Status
+
+\`\`\`math
+\boxed{\text{SOURCE-PINNED / BRANCH-LOCAL RPB}}
+\`\`\`
+
+
+---
+
+## RPB-EXT-A2 — Gel'fond--Schneider theorem
+
+### Source
+
+Encyclopedia of Mathematics,
+**Gel'fond--Schneider method**.
+
+Classical theorem of A. O. Gel'fond and Th. Schneider (1934), solving
+Hilbert's seventh problem.
+
+### Exact input consumed by RPB-44
+
+If \(\alpha\) is algebraic with \(\alpha\ne0,1\) and \(\beta\) is algebraic
+irrational, then
+
+\`\`\`math
+\alpha^\beta
+\`\`\`
+
+is transcendental.
+
+### RPB specialization
+
+For distinct primes \(p\ne q\), the quotient
+
+\`\`\`math
+\frac{\log p}{\log q}
+\`\`\`
+
+cannot be algebraic.
+
+Indeed, unique factorization shows that this quotient is irrational.  If it
+were algebraic irrational, Gel'fond--Schneider applied to
+
+\`\`\`math
+q^{\log p/\log q}
+=
+p
+\`\`\`
+
+would make the left side transcendental, contradiction.
+
+Thus for distinct primes the ratio of their real logarithms is
+transcendental.
+
+### Consumed by
+
+- RPB-44 / paired endpoint collision resonance.
+
+### Status
+
+\`\`\`math
+\boxed{\text{SOURCE-PINNED / BRANCH-LOCAL RPB}}
+\`\`\`
+
+
+---
+
+## RPB-EXT-A3 — Suzuki base-endpoint screw singularity
+
+### Source
+
+Masatoshi Suzuki,
+*Aspects of the screw function corresponding to the Riemann zeta-function*,
+Journal of the London Mathematical Society **108** (2023), 1448--1487.
+
+### Exact input consumed by RPB-45
+
+Formula (1.1) defines \(\Psi\), with \(g=-\Psi\).
+
+In the proof of Theorem 4.1, for
+
+\`\`\`math
+0<t<\log2
+\`\`\`
+
+the prime sum is absent and Suzuki gives
+
+\`\`\`math
+\Psi'(t)
+=
+2(e^{t/2}-e^{-t/2})
++
+c_0
+-
+\arctan(e^{t/2})
++
+\operatorname{arctanh}(e^{-t/2}),
+\`\`\`
+
+where
+
+\`\`\`math
+c_0
+=
+\frac{\pi}{4}
+-
+\frac{\gamma_0+3\log2}{2}.
+\`\`\`
+
+Expanding at \(t=0+\) gives
+
+\`\`\`math
+g(t)
+=
+\frac{t}{2}\log t
++
+\frac{\gamma_0+\log2-1}{2}t
++
+O(t^2),
+\`\`\`
+
+and therefore
+
+\`\`\`math
+\boxed{
+g''(t)
+=
+\frac1{2t}
++
+O(1)
+}
+\qquad
+(t\downarrow0).
+\`\`\`
+
+The coefficient \(1/2\) of the Stieltjes kernel is load-bearing in RPB-45.
+
+### Status
+
+\`\`\`math
+\boxed{\text{SOURCE-PINNED / BRANCH-LOCAL RPB}}
+\`\`\`
+
+---
+
+## RPB-EXT-A4 — Sokhotskii--Plemelj jump principle
+
+### Source
+
+Encyclopedia of Mathematics,
+**Sokhotskii formulas**.
+
+### Exact input consumed by RPB-45
+
+For a Cauchy-type integral with \(L^p\) density, \(1<p<\infty\), the
+non-tangential boundary values from the two sides exist almost everywhere and
+their difference recovers the density.
+
+### RPB specialization
+
+For
+
+\`\`\`math
+S_f(z)
+=
+\int_0^\delta
+\frac{f(r)}{z+r}\,dr,
+\qquad
+f\in L^2(0,\delta),
+\`\`\`
+
+the cut is \([-\delta,0]\).
+
+If \(S_f\) admits a holomorphic continuation through an open subinterval of
+that cut, the jump there is zero, hence \(f=0\) almost everywhere on the
+corresponding reflected source interval.
+
+This is the exact support-removal step used in the nonthreshold branch of
+RPB-45.
+
+### Status
+
+\`\`\`math
+\boxed{\text{SOURCE-PINNED / BRANCH-LOCAL RPB}}
+\`\`\`
+
+
+---
+
+## RPB-EXT-A5 — Mellin diagonalization of the Carleman operator
+
+### Source
+
+D. R. Yafaev,
+*Spectral and scattering theory for differential and Hankel operators*,
+arXiv:1511.04683 (2015), and the classical Carleman diagonalization recalled
+there.
+
+A directly stated formula also appears in D. R. Yafaev,
+*Diagonalizations of two classes of unbounded Hankel operators*,
+Bulletin of Mathematical Sciences **3** (2013), Theorem 3.2 and the discussion
+immediately following it.
+
+### Exact input consumed by RPB-46
+
+For the Carleman Hankel operator
+
+\`\`\`math
+(\mathcal C f)(x)
+=
+\int_0^\infty
+\frac{f(y)}{x+y}\,dy
+\`\`\`
+
+on \(L^2(\mathbb R_+)\), the Mellin transform diagonalizes
+\(\mathcal C\) with multiplier
+
+\`\`\`math
+\boxed{
+\frac{\pi}{\cosh(\pi t)}.
+}
+\`\`\`
+
+Consequently
+
+\`\`\`math
+\sigma(\mathcal C)
+=
+[0,\pi]
+\`\`\`
+
+and the spectrum is absolutely continuous.
+
+### RPB specialization
+
+The threshold endpoint model is
+
+\`\`\`math
+\frac12\mathcal C
++
+\varepsilon a_0 I,
+\qquad
+a_0
+=
+\frac{\Lambda(n_0)}{\sqrt{n_0}}.
+\`\`\`
+
+On the \(L^2\) Mellin line, its multiplier is
+
+\`\`\`math
+\frac{\pi}{2\cosh(\pi t)}
++
+\varepsilon a_0.
+\`\`\`
+
+For \(\varepsilon=+1\) it has no real zero.
+
+For \(\varepsilon=-1\), because \(0<a_0<\pi/2\), it has exactly two real zeros
+
+\`\`\`math
+t=\pm\tau_0,
+\qquad
+\cosh(\pi\tau_0)
+=
+\frac{\pi}{2a_0}.
+\`\`\`
+
+This global \(L^2\) spectral statement is used only to type the local Mellin
+indicial geometry.  The truncated endpoint equation is not identified with a
+global Carleman eigenvalue problem.
+
+### Status
+
+\`\`\`math
+\boxed{\text{SOURCE-PINNED / BRANCH-LOCAL RPB}}
+\`\`\`
+
+
+---
+
+## RPB-EXT-A6 — optimal boundary scale for the logarithmic Laplacian
+
+### Source
+
+Víctor Hernández-Santamaría, Luis Fernando López Ríos, Alberto Saldaña,
+*Optimal boundary regularity and a Hopf-type lemma for Dirichlet problems
+involving the logarithmic Laplacian*,
+Discrete and Continuous Dynamical Systems **45** (2025), 1--36,
+DOI 10.3934/dcds.2024084.
+
+### Exact input / scope consumed by RPB-48
+
+Theorem 1.1 proves the optimal upper boundary scale
+
+\`\`\`math
+|u(x)|
+\le
+C
+\ell^{1/2}
+\!\left(
+\operatorname{dist}(x,\partial\Omega)
+\right)
+\`\`\`
+
+for bounded Dirichlet solutions with bounded forcing.
+
+Theorem 1.2 shows the same \(\ell^{1/2}\) scale is sharp for the torsion
+function in a ball.
+
+### RPB use
+
+RPB-48 uses this only as a scope check:
+
+- available general logarithmic-Laplacian boundary theory controls the
+  **size/regularity scale**;
+- it does not provide the source-dependent endpoint Mellin residue map needed
+  for
+  \[
+  D A_{B,c}^{-1}\Phi_c^*v
+  \]
+  in the actual Weil background operator.
+
+No positivity/Hopf conclusion is applied to the sign-changing RPB neutral mode.
+
+### Status
+
+\`\`\`math
+\boxed{\text{SOURCE-PINNED / CONTEXTUAL FOR RPB-48}}
+\`\`\`
+
+
+---
+
+## RPB-EXT-A7 — one-dimensional logarithmic-Laplacian edge kernel
+
+### Source
+
+Huyuan Chen and Tobias Weth,
+*The Dirichlet problem for the logarithmic Laplacian*,
+Communications in Partial Differential Equations **44** (2019), 1100--1139,
+Theorem 1.1 / the integral representation of \(L_\Delta\).
+
+### Exact input consumed by RPB-49
+
+The logarithmic Laplacian has Fourier symbol
+
+\`\`\`math
+2\log|\xi|
+\`\`\`
+
+and pointwise representation
+
+\`\`\`math
+L_\Delta u(x)
+=
+c_N
+\int_{\mathbb R^N}
+\frac{
+u(x)\mathbf1_{B_1(x)}(y)-u(y)
+}{
+|x-y|^N
+}\,dy
++
+\rho_Nu(x).
+\`\`\`
+
+For \(N=1\),
+
+\`\`\`math
+c_1
+=
+\pi^{-1/2}\Gamma(1/2)
+=
+1.
+\`\`\`
+
+### RPB endpoint specialization
+
+At the right endpoint of an interval, put
+
+\`\`\`math
+x=c-s,
+\qquad
+r=c-y.
+\`\`\`
+
+For a cutoff conormal germ
+
+\`\`\`math
+u(c-r)
+=
+r^\lambda
+\`\`\`
+
+with \(\lambda\notin\mathbb Z_{\ge0}\), direct splitting of the
+Chen--Weth integral gives the universal nonanalytic term
+
+\`\`\`math
+\boxed{
+L_\Delta u(c-s)
+=
+2s^\lambda
+\log\frac1s
++
+O_{\rm conormal}(s^\lambda)
++
+\text{analytic powers}.
+}
+\`\`\`
+
+The coefficient \(2\) comes from two equal logarithmic pieces:
+
+1. the exterior zero-extension integral;
+2. the \(u(x)\)-part of the interior singular integral.
+
+No external theorem on the power asymptotic is imported; the coefficient is
+derived directly from the pinned integral representation in RPB-49.
+
+Since the Weil archimedean multiplier has principal symbol
+\(\log|\xi|\), its endpoint log-enhancement coefficient is one half of the
+displayed \(L_\Delta\) coefficient.
+
+### Status
+
+\`\`\`math
+\boxed{\text{SOURCE-PINNED / BRANCH-LOCAL RPB}}
+\`\`\`
+
+
+---
+
+## RPB-EXT-A8 — Zhu strict prime convention and exact Gauss/digamma kernel
+
+### Source
+
+Xuefeng Zhu,
+*Weil positivity in compact windows: a finite reduction, certified two-sided
+bounds, and a Landau--Widom decay law*,
+arXiv:2608.24827v2 (2026).
+
+### Exact inputs consumed by RPB-57/58
+
+Equation (3) gives the fixed-window symbol with prime-power support convention
+
+~~~math
+\Psi_L(t)
+=
+\Re\psi\!\left(
+\frac14+\frac{it}{2}
+\right)
+-
+\log\pi
+-
+\sum_{\log n<2L}
+\frac{2\Lambda(n)}{\sqrt n}\cos(t\log n).
+~~~
+
+Thus equality-threshold prime powers with
+
+~~~math
+\log n=2L
+~~~
+
+are absent from the endpoint operator and enter every strict right enlargement.
+
+Equation (9) gives Gauss's representation
+
+~~~math
+\Re\psi\!\left(
+\frac14+\frac{it}{2}
+\right)
+=
+-\gamma
++
+\int_0^\infty
+\frac{2}{
+1-e^{-2x}
+}
+\left[
+e^{-2x}
+-
+e^{-x/2}\cos(tx)
+\right]dx.
+~~~
+
+Hence the off-diagonal physical kernel factor is
+
+~~~math
+q(x)
+=
+\frac{
+2e^{-x/2}
+}{
+1-e^{-2x}
+}
+=
+\frac1x
++
+q_{\rm an}(x),
+~~~
+
+with \(q_{\rm an}\) analytic near \(x=0\).
+
+This is the exact source input used by RPB-57 to split the endpoint
+Stieltjes singularity from a holomorphic exterior remainder.
+
+### Consumed by
+
+- RPB-57 / full nonthreshold Friedrichs null-extension candidate;
+- RPB-58 / equality-threshold endpoint/right-limit convention.
+
+### Status
+
+~~~math
+\boxed{\text{SOURCE-PINNED / BRANCH-LOCAL RPB}}
+~~~
+
+---
+
+## RPB-EXT-A1 promotion caution — logarithmic-order specialization not yet certified
+
+RPB-EXT-A1 correctly pins the standard analytic-wavefront elliptic regularity
+theorem.
+
+RPB-59 records that canonical promotion additionally requires a direct
+verification that the actual compact-window logarithmic-order Fourier
+multiplier satisfies the precise analytic pseudodifferential hypotheses needed
+for
+
+~~~math
+\mathcal P_ch\in C^\omega_{\rm loc}
+\Longrightarrow
+h\in C^\omega_{\rm loc}
+~~~
+
+for arbitrary Friedrichs zero modes.
+
+Until that specialization is proved internally or source-pinned, the
+RPB-57 interior-analyticity step remains branch-local and is not treated as a
+stable theorem input.
+
+### Status
+
+~~~math
+\boxed{\text{PROMOTION CAUTION / OPEN CERTIFICATION OBLIGATION}}
+~~~
+
+
+---
+
+## RPB-EXT-A1 correction — finite translations are outside the ordinary analytic-pseudodifferential specialization
+
+RPB-EXT-A1 remains a correct source pin for ordinary analytic
+pseudodifferential elliptic regularity.
+
+RPB-60 corrects its earlier RPB-43 specialization to the full compact-window
+Weil operator.
+
+For one prime delay,
+
+~~~math
+(\tau_\ell h)(x)=h(x-\ell),
+~~~
+
+the Schwartz kernel is
+
+~~~math
+K_\ell(x,y)=\delta(x-y-\ell),
+~~~
+
+which is singular on the shifted diagonal \(x-y=\ell\).
+
+Thus \(\tau_\ell\) is a translation Fourier-integral operator with an
+off-diagonal canonical relation, not an ordinary pseudodifferential operator
+with diagonal canonical relation.
+
+Equivalently, although the Fourier multiplier is
+
+~~~math
+e^{-i\ell\xi},
+~~~
+
+its derivatives satisfy
+
+~~~math
+\left|
+\partial_\xi^k e^{-i\ell\xi}
+\right|
+=
+\ell^k,
+~~~
+
+and do not have the high-frequency derivative decay used in the standard
+\(S^0_{1,0}\) analytic pseudodifferential calculus.
+
+Therefore the ordinary analytic-wavefront theorem may be applied to the
+archimedean pseudodifferential component, but it does **not** justify treating
+
+~~~math
+\mathcal A_\infty
+-
+\sum_j a_j(\tau_{\ell_j}+\tau_{-\ell_j})
+~~~
+
+as a single local analytic pseudodifferential operator merely because its
+global Fourier multiplier is nonzero at high frequency.
+
+### Correct RPB status
+
+~~~text
+RPB-43 full-symbol analytic-ellipticity shortcut:
+    WITHDRAWN BY RPB-60
+
+Interior analyticity for arbitrary Friedrichs zero modes:
+    OPEN DELAY-PROPAGATION OBLIGATION
+~~~
+
+### Status
+
+~~~math
+\boxed{\text{SOURCE PIN VALID / FORMER SPECIALIZATION WITHDRAWN}}
+~~~
+
+
+---
+
+## RPB-EXT-A9 — analytic Fourier-integral operators transport ultradifferentiable wavefront sets
+
+### Source
+
+Stefan Fürdös,
+*Hypoellipticity of analytic differential operators in general
+ultradifferentiable classes*,
+Journal of Pseudo-Differential Operators and Applications **17** (2026),
+Article 72.
+DOI: 10.1007/s11868-026-00803-0.
+
+### Exact contextual input consumed by RPB-61
+
+The paper develops microlocal regularity for semiregular
+ultradifferentiable classes and, in particular, records that analytic
+Fourier-integral operators transform the corresponding ultradifferentiable
+wavefront sets along their canonical relations.
+
+RPB-61 uses this only as contextual confirmation of the operator typing:
+
+~~~math
+\tau_\ell
+:
+(x,\xi)
+\mapsto
+(x+\ell,\xi).
+~~~
+
+The RPB propagation formula for an exact translation is elementary and does
+not depend on a deep theorem from this paper.
+
+The source does **not** supply a unique-continuation theorem for the mixed
+operator
+
+~~~math
+\mathcal A_\infty
+-
+\sum_j a_j(\tau_{\ell_j}+\tau_{-\ell_j}).
+~~~
+
+### Status
+
+~~~math
+\boxed{\text{CONTEXTUAL / NON-LOAD-BEARING RPB}}
+~~~
+
+
+---
+
+## WD-T40 source boundary — Gaussian support-gap null-extension exclusion
+
+WD-T40 consumes only already pinned external inputs:
+
+- EXT-4: compact-window formula, finite prime support, and strict threshold convention;
+- EXT-5: digamma asymptotic giving
+  \[
+  \Psi_a(\eta)=\log|\eta|+O_a(1).
+  \]
+
+The Gaussian support-gap argument itself is internal.
+
+No RPB analytic-wavefront, Mellin-conormal, or Suzuki completed-space theorem is load-bearing for WD-T40.
+
+### Status
+
+~~~math
+\boxed{\text{SOURCE BOUNDARY AUDITED / WD-T40}}
+~~~
+
+
+---
+
+## EXT-5D — polygamma derivative asymptotics
+
+### Source
+
+NIST Digital Library of Mathematical Functions, §5.15, equation **5.15.9**.
+
+https://dlmf.nist.gov/5.15.E9
+
+### Exact pin
+
+For every integer `n >= 1`, as `z -> infinity` in a sector
+`|ph z| <= pi - delta`,
+
+~~~math
+\psi^{(n)}(z)
+\sim
+(-1)^{n-1}
+\left(
+\frac{(n-1)!}{z^n}
++
+\frac{n!}{2z^{n+1}}
++
+\sum_{k\ge1}
+\frac{(2k+n-1)!}{(2k)!}
+\frac{B_{2k}}{z^{2k+n}}
+\right).
+~~~
+
+DLMF §5.15 explicitly identifies these as the asymptotic expansions of the
+polygamma derivatives.
+
+### F-2 specialization
+
+Along the pole-free vertical line
+
+~~~math
+z(t)=\frac14+\frac{it}{2},
+~~~
+
+the zeroth derivative is already pinned by EXT-5:
+
+~~~math
+\Re\psi(z(t))=\log|t|+O(1).
+~~~
+
+For every positive derivative order, EXT-5D gives decay by a negative power of
+`|t|`. Hence every derivative of
+
+~~~math
+t \mapsto \Re\psi(z(t))
+~~~
+
+has polynomial growth (indeed, all positive derivatives decay at infinity).
+The finite prime trigonometric correction has bounded derivatives of every
+order. Smoothness on the compact frequency core follows from the absence of
+digamma poles on `Re z=1/4`.
+
+Therefore the exact strict-right symbol is mathematically of temperate growth.
+
+### Formalization role
+
+The project does not reconstruct DLMF 5.15.9 in Lean in the current pass.
+Instead, RPB-84 exposes its consequence explicitly through:
+
+~~~lean
+RightLimitWeilSymbolTemperatePremise
+~~~
+
+A final WD-T40 certificate consuming this premise therefore remains
+`LEAN-CERTIFIED-FROM-IMPORTED-PREMISE`, consistent with the existing EXT-4
+and EXT-5 treatment.
+
+### Consumed by
+
+- WD-T40 F-2 exact tempered multiplier realization.
+
+### Pin status
+
+~~~math
+\boxed{\text{SOURCE-PINNED / EXPLICIT IMPORTED PREMISE}}
+~~~
+
+
+---
+
+## RPB-96 Fourier-coordinate correction
+
+### Scope
+
+This is a **convention correction**, not a new external source.
+
+EXT-4 remains pinned exactly as before in its source frequency variable \(t\).
+Mathlib's real Fourier transform uses
+
+~~~math
+\widehat f(\xi)
+=
+\int_{\mathbb R} e^{-2\pi i x\xi} f(x)\,dx.
+~~~
+
+Therefore the source variable and mathlib Fourier variable obey
+
+~~~math
+\boxed{t=2\pi\xi.}
+~~~
+
+### Corrected strict-right multiplier coordinate
+
+The source-frequency symbol remains
+
+~~~math
+\Psi_a^{\rm src}(t).
+~~~
+
+The actual symbol passed to mathlib's Fourier multiplier must be
+
+~~~math
+\boxed{
+\Psi_a^{\rm ml}(\xi)
+=
+\Psi_a^{\rm src}(2\pi\xi).
+}
+~~~
+
+Then the prime factor
+
+~~~math
+\cos((2\pi\xi)\log n)
+~~~
+
+corresponds to the physical translation pair at
+
+~~~math
+\pm\log n,
+~~~
+
+which is exactly the displacement used by the project arithmetic carrier.
+
+The archimedean term is rescaled by the same coordinate map.
+
+### Effect on EXT-5 / EXT-5D
+
+No new asymptotic theorem is required.  Since multiplication of the frequency
+variable by the fixed positive constant \(2\pi\) preserves logarithmic order
+and temperate growth,
+
+~~~math
+\Psi_a^{\rm src}(t)
+=
+\log|t|+O_a(1)
+~~~
+
+becomes
+
+~~~math
+\Psi_a^{\rm ml}(\xi)
+=
+\log|\xi|+O_a(1).
+~~~
+
+Likewise the EXT-5D derivative-growth conclusion remains valid after the
+linear rescaling.
+
+### Certificate consequence
+
+The earlier F-2 compiler certificates remain valid records for the source that
+was compiled at those checkpoints, but they are **not the current semantic
+certificate** after this convention correction.
+
+The normalized multiplier/residual dependency chain must be rebuilt before
+F-4 may consume it.
+
+### Status
+
+~~~math
+\boxed{
+\textbf{FOURIER-CONVENTION CORRECTED / REBUILD REQUIRED}
+}
+~~~
+
+
+---
+
+## RPB-100 pole-growth source boundary
+
+The compact-window pole/evaluation component is not treated as an arbitrary
+locally integrable function in the Gaussian-admissibility step.
+
+The WD-T40 promotion audit already records the actual pole species as lying in
+a fixed finite-dimensional span generated by functions of the form
+
+~~~math
+e^{\sigma x/2},
+\qquad
+\sigma\in\{+1,-1\}.
+~~~
+
+RPB-100 extracts only the consequence needed for the Gaussian cutoff argument:
+
+~~~math
+|p(x)|
+\le
+C_p e^{\kappa_p |x|}
+~~~
+
+for fixed nonnegative constants \(C_p,\kappa_p\).
+
+The Lean formalization exposes that consequence through
+
+~~~lean
+NeutralPoleExponentialGrowthData
+~~~
+
+rather than deriving the concrete coefficients of the pole basis in the same
+pass.
+
+### Status
+
+~~~math
+\boxed{
+\textbf{SOURCE-FAITHFUL EXPLICIT PREMISE / COEFFICIENT RECONSTRUCTION NOT YET INTERNAL}
+}
+~~~
+
+This premise is narrower than Gaussian admissibility itself and contains no
+coercivity conclusion.

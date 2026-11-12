@@ -1062,3 +1062,14 @@ It should package the already established chains into exact morphology theorems,
 ```
 
 without attempting to solve that interface.
+
+
+---
+
+## Post-Horizon neutral-interface note
+
+The H1-P2.2 text above correctly identifies AZ-FIN-WEIL-NULL-EXTENSION as the first statement not proved within the original H1-P2.2 attachment.
+
+That historical boundary has since been crossed by the additive theorem WD-T40: Gaussian support-gap coercivity excludes strict null extension under the WD-T38 carrier hypotheses.
+
+The H1-P2.2 theorem statements themselves are unchanged.

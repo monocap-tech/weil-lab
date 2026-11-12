@@ -40,7 +40,7 @@ Current canonical IDs:
 
 ```math
 \boxed{
-\text{WD-T01 through WD-T39}
+\text{WD-T01 through WD-T40}
 }
 ```
 
@@ -88,8 +88,8 @@ SOURCE-PINNED inputs:
 1. Douglas factorization — WD-T02;
 2. Bombieri finite Weil inertia/multiplicity/kernel estimates — WD-T22, WD-T23, WD-T28;
 3. standard zeta zero counting — WD-T28, WD-T31;
-4. compact-window geometric explicit formula — WD-T34, WD-T35;
-5. digamma asymptotics — WD-T35.
+4. compact-window geometric explicit formula — WD-T34, WD-T35, WD-T38, WD-T40;
+5. digamma asymptotics — WD-T35, WD-T40.
 
 Anderson–Trapp shorting and Suzuki's operator framework remain contextual/non-load-bearing for the current theorem statements.
 
@@ -117,13 +117,37 @@ with C-ACTUAL-KPH-FLOOR as a stronger special-packet interface.
 **Standing:** CONDITIONAL COMPOSITE.
 **Verification:** COMPOSITE-AUDIT-PASSED.
 
-Stops at:
+Historically stopped at:
 
 ```math
 \boxed{
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 }
 ```
+
+That interface is now discharged negatively by WD-T40.
+
+### WD-T40 — Gaussian support-gap null-extension exclusion
+
+**Standing:** INTERNAL-PROOF / CONDITIONAL on WD-T38 carrier hypotheses.
+**Verification:** P4-AUDIT-PASSED.
+
+Concludes:
+
+```math
+\boxed{
+\texttt{AZ-FIN-WEIL-NULL-EXTENSION}
+\text{ is discharged negatively.}
+}
+```
+
+
+
+**Formalization:** LEAN-BLOCKED after RPB-67. The exact blocker is the missing
+physical real-line Fourier/distribution carrier lift, followed by the
+project-local Gaussian support-gap and strip-holomorphy stack. A completed
+faithful formalization is expected to be
+LEAN-CERTIFIED-FROM-IMPORTED-PREMISE unless EXT-4/EXT-5 are reconstructed.
 
 ### WD-T39 — Noncompact background morphology
 
@@ -147,19 +171,25 @@ The current audit prohibits the following silent transfers:
 
 ---
 
-## Open Horizon-1 interfaces
+## Horizon-1 interface status
 
-The two primary stop-line interfaces remain OPEN:
+The remaining primary open stop-line interface is:
 
 ```math
 \boxed{
-\texttt{AZ-NEXTJET-LOC},
-\qquad
-\texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
+\texttt{AZ-NEXTJET-LOC}.
 }
 ```
 
-`C-ACTUAL-KPH-FLOOR` is also open, but it is a stronger special-packet sufficient refinement of the negative interface rather than a third independent universal stop-line obligation.
+`C-ACTUAL-KPH-FLOOR` also remains open as a stronger special-packet sufficient refinement of the negative interface.
+
+The neutral interface
+
+```text
+AZ-FIN-WEIL-NULL-EXTENSION
+```
+
+is **DISCHARGED NEGATIVELY** by WD-T40 under the WD-T38 carrier hypotheses.
 
 PAP/MTP closure and RH are not proved by this repository.
 
@@ -175,7 +205,7 @@ WD-T01 through WD-T36 are now
 
 See [Internal Proof Audit](INTERNAL_PROOF_AUDIT.md).
 
-The composite morphology theorems WD-T37 through WD-T39 are COMPOSITE-AUDIT-PASSED.
+The composite morphology theorems WD-T37 through WD-T39 are COMPOSITE-AUDIT-PASSED. WD-T40 is P4-AUDIT-PASSED.
 
 See [Composite Morphology Audit](COMPOSITE_MORPHOLOGY_AUDIT.md).
 
@@ -195,11 +225,11 @@ All H1-P4 audit classes are complete.
 
 ## Next project cursor
 
-The mathematical audit is complete and LEAN-H1 has reached its exhaustion condition. Public-package assembly has not yet started; the next project cursor is:
+The post-Horizon RPB promotion audit has added WD-T40. The next research cursor is:
 
 ```math
 \boxed{
-\texttt{H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE}
+\texttt{RPB-79 / WD-T40 ACTUAL WEIL MULTIPLIER REALIZATION}
 }
 ```
 
@@ -225,4 +255,4 @@ Current formalization cursor:
 
 WD-X06 is `LEAN-CERTIFIED`; all stable Horizon-1 theorem/example rows now have durable final Lean states. See [Lean Status Ledger](LEAN_STATUS.md) for certificate evidence.
 
-H1-P5.0 through H1-P5.5 are complete. The final cross-surface audit passed; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md). **Horizon 1 is complete.** No post-Horizon research cursor is selected.
+H1-P5.0 through H1-P5.5 are complete. The post-WD-T40 package revalidation also passed; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md). **Horizon 1 is complete.** The next post-Horizon research cursor is RPB-69 / WD-T40 physical Fourier carrier build certification.

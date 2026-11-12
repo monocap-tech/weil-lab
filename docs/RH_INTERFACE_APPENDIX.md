@@ -2,8 +2,9 @@
 
 ## H1-P5.4 — Exact Horizon-1 stop boundary
 
-This appendix records the open actual-zeta interfaces reached by the
-independent Weil-defect theory.
+This appendix records the status of actual-zeta interfaces reached by the
+independent Weil-defect theory, including interfaces that remain open and the
+neutral support interface now discharged by WD-T40.
 
 It is not part of the proof-producing theorem spine. No interface listed here
 is a premise of the Horizon-1 theorem from which that interface emerges as the
@@ -181,9 +182,9 @@ Horizon 1 does not claim:
 
 **Consumed by:** the attained fixed-packet neutral morphology, WD-T38.
 
-**Status:** OPEN.
+**Status:** **DISCHARGED NEGATIVELY by WD-T40.**
 
-**Type:** primary support/right-limit interface.
+**Type:** resolved primary support/right-limit interface.
 
 ## 3.2 Upstream output supplied by Horizon 1
 
@@ -203,7 +204,7 @@ Assume the WD-T38 neutral-branch hypotheses:
 - carrier identification with the compact-window Weil form/operator used in
   the arithmetic part.
 
-Under those hypotheses, Horizon 1 proves the nonzero physical null equation
+Under those hypotheses, Horizon 1 supplies a nonzero compact-window physical null mode
 
 $$
 \boxed{
@@ -211,13 +212,13 @@ W_ck=0.
 }
 $$
 
-The corresponding compact-window operator species is:
+The corresponding operator species has:
 
 - logarithmic-order nonlocal archimedean part;
 - finitely many symmetric prime-power translations;
 - finite-rank pole term.
 
-Its symbol/form order is
+Its scalar symbol obeys
 
 $$
 \boxed{
@@ -225,90 +226,72 @@ $$
 }
 $$
 
-Horizon 1 also fixes the endpoint/right-limit threshold convention:
+The endpoint/right-limit threshold convention is the strict compact-window convention from EXT-4.
 
-- away from a prime-power threshold, sufficiently small strict right
-  enlargements use the same active prime set;
-- at a threshold, the strict right-limit operator has a finite
-  equality-threshold correction.
+## 3.3 Resolution by WD-T40
 
-No positive-Sobolev or quasianalytic continuation gain is inferred from this
-logarithmic form estimate.
+Let \(\widetilde k\) be the zero extension of the endpoint mode.
 
-## 3.3 Missing statement
-
-Let $\widetilde k$ denote the zero extension of the endpoint neutral mode.
-
-The interface asks:
-
-> For an actual nonzero finite-exception unit-gain neutral mode satisfying
-> the endpoint equation
-> $$
-> P_{[-c,c]}\mathcal W_c^{\rm ext}\widetilde k=0,
-> $$
-> does the same fixed relation satisfy the correct right-limit compact-window
-> equation on some strict enlargement?
-
-Away from a prime threshold, this is the exterior-collar question
+Suppose the same physical relation satisfied the correct compact-window null equation on some strict enlargement
 
 $$
-\mathcal W_c^{\rm ext}\widetilde k=0
+(-a,a),
+\qquad
+a>c.
 $$
 
-on a nontrivial collar outside the endpoint interval.
+Then the enlarged whole-line residual vanishes on an interval containing the support of \(k\) with positive margin \(a-c\).
 
-At a threshold, the question uses the finitely corrected strict right-limit
-operator
+WD-T40 applies moving Gaussian frequency windows. The support gap makes the residual pairing exponentially small, while the exact enlarged symbol satisfies
 
 $$
-\mathcal W_{c+}^{\rm ext}.
+\Psi_a(\eta)\ge \log|\eta|-C_a.
 $$
 
-The interface name is
+The resulting coercive estimate forces an exponential Fourier weight on \(\widehat k\), hence a strip-holomorphic extension of \(k\).
 
-~~~text
-AZ-FIN-WEIL-NULL-EXTENSION
-~~~
+Because \(k\) is compactly supported on the real axis, the identity theorem then forces
 
-because the missing theorem is a finite-exception actual-Weil null-extension
-or support-rigidity statement.
+$$
+k\equiv0,
+$$
 
-## 3.4 What discharge would accomplish
+contradicting the nonzero WD-T38 mode.
 
-A positive resolution strong enough for the required branch would determine
-whether the attained endpoint neutral relation persists correctly into a
-strict right enlargement.
+Therefore
 
-A theorem establishing the required right-limit relation would transport the
-endpoint null relation to a strict enlargement. A theorem showing that no
-nonzero endpoint mode can satisfy that required transport would instead exclude
-the attained-neutral branch. Either kind of result would address the support
-stop only under its stated hypotheses.
+$$
+\boxed{
+\texttt{AZ-FIN-WEIL-NULL-EXTENSION}
+\text{ is discharged negatively under the WD-T38 hypotheses.}
+}
+$$
 
-## 3.5 What Horizon 1 does not claim
+## 3.4 Logical effect
 
-Horizon 1 does not prove:
+The attained fixed-packet neutral persistence branch is excluded under the same carrier-identification hypotheses already required by WD-T38.
 
-- that $W_ck=0$ implies zero extension satisfies the enlarged equation;
-- an exterior unique-continuation theorem;
-- quasianalyticity from logarithmic form order;
-- positive-Sobolev regularity of the neutral mode;
-- termwise vanishing of pole, prime, and archimedean contributions;
-- persistence across a prime threshold without the finite threshold
-  correction.
+This closure does not affect:
 
-The neutral equation is a global quadratic/operator cancellation.  The
-support-extension question is genuinely additional.
+- AZ-NEXTJET-LOC;
+- C-ACTUAL-KPH-FLOOR;
+- the WD-T39 noncompact/background morphologies.
+
+It is not, by itself, an RH proof.
+
+## 3.5 Historical note
+
+Earlier Horizon-1 package text treated this interface as open and used it as the exact neutral stop line. That wording remains historical provenance. WD-T40 is the additive theorem that resolves the stop.
 
 ---
 
 # 4. Relation among the interfaces
 
-The two primary fixed-packet exits are
+The fixed-packet interface state is now
 
 ~~~text
-WD-T37  →  AZ-NEXTJET-LOC
-WD-T38  →  AZ-FIN-WEIL-NULL-EXTENSION
+WD-T37  →  AZ-NEXTJET-LOC                  [OPEN]
+WD-T38  →  AZ-FIN-WEIL-NULL-EXTENSION     [DISCHARGED NEGATIVELY BY WD-T40]
 ~~~
 
 The stronger special-packet refinement is
@@ -338,8 +321,6 @@ $$
 }
 $$
 
-Horizon 1 establishes the theory on the left and leaves the named interfaces
-on the right as downstream obligations.
+Horizon 1 establishes the theory on the left. The negative-branch interfaces remain downstream obligations; the neutral support/null-extension interface is discharged negatively by WD-T40.
 
-It does not claim that those interfaces are solved, and it does not claim RH
-closure.
+This update does not claim RH closure.

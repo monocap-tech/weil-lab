@@ -24,13 +24,13 @@ Layer B — Selected/background transfer and support filtration
 Layer C — Zeta-Weil specialization and explicit-formula arithmetic
   WD-T20 ... WD-T36
 
-Layer D — Composite morphology
-  WD-T37, WD-T38, WD-T39
+Layer D — Morphology and post-audit neutral rigidity
+  WD-T37, WD-T38, WD-T39, WD-T40
 
-Layer E — Open actual-zeta interfaces
-  AZ-NEXTJET-LOC
-  C-ACTUAL-KPH-FLOOR
-  AZ-FIN-WEIL-NULL-EXTENSION
+Layer E — Actual-zeta interface state
+  AZ-NEXTJET-LOC                 [OPEN]
+  C-ACTUAL-KPH-FLOOR             [OPEN stronger refinement]
+  AZ-FIN-WEIL-NULL-EXTENSION     [DISCHARGED NEGATIVELY BY WD-T40]
 ~~~
 
 Direct external-source entry points are shown explicitly. Downstream theorem
@@ -273,11 +273,15 @@ physical compact-window null mode
         WD-T38
           │
           ▼
-AZ-FIN-WEIL-NULL-EXTENSION   [OPEN]
+        WD-T40
+          │
+          ▼
+AZ-FIN-WEIL-NULL-EXTENSION   [DISCHARGED NEGATIVELY]
 ~~~
 
-No later support-rigidity or unique-continuation theorem is consumed above
-the stop line.
+WD-T40 uses the strict enlarged-null hypothesis plus WD-T34/WD-T35 and the
+EXT-4/EXT-5 compact-window symbol inputs. It does not consume the historical
+RPB analytic-wavefront or Mellin routes.
 
 ---
 
@@ -324,8 +328,8 @@ the selected ray.
 | EXT-2A — Bombieri finite inertia | WD-T22 | Finite Weil negative-index count |
 | EXT-2B — Bombieri multiplicity/nullity | WD-T23 | Quotienting repeated-ordinate null directions |
 | EXT-3 — Unit-height zeta zero count | WD-T28, WD-T31 | Native compactness and far-shell summation |
-| EXT-4 — Compact-window formula | WD-T34, WD-T35; arithmetic input to WD-T38 | Finite prime translations and compact-window form |
-| EXT-5 — Digamma asymptotic | WD-T35 | Logarithmic principal order |
+| EXT-4 — Compact-window formula | WD-T34, WD-T35; arithmetic input to WD-T38 and WD-T40 | Finite prime translations, threshold convention, and compact-window form |
+| EXT-5 — Digamma asymptotic | WD-T35, WD-T40 | Logarithmic principal order |
 
 Transitive source dependence is inherited through theorem edges. Calling a
 proof body internal describes where the deduction is carried out; it does not
@@ -351,18 +355,16 @@ WD-S05  background-custody guard
 
 The Horizon-1 proof graph is acyclic.
 
-The primary exits are strictly downstream:
+The current boundary is:
 
 ~~~text
-WD-T37 ─────► AZ-NEXTJET-LOC
-WD-T38 ─────► AZ-FIN-WEIL-NULL-EXTENSION
+WD-T37 ─────► AZ-NEXTJET-LOC                 [OPEN]
+WD-T37 ─────► C-ACTUAL-KPH-FLOOR             [OPEN stronger refinement]
+
+WD-T38 ─────► WD-T40
+                  │
+                  ▼
+          AZ-FIN-WEIL-NULL-EXTENSION          [DISCHARGED NEGATIVELY]
 ~~~
 
-and the stronger packetwise refinement
-
-~~~text
-WD-T37 ─────► C-ACTUAL-KPH-FLOOR
-~~~
-
-is also downstream only. No open interface is a premise of the morphology
-theorem from which its arrow originates.
+No remaining open interface is a premise of the theorem from which its arrow originates.
