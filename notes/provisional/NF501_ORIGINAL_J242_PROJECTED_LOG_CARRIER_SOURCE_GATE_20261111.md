@@ -80,3 +80,23 @@ A genuinely independent numerical/analytic replication of the full 242D projecte
 - W-ODD-NEG, whole even/odd Weil and RH: **OPEN**.
 
 **Next bold NF502:** On a source-passing NF501 producer, independent validation of genuine physical projector/Schur values and a domain/source-range test, explicitly preserving the original Weil operator and physical support. If the result is already far from the gate, stop this candidate; do not automatically extend it to a second or third arbitrary ray.
+
+
+## NF501 execution finding and NF501R source-correlation repair
+
+The FIRST actual focused original-source CI execution #43137855518 failed its numerical gate after successfully authenticating all 242 NF500 source moments, reconstructing the true 242×242 physical Gram and reproducing the original dyadic frame SHA. The failure was exactly the anticipated interval-method defect: transforming 242 independently widened NF500 raw logarithmic cross intervals (each padded by 1e-75) into the original near-orthonormal frame produced a \(\|P\ell\|^2\) interval with negative lower endpoint. This is **METHOD STOP**, not a physically negative projected squared norm, failure of the smooth candidate, nor a Weil sign assertion.
+
+NF501R, staged in the same draft branch, corrects the arithmetic architecture, keeping the same original source. It independently reuses original accepted NF493 *shared* 400 native U Taylor balls, reconstructs the true source U110 finite polynomial and uses the original NF500 oscillator-source code at 600 Taylor terms. Crucially it contracts ALL selected native finite source moments into the **accepted original D-frame before adding original source-tail uncertainties**.
+
+The source U110 omitted normalized \(\ell^1\) tail plus input radii is <2.1e-79 uniformly in \(0\le d\le1/500\). The two-collar true logarithmic square moment satisfies \(\int_0^\delta\log^2(B/d)dd<65\delta\). Therefore for each verified physical D-frame unit \(g_k\), \(\|g_k\|^2=N_{kk}<1.01\), Cauchy gives a *globally correlated*, D-condition-independent original shared U truncation contribution <1e-78 to every genuine source mixed D-frame moment. It includes the exact source-pinned \(\log550\) enclosure. This is the mathematical basis for assigning a per-frame 1e-78 source fee rather than the invalid amplification of independently padded raw rows.
+
+The remaining **basis Taylor** truncation is genuinely row dependent: each original generator has uniform complex oscillator order-600 error \(<200\cdot10^6 12^{600}/600!\), multiplied by its authentic D column \(\ell^1\) coefficient norm. The true \(\|\ell\|_{L^1}\) bound is <4e-9. Hence each original D-frame error from basis truncation is charged as
+\[
+E^{\mathrm{basis}}_k
+\le
+(4\cdot10^{-9})\frac{200\cdot10^6 12^{600}}{600!}
+\sum_{i=0}^{241}|D_{ik}|.
+\]
+Every resulting original source-native raw amplitude is also required to overlap its NF500 independently source-certified raw physical moment interval, ensuring no changed parity, original oscillator, pole, Fourier normalization, or source object. The old NF401 raw multiplier column and original NF404 pole-centered finite projection are source-rechecked.
+
+**NF501R remains unaccepted until this repaired source-native CI actually passes.** The original first run failure and separately staged diagnostics are preserved. Neither a successful finite Schur test nor an operator graph/source image result is currently claimed.
