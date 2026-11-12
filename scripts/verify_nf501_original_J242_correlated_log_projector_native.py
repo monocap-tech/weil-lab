@@ -121,7 +121,33 @@ def main(opt):
     d_ell=D.transpose()*raw_ell
     x_ell=N.solve(d_ell,algorithm="lu")
     Pell2=(d_ell.transpose()*x_ell)[0,0]
-    assert Pell2.lower()>=0, "METHOD STOP: projector source numerical precision"
+    # NF501 initial direct propagation of independently overcharged raw
+    # NF500 1e-75 moment rows is NOT legitimate as a decision-quality
+    # physical frame interval; preserve a typed method stop and useful
+    # diagnostic instead of treating an interval sign failure as physics.
+    D_col_l1_max=max(sum((abs(D[i,j]) for i in range(242)),arb(0)) for j in range(242))
+    d_ell_bound=max(abs(d_ell[i,0]) for i in range(242))
+    print("NF501 original D-frame absolute raw-amplification maximum:",D_col_l1_max,flush=True)
+    print("NF501 D-frame log source moment interval magnitude bound:",d_ell_bound,flush=True)
+    if Pell2.lower()<0:
+        print("NF501 METHOD STOP: raw independently inflated source intervals fail positive projected-power gate; direct original source-correlated D-frame integration REQUIRED",flush=True)
+        status={
+            "pass":"NF501-preflight-method-stop",
+            "standing":"METHOD STOP: original independent 1e-75 per raw NF500 interval padding amplified by old physical near-normalized D-frame; NOT certified source projector",
+            "original_nf401_SHA256":oldsha,
+            "original_nf500_SHA256":newsha,
+            "original_nf498_SHA256":logsha,
+            "original_physical_frame_SHA256":FRAME_SHA,
+            "original_242D_raw_Gram_and_frame_reconstructed":True,
+            "raw_interval_Pell_squared_outward":interval(Pell2),
+            "original_D_frame_absolute_column_amplification_max":str(D_col_l1_max),
+            "original_D_frame_log_moment_magnitude_bound":str(d_ell_bound),
+            "actual_Q_J_ell_capture":"OPEN",
+            "next":"NF501R direct correlated U110 and original basis oscillator contraction in D frame BEFORE source error; L2 tail via near-isometry",
+            "W_ODD_NEG":"OPEN","RH":"OPEN"
+        }
+        Path(opt.output).write_text(json.dumps(status,indent=2)+"\n")
+        return
     restored=H*D*N.solve(d_old,algorithm="lu")
     for i,(lo,hi) in enumerate(old["original_selected_raw_J_basis_moment_column_outward"]):
         a,b=map(F,(lo,hi))
