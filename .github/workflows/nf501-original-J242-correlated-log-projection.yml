@@ -79,13 +79,13 @@ jobs:
           run-id: 43026495480
           name: nf498-original-endpoint-log-carrier-rankone-domain-exact
           path: accepted-original-nf498
-          github-token: \${{ github.token }}
+          github-token: ${{ github.token }}
       - uses: actions/download-artifact@v4
         with:
           run-id: 42866700605
           name: nf494-original-J8-whole-physical-square-independent-exact-source
           path: accepted-original-nf495
-          github-token: \${{ github.token }}
+          github-token: ${{ github.token }}
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
