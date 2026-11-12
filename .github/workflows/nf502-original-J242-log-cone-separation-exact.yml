@@ -1,0 +1,40 @@
+name: NF502 original 242D physical logarithmic one-ray cone separation exact
+on:
+  push:
+    branches:
+      - research/nf502-original-J242-log-cone-separation
+    paths:
+      - '.github/workflows/nf502-original-J242-log-cone-separation-exact.yml'
+      - 'scripts/local_replay/verify_nf502_original_log_ray_cone_separation_exact.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  exact-original-physical-projection-cone:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43139106161
+          name: nf501-original-J242-QJ-log-projection-source-native
+          path: accepted-original-nf501
+          github-token: \${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact rational source-original QJ Hilbert cone separation and non-perturbative L2 threshold
+        run: |
+          python -m py_compile scripts/local_replay/verify_nf502_original_log_ray_cone_separation_exact.py
+          python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf502_original_log_ray_cone_separation_exact.py \
+            --nf501 accepted-original-nf501/nf501-original-242D-QJ-smooth-log-capture-native.json \
+            --output nf502-original-J242-log-one-ray-cone-separation-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf502-original-J242-log-one-ray-cone-separation-exact
+          path: nf502-original-J242-log-one-ray-cone-separation-exact.json
+          if-no-files-found: ignore
+          retention-days: 90
