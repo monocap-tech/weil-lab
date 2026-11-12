@@ -54,14 +54,15 @@ def cmpoverlap(x,p):
     return x.lower()<=native.A(b) and x.upper()>=native.A(a)
 def absmax(x):return max(abs(x.lower()),abs(x.upper()))
 def finite_moment_weights(A,C,h,M=TD+14):
-    K=len(A)
     qA=[];qL=[]
     two_delta=native.A(2*DELTA)
     for j in range(M):
         a=arb(0);ell=arb(0)
-        for i in range(K):
+        for i in range(len(A)):
             den=native.A(F(1,j+i+1))
             a+=A[i]*den
+        for i in range(len(C)):
+            den=native.A(F(1,j+i+1))
             ell+=C[i]*(h*den+den*den)
         qA.append(two_delta*a)
         qL.append(two_delta*ell)
@@ -170,9 +171,14 @@ def main(o):
     K=last["original_true_same_source_joint_normalized_coeff_retained_count"]
     A=[];C=[]
     scale=F(1)
-    for i in range(K):
-        a=H400[i]+(U400[0]*c8 if i==0 else arb(0))
-        A.append(a*native.A(scale))
+    for i in range(400):
+        if i<K:
+            a=H400[i]+(U400[0]*c8 if i==0 else arb(0))
+            A.append(a*native.A(scale))
+        # The original NF500 source log is certified at 1e-75.
+        # Reproducing its all-242 rows requires ALL original H494
+        # 400 physical U coefficients, not the coarser NF495
+        # 102-row norm-tail used only for computing the squared energy.
         C.append(U400[i]*native.A(scale)/2)
         scale*=DELTA
     tailA=F(last["original_full_H400_remaining_source_normalized_l1"])
@@ -180,8 +186,8 @@ def main(o):
     EH=F(Hjet["original_original_H400_analytic_tail"])
     EU=F(Hjet["original_original_U400_analytic_tail"])
     erra=tailA+EH
-    errc=tailC+EU/2
-    assert erra+9*errc<F(1,10**49)
+    errc=EU/2
+    assert tailC<F(1,10**69) and erra+9*errc<F(1,10**49)
     print("NF504 full original source H/U normalized cutoff",K,"remaining L2 correlated fee",(erra+9*errc)/7,flush=True)
     hlo,hhi=map(F,nf500["original_exact_log550_rational_positive_atanh_410term_interval"])
     assert F(6)<hlo<=hhi<F(7) and hhi-hlo<F(1,10**375)
@@ -288,6 +294,7 @@ def main(o):
         "original_actual_exterior_D_Gram_inverse_executed":True,
         "original_source_all_242_true_complete_W_H_and_Ulog_moments_source_cross_NF500":True,
         "original_H_U_normalized_retained_terms":K,
+        "original_U_full_log_source_normalized_terms":len(C),
         "original_original_basis_Taylor_order":TD,
         "original_source_global_correlated_W_analytic_fee":str((erra+9*errc)/7),
         "original_generator_Taylor_source_remainder":str(basis_tail),
