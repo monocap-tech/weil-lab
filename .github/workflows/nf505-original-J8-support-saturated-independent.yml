@@ -1,0 +1,89 @@
+name: NF505 independently audit genuine original J8 physical support-saturated 242D exterior Schur
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  genuine-original-NF504-source-native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42850200418
+          name: nf494-original-J8-whole-analytic-H400-native
+          path: original-nf494
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42866700605
+          name: nf494-original-J8-whole-physical-square-independent-exact-source
+          path: original-nf495
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43063534898
+          name: nf500-original-J242-full-selected-log-mixed-native
+          path: original-nf500
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43139106161
+          name: nf501-original-J242-QJ-log-projection-source-native
+          path: original-nf501
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install --only-binary=:all: python-flint==0.8.0
+      - name: Recompute original NF504 complete 242D exterior true physical Gram and full H400 U400 matched real source J8 two-collar support saturation in 4096bit source arithmetic
+        run: |
+          python -m py_compile scripts/verify_nf504_original_J8_support_saturated_exterior_native.py
+          python -u -X int_max_str_digits=0 scripts/verify_nf504_original_J8_support_saturated_exterior_native.py \
+            --nf494-native original-nf494/nf494-original-J8-source-H400-joint-compact-native.json \
+            --nf495 original-nf495/nf494-original-J8-complete-joint-physical-square-source-exact.json \
+            --nf500 original-nf500/nf500-original-J242-all-selected-smooth-source-moments-native.json \
+            --nf501 original-nf501/nf501-original-242D-QJ-smooth-log-capture-native.json \
+            --output nf505-original-real-physical-J8-two-collar-saturated-source-native.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf505-original-full-J8-two-collar-242D-saturated-source-native
+          path: nf505-original-real-physical-J8-two-collar-saturated-source-native.json
+          retention-days: 90
+  independent-exact-original-saturation-source:
+    needs: [genuine-original-NF504-source-native]
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf505-original-full-J8-two-collar-242D-saturated-source-native
+          path: original-nf505-native
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42866700605
+          name: nf494-original-J8-whole-physical-square-independent-exact-source
+          path: original-nf495
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43139106161
+          name: nf501-original-J242-QJ-log-projection-source-native
+          path: original-nf501
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independent source exact Fraction 242x242 exterior Schur physical primal dual quotient, actual original K plus genuine J7 and J8, all symmetric source intervals and unchanged gamma
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf505_original_J8_saturated_exterior_source_exact.py --native original-nf505-native/nf505-original-real-physical-J8-two-collar-saturated-source-native.json --nf495 original-nf495/nf494-original-J8-complete-joint-physical-square-source-exact.json --nf501 original-nf501/nf501-original-242D-QJ-smooth-log-capture-native.json --output nf505-original-J8-saturated-242D-support-independent-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf505-original-J8-242D-saturated-support-independent-exact
+          path: nf505-original-J8-saturated-242D-support-independent-exact.json
+          retention-days: 90
