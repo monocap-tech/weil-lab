@@ -1,5 +1,6 @@
 name: NF504 original full J8 support-saturated physical quotient 4096bit source native
 on:
+  pull_request:
   push:
     branches:
       - research/nf504-original-J8-saturated-quotient-native
@@ -61,4 +62,38 @@ jobs:
           name: nf504-original-J8-full-242D-support-saturated-exterior-source-native
           path: nf504-original-J8-physical-support-saturated-exterior-source-native.json
           if-no-files-found: ignore
+          retention-days: 90
+
+  independent-NF505-source-Fraction-Schur:
+    needs: [original-242D-entire-J8-physical-support-saturation]
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf504-original-J8-full-242D-support-saturated-exterior-source-native
+          path: nf504-native
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42866700605
+          name: nf494-original-J8-whole-physical-square-independent-exact-source
+          path: original-nf495
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43139106161
+          name: nf501-original-J242-QJ-log-projection-source-native
+          path: original-nf501
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Original 242D all exterior source Gram symmetric exact Fraction; genuine K D7 D8 minus original full J8 2-collar and independent primal dual Schur exact gamma
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf505_original_J8_saturated_exterior_source_exact.py --native nf504-native/nf504-original-J8-physical-support-saturated-exterior-source-native.json --nf495 original-nf495/nf494-original-J8-complete-joint-physical-square-source-exact.json --nf501 original-nf501/nf501-original-242D-QJ-smooth-log-capture-native.json --output nf505-original-J8-support-saturated-independent-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf505-original-independent-242D-true-J8-saturated-Schur
+          path: nf505-original-J8-support-saturated-independent-exact.json
           retention-days: 90
