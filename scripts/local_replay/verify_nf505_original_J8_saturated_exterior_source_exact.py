@@ -127,7 +127,7 @@ def main():
     assert n["original_exterior_center_radius"]=="549/500"
     assert n["source_native_4096bit_complete_two_collar_S_saturation_result"] is True
     assert n["original_source_all_242_true_complete_W_H_and_Ulog_moments_source_cross_NF500"] is True
-    assert n["original_H_U_normalized_retained_terms"]==102
+    assert n["original_H_U_normalized_retained_terms"]==400
     assert n["original_U_full_log_source_normalized_terms"]==400
     assert n["original_original_basis_Taylor_order"]==400
     assert n["original_actual_exterior_D_Gram_inverse_executed"] is True
@@ -221,6 +221,8 @@ def main():
       "original_all_242_exterior_Gram_diagonal_strictly_positive":True,
       "original_source_original_norm_fee_lt":"1e-45",
       "original_complete_J8_log_400_coefficients_retained":True,
+      "original_complete_J8_analytic_H400_coefficients_retained_before_projection":True,
+      "original_exact_Lambda_n_over_sqrt_n_4096bit_instead_of_coarse_NF411_c_n_independent_bounds":True,
       "original_original_true_whole_centered_energy_reassembled_outward":to_str(full),
       "original_original_true_two_collar_total_positive_square_reassembled_outward":to_str(S),
       "original_original_true_exterior_energy_reassembled_outward":to_str(O),
