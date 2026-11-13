@@ -168,27 +168,38 @@ def main(o):
     H400=[ball(r) for r in Hjet["original_H_400_native_outward"]]
     U400=[ball(r) for r in Hjet["original_U_400_native_outward"]]
     assert U400[0].upper()<0 and H400[0].upper()<0
-    K=last["original_true_same_source_joint_normalized_coeff_retained_count"]
+    K_nf495=last["original_true_same_source_joint_normalized_coeff_retained_count"]
+    assert K_nf495==102
+    # NF505 independent source-consistency repair: the original D frame
+    # has raw selected coefficient l1 as large as 2.77e149. A
+    # source-native 102-term H polynomial has a physically small
+    # global tail (2.24e-71), but raw high-condition moment transport
+    # can exhibit enormous cancellation artifacts. Retain ALL 400
+    # authentic source-matched analytic H coefficients and ALL 400
+    # U-log coefficients BEFORE applying the fixed historical D frame.
+    # Pay only the genuine analytic 400-jet source remainder AFTER
+    # this correlation-preserving projection. NF495's independently
+    # accepted original square still retains its own 102-term policy.
+    K=TD
+    assert K==400
     A=[];C=[]
     scale=F(1)
-    for i in range(400):
-        if i<K:
-            a=H400[i]+(U400[0]*c8 if i==0 else arb(0))
-            A.append(a*native.A(scale))
-        # The original NF500 source log is certified at 1e-75.
-        # Reproducing its all-242 rows requires ALL original H494
-        # 400 physical U coefficients, not the coarser NF495
-        # 102-row norm-tail used only for computing the squared energy.
+    for i in range(K):
+        a=H400[i]+(U400[0]*c8 if i==0 else arb(0))
+        A.append(a*native.A(scale))
         C.append(U400[i]*native.A(scale)/2)
         scale*=DELTA
     tailA=F(last["original_full_H400_remaining_source_normalized_l1"])
     tailC=F(last["original_full_U400_remaining_source_normalized_l1"])
     EH=F(Hjet["original_original_H400_analytic_tail"])
     EU=F(Hjet["original_original_U400_analytic_tail"])
-    erra=tailA+EH
+    assert 0<tailA<F(1,10**69) and 0<tailC<F(1,10**69)
+    # Source-real true H400 residual bound is the ORIGINAL accepted
+    # analytic Cauchy remainder, not the old H102 omitted polynomial.
+    erra=EH
     errc=EU/2
-    assert tailC<F(1,10**69) and erra+9*errc<F(1,10**49)
-    print("NF504 full original source H/U normalized cutoff",K,"remaining L2 correlated fee",(erra+9*errc)/7,flush=True)
+    assert erra+9*errc<F(1,10**99)
+    print("NF505 source-normalized full original H400/U400 selected-frame contraction, original NF495 102 only for prior positive square; remaining L2 correlated analytic fee",(erra+9*errc)/7,flush=True)
     hlo,hhi=map(F,nf500["original_exact_log550_rational_positive_atanh_410term_interval"])
     assert F(6)<hlo<=hhi<F(7) and hhi-hlo<F(1,10**375)
     h=ball([hlo,hhi])
@@ -230,6 +241,22 @@ def main(o):
     dS=col(dS)
     assert maxfee.upper()<arb("1e-45"), "METHOD STOP source H/U original new correlated D-frame error"
     print("NF504 original direct D-frame true W mixed 242 moments max fee",maxfee.str(16),flush=True)
+    # Hard Cauchy necessary source-consistency gate for the genuine
+    # physical normalized selected-frame source vectors. The true
+    # original positive two-collar square is already independently
+    # source-certified; Njj<=1.01 from the original full selected
+    # frame. Therefore |<D_j,W_S>|<1e-9 for all 242. A purported
+    # narrow source interval centered at 1e82 can NEVER represent
+    # the original physical scalar, even if a later interval LU
+    # quotient returns an interval containing all real numbers.
+    Es_source=2*ball(last["original_complete_J8_true_improper_whole_terminal_positive_square_EwT_outward"])
+    assert Es_source.upper()<arb("1e-20")
+    cauchy_guard=arb("1e-9")
+    bad=[i for i in range(242) if dS[i,0].lower()>cauchy_guard or dS[i,0].upper() < -cauchy_guard]
+    if bad:
+        print("NF505 METHOD STOP: original selected-frame S physical Cauchy mismatch, violating actual ||W_S|| and Njj. Indices:",bad[:20],"count",len(bad),flush=True)
+        print("NF505 first actual impossible source interval:",interval(dS[bad[0],0]),flush=True)
+        raise AssertionError("METHOD STOP: original D-frame source contraction does not enclose physical mixed moments; source-verified Cauchy inconsistency")
 
     dOld=col([ball(x) for x in old["original_selected_D_frame_moment_column_outward"]])
     es=col([int(j==241) for j in range(242)])
