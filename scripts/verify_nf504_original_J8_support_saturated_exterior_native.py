@@ -158,13 +158,31 @@ def main(o):
     out_deviation=max(sum((abs(Nout[i,j]-int(i==j)) for j in range(242)),arb(0)) for i in range(242))
     print("NF504 original actual exterior D-frame maximal row deviation:",out_deviation.str(16),flush=True)
 
+    # NF505 ORIGINAL SOURCE-CORRELATED PRIME CONSTANT REPAIR:
+    # c_n = Lambda(n)/sqrt(n), where all seven n are EXACT original
+    # prime powers. The old NF411 custody enclosures are safe but some
+    # are only ~40 decimal digits. Multiplying their independently
+    # overpaid widths through the historic D frame with source
+    # coefficient l1 ~2.765e149 creates completely vacuous original
+    # 242D moment balls (up to 1e101), even though the true physical
+    # source is small. These are KNOWN arithmetic constants: evaluate
+    # each original prime-power Lambda(n) from the exact prime base at
+    # the SAME 4096-bit Arb precision as the ORIGINAL H400/U400 source;
+    # independently assert genuine NF411 original custody overlap.
+    # No prime list/source/carrier is changed or refitted.
+    prime_base={2:2,3:3,4:2,5:5,7:7,8:2,9:3}
     c8=arb(0);seen=[]
     for row in nf411["all_seven_original_prime_seam_derivative_identities"]:
         n=row["prime_power"]
-        assert n in (2,3,4,5,7,8,9) and n not in seen
-        c8+=ball(row["c_n_positive_outward"])
+        assert n in prime_base and n not in seen
+        cn=native.A(prime_base[n]).log()/native.A(n).sqrt()
+        assert cn.lower()>0
+        assert cmpoverlap(cn,row["c_n_positive_outward"]), (
+            "METHOD STOP original NF411 arithmetic prime weight custody does not overlap exact source-native 4096bit Lambda(n)/sqrt(n)",n)
+        c8+=cn
         seen.append(n)
     assert seen==[2,3,4,5,7,8,9]
+    print("NF505 original exact seven Lambda(n)/sqrt(n) source arithmetic restored at full 4096bit; original NF411 custody overlaps all seven",flush=True)
     H400=[ball(r) for r in Hjet["original_H_400_native_outward"]]
     U400=[ball(r) for r in Hjet["original_U_400_native_outward"]]
     assert U400[0].upper()<0 and H400[0].upper()<0
