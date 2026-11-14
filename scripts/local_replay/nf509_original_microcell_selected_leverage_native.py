@@ -115,6 +115,17 @@ def main():
     assert inverse_defect.upper()<arb('1e-30'), (
         'METHOD STOP original high-precision inverse independent residual',inverse_defect)
     print('NF509 original exterior 242D inverse 4096-bit posterior source checked',flush=True)
+    dO=arb_mat([[source.ball(pair)] for pair in
+               old['original_actual_exterior_W_moments_D_outward']])
+    aO=inverse*dO
+    eq=dO-Nout*aO
+    eqerr=max((abs(eq[i,0]) for i in range(242)),default=arb(0))
+    assert eqerr.upper()<arb('1e-30'), 'METHOD STOP original exterior source fit residual'
+    Eout=source.ball(old['original_original_W_exterior_energy_outward'])
+    R=Eout-(dO.transpose()*aO)[0,0]
+    assert source.cmpoverlap(R,old['original_original_saturated_exterior_residual_outward']), (
+        'METHOD STOP original physical exterior W response not source-consistent')
+    print('NF509 original W exterior optimal 242D coefficient source reconstructed',flush=True)
     h=BO/M
     needed={F(j)*h for j in indices}|{F(j+1)*h for j in indices}
     cumul={F(0):arb_mat(242,242),BO:Nout}
@@ -156,6 +167,10 @@ def main():
         'original_full_frame_normalization_error':interval(frameerr),
         'original_exterior_inverse_4096bit_residual_inf':interval(inverse_defect),
         'original_source_real_microcell_leverage_measurements':rows,
+        'original_exterior_original_W_242D_optimal_fit_D_coefficients_outward':
+            [interval(aO[i,0]) for i in range(242)],
+        'original_exterior_W_selected_fit_equation_residual':interval(eqerr),
+        'original_full_exterior_W_optimal_residual_reconstructed':interval(R),
         'original_W_minus_Ja_local_energy_integrated':False,
         'individual_local_support_acceptance_certified':False,
         'original_weil_multiplier_image_graph_domain':'OPEN',
