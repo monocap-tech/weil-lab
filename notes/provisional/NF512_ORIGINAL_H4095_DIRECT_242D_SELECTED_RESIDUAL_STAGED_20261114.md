@@ -1,6 +1,40 @@
 # NF512 — Direct original-source H4095 242-dimensional local residual architecture
 
-**November 14, 2026 PT. STAGED — actual source-native 4096-bit calculation and independent receipt CI NOT yet accepted.** Exact algebraic direct-versus-mixed residual identity checked locally in 120 exact Fraction controls. Stacked on NF511 draft PR #540. No merge into \`main\`; no original local residual value or named NF404 physical gate is claimed before authentic run completion.
+**November 14, 2026 PT. NEW actual original-source first nonpole local mixed moment and H400/U400 tail preflight: EXACT FRACTION LOCAL PASS. Complete original 242D e_H / tau_H source-native calculation and independent receipt CI NOT yet accepted.** Exact algebraic direct-versus-mixed residual identity also checked locally in 120 exact Fraction controls. Stacked on NF511 draft PR #540. No merge into \`main\`; no original local residual value or named NF404 physical gate is claimed before authentic run completion.
+
+## NF512 first verified source-local advances — before the complete 242D run
+
+The SHA-pinned **actual original NF494 H400/U400 source** and original NF505 native artifact were read into the independent Fraction script \`verify_nf512_H4095_source_analytic_preflight_exact.py\` (equivalent local preflight independently executed). For the genuine original \(H_{4095}\) midpoint \(d_0\), local half-width \(h/2\), authentic NF494 holomorphic radius \(R=1/25\), and selected local Taylor order \(K=240\), it computes from **all original 400 actual source coefficient intervals** the exact binomial bound for the source polynomial remainder after recentering:
+
+\[
+\sum_{n=K+1}^{399}\|c_n\|\binom n{K+1}(h/2)^{K+1}
+(d_0+h/2)^{n-K-1}.
+\]
+
+Both the complete original H and U reexpansion remainders are strictly below \(10^{-60}\); their genuine NF494 source Cauchy tails on this slightly enlarged \(d\)-range are \(<10^{-75}\) and \(<10^{-95}\), respectively, and the true local logarithm's order-240 geometric tail is \(<10^{-250}\). The complete original U polynomial absolute norm times this log tail is \(<10^{-50}\). The selected generator exponential-phase analytic remainder per unit raw coefficient norm remains \(<10^{-240}\) (indeed its product with a hypothetical \(10^{200}\) raw coefficient norm is \(<10^{-40}\)). The actual source-selected raw fit coefficient norm itself **has NOT yet been computed by this preflight**: source-native NF512 must verify that bound from the genuine recovered 242D fit before accepting a local e_H.
+
+More significantly, a second independently executed original-source exact Fraction script uses **NF511's actual original whole-W uniform negative interval** on the true \(H_{4095}\), together with the genuine source-selected first nonpole function
+
+\[
+j_0(x)=\sin\left(2\pi\frac{37}{64}x\right).
+\]
+
+Across the entire true positive half-cell, \(2\pi(37/64)x=\pi+u\) with \(0<u<1\); hence \(j_0(x)=-\sin u<0\). The original full W is strictly negative there, and both original functions are odd. A fully rational independent 90-term Machin arctan enclosure of \(\pi\), followed by a 45-term alternating sine bound, proves the genuine original **first nonpole raw selected mixed local moment**
+
+\[
+\boxed{
+3.39465\times10^{-14}
+<
+\int_{H_{4095}}W(x)\,
+\sin\!\left(2\pi\frac{37}{64}x\right)\,dx
+<
+4.49856\times10^{-14}.
+}
+\]
+
+This is **the first actual named original raw selected mixed cell moment beyond the sinh pole**, with a strictly positive source-certified sign. It uses exact source NF511 receipt SHA256 \`9e80c5bf05d9242b078f407c10009fa2c036b8abc1f8a5add24c1fe4e58aaed1\`, NF494 raw source SHA256 \`39cba367d70243c2d15e5a9323fc8097d58187923dcf0eca2b031136871f0181\`, and NF505 original native SHA256 \`ad4afeaa4c7d8f48dfc270c437362287d8e2a21d9cce5b385c071e358431d2ec\`. Its exact result was independently outward-rounded to 70 decimal places before publication; local verification receipt SHA256 \`07a3d12a5859715d45409722855bf81d9ab72d1b0a921b2acadaa2e4ab2285c0\`. The user-facing local proof package is \`NF512_local_source_preflight_pack.zip\`.
+
+**Scope warning:** The one genuine raw \(j_0\) moment is much too coarsely enclosed to be transported through the enormously amplified historical NF401 D-frame; doing so would destroy the physical 242D source correlations. It is NOT a certified D-frame component, a full \(b_H\), a globally fitted \(e_H\), a cell support verdict, or an admissible Weil-image claim. The principal NF512 source-native correlated direct-integration architecture below remains STAGED.
 
 ## New numerical target
 
@@ -88,6 +122,8 @@ One path-scoped NF512 GitHub Actions workflow downloads original authenticated N
 ## Standing and stopping rules
 
 - NF511 named H4095 complete original \(E_H\), local pole cross/Gram: **source-exact local verified**, not full exterior-fit residual.
+- NF512 original H400/U400 source 240-jet remainder preflight: **source-authentic exact Fraction LOCAL PASS**.
+- NF512 true original raw first nonpole (j_0) mixed local cell moment: **source-authentic exact Fraction LOCAL PASS**, strictly positive.
 - NF512 equivalent direct 242D local residual architecture: **mathematical identity established**.
 - NF512 independent exact 120 rational identity tests: **LOCAL PASS**.
 - NF512 authentic 4096-bit selected-fit \(e_H\) and \(\tau_H\): **UNCOMPUTED / CI PENDING**.
