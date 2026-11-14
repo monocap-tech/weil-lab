@@ -6,6 +6,7 @@ on:
       - 'scripts/local_replay/verify_nf512_original_direct_local_residual_receipt_exact.py'
       - 'scripts/local_replay/verify_nf512_H4095_source_analytic_preflight_exact.py'
       - 'scripts/local_replay/verify_nf512_first_original_nonpole_raw_cell_moment_exact.py'
+      - 'scripts/local_replay/verify_nf512_original_first_frequency_block14_cell_moments_exact.py'
       - '.github/workflows/nf512-original-H4095-direct-J242-residual-focused.yml'
   workflow_dispatch:
 permissions:
@@ -50,6 +51,12 @@ jobs:
           python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf512_first_original_nonpole_raw_cell_moment_exact.py \
             --nf511 nf512-recomputed-nf511-original-H4095-pole.json \
             --output nf512-original-H4095-raw-j0-nonpole-source-moment.json
+      - name: Source-exact original first 14 selected nonpole/raw local H4095 mixed moments
+        run: |
+          python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf512_original_first_frequency_block14_cell_moments_exact.py \
+            --nf505 original-nf505/nf504-original-J8-physical-support-saturated-exterior-source-native.json \
+            --nf511 nf512-recomputed-nf511-original-H4095-pole.json \
+            --output nf512-original-H4095-first14-raw-source-moments.json
       - name: Source-native 4096bit full original 242D exterior fit and actual H4095 local residual squared
         run: |
           python -u -X int_max_str_digits=0 scripts/local_replay/nf512_original_H4095_direct_J242_residual_native.py \
@@ -75,4 +82,5 @@ jobs:
             nf512-independent-Fraction-H4095-local-source-receipt.json
             nf512-original-source-H4095-exact-analytic-preflight.json
             nf512-original-H4095-raw-j0-nonpole-source-moment.json
+            nf512-original-H4095-first14-raw-source-moments.json
           retention-days: 90
