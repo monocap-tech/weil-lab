@@ -1,6 +1,6 @@
 # NF509 — Original J242 selected-leverage microcell profile, authentic physical source stage
 
-**2026-11-14 PT. Exact rational leverage algebra: 472-cell LOCAL PASS. Actual original NF407/NF406 4096-bit microcell source output: STAGED / NOT YET ACCEPTED.** Stacked on NF508 draft PR #537; no merge into `main`. W-ODD-NEG, original whole even/odd Weil positivity, multiplier image/graph domain, and RH OPEN.
+**2026-11-14 PT. Authentic original sinh-pole physical cell lower bounds: SOURCE-EXACT LOCAL PASS for 13 real microcells; 472 exact rational frame-algebra controls LOCAL PASS. Complete 242D original-source cell leverage output: STAGED / NOT YET ACCEPTED.** Stacked on NF508 draft PR #537; no merge into `main`. W-ODD-NEG, original whole even/odd Weil positivity, multiplier image/graph domain, and RH OPEN.
 
 ## Why the next source calculation is necessary
 
@@ -37,6 +37,35 @@ r_O(x)=W(x)-J_D(x)^T a_O.}
 \]
 The script also reconstructs and preserves this full genuine source-original W exterior fit for later actual local energy profiles
 \(e_j=\int_{H_j}r_O^2\), but **does not pretend to have evaluated those energies**.
+
+## First genuinely located original-source local measurement — sinh-pole component
+
+The actual historical selected J242 contains the original odd pole generator \(s(x)=\sinh(x/2)\) at index 241. This fact is SHA-pinned to the authentic NF505 complete original selected basis; it is not a toy substitute. For each genuine physical mirror-pair \(H_j\), the full 242D selected leverage obeys the exact Rayleigh/trace lower bound
+
+\[
+\boxed{\tau_j\ge
+\frac{\int_{H_j}s(x)^2\,dx}{\int_O s(x)^2\,dx}
+=\frac{[\sinh((j+1)h)-(j+1)h]-[\sinh(jh)-jh]}
+{\sinh(549/500)-549/500}.}
+\]
+
+The inequality follows by taking the original pole coefficient direction in the positive semidefinite trace \(\mathrm{tr}(G_O^{-1}G_{H_j})\): a single Rayleigh quotient cannot exceed the trace. The numerator and denominator are rigorously outward-enclosed via 33 positive terms of the exact Taylor series for \(\sinh(x)-x\), with a separately proved geometric remainder; all source geometry and threshold comparisons are exact \(\mathtt{Fraction}\), not floating acceptance tests.
+
+The new local source-authentic exact script \(\mathtt{verify_nf509_original_pole_microcell_lower_exact.py}\) ran successfully against the *actual original NF505 81 MB raw source artifact* with immutable SHA256, giving the following rounded displays of **rigorous exact-rational floors**:
+
+| Genuine mirrored microcell \(j\) | Certified lower bound on full original \(\tau_j\) from the pole |
+| ---: | ---: |
+| 0 | \(1.370185457751923\times10^{-11}\) |
+| 15 | \(9.879051352410768\times10^{-9}\) |
+| 255 | \(2.684434046093155\times10^{-6}\) |
+| 1023 | \(4.333102712609474\times10^{-5}\) |
+| 2047 | \(1.766948686214435\times10^{-4}\) |
+| 3071 | \(4.102037952321571\times10^{-4}\) |
+| 4095 | \(7.615635228519864\times10^{-4}\) |
+
+All 13 source-authentic sampled pole contributions are strictly positive and monotonically increase away from the center on the positive half-carrier. **This does not imply that the total 242D leverage itself is monotone**, nor does a lower bound below \(27/29\) certify a cell low-leverage decision. In particular *no* original full 242D \(\tau_j\) interval, local residual energy \(e_j\), localized NF404 no-go, or source-domain eligibility follows from the pole-only lower floors.
+
+The local result is reproducible in \(\mathtt{/mnt/data/NF509_local_original_pole_geometry_pack.zip}\), with exact rational JSON payload SHA256 \(\mathtt{e395cbb170b31a2ac90fdf42ff98ef6bd1913ace2ea22316df99433dfe49eecf}\). The committed script is also used as a separate exact-source preflight in the focused NF509 workflow. This first identified source-specific pole measurement does **not** substitute for the pending full 242D J242 source-native stage below.
 
 ## Computational scope and rigorous gates
 
