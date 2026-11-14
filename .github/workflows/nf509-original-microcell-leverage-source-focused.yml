@@ -5,6 +5,7 @@ on:
       - 'scripts/local_replay/nf509_original_microcell_selected_leverage_native.py'
       - 'scripts/local_replay/verify_nf509_microcell_source_receipt_exact.py'
       - 'scripts/local_replay/verify_nf509_leverage_identity_exact.py'
+      - 'scripts/local_replay/verify_nf509_original_pole_microcell_lower_exact.py'
       - '.github/workflows/nf509-original-microcell-leverage-source-focused.yml'
   workflow_dispatch:
 
@@ -28,6 +29,11 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install --only-binary=:all: python-flint==0.8.0
+      - name: Genuine original sinh pole 13 source-physical cell lower bounds in exact rational arithmetic
+        run: |
+          python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf509_original_pole_microcell_lower_exact.py \
+            --native accepted-nf505-native/nf504-original-J8-physical-support-saturated-exterior-source-native.json \
+            --output nf509-original-pole-source-microcell-exact.json
       - name: Original 4096bit NF407/406 source 242D true mirrored microcell physical leverage and matched exterior fit
         run: |
           python -u -X int_max_str_digits=0 scripts/local_replay/nf509_original_microcell_selected_leverage_native.py \
@@ -48,4 +54,5 @@ jobs:
           path: |
             nf509-original-source-microcell-selected-leverage-native.json
             nf509-independent-exact-source-microcell-custody.json
+            nf509-original-pole-source-microcell-exact.json
           retention-days: 90
