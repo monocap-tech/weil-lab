@@ -1,0 +1,58 @@
+name: NF509 selected original microcell leverage and independent rational custody
+on:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf509_original_microcell_selected_leverage_native.py'
+      - 'scripts/local_replay/verify_nf509_microcell_source_receipt_exact.py'
+      - 'scripts/local_replay/verify_nf509_leverage_identity_exact.py'
+      - 'scripts/local_replay/verify_nf509_original_pole_microcell_lower_exact.py'
+      - '.github/workflows/nf509-original-microcell-leverage-source-focused.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  original-source-242d-true-physical-microcell-leverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43352403600
+          name: nf504-original-J8-full-242D-support-saturated-exterior-source-native
+          path: accepted-nf505-native
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install --only-binary=:all: python-flint==0.8.0
+      - name: Genuine original sinh pole 13 source-physical cell lower bounds in exact rational arithmetic
+        run: |
+          python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf509_original_pole_microcell_lower_exact.py \
+            --native accepted-nf505-native/nf504-original-J8-physical-support-saturated-exterior-source-native.json \
+            --output nf509-original-pole-source-microcell-exact.json
+      - name: Original 4096bit NF407/406 source 242D true mirrored microcell physical leverage and matched exterior fit
+        run: |
+          python -u -X int_max_str_digits=0 scripts/local_replay/nf509_original_microcell_selected_leverage_native.py \
+            --nf505-native accepted-nf505-native/nf504-original-J8-physical-support-saturated-exterior-source-native.json \
+            --output nf509-original-source-microcell-selected-leverage-native.json
+      - name: Independent exact rational native-source microcell geometry, D frame and 242D trace custody
+        run: |
+          python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf509_microcell_source_receipt_exact.py \
+            --native nf509-original-source-microcell-selected-leverage-native.json \
+            --prior accepted-nf505-native/nf504-original-J8-physical-support-saturated-exterior-source-native.json \
+            --output nf509-independent-exact-source-microcell-custody.json
+      - name: Independent 472 polynomial physical Gram and frame-invariance exact rational regression
+        run: python scripts/local_replay/verify_nf509_leverage_identity_exact.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf509-original-242D-physical-microcell-source-leverage
+          path: |
+            nf509-original-source-microcell-selected-leverage-native.json
+            nf509-independent-exact-source-microcell-custody.json
+            nf509-original-pole-source-microcell-exact.json
+          retention-days: 90
