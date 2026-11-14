@@ -1,0 +1,43 @@
+{
+  "pass": "NF515-authentic-original-source-J23-selected-excitation-local-exact",
+  "standing": "LOCAL EXACT FRACTION source NF401 pre-shear, NF404 original pole, NF494 original full H400/U400 collar, NF505 original exterior & NF514 authentic J23; NO original full J242 local fitted eH, no Weil/RH",
+  "date": "2026-11-14",
+  "nf401_source_sha256": "644337986f62a3f25bb6b2005efc82f517975c84629b32b5ae8d1e5b95614515",
+  "nf494_source_sha256": "39cba367d70243c2d15e5a9323fc8097d58187923dcf0eca2b031136871f0181",
+  "nf505_source_sha256": "ad4afeaa4c7d8f48dfc270c437362287d8e2a21d9cce5b385c071e358431d2ec",
+  "nf514_selected_witness_sha256": "39a8679197447975f54629a04c9608659e47aadf61dffb6e5dea11d0df2dc6b0",
+  "source_original_selected_dimension": 242,
+  "source_original_selected_witness_nodes": 23,
+  "original_entire_selected_witness_centered_moment_float": "-1.52777563981689961253193080108185160316638874314293e-44",
+  "original_terminal_collar_selected_witness_moment_float": "-1.46106718951191352214646375263196251838384573521778e-44",
+  "source_original_exterior_W_selected_witness_moment_strict_outward": [
+    "-6.670846e-46",
+    "-6.670844e-46"
+  ],
+  "source_original_rank_one_exterior_projection_power_strict_outward": [
+    "3.569532e-24",
+    "3.569533e-24"
+  ],
+  "original_full_J242_exterior_projection_power_approx": "7.43583430603264720941675464458033178670415879159711e-22",
+  "rank_one_fraction_of_complete_projection_power_strict_rational": [
+    "48/10000",
+    "1/200"
+  ],
+  "actual_rank_one_power_on_H4094_union_H4095_strictly_greater_than": "1.4e-24",
+  "nf401_independent_bigint_source_aggregations": [
+    "10^210",
+    "10^180"
+  ],
+  "native_NF494_collar_HU_terms_remainder_paid": 400,
+  "exact_rational_original_NF404_pole_shear": true,
+  "independent_noncertificate_mpmath_170digit_collar_agrees": true,
+  "source_local_primary_receipt_sha256": "3ff6a14a0d850dc23a3965ca651a4b1229ba4d82881c4373061b7483f07d289f",
+  "local_replay_script_sha256": "3d1926d85b568b1b351b1a718422c3bbb983d90b663b042158650b692ebcdb92",
+  "source_full_J242_globally_fitted_local_residual": "OPEN",
+  "source_named_physical_NF404_patch_decision": "OPEN",
+  "original_Weil_source_image_and_graph_domain": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "GitHub_focused_CI": "OPEN",
+  "main_merge": false
+}
