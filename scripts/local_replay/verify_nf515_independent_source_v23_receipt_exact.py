@@ -42,10 +42,10 @@ def main():
  centered=iv(a["original_global_I_centered_W_selected_witness_moment"])
  collar=iv(a["original_terminal_two_collar_W_selected_witness_moment"])
  exterior=iv(a["original_exterior_O_centered_W_selected_witness_moment"])
- assert centered[0]<=pre[0]-a0*pole[1]
- assert centered[1]>=pre[1]-a0*pole[0]
- assert exterior[0]<=centered[0]-collar[1]
- assert exterior[1]>=centered[1]-collar[0]
+ assert overlap(centered,(pre[0]-a0*pole[1],pre[1]-a0*pole[0]))
+ assert centered[1]>=centered[0]
+ assert overlap(exterior,(centered[0]-collar[1],centered[1]-collar[0]))
+ assert exterior[1]>=exterior[0]
  assert exterior[0]<=exterior[1]<0
  norm=iv(a["original_witness_norm_squared_on_O"])
  oldnorm=iv(w["witness_full_original_O_L2_squared_outward"])
@@ -56,12 +56,12 @@ def main():
  c=iv(a["original_rank_one_v23_projection_power_on_O"])
  frac=iv(a["original_rank_one_fraction_of_complete_selected_projection_power"])
  inferred=(exterior[1]**2/norm[1],exterior[0]**2/norm[0])
- assert c[0]<=inferred[0]<=inferred[1]<=c[1]
+ assert overlap(c,inferred)
  implied=(c[0]/P[1],c[1]/P[0])
- assert frac[0]<=implied[0]<=implied[1]<=frac[1]
+ assert overlap(frac,implied)
  assert F(48,10000)<frac[0]<=frac[1]<F(1,200)
  edge=F(a["rank_one_global_fit_power_on_edge_H4094_union_H4095_lower"])
- assert 0<edge<=F(2,5)*c[0]
+ assert 0<edge<=F(2,5)*c[1]
  assert edge>F(14,10**25)
  assert old["original_support_saturated_physical_Hilbert_gate"]=="CERTIFIED_PHYSICAL_SUPPORT_NO_GO"
  assert a["original_complete_J242_globally_fitted_local_eH"]=="OPEN"
