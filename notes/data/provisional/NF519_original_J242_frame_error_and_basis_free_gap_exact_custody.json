@@ -1,0 +1,53 @@
+{
+  "pass": "NF519-original-J242-exact-frame-tolerance-and-frame-invariant-Fredholm-gap-conditional",
+  "status": "SOURCE-EXACT FRACTION local PASS primary+independent; synthetic exact D contractor arithmetic PASS only",
+  "date": "2026-11-14",
+  "source_nf505_native_sha256": "ad4afeaa4c7d8f48dfc270c437362287d8e2a21d9cce5b385c071e358431d2ec",
+  "source_nf518_242D_galerkin_exact_receipt_sha256": "926f8d00d28212f542351760e0c1d814413e8a36a3367d6a58bf837c53865438",
+  "source_historical_original_D_frame_sha256": "18ac01bba4de7ec432e419db5ed990fbfabad91c10cbcf5666e36b430e",
+  "original_nf407_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_selected_dimension": 242,
+  "raw_source_selected_generator_L2_exterior_Gram_trace_strict_upper": 830,
+  "raw_source_selected_generator_sum_pointwise_strict_upper": 293,
+  "actual_original_nf518_242D_trial_L1_strict_upper": "5e-8",
+  "CONDITIONAL_actual_original_D_entrywise_abs_error_upper": "1e-14",
+  "CONDITIONAL_all_original_physical_subcell_squared_e_error_upper_if_frame_verified": "6e-30",
+  "CONDITIONAL_actual_original_weighted_raw_beta_L1_error_upper": "1e-19",
+  "CONDITIONAL_all_original_physical_subcell_squared_e_error_upper_if_raw_beta_verified": "4e-30",
+  "original_true_Fredholm_gap_basis_free_matrix_test": "G_(O_minus_D) - gap*G_O >= 0",
+  "original_gap_test_valid_in_any_invertible_selected_basis": true,
+  "original_named_cell_conditional_acceptance": [
+    {
+      "H": "H4094",
+      "future_trial_e_upper": "9.9e-28",
+      "future_true_gap_lower": "0.4"
+    },
+    {
+      "H": "H4095",
+      "future_trial_e_upper": "9.9e-28",
+      "future_true_gap_lower": "0.001"
+    },
+    {
+      "H": "H4094_union_H4095",
+      "future_trial_e_upper": "2.9e-27",
+      "future_true_gap_lower": "0.00005"
+    }
+  ],
+  "actual_full_historical_D_4096bit_frame_custody": "OPEN",
+  "actual_raw_physical_selected_242D_beta_certified": false,
+  "actual_original_full242D_local_eD_interval": "OPEN",
+  "actual_original_KD_spectral_gap_interval": "OPEN",
+  "unconditional_original_NF404_named_support": "OPEN",
+  "Weil_source_image_graph_domain": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "local_primary_executed_exact_script_sha256": "1476fb04aa4e0f95f429969602be420dbc2cca6327e57cb1964839e96a9961ad",
+  "local_primary_original_source_exact_receipt_sha256": "a31dfe3f80a7b5de6ddd498b5aa86dcbb2a88b88d690b99e52420c66016e7947",
+  "local_independent_executed_source_script_sha256": "e71add2cb52518486408802c322999d8d61184c42f3212bfb81bbbd478c70c24",
+  "local_independent_source_receipt_sha256": "2480c544f8a085ddab78cf2bf49bcfeb94ce8aa1d522797fd93b928bb0c86221",
+  "local_D_contractor_synthetic_only_executed_script_sha256": "b2fd6dff603b22fa283dcb0a24c36fdf416754397aa35f366714de0fafec0cd3",
+  "local_archive_sha256": "13dc8730d5b30649ce933f0404697f2d63951b29e8d564ece216d3c31e127777",
+  "github_ci": "OPEN",
+  "main_merged": false
+}
