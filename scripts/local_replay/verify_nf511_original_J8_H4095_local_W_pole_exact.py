@@ -204,6 +204,16 @@ def main():
     capture_floor=pole_power_lower/fine[1]
     assert 0<rem_upper<fine[1]
     assert capture_floor>F(96,100)
+    # Recompute conservative scalar implications from separately printed
+    # outward *decimal* input intervals, so independent Fraction replay
+    # does not rely on unprinted extra precision.
+    Ehi_receipt=F(dec_hi(fine[1]))
+    bhi_receipt=F(dec_hi(fine[3]))
+    Chi_receipt=F(dec_hi(cp_hi))
+    capture_power_receipt=F(dec_lo(bhi_receipt**2/Chi_receipt))
+    unexplained_receipt=F(dec_hi(Ehi_receipt-capture_power_receipt))
+    fraction_receipt=F(dec_lo(capture_power_receipt/Ehi_receipt))
+    assert fraction_receipt>F(96,100)
     result={
       'pass':'NF511-original-source-exact-local-W-pole-panel',
       'standing':'LOCAL SOURCE-EXACT original full W² and sinh-pole W moment/Gram on named J8 H4095; full 242D residual e_H and named NF404 patch verdict OPEN',
@@ -220,9 +230,9 @@ def main():
       'local_E_H_original_full_W_squared':[dec_lo(fine[0]),dec_hi(fine[1])],
       'local_b_H_original_sinh_pole_cross':[dec_lo(fine[2]),dec_hi(fine[3])],
       'local_C_H_original_sinh_pole_Gram':[dec_lo(cp_lo),dec_hi(cp_hi)],
-      'local_best_scalar_pole_capture_power_lower':dec_lo(pole_power_lower),
-      'local_best_scalar_pole_unexplained_upper':dec_hi(rem_upper),
-      'local_best_scalar_pole_alignment_fraction_lower':dec_lo(capture_floor),
+      'local_best_scalar_pole_capture_power_lower':str(capture_power_receipt),
+      'local_best_scalar_pole_unexplained_upper':str(unexplained_receipt),
+      'local_best_scalar_pole_alignment_fraction_lower':str(fraction_receipt),
       'coarse_16_slab_W2':[dec_lo(broad[0]),dec_hi(broad[1])],
       'coarse_16_slab_Ws':[dec_lo(broad[2]),dec_hi(broad[3])],
       'slabs':o.slabs,'original_named_W_local_EH':True,
