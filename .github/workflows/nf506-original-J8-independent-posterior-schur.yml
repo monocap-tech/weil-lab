@@ -1,0 +1,56 @@
+name: NF506 source-pinned independent 242D integer Schur posterior and physical support liberation
+
+on:
+  pull_request:
+    branches:
+      - research/nf505-independent-J8-support-saturated-source-audit
+    paths:
+      - 'scripts/local_replay/verify_nf506_independent_a_posteriori_schur.py'
+      - 'scripts/local_replay/verify_nf506_support_expansion_exact.py'
+      - 'notes/provisional/NF506_ORIGINAL_J8_INDEPENDENT_POSTERIOR_SCHUR_AND_SUPPORT_LIBERATION_20261113.md'
+      - '.github/workflows/nf506-original-J8-independent-posterior-schur.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  independent-original-full-242D-numerical-contraction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43352403600
+          name: nf504-original-J8-full-242D-support-saturated-exterior-source-native
+          path: original-nf505-native
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43352403600
+          name: nf505-original-independent-242D-true-J8-saturated-Schur
+          path: original-nf505-audit
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install --only-binary=:all: numpy==2.3.5
+      - name: Complete independently inverted 242D authentic physical exterior Schur with 242^3 integer a posteriori verification
+        run: |
+          python -m py_compile scripts/local_replay/verify_nf506_independent_a_posteriori_schur.py
+          python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf506_independent_a_posteriori_schur.py \
+            --native original-nf505-native/nf504-original-J8-physical-support-saturated-exterior-source-native.json \
+            --nf505-audit original-nf505-audit/nf505-original-J8-support-saturated-independent-exact.json \
+            --output nf506-original-independent-242D-numerical-schur-posterior.json
+      - name: Exact Fraction 192 support-recentering and liberation theorem controls
+        run: python -u scripts/local_replay/verify_nf506_support_expansion_exact.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf506-original-J8-independent-242D-posterior-source-gate
+          path: nf506-original-independent-242D-numerical-schur-posterior.json
+          retention-days: 90
