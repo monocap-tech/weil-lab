@@ -139,3 +139,57 @@ This is a real original-source *spatial* observation, not a projection of global
 Local source receipt SHA256 `b1b6909710262dd55f0498be1971cb958ef9105161276f8ada5bdf205e7cff96`; independent audit receipt SHA256 `230e8e7d4e55c4846b99008a0ab2eafd69dc06778c52cd2af747d35aa1e8e741`. A small reproducibility pack includes both exact source scripts, the original NF511 helper, and all local receipts, but omits the 81MB original NF505 native input; SHA-pinned authenticated original GitHub artifact retention and RC04 backup remain separate.
 
 **Next NF514:** do not march into H4093 using one NF494 source formula: the authentic n9 seam must be split with a new correlation-preserving local source evaluator. The higher-priority unresolved calculation is **genuine complete J242 globally fitted e_H and tau_H** from NF512 on H4095, then H4094 and their union, before testing any named support-expansion NF404 gate. Original source uncertainty and selected D-frame cancellation must be paid after full physical correlation contraction; otherwise METHOD STOP and consider Weil multiplier image/domain rather than continuing to produce physical local W-only shadows.
+
+## NF513 further consequence — leverage-only conditional physical support screen
+
+**This changes the certificate architecture and can avoid computing the full local 242D fitted residual e_H if the goal is a negative support exclusion.** Denote by \(p_O=P^O_J W\) the fixed original exterior selected projection, \(P=\|p_O\|_{L^2(O)}^2=b_O^\top G_O^{-1}b_O\), and let \(E_D=\|W\|_{L^2(D)}^2\) be the **genuine now source-certified local physical energy**. The original source-native NF505 artifact gives both \(P\le P_{\rm hi}\approx7.435835\times10^{-22}\) and \(\mathcal R(O)\ge R_{\rm lo}\). For an interior support addition \(D\), retain the **genuine full selected** leverage
+
+\[
+\tau_D=\mathrm{tr}(G_O^{-1}C_D),\qquad C_D=\int_D JJ^\top.
+\]
+
+Because the operator \(G_O^{-1/2}C_DG_O^{-1/2}\) is positive semidefinite with largest eigenvalue \(\le\tau_D\),
+
+\[
+\|p_O\|_{L^2(D)}^2\le\tau_D P_{\rm hi}.
+\]
+
+The triangle inequality on the true original physical cell therefore yields **without computing original local b_H or globally fitted e_H**,
+
+\[
+\boxed{
+e_D:=\|W-p_O\|_{L^2(D)}^2
+\le\bigl(\sqrt{E_D}+\sqrt{\tau_D P_{\rm hi}}\bigr)^2.
+}
+\]
+
+Combining with the exact NF506 liberation identity and NF508 trace-leverage gain upper bound gives, for \(\tau_D<1\),
+
+\[
+\boxed{
+\mathcal R(O\setminus D)\ge
+R_{\rm lo}-
+\frac{(\sqrt{E_{D,\mathrm{upper}}}+\sqrt{\tau_D P_{\rm hi}})^2}
+{1-\tau_D}.
+}
+\]
+
+The right-hand lower bound decreases monotonically with \(\tau_D\in[0,1)\). To avoid any floating radical for acceptance, put \(\Delta=R_{\rm lo}-\gamma^2>0\), \(T\) a proposed rational leverage ceiling, and \(A=(1-T)\Delta-E_{\rm upper}-TP_{\rm hi}\). **Exact Fraction sufficient test**:
+
+\[
+\boxed{A>0\qquad\text{and}\qquad A^2>4T E_{\rm upper}P_{\rm hi}.}
+\]
+
+When both hold, **any future source-certified full selected \(\tau_D\le T\) proves the unchanged original fixed NF404 physical support criterion still FAILS** for that named support expansion. The selected \(\tau_D\) itself is not yet measured, so these are strictly **CONDITIONAL exclusion certificates**.
+
+The newly committed independently SHA-pinned exact source rational verifier \`verify_nf513_original_source_leverage_only_no_go_exact.py\` passed locally and establishes:
+
+| Original physical support enlargement \(D\) | Source-exact sufficient leverage ceiling for fixed NF404 physical NO-GO | Actual \(\tau_D\) standing |
+| --- | ---: | --- |
+| Only the new H4094 | \(\boxed{\tau_{4094}\le 13/100=0.13}\) | **OPEN** |
+| Only existing H4095 | \(\boxed{\tau_{4095}\le 3/25=0.12}\) | **OPEN** |
+| **Both** H4094∪H4095 | \(\boxed{\tau_{4094}+\tau_{4095}\le1/10=0.10}\) | **OPEN** |
+
+All three radical-free exact Fraction squared comparisons are strictly positive against the actual original NF505 \(R_{\rm lo},P_{\rm hi},\gamma^2\) and the authentic original NF511/NF513 outward local \(W^2\) energy uppers. For example, at \(T=0.1\), the two-cell union's exact squared-comparison surplus is positive by a conservative factor >1.4309. This is more informative than merely producing additional physical W² shadows: **a full source-native J242 leverage upper bound alone could now close named-cell negative decisions, with no need to calculate the difficult local globally fitted selected residual e_H**. Conversely, if actual \(\tau_D\) is above the given ceiling, the method is inconclusive, not evidence of feasibility or failure.
+
+**NF514 should prioritize the true 242-dimensional leverage on these two particular cells**, through the original physical Gram endpoint-source evaluator or an alternative rigorous Christoffel upper bound, and apply the three source-exact conditions. Only if the thresholds do not decide should the original NF512 full 242D direct fitted local e_H be reactivated. This is the correlation-preserving certificate-architecture reduction after NF510's information-limit warning, and deliberately avoids unwarranted local moment overcalculation.
