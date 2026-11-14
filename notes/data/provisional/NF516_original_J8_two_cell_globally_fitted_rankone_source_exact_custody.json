@@ -1,0 +1,80 @@
+{
+  "pass": "NF516-original-source-J8-two-cell-globally-fitted-rankone-local-exact",
+  "standing": "SOURCE-EXACT LOCAL PASS 128-slab and independent complete 44-jet joint analytic; FULL original 242D globally-fitted local e_H / NF404 verdict / Weil image-domain / RH OPEN; focused CI OPEN",
+  "original_nf494_H400_U400_raw_SHA256": "39cba367d70243c2d15e5a9323fc8097d58187923dcf0eca2b031136871f0181",
+  "original_nf505_full_J242_raw_SHA256": "ad4afeaa4c7d8f48dfc270c437362287d8e2a21d9cce5b385c071e358431d2ec",
+  "original_nf514_selected_23D_integer_seed_SHA256": "39a8679197447975f54629a04c9608659e47aadf61dffb6e5dea11d0df2dc6b0",
+  "original_nf515_global_source_witness_bridge_SHA256": "3ff6a14a0d850dc23a3965ca651a4b1229ba4d82881c4373061b7483f07d289f",
+  "original_nf407_source_SHA256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_prime_seam_SHA256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "local_primary_128_slab_raw_SHA256": "13f18ea3532ee77eabd08338ab7fa490c7d3de5474c2e504e13203e2452f9281",
+  "local_independent_44jet_joint_analytic_raw_SHA256": "573d5db0449b02242d718b17bee81a31840666f2abb6382aafb2e12e256396ff",
+  "local_independent_exact_Fraction_audit_raw_SHA256": "77fdc393538fcc4127ce3ec1a60295b3bae6f99a0a70b91767122297f8019662",
+  "original_selected_dimension": 242,
+  "actual_original_selected_rank_one_witness_source_generators": 23,
+  "physical_mirror_pair_cells": [
+    4094,
+    4095
+  ],
+  "physical_two_cells_fraction_of_original_exterior_measure": "1/2048",
+  "source_integral_intervals_from_independent_44jet_analytic_exact_decimal": {
+    "H4094": {
+      "original_W2": [
+        "0.00000000000000000000000296688936683586396661303745185960952128836",
+        "0.00000000000000000000000296688936683586396661303745185960954495122"
+      ],
+      "original_W_times_selected_v": [
+        "-0.00000000000000000000000000000000000000000000025353921055755433331",
+        "-0.00000000000000000000000000000000000000000000025353921055755433330"
+      ],
+      "original_globally_fitted_rankone_residual_squared": [
+        "0.00000000000000000000000087516988366288117375171957127945933311762",
+        "0.00000000000000000000000087516988366288117375171957127947027582952"
+      ],
+      "local_energy_removed_fraction_strict_gt": "70/100"
+    },
+    "H4095": {
+      "original_W2": [
+        "0.00000000000000000000000517010505826528497068569557273138665727910",
+        "0.00000000000000000000000517010505826528497068569557273138665728137"
+      ],
+      "original_W_times_selected_v": [
+        "-0.00000000000000000000000000000000000000000000038157111412346306442",
+        "-0.00000000000000000000000000000000000000000000038157111412346306441"
+      ],
+      "original_globally_fitted_rankone_residual_squared": [
+        "0.00000000000000000000000189418442400053012689628806957144834604721",
+        "0.00000000000000000000000189418442400053012689628806957146423125177"
+      ],
+      "local_energy_removed_fraction_strict_gt": "63/100"
+    },
+    "union": {
+      "original_W2": [
+        "0.00000000000000000000000813699442510114893729873302459099617856746",
+        "0.00000000000000000000000813699442510114893729873302459099620223258"
+      ],
+      "original_W_times_selected_v": [
+        "-0.00000000000000000000000000000000000000000000063511032468101739772",
+        "-0.00000000000000000000000000000000000000000000063511032468101739771"
+      ],
+      "original_globally_fitted_rankone_residual_squared": [
+        "0.00000000000000000000000276935430766341130064800764085090767916484",
+        "0.00000000000000000000000276935430766341130064800764085093450708128"
+      ],
+      "original_signed_net_exterior_Wv_correlation_fraction_strict_gt": "95/100",
+      "rankone_energy_removed_fraction_strict_gt": "65/100"
+    }
+  },
+  "certificate_explanations": [
+    "Energy reduction uses original globally-fitted one-dimensional selected coefficient beta from NF515, not a local refit.",
+    "95% concentration is of the original whole-exterior NET SIGNED source coupling, not integral of absolute coupling.",
+    "The historical complete J242 original global selected projection has another 241D complement; these local rank-one energy intervals give neither a necessary nor a sufficient original NF404 physical support certificate."
+  ],
+  "original_complete_J242_globally_fitted_local_eH": "OPEN",
+  "original_NF404_named_physical_support_gate": "OPEN",
+  "original_Weil_multiplier_image_graph_domain": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "dedicated_GitHub_CI": "OPEN",
+  "main_merge": false
+}
