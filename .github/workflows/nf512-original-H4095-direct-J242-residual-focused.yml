@@ -1,0 +1,63 @@
+name: NF512 focused original H4095 direct J242 local residual and source custody
+on:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf512_original_H4095_direct_J242_residual_native.py'
+      - 'scripts/local_replay/verify_nf512_original_direct_local_residual_receipt_exact.py'
+      - '.github/workflows/nf512-original-H4095-direct-J242-residual-focused.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  authentic-original-H4095-direct-residual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42850200418
+          name: nf494-original-J8-whole-analytic-H400-native
+          path: original-nf494
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43352403600
+          name: nf504-original-J8-full-242D-support-saturated-exterior-source-native
+          path: original-nf505
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install --only-binary=:all: python-flint==0.8.0
+      - name: Recompute authentic original NF511 local W2 and pole source receipt
+        run: |
+          python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf511_original_J8_H4095_local_W_pole_exact.py \
+            --nf494 original-nf494/nf494-original-J8-source-H400-joint-compact-native.json \
+            --nf505 original-nf505/nf504-original-J8-physical-support-saturated-exterior-source-native.json \
+            --output nf512-recomputed-nf511-original-H4095-pole.json
+      - name: Source-native 4096bit full original 242D exterior fit and actual H4095 local residual squared
+        run: |
+          python -u -X int_max_str_digits=0 scripts/local_replay/nf512_original_H4095_direct_J242_residual_native.py \
+            --nf494 original-nf494/nf494-original-J8-source-H400-joint-compact-native.json \
+            --nf505 original-nf505/nf504-original-J8-physical-support-saturated-exterior-source-native.json \
+            --nf511 nf512-recomputed-nf511-original-H4095-pole.json \
+            --output nf512-original-H4095-direct-J242-local-source-native.json
+      - name: Independently audit exact original source receipt and fixed NF404 named cell gate
+        run: |
+          python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf512_original_direct_local_residual_receipt_exact.py \
+            --nf494 original-nf494/nf494-original-J8-source-H400-joint-compact-native.json \
+            --nf505 original-nf505/nf504-original-J8-physical-support-saturated-exterior-source-native.json \
+            --nf511 nf512-recomputed-nf511-original-H4095-pole.json \
+            --native nf512-original-H4095-direct-J242-local-source-native.json \
+            --output nf512-independent-Fraction-H4095-local-source-receipt.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf512-original-H4095-source-native-direct-J242-local-residual
+          path: |
+            nf512-recomputed-nf511-original-H4095-pole.json
+            nf512-original-H4095-direct-J242-local-source-native.json
+            nf512-independent-Fraction-H4095-local-source-receipt.json
+          retention-days: 90
