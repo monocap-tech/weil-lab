@@ -34,6 +34,20 @@ Across the entire true positive half-cell, \(2\pi(37/64)x=\pi+u\) with \(0<u<1\)
 
 This is **the first actual named original raw selected mixed cell moment beyond the sinh pole**, with a strictly positive source-certified sign. It uses exact source NF511 receipt SHA256 \`9e80c5bf05d9242b078f407c10009fa2c036b8abc1f8a5add24c1fe4e58aaed1\`, NF494 raw source SHA256 \`39cba367d70243c2d15e5a9323fc8097d58187923dcf0eca2b031136871f0181\`, and NF505 original native SHA256 \`ad4afeaa4c7d8f48dfc270c437362287d8e2a21d9cce5b385c071e358431d2ec\`. Its exact result was independently outward-rounded to 70 decimal places before publication; local verification receipt SHA256 \`07a3d12a5859715d45409722855bf81d9ab72d1b0a921b2acadaa2e4ab2285c0\`. The user-facing local proof package is \`NF512_local_source_preflight_pack.zip\`.
 
+**Extension within the same genuine original first-frequency selected block:** The original NF505 source-selected order begins with all 14 generators \([37/64,k]\), \(0\le k\le13\), where \(j_k(x)=x^k\sin(2\pi(37/64)x)\) for even k and \(j_k(x)=x^k\cos(2\pi(37/64)x)\) for odd k. On the actual positive H4095 cell the phase is \(\pi+u\), \(0<u<1\), so both sine and cosine basis factors are negative, as is the independently source-certified original \(W\). An **independent exact-rational cosine Taylor bound** paired with the sine/Machin proof therefore certifies the sign and full physical support interval of **all first 14 authentic original raw selected mixed moments**. The actual original NF505 selected basis order and historical D SHA are independently checked in the verifier \`verify_nf512_original_first_frequency_block14_cell_moments_exact.py\`.
+
+Selected outward values from the locally passed all-Fraction original-source calculation include
+
+| Original raw selected index and order | True \(H_{4095}\) mixed moment outward |
+| --- | ---: |
+| 0, \(k=0\) | \((3.39465,4.49856)\times10^{-14}\) |
+| 1, \(k=1\) | \((3.29723,4.37158)\times10^{-14}\) |
+| 2, \(k=2\) | \((4.09061,5.42349)\times10^{-14}\) |
+| 7, \(k=7\) | \((5.76936,7.66041)\times10^{-14}\) |
+| 13, \(k=13\) | \((1.00949,1.34235)\times10^{-13}\) |
+
+All 14 indices have **strictly positive**, source-certified actual mixed moments on the true named physical cell, and each passes the independent physical Cauchy bound using the original source-certified local whole-W square. The exact 70-decimal-place outward entries for every k are in the local source receipt; the independent all-rational 14-block calculation **PASSED**. These are again **raw** selected-function moments, not yet the full original correlated D-frame moment column. They must **not** be transported as 14 independently rounded uncertain inputs through the historical D.
+
 **Scope warning:** The one genuine raw \(j_0\) moment is much too coarsely enclosed to be transported through the enormously amplified historical NF401 D-frame; doing so would destroy the physical 242D source correlations. It is NOT a certified D-frame component, a full \(b_H\), a globally fitted \(e_H\), a cell support verdict, or an admissible Weil-image claim. The principal NF512 source-native correlated direct-integration architecture below remains STAGED.
 
 ## New numerical target
