@@ -228,6 +228,7 @@ def main():
       'cauchy_U400_tail_upper':dec_hi(cauchyU,110),
       'source_C8_interval':[dec_lo(clo),dec_hi(chi)],
       'local_E_H_original_full_W_squared':[dec_lo(fine[0]),dec_hi(fine[1])],
+      'local_W_pointwise_negative_outward':[dec_lo(fine[4]),dec_hi(fine[5])],
       'local_b_H_original_sinh_pole_cross':[dec_lo(fine[2]),dec_hi(fine[3])],
       'local_C_H_original_sinh_pole_Gram':[dec_lo(cp_lo),dec_hi(cp_hi)],
       'local_best_scalar_pole_capture_power_lower':str(capture_power_receipt),
