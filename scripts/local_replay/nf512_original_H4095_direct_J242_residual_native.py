@@ -252,8 +252,8 @@ def main():
     residual=[w-v for w,v in zip(W,fit)]
     sqR=integrate(residual,feeW+feeJ,o.steps)
     sqW=integrate(W,feeW,o.steps)
-    assert source.cmpoverlap(arb(sqW[0],(sqW[1]-sqW[0])/2) if False else
-                             (sqW[0]+sqW[1])/2+arb(0,(sqW[1]-sqW[0])/2),
+    localW=(sqW[0]+sqW[1])/2+arb(0,(sqW[1]-sqW[0])/2)
+    assert source.cmpoverlap(localW,
                              receipt['local_E_H_original_full_W_squared']), (
                              'METHOD STOP source J8 local W² inconsistent with accepted NF511')
     assert sqR[0]>=0
