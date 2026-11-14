@@ -1,0 +1,73 @@
+{
+  "status": "NF517-UNVERIFIED-original-J242-550-digit-Gauss-Nystrom-scout-only",
+  "provenance": "Original raw NF505 4096bit exterior selected Gram and source moments, independent 550-decimal original physical Gram from authentic 242 analytic generators, original NF494 H400/U400 W; exact source SHA-pinned but mpmath not interval-certified",
+  "original_nf505_raw_SHA256": "ad4afeaa4c7d8f48dfc270c437362287d8e2a21d9cce5b385c071e358431d2ec",
+  "original_nf494_raw_SHA256": "39cba367d70243c2d15e5a9323fc8097d58187923dcf0eca2b031136871f0181",
+  "original_nf407_source_SHA256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seams_SHA256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_selected_dimension": 242,
+  "original_raw_physical_Gram_arbitrary_precision_decimal_digits": 550,
+  "original_selected_global_solution_max_normal_equation_residual_display": "9.484143039e-563",
+  "original_selected_projection_power_numeric": "7.43583430603264720941675464458e-22",
+  "original_Full_Gout_vs_source_Nout_reconstructed_selected_Gram_sample_max_error_display": "1.809e-253",
+  "old_original_NF505_source_Rlower": "1.5782989705548823e-22",
+  "unchanged_original_NF404_gammaSquared": "5.1296807867614294e-26",
+  "original_source_selected_J242_scout_cells": {
+    "H4094": {
+      "globally_fitted_local_eD": "6.944685497429612e-28",
+      "full_refit_gain": "1.494440293128396e-27",
+      "trace_leverage": "0.6669135842180532",
+      "kernel_spectral_gap": "0.42855492245207505"
+    },
+    "H4095": {
+      "globally_fitted_local_eD": "6.134137430732793e-28",
+      "full_refit_gain": "1.7104499535354426e-27",
+      "trace_leverage": "1.656025648584924",
+      "kernel_spectral_gap": "0.003339996517662036"
+    },
+    "H4094_union_H4095": {
+      "globally_fitted_local_eD": "1.3078822928162404e-27",
+      "full_refit_gain": "2.5263479293029597e-27",
+      "trace_leverage": "2.322939232802977",
+      "kernel_spectral_gap": "0.00006889032408841089"
+    }
+  },
+  "Gauss_legendre_orders_per_cell_compared": [
+    12,
+    18,
+    24
+  ],
+  "original_242D_kernel_Nystrom_gauss_error_rigorously_bounded": false,
+  "original_550digit_mpmath_rounding_rigorously_bounded": false,
+  "original_historical_exact_D_frame_SHA256_reproduced": false,
+  "original_full242D_eD_and_K_gap_INTERVAL_CERTIFIED": false,
+  "source_exact_original_spectral_conditional_gates": [
+    {
+      "D": "H4094",
+      "IF_eD_upper": "1e-27",
+      "AND_gap_lower": "2/5",
+      "THEN_named_original_physical_nf404_NO_GO": true,
+      "ACTUAL_gate_verified": false
+    },
+    {
+      "D": "H4095",
+      "IF_eD_upper": "1e-27",
+      "AND_gap_lower": "1/1000",
+      "THEN_named_original_physical_nf404_NO_GO": true,
+      "ACTUAL_gate_verified": false
+    },
+    {
+      "D": "H4094_union_H4095",
+      "IF_eD_upper": "3e-27",
+      "AND_gap_lower": "1/20000",
+      "THEN_named_original_physical_nf404_NO_GO": true,
+      "ACTUAL_gate_verified": false
+    }
+  ],
+  "original_named_NF404_unconditional_physical_verdict": "OPEN",
+  "original_Weil_source_image_graph_domain": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "focused_GitHub_CI": "OPEN",
+  "main_merge": false
+}
