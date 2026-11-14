@@ -176,7 +176,10 @@ def main():
     mom=interval(bridge['original_true_exterior_O_W_witness_moment_outward'])
     norm=interval(bridge['original_selected_v23_full_exterior_norm_squared'])
     assert mom[1]<0 and norm[0]>0
-    beta=(mom[0]/norm[0],mom[1]/norm[1])
+    # Quantize the *outward* global source beta interval before combining
+    # hundreds of unrelated exact source denominators in local jet products.
+    # This is only an outward containment, not a fit replacement.
+    beta=(F(flo(mom[0]/norm[0],75)),F(cei(mom[1]/norm[1],75)))
     assert beta[1]<0
     q=true_source_selected_q(seed,old)
     cells=[]
