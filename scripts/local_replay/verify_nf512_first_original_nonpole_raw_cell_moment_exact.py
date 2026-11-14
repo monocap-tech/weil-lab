@@ -75,6 +75,12 @@ def run(p,out):
     # Original physical source Cauchy consistency, using the
     # rigorous geometric bound ||j0||_H²<=|H|=2h.
     assert blo**2<=Ehi*(2*H)
+    # Expose a compact 70-decimal-place exact outward receipt, while
+    # all original sine/Machin proof comparisons above use full Fractions.
+    scale=10**70
+    blo=F(blo.numerator*scale//blo.denominator,scale)
+    bhi=F(-((-bhi.numerator*scale)//bhi.denominator),scale)
+    assert 0<blo<bhi
     receipt={
       'pass':'NF512-source-exact-first-nonpole-local-moment',
       'NF511_source_local_receipt_sha256':sh,
