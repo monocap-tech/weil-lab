@@ -66,15 +66,15 @@ def localized_odd_control(seed):
     # selected functions x and x^3. A local 3-vector of residual values
     # is chosen orthogonal to both columns on its mirrored cell.
     # Disjoint positive nodes ensure different physical localization.
-    pos_a = [Q(j+1, 10) for j in range(3)]
-    pos_b = [Q(j+6, 10) for j in range(3)]
+    pos_a = [Q(j+1, 10)+Q(seed,1000) for j in range(3)]
+    pos_b = [Q(j+6, 10)+Q(seed,1000) for j in range(3)]
     x = pos_a + pos_b + [-v for v in pos_a+pos_b]
     J = [[v, v**3] for v in x]
     H_a = (0,1,2,6,7,8)
     H_b = (3,4,5,9,10,11)
     O = tuple(range(len(x)))
     G = mat_gram(J, O)
-    a = [Q(3, 7), Q(-8, 11)]
+    a = [Q(3+seed, 7), Q(-8-seed, 11)]
     projection = [dot(row, a) for row in J]
 
     def local_r(vals, cell):
@@ -175,7 +175,7 @@ def main():
     assert audit['original_nf504_original_entire_242_exterior_4096bit_native_json_sha256']==nsha
     lo,hi,gamma,E=original_source_gate(n,audit)
     tests=[localized_odd_control(j) for j in range(5)]
-    assert all(x==tests[0] for x in tests)
+    assert len({x['common_full_energy'] for x in tests}) == 5
     result={
         'pass':'NF510-source-aggregate-information-limit-exact',
         'standing':'ANALYTIC COUNTERMODELS + EXACT SOURCE GLOBAL DATA; NO ORIGINAL LOCAL W CELL INTEGRATIONS',
@@ -189,6 +189,7 @@ def main():
         'old_exterior_energy_interval':[str(v) for v in E],
         'global_Gram_moments_and_energy_do_not_determine_per_cell_residual_energy':True,
         'odd_mirrored_two_selected_generator_exact_countermodel':tests[0],
+        'independent_odd_control_variants':len(tests),
         'functional_analytic_argument':'Each positive-measure open mirrored H supports odd C_c^infty functions in the orthogonal complement of the 242 restricted analytic generators: take 243 disjoint odd bump pairs, solve 242 homogeneous moment equations, normalize. Two different H can carry equal-energy residuals with identical global Gram, mixed moments, and total energy after adding fixed projection.',
         'original_nf407_full_source_still_determines_W':True,
         'sufficient_per_cell_source_inputs':['E_H=integral_H W^2','b_H=integral_H J W','C_H=integral_H J J^T'],
