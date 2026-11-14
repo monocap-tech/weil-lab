@@ -1,0 +1,25 @@
+{
+  "pass": "NF514-source-exact-local-rational-replay-index",
+  "standing": "Original selected 23D exact integer witness lower-bounds full 242D physical trace leverage; NOT full trace, conditional support NO-GO impossible, RH OPEN",
+  "source_original_nf505_artifact_sha256": "ad4afeaa4c7d8f48dfc270c437362287d8e2a21d9cce5b385c071e358431d2ec",
+  "source_nf407_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "source_nf406_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "exact_original_witness_seed_sha256": "39a8679197447975f54629a04c9608659e47aadf61dffb6ae11d0df2dc6b0",
+  "local_primary_receipt_sha256": "b45b834bfebfdf7b8e3475e668e526d561c8cddb05a19bcfc4e98f9b945b4194",
+  "local_independent_receipt_sha256": "e0a57060cee775a007ee02d74f71bc0832d3abc73be80e7a8eeb6ae4b5e966cb",
+  "source_authenticated_original_selected_witness_23_generators": 23,
+  "original_selected_space_total_dimension": 242,
+  "rigorous_actual_true_selected_trace_leverage_lower_floors": {
+    "H4095": "> 1/5",
+    "H4094": "> 1/6",
+    "H4094_union_H4095": "> 2/5"
+  },
+  "original_full_selected_trace_leverage_values": "OPEN",
+  "NF513_original_conditional_leverage_only_no_go_status": "RULED_OUT_AS_USABLE_CERTIFICATE_FOR_THESE_CELLS",
+  "named_original_physical_NF404_support_decision": "OPEN",
+  "original_source_image_domain": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "focused_github_ci": "OPEN",
+  "local_verification": "PASS"
+}
