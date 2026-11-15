@@ -1,0 +1,57 @@
+{
+  "pass": "NF522-original-source-full-J242-three-named-finite-physical-NF404-NO_GO",
+  "date": "2026-11-14 PT",
+  "standing": "SOURCE-EXACT LOCAL PASS full historical 242D D frame, true global full242D source physical beta, all three true named local residual eD and independently source-certified NF520 Fredholm gaps; finite-selected NF404 physical NO_GO. Full Weil multiplier image/domain, W_ODD_NEG, odd/even and RH OPEN. Focused GitHub CI OPEN.",
+  "original_NF505_4096bit_native_raw_SHA256": "ad4afeaa4c7d8f48dfc270c437362287d8e2a21d9cce5b385c071e358431d2ec",
+  "original_NF494_full_H400_U400_raw_SHA256": "39cba367d70243c2d15e5a9323fc8097d58187923dcf0eca2b031136871f0181",
+  "original_NF407_source_SHA256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_NF406_seams_SHA256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_historical_D_frame_SHA256": "18ac01bba4de7ec432e419db5ed990fbfabad91c10cbcf2f61cf5666e36b430e",
+  "original_NF518_complete_global_242D_coefficient_receipt_SHA256": "926f8d00d28212f542351760e0c1d814413e8a36a3367d6a58bf837c53865438",
+  "genuine_original_selected_dimension": 242,
+  "source_original_full_carrier_Gram_interval_scale": "10^700",
+  "source_original_full_242D_Gram_source_blob_SHA256": "d00771a8f154328fbe7f3871a99c03c2221c93244f4bc4ad35044b7922466d62",
+  "original_first140_Gram_overlap_verified_entries": 9870,
+  "original_full_historical_D_alternative_positive_triangular_source_exact_proof_SHA256": "a84012c94bcb44f3de68a4617d267a70942a7f3a0f8bc81845a31e5b77eed09b",
+  "original_historical_D_full_frame_max_row_error_strict_lt": "2.232e-142",
+  "original_full_242D_raw_physical_beta_exact_source_proof_SHA256": "8272a5a7271d66e49235601f180356c9225f6e90ca849172e0c29dbf0217cbb4",
+  "original_full_242D_raw_beta_weighted_error_strict_lt": "5.480e-149",
+  "original_full_J242_named_local_eD_source_exact_receipt_SHA256": "a52c4f755d319535d64dd95b2915f7a3d8371317c317678d6630e1e7c24afa87",
+  "original_full_J242_named_local_energy_source_exact": [
+    {
+      "D": "H4094",
+      "source_exact_eD_strict_upper": "1e-27",
+      "display_measured_eD": "6.944685497429616e-28",
+      "source_original_NF520_certified_delta_strict_lower": "2/5",
+      "source_original_NF404_physical_gate": "CERTIFIED_NO_GO",
+      "source_original_remaining_R_strict_lower_display": "1.5782816088e-22"
+    },
+    {
+      "D": "H4095",
+      "source_exact_eD_strict_upper": "1e-27",
+      "display_measured_eD": "6.134137430732775e-28",
+      "source_original_NF520_certified_delta_strict_lower": "1/1000",
+      "source_original_NF404_physical_gate": "CERTIFIED_NO_GO",
+      "source_original_remaining_R_strict_lower_display": "1.5721648331e-22"
+    },
+    {
+      "D": "H4094_union_H4095",
+      "source_exact_eD_strict_upper": "3e-27",
+      "display_measured_eD": "1.307882292816239e-27",
+      "source_original_NF520_certified_delta_strict_lower": "1/20000",
+      "source_original_NF404_physical_gate": "CERTIFIED_NO_GO",
+      "source_original_remaining_R_strict_lower_display": "1.3167225120e-22"
+    }
+  ],
+  "unchanged_original_NF404_gamma_squared_display": "5.1296807867614294e-26",
+  "original_finite_physical_named_source_independent_Fraction_audit_SHA256": "87036252ebbde169657271fe675859537b8b349025f07822dd3cb8455bce966b",
+  "independent_mpmath_260digit_direct_source_quadrature": "NON_CERTIFICATE; 20 and 30 Gauss nodes on each cell agree inside exact intervals",
+  "actual_local_proof_pack_SHA256": "80cfbf4bc3bf1db758f4d11990d4808a362a9601d002eabd3e4c8437c2f36007",
+  "original_NF404_original_support_scope": "Only the three named H4094,H4095 and their union as finite original J242 physical support additions; no claim for other patches or source-space admissibility",
+  "Weil_multiplier_image_graph_domain": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "full_Weil_even_and_odd_positivity": "OPEN",
+  "RH": "OPEN",
+  "dedicated_GitHub_CI": "OPEN",
+  "main_merged": false
+}
