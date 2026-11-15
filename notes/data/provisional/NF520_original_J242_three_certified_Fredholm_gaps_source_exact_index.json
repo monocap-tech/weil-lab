@@ -1,0 +1,70 @@
+{
+  "pass": "NF520-source-original-full-J242-three-physical-Fredholm-gaps-exact-integer-local",
+  "date": "2026-11-14",
+  "standing": "Original-source exact local PASS for full 242D Fredholm gap on H4094, H4095 and union; independent exact receipt audit PASS; globally fitted local eD and original NF404 named physical decision OPEN",
+  "original_nf505_native_raw_SHA256": "ad4afeaa4c7d8f48dfc270c437362287d8e2a21d9cce5b385c071e358431d2ec",
+  "original_nf407_source_SHA256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seams_SHA256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_historical_D_frame_SHA256": "18ac01bba4de7ec432e419db5ed990fbfabad91c10cbcf2f61cf5666e36b430e",
+  "original_full_selected_dimension": 242,
+  "original_selected_basis": "241 authentic x^k sin/cos plus original sinh pole",
+  "authentic_original_endpoints": [
+    "549/500",
+    "449631/409600",
+    "1123803/1024000"
+  ],
+  "exact_rational_raw_Gram_fixed_scale": "10^420",
+  "untrusted_preconditioner_integer_scale": "10^200",
+  "source_gram_custody_SHA256": "80e19a74955e4a994aaac9fc08fbb32f344ddb48845eba758fb9def891a2b5b4",
+  "original_three_gap_certificates": [
+    {
+      "patch": "H4094",
+      "strict_gap_lower": "2/5",
+      "Gershgorin_center_deficit_display": 0.0015789792682814458,
+      "source_interval_error_display": 4.338046642972377e-102,
+      "receipt_SHA256": "6d42ab98423e6cf79f49d530cc15ea5af32d32806ea8c0415dbfe4c04862b47a"
+    },
+    {
+      "patch": "H4095",
+      "strict_gap_lower": "1/1000",
+      "Gershgorin_center_deficit_display": 0.00013023899546180313,
+      "source_interval_error_display": 1.0462570549246237e-102,
+      "receipt_SHA256": "80b9baa0027459a6ca2b3016c366596ea694dfc8cd6d8a9c2ea97ea4e8988688"
+    },
+    {
+      "patch": "H4094_union_H4095",
+      "strict_gap_lower": "1/20000",
+      "Gershgorin_center_deficit_display": 0.00044777938705055056,
+      "source_interval_error_display": 1.6102785685097446e-102,
+      "receipt_SHA256": "223c35b7c54041500f3e2a7ee37d8b32b361c42f239f7387b674c5a073806299"
+    }
+  ],
+  "independent_exact_Fraction_receipt_sha256": "b1ab7e1aabed0aed880ff49ce20871517d5d0da3c1359be63dca901d6c7d1000",
+  "local_16_file_proof_pack_SHA256": "68d85bcdbee50627414a6423d41c6f063950125f87ce3c8472d51a279e5c2932",
+  "all_three_Fredholm_spectral_gap_inputs_source_CERTIFIED": true,
+  "remaining_NF517_energy_upper_obligations": [
+    {
+      "patch": "H4094",
+      "eD_upper": "1e-27",
+      "certified": false
+    },
+    {
+      "patch": "H4095",
+      "eD_upper": "1e-27",
+      "certified": false
+    },
+    {
+      "patch": "H4094_union_H4095",
+      "eD_upper": "3e-27",
+      "certified": false
+    }
+  ],
+  "actual_original_full_J242_local_eD": "OPEN",
+  "unconditional_original_NF404_named_physical_support_result": "OPEN",
+  "original_Weil_multiplier_image_graph_domain": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "full_even_odd_Weil_positivity": "OPEN",
+  "RH": "OPEN",
+  "GitHub_dedicated_focus_CI": "OPEN",
+  "main_merge": false
+}
