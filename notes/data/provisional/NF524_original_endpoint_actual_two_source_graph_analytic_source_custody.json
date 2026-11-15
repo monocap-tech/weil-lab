@@ -30,7 +30,8 @@
   "new_Lean_source_theorem_compilation": "NOT_RUN",
   "dedicated_GitHub_CI": "OPEN",
   "main_merged": false,
-  "local_primary_executed_receipt_SHA256": "3068f0280cdb376f883a0fb4b69897ee206d87740965ab6324d3faa17e5147d3",
-  "local_independent_executed_receipt_SHA256": "1b0e516fee4cc781ccef3e018ec5ed65de104aee36218086f85aa26eaf23efb4",
-  "local_full_source_proof_zip_SHA256": "b149295e5406152bb6688c21bee68c8bc5f4994d9df52c331be16128e40b7079"
+  "local_primary_executed_receipt_SHA256": "94eb5d590bac1e76970d26978c21fa50c7b46cf198af321089bb37a6b98f05eb",
+  "local_independent_executed_receipt_SHA256": "dd67dd14aecccca19f936dd2baf6501e45f228e91391fa0385e6fb70fc2dbffe",
+  "local_full_source_proof_zip_SHA256": "162ed903e833c869275abd94ee622b15490101a72e8138f9fcd75bae56759fb3",
+  "actual_negative_pair_orientation": "(F(conjugate(z)) - F(z))/sqrt(2), matching original Lean"
 }
