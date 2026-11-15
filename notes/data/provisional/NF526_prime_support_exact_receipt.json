@@ -1,0 +1,20 @@
+{
+  "pass": "NF526-exact-original-endpoint-prime-support-9-only",
+  "date": "2026-11-15 PT",
+  "scope": "support/log9 rational geometry + original NF523-source-envelope conditional magnitude; NOT NF494 replay, Lean or Weil form acceptance",
+  "B": "11/10",
+  "delta": "1/500",
+  "cross_positive": ["549/250", "11/5"],
+  "log9_bounds": ["3878560408428192222711007/1765208913296620938854400", "79510488372780081163114531/36186782722580729246515200"],
+  "log9_tail_upper": "1/16904991277056",
+  "s9_bounds": ["100433616897523179218909/36186782722580729246515200", "4899200824373842768673/1765208913296620938854400"],
+  "only_prime_power": 9,
+  "original_NF523_envelope_premise": "|U(B-d)/2|<=2e-7 for 0<=d<=delta",
+  "prime_absolute_bound": "1/366210937500000",
+  "pole_absolute_bound": "1/781250000000000000",
+  "prime_sign": "UNDECIDED",
+  "original_archimedean_signed_scalar": "OPEN",
+  "original_400_source_replayed": false,
+  "lean_compiled": false,
+  "RH": "OPEN"
+}
