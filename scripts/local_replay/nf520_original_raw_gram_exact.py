@@ -53,11 +53,11 @@ def sincos(q):
     for k in range(1,161):
         st=-(st*ysq//(S*(2*k)*(2*k+1)));sn+=st
         ct=-(ct*ysq//(S*(2*k-1)*(2*k)));cs+=ct
-    # Taylor remainder <4^323/323!<1e-470; 161 terms,
-    # integer rounding and phase error together <1e-410.
+    # Sine remainder <4^323/323!<1e-470; cosine remainder\n    # <4^322/322!<1e-467. Both are below 1e-420.
+    # Integer rounding and phase error together <1e-410.
     # Per-step quantization error <100 fixed-point units:
     # sum of propagated magnitudes < 161*100*exp(4)+5 <10^10.
-    assert F(4)**323/math.factorial(323)<F(1,10**470)
+    assert F(4)**323/math.factorial(323)<F(1,10**470)\n    assert F(4)**322/math.factorial(322)<F(1,10**467)
     assert 161*100*55+5<10**10
     E=10**10
     return (sn-E,sn+E),(cs-E,cs+E)
