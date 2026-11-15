@@ -50,7 +50,7 @@ having cardinality <=A(n+2)2^n. Actual zeta ordinate z_q=-i(rho_q-1/2) has Re z_
 
 In the exact original two-source graph, for every multiplicity copy q:
 \[
-a_\pm(f;q)=\frac{F_f(z_q)\pm F_f(\bar z_q)}{\sqrt2}.
+a_\pm(f;q)=\frac{F_f(\bar z_q)\pm F_f(z_q)}{\sqrt2}.
 \]
 Within D_n, the Fourier estimate implies |F(z_q)|<=2C(n+2)/2^n, C=1e-4. Paying the actual pair normalization and actual multiplicity-count bound:
 \[
