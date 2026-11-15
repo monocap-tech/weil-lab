@@ -12,6 +12,6 @@ Replay in Python 3.11+ with no third-party dependencies:
 
 The first verifies the complex-window Fourier decay 1e-4*(1+log(2+t))/(1+t), exponential-strip fee and dyadic tail by exact Fraction. The second independently rechecks all genuine original U400 coefficient balls, reverse dual-Horner U and U' Cauchy fees and the dyadic tail. No numerical zeta-zero list is required. The dyadic actual full divisor multiplicity count bound is already proved in WeilDefect/Arithmetic/ActualZetaDyadicSummability.lean. The mathematical graph-lift and exact-242-moment smooth graph-convergence proof uses that existing theorem; it has NOT been newly Lean compiled.
 
-The full reproducibility package, including original ~1MB source native JSON and exact locally accepted receipts, is NF524_original_two_source_divisor_graph_exact_pack.zip, SHA256 b149295e5406152bb6688c21bee68c8bc5f4994d9df52c331be16128e40b7079.
+The full reproducibility package, including original ~1MB source native JSON and exact locally accepted receipts, is NF524_original_two_source_divisor_graph_exact_pack.zip, SHA256 162ed903e833c869275abd94ee622b15490101a72e8138f9fcd75bae56759fb3.
 
 Actual Green-packet closed-span membership and the same-source complete signed Weil diagonal are NOT established by source graph membership. W_ODD_NEG, RH, GitHub CI OPEN. No merge to main.
