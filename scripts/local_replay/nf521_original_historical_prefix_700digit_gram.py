@@ -56,7 +56,7 @@ def configure():
 def main():
     p=argparse.ArgumentParser()
     p.add_argument('--nf505',required=True)
-    p.add_argument('--rank',type=int,choices=(23,100,140),required=True)
+    p.add_argument('--rank',type=int,choices=(23,100,140,242),required=True)
     p.add_argument('--workdir',required=True)
     a=p.parse_args()
     raw=Path(a.nf505).read_bytes()
