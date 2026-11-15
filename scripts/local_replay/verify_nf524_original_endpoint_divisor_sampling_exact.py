@@ -59,7 +59,7 @@ def main():
      "ell_U_all_zeta_strip_sample_bound":"|F(z)|<=1e-4*(1+log(2+|Re(z)|))/(1+|Re(z)|) for |Im(z)|<=1/2",
      "actual_source_divisor_dyadic_card_Lean_theorem":"neutralActualZetaDivisorDyadicBand_card_bound",
      "zero_count_constant_A":"EXISTS_BY_UNCONDITIONAL_LEAN_NO_NUMERIC_VALUE",
-     "true_positive_negative_pair_samples":"(F(z)+/-F(conj(z)))/sqrt(2) for every multiplicity copy",
+     "true_positive_negative_pair_samples":"(F(conj(z))+/-F(z))/sqrt(2) for every multiplicity copy",
      "uniform_two_source_difference_tail_divided_by_A":"16*(3/10000)^2*2^-N*(2*(N+2)^3+6*(N+2)^2+18*(N+2)+26)",
      "original_ell_U_full_two_source_graph_lift":"ANALYTIC_THEOREM_FROM_NF523_SOURCE_AND_UNCONDITIONAL_DIVISOR_COUNT",
      "NF523_original_exact_242_moment_smooth_sequence_two_source_graph_Cauchy":"ANALYTIC_THEOREM",
