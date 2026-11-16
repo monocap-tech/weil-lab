@@ -1,0 +1,82 @@
+name: NF554 original dual Hermite jet multiplicity and full symbolic source audit
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242HermiteDerivativeMultiplicity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242WeightedCollarGram.lean"
+      - "scripts/local_replay/verify_nf554_original_dual_odd_jet_coefficient_bridge.py"
+      - ".github/workflows/nf554-original-hermite-multiplicity.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+  workflow_dispatch:
+
+jobs:
+  nf554-original-symbolic-odd-jet-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Syntax-check original source bridge
+        run: python3 -m py_compile scripts/local_replay/verify_nf554_original_dual_odd_jet_coefficient_bridge.py
+      - name: Check all original 58322 oscillator coefficients and 242 true sinh-pole coefficients
+        run: |
+          python3 scripts/local_replay/verify_nf554_original_dual_odd_jet_coefficient_bridge.py \
+            --output nf554_original_dual_odd_jet_coefficient_bridge.json
+      - name: Preserve genuine original-source coefficient certificate
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf554-original-dual-odd-jet-source-coefficients
+          path: nf554_original_dual_odd_jet_coefficient_bridge.json
+          if-no-files-found: error
+
+  nf554-hermite-derivative-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib archive
+        run: lake exe cache get
+      - name: Compile exact characteristic-zero Hermite root-multiplicity theorem
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242HermiteDerivativeMultiplicity
+      - name: Compile inherited degree-obstruction and real-node separation
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242HermiteDegreeObstruction
+      - name: Reject proof holes
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242HermiteDerivativeMultiplicity.lean \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242HermiteDegreeObstruction.lean; then
+            echo "NF554 no missing proof declarations permitted"
+            exit 1
+          fi
+
+  nf554-original-source-compiler-recovery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib archive
+        run: lake exe cache get
+      - name: Compile genuine original NF546 physical L2 source moments
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242PhysicalMomentMap
+      - name: Compile repaired genuine NF547 source smoothness
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242WeightedCollarGram
+      - name: Compile NF548 actual real even collar cutoff
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalEvenCollarCutoff
+      - name: Compile NF549 actual physical integral
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
+      - name: Compile NF550 actual 242 weighted-square Gram
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramSeparationGate
+      - name: Compile NF551 actual original odd parity and local-global identity
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddParity
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity
