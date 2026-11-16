@@ -4,6 +4,7 @@ import Mathlib.Tactic
 
 namespace WeilDefect
 noncomputable section
+open scoped ContDiff
 
 /-!
 NF561 — prove the frequency-scaled sine/cosine initial jets used by
@@ -29,7 +30,9 @@ theorem neutralNF561ScaledSin_oddJet (ω : ℝ) (n : ℕ) :
       (-1 : ℝ) ^ n * ω ^ (2 * n + 1) := by
   rw [iteratedDeriv_comp_const_mul
     (Real.contDiff_sin (n := 2 * n + 1)) ω]
-  simp [Real.iteratedDeriv_odd_sin, mul_comm]
+  rw [Real.iteratedDeriv_odd_sin]
+  simp only [mul_zero, Real.cos_zero, mul_one]
+  ring
 
 /-- Every even initial derivative of cosine at any positive original
 oscillator ω_f=2πf. The theorem is actually valid for all real ω. -/
@@ -39,7 +42,9 @@ theorem neutralNF561ScaledCos_evenJet (ω : ℝ) (n : ℕ) :
       (-1 : ℝ) ^ n * ω ^ (2 * n) := by
   rw [iteratedDeriv_comp_const_mul
     (Real.contDiff_cos (n := 2 * n)) ω]
-  simp [Real.iteratedDeriv_even_cos, mul_comm]
+  rw [Real.iteratedDeriv_even_cos]
+  simp only [mul_zero, Real.cos_zero, mul_one]
+  ring
 
 /-- The other parity jets of sine at the origin vanish. -/
 theorem neutralNF561ScaledSin_evenJet_zero (ω : ℝ) (n : ℕ) :
@@ -63,7 +68,8 @@ is the precise source-relevant Leibniz selection mechanism. -/
 theorem neutralNF561MonomialJet_zero_except (k m : ℕ) :
     (iteratedDeriv m (fun x : ℝ => x ^ k)) 0 =
       if m = k then (k.factorial : ℝ) else 0 := by
-  exact iteratedDeriv_fun_pow_zero
+  simpa only using
+    (iteratedDeriv_fun_pow_zero (𝕜 := ℝ) (n := m) (m := k))
 
 /-- Source-ready high-order product rule at the analytic initial
 point. Multiplication by x^k selects ONLY derivative order k
