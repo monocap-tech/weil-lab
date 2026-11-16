@@ -35,7 +35,7 @@ theorem neutralNF559OriginalPoleCoefficientIdentity (n : ℕ) (a : ℝ) :
     _ = a * ((1 / 2 : ℝ) * (((1 / 2 : ℝ) ^ 2) ^ n)) := by
       rw [hbase]
     _ = a * (1 / 2 : ℝ) ^ (2 * n + 1) := by
-      rw [pow_mul, pow_add]
+      rw [← pow_mul, pow_add]
       ring
 
 /-- Evaluating the actual 242-indexed dual polynomial at the
