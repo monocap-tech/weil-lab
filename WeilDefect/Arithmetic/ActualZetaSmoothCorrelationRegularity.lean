@@ -69,5 +69,47 @@ theorem neutralActualZetaWindowCorrelation_literature_of_smoothRepresentative
   neutralActualZetaWindowCorrelation_literature_of_contDiff a f g
     (neutralWindowCorrelation_contDiff_of_windowRepresentative_contDiff a f g hf)
 
+
+/-- The rigorous admissibility theorem for a genuine smooth test carried as
+an L² class: a compactly supported C² function agreeing a.e. with the
+window-restricted SECOND input makes the exact correlation C². Unlike a
+pointwise smoothness assumption on the selected L² representative, this
+hypothesis is invariant under change of representatives. -/
+theorem neutralWindowCorrelation_contDiff_of_ae_smoothSecond
+    (a : ℝ) (f g : RealComplexL2)
+    (ψ : ℝ → ℂ)
+    (hψ : ContDiff ℝ 2 ψ) (hψc : HasCompactSupport ψ)
+    (hψae : neutralWindowRepresentative a g =ᵐ[volume] ψ) :
+    ContDiff ℝ 2 (neutralWindowCorrelation a f g) := by
+  let H : ℝ → ℂ := fun x => conj (neutralWindowRepresentative a f (-x))
+  have hwin : Integrable (neutralWindowRepresentative a f) := by
+    simpa using neutralWindowRepresentative_twist_integrable a f 0
+  have hH : Integrable H := by
+    exact (Complex.conjCLE.toContinuousLinearMap.integrable_comp hwin).comp_neg
+  have hsame :
+      (neutralWindowRepresentative a g ⋆[ContinuousLinearMap.mul ℝ ℂ] H) =
+        (ψ ⋆[ContinuousLinearMap.mul ℝ ℂ] H) := by
+    exact convolution_congr (ContinuousLinearMap.mul ℝ ℂ) hψae
+      (Filter.EventuallyEq.rfl)
+  rw [neutralWindowCorrelation_eq_realBilinearConvolution, hsame]
+  exact hψc.contDiff_convolution_left (ContinuousLinearMap.mul ℝ ℂ)
+    hψ hH.locallyIntegrable
+
+/-- Actual complete-multiplicity Weil EF for a smooth physical input
+represented only a.e. inside the window. NO pointwise smoothness of the
+canonical L² representative, and NO separate divisor summability premise. -/
+theorem neutralActualZetaWindowCorrelation_literature_of_ae_smoothSecond
+    (a : ℝ) (f g : RealComplexL2)
+    (ψ : ℝ → ℂ) (hψ : ContDiff ℝ 2 ψ)
+    (hψc : HasCompactSupport ψ)
+    (hψae : neutralWindowRepresentative a g =ᵐ[volume] ψ) :
+    (∑' q : NeutralActualZetaDivisorCoordinate,
+      conj (neutralWindowEvaluation a
+        (conj (neutralActualZetaDivisorOrdinate q)) f) *
+        neutralWindowEvaluation a (neutralActualZetaDivisorOrdinate q) g) =
+      Zeta23.EF.literatureRHS (neutralWindowCorrelation a f g) :=
+  neutralActualZetaWindowCorrelation_literature_of_contDiff a f g
+    (neutralWindowCorrelation_contDiff_of_ae_smoothSecond a f g ψ hψ hψc hψae)
+
 end
 end WeilDefect
