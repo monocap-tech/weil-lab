@@ -1,0 +1,78 @@
+name: NF558 original dual coefficient injectivity and NF549 compiler recovery
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242DualPolynomialCoefficient.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramPhysicalIntegral.lean"
+      - ".github/workflows/nf558-original-dual-coefficients.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+  workflow_dispatch:
+
+jobs:
+  nf558-original-dual-polynomial-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Compile source-exact original dual polynomial and 68 nodes
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242DualPolynomialSourceNodes
+      - name: Compile original 242 polynomial coefficient injectivity
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242DualPolynomialCoefficient
+      - name: Reject missing proof placeholders
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242DualPolynomialCoefficient.lean; then
+            echo "NF558 genuine original-source coefficient recovery incomplete"
+            exit 1
+          fi
+
+  nf558-original-physical-source-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Compile genuine NF546 original full-window physical moments
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242PhysicalMomentMap
+      - name: Compile genuine NF547 original smooth weighted columns
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242WeightedCollarGram
+      - name: Compile genuine NF548 canonical real-even two-collar cutoff
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalEvenCollarCutoff
+      - name: Compile NF549 true original canonical Gram integral pairing
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
+      - name: Compile NF550 exact original canonical positive weighted-square reduction
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramSeparationGate
+      - name: Compile NF551 original analytic odd parity and identity
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddParity
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity
+
+  nf558-original-source-custody:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preserve source SHA and dual 58,564 exact odd-jet identities
+        run: |
+          python3 scripts/local_replay/verify_nf554_original_dual_odd_jet_coefficient_bridge.py \
+            --output nf558_original_242_dual_coefficients_replay.json
+      - name: Archive authentic original-source receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf558-original-source-dual-coefficients
+          path: nf558_original_242_dual_coefficients_replay.json
+          if-no-files-found: error
