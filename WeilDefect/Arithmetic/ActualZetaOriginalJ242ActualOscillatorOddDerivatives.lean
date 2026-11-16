@@ -4,6 +4,7 @@ import Mathlib.Tactic
 
 namespace WeilDefect
 noncomputable section
+open scoped ContDiff
 
 /-!
 NF562 — first ACTUAL source-indexed analytic differentiation theorem
