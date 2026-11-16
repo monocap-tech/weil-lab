@@ -22,9 +22,10 @@ def nf545OriginalSelectedOscillatorNodes : List (ℚ × ℕ) :=
 
 /-- The actual source oscillator-node expansion has exactly 241 rows.
 The 242nd original selected generator is the separate sinh pole. -/
+set_option maxRecDepth 8192 in
 theorem nf545OriginalSelectedOscillatorNodes_length :
     nf545OriginalSelectedOscillatorNodes.length = 241 := by
-  decide
+  decide +kernel
 
 /-- The source-exact rational frequency and monomial order for an
 original non-pole selected mode. The fixed index is preserved. -/
