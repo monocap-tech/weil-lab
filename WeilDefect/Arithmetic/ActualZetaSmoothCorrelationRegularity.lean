@@ -29,7 +29,7 @@ theorem neutralWindowReflectedRepresentative_hasCompactSupport
     (a : ℝ) (f : RealComplexL2) :
     HasCompactSupport
       (fun x : ℝ => conj (neutralWindowRepresentative a f (-x))) := by
-  apply HasCompactSupport.intro isCompact_Icc
+  apply HasCompactSupport.intro (K := Set.Icc (-a) a) isCompact_Icc
   intro x hx
   have hn : -x ∉ Set.Icc (-a) a := by
     intro hin
@@ -51,8 +51,8 @@ theorem neutralWindowCorrelation_contDiff_of_windowRepresentative_contDiff
       (fun x : ℝ => conj (neutralWindowRepresentative a f (-x))) := by
     exact Complex.conjCLE.contDiff.comp (hf.comp contDiff_neg)
   rw [neutralWindowCorrelation_eq_realBilinearConvolution]
-  exact (neutralWindowReflectedRepresentative_hasCompactSupport a f)
-    .contDiff_convolution_right (ContinuousLinearMap.mul ℝ ℂ)
+  exact (neutralWindowReflectedRepresentative_hasCompactSupport a f).contDiff_convolution_right
+    (ContinuousLinearMap.mul ℝ ℂ)
       hwin.locallyIntegrable hrefl
 
 /-- Combine the true unconditional literal zeta explicit formula with the
