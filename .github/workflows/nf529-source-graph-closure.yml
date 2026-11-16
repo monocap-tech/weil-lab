@@ -12,6 +12,7 @@ on:
       - "WeilDefect/Arithmetic/ActualZetaFullSourceLiftOfSquareSummable.lean"
       - "WeilDefect/Arithmetic/ActualZetaRawSamplesToFullSourceGraph.lean"
       - "WeilDefect/Arithmetic/ActualZetaRawPairNormalizedEnergy.lean"
+      - "WeilDefect/Arithmetic/ActualZetaFullGraphRawDivisorQuadratic.lean"
       - ".github/workflows/nf529-source-graph-closure.yml"
       - "lakefile.toml"
       - "lake-manifest.json"
@@ -43,6 +44,9 @@ jobs:
       - name: Build and typecheck NF533 automatic all-multiplicity summability
         shell: bash
         run: lake build WeilDefect.Arithmetic.ActualZetaSmoothLiteralFormulaAutomatic
+      - name: Build NF538 complete full-source-graph Q equals all-zero-divisor sum
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaFullGraphRawDivisorQuadratic
       - name: Build genuine NF534 correlation C2 regularity and actual EF attachment
         shell: bash
         run: lake build WeilDefect.Arithmetic.ActualZetaSmoothCorrelationRegularity
@@ -64,7 +68,7 @@ jobs:
       - name: Reject placeholders in the NF529 target
         shell: bash
         run: |
-          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' WeilDefect/Arithmetic/ActualZetaSourceQuadraticClosure.lean WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormula.lean WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormulaAutomatic.lean WeilDefect/Arithmetic/ActualZetaSmoothCorrelationRegularity.lean WeilDefect/Arithmetic/ActualZetaOriginalCollarSmoothL2.lean WeilDefect/Arithmetic/ActualZetaOddPhysicalSampleSummability.lean WeilDefect/Arithmetic/ActualZetaFullSourceLiftOfSquareSummable.lean WeilDefect/Arithmetic/ActualZetaRawSamplesToFullSourceGraph.lean WeilDefect/Arithmetic/ActualZetaRawPairNormalizedEnergy.lean; then
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' WeilDefect/Arithmetic/ActualZetaSourceQuadraticClosure.lean WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormula.lean WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormulaAutomatic.lean WeilDefect/Arithmetic/ActualZetaSmoothCorrelationRegularity.lean WeilDefect/Arithmetic/ActualZetaOriginalCollarSmoothL2.lean WeilDefect/Arithmetic/ActualZetaOddPhysicalSampleSummability.lean WeilDefect/Arithmetic/ActualZetaFullSourceLiftOfSquareSummable.lean WeilDefect/Arithmetic/ActualZetaRawSamplesToFullSourceGraph.lean WeilDefect/Arithmetic/ActualZetaRawPairNormalizedEnergy.lean WeilDefect/Arithmetic/ActualZetaFullGraphRawDivisorQuadratic.lean; then
             echo "NF529 target contains an unfinished declaration."
             exit 1
           fi
