@@ -43,6 +43,22 @@ Independent `.github/workflows/nf543-source-exact-collar-242.yml` compiles repai
 
 **Lean proof state: code committed, pending actual GitHub compiler acceptance.** A clean syntax parse is not an acceptance receipt.
 
+## 3A. Full-graph convergence stability (new second Lean module)
+
+`ActualZetaOriginalCollar242GraphCorrection.lean` adds a universal normed-source-graph theorem: for any full graph normed complex source space `V`, continuous true 242-moment map `M : V →L[ℂ] (Fin 242 → ℂ)`, and continuous correction lift `R : (Fin 242 → ℂ) →L[ℂ] V`, define
+
+```
+C_ell(g) = g + R (M ell - M g).
+```
+
+It proves `M(C_ell(g))=M ell` if `M ∘ R = id`. Crucially, **without requiring convergence at the level of physical L² only**, continuity of `M` and `R` gives
+
+```
+g_s → ell in V  ==>  C_ell(g_s) → ell in V
+```
+
+with the original complete graph topology. For the actual NF524/NF528 graph, `V` must be instantiated with the physical+true all-multiplicity P/N closed source graph, and the authentic 242-moment and supported bump correction maps must be proved continuous into that graph. Those instantiations are NOT supplied or silently assumed, so this is a rigorous **structural stability theorem**, not yet the source-specific convergence certificate. The dedicated NF543 workflow now includes the graph-limit module as another independent compiler target. All compilation currently PENDING.
+
 ## 4. Critical remaining original-source obligations
 
 1. Construct the TRUE `M` from the repository's authentic 242 selected `j_i` (including sinh-pole mode) on the original physical L² window. Prove moments are continuous in the relevant topology and do not alter the source object.
