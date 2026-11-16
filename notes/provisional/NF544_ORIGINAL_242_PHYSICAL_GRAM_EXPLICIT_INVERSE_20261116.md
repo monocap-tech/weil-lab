@@ -4,7 +4,7 @@
 
 ## 1. Compiler custody from NF542/NF543
 
-NF540 quadratic Fourier-moment admission PASS at [#43891499088](https://github.com/monocap-tech/weil-lab/actions/runs/43891499088), NF541 derivative-witness bridge PASS at [#43891499147](https://github.com/monocap-tech/weil-lab/actions/runs/43891499147). NF542 prior run [#43891501533](https://github.com/monocap-tech/weil-lab/actions/runs/43891501533) FAILED at two `ContDiff ℝ ∞` parser locations; NF543 fixed syntax to `ContDiff ℝ ⊤`. Latest NF543-branch NF542/NF543 focused checks had not yet completed at the time of writing. Any further compiler errors must be repaired before promoting NF542, NF543, or NF544.
+NF540 quadratic Fourier-moment admission PASS at [#43891499088](https://github.com/monocap-tech/weil-lab/actions/runs/43891499088), NF541 derivative-witness bridge PASS at [#43891499147](https://github.com/monocap-tech/weil-lab/actions/runs/43891499147). NF542 prior run [#43891501533](https://github.com/monocap-tech/weil-lab/actions/runs/43891501533) FAILED at two `ContDiff ℝ ∞` parser locations; NF543 first changed the syntax to `ContDiff ℝ ⊤` but this still FAILED in [#43896289780](https://github.com/monocap-tech/weil-lab/actions/runs/43896289780) because `HasCompactSupport.toSchwartzMap` requires `ContDiff ℝ ∞` (the scoped infinite-order notation) rather than the distinct order `⊤`. NF544 now explicitly opens `ContDiff` scope and restores `ContDiff ℝ ∞`. New focused compiler checks remain PENDING. Any further compiler errors must be repaired before promoting NF542, NF543, or NF544.
 
 ## 2. Original 242-column weighted Gram reduction
 
