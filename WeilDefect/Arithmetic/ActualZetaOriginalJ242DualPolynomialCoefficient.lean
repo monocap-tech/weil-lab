@@ -24,7 +24,8 @@ theorem neutralNF558OriginalDualPolynomial_coeff
     (neutralNF557OriginalDualPolynomial a).coeff i.val =
       (-1 : ℝ) ^ i.val * a i := by
   classical
-  simp [neutralNF557OriginalDualPolynomial, Polynomial.coeff_monomial]
+  simp [neutralNF557OriginalDualPolynomial, Polynomial.coeff_monomial,
+    Fin.val_inj]
 
 /-- The exact 242-dimensional original odd-jet dual polynomial
 is injective. This is the missing reverse implication p_a=0 → a=0,
