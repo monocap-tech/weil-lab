@@ -45,6 +45,7 @@ theorem neutralFiniteLogFourierEnergy_of_quadraticMoment
     have hpoly : 0 ≤ Real.exp 1 + 1 + ξ ^ 2 := by positivity
     have hnsq : 0 ≤ ‖(𝓕 f : RealComplexL2) ξ‖ ^ 2 := sq_nonneg _
     simp only [Real.norm_eq_abs]
+    rw [abs_of_nonneg (mul_nonneg hlow hnsq)]
     exact mul_le_mul_of_nonneg_right
       (neutralLogarithmicFourierWeight_le_quadraticMoment ξ) hnsq
 
