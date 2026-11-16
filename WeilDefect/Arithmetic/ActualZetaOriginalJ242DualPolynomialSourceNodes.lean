@@ -110,7 +110,6 @@ the dual polynomial root budget is exactly 242. -/
 theorem neutralNF557OriginalHermiteMultiplicityBudget :
     (nf545OriginalSelectedFrequencyGroups.map Prod.snd).sum + 1 = 242 := by
   rw [nf545OriginalOscillatorDimension]
-  norm_num
 
 end
 end WeilDefect
