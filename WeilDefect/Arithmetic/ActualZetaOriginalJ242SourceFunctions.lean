@@ -24,7 +24,9 @@ def nf545OriginalSelectedOscillatorNodes : List (ℚ × ℕ) :=
 The 242nd original selected generator is the separate sinh pole. -/
 theorem nf545OriginalSelectedOscillatorNodes_length :
     nf545OriginalSelectedOscillatorNodes.length = 241 := by
-  decide
+  simpa only [nf545OriginalSelectedOscillatorNodes,
+    List.length_flatMap, List.length_map, List.length_range] using
+      nf545OriginalOscillatorDimension
 
 /-- The source-exact rational frequency and monomial order for an
 original non-pole selected mode. The fixed index is preserved. -/
