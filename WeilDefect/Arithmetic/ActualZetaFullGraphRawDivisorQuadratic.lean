@@ -29,7 +29,7 @@ private theorem neutralActualZetaSourceNormalization_mul_self :
     (((Real.sqrt (2 : ℝ)) : ℂ)⁻¹) *
         (((Real.sqrt (2 : ℝ)) : ℂ)⁻¹) =
         (((Real.sqrt (2 : ℝ)) : ℂ) ^ 2)⁻¹ := by
-          simp only [inv_pow, pow_two]
+          simp only [mul_inv_rev]
     _ = (2 : ℂ)⁻¹ := by rw [hs]
     _ = 1 / 2 := by norm_num
 
@@ -120,7 +120,7 @@ private theorem neutralActualZetaPN_normalizedEnergy_eq_rawInner
     simp only [smul_add, smul_sub, two_smul]
     abel
   have h := re_inner_eq_norm_add_mul_self_sub_norm_sub_mul_self_div_four
-    (c • (P + N)) (c • (P - N))
+    (𝕜 := ℂ) (c • (P + N)) (c • (P - N))
   rw [hplus, hminus] at h
   have hp : ‖(2 : ℂ) • (c • P)‖ = 2 * ‖c • P‖ := by
     rw [norm_smul]
