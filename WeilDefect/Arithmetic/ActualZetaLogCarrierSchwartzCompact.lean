@@ -4,7 +4,7 @@ import Mathlib.Analysis.Distribution.SchwartzSpace.Fourier
 namespace WeilDefect
 noncomputable section
 open MeasureTheory FourierTransform
-open scoped FourierTransform
+open scoped FourierTransform SchwartzMap
 
 /-!
 NF542: a direct, assumption-free smooth-compact carrier entry for the
