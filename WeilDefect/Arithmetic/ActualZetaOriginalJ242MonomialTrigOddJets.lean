@@ -80,7 +80,7 @@ theorem neutralNF562EvenMonomialSine_originalOddJet_factorial
   have hle : 2 * r ≤ 2 * n + 1 := by omega
   have hsub : 2 * n + 1 - 2 * r = 2 * (n - r) + 1 := by omega
   rw [neutralNF562EvenMonomialSine_originalOddJet ω n r hr]
-  rw [← mul_assoc, neutralNF562ChooseFactorial_eq_factorialRatio
+  rw [neutralNF562ChooseFactorial_eq_factorialRatio
     (2 * n + 1) (2 * r) hle, hsub]
 
 /-- The exact REAL factorial-ratio closed odd jet for the odd-k
@@ -95,7 +95,7 @@ theorem neutralNF562OddMonomialCosine_originalOddJet_factorial
   have hle : 2 * r + 1 ≤ 2 * n + 1 := by omega
   have hsub : 2 * n + 1 - (2 * r + 1) = 2 * (n - r) := by omega
   rw [neutralNF562OddMonomialCosine_originalOddJet ω n r hr]
-  rw [← mul_assoc, neutralNF562ChooseFactorial_eq_factorialRatio
+  rw [neutralNF562ChooseFactorial_eq_factorialRatio
     (2 * n + 1) (2 * r + 1) hle, hsub]
 
 /-- The original sine source vanishes at odd order below its
