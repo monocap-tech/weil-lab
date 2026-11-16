@@ -113,14 +113,14 @@ theorem nf545OriginalOscillatorDimension :
 /-- All frequency rationals are strictly positive, so their
 ± 2πi f characteristic roots are distinct and nonzero. -/
 theorem nf545OriginalFrequenciesPositive :
-    (nf545OriginalSelectedFrequencyGroups.map Prod.fst).All
+    (nf545OriginalSelectedFrequencyGroups.map Prod.fst).Forall
        (fun f => (0 : ℚ) < f) := by
   decide
 
 /-- All 67 original group multiplicities are positive; the exact
 source script separately checks each k-block is 0,1,...,m-1. -/
 theorem nf545OriginalBlockLengthsPositive :
-    (nf545OriginalSelectedFrequencyGroups.map Prod.snd).All
+    (nf545OriginalSelectedFrequencyGroups.map Prod.snd).Forall
        (fun m => 0 < m) := by
   decide
 
