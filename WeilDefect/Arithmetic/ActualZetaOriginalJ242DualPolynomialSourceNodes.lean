@@ -84,6 +84,26 @@ theorem neutralNF557OriginalPoleNotNormalizedOscillator :
     (-(1 / 4 : ℚ)) ∉ neutralNF557OriginalRationalSquareNodes := by
   decide +kernel
 
+/-- The actual real squared oscillator nodes of the unchanged source:
+t_f=(2π)² f²=4π²f². This is an exact real list, not a
+numerical frequency approximation. -/
+def neutralNF557OriginalRealSquaredNodes : List ℝ :=
+  neutralNF557OriginalRationalSquareNodes.map
+    (fun q : ℚ => (2 * Real.pi) ^ 2 * (q : ℝ))
+
+/-- Actual original real squared-frequency nodes are pairwise
+distinct: exact rational nodup survives injective scaling by the
+strictly positive (2π)². -/
+theorem neutralNF557OriginalRealSquaredNodes_nodup :
+    neutralNF557OriginalRealSquaredNodes.Nodup := by
+  have hc : (2 * Real.pi) ^ 2 ≠ (0 : ℝ) := by positivity
+  have hinj :
+      Function.Injective (fun q : ℚ => (2 * Real.pi) ^ 2 * (q : ℝ)) := by
+    intro a b hab
+    have hab' : (a : ℝ) = (b : ℝ) := mul_left_cancel₀ hc hab
+    exact_mod_cast hab'
+  exact neutralNF557OriginalRationalSquareNodes_nodup.map hinj
+
 /-- The exact unchanged source multiplicities supply all 241
 oscillator Hermite conditions, plus one true sinh-pole condition:
 the dual polynomial root budget is exactly 242. -/
