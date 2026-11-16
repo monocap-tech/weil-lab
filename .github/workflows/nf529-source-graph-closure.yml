@@ -26,9 +26,9 @@ jobs:
       - name: Restore Mathlib cache
         shell: bash
         run: lake exe cache get
-      - name: Typecheck NF529 source-graph closure lemmas
+      - name: Build and typecheck NF529 source-graph closure with local imports
         shell: bash
-        run: lake env lean WeilDefect/Arithmetic/ActualZetaSourceQuadraticClosure.lean
+        run: lake build WeilDefect.Arithmetic.ActualZetaSourceQuadraticClosure
       - name: Reject placeholders in the NF529 target
         shell: bash
         run: |
