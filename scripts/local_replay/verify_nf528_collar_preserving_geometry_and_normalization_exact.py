@@ -50,6 +50,6 @@ def main():
   'status':'Finite arithmetic LOCAL PASS; E-preserving graph and direct EF ANALYTIC UNCOMPILED',
   'RH':'OPEN','W_ODD_NEG':'OPEN'
  }
- Path(args.output).write_text(json.dumps(data,indent=2)+'\\n')
+ Path(args.output).write_text(json.dumps(data,indent=2)+'\n')
  print(json.dumps({k:data[k] for k in ['pass','sample_pattern_rows_with_all_partner_multiplicity_copies','signed_Hilbert_source_mixed','all_copy_zero_side_mixed','coercivity_margin']},indent=2))
 if __name__=='__main__':main()
