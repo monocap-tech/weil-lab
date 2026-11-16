@@ -1,0 +1,68 @@
+{
+  "pass": "NF528-E-preserving-geometry-and-two-source-normalization-exact",
+  "date": "2026-11-15 PT",
+  "B": "11/10",
+  "delta": "1/500",
+  "collar_length_total": "1/250",
+  "geometry": [
+    {
+      "s": "1/2",
+      "epsilon": "1/4000",
+      "margin": "1/4000"
+    },
+    {
+      "s": "2/3",
+      "epsilon": "1/6000",
+      "margin": "1/6000"
+    },
+    {
+      "s": "3/4",
+      "epsilon": "1/8000",
+      "margin": "1/8000"
+    },
+    {
+      "s": "4/5",
+      "epsilon": "1/10000",
+      "margin": "1/10000"
+    },
+    {
+      "s": "9/10",
+      "epsilon": "1/20000",
+      "margin": "1/20000"
+    },
+    {
+      "s": "19/20",
+      "epsilon": "1/40000",
+      "margin": "1/40000"
+    },
+    {
+      "s": "99/100",
+      "epsilon": "1/200000",
+      "margin": "1/200000"
+    },
+    {
+      "s": "999/1000",
+      "epsilon": "1/2000000",
+      "margin": "1/2000000"
+    }
+  ],
+  "fixed_Gram_correction_can_be_supported_in_E": true,
+  "original_exact_242_Gram_rank": "INHERITED_NF523_NOT_NUMERICALLY_REPLAYED",
+  "source_rows_in_finite_custody_audit": 10,
+  "signed_Hilbert_source_mixed": [
+    "14725/12012",
+    "207937/600600"
+  ],
+  "all_copy_zero_side_mixed": [
+    "14725/12012",
+    "207937/600600"
+  ],
+  "uniform_collar_coercivity_margin": "1/10",
+  "original_full_graph_convergence": "ANALYTIC_USING_NF524_DYADIC_COUNT",
+  "direct_smooth_EF": "IMPORTED_THEOREM_SPECIALIZATION_NOT_LEAN_COMPILED",
+  "old_NF526_general_native_multiplier_bridge": "NOT_NEEDED_FOR_THIS_ROUTE",
+  "Green_span_membership": "OPEN",
+  "new_Lean_compile": false,
+  "dedicated_CI": "NOT_RUN",
+  "RH": "OPEN"
+}
