@@ -65,5 +65,24 @@ theorem neutralNF561MonomialJet_zero_except (k m : ℕ) :
       if m = k then (k.factorial : ℝ) else 0 := by
   exact iteratedDeriv_fun_pow_zero
 
+/-- Source-ready high-order product rule at the analytic initial
+point. Multiplication by x^k selects ONLY derivative order k
+of that monomial; every other Leibniz term vanishes at zero.
+This is the generic mechanism for the unchanged NF407
+x^k*sin(omega*x)/x^k*cos(omega*x) source families. -/
+theorem neutralNF561MonomialTimesSmooth_jetAtZero
+    (g : ℝ → ℝ) (hg : ContDiff ℝ ∞ g) (m k : ℕ) :
+    (iteratedDeriv m (fun x : ℝ => x ^ k * g x)) 0 =
+      if k ≤ m then (m.choose k : ℝ) * (k.factorial : ℝ) *
+        (iteratedDeriv (m - k) g) 0 else 0 := by
+  have hpow : ContDiffAt ℝ m (fun x : ℝ => x ^ k) 0 := by fun_prop
+  have hg' : ContDiffAt ℝ m g 0 :=
+    hg.contDiffAt.of_le (by simp)
+  change iteratedDeriv m ((fun x : ℝ => x ^ k) * g) 0 = _
+  rw [iteratedDeriv_mul hpow hg']
+  simp only [iteratedDeriv_fun_pow_zero]
+  simp only [mul_ite, mul_zero, zero_mul, ite_mul]
+  simp [Finset.sum_ite_eq', Finset.mem_range, Nat.lt_succ_iff]
+
 end
 end WeilDefect
