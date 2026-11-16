@@ -1,0 +1,83 @@
+name: NF560 genuine sinh source pole all odd derivatives and original J242 matrix
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242ActualPoleOddDerivatives.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242OriginalPoleDual.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242DualPolynomialSourceNodes.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242DualPolynomialCoefficient.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramPhysicalIntegral.lean"
+      - ".github/workflows/nf560-original-sinh-odd-derivatives.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+  workflow_dispatch:
+
+jobs:
+  nf560-real-original-pole-analytic-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Original dual polynomial exact source and 67 positive frequency squares
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242DualPolynomialSourceNodes
+      - name: Original 242 real dual coefficients injective
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242DualPolynomialCoefficient
+      - name: Original negative pole formal dual identity
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OriginalPoleDual
+      - name: Actual analytic sinh(x/2) all odd derivatives and authentic 242 odd-jet matrix
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242ActualPoleOddDerivatives
+      - name: Reject proof holes in source-dependent pole derivative code
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242ActualPoleOddDerivatives.lean; then
+            echo "NF560 true source analytic pole proof not closed"
+            exit 1
+          fi
+
+  nf560-original-physical-source-gram-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Genuine original NF546–NF548 physical L2 and canonical even cutoff
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242PhysicalMomentMap
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242WeightedCollarGram
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalEvenCollarCutoff
+      - name: Genuine NF549 original physical integral
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
+      - name: NF550 original source Gram and NF551 actual analytic parity identity
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramSeparationGate
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddParity
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity
+
+  nf560-source-custody-and-pole-differentiation-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify genuine source 241 original oscillators and sinh pole exact odd coefficients
+        run: |
+          python3 scripts/local_replay/verify_nf554_original_dual_odd_jet_coefficient_bridge.py \
+            --output nf560_original_odd_jet_exact_source_receipt.json
+      - name: Preserve actual source receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf560-original-242-odd-jet-analytic-pole
+          path: nf560_original_odd_jet_exact_source_receipt.json
+          if-no-files-found: error
