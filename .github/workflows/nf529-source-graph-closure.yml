@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "WeilDefect/Arithmetic/ActualZetaSourceQuadraticClosure.lean"
+      - "WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormula.lean"
       - ".github/workflows/nf529-source-graph-closure.yml"
       - "lakefile.toml"
       - "lake-manifest.json"
@@ -26,13 +27,16 @@ jobs:
       - name: Restore Mathlib cache
         shell: bash
         run: lake exe cache get
-      - name: Typecheck NF529 source-graph closure lemmas
+      - name: Build and typecheck NF529 source-graph closure with local imports
         shell: bash
-        run: lake env lean WeilDefect/Arithmetic/ActualZetaSourceQuadraticClosure.lean
+        run: lake build WeilDefect.Arithmetic.ActualZetaSourceQuadraticClosure
+      - name: Build and typecheck generic NF530 window correlation explicit formula
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaSmoothLiteralFormula
       - name: Reject placeholders in the NF529 target
         shell: bash
         run: |
-          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' WeilDefect/Arithmetic/ActualZetaSourceQuadraticClosure.lean; then
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' WeilDefect/Arithmetic/ActualZetaSourceQuadraticClosure.lean WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormula.lean; then
             echo "NF529 target contains an unfinished declaration."
             exit 1
           fi
