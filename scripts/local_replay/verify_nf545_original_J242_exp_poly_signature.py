@@ -97,7 +97,9 @@ def main():
     nf500, nf500_sha = exact_read(NF500_PATH)
     nf404, _ = exact_read(NF404_PATH)
     assert source_sha == SRC_SHA, "METHOD STOP: NF407 original source SHA mismatch"
-    assert nf500["original_source_native_raw_json_sha256"] == NF500_SHA, (\n        "METHOD STOP: NF500 original SOURCE-NATIVE RAW output digest mismatch"\n    )
+    assert nf500["original_source_native_raw_json_sha256"] == NF500_SHA, (
+        "METHOD STOP: NF500 original SOURCE-NATIVE RAW output digest mismatch"
+    )
     assert nf500["pass"] == "NF500"
     assert nf500["original_nf407_sha256"] == source_sha
     assert nf500["original_source_generators_selected"] == 242
