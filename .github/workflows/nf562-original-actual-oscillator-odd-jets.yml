@@ -1,0 +1,102 @@
+name: NF562 genuine original 241 indexed oscillator odd derivatives and source recovery
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242ActualOscillatorOddDerivatives.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242MonomialTrigOddJets.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242OriginalPoleDual.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242OscillatorTrigJets.lean"
+      - ".github/workflows/nf562-original-actual-oscillator-odd-jets.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+  workflow_dispatch:
+
+jobs:
+  nf562-actual-original-241-oscillator-jets-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Compile source-independent scaled trigonometric and monomial Leibniz engine
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OscillatorTrigJets
+      - name: Compile genuine even monomial sine and odd monomial cosine source formulas
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242MonomialTrigOddJets
+      - name: Compile source-indexed original 241 oscillator odd derivatives and exact positive frequencies
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242ActualOscillatorOddDerivatives
+      - name: Reject axiom sorry admit declarations in actual oscillator source
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242MonomialTrigOddJets.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242ActualOscillatorOddDerivatives.lean; then
+            echo "NF562 original oscillator derivative theorem has proof holes"
+            exit 1
+          fi
+
+  nf562-original-pole-source-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Compile genuine source exact 242 dual polynomial and nodes
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242DualPolynomialSourceNodes
+      - name: Compile genuine original 242 coefficient injection
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242DualPolynomialCoefficient
+      - name: Compile repaired original sinh negative pole dual algebra
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OriginalPoleDual
+      - name: Compile original actual sinh pole odd derivatives and 242x242 matrix
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242ActualPoleOddDerivatives
+
+  nf562-original-physical-source-gram-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Recheck genuine NF546 original physical L2 and NF547–NF548 cutoffs
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242PhysicalMomentMap
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242WeightedCollarGram
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalEvenCollarCutoff
+      - name: Compile original NF549 integral pairing
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
+      - name: Compile original NF550 weighted square and NF551 local-global analytic identity
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramSeparationGate
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddParity
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity
+
+  nf562-genuine-original-odd-jet-custody:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check entire original 58322 oscillator and 242 sinh-pole odd-jet source coefficients
+        run: |
+          python3 scripts/local_replay/verify_nf554_original_dual_odd_jet_coefficient_bridge.py \
+            --output nf562_genuine_original_odd_jet_source_replay.json
+      - name: Retain exact source receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf562-original-241-oscillators-and-sinh-pole-odd-jet-custody
+          path: nf562_genuine_original_odd_jet_source_replay.json
+          if-no-files-found: error
