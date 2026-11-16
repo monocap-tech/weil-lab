@@ -1,0 +1,78 @@
+name: NF546 original J242 physical L2 moment map and repaired source verification
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaLogCarrierSchwartzCompact.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollar242Correction.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollar242GraphCorrection.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollar242GramInverse.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242ExponentialSignature.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242SourceFunctions.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242PhysicalMomentMap.lean"
+      - "scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py"
+      - ".github/workflows/nf546-original-j242-physical-moment-map.yml"
+      - "lakefile.toml"
+      - "lean-toolchain"
+  workflow_dispatch:
+
+jobs:
+  nf546-original-source-exact-replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Exact source SHA and original 67 rational frequency/pole audit
+        shell: bash
+        run: |
+          python3 scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py \
+            --output nf546_original_J242_source_signature_replay.json
+      - name: Upload original source replay ledger
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf546-original-J242-source-sha-frequency-audit
+          path: nf546_original_J242_source_signature_replay.json
+          if-no-files-found: error
+  nf546-lean-original-physical-moments:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean via Elan
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib dependencies
+        shell: bash
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        shell: bash
+        run: lake exe cache get
+      - name: Compile repaired NF542 original log Schwartz carrier
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaLogCarrierSchwartzCompact
+      - name: Compile repaired NF544 explicit Schwartz Gram inverse
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollar242GramInverse
+      - name: Compile NF545 original J242 rational signature
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242ExponentialSignature
+      - name: Compile NF545 full actual 242 original generator functions
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242SourceFunctions
+      - name: Compile NF546 true full-window L2 physical J242 moment map
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242PhysicalMomentMap
+      - name: Reject placeholders in original selected certificate chain
+        shell: bash
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+            WeilDefect/Arithmetic/ActualZetaLogCarrierSchwartzCompact.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalCollar242Correction.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalCollar242GraphCorrection.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalCollar242GramInverse.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242ExponentialSignature.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242SourceFunctions.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242PhysicalMomentMap.lean; then
+            echo "NF546 original selected certificate contains unfinished declarations"
+            exit 1
+          fi

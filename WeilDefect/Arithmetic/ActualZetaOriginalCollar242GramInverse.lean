@@ -2,6 +2,7 @@ import WeilDefect.Arithmetic.ActualZetaOriginalCollar242Correction
 import WeilDefect.Arithmetic.ActualZetaOriginalCollar242GraphCorrection
 import Mathlib.LinearAlgebra.FiniteDimensional.Basic
 import Mathlib.LinearAlgebra.StdBasis
+import Mathlib.LinearAlgebra.Basis.Defs
 
 namespace WeilDefect
 noncomputable section
