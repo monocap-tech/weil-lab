@@ -4,7 +4,7 @@ import Mathlib.Analysis.Distribution.SchwartzSpace.Fourier
 namespace WeilDefect
 noncomputable section
 open MeasureTheory FourierTransform
-open scoped FourierTransform SchwartzMap
+open scoped FourierTransform SchwartzMap ContDiff
 
 /-!
 NF542: a direct, assumption-free smooth-compact carrier entry for the
@@ -85,7 +85,7 @@ L² equivalence class. No assumed spectral moment, no Fourier
 derivative witness and no Green construction. -/
 theorem neutralCompactSmoothOriginalLogHilbertCarrier
     (a : ℝ) (ψ : ℝ → ℂ)
-    (hψ : ContDiff ℝ ⊤ ψ) (hc : HasCompactSupport ψ)
+    (hψ : ContDiff ℝ ∞ ψ) (hc : HasCompactSupport ψ)
     (hs : ∀ x : ℝ, x ∉ Set.Icc (-a) a → ψ x = 0) :
     ∃ k : NeutralLogHilbertCarrier a,
       neutralLogPhysical k.val =
@@ -105,7 +105,7 @@ B=11/10 and δ=1/500. The compact C∞ test itself, rather than a
 surrogate Green packet, is the physical Hilbert-vector representative. -/
 theorem neutralOriginalTwoCollarCompactSmoothLogHilbertCarrier
     (ψ : ℝ → ℂ)
-    (hψ : ContDiff ℝ ⊤ ψ) (hc : HasCompactSupport ψ)
+    (hψ : ContDiff ℝ ∞ ψ) (hc : HasCompactSupport ψ)
     (hs : ∀ x : ℝ,
       x ∉ (Set.Ioo (-(11 / 10 : ℝ)) (-(11 / 10 : ℝ) + 1 / 500) ∪
         Set.Ioo ((11 / 10 : ℝ) - 1 / 500) (11 / 10 : ℝ)) → ψ x = 0) :
