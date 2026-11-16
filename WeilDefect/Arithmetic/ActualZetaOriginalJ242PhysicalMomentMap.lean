@@ -46,8 +46,16 @@ def neutralNF546OriginalWindowGenerator (i : Fin 242) : ℝ → ℂ :=
 truncation, including its unchanged sinh pole. -/
 theorem neutralNF546OriginalComplexGenerator_continuous (i : Fin 242) :
     Continuous (neutralNF546OriginalComplexGenerator i) := by
-  unfold neutralNF546OriginalComplexGenerator nf545OriginalSelectedRealGenerator
-  split_ifs <;> fun_prop
+  unfold neutralNF546OriginalComplexGenerator
+  by_cases hi : i.val < 241
+  · simp only [nf545OriginalSelectedRealGenerator, dif_pos hi]
+    by_cases he : Even (nf545OriginalOscillatorNodeAt ⟨i.val, hi⟩).2
+    · simp only [if_pos he]
+      fun_prop
+    · simp only [if_neg he]
+      fun_prop
+  · simp only [nf545OriginalSelectedRealGenerator, dif_neg hi]
+    fun_prop
 
 /-- The window-truncated original analytic generator has compact
 support, including possible jumps at the original endpoints. -/
@@ -77,7 +85,10 @@ theorem neutralNF546OriginalWindowGenerator_memLp (i : Fin 242) :
     change IsCompact (Set.Icc (-(11 / 10 : ℝ)) (11 / 10 : ℝ))
     exact isCompact_Icc
   obtain ⟨C, hC⟩ :=
-    hcompact.exists_bound_of_continuousOn' hcontinuous.continuousOn
+    hcompact.exists_bound_of_continuousOn
+      (show ContinuousOn (neutralNF546OriginalComplexGenerator i)
+          neutralNF546OriginalFullPhysicalWindow from
+        hcontinuous.continuousOn)
   have hbound (x : ℝ) :
       ‖neutralNF546OriginalWindowGenerator i x‖ ≤ max C 0 := by
     by_cases hx : x ∈ neutralNF546OriginalFullPhysicalWindow
@@ -112,8 +123,6 @@ theorem neutralNF546OriginalPoleWindow (x : ℝ) :
         (fun y : ℝ => (Real.sinh (y / 2) : ℂ)) x := by
   unfold neutralNF546OriginalWindowGenerator
   congr 1
-  funext y
-  exact congrArg Complex.ofReal (nf545OriginalSelectedPole_is_sinh y)
 
 /-- Unlike the abstract NF543 M, this is the actual physical source
 moment map built explicitly from the unchanged J242 L² vectors.
