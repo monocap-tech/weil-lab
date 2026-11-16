@@ -1,0 +1,80 @@
+name: NF551 actual original J242 real-odd parity and local-to-global analytic identity
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242PhysicalMomentMap.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242OddParity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242AnalyticIdentity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramWeightedSquare.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramSeparationGate.lean"
+      - "scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py"
+      - "scripts/local_replay/verify_nf551_original_J242_odd_ode_signature.py"
+      - ".github/workflows/nf551-original-j242-odd-real-analytic.yml"
+      - "lakefile.toml"
+      - "lean-toolchain"
+  workflow_dispatch:
+
+jobs:
+  nf551-exact-original-odd-ode-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse original exact-source audit scripts
+        run: |
+          python3 -m py_compile scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py
+          python3 -m py_compile scripts/local_replay/verify_nf551_original_J242_odd_ode_signature.py
+      - name: Verify source-native SHA, true original 242 source parity, root labels and 484 order
+        run: |
+          python3 scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py \
+            --output nf551_original_J242_frequency_signature.json
+          python3 scripts/local_replay/verify_nf551_original_J242_odd_ode_signature.py \
+            --output nf551_original_J242_odd_ode_signature.json
+      - name: Preserve exact original source and ODE certificate
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf551-original-J242-odd-ODE-source-receipts
+          path: |
+            nf551_original_J242_frequency_signature.json
+            nf551_original_J242_odd_ode_signature.json
+          if-no-files-found: error
+  nf551-original-lean-analytic-parity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install exact pinned Lean
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib archive
+        run: lake exe cache get
+      - name: Compile true NF545 selected original source generator functions
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242SourceFunctions
+      - name: Compile NF551 repaired actual original full-window 242 L2 moments
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242PhysicalMomentMap
+      - name: Compile authentic χ source correction Schwartz modules
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242WeightedCollarGram
+      - name: Compile canonical real even positive smooth original χ
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalEvenCollarCutoff
+      - name: Compile true original full J242 physical Gram inverse
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramRightInverse
+      - name: Compile exact weighted physical integral bridge
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
+      - name: Compile genuine canonical original Gram weighted square / local source gate
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramSeparationGate
+      - name: Compile NF551 all original source / correction parity
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddParity
+      - name: Compile NF551 genuine real-analytic local-to-global identity theorem
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity
+      - name: Reject unfinished original source proof declarations
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242PhysicalMomentMap.lean \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242OddParity.lean \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242AnalyticIdentity.lean; then
+            echo "NF551 original-source Lean proof is not closed"
+            exit 1
+          fi
