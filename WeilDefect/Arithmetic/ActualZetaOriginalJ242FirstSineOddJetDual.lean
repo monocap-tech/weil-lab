@@ -67,6 +67,34 @@ theorem neutralNF563SineSourceOddJets_dual
     _ = ω * (neutralNF557OriginalDualPolynomial a).eval (ω ^ 2) :=
       neutralNF563DualPolynomial_sineZeroOrder a ω
 
+/-- ALL original zero-monomial-order source oscillators, not just
+the first: whenever the authentic NF407 source index i carries
+k_i=0, its 242 odd-jet left-kernel expression is precisely
+the actual source omega_i times the original polynomial at omega_i².
+
+The 67 original frequency blocks each have such a k=0 row in
+the unchanged contiguous source list. No source frequency is
+selected by numerical sampling or invented here. -/
+theorem neutralNF563ActualOriginalZeroOrderOscillator_dual
+    (a : Fin 242 → ℝ) (i : Fin 241)
+    (hzero : (nf545OriginalOscillatorNodeAt i).2 = 0) :
+    (∑ n : Fin 242, a n *
+      (iteratedDeriv (2 * n.val + 1)
+        (nf545OriginalSelectedRealGenerator ⟨i.val, by omega⟩)) 0) =
+      (2 * Real.pi * ((nf545OriginalOscillatorNodeAt i).1 : ℝ)) *
+        (neutralNF557OriginalDualPolynomial a).eval
+          ((2 * Real.pi * ((nf545OriginalOscillatorNodeAt i).1 : ℝ)) ^ 2) := by
+  have hsource :
+      nf545OriginalSelectedRealGenerator ⟨i.val, by omega⟩ =
+        (fun x : ℝ => Real.sin
+          ((2 * Real.pi * ((nf545OriginalOscillatorNodeAt i).1 : ℝ)) * x)) := by
+    funext x
+    simp [nf545OriginalSelectedRealGenerator, hzero,
+      show i.val < 241 from i.isLt]
+  rw [hsource]
+  exact neutralNF563SineSourceOddJets_dual
+    a (2 * Real.pi * ((nf545OriginalOscillatorNodeAt i).1 : ℝ))
+
 /-- The frozen ORIGINAL NF407 source's FIRST exact oscillator
 node is (37/64, k=0), not an invented sine basis. -/
 theorem neutralNF563ActualFirstOriginalOscillatorNode :
