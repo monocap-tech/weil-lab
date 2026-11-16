@@ -1,0 +1,79 @@
+name: NF563 first genuine oscillator dual identity and NF550 weighted-square compiler recovery
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242FirstSineOddJetDual.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramWeightedSquare.lean"
+      - ".github/workflows/nf563-original-first-oscillator-dual-and-weighted-square.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+  workflow_dispatch:
+
+jobs:
+  nf563-first-actual-original-oscillator-dual-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Generic authentic frequency-scaled sine cosine and monomial Leibniz
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OscillatorTrigJets
+      - name: Original real 242 odd-jet dual polynomial and 67 true frequency nodes
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242DualPolynomialSourceNodes
+      - name: Compile first exact ORIGINAL oscillator sine and dual evaluation bridge
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242FirstSineOddJetDual
+      - name: Reject proof holes
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242FirstSineOddJetDual.lean; then
+            echo "NF563 true first oscillator-to-dual identity unfinished"
+            exit 1
+          fi
+
+  nf563-original-weighted-square-physical-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Recheck genuine original physical L2 and exact canonical two-collar cutoff
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242PhysicalMomentMap
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242WeightedCollarGram
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalEvenCollarCutoff
+      - name: Recheck now compiler-accepted original NF549 continuous Gram integral
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
+      - name: Compile repaired true ORIGINAL NF550 canonical physical weighted square
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramWeightedSquare
+      - name: Compile NF550 positive weighted-square bridge and NF551 analytic parity identity
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramSeparationGate
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddParity
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity
+
+  nf563-complete-original-sha-pinned-odd-jet-custody:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify genuine 67 oscillator frequency groups and true sinh last pole odd-jet dual
+        run: |
+          python3 scripts/local_replay/verify_nf554_original_dual_odd_jet_coefficient_bridge.py \
+            --output nf563_original_242_exact_odd_jet_source_receipt.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf563-original-242-odd-jet-source-receipt
+          path: nf563_original_242_exact_odd_jet_source_receipt.json
+          if-no-files-found: error
