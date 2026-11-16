@@ -5,6 +5,7 @@ on:
     paths:
       - "WeilDefect/Arithmetic/ActualZetaSourceQuadraticClosure.lean"
       - "WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormula.lean"
+      - "WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormulaAutomatic.lean"
       - ".github/workflows/nf529-source-graph-closure.yml"
       - "lakefile.toml"
       - "lake-manifest.json"
@@ -33,10 +34,13 @@ jobs:
       - name: Build and typecheck generic NF530 window correlation explicit formula
         shell: bash
         run: lake build WeilDefect.Arithmetic.ActualZetaSmoothLiteralFormula
+      - name: Build and typecheck NF533 automatic all-multiplicity summability
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaSmoothLiteralFormulaAutomatic
       - name: Reject placeholders in the NF529 target
         shell: bash
         run: |
-          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' WeilDefect/Arithmetic/ActualZetaSourceQuadraticClosure.lean WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormula.lean; then
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' WeilDefect/Arithmetic/ActualZetaSourceQuadraticClosure.lean WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormula.lean WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormulaAutomatic.lean; then
             echo "NF529 target contains an unfinished declaration."
             exit 1
           fi
