@@ -7,7 +7,7 @@ import Mathlib.Analysis.Normed.Group.Bounded
 namespace WeilDefect
 noncomputable section
 open MeasureTheory
-open scoped SchwartzMap
+open scoped SchwartzMap ComplexConjugate
 
 /-!
 NF546: the actual ORIGINAL NF407/NF505 242 selected generators are
