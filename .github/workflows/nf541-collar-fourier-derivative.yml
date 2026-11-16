@@ -1,0 +1,42 @@
+name: NF541 actual logarithmic collar Fourier-derivative witness
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaLogCarrierQuadraticMoment.lean"
+      - "WeilDefect/Arithmetic/ActualZetaLogCarrierFourierDerivativeWitness.lean"
+      - ".github/workflows/nf541-collar-fourier-derivative.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+      - "lakefile.lean"
+  workflow_dispatch:
+
+jobs:
+  nf541-fourier-derivative:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean via Elan
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned dependencies
+        shell: bash
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        shell: bash
+        run: lake exe cache get
+      - name: Check original NF540 quadratic-moment admission repair
+        run: lake build WeilDefect.Arithmetic.ActualZetaLogCarrierQuadraticMoment
+      - name: Check NF541 derivative-witness admission
+        run: lake build WeilDefect.Arithmetic.ActualZetaLogCarrierFourierDerivativeWitness
+      - name: Reject placeholder declarations
+        shell: bash
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+            WeilDefect/Arithmetic/ActualZetaLogCarrierQuadraticMoment.lean \
+            WeilDefect/Arithmetic/ActualZetaLogCarrierFourierDerivativeWitness.lean; then
+            echo "NF541 contains a placeholder declaration"
+            exit 1
+          fi
