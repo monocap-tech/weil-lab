@@ -1,0 +1,54 @@
+name: NF557 original 242 dual polynomial and exact 68-node source separation
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242DualPolynomialSourceNodes.lean"
+      - ".github/workflows/nf557-original-dual-polynomial-nodes.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+  workflow_dispatch:
+
+jobs:
+  nf557-source-exact-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Compile original 242 dual polynomial and true squared source-node independence
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242DualPolynomialSourceNodes
+      - name: Reject proof placeholders in new actual-source Lean module
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242DualPolynomialSourceNodes.lean; then
+            echo "NF557 unfinished source proof declarations"
+            exit 1
+          fi
+
+  nf557-original-sha-and-hermite-source-audits:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replay exact immutable NF407 original 67 blocks and 242 generators
+        run: |
+          python3 scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py \
+            --output nf557_original_source_frequency_signature.json
+      - name: Replay complete original dual derivative source identity
+        run: |
+          python3 scripts/local_replay/verify_nf554_original_dual_odd_jet_coefficient_bridge.py \
+            --output nf557_original_dual_source_coefficient_receipt.json
+      - name: Archive SHA and dual coefficient evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf557-original-242-dual-source-receipts
+          path: |
+            nf557_original_source_frequency_signature.json
+            nf557_original_dual_source_coefficient_receipt.json
+          if-no-files-found: error
