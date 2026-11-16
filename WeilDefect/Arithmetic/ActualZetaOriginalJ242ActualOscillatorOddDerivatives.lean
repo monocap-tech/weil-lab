@@ -35,6 +35,25 @@ def neutralNF562OriginalOscillatorOrder (i : Fin 241) : ℕ :=
 def neutralNF562OriginalOscillatorOmega (i : Fin 241) : ℝ :=
   2 * Real.pi * ((nf545OriginalOscillatorNodeAt i).1 : ℝ)
 
+/-- Every one of the exact original 241 oscillator rows inherits a
+strictly positive RATIONAL frequency from its immutable NF545
+source signature; this is not checked using approximate pi. -/
+private theorem neutralNF562OriginalAllIndexedRationalFrequencies_pos :
+    ∀ i : Fin 241, (0 : ℚ) < (nf545OriginalOscillatorNodeAt i).1 := by
+  decide +kernel
+
+/-- The *actual* real angular frequency omega_i=2*pi*f_i is
+strictly positive, as required by NF556's compiler-accepted
+quadratic Hermite multiplicity transfer. -/
+theorem neutralNF562OriginalOscillatorOmega_pos (i : Fin 241) :
+    0 < neutralNF562OriginalOscillatorOmega i := by
+  have hrat : (0 : ℚ) < (nf545OriginalOscillatorNodeAt i).1 :=
+    neutralNF562OriginalAllIndexedRationalFrequencies_pos i
+  have hreal : (0 : ℝ) < ((nf545OriginalOscillatorNodeAt i).1 : ℝ) := by
+    exact_mod_cast hrat
+  unfold neutralNF562OriginalOscillatorOmega
+  positivity
+
 /-- Source-selected trig factor: sine iff original monomial order even,
 cosine otherwise. -/
 def neutralNF562OriginalOscillatorTrig (i : Fin 241) (x : ℝ) : ℝ :=
