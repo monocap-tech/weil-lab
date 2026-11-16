@@ -33,8 +33,8 @@ theorem neutralActualZetaWindowCorrelation_literature
         (neutralActualZetaDivisorOrdinate q)) := by
     convert hsum using 1
     funext q
-    exact (neutralWindowCorrelation_rawTransform a f g
-      (neutralActualZetaDivisorOrdinate q)).symm
+    exact neutralWindowCorrelation_rawTransform a f g
+      (neutralActualZetaDivisorOrdinate q)
   calc
     (∑' q : NeutralActualZetaDivisorCoordinate,
       conj (neutralWindowEvaluation a
