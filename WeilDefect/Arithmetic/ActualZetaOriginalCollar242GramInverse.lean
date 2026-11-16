@@ -6,7 +6,7 @@ import Mathlib.LinearAlgebra.StdBasis
 namespace WeilDefect
 noncomputable section
 open MeasureTheory
-open scoped SchwartzMap
+open scoped SchwartzMap ComplexConjugate
 
 /-!
 NF544: eliminate NF543's *abstract* right-inverse R by constructing
