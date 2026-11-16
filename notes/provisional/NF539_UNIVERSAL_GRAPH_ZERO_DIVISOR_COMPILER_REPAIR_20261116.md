@@ -14,15 +14,15 @@ No theorem statement, authentic normalization, original source or divisor indexi
 ## Exact universal algebra
 
 For each existing authentic `h : NeutralActualZetaSourceDomain a`, the original source graph already contains both `P,N ∈ ℓ²(Σρ Fin(mρ))`, with exactly the original pair:
-[
+$
 P_q=(A_q+B_q)/\sqrt2,\quad N_q=(A_q-B_q)/\sqrt2,\quad
 A_q=F_h(\bar z_q),\ B_q=F_h(z_q).
-]
+$
 Thus `A,B ∈ ℓ²`, and their mixed product is absolutely summable without RH or Green density. There is a SECOND multiplication by `1/sqrt2` in the authentic `neutralActualZetaSourceQuadratic`, giving
-[
+$
 Q(h)=\frac12(\|P\|_2^2-\|N\|_2^2)
 =\operatorname{Re}\sum_{q\in D_\zeta}\overline{F_h(\bar z_q)}F_h(z_q).
-]
+$
 When the physical autocorrelation of the SAME `h` is `C²`, the imported complete authentic zeta EF implies `Q(h)=Re literatureRHS(C_h)`. The zero-side identity is unrestricted within the actual existing source graph, but the `C²` hypothesis is not universally automatic, and there is **no claim** every physical test or the singular original `ell_U` is already in that graph.
 
 ## Fresh finite-rational checks
