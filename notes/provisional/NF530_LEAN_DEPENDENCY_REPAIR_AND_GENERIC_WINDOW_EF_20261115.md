@@ -10,11 +10,11 @@ Focused GitHub Actions run [43781024141](https://github.com/monocap-tech/weil-la
 
 New module: `WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormula.lean`. It is the first direct *generic physical-window correlation* imported zeta EF lemma on this branch, with NO Green-synthesis restriction. For arbitrary `f g : RealComplexL2` and fixed `a`, it takes precisely:
 (1) `ContDiff ℝ 2` of their authentic correlation;
-(2) `HasCompactSupport` of that correlation;
-(3) `Summable` of the actual all-copy divisor series `conj(F_f(conj z_q)) F_g(z_q)`.
+(2) compact support is automatically obtained from already proved `neutralWindowCorrelation_hasCompactSupport`;
+(3) the only other outstanding premise is `Summable` of the actual all-copy divisor series `conj(F_f(conj z_q)) F_g(z_q)`.
 It proves that same **complete actual zeta-divisor copy series** equals `Zeta23.EF.literatureRHS (neutralWindowCorrelation a f g)`, preserving exact von Mangoldt, gamma-bracket and pole contributions. Proof references only existing `neutralWindowCorrelation_rawTransform`, `neutralActualZetaDivisor_tsum_literature`, and genuine imported `Zeta23.WeilEF.EF_lit_zeta`.
 
-This lemma is now a Lean proof **candidate**, NOT yet accepted; the new dedicated workflow builds this module too. The three admissibility premises remain to be formalized for arbitrary strict smooth collar tests.
+This lemma is now a Lean proof **candidate**, NOT yet accepted; the new dedicated workflow builds this module too. Only C² regularity and complete divisor-sum summability remain to be specialized for strict smooth collar tests. Compact support is discharged generically by existing Lean code.
 
 ## Quantitative full-source graph closure
 
