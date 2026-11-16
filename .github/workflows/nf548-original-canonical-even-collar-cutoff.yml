@@ -1,0 +1,85 @@
+name: NF548 explicit canonical real even positive smooth original two-collar cutoff
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollar242GramInverse.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242ExponentialSignature.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242SourceFunctions.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242PhysicalMomentMap.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242WeightedCollarGram.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalEvenCollarCutoff.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramRightInverse.lean"
+      - "scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py"
+      - ".github/workflows/nf548-original-canonical-even-collar-cutoff.yml"
+      - "lakefile.toml"
+      - "lean-toolchain"
+  workflow_dispatch:
+
+jobs:
+  nf548-source-exact-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python syntax check and TRUE original 242-node SHA audit
+        shell: bash
+        run: |
+          python3 -m py_compile scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py
+          python3 scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py \
+            --output nf548_original_J242_source_signature.json
+      - name: Publish original source audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf548-original-J242-source-SHA-signature
+          path: nf548_original_J242_source_signature.json
+          if-no-files-found: error
+  nf548-canonical-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean toolchain
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        shell: bash
+        run: lake update
+      - name: Download pinned Mathlib cache
+        shell: bash
+        run: lake exe cache get
+      - name: Compile repaired NF544 physical 242 Gram inverse
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollar242GramInverse
+      - name: Compile original NF545 source signature
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242ExponentialSignature
+      - name: Compile original NF545 selected functions
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242SourceFunctions
+      - name: Compile actual NF546 physical L2 source moments
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242PhysicalMomentMap
+      - name: Compile true NF547 χ times original 242 Schwartz columns
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242WeightedCollarGram
+      - name: Compile NF548 explicit even positive smooth E cutoff
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalEvenCollarCutoff
+      - name: Compile NF548 one-source canonical original Gram inverse
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramRightInverse
+      - name: Reject axiom and incomplete proof declarations
+        shell: bash
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+            WeilDefect/Arithmetic/ActualZetaOriginalCollar242GramInverse.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242ExponentialSignature.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242SourceFunctions.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242PhysicalMomentMap.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242WeightedCollarGram.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalCanonicalEvenCollarCutoff.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramRightInverse.lean; then
+            echo "NF548 source chain contains unfinished proofs"
+            exit 1
+          fi
