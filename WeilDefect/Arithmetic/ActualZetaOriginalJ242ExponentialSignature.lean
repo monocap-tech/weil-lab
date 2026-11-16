@@ -102,7 +102,7 @@ different. This is the decisive characteristic-root-separation gate
 for the exponential-polynomial independence argument. -/
 theorem nf545OriginalFrequenciesPairwiseDistinct :
     (nf545OriginalSelectedFrequencyGroups.map Prod.fst).Nodup := by
-  decide
+  decide +kernel
 
 /-- The original 67 oscillator blocks have EXACTLY 241 monomial
 directions. The separate genuine sinh pole is index 241. -/
@@ -115,7 +115,7 @@ theorem nf545OriginalOscillatorDimension :
 theorem nf545OriginalFrequenciesPositive :
     (nf545OriginalSelectedFrequencyGroups.map Prod.fst).Forall
        (fun f => (0 : ℚ) < f) := by
-  decide
+  decide +kernel
 
 /-- All 67 original group multiplicities are positive; the exact
 source script separately checks each k-block is 0,1,...,m-1. -/
