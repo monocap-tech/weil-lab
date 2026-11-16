@@ -91,5 +91,35 @@ theorem neutralNF549CanonicalGram_eq_weighted_source_integral
   rw [neutralNF549CanonicalSynthesis_pointwise d x]
   ring
 
+/-- The genuine original selected J242 physical source span
+inside actual L², synthesized from the 242 SOURCE GENERATORS.
+No arbitrary Hilbert basis is substituted. -/
+def neutralNF549OriginalPhysicalSynthesis :
+    (Fin 242 → ℂ) →ₗ[ℂ] RealComplexL2 :=
+  (Pi.basisFun ℂ (Fin 242)).constr ℂ
+    neutralNF546OriginalSelectedPhysicalL2
+
+/-- The ORIGINAL Hermitian finite Gram quadratic form is exactly
+the true physical L² pairing of (i) the original 242-generator
+source combination and (ii) the smooth χ-weighted original source
+combination. This is stronger than a purely abstract 242×242
+algebraic identity, and needs no source-specific positivity axiom.
+-/
+theorem neutralNF549CanonicalGram_quadratic_eq_physical_pairing
+    (d : Fin 242 → ℂ) :
+    (∑ i : Fin 242,
+      conj (d i) * (neutralNF548CanonicalOriginalWeightedGram d) i) =
+        inner ℂ (neutralNF549OriginalPhysicalSynthesis d)
+          ((neutralNF544BumpSynthesis
+            neutralNF548CanonicalOriginalColumns d).toLp 2 volume) := by
+  simp only [neutralNF549OriginalPhysicalSynthesis,
+    Module.Basis.constr_apply_fintype, Pi.basisFun_repr]
+  rw [sum_inner]
+  apply Finset.sum_congr rfl
+  intro i hi
+  rw [inner_smul_left]
+  simp only [starRingEnd_apply]
+  rfl
+
 end
 end WeilDefect
