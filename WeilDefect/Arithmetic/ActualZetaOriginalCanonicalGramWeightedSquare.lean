@@ -170,7 +170,7 @@ theorem neutralNF550OriginalSourceCombination_continuous
     (d : Fin 242 → ℂ) :
     Continuous (neutralNF550OriginalSourceCombination d) := by
   unfold neutralNF550OriginalSourceCombination
-  apply continuous_finset_sum
+  apply continuous_finsetSum Finset.univ
   intro j hj
   exact continuous_const.mul
     (neutralNF546OriginalComplexGenerator_continuous j)
