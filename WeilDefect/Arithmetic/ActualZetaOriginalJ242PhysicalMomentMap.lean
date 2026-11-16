@@ -3,6 +3,7 @@ import WeilDefect.Arithmetic.ActualZetaOriginalCollar242GramInverse
 import Mathlib.MeasureTheory.Function.LpSpace.Indicator
 import Mathlib.Analysis.InnerProductSpace.LinearMap
 import Mathlib.Analysis.Normed.Group.Bounded
+import Mathlib.Topology.Algebra.Module.ContinuousLinearMap.PiProd
 
 namespace WeilDefect
 noncomputable section
@@ -97,9 +98,27 @@ def neutralNF546OriginalSelectedPhysicalL2 (i : Fin 242) : RealComplexL2 :=
 moment map built explicitly from the unchanged J242 L² vectors.
 Inner product is conjugate-linear in the fixed j_i and ℂ-linear in
 the physical input, as required for exact Gram correction. -/
+def neutralNF546OriginalSelectedMomentsCLM :
+    RealComplexL2 →L[ℂ] (Fin 242 → ℂ) :=
+  ContinuousLinearMap.pi fun i : Fin 242 =>
+    innerSL ℂ (neutralNF546OriginalSelectedPhysicalL2 i)
+
+/-- The genuine 242 original physical moments are bounded/continuous,
+not merely an algebraic family. This continuity is the missing
+physical-limit input for the original NF528 Gram correction. -/
 def neutralNF546OriginalSelectedMoments : NeutralNF543Moments :=
-  LinearMap.pi fun i : Fin 242 =>
-    (innerSL ℂ (neutralNF546OriginalSelectedPhysicalL2 i)).toLinearMap
+  neutralNF546OriginalSelectedMomentsCLM.toLinearMap
+
+/-- TRUE selected source moments are stable under physical L²
+convergence. Full divisor source-graph convergence is a strictly
+stronger obligation and is NOT inferred from this theorem. -/
+theorem neutralNF546OriginalSelectedMoments_tendsto
+    {ι : Type*} {l : Filter ι} (ell : RealComplexL2)
+    (g : ι → RealComplexL2)
+    (hg : Filter.Tendsto g l (nhds ell)) :
+    Filter.Tendsto (fun s => neutralNF546OriginalSelectedMoments (g s))
+      l (nhds (neutralNF546OriginalSelectedMoments ell)) := by
+  exact neutralNF546OriginalSelectedMomentsCLM.continuous.continuousAt.tendsto.comp hg
 
 /-- Each output coordinate is EXACTLY the genuine original
 full-window j_i/L² pairing, not an invented ℂ-linear observation. -/
