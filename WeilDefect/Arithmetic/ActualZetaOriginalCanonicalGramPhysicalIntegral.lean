@@ -54,10 +54,11 @@ theorem neutralNF549CanonicalGram_entry_integral
   exact neutralNF549OriginalPhysicalMoment_eq_integral i
     (neutralNF544BumpSynthesis neutralNF548CanonicalOriginalColumns d)
 
+set_option maxRecDepth 4096
+
 /-- The canonical J242 Schwartz synthesis is exactly the ORIGINAL
 finite source combination times the one ACTUAL smooth χ, pointwise.
 No second cutoff, polynomial family, or substitute moments. -/
-set_option maxRecDepth 4096 in
 theorem neutralNF549CanonicalSynthesis_pointwise
     (d : Fin 242 → ℂ) (x : ℝ) :
     (neutralNF544BumpSynthesis
@@ -90,6 +91,8 @@ theorem neutralNF549CanonicalSynthesis_pointwise
       apply Finset.sum_congr rfl
       intro j hj
       ring
+
+set_option maxRecDepth 1000
 
 /-- True canonical original Gram entry is therefore the ORIGINAL
 weighted source integral with zero extension of J_i on [-B,B].
