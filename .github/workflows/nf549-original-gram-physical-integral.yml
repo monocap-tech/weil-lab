@@ -1,0 +1,69 @@
+name: NF549 original 242 canonical weighted physical Gram integral and quadratic source pairing
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242SourceFunctions.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242PhysicalMomentMap.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242WeightedCollarGram.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalEvenCollarCutoff.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramRightInverse.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramPhysicalIntegral.lean"
+      - "scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py"
+      - ".github/workflows/nf549-original-gram-physical-integral.yml"
+      - "lakefile.toml"
+      - "lean-toolchain"
+  workflow_dispatch:
+
+jobs:
+  nf549-source-sha-and-node-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile exact original source SHA audit as Python
+        run: python3 -m py_compile scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py
+      - name: Replay frozen original 242 generator signature and sinh pole
+        run: |
+          python3 scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py \
+            --output nf549_source_original_242_signature.json
+      - name: Upload independent exact source receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf549-original-J242-integral-source-audit
+          path: nf549_source_original_242_signature.json
+          if-no-files-found: error
+  nf549-lean-original-physical-gram:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean v4.34 via Elan
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve exact pinned Mathlib
+        run: lake update
+      - name: Restore Mathlib cache
+        run: lake exe cache get
+      - name: Compile source original 241+1 generators with recursion repair
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242SourceFunctions
+      - name: Compile original physical 242 moment map
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242PhysicalMomentMap
+      - name: Compile authentic canonical real even positive two-collar cutoff
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalEvenCollarCutoff
+      - name: Compile original complete canonical J242 finite Gram inverse
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramRightInverse
+      - name: Compile NF549 exact physical L2 integral and Hermitian quadratic pairing
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
+      - name: Reject axioms and proof placeholders
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+             WeilDefect/Arithmetic/ActualZetaOriginalJ242SourceFunctions.lean \
+             WeilDefect/Arithmetic/ActualZetaOriginalJ242PhysicalMomentMap.lean \
+             WeilDefect/Arithmetic/ActualZetaOriginalJ242WeightedCollarGram.lean \
+             WeilDefect/Arithmetic/ActualZetaOriginalCanonicalEvenCollarCutoff.lean \
+             WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramRightInverse.lean \
+             WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramPhysicalIntegral.lean; then
+            echo "NF549 true source Gram contains an unfinished proof"
+            exit 1
+          fi
