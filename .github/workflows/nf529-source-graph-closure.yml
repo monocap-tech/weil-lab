@@ -6,6 +6,7 @@ on:
       - "WeilDefect/Arithmetic/ActualZetaSourceQuadraticClosure.lean"
       - "WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormula.lean"
       - "WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormulaAutomatic.lean"
+      - "WeilDefect/Arithmetic/ActualZetaSmoothCorrelationRegularity.lean"
       - ".github/workflows/nf529-source-graph-closure.yml"
       - "lakefile.toml"
       - "lake-manifest.json"
@@ -37,10 +38,13 @@ jobs:
       - name: Build and typecheck NF533 automatic all-multiplicity summability
         shell: bash
         run: lake build WeilDefect.Arithmetic.ActualZetaSmoothLiteralFormulaAutomatic
+      - name: Build genuine NF534 correlation C2 regularity and actual EF attachment
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaSmoothCorrelationRegularity
       - name: Reject placeholders in the NF529 target
         shell: bash
         run: |
-          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' WeilDefect/Arithmetic/ActualZetaSourceQuadraticClosure.lean WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormula.lean WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormulaAutomatic.lean; then
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' WeilDefect/Arithmetic/ActualZetaSourceQuadraticClosure.lean WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormula.lean WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormulaAutomatic.lean WeilDefect/Arithmetic/ActualZetaSmoothCorrelationRegularity.lean; then
             echo "NF529 target contains an unfinished declaration."
             exit 1
           fi
