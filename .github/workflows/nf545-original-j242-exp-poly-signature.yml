@@ -1,0 +1,60 @@
+name: NF545 original J242 exponential polynomial source and Gram positivity preflight
+
+on:
+  pull_request:
+    paths:
+      - "notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json"
+      - "notes/data/provisional/NF500_original_all_242_selected_smooth_log_moment_native_custody.json"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242ExponentialSignature.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242SourceFunctions.lean"
+      - "scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py"
+      - ".github/workflows/nf545-original-j242-exp-poly-signature.yml"
+      - "lakefile.toml"
+      - "lean-toolchain"
+  workflow_dispatch:
+
+jobs:
+  nf545-original-source-signature:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit ORIGINAL NF407 and NF500 SHA, exact frequency blocks and Lean table
+        shell: bash
+        run: |
+          python3 scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py --output nf545_original_source_signature.json
+      - name: Publish exact original J242 audit receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf545-original-source-j242-exp-poly-signature
+          path: nf545_original_source_signature.json
+          if-no-files-found: error
+  nf545-lean-source-signature:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean via Elan
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib dependencies
+        shell: bash
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        shell: bash
+        run: lake exe cache get
+      - name: Compile source-exact 67-frequency distinct and 241 oscillator checks
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242ExponentialSignature
+      - name: Compile the actual 242 original source functions, including sinh pole
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242SourceFunctions
+      - name: Reject placeholders
+        shell: bash
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242ExponentialSignature.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242SourceFunctions.lean; then
+            echo "NF545 source signature has incomplete declarations"
+            exit 1
+          fi
