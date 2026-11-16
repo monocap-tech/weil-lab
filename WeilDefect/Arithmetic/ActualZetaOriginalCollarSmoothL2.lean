@@ -4,6 +4,7 @@ import Mathlib.MeasureTheory.Function.LpSpace.Indicator
 namespace WeilDefect
 noncomputable section
 open MeasureTheory
+open scoped ComplexConjugate
 
 /-!
 NF535: the ACTUAL physical L² class of a strict smooth collar test.
@@ -70,8 +71,8 @@ theorem neutralOriginalCollarSmooth_hasAuthenticWeilEF
       (neutralWindowRepresentative (11 / 10 : ℝ) g =ᵐ[volume] ψ) ∧
       (∀ f : RealComplexL2,
         (∑' q : NeutralActualZetaDivisorCoordinate,
-          Complex.conj (neutralWindowEvaluation (11 / 10 : ℝ)
-            (Complex.conj (neutralActualZetaDivisorOrdinate q)) f) *
+          conj (neutralWindowEvaluation (11 / 10 : ℝ)
+            (conj (neutralActualZetaDivisorOrdinate q)) f) *
             neutralWindowEvaluation (11 / 10 : ℝ)
               (neutralActualZetaDivisorOrdinate q) g) =
           Zeta23.EF.literatureRHS
@@ -79,8 +80,7 @@ theorem neutralOriginalCollarSmooth_hasAuthenticWeilEF
   obtain ⟨g, hg⟩ := neutralOriginalCollarSmooth_toActualPhysicalL2 ψ hψ hc hs
   refine ⟨g, hg, ?_⟩
   intro f
-  simpa only [Complex.conj_eq_star] using
-    neutralActualZetaWindowCorrelation_literature_of_ae_smoothSecond
+  exact neutralActualZetaWindowCorrelation_literature_of_ae_smoothSecond
       (11 / 10 : ℝ) f g ψ hψ hc hg
 
 end
