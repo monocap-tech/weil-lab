@@ -76,10 +76,10 @@ Consequently NF544's explicit finite-dimensional inverse (R=B\circ G^{-1}) is an
 Every (b_j\in C_c^\infty(E)), hence all `b_j`, (b_j') vanish at support endpoints. For the actual two-source Fourier evaluation (F_b(z)=\int b(x)e^{izx}dx) and zero strip `|Im z|≤1/2`, integration by parts twice gives
 
 ```
-|F_b(t+i u)| ≤ e^{B/2} ‖b''‖₁/t² (|t|≥1),
+|F_b(t+i u)| ≤ e^{B/2}(‖b''‖₁+‖b'‖₁+¼‖b‖₁)/t² (|t|≥1),
 |F_b(t+i u)| ≤ e^{B/2} ‖b‖₁ (all t),
 |F_b(t+i u)| ≤ C_b/(1+t²),
-C_b = 2 e^{B/2}(‖b‖₁+‖b''‖₁).
+C_b = 2 e^{B/2}(‖b‖₁+‖b'‖₁+‖b''‖₁).
 ```
 
 The genuine (P/N) combinations with `1/√2` obey by the parallelogram identity `|p_+|²+|p_-|²=|F_b(\bar z)|²+|F_b(z)|²≤2 C_b²/(1+t²)²`. On the original multiplicity-preserving dyadic band `2^n≤|t|<2^{n+1}`, use the already established unconditional genuine divisor count `#D_n≤A(n+2)2^n` to conclude for (N≥0)
