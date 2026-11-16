@@ -44,6 +44,9 @@ jobs:
       - name: Build and typecheck NF533 automatic all-multiplicity summability
         shell: bash
         run: lake build WeilDefect.Arithmetic.ActualZetaSmoothLiteralFormulaAutomatic
+      - name: Build NF538 complete full-source-graph Q equals all-zero-divisor sum
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaFullGraphRawDivisorQuadratic
       - name: Build genuine NF534 correlation C2 regularity and actual EF attachment
         shell: bash
         run: lake build WeilDefect.Arithmetic.ActualZetaSmoothCorrelationRegularity
@@ -62,9 +65,6 @@ jobs:
       - name: Build NF537 exact both-sqrt2 raw P-N energy normalization identity
         shell: bash
         run: lake build WeilDefect.Arithmetic.ActualZetaRawPairNormalizedEnergy
-      - name: Build NF538 complete full-source-graph Q equals all-zero-divisor sum
-        shell: bash
-        run: lake build WeilDefect.Arithmetic.ActualZetaFullGraphRawDivisorQuadratic
       - name: Reject placeholders in the NF529 target
         shell: bash
         run: |
