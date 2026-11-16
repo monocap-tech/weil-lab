@@ -1,4 +1,4 @@
-import WeilDefect.Arithmetic.ActualZetaRawPairNormalizedEnergy
+import WeilDefect.Arithmetic.ActualZetaSourceQuadraticClosure
 import WeilDefect.Arithmetic.ActualZetaSmoothLiteralFormulaAutomatic
 
 namespace WeilDefect
