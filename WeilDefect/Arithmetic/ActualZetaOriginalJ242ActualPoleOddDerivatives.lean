@@ -98,6 +98,19 @@ theorem neutralNF560ActualOriginalOddJetMatrix_pole (n : Fin 242) :
       (1 / 2 : ℝ) ^ (2 * n.val + 1) := by
   exact neutralNF560ActualOriginalPole_oddIteratedDeriv n.val
 
+/-- The authentic original index-241 sinh pole equation forces
+the dual polynomial's vanishing at its genuine negative node.
+This needs no assumptions about the other 241 oscillators. -/
+theorem neutralNF560OriginalPoleForcesDualRoot
+    (a : Fin 242 → ℝ)
+    (hpole : (∑ n : Fin 242,
+      a n * (iteratedDeriv (2 * n.val + 1)
+        (nf545OriginalSelectedRealGenerator ⟨241, by omega⟩)) 0) = 0) :
+    (neutralNF557OriginalDualPolynomial a).eval (-(1 / 4 : ℝ)) = 0 := by
+  rw [neutralNF560ActualOriginalPole_dualOddJets] at hpole
+  have hhalf : (1 / 2 : ℝ) ≠ 0 := by norm_num
+  exact (mul_eq_zero.mp hpole).resolve_left hhalf
+
 /-- Vanishing of the true original matrix's left-kernel pole
 coordinate forces the actual dual polynomial to have the
 negative real root -1/4. This lemma is a direct analytic-source
@@ -111,18 +124,6 @@ theorem neutralNF560OriginalMatrixPoleKernelForcesRoot
   apply neutralNF560OriginalPoleForcesDualRoot a
   exact hpole
 
-/-- The authentic original index-241 sinh pole equation forces
-the dual polynomial's vanishing at its genuine negative node.
-This needs no assumptions about the other 241 oscillators. -/
-theorem neutralNF560OriginalPoleForcesDualRoot
-    (a : Fin 242 → ℝ)
-    (hpole : (∑ n : Fin 242,
-      a n * (iteratedDeriv (2 * n.val + 1)
-        (nf545OriginalSelectedRealGenerator ⟨241, by omega⟩)) 0) = 0) :
-    (neutralNF557OriginalDualPolynomial a).eval (-(1 / 4 : ℝ)) = 0 := by
-  rw [neutralNF560ActualOriginalPole_dualOddJets] at hpole
-  have hhalf : (1 / 2 : ℝ) ≠ 0 := by norm_num
-  exact (mul_eq_zero.mp hpole).resolve_left hhalf
 
 end
 end WeilDefect
