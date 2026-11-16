@@ -145,6 +145,44 @@ theorem neutralNF548RealEvenCollarCutoff_pos_center :
   convert add_pos_of_pos_of_nonneg h0 hother using 1 <;>
     simp [neutralNF548CollarCenter]
 
+/-- χ is STRICTLY POSITIVE on a whole nonempty real open
+interval lying inside the original positive collar. This supplies
+the concrete open set needed for the original weighted Gram
+analytic-independence argument, not just positivity at one point. -/
+theorem neutralNF548RealEvenCollarCutoff_pos_interval
+    (x : ℝ)
+    (hx : x ∈ Set.Ioo
+      (neutralNF548CollarCenter - 1 / 2000)
+      (neutralNF548CollarCenter + 1 / 2000)) :
+    0 < neutralNF548RealEvenCollarCutoff x := by
+  have ha : |(2000 : ℝ) * (x - neutralNF548CollarCenter)| < 1 := by
+    apply abs_lt.mpr
+    constructor <;> dsimp [neutralNF548CollarCenter] at * <;> linarith [hx.1, hx.2]
+  have hs :
+      ((2000 : ℝ) * (x - neutralNF548CollarCenter)) ∈
+        Function.support nf548u := by
+    rw [show Function.support nf548u = ball (0 : ℝ) 1 from
+      ExistsContDiffBumpBase.u_support ℝ]
+    simpa only [Metric.mem_ball, dist_zero_right, Real.norm_eq_abs] using ha
+  have hp :
+      0 < nf548u ((2000 : ℝ) * (x - neutralNF548CollarCenter)) :=
+    lt_of_le_of_ne (nf548u_nonneg _) (Ne.symm hs)
+  have hn :
+      0 ≤ nf548u ((2000 : ℝ) * (x + neutralNF548CollarCenter)) :=
+    nf548u_nonneg _
+  exact add_pos_of_pos_of_nonneg hp hn
+
+/-- The matching negative original collar has the same positivity
+interval, by exact evenness, not by a second chosen cutoff. -/
+theorem neutralNF548RealEvenCollarCutoff_pos_negative_interval
+    (x : ℝ)
+    (hx : -x ∈ Set.Ioo
+      (neutralNF548CollarCenter - 1 / 2000)
+      (neutralNF548CollarCenter + 1 / 2000)) :
+    0 < neutralNF548RealEvenCollarCutoff x := by
+  simpa [neutralNF548RealEvenCollarCutoff_even x] using
+    neutralNF548RealEvenCollarCutoff_pos_interval (-x) hx
+
 /-- Embed the same explicit REAL cutoff into ℂ, preserving the
 genuine source's complex-linear selected moment convention. -/
 def neutralNF548ComplexEvenCollarCutoff (x : ℝ) : ℂ :=
