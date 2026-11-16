@@ -39,7 +39,7 @@ theorem neutralNF560SinhHalf_oddIteratedDeriv (n : ℕ) :
   rw [hfun]
   rw [iteratedDeriv_comp_const_mul
     (Real.contDiff_sinh (n := 2 * n + 1)) (1 / 2 : ℝ)]
-  simp only [Real.iteratedDeriv_odd_sinh, Real.cosh_zero, mul_one]
+  simp only [Real.iteratedDeriv_odd_sinh, mul_zero, Real.cosh_zero, mul_one]
 
 /-- The actual ORIGINAL source function at pole row 241 has
 these exact odd initial derivatives. No arbitrary generator
