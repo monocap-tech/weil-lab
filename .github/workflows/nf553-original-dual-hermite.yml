@@ -1,0 +1,79 @@
+name: NF553 original dual Hermite polynomial root budget and NF547 compiler recovery
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242HermiteDegreeObstruction.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242WeightedCollarGram.lean"
+      - "scripts/local_replay/verify_nf553_original_dual_hermite_sign_and_root_budget.py"
+      - ".github/workflows/nf553-original-dual-hermite.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+  workflow_dispatch:
+
+jobs:
+  nf553-original-source-signed-odd-jet-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Syntax check exact dual Hermite original source auditor
+        run: python3 -m py_compile scripts/local_replay/verify_nf553_original_dual_hermite_sign_and_root_budget.py
+      - name: Verify original 242 signed odd-jet Hermite source and root budget
+        run: |
+          python3 scripts/local_replay/verify_nf553_original_dual_hermite_sign_and_root_budget.py \
+            --output nf553_original_dual_hermite_sign_source_receipt.json
+      - name: Preserve exact source receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf553-original-dual-hermite-source-sign
+          path: nf553_original_dual_hermite_sign_source_receipt.json
+          if-no-files-found: error
+
+  nf553-standalone-hermite-degree-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib archive
+        run: lake exe cache get
+      - name: Compile standalone degree obstruction and real node separation
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242HermiteDegreeObstruction
+      - name: Reject incomplete generic Hermite proof placeholders
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242HermiteDegreeObstruction.lean; then
+            echo "NF553 Hermite degree lemma not closed"
+            exit 1
+          fi
+
+  nf553-nf547-source-compiler-recovery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib archive
+        run: lake exe cache get
+      - name: Compile genuine original NF546 physical source L2 first
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242PhysicalMomentMap
+      - name: Compile repaired NF547 genuine original smooth weighted columns
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242WeightedCollarGram
+      - name: Compile NF548 actual canonical cutoff
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalEvenCollarCutoff
+      - name: Compile NF549 actual weighted Gram integral
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
+      - name: Compile NF550 actual canonical source Gram separation
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramSeparationGate
+      - name: Compile NF551 exact odd parity and analytic uniqueness
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddParity
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity
