@@ -1,0 +1,66 @@
+name: NF547 exact original J242 weighted collar Schwartz Gram source attachment
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollar242GramInverse.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242ExponentialSignature.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242SourceFunctions.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242PhysicalMomentMap.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242WeightedCollarGram.lean"
+      - "scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py"
+      - ".github/workflows/nf547-original-j242-weighted-collar-gram.yml"
+      - "lakefile.toml"
+      - "lean-toolchain"
+  workflow_dispatch:
+
+jobs:
+  nf547-original-source-exact-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Confirm original source signatures and 242 generator sequence
+        run: |
+          python3 -m py_compile scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py
+          python3 scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py \
+            --output nf547_original_j242_signature.json
+      - name: Publish source audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf547-original-j242-source-signature
+          path: nf547_original_j242_signature.json
+          if-no-files-found: error
+  nf547-original-source-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Pinned dependency resolution
+        run: lake update
+      - name: Restore Mathlib pinned cache
+        run: lake exe cache get
+      - name: Compile repaired NF544 original finite Gram construction
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollar242GramInverse
+      - name: Compile original rational frequency source signature
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242ExponentialSignature
+      - name: Compile all 242 original source generator functions
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242SourceFunctions
+      - name: Compile concrete true full-window 242 physical moment map
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242PhysicalMomentMap
+      - name: Compile all original weighted χ times j_i Schwartz columns
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242WeightedCollarGram
+      - name: Reject unfinished proof declarations
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+              WeilDefect/Arithmetic/ActualZetaOriginalCollar242GramInverse.lean \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242ExponentialSignature.lean \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242SourceFunctions.lean \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242PhysicalMomentMap.lean \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242WeightedCollarGram.lean; then
+            echo "NF547 detected unfinished proof declarations"
+            exit 1
+          fi
