@@ -24,8 +24,16 @@ smooth of ALL orders. Each of its 241 original sine/cosine monomial
 rows and the genuine sinh pole is handled in the same source formula. -/
 theorem neutralNF547OriginalComplexGenerator_smooth (i : Fin 242) :
     ContDiff ℝ ∞ (neutralNF546OriginalComplexGenerator i) := by
-  unfold neutralNF546OriginalComplexGenerator nf545OriginalSelectedRealGenerator
-  split_ifs <;> dsimp <;> fun_prop
+  unfold neutralNF546OriginalComplexGenerator
+  by_cases hi : i.val < 241
+  · simp only [nf545OriginalSelectedRealGenerator, dif_pos hi]
+    by_cases he : Even (nf545OriginalOscillatorNodeAt ⟨i.val, hi⟩).2
+    · simp only [if_pos he]
+      fun_prop
+    · simp only [if_neg he]
+      fun_prop
+  · simp only [nf545OriginalSelectedRealGenerator, dif_neg hi]
+    fun_prop
 
 /-- The ACTUAL original generator j_i times ONE smooth correction
 cutoff χ. Its Schwartz class follows from C∞ and compact support;
