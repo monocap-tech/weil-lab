@@ -53,19 +53,27 @@ theorem neutralNF550OriginalPhysicalSynthesis_ae
       [Lp.coeFn_smul (d i) (neutralNF546OriginalSelectedPhysicalL2 i),
        neutralNF546OriginalSelectedPhysicalL2_ae i] with x hs hi
     simpa only [Pi.smul_apply, smul_eq_mul, hs, hi]
+  have hsum' :
+      ((∑ i : Fin 242,
+        d i • neutralNF546OriginalSelectedPhysicalL2 i :
+          RealComplexL2) : ℝ → ℂ) =ᵐ[volume]
+      (∑ i : Fin 242,
+        (fun x : ℝ => d i * neutralNF546OriginalWindowGenerator i x)) :=
+    (Lp.coeFn_fun_finsetSum Finset.univ
+      (fun i : Fin 242 =>
+        d i • neutralNF546OriginalSelectedPhysicalL2 i)).trans
+      (eventuallyEq_sum fun i _ => hterm i)
   have hsum :
       ((∑ i : Fin 242,
         d i • neutralNF546OriginalSelectedPhysicalL2 i :
           RealComplexL2) : ℝ → ℂ) =ᵐ[volume]
       (fun x => ∑ i : Fin 242,
-        d i * neutralNF546OriginalWindowGenerator i x) :=
-    (Lp.coeFn_fun_finsetSum Finset.univ
-      (fun i : Fin 242 =>
-        d i • neutralNF546OriginalSelectedPhysicalL2 i)).trans
-      (eventuallyEq_sum fun i _ => hterm i)
+        d i * neutralNF546OriginalWindowGenerator i x) := by
+    simpa only [Finset.sum_apply] using hsum'
   simpa only [neutralNF549OriginalPhysicalSynthesis,
-      Module.Basis.constr_apply_fintype, Pi.basisFun_repr,
-      neutralNF550OriginalWindowSourceCombination] using hsum
+      Module.Basis.constr_apply_fintype, Pi.basisFun_equivFun,
+      LinearEquiv.refl_apply, neutralNF550OriginalWindowSourceCombination]
+    using hsum
 
 /-- The ORIGINAL canonical χ vanishes outside the original
 physical aperture. No falsely shrunk physical moment window:
@@ -77,10 +85,8 @@ theorem neutralNF550CanonicalCutoff_zero_outside_physical
   intro hE
   rcases hE with hleft | hright
   · exact hx ⟨hleft.1.le, by
-      dsimp [neutralNF546OriginalFullPhysicalWindow]
       linarith [hleft.2]⟩
   · exact hx ⟨by
-      dsimp [neutralNF546OriginalFullPhysicalWindow]
       linarith [hright.1], hright.2.le⟩
 
 /-- On the unchanged ORIGINAL full source window, the exact
@@ -112,8 +118,17 @@ theorem neutralNF550OriginalCanonicalWeightedSquare_pointwise
         ((‖neutralNF550OriginalSourceCombination d x‖ ^ 2 : ℝ) : ℂ) := by
   by_cases hx : x ∈ neutralNF546OriginalFullPhysicalWindow
   · rw [neutralNF550OriginalWindowSourceCombination_eq d x hx]
-    rw [← RCLike.conj_mul (neutralNF550OriginalSourceCombination d x)]
-    ring
+    calc
+      conj (neutralNF550OriginalSourceCombination d x) *
+          (neutralNF548ComplexEvenCollarCutoff x *
+            neutralNF550OriginalSourceCombination d x) =
+        neutralNF548ComplexEvenCollarCutoff x *
+          (conj (neutralNF550OriginalSourceCombination d x) *
+            neutralNF550OriginalSourceCombination d x) := by ring
+      _ = neutralNF548ComplexEvenCollarCutoff x *
+          ((‖neutralNF550OriginalSourceCombination d x‖ ^ 2 : ℝ) : ℂ) := by
+        rw [← Complex.normSq_eq_conj_mul_self,
+          Complex.normSq_eq_norm_sq]
   · have hχ := neutralNF550CanonicalCutoff_zero_outside_physical x hx
     simp [hχ]
 
@@ -143,7 +158,9 @@ theorem neutralNF550CanonicalOriginalGram_eq_weighted_square_integral
        neutralNF548CanonicalOriginalColumns d).coeFn_toLp 2 volume] with x hV hB
   rw [hV, hB]
   rw [neutralNF549CanonicalSynthesis_pointwise]
-  exact neutralNF550OriginalCanonicalWeightedSquare_pointwise d x
+  simpa only [RCLike.inner_apply,
+    neutralNF550OriginalSourceCombination] using
+      (neutralNF550OriginalCanonicalWeightedSquare_pointwise d x)
 
 
 /-- All TRUE original 242 selected functions are continuous.
@@ -153,7 +170,10 @@ theorem neutralNF550OriginalSourceCombination_continuous
     (d : Fin 242 → ℂ) :
     Continuous (neutralNF550OriginalSourceCombination d) := by
   unfold neutralNF550OriginalSourceCombination
-  fun_prop
+  apply continuous_finset_sum
+  intro j hj
+  exact continuous_const.mul
+    (neutralNF546OriginalComplexGenerator_continuous j)
 
 /-- Reduce the complex-Hermitian canonical Gram to an entirely
 REAL nonnegative weighted squared-norm integral. The original
@@ -171,7 +191,8 @@ theorem neutralNF550CanonicalOriginalGram_real_eq_real_weighted_square
         ((‖neutralNF550OriginalSourceCombination d x‖ ^ 2 : ℝ) : ℂ) =
       ((neutralNF548RealEvenCollarCutoff x *
           ‖neutralNF550OriginalSourceCombination d x‖ ^ 2 : ℝ) : ℂ) := by
-    simp [neutralNF548ComplexEvenCollarCutoff, ofReal_mul]
+    simp only [neutralNF548ComplexEvenCollarCutoff,
+      Complex.ofReal_mul]
   simp_rw [hp]
   rw [integral_ofReal]
   simp
