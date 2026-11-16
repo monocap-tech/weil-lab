@@ -1,0 +1,82 @@
+name: NF559 original pole dual polynomial source and NF549 compiler recovery
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242DualPolynomialSourceNodes.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242DualPolynomialCoefficient.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242OriginalPoleDual.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramPhysicalIntegral.lean"
+      - ".github/workflows/nf559-original-pole-dual.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+  workflow_dispatch:
+
+jobs:
+  nf559-original-source-pole-dual-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Compile the EXACT original 242 odd-jet polynomial and 68 nodes
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242DualPolynomialSourceNodes
+      - name: Compile true 242 coefficient extraction/injection
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242DualPolynomialCoefficient
+      - name: Compile the genuine sinh-pole dual polynomial evaluation identity
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OriginalPoleDual
+      - name: Reject unfinished Lean proof declarations
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+               WeilDefect/Arithmetic/ActualZetaOriginalJ242DualPolynomialSourceNodes.lean \
+               WeilDefect/Arithmetic/ActualZetaOriginalJ242DualPolynomialCoefficient.lean \
+               WeilDefect/Arithmetic/ActualZetaOriginalJ242OriginalPoleDual.lean; then
+            echo "NF559 original source Hermite polynomial obligations have proof holes"
+            exit 1
+          fi
+
+  nf559-original-physical-gram-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Recheck true physical source through original NF548 cutoff
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242PhysicalMomentMap
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242WeightedCollarGram
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalEvenCollarCutoff
+      - name: Recheck first NF549 physical weighted Gram continuous integral
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
+      - name: Check NF550 canonical source Gram and NF551 analytic source identity
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramSeparationGate
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddParity
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity
+
+  nf559-original-odd-jet-source-custody:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recheck immutable original source 242 odd-jet derivative coefficients
+        run: |
+          python3 scripts/local_replay/verify_nf554_original_dual_odd_jet_coefficient_bridge.py \
+            --output nf559_original_odd_jet_source_replay.json
+      - name: Preserve exact original-source custody evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf559-original-pole-and-oscillator-odd-jet-source
+          path: nf559_original_odd_jet_source_replay.json
+          if-no-files-found: error
