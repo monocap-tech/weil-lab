@@ -81,6 +81,36 @@ theorem neutralNF560ActualOriginalPole_dualOddJets
           (neutralNF557OriginalDualPolynomial a).eval (-(1 / 4 : ℝ)) := by
       exact (neutralNF559OriginalDualPolynomial_pole_eval a).symm
 
+/-- The AUTHENTIC real 242×242 odd-initial-derivative matrix,
+including all 241 sine/cosine monomial oscillator generators and
+the true index-241 sinh pole. Its row n is derivative order 2n+1,
+not a numerical sample or a freely prescribed finite matrix. -/
+def neutralNF560ActualOriginalOddJetMatrix :
+    Matrix (Fin 242) (Fin 242) ℝ :=
+  fun n j =>
+    (iteratedDeriv (2 * n.val + 1)
+      (nf545OriginalSelectedRealGenerator j)) 0
+
+/-- The last column of the actual analytic source odd-jet matrix
+is precisely the genuine sinh-pole derivative sequence. -/
+theorem neutralNF560ActualOriginalOddJetMatrix_pole (n : Fin 242) :
+    neutralNF560ActualOriginalOddJetMatrix n ⟨241, by omega⟩ =
+      (1 / 2 : ℝ) ^ (2 * n.val + 1) := by
+  exact neutralNF560ActualOriginalPole_oddIteratedDeriv n.val
+
+/-- Vanishing of the true original matrix's left-kernel pole
+coordinate forces the actual dual polynomial to have the
+negative real root -1/4. This lemma is a direct analytic-source
+obligation, not a surrogate Gram or a general finite basis. -/
+theorem neutralNF560OriginalMatrixPoleKernelForcesRoot
+    (a : Fin 242 → ℝ)
+    (hpole :
+      (∑ n : Fin 242,
+        a n * neutralNF560ActualOriginalOddJetMatrix n ⟨241, by omega⟩) = 0) :
+    (neutralNF557OriginalDualPolynomial a).eval (-(1 / 4 : ℝ)) = 0 := by
+  apply neutralNF560OriginalPoleForcesDualRoot a
+  exact hpole
+
 /-- The authentic original index-241 sinh pole equation forces
 the dual polynomial's vanishing at its genuine negative node.
 This needs no assumptions about the other 241 oscillators. -/
