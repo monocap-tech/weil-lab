@@ -1,0 +1,68 @@
+name: NF552 original J242 odd jets 68-node Hermite source audit and compiler recovery
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242PhysicalMomentMap.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242OddParity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242AnalyticIdentity.lean"
+      - "scripts/local_replay/verify_nf552_original_odd_jet_hermite_factorization.py"
+      - ".github/workflows/nf552-original-odd-jet-hermite.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+  workflow_dispatch:
+
+jobs:
+  nf552-original-full-odd-jet-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Syntax-check exact original auditor
+        run: python3 -m py_compile scripts/local_replay/verify_nf552_original_odd_jet_hermite_factorization.py
+      - name: Run SHA-pinned full 242-by-242 odd jet and 68-node product cross-check
+        run: |
+          python3 scripts/local_replay/verify_nf552_original_odd_jet_hermite_factorization.py \
+            --output nf552_original_odd_jet_68_node_source_receipt.json
+      - name: Preserve exact source receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf552-original-242-odd-jet-68-node-audit
+          path: nf552_original_odd_jet_68_node_source_receipt.json
+          if-no-files-found: error
+
+  nf552-original-compiler-recovery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install exact pinned Lean
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib archive
+        run: lake exe cache get
+      - name: Compile actual original NF546 source moments before any downstream module
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242PhysicalMomentMap
+      - name: Compile NF547 actual source cutoff Gram
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242WeightedCollarGram
+      - name: Compile NF548 genuine even real smooth cutoff
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalEvenCollarCutoff
+      - name: Compile NF549 and NF550 actual canonical Gram reduction
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramSeparationGate
+      - name: Compile original source odd parity and real-analytic local-global identity
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddParity
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity
+      - name: Reject missing proofs in targeted source files
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242PhysicalMomentMap.lean \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242OddParity.lean \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242AnalyticIdentity.lean; then
+            echo "NF552 original-source Lean proof is not closed"
+            exit 1
+          fi
