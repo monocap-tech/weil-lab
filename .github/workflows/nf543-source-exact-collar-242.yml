@@ -6,6 +6,7 @@ on:
       - "WeilDefect/Arithmetic/ActualZetaLogCarrierQuadraticMoment.lean"
       - "WeilDefect/Arithmetic/ActualZetaLogCarrierSchwartzCompact.lean"
       - "WeilDefect/Arithmetic/ActualZetaOriginalCollar242Correction.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollar242GraphCorrection.lean"
       - ".github/workflows/nf543-source-exact-collar-242.yml"
       - "lakefile.toml"
       - "lean-toolchain"
@@ -36,13 +37,17 @@ jobs:
       - name: Compile NF543 strict-collar source-exact 242 correction
         shell: bash
         run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollar242Correction
+      - name: Compile NF543 graph-norm finite-rank correction continuity
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollar242GraphCorrection
       - name: Check for incomplete proof declarations
         shell: bash
         run: |
           if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
             WeilDefect/Arithmetic/ActualZetaLogCarrierQuadraticMoment.lean \
             WeilDefect/Arithmetic/ActualZetaLogCarrierSchwartzCompact.lean \
-            WeilDefect/Arithmetic/ActualZetaOriginalCollar242Correction.lean; then
+            WeilDefect/Arithmetic/ActualZetaOriginalCollar242Correction.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalCollar242GraphCorrection.lean; then
             echo "NF543 contains a placeholder declaration"
             exit 1
           fi
