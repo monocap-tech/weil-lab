@@ -2,6 +2,7 @@ import WeilDefect.Arithmetic.ActualZetaLiteralFormula
 
 namespace WeilDefect
 noncomputable section
+open scoped ComplexConjugate
 
 /-!
 NF530: The authentic zeta explicit formula is not restricted to Green
