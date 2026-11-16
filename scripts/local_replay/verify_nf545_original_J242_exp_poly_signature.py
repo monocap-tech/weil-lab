@@ -119,7 +119,8 @@ def main():
     result = {
        "pass": "NF545-exact-original-J242-characteristic-root-source-signature",
        "original_nf407_source_sha256": source_sha,
-       "nf500_custody_json_sha256": nf500_sha,\n       "original_nf500_native_raw_source_sha256": NF500_SHA,
+       "nf500_custody_json_sha256": nf500_sha,
+       "original_nf500_native_raw_source_sha256": NF500_SHA,
        "selected_original_oscillator_frequency_groups": len(sig),
        "selected_original_oscillator_monomial_directions": sum(m for _,m in sig),
        "selected_original_sinh_pole_index": 241,

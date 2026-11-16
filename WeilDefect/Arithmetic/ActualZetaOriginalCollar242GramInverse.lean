@@ -6,7 +6,7 @@ import Mathlib.LinearAlgebra.Basis.Defs
 
 namespace WeilDefect
 noncomputable section
-open MeasureTheory
+open MeasureTheory Module
 open scoped SchwartzMap ComplexConjugate
 
 /-!
@@ -91,7 +91,7 @@ theorem neutralNF544BumpSynthesis_supported
     (d : Fin 242 → ℂ) (x : ℝ)
     (hx : x ∉ neutralNF543OriginalCollars) :
     (neutralNF544BumpSynthesis b d) x = 0 := by
-  simp only [neutralNF544BumpSynthesis, Basis.constr_apply_fintype,
+  simp only [neutralNF544BumpSynthesis, Module.Basis.constr_apply_fintype,
     Pi.basisFun_repr]
   simp [hb _ x hx]
 
