@@ -6,6 +6,7 @@ on:
       - "notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json"
       - "notes/data/provisional/NF500_original_all_242_selected_smooth_log_moment_native_custody.json"
       - "WeilDefect/Arithmetic/ActualZetaOriginalJ242ExponentialSignature.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242SourceFunctions.lean"
       - "scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py"
       - ".github/workflows/nf545-original-j242-exp-poly-signature.yml"
       - "lakefile.toml"
@@ -45,11 +46,15 @@ jobs:
       - name: Compile source-exact 67-frequency distinct and 241 oscillator checks
         shell: bash
         run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242ExponentialSignature
+      - name: Compile the actual 242 original source functions, including sinh pole
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242SourceFunctions
       - name: Reject placeholders
         shell: bash
         run: |
           if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
-            WeilDefect/Arithmetic/ActualZetaOriginalJ242ExponentialSignature.lean; then
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242ExponentialSignature.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242SourceFunctions.lean; then
             echo "NF545 source signature has incomplete declarations"
             exit 1
           fi
