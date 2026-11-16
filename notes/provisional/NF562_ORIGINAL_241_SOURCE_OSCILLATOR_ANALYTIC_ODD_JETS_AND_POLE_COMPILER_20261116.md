@@ -126,3 +126,22 @@ Full NF528 genuine source all-divisor graph convergence, NF527 complete gamma+pr
 ## NF563
 
 Obtain actual NF562 Lean compiler diagnostics, repair genuine source-indexed analytic jet compilation and NF559 negative pole algebra, and address NF549–NF551 remaining physical-chain errors. Then formalize the unified exact signed source factorial formula and the source derivative-to-dual polynomial step. Avoid new numerical Gram detours.
+
+
+## 6. Post-commit CI diagnostics and exact NF549 acceptance
+
+Additional actual NF561 workflow results became available after drafting this note:
+
+- `nf561-original-oscillator-jet-lean`, run #43976006178 job #133680034759, **FAILED**, pinpointing issues in the new generic NF561 source engine: `simp [mul_comm]` normalized `2*n` to `n*2` and prevented Mathlib's exact sin/cos iterated-derivative theorem from matching; `iteratedDeriv_fun_pow_zero` lacked an explicit real-field type parameter; and the `∞`-order `ContDiff` notation needed the `ContDiff` scope. NF562 has now **committed targeted repairs**: explicit `rw [Real.iteratedDeriv_odd_sin]`/`rw [Real.iteratedDeriv_even_cos]` without global `mul_comm` simplification, explicit `(𝕜 := ℝ)` for the monomial jet theorem, and `open scoped ContDiff` in both oscillator-related files. Compiler acceptance of these fixes is pending.
+
+- `nf561-original-physical-gram-lean`, run #43976006178 job #133680034578, progressed completely **THROUGH NF549**. The log explicitly records:
+  ```
+  ⚠ Built WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
+  ```
+  at 2026-11-16T23:27:10Z. Thus the genuine NF546–NF549 original physical source, two-collar cutoff, original continuous physical Gram integral, and original Schwartz synthesis have now all **LEAN PASS within the same dependent build**. The overall job still FAILED when compiling NF550 `ActualZetaOriginalCanonicalGramWeightedSquare.lean`.
+
+- NF550's first compiler transcript contains genuine proof integration problems: the a.e. finite L² synthesis sum needs its exact function representation, two `dsimp` calls fail to progress, a `RCLike.conj_mul` rewrite does not match the actual star/weighted norm expression, the inner-product proof requires a literal expansion, continuity needs the established NF547 complex smoothness theorem rather than bare `fun_prop`, and a complex-of-real coercion/integral-reality rewrite is misstated. These are **NF550 compiler obligations, not solved by NF562**. The staged next NF563 compiler task should repair NF550 from these concrete diagnostics, then attempt NF551. Do not report NF550 PASS.
+
+- NF562 additionally commits exact real `Nat.choose_mul_factorial_mul_factorial` normalization of the true source binomial Leibniz coefficient to the authentic factorial ratio, with two candidate signed factorial-ratio theorems for original even-k sine and odd-k cosine oscillator patterns. Their compiler acceptance remains pending.
+
+As a result, the accepted physical source chain can now be stated precisely: **NF542–NF549 LEAN PASS in historical/dependent builds**; **NF550–NF551 COMPILER PENDING/FAILING**. The algebraic polynomial NF553–NF556 accepted results remain distinct from the original source-independence proof.
