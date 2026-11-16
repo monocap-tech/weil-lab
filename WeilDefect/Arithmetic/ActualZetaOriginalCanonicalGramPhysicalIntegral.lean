@@ -66,12 +66,29 @@ theorem neutralNF549CanonicalSynthesis_pointwise
             d j * neutralNF546OriginalComplexGenerator j x) := by
   simp only [neutralNF544BumpSynthesis,
     Module.Basis.constr_apply_fintype, Pi.basisFun_repr]
-  simp only [map_sum, SchwartzMap.sum_apply, SchwartzMap.smul_apply]
-  rw [Finset.mul_sum]
-  apply Finset.sum_congr rfl
-  intro j hj
-  rw [neutralNF547OriginalWeightedColumn_apply]
-  ring
+  calc
+    ((∑ j : Fin 242, d j • neutralNF548CanonicalOriginalColumns j) :
+        𝓢(ℝ, ℂ)) x =
+        ∑ j : Fin 242, d j *
+          (neutralNF548CanonicalOriginalColumns j) x := by simp
+    _ = ∑ j : Fin 242,
+          d j * (neutralNF548ComplexEvenCollarCutoff x *
+            neutralNF546OriginalComplexGenerator j x) := by
+      apply Finset.sum_congr rfl
+      intro j hj
+      rw [show neutralNF548CanonicalOriginalColumns j x =
+          neutralNF547OriginalWeightedColumn
+            neutralNF548ComplexEvenCollarCutoff
+            neutralNF548ComplexEvenCollarCutoff_smooth
+            neutralNF548ComplexEvenCollarCutoff_hasCompactSupport j x by rfl]
+      rw [neutralNF547OriginalWeightedColumn_apply]
+    _ = neutralNF548ComplexEvenCollarCutoff x *
+          (∑ j : Fin 242,
+            d j * neutralNF546OriginalComplexGenerator j x) := by
+      rw [Finset.mul_sum]
+      apply Finset.sum_congr rfl
+      intro j hj
+      ring
 
 /-- True canonical original Gram entry is therefore the ORIGINAL
 weighted source integral with zero extension of J_i on [-B,B].
