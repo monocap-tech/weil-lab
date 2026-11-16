@@ -35,8 +35,9 @@ theorem neutralNF547OriginalComplexGenerator_smooth (i : Fin 242) :
         fun_prop
     · simp only [dif_neg hi]
       fun_prop
-  simpa only [neutralNF546OriginalComplexGenerator, Function.comp_def] using
-    (Complex.ofRealCLM.contDiff.comp hreal)
+  change ContDiff ℝ ∞
+    (fun x : ℝ => Complex.ofRealCLM (nf545OriginalSelectedRealGenerator i x))
+  exact Complex.ofRealCLM.contDiff.comp hreal
 
 /-- The ACTUAL original generator j_i times ONE smooth correction
 cutoff χ. Its Schwartz class follows from C∞ and compact support;
