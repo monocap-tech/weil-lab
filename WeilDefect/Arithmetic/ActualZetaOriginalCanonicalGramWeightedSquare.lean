@@ -145,5 +145,127 @@ theorem neutralNF550CanonicalOriginalGram_eq_weighted_square_integral
   rw [neutralNF549CanonicalSynthesis_pointwise]
   exact neutralNF550OriginalCanonicalWeightedSquare_pointwise d x
 
+
+/-- All TRUE original 242 selected functions are continuous.
+Consequently their unchanged finite complex source combination is
+continuous; this is used for the strict-positive real integral. -/
+theorem neutralNF550OriginalSourceCombination_continuous
+    (d : Fin 242 → ℂ) :
+    Continuous (neutralNF550OriginalSourceCombination d) := by
+  unfold neutralNF550OriginalSourceCombination
+  fun_prop
+
+/-- Reduce the complex-Hermitian canonical Gram to an entirely
+REAL nonnegative weighted squared-norm integral. The original
+source coefficients and original full physical window are fixed. -/
+theorem neutralNF550CanonicalOriginalGram_real_eq_real_weighted_square
+    (d : Fin 242 → ℂ) :
+    (∑ i : Fin 242,
+      conj (d i) * (neutralNF548CanonicalOriginalWeightedGram d) i).re =
+      ∫ x : ℝ,
+        neutralNF548RealEvenCollarCutoff x *
+          ‖neutralNF550OriginalSourceCombination d x‖ ^ 2 ∂volume := by
+  rw [neutralNF550CanonicalOriginalGram_eq_weighted_square_integral]
+  have hp (x : ℝ) :
+      neutralNF548ComplexEvenCollarCutoff x *
+        ((‖neutralNF550OriginalSourceCombination d x‖ ^ 2 : ℝ) : ℂ) =
+      ((neutralNF548RealEvenCollarCutoff x *
+          ‖neutralNF550OriginalSourceCombination d x‖ ^ 2 : ℝ) : ℂ) := by
+    simp [neutralNF548ComplexEvenCollarCutoff, ofReal_mul]
+  simp_rw [hp]
+  rw [integral_ofReal]
+  simp
+
+/-- Genuine original canonical Gram is POSITIVE SEMIDEFINITE for
+every 242-source coefficient vector, without assuming 136-root
+independence. Strictness is precisely the outstanding source
+nonvanishing obligation. -/
+theorem neutralNF550CanonicalOriginalGram_nonneg
+    (d : Fin 242 → ℂ) :
+    0 ≤ (∑ i : Fin 242,
+      conj (d i) * (neutralNF548CanonicalOriginalWeightedGram d) i).re := by
+  rw [neutralNF550CanonicalOriginalGram_real_eq_real_weighted_square]
+  apply integral_nonneg
+  intro x
+  exact mul_nonneg (neutralNF548RealEvenCollarCutoff_nonneg x)
+    (sq_nonneg _)
+
+/-- The authentic real weighted squared modulus is continuous. -/
+theorem neutralNF550CanonicalOriginalSquare_continuous
+    (d : Fin 242 → ℂ) :
+    Continuous (fun x : ℝ =>
+      neutralNF548RealEvenCollarCutoff x *
+        ‖neutralNF550OriginalSourceCombination d x‖ ^ 2) := by
+  exact neutralNF548RealEvenCollarCutoff_smooth.continuous.mul
+    ((neutralNF550OriginalSourceCombination_continuous d).norm.pow 2)
+
+/-- The genuine squared norm weighted by the canonical source
+cutoff is integrable, because χ is genuinely C∞ compactly
+supported inside the old strict E. -/
+theorem neutralNF550CanonicalOriginalSquare_integrable
+    (d : Fin 242 → ℂ) :
+    Integrable (fun x : ℝ =>
+      neutralNF548RealEvenCollarCutoff x *
+        ‖neutralNF550OriginalSourceCombination d x‖ ^ 2) volume := by
+  apply (neutralNF550CanonicalOriginalSquare_continuous d).integrable_of_hasCompactSupport
+  exact neutralNF548RealEvenCollarCutoff_hasCompactSupport.mul_right
+
+/-- EXACT bridge from one nonzero observation inside the TRUE
+positive-mass original collar to strict Hermitian positivity of
+the original 242-dimensional canonical Gram.
+
+This implication is unconditional given the witness; it does
+not assert that a nonzero d always yields such a witness. -/
+theorem neutralNF550CanonicalOriginalGram_pos_of_nonzero_at
+    (d : Fin 242 → ℂ) (x : ℝ)
+    (hχ : 0 < neutralNF548RealEvenCollarCutoff x)
+    (hsource : neutralNF550OriginalSourceCombination d x ≠ 0) :
+    0 < (∑ i : Fin 242,
+      conj (d i) * (neutralNF548CanonicalOriginalWeightedGram d) i).re := by
+  rw [neutralNF550CanonicalOriginalGram_real_eq_real_weighted_square]
+  apply integral_pos_of_integrable_nonneg_nonzero
+    (neutralNF550CanonicalOriginalSquare_continuous d)
+    (neutralNF550CanonicalOriginalSquare_integrable d)
+    (fun y => mul_nonneg (neutralNF548RealEvenCollarCutoff_nonneg y)
+      (sq_nonneg _))
+  exact ne_of_gt (mul_pos hχ (pow_pos (norm_pos_iff.mpr hsource) 2))
+
+/-- A witness inside the one ACTUAL prescribed positive interval
+is sufficient to certify strict positivity of the one canonical
+original source Gram. -/
+theorem neutralNF550CanonicalOriginalGram_pos_of_original_collar_witness
+    (d : Fin 242 → ℂ) (x : ℝ)
+    (hx : x ∈ Set.Ioo
+      (neutralNF548CollarCenter - 1 / 2000)
+      (neutralNF548CollarCenter + 1 / 2000))
+    (hsource : neutralNF550OriginalSourceCombination d x ≠ 0) :
+    0 < (∑ i : Fin 242,
+      conj (d i) * (neutralNF548CanonicalOriginalWeightedGram d) i).re := by
+  exact neutralNF550CanonicalOriginalGram_pos_of_nonzero_at d x
+    (neutralNF548RealEvenCollarCutoff_pos_interval x hx) hsource
+
+/-- Precise last remaining ORIGINAL J242 finite-Gram gate:
+if no nonzero original 242-frequency-plus-sinh combination
+vanishes on the fixed positive original endpoint collar interval,
+the actual canonical original Gram is strictly positive.
+
+NF545 proves this local source independence analytically via
+136 distinct exponential-polynomial characteristic roots;
+that original independence is NOT YET a Lean theorem. -/
+theorem neutralNF550CanonicalOriginalGram_pos_of_collar_separation
+    (hsource : ∀ d : Fin 242 → ℂ, d ≠ 0 →
+      ∃ x : ℝ,
+        x ∈ Set.Ioo
+          (neutralNF548CollarCenter - 1 / 2000)
+          (neutralNF548CollarCenter + 1 / 2000) ∧
+        neutralNF550OriginalSourceCombination d x ≠ 0) :
+    ∀ d : Fin 242 → ℂ, d ≠ 0 →
+      0 < (∑ i : Fin 242,
+        conj (d i) * (neutralNF548CanonicalOriginalWeightedGram d) i).re := by
+  intro d hd
+  obtain ⟨x, hx, hnonzero⟩ := hsource d hd
+  exact neutralNF550CanonicalOriginalGram_pos_of_original_collar_witness
+    d x hx hnonzero
+
 end
 end WeilDefect
