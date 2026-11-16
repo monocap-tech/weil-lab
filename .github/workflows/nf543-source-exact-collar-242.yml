@@ -1,0 +1,48 @@
+name: NF543 source-exact 242-moment strict collar Schwartz correction
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaLogCarrierQuadraticMoment.lean"
+      - "WeilDefect/Arithmetic/ActualZetaLogCarrierSchwartzCompact.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollar242Correction.lean"
+      - ".github/workflows/nf543-source-exact-collar-242.yml"
+      - "lakefile.toml"
+      - "lean-toolchain"
+  workflow_dispatch:
+
+jobs:
+  nf543-source-exact-collar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean via Elan
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned dependencies
+        shell: bash
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        shell: bash
+        run: lake exe cache get
+      - name: Compile NF540 quadratic moment admission
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaLogCarrierQuadraticMoment
+      - name: Compile NF542 genuine Schwartz carrier (repaired)
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaLogCarrierSchwartzCompact
+      - name: Compile NF543 strict-collar source-exact 242 correction
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollar242Correction
+      - name: Check for incomplete proof declarations
+        shell: bash
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+            WeilDefect/Arithmetic/ActualZetaLogCarrierQuadraticMoment.lean \
+            WeilDefect/Arithmetic/ActualZetaLogCarrierSchwartzCompact.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalCollar242Correction.lean; then
+            echo "NF543 contains a placeholder declaration"
+            exit 1
+          fi
