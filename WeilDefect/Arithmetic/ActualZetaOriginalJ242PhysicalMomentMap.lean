@@ -94,6 +94,25 @@ def neutralNF546OriginalSelectedPhysicalL2 (i : Fin 242) : RealComplexL2 :=
   (neutralNF546OriginalWindowGenerator_memLp i).toLp
     (neutralNF546OriginalWindowGenerator i)
 
+/-- Each original physical L² class agrees almost everywhere with
+the EXACT source function truncated to the original physical window.
+We do NOT equate arbitrary L² representatives pointwise. -/
+theorem neutralNF546OriginalSelectedPhysicalL2_ae (i : Fin 242) :
+    (neutralNF546OriginalSelectedPhysicalL2 i : ℝ → ℂ) =ᵐ[volume]
+      neutralNF546OriginalWindowGenerator i := by
+  exact (neutralNF546OriginalWindowGenerator_memLp i).coeFn_toLp
+
+/-- The final ORIGINAL physical selected generator is precisely the
+unchanged sinh-pole, and is zero outside the original physical
+window (not outside the smaller correction collars). -/
+theorem neutralNF546OriginalPoleWindow (x : ℝ) :
+    neutralNF546OriginalWindowGenerator ⟨241, by omega⟩ x =
+      neutralNF546OriginalFullPhysicalWindow.indicator
+        (fun y : ℝ => (Real.sinh (y / 2) : ℂ)) x := by
+  simp [neutralNF546OriginalWindowGenerator,
+    neutralNF546OriginalComplexGenerator,
+    nf545OriginalSelectedPole_is_sinh]
+
 /-- Unlike the abstract NF543 M, this is the actual physical source
 moment map built explicitly from the unchanged J242 L² vectors.
 Inner product is conjugate-linear in the fixed j_i and ℂ-linear in
