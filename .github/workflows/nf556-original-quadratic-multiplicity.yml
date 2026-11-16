@@ -1,0 +1,60 @@
+name: NF556 original quadratic root multiplicity equality and NF548 compiler recovery
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242QuadraticRootMultiplicity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalEvenCollarCutoff.lean"
+      - ".github/workflows/nf556-original-quadratic-multiplicity.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+  workflow_dispatch:
+
+jobs:
+  nf556-standalone-root-multiplicity-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve Mathlib from pinned lockfile
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Compile exact positive-frequency quadratic rootMultiplicity equality
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242QuadraticRootMultiplicity
+      - name: Reject proof holes
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+             WeilDefect/Arithmetic/ActualZetaOriginalJ242QuadraticRootMultiplicity.lean; then
+            echo "NF556 source-related generic rootMultiplicity equality not proved"
+            exit 1
+          fi
+
+  nf556-original-source-chain-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve Mathlib from pinned lockfile
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: NF546 original full-window physical L2 moments
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242PhysicalMomentMap
+      - name: NF547 actual real-to-complex source smoothness
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242WeightedCollarGram
+      - name: NF548 original real even compact collar cutoff
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalEvenCollarCutoff
+      - name: NF549 actual original Gram physical integral
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
+      - name: NF550 original canonical weighted Gram positivity reduction
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramSeparationGate
+      - name: NF551 exact original odd symmetry and local-to-global identity
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddParity
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity

@@ -59,7 +59,7 @@ theorem neutralNF548RealEvenCollarCutoff_even (x : ℝ) :
       (2000 : ℝ) * (-x - neutralNF548CollarCenter) =
         -((2000 : ℝ) * (x + neutralNF548CollarCenter)) := by ring
   have h₂ :
-      (2000 : ℝ) * (-x + neutralNF548CollarCenter) =
+      (2000 : ℝ) * (neutralNF548CollarCenter + -x) =
         -((2000 : ℝ) * (x - neutralNF548CollarCenter)) := by ring
   simp only [neutralNF548RealEvenCollarCutoff, h₁, h₂,
     nf548u_neg, add_comm]
@@ -82,7 +82,7 @@ private theorem nf548PositiveBump_inside (x : ℝ)
   have habs : |2000 * (x - neutralNF548CollarCenter)| < 1 := by
     simpa only [Metric.mem_ball, dist_zero_right, Real.norm_eq_abs] using hu
   rcases abs_lt.mp habs with ⟨hlo, hhi⟩
-  constructor <;> dsimp [neutralNF548CollarCenter] <;> linarith
+  constructor <;> simp only [neutralNF548CollarCenter] at * <;> linarith
 
 /-- Mirror geometry: the other copy stays strictly inside the
 original NEGATIVE terminal collar. -/
@@ -96,7 +96,7 @@ private theorem nf548NegativeBump_inside (x : ℝ)
   have habs : |2000 * (x + neutralNF548CollarCenter)| < 1 := by
     simpa only [Metric.mem_ball, dist_zero_right, Real.norm_eq_abs] using hu
   rcases abs_lt.mp habs with ⟨hlo, hhi⟩
-  constructor <;> dsimp [neutralNF548CollarCenter] <;> linarith
+  constructor <;> simp only [neutralNF548CollarCenter] at * <;> linarith
 
 /-- THE ORIGINAL strict E support, not merely the large full
 physical window. This is pointwise vanishing outside exact E. -/
