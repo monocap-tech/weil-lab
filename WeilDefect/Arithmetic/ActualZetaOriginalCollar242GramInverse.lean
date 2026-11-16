@@ -6,7 +6,7 @@ import Mathlib.LinearAlgebra.Basis.Defs
 
 namespace WeilDefect
 noncomputable section
-open MeasureTheory
+open MeasureTheory Module
 open scoped SchwartzMap ComplexConjugate
 
 /-!
