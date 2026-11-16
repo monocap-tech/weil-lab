@@ -29,7 +29,8 @@ private theorem neutralActualZetaSourceNormalization_mul_self :
     (((Real.sqrt (2 : ℝ)) : ℂ)⁻¹) *
         (((Real.sqrt (2 : ℝ)) : ℂ)⁻¹) =
         (((Real.sqrt (2 : ℝ)) : ℂ) ^ 2)⁻¹ := by
-          simp only [mul_inv_rev]
+          rw [pow_two]
+          exact (mul_inv_rev _ _).symm
     _ = (2 : ℂ)⁻¹ := by rw [hs]
     _ = 1 / 2 := by norm_num
 
@@ -129,6 +130,8 @@ private theorem neutralActualZetaPN_normalizedEnergy_eq_rawInner
     rw [norm_smul]
     norm_num
   rw [hp, hn] at h
+  change ‖c • P‖ ^ 2 - ‖c • N‖ ^ 2 =
+    RCLike.re (inner ℂ (c • (P + N)) (c • (P - N)))
   rw [h]
   ring
 

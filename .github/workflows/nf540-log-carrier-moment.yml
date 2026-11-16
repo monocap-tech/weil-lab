@@ -1,0 +1,38 @@
+name: NF540 genuine log Hilbert carrier quadratic-moment admission
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaLogCarrierQuadraticMoment.lean"
+      - ".github/workflows/nf540-log-carrier-moment.yml"
+      - "lean-toolchain"
+      - "lake-manifest.json"
+      - "lakefile.toml"
+  workflow_dispatch:
+
+jobs:
+  nf540-log-carrier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean via Elan
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned dependencies
+        shell: bash
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        shell: bash
+        run: lake exe cache get
+      - name: Compile the actual NF540 supported log-Hilbert carrier theorem
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaLogCarrierQuadraticMoment
+      - name: Reject incomplete NF540 proof declarations
+        shell: bash
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' WeilDefect/Arithmetic/ActualZetaLogCarrierQuadraticMoment.lean; then
+            echo "NF540 contains a placeholder declaration"
+            exit 1
+          fi
