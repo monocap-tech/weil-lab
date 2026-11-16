@@ -96,5 +96,49 @@ theorem neutralActualZetaFullSourceLiftOfRawSamples_physical
       (neutralActualZetaFullSourceLiftOfRawSamples a f hA hB) = f := by
   exact neutralActualZetaFullSourceLiftOfSquareSummable_physical a f _ _
 
+
+/-- Compose genuine explicit-formula absolute convergence, real-odd raw
+sample conjugation, ℓ² P/N transport, and the unchanged complete
+source-graph graph equations. The REAL-ODD symmetry and C² correlation
+are explicit input obligations; logarithmic physical membership is the
+type of f. No Green synthesis or density estimate is used. -/
+def neutralActualZetaRealOddSmoothLogFullSourceLift
+    (a : ℝ) (f : NeutralLogHilbertCarrier a)
+    (hreg : ContDiff ℝ 2
+      (neutralWindowCorrelation a (neutralLogPhysical f.val) (neutralLogPhysical f.val)))
+    (hodd : ∀ q : NeutralActualZetaDivisorCoordinate,
+      neutralWindowEvaluation a (conj (neutralActualZetaDivisorOrdinate q))
+        (neutralLogPhysical f.val) =
+        -conj (neutralWindowEvaluation a (neutralActualZetaDivisorOrdinate q)
+          (neutralLogPhysical f.val))) :
+    NeutralActualZetaSourceDomain a := by
+  have hB : Summable (fun q : NeutralActualZetaDivisorCoordinate =>
+      ‖neutralWindowEvaluation a (neutralActualZetaDivisorOrdinate q)
+        (neutralLogPhysical f.val)‖ ^ 2) :=
+    neutralActualZetaOddPhysicalWindowSample_sq_summable a
+      (neutralLogPhysical f.val) hreg hodd
+  have hA : Summable (fun q : NeutralActualZetaDivisorCoordinate =>
+      ‖neutralWindowEvaluation a (conj (neutralActualZetaDivisorOrdinate q))
+        (neutralLogPhysical f.val)‖ ^ 2) := by
+    apply hB.congr
+    intro q
+    rw [hodd q, norm_neg, Complex.norm_conj]
+  exact neutralActualZetaFullSourceLiftOfRawSamples a f hA hB
+
+/-- Exact original physical custody for any real-odd smooth full-graph
+lift. This is not a newly synthesized physical approximation. -/
+theorem neutralActualZetaRealOddSmoothLogFullSourceLift_physical
+    (a : ℝ) (f : NeutralLogHilbertCarrier a)
+    (hreg : ContDiff ℝ 2
+      (neutralWindowCorrelation a (neutralLogPhysical f.val) (neutralLogPhysical f.val)))
+    (hodd : ∀ q : NeutralActualZetaDivisorCoordinate,
+      neutralWindowEvaluation a (conj (neutralActualZetaDivisorOrdinate q))
+        (neutralLogPhysical f.val) =
+        -conj (neutralWindowEvaluation a (neutralActualZetaDivisorOrdinate q)
+          (neutralLogPhysical f.val))) :
+    neutralActualZetaSourcePhysical a
+      (neutralActualZetaRealOddSmoothLogFullSourceLift a f hreg hodd) = f := by
+  exact neutralActualZetaFullSourceLiftOfRawSamples_physical a f _ _
+
 end
 end WeilDefect
