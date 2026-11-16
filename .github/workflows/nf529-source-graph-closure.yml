@@ -8,6 +8,7 @@ on:
       - "WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormulaAutomatic.lean"
       - "WeilDefect/Arithmetic/ActualZetaSmoothCorrelationRegularity.lean"
       - "WeilDefect/Arithmetic/ActualZetaOriginalCollarSmoothL2.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOddPhysicalSampleSummability.lean"
       - ".github/workflows/nf529-source-graph-closure.yml"
       - "lakefile.toml"
       - "lake-manifest.json"
@@ -45,10 +46,13 @@ jobs:
       - name: Build NF535 authentic original smooth collar physical L2 embedding and EF
         shell: bash
         run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarSmoothL2
+      - name: Build NF536 real-odd raw actual zero divisor sample square summability
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOddPhysicalSampleSummability
       - name: Reject placeholders in the NF529 target
         shell: bash
         run: |
-          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' WeilDefect/Arithmetic/ActualZetaSourceQuadraticClosure.lean WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormula.lean WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormulaAutomatic.lean WeilDefect/Arithmetic/ActualZetaSmoothCorrelationRegularity.lean WeilDefect/Arithmetic/ActualZetaOriginalCollarSmoothL2.lean; then
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' WeilDefect/Arithmetic/ActualZetaSourceQuadraticClosure.lean WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormula.lean WeilDefect/Arithmetic/ActualZetaSmoothLiteralFormulaAutomatic.lean WeilDefect/Arithmetic/ActualZetaSmoothCorrelationRegularity.lean WeilDefect/Arithmetic/ActualZetaOriginalCollarSmoothL2.lean WeilDefect/Arithmetic/ActualZetaOddPhysicalSampleSummability.lean; then
             echo "NF529 target contains an unfinished declaration."
             exit 1
           fi
