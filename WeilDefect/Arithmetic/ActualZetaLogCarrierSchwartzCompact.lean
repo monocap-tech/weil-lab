@@ -100,5 +100,26 @@ theorem neutralCompactSmoothOriginalLogHilbertCarrier
     a (s.toLp 2 volume) hsupport
       (neutralSchwartzPhysical_quadraticFourierMoment s)
 
+/-- Direct admission for the EXACT original two endpoint collars
+B=11/10 and δ=1/500. The compact C∞ test itself, rather than a
+surrogate Green packet, is the physical Hilbert-vector representative. -/
+theorem neutralOriginalTwoCollarCompactSmoothLogHilbertCarrier
+    (ψ : ℝ → ℂ)
+    (hψ : ContDiff ℝ ∞ ψ) (hc : HasCompactSupport ψ)
+    (hs : ∀ x : ℝ,
+      x ∉ (Set.Ioo (-(11 / 10 : ℝ)) (-(11 / 10 : ℝ) + 1 / 500) ∪
+        Set.Ioo ((11 / 10 : ℝ) - 1 / 500) (11 / 10 : ℝ)) → ψ x = 0) :
+    ∃ k : NeutralLogHilbertCarrier (11 / 10 : ℝ),
+      neutralLogPhysical k.val =
+        (hc.toSchwartzMap hψ).toLp 2 volume := by
+  apply neutralCompactSmoothOriginalLogHilbertCarrier
+    (11 / 10 : ℝ) ψ hψ hc
+  intro x hout
+  apply hs x
+  intro hE
+  rcases hE with hleft | hright
+  · exact hout ⟨hleft.1.le, by linarith [hleft.2]⟩
+  · exact hout ⟨by linarith [hright.1], hright.2.le⟩
+
 end
 end WeilDefect
