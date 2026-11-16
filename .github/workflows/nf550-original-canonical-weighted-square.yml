@@ -1,0 +1,79 @@
+name: NF550 original canonical 242 Gram weighted square positivity reduction
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242SourceFunctions.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242PhysicalMomentMap.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242WeightedCollarGram.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalEvenCollarCutoff.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramRightInverse.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramPhysicalIntegral.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramWeightedSquare.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramSeparationGate.lean"
+      - "scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py"
+      - ".github/workflows/nf550-original-canonical-weighted-square.yml"
+      - "lakefile.toml"
+      - "lean-toolchain"
+  workflow_dispatch:
+
+jobs:
+  nf550-source-custody:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict original source-auditor Python syntax
+        run: python3 -m py_compile scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py
+      - name: Exact NF407 source SHA, 242 selected generator nodes and pole
+        run: |
+          python3 scripts/local_replay/verify_nf545_original_J242_exp_poly_signature.py \
+            --output nf550_original_j242_source_signature.json
+      - name: Preserve original source audit receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf550-original-J242-source-sha
+          path: nf550_original_j242_source_signature.json
+          if-no-files-found: error
+  nf550-lean-actual-canonical-weighted-square:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve exact pinned Mathlib
+        run: lake update
+      - name: Restore cached Mathlib
+        run: lake exe cache get
+      - name: Compile exact 67-frequency and 241+1 source J242 definitions
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242SourceFunctions
+      - name: Compile the actual original 242 full-window physical L2 moment CLM
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242PhysicalMomentMap
+      - name: Compile true source weighted χ-times-J242 Schwartz columns
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242WeightedCollarGram
+      - name: Compile original real even positive smooth two-collar cutoff
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalEvenCollarCutoff
+      - name: Compile canonical actual original Gram inverse
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramRightInverse
+      - name: Compile actual physical Gram source integral
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
+      - name: Compile NF550 source Gram weighted squared-norm identity and nonnegativity
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramWeightedSquare
+      - name: Compile NF550 exact source-separation-only terminal correction
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramSeparationGate
+      - name: Reject axioms, admits and sorries in original chain
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242SourceFunctions.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242PhysicalMomentMap.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242WeightedCollarGram.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalCanonicalEvenCollarCutoff.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramRightInverse.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramPhysicalIntegral.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramWeightedSquare.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramSeparationGate.lean; then
+            echo "NF550 original canonical Gram has an unfinished declaration"
+            exit 1
+          fi
