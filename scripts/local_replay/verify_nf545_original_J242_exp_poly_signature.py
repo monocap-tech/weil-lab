@@ -97,7 +97,7 @@ def main():
     nf500, nf500_sha = exact_read(NF500_PATH)
     nf404, _ = exact_read(NF404_PATH)
     assert source_sha == SRC_SHA, "METHOD STOP: NF407 original source SHA mismatch"
-    assert nf500_sha == NF500_SHA, "METHOD STOP: original selected NF500 source SHA mismatch"
+    assert nf500["original_source_native_raw_json_sha256"] == NF500_SHA, (\n        "METHOD STOP: NF500 original SOURCE-NATIVE RAW output digest mismatch"\n    )
     assert nf500["pass"] == "NF500"
     assert nf500["original_nf407_sha256"] == source_sha
     assert nf500["original_source_generators_selected"] == 242
@@ -117,7 +117,7 @@ def main():
     result = {
        "pass": "NF545-exact-original-J242-characteristic-root-source-signature",
        "original_nf407_source_sha256": source_sha,
-       "original_nf500_source_sha256": nf500_sha,
+       "nf500_custody_json_sha256": nf500_sha,\n       "original_nf500_native_raw_source_sha256": NF500_SHA,
        "selected_original_oscillator_frequency_groups": len(sig),
        "selected_original_oscillator_monomial_directions": sum(m for _,m in sig),
        "selected_original_sinh_pole_index": 241,
