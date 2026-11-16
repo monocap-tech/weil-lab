@@ -1,0 +1,42 @@
+name: NF542 strict compact-smooth original log carrier via Schwartz
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaLogCarrierSchwartzCompact.lean"
+      - "WeilDefect/Arithmetic/ActualZetaLogCarrierQuadraticMoment.lean"
+      - ".github/workflows/nf542-schwartz-compact-log-carrier.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+      - "lakefile.lean"
+  workflow_dispatch:
+
+jobs:
+  nf542-schwartz-compact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean via Elan
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned dependencies
+        shell: bash
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        shell: bash
+        run: lake exe cache get
+      - name: Build NF540 base theorem after NF542 compiler repair
+        run: lake build WeilDefect.Arithmetic.ActualZetaLogCarrierQuadraticMoment
+      - name: Build NF542 genuine compact smooth log-carrier theorem
+        run: lake build WeilDefect.Arithmetic.ActualZetaLogCarrierSchwartzCompact
+      - name: Reject proof placeholders
+        shell: bash
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+            WeilDefect/Arithmetic/ActualZetaLogCarrierQuadraticMoment.lean \
+            WeilDefect/Arithmetic/ActualZetaLogCarrierSchwartzCompact.lean; then
+            echo "NF542 contains a placeholder declaration"
+            exit 1
+          fi
