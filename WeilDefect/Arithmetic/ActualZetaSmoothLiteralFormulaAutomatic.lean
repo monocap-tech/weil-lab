@@ -18,14 +18,20 @@ theorem neutralActualZetaDivisor_rawTransform_summable_of_contDiff
     Summable (fun q : NeutralActualZetaDivisorCoordinate =>
       neutralRawTransform k (neutralActualZetaDivisorOrdinate q)) := by
   have hEF := ((Zeta23.WeilEF.EF_lit_zeta Zeta23.zetaSeam) k hreg hcompact).1
+  have hlit : Summable (fun ρ : NeutralActualZetaZeroPoint =>
+      ((Zeta23.zetaZeros Zeta23.zetaSeam).mult
+        (neutralActualZetaLiteraturePointEquiv ρ) : ℂ) *
+      Zeta23.paperFT k
+        (Zeta23.gammaOf (neutralActualZetaLiteraturePointEquiv ρ).val)) :=
+    (neutralActualZetaLiteraturePointEquiv.summable_iff).mpr hEF
   have hw : Summable (fun ρ : NeutralActualZetaZeroPoint =>
       (neutralActualZetaMultiplicity ρ : ℂ) *
         neutralRawTransform k (neutralActualZetaOrdinate ρ)) := by
-    convert hEF using 1
+    convert hlit using 1
     funext ρ
-    rw [neutralRawTransform_eq_paperFT]
-    rw [← neutralActualZetaLiterature_ordinate ρ]
-    rfl
+    rw [neutralRawTransform_eq_paperFT,
+      neutralActualZetaLiterature_multiplicity ρ,
+      neutralActualZetaLiterature_ordinate ρ]
   have hn := hw.norm
   have hc : Summable (fun q : NeutralActualZetaDivisorCoordinate =>
       ‖neutralRawTransform k (neutralActualZetaDivisorOrdinate q)‖) := by
