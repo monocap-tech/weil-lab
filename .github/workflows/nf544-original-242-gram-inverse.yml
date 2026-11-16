@@ -1,0 +1,54 @@
+name: NF544 authentic original 242 Gram right inverse finite Schwartz synthesis
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaLogCarrierQuadraticMoment.lean"
+      - "WeilDefect/Arithmetic/ActualZetaLogCarrierSchwartzCompact.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollar242Correction.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollar242GraphCorrection.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollar242GramInverse.lean"
+      - ".github/workflows/nf544-original-242-gram-inverse.yml"
+      - "lakefile.toml"
+      - "lean-toolchain"
+  workflow_dispatch:
+
+jobs:
+  nf544-original-242-gram-inverse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean via Elan
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned dependencies
+        shell: bash
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        shell: bash
+        run: lake exe cache get
+      - name: Check repaired NF542 original Schwartz log carrier
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaLogCarrierSchwartzCompact
+      - name: Check NF543 exact physical 242-moment Schwartz correction
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollar242Correction
+      - name: Check NF543 complete normed graph correction continuity
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollar242GraphCorrection
+      - name: Check NF544 actual physical 242 Gram inverse Schwartz construction
+        shell: bash
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollar242GramInverse
+      - name: Reject proof placeholders
+        shell: bash
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+            WeilDefect/Arithmetic/ActualZetaLogCarrierSchwartzCompact.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalCollar242Correction.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalCollar242GraphCorrection.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalCollar242GramInverse.lean; then
+            echo "NF544 contains an unfinished proof declaration"
+            exit 1
+          fi
