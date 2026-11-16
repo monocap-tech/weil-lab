@@ -131,5 +131,22 @@ theorem neutralNF563ActualFirstOriginalOscillator_dual
   exact neutralNF563SineSourceOddJets_dual
     a (2 * Real.pi * (37 / 64 : ℝ))
 
+/-- The first actual NF407 oscillator left-kernel equation forces
+a genuine root of the original 242-dual polynomial at the real
+positive squared frequency (2*pi*37/64)^2. This is an authentic
+first-node Hermite obligation, not numerical root verification. -/
+theorem neutralNF563ActualFirstOriginalOscillator_forcesRoot
+    (a : Fin 242 → ℝ)
+    (hfirst : (∑ n : Fin 242, a n *
+      (iteratedDeriv (2 * n.val + 1)
+        (nf545OriginalSelectedRealGenerator ⟨0, by omega⟩)) 0) = 0) :
+    (neutralNF557OriginalDualPolynomial a).eval
+      ((2 * Real.pi * (37 / 64 : ℝ)) ^ 2) = 0 := by
+  rw [neutralNF563ActualFirstOriginalOscillator_dual] at hfirst
+  have hω : (2 * Real.pi * (37 / 64 : ℝ)) ≠ 0 := by
+    positivity
+  exact (mul_eq_zero.mp hfirst).resolve_left hω
+
+
 end
 end WeilDefect
