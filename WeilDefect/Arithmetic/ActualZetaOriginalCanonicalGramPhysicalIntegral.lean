@@ -57,6 +57,7 @@ theorem neutralNF549CanonicalGram_entry_integral
 /-- The canonical J242 Schwartz synthesis is exactly the ORIGINAL
 finite source combination times the one ACTUAL smooth χ, pointwise.
 No second cutoff, polynomial family, or substitute moments. -/
+set_option maxRecDepth 4096 in
 theorem neutralNF549CanonicalSynthesis_pointwise
     (d : Fin 242 → ℂ) (x : ℝ) :
     (neutralNF544BumpSynthesis
@@ -65,7 +66,7 @@ theorem neutralNF549CanonicalSynthesis_pointwise
           (∑ j : Fin 242,
             d j * neutralNF546OriginalComplexGenerator j x) := by
   simp only [neutralNF544BumpSynthesis,
-    Module.Basis.constr_apply_fintype, Pi.basisFun_repr]
+    Module.Basis.constr_apply_fintype]
   calc
     ((∑ j : Fin 242, d j • neutralNF548CanonicalOriginalColumns j) :
         𝓢(ℝ, ℂ)) x =
