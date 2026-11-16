@@ -14,6 +14,10 @@ j_{241}(x) = sinh(x/2).
 
 This is not the six-polynomial NF523 control or a new selected family. The exact rational source audit reads the SOURCE file, verifies SHA256, checks all 242 positions and all 67 complete block lengths and compares the exact `ℚ × ℕ` table compiled into the new Lean module. Frequencies range from (37/64) to (113013/128) in the source's original order. Their grouping is not an approximation or frequency-phase fit.
 
+## 1A. Original source functions are now explicitly defined in Lean (compiler pending)
+
+The separate module `ActualZetaOriginalJ242SourceFunctions.lean` expands the original 67 rational source blocks, using exact `List.range` indexing, into the full original **241 oscillator source positions**, and defines the *actual* real selected generator at every `i : Fin 242` by the original even-sine/odd-cosine rule. Its final 242nd mode is exactly `Real.sinh (x/2)` at source index 241, with a small direct pole-identity theorem. This is stronger than a list signature alone: it gives a canonical source-exact `Fin 242 → ℝ → ℝ` object for subsequent moment-map and Gram integral formalization, without inventing basis functions. Its compilation is included in the focused NF545 workflow and remains PENDING. The independent exact auditor cross-checks the frequency/group signature against the unchanged original NF407 JSON; no Lean theorem currently reads or SHA-hashes the JSON itself.
+
 ## 2. Direct mathematical proof of original J242 analytic independence
 
 Suppose a complex linear combination of the original 242 (j_i) vanishes on a nonempty real open interval (U\subseteq E). Every (j_i) is an entire function of (z), so analytic uniqueness implies that the combination vanishes for all (z\in\mathbb C).
