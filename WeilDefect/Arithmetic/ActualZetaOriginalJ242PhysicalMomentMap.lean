@@ -47,7 +47,7 @@ truncation, including its unchanged sinh pole. -/
 theorem neutralNF546OriginalComplexGenerator_continuous (i : Fin 242) :
     Continuous (neutralNF546OriginalComplexGenerator i) := by
   unfold neutralNF546OriginalComplexGenerator nf545OriginalSelectedRealGenerator
-  split_ifs <;> dsimp <;> fun_prop
+  split_ifs <;> fun_prop
 
 /-- The window-truncated original analytic generator has compact
 support, including possible jumps at the original endpoints. -/
@@ -73,10 +73,11 @@ theorem neutralNF546OriginalWindowGenerator_memLp (i : Fin 242) :
   have hAE : AEStronglyMeasurable
       (neutralNF546OriginalWindowGenerator i) volume := by
     exact hcontinuous.aestronglyMeasurable.indicator hmeas
+  have hcompact : IsCompact neutralNF546OriginalFullPhysicalWindow := by
+    change IsCompact (Set.Icc (-(11 / 10 : ℝ)) (11 / 10 : ℝ))
+    exact isCompact_Icc
   obtain ⟨C, hC⟩ :=
-    (show IsCompact neutralNF546OriginalFullPhysicalWindow from
-      isCompact_Icc).exists_bound_of_continuousOn'
-      hcontinuous.continuousOn
+    hcompact.exists_bound_of_continuousOn' hcontinuous.continuousOn
   have hbound (x : ℝ) :
       ‖neutralNF546OriginalWindowGenerator i x‖ ≤ max C 0 := by
     by_cases hx : x ∈ neutralNF546OriginalFullPhysicalWindow
@@ -109,9 +110,10 @@ theorem neutralNF546OriginalPoleWindow (x : ℝ) :
     neutralNF546OriginalWindowGenerator ⟨241, by omega⟩ x =
       neutralNF546OriginalFullPhysicalWindow.indicator
         (fun y : ℝ => (Real.sinh (y / 2) : ℂ)) x := by
-  simp [neutralNF546OriginalWindowGenerator,
-    neutralNF546OriginalComplexGenerator,
-    nf545OriginalSelectedPole_is_sinh]
+  unfold neutralNF546OriginalWindowGenerator
+  congr 1
+  funext y
+  exact congrArg Complex.ofReal (nf545OriginalSelectedPole_is_sinh y)
 
 /-- Unlike the abstract NF543 M, this is the actual physical source
 moment map built explicitly from the unchanged J242 L² vectors.
@@ -182,7 +184,7 @@ theorem neutralNF546OriginalJ242Gram_correctedLogCarrier
           ell g).toLp 2 volume) =
         neutralNF546OriginalSelectedMoments ell := by
   exact neutralNF544OriginalGram_correctedSmoothLogCarrier
-    neutralNF546OriginalSelectedMoments b hGram hb ell g
+    neutralNF546OriginalSelectedMoments b hGram hb ell g hg
 
 end
 end WeilDefect
