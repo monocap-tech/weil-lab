@@ -33,9 +33,12 @@ The original true complex-linear physical selected-moment map is THEN DEFINED, n
 
 ```
 J_i := (MemLp j_i^window).toLp,
-M_original : L²(ℝ,ℂ) →ₗ[ℂ] (Fin 242 → ℂ),
+M_originalCLM : L²(ℝ,ℂ) →L[ℂ] (Fin 242 → ℂ),
+M_original = M_originalCLM.toLinearMap,
 M_original(f)_i := ⟪J_i,f⟫_ℂ .
 ```
+
+Moreover, the source map is constructed from the bounded `innerSL ℂ J_i` functionals with `ContinuousLinearMap.pi`, not merely `LinearMap.pi`. The newly included `neutralNF546OriginalSelectedMoments_tendsto` proves actual all-242 source moment convergence from genuine **physical L² convergence** for any sequence or net of physical tests. This is a useful original NF528 correction input, but it is **not** the stronger full true-divisor two-source graph convergence.
 
 The complex convention is essential: this is **linear in f** and conjugate-linear in fixed (J_i). Because the original (j_i) are REAL, the pairing is precisely (\int_{-B}^{B}j_i(x)f(x)\,dx\) (for arbitrary complex (f\), interpreted in the L² sense). This is NOT a new frequency response, finite sample projection, or Green packet.
 
