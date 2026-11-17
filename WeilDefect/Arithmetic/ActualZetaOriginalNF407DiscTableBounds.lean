@@ -51,7 +51,7 @@ theorem neutralNF589PrimitiveBox_bound (m r : ℤ × ℤ) (a : ℝ)
     |a| = |(a-neutralNF587Dyadic m)+neutralNF587Dyadic m| := by
       rw [sub_add_cancel]
     _ ≤ |a-neutralNF587Dyadic m|+|neutralNF587Dyadic m| := abs_add_le _ _
-    _ ≤ |neutralNF587Dyadic r|+|neutralNF587Dyadic m| := add_le_add_right ha _
+    _ ≤ |neutralNF587Dyadic r|+|neutralNF587Dyadic m| := add_le_add ha le_rfl
     _ ≤ _ := by linarith
 
 /-- Keep the two large rational decisions isolated. The fresh
