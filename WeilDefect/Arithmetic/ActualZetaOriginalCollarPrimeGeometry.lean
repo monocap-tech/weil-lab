@@ -52,7 +52,8 @@ theorem neutralNF600Log10_lower : (11/5:ℝ) < Real.log 10 := by
   have h2 : Real.exp (11/5) < 10 := by
     by_contra! h
     have hp := pow_le_pow_left₀ (by norm_num : (0:ℝ)≤10) h 5
-    rw [← Real.exp_nat_mul,show (5:ℝ)*(11/5)=11 by norm_num] at hp
+    rw [← Real.exp_nat_mul] at hp
+    norm_num at hp
     exact (not_le_of_gt h1) hp
   exact (Real.lt_log_iff_exp_lt (by norm_num)).mpr h2
 
