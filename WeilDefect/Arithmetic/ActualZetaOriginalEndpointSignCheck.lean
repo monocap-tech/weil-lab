@@ -49,7 +49,12 @@ theorem neutralNF597Endpoint_negative_of_check
     rw [neutralNF593SourceTable_read _ _ _ _ _ (by decide : 0 < 1)] at hq
     exact hq
   have hc' : ((neutralNF592OriginalJetBall 0).mid:ℝ)+
-      ((neutralNF592OriginalJetBall 0).rad:ℝ) < -(1/10^11:ℝ) := by exact_mod_cast hc
+      ((neutralNF592OriginalJetBall 0).rad:ℝ) < -(1/10^11:ℝ) := by
+    have hh : (((neutralNF592OriginalJetBall 0).mid+
+        (neutralNF592OriginalJetBall 0).rad:ℚ):ℝ) < ((-(1/10^11:ℚ)):ℝ) :=
+      Rat.cast_lt.mpr hc
+    simpa only [Rat.cast_add,Rat.cast_neg,Rat.cast_div,Rat.cast_one,
+      Rat.cast_pow,Rat.cast_ofNat] using hh
   unfold NF591Ball.Contains at h
   have hu := le_trans (le_abs_self _) h
   linarith only [hu,hc']
