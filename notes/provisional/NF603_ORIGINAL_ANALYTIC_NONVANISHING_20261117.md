@@ -1,0 +1,19 @@
+# NF603 — alternative nonvanishing independent of the endpoint checker
+
+Stacked on NF602 #634. All new NF603 proof scripts and shard runs are compiler-pending.
+
+## Verified new results
+
+NF602 run 44199041909 job 134448018265 completed SUCCESS on every mathematical and diagnostic step. All 274 indexed mode receipts, the shared pole, aggregate and sign checks passed compiled Lean. Three independent kernel-only trials passed: literal endpoint receipt sign, selected mode 0 exact equality and complete transcendental-free original primitive aggregation. Each printed only propext, Classical.choice, Quot.sound. The entire conditional receipt-to-original-check theorem compiled. Thus the remaining kernel endpoint gate consists of the other indexed mode equalities and shared pole equality, not the rational aggregation or sign arithmetic. NF603 promotes the successful proofs and schedules nine bounded shards (32 selected indices each except the last; final shard 32 critical sine checks and pole). The shards emit individual proofs and audit axiom reports. They are temporary CI proof files until accepted/promoted; no complete endpoint-check theorem is asserted.
+
+NF600 run 44199041339 job 134448016273 accepted exact two-collar measure and integer prime exclusion; the Fourier mass step failed. Its logs were unavailable (runner still processing). Other NF602 analytic/graph recovery jobs remain in progress; their logs could not be fetched. No additional gamma, correction continuity, or Fourier mass acceptance is claimed. The previous actual canonical right inverse and exact moments remain certified.
+
+## New mathematical bypass: remote point and analytic continuation
+
+For strict positivity of a supported graph, the endpoint value U(B) is only one way to prove U is not identically zero. The entire original 246-primitive amplitude contains a genuine sinh(x/2) pole. Split it EXACTLY into oscillator part O and combined sinh coefficient p:
+p = a_241 + sum_{j<4} b_j * criticalPole_j.
+Fresh exact integer arithmetic on the original frozen dyadic row gives upper endpoint a_241 < -10^140 uniformly in the box. Each critical pole weight has magnitude <=10^-6. Using the already certified |b_j|<=10^143, p < -10^139. The already certified degree cap 13 and |a_j|,|b_j|<=10^143 give |O(1000)| <=400*10^182 (242 selected masks including one zero, 128 critical sine summands). Since exp(1)>2, exp(500)>2^500 and exp(-500)<=1; hence sinh(500)>10^60. Exact integer checks confirm 2^500>2*10^60+1 and 400*10^182<10^199. Thus U(1000)<0 for EVERY coefficient choice in the same frozen box, without computing a transcendental value. This is a mathematical argument with new Lean proof candidates, not a new certified Lean theorem. The remote point is only evaluation of the entire analytic amplitude, NOT an enlargement or alteration of the physical support.
+
+If the actual L² carrier is zero, the strictly positive logarithmic multiplier forces U=0 almost everywhere in the open right collar, continuity gives zero everywhere in the collar, and real-analytic identity extends this to the entire real line. Contradiction at x=1000. New candidate strict local positivity wrapper needs only frozen-box membership and a positive universal local smooth coercivity inequality. Neither U400 nor endpoint checker truth is a premise. This does NOT decide the original endpoint sign, the logarithmic singularity coefficient, or any cancellation-sensitive quantitative inequality. Keep the modular endpoint verification as a separate branch obligation. No new numerical evaluator run in NF603; exact original row/inequality audit only.
+
+Complete local support coercivity (including Fourier mass and gamma recovery), exact correlated solve-box membership and terminal corrected moment convergence remain open. No local Lean environment, no main merge, no global Weil coercivity, W_ODD_NEG or RH claim.
