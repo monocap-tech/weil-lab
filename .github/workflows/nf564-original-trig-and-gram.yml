@@ -1,0 +1,95 @@
+name: NF564 original oscillator compiler and NF550 exact weighted-square recovery
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242OscillatorTrigJets.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242MonomialTrigOddJets.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242ActualOscillatorOddDerivatives.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242FirstSineOddJetDual.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramWeightedSquare.lean"
+      - ".github/workflows/nf564-original-trig-and-gram.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+  workflow_dispatch:
+
+jobs:
+  nf564-sine-cosine-and-leibniz-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install repository-pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Download pinned cache
+        run: lake exe cache get
+      - name: Compile actual-frequency-scaled sine and cosine jets and monomial initial Leibniz selector
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OscillatorTrigJets
+      - name: Compile exact even-sine/odd-cosine factorial original jets
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242MonomialTrigOddJets
+      - name: Compile genuine 241 source-indexed oscillator derivatives
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242ActualOscillatorOddDerivatives
+      - name: No proof holes in oscillator files
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242OscillatorTrigJets.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242MonomialTrigOddJets.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242ActualOscillatorOddDerivatives.lean; then
+            echo "Original oscillator derivative formalization incomplete"; exit 1
+          fi
+
+  nf564-first-true-positive-original-dual-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install repository-pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Download pinned cache
+        run: lake exe cache get
+      - name: Compile source exact 242 polynomial and original first positive squared frequency root
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242DualPolynomialSourceNodes
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242FirstSineOddJetDual
+
+  nf564-original-nf550-physical-weighted-square-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install repository-pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Download pinned cache
+        run: lake exe cache get
+      - name: Compile authentic NF549 physical Gram source first
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
+      - name: Compile complete genuine NF550 original weighted-square from exact L2 moments
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramWeightedSquare
+      - name: Compile NF550 separation and NF551 analytic local-global source if upstream accepted
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramSeparationGate
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddParity
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity
+
+  nf564-exact-original-odd-jet-source-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Revalidate all 58322 oscillator plus 242 genuine sinh-pole original derivative coefficients
+        run: |
+          python3 scripts/local_replay/verify_nf554_original_dual_odd_jet_coefficient_bridge.py \
+            --output nf564_original_242_odd_jet_sha_receipt.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf564-original-242-odd-jet-source-custody
+          path: nf564_original_242_odd_jet_sha_receipt.json
+          if-no-files-found: error
