@@ -29,8 +29,7 @@ theorem neutralNF599Gain_mono_sq (a t u : ℝ) (ha : 0 < a)
 theorem neutralNF599Gain_inv (a t : ℝ) (ha : 0<a) :
     neutralNF599Gain a t =
       1/a - (1/((a:ℂ)+Complex.I*((t/2:ℝ):ℂ))).re := by
-  rw [one_div,Complex.inv_re]
-  simp only [Complex.add_re,Complex.add_im,Complex.mul_re,Complex.mul_im,
+  simp only [one_div,Complex.inv_re,Complex.add_re,Complex.add_im,Complex.mul_re,Complex.mul_im,
     Complex.ofReal_re,Complex.ofReal_im,Complex.I_re,Complex.I_im,
     zero_mul,one_mul,mul_zero,sub_zero,zero_add,add_zero,Complex.normSq_apply]
   unfold neutralNF599Gain
@@ -118,7 +117,7 @@ theorem neutralNF599Gain20_real :
   simpa [neutralNF599GainQ,neutralNF599Gain,add_comm,add_left_comm,add_assoc] using h
 
 theorem neutralNF599GammaZero_lower :
-    -(59/10:ℝ) < Zeta23.EF.gammaBracket 0 := by
+    -(28/5:ℝ) < Zeta23.EF.gammaBracket 0 := by
   have hp : Real.pi < 22/7 := Real.pi_lt_d4.trans (by norm_num)
   have hl2 : Real.log 2 < 7/10 := Real.log_two_lt_d9.trans (by norm_num)
   have he : (22/7:ℝ) < Real.exp (6/5) := by
@@ -135,14 +134,14 @@ theorem neutralNF599GammaZero_lower :
   linarith
 
 theorem neutralNF599GammaLower (t : ℝ) :
-    -(59/10:ℝ) < Zeta23.EF.gammaBracket t := by
+    -(28/5:ℝ) < Zeta23.EF.gammaBracket t := by
   have h := neutralNF599GammaLower_partial t 0
   simp only [range_zero,sum_empty,add_zero] at h
   have h0 := neutralNF599Gain_nonneg (1/4) t (by norm_num)
   linarith [neutralNF599GammaZero_lower]
 
 theorem neutralNF599GammaHigh (t : ℝ) (ht : 30 ≤ |t|) :
-    (4/5:ℝ) < Zeta23.EF.gammaBracket t := by
+    (11/10:ℝ) < Zeta23.EF.gammaBracket t := by
   have hsq : (30:ℝ)^2 ≤ t^2 := by
     rw [← sq_abs t]
     exact pow_le_pow_left₀ (by norm_num) ht 2
