@@ -46,6 +46,52 @@ theorem neutralNF567OriginalAll67GroupMultiplicities_sum :
     (∑ g : Fin 67, (neutralNF567OriginalGroupAt g).2) = 241 := by
   decide +kernel
 
+/-- Exact injectivity of the original 67 rational frequency
+groups, at the actual Fin67 group indices. This uses the
+already Lean-accepted frozen NF545 Nodup proof; it does not
+compare approximate real frequencies or sample a Gram matrix. -/
+theorem neutralNF567OriginalGroupRationalFrequency_injective :
+    Function.Injective
+      (fun g : Fin 67 => (neutralNF567OriginalGroupAt g).1) := by
+  intro g h hfreq
+  have hlen :
+      (nf545OriginalSelectedFrequencyGroups.map Prod.fst).length = 67 := by
+    simpa only [List.length_map] using nf545OriginalFrequencyGroupCount
+  have hg :
+      g.val < (nf545OriginalSelectedFrequencyGroups.map Prod.fst).length := by
+    simpa only [hlen] using g.isLt
+  have hh :
+      h.val < (nf545OriginalSelectedFrequencyGroups.map Prod.fst).length := by
+    simpa only [hlen] using h.isLt
+  have hget :
+      (nf545OriginalSelectedFrequencyGroups.map Prod.fst).get ⟨g.val, hg⟩ =
+        (nf545OriginalSelectedFrequencyGroups.map Prod.fst).get ⟨h.val, hh⟩ := by
+    simpa only [neutralNF567OriginalGroupAt, List.get_map] using hfreq
+  have hindices :
+      (⟨g.val, hg⟩ :
+        Fin (nf545OriginalSelectedFrequencyGroups.map Prod.fst).length) =
+      ⟨h.val, hh⟩ :=
+    (List.Nodup.get_inj_iff nf545OriginalFrequenciesPairwiseDistinct).mp hget
+  exact Fin.ext (congrArg Fin.val hindices)
+
+/-- The 67 genuine REAL oscillator frequencies 2πf are pairwise
+distinct because π>0 and the 67 original rational frequencies
+are genuinely pairwise distinct. -/
+theorem neutralNF567OriginalGroupOmega_injective :
+    Function.Injective neutralNF567OriginalGroupOmega := by
+  intro g h hfreq
+  have hpi : (2 * Real.pi : ℝ) ≠ 0 := by positivity
+  have hratR :
+      ((neutralNF567OriginalGroupAt g).1 : ℝ) =
+      ((neutralNF567OriginalGroupAt h).1 : ℝ) := by
+    apply mul_left_cancel₀ hpi
+    simpa only [neutralNF567OriginalGroupOmega] using hfreq
+  have hrat :
+      (neutralNF567OriginalGroupAt g).1 =
+      (neutralNF567OriginalGroupAt h).1 := by
+    exact_mod_cast hratR
+  exact neutralNF567OriginalGroupRationalFrequency_injective hrat
+
 /-- For every genuine frequency group g and EVERY k in its
 original range, recover a specific genuine Fin241 oscillator
 column carrying exactly (f_g,k). This is the source-index
