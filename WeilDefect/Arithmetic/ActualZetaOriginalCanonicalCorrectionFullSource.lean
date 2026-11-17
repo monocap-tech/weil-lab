@@ -2,6 +2,7 @@ import WeilDefect.Arithmetic.ActualZetaOriginalRealOddSchwartzFullSource
 import WeilDefect.Arithmetic.ActualZetaOriginalJ242OddParity
 import WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
 import Mathlib.Topology.Algebra.Module.FiniteDimension
+import WeilDefect.Arithmetic.ActualZetaOriginalCorrectionNaturality
 
 namespace WeilDefect
 noncomputable section
@@ -211,23 +212,12 @@ theorem neutralNF573OriginalGraphCorrectedSeed_physical
       (neutralNF543Correct neutralNF546OriginalSelectedMoments
         (neutralNF548CanonicalRightInverse hpos)
         (neutralNF573OriginalGraphPhysical ell) s).toLp 2 volume := by
-  unfold neutralNF543CorrectGraph
-  rw [map_add, hR, hs]
-  have hm (u : NeutralActualZetaSourceDomain (11 / 10 : ℝ)) :
-      neutralNF573OriginalGraphMoments u =
-      neutralNF546OriginalSelectedMoments
-        (neutralNF573OriginalGraphPhysical u) := rfl
-  rw [hm ell, hm g, hs]
-  change s.toLp 2 volume +
-    (neutralNF548CanonicalRightInverse hpos
-      (neutralNF546OriginalSelectedMoments (neutralNF573OriginalGraphPhysical ell) -
-        neutralNF546OriginalSelectedMoments (s.toLp 2 volume))).toLp 2 volume =
-    SchwartzMap.toLpCLM ℂ ℂ 2 volume
-      (s + neutralNF548CanonicalRightInverse hpos
-        (neutralNF546OriginalSelectedMoments (neutralNF573OriginalGraphPhysical ell) -
-          neutralNF546OriginalSelectedMoments (s.toLp 2 volume)))
-  rw [map_add]
-  rfl
+  exact neutralNF597CorrectGraph_physical
+    neutralNF573OriginalGraphPhysical
+    neutralNF546OriginalSelectedMoments
+    (neutralNF548CanonicalRightInverse hpos)
+    neutralNF573OriginalGraphMoments R
+    (fun _ => rfl) hR ell g s hs
 
 end
 end WeilDefect

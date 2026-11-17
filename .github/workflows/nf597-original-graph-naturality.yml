@@ -1,0 +1,112 @@
+name: NF597 graph naturality and independent interval proof gates
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCorrectionNaturality.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalCorrectionFullSource.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpoint*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCachedSourceEquality.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalSharedPiReceipt.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalFixedpointSourceJets.lean"
+      - ".github/workflows/nf597-original-graph-naturality.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf597-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  graph:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Generic correction naturality
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCorrectionNaturality
+      - name: Bounded original seed graph recovery
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointBoundedSeedGraph
+      - name: Qualitative original C1 seed graph
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointQualitativeC1Graph
+      - name: Actual canonical correction specialization
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalCorrectionFullSource
+      - name: Qualitative original corrected graph
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointQualitativeCorrectedGraph
+  soundness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Full primitive interval assembly independent of disc
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalFixedpointSourceJets
+      - name: Full cached source equality independent of disc
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCachedSourceEquality
+      - name: Separate single-coefficient signed endpoint gate
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointSignCheck
+      - name: Literal original full-box disc recovery
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407DiscTableBounds
+      - name: Full reduced checker soundness
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalKernelJetBlocks
+  local-kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Shared exact Machin receipt and comparison soundness
+        id: pi
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalSharedPiReceipt
+      - name: Executable shared Machin receipt diagnostic (not proof)
+        if: ${{ always() && steps.pi.outcome == 'success' }}
+        run: |
+          cat >/tmp/NF597PiDiagnostic.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalSharedPiReceipt
+          open WeilDefect
+          def main : IO Unit := do
+            unless neutralNF597PiReceiptCheck do
+              throw (IO.userError "NF597 shared pi mismatch")
+            IO.println "NF597_SHARED_PI_EXECUTABLE_PASS"
+          EOF
+          timeout 120 lake env lean --run /tmp/NF597PiDiagnostic.lean
+      - name: Shared Machin-only kernel trial (no native_decide)
+        if: ${{ always() && steps.pi.outcome == 'success' }}
+        run: |
+          cat >/tmp/NF597PiKernel.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalSharedPiReceipt
+          open WeilDefect
+          set_option maxRecDepth 100000
+          set_option maxHeartbeats 10000000
+          theorem nf597_pi_check : neutralNF597PiReceiptCheck = true := by decide +kernel
+          theorem nf597_pi_eq : neutralNF592PiBall neutralNF592Q 200 = neutralNF597PiReceipt :=
+            neutralNF597PiReceipt_of_check nf597_pi_check
+          #print axioms nf597_pi_check
+          #print axioms nf597_pi_eq
+          EOF
+          timeout 240 lake env lean /tmp/NF597PiKernel.lean

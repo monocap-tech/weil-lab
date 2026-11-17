@@ -78,7 +78,7 @@ theorem neutralNF596OriginalEndpoint_actualSeedGraph_bounded
         rcases he with hl | hr
         · exact ⟨hl.1.le, by linarith [hl.2]⟩
         · exact ⟨by linarith [hr.1], hr.2.le⟩))]
-    exact neutralNF583Raw_cast _ z
+    exact neutralNF596Raw_cast _ z
   have hsample (n : ℕ) (z : ℂ) : neutralWindowEvaluation (11/10:ℝ) z (v n) =
       neutralNF579RawTransform (neutralNF583Odd (neutralNF582HalfSequence h n)) z := by
     change neutralWindowEvaluation (11/10:ℝ) z (((g n).memLp 2 volume).toLp (g n)) = _
@@ -87,7 +87,7 @@ theorem neutralNF596OriginalEndpoint_actualSeedGraph_bounded
     have he : (g n : ℝ → ℂ) =
         fun x => (neutralNF583Odd (neutralNF582HalfSequence h n) x:ℂ) :=
       funext (hge n)
-    rw [he, neutralNF583Raw_cast]
+    rw [he, neutralNF596Raw_cast]
   have hp (ξ : ℝ) : Tendsto
       (fun n => neutralWindowEvaluation (11/10:ℝ) ((-2*Real.pi*ξ:ℝ):ℂ) (v n))
       atTop (nhds (neutralWindowEvaluation (11/10:ℝ) ((-2*Real.pi*ξ:ℝ):ℂ) f)) := by
