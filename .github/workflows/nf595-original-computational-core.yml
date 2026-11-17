@@ -1,0 +1,81 @@
+name: NF595 standalone original computation and proof recovery
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalFixedpointComputationalCore.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalNF407*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCached*.lean"
+      - "scripts/local_replay/NF593CachedSourcePreflight.lean"
+      - ".github/workflows/nf595-original-computational-core.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf595-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  standalone:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Compile same shared evaluator definitions independently
+        id: core
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalFixedpointComputationalCore
+      - name: Standalone compiled evaluator all 800 endpoint diagnostic
+        if: ${{ always() && steps.core.outcome == 'success' }}
+        run: |
+          set -o pipefail
+          timeout 600 lake env lean --run scripts/local_replay/NF593CachedSourcePreflight.lean | tee nf595-preflight.txt
+          python scripts/local_replay/verify_nf593_cached_source_preflight.py nf595-preflight.txt
+      - name: Kernel only first order trial, independent of preflight
+        if: ${{ always() && steps.core.outcome == 'success' }}
+        run: |
+          cat > /tmp/NF595First.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalFixedpointComputationalCore
+          open WeilDefect
+          set_option maxRecDepth 100000
+          set_option maxHeartbeats 10000000
+          theorem nf595_first : neutralNF594BlockCheck 0 1 = true := by decide +kernel
+          #print axioms nf595_first
+          EOF
+          timeout 360 lake env lean /tmp/NF595First.lean
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() && steps.core.outcome == 'success' }}
+        with:
+          name: NF595-standalone-preflight
+          path: nf595-preflight.txt
+          if-no-files-found: ignore
+  proof-recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Actual original canonical recurrence
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407CanonicalJetRecurrence
+      - name: Disc assembly and original box
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407DiscTableBounds
+      - name: Periodic phase after shared-core move
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalFixedpointPhase
+      - name: Cached exact mode proof
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCachedModeJets
+      - name: Reduced block soundness
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalKernelJetBlocks

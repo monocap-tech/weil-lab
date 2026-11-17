@@ -1,5 +1,6 @@
 import WeilDefect.Arithmetic.ActualZetaOriginalFixedpointModeJets
 import WeilDefect.Arithmetic.ActualZetaOriginalNF407RecurrenceBounds
+import WeilDefect.Arithmetic.ActualZetaOriginalFixedpointComputationalCore
 
 namespace WeilDefect
 noncomputable section
@@ -8,9 +9,6 @@ open Finset
 /-! NF592: full primitive coefficient-box assembly, no regrouping.
 This is a reference evaluator and soundness candidate. Efficient
 caching and a kernel-checked evaluation receipt remain separate. -/
-
-def neutralNF592BallSum {ι : Type*} (s : Finset ι) (a : ι → NF591Ball) : NF591Ball :=
-  ⟨∑ j ∈ s, (a j).mid, ∑ j ∈ s, (a j).rad⟩
 
 theorem neutralNF592BallSum_sound {ι : Type*} (s : Finset ι)
     (a : ι → NF591Ball) (x : ι → ℝ)
@@ -25,19 +23,11 @@ theorem neutralNF592BallSum_sound {ι : Type*} (s : Finset ι)
   rw [Real.norm_eq_abs]
   exact h j hj
 
-def neutralNF592DyadicQ (p : ℤ × ℤ) : ℚ :=
-  (p.1:ℚ)*(2:ℚ)^p.2
-
 theorem neutralNF592DyadicQ_spec (p : ℤ × ℤ) :
     (neutralNF592DyadicQ p:ℝ) = neutralNF587Dyadic p := by
   unfold neutralNF592DyadicQ neutralNF587Dyadic
   push_cast
   rfl
-
-def neutralNF592PrimitiveBox (row : (ℤ × ℤ) × (ℤ × ℤ)) (Q : ℕ) : NF591Ball :=
-  let a := NF591Ball.exactQ (neutralNF592DyadicQ row.1) Q
-  let r := NF591Ball.exactQ (neutralNF592DyadicQ row.2) Q
-  a.expand (|r.mid|+r.rad)
 
 theorem neutralNF592PrimitiveBox_sound (row : (ℤ × ℤ) × (ℤ × ℤ))
     (Q : ℕ) (hQ : 0 < Q) (x : ℝ)
@@ -48,12 +38,6 @@ theorem neutralNF592PrimitiveBox_sound (row : (ℤ × ℤ) × (ℤ × ℤ))
     (NF591Ball.contains_exactQ (neutralNF592DyadicQ row.2) Q hQ)
   rw [neutralNF592DyadicQ_spec] at hm hr
   exact NF591Ball.contains_expand _ hm (hx.trans hr)
-
-def neutralNF592SelectedJetBall (p : NF591Ball) (Q N : ℕ) (j : Fin 242) (n : ℕ) : NF591Ball :=
-  if hj : j.val < 241 then
-    let node := nf545OriginalOscillatorNodeAt ⟨j.val,hj⟩
-    neutralNF592OscillatorBall p node.1 Q N node.2 n
-  else neutralNF592PoleBall Q N n
 
 theorem neutralNF592SelectedJetBall_sound (p : NF591Ball) (hp : p.Contains Real.pi)
     (Q N : ℕ) (hQ : 0 < Q) (hN : 1 ≤ N) (hfee : 2/(N.factorial:ℝ) ≤ 1/(Q:ℝ))
@@ -68,14 +52,6 @@ theorem neutralNF592SelectedJetBall_sound (p : NF591Ball) (hp : p.Contains Real.
 
 /-- Multiply the primitive critical coefficient into each probe
 component BEFORE summing, just as the integer-only replay did. -/
-def neutralNF592CriticalContribution (p : NF591Ball) (Q N : ℕ)
-    (b : NF591Ball) (j : Fin 4) (n : ℕ) : NF591Ball :=
-  (neutralNF592BallSum univ (fun k : Fin 32 =>
-    ((((b.mul (NF591Ball.exactQ ((neutralNF587CriticalSines[j.val]!)[k.val]!) Q)).round Q).mul
-      (neutralNF592OscillatorBall p neutralNF587CriticalFrequencies[k.val]! Q N 0 n)).round Q))).add
-    ((((b.mul (NF591Ball.exactQ neutralNF587CriticalPoles[j.val]! Q)).round Q).mul
-      (neutralNF592PoleBall Q N n)).round Q)
-
 theorem neutralNF592CriticalContribution_sound (p : NF591Ball) (hp : p.Contains Real.pi)
     (Q N : ℕ) (hQ : 0 < Q) (hN : 1 ≤ N) (hfee : 2/(N.factorial:ℝ) ≤ 1/(Q:ℝ))
     (b : NF591Ball) (β : ℝ) (hb : b.Contains β) (j : Fin 4) (n : ℕ) :
@@ -95,14 +71,6 @@ theorem neutralNF592CriticalContribution_sound (p : NF591Ball) (hp : p.Contains 
       (NF591Ball.contains_rounded_mul hb
         (NF591Ball.contains_exactQ _ Q hQ) Q hQ)
       (neutralNF592PoleBall_sound Q N n hQ hN hfee) Q hQ
-
-def neutralNF592SourceBall (p : NF591Ball) (Q N n : ℕ) : NF591Ball :=
-  (neutralNF592BallSum univ (fun j : Fin 242 =>
-    ((neutralNF592PrimitiveBox neutralNF587SelectedDyads[j.val]! Q).mul
-      (neutralNF592SelectedJetBall p Q N j n)).round Q)).add
-    (neutralNF592BallSum univ (fun j : Fin 4 =>
-      neutralNF592CriticalContribution p Q N
-        (neutralNF592PrimitiveBox neutralNF587CriticalDyads[j.val]! Q) j n))
 
 theorem neutralNF592SourceBall_sound (p : NF591Ball) (hp : p.Contains Real.pi)
     (Q N : ℕ) (hQ : 0 < Q) (hN : 1 ≤ N) (hfee : 2/(N.factorial:ℝ) ≤ 1/(Q:ℝ))

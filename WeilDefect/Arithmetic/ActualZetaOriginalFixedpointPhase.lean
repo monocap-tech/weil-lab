@@ -1,4 +1,5 @@
 import WeilDefect.Arithmetic.ActualZetaOriginalFixedpointExpRecurrence
+import WeilDefect.Arithmetic.ActualZetaOriginalFixedpointComputationalCore
 
 namespace WeilDefect
 noncomputable section
@@ -8,14 +9,6 @@ open Finset
 replay, including periodic reduction of the historical oscillator
 phase. Only the constant phase is reduced. The jet frequency is
 always the full original frequency. -/
-
-def neutralNF592AtanTerm (x : ℚ) (n : ℕ) : ℚ :=
-  (-1:ℚ)^n*x^(2*n+1)/(2*n+1:ℚ)
-
-def neutralNF592AtanPartial (x : ℚ) (Q : ℕ) : ℕ → NF591Ball
-  | 0 => ⟨0,0⟩
-  | n+1 => (neutralNF592AtanPartial x Q n).add
-    (NF591Ball.exactQ (neutralNF592AtanTerm x n) Q)
 
 theorem neutralNF592AtanPartial_sound (x : ℚ) (Q : ℕ) (hQ : 0 < Q) (N : ℕ) :
     (neutralNF592AtanPartial x Q N).Contains (neutralNF591AtanPoly N (x:ℝ)) := by
@@ -28,19 +21,12 @@ theorem neutralNF592AtanPartial_sound (x : ℚ) (Q : ℕ) (hQ : 0 < Q) (N : ℕ)
       Rat.cast_add,Rat.cast_neg,Rat.cast_one,Rat.cast_ofNat,Rat.cast_natCast] using
       NF591Ball.contains_exactQ (neutralNF592AtanTerm x N) Q hQ
 
-def neutralNF592AtanBall (x : ℚ) (Q N : ℕ) : NF591Ball :=
-  (neutralNF592AtanPartial x Q N).expand (1/(Q:ℚ))
-
 theorem neutralNF592AtanBall_sound (x : ℚ) (Q N : ℕ) (hQ : 0 < Q)
     (hx : 0 ≤ x) (hfee : (x:ℝ)^(2*N+1)/(2*N+1:ℝ) ≤ 1/(Q:ℝ)) :
     (neutralNF592AtanBall x Q N).Contains (Real.arctan (x:ℝ)) := by
   apply NF591Ball.contains_expand _ (neutralNF592AtanPartial_sound x Q hQ N)
   simpa only [Rat.cast_div,Rat.cast_one,Rat.cast_natCast] using
     (neutralNF591Atan_tail (x:ℝ) (by exact_mod_cast hx) N).trans hfee
-
-def neutralNF592PiBall (Q N : ℕ) : NF591Ball :=
-  (((NF591Ball.exactQ 16 Q).mul (neutralNF592AtanBall (1/5) Q N)).round Q).add
-    ((((NF591Ball.exactQ 4 Q).mul (neutralNF592AtanBall (1/239) Q N)).round Q).neg)
 
 theorem neutralNF592PiBall_sound (Q N : ℕ) (hQ : 0 < Q)
     (h5 : (1/5:ℝ)^(2*N+1)/(2*N+1:ℝ) ≤ 1/(Q:ℝ))
@@ -63,11 +49,6 @@ theorem neutralNF592PiBall_sound (Q N : ℕ) (hQ : 0 < Q)
   · simp [neutralNF592PiBall]
   · norm_num
     linarith [he]
-
-def neutralNF592Turns (f : ℚ) : ℤ := ⌊f*(11/10:ℚ)+1/2⌋
-
-def neutralNF592Reduced (f : ℚ) : ℚ :=
-  f*(11/10:ℚ)-neutralNF592Turns f
 
 theorem neutralNF592Reduced_abs (f : ℚ) : |neutralNF592Reduced f| ≤ 1/2 := by
   have h1 := Int.floor_le (f*(11/10:ℚ)+1/2)
@@ -100,9 +81,6 @@ theorem neutralNF592Reduced_norm (f : ℚ) :
   have hp := mul_le_mul Real.pi_lt_four.le hr (abs_nonneg _) (by norm_num : (0:ℝ)≤4)
   linarith
 
-def neutralNF592PhaseArg (p : NF591Ball) (f : ℚ) (Q : ℕ) : NF591Rect :=
-  ⟨⟨0,0⟩,(p.mul (NF591Ball.exactQ (neutralNF592Reduced f/2) Q)).round Q⟩
-
 theorem neutralNF592PhaseArg_sound (p : NF591Ball) (hp : p.Contains Real.pi)
     (f : ℚ) (Q : ℕ) (hQ : 0 < Q) :
     (neutralNF592PhaseArg p f Q).Contains
@@ -117,11 +95,6 @@ theorem neutralNF592PhaseArg_sound (p : NF591Ball) (hp : p.Contains Real.pi)
   · have h := NF591Ball.contains_rounded_mul hp
         (NF591Ball.contains_exactQ (neutralNF592Reduced f/2) Q hQ) Q hQ
     simpa [neutralNF592PhaseArg,Complex.mul_im,Rat.cast_div,mul_div_assoc] using h
-
-def neutralNF592PhaseBall (p : NF591Ball) (f : ℚ) (Q N : ℕ) : NF591Rect :=
-  let a := neutralNF592SmallExpBall (neutralNF592PhaseArg p f Q) Q N
-  let b := a.mulQ a Q
-  b.mulQ b Q
 
 theorem neutralNF592PhaseBall_sound (p : NF591Ball) (hp : p.Contains Real.pi)
     (f : ℚ) (Q N : ℕ) (hQ : 0 < Q) (hN : 1 ≤ N)

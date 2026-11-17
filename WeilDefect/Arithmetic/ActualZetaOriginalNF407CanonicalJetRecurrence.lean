@@ -35,7 +35,9 @@ theorem neutralNF590OscillatorJet_hasSum (f : ℝ) (k : ℕ) (w : ℝ) :
       (α*Complex.exp (Complex.I*(ω:ℂ)*B)*
         (neutralNF590ModeJet B D lam k n*(w:ℂ)^n)).re
     rw [← mul_assoc, ← Complex.ofReal_pow]
-    simp [neutralNF590OscillatorJet,ω,α,B,D,lam,Complex.mul_re,mul_comm]
+    change _ = (_ * ((w^n:ℝ):ℂ)).re
+    rw [Complex.mul_re,Complex.ofReal_re,Complex.ofReal_im,mul_zero,sub_zero]
+    rfl
   · let x : ℝ := 11/10-w/500
     have hx : B+D*(w:ℂ) = (x:ℂ) := by
       dsimp [B,D,x]
@@ -56,8 +58,8 @@ theorem neutralNF590OscillatorJet_hasSum (f : ℝ) (k : ℕ) (w : ℝ) :
       ring
     rw [he,← Complex.ofReal_pow]
     by_cases hk : Even k
-    · simp [α,hk,Complex.mul_re,Complex.mul_im,Complex.exp_re,Complex.exp_im]
-    · simp [α,hk,Complex.mul_re,Complex.mul_im,Complex.exp_re,Complex.exp_im]
+    · simp [α,hk,← Complex.ofReal_pow,Complex.mul_re,Complex.mul_im,Complex.exp_re,Complex.exp_im]
+    · simp [α,hk,← Complex.ofReal_pow,Complex.mul_re,Complex.mul_im,Complex.exp_re,Complex.exp_im]
 
 /-- The true sinh mode is the difference of two real exponential
 recurrences, not an oscillatory approximation to the pole. -/
