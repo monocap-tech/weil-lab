@@ -68,7 +68,10 @@ theorem neutralNF599GammaGainSeries (t : ℝ) :
       push_cast
       ring
     rw [hq,hzq]
-    simp only [Complex.sub_re,← Complex.ofReal_div,Complex.ofReal_one,Complex.ofReal_re]
+    have hreal : (1/(((n:ℝ)+1+1/4:ℝ):ℂ)).re =
+        1/((n:ℝ)+1+1/4) := by
+      rw [← Complex.ofReal_one,← Complex.ofReal_div,Complex.ofReal_re]
+    simp only [Complex.sub_re,hreal]
     ring
   have he' :
       (fun n : ℕ => Complex.reCLM
@@ -86,6 +89,9 @@ theorem neutralNF599GammaGainSeries (t : ℝ) :
     ring
   rw [hz']
   norm_num
+  dsimp [z]
+  simp only [Complex.normSq_apply,Complex.add_re,Complex.add_im,Complex.mul_re,
+    Complex.mul_im,Complex.ofReal_re,Complex.ofReal_im,Complex.I_re,Complex.I_im]
   ring
 
 theorem neutralNF599GammaLower_partial (t : ℝ) (N : ℕ) :
@@ -114,7 +120,7 @@ theorem neutralNF599Gain20_real :
   have h : ((67/10:ℚ):ℝ) < ((∑ n ∈ range 20, neutralNF599GainQ n:ℚ):ℝ) :=
     Rat.cast_lt.mpr neutralNF599Gain20_rat
   rw [sum_range_succ',Rat.cast_add,Rat.cast_sum] at h
-  simpa [neutralNF599GainQ,neutralNF599Gain,add_comm,add_left_comm,add_assoc] using h
+  simpa [neutralNF599GainQ,neutralNF599Gain,show (30/2:ℝ)^2=225 by norm_num,add_comm,add_left_comm,add_assoc] using h
 
 theorem neutralNF599GammaZero_lower :
     -(28/5:ℝ) < Zeta23.EF.gammaBracket 0 := by

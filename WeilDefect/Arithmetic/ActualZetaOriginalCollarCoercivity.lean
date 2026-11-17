@@ -27,7 +27,7 @@ theorem neutralNF600Arch_integrable (s : 𝓢(ℝ,ℂ)) :
   filter_upwards [] with ξ
   have hξ : ‖v ξ‖ ≤ M := by simpa using hM ξ
   have hg := hb ξ
-  rw [← neutralActualZetaGammaBracket_native,← neutralActualZetaGammaBracket_even] at hg
+  rw [← neutralActualZetaGammaBracket_mathlib] at hg
   simp only [neutralNF600Density,norm_mul,Real.norm_eq_abs,abs_of_nonneg (sq_nonneg _),
     Pi.add_apply,pow_one]
   calc

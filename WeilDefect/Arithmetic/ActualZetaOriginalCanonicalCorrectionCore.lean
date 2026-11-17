@@ -180,19 +180,6 @@ theorem neutralNF573OriginalGraphRightInverse_exists
     rw [neutralNF573GraphRightInverse_physical hpos v hv]
     exact neutralNF548CanonicalRightInverse_correct hpos d
 
-/-- A single bounded graph correction preserves every convergent
-seed family in the complete source topology. The convergence of
-the uncorrected seeds to the original target is STILL a hypothesis. -/
-theorem neutralNF573OriginalGraphCorrection_preservesConvergence
-    {ι : Type*} {l : Filter ι}
-    (R : (Fin 242 → ℂ) →L[ℂ] NeutralActualZetaSourceDomain (11 / 10 : ℝ))
-    (ell : NeutralActualZetaSourceDomain (11 / 10 : ℝ))
-    (g : ι → NeutralActualZetaSourceDomain (11 / 10 : ℝ))
-    (hg : Tendsto g l (nhds ell)) :
-    Tendsto (fun s => neutralNF543CorrectGraph
-      neutralNF573OriginalGraphMoments R ell (g s)) l (nhds ell) :=
-  neutralNF543CorrectGraph_tendsto neutralNF573OriginalGraphMoments R ell g hg
-
 
 end
 end WeilDefect
