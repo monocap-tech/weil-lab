@@ -21,8 +21,7 @@ theorem neutralNF585Twisted_hasDerivAt (U U' : ℝ → ℝ) (y d : ℝ)
     HasDerivAt (neutralNF585TwistedAmplitude U y)
       (neutralNF585TwistedDerivative U U' y d) d := by
   have hx : HasDerivAt (fun d : ℝ => neutralNF578B-d) (-1) d := by
-    simpa only [Pi.sub_apply, id_eq, zero_sub] using
-      (hasDerivAt_const d neutralNF578B).sub (hasDerivAt_id d)
+    exact (hasDerivAt_id d).const_sub neutralNF578B
   have hu := (h.comp d hx).div_const 2
   have he := (hx.const_mul (-y)).exp
   have hp := hu.mul he
