@@ -16,8 +16,7 @@ theorem neutralNF573OriginalGraphCorrection_preservesConvergence
     (g : ι → NeutralActualZetaSourceDomain (11 / 10 : ℝ))
     (hg : Tendsto g l (nhds ell)) :
     Tendsto (fun s => neutralNF543CorrectGraph
-      neutralNF573OriginalGraphMoments R ell (g s)) l (nhds ell) :=
-by
+      neutralNF573OriginalGraphMoments R ell (g s)) l (nhds ell) := by
   have hM : Tendsto (fun i => neutralNF573OriginalGraphMoments (g i)) l
       (nhds (neutralNF573OriginalGraphMoments ell)) :=
     neutralNF573OriginalGraphMoments.continuous.continuousAt.tendsto.comp hg
