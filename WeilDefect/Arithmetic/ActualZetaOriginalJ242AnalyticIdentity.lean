@@ -38,7 +38,15 @@ theorem neutralNF551OriginalRealGenerator_analytic
     AnalyticOnNhd ℝ (nf545OriginalSelectedRealGenerator i) Set.univ := by
   intro x hx
   unfold nf545OriginalSelectedRealGenerator
-  split_ifs <;> (try dsimp) <;> fun_prop
+  by_cases hi : i.val < 241
+  · simp only [dif_pos hi]
+    by_cases he : Even (nf545OriginalOscillatorNodeAt ⟨i.val, hi⟩).2
+    · simp only [if_pos he]
+      fun_prop
+    · simp only [if_neg he]
+      fun_prop
+  · simp only [dif_neg hi]
+    fun_prop
 
 /-- Analyticity survives the faithful REAL-to-COMPLEX embedding
 of the ACTUAL original selected J242 source generator. -/

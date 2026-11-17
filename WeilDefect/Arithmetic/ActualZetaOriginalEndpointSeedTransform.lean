@@ -26,7 +26,7 @@ private theorem neutralNF579AffineIntegral (f : ℝ → ℂ) (c s : ℝ)
   calc
     _ = ∫ x : ℝ, F (x/s) :=
       integral_sub_left_eq_self (fun x : ℝ => F (x/s)) volume c
-    _ = |s| • ∫ x : ℝ, F x := integral_comp_div F s
+    _ = |s| • ∫ x : ℝ, F x := Measure.integral_comp_div F s
     _ = s • ∫ x : ℝ, f x := by
       rw [abs_of_pos hs]
       unfold F
@@ -68,7 +68,6 @@ theorem neutralNF579CompressedHalf_transform
   rw [he, neutralNF579AffineIntegral f c s hs]
   dsimp [f]
   rw [integral_const_mul]
-  rw [Complex.real_smul]
   dsimp [K,c]
   ring
 
