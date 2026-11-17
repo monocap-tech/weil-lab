@@ -12,7 +12,8 @@ coefficients, and the raw dyadic interval box, NOT solely the midpoint.
 The identification of the true reconstructed coefficient vector with
 this box is a separate certificate obligation. -/
 
-set_option maxRecDepth 10000 in
+set_option maxRecDepth 100000 in
+set_option maxHeartbeats 3000000 in
 theorem neutralNF587FrozenNodes_eq_original :
     neutralNF587FrozenNodes = nf545OriginalSelectedOscillatorNodes := by
   decide +kernel
@@ -48,7 +49,7 @@ def neutralNF587CriticalRadius (j : Fin 4) : ℝ :=
 genuine sinh pole, with the authentic sign of each coefficient. -/
 def neutralNF587CriticalGenerator (j : Fin 4) (x : ℝ) : ℝ :=
   (∑ k : Fin 32,
-    ((neutralNF587CriticalSines[j.val]![k.val]! : ℚ) : ℝ) *
+    (((neutralNF587CriticalSines[j.val]!)[k.val]! : ℚ) : ℝ) *
       Real.sin (2 * Real.pi * (neutralNF587CriticalFrequencies[k.val]! : ℝ) * x)) +
     (neutralNF587CriticalPoles[j.val]! : ℝ) * Real.sinh (x / 2)
 
