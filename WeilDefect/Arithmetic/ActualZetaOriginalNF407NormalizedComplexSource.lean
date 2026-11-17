@@ -90,10 +90,10 @@ theorem neutralNF588SourceComplex_differentiable (a : Fin 242 → ℝ) (b : Fin 
   apply Differentiable.add
   · apply Differentiable.fun_sum
     intro j hj
-    exact differentiable_const.mul (neutralNF588SelectedComplex_differentiable j)
+    exact (neutralNF588SelectedComplex_differentiable j).const_mul (a j:ℂ)
   · apply Differentiable.fun_sum
     intro j hj
-    exact differentiable_const.mul (neutralNF588CriticalComplex_differentiable j)
+    exact (neutralNF588CriticalComplex_differentiable j).const_mul (b j:ℂ)
 
 theorem neutralNF588NormalizedSource_differentiable (a : Fin 242 → ℝ) (b : Fin 4 → ℝ) :
     Differentiable ℂ (neutralNF588NormalizedSource a b) := by

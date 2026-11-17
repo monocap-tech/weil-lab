@@ -91,8 +91,8 @@ theorem neutralNF592Reduced_norm (f : ℚ) :
     ‖Complex.I*(Real.pi:ℂ)*(neutralNF592Reduced f:ℂ)/2‖ ≤ 1 := by
   have h := neutralNF592Reduced_abs f
   have hr : |(neutralNF592Reduced f:ℝ)| ≤ 1/2 := by
-    rw [← Rat.cast_abs]
-    exact_mod_cast h
+    have hh : ((|neutralNF592Reduced f|:ℚ):ℝ) ≤ ((1/2:ℚ):ℝ) := Rat.cast_le.mpr h
+    simpa only [Rat.cast_abs,Rat.cast_div,Rat.cast_one,Rat.cast_ofNat] using hh
   rw [norm_div,norm_mul,norm_mul,Complex.norm_I,one_mul,
     Complex.norm_real,Real.norm_eq_abs,abs_of_pos Real.pi_pos,
     ← Complex.ofReal_ratCast,Complex.norm_real,Real.norm_eq_abs,
