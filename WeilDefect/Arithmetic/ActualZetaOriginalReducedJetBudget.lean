@@ -54,7 +54,13 @@ theorem neutralNF594HeadJet (hhead : neutralNF594HeadBudget)
   rw [Real.norm_eq_abs]
   apply (NF591Ball.contains_abs_bound h).trans
   unfold neutralNF588U400Bound
-  exact_mod_cast hhead n hn
+  have hr :
+      ((|(neutralNF592OriginalJetBall n).mid|+
+        (neutralNF592OriginalJetBall n).rad:ℚ):ℝ) ≤
+      (((neutralNF588U400Ceil n:ℚ)/10^40:ℚ):ℝ) :=
+    Rat.cast_le.mpr (hhead n hn)
+  simpa only [neutralNF592OriginalJetBall,Rat.cast_div,Rat.cast_natCast,
+    Rat.cast_pow,Rat.cast_ofNat] using hr
 
 theorem neutralNF594AllJets_of_headBudget (hhead : neutralNF594HeadBudget)
     (a : Fin 242 → ℝ) (b : Fin 4 → ℝ) (hbox : neutralNF587SourceInFrozenBox a b) :
