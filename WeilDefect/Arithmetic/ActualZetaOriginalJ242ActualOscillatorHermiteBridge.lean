@@ -1,6 +1,7 @@
 import WeilDefect.Arithmetic.ActualZetaOriginalJ242HermiteSignedOscillatorSum
 import WeilDefect.Arithmetic.ActualZetaOriginalJ242ActualOscillatorOddDerivatives
 import WeilDefect.Arithmetic.ActualZetaOriginalJ242MonomialTrigOddJets
+import WeilDefect.Arithmetic.ActualZetaOriginalJ242ActualPoleOddDerivatives
 import Mathlib.Tactic
 
 namespace WeilDefect
@@ -159,6 +160,38 @@ theorem neutralNF566OriginalEachOscillator_kernelForcesHermiteZero
       (-1 : ℝ) ^ (neutralNF562OriginalOscillatorOrder i / 2) ≠ 0 :=
     pow_ne_zero _ (by norm_num)
   exact (mul_eq_zero.mp hkernel).resolve_left hsign
+
+/-- The literal full 242×242 ORIGINAL analytic odd-jet matrix
+left kernel forces ALL 241 original oscillator frequency-side
+formal Hermite derivative zero conditions AND the genuine
+negative sinh-pole dual root p_a(-1/4)=0.
+
+This is the direct original-source-specific 242-column analytic
+to dual-polynomial reduction. It does not yet prove that the
+frequencies' source monomial-order blocks combine to root
+multiplicities, or that the simultaneous 68-node polynomial
+root budget forces a=0. No replacement columns or Gram inverse
+hypotheses occur here. -/
+theorem neutralNF566OriginalFullActualOddJetKernel_rootObligations
+    (a : Fin 242 → ℝ)
+    (hker : ∀ j : Fin 242,
+      (∑ n : Fin 242,
+        a n * neutralNF560ActualOriginalOddJetMatrix n j) = 0) :
+    (∀ i : Fin 241,
+      ((Polynomial.derivative^[neutralNF562OriginalOscillatorOrder i])
+        (neutralNF565OriginalFrequencyHermitePolynomial a)).eval
+          (neutralNF562OriginalOscillatorOmega i) = 0) ∧
+      (neutralNF557OriginalDualPolynomial a).eval (-(1 / 4 : ℝ)) = 0 := by
+  constructor
+  · intro i
+    apply neutralNF566OriginalEachOscillator_kernelForcesHermiteZero a i
+    have hc := hker ⟨i.val, by omega⟩
+    change (∑ n : Fin 242, a n *
+      (iteratedDeriv (2 * n.val + 1)
+        (nf545OriginalSelectedRealGenerator ⟨i.val, by omega⟩)) 0) = 0 at hc
+    exact hc
+  · exact neutralNF560OriginalMatrixPoleKernelForcesRoot
+      a (hker ⟨241, by omega⟩)
 
 end
 end WeilDefect
