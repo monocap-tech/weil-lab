@@ -1,0 +1,76 @@
+name: NF592 original Lean fixedpoint recurrence and graph recovery
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalFixedpoint*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalRationalIntervalKernel.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalTranscendentalRemainders.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalU400NormalizedBudget.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalCorrectionFullSource.lean"
+      - ".github/workflows/nf592-original-lean-fixedpoint.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf592-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  fixedpoint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Rational ball soundness
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalRationalIntervalKernel
+      - name: Exact directed rounding
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalDirectedRounding
+      - name: Elementary transcendental analytic remainders
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalTranscendentalRemainders
+      - name: Historical exact remainder fee arithmetic
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalFixedpointParameters
+      - name: Sound rounded exponential recurrence
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalFixedpointExpRecurrence
+      - name: Sound Machin pi and exact periodic phase
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalFixedpointPhase
+      - name: Sound original oscillator and pole balls
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalFixedpointModeJets
+      - name: Full primitive interval assembly and budget bridge
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalFixedpointBudgetBridge
+  graph-and-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Exact normalized finite sums and budgets
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalU400NormalizedBudget
+      - name: Literal source canonical recurrence
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407CanonicalJetRecurrence
+      - name: Original full-box disc assembly
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407DiscTableBounds
+      - name: Continuous coordinate sum graph correction
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalCorrectionFullSource
+      - name: Actual corrected source graph
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointCorrectedGraph
