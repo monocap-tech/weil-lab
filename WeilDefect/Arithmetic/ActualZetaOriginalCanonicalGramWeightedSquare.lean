@@ -37,6 +37,8 @@ def neutralNF550OriginalWindowSourceCombination
   ∑ j : Fin 242,
     d j * neutralNF546OriginalWindowGenerator j x
 
+set_option maxRecDepth 4096
+
 /-- The finite original physical L² synthesis V(d) agrees
 almost everywhere with the ACTUAL full-window source combination.
 The important distinction between L² classes and pointwise
@@ -72,10 +74,11 @@ theorem neutralNF550OriginalPhysicalSynthesis_ae
     (Lp.coeFn_fun_finsetSum Finset.univ
       (fun i : Fin 242 =>
         d i • neutralNF546OriginalSelectedPhysicalL2 i)).trans hsumFunctions
-  simpa only [neutralNF549OriginalPhysicalSynthesis,
-      Module.Basis.constr_apply_fintype, Pi.basisFun_equivFun,
-      LinearEquiv.refl_apply, neutralNF550OriginalWindowSourceCombination]
-    using hsum
+  simpa [neutralNF549OriginalPhysicalSynthesis,
+      Module.Basis.constr_apply_fintype, Pi.basisFun_repr,
+      neutralNF550OriginalWindowSourceCombination] using hsum
+
+set_option maxRecDepth 1000
 
 /-- The ORIGINAL canonical χ vanishes outside the original
 physical aperture. No falsely shrunk physical moment window:
@@ -160,9 +163,9 @@ theorem neutralNF550CanonicalOriginalGram_eq_weighted_square_integral
        neutralNF548CanonicalOriginalColumns d).coeFn_toLp 2 volume] with x hV hB
   rw [hV, hB]
   rw [neutralNF549CanonicalSynthesis_pointwise]
-  simpa only [RCLike.inner_apply,
-    neutralNF550OriginalSourceCombination] using
-      (neutralNF550OriginalCanonicalWeightedSquare_pointwise d x)
+  simp only [RCLike.inner_apply]
+  convert (neutralNF550OriginalCanonicalWeightedSquare_pointwise d x) using 1 <;>
+    ring
 
 
 /-- All TRUE original 242 selected functions are continuous.
@@ -196,7 +199,17 @@ theorem neutralNF550CanonicalOriginalGram_real_eq_real_weighted_square
     simp only [neutralNF548ComplexEvenCollarCutoff,
       Complex.ofReal_mul]
   simp_rw [hp]
-  simpa only [integral_ofReal, Complex.ofReal_re]
+  have hIntegral :
+      (∫ x : ℝ,
+        ((neutralNF548RealEvenCollarCutoff x *
+          ‖neutralNF550OriginalSourceCombination d x‖ ^ 2 : ℝ) : ℂ)
+          ∂volume) =
+      ((∫ x : ℝ,
+        neutralNF548RealEvenCollarCutoff x *
+          ‖neutralNF550OriginalSourceCombination d x‖ ^ 2 ∂volume : ℝ) : ℂ) :=
+    integral_ofReal
+  rw [hIntegral]
+  exact Complex.ofReal_re _
 
 /-- Genuine original canonical Gram is POSITIVE SEMIDEFINITE for
 every 242-source coefficient vector, without assuming 136-root

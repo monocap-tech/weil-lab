@@ -1,0 +1,87 @@
+name: NF567 actual original J242 complex global independence and unconditional canonical Gram
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242ComplexOddJetMatrixInvertible.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242GlobalComplexSourceIndependence.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242UnconditionalCanonicalGram.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramWeightedSquare.lean"
+      - ".github/workflows/nf567-original-complex-global-independence.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+  workflow_dispatch:
+
+jobs:
+  nf567-original-analytic-real-and-complex-independence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Original 242 source authentic real 68-node matrix invertibility
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddJetMatrixInvertible
+      - name: Exact real-to-complex base change of original J242 analytic matrix
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242ComplexOddJetMatrixInvertible
+      - name: Termwise original real analytic derivatives and true global complex generator independence
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242GlobalComplexSourceIndependence
+      - name: Reject any declaration-level proof placeholders
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242ComplexOddJetMatrixInvertible.lean \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242GlobalComplexSourceIndependence.lean; then
+            echo "NF567 true original global independence proof holes"
+            exit 1
+          fi
+
+  nf567-original-strict-gram-and-schwartz-right-inverse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Original physical L2 and exact NF549 canonical Gram
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
+      - name: Repaired NF550 actual weighted-square and source separation
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramWeightedSquare
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramSeparationGate
+      - name: NF551 authentic odd symmetry and true local-to-global analytic identity
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddParity
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity
+      - name: Full original analytic independence to strict canonical Gram and Schwartz correction
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242UnconditionalCanonicalGram
+      - name: Reject unconditional-positivity proof holes
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242UnconditionalCanonicalGram.lean; then
+            echo "NF567 true original strict canonical Gram proof holes"
+            exit 1
+          fi
+
+  nf567-original-nf407-source-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify complete authentic 241 sine cosine oscillator and last sinh source coefficient identities
+        run: |
+          python3 scripts/local_replay/verify_nf554_original_dual_odd_jet_coefficient_bridge.py \
+            --output nf567_original_complex_independence_source_replay.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf567-original-nf407-242-function-source-audit
+          path: nf567_original_complex_independence_source_replay.json
+          if-no-files-found: error
