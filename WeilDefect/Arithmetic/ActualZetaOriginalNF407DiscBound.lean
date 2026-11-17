@@ -16,28 +16,15 @@ theorem neutralNF589ModeMajorant_pos : 0 < neutralNF589ModeMajorant := by
   positivity
 
 theorem neutralNF589Pole_le_mode : (3:ℝ) ≤ neutralNF589ModeMajorant := by
+  have h : (3:ℕ) ≤ 2^13*3^283 := by decide +kernel
   unfold neutralNF589ModeMajorant
-  calc
-    (3:ℝ) = 1*3^1 := by norm_num
-    _ ≤ 2^13*3^283 := mul_le_mul (by positivity) 
-      (pow_le_pow_right₀ (by norm_num) (by decide)) (by norm_num) (by positivity)
+  exact_mod_cast h
 
 theorem neutralNF589Disc_arithmetic :
     (400:ℝ)*10^143*neutralNF589ModeMajorant ≤ (10:ℝ)^400 := by
-  have h3 : (3:ℝ)^283 ≤ 10^142 := calc
-    _ ≤ (3:ℝ)^284 := pow_le_pow_right₀ (by norm_num) (by decide)
-    _ = ((3:ℝ)^2)^142 := by rw [← pow_mul]; norm_num
-    _ ≤ (10:ℝ)^142 := pow_le_pow_left₀ (by positivity) (by norm_num) _
-  have h2 : (2:ℝ)^13 ≤ 10^4 := by norm_num
+  have h : (400:ℕ)*10^143*(2^13*3^283) ≤ 10^400 := by decide +kernel
   unfold neutralNF589ModeMajorant
-  calc
-    _ = 400*10^143*2^13*3^283 := by ring
-    _ ≤ (10:ℝ)^3*10^143*10^4*10^142 := by
-      gcongr <;> norm_num
-    _ = (10:ℝ)^292 := by
-      rw [← pow_add,← pow_add,← pow_add]
-      norm_num
-    _ ≤ _ := pow_le_pow_right₀ (by norm_num) (by decide)
+  exact_mod_cast h
 
 /-- This predicate concerns only finite rational data and the original
 primitive coefficient intervals. No analytic enclosure is assumed. -/
@@ -83,7 +70,7 @@ theorem neutralNF594SourceDisc_raw_of_scalarBounds
       have htrig := neutralNF589Oscillator_norm x
         (neutralNF587CriticalFrequencies[k.val]! : ℝ) 0 hx hy
         (by exact_mod_cast (hf k).1) (by exact_mod_cast (hf k).2) (by decide)
-      simp only [pow_zero,even_zero,if_true,one_mul] at htrig
+      simp only [pow_zero,if_pos (by decide : Even (0:ℕ)),one_mul] at htrig
       have htrig' : ‖Complex.sin (2*(Real.pi:ℂ)*
           (neutralNF587CriticalFrequencies[k.val]! : ℂ)*x)‖ ≤ Q := by
         simpa only [Complex.ofReal_ratCast] using htrig
