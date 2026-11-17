@@ -36,7 +36,8 @@ theorem neutralNF582Scale_tendsto :
   have h2 : Tendsto (fun _ : ℕ => (2:ℝ)) atTop (nhds 2) := tendsto_const_nhds
   have h1 : Tendsto (fun _ : ℕ => (1:ℝ)) atTop (nhds 1) := tendsto_const_nhds
   have h := h1.sub (hd.div h2 (by norm_num))
-  simpa [neutralNF582Scale] using h
+  change Tendsto (fun n : ℕ => 1-(1/((n:ℝ)+1))/2) atTop (nhds 1)
+  simpa using h
 
 end
 end WeilDefect
