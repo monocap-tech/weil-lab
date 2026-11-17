@@ -86,7 +86,7 @@ theorem neutralNF561MonomialTimesSmooth_jetAtZero
     hg.contDiffAt.of_le (by simp)
   change iteratedDeriv m ((fun x : ℝ => x ^ k) * g) 0 = _
   rw [iteratedDeriv_mul hpow hg']
-  simp only [iteratedDeriv_fun_pow_zero]
+  simp only [iteratedDeriv_fun_pow_zero, Nat.cast_ite, Nat.cast_zero]
   simp only [mul_ite, mul_zero, zero_mul, ite_mul]
   simp only [Finset.sum_ite_eq', Finset.mem_range, Nat.lt_succ_iff]
   split_ifs <;> simp_all
