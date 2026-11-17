@@ -1,0 +1,37 @@
+name: NF579 original normalized mollifier and strip-sample graph limit
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointMollifier.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointSeedTransform.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalStripLogConvergence.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalStripFullGraph.lean"
+      - ".github/workflows/nf579-original-mollifier-and-strip-sample-limit.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf579-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  nf579-focused:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Construct literal normalized mollifier and smooth seed
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointMollifier
+      - name: Exact affine and full strip convolution transforms
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointSeedTransform
+      - name: Real-axis sample convergence suffices for log norm convergence
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalStripLogConvergence
+      - name: Pointwise sample full graph limit
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalStripFullGraph
