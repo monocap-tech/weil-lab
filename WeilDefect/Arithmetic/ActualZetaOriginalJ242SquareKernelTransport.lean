@@ -23,7 +23,7 @@ def neutralNF569RealSquareLeftAction {N : ℕ}
     simp only [Pi.add_apply, add_mul, Finset.sum_add_distrib]
   map_smul' c a := by
     funext j
-    simp only [Pi.smul_apply, smul_eq_mul, Finset.mul_sum, mul_assoc]
+    simp only [Pi.smul_apply, smul_eq_mul, RingHom.id_apply, Finset.mul_sum, mul_assoc]
 
 /-- Exact finite bilinear pairing identity, without any
 symmetry assumption on A. -/

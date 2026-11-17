@@ -1,0 +1,47 @@
+name: NF575 original endpoint and physical strip log convergence
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalStripLogCarrier.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalStripLogConvergence.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointLogGeometry.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalStripFullGraph.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242SquareKernelTransport.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242GlobalCombinationJets.lean"
+      - ".github/workflows/nf575-original-endpoint-strip-log.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf575-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  nf575-source-compiler-and-endpoint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Recover square kernel and actual global combination differentiation
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242SquareKernelTransport
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242GlobalCombinationJets
+      - name: Recover actual source block and full real kernel
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242ActualOddJetKernelClosure
+      - name: Independent actual physical strip log-energy criterion
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalStripLogCarrier
+      - name: Original physical L2 to weighted log limit
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalStripLogConvergence
+      - name: Literal original nonsmooth endpoint, L2 admission and compression geometry
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointLogGeometry
+      - name: Entire original physical strip full source graph limit
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalStripFullGraph
