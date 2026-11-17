@@ -5,6 +5,7 @@ on:
     paths:
       - "WeilDefect/Arithmetic/ActualZetaOriginalJ242Original68RootBudget.lean"
       - "WeilDefect/Arithmetic/ActualZetaOriginalJ242ActualOddJetKernelClosure.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242FrequencyNonzero.lean"
       - "WeilDefect/Arithmetic/ActualZetaOriginalJ242Actual67BlockCoverage.lean"
       - "WeilDefect/Arithmetic/ActualZetaOriginalJ242Actual67BlockHermiteCompleteness.lean"
       - "WeilDefect/Arithmetic/ActualZetaOriginalJ242ActualOscillatorHermiteBridge.lean"
@@ -29,6 +30,8 @@ jobs:
         run: lake exe cache get
       - name: Independently verify original 67 frequency index blocks, distinct positive squared nodes, and negative pole separation
         run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242Actual67BlockCoverage
+      - name: Independently compile original p_a nonzero implies F_a=X p_a(X²) nonzero
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242FrequencyNonzero
       - name: Compile simultaneous 68-node real polynomial root multiset count and original degree-242 obstruction
         run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242Original68RootBudget
       - name: Check no proof holes in new original terminal root-budget module
