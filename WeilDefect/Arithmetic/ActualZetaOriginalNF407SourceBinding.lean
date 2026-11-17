@@ -18,9 +18,11 @@ theorem neutralNF587FrozenNodes_eq_original :
     neutralNF587FrozenNodes = nf545OriginalSelectedOscillatorNodes := by
   decide +kernel
 
+set_option maxRecDepth 100000 in
+set_option maxHeartbeats 3000000 in
 theorem neutralNF587SelectedDyads_size :
     neutralNF587SelectedDyads.size = 242 := by
-  rfl
+  simp only [neutralNF587SelectedDyads,Array.size_append] <;> rfl
 
 theorem neutralNF587CriticalDyads_size :
     neutralNF587CriticalDyads.size = 4 := by
