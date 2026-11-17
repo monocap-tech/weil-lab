@@ -1,0 +1,114 @@
+name: NF568 original 68-node degree contradiction and real 242 odd-jet kernel
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242Original68RootBudget.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242Generic67PlusPoleRootCount.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242ActualOddJetKernelClosure.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242FrequencyNonzero.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242Actual67BlockCoverage.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242Actual67BlockHermiteCompleteness.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242ActualOscillatorHermiteBridge.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramWeightedSquare.lean"
+      - ".github/workflows/nf568-original-68-roots-and-real-kernel.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+  workflow_dispatch:
+
+jobs:
+  nf568-independent-original-68-root-budget-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean 4
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: First independently compile completely generic multiset 67 distinct roots plus pole budget
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242Generic67PlusPoleRootCount
+      - name: Independently verify original 67 frequency index blocks, distinct positive squared nodes, and negative pole separation
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242Actual67BlockCoverage
+      - name: Independently compile original p_a nonzero implies F_a=X p_a(X²) nonzero
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242FrequencyNonzero
+      - name: Compile simultaneous 68-node real polynomial root multiset count and original degree-242 obstruction
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242Original68RootBudget
+      - name: Check no proof holes in new original terminal root-budget module
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242Original68RootBudget.lean; then
+            echo "NF568 source-specific 68-node root degree bound contains proof holes"
+            exit 1
+          fi
+
+  nf568-original-242-real-analytic-odd-jet-kernel-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean 4
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Accepted original frequency Hermite polynomial and exact analytic sinh pole
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242FrequencyHermitePolynomial
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242ActualPoleOddDerivatives
+      - name: Original signed oscillator coefficient sum and real analytic derivative reduction
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242HermiteSignedOscillatorSum
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242ActualOscillatorHermiteBridge
+      - name: All 67 actual source Hermite multiplicities, squared dual transfer and true sinh pole
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242Actual67BlockHermiteCompleteness
+      - name: Prove p_a nonzero implies F_a nonzero and full 242x242 original analytic real left kernel trivial
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242ActualOddJetKernelClosure
+      - name: Reject proof holes in full original real source left kernel
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242ActualOddJetKernelClosure.lean; then
+            echo "NF568 original source odd-jet kernel theorem contains proof holes"
+            exit 1
+          fi
+
+  nf568-original-physical-nf550-gram-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean 4
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Original canonical Gram physical continuous integral
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
+      - name: Original physical weighted-square and nonnegative canonical Gram
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramWeightedSquare
+      - name: Dependent original NF550 separation and NF551 odd analytic local-global continuation
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramSeparationGate
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddParity
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity
+
+  nf568-immutable-original-odd-jet-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replay original 58322 analytic oscillator and 242 true sinh-pole odd-jet coefficients
+        run: |
+          python3 scripts/local_replay/verify_nf554_original_dual_odd_jet_coefficient_bridge.py \
+            --output nf568_original_242_odd_jets_source_custody.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf568-original-242-odd-jet-source-custody
+          path: nf568_original_242_odd_jets_source_custody.json
+          if-no-files-found: error
