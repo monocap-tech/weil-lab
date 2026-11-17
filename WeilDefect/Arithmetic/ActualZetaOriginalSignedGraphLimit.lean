@@ -27,7 +27,10 @@ theorem neutralNF598SmoothWeil_tendsto
       neutralNF598SmoothWeil (s n) :=
     neutralNF598GraphWeil_eq_smooth (F n) (s n) (hs n) (hp n)
   have h := (neutralNF598GraphWeil_continuous (11/10)).continuousAt.tendsto.comp hlim
-  simpa only [Function.comp_apply,he] using h
+  have hf : (neutralNF598GraphWeil (11/10) ∘ F) =
+      (fun n => neutralNF598SmoothWeil (s n)) := funext he
+  rw [hf] at h
+  exact h
 
 theorem neutralNF598GraphMargin_continuous (a c : ℝ) :
     Continuous (fun u : NeutralActualZetaSourceDomain a =>
@@ -52,7 +55,16 @@ theorem neutralNF598SmoothMargin_tendsto
       neutralNF598SmoothWeil (s n) :=
     neutralNF598GraphWeil_eq_smooth (F n) (s n) (hs n) (hp n)
   have h := (neutralNF598GraphMargin_continuous (11/10) c).continuousAt.tendsto.comp hlim
-  simpa only [Function.comp_apply,he,hp] using h
+  have hf :
+      ((fun u : NeutralActualZetaSourceDomain (11/10:ℝ) =>
+        neutralNF598GraphWeil (11/10) u - c*‖neutralNF598GraphPhysical (11/10) u‖^2) ∘ F) =
+      (fun n => neutralNF598SmoothWeil (s n) - c*‖(s n).toLp 2 volume‖^2) := by
+    funext n
+    change neutralNF598GraphWeil (11/10) (F n) -
+      c*‖neutralNF598GraphPhysical (11/10) (F n)‖^2 = _
+    rw [he n,hp n]
+  rw [hf] at h
+  exact h
 
 theorem neutralNF598SmoothMargin_eventually
     (K : NeutralActualZetaSourceDomain (11/10:ℝ))
