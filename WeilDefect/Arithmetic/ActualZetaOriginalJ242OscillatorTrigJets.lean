@@ -31,8 +31,8 @@ theorem neutralNF561ScaledSin_oddJet (freq : ℝ) (n : ℕ) :
   rw [iteratedDeriv_comp_const_mul
     (Real.contDiff_sin (n := 2 * n + 1)) freq]
   rw [Real.iteratedDeriv_odd_sin]
-  simp only [mul_zero, Real.cos_zero, mul_one]
-  ring
+  simp only [Pi.mul_apply, mul_zero, Real.cos_zero, mul_one]
+  ring_nf
 
 /-- Every even initial derivative of cosine at any positive original
 oscillator freq_f=2πf. The theorem is actually valid for all real freq. -/
@@ -43,8 +43,8 @@ theorem neutralNF561ScaledCos_evenJet (freq : ℝ) (n : ℕ) :
   rw [iteratedDeriv_comp_const_mul
     (Real.contDiff_cos (n := 2 * n)) freq]
   rw [Real.iteratedDeriv_even_cos]
-  simp only [mul_zero, Real.cos_zero, mul_one]
-  ring
+  simp only [Pi.mul_apply, mul_zero, Real.cos_zero, mul_one]
+  ring_nf
 
 /-- The other parity jets of sine at the origin vanish. -/
 theorem neutralNF561ScaledSin_evenJet_zero (freq : ℝ) (n : ℕ) :
@@ -89,7 +89,6 @@ theorem neutralNF561MonomialTimesSmooth_jetAtZero
   simp only [iteratedDeriv_fun_pow_zero, Nat.cast_ite, Nat.cast_zero]
   simp only [mul_ite, mul_zero, zero_mul, ite_mul]
   simp only [Finset.sum_ite_eq', Finset.mem_range, Nat.lt_succ_iff]
-  split_ifs <;> simp_all
 
 end
 end WeilDefect
