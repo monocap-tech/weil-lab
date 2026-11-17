@@ -99,10 +99,10 @@ theorem neutralNF580Twisted_integrable
   apply hmajor.mono' hf
   filter_upwards [] with x
   by_cases hx : |x| ≤ A
-  · have hb : -(z.im*x) ≤ |z.im|*A := by
+  · have hb : -(z.im*x) ≤ |z.im| * A := by
       calc
         _ ≤ |z.im*x| := neg_le_abs _
-        _ = |z.im|*|x| := abs_mul _ _
+        _ = |z.im| * |x| := abs_mul _ _
         _ ≤ _ := mul_le_mul_of_nonneg_left hx (abs_nonneg _)
     have hr : (Complex.I * (z * (x : ℂ))).re = -(z.im*x) := by
       simp [Complex.mul_re, Complex.mul_im]
