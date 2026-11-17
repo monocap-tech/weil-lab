@@ -1,4 +1,4 @@
-import WeilDefect.Arithmetic.ActualZetaOriginalCanonicalCorrectionCore
+import WeilDefect.Arithmetic.ActualZetaOriginalCanonicalCorrectionContinuity
 
 namespace WeilDefect
 noncomputable section
