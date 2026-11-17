@@ -1,0 +1,44 @@
+name: NF583 original odd sequence and graph attachment
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpoint*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242AnalyticIdentity.lean"
+      - ".github/workflows/nf583-original-odd-sequence.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf583-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  nf583-focused:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Actual analytic identity and canonical Gram
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242CanonicalGramPositivity
+      - name: Literal half and odd endpoint L2
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointLogGeometry
+      - name: Exact affine and convolution transform
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointSeedTransform
+      - name: Explicit contraction sequence
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointScaleSequence
+      - name: Actual Schwartz seed packaging
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointSeedSchwartz
+      - name: Full physical strip graph
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalStripFullGraph
+      - name: Actual odd sequence and endpoint graph attachment
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointActualSeedGraph
