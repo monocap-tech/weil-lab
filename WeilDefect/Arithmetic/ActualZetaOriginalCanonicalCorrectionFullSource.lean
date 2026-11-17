@@ -7,6 +7,7 @@ namespace WeilDefect
 noncomputable section
 open MeasureTheory Filter Module
 open scoped SchwartzMap ComplexConjugate
+set_option maxHeartbeats 1500000
 
 /-!
 NF573: lift the actual finite-rank correction into the original
@@ -65,7 +66,23 @@ the actual NF548 columns, with both complete P/N vectors. -/
 def neutralNF573GraphColumnSynthesis
     (v : Fin 242 → NeutralActualZetaSourceDomain (11 / 10 : ℝ)) :
     (Fin 242 → ℂ) →L[ℂ] NeutralActualZetaSourceDomain (11 / 10 : ℝ) :=
-  LinearMap.toContinuousLinearMap ((Pi.basisFun ℂ (Fin 242)).constr ℂ v)
+  by
+    let L := (Pi.basisFun ℂ (Fin 242)).constr ℂ v
+    refine L.mkContinuous (∑ j : Fin 242, ‖v j‖) ?_
+    intro d
+    change ‖((Pi.basisFun ℂ (Fin 242)).constr ℂ v) d‖ ≤ _
+    rw [Module.Basis.constr_apply_fintype]
+    simp only [Pi.basisFun_repr]
+    calc
+      ‖∑ j : Fin 242, d j • v j‖ ≤ ∑ j : Fin 242, ‖d j • v j‖ := norm_sum_le _ _
+      _ ≤ ∑ j : Fin 242, ‖v j‖ * ‖d‖ := by
+        apply Finset.sum_le_sum
+        intro j hj
+        calc
+          ‖d j • v j‖ ≤ ‖d j‖ * ‖v j‖ := norm_smul_le _ _
+          _ ≤ ‖d‖ * ‖v j‖ := mul_le_mul_of_nonneg_right (norm_le_pi_norm d j) (norm_nonneg _)
+          _ = _ := mul_comm _ _
+      _ = _ := Finset.sum_mul ..
 
 /-- Exact physical custody of the graph synthesis, conditional only
 on the individual column physical equalities. -/
