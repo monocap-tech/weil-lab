@@ -96,3 +96,13 @@ The next proof target is to match the explicit NF565 formal polynomial derivativ
 with the exact NF562 analytic source odd-jet coefficient for every original oscillator, including both k parities, **as a finite 242-term sum**. Then the literal left-kernel vanishing for `j_(f,k)` yields the formal `D_poly^k F_a(freq_f)=0` for all `k<m_f`. Accepted NF554 Hermite multiplicity, NF556 transfer to `p_a(freq_f²)`, and the genuine sinh-pole `p_a(-1/4)=0` must be assembled into a simultaneous **68-node 242-multiplicity divisor** whose degree contradicts the NF557 `p_a` degree bound. A square real matrix kernel argument, complex coefficient split, and NF551 analytic collar transfer then remain before unconditional strict positive canonical Gram.
 
 NF528 authentic all-positive/negative divisor graph convergence, NF527 gamma+prime n9 and both-pole 1/10 coercivity, NF539 signed Weil identity, real-data correction conjugation equivariance, W_ODD_NEG and RH **OPEN**.
+
+## 6. Finite parity preservation and current workflow acceptance boundary
+
+The frequency polynomial module additionally proves a candidate **odd-evaluation identity**
+```
+F_a(-freq) = -F_a(freq)
+```
+from the exact source-level `F_a(freq)=freq*p_a(freq²)`. This mirrors the genuine odd symmetry of all 242 original generators, with no new assumption. It has not yet passed the pinned Lean compiler.
+
+NF565 draft PR #597 opened and the new `NF565 original frequency Hermite polynomial and source compiler closure` workflow **queued** (initial run #44002413454). Its jobs for original algebraic frequency-side polynomial, original analytic 241 oscillators, physical NF550 Gram, and source SHA custody are **PENDING**. The previous NF564 `nf564-exact-original-odd-jet-source-audit` job #133766712702 is **PASS**, while its new oscillator/NF550 compiler jobs were still queued or running. No mathematical theorem beyond the accepted original pole and NF549 physical chain is upgraded to LEAN PASS before those runs finish.
