@@ -77,7 +77,7 @@ theorem neutralNF573OriginalCollar_window_ae
     neutralNF543OriginalCollarSchwartz_supported s hs] with x hx hzero
   by_cases hw : x ∈ Set.Icc (-(11 / 10 : ℝ)) (11 / 10 : ℝ)
   · simp [neutralWindowRepresentative, hw, hx]
-  · have hz : s x = 0 := hx ▸ hzero hw
+  · have hz : s x = 0 := hx.symm.trans (hzero hw)
     simp [neutralWindowRepresentative, hw, hz]
 
 /-- A single originally supported real odd Schwartz test has an
@@ -108,15 +108,16 @@ theorem neutralNF573OriginalRealOddSchwartz_fullSource
     apply hs x
     intro hE
     apply hx
+    change x ∈ Set.Icc (-(11 / 10 : ℝ)) (11 / 10 : ℝ)
     rcases hE with hl | hh
-    · exact ⟨hl.1.le, by dsimp [B]; linarith [hl.2]⟩
-    · exact ⟨by dsimp [B]; linarith [hh.1], hh.2.le⟩
+    · exact ⟨hl.1.le, by linarith [hl.2]⟩
+    · exact ⟨by linarith [hh.1], hh.2.le⟩
   have hreg : ContDiff ℝ 2
       (neutralWindowCorrelation B (neutralLogPhysical k.val)
         (neutralLogPhysical k.val)) :=
     neutralWindowCorrelation_contDiff_of_ae_smoothSecond B
       (neutralLogPhysical k.val) (neutralLogPhysical k.val)
-      (fun x => s x) (s.smooth.of_le (by norm_num)) hc hae
+      (fun x => s x) (s.smooth 2) hc hae
   have hsym : ∀ q : NeutralActualZetaDivisorCoordinate,
       neutralWindowEvaluation B (conj (neutralActualZetaDivisorOrdinate q))
           (neutralLogPhysical k.val) =
