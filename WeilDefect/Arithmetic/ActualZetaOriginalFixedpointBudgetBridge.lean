@@ -1,5 +1,6 @@
 import WeilDefect.Arithmetic.ActualZetaOriginalFixedpointSourceJets
 import WeilDefect.Arithmetic.ActualZetaOriginalFixedpointParameters
+import WeilDefect.Arithmetic.ActualZetaOriginalFixedpointComputationalCore
 
 namespace WeilDefect
 noncomputable section
@@ -7,14 +8,6 @@ noncomputable section
 /-! NF592: the final numerical obligation is a finite inequality
 on a fully specified rational evaluator. The statement does not
 assume any transcendental enclosure or arbitrary interval choice. -/
-
-def neutralNF592OriginalJetBall (n : ℕ) : NF591Ball :=
-  neutralNF592SourceBall (neutralNF592PiBall neutralNF592Q 200)
-    neutralNF592Q 220 n
-
-def neutralNF592OriginalFixedpointBudget : Prop :=
-  ∀ n : Fin 400, |(neutralNF592OriginalJetBall n.val).mid|+
-    (neutralNF592OriginalJetBall n.val).rad ≤ (neutralNF588U400Ceil n.val:ℚ)/10^40
 
 theorem neutralNF592OriginalJets_of_fixedpointBudget
     (hbudget : neutralNF592OriginalFixedpointBudget)
