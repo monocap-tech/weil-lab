@@ -73,6 +73,19 @@ theorem neutralNF565OriginalFrequencyHermitePolynomial_eq_comp
     Polynomial.eval_comp, Polynomial.eval_pow] using
       neutralNF565OriginalFrequencyHermitePolynomial_eval a freq
 
+/-- The frequency Hermite polynomial is genuinely ODD.
+This is the finite algebraic symmetry corresponding to the
+unchanged odd sine/cosine-monomial and sinh source generators.
+It is derived, not taken as an extra source assumption. -/
+theorem neutralNF565OriginalFrequencyHermitePolynomial_odd
+    (a : Fin 242 → ℝ) (freq : ℝ) :
+    (neutralNF565OriginalFrequencyHermitePolynomial a).eval (-freq) =
+      -((neutralNF565OriginalFrequencyHermitePolynomial a).eval freq) := by
+  rw [neutralNF565OriginalFrequencyHermitePolynomial_eval,
+    neutralNF565OriginalFrequencyHermitePolynomial_eval]
+  rw [even_two, neg_pow]
+  ring
+
 /-- The EXACT formal derivative of order k of the original
 frequency-side dual is the finite Hermite falling-factorial sum
 for all k, without a nonzero-frequency assumption.
