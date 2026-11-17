@@ -17,7 +17,7 @@ private theorem neutralNF583Raw_cast (h : ℝ → ℝ) (z : ℂ) :
   apply integral_congr_ae
   filter_upwards [] with x
   rw [show Complex.I*z*(x:ℂ) = Complex.I*(z*(x:ℂ)) by ring]
-  ring
+  
 
 theorem neutralNF583OriginalEndpoint_actualSeedGraph
     (U : ℝ → ℝ) (hm : Measurable U)
@@ -70,6 +70,7 @@ theorem neutralNF583OriginalEndpoint_actualSeedGraph
       ((g n).memLp 2 volume) (hw n)
   have htarget (z : ℂ) : neutralWindowEvaluation (11/10:ℝ) z f =
       neutralNF579RawTransform (neutralNF583Odd h) z := by
+    dsimp only [f,neutralNF575OriginalEndpointL2]
     rw [← neutralNF581RawTransform_toLp_window (11/10:ℝ)
       (neutralNF575OriginalEndpoint U)
       (neutralNF575OriginalEndpoint_memLp U hm (2/10^7) (by norm_num) hU)
@@ -82,6 +83,7 @@ theorem neutralNF583OriginalEndpoint_actualSeedGraph
     exact neutralNF583Raw_cast _ z
   have hsample (n : ℕ) (z : ℂ) : neutralWindowEvaluation (11/10:ℝ) z (v n) =
       neutralNF579RawTransform (neutralNF583Odd (neutralNF582HalfSequence h n)) z := by
+    change neutralWindowEvaluation (11/10:ℝ) z (((g n).memLp 2 volume).toLp (g n)) = _
     rw [← neutralNF581RawTransform_toLp_window (11/10:ℝ)
       (g n) ((g n).memLp 2 volume) (hw n)]
     have he : (g n : ℝ → ℂ) =
