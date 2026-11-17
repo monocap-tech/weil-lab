@@ -1,0 +1,17 @@
+# NF602 — modular endpoint receipts; actual canonical right inverse certified
+
+Stacked on NF601 #633. NF602 proof candidates and CI trials pending.
+
+## Verified compiler receipts
+
+NF601 run 44196142348 job 134437991250 and NF599 run 44196142120 job 134437990509 independently passed ActualZetaOriginalCanonicalCorrectionCore: the actual graph lift of the original canonical finite right inverse, physical custody and exact 242 moments are Lean-certified. This is not yet corrected graph convergence. The latter failed on constant inference, composition type mismatch and ContinuousAdd inference for the closed-submodule subtype. NF602 explicitly types the constant and transports addition/convergence into the ambient product, then uses subtype convergence. The old six-million-heartbeat timeout is no longer the reported blocker.
+
+NF599 job 134437990509 also reaccepted the endpoint-check implication and reduced 250-order checker soundness. NF601 nonzero carrier proof had one reported unknown identifier eqOn_open_of_ae_eq: the pinned Mathlib theorem is in MeasureTheory.Measure. NF602 qualifies it. NF601 job 134437992026 reports one residual gamma quarter-line normalization equality (the inverse real-axis and 225 goals no longer fail) and one log10 numeral normalization mismatch; repairs committed. Downstream Fourier mass, prime and pole proofs remain unaccepted. No new graph convergence, support coercivity or strict-sign implication acceptance claimed.
+
+## Fresh exact one-order reconstruction
+
+Executed the actual NF591 BigInt recurrence on the original NF407 primitive source with N=1 (same scale Q=10^250, 200 Machin and 220 complex exponential terms, original dyads, all 374 primitive summands, original frequencies and pole). Retained the 242 selected order-zero balls, 32 critical sine order-zero balls and one shared pole ball (the last selected ball is the same pole). Both reconstructed aggregate scaled endpoints agree EXACTLY with the previous NF591 archived order-zero endpoints. Upper endpoint is approximately -1.1679864490968302e-11. Fresh live replay did not independently rehash the raw source; source hash had been checked in prior NF591 CI. No full 400-order replay performed here.
+
+Committed exact rational ball data in eight selected chunks, a critical table, the pole and the endpoint. New local checks compare both rational center and radius with the actual NF593 cached mode evaluator using the shared kernel-certified Machin receipt. The aggregation check uses the same literal 374 primitive multiplication/rounding/addition steps on those mode receipts, with no transcendental recomputation; the last sign check uses only literal midpoint plus radius. A candidate exact equality theorem combines each indexed check, pole check and rational aggregate/sign check into the original NF597 endpoint Boolean. No local receipt is assumed correct, and a sign proof on the literal data alone is not sufficient.
+
+Focused CI compiles the receipt definitions separately, attempts all 274 indexed checks plus pole/aggregate/sign in a compiled diagnostic, then independent bounded decide +kernel trials for literal sign, one selected mode and transcendental-free aggregation. The other individual mode kernel proofs still need to be discharged; success on one local mode does not prove all. No local Lean environment, no new kernel proof result claimed. New graph/gamma/geometric repairs and receipt bridge are pending. Original solve custody and full global Weil coercivity, W_ODD_NEG and RH remain open. No main merge.

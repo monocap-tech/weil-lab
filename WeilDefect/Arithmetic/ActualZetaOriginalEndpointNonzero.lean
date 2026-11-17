@@ -39,7 +39,7 @@ theorem neutralNF601Endpoint_L2_ne_zero (U : ℝ → ℝ)
     by_contra hne
     exact neutralNF601Endpoint_ne_zero_on_right U x hx hne hzx
   have he : EqOn U (0:ℝ → ℝ) E :=
-    eqOn_open_of_ae_eq hae isOpen_Ioo hU.continuousOn continuous_const.continuousOn
+    Measure.eqOn_open_of_ae_eq hae isOpen_Ioo hU.continuousOn continuous_const.continuousOn
   have hc := he.closure hU continuous_const
   have hb : (11/10:ℝ) ∈ closure E := by
     dsimp [E]

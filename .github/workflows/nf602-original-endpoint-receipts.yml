@@ -1,0 +1,116 @@
+name: NF602 modular original endpoint receipts
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpoint*Receipts.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointReceipt*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointNonzero.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalCorrectionContinuity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollar*.lean"
+      - ".github/workflows/nf602-original-endpoint-receipts.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf602-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  receipts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Compile receipt data and exact local checks
+        id: checks
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointReceiptChecks
+      - name: All indexed endpoint equality checks (compiled diagnostic)
+        if: ${{ always() && steps.checks.outcome == 'success' }}
+        run: |
+          cat >/tmp/NF602Diagnostic.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalEndpointReceiptChecks
+          open WeilDefect
+          def main : IO Unit := do
+            for j in List.finRange 242 do
+              unless neutralNF602SelectedCheck j do
+                throw (IO.userError s!"selected mode {j.val} mismatch")
+            for j in List.finRange 32 do
+              unless neutralNF602CriticalCheck j do
+                throw (IO.userError s!"critical mode {j.val} mismatch")
+            unless neutralNF602PoleCheck && neutralNF602AssemblyCheck &&
+                neutralNF602ReceiptSignCheck do
+              throw (IO.userError "pole, assembly or sign mismatch")
+            IO.println "NF602_ALL_ENDPOINT_RECEIPTS_PASS"
+          EOF
+          timeout 300 lake env lean --run /tmp/NF602Diagnostic.lean
+      - name: Literal endpoint receipt sign kernel decision
+        if: ${{ always() && steps.checks.outcome == 'success' }}
+        run: |
+          cat >/tmp/NF602Sign.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalEndpointReceiptChecks
+          open WeilDefect
+          set_option maxRecDepth 100000
+          set_option maxHeartbeats 10000000
+          theorem nf602_sign : neutralNF602ReceiptSignCheck = true := by decide +kernel
+          #print axioms nf602_sign
+          EOF
+          timeout 120 lake env lean /tmp/NF602Sign.lean
+      - name: One selected mode isolated kernel decision
+        if: ${{ always() && steps.checks.outcome == 'success' }}
+        run: |
+          cat >/tmp/NF602Mode.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalEndpointReceiptChecks
+          open WeilDefect
+          set_option maxRecDepth 100000
+          set_option maxHeartbeats 10000000
+          theorem nf602_mode : neutralNF602SelectedCheck (0 : Fin 242) = true := by decide +kernel
+          #print axioms nf602_mode
+          EOF
+          timeout 300 lake env lean /tmp/NF602Mode.lean
+      - name: Transcendental-free primitive aggregation kernel decision
+        if: ${{ always() && steps.checks.outcome == 'success' }}
+        run: |
+          cat >/tmp/NF602Assembly.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalEndpointReceiptChecks
+          open WeilDefect
+          set_option maxRecDepth 100000
+          set_option maxHeartbeats 10000000
+          theorem nf602_assembly : neutralNF602AssemblyCheck = true := by decide +kernel
+          #print axioms nf602_assembly
+          EOF
+          timeout 300 lake env lean /tmp/NF602Assembly.lean
+      - name: Exact receipt-to-original-check soundness
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointReceiptBridge
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Actual right inverse and convergence
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalCorrectionContinuity
+      - name: Nonzero endpoint and strict sign bridge
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointStrictSignBridge
+      - name: Exact collar geometry
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarPrimeGeometry
+      - name: Genuine gamma series
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarGammaLower
+      - name: Actual Fourier mass, prime, pole and local sign
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarCoercivity

@@ -22,13 +22,25 @@ theorem neutralNF573OriginalGraphCorrection_preservesConvergence
     neutralNF573OriginalGraphMoments.continuous.continuousAt.tendsto.comp hg
   have hd : Tendsto (fun i => neutralNF573OriginalGraphMoments ell -
       neutralNF573OriginalGraphMoments (g i)) l (nhds 0) := by
-    simpa only [sub_self] using tendsto_const_nhds.sub hM
+    have hc : Tendsto (fun _ : ι => neutralNF573OriginalGraphMoments ell) l
+        (nhds (neutralNF573OriginalGraphMoments ell)) := tendsto_const_nhds
+    simpa only [sub_self] using hc.sub hM
   have hR : Tendsto (fun i => R (neutralNF573OriginalGraphMoments ell -
       neutralNF573OriginalGraphMoments (g i))) l (nhds 0) := by
     have hh := (R.continuous.continuousAt (x := 0)).tendsto.comp hd
-    simpa only [Function.comp_apply,map_zero] using hh
-  have h := hg.add hR
-  simpa only [neutralNF543CorrectGraph,add_zero] using h
+    change Tendsto (fun i => R (neutralNF573OriginalGraphMoments ell - neutralNF573OriginalGraphMoments (g i))) l (nhds (R 0)) at hh
+    rw [map_zero] at hh
+    exact hh
+  let S := (neutralActualZetaSourceGraph (11/10:ℝ)).toSubmodule
+  let P := S.subtypeL
+  have hg' := P.continuous.continuousAt.tendsto.comp hg
+  have hR' := P.continuous.continuousAt.tendsto.comp hR
+  have ha := hg'.add hR'
+  rw [map_zero,add_zero] at ha
+  apply tendsto_subtype_rng.mpr
+  change Tendsto (fun i => P (neutralNF543CorrectGraph
+    neutralNF573OriginalGraphMoments R ell (g i))) l (nhds (P ell))
+  simpa only [neutralNF543CorrectGraph,map_add,Function.comp_apply] using ha
 
 
 end
