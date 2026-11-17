@@ -1,0 +1,68 @@
+name: NF601 original gamma recovery and strict graph sign bridge
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollar*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointNonzero.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointStrictSignBridge.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalCorrection*.lean"
+      - ".github/workflows/nf601-original-strict-sign.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf601-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  local-analytic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Actual digamma series and gamma constants
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarGammaLower
+      - name: Exact collar measure and all-integer exclusion
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarPrimeGeometry
+      - name: Actual Fourier low-band energy
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarFourierMass
+      - name: Complete prime and pole bounds
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarPoleBound
+      - name: Complete literal support-only coercivity
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarCoercivity
+  sign-and-correction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Nonzero physical carrier from continuous endpoint
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointNonzero
+      - name: Strict original sign conditional on endpoint check and support inequality
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointStrictSignBridge
+      - name: Isolated actual right inverse
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalCorrectionCore
+      - name: Exact corrected graph convergence
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalCorrectionContinuity
+      - name: Terminal actual corrected graph
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointQualitativeCorrectedGraph
