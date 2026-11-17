@@ -1,13 +1,11 @@
 import WeilDefect.Arithmetic.ActualZetaOriginalRationalIntervalKernel
+import WeilDefect.Arithmetic.ActualZetaOriginalFixedpointComputationalCore
 
 namespace WeilDefect
 noncomputable section
 
 /-! NF591: directed rounding at a positive integer scale.
 The proof uses exact rational floor/ceil inequalities only. -/
-
-def NF591Ball.round (a : NF591Ball) (Q : ℕ) : NF591Ball :=
-  ⟨(⌊a.mid*Q⌋:ℚ)/Q,((⌈a.rad*Q⌉:ℚ)+1)/Q⟩
 
 theorem NF591Ball.round_widens (a : NF591Ball) (Q : ℕ) (hQ : 0 < Q) :
     a.Widens (a.round Q) := by
