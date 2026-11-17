@@ -1,0 +1,40 @@
+name: NF581 original endpoint admission and physical sample dictionary
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointLogGeometry.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalStripLogConvergence.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalRawWindowDictionary.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointSeedSchwartz.lean"
+      - ".github/workflows/nf581-original-endpoint-admission.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf581-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  nf581-focused:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Exact raw window evaluation dictionary
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalRawWindowDictionary
+      - name: Literal half-carrier and odd endpoint L2 admission
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointLogGeometry
+      - name: Pointwise sample logarithmic carrier limit
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalStripLogConvergence
+      - name: Actual real odd Schwartz seed packaging
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointSeedSchwartz
+      - name: Full physical strip source graph
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalStripFullGraph
