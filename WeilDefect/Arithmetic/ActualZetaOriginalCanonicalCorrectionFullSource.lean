@@ -157,5 +157,42 @@ theorem neutralNF573OriginalGraphCorrection_preservesConvergence
       neutralNF573OriginalGraphMoments R ell (g s)) l (nhds ell) :=
   neutralNF543CorrectGraph_tendsto neutralNF573OriginalGraphMoments R ell g hg
 
+/-- The graph-level corrected seed is exactly the original physical
+Schwartz correction, provided the seed realizes that same Schwartz
+test. This prevents treating an unrelated graph sequence as a
+certificate for the canonical physical correction. -/
+theorem neutralNF573OriginalGraphCorrectedSeed_physical
+    (hpos : ∀ d : Fin 242 → ℂ, d ≠ 0 →
+      0 < (∑ i : Fin 242,
+        conj (d i) * (neutralNF548CanonicalOriginalWeightedGram d) i).re)
+    (R : (Fin 242 → ℂ) →L[ℂ] NeutralActualZetaSourceDomain (11 / 10 : ℝ))
+    (hR : ∀ d, neutralNF573OriginalGraphPhysical (R d) =
+      (neutralNF548CanonicalRightInverse hpos d).toLp 2 volume)
+    (ell g : NeutralActualZetaSourceDomain (11 / 10 : ℝ))
+    (s : 𝓢(ℝ, ℂ))
+    (hs : neutralNF573OriginalGraphPhysical g = s.toLp 2 volume) :
+    neutralNF573OriginalGraphPhysical
+      (neutralNF543CorrectGraph neutralNF573OriginalGraphMoments R ell g) =
+      (neutralNF543Correct neutralNF546OriginalSelectedMoments
+        (neutralNF548CanonicalRightInverse hpos)
+        (neutralNF573OriginalGraphPhysical ell) s).toLp 2 volume := by
+  unfold neutralNF543CorrectGraph
+  rw [map_add, hR, hs]
+  have hm (u : NeutralActualZetaSourceDomain (11 / 10 : ℝ)) :
+      neutralNF573OriginalGraphMoments u =
+      neutralNF546OriginalSelectedMoments
+        (neutralNF573OriginalGraphPhysical u) := rfl
+  rw [hm ell, hm g, hs]
+  change s.toLp 2 volume +
+    (neutralNF548CanonicalRightInverse hpos
+      (neutralNF546OriginalSelectedMoments (neutralNF573OriginalGraphPhysical ell) -
+        neutralNF546OriginalSelectedMoments (s.toLp 2 volume))).toLp 2 volume =
+    SchwartzMap.toLpCLM ℂ ℂ 2 volume
+      (s + neutralNF548CanonicalRightInverse hpos
+        (neutralNF546OriginalSelectedMoments (neutralNF573OriginalGraphPhysical ell) -
+          neutralNF546OriginalSelectedMoments (s.toLp 2 volume)))
+  rw [map_add]
+  rfl
+
 end
 end WeilDefect
