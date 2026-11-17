@@ -1,4 +1,5 @@
 import WeilDefect.Arithmetic.ActualZetaOriginalJ242ActualPoleOddDerivatives
+import WeilDefect.Arithmetic.ActualZetaOriginalJ242ActualOscillatorOddDerivatives
 import Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas
 import Mathlib.Tactic
 
@@ -23,9 +24,22 @@ theorem neutralNF569OriginalRealGenerator_contDiffAt
     (j : Fin 242) (m : ℕ) (x : ℝ) :
     ContDiffAt ℝ m (nf545OriginalSelectedRealGenerator j) x := by
   by_cases hj : j.val < 241
-  · simp only [nf545OriginalSelectedRealGenerator, dif_pos hj]
-    split_ifs <;> fun_prop
-  · simp only [nf545OriginalSelectedRealGenerator, dif_neg hj]
+  · let i : Fin 241 := ⟨j.val, hj⟩
+    have hi : (⟨i.val, by omega⟩ : Fin 242) = j := Fin.ext rfl
+    rw [← hi, neutralNF562OriginalOscillator_exactSource i]
+    have hs : ContDiff ℝ ∞ (fun y : ℝ =>
+        y ^ neutralNF562OriginalOscillatorOrder i *
+          neutralNF562OriginalOscillatorTrig i y) :=
+      (contDiff_id.pow _).mul (neutralNF562OriginalOscillatorTrig_smooth i)
+    exact (hs.of_le le_top).contDiffAt
+  · have hjlast : j = (⟨241, by omega⟩ : Fin 242) := by
+      apply Fin.ext
+      omega
+    rw [hjlast]
+    have he : nf545OriginalSelectedRealGenerator (⟨241, by omega⟩ : Fin 242) =
+        (fun y : ℝ => Real.sinh (y / 2)) :=
+      funext nf545OriginalSelectedPole_is_sinh
+    rw [he]
     fun_prop
 
 /-- Original real combination, with precisely the authentic
