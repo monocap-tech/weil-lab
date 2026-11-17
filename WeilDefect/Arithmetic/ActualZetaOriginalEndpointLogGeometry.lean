@@ -54,10 +54,11 @@ theorem neutralNF575OriginalEndpoint_supported (U : ℝ → ℝ) (x : ℝ)
 the actual endpoint. The half-source amplitude is the supplied
 U(B-d)/2, not a smooth surrogate. Bounded measurable U on the
 true collar suffices; this needs no first Fourier derivative. -/
-theorem neutralNF575OriginalEndpoint_memLp
+theorem neutralNF581OriginalHalfAndEndpoint_memLp
     (U : ℝ → ℝ) (hm : Measurable U) (M : ℝ) (hM : 0 ≤ M)
     (hU : ∀ x ∈ Set.Ioo ((11/10:ℝ)-1/500) (11/10:ℝ), |U x| ≤ M) :
-    MemLp (neutralNF575OriginalEndpoint U) 2 volume := by
+    MemLp (fun x => (neutralNF575OriginalEndpointHalf U x : ℂ)) 2 volume ∧
+      MemLp (neutralNF575OriginalEndpoint U) 2 volume := by
   let B : ℝ := 11/10
   let δ : ℝ := 1/500
   let H : ℝ → ℂ := (Set.Ioo (0:ℝ) δ).indicator
@@ -98,7 +99,7 @@ theorem neutralNF575OriginalEndpoint_memLp
         exact mul_le_mul (div_le_div_of_nonneg_right hb (by norm_num)) hl
           hl0 (by positivity)
       have hsq := pow_le_pow_left₀ (norm_nonneg (H d)) hnorm 2
-      rw [Real.norm_eq_abs,abs_of_nonneg (sq_nonneg _),
+      rw [Real.norm_eq_abs,abs_of_nonneg (sq_nonneg ‖H d‖),
         Set.indicator_of_mem hd]
       calc
         _ ≤ ((M/2)*(4*(B/d)^(1/4:ℝ)))^2 := hsq
@@ -144,8 +145,16 @@ theorem neutralNF575OriginalEndpoint_memLp
   have he : neutralNF575OriginalEndpoint U = fun x => h x-h (-x) := by
     funext x
     simp [neutralNF575OriginalEndpoint,h]
+  refine ⟨hr, ?_⟩
   rw [he]
   exact hr.sub hh
+
+/-- Preserve the earlier endpoint-admission interface. -/
+theorem neutralNF575OriginalEndpoint_memLp
+    (U : ℝ → ℝ) (hm : Measurable U) (M : ℝ) (hM : 0 ≤ M)
+    (hU : ∀ x ∈ Set.Ioo ((11/10:ℝ)-1/500) (11/10:ℝ), |U x| ≤ M) :
+    MemLp (neutralNF575OriginalEndpoint U) 2 volume :=
+  (neutralNF581OriginalHalfAndEndpoint_memLp U hm M hM hU).2
 
 /-- If the historical endpoint has finite physical L² norm, its
 actual L² realization is supported and real a.e. No claim that an
