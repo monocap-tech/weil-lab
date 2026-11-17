@@ -1,0 +1,95 @@
+name: NF603 original nonvanishing and modular endpoint kernel shards
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalRemoteNonvanishing.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalAnalyticNonzeroGraph.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointReceiptCertifiedBase.lean"
+      - ".github/workflows/nf603-original-nonzero.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf603-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  nonzero:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Exact original pole dominance at remote point
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalRemoteNonvanishing
+      - name: Analytic continuation to nonzero physical collar and strict local sign
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalAnalyticNonzeroGraph
+      - name: Promote successful prior kernel sign and assembly
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointReceiptCertifiedBase
+  mode-kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointReceiptChecks
+      - name: Individual kernel-only checks with axiom reports
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          i = int(os.environ["SHARD"])
+          lines = ["import WeilDefect.Arithmetic.ActualZetaOriginalEndpointReceiptChecks",
+                   "open WeilDefect", "set_option maxRecDepth 100000",
+                   "set_option maxHeartbeats 10000000"]
+          def emit(name, prop):
+              lines.extend([f"theorem {name} : {prop} := by decide +kernel",
+                            f"#print axioms {name}"])
+          if i < 8:
+              for j in range(i*32,min((i+1)*32,242)):
+                  emit(f"nf603_selected_{j}",f"neutralNF602SelectedCheck ({j}:Fin 242) = true")
+          else:
+              for j in range(32):
+                  emit(f"nf603_critical_{j}",f"neutralNF602CriticalCheck ({j}:Fin 32) = true")
+              emit("nf603_pole","neutralNF602PoleCheck = true")
+          Path("NF603Shard.lean").write_text("\n".join(lines)+"\n")
+          PY
+          set -o pipefail
+          timeout 1500 lake env lean NF603Shard.lean | tee nf603-kernel.txt
+          python - <<'PY'
+          import os, re
+          from pathlib import Path
+          i=int(os.environ["SHARD"])
+          expected= min(32,242-i*32) if i<8 else 33
+          rows=re.findall(r"'nf603_[^']+' depends on axioms: \[([^\]]*)\]",Path("nf603-kernel.txt").read_text())
+          assert len(rows)==expected,(len(rows),expected)
+          assert all(set(x.strip() for x in r.split(",") if x.strip()) <= {"propext","Classical.choice","Quot.sound"} for r in rows)
+          print(f"NF603 shard {i}: {expected} kernel declarations checked")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf603-mode-kernel-${{ matrix.shard }}
+          path: |
+            NF603Shard.lean
+            nf603-kernel.txt
+          if-no-files-found: ignore
