@@ -43,8 +43,19 @@ def neutralNF567OriginalGroupOmega (g : Fin 67) : ℝ :=
 /-- Every frozen source group has strictly positive multiplicity;
 this is the exact 67-element original NF407 table, not a
 hypothetical collection of blocks. -/
+private theorem neutralNF567OriginalAllGroupMultiplicities_pos :
+    ∀ g : Fin 67, 0 < (neutralNF567OriginalGroupAt g).2 := by
+  decide +kernel
+
 theorem neutralNF567OriginalGroupAt_multiplicity_pos (g : Fin 67) :
-    0 < (neutralNF567OriginalGroupAt g).2 := by
+    0 < (neutralNF567OriginalGroupAt g).2 :=
+  neutralNF567OriginalAllGroupMultiplicities_pos g
+
+/-- Direct exact ORIGINAL 67-block multiplicity budget from the
+frozen NF407 table: 241 oscillator directions before the sinh
+pole, not an abstract Hermite interpolation dimension. -/
+theorem neutralNF567OriginalAll67GroupMultiplicities_sum :
+    (∑ g : Fin 67, (neutralNF567OriginalGroupAt g).2) = 241 := by
   decide +kernel
 
 /-- For every genuine frequency group g and EVERY k in its
