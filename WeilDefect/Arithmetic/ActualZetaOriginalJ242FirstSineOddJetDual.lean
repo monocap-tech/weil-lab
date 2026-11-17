@@ -21,8 +21,8 @@ For arbitrary real coefficient a : Fin 242 → ℝ, its true odd
 dual polynomial is p_a(T)=Σ_n (-1)^n a_n T^n. The k=0 identity
 is the exact positive-frequency evaluation
 
-  Σ_n a_n D^(2n+1) sin(ωx)|_(x=0)
-    = ω * p_a(ω²).
+  Σ_n a_n D^(2n+1) sin(freqx)|_(x=0)
+    = freq * p_a(freq²).
 
 This is the first source-analytic instance of the 67-node Hermite
 bridge, not a global 241-oscillator independence theorem.
@@ -32,15 +32,15 @@ bridge, not a global 241-oscillator independence theorem.
 at any real frequency. This uses the ORIGINAL 242 coefficient
 sign convention, not a replacement polynomial family. -/
 theorem neutralNF563DualPolynomial_sineZeroOrder
-    (a : Fin 242 → ℝ) (ω : ℝ) :
-    (∑ n : Fin 242, a n * ((-1 : ℝ) ^ n.val * ω ^ (2 * n.val + 1))) =
-      ω * (neutralNF557OriginalDualPolynomial a).eval (ω ^ 2) := by
+    (a : Fin 242 → ℝ) (freq : ℝ) :
+    (∑ n : Fin 242, a n * ((-1 : ℝ) ^ n.val * freq ^ (2 * n.val + 1))) =
+      freq * (neutralNF557OriginalDualPolynomial a).eval (freq ^ 2) := by
   unfold neutralNF557OriginalDualPolynomial
   rw [Polynomial.eval_finsetSum, Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro n hn
   rw [Polynomial.eval_monomial]
-  have hp : ω ^ (2 * n.val + 1) = (ω ^ 2) ^ n.val * ω := by
+  have hp : freq ^ (2 * n.val + 1) = (freq ^ 2) ^ n.val * freq := by
     rw [pow_add, pow_mul]
     ring
   rw [hp]
@@ -50,22 +50,22 @@ theorem neutralNF563DualPolynomial_sineZeroOrder
 sum of the real sine function, for every nonnegative integer
 initial-jet index from the original 242 rows. -/
 theorem neutralNF563SineSourceOddJets_dual
-    (a : Fin 242 → ℝ) (ω : ℝ) :
+    (a : Fin 242 → ℝ) (freq : ℝ) :
     (∑ n : Fin 242, a n *
       (iteratedDeriv (2 * n.val + 1)
-        (fun x : ℝ => Real.sin (ω * x))) 0) =
-      ω * (neutralNF557OriginalDualPolynomial a).eval (ω ^ 2) := by
+        (fun x : ℝ => Real.sin (freq * x))) 0) =
+      freq * (neutralNF557OriginalDualPolynomial a).eval (freq ^ 2) := by
   calc
     (∑ n : Fin 242, a n *
       (iteratedDeriv (2 * n.val + 1)
-        (fun x : ℝ => Real.sin (ω * x))) 0) =
+        (fun x : ℝ => Real.sin (freq * x))) 0) =
       ∑ n : Fin 242,
-        a n * ((-1 : ℝ) ^ n.val * ω ^ (2 * n.val + 1)) := by
+        a n * ((-1 : ℝ) ^ n.val * freq ^ (2 * n.val + 1)) := by
       apply Finset.sum_congr rfl
       intro n hn
       rw [neutralNF561ScaledSin_oddJet]
-    _ = ω * (neutralNF557OriginalDualPolynomial a).eval (ω ^ 2) :=
-      neutralNF563DualPolynomial_sineZeroOrder a ω
+    _ = freq * (neutralNF557OriginalDualPolynomial a).eval (freq ^ 2) :=
+      neutralNF563DualPolynomial_sineZeroOrder a freq
 
 /-- ALL original zero-monomial-order source oscillators, not just
 the first: whenever the authentic NF407 source index i carries
@@ -143,9 +143,9 @@ theorem neutralNF563ActualFirstOriginalOscillator_forcesRoot
     (neutralNF557OriginalDualPolynomial a).eval
       ((2 * Real.pi * (37 / 64 : ℝ)) ^ 2) = 0 := by
   rw [neutralNF563ActualFirstOriginalOscillator_dual] at hfirst
-  have hω : (2 * Real.pi * (37 / 64 : ℝ)) ≠ 0 := by
+  have hfreq : (2 * Real.pi * (37 / 64 : ℝ)) ≠ 0 := by
     positivity
-  exact (mul_eq_zero.mp hfirst).resolve_left hω
+  exact (mul_eq_zero.mp hfirst).resolve_left hfreq
 
 
 end
