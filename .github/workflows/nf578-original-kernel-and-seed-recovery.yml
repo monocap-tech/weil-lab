@@ -1,0 +1,45 @@
+name: NF578 original kernel closure and endpoint seed recovery
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242GlobalCombinationJets.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalStripLogCarrier.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalLogDyadicEnvelope.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointSeedGeometry.lean"
+      - ".github/workflows/nf578-original-kernel-and-seed-recovery.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf578-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  nf578-focused:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Full unconditional original finite Gram and real odd correction
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242CanonicalGramPositivity
+      - name: Independent exact scalar and actual convolution geometry
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointSeedGeometry
+      - name: Logarithmic carrier and physical convergence
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalStripLogCarrier
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalStripLogConvergence
+      - name: Literal logarithmic endpoint and L2 admission
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointLogGeometry
+      - name: Actual multiplicity dyadic envelope
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalLogDyadicEnvelope
+      - name: Physical strip full source graph
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalStripFullGraph

@@ -29,7 +29,8 @@ def neutralNF575StripConstant : ℝ :=
 
 theorem neutralNF575ContinuumWeight_integrable :
     Integrable neutralNF575ContinuumWeight volume := by
-  simpa only [neutralNF575ContinuumWeight, Real.norm_eq_abs] using
+  unfold neutralNF575ContinuumWeight
+  simpa only [Real.norm_eq_abs] using
     (integrable_one_add_norm (E := ℝ) (μ := (volume : Measure ℝ))
       (r := (5/4 : ℝ)) (by norm_num))
 

@@ -100,7 +100,8 @@ theorem neutralNF574LogStripEnvelope_sq_le (q : NeutralActualZetaDivisorCoordina
   have hnum : 1 + Real.log (2 + |q.1.val.im|) ≤ 2 * ((n:ℝ)+2) := by
     nlinarith only [hlog, hmul, Nat.cast_nonneg (α := ℝ) n]
   have hnum0 : 0 ≤ 1 + Real.log (2 + |q.1.val.im|) := by
-    have : 0 ≤ Real.log (2 + |q.1.val.im|) := Real.log_nonneg (by positivity)
+    have : 0 ≤ Real.log (2 + |q.1.val.im|) :=
+      Real.log_nonneg (by linarith [abs_nonneg q.1.val.im])
     linarith
   have hratio :
       (1 + Real.log (2 + |q.1.val.im|)) / (1 + |q.1.val.im|) ≤

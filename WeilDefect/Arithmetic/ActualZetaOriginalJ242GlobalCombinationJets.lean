@@ -31,9 +31,11 @@ theorem neutralNF569OriginalRealGenerator_contDiffAt
         y ^ neutralNF562OriginalOscillatorOrder i *
           neutralNF562OriginalOscillatorTrig i y) :=
       (contDiff_id.pow _).mul (neutralNF562OriginalOscillatorTrig_smooth i)
-    exact (hs.of_le le_top).contDiffAt
+    exact (hs.of_le (by simp)).contDiffAt
   · have hjlast : j = (⟨241, by omega⟩ : Fin 242) := by
       apply Fin.ext
+      change j.val = 241
+      have hjlt := j.isLt
       omega
     rw [hjlast]
     have he : nf545OriginalSelectedRealGenerator (⟨241, by omega⟩ : Fin 242) =
