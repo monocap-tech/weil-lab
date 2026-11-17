@@ -1,4 +1,5 @@
 import WeilDefect.Arithmetic.ActualZetaOriginalFixedpointSourceJets
+import WeilDefect.Arithmetic.ActualZetaOriginalCachedSourceEquality
 
 namespace WeilDefect
 noncomputable section
@@ -19,7 +20,8 @@ theorem neutralNF597SourceJet_zero (a : Fin 242 → ℝ) (b : Fin 4 → ℝ) :
   simpa using ht.symm
 
 def neutralNF597EndpointCheck : Bool :=
-  let v := neutralNF592OriginalJetBall 0
+  let v := neutralNF593ReadBall (neutralNF593SourceTable
+    (neutralNF592PiBall neutralNF592Q 200) neutralNF592Q 220 1) 0
   decide (v.mid+v.rad < -(1/10^11:ℚ))
 
 /-- The endpoint sign is uniform on the genuine primitive box.
@@ -39,7 +41,13 @@ theorem neutralNF597Endpoint_negative_of_check
   rw [neutralNF597SourceJet_zero] at h
   have hc : (neutralNF592OriginalJetBall 0).mid+
       (neutralNF592OriginalJetBall 0).rad < -(1/10^11:ℚ) := by
-    exact of_decide_eq_true hcheck
+    have hq := of_decide_eq_true hcheck
+    change (neutralNF593ReadBall (neutralNF593SourceTable
+      (neutralNF592PiBall neutralNF592Q 200) neutralNF592Q 220 1) 0).mid +
+      (neutralNF593ReadBall (neutralNF593SourceTable
+      (neutralNF592PiBall neutralNF592Q 200) neutralNF592Q 220 1) 0).rad < -(1/10^11:ℚ) at hq
+    rw [neutralNF593SourceTable_read _ _ _ _ _ (by decide : 0 < 1)] at hq
+    exact hq
   have hc' : ((neutralNF592OriginalJetBall 0).mid:ℝ)+
       ((neutralNF592OriginalJetBall 0).rad:ℝ) < -(1/10^11:ℝ) := by exact_mod_cast hc
   unfold NF591Ball.Contains at h
