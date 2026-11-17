@@ -140,7 +140,7 @@ theorem neutralNF585TwistedPanel_strip
     have haδ : a ≤ neutralNF578Delta := by
       unfold a neutralNF578Delta
       exact div_le_div_of_nonneg_left (by norm_num) (by norm_num) ht'
-    have hsplit : |t|*a = 1 := by change T*(1/T)=1; field_simp
+    have hsplit : |t| * a = 1 := by change T*(1/T)=1; field_simp
     have hf := neutralNF584SplitPanel A A' neutralNF578B a neutralNF578Delta
       neutralNF578C0 neutralNF578C1 t ha haδ hδB hC0 hC1
       (fun d hd => hAd d ⟨ha.le.trans hd.1,hd.2⟩) hA
