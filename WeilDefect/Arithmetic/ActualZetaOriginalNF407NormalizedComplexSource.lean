@@ -20,7 +20,7 @@ def neutralNF588SelectedComplex (j : Fin 242) (z : ℂ) : ℂ :=
   else Complex.sinh (z/2)
 
 def neutralNF588CriticalComplex (j : Fin 4) (z : ℂ) : ℂ :=
-  (∑ k : Fin 32, (neutralNF587CriticalSines[j.val]![k.val]! : ℂ) *
+  (∑ k : Fin 32, ((neutralNF587CriticalSines[j.val]!)[k.val]! : ℂ) *
       Complex.sin (2*(Real.pi:ℂ)*(neutralNF587CriticalFrequencies[k.val]! : ℂ)*z)) +
     (neutralNF587CriticalPoles[j.val]! : ℂ)*Complex.sinh (z/2)
 
