@@ -1,5 +1,6 @@
 import WeilDefect.Arithmetic.ActualZetaOriginalJ242GlobalIndependence
 import WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity
+import WeilDefect.Arithmetic.ActualZetaOriginalJ242RealPhysicalCorrectedTest
 
 namespace WeilDefect
 noncomputable section
@@ -68,6 +69,32 @@ theorem neutralNF570Original242OddSupportedRightInverse :
       neutralNF569CanonicalOriginalGram_pos
   · exact neutralNF551CanonicalRightInverse_odd
       neutralNF569CanonicalOriginalGram_pos
+
+/-- Terminal finite-source interface: the unchanged canonical
+correction of an a.e.-real physical target by an odd real
+collar test is itself real and odd, exactly moment matched,
+supported in E, and admitted to the true log carrier.
+There is no explicit Gram or independence premise. As a proof
+candidate, it still requires the entire imported chain to pass. -/
+theorem neutralNF572OriginalCanonicalRealOddCorrectedTest
+    (ell : RealComplexL2)
+    (hell : ∀ᵐ x ∂volume, conj (ell x) = ell x)
+    (g : 𝓢(ℝ, ℂ))
+    (hreal : ∀ x : ℝ, conj (g x) = g x)
+    (hodd : ∀ x : ℝ, g (-x) = -g x)
+    (hsupp : ∀ x : ℝ, x ∉ neutralNF543OriginalCollars → g x = 0) :
+    let f := neutralNF543Correct neutralNF546OriginalSelectedMoments
+      (neutralNF548CanonicalRightInverse neutralNF569CanonicalOriginalGram_pos)
+      ell g
+    (∀ x : ℝ, conj (f x) = f x) ∧
+    (∀ x : ℝ, f (-x) = -f x) ∧
+    (∀ x : ℝ, x ∉ neutralNF543OriginalCollars → f x = 0) ∧
+    neutralNF546OriginalSelectedMoments (f.toLp 2 volume) =
+      neutralNF546OriginalSelectedMoments ell ∧
+    (∃ k : NeutralLogHilbertCarrier (11 / 10 : ℝ),
+      neutralLogPhysical k.val = f.toLp 2 volume) :=
+  neutralNF572OriginalCorrectedTest_realOddSupported
+    neutralNF569CanonicalOriginalGram_pos ell hell g hreal hodd hsupp
 
 end
 end WeilDefect
