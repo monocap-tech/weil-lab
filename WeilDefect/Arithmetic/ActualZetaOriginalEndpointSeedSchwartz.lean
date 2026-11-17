@@ -5,7 +5,7 @@ import WeilDefect.Arithmetic.ActualZetaOriginalCollar242Correction
 namespace WeilDefect
 noncomputable section
 open MeasureTheory
-open scoped SchwartzMap ComplexConjugate
+open scoped SchwartzMap ComplexConjugate ContDiff
 
 /-! NF581: package the literal real-valued seed as a compact smooth
 complex Schwartz test, with the original moment-correction geometry.
