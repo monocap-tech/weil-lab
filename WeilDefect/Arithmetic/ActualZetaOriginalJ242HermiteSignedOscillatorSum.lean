@@ -157,10 +157,15 @@ theorem neutralNF566ActualAnalyticOddJets_force_HermiteMultiplicity
       (neutralNF565OriginalFrequencyHermitePolynomial a) := by
   apply neutralNF566OriginalSignedOddJets_force_HermiteMultiplicity a freq m hp
   intro k hk
-  convert hkernel k hk using 1
-  apply Finset.sum_congr rfl
-  intro n hn
-  rw [hactual k hk n]
+  calc
+    (∑ n : Fin 242, a n *
+      neutralNF566OriginalSignedOscillatorJetCoefficient n.val k freq) =
+      ∑ n : Fin 242, a n *
+        (iteratedDeriv (2 * n.val + 1) (g k)) 0 := by
+      apply Finset.sum_congr rfl
+      intro n hn
+      rw [hactual k hk n]
+    _ = 0 := hkernel k hk
 
 end
 end WeilDefect
