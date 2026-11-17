@@ -67,10 +67,10 @@ theorem neutralNF574ActualFullGraphLimit_of_dyadicDomination
     (hkn : ∀ q : NeutralActualZetaDivisorCoordinate,
       ‖inner ℂ (neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q)) k‖^2
         ≤ C * neutralNF574LogDyadicWeight q)
-    (hgp : ∀ i q : _,
+    (hgp : ∀ (i : ι) (q : NeutralActualZetaDivisorCoordinate),
       ‖inner ℂ (neutralLogPositivePairSource a (neutralActualZetaDivisorOrdinate q)) (g i)‖^2
         ≤ C * neutralNF574LogDyadicWeight q)
-    (hgn : ∀ i q : _,
+    (hgn : ∀ (i : ι) (q : NeutralActualZetaDivisorCoordinate),
       ‖inner ℂ (neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q)) (g i)‖^2
         ≤ C * neutralNF574LogDyadicWeight q) :
     ∃ (K : NeutralActualZetaSourceDomain a)
@@ -109,9 +109,11 @@ theorem neutralNF574ActualFullGraphLimit_of_dyadicDomination
       have h := ((continuous_const : Continuous (fun _ : NeutralLogHilbertCarrier a =>
         neutralLogPositivePairSource a (neutralActualZetaDivisorOrdinate q))).inner
           (𝕜 := ℂ) continuous_id).continuousAt.tendsto.comp hg
-      simpa only [Function.comp_def, (neutralActualZetaSourceAnalysis_sampling a K q).1,
-        hK, (neutralActualZetaFullSourceLiftOfSquareSummable_samples a (g _) _ _ q).1]
-        using h
+      change Tendsto (fun i => inner ℂ
+        (neutralLogPositivePairSource a (neutralActualZetaDivisorOrdinate q)) (g i))
+        l (nhds (inner ℂ
+          (neutralLogPositivePairSource a (neutralActualZetaDivisorOrdinate q)) k))
+      simpa only [Function.comp_def] using h
     · filter_upwards [] with i q
       rw [(neutralActualZetaSourceAnalysis_sampling a (G i) q).1,
         (neutralActualZetaSourceAnalysis_sampling a K q).1, hG i, hK]
@@ -124,9 +126,11 @@ theorem neutralNF574ActualFullGraphLimit_of_dyadicDomination
       have h := ((continuous_const : Continuous (fun _ : NeutralLogHilbertCarrier a =>
         neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q))).inner
           (𝕜 := ℂ) continuous_id).continuousAt.tendsto.comp hg
-      simpa only [Function.comp_def, (neutralActualZetaSourceAnalysis_sampling a K q).2,
-        hK, (neutralActualZetaFullSourceLiftOfSquareSummable_samples a (g _) _ _ q).2]
-        using h
+      change Tendsto (fun i => inner ℂ
+        (neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q)) (g i))
+        l (nhds (inner ℂ
+          (neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q)) k))
+      simpa only [Function.comp_def] using h
     · filter_upwards [] with i q
       rw [(neutralActualZetaSourceAnalysis_sampling a (G i) q).2,
         (neutralActualZetaSourceAnalysis_sampling a K q).2, hG i, hK]
