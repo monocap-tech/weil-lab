@@ -116,6 +116,7 @@ theorem neutralNF584OscillatoryPanel
       _ = _ := by
         apply intervalIntegral.integral_congr
         intro d _
+        change ‖b' d * P d‖ = ‖b' d‖
         rw [norm_mul,show ‖P d‖ = 1 from neutralNF584Phase_norm t d,mul_one]
   calc
     _ = ‖(∫ d in a..δ, b d*P d)*k‖ := by
