@@ -60,11 +60,15 @@ theorem neutralNF591AtanGeometric (t : ℝ) (N : ℕ) :
   induction N with
   | zero => simp
   | succ N ih =>
-    rw [sum_range_succ, pow_succ, show 2*(N+1)=2*N+2 by omega,pow_add,← sub_eq_zero]
-    have h : (1+t^2:ℝ) ≠ 0 := by positivity
-    rw [ih]
-    field_simp
-    ring
+    rw [sum_range_succ, show (-1:ℝ)^(N+1)=(-1)^N*(-1) by rw [pow_succ],
+      show 2*(N+1)=2*N+2 by omega,pow_add]
+    calc
+      _ = (∑ n ∈ range N, (-1:ℝ)^n*t^(2*n))+
+          (-1:ℝ)^N*t^(2*N)/(1+t^2) := ih
+      _ = _ := by
+        have hh : (1+t^2:ℝ) ≠ 0 := by positivity
+        field_simp
+        ring
 
 /-- Integrate the finite geometric identity, paying the entire
 remainder through its absolute value. This is a non-asymptotic
