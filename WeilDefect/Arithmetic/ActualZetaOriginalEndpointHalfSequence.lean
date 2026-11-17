@@ -109,9 +109,9 @@ theorem neutralNF582ActualHalf_strip
   rw [neutralNF582ActualHalf_transform h hi hh s hs0 hs' z,
     norm_mul,norm_mul,norm_mul,Complex.norm_real,Real.norm_eq_abs,abs_of_pos hs0]
   calc
-    _ ≤ (Real.exp (neutralNF578Epsilon s/2) *
-        (s * Real.exp ((1-s)*neutralNF578Center/2))) *
-          (C * neutralNF575StripEnvelope (s*z.re)) := by
+    _ ≤ Real.exp (neutralNF578Epsilon s/2) *
+        ((s * Real.exp ((1-s)*neutralNF578Center/2)) *
+          (C * neutralNF575StripEnvelope (s*z.re))) := by
       exact mul_le_mul hm
         (mul_le_mul (mul_le_mul_of_nonneg_left hphase hs0.le) hseed
           (norm_nonneg _) (mul_nonneg hs0.le (Real.exp_pos _).le))
