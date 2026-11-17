@@ -90,8 +90,11 @@ theorem neutralNF581OriginalHalfAndEndpoint_memLp
           (by norm_num : 0 < (1/4:ℝ))
         linarith only [h]
       have hb : |U (B-d)| ≤ M :=
-        hU (B-d) ⟨by dsimp [B] at *; linarith [hd.2],
-          by dsimp [B] at *; linarith⟩
+        hU (B-d) ⟨by
+          have hdδ : d < (1/500:ℝ) := hd.2
+          dsimp [B]
+          linarith,
+          by dsimp [B]; linarith⟩
       have hnorm : ‖H d‖ ≤ (M/2)*(4*(B/d)^(1/4:ℝ)) := by
         simp only [H,Set.indicator_of_mem hd,Complex.norm_real,
           Real.norm_eq_abs,abs_mul,abs_div,abs_of_nonneg hl0,
@@ -99,6 +102,7 @@ theorem neutralNF581OriginalHalfAndEndpoint_memLp
         exact mul_le_mul (div_le_div_of_nonneg_right hb (by norm_num)) hl
           hl0 (by positivity)
       have hsq := pow_le_pow_left₀ (norm_nonneg (H d)) hnorm 2
+      change ‖(‖H d‖^2 : ℝ)‖ ≤ _
       rw [Real.norm_eq_abs,abs_of_nonneg (sq_nonneg ‖H d‖),
         Set.indicator_of_mem hd]
       calc
@@ -123,7 +127,6 @@ theorem neutralNF581OriginalHalfAndEndpoint_memLp
     by_cases hx : x ∈ Set.Ioo ((11/10:ℝ)-1/500) (11/10:ℝ)
     · dsimp only [h, H, neutralNF575OriginalEndpointHalf]
       rw [if_pos hx, Set.indicator_of_mem (heq.mpr hx), sub_sub_cancel]
-      rfl
     · have hn : B-x ∉ Set.Ioo (0:ℝ) δ := fun hh => hx (heq.mp hh)
       dsimp only [h, H, neutralNF575OriginalEndpointHalf]
       rw [if_neg hx, Set.indicator_of_notMem hn]
