@@ -1,0 +1,37 @@
+name: NF571 original source block recovery and correction reality
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242Actual67BlockCoverage.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242CanonicalCorrectionReality.lean"
+      - ".github/workflows/nf571-original-reality-and-block-recovery.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: nf571-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  nf571-independent-reality-and-source-blocks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and restore Mathlib cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Repair actual 67 source block coverage compiler failure
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242Actual67BlockCoverage
+      - name: Actual simultaneous source root budget at repaired coverage
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242Original68RootBudget
+      - name: Original real physical moments, Gram and inverse equivariance
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242CanonicalCorrectionReality
+      - name: Full original independence and physical endpoint using repaired source index
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242CanonicalGramPositivity
