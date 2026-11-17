@@ -22,12 +22,11 @@ theorem neutralNF584Amplitude_hasDerivAt (B d : ℝ) (A A' : ℝ → ℂ)
       (neutralNF584AmplitudeDeriv B A A' d) d := by
   have hlog : HasDerivAt (neutralNF584LogKernel B) (-(d⁻¹)) d := by
     unfold neutralNF584LogKernel
-    simpa using (hasDerivAt_const d (Real.log B)).sub (Real.hasDerivAt_log hd.ne')
+    exact (Real.hasDerivAt_log hd.ne').const_sub (Real.log B)
   have hc := hlog.ofReal_comp
   have h := hA.mul hc
   unfold neutralNF584Amplitude neutralNF584AmplitudeDeriv
-  push_cast at h
-  convert h using 1 <;> ring
+  convert h using 1 <;> push_cast <;> ring
 
 theorem neutralNF584LogKernel_mass_le (B a δ : ℝ)
     (ha : 0 < a) (haδ : a ≤ δ) (hδB : δ ≤ B) :
@@ -133,7 +132,7 @@ theorem neutralNF584SplitPanel
     (hi : IntervalIntegrable (neutralNF584AmplitudeDeriv B A A') volume a δ)
     (hfull : IntervalIntegrable
       (fun d => neutralNF584Amplitude B A d * neutralNF584Phase t d) volume 0 δ)
-    (ht : 0 < |t|) (hsplit : |t|*a = 1) :
+    (ht : 0 < |t|) (hsplit : |t| * a = 1) :
     |t| * ‖∫ d in (0:ℝ)..δ, neutralNF584Amplitude B A d * neutralNF584Phase t d‖ ≤
       C0*(3*neutralNF584LogKernel B a+1) +
         C1*δ*(neutralNF584LogKernel B δ+1) := by
@@ -145,10 +144,10 @@ theorem neutralNF584SplitPanel
   have hhigh := neutralNF584HighPanel A A' B a δ C0 C1 t ha haδ hδB hC0 hC1
     hder (fun d hd => hA d ⟨ha.le.trans hd.1,hd.2⟩) hA' hi
   have hnear' := mul_le_mul_of_nonneg_left hnear ht.le
-  have hsplit' : |t|*(C0*a*(neutralNF584LogKernel B a+1)) =
+  have hsplit' : |t| * (C0*a*(neutralNF584LogKernel B a+1)) =
       C0*(neutralNF584LogKernel B a+1) := by
     calc
-      _ = (|t|*a)*(C0*(neutralNF584LogKernel B a+1)) := by ring
+      _ = (|t| * a)*(C0*(neutralNF584LogKernel B a+1)) := by ring
       _ = _ := by rw [hsplit,one_mul]
   rw [hsplit'] at hnear'
   have hsub1 : uIcc (0:ℝ) a ⊆ uIcc 0 δ := by
@@ -159,7 +158,7 @@ theorem neutralNF584SplitPanel
     exact Icc_subset_Icc ha.le le_rfl
   have hadd := intervalIntegral.integral_add_adjacent_intervals
     (hfull.mono_set hsub1) (hfull.mono_set hsub2)
-  change |t|*‖∫ d in (0:ℝ)..δ, f d‖ ≤ _
+  change |t| * ‖∫ d in (0:ℝ)..δ, f d‖ ≤ _
   rw [← hadd]
   have htri := mul_le_mul_of_nonneg_left
     (norm_add_le (∫ d in (0:ℝ)..a, f d) (∫ d in a..δ, f d)) ht.le
