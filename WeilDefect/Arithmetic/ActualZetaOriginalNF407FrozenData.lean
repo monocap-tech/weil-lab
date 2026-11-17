@@ -5,6 +5,7 @@ import WeilDefect.Arithmetic.ActualZetaOriginalNF407DyadicChunk2
 import WeilDefect.Arithmetic.ActualZetaOriginalNF407DyadicChunk3
 
 namespace WeilDefect
+set_option maxHeartbeats 2000000
 
 /-! Generated losslessly from frozen NF407 native JSON.
 The 241 oscillator rows are followed by the separate sinh pole.
