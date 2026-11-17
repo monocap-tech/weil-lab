@@ -79,7 +79,7 @@ theorem neutralNF596C1_strip (U U' : ℝ → ℝ)
   have hUV : U = fun x => c*V x := by
     funext x
     dsimp [V]
-    field_simp
+    field_simp [hc.ne']
   have hhalf : neutralNF575OriginalEndpointHalf U =
       fun x => c*neutralNF575OriginalEndpointHalf V x := by
     funext x
@@ -146,7 +146,7 @@ theorem neutralNF596NF407SeedGraph (a : Fin 242 → ℝ) (b : Fin 4 → ℝ) :
     (neutralNF587Source a b) (deriv (neutralNF587Source a b))
     (neutralNF587Source_measurable a b)
   · exact (neutralNF587Source_contDiff a b).continuous.continuousOn
-  · exact (neutralNF587Source_deriv_continuous a b).continuousOn
+  · exact (neutralNF587Source_derivative_continuous a b).continuousOn
   · intro x _
     exact neutralNF587Source_hasDerivAt a b x
 
