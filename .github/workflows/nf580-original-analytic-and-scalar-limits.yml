@@ -1,0 +1,36 @@
+name: NF580 original analytic identity and endpoint scalar limits
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242AnalyticIdentity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalLogDyadicGraphLimit.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointScalarLimits.lean"
+      - ".github/workflows/nf580-original-analytic-and-scalar-limits.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf580-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  nf580-focused:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Actual analytic identity and unconditional canonical Gram
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242CanonicalGramPositivity
+      - name: Independent normalized bump sample limits and supported complex twist
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointScalarLimits
+      - name: Actual multiplicity divisor graph dominated convergence
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalLogDyadicGraphLimit
+      - name: Complete original physical strip graph limit
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalStripFullGraph
