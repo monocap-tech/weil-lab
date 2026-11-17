@@ -5,7 +5,7 @@ import Mathlib.Analysis.SpecialFunctions.Complex.Analytic
 namespace WeilDefect
 noncomputable section
 open MeasureTheory
-open scoped SchwartzMap
+open scoped SchwartzMap ComplexConjugate
 
 /-!
 NF551 — ORIGINAL SOURCE LOCAL-TO-GLOBAL IDENTITY THEOREM.
@@ -38,7 +38,7 @@ theorem neutralNF551OriginalRealGenerator_analytic
     AnalyticOnNhd ℝ (nf545OriginalSelectedRealGenerator i) Set.univ := by
   intro x hx
   unfold nf545OriginalSelectedRealGenerator
-  split_ifs <;> dsimp <;> fun_prop
+  split_ifs <;> (try dsimp) <;> fun_prop
 
 /-- Analyticity survives the faithful REAL-to-COMPLEX embedding
 of the ACTUAL original selected J242 source generator. -/
@@ -48,7 +48,9 @@ theorem neutralNF551OriginalComplexGenerator_analytic
   have h := (Complex.ofRealCLM.analyticOnNhd Set.univ).comp
     (neutralNF551OriginalRealGenerator_analytic i)
     (Set.mapsTo_univ _ _)
-  simpa only [Function.comp_def, neutralNF546OriginalComplexGenerator] using h
+  change AnalyticOnNhd ℝ
+    (fun x => Complex.ofRealCLM (nf545OriginalSelectedRealGenerator i x)) Set.univ
+  exact h
 
 /-- ALL finite complex combinations of the original 242 selected
 source generator functions are real-analytic on the ENTIRE line,
@@ -60,7 +62,8 @@ theorem neutralNF551OriginalSourceCombination_analytic
   apply Finset.analyticOnNhd_fun_sum
   intro i hi
   have hs := neutralNF551OriginalComplexGenerator_analytic i
-  simpa only [smul_eq_mul] using hs.const_smul (c := d i)
+  change AnalyticOnNhd ℝ (d i • neutralNF546OriginalComplexGenerator i) Set.univ
+  exact hs.const_smul (c := d i)
 
 /-- The fixed canonical original source collar interval I
 contains the ORIGINAL positive bump center c. -/
