@@ -1,0 +1,74 @@
+name: NF594 analytic tail cutoff and kernel block trials
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalAnalyticTailCutoff.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalReducedJetBudget.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalKernelJetBlocks.lean"
+      - ".github/workflows/nf594-original-kernel-blocks.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf594-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounds-and-kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Exact integer and analytic cutoff arithmetic
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalAnalyticTailCutoff
+      - name: Reduced original jet budget
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalReducedJetBudget
+      - name: Block checker soundness and joining
+        id: blocks
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalKernelJetBlocks
+      - name: Cached executable replay and all 800 endpoints
+        if: ${{ always() && steps.blocks.outcome == 'success' }}
+        run: |
+          set -o pipefail
+          timeout 300 lake env lean --run scripts/local_replay/NF593CachedSourcePreflight.lean | tee nf594-preflight.txt
+          python scripts/local_replay/verify_nf593_cached_source_preflight.py nf594-preflight.txt
+      - name: First order kernel trial (no native_decide)
+        id: first
+        if: ${{ always() && steps.blocks.outcome == 'success' }}
+        run: |
+          cat > /tmp/NF594First.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalKernelJetBlocks
+          open WeilDefect
+          set_option maxRecDepth 100000
+          set_option maxHeartbeats 10000000
+          theorem nf594_first : neutralNF594BlockCheck 0 1 = true := by decide +kernel
+          #print axioms nf594_first
+          EOF
+          timeout 360 lake env lean /tmp/NF594First.lean
+      - name: Five independent bounded kernel block trials
+        if: ${{ always() && steps.first.outcome == 'success' }}
+        run: |
+          for lo in 0 50 100 150 200; do
+            cat > /tmp/NF594Block.lean <<EOF
+          import WeilDefect.Arithmetic.ActualZetaOriginalKernelJetBlocks
+          open WeilDefect
+          set_option maxRecDepth 100000
+          set_option maxHeartbeats 10000000
+          theorem nf594_block_${lo} : neutralNF594BlockCheck ${lo} 50 = true := by decide +kernel
+          #print axioms nf594_block_${lo}
+          EOF
+            timeout 300 lake env lean /tmp/NF594Block.lean || exit $?
+          done
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() && steps.blocks.outcome == 'success' }}
+        with:
+          name: NF594-preflight
+          path: nf594-preflight.txt
+          if-no-files-found: ignore
