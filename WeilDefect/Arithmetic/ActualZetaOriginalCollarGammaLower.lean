@@ -68,7 +68,10 @@ theorem neutralNF599GammaGainSeries (t : ℝ) :
       push_cast
       ring
     rw [hq,hzq]
-    simp only [Complex.sub_re,← Complex.ofReal_div,Complex.ofReal_one,Complex.ofReal_re,← Complex.ofReal_inv,one_div]
+    have hreal : (1/(((n:ℝ)+1+1/4:ℝ):ℂ)).re =
+        1/((n:ℝ)+1+1/4) := by
+      rw [← Complex.ofReal_one,← Complex.ofReal_div,Complex.ofReal_re]
+    simp only [Complex.sub_re,hreal]
     ring
   have he' :
       (fun n : ℕ => Complex.reCLM
@@ -87,8 +90,9 @@ theorem neutralNF599GammaGainSeries (t : ℝ) :
   rw [hz']
   norm_num
   dsimp [z]
-  push_cast
-  congr 1 <;> ring
+  simp only [Complex.normSq_apply,Complex.add_re,Complex.add_im,Complex.mul_re,
+    Complex.mul_im,Complex.ofReal_re,Complex.ofReal_im,Complex.I_re,Complex.I_im]
+  ring
 
 theorem neutralNF599GammaLower_partial (t : ℝ) (N : ℕ) :
     Zeta23.EF.gammaBracket 0 + neutralNF599Gain (1/4) t +
