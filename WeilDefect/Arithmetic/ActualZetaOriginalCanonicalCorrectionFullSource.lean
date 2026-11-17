@@ -63,18 +63,42 @@ theorem neutralNF573CanonicalColumn_fullSource (j : Fin 242) :
 /-- The finite graph synthesis is continuous because its coefficient
 domain is finite-dimensional. The column graph vectors must realize
 the actual NF548 columns, with both complete P/N vectors. -/
+/-- Perform finite synthesis in the ambient product, where the
+continuous additive structure is already available, then restrict
+the range to the actual closed source submodule. -/
+def neutralNF594AmbientColumnSynthesis
+    (v : Fin 242 → NeutralActualZetaSourceDomain (11 / 10 : ℝ)) :
+    (Fin 242 → ℂ) →L[ℂ] NeutralActualZetaSourceAmbient (11 / 10 : ℝ) :=
+  ∑ j : Fin 242,
+    (ContinuousLinearMap.proj (R := ℂ) (φ := fun _ : Fin 242 => ℂ) j).smulRight (v j).val
+
+theorem neutralNF594AmbientColumnSynthesis_apply
+    (v : Fin 242 → NeutralActualZetaSourceDomain (11 / 10 : ℝ)) (d : Fin 242 → ℂ) :
+    neutralNF594AmbientColumnSynthesis v d =
+      ∑ j : Fin 242, d j • (v j).val := by
+  simp [neutralNF594AmbientColumnSynthesis,ContinuousLinearMap.sum_apply]
+
 def neutralNF573GraphColumnSynthesis
     (v : Fin 242 → NeutralActualZetaSourceDomain (11 / 10 : ℝ)) :
-    (Fin 242 → ℂ) →L[ℂ] NeutralActualZetaSourceDomain (11 / 10 : ℝ) :=
-  ∑ j : Fin 242,
-    (ContinuousLinearMap.proj (R := ℂ) (φ := fun _ : Fin 242 => ℂ) j).smulRight (v j)
+    (Fin 242 → ℂ) →L[ℂ] NeutralActualZetaSourceDomain (11 / 10 : ℝ) := by
+  refine (neutralNF594AmbientColumnSynthesis v).codRestrict
+    (neutralActualZetaSourceGraph (11/10:ℝ)).toSubmodule ?_
+  intro d
+  rw [neutralNF594AmbientColumnSynthesis_apply]
+  apply Submodule.sum_mem
+  intro j _
+  exact Submodule.smul_mem _ _ (v j).property
 
 theorem neutralNF573GraphColumnSynthesis_apply
     (v : Fin 242 → NeutralActualZetaSourceDomain (11 / 10 : ℝ))
     (d : Fin 242 → ℂ) :
     neutralNF573GraphColumnSynthesis v d = ∑ j : Fin 242, d j • v j := by
-  simp [neutralNF573GraphColumnSynthesis,ContinuousLinearMap.sum_apply]
-
+  apply Subtype.ext
+  change neutralNF594AmbientColumnSynthesis v d = _
+  rw [neutralNF594AmbientColumnSynthesis_apply]
+  change _ = ((neutralActualZetaSourceGraph (11/10:ℝ)).toSubmodule.subtype (∑ j : Fin 242, d j • v j))
+  rw [map_sum]
+  rfl
 
 /-- Exact physical custody of the graph synthesis, conditional only
 on the individual column physical equalities. -/
@@ -91,7 +115,7 @@ theorem neutralNF573GraphColumnSynthesis_physical
       (SchwartzMap.toLpCLM ℂ ℂ 2 volume) (neutralNF548CanonicalOriginalColumns j)) =
     (SchwartzMap.toLpCLM ℂ ℂ 2 volume)
       (neutralNF544BumpSynthesis neutralNF548CanonicalOriginalColumns d)
-  simp only [neutralNF544BumpSynthesis,map_sum,map_smul]
+  simp only [neutralNF544BumpSynthesis,Module.Basis.constr_apply_fintype, Pi.basisFun_repr,map_sum,map_smul]
 
 
 /-- The SAME actual NF544 inverse Gram, followed by finite synthesis
