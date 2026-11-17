@@ -7,7 +7,7 @@ namespace WeilDefect
 noncomputable section
 open MeasureTheory Filter Module
 open scoped SchwartzMap ComplexConjugate
-set_option maxHeartbeats 1500000
+set_option maxHeartbeats 6000000
 
 /-!
 NF573: lift the actual finite-rank correction into the original
@@ -66,23 +66,15 @@ the actual NF548 columns, with both complete P/N vectors. -/
 def neutralNF573GraphColumnSynthesis
     (v : Fin 242 → NeutralActualZetaSourceDomain (11 / 10 : ℝ)) :
     (Fin 242 → ℂ) →L[ℂ] NeutralActualZetaSourceDomain (11 / 10 : ℝ) :=
-  by
-    let L := (Pi.basisFun ℂ (Fin 242)).constr ℂ v
-    refine L.mkContinuous (∑ j : Fin 242, ‖v j‖) ?_
-    intro d
-    change ‖((Pi.basisFun ℂ (Fin 242)).constr ℂ v) d‖ ≤ _
-    rw [Module.Basis.constr_apply_fintype]
-    simp only [Pi.basisFun_repr]
-    calc
-      ‖∑ j : Fin 242, d j • v j‖ ≤ ∑ j : Fin 242, ‖d j • v j‖ := norm_sum_le _ _
-      _ ≤ ∑ j : Fin 242, ‖v j‖ * ‖d‖ := by
-        apply Finset.sum_le_sum
-        intro j hj
-        calc
-          ‖d j • v j‖ ≤ ‖d j‖ * ‖v j‖ := norm_smul_le _ _
-          _ ≤ ‖d‖ * ‖v j‖ := mul_le_mul_of_nonneg_right (norm_le_pi_norm d j) (norm_nonneg _)
-          _ = _ := mul_comm _ _
-      _ = _ := Finset.sum_mul ..
+  ∑ j : Fin 242,
+    (ContinuousLinearMap.proj (R := ℂ) (φ := fun _ : Fin 242 => ℂ) j).smulRight (v j)
+
+theorem neutralNF573GraphColumnSynthesis_apply
+    (v : Fin 242 → NeutralActualZetaSourceDomain (11 / 10 : ℝ))
+    (d : Fin 242 → ℂ) :
+    neutralNF573GraphColumnSynthesis v d = ∑ j : Fin 242, d j • v j := by
+  simp [neutralNF573GraphColumnSynthesis,ContinuousLinearMap.sum_apply]
+
 
 /-- Exact physical custody of the graph synthesis, conditional only
 on the individual column physical equalities. -/
@@ -93,13 +85,14 @@ theorem neutralNF573GraphColumnSynthesis_physical
     (d : Fin 242 → ℂ) :
     neutralNF573OriginalGraphPhysical (neutralNF573GraphColumnSynthesis v d) =
       (neutralNF544BumpSynthesis neutralNF548CanonicalOriginalColumns d).toLp 2 volume := by
-  change neutralNF573OriginalGraphPhysical
-      (((Pi.basisFun ℂ (Fin 242)).constr ℂ v) d) =
-    SchwartzMap.toLpCLM ℂ ℂ 2 volume
+  rw [neutralNF573GraphColumnSynthesis_apply,map_sum]
+  simp only [map_smul,hv]
+  change (∑ j : Fin 242, d j •
+      (SchwartzMap.toLpCLM ℂ ℂ 2 volume) (neutralNF548CanonicalOriginalColumns j)) =
+    (SchwartzMap.toLpCLM ℂ ℂ 2 volume)
       (neutralNF544BumpSynthesis neutralNF548CanonicalOriginalColumns d)
-  simp only [neutralNF544BumpSynthesis, Module.Basis.constr_apply_fintype,
-    Pi.basisFun_repr, map_sum, map_smul, hv]
-  rfl
+  simp only [neutralNF544BumpSynthesis,map_sum,map_smul]
+
 
 /-- The SAME actual NF544 inverse Gram, followed by finite synthesis
 into the complete source graph. Positivity remains an explicit premise. -/
