@@ -1,0 +1,118 @@
+name: NF565 original 67 block Hermite roots and full 68 node budget
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242FrequencyBlockHermiteMultiplicity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242FiniteRootBudget.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242Exact68NodeBudget.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242OddDualHermitePolynomialDerivatives.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGramWeightedSquare.lean"
+      - ".github/workflows/nf565-original-68-node-budget.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+  workflow_dispatch:
+
+jobs:
+  nf565-generic-root-budget-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Check exact root multiset cardinality exceeds finite source degree
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242FiniteRootBudget
+      - name: Reject proof holes
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242FiniteRootBudget.lean; then
+            exit 1
+          fi
+
+  nf565-actual-original-68-node-ledger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Compile authentic original 67 positive real squares and pole negative node budget
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242Exact68NodeBudget
+      - name: Reject proof holes
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242Exact68NodeBudget.lean; then
+            exit 1
+          fi
+
+  nf565-genuine-original-group-jet-multiplicity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Check repaired NF564 exact odd dual Hermite polynomial coefficient bridge
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddDualHermitePolynomialDerivatives
+      - name: Check original true sine cosine analytic-to-Hermite bridge
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242SourceIndexedHermiteBridge
+      - name: Check each literal original 67 frequency block gives all m_f squared-node roots
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242FrequencyBlockHermiteMultiplicity
+      - name: Reject proof holes
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242FrequencyBlockHermiteMultiplicity.lean; then
+            exit 1
+          fi
+
+  nf565-original-nf550-physical-gram-recovery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore pinned Mathlib cache
+        run: lake exe cache get
+      - name: Genuine original NF549 accepted full physical L2 and canonical integral
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
+      - name: Genuine original NF550 242 source weighted squared modulus
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramWeightedSquare
+      - name: NF550 canonical Gram separation and NF551 analytic identity
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramSeparationGate
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddParity
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity
+
+  nf565-sha-pinned-original-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check all original 58322 oscillator and 242 true sinh-pole odd-jet coefficients
+        run: |
+          python3 scripts/local_replay/verify_nf554_original_dual_odd_jet_coefficient_bridge.py \
+            --output nf565_actual_242_odd_jet_source_receipt.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf565-unchanged-original-242-odd-jet-source
+          path: nf565_actual_242_odd_jet_source_receipt.json
+          if-no-files-found: error

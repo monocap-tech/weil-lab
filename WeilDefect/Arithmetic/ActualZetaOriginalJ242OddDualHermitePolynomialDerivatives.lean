@@ -116,7 +116,11 @@ theorem neutralNF564OriginalOddDualSignTransfer
     (-1 : ℝ) ^ r * (-1 : ℝ) ^ n =
         (-1 : ℝ) ^ r *
           ((-1 : ℝ) ^ (n - r) * (-1 : ℝ) ^ r) := by
-      rw [← pow_add, Nat.sub_add_cancel hr]
+      have hexp :
+          (-1 : ℝ) ^ n =
+            (-1 : ℝ) ^ (n - r) * (-1 : ℝ) ^ r := by
+        rw [← pow_add, Nat.sub_add_cancel hr]
+      rw [hexp]
     _ = (-1 : ℝ) ^ (n - r) *
           ((-1 : ℝ) ^ r * (-1 : ℝ) ^ r) := by ring
     _ = (-1 : ℝ) ^ (n - r) := by rw [htwice, mul_one]
