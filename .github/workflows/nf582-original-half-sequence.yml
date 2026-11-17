@@ -1,0 +1,37 @@
+name: NF582 original explicit half-sequence strip transport
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpoint*.lean"
+      - ".github/workflows/nf582-original-half-sequence.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf582-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  half-sequence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Independent actual contraction sequence
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointScaleSequence
+      - name: Normalized mollifier recovery
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointMollifier
+      - name: Scalar Fourier limits
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointScalarLimits
+      - name: Literal complex transforms
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointSeedTransform
+      - name: Actual half-carrier uniform strip and fixed sample limit
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointHalfSequence

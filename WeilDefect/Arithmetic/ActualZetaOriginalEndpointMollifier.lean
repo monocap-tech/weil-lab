@@ -135,7 +135,7 @@ theorem neutralNF579Mollifier_strip (s : ℝ) (hs : s < 1) (z : ℂ)
       have he : -(z.im*x) ≤ neutralNF578Epsilon s/2 := by
         calc
           _ ≤ |z.im*x| := neg_le_abs _
-          _ = |z.im|*|x| := abs_mul _ _
+          _ = |z.im| * |x| := abs_mul _ _
           _ ≤ (1/2)*neutralNF578Epsilon s :=
             mul_le_mul hz hx (abs_nonneg _) (by norm_num)
           _ = _ := by ring
