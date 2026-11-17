@@ -1,0 +1,62 @@
+name: NF596 qualitative original graph without numerical smallness
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointBoundedSeedGraph.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointQualitative*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalNF407DiscBound.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCachedModeJets.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalCorrectionFullSource.lean"
+      - ".github/workflows/nf596-original-qualitative-graph.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf596-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  qualitative:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Bounded literal endpoint seed graph
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointBoundedSeedGraph
+      - name: Qualitative C1 graph and all original source coefficients
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointQualitativeC1Graph
+      - name: Canonical graph correction recovery
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalCorrectionFullSource
+      - name: Terminal original qualitative corrected graph
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointQualitativeCorrectedGraph
+  numerical-proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Actual original disc assembly and finite box
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407DiscTableBounds
+      - name: Exact cached mode equality
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCachedModeJets
+      - name: Complete primitive interval soundness
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalFixedpointBudgetBridge
+      - name: Full cached and reduced block checker soundness
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalKernelJetBlocks

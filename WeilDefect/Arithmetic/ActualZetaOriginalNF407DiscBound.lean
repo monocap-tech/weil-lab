@@ -73,7 +73,7 @@ theorem neutralNF594SourceDisc_raw_of_scalarBounds
       simp only [pow_zero,if_pos (by decide : Even (0:ℕ)),one_mul] at htrig
       have htrig' : ‖Complex.sin (2*(Real.pi:ℂ)*
           (neutralNF587CriticalFrequencies[k.val]! : ℂ)*x)‖ ≤ Q := by
-        simpa only [Complex.ofReal_ratCast] using htrig
+        simpa only [Q,neutralNF589ModeMajorant,Complex.ofReal_ratCast] using htrig
       have hcoef : ‖((neutralNF587CriticalSines[j.val]!)[k.val]! : ℂ)‖ ≤ 1 := by
         rw [← Complex.ofReal_ratCast,Complex.norm_real,Real.norm_eq_abs]
         exact_mod_cast hc j k
