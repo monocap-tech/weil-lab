@@ -1,4 +1,4 @@
-import WeilDefect.Arithmetic.ActualZetaOriginalLogStripGraphLimit
+import WeilDefect.Morphology.NeutralLogHilbertCarrier
 import WeilDefect.Arithmetic.ActualZetaCorrelationFourierAgreement
 import Mathlib.Analysis.SpecialFunctions.JapaneseBracket
 import Mathlib.MeasureTheory.Integral.DominatedConvergence
@@ -13,6 +13,10 @@ NF575: the original NF524/NF528 strip estimate pays the physical
 logarithmic energy too. A separate H^(1/4) formalization is not
 necessary once the strip estimate itself is established.
 -/
+
+/-- Same original NF574 logarithmic strip envelope, isolated from the pending graph proof. -/
+def neutralNF575StripEnvelope (t : ℝ) : ℝ :=
+  (1 + Real.log (2 + |t|)) / (1 + |t|)
 
 def neutralNF575ContinuumWeight (ξ : ℝ) : ℝ :=
   (1 + |ξ|) ^ (-(5/4) : ℝ)
@@ -55,7 +59,7 @@ theorem neutralNF575LogWeight_le (ξ : ℝ) :
     neutralNF575LogAffine_le (Real.exp 1) 1 ξ (Real.exp_pos _) zero_le_one
 
 theorem neutralNF575RealStrip_le (ξ : ℝ) :
-    neutralNF574StripEnvelope (-2*Real.pi*ξ) ≤
+    neutralNF575StripEnvelope (-2*Real.pi*ξ) ≤
       neutralNF575StripConstant * (1+|ξ|)^(-(3/4):ℝ) := by
   have hp : 0 < Real.pi := Real.pi_pos
   have h2p : 1 ≤ 2*Real.pi := by linarith [Real.pi_gt_three]
@@ -75,7 +79,7 @@ theorem neutralNF575RealStrip_le (ξ : ℝ) :
       neutralNF575StripConstant*(1+|ξ|)^(1/4:ℝ) := by
     unfold neutralNF575StripConstant
     linarith only [hlog,hp1]
-  unfold neutralNF574StripEnvelope
+  unfold neutralNF575StripEnvelope
   rw [habs]
   calc
     _ ≤ (neutralNF575StripConstant * (1+|ξ|)^(1/4:ℝ)) /
@@ -84,14 +88,17 @@ theorem neutralNF575RealStrip_le (ξ : ℝ) :
       div_le_div_of_nonneg_left (by unfold neutralNF575StripConstant; positivity)
         hr hden
     _ = _ := by
-      rw [mul_div_assoc, ← Real.rpow_one (1+|ξ|), ← Real.rpow_sub hr]
-      norm_num
+      rw [mul_div_assoc]
+      congr 1
+      have h := Real.rpow_sub hr (1/4:ℝ) 1
+      rw [Real.rpow_one] at h
+      convert h.symm using 1 <;> norm_num
 
 /-- The original slow strip bound already has finite log energy.
 The actual negative-exponent 2π Fourier convention is paid exactly. -/
 theorem neutralNF575EnergyEnvelope_le (M : ℝ) (hM : 0 ≤ M)
     (ξ : ℝ) (v : ℂ)
-    (hv : ‖v‖ ≤ M * neutralNF574StripEnvelope (-2*Real.pi*ξ)) :
+    (hv : ‖v‖ ≤ M * neutralNF575StripEnvelope (-2*Real.pi*ξ)) :
     logarithmicFourierWeight ξ * ‖v‖^2 ≤
       (neutralNF575LogConstant * (M*neutralNF575StripConstant)^2) *
         neutralNF575ContinuumWeight ξ := by
@@ -108,7 +115,7 @@ theorem neutralNF575EnergyEnvelope_le (M : ℝ) (hM : 0 ≤ M)
     _ = _ := by
       unfold neutralNF575ContinuumWeight
       have hpow : ((1+|ξ|)^(-(3/4):ℝ))^2 = (1+|ξ|)^(-(3/2):ℝ) := by
-        rw [← Real.rpow_natCast_mul (by positivity : 0 ≤ 1+|ξ|)]
+        rw [← Real.rpow_mul_natCast (by positivity : 0 ≤ 1+|ξ|)]
         norm_num
       rw [show M*(neutralNF575StripConstant*(1+|ξ|)^(-(3/4):ℝ)) =
         (M*neutralNF575StripConstant)*(1+|ξ|)^(-(3/4):ℝ) by ring,
@@ -147,7 +154,7 @@ theorem neutralNF575LogEnergy_of_strip (a : ℝ) (f : RealComplexL2)
     (hs : ∀ᵐ x ∂volume, x ∉ Set.Icc (-a) a → f x = 0)
     (M : ℝ) (hM : 0 ≤ M)
     (ht : ∀ z : ℂ, |z.im| ≤ 1/2 →
-      ‖neutralWindowEvaluation a z f‖ ≤ M*neutralNF574StripEnvelope z.re) :
+      ‖neutralWindowEvaluation a z f‖ ≤ M*neutralNF575StripEnvelope z.re) :
     Integrable (fun ξ => logarithmicFourierWeight ξ *
       ‖(𝓕 f : RealComplexL2) ξ‖^2) volume := by
   refine (neutralNF575ContinuumWeight_integrable.const_mul
@@ -165,7 +172,7 @@ def neutralNF575StripLogCarrier (a : ℝ) (f : RealComplexL2)
     (hs : ∀ᵐ x ∂volume, x ∉ Set.Icc (-a) a → f x = 0)
     (M : ℝ) (hM : 0 ≤ M)
     (ht : ∀ z : ℂ, |z.im| ≤ 1/2 →
-      ‖neutralWindowEvaluation a z f‖ ≤ M*neutralNF574StripEnvelope z.re) :
+      ‖neutralWindowEvaluation a z f‖ ≤ M*neutralNF575StripEnvelope z.re) :
     NeutralLogHilbertCarrier a :=
   neutralCanonicalToLogHilbert ⟨f,hs,neutralNF575LogEnergy_of_strip a f hs M hM ht⟩
 
@@ -173,7 +180,7 @@ theorem neutralNF575StripLogCarrier_physical (a : ℝ) (f : RealComplexL2)
     (hs : ∀ᵐ x ∂volume, x ∉ Set.Icc (-a) a → f x = 0)
     (M : ℝ) (hM : 0 ≤ M)
     (ht : ∀ z : ℂ, |z.im| ≤ 1/2 →
-      ‖neutralWindowEvaluation a z f‖ ≤ M*neutralNF574StripEnvelope z.re) :
+      ‖neutralWindowEvaluation a z f‖ ≤ M*neutralNF575StripEnvelope z.re) :
     neutralLogPhysical (neutralNF575StripLogCarrier a f hs M hM ht).val = f :=
   neutralLogPhysical_weighted _
 
