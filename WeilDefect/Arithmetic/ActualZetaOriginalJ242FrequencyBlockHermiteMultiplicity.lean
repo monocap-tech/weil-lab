@@ -154,7 +154,8 @@ theorem neutralNF565OriginalFrequencyBlock_squaredRootMultiplicity
   have hquad := neutralNF556OriginalDualQuadraticRootMultiplicity
     p hp ω (neutralNF565OriginalFrequencyBlock_omega_positive g hg)
   rw [← neutralNF564OriginalDualOddPolynomial_eq_quadratic] at hquad
-  exact hmult.trans_eq hquad
+  rw [hquad] at hmult
+  exact hmult
 
 end
 end WeilDefect
