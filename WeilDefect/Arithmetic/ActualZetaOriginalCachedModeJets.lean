@@ -25,7 +25,7 @@ theorem neutralNF593ExpTable_get (a : NF591Rect) (Q n j : ℕ) (hj : j ≤ n) :
     rw [neutralNF593ExpTable,Array.getElem?_push,neutralNF593ExpTable_size]
     by_cases he : j=n+1
     · subst j
-      simp only [if_pos rfl,neutralNF593ReadRect,ih n (by omega : n ≤ n),
+      simp only [ite_true,neutralNF593ReadRect,ih n (by omega : n ≤ n),
         Option.getD_some,neutralNF592ExpJetBall]
     · rw [if_neg he]
       exact ih j (by omega)
@@ -55,7 +55,8 @@ theorem neutralNF593SmallExp_eq (a : NF591Rect) (Q N : ℕ) :
     neutralNF593SmallExp a Q N = neutralNF592SmallExpBall a Q N := by
   unfold neutralNF593SmallExp neutralNF592SmallExpBall
   rw [neutralNF593Partial_eq_sum]
-  congr 1
+  dsimp only
+  apply congrArg (fun r : NF591Rect => r.expand (1/(Q:ℚ)))
   apply neutralNF593RectSum_congr
   intro n hn
   exact neutralNF593ExpTable_read a Q N n (by omega)
