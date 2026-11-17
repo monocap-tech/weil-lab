@@ -3,7 +3,8 @@ import WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity
 
 namespace WeilDefect
 noncomputable section
-open scoped ComplexConjugate
+open MeasureTheory
+open scoped ComplexConjugate SchwartzMap
 
 /-!
 NF569 — terminal connection to the ORIGINAL NF550/NF551
@@ -45,6 +46,28 @@ theorem neutralNF569CanonicalOriginalGram_pos :
         conj (d i) * (neutralNF548CanonicalOriginalWeightedGram d) i).re :=
   neutralNF551OriginalGlobalIndependence_implies_Gram_pos
     neutralNF569OriginalJ242GlobalIndependence
+
+/-- NF570: the actual NF548 canonical right inverse of the true
+242 moment map, with its genuine strict collar support and original
+odd parity. There is no extra separation or positivity premise.
+Compiler acceptance still depends on the full NF569 source chain. -/
+theorem neutralNF570Original242OddSupportedRightInverse :
+    ∃ R : NeutralNF543RightInverse,
+      (∀ d : Fin 242 → ℂ,
+        neutralNF546OriginalSelectedMoments
+          ((R d).toLp 2 volume) = d) ∧
+      (∀ (d : Fin 242 → ℂ) (x : ℝ),
+        x ∉ neutralNF543OriginalCollars → (R d) x = 0) ∧
+      (∀ (d : Fin 242 → ℂ) (x : ℝ),
+        (R d) (-x) = -(R d) x) := by
+  refine ⟨neutralNF548CanonicalRightInverse
+    neutralNF569CanonicalOriginalGram_pos, ?_, ?_, ?_⟩
+  · exact neutralNF548CanonicalRightInverse_correct
+      neutralNF569CanonicalOriginalGram_pos
+  · exact neutralNF548CanonicalRightInverse_supported
+      neutralNF569CanonicalOriginalGram_pos
+  · exact neutralNF551CanonicalRightInverse_odd
+      neutralNF569CanonicalOriginalGram_pos
 
 end
 end WeilDefect
