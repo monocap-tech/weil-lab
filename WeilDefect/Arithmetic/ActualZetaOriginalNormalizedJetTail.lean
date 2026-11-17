@@ -72,7 +72,9 @@ theorem neutralNF588Tail_budget :
     neutralNF588ValueTail < (10:ℝ)^(-120:ℤ) ∧
       neutralNF588DerivativeTail < (10:ℝ)^(-115:ℤ) := by
   unfold neutralNF588ValueTail neutralNF588DerivativeTail neutralNF588ScaledDerivativeTail
-  constructor <;> norm_num1 <;> norm_num [← mul_pow]
+  have h0 : (10:ℚ)^400*(1/20:ℚ)^400/(1-1/20) < (10:ℚ)^(-120:ℤ) := by decide +kernel
+  have h1 : (500:ℚ)*((10:ℚ)^400*(1/20:ℚ)^400*(400/(1-1/20)+(1/20)/(1-1/20)^2)) < (10:ℚ)^(-115:ℤ) := by decide +kernel
+  exact ⟨by exact_mod_cast h0,by exact_mod_cast h1⟩
 
 /-- Normalized Taylor terms and the simultaneously differentiated
 terms represent the SAME source.  The derivative is in the d
