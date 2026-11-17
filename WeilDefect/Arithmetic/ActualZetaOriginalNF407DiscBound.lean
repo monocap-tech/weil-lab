@@ -53,11 +53,12 @@ def neutralNF589SourceScalarBounds (a : Fin 242 → ℝ) (b : Fin 4 → ℝ) : P
   (∀ j : Fin 4, ∀ k : Fin 32, |(neutralNF587CriticalSines[j.val]!)[k.val]!| ≤ 1) ∧
   (∀ j : Fin 4, |neutralNF587CriticalPoles[j.val]!| ≤ 1)
 
-theorem neutralNF589SourceDisc_of_scalarBounds
+theorem neutralNF594SourceDisc_raw_of_scalarBounds
     (a : Fin 242 → ℝ) (b : Fin 4 → ℝ)
     (h : neutralNF589SourceScalarBounds a b)
     (w : ℂ) (hw : ‖w‖ ≤ 20) :
-    ‖neutralNF588NormalizedSource a b w‖ ≤ (10:ℝ)^400 := by
+    ‖neutralNF588NormalizedSource a b w‖ ≤
+      (400:ℝ)*10^143*neutralNF589ModeMajorant := by
   let x := (11/10:ℂ)-w/500
   have hx : ‖x‖ ≤ 2 := (neutralNF589NormalizedGeometry w hw).1
   have hy : |x.im| ≤ 1/25 := (neutralNF589NormalizedGeometry w hw).2
@@ -132,7 +133,13 @@ theorem neutralNF589SourceDisc_of_scalarBounds
     _ ≤ 242*((10:ℝ)^143*Q)+4*((10:ℝ)^143*(33*Q)) := add_le_add hA hB
     _ = 374*((10:ℝ)^143*Q) := by ring
     _ ≤ 400*10^143*Q := by nlinarith [show 0 ≤ (10:ℝ)^143*Q by positivity]
-    _ ≤ _ := neutralNF589Disc_arithmetic
+
+theorem neutralNF589SourceDisc_of_scalarBounds
+    (a : Fin 242 → ℝ) (b : Fin 4 → ℝ)
+    (h : neutralNF589SourceScalarBounds a b)
+    (w : ℂ) (hw : ‖w‖ ≤ 20) :
+    ‖neutralNF588NormalizedSource a b w‖ ≤ (10:ℝ)^400 :=
+  (neutralNF594SourceDisc_raw_of_scalarBounds a b h w hw).trans neutralNF589Disc_arithmetic
 
 end
 end WeilDefect
