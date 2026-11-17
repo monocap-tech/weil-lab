@@ -25,32 +25,32 @@ theorem neutralNF590OscillatorJet_hasSum (f : ℝ) (k : ℕ) (w : ℝ) :
   let α : ℂ := if Even k then -Complex.I else 1
   let B : ℂ := 11/10
   let D : ℂ := -1/500
-  let λ : ℂ := -(Complex.I*(ω:ℂ))/500
-  have h := (neutralNF590ModeJet_hasSum B D λ (w:ℂ) k).mul_left
+  let lam : ℂ := -(Complex.I*(ω:ℂ))/500
+  have h := (neutralNF590ModeJet_hasSum B D lam (w:ℂ) k).mul_left
     (α*Complex.exp (Complex.I*(ω:ℂ)*B))
   have hr := Complex.reCLM.hasSum h
   convert hr using 1
   · funext n
     change neutralNF590OscillatorJet f k n*w^n =
       (α*Complex.exp (Complex.I*(ω:ℂ)*B)*
-        (neutralNF590ModeJet B D λ k n*(w:ℂ)^n)).re
+        (neutralNF590ModeJet B D lam k n*(w:ℂ)^n)).re
     rw [← mul_assoc, ← Complex.ofReal_pow]
-    simp [neutralNF590OscillatorJet,ω,α,B,D,λ,Complex.mul_re,mul_comm]
+    simp [neutralNF590OscillatorJet,ω,α,B,D,lam,Complex.mul_re,mul_comm]
   · let x : ℝ := 11/10-w/500
     have hx : B+D*(w:ℂ) = (x:ℂ) := by
       dsimp [B,D,x]
       push_cast
       ring
-    have hphase : Complex.I*(ω:ℂ)*B+λ*(w:ℂ) = Complex.I*((ω*x:ℝ):ℂ) := by
-      dsimp [B,λ,x]
+    have hphase : Complex.I*(ω:ℂ)*B+lam*(w:ℂ) = Complex.I*((ω*x:ℝ):ℂ) := by
+      dsimp [B,lam,x]
       push_cast
       ring
     change x^k*(if Even k then Real.sin (ω*x) else Real.cos (ω*x)) =
       (α*Complex.exp (Complex.I*(ω:ℂ)*B)*
-        ((B+D*(w:ℂ))^k*Complex.exp (λ*(w:ℂ)))).re
+        ((B+D*(w:ℂ))^k*Complex.exp (lam*(w:ℂ)))).re
     rw [hx]
     have he : α*Complex.exp (Complex.I*(ω:ℂ)*B)*
-        ((x:ℂ)^k*Complex.exp (λ*(w:ℂ))) =
+        ((x:ℂ)^k*Complex.exp (lam*(w:ℂ))) =
         (x:ℂ)^k*α*Complex.exp (Complex.I*((ω*x:ℝ):ℂ)) := by
       rw [← hphase,Complex.exp_add]
       ring

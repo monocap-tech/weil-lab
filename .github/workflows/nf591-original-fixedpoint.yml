@@ -1,0 +1,59 @@
+name: NF591 exact original fixedpoint interval engine
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalRationalIntervalKernel.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalDirectedRounding.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalTranscendentalRemainders.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJetRecurrence.lean"
+      - "scripts/local_replay/nf591_exact_fixedpoint_original_jets.js"
+      - ".github/workflows/nf591-original-fixedpoint.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf591-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  exact-replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Exact integer full-box recurrence without Arb
+        run: node scripts/local_replay/nf591_exact_fixedpoint_original_jets.js nf591-fixedpoint.json
+      - name: Byte-identical exact receipt
+        run: cmp nf591-fixedpoint.json notes/data/provisional/NF591_original_fixedpoint_receipt.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF591-fixedpoint-receipt
+          path: nf591-fixedpoint.json
+  lean-kernel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Exact rational real and complex ball soundness
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalRationalIntervalKernel
+      - name: Directed rounding soundness
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalDirectedRounding
+      - name: Analytic exponential and Machin remainder bounds
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalTranscendentalRemainders
+      - name: Exact original generic recurrence recovery
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJetRecurrence
+      - name: Literal original source recurrence
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407CanonicalJetRecurrence
+      - name: Quantitative true endpoint strip recovery
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointTwistedPanels

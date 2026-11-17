@@ -55,16 +55,16 @@ theorem neutralNF590ShiftedJet_hasSum (z w : ℂ) (m : ℕ) :
 def neutralNF590PolyTerm (B D : ℂ) (k m : ℕ) : ℂ :=
   (k.choose m:ℂ)*B^(k-m)*D^m
 
-def neutralNF590ModeJet (B D λ : ℂ) (k n : ℕ) : ℂ :=
+def neutralNF590ModeJet (B D lam : ℂ) (k n : ℕ) : ℂ :=
   ∑ m ∈ range (k+1),
-    neutralNF590PolyTerm B D k m * neutralNF590ShiftedJet λ m n
+    neutralNF590PolyTerm B D k m * neutralNF590ShiftedJet lam m n
 
 /-- This is the exact finite summation in the interval recurrence:
 the zero terms with m>n can be omitted. -/
-theorem neutralNF590ModeJet_truncate (B D λ : ℂ) (k n : ℕ) :
-    neutralNF590ModeJet B D λ k n =
+theorem neutralNF590ModeJet_truncate (B D lam : ℂ) (k n : ℕ) :
+    neutralNF590ModeJet B D lam k n =
       ∑ m ∈ range (min k n+1),
-        neutralNF590PolyTerm B D k m * neutralNF590ExpJet λ (n-m) := by
+        neutralNF590PolyTerm B D k m * neutralNF590ExpJet lam (n-m) := by
   unfold neutralNF590ModeJet
   rw [← sum_subset (s₁ := range (min k n+1)) (s₂ := range (k+1))
     (range_subset_range.mpr (by omega : min k n+1 ≤ k+1))]
@@ -80,14 +80,14 @@ theorem neutralNF590ModeJet_truncate (B D λ : ℂ) (k n : ℕ) :
       exact mem_range.mpr (by omega)
     simp [neutralNF590ShiftedJet,hh]
 
-theorem neutralNF590ModeJet_hasSum (B D λ w : ℂ) (k : ℕ) :
-    HasSum (fun n : ℕ => neutralNF590ModeJet B D λ k n*w^n)
-      ((B+D*w)^k*Complex.exp (λ*w)) := by
+theorem neutralNF590ModeJet_hasSum (B D lam w : ℂ) (k : ℕ) :
+    HasSum (fun n : ℕ => neutralNF590ModeJet B D lam k n*w^n)
+      ((B+D*w)^k*Complex.exp (lam*w)) := by
   have h : HasSum (fun n : ℕ => ∑ m ∈ range (k+1),
-      neutralNF590PolyTerm B D k m * (neutralNF590ShiftedJet λ m n*w^n))
+      neutralNF590PolyTerm B D k m * (neutralNF590ShiftedJet lam m n*w^n))
       (∑ m ∈ range (k+1),
-        neutralNF590PolyTerm B D k m * (w^m*Complex.exp (λ*w))) :=
-    hasSum_sum fun m _ => (neutralNF590ShiftedJet_hasSum λ w m).mul_left _
+        neutralNF590PolyTerm B D k m * (w^m*Complex.exp (lam*w))) :=
+    hasSum_sum fun m _ => (neutralNF590ShiftedJet_hasSum lam w m).mul_left _
   convert h using 1
   · funext n
     unfold neutralNF590ModeJet
@@ -118,7 +118,7 @@ theorem neutralNF590RealSeries_unique (u v : ℕ → ℝ) (f : ℝ → ℝ)
       exact p.le_radius_of_tendsto (r := 1) ht
     refine ⟨1,hr,by norm_num,?_⟩
     intro w _
-    simpa [p,FormalMultilinearSeries.ofScalars_apply_eq,smul_eq_mul] using hc w
+    simpa [p,FormalMultilinearSeries.ofScalars_apply_eq,smul_eq_mul,mul_comm] using hc w
   have h := (make u hu).eq_formalMultilinearSeries (make v hv)
   exact FormalMultilinearSeries.ofScalars_series_injective ℝ ℝ h
 

@@ -164,7 +164,12 @@ theorem neutralNF585TwistedPanel_strip
       unfold neutralNF578Delta at hright
       exact add_le_add hleft hright
     have hf' := hf.trans hnum
-    have hdiv := (le_div_iff₀ ht0).mpr (by simpa only [T,mul_comm] using hf')
+    have hdiv : ‖∫ d in (0:ℝ)..neutralNF578Delta,
+        neutralNF584Amplitude neutralNF578B A d*neutralNF584Phase t d‖ ≤
+        (neutralNF578C0*(3*(1+L)+1)+neutralNF578C1*(1/500)*8)/T := by
+      apply (le_div_iff₀ ht0).mpr
+      rw [mul_comm]
+      exact hf'
     exact hdiv.trans (neutralNF578HighBand_scalar T L (le_of_lt (lt_of_not_ge ht)) hL)
 
 end
