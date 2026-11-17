@@ -104,7 +104,8 @@ theorem neutralNF592SourceJet_of_ballBudget
   apply (NF591Ball.contains_abs_bound
     (neutralNF592SourceBall_sound p hp Q N hQ hN hfee a b hbox n)).trans
   unfold neutralNF588U400Bound
-  exact_mod_cast hbudget n hn
+  have hr := Rat.cast_le (K := ℝ).mpr (hbudget n hn)
+  simpa only [Rat.cast_div,Rat.cast_natCast,Rat.cast_pow,Rat.cast_ofNat] using hr
 
 end
 end WeilDefect
