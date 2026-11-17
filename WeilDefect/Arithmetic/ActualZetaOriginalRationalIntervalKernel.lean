@@ -22,7 +22,7 @@ def NF591Ball.neg (a : NF591Ball) : NF591Ball :=
   ⟨-a.mid,a.rad⟩
 
 def NF591Ball.mul (a b : NF591Ball) : NF591Ball :=
-  ⟨a.mid*b.mid,|a.mid|*b.rad+|b.mid|*a.rad+a.rad*b.rad⟩
+  ⟨a.mid*b.mid,|a.mid| * b.rad+|b.mid| * a.rad+a.rad*b.rad⟩
 
 def NF591Ball.divPos (a : NF591Ball) (d : ℚ) : NF591Ball :=
   ⟨a.mid/d,a.rad/d⟩
@@ -59,7 +59,7 @@ theorem NF591Ball.contains_mul {a b : NF591Ball} {x y : ℝ}
         |(a.mid:ℝ)*v+(b.mid:ℝ)*u+u*v| := by congr 1 <;> dsimp [u,v] <;> ring
     _ ≤ |(a.mid:ℝ)*v+(b.mid:ℝ)*u|+|u*v| := abs_add_le _ _
     _ ≤ (|(a.mid:ℝ)*v|+|(b.mid:ℝ)*u|)+|u*v| :=
-      add_le_add_right (abs_add_le _ _) _
+      add_le_add (abs_add_le _ _) le_rfl
     _ ≤ _ := by
       simp only [abs_mul]
       exact add_le_add
@@ -120,21 +120,21 @@ def NF591Rect.divPos (a : NF591Rect) (d : ℚ) : NF591Rect :=
 
 theorem NF591Rect.contains_add {a b : NF591Rect} {z w : ℂ}
     (hz : a.Contains z) (hw : b.Contains w) : (a.add b).Contains (z+w) := by
-  exact ⟨by simpa only [Complex.add_re] using NF591Ball.contains_add hz.1 hw.1,
-    by simpa only [Complex.add_im] using NF591Ball.contains_add hz.2 hw.2⟩
+  exact ⟨by simpa only [add,Complex.add_re] using NF591Ball.contains_add hz.1 hw.1,
+    by simpa only [add,Complex.add_im] using NF591Ball.contains_add hz.2 hw.2⟩
 
 theorem NF591Rect.contains_neg {a : NF591Rect} {z : ℂ}
     (hz : a.Contains z) : a.neg.Contains (-z) := by
-  exact ⟨by simpa only [Complex.neg_re] using NF591Ball.contains_neg hz.1,
-    by simpa only [Complex.neg_im] using NF591Ball.contains_neg hz.2⟩
+  exact ⟨by simpa only [neg,Complex.neg_re] using NF591Ball.contains_neg hz.1,
+    by simpa only [neg,Complex.neg_im] using NF591Ball.contains_neg hz.2⟩
 
 theorem NF591Rect.contains_mul {a b : NF591Rect} {z w : ℂ}
     (hz : a.Contains z) (hw : b.Contains w) : (a.mul b).Contains (z*w) := by
   constructor
-  · simpa only [Complex.mul_re,sub_eq_add_neg] using
+  · simpa only [mul,Complex.mul_re,sub_eq_add_neg] using
       NF591Ball.contains_add (NF591Ball.contains_mul hz.1 hw.1)
         (NF591Ball.contains_neg (NF591Ball.contains_mul hz.2 hw.2))
-  · simpa only [Complex.mul_im,add_comm] using
+  · simpa only [mul,Complex.mul_im,add_comm] using
       NF591Ball.contains_add (NF591Ball.contains_mul hz.1 hw.2)
         (NF591Ball.contains_mul hz.2 hw.1)
 
