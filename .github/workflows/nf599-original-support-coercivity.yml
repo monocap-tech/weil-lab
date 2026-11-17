@@ -1,0 +1,71 @@
+name: NF599 original support coercivity and correction recovery
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollarGammaLower.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollarMarginBudget.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalSupportCoercivityTransfer.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalSignedGraphLimit.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalCorrection*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalReducedJetBudget.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointSignCheck.lean"
+      - ".github/workflows/nf599-original-support-coercivity.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf599-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  support-coercivity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Scalar strengthened two-collar margin
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarMarginBudget
+      - name: Actual digamma gain and gamma lower bounds
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarGammaLower
+      - name: Literal signed Weil and relative margin limits
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalSignedGraphLimit
+      - name: Support-localized coercivity transfer without correction
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalSupportCoercivityTransfer
+      - name: Physical graph-lift uniqueness
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalGraphPhysicalUniqueness
+  correction-and-numeric:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Actual canonical graph right inverse core
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalCorrectionCore
+      - name: Terminal physical correction identity
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalCorrectionFullSource
+      - name: Literal endpoint sign checker soundness
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointSignCheck
+      - name: Full reduced block checker soundness
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalKernelJetBlocks
+      - name: Actual moment-corrected signed margin
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407SignedMarginTransfer
