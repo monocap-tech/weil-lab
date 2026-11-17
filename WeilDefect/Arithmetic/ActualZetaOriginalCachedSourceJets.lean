@@ -74,12 +74,12 @@ theorem neutralNF593SourceTable_read (p : NF591Ball) (Q N K n : ℕ) (hn : n<K) 
   congr 1
   · congr 1
     funext j
-    simp only [neutralNF593ReadTable,Array.getElem?_ofFn,dif_pos j.isLt,Option.getD_some]
+    simp only [neutralNF593ReadBall,neutralNF593ReadTable,Array.getElem?_ofFn,dif_pos j.isLt,Option.getD_some]
     exact congrArg (fun z => ((neutralNF592PrimitiveBox neutralNF587SelectedDyads[j.val]! Q).mul z).round Q)
       (neutralNF593SelectedTable_read p Q N K j n hn)
   · congr 1
     funext j
-    simpa only [Array.getElem?_ofFn,dif_pos j.isLt,Option.getD_some] using
+    simpa only [neutralNF593ReadBall,Array.getElem?_ofFn,dif_pos j.isLt,Option.getD_some] using
       neutralNF593CriticalFromTables_eq p Q N K
         (neutralNF592PrimitiveBox neutralNF587CriticalDyads[j.val]! Q) j n hn
 
