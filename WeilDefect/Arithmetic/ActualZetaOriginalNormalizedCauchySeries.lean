@@ -24,7 +24,7 @@ theorem neutralNF588NormalizedCoefficient_bound (F : ℂ → ℂ)
     calc
       _ ≤ ∫ _ in (0:ℝ)..2*Real.pi, M := by
         apply intervalIntegral.integral_mono_on Real.two_pi_pos.le
-          hc.intervalIntegrable intervalIntegrable_const
+          (hc.intervalIntegrable 0 (2*Real.pi)) intervalIntegrable_const
         intro θ _
         apply hM
         rw [norm_circleMap_zero]
@@ -94,7 +94,7 @@ theorem neutralNF588NormalizedCoefficient_derivative (F : ℂ → ℂ)
       rw [zero_add,fderiv_apply_one_eq_deriv]
   apply (hasSum_nat_add_iff' 1).mp
   simpa only [Finset.sum_range_one,Nat.cast_zero,zero_mul,Nat.zero_sub,zero_sub,
-    Nat.add_sub_cancel] using hs
+    Nat.add_sub_cancel,sub_zero] using hs
 
 end
 end WeilDefect
