@@ -53,23 +53,25 @@ theorem neutralNF550OriginalPhysicalSynthesis_ae
       [Lp.coeFn_smul (d i) (neutralNF546OriginalSelectedPhysicalL2 i),
        neutralNF546OriginalSelectedPhysicalL2_ae i] with x hs hi
     simpa only [Pi.smul_apply, smul_eq_mul, hs, hi]
-  have hsum' :
-      ((∑ i : Fin 242,
-        d i • neutralNF546OriginalSelectedPhysicalL2 i :
-          RealComplexL2) : ℝ → ℂ) =ᵐ[volume]
-      (∑ i : Fin 242,
-        (fun x : ℝ => d i * neutralNF546OriginalWindowGenerator i x)) :=
-    (Lp.coeFn_fun_finsetSum Finset.univ
-      (fun i : Fin 242 =>
-        d i • neutralNF546OriginalSelectedPhysicalL2 i)).trans
-      (eventuallyEq_sum fun i _ => hterm i)
+  have hsumFunctions :
+      (fun x : ℝ => ∑ i : Fin 242,
+        ((d i • neutralNF546OriginalSelectedPhysicalL2 i :
+            RealComplexL2) : ℝ → ℂ) x) =ᵐ[volume]
+      (fun x : ℝ => ∑ i : Fin 242,
+        d i * neutralNF546OriginalWindowGenerator i x) := by
+    have hsumRaw := (eventuallyEq_sum
+      (s := (Finset.univ : Finset (Fin 242)))
+      (fun i _ => hterm i))
+    simpa only [Finset.sum_apply] using hsumRaw
   have hsum :
       ((∑ i : Fin 242,
         d i • neutralNF546OriginalSelectedPhysicalL2 i :
           RealComplexL2) : ℝ → ℂ) =ᵐ[volume]
       (fun x => ∑ i : Fin 242,
-        d i * neutralNF546OriginalWindowGenerator i x) := by
-    simpa only [Finset.sum_apply] using hsum'
+        d i * neutralNF546OriginalWindowGenerator i x) :=
+    (Lp.coeFn_fun_finsetSum Finset.univ
+      (fun i : Fin 242 =>
+        d i • neutralNF546OriginalSelectedPhysicalL2 i)).trans hsumFunctions
   simpa only [neutralNF549OriginalPhysicalSynthesis,
       Module.Basis.constr_apply_fintype, Pi.basisFun_equivFun,
       LinearEquiv.refl_apply, neutralNF550OriginalWindowSourceCombination]
@@ -194,8 +196,7 @@ theorem neutralNF550CanonicalOriginalGram_real_eq_real_weighted_square
     simp only [neutralNF548ComplexEvenCollarCutoff,
       Complex.ofReal_mul]
   simp_rw [hp]
-  rw [integral_ofReal]
-  simp
+  simpa only [integral_ofReal, Complex.ofReal_re]
 
 /-- Genuine original canonical Gram is POSITIVE SEMIDEFINITE for
 every 242-source coefficient vector, without assuming 136-root
