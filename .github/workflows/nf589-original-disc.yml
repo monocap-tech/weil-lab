@@ -1,0 +1,63 @@
+name: NF589 original complex disc majorant and source table closure
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalComplexDiscMajorants.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalNF407*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalNormalized*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpoint*.lean"
+      - ".github/workflows/nf589-original-disc.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf589-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  source-disc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Elementary complex disc majorants
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalComplexDiscMajorants
+      - name: Exact frozen source regularity
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407SourceBinding
+      - name: Normalized infinite value and derivative tails
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNormalizedJetTail
+      - name: Canonical Cauchy coefficient series
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNormalizedCauchySeries
+      - name: Exact finite normalized budget
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalU400NormalizedBudget
+      - name: All coefficients full-box complex disc and collar reduction
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407DiscTableBounds
+  endpoint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Quantitative original twisted panels
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointTwistedPanels
+      - name: Literal uncorrected odd seed graph
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointActualSeedGraph
+      - name: Literal full complex strip and terminal C1 endpoint graph
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointC1SeedGraph
