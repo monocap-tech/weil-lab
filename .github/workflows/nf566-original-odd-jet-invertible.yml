@@ -1,0 +1,113 @@
+name: NF566 genuine original J242 68-node real left-kernel and matrix invertibility
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242WeightedListRootBudget.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242RealOddJetLeftKernel.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242OddJetMatrixInvertible.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242FiniteRootBudget.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242Exact68NodeBudget.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242FrequencyBlockHermiteMultiplicity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242OscillatorTrigJets.lean"
+      - ".github/workflows/nf566-original-odd-jet-invertible.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+  workflow_dispatch:
+
+jobs:
+  nf566-generic-weighted-list-root-budget:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore Mathlib cache
+        run: lake exe cache get
+      - name: Compile generic source-independent root multiset cardinality bound
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242FiniteRootBudget
+      - name: Compile exact list-of-distinct-real-nodes weighted root degree theorem
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242WeightedListRootBudget
+      - name: Reject proof holes
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+               WeilDefect/Arithmetic/ActualZetaOriginalJ242WeightedListRootBudget.lean; then
+            echo "NF566 generic weighted original root budget has holes"
+            exit 1
+          fi
+
+  nf566-original-real-odd-jet-matrix-invertible:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore Mathlib cache
+        run: lake exe cache get
+      - name: Recheck true original index-241 sinh-pole analytic derivative source
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242ActualPoleOddDerivatives
+      - name: Check original oscillator higher derivatives without source substitutions
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OscillatorTrigJets
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242MonomialTrigOddJets
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242SourceIndexedHermiteBridge
+      - name: Compile original full 67 source block multiplicity and authentic 68-node ledger
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242FrequencyBlockHermiteMultiplicity
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242Exact68NodeBudget
+      - name: Compile actual 242 left-kernel root budget and real matrix invertibility
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242RealOddJetLeftKernel
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddJetMatrixInvertible
+      - name: Reject proof holes in source-specific original independence implementation
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+               WeilDefect/Arithmetic/ActualZetaOriginalJ242RealOddJetLeftKernel.lean \
+               WeilDefect/Arithmetic/ActualZetaOriginalJ242OddJetMatrixInvertible.lean; then
+            echo "NF566 actual original 242 source rank proof unfinished"
+            exit 1
+          fi
+
+  nf566-original-physical-gram-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: lake update
+      - name: Restore Mathlib cache
+        run: lake exe cache get
+      - name: Original canonical source through certified NF549 physical integral
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
+      - name: Check exact original NF550 canonical physical weighted-square identity
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramWeightedSquare
+      - name: Check original NF550 strict separation and NF551 analytic collar identity
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramSeparationGate
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddParity
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity
+
+  nf566-original-source-custody:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check exact original NF407 source 241 oscillators and genuine sinh pole
+        run: |
+          python3 scripts/local_replay/verify_nf554_original_dual_odd_jet_coefficient_bridge.py \
+            --output nf566_original_242_source_odd_jets.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf566-authentic-nf407-j242-source-custody
+          path: nf566_original_242_source_odd_jets.json
+          if-no-files-found: error
