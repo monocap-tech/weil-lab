@@ -81,17 +81,24 @@ theorem neutralNF603Source_split (a : Fin 242 → ℝ) (b : Fin 4 → ℝ) (x : 
     have hp : (∑ j : Fin 242, if j=neutralNF603PoleIndex then
         a j*nf545OriginalSelectedRealGenerator j x else 0) =
         a neutralNF603PoleIndex*Real.sinh (x/2) := by
-      rw [Finset.sum_ite_eq']
       simp [neutralNF603PoleIndex,nf545OriginalSelectedPole_is_sinh]
     rw [← hp,← sum_add_distrib]
     apply sum_congr rfl
     intro j _
     by_cases hj : j=neutralNF603PoleIndex <;> simp [hj]
+  have hcrit : (∑ j : Fin 4, b j*neutralNF587CriticalGenerator j x) =
+      (∑ j : Fin 4, b j * ∑ k : Fin 32,
+        ((neutralNF587CriticalSines[j.val]!)[k.val]! : ℝ)*Real.sin
+          (2*Real.pi*(neutralNF587CriticalFrequencies[k.val]! : ℝ)*x)) +
+        (∑ j : Fin 4, b j*(neutralNF587CriticalPoles[j.val]! : ℝ))*Real.sinh (x/2) := by
+    rw [sum_mul,← sum_add_distrib]
+    apply sum_congr rfl
+    intro j _
+    unfold neutralNF587CriticalGenerator
+    ring
   unfold neutralNF587Source neutralNF569OriginalRealCombination
-    neutralNF603OscillatorPart neutralNF603PoleCoeff neutralNF587CriticalGenerator
-  rw [hsel,add_mul,sum_mul]
-  simp_rw [mul_add,← mul_assoc]
-  rw [sum_add_distrib]
+    neutralNF603OscillatorPart neutralNF603PoleCoeff
+  rw [hsel,hcrit,add_mul]
   ring
 
 theorem neutralNF603OscillatorPart_bound (a : Fin 242 → ℝ) (b : Fin 4 → ℝ)
@@ -188,8 +195,7 @@ theorem neutralNF603Source_remote_negative (a : Fin 242 → ℝ) (b : Fin 4 → 
       _ < -(10:ℝ)^139*Real.sinh 500 := mul_lt_mul_of_pos_right hp hs
       _ < -(10:ℝ)^139*10^60 := mul_lt_mul_of_neg_left ht (neg_lt_zero.mpr (by positivity))
       _ = _ := by norm_num
-  rw [neutralNF603Source_split]
-  norm_num only [show (1000:ℝ)/2=500 by norm_num]
+  rw [neutralNF603Source_split,show (1000:ℝ)/2=500 by norm_num]
   calc
     _ < (400:ℝ)*10^182-10^199 := by linarith only [ho,hprod]
     _ < _ := by norm_num
