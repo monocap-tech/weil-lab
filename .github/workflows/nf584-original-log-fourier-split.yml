@@ -1,0 +1,32 @@
+name: NF584 exact original endpoint logarithmic Fourier split
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointLogFourier*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointScaleSequence.lean"
+      - ".github/workflows/nf584-original-log-fourier-split.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf584-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  nf584-focused:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Exact logarithmic mass and proper interval complex integration by parts
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointLogFourierPanels
+      - name: Actual weighted logarithmic amplitude derivative and split bound
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointLogFourierSplit
+      - name: Explicit contraction sequence recovery
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointScaleSequence
