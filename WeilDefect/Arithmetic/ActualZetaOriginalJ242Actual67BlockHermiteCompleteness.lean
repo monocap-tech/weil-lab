@@ -1,6 +1,7 @@
 import WeilDefect.Arithmetic.ActualZetaOriginalJ242Actual67BlockCoverage
 import WeilDefect.Arithmetic.ActualZetaOriginalJ242ActualOscillatorHermiteBridge
 import WeilDefect.Arithmetic.ActualZetaOriginalJ242HermiteDerivativeMultiplicity
+import WeilDefect.Arithmetic.ActualZetaOriginalJ242QuadraticRootMultiplicity
 import Mathlib.Tactic
 
 namespace WeilDefect
@@ -90,6 +91,37 @@ theorem neutralNF567OriginalAll67HermiteRootMultiplicities
   exact neutralNF567OriginalBlockHermiteJets_fromActualOscillators
     a hzeros g k hk
 
+/-- Exact NF556 transfer: once the original genuine oscillator
+analytic derivative equations force multiplicities in F_a, each
+source frequency block g contributes its ORIGINAL m_g root
+multiplicity to the real p_a polynomial at the true squared
+frequency (2π f_g)².
+
+Both nonzero assumptions are explicitly exposed. This does
+not assert source independence or conceal the still-needed
+proof that p_a≠0 entails F_a≠0. -/
+theorem neutralNF567OriginalAll67SquaredDualRootMultiplicities
+    (a : Fin 242 → ℝ)
+    (hp : neutralNF557OriginalDualPolynomial a ≠ 0)
+    (hF : neutralNF565OriginalFrequencyHermitePolynomial a ≠ 0)
+    (hzeros : ∀ i : Fin 241,
+      ((Polynomial.derivative^[neutralNF562OriginalOscillatorOrder i])
+        (neutralNF565OriginalFrequencyHermitePolynomial a)).eval
+          (neutralNF562OriginalOscillatorOmega i) = 0) :
+    ∀ g : Fin 67,
+      (neutralNF567OriginalGroupAt g).2 ≤
+        Polynomial.rootMultiplicity
+          (neutralNF567OriginalGroupOmega g ^ 2)
+          (neutralNF557OriginalDualPolynomial a) := by
+  intro g
+  have hmult :=
+    neutralNF567OriginalAll67HermiteRootMultiplicities a hF hzeros g
+  rw [neutralNF565OriginalFrequencyHermitePolynomial_eq_comp] at hmult
+  rwa [neutralNF556OriginalDualQuadraticRootMultiplicity
+    (neutralNF557OriginalDualPolynomial a) hp
+    (neutralNF567OriginalGroupOmega g)
+    (neutralNF567OriginalGroupOmega_pos g)] at hmult
+
 /-- The literal complete 242×242 ORIGINAL analytic odd-jet
 left kernel now implies, at EACH of the 67 original frequencies,
 ALL derivative orders up to its authentic m_g-1, and also the
@@ -134,6 +166,32 @@ theorem neutralNF567OriginalFull242Kernel_rootMultiplicities
     neutralNF566OriginalFullActualOddJetKernel_rootObligations a hker
   exact ⟨neutralNF567OriginalAll67HermiteRootMultiplicities
     a hp hzeros, hpole⟩
+
+/-- Complete authentic source 242×242 real left kernel forces
+67 correctly indexed positive SQUARED-frequency multiplicity
+bounds in p_a, plus the genuine negative sinh-pole root.
+
+This is the exact ORIGINAL 68-node setup for NF553's
+degree-242 Hermite obstruction; the simultaneous divisor and
+nonzero F_a implications are the remaining global algebraic
+gates. -/
+theorem neutralNF567OriginalFull242Kernel_squaredDualRootMultiplicities
+    (a : Fin 242 → ℝ)
+    (hker : ∀ j : Fin 242,
+      (∑ n : Fin 242,
+        a n * neutralNF560ActualOriginalOddJetMatrix n j) = 0)
+    (hp : neutralNF557OriginalDualPolynomial a ≠ 0)
+    (hF : neutralNF565OriginalFrequencyHermitePolynomial a ≠ 0) :
+    (∀ g : Fin 67,
+      (neutralNF567OriginalGroupAt g).2 ≤
+        Polynomial.rootMultiplicity
+          (neutralNF567OriginalGroupOmega g ^ 2)
+          (neutralNF557OriginalDualPolynomial a)) ∧
+      (neutralNF557OriginalDualPolynomial a).eval (-(1 / 4 : ℝ)) = 0 := by
+  obtain ⟨hzeros, hpole⟩ :=
+    neutralNF566OriginalFullActualOddJetKernel_rootObligations a hker
+  exact ⟨neutralNF567OriginalAll67SquaredDualRootMultiplicities
+    a hp hF hzeros, hpole⟩
 
 end
 end WeilDefect
