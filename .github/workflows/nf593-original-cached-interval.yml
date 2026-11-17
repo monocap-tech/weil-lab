@@ -1,0 +1,71 @@
+name: NF593 cached original source interval evaluator
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCached*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalFixedpoint*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalNF407*.lean"
+      - "scripts/local_replay/NF593CachedSourcePreflight.lean"
+      - "scripts/local_replay/verify_nf593_cached_source_preflight.py"
+      - ".github/workflows/nf593-original-cached-interval.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf593-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  cache-and-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Sound periodic phase recovery
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalFixedpointPhase
+      - name: Exact cached exponential and mode table equality
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCachedModeJets
+      - name: Full cached source and Boolean checker soundness
+        id: cached
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCachedSourceJets
+      - name: Execute cached evaluator (diagnostic, not proof)
+        if: ${{ always() && steps.cached.outcome == 'success' }}
+        run: |
+          set -o pipefail
+          lake env lean --run scripts/local_replay/NF593CachedSourcePreflight.lean | tee nf593-preflight.txt
+          python scripts/local_replay/verify_nf593_cached_source_preflight.py nf593-preflight.txt
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() && steps.cached.outcome == 'success' }}
+        with:
+          name: NF593-cached-evaluator-preflight
+          path: nf593-preflight.txt
+  source-recovery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Literal normalized complex source
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407NormalizedComplexSource
+      - name: All-order original canonical recurrence
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407CanonicalJetRecurrence
+      - name: Exact original full-box disc bounds
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407DiscTableBounds
+      - name: Reference interval evaluator soundness
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalFixedpointBudgetBridge
