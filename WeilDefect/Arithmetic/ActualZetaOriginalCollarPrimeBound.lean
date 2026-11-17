@@ -170,5 +170,24 @@ theorem neutralNF600Prime_bound (s : 𝓢(ℝ,ℂ))
     neutralNF600Mass s := by linarith
   exact mul_le_mul hc hh (norm_nonneg _) (by norm_num)
 
+theorem neutralNF600Prime9_coefficient :
+    ArithmeticFunction.vonMangoldt 9 / Real.sqrt 9 ≤ (2/5:ℝ) := by
+  have h9 : ArithmeticFunction.vonMangoldt 9 = Real.log 3 := by
+    rw [show (9:ℕ)=3^2 by norm_num,
+      ArithmeticFunction.vonMangoldt_apply_pow (by decide),
+      ArithmeticFunction.vonMangoldt_apply_prime (by decide)]
+  have he : (3:ℝ) < Real.exp (6/5) := by
+    have h := Real.sum_le_exp_of_nonneg (show (0:ℝ) ≤ 6/5 by norm_num) 5
+    apply lt_of_lt_of_le _ h
+    norm_num [Finset.sum_range_succ,Nat.factorial_succ]
+  have hl := (Real.log_lt_iff_lt_exp (by norm_num : (0:ℝ)<3)).mpr he
+  rw [h9,show Real.sqrt 9=3 by norm_num]
+  linarith
+
+theorem neutralNF600Prime_bound_actual (s : 𝓢(ℝ,ℂ))
+    (hs : ∀ x, x ∉ neutralNF543OriginalCollars → s x = 0) :
+    |(neutralNF600Prime s).re| ≤ (2/5:ℝ)*neutralNF600Mass s :=
+  neutralNF600Prime_bound s hs neutralNF600Prime9_coefficient
+
 end
 end WeilDefect
