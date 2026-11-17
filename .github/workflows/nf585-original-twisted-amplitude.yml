@@ -1,0 +1,36 @@
+name: NF585 original twisted U amplitude and sharp strip attachment
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointTwisted*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointLiteralStrip.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointC1SeedGraph.lean"
+      - ".github/workflows/nf585-original-twisted-amplitude.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf585-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  nf585-focused:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Actual twisted U derivative and sharp historical amplitude constants
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointTwistedAmplitude
+      - name: Actual panel integrability and quantitative split envelope
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointTwistedPanels
+      - name: Literal physical half L1 and exact complex strip attachment
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointLiteralStrip
+      - name: Terminal C1 original actual endpoint graph
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointC1SeedGraph
