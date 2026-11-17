@@ -120,7 +120,7 @@ theorem neutralNF590RealSeries_unique (u v : ℕ → ℝ) (f : ℝ → ℝ)
     intro w _
     simpa [p,FormalMultilinearSeries.ofScalars_apply_eq,smul_eq_mul] using hc w
   have h := (make u hu).eq_formalMultilinearSeries (make v hv)
-  exact (FormalMultilinearSeries.ofScalars_series_eq_iff ℝ ℝ v).mp h
+  exact FormalMultilinearSeries.ofScalars_series_injective ℝ ℝ h
 
 end
 end WeilDefect
