@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "WeilDefect/Arithmetic/ActualZetaOriginalJ242Original68RootBudget.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242Generic67PlusPoleRootCount.lean"
       - "WeilDefect/Arithmetic/ActualZetaOriginalJ242ActualOddJetKernelClosure.lean"
       - "WeilDefect/Arithmetic/ActualZetaOriginalJ242FrequencyNonzero.lean"
       - "WeilDefect/Arithmetic/ActualZetaOriginalJ242Actual67BlockCoverage.lean"
@@ -28,6 +29,8 @@ jobs:
         run: lake update
       - name: Restore pinned Mathlib cache
         run: lake exe cache get
+      - name: First independently compile completely generic multiset 67 distinct roots plus pole budget
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242Generic67PlusPoleRootCount
       - name: Independently verify original 67 frequency index blocks, distinct positive squared nodes, and negative pole separation
         run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242Actual67BlockCoverage
       - name: Independently compile original p_a nonzero implies F_a=X p_a(X²) nonzero
