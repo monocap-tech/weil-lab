@@ -1,0 +1,54 @@
+name: NF587 original NF407 frozen-source binding and full-box U400 replay
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalNF407*.lean"
+      - "scripts/local_replay/*nf587*.py"
+      - ".github/workflows/nf587-original-nf407-binding.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf587-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  exact-data-and-full-box:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Independent lossless archival data audit
+        run: python scripts/local_replay/verify_nf587_original_NF407_lean_binding.py
+      - name: Install rigorous ball arithmetic
+        run: python -m pip install python-flint
+      - name: Direct full original coefficient-box normalized U400
+        run: python scripts/local_replay/nf587_original_NF407_full_box_normalized_U400.py --output nf587-full-box-U400.json
+      - name: Upload exact interval receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: NF587-full-box-U400
+          path: nf587-full-box-U400.json
+  lean-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Exact frozen NF407 data and source regularity
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407SourceBinding
+      - name: Actual logarithmic Fourier split recovery
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointLogFourierSplit
+      - name: Actual twisted derivative recovery
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointTwistedAmplitude
+      - name: Source-specific corrected carrier
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407CorrectedCarrier
