@@ -65,17 +65,27 @@ theorem neutralNF550OriginalPhysicalSynthesis_ae
       (fun i : Fin 242 =>
         d i • neutralNF546OriginalSelectedPhysicalL2 i)).trans
       (eventuallyEq_sum fun i _ => hterm i)
-  have hsum :
-      ((∑ i : Fin 242,
-        d i • neutralNF546OriginalSelectedPhysicalL2 i :
-          RealComplexL2) : ℝ → ℂ) =ᵐ[volume]
-      (fun x => ∑ i : Fin 242,
+  have hsumFun :
+      (∑ i : Fin 242,
+        (fun x : ℝ => d i * neutralNF546OriginalWindowGenerator i x)) =
+      (fun x : ℝ => ∑ i : Fin 242,
         d i * neutralNF546OriginalWindowGenerator i x) := by
-    simpa only [Finset.sum_apply] using hsum'
-  simpa only [neutralNF549OriginalPhysicalSynthesis,
-      Module.Basis.constr_apply_fintype, Pi.basisFun_equivFun,
-      LinearEquiv.refl_apply, neutralNF550OriginalWindowSourceCombination]
-    using hsum
+    funext x
+    simp only [Finset.sum_apply]
+  rw [hsumFun] at hsum'
+  have hrepr :
+      neutralNF549OriginalPhysicalSynthesis d =
+        ∑ i : Fin 242, d i • neutralNF546OriginalSelectedPhysicalL2 i := by
+    simp only [neutralNF549OriginalPhysicalSynthesis,
+      Module.Basis.constr_apply_fintype,
+      Pi.basisFun_equivFun, LinearEquiv.refl_apply]
+  rw [hrepr]
+  change ((∑ i : Fin 242,
+      d i • neutralNF546OriginalSelectedPhysicalL2 i :
+        RealComplexL2) : ℝ → ℂ) =ᵐ[volume]
+        (fun x => ∑ i : Fin 242,
+          d i * neutralNF546OriginalWindowGenerator i x)
+  exact hsum'
 
 set_option maxRecDepth 1000
 
@@ -208,16 +218,10 @@ theorem neutralNF550CanonicalOriginalGram_real_eq_real_weighted_square
     simp only [neutralNF548ComplexEvenCollarCutoff,
       Complex.ofReal_mul]
   simp_rw [hp]
-  have hcast :
-      (∫ x : ℝ,
-        ((neutralNF548RealEvenCollarCutoff x *
-            ‖neutralNF550OriginalSourceCombination d x‖ ^ 2 : ℝ) : ℂ) ∂volume) =
-      ((∫ x : ℝ,
-        neutralNF548RealEvenCollarCutoff x *
-          ‖neutralNF550OriginalSourceCombination d x‖ ^ 2 ∂volume) : ℂ) := by
-      exact integral_ofReal
-  rw [hcast]
-  simp
+  simpa only [Complex.ofReal_re] using congrArg Complex.re
+    (integral_complex_ofReal (μ := volume)
+      (f := fun x : ℝ => neutralNF548RealEvenCollarCutoff x *
+        ‖neutralNF550OriginalSourceCombination d x‖ ^ 2))
 
 /-- Genuine original canonical Gram is POSITIVE SEMIDEFINITE for
 every 242-source coefficient vector, without assuming 136-root
