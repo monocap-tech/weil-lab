@@ -29,11 +29,13 @@ theorem neutralNF574ActualCoefficients_tendsto_of_domination
       ‖u i q - v q‖^2) l (nhds 0) := by
     have hpoint (q : NeutralActualZetaDivisorCoordinate) :
         Tendsto (fun i => ‖u i q - v q‖^2) l (nhds (0 : ℝ)) := by
-      have h := ((hcoord q).sub tendsto_const_nhds).norm.pow 2
+      have hc : Tendsto (fun _ : ι => v q) l (nhds (v q)) := tendsto_const_nhds
+      have h := ((hcoord q).sub hc).norm.pow 2
       simpa using h
     have hd : ∀ᶠ i in l, ∀ q, ‖(‖u i q - v q‖^2 : ℝ)‖ ≤ W q := by
       filter_upwards [hbound] with i hi q
-      simpa only [Real.norm_eq_abs, abs_of_nonneg (sq_nonneg _)] using hi q
+      rw [Real.norm_eq_abs, abs_of_nonneg (sq_nonneg ‖u i q - v q‖)]
+      exact hi q
     simpa only [tsum_zero] using
       (tendsto_tsum_of_dominated_convergence
         (f := fun i q => ‖u i q - v q‖^2)
@@ -113,7 +115,7 @@ theorem neutralNF574ActualFullGraphLimit_of_dyadicDomination
         (neutralLogPositivePairSource a (neutralActualZetaDivisorOrdinate q)) (g i))
         l (nhds (inner ℂ
           (neutralLogPositivePairSource a (neutralActualZetaDivisorOrdinate q)) k))
-      simpa only [Function.comp_def] using h
+      simpa only [Function.comp_def, id_eq] using h
     · filter_upwards [] with i q
       rw [(neutralActualZetaSourceAnalysis_sampling a (G i) q).1,
         (neutralActualZetaSourceAnalysis_sampling a K q).1, hG i, hK]
@@ -130,7 +132,7 @@ theorem neutralNF574ActualFullGraphLimit_of_dyadicDomination
         (neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q)) (g i))
         l (nhds (inner ℂ
           (neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q)) k))
-      simpa only [Function.comp_def] using h
+      simpa only [Function.comp_def, id_eq] using h
     · filter_upwards [] with i q
       rw [(neutralActualZetaSourceAnalysis_sampling a (G i) q).2,
         (neutralActualZetaSourceAnalysis_sampling a K q).2, hG i, hK]
