@@ -70,9 +70,12 @@ theorem neutralNF585LiteralHalf_transform (U : ℝ → ℝ) (z : ℂ) :
       have hp : Complex.I*(z*((B-d:ℝ):ℂ)) =
           Complex.I*(z.re:ℂ)*(B:ℂ) +
           ((-z.im*(B-d):ℝ):ℂ) + (-(Complex.I*(z.re:ℂ))*(d:ℂ)) := by
-        rw [hz]
-        push_cast
-        linear_combination (Complex.I_mul_I)*(z.im:ℂ)*((B:ℂ)-(d:ℂ))
+        calc
+          _ = Complex.I*(((z.re:ℂ)+Complex.I*(z.im:ℂ))*((B-d:ℝ):ℂ)) :=
+            congrArg (fun w : ℂ => Complex.I*(w*((B-d:ℝ):ℂ))) hz
+          _ = _ := by
+            push_cast
+            linear_combination (Complex.I_mul_I)*(z.im:ℂ)*((B:ℂ)-(d:ℂ))
       rw [hp,Complex.exp_add,Complex.exp_add]
       dsimp [K,P,neutralNF584Amplitude,neutralNF585A,
         neutralNF585TwistedAmplitude,neutralNF584Phase]
