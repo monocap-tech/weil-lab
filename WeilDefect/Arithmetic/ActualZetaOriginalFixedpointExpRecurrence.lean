@@ -1,6 +1,7 @@
 import WeilDefect.Arithmetic.ActualZetaOriginalDirectedRounding
 import WeilDefect.Arithmetic.ActualZetaOriginalJetRecurrence
 import WeilDefect.Arithmetic.ActualZetaOriginalTranscendentalRemainders
+import WeilDefect.Arithmetic.ActualZetaOriginalFixedpointComputationalCore
 
 namespace WeilDefect
 noncomputable section
@@ -10,9 +11,6 @@ open Finset
 NF591 outward-rounding convention. Q is generic, not a trust input.
 The complex product rounds each of its four real products. -/
 
-def NF591Ball.exactQ (q : ℚ) (Q : ℕ) : NF591Ball :=
-  if (⌊q*(Q:ℚ)⌋:ℚ) = q*Q then ⟨q,0⟩ else (NF591Ball.mk q 0).round Q
-
 theorem NF591Ball.contains_exactQ (q : ℚ) (Q : ℕ) (hQ : 0 < Q) :
     (NF591Ball.exactQ q Q).Contains (q:ℝ) := by
   have h : (NF591Ball.mk q 0).Contains (q:ℝ) := by simp [Contains]
@@ -20,9 +18,6 @@ theorem NF591Ball.contains_exactQ (q : ℚ) (Q : ℕ) (hQ : 0 < Q) :
   split_ifs
   · exact h
   · exact contains_round h Q hQ
-
-def NF591Ball.expand (a : NF591Ball) (r : ℚ) : NF591Ball :=
-  ⟨a.mid,a.rad+r⟩
 
 theorem NF591Ball.contains_expand {a : NF591Ball} {x y : ℝ} (r : ℚ)
     (hx : a.Contains x) (hy : |y-x| ≤ (r:ℝ)) :
@@ -33,12 +28,6 @@ theorem NF591Ball.contains_expand {a : NF591Ball} {x y : ℝ} (r : ℚ)
     |y-(a.mid:ℝ)| = |(y-x)+(x-(a.mid:ℝ))| := by congr 1 <;> ring
     _ ≤ |y-x|+|x-(a.mid:ℝ)| := abs_add_le _ _
     _ ≤ _ := by linarith
-
-def NF591Rect.realQ (q : ℚ) (Q : ℕ) : NF591Rect :=
-  ⟨NF591Ball.exactQ q Q,⟨0,0⟩⟩
-
-def NF591Rect.one : NF591Rect := ⟨⟨1,0⟩,⟨0,0⟩⟩
-def NF591Rect.zero : NF591Rect := ⟨⟨0,0⟩,⟨0,0⟩⟩
 
 theorem NF591Rect.contains_one : NF591Rect.one.Contains 1 := by
   simp [one,Contains,NF591Ball.Contains]
@@ -52,11 +41,6 @@ theorem NF591Rect.contains_realQ (q : ℚ) (Q : ℕ) (hQ : 0 < Q) :
   · simpa [realQ,← Complex.ofReal_ratCast] using NF591Ball.contains_exactQ q Q hQ
   · simp [realQ,NF591Ball.Contains,← Complex.ofReal_ratCast]
 
-def NF591Rect.mulQ (a b : NF591Rect) (Q : ℕ) : NF591Rect :=
-  let p := fun x y : NF591Ball => (x.mul y).round Q
-  ⟨(p a.re b.re).add (p a.im b.im).neg,
-    (p a.re b.im).add (p a.im b.re)⟩
-
 theorem NF591Rect.contains_mulQ {a b : NF591Rect} {z w : ℂ}
     (hz : a.Contains z) (hw : b.Contains w) (Q : ℕ) (hQ : 0 < Q) :
     (a.mulQ b Q).Contains (z*w) := by
@@ -67,9 +51,6 @@ theorem NF591Rect.contains_mulQ {a b : NF591Rect} {z w : ℂ}
   · simpa only [mulQ,Complex.mul_im,add_comm] using
       NF591Ball.contains_add (NF591Ball.contains_rounded_mul hz.1 hw.2 Q hQ)
         (NF591Ball.contains_rounded_mul hz.2 hw.1 Q hQ)
-
-def NF591Rect.divQ (a : NF591Rect) (d : ℚ) (Q : ℕ) : NF591Rect :=
-  ⟨(a.re.divPos d).round Q,(a.im.divPos d).round Q⟩
 
 theorem NF591Rect.contains_divQ {a : NF591Rect} {z : ℂ}
     (hz : a.Contains z) (d : ℚ) (hd : 0 < d) (Q : ℕ) (hQ : 0 < Q) :
@@ -83,9 +64,6 @@ theorem NF591Rect.contains_divQ {a : NF591Rect} {z : ℂ}
   · simpa only [divQ,Complex.smul_im,smul_eq_mul,div_eq_mul_inv,mul_comm] using
       NF591Ball.contains_rounded_div hz.2 d hd Q hQ
 
-def NF591Rect.expand (a : NF591Rect) (r : ℚ) : NF591Rect :=
-  ⟨a.re.expand r,a.im.expand r⟩
-
 theorem NF591Rect.contains_expand {a : NF591Rect} {z w : ℂ}
     (hz : a.Contains z) (r : ℚ) (hw : ‖w-z‖ ≤ (r:ℝ)) :
     (a.expand r).Contains w := by
@@ -96,10 +74,6 @@ theorem NF591Rect.contains_expand {a : NF591Rect} {z w : ℂ}
 
 /-- Same recurrence as the exact integer replay; no factorial or
 large power is evaluated by floating-point arithmetic. -/
-def neutralNF592ExpJetBall (a : NF591Rect) (Q : ℕ) : ℕ → NF591Rect
-  | 0 => NF591Rect.one
-  | n+1 => ((neutralNF592ExpJetBall a Q n).mulQ a Q).divQ (n+1:ℚ) Q
-
 theorem neutralNF592ExpJetBall_sound (a : NF591Rect) (z : ℂ) (Q : ℕ)
     (hQ : 0 < Q) (ha : a.Contains z) (n : ℕ) :
     (neutralNF592ExpJetBall a Q n).Contains (neutralNF590ExpJet z n) := by
@@ -111,10 +85,6 @@ theorem neutralNF592ExpJetBall_sound (a : NF591Rect) (z : ℂ) (Q : ℕ)
       NF591Rect.contains_divQ (NF591Rect.contains_mulQ ih ha Q hQ)
         (n+1:ℚ) (by positivity) Q hQ
 
-def neutralNF592ExpPartial (a : NF591Rect) (Q : ℕ) : ℕ → NF591Rect
-  | 0 => NF591Rect.zero
-  | n+1 => (neutralNF592ExpPartial a Q n).add (neutralNF592ExpJetBall a Q n)
-
 theorem neutralNF592ExpPartial_sound (a : NF591Rect) (z : ℂ) (Q : ℕ)
     (hQ : 0 < Q) (ha : a.Contains z) (N : ℕ) :
     (neutralNF592ExpPartial a Q N).Contains
@@ -125,9 +95,6 @@ theorem neutralNF592ExpPartial_sound (a : NF591Rect) (z : ℂ) (Q : ℕ)
     rw [neutralNF592ExpPartial,sum_range_succ]
     exact NF591Rect.contains_add ih
       (by simpa only [neutralNF590ExpJet_eq] using neutralNF592ExpJetBall_sound a z Q hQ ha N)
-
-def neutralNF592SmallExpBall (a : NF591Rect) (Q N : ℕ) : NF591Rect :=
-  (neutralNF592ExpPartial a Q N).expand (1/(Q:ℚ))
 
 /-- The exact small-disc error must be paid by a rational
 comparison, not asserted from the replay. -/
