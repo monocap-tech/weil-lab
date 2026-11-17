@@ -1,0 +1,64 @@
+name: NF600 original two-collar Fourier and arithmetic support coercivity
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollar*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalSupportCoercivityTransfer.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointSignCheck.lean"
+      - ".github/workflows/nf600-original-collar-coercivity.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf600-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  support:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Exact two-collar measure and integer prime exclusion
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarPrimeGeometry
+      - name: Actual unitary Fourier mass and support L1 bound
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarFourierMass
+      - name: Genuine log9 correlation and complete prime cost
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarPrimeBound
+      - name: Exact literal two-pole moment cost
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarPoleBound
+  signed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Genuine digamma gain and gamma lower bounds
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarGammaLower
+      - name: Unit-normalized complete gamma integral lower
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarArchLower
+      - name: Support-only lower bound graph transfer
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalSupportCoercivityTransfer
+      - name: Literal smooth EF 2/5 margin and actual NF407 graph
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarCoercivity
+      - name: Independent endpoint sign implication
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointSignCheck
