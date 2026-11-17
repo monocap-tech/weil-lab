@@ -1,4 +1,5 @@
 import WeilDefect.Arithmetic.ActualZetaOriginalJ242SourceFunctions
+import WeilDefect.Arithmetic.ActualZetaOriginalJ242HermiteDegreeObstruction
 import Mathlib.Tactic
 
 namespace WeilDefect
@@ -91,6 +92,46 @@ theorem neutralNF567OriginalGroupOmega_injective :
       (neutralNF567OriginalGroupAt h).1 := by
     exact_mod_cast hratR
   exact neutralNF567OriginalGroupRationalFrequency_injective hrat
+
+/-- Every original group frequency f is positive in the
+ACTUAL rational NF407 table, not a sampled or post-selected f. -/
+private theorem neutralNF567OriginalAllGroupFrequencies_pos :
+    ∀ g : Fin 67, (0 : ℚ) < (neutralNF567OriginalGroupAt g).1 := by
+  decide +kernel
+
+/-- Each true original real angular node 2*pi*f_g is positive. -/
+theorem neutralNF567OriginalGroupOmega_pos (g : Fin 67) :
+    0 < neutralNF567OriginalGroupOmega g := by
+  have hrat : (0 : ℚ) < (neutralNF567OriginalGroupAt g).1 :=
+    neutralNF567OriginalAllGroupFrequencies_pos g
+  have hreal : (0 : ℝ) < ((neutralNF567OriginalGroupAt g).1 : ℝ) := by
+    exact_mod_cast hrat
+  unfold neutralNF567OriginalGroupOmega
+  positivity
+
+/-- The 67 genuine real squared source nodes (2*pi*f_g)^2
+are strictly positive and cannot meet the sinh pole node. -/
+theorem neutralNF567OriginalGroupSquaredOmega_pos (g : Fin 67) :
+    0 < neutralNF567OriginalGroupOmega g ^ 2 :=
+  neutralNF553PositiveSquareNode _
+    (neutralNF567OriginalGroupOmega_pos g)
+
+/-- The actual 67 positive squared frequencies remain injectively
+indexed: none of the original multiplicity blocks collide after
+the quadratic substitution required by NF556. -/
+theorem neutralNF567OriginalGroupSquaredOmega_injective :
+    Function.Injective (fun g : Fin 67 => neutralNF567OriginalGroupOmega g ^ 2) := by
+  intro g h hsquares
+  apply neutralNF567OriginalGroupOmega_injective
+  exact neutralNF553PositiveSquareNodeInjective
+    (neutralNF567OriginalGroupOmega_pos g)
+    (neutralNF567OriginalGroupOmega_pos h) hsquares
+
+/-- None of the 67 original positive squared-frequency nodes
+collides with the true negative sinh-pole node -1/4. -/
+theorem neutralNF567OriginalGroupSquaredOmega_ne_sinhPole (g : Fin 67) :
+    neutralNF567OriginalGroupOmega g ^ 2 ≠ -(1 / 4 : ℝ) :=
+  neutralNF553GenuinePoleNodeSeparated _
 
 /-- For every genuine frequency group g and EVERY k in its
 original range, recover a specific genuine Fin241 oscillator
