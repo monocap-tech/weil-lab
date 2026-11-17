@@ -21,16 +21,10 @@ theorem neutralNF597PiReceipt_of_check
   have hh : (neutralNF592PiBall neutralNF592Q 200).mid = neutralNF597PiReceipt.mid ∧
       (neutralNF592PiBall neutralNF592Q 200).rad = neutralNF597PiReceipt.rad :=
     of_decide_eq_true h
-  cases hp : neutralNF592PiBall neutralNF592Q 200 with
-  | mk m r =>
-    cases hq : neutralNF597PiReceipt with
-    | mk m' r' =>
-      rw [hp,hq] at hh
-      simp only at hh
-      cases hh with
-      | intro h1 h2 =>
-        cases h1
-        cases h2
-        rfl
+  have he (a b : NF591Ball) (hm : a.mid = b.mid) (hr : a.rad = b.rad) : a = b := by
+    cases a
+    cases b
+    simp_all
+  exact he _ _ hh.1 hh.2
 
 end WeilDefect
