@@ -22,7 +22,7 @@ theorem neutralNF589CriticalFrequency_bounds :
 
 theorem neutralNF589CriticalSine_bounds :
     ∀ j : Fin 4, ∀ k : Fin 32,
-      |neutralNF587CriticalSines[j.val]![k.val]!| ≤ 1 := by
+      |(neutralNF587CriticalSines[j.val]!)[k.val]!| ≤ 1 := by
   decide +kernel
 
 theorem neutralNF589CriticalPole_bounds :
