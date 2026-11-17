@@ -79,7 +79,7 @@ theorem neutralNF588CriticalComplex_differentiable (j : Fin 4) :
     Differentiable ℂ (neutralNF588CriticalComplex j) := by
   unfold neutralNF588CriticalComplex
   apply Differentiable.add
-  · apply Differentiable.sum
+  · apply Differentiable.fun_sum
     intro k hk
     fun_prop
   · fun_prop
@@ -88,10 +88,10 @@ theorem neutralNF588SourceComplex_differentiable (a : Fin 242 → ℝ) (b : Fin 
     Differentiable ℂ (neutralNF588SourceComplex a b) := by
   unfold neutralNF588SourceComplex
   apply Differentiable.add
-  · apply Differentiable.sum
+  · apply Differentiable.fun_sum
     intro j hj
     exact differentiable_const.mul (neutralNF588SelectedComplex_differentiable j)
-  · apply Differentiable.sum
+  · apply Differentiable.fun_sum
     intro j hj
     exact differentiable_const.mul (neutralNF588CriticalComplex_differentiable j)
 
@@ -112,7 +112,7 @@ theorem neutralNF588NormalizedSource_real_derivative
     simp
   rw [he] at hc
   have hd : HasDerivAt (fun t : ℝ => (11/10:ℝ)-t/500) (-1/500) w := by
-    simpa only [neg_div] using ((hasDerivAt_id w).div_const 500).const_sub (11/10:ℝ)
+    simpa only [id_eq,neg_div] using ((hasDerivAt_id w).div_const 500).const_sub (11/10:ℝ)
   have hu := (neutralNF587Source_hasDerivAt a b (11/10-w/500)).comp w hd
   have h := hc.deriv.symm.trans hu.deriv
   simpa only [Function.comp_apply] using h.trans (by ring)
