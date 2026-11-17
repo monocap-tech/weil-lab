@@ -88,6 +88,62 @@ theorem neutralNF564OriginalDualOddPolynomial_iterateDerivative_eval
   intro n hn
   ring
 
+/-- The exact REAL translation of Mathlib's descending
+factorial into the source-audited binomial times monomial
+factorial, for arbitrary derivative and oscillator orders. -/
+theorem neutralNF564DescendingFactorial_eq_chooseFactorial
+    (m k : ℕ) :
+    (Nat.descFactorial m k : ℝ) =
+      (m.choose k : ℝ) * (k.factorial : ℝ) := by
+  have hn : Nat.descFactorial m k = m.choose k * k.factorial := by
+    simpa only [Nat.mul_comm] using
+      (Nat.descFactorial_eq_factorial_mul_choose m k)
+  exact_mod_cast hn
+
+/-- The historical cosine/sine source parity sign identity.
+For k=2r or 2r+1, the original source uses the sign
+(-1)^(n-r), whereas polynomial differentiation of
+F_a(X)=Σ(-1)^n a_n X^(2n+1) introduces (-1)^n.
+Multiplication by (-1)^r reconciles them exactly. -/
+theorem neutralNF564OriginalOddDualSignTransfer
+    (n r : ℕ) (hr : r ≤ n) :
+    (-1 : ℝ) ^ r * (-1 : ℝ) ^ n =
+      (-1 : ℝ) ^ (n - r) := by
+  have htwice : (-1 : ℝ) ^ r * (-1 : ℝ) ^ r = 1 := by
+    rw [← pow_add, show r + r = 2 * r by omega, pow_mul]
+    norm_num
+  calc
+    (-1 : ℝ) ^ r * (-1 : ℝ) ^ n =
+        (-1 : ℝ) ^ r *
+          ((-1 : ℝ) ^ (n - r) * (-1 : ℝ) ^ r) := by
+      rw [← pow_add, Nat.sub_add_cancel hr]
+    _ = (-1 : ℝ) ^ (n - r) *
+          ((-1 : ℝ) ^ r * (-1 : ℝ) ^ r) := by ring
+    _ = (-1 : ℝ) ^ (n - r) := by rw [htwice, mul_one]
+
+/-- The signed kth coefficient of the original odd-dual Hermite
+polynomial agrees with BOTH original trigonometric monomial
+branches, k=2r or k=2r+1. The only analytic fact needed after
+this is the authentic oscillator's initial derivative identity. -/
+theorem neutralNF564OriginalOddDualSignedCoefficient
+    (n r k : ℕ) (hr : r ≤ n) :
+    (-1 : ℝ) ^ r *
+        ((-1 : ℝ) ^ n *
+          (Nat.descFactorial (2 * n + 1) k : ℝ)) =
+      (-1 : ℝ) ^ (n - r) *
+        ((2 * n + 1).choose k : ℝ) * (k.factorial : ℝ) := by
+  rw [neutralNF564DescendingFactorial_eq_chooseFactorial]
+  calc
+    (-1 : ℝ) ^ r *
+        ((-1 : ℝ) ^ n *
+          ((2 * n + 1).choose k * (k.factorial : ℝ))) =
+      ((-1 : ℝ) ^ r * (-1 : ℝ) ^ n) *
+        ((2 * n + 1).choose k * (k.factorial : ℝ)) := by ring
+    _ = (-1 : ℝ) ^ (n - r) *
+        ((2 * n + 1).choose k * (k.factorial : ℝ)) := by
+      rw [neutralNF564OriginalOddDualSignTransfer n r hr]
+    _ = _ := by ring
+
 /-- Base k=0 of the full original Hermite bridge is precisely
 the quadratic dual evaluation, without any source derivative
 assumption. All k>0 follow from the formally stated higher
