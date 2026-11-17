@@ -99,7 +99,9 @@ theorem neutralNF579PhysicalSequence_logLimit_of_stripSamples
     filter_upwards [] with ξ
     have hv : Tendsto (fun n => V (g n) ξ) atTop (nhds (V f ξ)) :=
       hpoint ξ
-    have h := (((hv.sub tendsto_const_nhds).norm).pow 2).const_mul
+    have hc : Tendsto (fun _ : ℕ => V f ξ) atTop (nhds (V f ξ)) :=
+      tendsto_const_nhds
+    have h := (((hv.sub hc).norm).pow 2).const_mul
       (logarithmicFourierWeight ξ)
     simpa [F] using h
   have hint : Tendsto (fun n => ∫ ξ, F n ξ ∂volume) atTop (nhds (0:ℝ)) := by
