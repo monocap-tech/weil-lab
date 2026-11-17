@@ -17,8 +17,7 @@ theorem neutralNF600Arch_integrable (s : 𝓢(ℝ,ℂ)) :
     Integrable (fun ξ => Zeta23.EF.gammaBracket (-2*Real.pi*ξ)*neutralNF600Density s ξ) := by
   obtain ⟨D,hD,hb⟩ := neutralActualZetaArchimedeanSymbol_bound
   let v := 𝓕 s
-  obtain ⟨M,hM⟩ := v.decay 0 0
-  have hM0 : 0≤M := (norm_nonneg (v 0)).trans (by simpa using hM 0)
+  obtain ⟨M,hM0,hM⟩ := v.decay 0 0
   have hi := (v.integrable.norm.add (v.integrable_pow_mul volume 1)).const_mul (D*M)
   apply hi.mono' (by
     unfold neutralNF600Density
