@@ -1,5 +1,6 @@
 import WeilDefect.Arithmetic.ActualZetaOriginalJ242FrequencyHermitePolynomial
 import WeilDefect.Arithmetic.ActualZetaOriginalJ242HermiteDerivativeMultiplicity
+import Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas
 import Mathlib.Tactic
 
 namespace WeilDefect

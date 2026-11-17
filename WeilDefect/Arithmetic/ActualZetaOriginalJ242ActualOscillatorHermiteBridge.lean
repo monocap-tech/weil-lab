@@ -42,8 +42,10 @@ theorem neutralNF566EvenOriginalOscillator_analyticSignedJet
     rw [hdiv, hsub]
     have hsign : (-1 : ℝ) ^ (n - r) = (-1 : ℝ) ^ (n + r) := by
       have hnat : n + r = (n - r) + 2 * r := by omega
-      rw [hnat, pow_add]
-      norm_num [← pow_mul]
+      have hpow : (-1 : ℝ) ^ (2 * r) = 1 := by
+        rw [pow_mul]
+        norm_num
+      rw [hnat, pow_add, hpow, mul_one]
     rw [hsign]
     ring
   · have hlt : n < r := by omega
@@ -68,8 +70,10 @@ theorem neutralNF566OddOriginalOscillator_analyticSignedJet
     rw [hdiv, hsub]
     have hsign : (-1 : ℝ) ^ (n - r) = (-1 : ℝ) ^ (n + r) := by
       have hnat : n + r = (n - r) + 2 * r := by omega
-      rw [hnat, pow_add]
-      norm_num [← pow_mul]
+      have hpow : (-1 : ℝ) ^ (2 * r) = 1 := by
+        rw [pow_mul]
+        norm_num
+      rw [hnat, pow_add, hpow, mul_one]
     rw [hsign]
     ring
   · have hlt : n < r := by omega
@@ -100,9 +104,9 @@ theorem neutralNF566OriginalEachOscillator_analyticSignedJet
   · have hmod : k % 2 = 0 := Nat.even_iff.mp he
     have hk : k = 2 * (k / 2) := by omega
     simp only [if_pos he]
-    simpa only [hk] using
-      (neutralNF566EvenOriginalOscillator_analyticSignedJet
-        freq n.val (k / 2))
+    rw [hk]
+    exact neutralNF566EvenOriginalOscillator_analyticSignedJet
+      freq n.val (k / 2)
   · have hmod : k % 2 = 1 := by
       have hne : k % 2 ≠ 0 := by
         intro hz
@@ -110,9 +114,9 @@ theorem neutralNF566OriginalEachOscillator_analyticSignedJet
       omega
     have hk : k = 2 * (k / 2) + 1 := by omega
     simp only [if_neg he]
-    simpa only [hk] using
-      (neutralNF566OddOriginalOscillator_analyticSignedJet
-        freq n.val (k / 2))
+    rw [hk]
+    exact neutralNF566OddOriginalOscillator_analyticSignedJet
+      freq n.val (k / 2)
 
 /-- THE exact original oscillator analytic odd-jet LEFT-KERNEL
 equation is the corresponding formal frequency Hermite derivative
