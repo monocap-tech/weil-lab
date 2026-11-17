@@ -1,0 +1,67 @@
+name: NF598 signed original graph form and certified shared pi
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalSignedGraph*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalGraphPhysicalUniqueness.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalNF407SignedMarginTransfer.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalSharedPiCertified.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCachedSourceEquality.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalFixedpointSourceJets.lean"
+      - ".github/workflows/nf598-original-signed-graph.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf598-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  signed-form:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Actual full-divisor signed form and smooth literal EF
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalSignedGraphForm
+      - name: Exact smooth signed margin and limit transfer
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalSignedGraphLimit
+      - name: Unique graph lift from same physical L2 vector
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalGraphPhysicalUniqueness
+      - name: Actual qualitative corrected source and signed margin transfer
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407SignedMarginTransfer
+  arithmetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Promote kernel certified Machin constant and analytic enclosure
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalSharedPiCertified
+      - name: Actual primitive interval assembly cast recovery
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalFixedpointSourceJets
+      - name: Cached full-source equality by local array lookups
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCachedSourceEquality
+      - name: Exact endpoint sign checker soundness
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointSignCheck
+      - name: Full reduced block checker soundness
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalKernelJetBlocks
