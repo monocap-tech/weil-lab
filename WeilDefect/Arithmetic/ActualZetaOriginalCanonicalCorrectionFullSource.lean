@@ -8,6 +8,7 @@ noncomputable section
 open MeasureTheory Filter Module
 open scoped SchwartzMap ComplexConjugate
 set_option maxHeartbeats 6000000
+set_option maxRecDepth 10000
 
 /-!
 NF573: lift the actual finite-rank correction into the original
@@ -60,9 +61,6 @@ theorem neutralNF573CanonicalColumn_fullSource (j : Fin 242) :
     (neutralNF573CanonicalColumn_real j)
     (neutralNF551CanonicalOriginalColumn_odd j)
 
-/-- The finite graph synthesis is continuous because its coefficient
-domain is finite-dimensional. The column graph vectors must realize
-the actual NF548 columns, with both complete P/N vectors. -/
 /-- Perform finite synthesis in the ambient product, where the
 continuous additive structure is already available, then restrict
 the range to the actual closed source submodule. -/
@@ -116,6 +114,9 @@ theorem neutralNF573GraphColumnSynthesis_physical
     (SchwartzMap.toLpCLM ℂ ℂ 2 volume)
       (neutralNF544BumpSynthesis neutralNF548CanonicalOriginalColumns d)
   simp only [neutralNF544BumpSynthesis,Module.Basis.constr_apply_fintype, Pi.basisFun_repr,map_sum,map_smul]
+  apply Finset.sum_congr rfl
+  intro j _
+  rfl
 
 
 /-- The SAME actual NF544 inverse Gram, followed by finite synthesis
