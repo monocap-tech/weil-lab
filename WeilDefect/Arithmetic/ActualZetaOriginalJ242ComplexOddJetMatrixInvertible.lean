@@ -62,8 +62,9 @@ theorem neutralNF567OriginalComplexOddJetMatrix_isUnit :
   have hdetComplex :
       IsUnit (neutralNF560ActualOriginalOddJetMatrix.det : ℂ) :=
     hdet.map Complex.ofRealHom
-  exact (Matrix.isUnit_iff_isUnit_det _).mpr
-    (neutralNF567OriginalComplexOddJetMatrix_det ▸ hdetComplex)
+  apply (Matrix.isUnit_iff_isUnit_det _).mpr
+  rw [neutralNF567OriginalComplexOddJetMatrix_det]
+  exact hdetComplex
 
 /-- Every actual complex coefficient vector annihilating the
 authentic original complexified analytic odd-jet matrix is zero.
