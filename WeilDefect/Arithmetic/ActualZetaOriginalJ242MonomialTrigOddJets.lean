@@ -24,16 +24,16 @@ or model substitution occurs.
 /-- The exact genuine even-monomial *sine* oscillator odd jet,
 valid for every nonzero or zero real omega and n>=r. -/
 theorem neutralNF562EvenMonomialSine_originalOddJet
-    (ω : ℝ) (n r : ℕ) (hr : r ≤ n) :
+    (freq : ℝ) (n r : ℕ) (hr : r ≤ n) :
     (iteratedDeriv (2 * n + 1)
-      (fun x : ℝ => x ^ (2 * r) * Real.sin (ω * x))) 0 =
+      (fun x : ℝ => x ^ (2 * r) * Real.sin (freq * x))) 0 =
         ((2 * n + 1).choose (2 * r) : ℝ) *
         ((2 * r).factorial : ℝ) *
-        ((-1 : ℝ) ^ (n - r) * ω ^ (2 * (n - r) + 1)) := by
+        ((-1 : ℝ) ^ (n - r) * freq ^ (2 * (n - r) + 1)) := by
   have hle : 2 * r ≤ 2 * n + 1 := by omega
   have hsub : 2 * n + 1 - 2 * r = 2 * (n - r) + 1 := by omega
   rw [neutralNF561MonomialTimesSmooth_jetAtZero
-    (fun x : ℝ => Real.sin (ω * x)) (by fun_prop)
+    (fun x : ℝ => Real.sin (freq * x)) (by fun_prop)
     (2 * n + 1) (2 * r)]
   simp only [if_pos hle]
   rw [hsub, neutralNF561ScaledSin_oddJet]
@@ -41,16 +41,16 @@ theorem neutralNF562EvenMonomialSine_originalOddJet
 /-- The exact genuine odd-monomial *cosine* oscillator odd jet.
 This covers all odd-k original selected generators with k=2r+1. -/
 theorem neutralNF562OddMonomialCosine_originalOddJet
-    (ω : ℝ) (n r : ℕ) (hr : r ≤ n) :
+    (freq : ℝ) (n r : ℕ) (hr : r ≤ n) :
     (iteratedDeriv (2 * n + 1)
-      (fun x : ℝ => x ^ (2 * r + 1) * Real.cos (ω * x))) 0 =
+      (fun x : ℝ => x ^ (2 * r + 1) * Real.cos (freq * x))) 0 =
         ((2 * n + 1).choose (2 * r + 1) : ℝ) *
         ((2 * r + 1).factorial : ℝ) *
-        ((-1 : ℝ) ^ (n - r) * ω ^ (2 * (n - r))) := by
+        ((-1 : ℝ) ^ (n - r) * freq ^ (2 * (n - r))) := by
   have hle : 2 * r + 1 ≤ 2 * n + 1 := by omega
   have hsub : 2 * n + 1 - (2 * r + 1) = 2 * (n - r) := by omega
   rw [neutralNF561MonomialTimesSmooth_jetAtZero
-    (fun x : ℝ => Real.cos (ω * x)) (by fun_prop)
+    (fun x : ℝ => Real.cos (freq * x)) (by fun_prop)
     (2 * n + 1) (2 * r + 1)]
   simp only [if_pos hle]
   rw [hsub, neutralNF561ScaledCos_evenJet]
@@ -71,41 +71,41 @@ theorem neutralNF562ChooseFactorial_eq_factorialRatio
 /-- The exact REAL factorial-ratio closed odd jet for the even-k
 sine branch of each source oscillator, with no numerical pi. -/
 theorem neutralNF562EvenMonomialSine_originalOddJet_factorial
-    (ω : ℝ) (n r : ℕ) (hr : r ≤ n) :
+    (freq : ℝ) (n r : ℕ) (hr : r ≤ n) :
     (iteratedDeriv (2 * n + 1)
-      (fun x : ℝ => x ^ (2 * r) * Real.sin (ω * x))) 0 =
+      (fun x : ℝ => x ^ (2 * r) * Real.sin (freq * x))) 0 =
         ((2 * n + 1).factorial : ℝ) /
         ((2 * (n - r) + 1).factorial : ℝ) *
-        ((-1 : ℝ) ^ (n - r) * ω ^ (2 * (n - r) + 1)) := by
+        ((-1 : ℝ) ^ (n - r) * freq ^ (2 * (n - r) + 1)) := by
   have hle : 2 * r ≤ 2 * n + 1 := by omega
   have hsub : 2 * n + 1 - 2 * r = 2 * (n - r) + 1 := by omega
-  rw [neutralNF562EvenMonomialSine_originalOddJet ω n r hr]
+  rw [neutralNF562EvenMonomialSine_originalOddJet freq n r hr]
   rw [neutralNF562ChooseFactorial_eq_factorialRatio
     (2 * n + 1) (2 * r) hle, hsub]
 
 /-- The exact REAL factorial-ratio closed odd jet for the odd-k
 cosine branch of each source oscillator, with no numerical pi. -/
 theorem neutralNF562OddMonomialCosine_originalOddJet_factorial
-    (ω : ℝ) (n r : ℕ) (hr : r ≤ n) :
+    (freq : ℝ) (n r : ℕ) (hr : r ≤ n) :
     (iteratedDeriv (2 * n + 1)
-      (fun x : ℝ => x ^ (2 * r + 1) * Real.cos (ω * x))) 0 =
+      (fun x : ℝ => x ^ (2 * r + 1) * Real.cos (freq * x))) 0 =
         ((2 * n + 1).factorial : ℝ) /
         ((2 * (n - r)).factorial : ℝ) *
-        ((-1 : ℝ) ^ (n - r) * ω ^ (2 * (n - r))) := by
+        ((-1 : ℝ) ^ (n - r) * freq ^ (2 * (n - r))) := by
   have hle : 2 * r + 1 ≤ 2 * n + 1 := by omega
   have hsub : 2 * n + 1 - (2 * r + 1) = 2 * (n - r) := by omega
-  rw [neutralNF562OddMonomialCosine_originalOddJet ω n r hr]
+  rw [neutralNF562OddMonomialCosine_originalOddJet freq n r hr]
   rw [neutralNF562ChooseFactorial_eq_factorialRatio
     (2 * n + 1) (2 * r + 1) hle, hsub]
 
 /-- The original sine source vanishes at odd order below its
 even monomial degree, independent of frequency. -/
 theorem neutralNF562EvenMonomialSine_originalOddJet_below
-    (ω : ℝ) (n r : ℕ) (hr : n < r) :
+    (freq : ℝ) (n r : ℕ) (hr : n < r) :
     (iteratedDeriv (2 * n + 1)
-      (fun x : ℝ => x ^ (2 * r) * Real.sin (ω * x))) 0 = 0 := by
+      (fun x : ℝ => x ^ (2 * r) * Real.sin (freq * x))) 0 = 0 := by
   rw [neutralNF561MonomialTimesSmooth_jetAtZero
-    (fun x : ℝ => Real.sin (ω * x)) (by fun_prop)
+    (fun x : ℝ => Real.sin (freq * x)) (by fun_prop)
     (2 * n + 1) (2 * r)]
   have hnot : ¬ (2 * r ≤ 2 * n + 1) := by omega
   simp [hnot]
@@ -113,11 +113,11 @@ theorem neutralNF562EvenMonomialSine_originalOddJet_below
 /-- The original cosine source vanishes at odd order below its
 odd monomial degree, independent of frequency. -/
 theorem neutralNF562OddMonomialCosine_originalOddJet_below
-    (ω : ℝ) (n r : ℕ) (hr : n < r) :
+    (freq : ℝ) (n r : ℕ) (hr : n < r) :
     (iteratedDeriv (2 * n + 1)
-      (fun x : ℝ => x ^ (2 * r + 1) * Real.cos (ω * x))) 0 = 0 := by
+      (fun x : ℝ => x ^ (2 * r + 1) * Real.cos (freq * x))) 0 = 0 := by
   rw [neutralNF561MonomialTimesSmooth_jetAtZero
-    (fun x : ℝ => Real.cos (ω * x)) (by fun_prop)
+    (fun x : ℝ => Real.cos (freq * x)) (by fun_prop)
     (2 * n + 1) (2 * r + 1)]
   have hnot : ¬ (2 * r + 1 ≤ 2 * n + 1) := by omega
   simp [hnot]
