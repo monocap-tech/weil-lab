@@ -136,7 +136,9 @@ theorem neutralNF591Machin_approx (N : ℕ) :
   norm_num only [abs_of_nonneg (by norm_num : (0:ℝ)≤16),abs_neg,abs_of_nonneg (by norm_num : (0:ℝ)≤4)]
   have h1 := neutralNF591Atan_tail (1/5) (by norm_num) N
   have h2 := neutralNF591Atan_tail (1/239) (by norm_num) N
-  linarith
+  rw [mul_div_assoc,mul_div_assoc]
+  exact add_le_add (mul_le_mul_of_nonneg_left h1 (by norm_num))
+    (mul_le_mul_of_nonneg_left h2 (by norm_num))
 
 end
 end WeilDefect
