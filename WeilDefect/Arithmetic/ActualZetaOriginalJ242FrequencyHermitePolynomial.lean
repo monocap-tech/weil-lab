@@ -58,6 +58,21 @@ theorem neutralNF565OriginalFrequencyHermitePolynomial_eval
   rw [hpow]
   ring
 
+/-- The finite signed odd-monomial frequency polynomial is
+LITERALLY X times the unchanged original signed dual with X²
+substituted, as a Polynomial ℝ identity (not only at a
+particular selected source frequency). -/
+theorem neutralNF565OriginalFrequencyHermitePolynomial_eq_comp
+    (a : Fin 242 → ℝ) :
+    neutralNF565OriginalFrequencyHermitePolynomial a =
+      Polynomial.X *
+        (neutralNF557OriginalDualPolynomial a).comp (Polynomial.X ^ 2) := by
+  apply Polynomial.funext
+  intro freq
+  simpa only [Polynomial.eval_mul, Polynomial.eval_X,
+    Polynomial.eval_comp, Polynomial.eval_pow] using
+      neutralNF565OriginalFrequencyHermitePolynomial_eval a freq
+
 /-- The EXACT formal derivative of order k of the original
 frequency-side dual is the finite Hermite falling-factorial sum
 for all k, without a nonzero-frequency assumption.
