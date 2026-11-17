@@ -115,7 +115,8 @@ theorem neutralNF582ActualHalf_strip
       exact mul_le_mul hm
         (mul_le_mul (mul_le_mul_of_nonneg_left hphase hs0.le) hseed
           (norm_nonneg _) (mul_nonneg hs0.le (Real.exp_pos _).le))
-        (mul_nonneg (norm_nonneg _) (norm_nonneg _)) (Real.exp_pos _).le
+        (mul_nonneg (mul_nonneg hs0.le (norm_nonneg _)) (norm_nonneg _))
+        (Real.exp_pos _).le
     _ = Real.exp (neutralNF578Epsilon s/2+(1-s)*neutralNF578Center/2) *
         C * (s*neutralNF575StripEnvelope (s*z.re)) := by
       rw [Real.exp_add]
