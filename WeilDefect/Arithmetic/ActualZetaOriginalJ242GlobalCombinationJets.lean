@@ -83,8 +83,22 @@ theorem neutralNF569OriginalComplexCombination_re
     (d : Fin 242 → ℂ) (x : ℝ) :
     (neutralNF569OriginalComplexCombination d x).re =
       neutralNF569OriginalRealCombination (fun j => (d j).re) x := by
-  simp [neutralNF569OriginalComplexCombination,
-    neutralNF569OriginalRealCombination, Complex.sum_re, Complex.mul_re]
+  classical
+  unfold neutralNF569OriginalComplexCombination
+    neutralNF569OriginalRealCombination
+  let f : Fin 242 → ℂ :=
+    fun j => d j * (nf545OriginalSelectedRealGenerator j x : ℂ)
+  have hsum (s : Finset (Fin 242)) :
+      (∑ j ∈ s, f j).re = ∑ j ∈ s, (f j).re := by
+    induction s using Finset.induction_on with
+    | empty => simp
+    | insert i s hi ih =>
+        simp only [Finset.sum_insert hi, Complex.add_re, ih]
+  change (∑ j : Fin 242, f j).re = _
+  rw [hsum Finset.univ]
+  apply Finset.sum_congr rfl
+  intro j hj
+  simp [f, Complex.mul_re]
 
 /-- Imaginary part uses the SAME original real generator space,
 with imaginary coefficients as the real vector. -/
@@ -92,8 +106,22 @@ theorem neutralNF569OriginalComplexCombination_im
     (d : Fin 242 → ℂ) (x : ℝ) :
     (neutralNF569OriginalComplexCombination d x).im =
       neutralNF569OriginalRealCombination (fun j => (d j).im) x := by
-  simp [neutralNF569OriginalComplexCombination,
-    neutralNF569OriginalRealCombination, Complex.sum_im, Complex.mul_im]
+  classical
+  unfold neutralNF569OriginalComplexCombination
+    neutralNF569OriginalRealCombination
+  let f : Fin 242 → ℂ :=
+    fun j => d j * (nf545OriginalSelectedRealGenerator j x : ℂ)
+  have hsum (s : Finset (Fin 242)) :
+      (∑ j ∈ s, f j).im = ∑ j ∈ s, (f j).im := by
+    induction s using Finset.induction_on with
+    | empty => simp
+    | insert i s hi ih =>
+        simp only [Finset.sum_insert hi, Complex.add_im, ih]
+  change (∑ j : Fin 242, f j).im = _
+  rw [hsum Finset.univ]
+  apply Finset.sum_congr rfl
+  intro j hj
+  simp [f, Complex.mul_im]
 
 end
 end WeilDefect
