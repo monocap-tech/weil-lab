@@ -46,16 +46,19 @@ theorem neutralNF575OriginalEndpoint_supported (U : ℝ → ℝ) (x : ℝ)
     apply hx
     left
     exact ⟨by linarith [h.2], by linarith [h.1]⟩
-  simp [neutralNF575OriginalEndpoint, neutralNF575OriginalEndpointHalf,hp,hn]
+  unfold neutralNF575OriginalEndpoint neutralNF575OriginalEndpointHalf
+  rw [if_neg hp, if_neg hn]
+  norm_num
 
 /-- The logarithmic singularity itself is square integrable at
 the actual endpoint. The half-source amplitude is the supplied
 U(B-d)/2, not a smooth surrogate. Bounded measurable U on the
 true collar suffices; this needs no first Fourier derivative. -/
-theorem neutralNF575OriginalEndpoint_memLp
+theorem neutralNF581OriginalHalfAndEndpoint_memLp
     (U : ℝ → ℝ) (hm : Measurable U) (M : ℝ) (hM : 0 ≤ M)
     (hU : ∀ x ∈ Set.Ioo ((11/10:ℝ)-1/500) (11/10:ℝ), |U x| ≤ M) :
-    MemLp (neutralNF575OriginalEndpoint U) 2 volume := by
+    MemLp (fun x => (neutralNF575OriginalEndpointHalf U x : ℂ)) 2 volume ∧
+      MemLp (neutralNF575OriginalEndpoint U) 2 volume := by
   let B : ℝ := 11/10
   let δ : ℝ := 1/500
   let H : ℝ → ℂ := (Set.Ioo (0:ℝ) δ).indicator
@@ -69,7 +72,9 @@ theorem neutralNF575OriginalEndpoint_memLp
       (by norm_num)
   have hi : Integrable (fun d => ‖H d‖^2) volume := by
     let c : ℝ := 4*M^2*B^(1/2:ℝ)
-    have hmajor := (hg.const_mul c).integrable_indicator measurableSet_Ioo
+    have hmajor : Integrable ((Set.Ioo (0:ℝ) δ).indicator
+        (fun d : ℝ => c*d^(-(1/2):ℝ))) volume :=
+      (integrable_indicator_iff measurableSet_Ioo).mpr (hg.const_mul c)
     apply hmajor.mono' (hmH.aestronglyMeasurable.norm.pow 2)
     filter_upwards [] with d
     by_cases hd : d ∈ Set.Ioo (0:ℝ) δ
@@ -94,7 +99,7 @@ theorem neutralNF575OriginalEndpoint_memLp
         exact mul_le_mul (div_le_div_of_nonneg_right hb (by norm_num)) hl
           hl0 (by positivity)
       have hsq := pow_le_pow_left₀ (norm_nonneg (H d)) hnorm 2
-      rw [Real.norm_eq_abs,abs_of_nonneg (sq_nonneg _),
+      rw [Real.norm_eq_abs,abs_of_nonneg (sq_nonneg ‖H d‖),
         Set.indicator_of_mem hd]
       calc
         _ ≤ ((M/2)*(4*(B/d)^(1/4:ℝ)))^2 := hsq
@@ -116,9 +121,13 @@ theorem neutralNF575OriginalEndpoint_memLp
       dsimp [B,δ]
       constructor <;> intro hh <;> constructor <;> linarith [hh.1,hh.2]
     by_cases hx : x ∈ Set.Ioo ((11/10:ℝ)-1/500) (11/10:ℝ)
-    · simp [h,H,neutralNF575OriginalEndpointHalf,hx,heq.mpr hx,B]
+    · dsimp only [h, H, neutralNF575OriginalEndpointHalf]
+      rw [if_pos hx, Set.indicator_of_mem (heq.mpr hx), sub_sub_cancel]
+      rfl
     · have hn : B-x ∉ Set.Ioo (0:ℝ) δ := fun hh => hx (heq.mp hh)
-      simp [h,H,neutralNF575OriginalEndpointHalf,hx,hn]
+      dsimp only [h, H, neutralNF575OriginalEndpointHalf]
+      rw [if_neg hx, Set.indicator_of_notMem hn]
+      norm_num
   have hmright : Measurable h := by
     rw [hright]
     exact hmH.comp (measurable_const.sub measurable_id)
@@ -136,8 +145,16 @@ theorem neutralNF575OriginalEndpoint_memLp
   have he : neutralNF575OriginalEndpoint U = fun x => h x-h (-x) := by
     funext x
     simp [neutralNF575OriginalEndpoint,h]
+  refine ⟨hr, ?_⟩
   rw [he]
   exact hr.sub hh
+
+/-- Preserve the earlier endpoint-admission interface. -/
+theorem neutralNF575OriginalEndpoint_memLp
+    (U : ℝ → ℝ) (hm : Measurable U) (M : ℝ) (hM : 0 ≤ M)
+    (hU : ∀ x ∈ Set.Ioo ((11/10:ℝ)-1/500) (11/10:ℝ), |U x| ≤ M) :
+    MemLp (neutralNF575OriginalEndpoint U) 2 volume :=
+  (neutralNF581OriginalHalfAndEndpoint_memLp U hm M hM hU).2
 
 /-- If the historical endpoint has finite physical L² norm, its
 actual L² realization is supported and real a.e. No claim that an
