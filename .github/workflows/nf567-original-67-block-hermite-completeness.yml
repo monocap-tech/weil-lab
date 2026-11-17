@@ -1,0 +1,104 @@
+name: NF567 authentic original 67 frequency blocks and Hermite multiplicity source transfer
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242Actual67BlockCoverage.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242Actual67BlockHermiteCompleteness.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242ActualOscillatorHermiteBridge.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242HermiteSignedOscillatorSum.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242FrequencyHermitePolynomial.lean"
+      - ".github/workflows/nf567-original-67-block-hermite-completeness.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+  workflow_dispatch:
+
+jobs:
+  nf567-frozen-67-source-block-index-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install repository-pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve exact Mathlib
+        run: lake update
+      - name: Fetch Mathlib cache
+        run: lake exe cache get
+      - name: Compile independently of pending NF561/NF566 the entire ORIGINAL 67-group Fin241 index coverage and 68-node separation
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242ExponentialSignature
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242SourceFunctions
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242Actual67BlockCoverage
+      - name: Reject source index table proof holes
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242Actual67BlockCoverage.lean; then
+            echo "NF567 original 67 source block coverage contains a proof hole"
+            exit 1
+          fi
+
+  nf567-full-original-hermite-multiplicities:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install repository-pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve exact Mathlib
+        run: lake update
+      - name: Fetch Mathlib cache
+        run: lake exe cache get
+      - name: Compile original NF565 frequency polynomial formal all-order derivative
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242FrequencyHermitePolynomial
+      - name: Compile 242-term original signed oscillator to frequency polynomial equality
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242HermiteSignedOscillatorSum
+      - name: Compile literal all 241 real NF407 oscillator odd jet to Hermite transfer, and sinh-pole matrix root
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242ActualOscillatorHermiteBridge
+      - name: Compile original 67-block analytic kernel to 67 positive squared p_a multiplicities plus genuine negative sinh-pole root
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242Actual67BlockHermiteCompleteness
+      - name: Reject all NF567 source-bridge proof holes
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+            WeilDefect/Arithmetic/ActualZetaOriginalJ242Actual67BlockHermiteCompleteness.lean; then
+            echo "NF567 68-node original source bridge contains a proof hole"
+            exit 1
+          fi
+
+  nf567-independent-original-physical-nf550:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install repository-pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve exact Mathlib
+        run: lake update
+      - name: Fetch Mathlib cache
+        run: lake exe cache get
+      - name: Verify full original NF549 physical L2 Gram integral
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramPhysicalIntegral
+      - name: Recheck source exact NF550 242-weighted-square and nonnegative Gram
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramWeightedSquare
+      - name: Original NF550 separation and NF551 parity analytic local-global identity
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramSeparationGate
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddParity
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity
+
+  nf567-original-242-odd-jet-custody:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen NF407 all 58322 oscillator and 242 genuine sinh pole analytic coefficients
+        run: |
+          python3 scripts/local_replay/verify_nf554_original_dual_odd_jet_coefficient_bridge.py \
+            --output nf567_original_242_odd_jet_SHA_exact_receipt.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf567-original-242-odd-jet-source-custody
+          path: nf567_original_242_odd_jet_SHA_exact_receipt.json
+          if-no-files-found: error
