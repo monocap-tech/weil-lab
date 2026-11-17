@@ -50,7 +50,7 @@ def neutralNF589SourceScalarBounds (a : Fin 242 → ℝ) (b : Fin 4 → ℝ) : P
       (nf545OriginalOscillatorNodeAt i).2 ≤ 13) ∧
   (∀ k : Fin 32, 0 ≤ neutralNF587CriticalFrequencies[k.val]! ∧
       neutralNF587CriticalFrequencies[k.val]! ≤ 883) ∧
-  (∀ j : Fin 4, ∀ k : Fin 32, |neutralNF587CriticalSines[j.val]![k.val]!| ≤ 1) ∧
+  (∀ j : Fin 4, ∀ k : Fin 32, |(neutralNF587CriticalSines[j.val]!)[k.val]!| ≤ 1) ∧
   (∀ j : Fin 4, |neutralNF587CriticalPoles[j.val]!| ≤ 1)
 
 theorem neutralNF589SourceDisc_of_scalarBounds
@@ -77,7 +77,7 @@ theorem neutralNF589SourceDisc_of_scalarBounds
   have hcrit (j : Fin 4) : ‖neutralNF588CriticalComplex j x‖ ≤ 33*Q := by
     unfold neutralNF588CriticalComplex
     have hterm (k : Fin 32) :
-        ‖(neutralNF587CriticalSines[j.val]![k.val]! : ℂ) *
+        ‖((neutralNF587CriticalSines[j.val]!)[k.val]! : ℂ) *
         Complex.sin (2*(Real.pi:ℂ)*(neutralNF587CriticalFrequencies[k.val]! : ℂ)*x)‖ ≤ Q := by
       have htrig := neutralNF589Oscillator_norm x
         (neutralNF587CriticalFrequencies[k.val]! : ℝ) 0 hx hy
@@ -86,12 +86,12 @@ theorem neutralNF589SourceDisc_of_scalarBounds
       have htrig' : ‖Complex.sin (2*(Real.pi:ℂ)*
           (neutralNF587CriticalFrequencies[k.val]! : ℂ)*x)‖ ≤ Q := by
         simpa only [Complex.ofReal_ratCast] using htrig
-      have hcoef : ‖(neutralNF587CriticalSines[j.val]![k.val]! : ℂ)‖ ≤ 1 := by
+      have hcoef : ‖((neutralNF587CriticalSines[j.val]!)[k.val]! : ℂ)‖ ≤ 1 := by
         rw [← Complex.ofReal_ratCast,Complex.norm_real,Real.norm_eq_abs]
         exact_mod_cast hc j k
       rw [norm_mul]
       exact (mul_le_mul hcoef htrig' (norm_nonneg _) (by norm_num)).trans_eq (one_mul _)
-    have hs : ‖∑ k : Fin 32, (neutralNF587CriticalSines[j.val]![k.val]! : ℂ) *
+    have hs : ‖∑ k : Fin 32, ((neutralNF587CriticalSines[j.val]!)[k.val]! : ℂ) *
         Complex.sin (2*(Real.pi:ℂ)*(neutralNF587CriticalFrequencies[k.val]! : ℂ)*x)‖ ≤ 32*Q := by
       apply (norm_sum_le _ _).trans
       calc
