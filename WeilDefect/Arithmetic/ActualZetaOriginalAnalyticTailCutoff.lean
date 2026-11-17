@@ -24,7 +24,8 @@ theorem neutralNF594HighDegree_base :
     (10:ℝ)^285*(1/20:ℝ)^250 ≤ 1/(10:ℝ)^40 := by
   have h : (10:ℝ)^325 ≤ (20:ℝ)^250 := by
     exact_mod_cast neutralNF594HighDegree_nat
-  rw [div_pow,one_pow,← div_eq_mul_inv, mul_one]
+  rw [div_pow,one_pow]
+  rw [show (10:ℝ)^285*(1/(20:ℝ)^250) = (10:ℝ)^285/(20:ℝ)^250 by ring]
   apply (div_le_div_iff₀ (by positivity) (by positivity)).mpr
   rw [one_mul,← pow_add]
   exact h
