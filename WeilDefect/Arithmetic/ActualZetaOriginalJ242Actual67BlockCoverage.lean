@@ -67,7 +67,8 @@ theorem neutralNF567OriginalGroupRationalFrequency_injective :
   have hget :
       (nf545OriginalSelectedFrequencyGroups.map Prod.fst).get ⟨g.val, hg⟩ =
         (nf545OriginalSelectedFrequencyGroups.map Prod.fst).get ⟨h.val, hh⟩ := by
-    simpa only [neutralNF567OriginalGroupAt, List.get_map] using hfreq
+    simpa only [neutralNF567OriginalGroupAt, List.get_eq_getElem,
+      List.getElem_map] using hfreq
   have hindices :
       (⟨g.val, hg⟩ :
         Fin (nf545OriginalSelectedFrequencyGroups.map Prod.fst).length) =
