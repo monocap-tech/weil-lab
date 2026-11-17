@@ -104,7 +104,11 @@ theorem neutralNF592SourceJet_of_ballBudget
   apply (NF591Ball.contains_abs_bound
     (neutralNF592SourceBall_sound p hp Q N hQ hN hfee a b hbox n)).trans
   unfold neutralNF588U400Bound
-  have hr := Rat.cast_le (K := ℝ).mpr (hbudget n hn)
+  have hr :
+      ((|(neutralNF592SourceBall p Q N n).mid|+
+        (neutralNF592SourceBall p Q N n).rad:ℚ):ℝ) ≤
+      (((neutralNF588U400Ceil n:ℚ)/10^40:ℚ):ℝ) :=
+    Rat.cast_le.mpr (hbudget n hn)
   simpa only [Rat.cast_div,Rat.cast_natCast,Rat.cast_pow,Rat.cast_ofNat] using hr
 
 end
