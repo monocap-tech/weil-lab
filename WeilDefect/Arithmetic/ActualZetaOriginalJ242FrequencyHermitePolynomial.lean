@@ -83,7 +83,8 @@ theorem neutralNF565OriginalFrequencyHermitePolynomial_odd
       -((neutralNF565OriginalFrequencyHermitePolynomial a).eval freq) := by
   rw [neutralNF565OriginalFrequencyHermitePolynomial_eval,
     neutralNF565OriginalFrequencyHermitePolynomial_eval]
-  rw [even_two, neg_pow]
+  have hsq : (-freq) ^ 2 = freq ^ 2 := by ring
+  rw [hsq]
   ring
 
 /-- The EXACT formal derivative of order k of the original
