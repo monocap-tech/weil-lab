@@ -61,7 +61,7 @@ neutralNF568OriginalDual68Roots_forcesZero.
 
 **These are Lean proof implementations, not yet independently compiler-accepted.**
 
-File: `WeilDefect/Arithmetic/ActualZetaOriginalJ242Original68RootBudget.lean`.
+The general, source-independent multiset theorem was isolated in `WeilDefect/Arithmetic/ActualZetaOriginalJ242Generic67PlusPoleRootCount.lean`. The *actual NF407* 67 positive-square plus true sinh-pole specialization and 242-degree contradiction are in `WeilDefect/Arithmetic/ActualZetaOriginalJ242Original68RootBudget.lean`. The standalone generic theorem is compiled first so a later source-index elaboration error cannot obscure its result.
 
 ## 3. Remove the outstanding hidden nonzero hypothesis
 
@@ -115,7 +115,7 @@ A second theorem derives injectivity of the real finite left-kernel linear actio
 
 New pinned workflow `.github/workflows/nf568-original-68-roots-and-real-kernel.yml` separates:
 
-1. **Independent algebraic root budget**: NF567 frozen source block coverage, exact p_a≠0⇒F_a≠0, the complete 68-node roots multiset count and original dual polynomial degree contradiction. No NF566 analytic-source dependency.
+1. **Independent algebraic root budget**: first compile the completely generic 67+pole root multiset count (Mathlib-only), then NF567 frozen source block coverage, then the original p_a≠0⇒F_a≠0 lemma and the genuine NF407 68-node 242-degree contradiction. None imports pending NF566 analytic-source proof code.
 2. **Full real analytic original matrix left kernel**: the already accepted NF565 frequency polynomial, genuine analytic sinh source, NF566 authentic all-241 oscillators and 242×242 kernel conditions, NF567 group multiplicity transport, and the new NF568 terminal real kernel.
 3. **Independent original physical NF549→NF550 weighted-square and NF551 downstream**: still compiler-open, no positivity claim.
 4. **Exact SHA-pinned immutable source custody**: all 58,564 original NF407/NF500 symbolic source coefficients.
