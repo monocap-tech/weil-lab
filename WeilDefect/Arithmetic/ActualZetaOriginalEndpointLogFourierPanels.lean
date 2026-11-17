@@ -34,9 +34,8 @@ theorem neutralNF584LogKernel_zero_mass (B a : ℝ) :
   unfold neutralNF584LogKernel
   rw [intervalIntegral.integral_sub intervalIntegrable_const
       intervalIntegral.intervalIntegrable_log',
-    intervalIntegral.integral_const, intervalIntegral.integral_log_from_zero]
-  simp
-  ring
+    intervalIntegral.integral_const, integral_log_from_zero]
+  simp <;> ring
 
 /-- The short near-singularity panel pays exactly a log mass,
 not a bound on the singular integrand at zero. -/
@@ -79,8 +78,9 @@ theorem neutralNF584Phase_deriv (t d : ℝ) :
   unfold neutralNF584Phase
   have h : HasDerivAt (fun x : ℝ => -(Complex.I*(t:ℂ))*(x:ℂ))
       (-(Complex.I*(t:ℂ))) d := by
-    simpa only [mul_one] using
-      (Complex.ofRealCLM.hasDerivAt (x := d)).const_mul (-(Complex.I*(t:ℂ)))
+    have hc : HasDerivAt (fun x : ℝ => (x:ℂ)) (1:ℂ) d :=
+      Complex.ofRealCLM.hasDerivAt
+    simpa only [mul_one] using hc.const_mul (-(Complex.I*(t:ℂ)))
   exact h.cexp
 
 /-- Proper interval estimate with the exact complex plane wave.
