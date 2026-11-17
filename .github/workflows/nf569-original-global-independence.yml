@@ -1,0 +1,60 @@
+name: NF569 original square kernel, global independence and finite Gram
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242SquareKernelTransport.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242GlobalCombinationJets.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242GlobalIndependence.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242CanonicalGramPositivity.lean"
+      - ".github/workflows/nf569-original-global-independence.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+  workflow_dispatch:
+
+concurrency:
+  group: nf569-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  nf569-independent-square-and-combination-jets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib and cache
+        run: |
+          lake update
+          lake exe cache get
+      - name: Compile generic square left-to-right kernel transport
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242SquareKernelTransport
+      - name: Compile original real finite-combination derivative and complex splitting
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242GlobalCombinationJets
+
+  nf569-authentic-independence-and-canonical-gram:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib and cache
+        run: |
+          lake update
+          lake exe cache get
+      - name: Compile complete actual original analytic left and right kernel and global independence
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242GlobalIndependence
+      - name: Compile genuine original NF550 NF551 physical and analytic identity then strict canonical finite Gram
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242CanonicalGramPositivity
+      - name: Check for explicit proof holes in new modules
+        run: |
+          if grep -nE '^[[:space:]]*(axiom|sorry|admit)\b' \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242SquareKernelTransport.lean \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242GlobalCombinationJets.lean \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242GlobalIndependence.lean \
+              WeilDefect/Arithmetic/ActualZetaOriginalJ242CanonicalGramPositivity.lean; then
+            exit 1
+          fi
