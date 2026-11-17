@@ -48,6 +48,97 @@ theorem neutralNF575OriginalEndpoint_supported (U : ℝ → ℝ) (x : ℝ)
     exact ⟨by linarith [h.2], by linarith [h.1]⟩
   simp [neutralNF575OriginalEndpoint, neutralNF575OriginalEndpointHalf,hp,hn]
 
+/-- The logarithmic singularity itself is square integrable at
+the actual endpoint. The half-source amplitude is the supplied
+U(B-d)/2, not a smooth surrogate. Bounded measurable U on the
+true collar suffices; this needs no first Fourier derivative. -/
+theorem neutralNF575OriginalEndpoint_memLp
+    (U : ℝ → ℝ) (hm : Measurable U) (M : ℝ) (hM : 0 ≤ M)
+    (hU : ∀ x ∈ Set.Ioo ((11/10:ℝ)-1/500) (11/10:ℝ), |U x| ≤ M) :
+    MemLp (neutralNF575OriginalEndpoint U) 2 volume := by
+  let B : ℝ := 11/10
+  let δ : ℝ := 1/500
+  let H : ℝ → ℂ := (Set.Ioo (0:ℝ) δ).indicator
+    (fun d => ((U (B-d)/2)*Real.log (B/d) : ℝ))
+  have hmH : Measurable H := by
+    apply Measurable.indicator _ measurableSet_Ioo
+    fun_prop
+  have hg : IntegrableOn (fun d : ℝ => d^(-(1/2):ℝ))
+      (Set.Ioo 0 δ) volume :=
+    (intervalIntegral.integrableOn_Ioo_rpow_iff (by norm_num : 0 < δ)).mpr
+      (by norm_num)
+  have hi : Integrable (fun d => ‖H d‖^2) volume := by
+    let c : ℝ := 4*M^2*B^(1/2:ℝ)
+    have hmajor := (hg.const_mul c).integrable_indicator measurableSet_Ioo
+    apply hmajor.mono' (hmH.aestronglyMeasurable.norm.pow 2)
+    filter_upwards [] with d
+    by_cases hd : d ∈ Set.Ioo (0:ℝ) δ
+    · have hd0 : 0 < d := hd.1
+      have hdB : d < B := by
+        have h := hd.2
+        dsimp [δ,B] at *
+        linarith
+      have harg : 1 ≤ B/d := (le_div_iff₀ hd0).mpr (by simpa using hdB.le)
+      have hl0 : 0 ≤ Real.log (B/d) := Real.log_nonneg harg
+      have hl : Real.log (B/d) ≤ 4*(B/d)^(1/4:ℝ) := by
+        have h := Real.log_le_rpow_div (by positivity : 0 ≤ B/d)
+          (by norm_num : 0 < (1/4:ℝ))
+        linarith only [h]
+      have hb : |U (B-d)| ≤ M :=
+        hU (B-d) ⟨by dsimp [B] at *; linarith [hd.2],
+          by dsimp [B] at *; linarith⟩
+      have hnorm : ‖H d‖ ≤ (M/2)*(4*(B/d)^(1/4:ℝ)) := by
+        simp only [H,Set.indicator_of_mem hd,Complex.norm_real,
+          Real.norm_eq_abs,abs_mul,abs_div,abs_of_nonneg hl0,
+          abs_of_nonneg (by norm_num : (0:ℝ)≤2)]
+        exact mul_le_mul (div_le_div_of_nonneg_right hb (by norm_num)) hl
+          hl0 (by positivity)
+      have hsq := pow_le_pow_left₀ (norm_nonneg (H d)) hnorm 2
+      rw [Real.norm_eq_abs,abs_of_nonneg (sq_nonneg _),
+        Set.indicator_of_mem hd]
+      calc
+        _ ≤ ((M/2)*(4*(B/d)^(1/4:ℝ)))^2 := hsq
+        _ = c*d^(-(1/2):ℝ) := by
+          have hp : ((B/d)^(1/4:ℝ))^2 = (B/d)^(1/2:ℝ) := by
+            rw [← Real.rpow_mul_natCast (by positivity : 0 ≤ B/d)]
+            norm_num
+          rw [mul_pow,mul_pow,hp,Real.div_rpow (by positivity : 0 ≤ B) hd0.le]
+          unfold c
+          rw [Real.rpow_neg hd0.le]
+          ring
+    · simp [H,hd]
+  let h : ℝ → ℂ := fun x => (neutralNF575OriginalEndpointHalf U x : ℂ)
+  have hright : h = fun x => H (B-x) := by
+    funext x
+    have heq : B-x ∈ Set.Ioo (0:ℝ) δ ↔
+        x ∈ Set.Ioo ((11/10:ℝ)-1/500) (11/10:ℝ) := by
+      simp only [Set.mem_Ioo]
+      dsimp [B,δ]
+      constructor <;> intro hh <;> constructor <;> linarith [hh.1,hh.2]
+    by_cases hx : x ∈ Set.Ioo ((11/10:ℝ)-1/500) (11/10:ℝ)
+    · simp [h,H,neutralNF575OriginalEndpointHalf,hx,heq.mpr hx,B]
+    · have hn : B-x ∉ Set.Ioo (0:ℝ) δ := fun hh => hx (heq.mp hh)
+      simp [h,H,neutralNF575OriginalEndpointHalf,hx,hn]
+  have hmright : Measurable h := by
+    rw [hright]
+    exact hmH.comp (measurable_const.sub measurable_id)
+  have hir : Integrable (fun x => ‖h x‖^2) volume := by
+    rw [hright]
+    exact (integrable_comp_sub_left (fun d => ‖H d‖^2) B).mpr hi
+  have hil : Integrable (fun x : ℝ => ‖h (-x)‖^2) volume := by
+    simpa only [zero_sub] using
+      (integrable_comp_sub_left (fun d => ‖h d‖^2) 0).mpr hir
+  have hr : MemLp h 2 volume :=
+    (memLp_two_iff_integrable_sq_norm hmright.aestronglyMeasurable).mpr hir
+  have hh : MemLp (fun x : ℝ => h (-x)) 2 volume :=
+    (memLp_two_iff_integrable_sq_norm
+      (hmright.comp measurable_neg).aestronglyMeasurable).mpr hil
+  have he : neutralNF575OriginalEndpoint U = fun x => h x-h (-x) := by
+    funext x
+    simp [neutralNF575OriginalEndpoint,h]
+  rw [he]
+  exact hr.sub hh
+
 /-- If the historical endpoint has finite physical L² norm, its
 actual L² realization is supported and real a.e. No claim that an
 arbitrary U (or a truncated U400 polynomial) has this membership. -/
