@@ -1,4 +1,5 @@
 import WeilDefect.Arithmetic.ActualZetaOriginalReducedJetBudget
+import WeilDefect.Arithmetic.ActualZetaOriginalFixedpointComputationalCore
 
 namespace WeilDefect
 noncomputable section
@@ -7,14 +8,6 @@ noncomputable section
 prefix needed for that block. Five 50-order blocks suffice after
 the analytic high-degree cutoff. Boolean checking and its soundness
 are separate; no native_decide proposition is assumed. -/
-
-def neutralNF594BlockCheck (lo count : ℕ) : Bool :=
-  let t := neutralNF593SourceTable (neutralNF592PiBall neutralNF592Q 200)
-    neutralNF592Q 220 (lo+count)
-  (List.range count).all (fun i =>
-    let n := lo+i
-    let b := neutralNF593ReadBall t n
-    decide (|b.mid|+b.rad ≤ (neutralNF588U400Ceil n:ℚ)/10^40))
 
 theorem neutralNF594BlockCheck_sound (lo count n : ℕ)
     (hl : lo ≤ n) (hu : n < lo+count)
