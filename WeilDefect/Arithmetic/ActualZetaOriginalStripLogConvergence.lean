@@ -22,14 +22,16 @@ theorem neutralNF575WindowEvaluation_continuous (a : ℝ) (z : ℂ) :
     continuous_const.inner continuous_id
   simpa only [neutralExponentialColumnL2_inner, starRingEnd_apply, star_star] using h
 
-/-- The original raw window strip envelope and L² convergence suffice
+/-- The original raw window strip envelope and real-axis sample convergence suffice
 for finite log-energy admission and convergence in the actual
 logarithmic Hilbert carrier, preserving every physical vector. -/
-theorem neutralNF575PhysicalSequence_logLimit_of_strip
+theorem neutralNF579PhysicalSequence_logLimit_of_stripSamples
     (a : ℝ) (f : RealComplexL2) (g : ℕ → RealComplexL2)
     (hf : ∀ᵐ x ∂volume, x ∉ Set.Icc (-a) a → f x = 0)
     (hg : ∀ n, ∀ᵐ x ∂volume, x ∉ Set.Icc (-a) a → g n x = 0)
-    (hconv : Tendsto g atTop (nhds f))
+    (hpoint : ∀ ξ : ℝ, Tendsto
+      (fun n => neutralWindowEvaluation a ((-2*Real.pi*ξ : ℝ):ℂ) (g n))
+      atTop (nhds (neutralWindowEvaluation a ((-2*Real.pi*ξ : ℝ):ℂ) f)))
     (M : ℝ) (hM : 0 ≤ M)
     (hft : ∀ z : ℂ, |z.im| ≤ 1/2 →
       ‖neutralWindowEvaluation a z f‖ ≤ M*neutralNF575StripEnvelope z.re)
@@ -96,8 +98,7 @@ theorem neutralNF575PhysicalSequence_logLimit_of_strip
       Tendsto (fun n => F n ξ) atTop (nhds (0:ℝ)) := by
     filter_upwards [] with ξ
     have hv : Tendsto (fun n => V (g n) ξ) atTop (nhds (V f ξ)) :=
-      (neutralNF575WindowEvaluation_continuous a
-        ((-2*Real.pi*ξ : ℝ):ℂ)).continuousAt.tendsto.comp hconv
+      hpoint ξ
     have h := (((hv.sub tendsto_const_nhds).norm).pow 2).const_mul
       (logarithmicFourierWeight ξ)
     simpa [F] using h
@@ -126,6 +127,29 @@ theorem neutralNF575PhysicalSequence_logLimit_of_strip
   have h := Real.continuous_sqrt.continuousAt.tendsto.comp hn
   simpa only [Function.comp_def, Real.sqrt_sq_eq_abs,
     abs_of_nonneg (norm_nonneg _), Real.sqrt_zero] using h
+
+
+/-- Original NF575 physical-convergence interface, now a specialization
+of the pointwise real-axis sample limit theorem. -/
+theorem neutralNF575PhysicalSequence_logLimit_of_strip
+    (a : ℝ) (f : RealComplexL2) (g : ℕ → RealComplexL2)
+    (hf : ∀ᵐ x ∂volume, x ∉ Set.Icc (-a) a → f x = 0)
+    (hg : ∀ n, ∀ᵐ x ∂volume, x ∉ Set.Icc (-a) a → g n x = 0)
+    (hconv : Tendsto g atTop (nhds f))
+    (M : ℝ) (hM : 0 ≤ M)
+    (hft : ∀ z : ℂ, |z.im| ≤ 1/2 →
+      ‖neutralWindowEvaluation a z f‖ ≤ M*neutralNF575StripEnvelope z.re)
+    (hgt : ∀ n (z : ℂ), |z.im| ≤ 1/2 →
+      ‖neutralWindowEvaluation a z (g n)‖ ≤ M*neutralNF575StripEnvelope z.re) :
+    ∃ (k : NeutralLogHilbertCarrier a) (G : ℕ → NeutralLogHilbertCarrier a),
+      neutralLogPhysical k.val = f ∧
+      (∀ n, neutralLogPhysical (G n).val = g n) ∧
+      Tendsto G atTop (nhds k) := by
+  apply neutralNF579PhysicalSequence_logLimit_of_stripSamples a f g hf hg
+    _ M hM hft hgt
+  intro ξ
+  exact (neutralNF575WindowEvaluation_continuous a
+    ((-2*Real.pi*ξ : ℝ):ℂ)).continuousAt.tendsto.comp hconv
 
 end
 end WeilDefect
