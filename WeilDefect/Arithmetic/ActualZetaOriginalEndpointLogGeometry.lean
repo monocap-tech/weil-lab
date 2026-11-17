@@ -46,7 +46,9 @@ theorem neutralNF575OriginalEndpoint_supported (U : ℝ → ℝ) (x : ℝ)
     apply hx
     left
     exact ⟨by linarith [h.2], by linarith [h.1]⟩
-  simp [neutralNF575OriginalEndpoint, neutralNF575OriginalEndpointHalf,hp,hn]
+  unfold neutralNF575OriginalEndpoint neutralNF575OriginalEndpointHalf
+  rw [if_neg hp, if_neg hn]
+  norm_num
 
 /-- The logarithmic singularity itself is square integrable at
 the actual endpoint. The half-source amplitude is the supplied
@@ -69,7 +71,9 @@ theorem neutralNF575OriginalEndpoint_memLp
       (by norm_num)
   have hi : Integrable (fun d => ‖H d‖^2) volume := by
     let c : ℝ := 4*M^2*B^(1/2:ℝ)
-    have hmajor := (hg.const_mul c).integrable_indicator measurableSet_Ioo
+    have hmajor : Integrable ((Set.Ioo (0:ℝ) δ).indicator
+        (fun d : ℝ => c*d^(-(1/2):ℝ))) volume :=
+      (integrable_indicator_iff measurableSet_Ioo).mpr (hg.const_mul c)
     apply hmajor.mono' (hmH.aestronglyMeasurable.norm.pow 2)
     filter_upwards [] with d
     by_cases hd : d ∈ Set.Ioo (0:ℝ) δ
@@ -116,9 +120,13 @@ theorem neutralNF575OriginalEndpoint_memLp
       dsimp [B,δ]
       constructor <;> intro hh <;> constructor <;> linarith [hh.1,hh.2]
     by_cases hx : x ∈ Set.Ioo ((11/10:ℝ)-1/500) (11/10:ℝ)
-    · simp [h,H,neutralNF575OriginalEndpointHalf,hx,heq.mpr hx,B]
+    · dsimp only [h, H, neutralNF575OriginalEndpointHalf]
+      rw [if_pos hx, Set.indicator_of_mem (heq.mpr hx), sub_sub_cancel]
+      rfl
     · have hn : B-x ∉ Set.Ioo (0:ℝ) δ := fun hh => hx (heq.mp hh)
-      simp [h,H,neutralNF575OriginalEndpointHalf,hx,hn]
+      dsimp only [h, H, neutralNF575OriginalEndpointHalf]
+      rw [if_neg hx, Set.indicator_of_notMem hn]
+      norm_num
   have hmright : Measurable h := by
     rw [hright]
     exact hmH.comp (measurable_const.sub measurable_id)
