@@ -1,0 +1,35 @@
+name: NF572 original real physical moment and corrected test
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242RealPhysicalMoments.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242RealPhysicalCorrectedTest.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242CanonicalGramPositivity.lean"
+      - ".github/workflows/nf572-original-real-corrected-test.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: nf572-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  nf572-original-real-physical-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and restore Mathlib cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Independent actual arbitrary L2 moment integral and real moment defect
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242RealPhysicalMoments
+      - name: Actual real odd supported corrected test conditional on Gram positivity
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242RealPhysicalCorrectedTest
+      - name: Integrated exact original real odd corrected test without explicit Gram positivity premise
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242CanonicalGramPositivity
