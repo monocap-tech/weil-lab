@@ -81,7 +81,9 @@ theorem neutralNF566ActualOriginal68Nodes_rootDemands
         rootMultiplicity (-(1 / 4 : ℝ))
           (neutralNF557OriginalDualPolynomial a) :=
       Polynomial.rootMultiplicity_pos'.mpr ⟨hp, hpole⟩
-    simpa only [Prod.fst, Prod.snd, Nat.one_le_iff_ne_zero] using hmult
+    change 1 ≤ rootMultiplicity (-(1 / 4 : ℝ))
+      (neutralNF557OriginalDualPolynomial a)
+    omega
 
 /-- Original 242×242 REAL odd-jet left-kernel theorem.
 
