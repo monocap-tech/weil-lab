@@ -1,0 +1,30 @@
+name: NF574 original logarithmic dyadic graph limit
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalLogDyadicEnvelope.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalLogDyadicGraphLimit.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalLogStripGraphLimit.lean"
+      - ".github/workflows/nf574-original-logarithmic-graph-limit.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf574-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  nf574-original-log-graph:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install repository-pinned Lean and restore Mathlib cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Actual multiplicity divisor logarithmic-square summable envelope
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalLogDyadicEnvelope
+      - name: Genuine two-source graph dominated convergence
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalLogDyadicGraphLimit
+      - name: Specialize to actual zero-strip raw transform and original B
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalLogStripGraphLimit
