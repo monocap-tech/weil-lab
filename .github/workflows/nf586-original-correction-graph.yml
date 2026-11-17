@@ -1,0 +1,71 @@
+name: NF586 original canonical corrected graph and endpoint recovery
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpoint*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalUnconditionalGraphCorrection.lean"
+      - "WeilDefect/Arithmetic/ActualZetaRawSamplesToFullSourceGraph.lean"
+      - ".github/workflows/nf586-original-correction-graph.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf586-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  correction:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Exact raw samples to full graph recovery
+        run: lake build WeilDefect.Arithmetic.ActualZetaRawSamplesToFullSourceGraph
+      - name: Actual real odd Schwartz graph admission
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalRealOddSchwartzFullSource
+      - name: Finite graph right inverse and continuity
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalCorrectionFullSource
+      - name: Unconditional Gram corrected graph sequence
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalUnconditionalGraphCorrection
+      - name: Literal endpoint corrected graph
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointCorrectedGraph
+  endpoint-recovery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Log near panel and proper integration by parts
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointLogFourierPanels
+      - name: Log Fourier split
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointLogFourierSplit
+      - name: Actual twisted derivative and bounds
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointTwistedAmplitude
+      - name: Literal real odd Schwartz seed packaging
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointSeedSchwartz
+      - name: Explicit half sequence Fourier transport
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointHalfSequence
+      - name: Actual odd sequence Fourier transport
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointOddSequence
+      - name: Literal physical half full strip attachment
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointLiteralStrip

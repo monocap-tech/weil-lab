@@ -21,12 +21,17 @@ theorem neutralNF585Twisted_hasDerivAt (U U' : ℝ → ℝ) (y d : ℝ)
     HasDerivAt (neutralNF585TwistedAmplitude U y)
       (neutralNF585TwistedDerivative U U' y d) d := by
   have hx : HasDerivAt (fun d : ℝ => neutralNF578B-d) (-1) d := by
-    simpa using (hasDerivAt_const d neutralNF578B).sub (hasDerivAt_id d)
+    simpa only [Pi.sub_apply, id_eq, zero_sub] using
+      (hasDerivAt_const d neutralNF578B).sub (hasDerivAt_id d)
   have hu := (h.comp d hx).div_const 2
   have he := (hx.const_mul (-y)).exp
   have hp := hu.mul he
   unfold neutralNF585TwistedAmplitude neutralNF585TwistedDerivative
-  convert hp using 1 <;> ring
+  convert hp using 1
+  · funext x
+    simp only [Pi.mul_apply, Function.comp_apply]
+  · simp only [Function.comp_apply]
+    ring
 
 theorem neutralNF585Twisted_continuousOn (U : ℝ → ℝ) (y : ℝ)
     (hU : ContinuousOn U (Icc (neutralNF578B-neutralNF578Delta) neutralNF578B)) :

@@ -5,7 +5,7 @@ import WeilDefect.Arithmetic.ActualZetaOriginalCollar242Correction
 namespace WeilDefect
 noncomputable section
 open MeasureTheory
-open scoped SchwartzMap ComplexConjugate
+open scoped SchwartzMap ComplexConjugate ContDiff
 
 /-! NF581: package the literal real-valued seed as a compact smooth
 complex Schwartz test, with the original moment-correction geometry.
@@ -55,8 +55,8 @@ theorem neutralNF581Seed_existsSchwartz
     rcases he with hl | hr
     · exact ⟨hl.1.le, by linarith [hl.2]⟩
     · exact ⟨by linarith [hr.1], hr.2.le⟩
-  have hcomp : HasCompactSupport f :=
-    exists_compact_iff_hasCompactSupport.mp ⟨_, isCompact_Icc, hw⟩
+  have hcomp : HasCompactSupport f := by
+    exact HasCompactSupport.intro (K := Set.Icc (-(11/10:ℝ)) (11/10:ℝ)) isCompact_Icc hw
   let g : 𝓢(ℝ,ℂ) := hcomp.toSchwartzMap hsm
   have hg (x : ℝ) : g x = f x := rfl
   refine ⟨g, fun x => hg x, ?_, ?_, ?_⟩

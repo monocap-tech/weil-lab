@@ -91,7 +91,6 @@ theorem neutralNF582ActualHalf_strip
     have hr : (Complex.I * (z * (((1-s)*neutralNF578Center:ℝ):ℂ))).re =
         -z.im * ((1-s)*neutralNF578Center) := by
       simp [Complex.mul_re,Complex.mul_im]
-      ring
     rw [hr]
     have hm := mul_le_mul_of_nonneg_right
       ((neg_le_abs z.im).trans hz) hc
@@ -110,10 +109,13 @@ theorem neutralNF582ActualHalf_strip
   rw [neutralNF582ActualHalf_transform h hi hh s hs0 hs' z,
     norm_mul,norm_mul,norm_mul,Complex.norm_real,Real.norm_eq_abs,abs_of_pos hs0]
   calc
-    _ ≤ (Real.exp (neutralNF578Epsilon s/2) *
-        (s * Real.exp ((1-s)*neutralNF578Center/2))) *
-          (C * neutralNF575StripEnvelope (s*z.re)) := by
-      gcongr
+    _ ≤ Real.exp (neutralNF578Epsilon s/2) *
+        ((s * Real.exp ((1-s)*neutralNF578Center/2)) *
+          (C * neutralNF575StripEnvelope (s*z.re))) := by
+      exact mul_le_mul hm
+        (mul_le_mul (mul_le_mul_of_nonneg_left hphase hs0.le) hseed
+          (norm_nonneg _) (mul_nonneg hs0.le (Real.exp_pos _).le))
+        (mul_nonneg (norm_nonneg _) (norm_nonneg _)) (Real.exp_pos _).le
     _ = Real.exp (neutralNF578Epsilon s/2+(1-s)*neutralNF578Center/2) *
         C * (s*neutralNF575StripEnvelope (s*z.re)) := by
       rw [Real.exp_add]
@@ -145,8 +147,10 @@ theorem neutralNF582ActualHalf_sampleLimit
   have hrad : Tendsto (fun n => (φ n).rOut) atTop (nhds 0) := by
     have ho : Tendsto (fun _ : ℕ => (1:ℝ)) atTop (nhds 1) := tendsto_const_nhds
     have hd : Tendsto (fun _ : ℕ => (2000:ℝ)) atTop (nhds 2000) := tendsto_const_nhds
-    simpa [φ,neutralNF579Bump,neutralNF578Epsilon] using
-      (ho.sub hS).div hd (by norm_num)
+    have hv := (ho.sub hS).div hd (by norm_num)
+    change Tendsto (fun n => (1-S n)/2000) atTop (nhds 0)
+    change Tendsto (fun n => (1-S n)/2000) atTop (nhds ((1-1)/2000)) at hv
+    simpa only [sub_self,zero_div] using hv
   have hρ := neutralNF580NormalizedBump_sampleLimit φ hrad t
   have ht : Tendsto (fun n => S n*t) atTop (nhds t) := by
     have hc : Tendsto (fun _ : ℕ => t) atTop (nhds t) := tendsto_const_nhds
@@ -157,7 +161,9 @@ theorem neutralNF582ActualHalf_sampleLimit
   have hp : Tendsto (fun n => (S n:ℂ) * Complex.exp
       (Complex.I * ((t:ℂ) * (((1-S n)*neutralNF578Center:ℝ):ℂ))))
       atTop (nhds (1:ℂ)) := by
-    simpa using hc.continuousAt.tendsto.comp hS
+    simpa only [Function.comp_def, Complex.ofReal_one, sub_self, zero_mul,
+      Complex.ofReal_zero, mul_zero, Complex.exp_zero, mul_one] using
+      hc.continuousAt.tendsto.comp hS
   have hlim := hρ.mul (hp.mul hH)
   have he (n : ℕ) :
       neutralNF579RawTransform (neutralNF582HalfSequence h n) (t:ℂ) =
@@ -171,7 +177,8 @@ theorem neutralNF582ActualHalf_sampleLimit
       (neutralNF582Scale_pos n) (neutralNF582Scale_lt_one n)]
     push_cast
     rfl
-  simpa [he,neutralNF579RawTransform,neutralNF579Mollifier,φ] using hlim
+  simp_rw [he]
+  simpa [neutralNF579RawTransform,neutralNF579Mollifier,φ] using hlim
 
 end
 end WeilDefect

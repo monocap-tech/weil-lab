@@ -94,7 +94,8 @@ theorem neutralActualZetaFullSourceLiftOfRawSamples_physical
         (neutralLogPhysical f.val)‖ ^ 2)) :
     neutralActualZetaSourcePhysical a
       (neutralActualZetaFullSourceLiftOfRawSamples a f hA hB) = f := by
-  exact neutralActualZetaFullSourceLiftOfSquareSummable_physical a f _ _
+  unfold neutralActualZetaFullSourceLiftOfRawSamples
+  apply neutralActualZetaFullSourceLiftOfSquareSummable_physical
 
 
 /-- Compose genuine explicit-formula absolute convergence, real-odd raw
@@ -138,7 +139,8 @@ theorem neutralActualZetaRealOddSmoothLogFullSourceLift_physical
           (neutralLogPhysical f.val))) :
     neutralActualZetaSourcePhysical a
       (neutralActualZetaRealOddSmoothLogFullSourceLift a f hreg hodd) = f := by
-  exact neutralActualZetaFullSourceLiftOfRawSamples_physical a f _ _
+  unfold neutralActualZetaRealOddSmoothLogFullSourceLift
+  apply neutralActualZetaFullSourceLiftOfRawSamples_physical
 
 end
 end WeilDefect
