@@ -99,7 +99,7 @@ def neutralNF590SelectedJet (j : Fin 242) (n : ℕ) : ℝ :=
   else neutralNF590PoleJet n
 
 def neutralNF590CriticalJet (j : Fin 4) (n : ℕ) : ℝ :=
-  (∑ k : Fin 32, (neutralNF587CriticalSines[j.val]![k.val]! : ℝ)*
+  (∑ k : Fin 32, ((neutralNF587CriticalSines[j.val]!)[k.val]! : ℝ)*
     neutralNF590OscillatorJet (neutralNF587CriticalFrequencies[k.val]! : ℝ) 0 n) +
       (neutralNF587CriticalPoles[j.val]! : ℝ)*neutralNF590PoleJet n
 
@@ -122,7 +122,7 @@ theorem neutralNF590CriticalJet_hasSum (j : Fin 4) (w : ℝ) :
       (neutralNF587CriticalGenerator j (11/10-w/500)) := by
   have ho (k : Fin 32) := (neutralNF590OscillatorJet_hasSum
     (neutralNF587CriticalFrequencies[k.val]! : ℝ) 0 w).mul_left
-      (neutralNF587CriticalSines[j.val]![k.val]! : ℝ)
+      ((neutralNF587CriticalSines[j.val]!)[k.val]! : ℝ)
   have hs := hasSum_sum (s := univ) (fun k _ => ho k)
   have hp := (neutralNF590PoleJet_hasSum w).mul_left
     (neutralNF587CriticalPoles[j.val]! : ℝ)
