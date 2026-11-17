@@ -66,9 +66,9 @@ def neutralNF588ScaledDerivativeTail : ℝ :=
 def neutralNF588DerivativeTail : ℝ :=
   500*neutralNF588ScaledDerivativeTail
 
+set_option exponentiation.threshold 1000 in
 /-- Exact rational overcharges (only used to simplify the finite
 arithmetic receipt, never in place of the first 400 coefficients). -/
-set_option exponentiation.threshold 1000 in
 theorem neutralNF588Tail_budget :
     neutralNF588ValueTail < (10:ℝ)^(-120:ℤ) ∧
       neutralNF588DerivativeTail < (10:ℝ)^(-115:ℤ) := by
