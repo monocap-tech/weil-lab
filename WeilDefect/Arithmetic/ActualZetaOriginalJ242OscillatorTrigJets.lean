@@ -23,43 +23,43 @@ candidates until GitHub Actions accepts them.
 -/
 
 /-- Every odd initial derivative of sine at an arbitrary genuine
-real oscillator frequency ω, including all ω=2πf from NF407. -/
-theorem neutralNF561ScaledSin_oddJet (ω : ℝ) (n : ℕ) :
+real oscillator frequency freq, including all freq=2πf from NF407. -/
+theorem neutralNF561ScaledSin_oddJet (freq : ℝ) (n : ℕ) :
     (iteratedDeriv (2 * n + 1)
-      (fun x : ℝ => Real.sin (ω * x))) 0 =
-      (-1 : ℝ) ^ n * ω ^ (2 * n + 1) := by
+      (fun x : ℝ => Real.sin (freq * x))) 0 =
+      (-1 : ℝ) ^ n * freq ^ (2 * n + 1) := by
   rw [iteratedDeriv_comp_const_mul
-    (Real.contDiff_sin (n := 2 * n + 1)) ω]
+    (Real.contDiff_sin (n := 2 * n + 1)) freq]
   rw [Real.iteratedDeriv_odd_sin]
   simp only [mul_zero, Real.cos_zero, mul_one]
   ring
 
 /-- Every even initial derivative of cosine at any positive original
-oscillator ω_f=2πf. The theorem is actually valid for all real ω. -/
-theorem neutralNF561ScaledCos_evenJet (ω : ℝ) (n : ℕ) :
+oscillator freq_f=2πf. The theorem is actually valid for all real freq. -/
+theorem neutralNF561ScaledCos_evenJet (freq : ℝ) (n : ℕ) :
     (iteratedDeriv (2 * n)
-      (fun x : ℝ => Real.cos (ω * x))) 0 =
-      (-1 : ℝ) ^ n * ω ^ (2 * n) := by
+      (fun x : ℝ => Real.cos (freq * x))) 0 =
+      (-1 : ℝ) ^ n * freq ^ (2 * n) := by
   rw [iteratedDeriv_comp_const_mul
-    (Real.contDiff_cos (n := 2 * n)) ω]
+    (Real.contDiff_cos (n := 2 * n)) freq]
   rw [Real.iteratedDeriv_even_cos]
   simp only [mul_zero, Real.cos_zero, mul_one]
   ring
 
 /-- The other parity jets of sine at the origin vanish. -/
-theorem neutralNF561ScaledSin_evenJet_zero (ω : ℝ) (n : ℕ) :
+theorem neutralNF561ScaledSin_evenJet_zero (freq : ℝ) (n : ℕ) :
     (iteratedDeriv (2 * n)
-      (fun x : ℝ => Real.sin (ω * x))) 0 = 0 := by
+      (fun x : ℝ => Real.sin (freq * x))) 0 = 0 := by
   rw [iteratedDeriv_comp_const_mul
-    (Real.contDiff_sin (n := 2 * n)) ω]
+    (Real.contDiff_sin (n := 2 * n)) freq]
   simp [Real.iteratedDeriv_even_sin]
 
 /-- The other parity jets of cosine at the origin vanish. -/
-theorem neutralNF561ScaledCos_oddJet_zero (ω : ℝ) (n : ℕ) :
+theorem neutralNF561ScaledCos_oddJet_zero (freq : ℝ) (n : ℕ) :
     (iteratedDeriv (2 * n + 1)
-      (fun x : ℝ => Real.cos (ω * x))) 0 = 0 := by
+      (fun x : ℝ => Real.cos (freq * x))) 0 = 0 := by
   rw [iteratedDeriv_comp_const_mul
-    (Real.contDiff_cos (n := 2 * n + 1)) ω]
+    (Real.contDiff_cos (n := 2 * n + 1)) freq]
   simp [Real.iteratedDeriv_odd_cos]
 
 /-- The original monomial source x^k has exactly one nonzero
@@ -68,7 +68,7 @@ is the precise source-relevant Leibniz selection mechanism. -/
 theorem neutralNF561MonomialJet_zero_except (k m : ℕ) :
     (iteratedDeriv m (fun x : ℝ => x ^ k)) 0 =
       if m = k then (k.factorial : ℝ) else 0 := by
-  simpa only using
+  simpa only [Nat.cast_ite, Nat.cast_zero] using
     (iteratedDeriv_fun_pow_zero (𝕜 := ℝ) (n := m) (m := k))
 
 /-- Source-ready high-order product rule at the analytic initial
@@ -88,7 +88,8 @@ theorem neutralNF561MonomialTimesSmooth_jetAtZero
   rw [iteratedDeriv_mul hpow hg']
   simp only [iteratedDeriv_fun_pow_zero]
   simp only [mul_ite, mul_zero, zero_mul, ite_mul]
-  simp [Finset.sum_ite_eq', Finset.mem_range, Nat.lt_succ_iff]
+  simp only [Finset.sum_ite_eq', Finset.mem_range, Nat.lt_succ_iff]
+  split_ifs <;> simp_all
 
 end
 end WeilDefect
