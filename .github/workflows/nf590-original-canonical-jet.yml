@@ -1,0 +1,54 @@
+name: NF590 original canonical jet recurrence
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJetRecurrence.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalNF407*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalNormalizedJetTail.lean"
+      - "scripts/local_replay/nf590_original_ungrouped_canonical_jet_replay.py"
+      - ".github/workflows/nf590-original-canonical-jet.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf590-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  interval-replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install python-flint
+      - name: Ungrouped original 374 primitive contributions and all 400 existing ceilings
+        run: python scripts/local_replay/nf590_original_ungrouped_canonical_jet_replay.py --output nf590-ungrouped-jets.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF590-ungrouped-jets
+          path: nf590-ungrouped-jets.json
+  lean-jet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Generic exact exponential and finite product recurrence
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJetRecurrence
+      - name: Original frozen source regularity recovery
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407SourceBinding
+      - name: Infinite tail recovery
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNormalizedJetTail
+      - name: Exact original all-order canonical recurrence
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407CanonicalJetRecurrence
+      - name: Literal source bounds from explicit interval recurrence
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407RecurrenceBounds
