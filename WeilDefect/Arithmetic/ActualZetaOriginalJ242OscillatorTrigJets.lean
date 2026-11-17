@@ -31,7 +31,8 @@ theorem neutralNF561ScaledSin_oddJet (freq : ℝ) (n : ℕ) :
   rw [iteratedDeriv_comp_const_mul
     (Real.contDiff_sin (n := 2 * n + 1)) freq]
   rw [Real.iteratedDeriv_odd_sin]
-  simp only [Pi.mul_apply, mul_zero, Real.cos_zero, mul_one]
+  simp only [Pi.mul_apply, Pi.pow_apply, Pi.neg_apply, Pi.one_apply,
+    mul_zero, Real.cos_zero, mul_one]
   ring_nf
 
 /-- Every even initial derivative of cosine at any positive original
@@ -43,7 +44,8 @@ theorem neutralNF561ScaledCos_evenJet (freq : ℝ) (n : ℕ) :
   rw [iteratedDeriv_comp_const_mul
     (Real.contDiff_cos (n := 2 * n)) freq]
   rw [Real.iteratedDeriv_even_cos]
-  simp only [Pi.mul_apply, mul_zero, Real.cos_zero, mul_one]
+  simp only [Pi.mul_apply, Pi.pow_apply, Pi.neg_apply, Pi.one_apply,
+    mul_zero, Real.cos_zero, mul_one]
   ring_nf
 
 /-- The other parity jets of sine at the origin vanish. -/
