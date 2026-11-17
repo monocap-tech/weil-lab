@@ -112,9 +112,12 @@ theorem neutralNF574LogStripEnvelope_sq_le (q : NeutralActualZetaDivisorCoordina
     _ ≤ (2 * ((n:ℝ)+2) / (2:ℝ)^n)^2 := hs
     _ = 4 * neutralNF574LogDyadicWeight q := by
       rw [neutralNF574LogDyadicWeight_onBand n ⟨q,hq⟩]
-      rw [div_pow, mul_pow, ← pow_mul, Nat.mul_comm n 2, pow_mul]
-      norm_num
-      rw [← one_div_pow]
+      have hden : ((2 : ℝ)^n)^2 = (4 : ℝ)^n := by
+        rw [← pow_mul, Nat.mul_comm n 2, pow_mul]
+        norm_num
+      have hinv : (1 / 4 : ℝ)^n = 1 / (4 : ℝ)^n := by
+        rw [div_pow, one_pow]
+      rw [div_pow, hden, hinv]
       ring
 
 end
