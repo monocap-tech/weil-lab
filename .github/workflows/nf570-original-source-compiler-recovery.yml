@@ -1,0 +1,62 @@
+name: NF570 exact original source compiler recovery
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalJ242*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCanonicalGram*.lean"
+      - ".github/workflows/nf570-original-source-compiler-recovery.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: nf570-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  nf570-authentic-oscillator-to-global-independence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib and cache
+        run: |
+          lake update
+          lake exe cache get
+      - name: Repair exact signed oscillator finite-sum compiler
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242HermiteSignedOscillatorSum
+      - name: Actual all-241 oscillator Hermite source bridge
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242ActualOscillatorHermiteBridge
+      - name: Original frequency block coverage and 68-node root-count budget
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242Actual67BlockCoverage
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242Original68RootBudget
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242FrequencyNonzero
+      - name: Original source analytic matrix kernel and global complex independence
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242ActualOddJetKernelClosure
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242GlobalIndependence
+
+  nf570-physical-parity-analytic-and-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib and cache
+        run: |
+          lake update
+          lake exe cache get
+      - name: Recheck already accepted NF550 physical weighted square and separation
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramWeightedSquare
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalGramSeparationGate
+      - name: Repair NF551 original odd parity and local-global analytic identity
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242OddParity
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity
+      - name: Complete finite Gram and exact odd collar supported moment right inverse
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalJ242CanonicalGramPositivity
