@@ -128,8 +128,12 @@ theorem neutralNF551CanonicalOriginalSynthesis_odd
         neutralNF548CanonicalOriginalColumns d) x := by
   rw [neutralNF549CanonicalSynthesis_pointwise,
     neutralNF549CanonicalSynthesis_pointwise,
-    neutralNF548ComplexEvenCollarCutoff_even,
-    neutralNF551OriginalSourceCombination_odd]
+    neutralNF548ComplexEvenCollarCutoff_even]
+  change neutralNF548ComplexEvenCollarCutoff x *
+      neutralNF550OriginalSourceCombination d (-x) =
+    -(neutralNF548ComplexEvenCollarCutoff x *
+      neutralNF550OriginalSourceCombination d x)
+  rw [neutralNF551OriginalSourceCombination_odd]
   ring
 
 /-- Even without proving source J242 collar separation yet, if
