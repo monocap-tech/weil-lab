@@ -50,7 +50,9 @@ theorem neutralNF588WeightedGeometricTail
   have he : ∀ n : ℕ,
       ‖v (n+N)‖ ≤ (M*q^N)*((n:ℝ)*q^n+(N:ℝ)*q^n) := by
     intro n
-    simpa only [add_mul] using hv n
+    calc
+      _ ≤ (M*q^N)*((n:ℝ)+N)*q^n := hv n
+      _ = _ := by ring
   have hb := tsum_of_norm_bounded h (f := fun n => v (n+N)) he
   convert hb using 1 <;> ring
 
@@ -70,7 +72,7 @@ theorem neutralNF588Tail_budget :
     neutralNF588ValueTail < (10:ℝ)^(-120:ℤ) ∧
       neutralNF588DerivativeTail < (10:ℝ)^(-115:ℤ) := by
   unfold neutralNF588ValueTail neutralNF588DerivativeTail neutralNF588ScaledDerivativeTail
-  constructor <;> norm_num
+  constructor <;> norm_num1 <;> norm_num [← mul_pow]
 
 /-- Normalized Taylor terms and the simultaneously differentiated
 terms represent the SAME source.  The derivative is in the d
@@ -104,7 +106,7 @@ theorem neutralNF588OriginalNormalizedSeries_bounds
     have he : (11/10:ℝ)-w/500 = x := hx' x
     rw [he] at h
     have htail : ‖∑' n : ℕ, v (n+400)*w^(n+400)‖ ≤ neutralNF588ValueTail := by
-      apply neutralNF588GeometricTail _ ((10:ℝ)^400) (1/20) 400 (by norm_num) (by norm_num)
+      apply neutralNF588GeometricTail (fun k : ℕ => v k*w^k) ((10:ℝ)^400) (1/20) 400 (by norm_num) (by norm_num)
       intro n
       rw [norm_mul]
       exact (mul_le_mul_of_nonneg_left (hp w hw' n) (norm_nonneg _)).trans
@@ -124,7 +126,7 @@ theorem neutralNF588OriginalNormalizedSeries_bounds
     rw [he] at h
     have htail : ‖∑' n : ℕ, ((n+400:ℕ):ℝ)*v (n+400)*w^(n+400-1)‖ ≤
         neutralNF588ScaledDerivativeTail := by
-      apply neutralNF588WeightedGeometricTail _ ((10:ℝ)^400) (1/20) 400
+      apply neutralNF588WeightedGeometricTail (fun k : ℕ => (k:ℝ)*v k*w^(k-1)) ((10:ℝ)^400) (1/20) 400
         (by norm_num) (by norm_num)
       intro n
       rw [norm_mul,norm_mul,Real.norm_eq_abs,abs_of_nonneg (Nat.cast_nonneg _)]
@@ -135,7 +137,7 @@ theorem neutralNF588OriginalNormalizedSeries_bounds
         _ ≤ ((n+400:ℕ):ℝ)*((10:ℝ)^400*(1/20:ℝ)^(n+400)) :=
           mul_le_mul_of_nonneg_left (hv _) (Nat.cast_nonneg _)
         _ = _ := by push_cast; rw [pow_add]; ring
-    have hf : ∀ n < 400, ‖(n:ℝ)*v n*w^(n-1)‖ ≤ (n:ℝ)*b n := by
+    have hf : ∀ n : ℕ, n < 400 → ‖(n:ℝ)*v n*w^(n-1)‖ ≤ (n:ℝ)*b n := by
       intro n hn
       rw [norm_mul,norm_mul,Real.norm_eq_abs,abs_of_nonneg (Nat.cast_nonneg _)]
       calc
