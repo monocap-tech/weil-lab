@@ -105,6 +105,7 @@ theorem neutralNF588U400_value_budget :
       (1965965555768486224139685001519513:ℝ)/(10:ℝ)^40 := by
     unfold neutralNF588U400Bound
     rw [← sum_div, ← Nat.cast_sum, neutralNF588U400_sum_nat]
+    norm_num
   rw [h]
   have ht := neutralNF588Tail_budget.1
   norm_num at ht ⊢
@@ -118,6 +119,7 @@ theorem neutralNF588U400_derivative_budget :
     unfold neutralNF588U400Bound
     simp_rw [← mul_div_assoc, ← Nat.cast_mul]
     rw [← sum_div, ← Nat.cast_sum, neutralNF588U400_weighted_nat]
+    norm_num
   rw [h]
   have ht := neutralNF588Tail_budget.2
   norm_num at ht ⊢
