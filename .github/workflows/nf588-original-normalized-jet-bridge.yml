@@ -1,0 +1,56 @@
+name: NF588 normalized original U400 coefficient bound bridge
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalNormalized*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalU400NormalizedBudget.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalNF407NormalizedComplexSource.lean"
+      - "scripts/local_replay/verify_nf588_U400_normalized_lean_budget.py"
+      - ".github/workflows/nf588-original-normalized-jet-bridge.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf588-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  exact-receipt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install python-flint
+      - name: Fresh primitive full-box interval replay
+        run: python scripts/local_replay/nf587_original_NF407_full_box_normalized_U400.py --output nf587-full-box-U400.json
+      - name: Every compressed normalized ceiling and both exact budgets
+        run: python scripts/local_replay/verify_nf588_U400_normalized_lean_budget.py nf587-full-box-U400.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF588-full-box-U400
+          path: nf587-full-box-U400.json
+  lean-series:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Normalized infinite value and derivative tail transfer
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNormalizedJetTail
+      - name: Compressed finite exact normalized coefficient budget
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalU400NormalizedBudget
+      - name: Canonical Cauchy coefficients and differentiated series
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNormalizedCauchySeries
+      - name: Exact original source family complexification
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407NormalizedComplexSource
+      - name: Full graph correction recovery
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCanonicalCorrectionFullSource
