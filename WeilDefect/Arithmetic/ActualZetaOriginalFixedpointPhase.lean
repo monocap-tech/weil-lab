@@ -90,7 +90,9 @@ theorem neutralNF592Phase_identity (f : ℚ) :
 theorem neutralNF592Reduced_norm (f : ℚ) :
     ‖Complex.I*(Real.pi:ℂ)*(neutralNF592Reduced f:ℂ)/2‖ ≤ 1 := by
   have h := neutralNF592Reduced_abs f
-  have hr : |(neutralNF592Reduced f:ℝ)| ≤ 1/2 := by exact_mod_cast h
+  have hr : |(neutralNF592Reduced f:ℝ)| ≤ 1/2 := by
+    rw [← Rat.cast_abs]
+    exact_mod_cast h
   rw [norm_div,norm_mul,norm_mul,Complex.norm_I,one_mul,
     Complex.norm_real,Real.norm_eq_abs,abs_of_pos Real.pi_pos,
     ← Complex.ofReal_ratCast,Complex.norm_real,Real.norm_eq_abs,
@@ -132,8 +134,7 @@ theorem neutralNF592PhaseBall_sound (p : NF591Ball) (hp : p.Contains Real.pi)
   have h2 := NF591Rect.contains_mulQ h h Q hQ
   have h4 := NF591Rect.contains_mulQ h2 h2 Q hQ
   rw [neutralNF592Phase_identity]
-  convert h4 using 1
-  ring
+  convert h4 using 1 <;> simp [neutralNF592PhaseBall,z,pow_succ] <;> ring
 
 end
 end WeilDefect
