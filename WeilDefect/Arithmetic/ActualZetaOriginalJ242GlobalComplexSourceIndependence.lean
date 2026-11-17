@@ -158,8 +158,8 @@ theorem neutralNF567OriginalComplexGlobalIndependent
         Complex.zero_im] using hz)
   funext j
   apply Complex.ext
-  · exact congrFun hre j
-  · exact congrFun him j
+  · simpa using congrFun hre j
+  · simpa using congrFun him j
 
 end
 end WeilDefect
