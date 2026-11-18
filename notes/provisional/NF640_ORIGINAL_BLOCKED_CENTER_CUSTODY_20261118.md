@@ -1,0 +1,11 @@
+# NF640 — exact widened mass and center-product custody
+
+## Recovered compiler status
+NF632 run 44359888464: both focused jobs now PASS (integer centers 134998025032, segmented pi 134998025082), in addition to all four literal Machin segment gates. Generic NF626 integer-center translation, including the repaired Ay identity, therefore builds successfully. Full Machin and widened scalar jobs on NF639 run 44369691836 remain queued. NF633 older focused job 135008250090 failed: partial is a reserved keyword, successor induction leaves a Nat identity, and older Bool conjunction rewrites (already repaired NF634). Rename state field to sumState in reference, integer Taylor and full generator; patch successor proof. New compiler acceptance pending.
+
+## Exact mass and blocked-dot interface
+Keep all source dimensions and scaled numerical values. At n=242 divide the index list into seven 32-entry blocks and one 18-entry block. Exact partition equality, per-block dot equality, and the sum of block values imply the full reference integer dot equality. No approximate, probabilistic or unchecked matrix identity. Masses may be checked once and reused; bind scalar receipts to the exact proposed masses, defect numerator and center cache, then apply NF639 conditional scalar transfer. The NF626 original integer-center validity gates remain the ultimate attachment.
+
+Independent synthetic regression on sixteen signed 2600-digit integer dot products: 128 block identities and 256 one-unit mutations rejected, exact partition verified. This is not execution of the new Python emitter or Lean.
+
+The new emitter targets the immutable NF631 widened entries/payment/cache artifacts and NF623 historical frame, checks hash/scale linkage, independently recomputes all 242 row masses, 242 column masses, 968 vector products and four actual diagonal HD/A products (first and final indices). It prepares five literal mass/totals gates and thirty-two blocked dot gates with four complete dot composition proofs. The actual emitter and these kernel tests have not run in-session; CI pending. These local results would not establish the complete HD/A products (117128 entries), mass-to-full-input attachment or numerical solve custody. Full data production and widened scalar payment external PASS unchanged. No main merge, global Weil positivity or RH claim.
