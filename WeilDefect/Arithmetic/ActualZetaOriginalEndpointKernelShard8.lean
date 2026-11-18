@@ -42,6 +42,7 @@ private theorem nf605_critical_30 : neutralNF602CriticalCheck (30:Fin 32) = true
 private theorem nf605_critical_31 : neutralNF602CriticalCheck (31:Fin 32) = true := by decide +kernel
 
 theorem neutralNF605CriticalShard8 (j : Fin 32) : neutralNF602CriticalCheck j = true := by
+  have hhi := j.isLt
   by_cases h16 : j.val < 16
   ·
     by_cases h8 : j.val < 8
