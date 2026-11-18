@@ -1,0 +1,68 @@
+name: NF604 original solve custody and analytic coercivity recovery
+on:
+  pull_request:
+    paths:
+      - "scripts/verify_nf604_original_solve_box_containment.py"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCriticalSolveCustody.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalRemoteNonvanishing.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollar*.lean"
+      - ".github/workflows/nf604-original-custody.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf604-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  solve-custody:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pinned Arb environment
+        run: |
+          pip install --only-binary=:all: python-flint==0.8.0
+          python -m py_compile scripts/verify_nf604_original_solve_box_containment.py
+      - name: Fixed-frame independent 8192-bit original solve containment
+        run: python -u scripts/verify_nf604_original_solve_box_containment.py --bits 8192 --output nf604-solve-containment.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf604-original-solve-containment
+          path: nf604-solve-containment.json
+          if-no-files-found: error
+  analytic-recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Exact four critical coordinates from historic shear
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCriticalSolveCustody
+      - name: Actual gamma gain and lower thresholds
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarGammaLower
+      - name: Restricted Holder and exact Plancherel mass
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarFourierMass
+      - name: Complete genuine prime and pole contribution
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarPoleBound
+      - name: Literal complete local coercivity
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarCoercivity
+      - name: Nonvanishing by actual pole dominance and analytic identity
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalAnalyticNonzeroGraph
+      - name: Original corrected signed margin transfer
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalNF407SignedMarginTransfer
