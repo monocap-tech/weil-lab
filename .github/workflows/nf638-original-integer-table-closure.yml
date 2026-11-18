@@ -1,0 +1,73 @@
+name: NF638 original integer moment table closure
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalIntegerBoundary.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalIntegerTableClosure.lean"
+      - "scripts/emit_nf638_integer_table_pilots.py"
+      - ".github/workflows/nf638-original-integer-table-closure.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf638-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  table-closure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf621-shard-*
+          path: receipts
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf621-complete-schedule-coverage
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Emit original complete integer table proposals
+        run: |
+          python -m py_compile scripts/emit_nf638_integer_table_pilots.py
+          python scripts/emit_nf638_integer_table_pilots.py --root . --shards receipts --output WeilDefect/Generated/NF638
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          m=json.loads(Path('WeilDefect/Generated/NF638/manifest.json').read_text())
+          c=json.loads(Path('nf621-coverage.json').read_text())
+          assert m['input_sha256']=={s['file']:s['sha256'] for s in c['shards']}
+          assert sum(x['rows'] for x in m['files'])==42
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf638-original-integer-table-pilots
+          path: WeilDefect/Generated/NF638/
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalIntegerTableClosure
+      - name: Audit generic closure
+        run: |
+          cat >/tmp/nf638Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalIntegerTableClosure
+          #print axioms WeilDefect.neutralNF638ExactQ_scaled
+          #print axioms WeilDefect.NF638Cache.boundary_denote
+          #print axioms WeilDefect.NF638Table.to_original
+          #print axioms WeilDefect.neutralNF638Chunk_of_checks
+          EOF
+          lake env lean /tmp/nf638Audit.lean
+      - name: Bounded table and conditional chunk proof trial
+        timeout-minutes: 15
+        run: lake build WeilDefect.Generated.NF638.Join

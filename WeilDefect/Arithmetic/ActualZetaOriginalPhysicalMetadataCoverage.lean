@@ -39,7 +39,7 @@ theorem neutralNF627LookupCheck_shape (bank metadata : Array NF624KeyTable)
   · simp [neutralNF624LookupCheck,hz]
   · let i := idx k.canonical
     by_cases hi : i<bank.size
-    · have hm : i<metadata.size := by rw [← h.1]; exact hi
+    · have hm : i < metadata.size := by rw [← h.1]; exact hi
       have he := h.2 i hi
       have hk : (neutralNF624BankRead bank i).key =
           (neutralNF624BankRead metadata i).key := congrArg Prod.fst he
@@ -49,15 +49,15 @@ theorem neutralNF627LookupCheck_shape (bank metadata : Array NF624KeyTable)
       simp only [if_neg hz]
       change decide (i<bank.size ∧ (neutralNF624BankRead bank i).key=k.canonical ∧
         n<(neutralNF624BankRead bank i).rows.size) =
-        decide (i<metadata.size ∧ (neutralNF624BankRead metadata i).key=k.canonical ∧
+        decide (i < metadata.size ∧ (neutralNF624BankRead metadata i).key=k.canonical ∧
         n<(neutralNF624BankRead metadata i).rows.size)
       rw [h.1,hk,hn]
-    · have hm : ¬i<metadata.size := by rw [← h.1]; exact hi
+    · have hm : ¬i < metadata.size := by rw [← h.1]; exact hi
       unfold neutralNF624LookupCheck
       simp only [if_neg hz]
       change decide (i<bank.size ∧ (neutralNF624BankRead bank i).key=k.canonical ∧
         n<(neutralNF624BankRead bank i).rows.size) =
-        decide (i<metadata.size ∧ (neutralNF624BankRead metadata i).key=k.canonical ∧
+        decide (i < metadata.size ∧ (neutralNF624BankRead metadata i).key=k.canonical ∧
         n<(neutralNF624BankRead metadata i).rows.size)
       simp [hi,hm]
 
@@ -69,9 +69,11 @@ theorem neutralNF627Coverage_of_shape (bank metadata : Array NF624KeyTable)
   have hc := neutralNF624CoverageCheck_sound metadata (neutralNF624Index metadata) hcov
   constructor
   · intro i j s t
+    dsimp only
     rw [neutralNF627LookupCheck_shape bank metadata he]
     exact hc.1 i j s t
   · intro i j k s t
+    dsimp only
     rw [neutralNF627LookupCheck_shape bank metadata he]
     exact hc.2 i j k s t
 
