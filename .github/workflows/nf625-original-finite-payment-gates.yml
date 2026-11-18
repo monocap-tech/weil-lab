@@ -1,0 +1,47 @@
+name: NF625 original finite rational closure gates
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalUniformPayments.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalRationalPayments.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalBooleanClosure.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalShardComposition.lean"
+      - ".github/workflows/nf625-original-finite-payment-gates.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf625-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  focused:
+    strategy:
+      fail-fast: false
+      matrix:
+        module:
+          - ActualZetaOriginalPhysicalRationalPayments
+          - ActualZetaOriginalPhysicalBooleanClosure
+          - ActualZetaOriginalPhysicalShardComposition
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.${{ matrix.module }}
+      - name: Audit finite payment closure
+        if: matrix.module == 'ActualZetaOriginalPhysicalBooleanClosure'
+        run: |
+          cat > /tmp/nf625Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalBooleanClosure
+          #print axioms WeilDefect.NF625PaymentData.check_sound
+          #print axioms WeilDefect.neutralNF625EntryCheck_sound
+          #print axioms WeilDefect.neutralNF625OriginalPhysical_of_checks
+          #print axioms WeilDefect.neutralNF625OriginalPhysical_strict_of_checks
+          EOF
+          lake env lean /tmp/nf625Audit.lean

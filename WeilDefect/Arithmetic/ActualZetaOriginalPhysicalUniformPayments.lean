@@ -62,7 +62,7 @@ theorem neutralNF623OriginalPhysicalSolve_of_uniform_entries
     (hres : ∀ i, |neutralNF613RHSCenter D V0 i-
       neutralNF606Apply (neutralNF613GramCenter D H0) y0 i| +
       neutralNF623ColMass D i * (neutralNF623WMass*eV) +
-      neutralNF623ColMass D i * ((∑ j, |y0 j|*neutralNF623ColMass D j)*eH) ≤ r)
+      neutralNF623ColMass D i * ((∑ j, |y0 j| *neutralNF623ColMass D j)*eH) ≤ r)
     (hpay : ∀ i, |neutralNF606Apply D y0 i-neutralNF587SelectedMid i| +
       neutralNF623RowMass D i*(2*r) ≤ neutralNF587SelectedRadius i) :
     ∃! a : Fin 242 → ℝ,
