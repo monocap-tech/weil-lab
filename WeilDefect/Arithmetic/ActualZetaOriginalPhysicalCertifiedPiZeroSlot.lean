@@ -82,6 +82,10 @@ theorem neutralNF645ZeroPartial (Q len : ℕ) (hQ : 0<Q) :
       neutralNF645Fixed,add_zero,Nat.cast_add,Nat.cast_one]
     congr 1 <;> congr 1 <;> ring
 
+theorem neutralNF645RealQ_zero (Q : ℕ) :
+    NF591Rect.realQ ((0:ℚ)*11/20) Q = NF591Rect.zero := by
+  simp [NF591Rect.realQ,NF591Rect.zero,NF591Ball.exactQ]
+
 theorem neutralNF645ZeroSlot (a e : NF591Rect)
     (ha : neutralNF645RectEq
       (neutralNF592ExpPartial NF591Rect.zero neutralNF616Q 2) a=true)
@@ -89,8 +93,7 @@ theorem neutralNF645ZeroSlot (a e : NF591Rect)
       ((a.expand (2*(1198:ℚ)/neutralNF616Q+1/(neutralNF616Q:ℚ))).mulQ
        (a.expand (2*(1198:ℚ)/neutralNF616Q+1/(neutralNF616Q:ℚ))) neutralNF616Q) e=true) :
     neutralNF635RealRef 0=e := by
-  have hz : NF591Rect.realQ ((0:ℚ)*11/20) neutralNF616Q=NF591Rect.zero := by
-    simp [NF591Rect.realQ,NF591Rect.zero,NF591Ball.exactQ]
+  have hz := neutralNF645RealQ_zero neutralNF616Q
   have hsum := neutralNF645ZeroPartial neutralNF616Q 1198 neutralNF616Q_pos
   have ha' := neutralNF645RectEq_sound _ _ ha
   rw [ha'] at hsum
