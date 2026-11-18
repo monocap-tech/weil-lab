@@ -1,4 +1,4 @@
-import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalOscillatorPilots
+import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramTerms
 
 namespace WeilDefect
 noncomputable section
