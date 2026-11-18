@@ -75,5 +75,32 @@ theorem neutralNF615Moment_succ_of_rect (p : NF591Ball) (hp : p.Contains Real.pi
   exact neutralNF614Moment_succ_enclosure _ _ _ u v n δ E R (S:ℝ) hδ hz hprev
     (neutralNF615RectBelow_sound _ _ S hres hcheck) hpay
 
+def neutralNF615BaseResidualRect (B Z q : NF591Rect) (Q : ℕ) : NF591Rect :=
+  B.add ((Z.mulQ q Q).neg)
+
+theorem neutralNF615Moment_zero_of_rect (p : NF591Ball) (hp : p.Contains Real.pi)
+    (h f : ℚ) (hh : |h|≤1)
+    (q : NF591Rect) (u : ℂ) (hu : q.Contains u)
+    (Q N : ℕ) (hQ : 0<Q) (hN : 1≤N)
+    (hfee : 2/(N.factorial:ℝ) ≤ 1/(Q:ℝ))
+    (δ R : ℝ) (S : ℚ)
+    (hδ : 0<δ) (hz : δ ≤ ‖neutralNF615Lambda h f‖)
+    (hcheck : neutralNF615RectBelow
+      (neutralNF615BaseResidualRect (neutralNF615BoundaryRect p h f Q N 0)
+        (neutralNF615LambdaRect p h f Q) q Q) S = true)
+    (hpay : (S:ℝ) ≤ δ*R) :
+    ‖neutralNF606ExpMoment (-(11/10:ℝ)) (11/10:ℝ)
+      (neutralNF615Lambda h f) 0-u‖ ≤ R := by
+  have hb := neutralNF615BoundaryRect_sound p hp h f hh Q N 0 hQ hN hfee
+  have hZ := neutralNF615LambdaRect_sound p hp h f Q hQ
+  have hres := NF591Rect.contains_add hb
+    (NF591Rect.contains_neg (NF591Rect.contains_mulQ hZ hu Q hQ))
+  have hbnd := neutralNF615RectBelow_sound _ _ S
+    (show (neutralNF615BaseResidualRect _ _ q Q).Contains
+      (neutralNF614Boundary (-(11/10:ℝ)) (11/10:ℝ) (neutralNF615Lambda h f) 0-
+        neutralNF615Lambda h f*u) by
+      simpa only [neutralNF615BaseResidualRect,sub_eq_add_neg] using hres) hcheck
+  exact neutralNF614Moment_zero_enclosure _ _ _ u δ R hδ hz (hbnd.trans hpay)
+
 end
 end WeilDefect
