@@ -35,7 +35,8 @@ theorem neutralNF629Payments_of_rows (c : NF626CenterCache) (s : NF626ScaledInpu
     (hp : neutralNF629Parameters s = true)
     (hr : ∀ i, c.fastPayGate s i = true) : c.fastPayCheck s = true := by
   unfold NF626CenterCache.fastPayCheck
-  exact Bool.and_eq_true.mpr ⟨hp,List.all_eq_true.mpr (fun i _ => hr i)⟩
+  simp only [Bool.and_eq_true]
+  exact ⟨hp,List.all_eq_true.mpr (fun i _ => hr i)⟩
 
 /-- A finite set of per-row truths can be packaged as a universal
 statement without rerunning a large numerical check. -/
