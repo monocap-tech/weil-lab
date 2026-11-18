@@ -48,13 +48,13 @@ theorem neutralNF629Rows_of_list (f : Fin 242 → Bool)
 noncomputable section
 
 theorem neutralNF629OriginalPhysical_of_rows
-    (chunks : List (Array NF624KeyTable)) (meta : Array NF624KeyTable)
+    (chunks : List (Array NF624KeyTable)) (metadata : Array NF624KeyTable)
     (s : NF626ScaledInputs) (c : NF626CenterCache)
     (hchunks : chunks.all neutralNF628ChunkCheck = true)
-    (hshape : neutralNF627ShapeCheck (neutralNF628Join chunks) meta = true)
-    (hcov : neutralNF624CoverageCheck meta (neutralNF624Index meta) = true)
+    (hshape : neutralNF627ShapeCheck (neutralNF628Join chunks) metadata = true)
+    (hcov : neutralNF624CoverageCheck metadata (neutralNF624Index metadata) = true)
     (hentry : ∀ i, neutralNF629EntryRow
-      (neutralNF624Lookup (neutralNF628Join chunks) (neutralNF624Index meta))
+      (neutralNF624Lookup (neutralNF628Join chunks) (neutralNF624Index metadata))
       s.payment i = true)
     (hw : s.wCheck = true)
     (hcache : ∀ i, neutralNF629CacheRow c s i = true)
@@ -65,7 +65,7 @@ theorem neutralNF629OriginalPhysical_of_rows
       neutralNF587SourceInFrozenBox a neutralNF604OriginalCritical := by
   have hb := neutralNF628Bank_of_chunks chunks hchunks
   have hm := neutralNF627AllMoments_of_metadata
-    (neutralNF628Join chunks) meta hb hshape hcov
+    (neutralNF628Join chunks) metadata hb hshape hcov
   have he := neutralNF629EntryRows_sound _ s.payment hm hentry
   have hc := c.check_sound s (neutralNF629Cache_of_rows c s hw hcache)
   exact s.payment.check_sound

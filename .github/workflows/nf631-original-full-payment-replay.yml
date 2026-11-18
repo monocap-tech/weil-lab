@@ -1,0 +1,100 @@
+name: NF631 original reference widening and full payment replay
+on:
+  pull_request:
+    paths:
+      - "scripts/verify_nf631_reference_entry_widening.py"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalMetadataCoverage.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalChunkedClosure.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalRowClosure.lean"
+      - ".github/workflows/nf631-original-full-payment-replay.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf631-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  exact-reference-payments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install python-flint==0.8.0
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf621-shard-*
+          path: receipts
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf621-complete-schedule-coverage
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf622-original-physical-entries
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf623-historical-frame
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Reassemble reference-compatible radii for the SAME centers
+        run: |
+          python -m py_compile scripts/verify_nf631_reference_entry_widening.py
+          python scripts/verify_nf631_reference_entry_widening.py --self-test
+          python scripts/verify_nf631_reference_entry_widening.py --root . --shards receipts --entries nf622-physical-entries.jsonl.gz --output nf631-widened-entries.jsonl.gz --summary nf631-widening.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          s=json.loads(Path('nf631-widening.json').read_text())
+          c=json.loads(Path('nf621-coverage.json').read_text())
+          assert s['input_sha256']=={x['file']:x['sha256'] for x in c['shards']}
+          assert (s['H_entries'],s['V_entries'])==(29403,968)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf631-reference-widened-entries
+          path: |
+            nf631-widened-entries.jsonl.gz
+            nf631-widening.json
+          if-no-files-found: error
+      - name: Exact full transformed payment replay, cache proposals
+        run: |
+          python scripts/verify_nf623_uniform_physical_payments.py --root . --historical nf623-historical-entries.jsonl.gz --entries nf631-widened-entries.jsonl.gz --output nf631-widened-payments.json --center-cache nf631-center-cache.jsonl.gz
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf631-reference-widened-payments
+          path: nf631-widened-payments.json
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf631-reference-center-cache
+          path: nf631-center-cache.jsonl.gz
+          if-no-files-found: error
+  focused-metadata:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalMetadataCoverage
+      - run: |
+          cat >/tmp/nf631Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalMetadataCoverage
+          #print axioms WeilDefect.neutralNF627AllMoments_of_metadata
+          EOF
+          lake env lean /tmp/nf631Audit.lean
