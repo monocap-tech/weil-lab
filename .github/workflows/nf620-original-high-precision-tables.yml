@@ -1,0 +1,61 @@
+name: NF620 original high precision physical moment tables
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalFullTableSound.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalMomentParity.lean"
+      - "scripts/verify_nf620_physical_key_tables.py"
+      - ".github/workflows/nf620-original-high-precision-tables.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf620-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  exact-replay:
+    strategy:
+      fail-fast: false
+      matrix:
+        case: [pilot, shard0, shard31]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Actual source key schedule and high precision replay
+        run: |
+          case "${{ matrix.case }}" in
+            pilot) python scripts/verify_nf620_physical_key_tables.py --root . --output nf620-pilot.json.gz ;;
+            shard0) python scripts/verify_nf620_physical_key_tables.py --root . --shard 0/64 --output nf620-shard0.json.gz ;;
+            shard31) python scripts/verify_nf620_physical_key_tables.py --root . --shard 31/64 --output nf620-shard31.json.gz ;;
+          esac
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf620-physical-${{ matrix.case }}
+          path: nf620-*.json.gz
+          if-no-files-found: error
+  focused:
+    strategy:
+      fail-fast: false
+      matrix:
+        module:
+          - ActualZetaOriginalPhysicalFullTableSound
+          - ActualZetaOriginalPhysicalMomentParity
+          - ActualZetaOriginalPhysicalGramPilotAssembly
+          - ActualZetaOriginalPhysicalOscillatorPilots
+          - ActualZetaOriginalPhysicalGramPilotReceipts
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.${{ matrix.module }}
