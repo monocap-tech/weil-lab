@@ -26,7 +26,7 @@ def neutralNF625Mid (i : Fin 242) : ℚ :=
   neutralNF589DyadicQ neutralNF587SelectedDyads[i.val]!.1
 
 def neutralNF625Rad (i : Fin 242) : ℚ :=
-  neutralNF589DyadicQ neutralNF587SelectedDyads[i.val]!.2
+  |neutralNF589DyadicQ neutralNF587SelectedDyads[i.val]!.2|
 
 def NF625PaymentData.A (p : NF625PaymentData) (i j : Fin 242) : ℚ :=
   ∑ k, p.D k i * (∑ l, p.H0 k l * p.D l j)
@@ -74,7 +74,7 @@ theorem neutralNF625Mid_cast (i : Fin 242) :
 theorem neutralNF625Rad_cast (i : Fin 242) :
     (neutralNF625Rad i:ℝ) = neutralNF587SelectedRadius i := by
   unfold neutralNF625Rad neutralNF587SelectedRadius
-  exact neutralNF589Dyadic_cast _
+  rw [Rat.cast_abs,neutralNF589Dyadic_cast]
 
 def NF625PaymentData.DR (p : NF625PaymentData) : Fin 242 → Fin 242 → ℝ :=
   fun i j => (p.D i j:ℝ)
@@ -91,8 +91,7 @@ def NF625PaymentData.yR (p : NF625PaymentData) : Fin 242 → ℝ :=
 theorem NF625PaymentData.A_cast (p : NF625PaymentData) (i j : Fin 242) :
     (p.A i j:ℝ) = neutralNF613GramCenter p.DR p.HR i j := by
   unfold A neutralNF613GramCenter DR HR
-  push_cast
-  rfl
+  push_cast <;> rfl
 
 theorem NF625PaymentData.b_cast (p : NF625PaymentData) (i : Fin 242) :
     (p.b i:ℝ) = neutralNF613RHSCenter p.DR p.VR i := by
@@ -103,8 +102,7 @@ theorem NF625PaymentData.b_cast (p : NF625PaymentData) (i : Fin 242) :
 theorem NF625PaymentData.c_cast (p : NF625PaymentData) (i : Fin 242) :
     (p.c i:ℝ) = neutralNF623ColMass p.DR i := by
   unfold c neutralNF623ColMass DR
-  push_cast
-  rfl
+  push_cast <;> rfl
 
 theorem NF625PaymentData.row_cast (p : NF625PaymentData) (i : Fin 242) :
     (p.row i:ℝ) =
