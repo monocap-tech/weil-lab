@@ -66,7 +66,7 @@ theorem neutralNF615Endpoint_sound (p : NF591Ball) (hp : p.Contains Real.pi)
   have ha := neutralNF615RealEndpoint_sound h hh Q N hQ hN hfee
   have hb := neutralNF592PhaseBall_sound p hp f Q N hQ hN hfee
   unfold neutralNF615Endpoint neutralNF615Lambda
-  rw [add_mul,Complex.exp_add,mul_assoc]
+  rw [add_mul,Complex.exp_add]
   exact NF591Rect.contains_mulQ ha hb Q hQ
 
 theorem neutralNF615Lambda_neg (h f : ℚ) :
