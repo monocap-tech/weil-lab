@@ -1,0 +1,19 @@
+# NF608 — terminal endpoint kernel theorem and independent nonvanishing accepted
+
+Stacked on NF607 #639. New NF608 changes await compilation.
+
+## Verified receipts
+
+- NF605 run 44211798238 job 134491739833 completed both promoted-shard build and complete endpoint closure successfully. The permanent source declarations neutralNF605EndpointCheck, neutralNF605Endpoint_negative, neutralNF605OriginalCarrier_nonzero and neutralNF605OriginalGraph_positive_of_selected are accepted. The final independent axiom audit explicitly passed; only propext, Classical.choice and Quot.sound. Thus the endpoint checker truth is no longer an assumption. For every actual coefficient choice in the original frozen box, U(B)<-10^-11 is a Lean theorem. This is not the complete U400 checker.
+- NF607 run 44215059104 job 134502705017 and NF605 run 44215059450 job 134502706908 accepted the independent original remote nonvanishing module. The proof that U(1000)<0 throughout the box, analytic uniqueness on the real line and nonzero actual L2 carrier all compile. This second proof avoids any endpoint checker and does not enlarge carrier support. Both routes retain the box premise.
+- NF606 run 44215059509 jobs 134502707695 and 134502708388 independently reaccepted residual row payments and real residual containment/physical system attachment. No new NF608 numerical replay.
+- NF607 moment recurrence still failed on two observed proof diagnostics (exp derivative function/instance elaboration and a redundant simp in the zero-frequency derivative); repair using explicit change and the exact nonzero-denominator derivative equality. The dependent original H,V dictionary is unaccepted.
+- NF607 pole proof had two observed diagnostics: rewrite of double negated moment argument, and local abbreviation/negative-half mismatch in the exact two-pole cross-term identity. NF608 normalizes the imaginary evaluation theorem before rewriting and makes the negative half and all local abbreviations explicit. Remaining complete coercivity unaccepted. Certified gamma, Fourier mass and prime proofs retained.
+
+## New strict local transfer and independently testable literal gamma
+
+For every frozen-box source, the independently certified analytic nonvanishing proves m=||ell_U||²>0. If a universal local smooth bound with constant c is supplied, accepted graph transport gives W(K)>=c m. For any 0<d<c, W(K)>d m>0, and accepted corrected signed-margin transfer yields a real odd, original-collar supported Schwartz sequence matching all 242 moments with eventual strict relative margin d. The new NF608 wrapper also combines actual real residual hypotheses, exact critical coefficients and local coercivity into strict positivity of the graph of the transformed physical solution. These new statements remain compiler-pending with their exact premises explicit. In particular a local constant of 2/5 would give a strict margin at any smaller positive d, e.g. 1/5.
+
+Split the literal archimedean integral normalization from the pole module so both can be compiled independently. The weighted spectral density is integrable by the existing linear gamma growth bound, Schwartz zeroth/first absolute moments and uniform decay bound. The literal correlation uses the actual physical window Fourier agreement, and the full gamma integral rescales by the exact 2π factor. No tail omitted. Actual integrability and normalization are new proof candidates, not yet accepted.
+
+The two major numerical custody routes (original Arb containment and residual replay), the complete endpoint kernel theorem and independent analytic nonvanishing are now verified. Formal attachment of actual H,V and historical frame enclosures to the real residual inequalities remains OPEN. Complete local support coercivity remains OPEN pending pole/literal gamma attachment. No main merge, no local Lean build. Full U400 truth, global Weil coercivity, W_ODD_NEG and RH remain OPEN.
