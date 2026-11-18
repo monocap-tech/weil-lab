@@ -47,6 +47,21 @@ jobs:
                   assert r.returncode!=0,mode
           print('NF657 two targeted forged certificates rejected')
           PY
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Original physical H symmetry theorem and axiom audit
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramBlockSymmetry
+          cat >/tmp/nf657Symm.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramBlockSymmetry
+          #print axioms WeilDefect.neutralNF657PhysicalH_symm
+          EOF
+          lake env lean /tmp/nf657Symm.lean
       - uses: actions/upload-artifact@v4
         with:
           name: nf657-compact-physical-gram-congruence
