@@ -92,7 +92,8 @@ theorem neutralNF617PoleGramBall_sound :
       ((Complex.exp (11/10)).re - (Complex.exp (-(11/10))).re)/2-11/10 := by
     norm_num [Complex.div_re,Complex.sub_re] at he ⊢ <;> linarith
   rw [hx]
-  convert h using 1 <;> simp only [neutralNF617PoleGramBall] <;> ring
+  unfold neutralNF617PoleGramBall
+  convert h using 1 <;> ring
 
 def neutralNF617PoleTarget : NF591Ball :=
   ⟨2356474701241767793847805235787/10^31,1/10^30⟩
@@ -107,10 +108,10 @@ theorem neutralNF617PoleCheck_true : neutralNF617PoleCheck = true := by
   decide +kernel
 
 theorem neutralNF617PoleGram_certified :
-    neutralNF617PoleTarget.Contains (neutralNF606PhysicalH (241:Fin 242) (241:Fin 242)) :=
-  NF591Ball.contains_widen neutralNF617PoleGramBall_sound
-    (show neutralNF617PoleGramBall.Widens neutralNF617PoleTarget from
-      of_decide_eq_true neutralNF617PoleCheck_true)
+    neutralNF617PoleTarget.Contains (neutralNF606PhysicalH (241:Fin 242) (241:Fin 242)) := by
+  apply NF591Ball.contains_widen neutralNF617PoleGramBall_sound
+  unfold NF591Ball.Widens
+  exact of_decide_eq_true neutralNF617PoleCheck_true
 
 end
 end WeilDefect
