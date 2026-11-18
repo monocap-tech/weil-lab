@@ -33,6 +33,30 @@ Use **integer floor for every lower product/division bound and integer ceiling f
 
 Each lower pivot is **strictly greater than zero as an exact integer**. At (S=10^{160}), the final pivot enclosure width is approximately (1.681\times10^{-148}), 102–103 orders of magnitude smaller than its lower bound. Independent replays using (S=10^{100},10^{120},10^{140}) all retained positive lower pivots. A separate 110-digit high-precision real-symmetric point eigensolver gave 15 positive center eigenvalues, smallest approximately (2.84551707\times10^{-47}); this is only an independent numerical cross-check, **not** the enclosure proof.
 
+## Quantified finite-block coercivity (exact arithmetic)
+
+Interval forward substitution for (K=L^{-1}), with identity diagonal and
+(K_{ij}=-\sum_{k=j}^{i-1}L_{ik}K_{kj}), bounds (\|K\|_F^2) from above by
+`18895241242739.324259952041265... `. With lower pivot
+`4.942065270655477857571697082798...e-46`, the resulting rigorous
+external ratio bound is approximately
+`2.615507898082282136473215218157...e-59`.
+The fixedpoint integer inequality
+`minimum_pivot_lower_integer * 10^160 * 10^60 > L_inverse_Frobenius_scaled_numerator`
+holds **exactly**, at fixedpoint precision 160 decimal digits. At 100, 120,
+140 and 160 digits it independently passed. Therefore, conditional on
+the 120 analytical entries being contained in the retained balls and the
+physical block being symmetric,
+
+\[
+  \boxed{x^{\mathsf T}H_I x\;\ge\;10^{-60}\|x\|_2^2\quad
+    \text{for all }x\in\mathbb R^{15}.}
+\]
+
+This is a finite-dimensional positive coercivity *interval* certificate,
+not a statement about the full physical operator, not the independent
+local 17/40 or corrected 2/5 margin, and not a new Lean theorem.
+
 ## Formal obligations
 
 1. NF655 Lean: all 120 *physical* H entries belong to the exact widened input intervals; CI run 44420223350, base 106 and cross 14 pending at last inspection. NF648 first 42 moment rows and 73 source prefix modules already accepted; 14 opposite-sign moment rows unverified.
