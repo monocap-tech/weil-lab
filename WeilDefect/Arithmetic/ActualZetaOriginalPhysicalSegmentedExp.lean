@@ -39,7 +39,8 @@ def neutralNF633RectEq (a b : NF591Rect) : Bool :=
 
 theorem neutralNF633RectEq_sound (a b : NF591Rect)
     (h : neutralNF633RectEq a b=true) : a=b := by
-  have h' := Bool.and_eq_true.mp h
+  have h' := h
+  simp only [neutralNF633RectEq,Bool.and_eq_true] at h'
   have hr := neutralNF632BallEq_sound _ _ h'.1
   have hi := neutralNF632BallEq_sound _ _ h'.2
   cases a
@@ -51,7 +52,8 @@ def neutralNF633StateEq (s t : NF633ExpState) : Bool :=
 
 theorem neutralNF633StateEq_sound (s t : NF633ExpState)
     (h : neutralNF633StateEq s t=true) : s=t := by
-  have h' := Bool.and_eq_true.mp h
+  have h' := h
+  simp only [neutralNF633StateEq,Bool.and_eq_true] at h'
   have hj := neutralNF633RectEq_sound _ _ h'.1
   have hp := neutralNF633RectEq_sound _ _ h'.2
   cases s
