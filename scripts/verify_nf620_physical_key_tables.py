@@ -28,7 +28,7 @@ def div(a,k): return a[0]//k,ceildiv(a[1],k)+1
 def real(q): return exact(q),ZERO
 def zadd(a,b): return add(a[0],b[0]),add(a[1],b[1])
 def zneg(a): return neg(a[0]),neg(a[1])
-def zmul(a,b): return add(mul(a[0],b[0]),neg(mul(a[1],b[1]))),add(mul(a[0],b[1]),mul(a[1],b[0]))
+def zmul(a,b): return add(mul(a[0],b[0]),neg(mul(a[1],b[1]))),add(mul(a[0],b[1]),mul(a[1],b[0])))
 def small(z):
     s=(ZERO,ZERO); t=(ONE,ZERO)
     for n in range(N):
