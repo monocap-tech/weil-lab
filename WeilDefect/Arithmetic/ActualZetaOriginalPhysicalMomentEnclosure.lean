@@ -18,7 +18,9 @@ theorem neutralNF614Norm_from_scaled (z e : ℂ) (δ R : ℝ)
     (h : ‖z*e‖ ≤ δ*R) : ‖e‖ ≤ R := by
   rw [norm_mul] at h
   have he := (mul_le_mul_of_nonneg_right hz (norm_nonneg e)).trans h
-  exact (mul_le_mul_left₀ hδ).mp he
+  by_contra hn
+  have hh := mul_lt_mul_of_pos_left (lt_of_not_ge hn) hδ
+  exact (not_lt_of_ge he) hh
 
 theorem neutralNF614Moment_zero_enclosure (a b : ℝ) (z q : ℂ) (δ R : ℝ)
     (hδ : 0 < δ) (hz : δ ≤ ‖z‖)
