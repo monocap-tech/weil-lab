@@ -1,0 +1,112 @@
+name: NF642 original endpoint slot certificates
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalEndpointSlotCertificates.lean"
+      - "scripts/emit_nf642_endpoint_slot_certificates.py"
+      - ".github/workflows/nf642-original-endpoint-slot-certificates.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf642-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf635-original-endpoint-key-coverage
+          run-id: 44364429357
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: WeilDefect/Generated/NF635
+      - name: Validate retained key-only proposals
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF635')
+          m=json.loads((d/'manifest.json').read_text())
+          assert not m['full_values'] and m['coverage_chunks']==62
+          assert (m['key_count'],m['route_count'])==(7835,31340)
+          for x in m['files']:
+              assert hashlib.sha256((d/x['file']).read_bytes()).hexdigest()==x['sha256']
+          PY
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: All 62 literal key coverage gates
+        timeout-minutes: 30
+        run: |
+          targets=()
+          for i in $(seq -w 0 61); do
+            targets+=("WeilDefect.Generated.NF635.Coverage0$i")
+          done
+          lake build "${targets[@]}"
+  endpoint-prefix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf635-original-complete-endpoint-proposals
+          run-id: 44364429357
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: WeilDefect/Generated/NF635
+      - name: Plan every slot and generate seven retained-value prefix chains
+        run: |
+          python -m py_compile scripts/emit_nf642_endpoint_slot_certificates.py
+          python scripts/emit_nf642_endpoint_slot_certificates.py --bank WeilDefect/Generated/NF635 --output WeilDefect/Generated/NF642
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('WeilDefect/Generated/NF642/plan.json').read_text())
+          assert (m['slot_count'],m['generated'],m['segments_all'])==(1281,7,48678)
+          phase=next(x['module'] for x in m['slots'] if x['bank']=='Phase' and x['parameter']=='87/320')
+          with open('phase-target.txt','w') as f: f.write(phase+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf642-original-endpoint-slot-plan-and-pilots
+          path: WeilDefect/Generated/NF642/
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalEndpointSlotCertificates
+      - name: Audit reference attachment theorems
+        run: |
+          cat >/tmp/nf642Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalEndpointSlotCertificates
+          #print axioms WeilDefect.neutralNF642RealSlot
+          #print axioms WeilDefect.neutralNF642PhaseSlot
+          #print axioms WeilDefect.neutralNF642AttachSlot
+          #print axioms WeilDefect.neutralNF642Bank_of_slots
+          EOF
+          lake env lean /tmp/nf642Audit.lean
+      - name: Two complete original slot prefix-chain trials
+        timeout-minutes: 24
+        run: |
+          phase=$(cat phase-target.txt)
+          lake build WeilDefect.Generated.NF642.Real0004 "WeilDefect.Generated.NF642.$phase"
+      - name: Attach the two certified literals to the actual indexed bank
+        timeout-minutes: 10
+        run: |
+          phase=$(cat phase-target.txt)
+          lake build WeilDefect.Generated.NF642.Real0004Attach "WeilDefect.Generated.NF642.${phase}Attach"
