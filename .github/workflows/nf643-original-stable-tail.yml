@@ -1,0 +1,72 @@
+name: NF643 exact stable Taylor tail survey and proof trials
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalStableTaylorTail.lean"
+      - "scripts/emit_nf642_endpoint_slot_certificates.py"
+      - ".github/workflows/nf643-original-stable-tail.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf643-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  stable-tail-survey:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf635-original-complete-endpoint-proposals
+          run-id: 44364429357
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: WeilDefect/Generated/NF635
+      - name: Audit every retained rectangle and generate compressed proof pilots
+        run: |
+          python -m py_compile scripts/emit_nf642_endpoint_slot_certificates.py
+          python scripts/emit_nf642_endpoint_slot_certificates.py --bank WeilDefect/Generated/NF635 --output WeilDefect/Generated/NF642 --stable-tail --survey
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('WeilDefect/Generated/NF642/plan.json').read_text())
+          assert m['audited_slots']==m['slot_count']==1281
+          assert m['generated']==7 and m['segments_all']==48678
+          assert all(x['cutoff']<1200 for x in m['slots'])
+          assert m['skipped_terms_audited']>0
+          print('Full prefix segments',m['prefix_segments_audited'],'vs',m['segments_all'])
+          print('Total reference steps compressed',m['skipped_terms_audited'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf643-original-stable-tail-survey
+          path: WeilDefect/Generated/NF642/
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalStableTaylorTail
+      - name: Audit exact tail reference theorem
+        run: |
+          cat >/tmp/nf643Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalStableTaylorTail
+          #print axioms WeilDefect.neutralNF643Stable_of_gate
+          #print axioms WeilDefect.neutralNF643Tail_of_prefix
+          #print axioms WeilDefect.neutralNF643Tail_to_state
+          EOF
+          lake env lean /tmp/nf643Audit.lean
+      - name: Two complete compressed slot proof trials
+        timeout-minutes: 24
+        run: lake build WeilDefect.Generated.NF642.Real0002 WeilDefect.Generated.NF642.Phase0986
+      - name: Actual stored slot attachment trials
+        timeout-minutes: 10
+        run: lake build WeilDefect.Generated.NF642.Real0002Attach WeilDefect.Generated.NF642.Phase0986Attach
