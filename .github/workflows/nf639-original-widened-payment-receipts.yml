@@ -1,0 +1,105 @@
+name: NF639 widened scalar payments and full Machin prefix trial
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalScalarPaymentReceipts.lean"
+      - "scripts/emit_nf639_widened_scalar_receipts.py"
+      - ".github/workflows/nf639-original-widened-payment-receipts.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf639-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  widened-scalar-payments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf623-historical-frame
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf631-reference-widened-entries
+          run-id: 44359078922
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf631-reference-widened-payments
+          run-id: 44359078922
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf631-reference-center-cache
+          run-id: 44359078922
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Exact scalar receipt generation
+        run: |
+          python -m py_compile scripts/emit_nf639_widened_scalar_receipts.py
+          python scripts/emit_nf639_widened_scalar_receipts.py --root . --historical nf623-historical-entries.jsonl.gz --entries nf631-widened-entries.jsonl.gz --payments nf631-widened-payments.json --cache nf631-center-cache.jsonl.gz --output WeilDefect/Generated/NF639
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf639-original-widened-scalar-proposals
+          path: WeilDefect/Generated/NF639/
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalScalarPaymentReceipts
+      - name: Audit scalar reference transfer
+        run: |
+          cat >/tmp/nf639Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalScalarPaymentReceipts
+          #print axioms WeilDefect.NF639PaymentRow.gate_to_ref
+          #print axioms WeilDefect.neutralNF639Payments_of_receipts
+          EOF
+          lake env lean /tmp/nf639Audit.lean
+      - name: Actual first and last widened scalar payment trials
+        timeout-minutes: 10
+        run: |
+          lake build WeilDefect.Generated.NF639.Row000
+          lake build WeilDefect.Generated.NF639.Row241
+  complete-pi:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf632-full-pi-proposals
+          run-id: 44359888464
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: WeilDefect/Generated/NF632
+      - name: Validate retained proposal file digests
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF632')
+          m=json.loads((d/'manifest.json').read_text())
+          assert m['full'] and m['chunk']==32 and len(m['files'])==127
+          for x in m['files']:
+              assert hashlib.sha256((d/x['file']).read_bytes()).hexdigest()==x['sha256']
+          PY
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Full 126 segment prefix-chain kernel trial
+        timeout-minutes: 35
+        run: lake build WeilDefect.Generated.NF632.Pi
