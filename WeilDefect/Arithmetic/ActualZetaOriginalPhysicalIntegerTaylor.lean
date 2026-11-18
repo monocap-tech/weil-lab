@@ -51,14 +51,14 @@ theorem NF636Rect.div_denote (a : NF636Rect) (Q d : ℕ)
 
 structure NF636State where
   jet : NF636Rect
-  partial : NF636Rect
+  sumState : NF636Rect
   deriving DecidableEq
 
 def NF636State.denote (s : NF636State) (Q : ℕ) : NF633ExpState :=
-  ⟨s.jet.denote Q,s.partial.denote Q⟩
+  ⟨s.jet.denote Q,s.sumState.denote Q⟩
 
 def NF636State.step (s : NF636State) (a : NF636Rect) (Q n : ℕ) : NF636State :=
-  ⟨(s.jet.mul a Q).div (n+1),s.partial.add s.jet⟩
+  ⟨(s.jet.mul a Q).div (n+1),s.sumState.add s.jet⟩
 
 def NF636State.stepGate (s : NF636State) (a : NF636Rect) (Q n : ℕ) : Bool :=
   s.jet.mulGate a Q && (s.jet.mul a Q).divGate (n+1)
