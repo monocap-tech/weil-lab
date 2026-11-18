@@ -1,0 +1,82 @@
+name: NF648 ten-leaf original analytical moment trials
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalRationalLocalMoment.lean"
+      - "scripts/emit_nf648_ten_leaf_moments.py"
+      - ".github/workflows/nf648-original-ten-leaf-moments.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf648-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  local-moment:
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        group: [Pole, Osc, Mixed]
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf632-full-pi-proposals
+          run-id: 44359888464
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: WeilDefect/Generated/NF632
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf635-original-complete-endpoint-proposals
+          run-id: 44364429357
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: inputs/bank
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf621-shard-*
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: inputs/shards
+      - name: Validate retained data and emit complete local proofs
+        run: |
+          python -m py_compile scripts/emit_nf648_ten_leaf_moments.py
+          python scripts/emit_nf648_ten_leaf_moments.py --root . --shards inputs/shards --bank inputs/bank --pi WeilDefect/Generated/NF632 --output WeilDefect/Generated/NF648 --group ${{ matrix.group }}
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('WeilDefect/Generated/NF648/manifest.json').read_text())
+          expected={'Pole':(3,1),'Osc':(3,27),'Mixed':(4,14)}
+          assert (m['leaf_count'],m['rows'])==expected[m['group']]
+          assert m['prefix_checks']==38*m['leaf_count']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf648-${{ matrix.group }}-local-proposals
+          path: WeilDefect/Generated/NF648/
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Focused rational transfer
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalRationalLocalMoment
+      - name: Complete certified pi, local endpoint prefixes and original analytic moment proof
+        timeout-minutes: 50
+        run: lake build WeilDefect.Generated.NF648.${{ matrix.group }}
+      - name: Audit unconditional concrete moment containment
+        run: |
+          cat >/tmp/nf648Audit.lean <<'EOF'
+          import WeilDefect.Generated.NF648.${{ matrix.group }}
+          #print axioms WeilDefect.nf648${{ matrix.group }}Moment
+          EOF
+          lake env lean /tmp/nf648Audit.lean
