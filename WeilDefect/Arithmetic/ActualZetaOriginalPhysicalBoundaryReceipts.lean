@@ -44,6 +44,7 @@ theorem neutralNF615RealEndpoint_sound (h : ℚ) (hh : |h| ≤ 1)
     dsimp [z]
     rw [← Complex.ofReal_ratCast,Complex.norm_real]
     push_cast
+    simp only [Real.norm_eq_abs]
     rw [abs_div,abs_mul,abs_of_pos (by norm_num : (0:ℝ)<11),
       abs_of_pos (by norm_num : (0:ℝ)<20)]
     linarith
@@ -88,7 +89,7 @@ theorem neutralNF615BoundaryRect_sound (p : NF591Ball) (hp : p.Contains Real.pi)
   have hpos := neutralNF615Endpoint_sound p hp h f hh Q N hQ hN hfee
   have hneg := neutralNF615Endpoint_sound p hp (-h) (-f) (by simpa using hh)
     Q N hQ hN hfee
-  rw [neutralNF615Lambda_neg,neg_mul] at hneg
+  rw [neutralNF615Lambda_neg,neg_mul,← mul_neg] at hneg
   have hb := NF591Rect.contains_mulQ
     (NF591Rect.contains_realQ ((11/10:ℚ)^n) Q hQ) hpos Q hQ
   have ha := NF591Rect.contains_mulQ
