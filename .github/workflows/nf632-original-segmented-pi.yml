@@ -1,0 +1,76 @@
+name: NF632 original segmented high precision pi
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalSegmentedPi.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalIntegerCenters.lean"
+      - "scripts/emit_nf632_segmented_pi.py"
+      - ".github/workflows/nf632-original-segmented-pi.yml"
+  workflow_dispatch:
+    inputs:
+      full:
+        description: "Compile complete segmented Machin equality (bounded experiment)"
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: nf632-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  focused:
+    strategy:
+      fail-fast: false
+      matrix:
+        module: [ActualZetaOriginalPhysicalSegmentedPi, ActualZetaOriginalPhysicalIntegerCenters]
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.${{ matrix.module }}
+  actual-segments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Emit genuine first and terminal 32-term segments
+        run: |
+          python -m py_compile scripts/emit_nf632_segmented_pi.py
+          python scripts/emit_nf632_segmented_pi.py --output WeilDefect/Generated/NF632
+          python scripts/emit_nf632_segmented_pi.py --full --output /tmp/nf632-full-proposals
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf632-full-pi-proposals
+          path: /tmp/nf632-full-proposals/
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalSegmentedPi
+      - name: Bounded early/late segment kernel comparison
+        timeout-minutes: 20
+        run: |
+          lake build WeilDefect.Generated.NF632.Pilot5_0
+          lake build WeilDefect.Generated.NF632.Pilot239_0
+          lake build WeilDefect.Generated.NF632.Pilot5_1968
+          lake build WeilDefect.Generated.NF632.Pilot239_1968
+      - name: Full proof trial only when explicitly requested
+        if: github.event_name == 'workflow_dispatch' && inputs.full
+        timeout-minutes: 20
+        run: |
+          cp /tmp/nf632-full-proposals/*.lean WeilDefect/Generated/NF632/
+          lake build WeilDefect.Generated.NF632.Pi
