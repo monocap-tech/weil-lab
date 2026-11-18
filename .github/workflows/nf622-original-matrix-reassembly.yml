@@ -1,0 +1,61 @@
+name: NF622 original physical matrix reassembly
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalEntryAssembly.lean"
+      - "scripts/verify_nf622_physical_entry_reassembly.py"
+      - ".github/workflows/nf622-original-matrix-reassembly.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf622-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact committed replay and full-entry pilots
+        run: |
+          python -m py_compile scripts/verify_nf620_physical_key_tables.py scripts/verify_nf622_physical_entry_reassembly.py
+          python scripts/verify_nf620_physical_key_tables.py --root .
+          python scripts/verify_nf622_physical_entry_reassembly.py --root . --pilot
+          PYTHONPATH=scripts python - <<'PY'
+          from pathlib import Path
+          import verify_nf622_physical_entry_reassembly as s
+          S=s.selected(Path('.'))
+          C=s.critical(Path('.'))
+          data={}
+          for j in range(4):
+              m,r=s.entry(data,S[0],C[j],True)
+              assert r<10**30
+              print('V[0,%d] exact outward reassembly PASS; radius < 10^%d' % (j,len(str(r))-2600))
+          assert len(data)==66
+          PY
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalEntryAssembly
+      - name: Audit generic entry reassembly
+        run: |
+          cat > /tmp/nf622Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalEntryAssembly
+          #print axioms WeilDefect.neutralNF622Restore_sound
+          #print axioms WeilDefect.neutralNF622H_of_specs
+          #print axioms WeilDefect.neutralNF622V_of_specs
+          EOF
+          lake env lean /tmp/nf622Audit.lean
