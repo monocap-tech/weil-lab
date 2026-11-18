@@ -1,0 +1,55 @@
+name: NF636 original integer rounding kernel trials
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalIntegerRounding.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalIntegerTaylor.lean"
+      - "scripts/emit_nf636_integer_taylor_pilots.py"
+      - ".github/workflows/nf636-original-integer-rounding-gates.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf636-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  integer-taylor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: |
+          python -m py_compile scripts/emit_nf636_integer_taylor_pilots.py
+          python scripts/emit_nf636_integer_taylor_pilots.py --output WeilDefect/Generated/NF636
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf636-integer-taylor-pilots
+          path: WeilDefect/Generated/NF636/
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalIntegerTaylor
+      - name: Generic proof audit
+        run: |
+          cat >/tmp/nf636Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalIntegerTaylor
+          #print axioms WeilDefect.NF636Ball.roundGate_sound
+          #print axioms WeilDefect.neutralNF636Segment_denote
+          #print axioms WeilDefect.neutralNF636Prefix_extend
+          EOF
+          lake env lean /tmp/nf636Audit.lean
+      - name: Four genuine 32-step integer-only checks with mutations
+        timeout-minutes: 15
+        run: |
+          lake build WeilDefect.Generated.NF636.Pole0000
+          lake build WeilDefect.Generated.NF636.Pole1168
+          lake build WeilDefect.Generated.NF636.Phase0000
+          lake build WeilDefect.Generated.NF636.Phase1168
