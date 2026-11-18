@@ -58,8 +58,8 @@ theorem NF639PaymentRow.gate_to_ref (v : NF639PaymentRow)
 
 theorem neutralNF639Payments_of_receipts (c : NF626CenterCache)
     (s : NF626ScaledInputs) (v : Fin 242 → NF639PaymentRow)
-    (hp : decide (0<s.S ∧ 0<s.Q ∧ 0<s.T ∧ 0<s.U ∧
-      0≤s.r ∧ 0≤s.eH ∧ 0≤s.eV)=true)
+    (hp : decide (0 < s.S ∧ 0 < s.Q ∧ 0 < s.T ∧ 0 < s.U ∧
+      0 ≤ s.r ∧ 0 ≤ s.eH ∧ 0 ≤ s.eV)=true)
     (hv : ∀ i, (v i).Valid c s i)
     (hg : ∀ i, (v i).gate s.S s.Q s.T s.U s.eH s.eV s.r i=true) :
     c.fastPayCheck s=true := by
