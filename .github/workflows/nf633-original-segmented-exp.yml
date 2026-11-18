@@ -1,0 +1,80 @@
+name: NF633 original segmented high precision exponential
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalSegmentedExp.lean"
+      - "scripts/emit_nf633_segmented_exp.py"
+      - ".github/workflows/nf633-original-segmented-exp.yml"
+  workflow_dispatch:
+    inputs:
+      full:
+        description: "Compile complete two-case proof including segmented pi (bounded)"
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: nf633-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalSegmentedExp
+      - run: |
+          cat >/tmp/nf633Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalSegmentedExp
+          #print axioms WeilDefect.neutralNF633Prefix_extend
+          #print axioms WeilDefect.neutralNF633SmallExp_of_state
+          #print axioms WeilDefect.neutralNF633Phase_of_small
+          EOF
+          lake env lean /tmp/nf633Audit.lean
+  actual-segments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Emit original pole and oscillator phase states
+        run: |
+          python -m py_compile scripts/emit_nf633_segmented_exp.py
+          python scripts/emit_nf633_segmented_exp.py --output WeilDefect/Generated/NF633
+          python scripts/emit_nf633_segmented_exp.py --full --output /tmp/nf633-full
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf633-exp-prefix-proposals
+          path: /tmp/nf633-full/
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Four local 32-step kernel comparisons
+        timeout-minutes: 20
+        run: |
+          lake build WeilDefect.Generated.NF633.PolePilot0000
+          lake build WeilDefect.Generated.NF633.PolePilot1168
+          lake build WeilDefect.Generated.NF633.PhasePilot0000
+          lake build WeilDefect.Generated.NF633.PhasePilot1168
+      - name: Full original pole and oscillator phase prefix proof trial
+        if: github.event_name == 'workflow_dispatch' && inputs.full
+        timeout-minutes: 20
+        run: |
+          python scripts/emit_nf632_segmented_pi.py --full --output WeilDefect/Generated/NF632
+          cp /tmp/nf633-full/*.lean WeilDefect/Generated/NF633/
+          lake build WeilDefect.Generated.NF633.PoleComplete
+          lake build WeilDefect.Generated.NF633.PhaseComplete
