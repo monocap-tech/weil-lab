@@ -4,7 +4,7 @@ import WeilDefect.Arithmetic.ActualZetaOriginalResidualSignedMargin
 
 namespace WeilDefect
 noncomputable section
-open MeasureTheory
+open MeasureTheory Filter
 open scoped SchwartzMap ComplexConjugate
 
 theorem neutralNF610SmoothCollarLower :
