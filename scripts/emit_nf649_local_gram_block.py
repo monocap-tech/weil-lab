@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Bind the NF648 three local moment proofs to all 120 physical Gram
+"""Bind the NF648 four local moment proofs to all 120 physical Gram
 entries at actual source indices 0..13 and 241, using retained NF631 radii.
 No full-bank truth, no substitute source, no global positivity claim.
-Generate NF648 proof proposals first with --group omitted.
+Generate NF648 proof proposals first with --opposite-mixed and --group omitted.
 """
 import argparse,gzip,json,hashlib
 from pathlib import Path
@@ -16,7 +16,7 @@ MODULE='WeilDefect.Generated.NF649'
 MOM='WeilDefect.Generated.NF648'
 OPT='set_option maxRecDepth 100000\nset_option maxHeartbeats 0\n\n'
 INDICES=list(range(14))+[241]
-KEYS=[(F(1),F(0)),(F(0),F(37,32)),(F(1,2),F(37,64))]
+KEYS=[(F(1),F(0)),(F(0),F(37,32)),(F(1,2),F(37,64)),(F(-1,2),F(37,64))]
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
     ap=argparse.ArgumentParser()
@@ -24,7 +24,7 @@ def main():
     a=ap.parse_args(); a.output.mkdir(parents=True,exist_ok=True)
     m=json.loads((a.moments/'manifest.json').read_text())
     assert m['schema']=='NF648-ten-leaf-local-moment-proposals-v1'
-    assert m['group'] is None and m['rows']==42 and m['leaf_count']==10
+    assert m['group'] is None and m['opposite_mixed'] and m['rows']==56 and m['leaf_count']==10
     for x in m['files']: assert sha(a.moments/x['file'])==x['sha256']
     summary=json.loads(a.summary.read_text())
     hashes={p.name:sha(p) for p in a.shards.rglob('nf621-shard*.json.gz')}
@@ -33,7 +33,7 @@ def main():
     assert sha(a.entries)==summary['widened_entry_sha256']
     full=read_shards(a.root,a.shards)
     data={k:full[k] for k in KEYS}
-    assert [len(data[k]) for k in KEYS]==[1,27,14]
+    assert [len(data[k]) for k in KEYS]==[1,27,14,14]
     S=selected(a.root)
     assert len(S)==242
     assert all({(h,abs(f),n) for h,f,n,c,d in S[i]}=={(F(0),F(37,64),i)} for i in range(14))
@@ -55,13 +55,14 @@ def main():
         p.write_text(filetext(imports,OPT+body))
         files.append({'file':p.name,'sha256':sha(p)})
     body='''def nf649Bank : Array NF624KeyTable :=
-  #[nf648PoleTable,nf648OscTable,nf648MixedTable]
+  #[nf648PoleTable,nf648OscTable,nf648MixedTable,nf648MixedOppTable]
 
 def nf649Index (k : NF616Frequency) : ℕ :=
   if k.h=1 ∧ k.f=0 then 0
   else if k.h=0 ∧ k.f=37/32 then 1
   else if k.h=1/2 ∧ k.f=37/64 then 2
-  else 3
+  else if k.h= -1/2 ∧ k.f=37/64 then 3
+  else 4
 
 theorem nf649BankSound : ∀ i < nf649Bank.size,
     ∀ n < (neutralNF624BankRead nf649Bank i).rows.size,
@@ -69,17 +70,18 @@ theorem nf649BankSound : ∀ i < nf649Bank.size,
       (neutralNF617MomentRead (neutralNF624BankRead nf649Bank i).rows n).value‖ ≤
       (neutralNF617MomentRead (neutralNF624BankRead nf649Bank i).rows n).rad := by
   intro i hi n hn
-  have hs : nf649Bank.size=3 := by rfl
+  have hs : nf649Bank.size=4 := by rfl
   rw [hs] at hi
-  have hh : i=0 ∨ i=1 ∨ i=2 := by omega
-  rcases hh with rfl | rfl | rfl
+  have hh : i=0 ∨ i=1 ∨ i=2 ∨ i=3 := by omega
+  rcases hh with rfl | rfl | rfl | rfl
   · exact nf648PoleMoment n hn
   · exact nf648OscMoment n hn
   · exact nf648MixedMoment n hn
+  · exact nf648MixedOppMoment n hn
 
 #print axioms nf649BankSound
 '''
-    write('Bank',[BASE]+[MOM+'.'+g for g in ('Pole','Osc','Mixed')],body)
+    write('Bank',[BASE]+[MOM+'.'+g for g in ('Pole','Osc','Mixed','MixedOpp')],body)
     pair_count=zero_count=0; keys=set(); zero_degrees=set()
     for i in INDICES:
         body=''
@@ -103,7 +105,7 @@ theorem nf649BankSound : ∀ i < nf649Bank.size,
             body+=f'theorem {v}Widen : neutralNF649WidenH nf649Bank nf649Index {i} {j} {v}Ball=true := by\n  decide +kernel\n'
             body+=f'theorem {v}Contains : {v}Ball.Contains (neutralNF606PhysicalH {i} {j}) :=\n  neutralNF649H_of_local nf649Bank nf649Index nf649BankSound {i} {j} _ {v}Route {v}Widen\n\n'
         write(f'Row{i:03d}',[MODULE+'.Bank'],body)
-    assert pair_count==480 and len(keys)==3
+    assert pair_count==480 and len(keys)==4
     write('Complete',[MODULE+f'.Row{i:03d}' for i in INDICES],
           '#print axioms nf649H000_000Contains\n#print axioms nf649H013_013Contains\n#print axioms nf649H241_000Contains\n#print axioms nf649H241_241Contains')
     result={'schema':'NF649-original-local-gram-block-v1','indices':INDICES,'lower_entries':120,
