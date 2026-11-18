@@ -30,9 +30,8 @@ theorem neutralNF643Div_fixed (b : NF591Ball) (Q n : ℕ)
     simpa only [one_mul] using hu
   have hc : ⌈b.rad/((n:ℚ)+1)*(Q:ℚ)⌉=(1:ℤ) := by
     apply Int.ceil_eq_iff.mpr
-    norm_num
-    exact ⟨hp,hle⟩
-  simp [NF591Ball.divPos,NF591Ball.round,hm,hc]
+    simpa using And.intro hp hle
+  simp [NF591Ball.divPos,NF591Ball.round,hm,hc] <;> norm_num
 
 theorem neutralNF643Stable_of_gate (a : NF591Rect) (Q start n : ℕ)
     (hn : start≤n) (hg : neutralNF643StableGate a Q start=true) :
