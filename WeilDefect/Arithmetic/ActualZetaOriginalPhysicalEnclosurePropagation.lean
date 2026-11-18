@@ -10,7 +10,7 @@ rational casts, but analytic containment is a separate premise. -/
 
 theorem neutralNF613WeightedError {n : ℕ}
     (u x m e : Fin n → ℝ) (h : ∀ j, |x j-m j| ≤ e j) :
-    |(∑ j, u j*x j)-(∑ j, u j*m j)| ≤ ∑ j, |u j|*e j := by
+    |(∑ j, u j*x j)-(∑ j, u j*m j)| ≤ ∑ j, |u j| *e j := by
   rw [← Finset.sum_sub_distrib]
   simp_rw [← mul_sub]
   apply (abs_sum_le_sum_abs _ _).trans
@@ -64,7 +64,7 @@ theorem neutralNF613RHS_enclosure (D : Fin 242 → Fin 242 → ℝ)
 above: a tighter source-native enclosure of A may also be used. -/
 theorem neutralNF613Rows_of_enclosures (D A0 EA : Fin 242 → Fin 242 → ℝ)
     (hA : ∀ i j, |neutralNF606TransformedH D i j-A0 i j| ≤ EA i j)
-    (hcheck : ∀ i, (∑ j, |neutralNF606Defect A0 i j|+EA i j) ≤ 1/100)
+    (hcheck : ∀ i, (∑ j, |neutralNF606Defect A0 i j| +EA i j) ≤ 1/100)
     (i : Fin 242) :
     (∑ j, |neutralNF606Defect (neutralNF606TransformedH D) i j|) ≤ 1/100 := by
   apply le_trans _ (hcheck i)
@@ -75,21 +75,24 @@ theorem neutralNF613Rows_of_enclosures (D A0 EA : Fin 242 → Fin 242 → ℝ)
     unfold neutralNF606Defect
     ring
   rw [he]
-  rw [sub_eq_add_neg]
-  exact (abs_add_le _ _).trans (by rw [abs_neg]; exact add_le_add le_rfl (hA i j))
+  calc
+    _ ≤ |neutralNF606Defect A0 i j| + |neutralNF606TransformedH D i j-A0 i j| := by
+      simpa only [sub_eq_add_neg,abs_neg] using
+        (abs_add_le (neutralNF606Defect A0 i j) (-(neutralNF606TransformedH D i j-A0 i j)))
+    _ ≤ _ := add_le_add le_rfl (hA i j)
 
 theorem neutralNF613Residual_of_enclosures (D A0 EA : Fin 242 → Fin 242 → ℝ)
     (b0 Eb y0 : Fin 242 → ℝ) (r : ℝ)
     (hA : ∀ i j, |neutralNF606TransformedH D i j-A0 i j| ≤ EA i j)
     (hb : ∀ i, |neutralNF606TransformedRHS D i-b0 i| ≤ Eb i)
-    (hcheck : ∀ i, |b0 i-neutralNF606Apply A0 y0 i|+Eb i+
-      (∑ j, |y0 j|*EA i j) ≤ r)
+    (hcheck : ∀ i, |b0 i-neutralNF606Apply A0 y0 i| +Eb i+
+      (∑ j, |y0 j| *EA i j) ≤ r)
     (i : Fin 242) :
     |neutralNF606TransformedRHS D i-
       neutralNF606Apply (neutralNF606TransformedH D) y0 i| ≤ r := by
   have hdiff :
       |neutralNF606Apply (neutralNF606TransformedH D) y0 i-
-        neutralNF606Apply A0 y0 i| ≤ ∑ j, |y0 j|*EA i j := by
+        neutralNF606Apply A0 y0 i| ≤ ∑ j, |y0 j| *EA i j := by
     unfold neutralNF606Apply
     simp_rw [mul_comm (neutralNF606TransformedH D i _) (y0 _),
       mul_comm (A0 i _) (y0 _)]
@@ -101,9 +104,8 @@ theorem neutralNF613Residual_of_enclosures (D A0 EA : Fin 242 → Fin 242 → �
         (neutralNF606Apply (neutralNF606TransformedH D) y0 i-
           neutralNF606Apply A0 y0 i) := by ring
   rw [he]
-  rw [sub_eq_add_neg]
-  apply (abs_add_le _ _).trans
-  rw [abs_neg]
+  apply (show |(_ : ℝ)-_| ≤ |_|+|_| from by
+    simpa only [sub_eq_add_neg,abs_neg] using abs_add_le _ (-_)).trans
   exact (add_le_add ((abs_add_le _ _).trans (add_le_add le_rfl (hb i))) hdiff).trans (hcheck i)
 
 end
