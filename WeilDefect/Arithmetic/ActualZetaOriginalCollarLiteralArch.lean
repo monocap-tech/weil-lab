@@ -53,7 +53,7 @@ theorem neutralNF600Correlation_spectral (s : 𝓢(ℝ,ℂ))
     Complex.conj_ofReal,h,← neutralRawTransform_fourier]
   rw [← SchwartzMap.fourier_coe]
   unfold neutralNF600Density
-  exact Complex.conj_mul' _
+  simpa only [Complex.ofReal_pow] using Complex.conj_mul' ((𝓕 s) ξ)
 
 theorem neutralNF600LiteralArch_eq (s : 𝓢(ℝ,ℂ))
     (hs : ∀ x, x ∉ neutralNF543OriginalCollars → s x=0) :
