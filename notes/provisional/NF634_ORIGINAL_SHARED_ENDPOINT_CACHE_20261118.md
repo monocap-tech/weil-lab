@@ -1,0 +1,13 @@
+# NF634 — shared real and reduced-phase endpoint custody
+
+Status: exact source-wide inventory independently reproduced; proof candidates and actual local residual trials committed, CI pending.
+
+## Recovered CI
+NF621 transformed-payments (134968354605), NF631 exact-reference-payments (134995143316), NF632 segmented pi jobs (44359888464) and NF633 exponential workflow (44362747867) still queued at inspection. NF629 focused triangular and actual-first-row jobs failed at Bool.and_eq_true.mp, which is not a constant in this toolchain; use simp only [neutralNF629EntryRow,Bool.and_eq_true] on explicit hypotheses. Also repair analogous conjunction use in row closure, segmented exp and integer payments. NF630 historical-pilot failed at the old NF626 Ay rewrite already repaired in NF632. No new actual payment or kernel truth acceptance.
+
+## Shared endpoint representation
+The exact exponentials in the incumbent recurrence can use five real factors indexed by h and 1276 phases indexed by u = 11f/10 - floor(11f/10+1/2). Independently parsed the literal 67 oscillator groups and 32 critical frequencies and formed all original selected-selected/selected-critical signed exponent keys with exact rational arithmetic. Reproduced 15,671 signed keys, five real factors (-1,-1/2,0,1/2,1), 1276 reduced phases. 7835 canonical nonzero keys require four small-exp evaluations per key (two real and two phase) in the unshared reference, 31340 total; ideal shared evaluation count 1281, a 95.91% reduction in that count only, NOT measured wall time.
+
+The new theorem exposes the exact reference reduced-phase evaluator, combines shared lookup functions into the original cache, and transfers local residual gates to the original NF628 chunk proof and NF624 bank check given separate exact pi and endpoint equalities for every used key/sign. No receipt equality is assumed from an index/hash. Zero-frequency polynomial handling stays unchanged. This allows the residual arithmetic to be tested without running the transcendental evaluation during that check.
+
+The emitter reads the audited full eight-shard inventory, reconstructs all shared parameter keys and generates literal pi and local shared endpoint proposals plus genuine first rows of (h=1,f=0) and (h=0,f=37/32), checking their identity to the external reference generator. Only those two moment rows enter the bounded kernel trials. Their endpoint equalities remain separate and open. The complete endpoint receipts and coverage proof are not emitted or certified yet; full inventory is not full bank truth. New emitter and Lean candidates not executed locally. Source-wide external inventory was checked independently in-session. No main merge, no global Weil/RH promotion.
