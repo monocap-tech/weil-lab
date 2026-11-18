@@ -44,9 +44,25 @@ def products(D,H,V,w,y,mm):
     return A,[r[0] for r in b],[r[0] for r in Ay],[r[0] for r in Dy]
 
 
-def exact_gates(D,S,H,V,w,T,y,U,eH,eV,mid,rad,mm,scale=Q):
+def cached_products(D,H,V,w,y,mm):
+    """NF626 association: retain independently checkable integer dot proposals."""
+    dt=transpose(D)
+    HD=mm(H,D)
+    A=mm(dt,HD)
+    Vw=mm(V,[[x] for x in w])
+    b=mm(dt,Vw)
+    Ay=mm(A,[[x] for x in y])
+    Dy=mm(D,[[x] for x in y])
+    return dict(HD=HD,A=A,Vw=[r[0] for r in Vw],b=[r[0] for r in b],
+                Ay=[r[0] for r in Ay],Dy=[r[0] for r in Dy])
+
+
+def exact_gates(D,S,H,V,w,T,y,U,eH,eV,mid,rad,mm,scale=Q,cache=None):
     n=len(D)
-    A,b,Ay,Dy=products(D,H,V,w,y,mm)
+    if cache is None:
+        A,b,Ay,Dy=products(D,H,V,w,y,mm)
+    else:
+        A,b,Ay,Dy=(cache[k] for k in ('A','b','Ay','Dy'))
     aden=scale*S*S; bden=scale*S*T
     col=[sum(map(abs,row)) for row in transpose(D)]
     row=[sum(map(abs,r)) for r in D]
@@ -79,6 +95,7 @@ def main():
     p=argparse.ArgumentParser()
     p.add_argument('--historical',type=Path,required=True,help='NF613 entry receipt with exact historical D and untrusted y0')
     p.add_argument('--entries',type=Path,help='NF622 moment-derived entry receipt; omit for Arb baseline')
+    p.add_argument('--center-cache',type=Path,help='emit NF626 untrusted common-scale integer product proposals')
     p.add_argument('--root',type=Path,required=True)
     p.add_argument('--output',type=Path,required=True)
     a=p.parse_args()
@@ -125,7 +142,8 @@ def main():
             H[i][j]=H[j][i]=m; EH=max(EH,e)
         v=[convert(p) for p in r['V']]; assert all(e>=0 for _,e in v)
         V.append([m for m,_ in v]); EV=max(EV,max(e for _,e in v))
-    defect,residual,r,pay=exact_gates(D,S,H,V,w,T,y,U,F(EH,Q),F(EV,Q),mid,rad,mm)
+    cache=cached_products(D,H,V,w,y,mm) if a.center_cache else None
+    defect,residual,r,pay=exact_gates(D,S,H,V,w,T,y,U,F(EH,Q),F(EV,Q),mid,rad,mm,cache=cache)
     row_ok=all(d<=F(1,100) for d in defect)
     payments=[p<=v for p,v in zip(pay,rad)]
     # Ratios for diagnostics only. Preserve exact numerators/denominators.
@@ -142,6 +160,17 @@ def main():
     a.output.write_text(json.dumps(receipt,separators=(',',':'))+'\n')
     print('row defect PASS:',row_ok,'selected payments:',sum(payments),'/',N,flush=True)
     assert row_ok and all(payments), 'uniform error route did not pay every historical gate'
+    if cache is not None:
+        with gzip.open(a.center_cache,'wt',compresslevel=3) as f:
+            def emit(obj): f.write(json.dumps(obj,separators=(',',':'))+'\n')
+            emit({'schema':'NF626-integer-center-cache-v1','scales':{k:str(v) for k,v in [('S',S),('Q',Q),('T',T),('U',U)]},
+                  'entry_sha256':receipt['entry_sha256'],'historical_sha256':hashlib.sha256(a.historical.read_bytes()).hexdigest(),
+                  'frame_sha256':FRAME_SHA,'frozen_sha256':FROZEN_SHA,'eH':rat(F(EH,Q)),'eV':rat(F(EV,Q)), 'r':rat(r),
+                  'w':list(map(str,w)),'y':list(map(str,y)), 'scope':'untrusted exact integer dot proposals; verify separately'})
+            for i in range(N):
+                emit({'i':i,'HD':list(map(str,cache['HD'][i])),'A':list(map(str,cache['A'][i])),
+                      **{k:str(cache[k][i]) for k in ('Vw','b','Ay','Dy')}})
+        print('NF626 integer center cache emitted (untrusted proposals)',flush=True)
 
 
 if __name__=='__main__': main()
