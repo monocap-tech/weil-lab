@@ -60,6 +60,7 @@ theorem neutralNF619OscGram_exact :
   unfold neutralNF607SelectedH
   simp only [neutralNF619FirstTerm,neutralNF607Pair,neutralNF607SinTerm,
     if_true,if_false,Bool.false_eq_true]
+  simp only [Nat.zero_add,neg_mul]
   change (1/(2*Complex.I))*(1/(2*Complex.I))*neutralNF619J (neutralNF619Z+neutralNF619Z) +
     (1/(2*Complex.I))*(-1/(2*Complex.I))*neutralNF619J (neutralNF619Z+ -neutralNF619Z) +
     (-1/(2*Complex.I))*(1/(2*Complex.I))*neutralNF619J (-neutralNF619Z+neutralNF619Z) +
@@ -83,6 +84,7 @@ theorem neutralNF619MixedGram_exact :
   unfold neutralNF607SelectedH
   simp only [neutralNF619FirstTerm,neutralNF619LastTerm,neutralNF607Pair,
     neutralNF607SinTerm,neutralNF607SinhTerm,if_true,if_false,Bool.false_eq_true]
+  simp only [Nat.zero_add,neg_mul]
   change (1/(2*Complex.I))*(1/2)*neutralNF619J (neutralNF619Z+1/2) +
     (1/(2*Complex.I))*(-1/2)*neutralNF619J (neutralNF619Z+ -1/2) +
     (-1/(2*Complex.I))*(1/2)*neutralNF619J (-neutralNF619Z+1/2) +
@@ -123,7 +125,7 @@ theorem neutralNF619MixedGram_of_moments (p q : ℂ) (r s : ℝ)
   have e1 := (Complex.abs_im_le_norm (neutralNF619J (neutralNF619Z+1/2)-p)).trans hp
   have e2 := (Complex.abs_im_le_norm (neutralNF619J (neutralNF619Z-1/2)-q)).trans hq
   simp only [Complex.sub_im] at e1 e2
-  rw [hr,show _ = (((neutralNF619J (neutralNF619Z+1/2)).im-p.im)-
+  rw [hr,show ((neutralNF619J (neutralNF619Z+1/2)).im-(neutralNF619J (neutralNF619Z-1/2)).im)/2-(p.im-q.im)/2 = (((neutralNF619J (neutralNF619Z+1/2)).im-p.im)-
     ((neutralNF619J (neutralNF619Z-1/2)).im-q.im))/2 by ring,abs_div]
   have hab (x y : ℝ) : |x-y| ≤ |x|+|y| := by
     simpa only [sub_eq_add_neg,abs_neg] using abs_add_le x (-y)
