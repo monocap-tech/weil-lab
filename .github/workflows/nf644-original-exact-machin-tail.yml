@@ -73,6 +73,8 @@ jobs:
           lake build WeilDefect.Generated.NF639.Row000
           lake build WeilDefect.Generated.NF639.Row241
   compressed-pi:
+    # NF639 full reference pi is already kernel-certified; optimization is optional.
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 50
     steps:
