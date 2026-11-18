@@ -18,14 +18,22 @@ theorem neutralNF620J_neg (z : ℂ) (n : ℕ) :
     have he : neutralNF620J 0 n =
         ((11/10:ℂ)^(n+1)-(-(11/10:ℂ))^(n+1))/(n+1:ℂ) := by
       simpa [neutralNF620J] using h
-    have hs : (-1:ℂ)^n * (-1:ℂ)^n = 1 := by
+    let p : ℂ := (-1:ℂ)^n
+    have hs : p*p = 1 := by
+      dsimp [p]
       rw [← mul_pow]
       norm_num
-    rw [neg_zero,he,show (-(11/10:ℂ))^ (n+1) =
-      (-1:ℂ)^(n+1)*(11/10:ℂ)^(n+1) by
-        rw [← mul_pow]; ring, pow_succ]
-    field_simp
-    linear_combination -((11/10:ℂ)^(n+1))*hs
+    have hb : (-(11/10:ℂ))^(n+1) = -p*(11/10:ℂ)^(n+1) := by
+      rw [show -(11/10:ℂ)=(-1:ℂ)*(11/10) by ring,mul_pow,pow_succ]
+      dsimp [p]
+      ring
+    rw [neg_zero,he,hb]
+    change ((11/10:ℂ)^(n+1)- -p*(11/10:ℂ)^(n+1))/(n+1:ℂ) =
+      p*(((11/10:ℂ)^(n+1)- -p*(11/10:ℂ)^(n+1))/(n+1:ℂ))
+    have hnum : (11/10:ℂ)^(n+1)- -p*(11/10:ℂ)^(n+1) =
+      p*((11/10:ℂ)^(n+1)- -p*(11/10:ℂ)^(n+1)) := by
+      linear_combination -((11/10:ℂ)^(n+1))*hs
+    rw [← mul_div_assoc,← hnum]
   · induction n with
     | zero =>
       have hp : z*neutralNF620J z 0 =
