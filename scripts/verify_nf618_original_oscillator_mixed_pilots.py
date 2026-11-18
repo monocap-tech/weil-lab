@@ -42,7 +42,8 @@ CASES=[(F(0),F(37,32),[(27269882293080879354289005834393638,0),(0,79027015628106
 def main():
     assert 2*Q<=factorial(N)
     assert all(Q<=p**(2*N+1)*(2*N+1) for p in (5,239))
-    for h,f,rows in CASES:
+    cases = CASES + [(F(-1,2),F(37,64),[(-49886081731885688585833176103982357,-14043467082935807939230485585476647)])]
+    for h,f,rows in cases:
         z=(exact(h),mul(P,exact(2*f))); pos=endpoint(h,f); negend=endpoint(-h,-f)
         d=max(abs(h),6*abs(f)); R=F(1,10**33); prev=None
         for n,(x,y) in enumerate(rows):
@@ -54,4 +55,8 @@ def main():
             assert fee<=d*R,(h,f,n,fee,d*R)
             print(f'key=({h},{f}) degree={n} residual upper={norm_upper(r)} payment PASS')
             prev=c
+    osc = F(27269882293080879354289005834393638,10**35)
+    mixed = F(14043467082935807939230485585476647,10**35)
+    print("H[0,0] center:", F(11,10)-osc/2, "radius:", R/2)
+    print("H[0,241] center:", mixed, "radius:", R)
 if __name__=='__main__': main()
