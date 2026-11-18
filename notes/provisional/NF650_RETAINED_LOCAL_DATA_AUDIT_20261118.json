@@ -1,0 +1,29 @@
+{
+  "schema": "NF650-retained-local-data-audit-v1",
+  "archive_sha256": {
+    "nf621-shard0": "a6d19c05b28bf9dbf3104f2e77f0a06653575d67aafde7dc28438c6f770dbd88",
+    "nf621-shard1": "42e8ed541720f316b9ab7136e884e29d7ee6601a11907c3d1f3210340c4351a9",
+    "nf621-shard2": "cd12417fe9e2fe2df994b2d970d384a047ec91e607b369ce09ba3ab7829af637",
+    "nf631-widened": "e91a83cae117e98608aefa6849dac178e4ddb58dd1dffbfe37304ad248af9ed9",
+    "nf632-pi": "d1769ab74275cc9c57452d3aa5ad3a30109efc500f7834ee392ed668612d9a37",
+    "nf635-endpoints": "2b0e45897c28a1ed8d671b2958c8a51646e818e742ecbcf4ed6fcf02f31ed363",
+    "nf638-pilots": "3ddcd0c863614a9f95a8b3ee393dc7af383a125d34b873e181c8f0646f85ac20"
+  },
+  "manifests_checked": 3,
+  "manifest_listed_files_checked": 275,
+  "common_shard_digest_inventory": 8,
+  "actual_shard_bytes_checked": 3,
+  "pi_literal_match": true,
+  "endpoint_json_lean_literal_matches": 1281,
+  "endpoint_reference_replays": 10,
+  "retained_integer_tables_matched": 3,
+  "retained_integer_rows_matched": 42,
+  "retained_moment_residuals_pass": 56,
+  "zero_radius_mutations_rejected": 56,
+  "retained_gram_centers_match": 120,
+  "exact_widening_pass": 120,
+  "one_unit_widening_mutations_rejected": 120,
+  "signed_source_queries": 480,
+  "max_local_widened_radius_units": "1861198149186",
+  "scope": "actual retained artifact byte audit and exact arithmetic; not Lean execution, no whole-bank reference proof"
+}
