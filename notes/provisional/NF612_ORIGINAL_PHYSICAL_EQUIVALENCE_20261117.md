@@ -1,0 +1,9 @@
+# NF612 — equivalence with the intrinsic original physical system
+
+Stacked on NF611 #642 (05a8b144). At initial inspection NF610 focused run 44223274315 and NF611 run 44223626962 were queued; no fresh acceptance of their new declarations is claimed. NF610 head's general Lean run 44223273559 succeeded, not a substitute for the focused proof builds.
+
+Let T=D^T, A=T H D and b=T V w. The same real row test on A gives injectivity and surjectivity of A once NF611 passes. If D x=D z then A x=A z, forcing x=z; finite dimensionality implies D is bijective. Because A is surjective, T is surjective, hence bijective in the same dimension. Consequently A y=b iff H(D y)=Vw. Since D is surjective and A injective, H is injective and thus bijective. This establishes exact equivalence to the untransformed original problem, without a separate numerical determinant or inverse check.
+
+The new intrinsic wrapper specifies the unique real coefficient vector a by the original H a=Vw, independently of D in the conclusion, and combines frozen-box membership, graph, real odd corrected sequence, all 242 selected moments and eventual strict relative margin. The local inequality and real numerical row, residual and payment premises remain explicit. Exact historical frame binding is a reproducibility/custody obligation, but no frame equality assumption is mathematically necessary for this intrinsic uniqueness statement: any actual square frame with the real certified inequalities yields the same a. In particular, the numerical witness still needs to be attached as an exact dyadic D and actual H,V enclosures; a hash or Arb PASS is not a Lean proof of these inequalities.
+
+New NF612 proofs and axiom audit are pending. No new numerical replay or local Lean build; no main merge. Literal local coercivity, full U400, global Weil positivity/W_ODD_NEG/RH remain open.
