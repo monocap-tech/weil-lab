@@ -55,28 +55,24 @@ theorem neutralNF605SelectedShard2 (j : Fin 242) (hlo : 64 ≤ j.val) (hhi : j.v
             have hj : j = (⟨64,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 64
               omega)
-            rw [hj]
-            exact nf605_selected_64
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_64
           ·
             have hj : j = (⟨65,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 65
               omega)
-            rw [hj]
-            exact nf605_selected_65
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_65
         ·
           by_cases h67 : j.val < 67
           ·
             have hj : j = (⟨66,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 66
               omega)
-            rw [hj]
-            exact nf605_selected_66
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_66
           ·
             have hj : j = (⟨67,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 67
               omega)
-            rw [hj]
-            exact nf605_selected_67
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_67
       ·
         by_cases h70 : j.val < 70
         ·
@@ -85,28 +81,24 @@ theorem neutralNF605SelectedShard2 (j : Fin 242) (hlo : 64 ≤ j.val) (hhi : j.v
             have hj : j = (⟨68,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 68
               omega)
-            rw [hj]
-            exact nf605_selected_68
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_68
           ·
             have hj : j = (⟨69,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 69
               omega)
-            rw [hj]
-            exact nf605_selected_69
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_69
         ·
           by_cases h71 : j.val < 71
           ·
             have hj : j = (⟨70,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 70
               omega)
-            rw [hj]
-            exact nf605_selected_70
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_70
           ·
             have hj : j = (⟨71,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 71
               omega)
-            rw [hj]
-            exact nf605_selected_71
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_71
     ·
       by_cases h76 : j.val < 76
       ·
@@ -117,28 +109,24 @@ theorem neutralNF605SelectedShard2 (j : Fin 242) (hlo : 64 ≤ j.val) (hhi : j.v
             have hj : j = (⟨72,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 72
               omega)
-            rw [hj]
-            exact nf605_selected_72
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_72
           ·
             have hj : j = (⟨73,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 73
               omega)
-            rw [hj]
-            exact nf605_selected_73
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_73
         ·
           by_cases h75 : j.val < 75
           ·
             have hj : j = (⟨74,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 74
               omega)
-            rw [hj]
-            exact nf605_selected_74
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_74
           ·
             have hj : j = (⟨75,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 75
               omega)
-            rw [hj]
-            exact nf605_selected_75
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_75
       ·
         by_cases h78 : j.val < 78
         ·
@@ -147,28 +135,24 @@ theorem neutralNF605SelectedShard2 (j : Fin 242) (hlo : 64 ≤ j.val) (hhi : j.v
             have hj : j = (⟨76,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 76
               omega)
-            rw [hj]
-            exact nf605_selected_76
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_76
           ·
             have hj : j = (⟨77,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 77
               omega)
-            rw [hj]
-            exact nf605_selected_77
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_77
         ·
           by_cases h79 : j.val < 79
           ·
             have hj : j = (⟨78,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 78
               omega)
-            rw [hj]
-            exact nf605_selected_78
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_78
           ·
             have hj : j = (⟨79,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 79
               omega)
-            rw [hj]
-            exact nf605_selected_79
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_79
   ·
     by_cases h88 : j.val < 88
     ·
@@ -181,28 +165,24 @@ theorem neutralNF605SelectedShard2 (j : Fin 242) (hlo : 64 ≤ j.val) (hhi : j.v
             have hj : j = (⟨80,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 80
               omega)
-            rw [hj]
-            exact nf605_selected_80
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_80
           ·
             have hj : j = (⟨81,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 81
               omega)
-            rw [hj]
-            exact nf605_selected_81
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_81
         ·
           by_cases h83 : j.val < 83
           ·
             have hj : j = (⟨82,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 82
               omega)
-            rw [hj]
-            exact nf605_selected_82
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_82
           ·
             have hj : j = (⟨83,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 83
               omega)
-            rw [hj]
-            exact nf605_selected_83
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_83
       ·
         by_cases h86 : j.val < 86
         ·
@@ -211,28 +191,24 @@ theorem neutralNF605SelectedShard2 (j : Fin 242) (hlo : 64 ≤ j.val) (hhi : j.v
             have hj : j = (⟨84,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 84
               omega)
-            rw [hj]
-            exact nf605_selected_84
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_84
           ·
             have hj : j = (⟨85,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 85
               omega)
-            rw [hj]
-            exact nf605_selected_85
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_85
         ·
           by_cases h87 : j.val < 87
           ·
             have hj : j = (⟨86,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 86
               omega)
-            rw [hj]
-            exact nf605_selected_86
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_86
           ·
             have hj : j = (⟨87,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 87
               omega)
-            rw [hj]
-            exact nf605_selected_87
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_87
     ·
       by_cases h92 : j.val < 92
       ·
@@ -243,28 +219,24 @@ theorem neutralNF605SelectedShard2 (j : Fin 242) (hlo : 64 ≤ j.val) (hhi : j.v
             have hj : j = (⟨88,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 88
               omega)
-            rw [hj]
-            exact nf605_selected_88
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_88
           ·
             have hj : j = (⟨89,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 89
               omega)
-            rw [hj]
-            exact nf605_selected_89
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_89
         ·
           by_cases h91 : j.val < 91
           ·
             have hj : j = (⟨90,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 90
               omega)
-            rw [hj]
-            exact nf605_selected_90
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_90
           ·
             have hj : j = (⟨91,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 91
               omega)
-            rw [hj]
-            exact nf605_selected_91
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_91
       ·
         by_cases h94 : j.val < 94
         ·
@@ -273,28 +245,24 @@ theorem neutralNF605SelectedShard2 (j : Fin 242) (hlo : 64 ≤ j.val) (hhi : j.v
             have hj : j = (⟨92,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 92
               omega)
-            rw [hj]
-            exact nf605_selected_92
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_92
           ·
             have hj : j = (⟨93,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 93
               omega)
-            rw [hj]
-            exact nf605_selected_93
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_93
         ·
           by_cases h95 : j.val < 95
           ·
             have hj : j = (⟨94,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 94
               omega)
-            rw [hj]
-            exact nf605_selected_94
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_94
           ·
             have hj : j = (⟨95,by decide⟩ : Fin 242) := Fin.ext (by
               change j.val = 95
               omega)
-            rw [hj]
-            exact nf605_selected_95
+            exact (congrArg neutralNF602SelectedCheck hj).trans nf605_selected_95
 
 #print axioms neutralNF605SelectedShard2
 
