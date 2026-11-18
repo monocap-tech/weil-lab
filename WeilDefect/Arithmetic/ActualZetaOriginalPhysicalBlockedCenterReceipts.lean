@@ -111,4 +111,22 @@ theorem neutralNF640BindRow_sound (v : NF639PaymentRow) (m : NF640Masses)
   rcases hm with ⟨hcol,hrow,ht,hw,hy⟩
   simpa only [NF639PaymentRow.Valid,hcol,hrow,ht,hw,hy] using h
 
+def neutralNF640AbsGate {n : ℕ} (x : Fin n → ℤ) (v : ℤ) : Bool :=
+  decide (v=∑ i, |x i|)
+
+theorem neutralNF640AbsGate_sound {n : ℕ} (x : Fin n → ℤ) (v : ℤ)
+    (h : neutralNF640AbsGate x v=true) : v=∑ i, |x i| :=
+  of_decide_eq_true h
+
+def neutralNF640TotalsGate (col y : Fin 242 → ℤ) (w : Fin 4 → ℤ)
+    (total wm ym : ℤ) : Bool :=
+  decide (total=(∑ j,col j) ∧ wm=(∑ j, |w j|) ∧
+    ym=neutralNF626Dot (fun j => |y j|) col)
+
+theorem neutralNF640TotalsGate_sound (col y : Fin 242 → ℤ) (w : Fin 4 → ℤ)
+    (total wm ym : ℤ) (h : neutralNF640TotalsGate col y w total wm ym=true) :
+    total=(∑ j,col j) ∧ wm=(∑ j, |w j|) ∧
+      ym=neutralNF626Dot (fun j => |y j|) col :=
+  of_decide_eq_true h
+
 end WeilDefect
