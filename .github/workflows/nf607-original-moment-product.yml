@@ -1,0 +1,60 @@
+name: NF607 original moment product and pole recovery
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysical*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollarPoleBound.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalAnalyticNonzeroGraph.lean"
+      - ".github/workflows/nf607-original-moment-product.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf607-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  physical:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Exact analytic moment recurrence
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalMomentRecurrence
+      - name: Original exponential term dictionary
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalTermDictionary
+      - name: Actual unweighted H entry identity
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramTerms
+      - name: Actual original critical V entry identity
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalMixedTerms
+  analytic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Literal two-pole moment cost
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarPoleBound
+      - name: Actual complete local coercivity
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarCoercivity
+      - name: Independent analytic nonvanishing
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalAnalyticNonzeroGraph
