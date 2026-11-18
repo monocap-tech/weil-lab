@@ -29,6 +29,7 @@ theorem neutralNF612Transformed_apply (D : Fin 242 → Fin 242 → ℝ)
   rw [Finset.sum_comm]
   apply Finset.sum_congr rfl
   intro l _
+  rw [Finset.sum_mul]
   apply Finset.sum_congr rfl
   intro j _
   ring
