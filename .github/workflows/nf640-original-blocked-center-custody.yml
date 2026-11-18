@@ -1,0 +1,77 @@
+name: NF640 original widened center and mass custody pilots
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalBlockedCenterReceipts.lean"
+      - "scripts/emit_nf640_blocked_center_pilots.py"
+      - ".github/workflows/nf640-original-blocked-center-custody.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf640-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  actual-center-pilots:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf623-historical-frame
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf631-reference-widened-entries
+          run-id: 44359078922
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf631-reference-widened-payments
+          run-id: 44359078922
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf631-reference-center-cache
+          run-id: 44359078922
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Emit and independently check actual mass and product proposals
+        run: |
+          python -m py_compile scripts/emit_nf640_blocked_center_pilots.py
+          python scripts/emit_nf640_blocked_center_pilots.py --root . --historical nf623-historical-entries.jsonl.gz --entries nf631-widened-entries.jsonl.gz --payments nf631-widened-payments.json --cache nf631-center-cache.jsonl.gz --output WeilDefect/Generated/NF640
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf640-original-blocked-center-pilots
+          path: WeilDefect/Generated/NF640/
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalBlockedCenterReceipts
+      - name: Generic proof axiom audit
+        run: |
+          cat >/tmp/nf640Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalBlockedCenterReceipts
+          #print axioms WeilDefect.neutralNF640Dot_of_blocks
+          #print axioms WeilDefect.NF640Masses.valid_of_gates
+          #print axioms WeilDefect.neutralNF640BindRow_sound
+          EOF
+          lake env lean /tmp/nf640Audit.lean
+      - name: Five literal mass gates and four complete blocked dot proofs
+        timeout-minutes: 20
+        run: |
+          lake build WeilDefect.Generated.NF640.MassPilot
+          lake build WeilDefect.Generated.NF640.HD000
+          lake build WeilDefect.Generated.NF640.A000
+          lake build WeilDefect.Generated.NF640.HD241
+          lake build WeilDefect.Generated.NF640.A241
