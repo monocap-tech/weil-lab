@@ -26,7 +26,7 @@ def keylit(k):
     return '⟨'+','.join(qlit(x) for x in k)+'⟩'
 
 def scaled(x):
-    return f'({int(x)}:ℤ)/((neutralNF616Q:ℕ):ℚ)'.replace(':ℤ)',':ℚ)')
+    return f'({int(x)}:ℚ)/(neutralNF616Q:ℚ)'
 
 def rowlit(row):
     assert len(row)==3 and row[2]>=0
@@ -85,7 +85,7 @@ def self_test():
         assert (m['keys'],m['rows'],m['chunks'])==(3,4,2)
         a=(out/'Chunk000.lean').read_text()
         assert a.index('(-1/2:ℚ)')<a.index('(0/1:ℚ)')
-        assert '(-9:ℚ)/((neutralNF616Q:ℕ):ℚ)' in a
+        assert '(-9:ℚ)/(neutralNF616Q:ℚ)' in a
         assert 'Array.replicate 2' in (out/'Metadata.lean').read_text()
         for r in m['files']:
             assert hashlib.sha256((out/r['file']).read_bytes()).hexdigest()==r['sha256']
