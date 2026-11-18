@@ -1,0 +1,40 @@
+name: NF612 original physical system equivalence
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalSystemEquiv.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalIntrinsicMargin.lean"
+      - ".github/workflows/nf612-original-physical-equivalence.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf612-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  equivalence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Exact original system equivalence and frame invertibility
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalSystemEquiv
+      - name: Intrinsic physical corrected margin
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalIntrinsicMargin
+      - name: Axiom audit
+        run: |
+          cat > /tmp/nf612Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalIntrinsicMargin
+          #print axioms WeilDefect.neutralNF612Frame_bijective
+          #print axioms WeilDefect.neutralNF612Physical_equiv
+          #print axioms WeilDefect.neutralNF612OriginalPhysicalSolve
+          #print axioms WeilDefect.neutralNF612OriginalPhysical_corrected
+          EOF
+          lake env lean /tmp/nf612Audit.lean
