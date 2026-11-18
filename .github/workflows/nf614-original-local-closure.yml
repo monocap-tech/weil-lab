@@ -1,0 +1,47 @@
+name: NF614 original local closure and analytic moment enclosures
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollar*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysical*.lean"
+      - ".github/workflows/nf614-original-local-closure.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf614-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  focused:
+    strategy:
+      fail-fast: false
+      matrix:
+        module:
+          - ActualZetaOriginalCollarAcceptedMargin
+          - ActualZetaOriginalCollarStrictMargin
+          - ActualZetaOriginalPhysicalMixedTerms
+          - ActualZetaOriginalPhysicalIntrinsicMargin
+          - ActualZetaOriginalPhysicalEntryAttachment
+          - ActualZetaOriginalPhysicalMomentEnclosure
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Focused module
+        run: lake build WeilDefect.Arithmetic.${{ matrix.module }}
+      - name: Audit local literal coercivity and accepted-margin instantiation
+        if: matrix.module == 'ActualZetaOriginalCollarAcceptedMargin'
+        run: |
+          cat > /tmp/nf614Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalCollarAcceptedMargin
+          #print axioms WeilDefect.neutralNF600SmoothCollarLower
+          #print axioms WeilDefect.neutralNF614OriginalMargin_of_box
+          EOF
+          lake env lean /tmp/nf614Audit.lean
