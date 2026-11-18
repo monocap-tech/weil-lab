@@ -1,0 +1,98 @@
+name: NF630 original literal payment proposals
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalSelectedRowReceipt.lean"
+      - "scripts/emit_nf630_original_literal_payments.py"
+      - ".github/workflows/nf630-original-literal-payments.yml"
+  workflow_dispatch:
+    inputs:
+      full:
+        description: "Emit complete moment-derived literal data (requires NF621 entry artifact)"
+        type: boolean
+        default: false
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf630-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  historical-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install python-flint==0.8.0
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf623-historical-frame
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf623-baseline-payments
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Emit actual first and last selected-box rows
+        run: |
+          python -m py_compile scripts/emit_nf630_original_literal_payments.py
+          python scripts/emit_nf630_original_literal_payments.py --root . --historical nf623-historical-entries.jsonl.gz --payments nf623-baseline-payments.json --output WeilDefect/Generated/NF630
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf630-historical-selected-row-proposals
+          path: WeilDefect/Generated/NF630/
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalSelectedRowReceipt
+      - name: Bounded actual selected-box pilot and audit
+        timeout-minutes: 15
+        run: |
+          lake build WeilDefect.Generated.NF630.Pilot
+          cat >/tmp/nf630Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalSelectedRowReceipt
+          #print axioms WeilDefect.neutralNF630SelectedRow_sound
+          #print axioms WeilDefect.neutralNF630SelectedPayment_of_row
+          EOF
+          lake env lean /tmp/nf630Audit.lean
+  full-moment-proposals:
+    if: github.event_name == 'workflow_dispatch' && inputs.full
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install python-flint==0.8.0
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf623-historical-frame
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf622-original-physical-entries
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Exact moment-derived payment and cache replay
+        run: |
+          python scripts/verify_nf623_uniform_physical_payments.py --root . --historical nf623-historical-entries.jsonl.gz --entries nf622-physical-entries.jsonl.gz --output nf630-moment-payments.json --center-cache nf630-center-cache.jsonl.gz
+          python scripts/emit_nf630_original_literal_payments.py --root . --historical nf623-historical-entries.jsonl.gz --entries nf622-physical-entries.jsonl.gz --payments nf630-moment-payments.json --cache nf630-center-cache.jsonl.gz --output WeilDefect/Generated/NF630
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf630-moment-literal-proposals
+          path: |
+            WeilDefect/Generated/NF630/
+            nf630-moment-payments.json
+            nf630-center-cache.jsonl.gz
+          if-no-files-found: error
