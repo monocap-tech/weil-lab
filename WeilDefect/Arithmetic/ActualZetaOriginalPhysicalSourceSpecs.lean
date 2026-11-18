@@ -42,7 +42,8 @@ theorem neutralNF624OscSpec_term (f : ℚ) (n : ℕ) (s : Bool) :
     rw [if_pos he,neutralNF624OscSpec,if_pos hn]
     cases s <;>
       simp [NF622TermSpec.term,NF622TermSpec.coeff,neutralNF607SinTerm,
-        neutralNF616Signed,neutralNF619SinCoeff,← hs] <;> ring
+        neutralNF616Signed,neutralNF619SinCoeff,← hs] <;> ring_nf <;>
+      simp only [Complex.inv_I] <;> ring
   · have hn : n%2≠0 := by
       intro h
       apply he
@@ -57,7 +58,8 @@ theorem neutralNF624PoleSpec_term (s : Bool) :
   have he := neutralNF616Pole s
   cases s <;>
     simp [neutralNF624PoleSpec,NF622TermSpec.term,NF622TermSpec.coeff,
-      neutralNF616Signed,neutralNF607SinhTerm] at he ⊢ <;> exact he.symm
+      neutralNF616Signed,neutralNF607SinhTerm] at he ⊢ <;>
+      first | exact he.symm | exact ⟨by ring,he.symm⟩
 
 def neutralNF624SelectedSpec (i : Fin 242) (s : Bool) : NF622TermSpec :=
   if hi : i.val<241 then
