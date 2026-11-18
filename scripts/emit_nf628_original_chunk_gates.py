@@ -87,9 +87,13 @@ def main():
     assert len(sources)==8
     if a.pilot_keys:
         assert 0<a.pilot_keys<len(data)
-        # Take low-frequency real-pole and oscillatory keys if available,
-        # otherwise use the first original keys in exact sorted order.
-        data=dict(sorted(data.items())[:a.pilot_keys])
+        # Select the genuine pole-pole and a genuine purely oscillatory
+        # key first; fill any remaining slots in exact sorted order.
+        ordered=sorted(data)
+        real_pole=next(k for k in ordered if k[1]==0 and abs(k[0])==1)
+        oscillatory=next(k for k in ordered if k[0]==0 and k[1]!=0)
+        chosen=list(dict.fromkeys([real_pole,oscillatory]+ordered))[:a.pilot_keys]
+        data={k:data[k] for k in chosen}
     m=emit_bank(data,a.output,a.chunk_size,sources)
     emit_gates(a.output,m,bool(a.pilot_keys))
     print('NF628 emitted',m['chunks'],'local gates; pilot=',bool(a.pilot_keys))
