@@ -75,7 +75,8 @@ theorem neutralNF613Rows_of_enclosures (D A0 EA : Fin 242 → Fin 242 → ℝ)
     unfold neutralNF606Defect
     ring
   rw [he]
-  exact (abs_sub_le _ _).trans (add_le_add le_rfl (hA i j))
+  rw [sub_eq_add_neg]
+  exact (abs_add_le _ _).trans (by rw [abs_neg]; exact add_le_add le_rfl (hA i j))
 
 theorem neutralNF613Residual_of_enclosures (D A0 EA : Fin 242 → Fin 242 → ℝ)
     (b0 Eb y0 : Fin 242 → ℝ) (r : ℝ)
@@ -100,8 +101,10 @@ theorem neutralNF613Residual_of_enclosures (D A0 EA : Fin 242 → Fin 242 → �
         (neutralNF606Apply (neutralNF606TransformedH D) y0 i-
           neutralNF606Apply A0 y0 i) := by ring
   rw [he]
-  exact ((abs_sub_le _ _).trans (add_le_add
-    ((abs_add_le _ _).trans (add_le_add le_rfl (hb i))) hdiff)).trans (hcheck i)
+  rw [sub_eq_add_neg]
+  apply (abs_add_le _ _).trans
+  rw [abs_neg]
+  exact (add_le_add ((abs_add_le _ _).trans (add_le_add le_rfl (hb i))) hdiff).trans (hcheck i)
 
 end
 end WeilDefect
