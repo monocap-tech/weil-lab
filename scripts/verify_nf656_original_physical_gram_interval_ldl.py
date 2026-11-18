@@ -65,7 +65,21 @@ def interval_ldl(a):
             for j in range(k):
                 t = sub(t, mul(mul(L[i][j], L[k][j]), D[j]))
             L[i][k] = div(t, v)
-    return D
+    return D, L
+
+def inverse_lower_frob_bound(L):
+    """Upper bound on S^2 * ||L^{-1}||_F^2 using interval forward solve."""
+    n = len(L)
+    K = [[None] * n for _ in range(n)]
+    for i in range(n):
+        K[i][i] = (S, S)
+        for j in range(i - 1, -1, -1):
+            v = (0, 0)
+            for k in range(j, i):
+                v = add(v, mul(L[i][k], K[k][j]))
+            K[i][j] = neg(v)
+    return sum(max(abs(K[i][j][0]), abs(K[i][j][1])) ** 2
+               for i in range(n) for j in range(i + 1))
 
 def source_matrix(entries, summary):
     meta = json.loads(summary.read_text())
@@ -131,7 +145,14 @@ def main():
         return
     assert a.entries and a.summary and a.output
     A, originals, manifest = source_matrix(a.entries, a.summary)
-    pivots = interval_ldl(A)
+    pivots, L = interval_ldl(A)
+    kfrob2 = inverse_lower_frob_bound(L)
+    smallest = min(d[0] for d in pivots)
+    # For every x: x^T H x >= dmin / ||L^{-1}||_F^2 * ||x||^2.
+    # Since D lower endpoints have denominator S and the squared norm
+    # has numerator kfrob2 / S^2, the next exact integer inequality
+    # proves a clean 10^-60 coercivity constant without floating point.
+    assert smallest > 0 and smallest * S * (10 ** 60) > kfrob2
     report = {
         'schema': 'NF656-original-physical-gram-interval-ldl-v1',
         'source_schema': manifest['schema'],
@@ -143,6 +164,9 @@ def main():
         'fixedpoint_denominator': '10^160',
         'original_entry_denominator': '10^2600',
         'positive_lower_pivots': sum(d[0] > 0 for d in pivots),
+        'L_inverse_frobenius_upper_scaled_numerator': str(kfrob2),
+        'exact_coercivity_integer_gate': str(smallest * S * (10 ** 60) - kfrob2),
+        'conditional_coercivity_lower_bound': '10^-60',
         'pivots': [
             {
                 'index': i,
@@ -171,6 +195,7 @@ def main():
     a.output.parent.mkdir(parents=True, exist_ok=True)
     a.output.write_text(json.dumps(report, indent=2) + '\n')
     print("NF656 all 15 rigorously outward-rounded positive LDL pivots PASS")
+    print("NF656 strict exact-integer coercivity bound 10^-60 PASS")
     print("NF656 minimum lower pivot:", report['pivots'][report['min_lower_pivot']]['lower_scientific'])
     print("NF656 positive matrix interval conditional on Lean H enclosures")
 
