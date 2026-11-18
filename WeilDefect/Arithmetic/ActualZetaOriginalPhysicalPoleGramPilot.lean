@@ -22,8 +22,7 @@ theorem neutralNF617PoleGram_exact :
     linear_combination -h'
   have hz : J 0 = (11/5:ℂ) := by
     have h := neutralNF606ExpMoment_zero_frequency (-(11/10:ℝ)) (11/10:ℝ) 0
-    norm_num [J] at h ⊢
-    exact h
+    norm_num [J] at h ⊢ <;> assumption
   rw [← neutralNF607SelectedH_eq]
   unfold neutralNF607SelectedH neutralNF607SelectedTerm
   have hlast : ¬(241:Fin 242).val < 241 := by decide
@@ -91,7 +90,7 @@ theorem neutralNF617PoleGramBall_sound :
   have he := congrArg Complex.re neutralNF617PoleGram_exact
   have hx : neutralNF606PhysicalH (241:Fin 242) (241:Fin 242) =
       ((Complex.exp (11/10)).re - (Complex.exp (-(11/10))).re)/2-11/10 := by
-    simpa [Complex.div_re,Complex.sub_re] using he
+    norm_num [Complex.div_re,Complex.sub_re] at he ⊢ <;> linarith
   rw [hx]
   simpa [neutralNF617PoleGramBall,sub_eq_add_neg] using h
 
