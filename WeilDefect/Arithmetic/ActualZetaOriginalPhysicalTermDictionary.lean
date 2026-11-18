@@ -32,7 +32,7 @@ theorem neutralNF607SinTerm_sum (w : ℂ) (n : ℕ) (x : ℝ) :
     (neutralNF607SinTerm w n true).eval x +
       (neutralNF607SinTerm w n false).eval x =
       (x:ℂ)^n * Complex.sin (w*(x:ℂ)) := by
-  simp only [neutralNF607SinTerm,if_true,if_false,NF607Term.eval,
+  simp only [neutralNF607SinTerm,if_true,if_false,Bool.false_eq_true,NF607Term.eval,
     Complex.sin]
   have h : -Complex.I*w*(x:ℂ) = -(w*(x:ℂ))*Complex.I := by ring
   have h' : Complex.I*w*(x:ℂ) = w*(x:ℂ)*Complex.I := by ring
@@ -43,7 +43,7 @@ theorem neutralNF607CosTerm_sum (w : ℂ) (n : ℕ) (x : ℝ) :
     (neutralNF607CosTerm w n true).eval x +
       (neutralNF607CosTerm w n false).eval x =
       (x:ℂ)^n * Complex.cos (w*(x:ℂ)) := by
-  simp only [neutralNF607CosTerm,if_true,if_false,NF607Term.eval,
+  simp only [neutralNF607CosTerm,if_true,if_false,Bool.false_eq_true,NF607Term.eval,
     Complex.cos]
   have h : -Complex.I*w*(x:ℂ) = -(w*(x:ℂ))*Complex.I := by ring
   have h' : Complex.I*w*(x:ℂ) = w*(x:ℂ)*Complex.I := by ring
@@ -54,7 +54,7 @@ theorem neutralNF607SinhTerm_sum (x : ℝ) :
     (neutralNF607SinhTerm true).eval x +
       (neutralNF607SinhTerm false).eval x =
       Complex.sinh ((x:ℂ)/2) := by
-  simp only [neutralNF607SinhTerm,if_true,if_false,NF607Term.eval,
+  simp only [neutralNF607SinhTerm,if_true,if_false,Bool.false_eq_true,NF607Term.eval,
     pow_zero,one_mul,Complex.sinh]
   rw [show (1/2:ℂ)*(x:ℂ)=(x:ℂ)/2 by ring,
     show (-1/2:ℂ)*(x:ℂ) = -((x:ℂ)/2) by ring]
