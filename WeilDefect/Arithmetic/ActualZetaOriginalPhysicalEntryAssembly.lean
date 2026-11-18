@@ -3,6 +3,7 @@ import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalMomentParity
 
 namespace WeilDefect
 noncomputable section
+open Finset
 
 /-! NF622: turn a signed, non-default-valued moment enclosure
 into a rectangular input to the actual physical term dictionary.
@@ -51,8 +52,9 @@ theorem neutralNF622Restore_sound (k : NF616Frequency) (n : ℕ) (a : NF591Rect)
     rw [he]
     by_cases hn : n%2=1
     · have hn' : Odd n := ⟨n/2,by omega⟩
-      simp only [neutralNF622Restore,hf,of_decide_eq_true (show decide (n%2=1)=true from by
-        simp [hn]),Bool.true_and,if_true]
+      have hflip : (k.flip && decide (n%2=1)) = true := by simp [hf,hn]
+      unfold neutralNF622Restore
+      rw [if_pos hflip]
       rw [hn'.neg_one_pow]
       simpa only [neg_one_mul] using NF591Rect.contains_neg ha
     · have hn' : Even n := ⟨n/2,by omega⟩
