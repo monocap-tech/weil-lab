@@ -1,0 +1,84 @@
+name: NF628 original chunked kernel custody
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalChunked*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalRationalPayments.lean"
+      - "scripts/emit_nf628_original_chunk_gates.py"
+      - ".github/workflows/nf628-original-chunked-kernel.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf628-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  focused:
+    strategy:
+      fail-fast: false
+      matrix:
+        module: [ActualZetaOriginalPhysicalRationalPayments, ActualZetaOriginalPhysicalChunkedBank, ActualZetaOriginalPhysicalChunkedClosure]
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.${{ matrix.module }}
+      - if: matrix.module == 'ActualZetaOriginalPhysicalChunkedClosure'
+        run: |
+          cat >/tmp/nf628Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalChunkedClosure
+          #print axioms WeilDefect.neutralNF628Bank_of_chunks
+          #print axioms WeilDefect.neutralNF628OriginalPhysical_of_chunked_checks
+          EOF
+          lake env lean /tmp/nf628Audit.lean
+  pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf621-shard-*
+          path: receipts
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf621-complete-schedule-coverage
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Emit two actual original single-key chunks
+        run: |
+          python -m py_compile scripts/emit_nf628_original_chunk_gates.py
+          python scripts/emit_nf628_original_chunk_gates.py --self-test
+          python scripts/emit_nf628_original_chunk_gates.py --root . --shards receipts --output WeilDefect/Generated/NF627 --chunk-size 1 --pilot-keys 2
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('WeilDefect/Generated/NF627/manifest.json').read_text())
+          c=json.loads(Path('nf621-coverage.json').read_text())
+          assert m['input_sha256']=={s['file']:s['sha256'] for s in c['shards']}
+          assert m['keys']==2 and m['chunks']==2
+          PY
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalChunkedBank
+      - name: Bounded kernel check of two original high-precision chunks and join
+        timeout-minutes: 20
+        run: lake build WeilDefect.Generated.NF627.ChunkJoin
