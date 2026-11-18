@@ -104,4 +104,20 @@ theorem NF638Table.to_original (t : NF638Table) (p : NF591Ball)
   rw [hpi,neutralNF621FastTableCheck_eq]
   exact t.to_ref p _ _ (hc.trans (neutralNF621Cache_eq _ _ _ _)) hg
 
+def neutralNF638Chunk (ts : List NF638Table) : Array NF624KeyTable :=
+  (ts.map (fun t => t.keyTable neutralNF616Q)).toArray
+
+theorem neutralNF638Chunk_of_checks (ts : List NF638Table) (p : NF591Ball)
+    (hpi : neutralNF592PiBall neutralNF616Q neutralNF616AtanN=p)
+    (hc : ∀ t ∈ ts, t.cache.denote neutralNF616Q=
+      neutralNF621Cache p t.key neutralNF616Q neutralNF616ExpN)
+    (hg : ts.all (fun t => t.check neutralNF616Q neutralNF616ExpN)=true) :
+    neutralNF628ChunkCheck (neutralNF638Chunk ts)=true := by
+  unfold neutralNF628ChunkCheck neutralNF638Chunk
+  simp only [List.toList_toArray]
+  apply List.all_eq_true.mpr
+  intro u hu
+  obtain ⟨t,ht,rfl⟩ := List.mem_map.mp hu
+  exact t.to_original p hpi (hc t ht) ((List.all_eq_true.mp hg) t ht)
+
 end WeilDefect
