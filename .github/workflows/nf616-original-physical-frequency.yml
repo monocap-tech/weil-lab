@@ -1,0 +1,36 @@
+name: NF616 original physical frequency dictionary
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysical*.lean"
+      - ".github/workflows/nf616-original-physical-frequency.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf616-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  focused:
+    strategy:
+      fail-fast: false
+      matrix:
+        module:
+          - ActualZetaOriginalPhysicalEntryAttachment
+          - ActualZetaOriginalPhysicalMomentEnclosure
+          - ActualZetaOriginalPhysicalResidualReceipts
+          - ActualZetaOriginalPhysicalDenominatorGuard
+          - ActualZetaOriginalPhysicalReceiptParameters
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Focused module
+        run: lake build WeilDefect.Arithmetic.${{ matrix.module }}
