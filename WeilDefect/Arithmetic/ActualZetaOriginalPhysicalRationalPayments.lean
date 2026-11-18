@@ -154,7 +154,9 @@ theorem NF625PaymentData.check_sound (p : NF625PaymentData)
     (p.eH:ℝ) (p.eV:ℝ) p.yR (p.r:ℝ) (by exact_mod_cast hparam.1) hH hV
   · intro i
     rw [← p.row_cast]
-    exact_mod_cast (hrow i).1
+    have he : (p.row i:ℝ) ≤ ((1/100:ℚ):ℝ) := Rat.cast_le.mpr (hrow i).1
+    norm_num at he ⊢
+    exact he
   · intro i
     rw [← p.residual_cast]
     exact_mod_cast (hrow i).2.1
