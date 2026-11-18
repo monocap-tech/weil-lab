@@ -1,0 +1,105 @@
+name: NF627 original concrete receipt bank
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalMetadataCoverage.lean"
+      - "scripts/emit_nf627_original_moment_bank.py"
+      - ".github/workflows/nf627-original-receipt-bank.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf627-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  emit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf621-shard-*
+          path: receipts
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf621-complete-schedule-coverage
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Emit literal bank proposals from the audited completed receipts
+        run: |
+          python -m py_compile scripts/emit_nf627_original_moment_bank.py
+          python scripts/emit_nf627_original_moment_bank.py --self-test
+          python scripts/emit_nf627_original_moment_bank.py --root . --shards receipts --output WeilDefect/Generated/NF627
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('WeilDefect/Generated/NF627/manifest.json').read_text())
+          c=json.loads(Path('nf621-coverage.json').read_text())
+          assert m['input_sha256']=={s['file']:s['sha256'] for s in c['shards']}
+          assert m['keys']==c['nonzero_keys']==7835 and m['rows']==c['nonzero_rows']==37994
+          print('audited input artifact hashes match all emitted bank proposals')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf627-untrusted-concrete-bank
+          path: WeilDefect/Generated/NF627/
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf627-compact-metadata
+          path: |
+            WeilDefect/Generated/NF627/Metadata.lean
+            WeilDefect/Generated/NF627/MetadataGate.lean
+          if-no-files-found: error
+  metadata-trial:
+    needs: emit
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf627-compact-metadata
+          path: WeilDefect/Generated/NF627
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalMetadataCoverage
+      - name: Compile compact literal metadata
+        run: lake build WeilDefect.Generated.NF627.Metadata
+      - name: Bounded complete metadata-only kernel coverage trial
+        timeout-minutes: 15
+        run: lake env lean WeilDefect/Generated/NF627/MetadataGate.lean
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalMetadataCoverage
+      - name: Audit metadata transport
+        run: |
+          cat >/tmp/nf627Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalMetadataCoverage
+          #print axioms WeilDefect.neutralNF627ShapeCheck_sound
+          #print axioms WeilDefect.neutralNF627Coverage_of_shape
+          #print axioms WeilDefect.neutralNF627AllMoments_of_metadata
+          EOF
+          lake env lean /tmp/nf627Audit.lean
