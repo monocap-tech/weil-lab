@@ -49,7 +49,7 @@ theorem neutralNF607Critical_sum (j : Fin 4) (x : ℝ) :
   rw [← neutralNF588CriticalComplex_ofReal,Fin.sum_univ_castSucc]
   unfold neutralNF588CriticalComplex
   simp only [neutralNF607CriticalBlock_eq,Fin.val_castSucc,Fin.val_last,
-    Fin.isLt,dif_pos,show ¬(32:ℕ)<32 by omega,dif_neg]
+    Fin.isLt,dif_pos,show ¬(32:ℕ)<32 by omega,dif_neg,dite_false]
 
 def neutralNF607MixedBlock (i : Fin 242) (j : Fin 4) (k : Fin 33) : ℂ :=
   neutralNF607Pair (neutralNF607SelectedTerm i true) (neutralNF607CriticalTerm j k true) +
