@@ -12,7 +12,7 @@ from fractions import Fraction as F
 from emit_nf630_original_literal_payments import historical, payment_receipt, sha, rat, qlit, filetext
 from verify_nf623_uniform_physical_payments import N,Q,FROZEN_SHA
 
-BASE='WeilDefect.Arithmetic.ActualZetaOriginalPhysicalScalarPaymentReceipts'
+BASE='WeilDefect.Arithmetic.ActualZetaOriginalPhysicalScalarPaymentCore'
 MODULE='WeilDefect.Generated.NF639'
 OPT='set_option maxRecDepth 100000\nset_option maxHeartbeats 0\n\n'
 
