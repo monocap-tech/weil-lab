@@ -24,8 +24,10 @@ theorem neutralNF603Source_analytic (a : Fin 242 → ℝ) (b : Fin 4 → ℝ) :
       apply AnalyticOnNhd.add
       · apply Finset.analyticOnNhd_fun_sum
         intro k _
+        intro x hx
         fun_prop
-      · fun_prop
+      · intro x hx
+        fun_prop
     exact h.const_smul (c := b j)
 
 theorem neutralNF603L2_zero_forces_global_zero

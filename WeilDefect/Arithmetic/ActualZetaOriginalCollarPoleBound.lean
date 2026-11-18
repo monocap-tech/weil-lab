@@ -25,7 +25,7 @@ theorem neutralNF600Moment_bound (s : 𝓢(ℝ,ℂ))
       have htx : t*x ≤ 11/20 := by
         calc
           _ ≤ |t*x| := le_abs_self _
-          _ = |t|*|x| := abs_mul _ _
+          _ = |t| * |x| := abs_mul _ _
           _ ≤ (1/2:ℝ)*(11/10) := mul_le_mul ht hwin (abs_nonneg _) (by norm_num)
           _ = _ := by norm_num
       have he : Complex.I*(Complex.I*((-t:ℝ):ℂ))*(x:ℂ)=((t*x:ℝ):ℂ) := by
@@ -66,7 +66,7 @@ theorem neutralNF600Pole_bound (s : 𝓢(ℝ,ℂ))
   have hA : ‖A‖ ≤ 2*‖s.toLp 1 volume‖ := neutralNF600Moment_bound s hs _ (by norm_num)
   have hB : ‖B‖ ≤ 2*‖s.toLp 1 volume‖ := neutralNF600Moment_bound s hs _ (by norm_num)
   have hL := neutralNF600L1_bound s hs
-  have hm : 0≤m := by dsimp [m,neutralNF600Mass]; positivity
+  have hm : 0 ≤ m := by dsimp [m,neutralNF600Mass]; positivity
   have hq : ‖s.toLp 1 volume‖^2 ≤ m/250 := by
     calc
       _ ≤ (Real.sqrt m*Real.sqrt (1/250))^2 := pow_le_pow_left₀ (norm_nonneg _) hL 2
