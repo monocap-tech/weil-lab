@@ -139,7 +139,6 @@ theorem neutralNF603OscillatorPart_bound (a : Fin 242 → ℝ) (b : Fin 4 → �
             (by positivity) (by positivity)
         _ = _ := by
           rw [mul_one,show (1000:ℝ)=10^3 by norm_num,← pow_mul,← pow_add]
-          norm_num
   have hcrit (j : Fin 4) : |b j * ∑ k : Fin 32,
       ((neutralNF587CriticalSines[j.val]!)[k.val]! : ℝ) * Real.sin
         (2*Real.pi*(neutralNF587CriticalFrequencies[k.val]! : ℝ)*1000)| ≤
@@ -188,7 +187,8 @@ theorem neutralNF603Sinh500_lower : (10:ℝ)^60 < Real.sinh 500 := by
   rw [Real.sinh_eq]
   have hnat : (2:ℕ)*10^60+1 < 2^500 := by decide +kernel
   have hnum : (2:ℝ)*10^60+1 < 2^500 := by exact_mod_cast hnat
-  linarith only [hpow,hneg,hnum]
+  have hE := hnum.trans hpow
+  linarith only [hE,hneg]
 
 theorem neutralNF603Source_remote_negative (a : Fin 242 → ℝ) (b : Fin 4 → ℝ)
     (hbox : neutralNF587SourceInFrozenBox a b) :
