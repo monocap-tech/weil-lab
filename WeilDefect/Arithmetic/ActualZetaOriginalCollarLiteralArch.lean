@@ -33,7 +33,7 @@ theorem neutralNF600Arch_integrable (s : 𝓢(ℝ,ℂ)) :
   rw [← neutralActualZetaGammaBracket_mathlib] at hg
   change ‖Zeta23.EF.gammaBracket (-2*Real.pi*ξ)*‖v ξ‖^2‖ ≤
     D*M*(‖v ξ‖+‖ξ‖*‖v ξ‖)
-  rw [norm_mul,Real.norm_eq_abs,abs_of_nonneg (sq_nonneg ‖v ξ‖)]
+  simp only [norm_mul,Real.norm_eq_abs,abs_of_nonneg (sq_nonneg ‖v ξ‖)]
   rw [Real.norm_eq_abs] at hg
   calc
     _ ≤ (D*(1+‖ξ‖))*‖v ξ‖^2 := mul_le_mul_of_nonneg_right hg (sq_nonneg _)
@@ -76,7 +76,7 @@ theorem neutralNF600LiteralArch_eq (s : 𝓢(ℝ,ℂ))
     funext ξ
     dsimp only [F]
     rw [neutralNF600Correlation_spectral s hs,Complex.ofReal_mul,mul_comm]
-  rw [he,← Complex.ofRealCLM.integral_comp_comm (neutralNF600Arch_integrable s)]
+  rw [he,integral_ofReal]
   rfl
 
 
