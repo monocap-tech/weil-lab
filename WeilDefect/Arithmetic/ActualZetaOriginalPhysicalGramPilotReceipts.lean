@@ -27,7 +27,7 @@ theorem neutralNF619MixedMinus_sound :
       (neutralNF617MomentRead neutralNF619MixedMinusRows 0).value‖ ≤
         (neutralNF617MomentRead neutralNF619MixedMinusRows 0).rad := by
   apply neutralNF618MomentRows_sound neutralNF618Pi neutralNF618Pi_sound
-    neutralNF619MixedMinus (by decide) (by decide) neutralNF618Q neutralNF618N
+    neutralNF619MixedMinus (by decide +kernel) (by decide +kernel) neutralNF618Q neutralNF618N
     neutralNF618Q_pos (by decide) neutralNF618ExpFee neutralNF619MixedMinusRows
   · intro m hm
     change m<1 at hm
