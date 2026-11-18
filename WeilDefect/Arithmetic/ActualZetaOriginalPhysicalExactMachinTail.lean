@@ -21,8 +21,7 @@ theorem neutralNF644Term (p n : ℕ) :
       (-1:ℚ)^n/(neutralNF644Denom p n:ℚ) := by
   unfold neutralNF592AtanTerm neutralNF644Denom
   push_cast
-  rw [div_pow,one_pow]
-  ring
+  rw [div_pow,one_pow,← mul_div_assoc,mul_one,div_div]
 
 theorem neutralNF644PosRound (x : ℚ) (Q : ℕ)
     (h0 : 0 < x*Q) (h1 : x*Q < 1) :
@@ -69,8 +68,7 @@ theorem neutralNF644Pair (p Q k : ℕ) (hQ : 0 < Q)
   rw [neutralNF644PosRound _ Q (mul_pos (div_pos (by norm_num) hd0) hq) hu,
       neutralNF644NegRound _ Q hv (mul_neg_of_neg_of_pos (div_neg_of_neg_of_pos (by norm_num) he0) hq)]
   simp only [NF591Ball.add,zero_add]
-  congr 1
-  ring
+  congr 1 <;> ring
 
 def neutralNF644Tail (Q pairs : ℕ) : NF591Ball :=
   ⟨-(pairs:ℚ)/Q,2*(pairs:ℚ)/Q⟩
