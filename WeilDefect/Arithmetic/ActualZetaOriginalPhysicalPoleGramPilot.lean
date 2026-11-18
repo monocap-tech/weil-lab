@@ -92,13 +92,14 @@ theorem neutralNF617PoleGramBall_sound :
       ((Complex.exp (11/10)).re - (Complex.exp (-(11/10))).re)/2-11/10 := by
     norm_num [Complex.div_re,Complex.sub_re] at he ⊢ <;> linarith
   rw [hx]
-  simpa [neutralNF617PoleGramBall,sub_eq_add_neg] using h
+  convert h using 1 <;> simp only [neutralNF617PoleGramBall] <;> ring
 
 def neutralNF617PoleTarget : NF591Ball :=
   ⟨2356474701241767793847805235787/10^31,1/10^30⟩
 
 def neutralNF617PoleCheck : Bool :=
-  decide (neutralNF617PoleGramBall.Widens neutralNF617PoleTarget)
+  decide (|neutralNF617PoleGramBall.mid-neutralNF617PoleTarget.mid| +
+    neutralNF617PoleGramBall.rad ≤ neutralNF617PoleTarget.rad)
 
 set_option maxRecDepth 100000 in
 set_option maxHeartbeats 10000000 in
@@ -108,7 +109,8 @@ theorem neutralNF617PoleCheck_true : neutralNF617PoleCheck = true := by
 theorem neutralNF617PoleGram_certified :
     neutralNF617PoleTarget.Contains (neutralNF606PhysicalH (241:Fin 242) (241:Fin 242)) :=
   NF591Ball.contains_widen neutralNF617PoleGramBall_sound
-    (of_decide_eq_true neutralNF617PoleCheck_true)
+    (show neutralNF617PoleGramBall.Widens neutralNF617PoleTarget from
+      of_decide_eq_true neutralNF617PoleCheck_true)
 
 end
 end WeilDefect
