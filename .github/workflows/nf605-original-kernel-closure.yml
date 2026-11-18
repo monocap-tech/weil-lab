@@ -1,0 +1,79 @@
+name: NF605 source-level endpoint kernel closure and local analytic recovery
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalEndpointKernel*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollar*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalRemoteNonvanishing.lean"
+      - ".github/workflows/nf605-original-kernel-closure.yml"
+  workflow_dispatch:
+concurrency:
+  group: nf605-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  closure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Promote each certified shard with finite-index coverage
+        run: |
+          set -o pipefail
+          for k in $(seq 0 8); do
+            lake build "WeilDefect.Arithmetic.ActualZetaOriginalEndpointKernelShard$k"
+          done
+      - name: Complete original endpoint sign and conditional strict graph proof
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: |
+          set -o pipefail
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalEndpointKernelClosure
+          cat >/tmp/NF605Axioms.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalEndpointKernelClosure
+          #print axioms WeilDefect.neutralNF605EndpointCheck
+          #print axioms WeilDefect.neutralNF605Endpoint_negative
+          #print axioms WeilDefect.neutralNF605OriginalCarrier_nonzero
+          EOF
+          lake env lean /tmp/NF605Axioms.lean | tee nf605-axioms.txt
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          rows=re.findall(r"'[^']+' depends on axioms: \[([^\]]*)\]",Path("nf605-axioms.txt").read_text())
+          assert len(rows)==3,rows
+          assert all(set(x.strip() for x in r.split(",") if x.strip()) <= {"propext","Classical.choice","Quot.sound"} for r in rows)
+          print("NF605 complete endpoint axiom audit PASS")
+          PY
+  analytic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Actual gamma series and full arch lower
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarArchLower
+      - name: Exact restricted energy and complete log9 prime contribution
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarPrimeBound
+      - name: Exact two-pole contribution
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarPoleBound
+      - name: Literal complete support coercivity
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarCoercivity
+      - name: Independent remote nonvanishing
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalAnalyticNonzeroGraph
