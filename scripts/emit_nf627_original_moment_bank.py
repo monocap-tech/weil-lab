@@ -35,6 +35,19 @@ def rowlit(row):
 def filetext(imports,body):
     return ''.join(f'import {m}\n' for m in imports)+f'\nnamespace {NS}\n\n'+body+'\n\nend '+NS+'\n'
 
+def metadata_body(shapes, size=128):
+    """Bound literal elaboration, preserving every ordered key/degree."""
+    assert size>0 and shapes
+    parts=[]
+    body='set_option maxRecDepth 100000\nset_option maxHeartbeats 0\n\n'
+    for start in range(0,len(shapes),size):
+        name=f'nf627MetaPart{start//size:03d}'
+        parts.append(name)
+        body+=f'def {name} : Array NF624KeyTable := #[\n  '+',\n  '.join(shapes[start:start+size])+'\n]\n\n'
+    body+='def nf627Meta : Array NF624KeyTable :=\n'
+    body+='  (#['+', '.join(parts)+'] : Array (Array NF624KeyTable)).foldl (fun a b => a ++ b) #[]'
+    return body
+
 def emit_bank(data,out,chunk_size,source_hashes):
     assert chunk_size>0 and data
     out.mkdir(parents=True,exist_ok=True)
@@ -57,8 +70,8 @@ def emit_bank(data,out,chunk_size,source_hashes):
     parts=', '.join('nf627'+name for name in names)
     write('Bank',filetext([MODULE+'.'+name for name in names],
           f'def nf627Bank : Array NF624KeyTable :=\n  (#[{parts}] : Array (Array NF624KeyTable)).foldl (fun a b => a ++ b) #[]'))
-    shapes=',\n  '.join('⟨'+keylit(k)+f', Array.replicate {len(rows)} ⟨0,0,0⟩⟩' for k,rows in ordered)
-    write('Metadata',filetext([META],'def nf627Meta : Array NF624KeyTable := #[\n  '+shapes+'\n]'))
+    shapes=['⟨'+keylit(k)+f', Array.replicate {len(rows)} ⟨0,0,0⟩⟩' for k,rows in ordered]
+    write('Metadata',filetext([META],metadata_body(shapes)))
     write('MetadataGate',filetext([MODULE+'.Metadata'],
           'set_option maxRecDepth 100000\nset_option maxHeartbeats 0\n\n'
           'theorem nf627MetadataCoverage :\n'
