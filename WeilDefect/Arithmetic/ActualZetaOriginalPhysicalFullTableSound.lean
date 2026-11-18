@@ -19,7 +19,8 @@ theorem neutralNF620NonzeroTableCheck_sound
       (neutralNF617MomentRead rows n).value‖ ≤
         (neutralNF617MomentRead rows n).rad := by
   unfold neutralNF617NonzeroTableCheck at hc
-  have hparts := Bool.and_eq_true.mp hc
+  simp only [Bool.and_eq_true] at hc
+  have hparts := hc
   have hparam : 0<Q ∧ 0<N ∧ |k.h| ≤ 1 ∧ 0<k.lower ∧ 0<rows.size :=
     of_decide_eq_true hparts.1
   apply neutralNF618MomentRows_sound p hp k hparam.2.2.1 hparam.2.2.2.1

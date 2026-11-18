@@ -28,7 +28,7 @@ def div(a,k): return a[0]//k,ceildiv(a[1],k)+1
 def real(q): return exact(q),ZERO
 def zadd(a,b): return add(a[0],b[0]),add(a[1],b[1])
 def zneg(a): return neg(a[0]),neg(a[1])
-def zmul(a,b): return add(mul(a[0],b[0]),neg(mul(a[1],b[1]))),add(mul(a[0],b[1]),mul(a[1],b[0]))
+def zmul(a,b): return add(mul(a[0],b[0]),neg(mul(a[1],b[1]))),add(mul(a[0],b[1]),mul(a[1],b[0])))
 def small(z):
     s=(ZERO,ZERO); t=(ONE,ZERO)
     for n in range(N):
@@ -43,7 +43,7 @@ def atan(p):
         power*=p*p
     return b[0],b[1]+1
 @lru_cache(maxsize=1)
-def pi(): return add(mul(exact(16),atan(5)),neg(mul(exact(4),atan(239)))
+def pi(): return add(mul(exact(16),atan(5)),neg(mul(exact(4),atan(239))))
 def reduced(f):
     u=f*F(11,10); return u-(u+F(1,2))//1
 def phase(f): return phase_reduced(reduced(f))
