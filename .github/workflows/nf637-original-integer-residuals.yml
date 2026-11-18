@@ -1,0 +1,74 @@
+name: NF637 original integer residual kernel trials
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalIntegerResidual.lean"
+      - "scripts/emit_nf637_integer_residual_pilots.py"
+      - ".github/workflows/nf637-original-integer-residuals.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf637-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  actual-residuals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf621-shard-*
+          path: receipts
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf621-complete-schedule-coverage
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Emit actual residual and negative-test proposals
+        run: |
+          python -m py_compile scripts/emit_nf637_integer_residual_pilots.py
+          python scripts/emit_nf637_integer_residual_pilots.py --root . --shards receipts --output WeilDefect/Generated/NF637
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('WeilDefect/Generated/NF637/manifest.json').read_text())
+          c=json.loads(Path('nf621-coverage.json').read_text())
+          assert m['input_sha256']=={s['file']:s['sha256'] for s in c['shards']}
+          assert sum(x['rows'] for x in m['files'])==42
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf637-original-integer-residual-pilots
+          path: WeilDefect/Generated/NF637/
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalIntegerResidual
+      - name: Generic proof audit
+        run: |
+          cat >/tmp/nf637Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalIntegerResidual
+          #print axioms WeilDefect.neutralNF637Fee_sound
+          #print axioms WeilDefect.neutralNF637Base_to_ref
+          #print axioms WeilDefect.neutralNF637Succ_to_ref
+          EOF
+          lake env lean /tmp/nf637Audit.lean
+      - name: Bounded integer-only actual residual truth
+        timeout-minutes: 15
+        run: |
+          lake build WeilDefect.Generated.NF637.Pole
+          lake build WeilDefect.Generated.NF637.Osc
+          lake build WeilDefect.Generated.NF637.Mixed
