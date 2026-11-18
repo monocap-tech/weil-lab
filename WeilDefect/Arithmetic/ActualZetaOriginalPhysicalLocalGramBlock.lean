@@ -89,7 +89,16 @@ theorem neutralNF649H_of_local (bank : Array NF624KeyTable)
     intro s t
     exact neutralNF649Lookup_sound bank idx hbank _ _ (hp s t)
   have hwide : (neutralNF624HBall (neutralNF624Lookup bank idx)
-      neutralNF616Q i j).Widens b := of_decide_eq_true hw
+      neutralNF616Q i j).Widens b := by
+    change |(neutralNF624HBall (neutralNF624Lookup bank idx)
+      neutralNF616Q i j).mid - b.mid| +
+      (neutralNF624HBall (neutralNF624Lookup bank idx)
+        neutralNF616Q i j).rad ≤ b.rad
+    change decide (|(neutralNF624HBall (neutralNF624Lookup bank idx)
+      neutralNF616Q i j).mid - b.mid| +
+      (neutralNF624HBall (neutralNF624Lookup bank idx)
+        neutralNF616Q i j).rad ≤ b.rad) = true at hw
+    exact of_decide_eq_true hw
   exact NF591Ball.contains_widen hh hwide
 
 end
