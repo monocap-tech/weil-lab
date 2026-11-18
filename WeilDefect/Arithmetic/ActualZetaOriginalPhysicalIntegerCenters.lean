@@ -68,11 +68,11 @@ def NF626CenterCache.vectorGate (c : NF626CenterCache) (s : NF626ScaledInputs)
 
 def NF626CenterCache.check (c : NF626CenterCache) (s : NF626ScaledInputs) : Bool :=
   s.wCheck &&
-  ((List.finRange 242).all (fun i =>
+  (((List.finRange 242).all (fun i =>
     (List.finRange 242).all (c.HDGate s i))) &&
-  ((List.finRange 242).all (fun i =>
+  (((List.finRange 242).all (fun i =>
     (List.finRange 242).all (c.AGate s i))) &&
-  ((List.finRange 242).all (c.vectorGate s))
+  ((List.finRange 242).all (c.vectorGate s))))
 
 def NF626CenterCache.Valid (c : NF626CenterCache) (s : NF626ScaledInputs) : Prop :=
   (∀ j, (s.w j:ℚ)/s.T = neutralNF625W j) ∧
@@ -89,15 +89,15 @@ theorem NF626CenterCache.check_sound (c : NF626CenterCache) (s : NF626ScaledInpu
   simp only [Bool.and_eq_true] at hc
   refine ⟨?_,?_,?_,?_⟩
   · intro j
-    exact of_decide_eq_true ((List.all_eq_true.mp hc.1.1.1) j (by simp))
+    exact of_decide_eq_true ((List.all_eq_true.mp hc.1) j (by simp))
   · intro i j
-    have hi := (List.all_eq_true.mp hc.1.1.2) i (by simp)
+    have hi := (List.all_eq_true.mp hc.2.1) i (by simp)
     exact of_decide_eq_true ((List.all_eq_true.mp hi) j (by simp))
   · intro i j
-    have hi := (List.all_eq_true.mp hc.1.2) i (by simp)
+    have hi := (List.all_eq_true.mp hc.2.2.1) i (by simp)
     exact of_decide_eq_true ((List.all_eq_true.mp hi) j (by simp))
   · intro i
-    exact of_decide_eq_true ((List.all_eq_true.mp hc.2) i (by simp))
+    exact of_decide_eq_true ((List.all_eq_true.mp hc.2.2.2) i (by simp))
 
 def NF626ScaledInputs.aden (s : NF626ScaledInputs) : ℚ := (s.Q:ℚ)*s.S*s.S
 
@@ -113,6 +113,7 @@ theorem NF626CenterCache.A_eq (c : NF626CenterCache) (s : NF626ScaledInputs)
     rw [neutralNF626ScaledDot,← hc.2.1 k j]
   simp only [hi]
   rw [neutralNF626ScaledDot,← hc.2.2.1 i j]
+  congr 1
   unfold NF626ScaledInputs.aden
   ring
 
@@ -127,6 +128,7 @@ theorem NF626CenterCache.b_eq (c : NF626CenterCache) (s : NF626ScaledInputs)
     rw [neutralNF626ScaledDot,← (hc.2.2.2 k).1]
   simp only [hi]
   rw [neutralNF626ScaledDot,← (hc.2.2.2 i).2.1]
+  congr 1
   unfold NF626ScaledInputs.bden
   ring
 
