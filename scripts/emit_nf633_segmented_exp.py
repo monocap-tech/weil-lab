@@ -78,7 +78,7 @@ def emit(out,chunk,full):
         body=f'def {small} : NF591Rect := {rect(b)}\n'
         body+=f'def {ep} : NF591Rect := {rect(e)}\n\n'
         body+=f'theorem {small}Check : neutralNF633RectEq\n'
-        body+=f'    ({v}End.partial.expand (1/(neutralNF616Q:ℚ))) {small}=true := by\n  decide +kernel\n\n'
+        body+=f'    ({v}End.sumState.expand (1/(neutralNF616Q:ℚ))) {small}=true := by\n  decide +kernel\n\n'
         body+=f'theorem {small}Eq : neutralNF593SmallExp {inp} neutralNF616Q neutralNF616ExpN={small} :=\n'
         body+=f'  neutralNF633SmallExp_of_state {inp} neutralNF616Q neutralNF616ExpN {v}End {small} {v}PrefixEq {small}Check\n\n'
         sq=f'({small}.mulQ {small} neutralNF616Q)'
