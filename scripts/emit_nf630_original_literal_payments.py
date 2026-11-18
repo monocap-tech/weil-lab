@@ -36,7 +36,10 @@ def filetext(imports,body):
     return ''.join('import '+s+'\n' for s in imports)+'\nnamespace WeilDefect\n\n'+body+'\n\nend WeilDefect\n'
 
 def historical(root,path):
-    from verify_nf380_original_archived_signed_dual import FRAME_SHA
+    # Read the incumbent immutable frame digest without importing the old Arb program.
+    FRAME_SHA='18ac01bba4de7ec432e419db5ed990fbfabad91c10cbcf2f61cf5666e36b430e'
+    source=(root/'scripts/verify_nf380_original_archived_signed_dual.py').read_text()
+    assert f"FRAME_SHA='{FRAME_SHA}'" in source
     f=root/'notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json'
     assert sha(f)==FROZEN_SHA
     frozen=json.loads(f.read_text())
