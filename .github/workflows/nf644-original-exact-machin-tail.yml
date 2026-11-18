@@ -1,0 +1,126 @@
+name: NF644 exact Machin tail and repaired scalar receipts
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalExactMachinTail.lean"
+      - "scripts/emit_nf644_exact_machin_tail.py"
+      - "scripts/emit_nf630_original_literal_payments.py"
+      - ".github/workflows/nf644-original-exact-machin-tail.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf644-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  widened-scalar-payments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf623-historical-frame
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf631-reference-widened-entries
+          run-id: 44359078922
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf631-reference-widened-payments
+          run-id: 44359078922
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf631-reference-center-cache
+          run-id: 44359078922
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Exact scalar receipt generation
+        run: |
+          python -m py_compile scripts/emit_nf639_widened_scalar_receipts.py
+          python scripts/emit_nf639_widened_scalar_receipts.py --root . --historical nf623-historical-entries.jsonl.gz --entries nf631-widened-entries.jsonl.gz --payments nf631-widened-payments.json --cache nf631-center-cache.jsonl.gz --output WeilDefect/Generated/NF639
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf639-original-widened-scalar-proposals
+          path: WeilDefect/Generated/NF639/
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalScalarPaymentReceipts
+      - name: Audit scalar reference transfer
+        run: |
+          cat >/tmp/nf639Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalScalarPaymentReceipts
+          #print axioms WeilDefect.NF639PaymentRow.gate_to_ref
+          #print axioms WeilDefect.neutralNF639Payments_of_receipts
+          EOF
+          lake env lean /tmp/nf639Audit.lean
+      - name: Actual first and last widened scalar payment trials
+        timeout-minutes: 10
+        run: |
+          lake build WeilDefect.Generated.NF639.Row000
+          lake build WeilDefect.Generated.NF639.Row241
+  compressed-pi:
+    # NF639 full reference pi is already kernel-certified; optimization is optional.
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf635-original-complete-endpoint-proposals
+          run-id: 44364429357
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: WeilDefect/Generated/NF635
+      - name: Generate the exact compressed Machin proposal
+        run: |
+          python -m py_compile scripts/emit_nf644_exact_machin_tail.py
+          python scripts/emit_nf644_exact_machin_tail.py --bank WeilDefect/Generated/NF635 --output WeilDefect/Generated/NF644
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('WeilDefect/Generated/NF644/manifest.json').read_text())
+          assert len(m['files'])==80
+          assert sum(x['prefix_segments'] for x in m['slots'])==77
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf644-compressed-pi-proposals
+          path: WeilDefect/Generated/NF644/
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalExactMachinTail
+      - name: Audit exact alternating tail proof
+        run: |
+          cat >/tmp/nf644Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalExactMachinTail
+          #print axioms WeilDefect.neutralNF644Pair
+          #print axioms WeilDefect.neutralNF644AtanTail
+          #print axioms WeilDefect.neutralNF644AtanTail_of_prefix
+          EOF
+          lake env lean /tmp/nf644Audit.lean
+      - name: Complete compressed prefix chain
+        timeout-minutes: 32
+        run: lake build WeilDefect.Generated.NF644.Pi
