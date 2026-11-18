@@ -1,0 +1,98 @@
+name: NF655 certified moment to original Gram containment
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/nf655-original-certified-moment-gram.yml"
+      - "scripts/prepare_nf655_certified_moment_gram.py"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf655-local-gram-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  local-gram:
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'research/nf655-original-certified-moment-gram'
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Obtain pinned original archive bytes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p inputs/archives
+          get() {
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" \
+              "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$1/zip" \
+              -o "inputs/archives/$2.zip"
+          }
+          get 14476203337 nf648-Pole
+          get 14476327246 nf648-Osc
+          get 14478132104 nf648-Mixed
+          get 14443955726 nf621-shard0
+          get 14443029185 nf621-shard1
+          get 14442993898 nf621-shard2
+          get 14443875632 nf621-shard3
+          get 14443830605 nf621-shard4
+          get 14443726709 nf621-shard5
+          get 14441839748 nf621-shard6
+          get 14442134710 nf621-shard7
+          get 14459025571 nf631-widened
+          get 14458696200 nf632-pi
+          echo 'd1769ab74275cc9c57452d3aa5ad3a30109efc500f7834ee392ed668612d9a37  inputs/archives/nf632-pi.zip' | sha256sum -c -
+          mkdir -p WeilDefect/Generated/NF632
+          unzip -q inputs/archives/nf632-pi.zip -d WeilDefect/Generated/NF632
+          echo 'b4d290d158af245635d17b58f1c8e9f8bfa5076f773c1a35aa7e789bf850b086  WeilDefect/Generated/NF632/manifest.json' | sha256sum -c -
+      - name: Reuse 73 accepted proposal modules; generate original four-table Gram targets
+        run: python scripts/prepare_nf655_certified_moment_gram.py inputs/archives WeilDefect/Generated
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf655-local-gram-preflight
+          path: WeilDefect/Generated/nf655-report.json
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Independent 106 original Gram containments from accepted tables
+        timeout-minutes: 35
+        run: |
+          set -o pipefail
+          lake build WeilDefect.Generated.NF655.Base | tee nf655-base.log
+      - name: Complete opposite-sign mixed table and remaining 14 cross entries
+        timeout-minutes: 25
+        run: |
+          set -o pipefail
+          lake build WeilDefect.Generated.NF655.Cross | tee nf655-cross.log
+      - name: Complete local block audit
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          t=Path('nf655-base.log').read_text()+Path('nf655-cross.log').read_text()
+          rows=set()
+          for i,j,ax in re.findall(r"'WeilDefect\.nf655H(\d{3})_(\d{3})Contains' depends on axioms: \[([^\]]*)\]",t):
+              assert set(x.strip() for x in ax.split(',') if x.strip()) <= {'propext','Classical.choice','Quot.sound'}
+              rows.add((int(i),int(j)))
+          for i,j in re.findall(r"'WeilDefect\.nf655H(\d{3})_(\d{3})Contains' does not depend on any axioms",t):
+              rows.add((int(i),int(j)))
+          ix=list(range(14))+[241]
+          assert rows=={(i,j) for i in ix for j in ix if j<=i},len(rows)
+          print('NF655 120 actual original physical H entry containments certified, standard axioms only')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf655-local-gram-kernel-logs
+          path: |
+            nf655-base.log
+            nf655-cross.log
+          if-no-files-found: ignore
