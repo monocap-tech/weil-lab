@@ -53,14 +53,26 @@ theorem NF635EndpointBank.lookup_eq (b : NF635EndpointBank)
   change b.read i=ref q
   rw [hv.2 i h.1,h.2]
 
+def neutralNF635FrequencyCoverage (rs ps : Array ℚ) (k : NF616Frequency) : Bool :=
+  neutralNF635ParamCheck rs k.h &&
+  (neutralNF635ParamCheck rs (-k.h) &&
+  (neutralNF635ParamCheck ps (neutralNF592Reduced k.f) &&
+   neutralNF635ParamCheck ps (neutralNF592Reduced (-k.f))))
+
 def neutralNF635KeyCoverage (rs ps : Array ℚ) (t : NF624KeyTable) : Bool :=
-  neutralNF635ParamCheck rs t.key.h &&
-  (neutralNF635ParamCheck rs (-t.key.h) &&
-  (neutralNF635ParamCheck ps (neutralNF592Reduced t.key.f) &&
-   neutralNF635ParamCheck ps (neutralNF592Reduced (-t.key.f))))
+  neutralNF635FrequencyCoverage rs ps t.key
 
 def neutralNF635ChunkCoverage (rs ps : Array ℚ) (chunk : Array NF624KeyTable) : Bool :=
-  chunk.toList.all (neutralNF635KeyCoverage rs ps)
+  (chunk.toList.map NF624KeyTable.key).all (neutralNF635FrequencyCoverage rs ps)
+
+theorem neutralNF635ChunkCoverage_of_keys (rs ps : Array ℚ)
+    (chunk : Array NF624KeyTable) (ks : List NF616Frequency)
+    (hk : chunk.toList.map NF624KeyTable.key=ks)
+    (hc : ks.all (neutralNF635FrequencyCoverage rs ps)=true) :
+    neutralNF635ChunkCoverage rs ps chunk=true := by
+  unfold neutralNF635ChunkCoverage
+  rw [hk]
+  exact hc
 
 def neutralNF635RealRef (h : ℚ) : NF591Rect :=
   neutralNF621RealEndpoint h neutralNF616Q neutralNF616ExpN
@@ -75,7 +87,7 @@ theorem neutralNF635Cache_of_coverage (p : NF591Ball) (R P : NF635EndpointBank)
     (hc : neutralNF635KeyCoverage R.keys P.keys t=true) :
     neutralNF634SharedCache p R.lookup P.lookup t.key =
       neutralNF621Cache p t.key neutralNF616Q neutralNF616ExpN := by
-  simp only [neutralNF635KeyCoverage,Bool.and_eq_true] at hc
+  simp only [neutralNF635KeyCoverage,neutralNF635FrequencyCoverage,Bool.and_eq_true] at hc
   exact neutralNF634SharedCache_eq p R.lookup P.lookup t.key
     (R.lookup_eq _ hr _ hc.1)
     (R.lookup_eq _ hr _ hc.2.1)
@@ -96,6 +108,6 @@ theorem neutralNF635Bank_of_indexed (p : NF591Ball) (R P : NF635EndpointBank)
   have h := hc chunk hchunk
   unfold neutralNF635ChunkCoverage at h
   exact neutralNF635Cache_of_coverage p R P hr hp t
-    ((List.all_eq_true.mp h) t ht)
+    ((List.all_eq_true.mp h) t.key (List.mem_map.mpr ⟨t,ht,rfl⟩))
 
 end WeilDefect
