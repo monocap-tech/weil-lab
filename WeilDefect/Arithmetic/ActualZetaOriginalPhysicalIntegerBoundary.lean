@@ -23,7 +23,7 @@ theorem neutralNF638NatRect_denote (Q n : ℕ) (hQ : 0<Q) :
   have hq : (Q:ℚ)≠0 := by exact_mod_cast hQ.ne'
   have he : (((n:ℤ)*(Q:ℤ):ℤ):ℚ)/Q=(n:ℚ) := by
     push_cast
-    exact mul_div_cancel_right₀ _ hq
+    field_simp [hq]
   have hx := neutralNF638ExactQ_scaled ((n:ℤ)*(Q:ℤ)) Q hQ
   rw [he] at hx
   simp [neutralNF637NatRect,NF636Rect.denote,NF636Ball.denote,
@@ -82,7 +82,6 @@ theorem NF638Cache.boundary_denote (c : NF638Cache) (Q n : ℕ)
     NF636Rect.mul_denote _ _ Q hQ hc.2.2.1,
     NF636Rect.mul_denote _ _ Q hQ hc.2.2.2,
     neutralNF638PowerRect_denote Q 11 n hQ hc.1,
-    neutralNF638PowerRect_denote Q (-11) n hQ hc.2.1]
-  norm_num
+    neutralNF638PowerRect_denote Q (-11) n hQ hc.2.1] <;> norm_num
 
 end WeilDefect
