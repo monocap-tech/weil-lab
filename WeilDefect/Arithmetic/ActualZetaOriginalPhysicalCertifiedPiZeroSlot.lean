@@ -63,8 +63,9 @@ theorem neutralNF645ZeroJet (Q n : ℕ) (hQ : 0<Q) :
     neutralNF592ExpJetBall NF591Rect.zero Q (n+2)=neutralNF645Fixed Q := by
   rw [show n+2=(n+1)+1 by omega,neutralNF592ExpJetBall,
       neutralNF645MulQ_zero]
-  unfold neutralNF645Fixed NF591Rect.divQ
-  rw [Nat.cast_add,Nat.cast_one,neutralNF645DivBall Q (n+1) hQ (by omega)]
+  change (NF591Rect.mk ⟨0,2/(Q:ℚ)⟩ ⟨0,2/(Q:ℚ)⟩).divQ
+    (((n+1:ℕ):ℚ)+1) Q=neutralNF645Fixed Q
+  simp only [NF591Rect.divQ,neutralNF645Fixed,neutralNF645DivBall Q (n+1) hQ (by omega)]
   
 theorem neutralNF645ZeroPartial (Q len : ℕ) (hQ : 0<Q) :
     neutralNF592ExpPartial NF591Rect.zero Q (len+2)=
@@ -106,5 +107,13 @@ theorem neutralNF645ZeroSlot (a e : NF591Rect)
     simp [NF591Rect.expand,NF591Ball.expand,add_assoc]
   rw [hx]
   exact neutralNF645RectEq_sound _ _ he
+
+theorem neutralNF645Zero_attach (b : NF635EndpointBank) (i : ℕ) (v : NF591Rect)
+    (hk : decide (neutralNF635ParamRead b.keys i=0)=true)
+    (hv : neutralNF645RectEq (b.read i) v=true)
+    (he : neutralNF635RealRef 0=v) :
+    b.read i=neutralNF635RealRef (neutralNF635ParamRead b.keys i) := by
+  rw [of_decide_eq_true hk,he]
+  exact neutralNF645RectEq_sound _ _ hv
 
 end WeilDefect
