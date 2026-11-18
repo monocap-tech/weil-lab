@@ -1,0 +1,77 @@
+name: NF646 retained complete nonzero endpoint attachment
+on:
+  pull_request:
+    paths:
+      - "scripts/emit_nf646_retained_nonzero_endpoints.py"
+      - ".github/workflows/nf646-original-nonzero-endpoints.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf646-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  complete-endpoints:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf632-full-pi-proposals
+          run-id: 44359888464
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: WeilDefect/Generated/NF632
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf633-exp-prefix-proposals
+          run-id: 44372926683
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: WeilDefect/Generated/NF633
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf635-original-complete-endpoint-proposals
+          run-id: 44364429357
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: WeilDefect/Generated/NF635
+      - name: Check retained literal coordinates and manifest hashes
+        run: |
+          python -m py_compile scripts/emit_nf646_retained_nonzero_endpoints.py
+          python scripts/emit_nf646_retained_nonzero_endpoints.py --pi WeilDefect/Generated/NF632 --exp WeilDefect/Generated/NF633 --bank WeilDefect/Generated/NF635 --output WeilDefect/Generated/NF646
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf646-retained-endpoint-attachment-proposals
+          path: WeilDefect/Generated/NF646/
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Complete first nonzero real reference proof
+        timeout-minutes: 15
+        run: lake build WeilDefect.Generated.NF633.PoleComplete
+      - name: Attach actual real slot
+        timeout-minutes: 12
+        run: lake build WeilDefect.Generated.NF646.PoleAttach
+      - name: Complete first nonzero phase proof and certified pi attachment
+        timeout-minutes: 30
+        run: lake build WeilDefect.Generated.NF646.PhaseAttach
+      - name: Audit terminal identities
+        run: |
+          cat >/tmp/nf646Audit.lean <<'EOF'
+          import WeilDefect.Generated.NF646.PoleAttach
+          import WeilDefect.Generated.NF646.PhaseAttach
+          #print axioms WeilDefect.nf633PoleEndpointEq
+          #print axioms WeilDefect.nf633PhaseEndpointEq
+          #print axioms WeilDefect.nf646PoleAttached
+          #print axioms WeilDefect.nf646PhaseAttached
+          #print axioms WeilDefect.nf646BankPiEq
+          EOF
+          lake env lean /tmp/nf646Audit.lean
