@@ -1,0 +1,54 @@
+name: NF606 original physical residual custody
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginal*Residual*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalMomentRecurrence.lean"
+      - "scripts/verify_nf606_original_residual_custody.py"
+      - ".github/workflows/nf606-original-residual-custody.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf606-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  residual-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pinned Arb and residual certificate
+        run: |
+          pip install --only-binary=:all: python-flint==0.8.0
+          python -m py_compile scripts/verify_nf606_original_residual_custody.py
+          python -u scripts/verify_nf606_original_residual_custody.py --bits 8192 --output nf606-residual.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf606-original-residual-custody
+          path: nf606-residual.json
+          if-no-files-found: error
+  real-attachment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Generic exact residual and row-specific physical coefficient box
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalSolveResidualCustody
+      - name: Literal unweighted original physical equations
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalSolveResidual
+      - name: Exact analytic moment recurrence including zero frequency
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalMomentRecurrence
