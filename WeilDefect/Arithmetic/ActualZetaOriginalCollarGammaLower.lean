@@ -92,7 +92,11 @@ theorem neutralNF599GammaGainSeries (t : ℝ) :
   rw [hzeroarg]
   have hzeroInv : (1/(1/4:ℂ)).re = 4 := by norm_num
   simp only [hzeroInv,Complex.ofReal_re]
-  ring
+  have harg : ((1/4:ℝ):ℂ)+Complex.I*((t*(1/2):ℝ):ℂ)=z := by
+    dsimp [z]
+    push_cast
+    ring
+  ring <;> rw [harg]
 
 theorem neutralNF599GammaLower_partial (t : ℝ) (N : ℕ) :
     Zeta23.EF.gammaBracket 0 + neutralNF599Gain (1/4) t +
