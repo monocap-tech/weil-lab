@@ -1,0 +1,55 @@
+name: NF618 original physical oscillator and mixed pilots
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysical*.lean"
+      - "scripts/verify_nf618_original_oscillator_mixed_pilots.py"
+      - ".github/workflows/nf618-original-physical-pilots.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf618-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  rational-replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/verify_nf618_original_oscillator_mixed_pilots.py
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        module:
+          - ActualZetaOriginalPhysicalPoleGramPilot
+          - ActualZetaOriginalPhysicalResidualReceipts
+          - ActualZetaOriginalPhysicalDenominatorGuard
+          - ActualZetaOriginalPhysicalMomentTableSound
+          - ActualZetaOriginalPhysicalOscillatorPilots
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.${{ matrix.module }}
+      - name: Audit literal physical pilot proofs
+        if: matrix.module == 'ActualZetaOriginalPhysicalOscillatorPilots'
+        run: |
+          cat > /tmp/nf618Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalOscillatorPilots
+          #print axioms WeilDefect.neutralNF618MomentRows_sound
+          #print axioms WeilDefect.neutralNF618Osc_actual
+          #print axioms WeilDefect.neutralNF618OscSucc_actual
+          #print axioms WeilDefect.neutralNF618Mixed_actual
+          EOF
+          lake env lean /tmp/nf618Audit.lean
