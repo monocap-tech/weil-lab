@@ -35,7 +35,10 @@ theorem neutralNF600Moment_bound (s : 𝓢(ℝ,ℂ))
           _ = _ := by rw [Complex.I_mul_I]; push_cast; ring
       have hE : Real.exp (t*x) ≤ 2 :=
         (Real.exp_le_exp.mpr htx).trans
-          (by simpa [neutralNF578B] using neutralNF585Exp_half_le_two)
+          (by
+            have h := neutralNF585Exp_half_le_two
+            rw [neutralNF578B, show (11/10:ℝ)/2 = 11/20 by norm_num] at h
+            exact h)
       dsimp [f]
       rw [he,norm_mul,Complex.norm_exp,Complex.ofReal_re]
       exact (mul_le_mul_of_nonneg_left hE (norm_nonneg _)).trans_eq (mul_comm _ _)
