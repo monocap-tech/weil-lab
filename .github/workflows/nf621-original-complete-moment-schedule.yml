@@ -1,0 +1,112 @@
+name: NF621 original complete physical moment schedule
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalFastMomentTable.lean"
+      - "scripts/verify_nf620_physical_key_tables.py"
+      - "scripts/emit_nf621_high_precision_lean_trial.py"
+      - "scripts/audit_nf621_physical_shard_coverage.py"
+      - ".github/workflows/nf621-original-complete-moment-schedule.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf621-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  schedule:
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile replay script and generate actual source schedule shard
+        run: |
+          python -m py_compile scripts/verify_nf620_physical_key_tables.py
+          python scripts/verify_nf620_physical_key_tables.py --root . --shard ${{ matrix.shard }}/8 --output nf621-shard${{ matrix.shard }}.json.gz > nf621-shard${{ matrix.shard }}.log
+          tail -n 2 nf621-shard${{ matrix.shard }}.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf621-shard-${{ matrix.shard }}
+          path: |
+            nf621-shard${{ matrix.shard }}.json.gz
+            nf621-shard${{ matrix.shard }}.log
+          if-no-files-found: error
+  coverage:
+    needs: schedule
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf621-shard-*
+          path: receipts
+      - run: python scripts/audit_nf621_physical_shard_coverage.py --root . --shards receipts --output nf621-coverage.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf621-complete-schedule-coverage
+          path: nf621-coverage.json
+          if-no-files-found: error
+  kernel-trial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate untrusted original first oscillator row proposal
+        run: |
+          python -m py_compile scripts/emit_nf621_high_precision_lean_trial.py
+          python scripts/verify_nf620_physical_key_tables.py --root . --output nf621-pilot.json.gz
+          python scripts/emit_nf621_high_precision_lean_trial.py nf621-pilot.json.gz /tmp/nf621Trial.lean --count 1
+      - name: Install Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Compile exact cached evaluator and soundness bridge
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalFastMomentTable
+      - name: Bounded high precision kernel trial and audit
+        timeout-minutes: 15
+        run: lake env lean /tmp/nf621Trial.lean
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf621-kernel-proposal
+          path: |
+            /tmp/nf621Trial.lean
+            nf621-pilot.json.gz
+          if-no-files-found: warn
+  focused-recovery:
+    strategy:
+      fail-fast: false
+      matrix:
+        module:
+          - ActualZetaOriginalPhysicalMomentParity
+          - ActualZetaOriginalPhysicalFullTableSound
+          - ActualZetaOriginalPhysicalGramPilotReceipts
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.${{ matrix.module }}
