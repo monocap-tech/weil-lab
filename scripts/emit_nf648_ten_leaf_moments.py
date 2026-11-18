@@ -28,7 +28,10 @@ def main():
     ap=argparse.ArgumentParser()
     for k in ('root','shards','bank','pi','output'): ap.add_argument('--'+k,type=Path,required=True)
     ap.add_argument('--group',choices=[x[0] for x in CASES])
-    a=ap.parse_args(); a.output.mkdir(parents=True,exist_ok=True)
+    ap.add_argument('--opposite-mixed',action='store_true',help='include the additional canonical mixed table for complete local H custody')
+    a=ap.parse_args(); assert not (a.group and a.opposite_mixed)
+    cases=CASES+([('MixedOpp',(F(-1,2),F(37,64)),14)] if a.opposite_mixed else [])
+    a.output.mkdir(parents=True,exist_ok=True)
     bm,pm=validate(a.bank),validate(a.pi)
     assert bm['full_values'] and (bm['real_count'],bm['phase_count'])==(5,1276)
     assert pm['full'] and len(pm['files'])==127
@@ -100,7 +103,7 @@ def main():
         write(name,[MODULE+'.'+prev],body)
         leaves[key]=(name,v,i)
         return leaves[key]
-    for label,k,count in CASES:
+    for label,k,count in cases:
         if a.group and a.group!=label: continue
         h,f=k; data=rows[k]
         assert len(data)==count and table(*k,count-1)==data
@@ -137,9 +140,9 @@ def main():
         imports=sorted({MODULE+'.'+l[0] for _,l in rr+pp})
         write(label,imports,body)
         groups.append({'group':label,'rows':count,'real':[l[2] for _,l in rr],'phase':[l[2] for _,l in pp]})
-    if not a.group: assert len(leaves)==10 and sum(x['rows'] for x in groups)==42
+    if not a.group: assert len(leaves)==10 and sum(x['rows'] for x in groups)==(56 if a.opposite_mixed else 42)
     (a.output/'manifest.json').write_text(json.dumps({'schema':'NF648-ten-leaf-local-moment-proposals-v1',
-        'group':a.group,'rows':sum(x['rows'] for x in groups),'groups':groups,'leaf_count':len(leaves),
+        'group':a.group,'opposite_mixed':a.opposite_mixed,'rows':sum(x['rows'] for x in groups),'groups':groups,'leaf_count':len(leaves),
         'prefix_checks':38*len(leaves),'input_sha256':hashes,'pi_manifest_sha256':sha(a.pi/'manifest.json'),
         'bank_manifest_sha256':sha(a.bank/'manifest.json'),'files':files,
         'scope':'untrusted proof proposals; full kernel truth pending'},indent=2)+'\n')
