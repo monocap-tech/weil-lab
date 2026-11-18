@@ -142,7 +142,7 @@ theorem NF626CenterCache.payment_of_fast (c : NF626CenterCache)
   have hq : (0:ℚ)<s.Q := by exact_mod_cast hpar.2.1
   have hd : 0<s.aden := by unfold NF626ScaledInputs.aden; positivity
   unfold NF625PaymentData.check
-  apply Bool.and_eq_true.mpr
+  simp only [Bool.and_eq_true]
   constructor
   · apply decide_eq_true
     exact hpar.2.2.2.2

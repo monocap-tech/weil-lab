@@ -25,7 +25,8 @@ theorem neutralNF629EntryRows_sound (M : NF622Moments) (p : NF625PaymentData)
     (∀ i j, |neutralNF606PhysicalV i j-p.VR i j| ≤ (p.eV:ℝ)) := by
   have hh (i j : Fin 242) :
       neutralNF629HGate M p i j = true := by
-    have hi := Bool.and_eq_true.mp (hc i)
+    have hi := hc i
+    simp only [neutralNF629EntryRow,Bool.and_eq_true] at hi
     exact (List.all_eq_true.mp hi.1) j (by simp)
   have hl (i j : Fin 242) (hj : j.val ≤ i.val) :
       |neutralNF606PhysicalH i j-p.HR i j| ≤ (p.eH:ℝ) := by
@@ -50,7 +51,8 @@ theorem neutralNF629EntryRows_sound (M : NF622Moments) (p : NF625PaymentData)
       rw [neutralNF606PhysicalH_symm i j,hsR]
       exact hl j i (by omega)
   · intro i j
-    have hi := Bool.and_eq_true.mp (hc i)
+    have hi := hc i
+    simp only [neutralNF629EntryRow,Bool.and_eq_true] at hi
     have he := (List.all_eq_true.mp hi.2) j (by simp)
     have hw : (neutralNF624VBall M neutralNF616Q i j).Widens
         ⟨p.V0 i j,p.eV⟩ := by
