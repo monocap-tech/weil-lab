@@ -1,0 +1,121 @@
+name: NF647 retained integer Taylor residual and local moment custody
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalLocalMomentCustody.lean"
+      - "scripts/emit_nf647_local_moment_custody.py"
+      - ".github/workflows/nf647-original-local-moment-custody.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf647-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  integer-chain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf636-integer-taylor-pilots
+          run-id: 44366377106
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: WeilDefect/Generated/NF636
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf637-original-integer-residual-pilots
+          run-id: 44367230590
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: WeilDefect/Generated/NF637
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf638-original-integer-table-pilots
+          run-id: 44368490151
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: WeilDefect/Generated/NF638
+      - name: Retained pilot provenance
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          for n in (636,637,638):
+              d=Path(f'WeilDefect/Generated/NF{n}')
+              m=json.loads((d/'manifest.json').read_text())
+              for x in m['files']:
+                  assert hashlib.sha256((d/x['file']).read_bytes()).hexdigest()==x['sha256']
+              if n>=637:
+                  assert sum(x['rows'] for x in m['files'])==42
+              if n==638:
+                  assert hashlib.sha256((d/'Join.lean').read_bytes()).hexdigest()==m['join_sha256']
+          PY
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Recovered generic integer-rounding and Taylor proofs
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalIntegerTaylor
+      - name: Four actual integer Taylor pilot comparisons
+        timeout-minutes: 10
+        run: lake build WeilDefect.Generated.NF636.Pole0000 WeilDefect.Generated.NF636.Pole1168 WeilDefect.Generated.NF636.Phase0000 WeilDefect.Generated.NF636.Phase1168
+      - name: Integer residual transfer and 42 actual row gates
+        timeout-minutes: 12
+        run: lake build WeilDefect.Generated.NF637.Pole WeilDefect.Generated.NF637.Osc WeilDefect.Generated.NF637.Mixed
+      - name: Complete actual integer table gates and conditional chunk transfer
+        timeout-minutes: 12
+        run: lake build WeilDefect.Generated.NF638.Join
+      - name: Audit transfer theorems
+        run: |
+          cat >/tmp/nf647Chain.lean <<'EOF'
+          import WeilDefect.Generated.NF638.Join
+          #print axioms WeilDefect.NF636Ball.roundGate_sound
+          #print axioms WeilDefect.neutralNF636Prefix_extend
+          #print axioms WeilDefect.neutralNF637Fee_sound
+          #print axioms WeilDefect.neutralNF638Chunk_of_checks
+          #print axioms WeilDefect.nf638PilotChunk
+          EOF
+          lake env lean /tmp/nf647Chain.lean
+  local-cache:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf638-original-integer-table-pilots
+          run-id: 44368490151
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: WeilDefect/Generated/NF638
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf635-original-complete-endpoint-proposals
+          run-id: 44364429357
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: WeilDefect/Generated/NF635
+      - name: Match each retained table cache with exact local endpoint values
+        run: |
+          python -m py_compile scripts/emit_nf647_local_moment_custody.py
+          python scripts/emit_nf647_local_moment_custody.py --tables WeilDefect/Generated/NF638 --bank WeilDefect/Generated/NF635 --output WeilDefect/Generated/NF647
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf647-local-cache-proposals
+          path: WeilDefect/Generated/NF647/
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Local analytic moment transfer and all three complete table pilots
+        timeout-minutes: 22
+        run: lake build WeilDefect.Generated.NF647.Pole WeilDefect.Generated.NF647.Osc WeilDefect.Generated.NF647.Mixed
