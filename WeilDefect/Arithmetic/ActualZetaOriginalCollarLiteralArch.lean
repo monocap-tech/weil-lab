@@ -40,7 +40,7 @@ theorem neutralNF600Arch_integrable (s : 𝓢(ℝ,ℂ)) :
     _ ≤ (D*(1+‖ξ‖))*(M*‖v ξ‖) := by
       apply mul_le_mul_of_nonneg_left _ (by positivity)
       nlinarith only [mul_le_mul_of_nonneg_right hξ (norm_nonneg (v ξ))]
-    _ = _ := by ring
+    _ = _ := by simp only [Real.norm_eq_abs, Pi.add_apply]; ring
 
 theorem neutralNF600Correlation_spectral (s : 𝓢(ℝ,ℂ))
     (hs : ∀ x, x ∉ neutralNF543OriginalCollars → s x=0) (ξ : ℝ) :
@@ -50,7 +50,7 @@ theorem neutralNF600Correlation_spectral (s : 𝓢(ℝ,ℂ))
     (s.toLp 2 volume) (fun x => s x) (neutralNF573OriginalCollar_window_ae s hs)
     ((-2*Real.pi*ξ:ℝ):ℂ)
   rw [← neutralRawTransform_eq_paperFT,neutralWindowCorrelation_rawTransform,
-    Complex.conj_ofReal,h,neutralRawTransform_fourier]
+    Complex.conj_ofReal,h,← neutralRawTransform_fourier]
   rw [← SchwartzMap.fourier_coe]
   unfold neutralNF600Density
   exact Complex.conj_mul' _
@@ -76,8 +76,16 @@ theorem neutralNF600LiteralArch_eq (s : 𝓢(ℝ,ℂ))
     funext ξ
     dsimp only [F]
     rw [neutralNF600Correlation_spectral s hs,Complex.ofReal_mul,mul_comm]
-  rw [he,integral_ofReal]
-  rfl
+  rw [he]
+  unfold neutralNF600Arch
+  first
+  | rw [integral_ofReal] <;> rfl
+  | norm_cast <;> rfl
+  | have hi := neutralNF600Arch_integrable s
+    have hc := Complex.ofRealCLM.integral_comp_comm hi
+    simpa using congrArg Complex.re hc
+  | have hi := neutralNF600Arch_integrable s
+    rw [← Complex.integral_re (Complex.continuous_ofReal.comp (by fun_prop) |>.aestronglyMeasurable)]
 
 
 end
