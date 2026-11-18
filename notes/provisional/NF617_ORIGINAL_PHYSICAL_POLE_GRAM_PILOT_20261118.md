@@ -9,3 +9,5 @@ A local independent Python Fraction replay of the same rectangular arithmetic pa
 NF617 also implements one shared lambda rectangle and pair of endpoint exponentials per nonzero rational key, with a cached boundary builder and array of candidate complex centers/radii. The row gate pays the actual residual plus (n+1) times prior radius; zero key has a separate exact rational polynomial moment. The generic table checker is executable source only; table-wide analytic soundness, original key table generation, concrete oscillatory/mixed receipts, final precision and physical row payments remain open. Pilot precision is deliberately smaller than final proposed 2600 digits. It does not certify the actual ill-conditioned solve.
 
 No main merge, no local Lean build, no new full Arb solve replay. Global Weil positivity and RH remain open.
+
+Final receipt update: NF616 precision configuration and all truncation-fee comparisons PASS (job 134659536633). NF616 moment enclosure job 134659536488 failed on unavailable scalar cancellation lemma; replace it by strict monotonicity and contradiction in NF617. This repair awaits Lean. Other focused jobs still pending at inspection.
