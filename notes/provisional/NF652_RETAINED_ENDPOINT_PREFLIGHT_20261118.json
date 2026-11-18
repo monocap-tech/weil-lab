@@ -1,0 +1,78 @@
+{
+  "schema": "NF652-retained-endpoint-prefix-audit-v1",
+  "archive_sha256": {
+    "nf642-endpoint-pilots": "2e2a06aae3ff1bd85e86cc746274101b4aa11ed40789cb231491414e39d99c08",
+    "nf635-endpoints": "2b0e45897c28a1ed8d671b2958c8a51646e818e742ecbcf4ed6fcf02f31ed363",
+    "nf632-pi": "d1769ab74275cc9c57452d3aa5ad3a30109efc500f7834ee392ed668612d9a37"
+  },
+  "listed_file_hashes": 287,
+  "slot_schedule": 1281,
+  "pi_literals_match": true,
+  "seed_checks": 7,
+  "retained_prefix_transitions_pass": 266,
+  "terminal_endpoint_matches": 7,
+  "one_unit_radius_mutations_rejected": 266,
+  "records": [
+    {
+      "module": "Real0000",
+      "parameter": "-1",
+      "index": 0,
+      "segments": 38,
+      "status": "PASS"
+    },
+    {
+      "module": "Real0001",
+      "parameter": "-1/2",
+      "index": 1,
+      "segments": 38,
+      "status": "PASS"
+    },
+    {
+      "module": "Real0002",
+      "parameter": "0",
+      "index": 2,
+      "segments": 38,
+      "status": "PASS"
+    },
+    {
+      "module": "Real0003",
+      "parameter": "1/2",
+      "index": 3,
+      "segments": 38,
+      "status": "PASS"
+    },
+    {
+      "module": "Real0004",
+      "parameter": "1",
+      "index": 4,
+      "segments": 38,
+      "status": "PASS"
+    },
+    {
+      "module": "Phase0000",
+      "parameter": "-1/2",
+      "index": 0,
+      "segments": 38,
+      "status": "PASS"
+    },
+    {
+      "module": "Phase0986",
+      "parameter": "87/320",
+      "index": 986,
+      "segments": 38,
+      "status": "PASS"
+    }
+  ],
+  "scope": "actual retained artifact equality and independent exact arithmetic; no Lean execution",
+  "metadata_preflight": {
+    "artifact_id": 14466686650,
+    "archive_sha256": "cd18543559e6ddacbd5439c3c15dd4c96698fae11903d8af794efce52e5ffbaa",
+    "keys": 7835,
+    "rows": 37994,
+    "source_shards_checked": 8,
+    "parts": 62,
+    "last_part": 27,
+    "ordered_shapes_preserved": true,
+    "scope": "local equivalent rechunk helper test, not Lean elaboration or complete metadata-only retry CLI execution"
+  }
+}
