@@ -1,0 +1,78 @@
+name: NF641 triangular original center custody
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularCenters.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalIntegerPayments.lean"
+      - "scripts/verify_nf641_triangular_centers.py"
+      - ".github/workflows/nf641-original-triangular-centers.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf641-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  focused:
+    strategy:
+      fail-fast: false
+      matrix:
+        module: [ActualZetaOriginalPhysicalTriangularCenters, ActualZetaOriginalPhysicalIntegerPayments]
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.${{ matrix.module }}
+      - if: matrix.module == 'ActualZetaOriginalPhysicalTriangularCenters'
+        run: |
+          cat >/tmp/nf641Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalTriangularCenters
+          #print axioms WeilDefect.neutralNF641GramInt_symm
+          #print axioms WeilDefect.neutralNF641A_of_triangle
+          #print axioms WeilDefect.neutralNF641Cache_of_triangle
+          EOF
+          lake env lean /tmp/nf641Audit.lean
+  exact-triangular-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install python-flint==0.8.0
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf623-historical-frame
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf631-reference-widened-entries
+          run-id: 44359078922
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf631-reference-widened-payments
+          run-id: 44359078922
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf631-reference-center-cache
+          run-id: 44359078922
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - run: |
+          python -m py_compile scripts/verify_nf641_triangular_centers.py
+          python scripts/verify_nf641_triangular_centers.py --root . --historical nf623-historical-entries.jsonl.gz --entries nf631-widened-entries.jsonl.gz --payments nf631-widened-payments.json --cache nf631-center-cache.jsonl.gz --output nf641-triangular-replay.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf641-original-triangular-replay
+          path: nf641-triangular-replay.json
+          if-no-files-found: error
