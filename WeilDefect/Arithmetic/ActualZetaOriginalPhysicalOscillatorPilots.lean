@@ -33,10 +33,8 @@ theorem neutralNF618AtanFee (p : ℕ) (hp : 0<p)
 theorem neutralNF618Pi_sound : neutralNF618Pi.Contains Real.pi := by
   apply neutralNF592PiBall_sound _ _ neutralNF618Q_pos
   · change (1/5:ℝ)^(2*48+1)/(2*(48:ℝ)+1) ≤ _
-    change (1/5:ℝ)^97/97 ≤ 1/(neutralNF618Q:ℝ)
     norm_num [neutralNF618Q]
   · change (1/239:ℝ)^(2*48+1)/(2*(48:ℝ)+1) ≤ _
-    change (1/239:ℝ)^97/97 ≤ 1/(neutralNF618Q:ℝ)
     norm_num [neutralNF618Q]
 
 def neutralNF618Osc : NF616Frequency := ⟨0,37/32⟩
