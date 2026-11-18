@@ -4,6 +4,7 @@ on:
     paths:
       - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalFastMomentTable.lean"
       - "scripts/verify_nf620_physical_key_tables.py"
+      - "scripts/verify_nf622_physical_entry_reassembly.py"
       - "scripts/emit_nf621_high_precision_lean_trial.py"
       - "scripts/audit_nf621_physical_shard_coverage.py"
       - ".github/workflows/nf621-original-complete-moment-schedule.yml"
@@ -56,6 +57,29 @@ jobs:
         with:
           name: nf621-complete-schedule-coverage
           path: nf621-coverage.json
+          if-no-files-found: error
+  entry-assembly:
+    needs: coverage
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf621-shard-*
+          path: receipts
+      - name: Complete literal H and V assembly from exact moment receipts
+        run: |
+          python -m py_compile scripts/verify_nf622_physical_entry_reassembly.py
+          python scripts/verify_nf622_physical_entry_reassembly.py --root . --pilot
+          python scripts/verify_nf622_physical_entry_reassembly.py --root . --shards receipts --output nf622-physical-entries.jsonl.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf622-original-physical-entries
+          path: nf622-physical-entries.jsonl.gz
           if-no-files-found: error
   kernel-trial:
     runs-on: ubuntu-latest
