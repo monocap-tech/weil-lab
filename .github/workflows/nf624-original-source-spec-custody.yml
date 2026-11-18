@@ -1,0 +1,59 @@
+name: NF624 original source spec and moment bank custody
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalEntryAssembly.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalSourceSpecs.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalMomentBank.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalCoverageGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalBankIndex.lean"
+      - "scripts/audit_nf624_source_pair_coverage.py"
+      - ".github/workflows/nf624-original-source-spec-custody.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf624-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: |
+          python -m py_compile scripts/audit_nf624_source_pair_coverage.py
+          python scripts/audit_nf624_source_pair_coverage.py --root . --output nf624-key-metadata.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf624-original-key-metadata
+          path: nf624-key-metadata.json
+          if-no-files-found: error
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Compile literal source dictionary and checked bank lookup
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalBankIndex
+      - name: Audit source, coverage and genuine entry attachment
+        run: |
+          cat > /tmp/nf624Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalBankIndex
+          #print axioms WeilDefect.neutralNF624SelectedSpec_term
+          #print axioms WeilDefect.neutralNF624CriticalSpec_term
+          #print axioms WeilDefect.neutralNF624Lookup_sound
+          #print axioms WeilDefect.neutralNF624Index_coverage
+          #print axioms WeilDefect.neutralNF624H_of_bank
+          #print axioms WeilDefect.neutralNF624V_of_bank
+          EOF
+          lake env lean /tmp/nf624Audit.lean
