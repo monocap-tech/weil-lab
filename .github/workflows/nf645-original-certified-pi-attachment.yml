@@ -1,0 +1,67 @@
+name: NF645 certified original pi attachment and exact zero slot
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalCertifiedPiZeroSlot.lean"
+      - "scripts/emit_nf645_certified_pi_zero_slot.py"
+      - ".github/workflows/nf645-original-certified-pi-attachment.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf645-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  attach-pi-and-zero:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf632-full-pi-proposals
+          run-id: 44359888464
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: WeilDefect/Generated/NF632
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf635-original-complete-endpoint-proposals
+          run-id: 44364429357
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: WeilDefect/Generated/NF635
+      - name: Validate original certified pi and retained zero slot proposals
+        run: |
+          python -m py_compile scripts/emit_nf645_certified_pi_zero_slot.py
+          python scripts/emit_nf645_certified_pi_zero_slot.py --bank WeilDefect/Generated/NF635 --pi WeilDefect/Generated/NF632 --output WeilDefect/Generated/NF645
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf645-original-pi-zero-attachment-proposals
+          path: WeilDefect/Generated/NF645/
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Attach accepted complete pi proof to actual retained bank
+        timeout-minutes: 40
+        run: lake build WeilDefect.Generated.NF645.PiAttach
+      - name: Independent zero-slot proof and attachment
+        timeout-minutes: 12
+        run: lake build WeilDefect.Generated.NF645.ZeroAttach
+      - name: Final axiom audit
+        run: |
+          cat >/tmp/nf645Audit.lean <<'EOF'
+          import WeilDefect.Generated.NF645.PiAttach
+          import WeilDefect.Generated.NF645.ZeroAttach
+          #print axioms WeilDefect.nf645BankPiEq
+          #print axioms WeilDefect.nf645BankPiSound
+          #print axioms WeilDefect.nf645ZeroAttached
+          EOF
+          lake env lean /tmp/nf645Audit.lean
