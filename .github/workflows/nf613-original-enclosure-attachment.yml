@@ -1,0 +1,51 @@
+name: NF613 original physical enclosure attachment
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalEnclosurePropagation.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalEntryAttachment.lean"
+      - "scripts/verify_nf606_original_residual_custody.py"
+      - ".github/workflows/nf613-original-enclosure-attachment.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf613-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  attachment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Real entry error propagation and residual payments
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalEnclosurePropagation
+      - name: Intrinsic physical solution from the literal entry bounds
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalEntryAttachment
+  entry-receipt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconstruct exact historical frame and export all entry balls
+        run: |
+          pip install --only-binary=:all: python-flint==0.8.0
+          python -m py_compile scripts/verify_nf606_original_residual_custody.py
+          python -u scripts/verify_nf606_original_residual_custody.py --bits 8192 --output nf613-residual.json --entry-receipt nf613-entries.jsonl.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf613-original-physical-entry-balls
+          path: |
+            nf613-residual.json
+            nf613-entries.jsonl.gz
+          if-no-files-found: error
