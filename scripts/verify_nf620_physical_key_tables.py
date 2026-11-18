@@ -44,9 +44,11 @@ def atan(p):
     return b[0],b[1]+1
 @lru_cache(maxsize=1)
 def pi(): return add(mul(exact(16),atan(5)),neg(mul(exact(4),atan(239)))
-@lru_cache(maxsize=16000)
-def phase(f):
-    u=f*F(11,10); u-= (u+F(1,2))//1
+def reduced(f):
+    u=f*F(11,10); return u-(u+F(1,2))//1
+def phase(f): return phase_reduced(reduced(f))
+@lru_cache(maxsize=1280)
+def phase_reduced(u):
     a=small((ZERO,mul(pi(),exact(u/2))))
     b=zmul(a,a); return zmul(b,b)
 @lru_cache(maxsize=5)
@@ -77,6 +79,9 @@ def inventory(root):
     assert sum(n+1 for n in raw.values())==76015
     assert sum(n+1 for n in keys.values())==38021
     print('source schedule:',len(raw),'signed keys,',len(keys),'canonical keys,',sum(n+1 for n in keys.values()),'rows',flush=True)
+    phases={reduced(f) for h,f in raw}
+    assert len(phases)==1276
+    print('distinct reduced phases:',len(phases),flush=True)
     return keys
 
 def table(h,f,K):
@@ -98,12 +103,16 @@ def table(h,f,K):
     return rows
 
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument('--root',type=Path); ap.add_argument('--output',type=Path); args=ap.parse_args()
+    ap=argparse.ArgumentParser(); ap.add_argument('--root',type=Path); ap.add_argument('--output',type=Path); ap.add_argument('--shard',help='index/count of complete canonical nonzero key inventory'); args=ap.parse_args()
     assert 2*Q<=factorial(N) and all(Q<=p**(2*M+1)*(2*M+1) for p in (5,239))
     cases=[(F(0),F(37,32),26),(F(1,2),F(37,64),13),(F(0),F(7,704),3)]
     if args.root:
         keys=inventory(args.root)
         assert all(keys[(h,f)]==n for h,f,n in cases)
+    if args.shard:
+        assert args.root and args.output
+        i,k=map(int,args.shard.split('/')); assert 0<=i<k
+        cases=sorted((h,f,n) for (h,f),n in keys.items() if h or f)[i::k]
     data=[]; t=time.monotonic()
     for h,f,n in cases:
         rows=table(h,f,n); maxR=max(r for _,_,r in rows)
