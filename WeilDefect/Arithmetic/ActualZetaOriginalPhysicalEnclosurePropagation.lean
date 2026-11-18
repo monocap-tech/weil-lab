@@ -64,7 +64,7 @@ theorem neutralNF613RHS_enclosure (D : Fin 242 → Fin 242 → ℝ)
 above: a tighter source-native enclosure of A may also be used. -/
 theorem neutralNF613Rows_of_enclosures (D A0 EA : Fin 242 → Fin 242 → ℝ)
     (hA : ∀ i j, |neutralNF606TransformedH D i j-A0 i j| ≤ EA i j)
-    (hcheck : ∀ i, (∑ j, |neutralNF606Defect A0 i j| +EA i j) ≤ 1/100)
+    (hcheck : ∀ i, (∑ j, (|neutralNF606Defect A0 i j| + EA i j)) ≤ 1/100)
     (i : Fin 242) :
     (∑ j, |neutralNF606Defect (neutralNF606TransformedH D) i j|) ≤ 1/100 := by
   apply le_trans _ (hcheck i)
@@ -104,8 +104,9 @@ theorem neutralNF613Residual_of_enclosures (D A0 EA : Fin 242 → Fin 242 → �
         (neutralNF606Apply (neutralNF606TransformedH D) y0 i-
           neutralNF606Apply A0 y0 i) := by ring
   rw [he]
-  apply (show |(_ : ℝ)-_| ≤ |_|+|_| from by
-    simpa only [sub_eq_add_neg,abs_neg] using abs_add_le _ (-_)).trans
+  have hab (x y : ℝ) : |x-y| ≤ |x| + |y| := by
+    simpa only [sub_eq_add_neg,abs_neg] using abs_add_le x (-y)
+  apply (hab _ _).trans
   exact (add_le_add ((abs_add_le _ _).trans (add_le_add le_rfl (hb i))) hdiff).trans (hcheck i)
 
 end
