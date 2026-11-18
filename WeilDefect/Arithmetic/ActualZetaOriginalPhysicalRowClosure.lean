@@ -13,7 +13,7 @@ def neutralNF629CacheRow (c : NF626CenterCache) (s : NF626ScaledInputs)
   ((List.finRange 242).all (c.AGate s i) && c.vectorGate s i)
 
 def neutralNF629Parameters (s : NF626ScaledInputs) : Bool :=
-  decide (0<s.S ∧ 0<s.Q ∧ 0<s.T ∧ 0<s.U ∧ 0≤s.r ∧ 0≤s.eH ∧ 0≤s.eV)
+  decide (0 < s.S ∧ 0 < s.Q ∧ 0 < s.T ∧ 0 < s.U ∧ 0 ≤ s.r ∧ 0 ≤ s.eH ∧ 0 ≤ s.eV)
 
 theorem neutralNF629Cache_of_rows (c : NF626CenterCache) (s : NF626ScaledInputs)
     (hw : s.wCheck = true)

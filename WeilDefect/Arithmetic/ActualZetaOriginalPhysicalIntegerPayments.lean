@@ -53,8 +53,9 @@ theorem NF626ScaledInputs.wMass_eq (s : NF626ScaledInputs) (c : NF626CenterCache
 theorem NF626ScaledInputs.yMass_eq (s : NF626ScaledInputs) :
     (∑ j, |s.payment.y0 j| * s.payment.c j) =
       (s.yMass:ℚ)/((s.U:ℚ)*s.S) := by
-  simp only [NF626ScaledInputs.payment,s.col_eq,abs_div,
-    abs_of_nonneg (Nat.cast_nonneg s.U : (0:ℚ)≤s.U)]
+  simp only [s.col_eq]
+  change (∑ j, |(s.y j:ℚ)/s.U| * ((s.col j:ℚ)/s.S)) = _
+  simp only [abs_div,abs_of_nonneg (Nat.cast_nonneg s.U)]
   unfold NF626ScaledInputs.yMass
   simp_rw [← Int.cast_abs]
   exact neutralNF626ScaledDot _ _ _ _
@@ -79,7 +80,7 @@ theorem NF626CenterCache.defect_eq (c : NF626CenterCache) (s : NF626ScaledInputs
       (if i=j then (1:ℚ) else 0)-s.payment.A i j =
         (((if i=j then s.adenZ else 0)-c.A i j : ℤ):ℚ)/s.aden := by
     rw [c.A_eq s hc i j]
-    split_ifs <;> push_cast <;> rw [s.aden_cast] <;>
+    split_ifs <;> push_cast <;> simp only [s.aden_cast] <;>
       field_simp [ne_of_gt hd] <;> ring
   simp_rw [ht,abs_div,abs_of_pos hd]
   rw [← Finset.sum_div]
@@ -107,13 +108,15 @@ theorem NF626CenterCache.fastRow_eq (c : NF626CenterCache) (s : NF626ScaledInput
     c.fastRow s i = s.payment.row i := by
   unfold NF626CenterCache.fastRow NF625PaymentData.row
   rw [c.defect_eq s hd hc i,s.total_eq,s.col_eq]
+  rfl
 
 theorem NF626CenterCache.fastResidual_eq (c : NF626CenterCache) (s : NF626ScaledInputs)
     (hc : c.Valid s) (i : Fin 242) :
     c.fastResidual s i = s.payment.residual i := by
   unfold NF626CenterCache.fastResidual NF625PaymentData.residual
   rw [c.b_eq s hc i,c.Ay_eq s hc i,s.wMass_eq c hc,s.yMass_eq]
-  simp only [s.col_eq,NF626ScaledInputs.payment]
+  simp only [s.col_eq]
+  rfl
 
 theorem NF626CenterCache.fastPayment_eq (c : NF626CenterCache) (s : NF626ScaledInputs)
     (hc : c.Valid s) (i : Fin 242) :
@@ -128,7 +131,7 @@ def NF626CenterCache.fastPayGate (c : NF626CenterCache) (s : NF626ScaledInputs)
     c.fastPayment s i ≤ neutralNF625Rad i)
 
 def NF626CenterCache.fastPayCheck (c : NF626CenterCache) (s : NF626ScaledInputs) : Bool :=
-  decide (0<s.S ∧ 0<s.Q ∧ 0<s.T ∧ 0<s.U ∧ 0≤s.r ∧ 0≤s.eH ∧ 0≤s.eV) &&
+  decide (0<s.S ∧ 0<s.Q ∧ 0<s.T ∧ 0<s.U ∧ 0 ≤ s.r ∧ 0 ≤ s.eH ∧ 0 ≤ s.eV) &&
     (List.finRange 242).all (c.fastPayGate s)
 
 theorem NF626CenterCache.payment_of_fast (c : NF626CenterCache)
@@ -136,7 +139,7 @@ theorem NF626CenterCache.payment_of_fast (c : NF626CenterCache)
     (hp : c.fastPayCheck s = true) : s.payment.check = true := by
   unfold NF626CenterCache.fastPayCheck at hp
   simp only [Bool.and_eq_true] at hp
-  have hpar : 0<s.S ∧ 0<s.Q ∧ 0<s.T ∧ 0<s.U ∧ 0≤s.r ∧ 0≤s.eH ∧ 0≤s.eV :=
+  have hpar : 0<s.S ∧ 0<s.Q ∧ 0<s.T ∧ 0<s.U ∧ 0 ≤ s.r ∧ 0 ≤ s.eH ∧ 0 ≤ s.eV :=
     of_decide_eq_true hp.1
   have hs : (0:ℚ)<s.S := by exact_mod_cast hpar.1
   have hq : (0:ℚ)<s.Q := by exact_mod_cast hpar.2.1
