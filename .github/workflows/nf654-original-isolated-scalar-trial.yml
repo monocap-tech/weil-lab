@@ -1,0 +1,91 @@
+name: NF654 isolated exact widened scalar gates
+on:
+  push:
+    branches: ["research/nf654-original-isolated-scalar-trial"]
+    paths:
+      - ".github/workflows/nf654-original-isolated-scalar-trial.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf654-scalar-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  scalar-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf639-original-widened-scalar-proposals
+          run-id: 44388921830
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: inputs/scalar
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf631-reference-widened-payments
+          run-id: 44359078922
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: inputs/payments
+      - name: Replay actual fees and preserve every literal row byte
+        run: |
+          python -m py_compile scripts/prepare_nf654_isolated_scalar_trial.py
+          python scripts/prepare_nf654_isolated_scalar_trial.py --root . --proposals inputs/scalar --payments inputs/payments/nf631-widened-payments.json --output WeilDefect/Generated/NF639
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf654-isolated-scalar-preflight
+          path: WeilDefect/Generated/NF639/nf654-preflight.json
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Independent scalar core and first, tightest, final actual rows
+        timeout-minutes: 12
+        run: |
+          set -o pipefail
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalScalarPaymentCore WeilDefect.Generated.NF639.Row000 WeilDefect.Generated.NF639.Row087 WeilDefect.Generated.NF639.Row241 | tee nf654-pilot.log
+      - name: Remaining actual row gates in bounded batches
+        timeout-minutes: 30
+        run: |
+          set -o pipefail
+          for start in $(seq 0 8 240); do
+            targets=()
+            for ((i=start;i<start+8 && i<242;i++)); do
+              if [[ "$i" == 0 || "$i" == 87 || "$i" == 241 ]]; then continue; fi
+              printf -v row '%03d' "$i"
+              targets+=("WeilDefect.Generated.NF639.Row$row")
+            done
+            lake build "${targets[@]}" | tee -a nf654-remaining.log
+          done
+      - name: Audit all 242 literal gate theorem axioms
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          logs=Path('nf654-pilot.log').read_text()+Path('nf654-remaining.log').read_text()
+          rows={}
+          for i,axioms in re.findall(r"'WeilDefect\.nf639Row(\d{3})Check' depends on axioms: \[([^\]]*)\]",logs):
+              assert set(x.strip() for x in axioms.split(',') if x.strip()) <= {'propext','Classical.choice','Quot.sound'}
+              rows[int(i)]=axioms
+          for i in re.findall(r"'WeilDefect\.nf639Row(\d{3})Check' does not depend on any axioms",logs):
+              rows[int(i)]=''
+          assert set(rows)==set(range(242)),f'incomplete audit: {len(rows)}'
+          print('NF654 all 242 isolated literal scalar gates and standard axiom audits PASS; cache validity/entry custody not asserted')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf654-isolated-scalar-kernel-logs
+          path: |
+            nf654-pilot.log
+            nf654-remaining.log
+          if-no-files-found: ignore
