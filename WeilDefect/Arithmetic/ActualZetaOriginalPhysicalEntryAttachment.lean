@@ -13,13 +13,13 @@ theorem neutralNF613OriginalPhysicalSolve_of_entries
     (y0 : Fin 242 → ℝ) (r : ℝ) (hr : 0≤r)
     (hH : ∀ k l, |neutralNF606PhysicalH k l-H0 k l| ≤ EH k l)
     (hV : ∀ k j, |neutralNF606PhysicalV k j-V0 k j| ≤ EV k j)
-    (hrow : ∀ i, (∑ j, |neutralNF606Defect (neutralNF613GramCenter D H0) i j|+
+    (hrow : ∀ i, (∑ j, |neutralNF606Defect (neutralNF613GramCenter D H0) i j| +
       neutralNF613GramRadius D EH i j) ≤ 1/100)
     (hres : ∀ i, |neutralNF613RHSCenter D V0 i-
-      neutralNF606Apply (neutralNF613GramCenter D H0) y0 i|+
+      neutralNF606Apply (neutralNF613GramCenter D H0) y0 i| +
       neutralNF613RHSRadius D EV i+
-        (∑ j, |y0 j|*neutralNF613GramRadius D EH i j) ≤ r)
-    (hpay : ∀ i, |neutralNF606Apply D y0 i-neutralNF587SelectedMid i|+
+        (∑ j, |y0 j| *neutralNF613GramRadius D EH i j) ≤ r)
+    (hpay : ∀ i, |neutralNF606Apply D y0 i-neutralNF587SelectedMid i| +
       (∑ j, |D i j|)*(2*r) ≤ neutralNF587SelectedRadius i) :
     ∃! a : Fin 242 → ℝ,
       neutralNF606Apply neutralNF606PhysicalH a = neutralNF612RHS ∧
