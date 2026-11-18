@@ -136,7 +136,8 @@ theorem NF626CenterCache.Ay_eq (c : NF626CenterCache) (s : NF626ScaledInputs)
     (hc : c.Valid s) (i : Fin 242) :
     (∑ j, s.payment.A i j * s.payment.y0 j) =
       (c.Ay i:ℚ)/(s.aden*s.U) := by
-  simp only [c.A_eq s hc,NF626ScaledInputs.payment]
+  change (∑ j, s.payment.A i j * ((s.y j:ℚ)/s.U)) = _
+  simp only [c.A_eq s hc]
   rw [neutralNF626ScaledDot,← (hc.2.2.2 i).2.2.1]
 
 theorem NF626CenterCache.Dy_eq (c : NF626CenterCache) (s : NF626ScaledInputs)
