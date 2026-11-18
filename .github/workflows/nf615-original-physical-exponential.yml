@@ -1,0 +1,39 @@
+name: NF615 original physical exponential receipts
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalBoundaryReceipts.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalResidualReceipts.lean"
+      - ".github/workflows/nf615-original-physical-exponential.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf615-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  receipts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Actual exponential boundary rectangles
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalBoundaryReceipts
+      - name: Rational base and successor recurrence residual gates
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalResidualReceipts
+      - name: Axiom audit
+        run: |
+          cat > /tmp/nf615Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalResidualReceipts
+          #print axioms WeilDefect.neutralNF615BoundaryRect_sound
+          #print axioms WeilDefect.neutralNF615Moment_zero_of_rect
+          #print axioms WeilDefect.neutralNF615Moment_succ_of_rect
+          EOF
+          lake env lean /tmp/nf615Audit.lean
