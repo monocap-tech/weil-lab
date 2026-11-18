@@ -1,0 +1,80 @@
+name: NF626 original integer center cache
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalInteger*.lean"
+      - "scripts/verify_nf623_uniform_physical_payments.py"
+      - "scripts/test_nf623_uniform_physical_payments.py"
+      - ".github/workflows/nf626-original-integer-centers.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf626-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: |
+          python -m py_compile scripts/verify_nf623_uniform_physical_payments.py scripts/test_nf623_uniform_physical_payments.py
+          python scripts/test_nf623_uniform_physical_payments.py
+  baseline-cache:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --only-binary=:all: python-flint==0.8.0
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf623-historical-frame
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Recheck actual historical input using HD-first integer association
+        run: python scripts/verify_nf623_uniform_physical_payments.py --root . --historical nf623-historical-entries.jsonl.gz --output nf626-baseline-payments.json --center-cache nf626-baseline-centers.jsonl.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf626-integer-center-cache-baseline
+          path: |
+            nf626-baseline-payments.json
+            nf626-baseline-centers.jsonl.gz
+          if-no-files-found: error
+  focused:
+    strategy:
+      fail-fast: false
+      matrix:
+        module:
+          - ActualZetaOriginalPhysicalIntegerCenters
+          - ActualZetaOriginalPhysicalIntegerPayments
+          - ActualZetaOriginalPhysicalIntegerClosure
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.${{ matrix.module }}
+      - name: Audit integer closure dependency
+        if: matrix.module == 'ActualZetaOriginalPhysicalIntegerClosure'
+        run: |
+          cat > /tmp/nf626Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalIntegerClosure
+          #print axioms WeilDefect.neutralNF626ScaledDot
+          #print axioms WeilDefect.NF626CenterCache.check_sound
+          #print axioms WeilDefect.NF626CenterCache.payment_of_fast
+          #print axioms WeilDefect.neutralNF626OriginalPhysical_of_fast_checks
+          EOF
+          lake env lean /tmp/nf626Audit.lean
