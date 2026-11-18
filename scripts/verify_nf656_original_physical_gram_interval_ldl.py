@@ -78,8 +78,8 @@ def inverse_lower_frob_bound(L):
             for k in range(j, i):
                 v = add(v, mul(L[i][k], K[k][j]))
             K[i][j] = neg(v)
-    return sum(max(abs(K[i][j][0]), abs(K[i][j][1])) ** 2
-               for i in range(n) for j in range(i + 1))
+    return (sum(max(abs(K[i][j][0]), abs(K[i][j][1])) ** 2
+                for i in range(n) for j in range(i + 1)), K)
 
 def source_matrix(entries, summary):
     meta = json.loads(summary.read_text())
@@ -139,6 +139,7 @@ def main():
     p.add_argument('--summary', type=Path)
     p.add_argument('--output', type=Path)
     p.add_argument('--self-test', action='store_true')
+    p.add_argument('--witness', type=Path, help='write the complete exact integer witness')
     a = p.parse_args()
     if a.self_test:
         self_test()
@@ -146,7 +147,7 @@ def main():
     assert a.entries and a.summary and a.output
     A, originals, manifest = source_matrix(a.entries, a.summary)
     pivots, L = interval_ldl(A)
-    kfrob2 = inverse_lower_frob_bound(L)
+    kfrob2, K = inverse_lower_frob_bound(L)
     smallest = min(d[0] for d in pivots)
     # For every x: x^T H x >= dmin / ||L^{-1}||_F^2 * ||x||^2.
     # Since D lower endpoints have denominator S and the squared norm
@@ -192,6 +193,29 @@ def main():
         'scope': 'exact external integer proof search; no new Lean acceptance',
     }
     assert len(pivots) == 15 and all(d[0] > 0 for d in pivots)
+    if a.witness is not None:
+        def encode(rows):
+            return [[None if x is None else list(map(str, x)) for x in row]
+                    for row in rows]
+        witness = {
+            'schema': 'NF657-original-physical-15-source-interval-LDL-witness-v1',
+            'index': INDICES,
+            'source_sha256': {
+                'archive': 'e91a83cae117e98608aefa6849dac178e4ddb58dd1dffbfe37304ad248af9ed9',
+                'entries': manifest['widened_entry_sha256'],
+                'original_entries': manifest['original_entry_sha256'],
+            },
+            'S': '10^160', 'Q': '10^2600',
+            'A': encode(A), 'L': encode(L), 'K': encode(K),
+            'D': [list(map(str, d)) for d in pivots],
+            'K_frob_sq_bound_scaled': str(kfrob2),
+            'minimum_d_lower_scaled': str(smallest),
+            'coercivity_integer_margin': str(smallest * S * 10**60 - kfrob2),
+            'coercivity_bound': '1/10^60',
+            'scope': 'external arithmetic witness; actual H inclusion and Lean positivity open',
+        }
+        a.witness.parent.mkdir(parents=True, exist_ok=True)
+        a.witness.write_text(json.dumps(witness, indent=2) + '\n')
     a.output.parent.mkdir(parents=True, exist_ok=True)
     a.output.write_text(json.dumps(report, indent=2) + '\n')
     print("NF656 all 15 rigorously outward-rounded positive LDL pivots PASS")
