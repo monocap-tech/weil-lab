@@ -1,0 +1,89 @@
+name: NF629 original triangular row gates
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularEntries.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalRowClosure.lean"
+      - "scripts/emit_nf629_original_entry_row_pilot.py"
+      - ".github/workflows/nf629-original-triangular-row-gates.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf629-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  focused:
+    strategy:
+      fail-fast: false
+      matrix:
+        module: [ActualZetaOriginalPhysicalTriangularEntries, ActualZetaOriginalPhysicalRowClosure]
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.${{ matrix.module }}
+      - if: matrix.module == 'ActualZetaOriginalPhysicalRowClosure'
+        run: |
+          cat >/tmp/nf629Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalRowClosure
+          #print axioms WeilDefect.neutralNF629EntryRows_sound
+          #print axioms WeilDefect.neutralNF629Cache_of_rows
+          #print axioms WeilDefect.neutralNF629Payments_of_rows
+          #print axioms WeilDefect.neutralNF629OriginalPhysical_of_rows
+          EOF
+          lake env lean /tmp/nf629Audit.lean
+  actual-first-row:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf621-shard-*
+          path: receipts
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf621-complete-schedule-coverage
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate actual row-zero pilot and bind audited inputs
+        run: |
+          python -m py_compile scripts/emit_nf629_original_entry_row_pilot.py
+          python scripts/emit_nf629_original_entry_row_pilot.py --root . --shards receipts --output WeilDefect/Generated/NF627
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=json.loads(Path('WeilDefect/Generated/NF627/entry-row-pilot.json').read_text())
+          c=json.loads(Path('nf621-coverage.json').read_text())
+          assert p['input_sha256']=={s['file']:s['sha256'] for s in c['shards']}
+          assert len(p['checked_entries'])==5
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf629-original-first-entry-row-proposal
+          path: WeilDefect/Generated/NF627/
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Bounded actual source-row lookup and widening check
+        timeout-minutes: 20
+        run: lake build WeilDefect.Generated.NF627.EntryRowPilot
