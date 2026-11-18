@@ -15,12 +15,14 @@ theorem neutralNF619J_neg (z : ℂ) :
     neutralNF619J (-z) = neutralNF619J z := by
   by_cases hz : z=0
   · simp [hz]
-  · have hp := neutralNF606ExpMoment_zero_degree (-(11/10:ℝ)) (11/10:ℝ) z
-    have hm := neutralNF606ExpMoment_zero_degree (-(11/10:ℝ)) (11/10:ℝ) (-z)
-    change z*neutralNF619J z =
-      Complex.exp (z*(11/10:ℂ))-Complex.exp (z*(-(11/10:ℂ))) at hp
-    change (-z)*neutralNF619J (-z) =
-      Complex.exp ((-z)*(11/10:ℂ))-Complex.exp ((-z)*(-(11/10:ℂ))) at hm
+  · have hp : z*neutralNF619J z =
+      Complex.exp (z*(11/10:ℂ))-Complex.exp (z*(-(11/10:ℂ))) := by
+      simpa [neutralNF619J] using
+        neutralNF606ExpMoment_zero_degree (-(11/10:ℝ)) (11/10:ℝ) z
+    have hm : (-z)*neutralNF619J (-z) =
+      Complex.exp ((-z)*(11/10:ℂ))-Complex.exp ((-z)*(-(11/10:ℂ))) := by
+      simpa [neutralNF619J] using
+        neutralNF606ExpMoment_zero_degree (-(11/10:ℝ)) (11/10:ℝ) (-z)
     rw [show (-z)*(11/10:ℂ) = z*(-(11/10:ℂ)) by ring,
       show (-z)*(-(11/10:ℂ)) = z*(11/10:ℂ) by ring] at hm
     have he : z*(neutralNF619J (-z)-neutralNF619J z)=0 := by
@@ -29,7 +31,7 @@ theorem neutralNF619J_neg (z : ℂ) :
 
 theorem neutralNF619J_zero : neutralNF619J 0 = (11/5:ℂ) := by
   have h := neutralNF606ExpMoment_zero_frequency (-(11/10:ℝ)) (11/10:ℝ) 0
-  simpa [neutralNF619J] using h
+  norm_num [neutralNF619J] at h ⊢ <;> assumption
 
 def neutralNF619W : ℂ := 2*(Real.pi:ℂ)*(37/64)
 def neutralNF619Z : ℂ := Complex.I*neutralNF619W
