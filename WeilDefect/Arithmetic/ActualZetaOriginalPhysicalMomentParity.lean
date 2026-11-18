@@ -25,7 +25,7 @@ theorem neutralNF620J_neg (z : ℂ) (n : ℕ) :
       (-1:ℂ)^(n+1)*(11/10:ℂ)^(n+1) by
         rw [← mul_pow]; ring, pow_succ]
     field_simp
-    linear_combination ((11/10:ℂ)^(n+1))*hs
+    linear_combination -((11/10:ℂ)^(n+1))*hs
   · induction n with
     | zero =>
       have hp : z*neutralNF620J z 0 =
