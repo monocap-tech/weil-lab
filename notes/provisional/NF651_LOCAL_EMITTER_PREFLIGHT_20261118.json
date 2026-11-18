@@ -1,0 +1,27 @@
+{
+  "648": {
+    "manifest_sha256": "4a763b427c6a8291a8c0899e63134ebeb843f65a37988db2460206f7aaaf2637",
+    "modules": 74,
+    "kernel_checks": 461,
+    "prefix_extensions": 380,
+    "containment_theorems": 0,
+    "moment_theorems": 4
+  },
+  "649": {
+    "manifest_sha256": "c0ea63e50cb30380fb755f60a9b5d442e557f8e9f766cb53f8d3575f8a539364",
+    "modules": 17,
+    "kernel_checks": 240,
+    "prefix_extensions": 0,
+    "containment_theorems": 120,
+    "moment_theorems": 0
+  },
+  "actual_moment_literal_rows": 56,
+  "actual_widened_entry_literals": 120,
+  "additional_archive_digests_verified": 6,
+  "all_eight_inner_shard_hashes_verified": true,
+  "source_emitter_git_blobs": {
+    "NF648": "28c518b39e2d8307057760c76f4038eb519856ff",
+    "NF649": "3b301a69a2b0e9b27638e9be8fa895e0d755f00e"
+  },
+  "scope": "exact emitter files with locally copied dependency functions and source signature excerpts; actual retained artifact data; no Lean execution"
+}
