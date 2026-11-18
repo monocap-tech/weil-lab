@@ -21,7 +21,8 @@ theorem neutralNF600Correlation_eq (s : 𝓢(ℝ,ℂ))
   unfold neutralWindowCorrelation
   apply integral_congr_ae
   filter_upwards [h,ht] with x hx hxt
-  simpa only [Function.comp_apply,hx,hxt]
+  change neutralWindowRepresentative (11/10:ℝ) (s.toLp 2 volume) (x-t) = s (x-t) at hxt
+  rw [hx,hxt]
 
 theorem neutralNF600Correlation_prime_vanish (s : 𝓢(ℝ,ℂ))
     (hs : ∀ x, x ∉ neutralNF543OriginalCollars → s x = 0)
@@ -38,7 +39,8 @@ theorem neutralNF600Correlation_prime_vanish (s : 𝓢(ℝ,ℂ))
         intro hy
         apply neutralNF600NoPrimeOverlap n hn h9 _ _ hy hx
         rw [show x-(x-Real.log n)=Real.log n by ring,abs_of_nonneg hp]
-      simp [hs _ hy]
+      rw [hs _ hy]
+      simp
     · simp [hs _ hx]
   · rw [neutralNF600Correlation_eq s hs]
     apply integral_eq_zero_of_ae
@@ -48,7 +50,8 @@ theorem neutralNF600Correlation_prime_vanish (s : 𝓢(ℝ,ℂ))
         intro hy
         apply neutralNF600NoPrimeOverlap n hn h9 _ _ hx hy
         rw [show x-(-Real.log n)-x=Real.log n by ring,abs_of_nonneg hp]
-      simp [hs _ hy]
+      rw [hs _ hy]
+      simp
     · simp [hs _ hx]
 
 /-- General translated product estimate with disjoint source masks.
@@ -69,17 +72,25 @@ theorem neutralNF600CrossCorrelation_bound (s : 𝓢(ℝ,ℂ)) (t : ℝ)
     ((measurePreserving_sub_right volume t).integrable_comp hb.aestronglyMeasurable).mpr hb
   have hg : Integrable (fun x : ℝ => (a x + b (x-t))/2) :=
     (ha.add hbt).div_const 2
+  have ha0 (x : ℝ) : 0 ≤ a x := by
+    by_cases hx : x∈A
+    · rw [show a x=e x from Set.indicator_of_mem hx _]
+      exact sq_nonneg _
+    · rw [show a x=0 from Set.indicator_of_notMem hx _]
+  have hb0 (x : ℝ) : 0 ≤ b x := by
+    by_cases hx : x∈B
+    · rw [show b x=e x from Set.indicator_of_mem hx _]
+      exact sq_nonneg _
+    · rw [show b x=0 from Set.indicator_of_notMem hx _]
   have hpoint (x : ℝ) : ‖s x * conj (s (x-t))‖ ≤ (a x+b (x-t))/2 := by
     by_cases hx : s x=0
     · simp only [hx,zero_mul,norm_zero]
       apply div_nonneg _ (by norm_num)
-      exact add_nonneg (by dsimp [a]; split_ifs <;> positivity)
-        (by dsimp [b]; split_ifs <;> positivity)
+      exact add_nonneg (ha0 x) (hb0 (x-t))
     by_cases hy : s (x-t)=0
     · simp only [hy,map_zero,mul_zero,norm_zero]
       apply div_nonneg _ (by norm_num)
-      exact add_nonneg (by dsimp [a]; split_ifs <;> positivity)
-        (by dsimp [b]; split_ifs <;> positivity)
+      exact add_nonneg (ha0 x) (hb0 (x-t))
     obtain ⟨hxa,hxb⟩ := hcross x hx hy
     simp only [a,b,Set.indicator_of_mem hxa,Set.indicator_of_mem hxb,e,norm_mul,Complex.norm_conj]
     nlinarith only [sq_nonneg (‖s x‖-‖s (x-t)‖)]
@@ -176,6 +187,7 @@ theorem neutralNF600Prime9_coefficient :
     rw [show (9:ℕ)=3^2 by norm_num,
       ArithmeticFunction.vonMangoldt_apply_pow (by decide),
       ArithmeticFunction.vonMangoldt_apply_prime (by decide)]
+    norm_num
   have he : (3:ℝ) < Real.exp (6/5) := by
     have h := Real.sum_le_exp_of_nonneg (show (0:ℝ) ≤ 6/5 by norm_num) 5
     apply lt_of_lt_of_le _ h
