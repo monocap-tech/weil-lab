@@ -1,0 +1,52 @@
+name: NF617 original physical pole Gram pilot
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPoleGramPilot.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalMomentTable.lean"
+      - "scripts/verify_nf617_original_pole_gram_pilot.py"
+      - ".github/workflows/nf617-original-pole-gram-pilot.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf617-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  exact-replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/verify_nf617_original_pole_gram_pilot.py
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        module:
+          - ActualZetaOriginalPhysicalPoleGramPilot
+          - ActualZetaOriginalPhysicalMomentTable
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.${{ matrix.module }}
+      - name: Audit literal physical entry proof
+        if: matrix.module == 'ActualZetaOriginalPhysicalPoleGramPilot'
+        run: |
+          cat > /tmp/nf617Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalPoleGramPilot
+          #print axioms WeilDefect.neutralNF617PoleGram_exact
+          #print axioms WeilDefect.neutralNF617PoleCheck_true
+          #print axioms WeilDefect.neutralNF617PoleGram_certified
+          EOF
+          lake env lean /tmp/nf617Audit.lean
