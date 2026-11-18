@@ -1,0 +1,49 @@
+name: NF623 original uniform transformed payments
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalUniformPayments.lean"
+      - "scripts/verify_nf623_uniform_physical_payments.py"
+      - "scripts/test_nf623_uniform_physical_payments.py"
+      - ".github/workflows/nf623-original-uniform-payments.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf623-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  arithmetic-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: |
+          python -m py_compile scripts/verify_nf623_uniform_physical_payments.py scripts/test_nf623_uniform_physical_payments.py
+          python scripts/test_nf623_uniform_physical_payments.py
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalUniformPayments
+      - name: Audit uniform-reduction and concrete small-entry theorem dependencies
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramPilotReceipts
+          cat > /tmp/nf623Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalUniformPayments
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramPilotReceipts
+          #print axioms WeilDefect.neutralNF623OriginalPhysicalSolve_of_uniform_entries
+          #print axioms WeilDefect.neutralNF619OscGram_certified
+          #print axioms WeilDefect.neutralNF619MixedGram_certified
+          EOF
+          lake env lean /tmp/nf623Audit.lean
