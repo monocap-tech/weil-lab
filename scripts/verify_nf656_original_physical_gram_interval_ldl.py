@@ -52,6 +52,8 @@ def interval_ldl(a):
     assert n == N and all(len(row) == n for row in a)
     assert all(a[i][j] == a[j][i] for i in range(n) for j in range(n))
     L = [[None] * n for _ in range(n)]
+    for i in range(n):
+        L[i][i] = (S,S)
     D = []
     for k in range(n):
         v = a[k][k]
