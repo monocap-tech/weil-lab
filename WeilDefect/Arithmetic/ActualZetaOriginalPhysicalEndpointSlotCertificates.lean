@@ -33,12 +33,15 @@ theorem neutralNF642PhaseSlot (p : NF591Ball) (u : ℚ) (a b e : NF591Rect)
     (he : neutralNF633RectEq ((b.mulQ b neutralNF616Q).mulQ
       (b.mulQ b neutralNF616Q) neutralNF616Q) e=true) :
     neutralNF635PhaseRef p u=e := by
-  unfold neutralNF635PhaseRef neutralNF634PhaseReduced
-  change (let x := neutralNF593SmallExp (neutralNF642PhaseArg p u neutralNF616Q)
-    neutralNF616Q neutralNF616ExpN; let y := x.mulQ x neutralNF616Q;
-    y.mulQ y neutralNF616Q)=e
-  rw [neutralNF633RectEq_sound _ _ ha,
-      neutralNF633SmallExp_of_state a neutralNF616Q neutralNF616ExpN s b hs hb]
+  let z := neutralNF593SmallExp (neutralNF642PhaseArg p u neutralNF616Q)
+    neutralNF616Q neutralNF616ExpN
+  have hz : z = b := by
+    dsimp only [z]
+    rw [neutralNF633RectEq_sound _ _ ha]
+    exact neutralNF633SmallExp_of_state a neutralNF616Q neutralNF616ExpN s b hs hb
+  change ((z.mulQ z neutralNF616Q).mulQ
+    (z.mulQ z neutralNF616Q) neutralNF616Q) = e
+  rw [hz]
   exact neutralNF633RectEq_sound _ _ he
 
 /-- Assemble explicit slot identities into the certified indexed-bank
