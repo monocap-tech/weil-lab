@@ -100,7 +100,10 @@ theorem neutralNF612PhysicalH_bijective (D : Fin 242 → Fin 242 → ℝ)
       apply (show Function.Injective (neutralNF606Apply (neutralNF606TransformedH D)) from
         neutralNF611LinearApply_injective _ hrow)
       rw [neutralNF612Transformed_apply,neutralNF612Transformed_apply,hx,hy,h]
-    exact hx.symm.trans (hxy ▸ hy)
+    calc
+      a = neutralNF606Apply D x := hx.symm
+      _ = neutralNF606Apply D y := congrArg (neutralNF606Apply D) hxy
+      _ = b := hy
   exact ⟨hi,(neutralNF612Injective_iff_surjective _).mp hi⟩
 
 theorem neutralNF612OriginalPhysicalSolve (D : Fin 242 → Fin 242 → ℝ)
