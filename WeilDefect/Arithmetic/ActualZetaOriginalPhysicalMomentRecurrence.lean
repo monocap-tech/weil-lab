@@ -21,7 +21,10 @@ theorem neutralNF606Exp_hasDerivAt (z : ℂ) (x : ℝ) :
       (z*Complex.exp (z*(x:ℂ))) x := by
   have hi := ((hasDerivAt_id x).ofReal_comp).const_mul z
   have h := (Complex.hasDerivAt_exp (z*(x:ℂ))).scomp x hi
-  simpa only [id_eq,Complex.ofReal_one,mul_one,Function.comp_apply,smul_eq_mul] using h
+  change HasDerivAt (fun t : ℝ => Complex.exp (z*(t:ℂ)))
+    (z*(1:ℂ)*Complex.exp (z*(x:ℂ))) x at h
+  rw [mul_one] at h
+  exact h
 
 theorem neutralNF606ExpMoment_zero_degree (a b : ℝ) (z : ℂ) :
     z*neutralNF606ExpMoment a b z 0 =
@@ -72,10 +75,11 @@ theorem neutralNF606ExpMoment_zero_frequency (a b : ℝ) (n : ℕ) :
     have hp : HasDerivAt (fun t : ℝ => (t:ℂ)^(n+1)) ((n+1:ℂ)*(x:ℂ)^n) x := by
       simpa [Nat.cast_succ] using (((hasDerivAt_id x).pow (n+1)).ofReal_comp)
     have h := hp.div_const (n+1:ℂ)
-    convert h using 1
-    simp only [Nat.cast_succ,Nat.add_sub_cancel,mul_one]
     have hn : (n+1:ℂ) ≠ 0 := by exact_mod_cast (Nat.succ_ne_zero n)
-    field_simp
+    have he : ((n+1:ℂ)*(x:ℂ)^n)/(n+1:ℂ) = (x:ℂ)^n := by
+      field_simp
+    rw [he] at h
+    exact h
   have h := intervalIntegral.integral_eq_sub_of_hasDerivAt
     (a := a) (b := b) (fun x _ => hd x)
     (show IntervalIntegrable (fun x : ℝ => (x:ℂ)^n) volume a b

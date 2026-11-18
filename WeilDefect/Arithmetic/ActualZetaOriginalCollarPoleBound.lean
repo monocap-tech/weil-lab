@@ -13,8 +13,9 @@ theorem neutralNF600Moment_bound (s : 𝓢(ℝ,ℂ))
     (t : ℝ) (ht : |t| ≤ 1/2) :
     ‖sourceWindowMoment (11/10:ℝ) t (s.toLp 2 volume)‖ ≤
       2*‖s.toLp 1 volume‖ := by
-  rw [← neutralWindowEvaluation_imaginary (11/10:ℝ) (-t)]
-  simp only [neg_neg]
+  have h := neutralWindowEvaluation_imaginary (11/10:ℝ) (-t) (s.toLp 2 volume)
+  rw [neg_neg] at h
+  rw [← h]
   rw [neutralNF573WindowEvaluation_eq_raw_of_ae _ _ _ (neutralNF573OriginalCollar_window_ae s hs)]
   unfold neutralRawTransform
   let f := fun x : ℝ => s x * Complex.exp (Complex.I*(Complex.I*((-t:ℝ):ℂ))*(x:ℂ))
@@ -62,7 +63,7 @@ theorem neutralNF600Pole_bound (s : 𝓢(ℝ,ℂ))
   let f := s.toLp 2 volume
   let m := neutralNF600Mass s
   let A := sourceWindowMoment (11/10:ℝ) (1/2) f
-  let B := sourceWindowMoment (11/10:ℝ) (-1/2) f
+  let B := sourceWindowMoment (11/10:ℝ) (-(1/2)) f
   have hA : ‖A‖ ≤ 2*‖s.toLp 1 volume‖ := neutralNF600Moment_bound s hs _ (by norm_num)
   have hB : ‖B‖ ≤ 2*‖s.toLp 1 volume‖ := neutralNF600Moment_bound s hs _ (by norm_num)
   have hL := neutralNF600L1_bound s hs
@@ -76,7 +77,8 @@ theorem neutralNF600Pole_bound (s : 𝓢(ℝ,ℂ))
     simp only [← neutralRawTransform_eq_paperFT]
     rw [show Complex.I/2=Complex.I*((1/2:ℝ):ℂ) by push_cast; ring,
       show -Complex.I/2=Complex.I*((-(1/2):ℝ):ℂ) by push_cast; ring]
-    exact neutralWindowCorrelation_poleCrossTerms (11/10:ℝ) f f
+    simpa only [f,A,B] using neutralWindowCorrelation_poleCrossTerms (11/10:ℝ)
+      (s.toLp 2 volume) (s.toLp 2 volume)
   apply (Complex.abs_re_le_norm _).trans
   rw [hp]
   calc

@@ -1,0 +1,53 @@
+name: NF608 original local sign and moment recovery
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollar*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalMomentRecurrence.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalResidualSignedMargin.lean"
+      - ".github/workflows/nf608-original-local-sign.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf608-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  conditional-sign:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        id: setup
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Strict corrected margin from certified nonvanishing and residual premises
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalResidualSignedMargin
+      - name: Literal gamma normalization independent of pole proof
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarLiteralArch
+      - name: Literal two-pole bound
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarPoleBound
+      - name: Complete local 2/5 coercivity
+        if: ${{ always() && steps.setup.outcome == 'success' }}
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalCollarCoercivity
+  physical:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          export PATH="$HOME/.elan/bin:$PATH"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          lake update
+          lake exe cache get
+      - name: Actual moment recurrence and original H,V dictionary
+        run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalMixedTerms
