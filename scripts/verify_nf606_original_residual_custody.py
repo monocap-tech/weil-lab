@@ -7,7 +7,7 @@ residual upper bounds and a row-specific frame payment. All
 inequalities are Arb-certified; the analytic input attachment to
 Lean remains open. No original frozen data changes.
 """
-import argparse, hashlib, json, time
+import argparse, gzip, hashlib, json, time
 from fractions import Fraction as F
 from pathlib import Path
 import flint
@@ -68,6 +68,7 @@ def main():
     p=argparse.ArgumentParser()
     p.add_argument("--bits",type=int,default=8192)
     p.add_argument("--output",required=True)
+    p.add_argument("--entry-receipt", help="optional gzip JSONL of exact frame and analytic/derived entry balls")
     args=p.parse_args()
     assert flint.__version__=="0.8.0" and args.bits>=8192
     start=time.monotonic()
@@ -165,6 +166,28 @@ def main():
          "all_246_residual_box_payments_pass":True,
          "evidence_kind":"Arb enclosures of real residual hypotheses; not Lean analytic attachment"}
     Path(args.output).write_text(json.dumps(out,indent=2)+"\n")
+    if args.entry_receipt:
+        # Explicit data, not a hash-only receipt. H is symmetric.
+        # Each line is one row; all numbers retain their dyadic mid/radius.
+        # A,b balls below are also provided so a checker can use tighter
+        # directly propagated enclosures if the separated-radius route fails.
+        with gzip.open(args.entry_receipt,"wt",encoding="utf-8") as f:
+            def emit(record):
+                f.write(json.dumps(record,separators=(",",":"))+"\n")
+            emit({"schema":"NF613-original-physical-entry-balls-v1",
+                  "precision_bits":args.bits,"frozen_sha256":FROZEN_SHA,
+                  "frame_sha256":FRAME_SHA,"rank_sha256":RANK_SHA,
+                  "source_sha256":PR355_SHA,"parent_sha256":NF369_SHA,
+                  "evidence_kind":"Arb only; analytic Lean containment not established",
+                  "w":[m.ball(fourth[j,0]) for j in range(4)],
+                  "r":rdyad,"y0":out["transformed_candidate"]})
+            for i in range(242):
+                emit({"row":i,"D":frame[i],
+                      "H_lower":[m.ball(H[i,j]) for j in range(i+1)],
+                      "V":[m.ball(V[i,j]) for j in range(4)],
+                      "A":[m.ball(N[i,j]) for j in range(242)],
+                      "b":m.ball(rhs[i,0])})
+        print("NF613 explicit physical entry receipt emitted",flush=True)
     print("NF606 all 242 residual row payments and 4 exact critical coordinates PASS",round(time.monotonic()-start,2),flush=True)
 
 if __name__=="__main__":

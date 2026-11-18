@@ -37,6 +37,8 @@ theorem neutralNF607SinTerm_sum (w : ℂ) (n : ℕ) (x : ℝ) :
   have h : -Complex.I*w*(x:ℂ) = -(w*(x:ℂ))*Complex.I := by ring
   have h' : Complex.I*w*(x:ℂ) = w*(x:ℂ)*Complex.I := by ring
   rw [h,h']
+  ring_nf
+  simp only [Complex.inv_I]
   ring
 
 theorem neutralNF607CosTerm_sum (w : ℂ) (n : ℕ) (x : ℝ) :
