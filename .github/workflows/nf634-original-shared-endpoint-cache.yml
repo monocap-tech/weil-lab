@@ -1,0 +1,86 @@
+name: NF634 original shared endpoint residual gates
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalSharedEndpointCache.lean"
+      - "scripts/emit_nf634_shared_endpoint_pilot.py"
+      - ".github/workflows/nf634-original-shared-endpoint-cache.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf634-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalSharedEndpointCache
+      - run: |
+          cat >/tmp/nf634Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalSharedEndpointCache
+          #print axioms WeilDefect.neutralNF634SharedCache_eq
+          #print axioms WeilDefect.neutralNF634OriginalChunk_of_shared
+          #print axioms WeilDefect.neutralNF634Bank_of_shared
+          EOF
+          lake env lean /tmp/nf634Audit.lean
+  actual-local-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf621-shard-*
+          path: receipts
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf621-complete-schedule-coverage
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Full endpoint inventory and two original first-row local gates
+        run: |
+          python -m py_compile scripts/emit_nf634_shared_endpoint_pilot.py
+          python scripts/emit_nf634_shared_endpoint_pilot.py --root . --shards receipts --output WeilDefect/Generated/NF627 --inventory nf634-inventory.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('nf634-inventory.json').read_text())
+          c=json.loads(Path('nf621-coverage.json').read_text())
+          assert m['input_sha256']=={s['file']:s['sha256'] for s in c['shards']}
+          assert len(m['reduced_phases'])==1276
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf634-original-shared-endpoint-proposals
+          path: |
+            WeilDefect/Generated/NF627/
+            nf634-inventory.json
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Isolated residual kernel gates, no transcendental recomputation
+        timeout-minutes: 15
+        run: |
+          lake build WeilDefect.Generated.NF627.SharedGate000
+          lake build WeilDefect.Generated.NF627.SharedGate001
