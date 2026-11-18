@@ -34,10 +34,10 @@ theorem neutralNF618Pi_sound : neutralNF618Pi.Contains Real.pi := by
   apply neutralNF592PiBall_sound _ _ neutralNF618Q_pos
   · change (1/5:ℝ)^(2*48+1)/(2*(48:ℝ)+1) ≤ _
     norm_num only [show (2*48+1:ℕ)=97 by decide,show (2*(48:ℝ)+1)=97 by norm_num]
-    exact neutralNF618AtanFee 5 (by decide) (by decide +kernel)
+    simpa using neutralNF618AtanFee 5 (by decide) (by decide +kernel)
   · change (1/239:ℝ)^(2*48+1)/(2*(48:ℝ)+1) ≤ _
     norm_num only [show (2*48+1:ℕ)=97 by decide,show (2*(48:ℝ)+1)=97 by norm_num]
-    exact neutralNF618AtanFee 239 (by decide) (by decide +kernel)
+    simpa using neutralNF618AtanFee 239 (by decide) (by decide +kernel)
 
 def neutralNF618Osc : NF616Frequency := ⟨0,37/32⟩
 def neutralNF618Mixed : NF616Frequency := ⟨1/2,37/64⟩
@@ -75,7 +75,7 @@ theorem neutralNF618Osc_sound (n : ℕ) (hn : n<neutralNF618OscRows.size) :
       (neutralNF617MomentRead neutralNF618OscRows n).value‖ ≤
         (neutralNF617MomentRead neutralNF618OscRows n).rad := by
   apply neutralNF618MomentRows_sound neutralNF618Pi neutralNF618Pi_sound
-    neutralNF618Osc (by decide) (by decide) neutralNF618Q neutralNF618N
+    neutralNF618Osc (by decide +kernel) (by decide +kernel) neutralNF618Q neutralNF618N
     neutralNF618Q_pos (by decide) neutralNF618ExpFee neutralNF618OscRows
   · intro m hm
     change m<2 at hm
@@ -90,7 +90,7 @@ theorem neutralNF618Mixed_sound :
       (neutralNF617MomentRead neutralNF618MixedRows 0).value‖ ≤
         (neutralNF617MomentRead neutralNF618MixedRows 0).rad := by
   apply neutralNF618MomentRows_sound neutralNF618Pi neutralNF618Pi_sound
-    neutralNF618Mixed (by decide) (by decide) neutralNF618Q neutralNF618N
+    neutralNF618Mixed (by decide +kernel) (by decide +kernel) neutralNF618Q neutralNF618N
     neutralNF618Q_pos (by decide) neutralNF618ExpFee neutralNF618MixedRows
   · intro m hm
     change m<1 at hm
