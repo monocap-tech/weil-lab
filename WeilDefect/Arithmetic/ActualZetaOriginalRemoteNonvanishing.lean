@@ -47,7 +47,9 @@ theorem neutralNF603PoleCoeff_upper (a : Fin 242 → ℝ) (b : Fin 4 → ℝ)
   have hb := (neutralNF589ScalarBounds_of_box a b hbox).2.1
   have ht (j : Fin 4) : b j * (neutralNF587CriticalPoles[j.val]! : ℝ) ≤ (10:ℝ)^137 := by
     have hh : |(neutralNF587CriticalPoles[j.val]! : ℝ)| ≤ (1/10^6:ℝ) := by
-      exact_mod_cast neutralNF603CriticalPole_small_rat j
+      have h : ((|neutralNF587CriticalPoles[j.val]!|:ℚ):ℝ) ≤
+          ((1/10^6:ℚ):ℝ) := Rat.cast_le.mpr (neutralNF603CriticalPole_small_rat j)
+      simpa only [Rat.cast_abs,Rat.cast_div,Rat.cast_one,Rat.cast_pow,Rat.cast_ofNat] using h
     calc
       _ ≤ |b j * (neutralNF587CriticalPoles[j.val]! : ℝ)| := le_abs_self _
       _ ≤ (10:ℝ)^143*(1/10^6) := by
@@ -81,7 +83,9 @@ theorem neutralNF603Source_split (a : Fin 242 → ℝ) (b : Fin 4 → ℝ) (x : 
     have hp : (∑ j : Fin 242, if j=neutralNF603PoleIndex then
         a j*nf545OriginalSelectedRealGenerator j x else 0) =
         a neutralNF603PoleIndex*Real.sinh (x/2) := by
-      simp [neutralNF603PoleIndex,nf545OriginalSelectedPole_is_sinh]
+      rw [Finset.sum_ite_eq_of_mem' _ _ _ (Finset.mem_univ _)]
+      rw [show nf545OriginalSelectedRealGenerator neutralNF603PoleIndex x =
+        Real.sinh (x/2) from nf545OriginalSelectedPole_is_sinh x]
     rw [← hp,← sum_add_distrib]
     apply sum_congr rfl
     intro j _
@@ -126,14 +130,16 @@ theorem neutralNF603OscillatorPart_bound (a : Fin 242 → ℝ) (b : Fin 4 → �
         · exact Real.abs_cos_le_one _
       simp only [if_neg hj,nf545OriginalSelectedRealGenerator,dif_pos hlt]
       change |a j * ((1000:ℝ)^(nf545OriginalOscillatorNodeAt i).2 * _)| ≤ _
-      rw [abs_mul,abs_mul,abs_of_nonneg (by positivity)]
+      rw [abs_mul,abs_mul,abs_of_nonneg (show 0 ≤ (1000:ℝ)^(nf545OriginalOscillatorNodeAt i).2 by positivity)]
       have hk' : (1000:ℝ)^(nf545OriginalOscillatorNodeAt i).2 ≤ (1000:ℝ)^13 :=
         pow_le_pow_right₀ (by norm_num) hk
       calc
         _ ≤ (10:ℝ)^143*((1000:ℝ)^13*1) :=
           mul_le_mul (ha j) (mul_le_mul hk' ht (abs_nonneg _) (by positivity))
             (by positivity) (by positivity)
-        _ = _ := by norm_num
+        _ = _ := by
+          rw [mul_one,show (1000:ℝ)=10^3 by norm_num,← pow_mul,← pow_add]
+          norm_num
   have hcrit (j : Fin 4) : |b j * ∑ k : Fin 32,
       ((neutralNF587CriticalSines[j.val]!)[k.val]! : ℝ) * Real.sin
         (2*Real.pi*(neutralNF587CriticalFrequencies[k.val]! : ℝ)*1000)| ≤
@@ -172,7 +178,7 @@ theorem neutralNF603OscillatorPart_bound (a : Fin 242 → ℝ) (b : Fin 4 → �
   exact (add_le_add hs ht).trans (by norm_num)
 
 theorem neutralNF603Sinh500_lower : (10:ℝ)^60 < Real.sinh 500 := by
-  have he : (2:ℝ)<Real.exp 1 := (by norm_num : (2:ℝ) < 2.718281828).trans Real.exp_one_gt_d9
+  have he : (2:ℝ)<Real.exp 1 := (by norm_num : (2:ℝ) < 2.7182818283).trans Real.exp_one_gt_d9
   have hpow : (2:ℝ)^500 < Real.exp 500 := by
     rw [show (500:ℝ)=(500:ℕ)*1 by norm_num,Real.exp_nat_mul]
     exact pow_lt_pow_left₀ he (by norm_num) (by decide)
@@ -180,7 +186,8 @@ theorem neutralNF603Sinh500_lower : (10:ℝ)^60 < Real.sinh 500 := by
     rw [← Real.exp_zero]
     exact Real.exp_le_exp.mpr (by norm_num)
   rw [Real.sinh_eq]
-  have hnum : (2:ℝ)*10^60+1 < 2^500 := by norm_num
+  have hnat : (2:ℕ)*10^60+1 < 2^500 := by decide +kernel
+  have hnum : (2:ℝ)*10^60+1 < 2^500 := by exact_mod_cast hnat
   linarith only [hpow,hneg,hnum]
 
 theorem neutralNF603Source_remote_negative (a : Fin 242 → ℝ) (b : Fin 4 → ℝ)

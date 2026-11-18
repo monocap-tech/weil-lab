@@ -24,7 +24,8 @@ theorem neutralNF600Mass_eq_integral (s : 𝓢(ℝ,ℂ)) :
     neutralNF600Mass s = ∫ x, ‖s x‖^2 := by
   unfold neutralNF600Mass
   rw [SchwartzMap.norm_toLp' (by norm_num) (by norm_num)]
-  simp only [ENNReal.toReal_ofNat,Real.rpow_two,← Real.sqrt_eq_rpow,
+  simp only [ENNReal.toReal_ofNat,Real.rpow_two]
+  rw [show (2:ℝ)⁻¹=1/2 by norm_num,← Real.sqrt_eq_rpow,
     Real.sq_sqrt (integral_nonneg fun x => sq_nonneg ‖s x‖)]
 
 theorem neutralNF600Density_integrable (s : 𝓢(ℝ,ℂ)) :
@@ -50,7 +51,7 @@ theorem neutralNF600L1_bound (s : 𝓢(ℝ,ℂ))
     simpa using (s.memLp 2 volume).mono_measure Measure.restrict_le_self
   have h1 : MemLp (fun _ : ℝ => (1:ℂ)) (ENNReal.ofReal 2) μ := memLp_const _
   have hh := integral_mul_norm_le_Lp_mul_Lq
-    (μ := μ) (p := 2) (q := 2) (by norm_num : (2:ℝ).HolderConjugate 2) h2 h1
+    (μ := μ) (p := 2) (q := 2) Real.HolderConjugate.two_two h2 h1
   simp only [norm_one,mul_one,Real.rpow_two,one_pow,← Real.sqrt_eq_rpow] at hh
   have hvol : (∫ _ : ℝ, (1:ℝ) ∂μ)=1/250 := by
     change (∫ _ : ℝ in E, (1:ℝ)) = _
@@ -62,8 +63,9 @@ theorem neutralNF600L1_bound (s : 𝓢(ℝ,ℂ))
     congr 1
     funext x
     by_cases hx : x∈E
-    · simp [hx]
-    · simp [hx,hs x hx]
+    · exact Set.indicator_of_mem hx _
+    · rw [Set.indicator_of_notMem hx,hs x hx]
+      simp
   have hi2 : (∫ x : ℝ, ‖s x‖^2 ∂μ) = neutralNF600Mass s := by
     rw [neutralNF600Mass_eq_integral]
     change (∫ x in E, ‖s x‖^2) = _
@@ -71,8 +73,9 @@ theorem neutralNF600L1_bound (s : 𝓢(ℝ,ℂ))
     congr 1
     funext x
     by_cases hx : x∈E
-    · simp [hx]
-    · simp [hx,hs x hx]
+    · exact Set.indicator_of_mem hx _
+    · rw [Set.indicator_of_notMem hx,hs x hx]
+      simp
   rw [hi1,hi2,hvol] at hh
   rw [SchwartzMap.norm_toLp_one]
   exact hh

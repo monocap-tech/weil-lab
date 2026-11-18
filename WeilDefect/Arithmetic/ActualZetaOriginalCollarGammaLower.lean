@@ -88,16 +88,10 @@ theorem neutralNF599GammaGainSeries (t : ℝ) :
     push_cast
     ring
   rw [hz']
-  norm_num
-  have hzq : (1/4:ℂ) + Complex.I * (t:ℂ) * (1/2:ℂ) = z := by
-    dsimp [z]
-    push_cast
-    ring
-  have hzr : z.re = 1/4 := by
-    dsimp [z]
-    norm_num [Complex.div_re,Complex.div_im,Complex.normSq_apply,Complex.mul_re,Complex.mul_im]
-  try rw [hzq]
-  rw [hzr]
+  have hzeroarg : (1/4:ℂ)+Complex.I*((0:ℝ):ℂ)/2 = (1/4:ℂ) := by simp
+  rw [hzeroarg]
+  have hzeroInv : (1/(1/4:ℂ)).re = 4 := by norm_num
+  simp only [hzeroInv,Complex.ofReal_re]
   ring
 
 theorem neutralNF599GammaLower_partial (t : ℝ) (N : ℕ) :
