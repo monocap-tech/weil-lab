@@ -24,16 +24,16 @@ def NF636Ball.roundProposal (m r d : ℤ) : NF636Ball :=
   ⟨m/d,-((-r)/d)+1⟩
 
 def NF636Ball.roundGate (m r d : ℤ) (b : NF636Ball) : Bool :=
-  decide (0<d ∧ b.mid*d≤m ∧ m<(b.mid+1)*d ∧
-    (b.rad-2)*d<r ∧ r≤(b.rad-1)*d)
+  decide (0 < d ∧ b.mid*d ≤ m ∧ m < (b.mid+1)*d ∧
+    (b.rad-2)*d < r ∧ r ≤ (b.rad-1)*d)
 
 theorem NF636Ball.roundGate_sound (m r d : ℤ) (b : NF636Ball)
-    (Q : ℕ) (hQ : 0<Q) (hc : NF636Ball.roundGate m r d b=true) :
+    (Q : ℕ) (hQ : 0 < Q) (hc : NF636Ball.roundGate m r d b=true) :
     (NF591Ball.mk ((m:ℚ)/d/Q) ((r:ℚ)/d/Q)).round Q=b.denote Q := by
-  have h : 0<d ∧ b.mid*d≤m ∧ m<(b.mid+1)*d ∧
-      (b.rad-2)*d<r ∧ r≤(b.rad-1)*d := of_decide_eq_true hc
-  have hd : (0:ℚ)<d := by exact_mod_cast h.1
-  have hq : (0:ℚ)<Q := by exact_mod_cast hQ
+  have h : 0 < d ∧ b.mid*d ≤ m ∧ m < (b.mid+1)*d ∧
+      (b.rad-2)*d < r ∧ r ≤ (b.rad-1)*d := of_decide_eq_true hc
+  have hd : (0:ℚ) < d := by exact_mod_cast h.1
+  have hq : (0:ℚ) < Q := by exact_mod_cast hQ
   have hm : ⌊(m:ℚ)/d⌋=b.mid := by
     apply Int.floor_eq_iff.mpr
     constructor
@@ -44,7 +44,7 @@ theorem NF636Ball.roundGate_sound (m r d : ℤ) (b : NF636Ball)
   have hr : ⌈(r:ℚ)/d⌉=b.rad-1 := by
     apply Int.ceil_eq_iff.mpr
     constructor
-    · have hh : (((b.rad-1:ℤ):ℚ)-1)*(d:ℚ)<(r:ℚ) := by
+    · have hh : (((b.rad-1:ℤ):ℚ)-1)*(d:ℚ) < (r:ℚ) := by
         push_cast
         exact_mod_cast h.2.2.2.1
       exact (lt_div_iff₀ hd).mpr hh
@@ -57,7 +57,7 @@ theorem NF636Ball.roundGate_sound (m r d : ℤ) (b : NF636Ball)
   rw [he]
 
 def NF636Ball.productRad (a b : NF636Ball) : ℤ :=
-  |a.mid|*b.rad+|b.mid|*a.rad+a.rad*b.rad
+  |a.mid| * b.rad + |b.mid| * a.rad + a.rad * b.rad
 
 def NF636Ball.mul (a b : NF636Ball) (Q : ℕ) : NF636Ball :=
   NF636Ball.roundProposal (a.mid*b.mid) (a.productRad b) Q
@@ -80,26 +80,26 @@ theorem NF636Ball.neg_denote (a : NF636Ball) (Q : ℕ) :
   simp [NF636Ball.neg,NF636Ball.denote,NF591Ball.neg,neg_div]
 
 theorem NF636Ball.mul_denote (a b : NF636Ball) (Q : ℕ)
-    (hQ : 0<Q) (hc : a.mulGate b Q=true) :
+    (hQ : 0 < Q) (hc : a.mulGate b Q=true) :
     (a.mul b Q).denote Q=((a.denote Q).mul (b.denote Q)).round Q := by
-  have hq : (0:ℚ)<Q := by exact_mod_cast hQ
+  have hq : (0:ℚ) < Q := by exact_mod_cast hQ
   have he : (a.denote Q).mul (b.denote Q)=
       NF591Ball.mk (((a.mid*b.mid:ℤ):ℚ)/Q/Q)
         (((a.productRad b:ℤ):ℚ)/Q/Q) := by
     simp only [NF636Ball.denote,NF591Ball.mul,NF636Ball.productRad,
       Int.cast_mul,Int.cast_add,Int.cast_abs,abs_div,abs_of_pos hq]
-    congr 1 <;> ring
+    congr 1  <;> ring
   rw [he]
   symm
   exact NF636Ball.roundGate_sound _ _ _ _ Q hQ hc
 
 theorem NF636Ball.div_denote (a : NF636Ball) (Q d : ℕ)
-    (hQ : 0<Q) (hc : a.divGate d=true) :
+    (hQ : 0 < Q) (hc : a.divGate d=true) :
     (a.div d).denote Q=((a.denote Q).divPos (d:ℚ)).round Q := by
   have he : (a.denote Q).divPos (d:ℚ)=
       NF591Ball.mk ((a.mid:ℚ)/d/Q) ((a.rad:ℚ)/d/Q) := by
     simp only [NF636Ball.denote,NF591Ball.divPos]
-    congr 1 <;> ring
+    congr 1  <;> ring
   rw [he]
   symm
   exact NF636Ball.roundGate_sound _ _ _ _ Q hQ hc
