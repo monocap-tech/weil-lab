@@ -9,14 +9,14 @@ checks and prefix composition retain the exact reference evaluator. -/
 
 structure NF633ExpState where
   jet : NF591Rect
-  partial : NF591Rect
+  sumState : NF591Rect
 
 def neutralNF633State (a : NF591Rect) (Q n : ℕ) : NF633ExpState :=
   ⟨neutralNF592ExpJetBall a Q n,neutralNF592ExpPartial a Q n⟩
 
 def NF633ExpState.step (s : NF633ExpState) (a : NF591Rect) (Q n : ℕ) :
     NF633ExpState :=
-  ⟨(s.jet.mulQ a Q).divQ (n+1:ℚ) Q,s.partial.add s.jet⟩
+  ⟨(s.jet.mulQ a Q).divQ (n+1:ℚ) Q,s.sumState.add s.jet⟩
 
 theorem neutralNF633State_step (a : NF591Rect) (Q n : ℕ) :
     (neutralNF633State a Q n).step a Q n = neutralNF633State a Q (n+1) := rfl
@@ -32,7 +32,8 @@ theorem neutralNF633Segment_reference (a : NF591Rect) (Q start len : ℕ) :
   induction len with
   | zero => rfl
   | succ n ih =>
-    rw [neutralNF633Segment,ih,neutralNF633State_step,Nat.add_succ]
+    rw [neutralNF633Segment,ih,neutralNF633State_step]
+    congr 1 <;> omega
 
 def neutralNF633RectEq (a b : NF591Rect) : Bool :=
   neutralNF632BallEq a.re b.re && neutralNF632BallEq a.im b.im
@@ -48,7 +49,7 @@ theorem neutralNF633RectEq_sound (a b : NF591Rect)
   simp_all
 
 def neutralNF633StateEq (s t : NF633ExpState) : Bool :=
-  neutralNF633RectEq s.jet t.jet && neutralNF633RectEq s.partial t.partial
+  neutralNF633RectEq s.jet t.jet && neutralNF633RectEq s.sumState t.sumState
 
 theorem neutralNF633StateEq_sound (s t : NF633ExpState)
     (h : neutralNF633StateEq s t=true) : s=t := by
@@ -70,12 +71,12 @@ theorem neutralNF633Prefix_extend (a : NF591Rect) (Q start len : ℕ)
 theorem neutralNF633SmallExp_of_state (a : NF591Rect) (Q N : ℕ)
     (s : NF633ExpState) (b : NF591Rect)
     (hs : neutralNF633State a Q N=s)
-    (hc : neutralNF633RectEq (s.partial.expand (1/(Q:ℚ))) b=true) :
+    (hc : neutralNF633RectEq (s.sumState.expand (1/(Q:ℚ))) b=true) :
     neutralNF593SmallExp a Q N=b := by
   rw [neutralNF593SmallExp_eq]
   unfold neutralNF592SmallExpBall
-  have hp := congrArg NF633ExpState.partial hs
-  change neutralNF592ExpPartial a Q N=s.partial at hp
+  have hp := congrArg NF633ExpState.sumState hs
+  change neutralNF592ExpPartial a Q N=s.sumState at hp
   rw [hp]
   exact neutralNF633RectEq_sound _ _ hc
 
