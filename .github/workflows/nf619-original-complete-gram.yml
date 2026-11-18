@@ -1,0 +1,51 @@
+name: NF619 complete original physical Gram pilots
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalGramPilotAssembly.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalGramPilotReceipts.lean"
+      - ".github/workflows/nf619-original-complete-gram.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf619-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  rational-replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/verify_nf618_original_oscillator_mixed_pilots.py
+  focused:
+    strategy:
+      fail-fast: false
+      matrix:
+        module:
+          - ActualZetaOriginalPhysicalGramPilotAssembly
+          - ActualZetaOriginalPhysicalGramPilotReceipts
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - run: lake build WeilDefect.Arithmetic.${{ matrix.module }}
+      - name: Audit original entry soundness
+        if: matrix.module == 'ActualZetaOriginalPhysicalGramPilotReceipts'
+        run: |
+          cat > /tmp/nf619Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramPilotReceipts
+          #print axioms WeilDefect.neutralNF619J_neg
+          #print axioms WeilDefect.neutralNF619OscGram_certified
+          #print axioms WeilDefect.neutralNF619MixedGram_certified
+          EOF
+          lake env lean /tmp/nf619Audit.lean
