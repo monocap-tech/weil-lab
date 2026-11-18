@@ -57,7 +57,7 @@ theorem NF636Ball.roundGate_sound (m r d : ℤ) (b : NF636Ball)
   rw [he]
 
 def NF636Ball.productRad (a b : NF636Ball) : ℤ :=
-  |a.mid| * b.rad+|b.mid| * a.rad+a.rad*b.rad
+  |a.mid| * b.rad + |b.mid| * a.rad + a.rad * b.rad
 
 def NF636Ball.mul (a b : NF636Ball) (Q : ℕ) : NF636Ball :=
   NF636Ball.roundProposal (a.mid*b.mid) (a.productRad b) Q
@@ -88,7 +88,7 @@ theorem NF636Ball.mul_denote (a b : NF636Ball) (Q : ℕ)
         (((a.productRad b:ℤ):ℚ)/Q/Q) := by
     simp only [NF636Ball.denote,NF591Ball.mul,NF636Ball.productRad,
       Int.cast_mul,Int.cast_add,Int.cast_abs,abs_div,abs_of_pos hq]
-    congr 1  < ;> ring
+    congr 1  <;> ring
   rw [he]
   symm
   exact NF636Ball.roundGate_sound _ _ _ _ Q hQ hc
@@ -99,7 +99,7 @@ theorem NF636Ball.div_denote (a : NF636Ball) (Q d : ℕ)
   have he : (a.denote Q).divPos (d:ℚ)=
       NF591Ball.mk ((a.mid:ℚ)/d/Q) ((a.rad:ℚ)/d/Q) := by
     simp only [NF636Ball.denote,NF591Ball.divPos]
-    congr 1  < ;> ring
+    congr 1  <;> ring
   rw [he]
   symm
   exact NF636Ball.roundGate_sound _ _ _ _ Q hQ hc
