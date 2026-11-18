@@ -1,0 +1,54 @@
+name: NF657 exact physical Gram congruence witness
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  independent-interval-certificate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve pinned original NF631 archive
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" \
+            "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14459025571/zip" \
+            -o nf631-widened.zip
+          echo 'e91a83cae117e98608aefa6849dac178e4ddb58dd1dffbfe37304ad248af9ed9  nf631-widened.zip' | sha256sum -c -
+      - name: Generate the compact source-bound congruence witness
+        run: |
+          python -m py_compile scripts/emit_nf657_compact_congruence.py
+          python scripts/emit_nf657_compact_congruence.py nf631-widened.zip nf657-compact.json
+      - name: Independently verify all retained source enclosures and 15 positive rows
+        run: |
+          python -m py_compile scripts/verify_nf657_compact_congruence.py
+          python scripts/verify_nf657_compact_congruence.py nf657-compact.json nf631-widened.zip
+      - name: Verify mutation rejection
+        run: |
+          python - <<'PY'
+          import json,subprocess,tempfile
+          w=json.load(open('nf657-compact.json'))
+          for mode in ('radius','margin'):
+              d=json.loads(json.dumps(w))
+              if mode=='radius':
+                  d['H_radius_scaled'][0][0]='0'
+              else:
+                  d['dominance_margin_scaled_numerator'][14]='0'
+              with tempfile.NamedTemporaryFile('w',suffix='.json') as p:
+                  json.dump(d,p);p.flush()
+                  r=subprocess.run(['python','scripts/verify_nf657_compact_congruence.py',p.name,'nf631-widened.zip'],capture_output=True)
+                  assert r.returncode!=0,mode
+          print('NF657 two targeted forged certificates rejected')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf657-compact-physical-gram-congruence
+          path: nf657-compact.json
+          if-no-files-found: error
