@@ -33,11 +33,11 @@ theorem neutralNF618AtanFee (p : ℕ) (hp : 0<p)
 theorem neutralNF618Pi_sound : neutralNF618Pi.Contains Real.pi := by
   apply neutralNF592PiBall_sound _ _ neutralNF618Q_pos
   · change (1/5:ℝ)^(2*48+1)/(2*(48:ℝ)+1) ≤ _
-    norm_num only [show (2*48+1:ℕ)=97 by decide,show (2*(48:ℝ)+1)=97 by norm_num]
-    simpa using neutralNF618AtanFee 5 (by decide) (by decide +kernel)
+    change (1/5:ℝ)^97/97 ≤ 1/(neutralNF618Q:ℝ)
+    norm_num [neutralNF618Q]
   · change (1/239:ℝ)^(2*48+1)/(2*(48:ℝ)+1) ≤ _
-    norm_num only [show (2*48+1:ℕ)=97 by decide,show (2*(48:ℝ)+1)=97 by norm_num]
-    simpa using neutralNF618AtanFee 239 (by decide) (by decide +kernel)
+    change (1/239:ℝ)^97/97 ≤ 1/(neutralNF618Q:ℝ)
+    norm_num [neutralNF618Q]
 
 def neutralNF618Osc : NF616Frequency := ⟨0,37/32⟩
 def neutralNF618Mixed : NF616Frequency := ⟨1/2,37/64⟩
