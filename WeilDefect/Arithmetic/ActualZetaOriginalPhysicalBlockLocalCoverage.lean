@@ -54,6 +54,40 @@ theorem neutralNF687Lookup_eq (bank : Array NF624KeyTable)
       rw [hs,hk,hn]
     · simp [hs,hi]
 
+/-- The original binary-search index is preserved when the compact
+reader is attached to every actual bank slot. -/
+theorem neutralNF687Search_eq (bank : Array NF624KeyTable)
+    (read : ℕ → NF687Shape) (size : ℕ)
+    (hs : bank.size=size)
+    (hr : ∀ i<size, neutralNF627ShapeAt bank i=read i)
+    (k : NF616Frequency) (fuel lo hi : ℕ) (hhi : hi ≤ size) :
+    neutralNF624Search bank k fuel lo hi =
+      neutralNF687Search read size k fuel lo hi := by
+  induction fuel generalizing lo hi with
+  | zero =>
+    exact hs
+  | succ fuel ih =>
+    simp only [neutralNF624Search,neutralNF687Search]
+    by_cases hl : lo < hi
+    · simp only [if_pos hl]
+      have hm : (lo+hi)/2 < hi := by omega
+      have hk := congrArg Prod.fst (hr _ (lt_of_lt_of_le hm hhi))
+      change (neutralNF624BankRead bank ((lo+hi)/2)).key =
+        (read ((lo+hi)/2)).1 at hk
+      rw [hk]
+      split_ifs <;> first | rfl | (apply ih; omega)
+    · simp only [if_neg hl,hs]
+
+theorem neutralNF687Index_eq (bank : Array NF624KeyTable)
+    (read : ℕ → NF687Shape) (size : ℕ)
+    (hs : bank.size=size)
+    (hr : ∀ i<size, neutralNF627ShapeAt bank i=read i) :
+    neutralNF624Index bank = neutralNF687Index read size := by
+  funext k
+  unfold neutralNF624Index neutralNF687Index
+  rw [hs]
+  exact neutralNF687Search_eq bank read size hs hr k 16 0 size le_rfl
+
 def neutralNF687SelectedAt (read : ℕ → NF687Shape) (size : ℕ)
     (idx : NF616Frequency → ℕ) (top : Fin 68 → Fin 242)
     (i j : Fin 68) : Bool :=
@@ -120,6 +154,8 @@ theorem neutralNF687Coverage_of_groups
     exact hh
 
 #print axioms neutralNF687Lookup_eq
+#print axioms neutralNF687Search_eq
+#print axioms neutralNF687Index_eq
 #print axioms neutralNF687Coverage_of_groups
 
 end WeilDefect
