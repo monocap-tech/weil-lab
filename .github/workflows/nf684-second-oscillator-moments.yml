@@ -1,0 +1,199 @@
+name: NF684 original second oscillator analytic moment custody
+on:
+  pull_request:
+    paths:
+      - "scripts/emit_nf684_second_oscillator_moments.py"
+      - ".github/workflows/nf684-second-oscillator-moments.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf684-second-oscillator-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  emit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate retained original endpoint and certified pi proposals
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p inputs/bank WeilDefect/Generated/NF632
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14462990552/zip" -o inputs/bank.zip
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14458696200/zip" -o inputs/pi.zip
+          echo '2b0e45897c28a1ed8d671b2958c8a51646e818e742ecbcf4ed6fcf02f31ed363  inputs/bank.zip' | sha256sum -c -
+          echo 'd1769ab74275cc9c57452d3aa5ad3a30109efc500f7834ee392ed668612d9a37  inputs/pi.zip' | sha256sum -c -
+          unzip -q inputs/bank.zip -d inputs/bank
+          unzip -q inputs/pi.zip -d WeilDefect/Generated/NF632
+          echo 'b4d290d158af245635d17b58f1c8e9f8bfa5076f773c1a35aa7e789bf850b086  WeilDefect/Generated/NF632/manifest.json' | sha256sum -c -
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf621-shard-*
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: inputs/shards
+      - name: Replay original endpoint and moment literals; emit five unconditional proof proposals
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/emit_nf684_second_oscillator_moments.py
+          python scripts/emit_nf684_second_oscillator_moments.py --root . --shards inputs/shards --bank inputs/bank --pi WeilDefect/Generated/NF632 --output WeilDefect/Generated/NF684
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF684')
+          m=json.loads((d/'manifest.json').read_text())
+          expected={'CrossSum':(['0','285/128'],22),'CrossDiff':(['0','137/128'],22),'SecondSelf':(['0','211/64'],17),'SecondPole':(['1/2','211/128'],9),'SecondPoleOpp':(['-1/2','211/128'],9)}
+          assert {r['group']:(r['key'],r['rows']) for r in m['groups']}==expected
+          assert (m['rows'],m['leaf_count'],m['prefix_checks'])==(79,11,418)
+          for r in m['files']:
+              assert hashlib.sha256((d/r['file']).read_bytes()).hexdigest()==r['sha256']
+          print('NF684 five exact original tables / 79 moment rows reconstructed externally; Lean pending')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf684-original-local-moment-proposals
+          path: |
+            WeilDefect/Generated/NF632/
+            WeilDefect/Generated/NF684/
+          if-no-files-found: error
+  local-moment:
+    needs: emit
+    name: Original moment certificate ${{ matrix.label }}
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - {label: CrossSum, targets: 'CrossSum'}
+          - {label: CrossDiff, targets: 'CrossDiff'}
+          - {label: SecondSelf, targets: 'SecondSelf'}
+          - {label: SecondPoles, targets: 'SecondPole SecondPoleOpp'}
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf684-original-local-moment-proposals
+          path: WeilDefect/Generated
+      - name: Verify exact source hashes
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          for name in ('NF632','NF684'):
+              d=Path('WeilDefect/Generated')/name
+              for r in json.loads((d/'manifest.json').read_text())['files']:
+                  assert hashlib.sha256((d/r['file']).read_bytes()).hexdigest()==r['sha256']
+          PY
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Build genuine analytic moment proofs, including every endpoint prefix and residual gate
+        timeout-minutes: 65
+        env:
+          TARGETS: ${{ matrix.targets }}
+        run: |
+          set -euo pipefail
+          for target in $TARGETS; do
+            lake build "WeilDefect.Generated.NF684.$target" 2>&1 | tee -a nf684-build.log
+          done
+      - name: Audit exact moment theorems with standard axioms only
+        env:
+          TARGETS: ${{ matrix.targets }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          ts=os.environ['TARGETS'].split()
+          Path('/tmp/nf684Audit.lean').write_text(''.join(f'import WeilDefect.Generated.NF684.{t}\n' for t in ts)+''.join(f'#print axioms WeilDefect.nf684{t}Moment\n' for t in ts))
+          PY
+          lake env lean /tmp/nf684Audit.lean 2>&1 | tee nf684-axioms.log
+          python - <<'PY'
+          import hashlib,json,os,re
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF684')
+          m=json.loads((d/'manifest.json').read_text())
+          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          ts=os.environ['TARGETS'].split()
+          log=Path('nf684-axioms.log').read_text()
+          receipts=[]
+          for t in ts:
+              name=f'nf684{t}Moment'
+              lines=[x for x in log.splitlines() if f"'WeilDefect.{name}'" in x]
+              assert len(lines)==1,(name,lines)
+              line=lines[0]
+              if 'does not depend on any axioms' in line:
+                  axioms=[]
+              else:
+                  match=re.search(r'depends on axioms: \[([^\]]*)\]',line)
+                  assert match,line
+                  axioms=[x.strip() for x in match.group(1).split(',') if x.strip()]
+              assert set(axioms)<={'propext','Classical.choice','Quot.sound'}
+              record=next(x for x in m['groups'] if x['group']==t)
+              receipts.append(dict(record,theorem=name,axioms=axioms,source_sha256=h(d/f'{t}.lean')))
+          Path('nf684-audit.json').write_text(json.dumps({'manifest_sha256':h(d/'manifest.json'),'receipts':receipts},indent=2)+'\n')
+          print('NF684 accepted original moment tables',ts,'rows',sum(x['rows'] for x in receipts))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf684-moment-audit-${{ matrix.label }}
+          path: |
+            nf684-build.log
+            nf684-axioms.log
+            nf684-audit.json
+          if-no-files-found: ignore
+  complete-audit:
+    needs: local-moment
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf684-original-local-moment-proposals
+          path: proposals
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf684-moment-audit-*
+          path: audits
+      - name: Verify five distinct actual keys and all 79 degree enclosures
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('proposals/NF684')
+          m=json.loads((d/'manifest.json').read_text())
+          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          ds=[json.loads(p.read_text()) for p in Path('audits').rglob('nf684-audit.json')]
+          assert len(ds)==4 and {v['manifest_sha256'] for v in ds}=={h(d/'manifest.json')}
+          expected={x['group']:x for x in m['groups']}
+          rr=[x for s in ds for x in s['receipts']]
+          assert len(rr)==5 and {x['group'] for x in rr}==set(expected)
+          for x in rr:
+              t=x['group']
+              assert all(x[k]==v for k,v in expected[t].items())
+              assert x['source_sha256']==h(d/f'{t}.lean')
+              assert x['theorem']==f'nf684{t}Moment'
+              assert set(x['axioms'])<={'propext','Classical.choice','Quot.sound'}
+          assert sum(x['rows'] for x in rr)==79 and len({tuple(x['key']) for x in rr})==5
+          Path('nf684-complete-audit.json').write_text(json.dumps({'schema':'NF684-five-original-moment-tables-audit-v1','manifest_sha256':h(d/'manifest.json'),'tables':rr,'rows':79,'scope':'Five genuine analytic moment tables; all in-range degree enclosures; not full original bank truth or matrix entry closure.'},indent=2)+'\n')
+          print('NF684 five original moment tables, 79 in-range moment enclosures: LEAN PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf684-complete-moment-audit
+          path: nf684-complete-audit.json
+          if-no-files-found: error
