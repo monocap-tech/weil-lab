@@ -1,0 +1,219 @@
+name: NF687 original block-local exact metadata lookup pilot
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalBlockLocalCoverage.lean"
+      - "scripts/emit_nf687_block_local_coverage.py"
+      - ".github/workflows/nf687-block-local-coverage.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf687-block-local-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  emit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate original NF682 coverage proposals including unchanged metadata
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14544145683/zip" -o nf682.zip
+          echo '167d5f99626169b716b03fc90a8b022225aafa777a412764f1a9f3528f74a6bb  nf682.zip' | sha256sum -c -
+          unzip -q nf682.zip -d WeilDefect/Generated
+          python -m py_compile scripts/emit_nf687_block_local_coverage.py
+          python scripts/emit_nf687_block_local_coverage.py --metadata WeilDefect/Generated/NF679 --groups WeilDefect/Generated/NF682 --output WeilDefect/Generated/NF687
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF687')
+          m=json.loads((d/'manifest.json').read_text())
+          assert (m['keys'],m['rows'],m['blocks'],m['block_width'],m['group_proposals'])==(7835,37994,62,128,68)
+          for f in m['files']:
+              assert hashlib.sha256((d/f['file']).read_bytes()).hexdigest()==f['sha256']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf687-original-compact-proposals
+          path: |
+            WeilDefect/Generated/NF679/
+            WeilDefect/Generated/NF682/
+            WeilDefect/Generated/NF687/
+          if-no-files-found: error
+  compact-pilot:
+    needs: emit
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf687-original-compact-proposals
+          path: WeilDefect/Generated
+      - name: Revalidate exact source digests
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('WeilDefect/Generated')
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          m=json.loads((root/'NF687/manifest.json').read_text())
+          assert m['metadata_sha256']==sha(root/'NF679/Metadata.lean')
+          assert m['group_manifest_sha256']==sha(root/'NF682/manifest.json')
+          for name in ('NF682','NF687'):
+              d=root/name
+              for r in json.loads((d/'manifest.json').read_text())['files']:
+                  assert sha(d/r['file'])==r['sha256']
+          PY
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Build generic exact transport and compact data
+        run: lake build WeilDefect.Generated.NF687.Compact WeilDefect.Generated.NF682.Maps WeilDefect.Generated.NF682.Partitions
+      - name: Time genuine compact four-sign and 32-request pilot
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o nf687-point-time.txt -f 'elapsed=%e user=%U rss_kb=%M exit=%x' lake build WeilDefect.Generated.NF687.PointPilot 2>&1 | tee nf687-point.log
+          /usr/bin/time -o nf687-pilot-time.txt -f 'elapsed=%e user=%U rss_kb=%M exit=%x' lake build WeilDefect.Generated.NF687.Pilot 2>&1 | tee nf687-pilot.log
+      - name: Verify two complete genuine representative rows (first oscillator and pole)
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          for group in 00 67; do
+            /usr/bin/time -a -o nf687-group-time.txt -f 'elapsed=%e user=%U rss_kb=%M exit=%x' lake build "WeilDefect.Generated.NF687.Group$group" 2>&1 | tee -a nf687-group.log
+          done
+      - name: Audit clean theorem prints for all pilot declarations and generic transport
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          names=['neutralNF687Lookup_eq','neutralNF687Search_eq','neutralNF687Index_eq','neutralNF687Coverage_of_groups','nf687PilotAt','nf687PilotBatch']
+          names += [f'nf687Group{i:02d}{s}' for i in (0,67) for s in [*[f'H{k:02d}' for k in range(9)],*[f'V{k:02d}' for k in range(5)],'HAll','VAll','Check']]
+          Path('/tmp/nf687Audit.lean').write_text('import WeilDefect.Generated.NF687.Pilot\nimport WeilDefect.Generated.NF687.Group00\nimport WeilDefect.Generated.NF687.Group67\n'+''.join(f'#print axioms WeilDefect.{n}\n' for n in names))
+          Path('nf687-names.txt').write_text('\n'.join(names)+'\n')
+          PY
+          lake env lean /tmp/nf687Audit.lean 2>&1 | tee nf687-axioms.log
+          python - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          names=set(Path('nf687-names.txt').read_text().splitlines())
+          log=Path('nf687-axioms.log').read_text()
+          found={}
+          for n,x in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[s.strip() for s in x.split(',') if s.strip()]
+          for n in re.findall(r"'WeilDefect\.(\w+)' does not depend on any axioms",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[]
+          assert set(found)==names,(len(found),len(names))
+          assert all(set(x)<={'propext','Classical.choice','Quot.sound'} for x in found.values())
+          p=Path('WeilDefect/Generated/NF687/manifest.json')
+          Path('nf687-audit.json').write_text(json.dumps({'manifest_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'theorems':found,'scope':'Two complete group rows, plus pilot and generic transport. Full bank shape and all group coverage remain open.'},indent=2)+'\n')
+          print('NF687 two original group rows and exact index transport: clean Lean audit PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf687-compact-pilot-audit
+          path: |
+            nf687-*.log
+            nf687-*.txt
+            nf687-audit.json
+          if-no-files-found: ignore
+  reference-and-shape-samples:
+    needs: emit
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf687-original-compact-proposals
+          path: WeilDefect/Generated
+      - name: Verify original and generated file digests
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          r=Path('WeilDefect/Generated')
+          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          m=json.loads((r/'NF687/manifest.json').read_text())
+          assert h(r/'NF679/Metadata.lean')==m['metadata_sha256']
+          for d in (r/'NF682',r/'NF687'):
+              for f in json.loads((d/'manifest.json').read_text())['files']:
+                  assert h(d/f['file'])==f['sha256']
+          PY
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Build same original metadata and compact reader for comparison
+        run: lake build WeilDefect.Generated.NF679.Metadata WeilDefect.Generated.NF687.Compact WeilDefect.Generated.NF682.Maps WeilDefect.Generated.NF682.Partitions
+      - name: Compare original and compact four-sign checks on identical source partner
+        timeout-minutes: 10
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o nf687-reference-time.txt -f 'elapsed=%e user=%U rss_kb=%M exit=%x' lake build WeilDefect.Generated.NF687.Reference 2>&1 | tee nf687-reference.log
+      - name: Verify eight original metadata slots including block boundaries
+        timeout-minutes: 10
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Generated.NF687.ShapeSamples 2>&1 | tee nf687-shapes.log
+          cat >/tmp/nf687Samples.lean <<'EOF'
+          import WeilDefect.Generated.NF687.ShapeSamples
+          import WeilDefect.Generated.NF687.Reference
+          #print axioms WeilDefect.nf687ReferenceAt
+          #print axioms WeilDefect.nf687ShapeSample0
+          #print axioms WeilDefect.nf687ShapeSample1
+          #print axioms WeilDefect.nf687ShapeSample2
+          #print axioms WeilDefect.nf687ShapeSample3
+          #print axioms WeilDefect.nf687ShapeSample4
+          #print axioms WeilDefect.nf687ShapeSample5
+          #print axioms WeilDefect.nf687ShapeSample6
+          #print axioms WeilDefect.nf687ShapeSample7
+          EOF
+          lake env lean /tmp/nf687Samples.lean 2>&1 | tee nf687-sample-axioms.log
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          s=Path('nf687-sample-axioms.log').read_text()
+          names={'nf687ReferenceAt'}|{f'nf687ShapeSample{i}' for i in range(8)}
+          found={}
+          for n,x in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",s):
+              if n in names:
+                  assert n not in found
+                  found[n]=[v.strip() for v in x.split(',') if v.strip()]
+          for n in re.findall(r"'WeilDefect\.(\w+)' does not depend on any axioms",s):
+              if n in names:
+                  assert n not in found
+                  found[n]=[]
+          assert set(found)==names
+          assert all(set(x)<={'propext','Classical.choice','Quot.sound'} for x in found.values())
+          print('NF687 sampled metadata shape and original reference gate audit PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf687-reference-and-shape-audit
+          path: |
+            nf687-*.log
+            nf687-*.txt
+          if-no-files-found: ignore
