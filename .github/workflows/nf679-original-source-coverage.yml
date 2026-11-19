@@ -1,0 +1,211 @@
+name: NF679 exact original source key and degree coverage
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalCoverageRows.lean"
+      - "scripts/emit_nf679_original_coverage_rows.py"
+      - ".github/workflows/nf679-original-source-coverage.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf679-source-coverage-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  emit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf621-shard-*
+          path: receipts
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf621-complete-schedule-coverage
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Original metadata and row proposal generation
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/emit_nf679_original_coverage_rows.py
+          python scripts/emit_nf679_original_coverage_rows.py --self-test
+          python scripts/emit_nf679_original_coverage_rows.py --root . --shards receipts --coverage nf621-coverage.json --output WeilDefect/Generated/NF679
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF679')
+          m=json.loads((d/'manifest.json').read_text())
+          assert (m['keys'],m['moment_rows'],m['source_rows'])==(7835,37994,242)
+          assert (m['selected_pair_lookups'],m['mixed_pair_lookups'])==(234256,127776)
+          assert {v['file'] for v in m['files']}=={'Metadata.lean','AllRows.lean'}|{f'Row{i:03d}.lean' for i in range(242)}
+          for v in m['files']:
+              assert hashlib.sha256((d/v['file']).read_bytes()).hexdigest()==v['sha256']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf679-original-coverage-proposals
+          path: WeilDefect/Generated/NF679/
+          if-no-files-found: error
+  coverage-shards:
+    needs: emit
+    name: Source coverage rows ${{ matrix.first }}-${{ matrix.last }}
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        include:
+          - {first: 0, last: 30}
+          - {first: 31, last: 60}
+          - {first: 61, last: 90}
+          - {first: 91, last: 120}
+          - {first: 121, last: 151}
+          - {first: 152, last: 181}
+          - {first: 182, last: 211}
+          - {first: 212, last: 241}
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf679-original-coverage-proposals
+          path: WeilDefect/Generated/NF679
+      - name: Recheck literal proposal source bytes
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF679')
+          m=json.loads((d/'manifest.json').read_text())
+          for v in m['files']:
+              assert hashlib.sha256((d/v['file']).read_bytes()).hexdigest()==v['sha256']
+          PY
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Compile original coverage transport and compact metadata
+        run: lake build WeilDefect.Generated.NF679.Metadata
+      - name: Kernel-check assigned complete source rows
+        timeout-minutes: 65
+        env:
+          FIRST: ${{ matrix.first }}
+          LAST: ${{ matrix.last }}
+        run: |
+          set -euo pipefail
+          for ((start=FIRST;start<=LAST;start+=4)); do
+            targets=()
+            for ((i=start;i<start+4 && i<=LAST;i++)); do
+              printf -v row '%03d' "$i"
+              targets+=("WeilDefect.Generated.NF679.Row$row")
+            done
+            lake build "${targets[@]}" 2>&1 | tee -a nf679-rows.log
+          done
+      - name: Strict standard-axiom audit and exact source-row manifest
+        env:
+          FIRST: ${{ matrix.first }}
+          LAST: ${{ matrix.last }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          a,b=int(os.environ['FIRST']),int(os.environ['LAST'])
+          imports=''.join(f'import WeilDefect.Generated.NF679.Row{i:03d}\n' for i in range(a,b+1))
+          names=['neutralNF679Coverage_of_rows','neutralNF679Rows_iff_coverage','neutralNF679AllMoments_of_metadata_rows']+[f'nf679CoverageRow{i:03d}' for i in range(a,b+1)]
+          Path('/tmp/nf679Audit.lean').write_text(imports+''.join(f'#print axioms WeilDefect.{n}\n' for n in names))
+          PY
+          lake env lean /tmp/nf679Audit.lean 2>&1 | tee nf679-axioms.log
+          python - <<'PY'
+          import hashlib,json,os,re
+          from pathlib import Path
+          a,b=int(os.environ['FIRST']),int(os.environ['LAST'])
+          names=['neutralNF679Coverage_of_rows','neutralNF679Rows_iff_coverage','neutralNF679AllMoments_of_metadata_rows']+[f'nf679CoverageRow{i:03d}' for i in range(a,b+1)]
+          log=Path('nf679-axioms.log').read_text()
+          found={}
+          for n,v in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[s.strip() for s in v.split(',') if s.strip()]
+          for n in re.findall(r"'WeilDefect\.(\w+)' does not depend on any axioms",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[]
+          assert set(found)==set(names),(len(found),len(names))
+          assert all(set(v)<={'propext','Classical.choice','Quot.sound'} for v in found.values())
+          d=Path('WeilDefect/Generated/NF679')
+          audit={'first':a,'last':b,'manifest_sha256':hashlib.sha256((d/'manifest.json').read_bytes()).hexdigest(),
+                 'metadata_sha256':hashlib.sha256((d/'Metadata.lean').read_bytes()).hexdigest(),
+                 'rows':[{'i':i,'source_sha256':hashlib.sha256((d/f'Row{i:03d}.lean').read_bytes()).hexdigest(),'axioms':found[f'nf679CoverageRow{i:03d}']} for i in range(a,b+1)],
+                 'generic_transport':{n:found[n] for n in names[:3]}}
+          Path('nf679-audit.json').write_text(json.dumps(audit,indent=2)+'\n')
+          print(f'NF679 {a}..{b}: exact original metadata row gates PASS with standard axioms')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf679-coverage-audit-${{ matrix.first }}-${{ matrix.last }}
+          path: |
+            nf679-rows.log
+            nf679-axioms.log
+            nf679-audit.json
+          if-no-files-found: ignore
+  complete-audit:
+    needs: coverage-shards
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf679-coverage-audit-*
+          path: audits
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf679-original-coverage-proposals
+          path: proposals
+      - name: Audit every original source exactly once
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('proposals')
+          manifest=json.loads((d/'manifest.json').read_text())
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          shards=[json.loads(p.read_text()) for p in Path('audits').rglob('nf679-audit.json')]
+          assert len(shards)==8
+          assert {s['manifest_sha256'] for s in shards}=={sha(d/'manifest.json')}
+          assert {s['metadata_sha256'] for s in shards}=={sha(d/'Metadata.lean')}
+          names={x['file']:x['sha256'] for x in manifest['files']}
+          rows=[]
+          for s in shards:
+              assert [r['i'] for r in s['rows']]==list(range(s['first'],s['last']+1))
+              assert len(s['generic_transport'])==3
+              rows+=s['rows']
+          rows.sort(key=lambda r:r['i'])
+          assert [r['i'] for r in rows]==list(range(242))
+          for r in rows:
+              assert r['source_sha256']==names[f"Row{r['i']:03d}.lean"]
+              assert set(r['axioms'])<={'propext','Classical.choice','Quot.sound'}
+          result={'schema':'NF679-complete-metadata-row-audit-v1','rows':rows,
+                  'manifest_sha256':sha(d/'manifest.json'),'metadata_sha256':sha(d/'Metadata.lean'),
+                  'selected_pair_lookups':234256,'mixed_pair_lookups':127776,
+                  'scope':'Every row gate checked; aggregate Lean AllRows proof not built by this audit; numerical bank shape and analytic truth remain separate.'}
+          Path('nf679-complete-audit.json').write_text(json.dumps(result,indent=2)+'\n')
+          print('NF679 242/242 original metadata row gates; all 362032 key/degree lookups audited')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf679-complete-original-coverage-audit
+          path: nf679-complete-audit.json
+          if-no-files-found: error
