@@ -1,0 +1,92 @@
+name: NF673 original 242-source triangular entry custody and conditional signed Weil closure
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularEntryCustody.lean"
+      - "scripts/audit_nf673_original_triangular_centers.py"
+      - ".github/workflows/nf673-original-triangular-custody.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf673-triangular-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-triangular-lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Lower-triangle physical H widening soundness and conditional original signed-Weil theorem
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalTriangularEntryCustody
+      - name: Strict standard axiom audit for all NF673 closures
+        run: |
+          cat >/tmp/nf673Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalTriangularEntryCustody
+          #print axioms WeilDefect.neutralNF673EntryCheck_sound
+          #print axioms WeilDefect.neutralNF673OriginalPhysical_of_triangular_fast_checks
+          #print axioms WeilDefect.neutralNF673OriginalPhysical_strict_of_triangular_fast_checks
+          EOF
+          set -o pipefail
+          lake env lean /tmp/nf673Audit.lean | tee /tmp/nf673-axioms.txt
+          python - <<'PY'
+          from pathlib import Path
+          names = [
+              "neutralNF673EntryCheck_sound",
+              "neutralNF673OriginalPhysical_of_triangular_fast_checks",
+              "neutralNF673OriginalPhysical_strict_of_triangular_fast_checks",
+          ]
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          text = Path("/tmp/nf673-axioms.txt").read_text()
+          for name in names:
+              prefix = f"'WeilDefect.{name}'"
+              rows = [line for line in text.splitlines() if prefix in line]
+              if len(rows) != 1:
+                  raise SystemExit(f"missing/duplicate axiom audit for {name}: {len(rows)}")
+              line = rows[0]
+              if "does not depend on any axioms" in line:
+                  continue
+              marker = prefix + " depends on axioms: ["
+              if marker not in line:
+                  raise SystemExit(f"unrecognized axioms for {name}: {line}")
+              used = {x.strip() for x in line.split(marker, 1)[1].split("]", 1)[0].split(",") if x.strip()}
+              if not used <= allowed:
+                  raise SystemExit(f"nonstandard axioms in {name}: {used - allowed}")
+          print("NF673 conditional original signed Weil closure standard axiom audit PASS")
+          PY
+  pinned-original-center-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch immutable original NF631 source receipt
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" \
+            "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14459025571/zip" \
+            -o nf631-original-widened.zip
+          echo 'e91a83cae117e98608aefa6849dac178e4ddb58dd1dffbfe37304ad248af9ed9  nf631-original-widened.zip' | sha256sum -c -
+      - name: Exact original 242-source H center symmetry and V receipt coverage
+        run: |
+          python -m py_compile scripts/audit_nf673_original_triangular_centers.py
+          python scripts/audit_nf673_original_triangular_centers.py \
+            --archive nf631-original-widened.zip --output nf673-source-center-audit.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf673-pinned-original-center-audit
+          path: nf673-source-center-audit.json
+          if-no-files-found: error
