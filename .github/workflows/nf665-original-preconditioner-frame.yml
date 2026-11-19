@@ -210,4 +210,33 @@ jobs:
           #print axioms WeilDefect.nf663OriginalPhysical_sourceEnclosed
           #print axioms WeilDefect.nf663ActualPhysical_transformedEnclosed
           EOF
-          lake env lean /tmp/nf663PhysicalAudit.lean
+          set -o pipefail
+          lake env lean /tmp/nf663PhysicalAudit.lean | tee /tmp/nf667-terminal-axioms.txt
+          python - <<'PY'
+          from pathlib import Path
+          content = Path("/tmp/nf667-terminal-axioms.txt").read_text()
+          names = [
+              "nf665OriginalExactMarginGate",
+              "nf665OriginalPhysical_coercivity",
+              "nf665OriginalK_surjective",
+              "nf665OriginalK_normBound",
+              "nf665OriginalPhysical_congruence",
+              "nf664OriginalIntegerMargin",
+              "nf664AuthenticatedOriginalTransformedCoercivity",
+              "nf663AllCenters",
+              "nf663AllRadii",
+              "nf663OriginalPhysical_sourceEnclosed",
+              "nf663ActualPhysical_transformedEnclosed",
+          ]
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for name in names:
+              marker = f"'WeilDefect.{name}' depends on axioms: ["
+              matches = [line for line in content.splitlines() if marker in line]
+              if len(matches) != 1:
+                  raise SystemExit(f"Missing or duplicated terminal axiom audit: {name}")
+              raw_axioms = matches[0].split(marker, 1)[1].split("]", 1)[0]
+              used = {x.strip() for x in raw_axioms.split(",") if x.strip()}
+              if not used <= allowed:
+                  raise SystemExit(f"Unexpected axiom in {name}: {used - allowed}")
+          print(f"NF667 terminal strict axiom whitelist PASS: {len(names)} source-bound targets")
+          PY
