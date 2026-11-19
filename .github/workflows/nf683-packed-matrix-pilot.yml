@@ -1,0 +1,131 @@
+name: NF683 deterministic packed original matrix product pilot
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedProducts.lean"
+      - "scripts/emit_nf683_packed_matrix_pilot.py"
+      - ".github/workflows/nf683-packed-matrix-pilot.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf683-packed-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  emit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install python-flint==0.8.0
+      - name: Authenticate retained original NF681 matrix frontier literal archive
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14541229354/zip" -o nf681.zip
+          echo '13c2c0e296633ab5368b6e1be09c4e9b69d527001e0f3969ffc2f0af0c611ef5  nf681.zip' | sha256sum -c -
+          unzip -q nf681.zip -d frontier
+      - name: Generate identical-coordinate direct and signed-digit packed proposals
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/emit_nf683_packed_matrix_pilot.py
+          python scripts/emit_nf683_packed_matrix_pilot.py --frontier frontier --output WeilDefect/Generated/NF683
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF683')
+          m=json.loads((d/'manifest.json').read_text())
+          assert m['width']==4 and m['coordinate_identities']==8
+          for x in m['files']:
+              assert hashlib.sha256((d/x['file']).read_bytes()).hexdigest()==x['sha256']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf683-packed-original-proposals
+          path: WeilDefect/Generated/NF683/
+          if-no-files-found: error
+  kernel-pilot:
+    needs: emit
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf683-packed-original-proposals
+          path: WeilDefect/Generated/NF683
+      - name: Verify exact generated source files
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF683')
+          for x in json.loads((d/'manifest.json').read_text())['files']:
+              assert hashlib.sha256((d/x['file']).read_bytes()).hexdigest()==x['sha256']
+          PY
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Build exact signed-digit recovery and shared source literals
+        run: lake build WeilDefect.Generated.NF683.Data
+      - name: Matched direct and packed kernel trials with separate elapsed and memory receipts
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          : >nf683-timing.txt
+          for target in DirectHD DirectA Bounds PackedHD PackedA; do
+            echo "TARGET $target" | tee -a nf683-timing.txt
+            /usr/bin/time -a -o nf683-timing.txt -f 'elapsed=%e user=%U rss_kb=%M exit=%x' \
+              lake build "WeilDefect.Generated.NF683.$target" 2>&1 | tee -a nf683-build.log
+          done
+      - name: Strict axiom audit of generic recovery, all literal bounds and both proof methods
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('WeilDefect/Generated/NF683/manifest.json').read_text())
+          mods=['DirectHD','DirectA','PackedHD','PackedA']
+          Path('/tmp/nf683Audit.lean').write_text(''.join(f'import WeilDefect.Generated.NF683.{v}\n' for v in mods)+''.join(f'#print axioms WeilDefect.{n}\n' for n in m['audit_theorems']))
+          PY
+          lake env lean /tmp/nf683Audit.lean 2>&1 | tee nf683-axioms.log
+          python - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF683')
+          names=set(json.loads((d/'manifest.json').read_text())['audit_theorems'])
+          log=Path('nf683-axioms.log').read_text()
+          found={}
+          for n,x in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[s.strip() for s in x.split(',') if s.strip()]
+          for n in re.findall(r"'WeilDefect\.(\w+)' does not depend on any axioms",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[]
+          assert set(found)==names,(len(found),len(names))
+          assert all(set(x)<={'propext','Classical.choice','Quot.sound'} for x in found.values())
+          Path('nf683-audit.json').write_text(json.dumps({'schema':'NF683-matched-packed-pilot-audit-v1','manifest_sha256':hashlib.sha256((d/'manifest.json').read_bytes()).hexdigest(),'theorems':found,'timing':Path('nf683-timing.txt').read_text(),'scope':'Eight original product coordinates, matched direct and deterministic packed proofs; timing includes lake overhead and is not a general speed claim.'},indent=2)+'\n')
+          print('NF683 original eight direct/packed coordinates and exact bounded decoding: standard-axiom audit PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf683-packed-pilot-audit
+          path: |
+            nf683-timing.txt
+            nf683-build.log
+            nf683-axioms.log
+            nf683-audit.json
+            WeilDefect/Generated/NF683/manifest.json
+          if-no-files-found: ignore
