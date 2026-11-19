@@ -156,10 +156,18 @@ theorem nf670FullPhysicalGram_allCoefficients (z : Fin 242 → ℝ) :
         nf669OriginalA nf669OriginalB nf669OriginalC
         (fun i => z (neutralNF661Source i))
         (fun j => z (nf669ComplementSource j)) := by
-  rw [← nf670AssembleOriginal_roundtrip z]
-  exact nf670FullPhysicalGram_blockEnergy
-    (fun i => z (neutralNF661Source i))
-    (fun j => z (nf669ComplementSource j))
+  calc
+    neutralNF661Quadratic neutralNF606PhysicalH z =
+      neutralNF661Quadratic neutralNF606PhysicalH
+        (nf670AssembleOriginal
+          (fun i => z (neutralNF661Source i))
+          (fun j => z (nf669ComplementSource j))) := by
+          rw [nf670AssembleOriginal_roundtrip z]
+    _ = neutralNF669BlockEnergy
+          nf669OriginalA nf669OriginalB nf669OriginalC
+          (fun i => z (neutralNF661Source i))
+          (fun j => z (nf669ComplementSource j)) :=
+      nf670FullPhysicalGram_blockEnergy _ _
 
 #print axioms nf670FullSource_sum
 #print axioms nf670FullSource_quadratic_reindex
