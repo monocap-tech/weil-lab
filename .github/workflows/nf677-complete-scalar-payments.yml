@@ -1,0 +1,190 @@
+name: NF677 complete original literal scalar payment kernel replay
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/nf677-complete-scalar-payments.yml"
+      - "scripts/prepare_nf654_isolated_scalar_trial.py"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf677-scalar-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  scalar-shards:
+    name: scalar-rows-${{ matrix.first }}-${{ matrix.last }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {first: 0, last: 60}
+          - {first: 61, last: 120}
+          - {first: 121, last: 181}
+          - {first: 182, last: 241}
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch immutable original scalar proposal and payment archives
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p inputs/scalar inputs/payments
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" \
+            "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14472975687/zip" -o inputs/scalar.zip
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" \
+            "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14458146136/zip" -o inputs/payments.zip
+          echo '7c4e6f03364ed0290a54683c5b52688a0478a32ae00625b3e5f6f4231ad54582  inputs/scalar.zip' | sha256sum -c -
+          echo '8cbae72a7714dc555c0183edfbbda077096ef910b1e284d4abc91c4960d95e6e  inputs/payments.zip' | sha256sum -c -
+          unzip -q inputs/scalar.zip -d inputs/scalar
+          unzip -q inputs/payments.zip -d inputs/payments
+      - name: Reconcile all 726 fees against the exact frozen box and preserve the 242 literal proofs
+        run: |
+          python scripts/prepare_nf654_isolated_scalar_trial.py \
+            --root . --proposals inputs/scalar \
+            --payments inputs/payments/nf631-widened-payments.json \
+            --output WeilDefect/Generated/NF639
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF639')
+          p=json.loads((d/'nf654-preflight.json').read_text())
+          m=json.loads(Path('inputs/scalar/manifest.json').read_text())
+          assert p['strict_selected_rows']==p['all_scalar_fees_replayed']==242
+          assert p['unchanged_row_bytes']==242
+          for item in m['files']:
+              if item['file']!='Params.lean':
+                  assert hashlib.sha256((d/item['file']).read_bytes()).hexdigest()==item['sha256']
+          PY
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Build strictly isolated rational scalar core
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalScalarPaymentCore
+      - name: Kernel-check every assigned literal scalar gate in bounded batches
+        timeout-minutes: 42
+        env:
+          FIRST: ${{ matrix.first }}
+          LAST: ${{ matrix.last }}
+        run: |
+          set -euo pipefail
+          for ((start=FIRST;start<=LAST;start+=8)); do
+            targets=()
+            for ((i=start;i<start+8 && i<=LAST;i++)); do
+              printf -v row '%03d' "$i"
+              targets+=("WeilDefect.Generated.NF639.Row$row")
+            done
+            lake build "${targets[@]}" 2>&1 | tee -a nf677-scalar.log
+          done
+      - name: Independently audit each assigned Lean theorem and source digest
+        env:
+          FIRST: ${{ matrix.first }}
+          LAST: ${{ matrix.last }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          first,last=int(os.environ['FIRST']),int(os.environ['LAST'])
+          imports=''.join(f'import WeilDefect.Generated.NF639.Row{i:03d}\n' for i in range(first,last+1))
+          prints=''.join(f'#print axioms WeilDefect.nf639Row{i:03d}Check\n' for i in range(first,last+1))
+          Path('/tmp/nf677Audit.lean').write_text(imports+prints)
+          PY
+          lake env lean /tmp/nf677Audit.lean 2>&1 | tee nf677-axioms.log
+          python - <<'PY'
+          import hashlib,json,os,re
+          from pathlib import Path
+          first,last=int(os.environ['FIRST']),int(os.environ['LAST'])
+          d=Path('WeilDefect/Generated/NF639')
+          manifest=Path('inputs/scalar/manifest.json')
+          allowed={'propext','Classical.choice','Quot.sound'}
+          lines=Path('nf677-axioms.log').read_text().splitlines()
+          rows=[]
+          for i in range(first,last+1):
+              key=f"'WeilDefect.nf639Row{i:03d}Check'"
+              matches=[x for x in lines if key in x]
+              assert len(matches)==1,(i,matches)
+              line=matches[0]
+              if 'does not depend on any axioms' in line:
+                  axioms=[]
+              else:
+                  pre=key+' depends on axioms: ['
+                  assert pre in line,(i,line)
+                  axioms=[x.strip() for x in line.split(pre,1)[1].split(']',1)[0].split(',') if x.strip()]
+                  assert set(axioms)<=allowed,(i,axioms)
+              rows.append({'row':i,'theorem':f'WeilDefect.nf639Row{i:03d}Check',
+                           'axioms':axioms,'source_sha256':hashlib.sha256((d/f'Row{i:03d}.lean').read_bytes()).hexdigest()})
+          Path('nf677-shard-audit.json').write_text(json.dumps({
+              'schema':'NF677-original-scalar-shard-kernel-audit-v1',
+              'first':first,'last':last,
+              'original_manifest_sha256':hashlib.sha256(manifest.read_bytes()).hexdigest(),
+              'preflight_sha256':hashlib.sha256((d/'nf654-preflight.json').read_bytes()).hexdigest(),
+              'rows':rows,
+              'scope':'literal scalar gates only; original cache numerator binding and analytic entries not asserted'
+          },indent=2)+'\n')
+          print(f'NF677 exact rows {first}..{last}: {len(rows)} Lean scalar gates with clean axioms')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf677-scalar-shard-${{ matrix.first }}-${{ matrix.last }}
+          path: |
+            nf677-shard-audit.json
+            nf677-scalar.log
+            nf677-axioms.log
+            WeilDefect/Generated/NF639/nf654-preflight.json
+          if-no-files-found: ignore
+
+  complete-scalar-audit:
+    needs: scalar-shards
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf677-scalar-shard-*
+          path: audits
+      - name: Verify exact complete dense coverage and consistent original source
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          files=list(Path('audits').rglob('nf677-shard-audit.json'))
+          assert len(files)==4
+          shards=[json.loads(p.read_text()) for p in files]
+          expected={(0,60),(61,120),(121,181),(182,241)}
+          assert {(s['first'],s['last']) for s in shards}==expected
+          assert all(s['schema']=='NF677-original-scalar-shard-kernel-audit-v1' for s in shards)
+          assert {s['original_manifest_sha256'] for s in shards}=={'efcb46ca6eabeae80d0beb21f8627773d23b71002c26fed82f68f47e56bbf896'}
+          assert len({s['preflight_sha256'] for s in shards})==1
+          rows=[]
+          for s in shards:
+              assert [r['row'] for r in s['rows']]==list(range(s['first'],s['last']+1))
+              rows.extend(s['rows'])
+          rows.sort(key=lambda r:r['row'])
+          assert [r['row'] for r in rows]==list(range(242))
+          assert all(r['theorem']==f"WeilDefect.nf639Row{r['row']:03d}Check" for r in rows)
+          assert all(set(r['axioms'])<={'propext','Classical.choice','Quot.sound'} for r in rows)
+          Path('nf677-complete-scalar-audit.json').write_text(json.dumps({
+              'schema':'NF677-complete-isolated-original-scalar-audit-v1',
+              'original_manifest_sha256':shards[0]['original_manifest_sha256'],
+              'rows':rows,'scalar_gate_count':242,'inequality_count':726,
+              'scope':'all isolated original scalar gates; no hcache, numerator validity, analytic H/V or complete hpay assertion'
+          },indent=2)+'\n')
+          print('NF677 242/242 original literal scalar gates, 726 inequalities and standard-axiom audits PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf677-complete-original-scalar-audit
+          path: nf677-complete-scalar-audit.json
+          if-no-files-found: error
