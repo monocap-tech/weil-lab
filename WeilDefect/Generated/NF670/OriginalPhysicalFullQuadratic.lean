@@ -79,19 +79,19 @@ theorem nf670AssembleOriginal_roundtrip (z : Fin 242 → ℝ) :
       (fun i => z (neutralNF661Source i))
       (fun j => z (nf669ComplementSource j)) = z := by
   funext k
-  have hk := nf669OriginalSourceEquiv.apply_symm_apply k
+  have hk :
+      nf669SourceSum (nf669OriginalSourceEquiv.symm k) = k :=
+    nf669OriginalSourceEquiv.apply_symm_apply k
   unfold nf670AssembleOriginal
   cases h : nf669OriginalSourceEquiv.symm k with
   | inl i =>
     change z (nf669SourceSum (Sum.inl i)) = z k
-    have hi : nf669SourceSum (Sum.inl i) = k := by
-      simpa [h] using hk
-    rw [hi]
+    rw [h] at hk
+    rw [hk]
   | inr j =>
     change z (nf669SourceSum (Sum.inr j)) = z k
-    have hj : nf669SourceSum (Sum.inr j) = k := by
-      simpa [h] using hk
-    rw [hj]
+    rw [h] at hk
+    rw [hk]
 
 theorem nf670Mixed_physicalTransposed (x : Fin 15 → ℝ)
     (y : Fin 227 → ℝ) :
@@ -130,15 +130,17 @@ theorem nf670FullPhysicalGram_blockEnergy
   rw [nf670FullSource_quadratic_reindex]
   simp only [nf670AssembleOriginal_source, Fintype.sum_sum_type,
     Finset.sum_add_distrib]
+  -- Fintype.sum_sum_type splits the *inner* Sum first.
+  -- Thus the expanded order is A + Bᵀ, then B + C, not A + B, Bᵀ + C.
   change
     ((∑ i : Fin 15, ∑ j : Fin 15,
         nf669OriginalA i j * x i * x j) +
-      (∑ i : Fin 15, ∑ j : Fin 227,
-        nf669OriginalB i j * x i * y j)) +
-    ((∑ j : Fin 227, ∑ i : Fin 15,
+      (∑ j : Fin 227, ∑ i : Fin 15,
         neutralNF606PhysicalH
           (nf669ComplementSource j) (neutralNF661Source i) *
-            y j * x i) +
+            y j * x i)) +
+    ((∑ i : Fin 15, ∑ j : Fin 227,
+        nf669OriginalB i j * x i * y j) +
       (∑ i : Fin 227, ∑ j : Fin 227,
         nf669OriginalC i j * y i * y j)) =
       neutralNF669BlockEnergy
