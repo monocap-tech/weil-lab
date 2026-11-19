@@ -4,6 +4,7 @@ on:
     paths:
       - "WeilDefect/Generated/NF670/OriginalPhysicalRieszResponse.lean"
       - "WeilDefect/Generated/NF670/OriginalPhysicalFullQuadratic.lean"
+      - "WeilDefect/Generated/NF670/OriginalPhysicalFullSchur.lean"
       - ".github/workflows/nf670-original-riesz-quadratic.yml"
   workflow_dispatch:
 permissions:
@@ -142,11 +143,18 @@ jobs:
         timeout-minutes: 30
         run: |
           lake build WeilDefect.Generated.NF670.OriginalPhysicalRieszResponse
+      - name: Full original 242-source physical Schur identity and exact complementary sign equivalence
+        timeout-minutes: 25
+        run: |
+          lake build WeilDefect.Generated.NF670.OriginalPhysicalFullSchur
       - name: Exact source-index partition, full quadratic, Riesz and original physical local bound axiom audit
         run: |
           cat >/tmp/nf663PhysicalAudit.lean <<'EOF'
           import WeilDefect.Generated.NF670.OriginalPhysicalFullQuadratic
+          import WeilDefect.Generated.NF670.OriginalPhysicalFullSchur
           import WeilDefect.Generated.NF670.OriginalPhysicalRieszResponse
+          #print axioms WeilDefect.nf670OriginalFullSchurIdentity
+          #print axioms WeilDefect.nf670OriginalFullNonnegative_iff_schur
           #print axioms WeilDefect.nf670FullSource_sum
           #print axioms WeilDefect.nf670FullSource_quadratic_reindex
           #print axioms WeilDefect.nf670AssembleOriginal_source
@@ -190,6 +198,8 @@ jobs:
           from pathlib import Path
           content = Path("/tmp/nf670-physical-audit.txt").read_text()
           names = [
+              "nf670OriginalFullSchurIdentity",
+              "nf670OriginalFullNonnegative_iff_schur",
               "nf670FullSource_sum",
               "nf670FullSource_quadratic_reindex",
               "nf670AssembleOriginal_source",
