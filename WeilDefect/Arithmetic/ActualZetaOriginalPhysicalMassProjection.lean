@@ -14,8 +14,8 @@ theorem neutralNF678MassProjection
       s.total = t.total ∧ s.wMass = t.wMass ∧ s.yMass = t.yMass := by
   simp only [NF626ScaledInputs.col, NF626ScaledInputs.rowMass,
     NF626ScaledInputs.total, NF626ScaledInputs.wMass,
-    NF626ScaledInputs.yMass, hD, hy, hw]
-  exact ⟨rfl, rfl, rfl, rfl, rfl⟩
+    NF626ScaledInputs.yMass, hD, hy, hw] <;>
+    exact ⟨rfl, rfl, rfl, rfl, rfl⟩
 
 theorem neutralNF678DyProjection
     (s t : NF626ScaledInputs) (i : Fin 242)
