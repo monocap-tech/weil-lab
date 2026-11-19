@@ -1,0 +1,117 @@
+name: NF659 original physical Gram exact transform and interval theorem
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalGramCongruenceInterval.lean"
+      - "scripts/emit_nf659_gram_transformed_gates.py"
+      - ".github/workflows/nf659-original-gram-transform.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf659-original-gram-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  finite-congruence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Recover pinned original source and previously accepted moment certificates
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p inputs/archives
+          get() {
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" \
+              "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$1/zip" \
+              -o "inputs/archives/$2.zip"
+          }
+          get 14476203337 nf648-Pole
+          get 14476327246 nf648-Osc
+          get 14478132104 nf648-Mixed
+          get 14443955726 nf621-shard0
+          get 14443029185 nf621-shard1
+          get 14442993898 nf621-shard2
+          get 14443875632 nf621-shard3
+          get 14443830605 nf621-shard4
+          get 14443726709 nf621-shard5
+          get 14441839748 nf621-shard6
+          get 14442134710 nf621-shard7
+          get 14459025571 nf631-widened
+          get 14458696200 nf632-pi
+          echo 'e91a83cae117e98608aefa6849dac178e4ddb58dd1dffbfe37304ad248af9ed9  inputs/archives/nf631-widened.zip' | sha256sum -c -
+          echo 'd1769ab74275cc9c57452d3aa5ad3a30109efc500f7834ee392ed668612d9a37  inputs/archives/nf632-pi.zip' | sha256sum -c -
+          mkdir -p WeilDefect/Generated/NF632
+          unzip -q inputs/archives/nf632-pi.zip -d WeilDefect/Generated/NF632
+      - name: Rebuild original physical entries and regenerate exact 64-digit witness
+        run: |
+          python scripts/prepare_nf655_certified_moment_gram.py inputs/archives WeilDefect/Generated
+          python scripts/emit_nf657_compact_congruence.py inputs/archives/nf631-widened.zip inputs/nf659-compact.json
+          python scripts/verify_nf657_compact_congruence.py inputs/nf659-compact.json inputs/archives/nf631-widened.zip
+          python scripts/emit_nf658_original_gram_widenings.py --archive inputs/archives/nf631-widened.zip --witness inputs/nf659-compact.json --output WeilDefect/Generated/NF658
+      - name: Generate all 450 integer transformed coefficient gates
+        run: |
+          python -m py_compile scripts/emit_nf659_gram_transformed_gates.py
+          python scripts/emit_nf659_gram_transformed_gates.py inputs/nf659-compact.json WeilDefect/Generated/NF659
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          p=Path('WeilDefect/Generated/NF659')
+          m=json.loads((p/'manifest.json').read_text())
+          assert m['center_checks']==225 and m['radius_checks']==225
+          assert m['positive_margins']==15 and len(m['files'])==17
+          for x in m['files']:
+              assert hashlib.sha256((p/x['file']).read_bytes()).hexdigest()==x['sha256']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf659-exact-transformed-matrix-proposals
+          path: |
+            WeilDefect/Generated/NF659/manifest.json
+            inputs/nf659-compact.json
+          if-no-files-found: error
+      - name: Install pinned Lean toolchain
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Generic congruence intervals and symmetric off-diagonal positivity
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramCongruenceInterval WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramDiagonalDominance
+      - name: Accepted original entries and first transformed integer pilots
+        timeout-minutes: 18
+        run: |
+          lake build WeilDefect.Generated.NF658.TransformPilot WeilDefect.Generated.NF659.ComputedData
+      - name: First, central, and pole transformed rows
+        timeout-minutes: 20
+        run: |
+          lake build WeilDefect.Generated.NF659.Row00 WeilDefect.Generated.NF659.Row07 WeilDefect.Generated.NF659.Row14
+      - name: All 225 centers and all 225 radii
+        timeout-minutes: 35
+        run: |
+          lake build WeilDefect.Generated.NF659.Complete
+      - name: Standard axiom audit
+        run: |
+          cat >/tmp/nf659Audit.lean <<'EOF'
+          import WeilDefect.Generated.NF659.Complete
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramCongruenceInterval
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramDiagonalDominance
+          #print axioms WeilDefect.neutralNF659CongruenceEntry_bound
+          #print axioms WeilDefect.neutralNF659OffDiagonalEnergy_nonneg
+          #print axioms WeilDefect.neutralNF659OffDiagonalAbs_swap
+          #print axioms WeilDefect.nf659ExactCoercivityGate
+          #print axioms WeilDefect.nf659MarginOfArray
+          #print axioms WeilDefect.nf659C00_00
+          #print axioms WeilDefect.nf659R07_07
+          #print axioms WeilDefect.nf659C14_14
+          #print axioms WeilDefect.nf659R14_14
+          EOF
+          lake env lean /tmp/nf659Audit.lean
