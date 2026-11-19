@@ -54,6 +54,26 @@ theorem nf659MarginOfArray : ∀ i : Fin 15,
     nf659MarginAt i = nf658Margins[i.val]! := by
   decide +kernel
 
+theorem nf659MarginPositive (i : Fin 15) : 0 < nf659MarginAt i := by
+  rw [nf659MarginOfArray]
+  exact nf658MarginPos i
+
+theorem nf659MarginUniform (i : Fin 15) :
+    nf658MinMargin ≤ nf659MarginAt i := by
+  rw [nf659MarginOfArray]
+  exact nf658MinMarginLe i
+
+def nf659KNormSq : ℤ :=
+  ∑ i : Fin 15, ∑ j : Fin 15, (nf658Get nf658Kints i j)^2
+
+theorem nf659KNormSq_eq : nf659KNormSq = nf658Ksq := by
+  decide +kernel
+
+theorem nf659ExactCoercivityGate :
+    nf658MinMargin * (10^60:ℤ) > (10^64:ℤ) * nf659KNormSq := by
+  rw [nf659KNormSq_eq]
+  exact nf658CoercivityIntegerGate
+
 theorem nf659CentersSymm : ∀ i j : Fin 15,
     nf659CenterAt i j = nf659CenterAt j i := by
   decide +kernel
