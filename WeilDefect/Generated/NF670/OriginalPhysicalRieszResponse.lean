@@ -33,8 +33,8 @@ theorem nf670ActualA_rowAction (x : Fin 15 → ℝ) :
     nf670ActualA.mulVec x =
       neutralNF668GramApply nf669OriginalA x := by
   funext i
-  simp only [nf670ActualA, neutralNF668GramApply,
-    Matrix.mulVec_apply_eq_sum]
+  change nf670ActualA.mulVec x i = ∑ j, nf669OriginalA i j * x j
+  rfl
 
 /-- Source-specific kernel triviality, obtained from the accepted
 original NF665 coercivity, not presumed from a numerical determinant. -/
@@ -74,8 +74,8 @@ theorem nf670ActualRiesz_exists
     (nf670ActualCrossRHS y)
   refine ⟨u, ?_⟩
   intro i
-  have hi := congrFun hu i
-  simpa only [nf670ActualA, Matrix.mulVec_apply_eq_sum] using hi
+  rw [nf670ActualA_rowAction] at hu
+  exact congrFun hu i
 
 /-- The exact Riesz response U(y)=A⁻¹By is defined using the
 mathematically established solution, not a rounded inverse. -/
@@ -98,11 +98,9 @@ theorem nf670ActualRiesz_unique
         nf670ActualCrossRHS y i) :
     u = nf670ActualRieszResponse y := by
   apply nf670ActualA_injective
+  rw [nf670ActualA_rowAction, nf670ActualA_rowAction]
   funext i
-  have hi := hu i
-  have hj := nf670ActualRiesz_solves y i
-  simpa only [nf670ActualA, Matrix.mulVec_apply_eq_sum] using
-    hi.trans hj.symm
+  exact (hu i).trans (nf670ActualRiesz_solves y i).symm
 
 /-- Source-integral mixed Gram energy has exactly the A-Riesz
 bilinear representation demanded by Schur completion. -/
