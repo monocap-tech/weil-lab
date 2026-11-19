@@ -53,7 +53,18 @@ real-analytic symmetry of the physical H integral. -/
 theorem nf662CompactBalls_symm :
     ∀ i j : Fin 15, nf662PhysicalCompactBall i j =
       nf662PhysicalCompactBall j i := by
-  apply NF591Ball.ext <;> decide +kernel
+  have hc : ∀ i j : Fin 15,
+      nf658Get nf658Centers i j = nf658Get nf658Centers j i := by
+    decide +kernel
+  have hr : ∀ i j : Fin 15,
+      nf658Get nf658Radii i j = nf658Get nf658Radii j i := by
+    decide +kernel
+  intro i j
+  apply NF591Ball.ext
+  · simpa [nf662PhysicalCompactBall] using
+      congrArg (fun t : ℤ => (t : ℚ) / (10 ^ 64 : ℚ)) (hc i j)
+  · simpa [nf662PhysicalCompactBall] using
+      congrArg (fun t : ℤ => (t : ℚ) / (10 ^ 64 : ℚ)) (hr i j)
 
 theorem nf662OriginalUpperPoleCross_contains :
     (nf662PhysicalCompactBall 0 14).Contains
