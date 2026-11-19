@@ -69,10 +69,12 @@ theorem nf662CompactBalls_symm :
     decide +kernel
   intro i j
   apply nf662Ball_ext
-  · simpa [nf662PhysicalCompactBall] using
-      congrArg (fun t : ℤ => (t : ℚ) / (10 ^ 64 : ℚ)) (hc i j)
-  · simpa [nf662PhysicalCompactBall] using
-      congrArg (fun t : ℤ => (t : ℚ) / (10 ^ 64 : ℚ)) (hr i j)
+  · change (nf658Get nf658Centers i j : ℚ) / (10 ^ 64 : ℚ) =
+        (nf658Get nf658Centers j i : ℚ) / (10 ^ 64 : ℚ)
+    exact congrArg (fun t : ℤ => (t : ℚ) / (10 ^ 64 : ℚ)) (hc i j)
+  · change (nf658Get nf658Radii i j : ℚ) / (10 ^ 64 : ℚ) =
+        (nf658Get nf658Radii j i : ℚ) / (10 ^ 64 : ℚ)
+    exact congrArg (fun t : ℤ => (t : ℚ) / (10 ^ 64 : ℚ)) (hr i j)
 
 theorem nf662OriginalUpperPoleCross_contains :
     (nf662PhysicalCompactBall 0 14).Contains
