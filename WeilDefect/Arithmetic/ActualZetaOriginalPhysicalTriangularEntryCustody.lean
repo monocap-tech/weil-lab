@@ -38,8 +38,8 @@ exact symmetry of historical rational H centers, and all four
 historical V columns. Its independent truth remains to be checked. -/
 def neutralNF673EntryCheck
     (M : NF622Moments) (p : NF625PaymentData) : Bool :=
-  neutralNF673LowerHEntryCheck M p &&
-    neutralNF673CenterSymmetryCheck p &&
+  (neutralNF673LowerHEntryCheck M p &&
+    neutralNF673CenterSymmetryCheck p) &&
     neutralNF673MixedVEntryCheck M p
 
 noncomputable section
