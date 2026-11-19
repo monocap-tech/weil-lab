@@ -149,6 +149,48 @@ def nf669OriginalC (i j : Fin 227) : ℝ :=
   neutralNF606PhysicalH (nf669ComplementSource i)
     (nf669ComplementSource j)
 
+/-- The original 242-by-242 physical Gram matrix, transported solely
+by the exact source-index bijection; there is no numerical
+preconditioner or approximate basis change in this identity. -/
+def nf669OriginalReindexedH
+    (s t : Fin 15 ⊕ Fin 227) : ℝ :=
+  neutralNF606PhysicalH (nf669SourceSum s) (nf669SourceSum t)
+
+theorem nf669OriginalReindexed_selected
+    (i j : Fin 15) :
+    nf669OriginalReindexedH (Sum.inl i) (Sum.inl j) =
+      nf669OriginalA i j := rfl
+
+theorem nf669OriginalReindexed_mixed
+    (i : Fin 15) (j : Fin 227) :
+    nf669OriginalReindexedH (Sum.inl i) (Sum.inr j) =
+      nf669OriginalB i j := rfl
+
+theorem nf669OriginalReindexed_complement
+    (i j : Fin 227) :
+    nf669OriginalReindexedH (Sum.inr i) (Sum.inr j) =
+      nf669OriginalC i j := rfl
+
+/-- Every full original physical H entry is preserved by the exact
+15+227 reindexing, not merely the selected block entries. -/
+theorem nf669OriginalReindexed_preservesH
+    (i j : Fin 242) :
+    neutralNF606PhysicalH i j =
+      nf669OriginalReindexedH
+        (nf669OriginalSourceEquiv.symm i)
+        (nf669OriginalSourceEquiv.symm j) := by
+  have hi :
+      nf669SourceSum (nf669OriginalSourceEquiv.symm i) = i :=
+    nf669OriginalSourceEquiv.apply_symm_apply i
+  have hj :
+      nf669SourceSum (nf669OriginalSourceEquiv.symm j) = j :=
+    nf669OriginalSourceEquiv.apply_symm_apply j
+  change neutralNF606PhysicalH i j =
+    neutralNF606PhysicalH
+      (nf669SourceSum (nf669OriginalSourceEquiv.symm i))
+      (nf669SourceSum (nf669OriginalSourceEquiv.symm j))
+  rw [hi, hj]
+
 theorem nf669OriginalA_eq_certified :
     nf669OriginalA = neutralNF661PhysicalH := rfl
 
@@ -176,6 +218,7 @@ theorem nf669OriginalB_transpose (i : Fin 15) (j : Fin 227) :
 #print axioms nf669Source_cover
 #print axioms nf669SourceSum_injective
 #print axioms nf669SourceSum_surjective
+#print axioms nf669OriginalReindexed_preservesH
 #print axioms nf669OriginalA_coercivity
 #print axioms nf669OriginalB_transpose
 
