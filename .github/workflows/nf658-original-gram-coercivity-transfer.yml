@@ -97,6 +97,10 @@ jobs:
         timeout-minutes: 25
         run: |
           lake build WeilDefect.Generated.NF658.Complete
+      - name: Generic symmetric Gram cross-term and interval lower bounds
+        timeout-minutes: 8
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramCoercivityLemmas
       - name: Exact transformed center and radius pilot gates
         timeout-minutes: 15
         run: |
@@ -105,7 +109,7 @@ jobs:
         run: |
           cat >/tmp/nf658Audit.lean <<'EOF'
           import WeilDefect.Generated.NF658.Complete
-          import WeilDefect.Generated.NF658.TransformPilot
+          import WeilDefect.Generated.NF658.TransformPilot\n          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramCoercivityLemmas
           import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramBlockSymmetry
           #print axioms WeilDefect.neutralNF657PhysicalH_symm
           #print axioms WeilDefect.nf658MarginPos
@@ -113,6 +117,6 @@ jobs:
           #print axioms WeilDefect.nf658H000_000Contains
           #print axioms WeilDefect.nf658H241_000Contains
           #print axioms WeilDefect.nf658H241_241Contains
-          #print axioms WeilDefect.nf658PoleCenterGate
+          #print axioms WeilDefect.nf658PoleCenterGate\n          #print axioms WeilDefect.neutralNF658CrossTerm_lower\n          #print axioms WeilDefect.neutralNF658Bilinear_enclosure
           EOF
           lake env lean /tmp/nf658Audit.lean
