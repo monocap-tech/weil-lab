@@ -48,7 +48,7 @@ def main():
     for x in ('archive','witness','output'):p.add_argument('--'+x,type=Path,required=True)
     a=p.parse_args()
     wraw=a.witness.read_bytes()
-    assert sha(wraw)==WIT
+    witness_sha=sha(wraw)
     w=json.loads(wraw)
     assert w['schema']=='NF657-original-15-source-compact-congruence-v1'
     assert w['indices']==I and w['S']=='10^64' and w['Q']=='10^2600'
@@ -61,6 +61,16 @@ def main():
     d=list(map(int,w['dominance_margin_scaled_numerator']))
     kn=int(w['K_norm_sq_scaled_numerator'])
     assert len(d)==15 and min(d)>0 and min(d)*10**60>S*kn
+    assert w['source_archive_sha256']==ZIP
+    assert all(K[i][j]==(S if i==j else 0) for i in range(15) for j in range(i,15))
+    assert sum(x*x for row in K for x in row)==kn
+    for i in range(15):
+        margin=0
+        for j in range(15):
+            center=sum(K[i][p]*K[j][q]*C[p][q] for p in range(15) for q in range(15))
+            radius=sum(abs(K[i][p]*K[j][q])*E[p][q] for p in range(15) for q in range(15))
+            margin += center-radius if i==j else -(abs(center)+radius)
+        assert margin==d[i]
     assert all(C[i][j]==C[j][i] and E[i][j]==E[j][i]>=0
                for i in range(15) for j in range(15))
     a.output.mkdir(parents=True,exist_ok=True);files=[]
@@ -112,7 +122,7 @@ theorem nf658CoercivityIntegerGate :
           '#print axioms nf658H000_000Contains\n#print axioms nf658H241_241Contains')
     report={'schema':'NF658-original-physical-gram-64-digit-attachment-v1',
             'archive_sha256':ZIP,'entry_sha256':m['widened_entry_sha256'],
-            'compact_witness_sha256':WIT,'original_entry_intervals':checked,
+            'compact_witness_sha256':witness_sha,'original_entry_intervals':checked,
             'exact_scaled_widenings':'PASS','positive_margins':15,
             'coercivity_integer_gate':'PASS','files':files,
             'scope':'actual exact source preflight, candidate Lean proof modules only'}
