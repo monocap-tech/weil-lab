@@ -1,5 +1,6 @@
 import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramIntegralSquare
 import WeilDefect.Generated.NF670.OriginalPhysicalFullSchur
+import WeilDefect.Arithmetic.ActualZetaOriginalJ242AnalyticIdentity
 
 namespace WeilDefect
 
@@ -23,15 +24,9 @@ open MeasureTheory Finset
 continuous, including the genuine pole generator 241. -/
 theorem nf671OriginalRealSource_continuous (i : Fin 242) :
     Continuous (nf545OriginalSelectedRealGenerator i) := by
-  by_cases hi : i.val < 241
-  · simp only [nf545OriginalSelectedRealGenerator, dif_pos hi]
-    by_cases he : Even (nf545OriginalOscillatorNodeAt ⟨i.val, hi⟩).2
-    · simp only [if_pos he]
-      fun_prop
-    · simp only [if_neg he]
-      fun_prop
-  · simp only [nf545OriginalSelectedRealGenerator, dif_neg hi]
-    fun_prop
+  apply continuous_iff_continuousAt.mpr
+  intro t
+  exact (neutralNF551OriginalRealGenerator_analytic i t (Set.mem_univ t)).continuousAt
 
 /-- The authentic original NF606 full 242-source physical H equals
 the generic Gram of the exact unchanged analytic selected generators;
