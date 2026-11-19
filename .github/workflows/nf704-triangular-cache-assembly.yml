@@ -1,0 +1,72 @@
+name: NF704 triangular original cache and packed receipt assembly
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularCacheAssembly.lean"
+      - ".github/workflows/nf704-triangular-cache-assembly.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf704-triangular-cache-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Kernel check the exact generic reductions
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalTriangularCacheAssembly 2>&1 | tee nf704-build.log
+      - name: Strict axiom audit
+        run: |
+          set -euo pipefail
+          cat > /tmp/nf704Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalTriangularCacheAssembly
+          #print axioms WeilDefect.neutralNF704HD_of_packed_receipt
+          #print axioms WeilDefect.neutralNF704Dot_comm
+          #print axioms WeilDefect.neutralNF704A_of_packed_receipt
+          #print axioms WeilDefect.neutralNF704ADot_symm
+          #print axioms WeilDefect.neutralNF704A_of_lower
+          #print axioms WeilDefect.neutralNF704Cache_of_triangular
+          #print axioms WeilDefect.neutralNF704OriginalRow_of_symmetric_projection
+          EOF
+          lake env lean /tmp/nf704Audit.lean 2>&1 | tee nf704-axioms.log
+          python - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          names={'neutralNF704'+x for x in ('HD_of_packed_receipt','Dot_comm','A_of_packed_receipt','ADot_symm','A_of_lower','Cache_of_triangular','OriginalRow_of_symmetric_projection')}
+          found={}
+          s=Path('nf704-axioms.log').read_text()
+          for n,x in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",s):
+              if n in names:
+                  assert n not in found
+                  found[n]=[a.strip() for a in x.split(',') if a.strip()]
+          for n in re.findall(r"'WeilDefect\.(\w+)' does not depend on any axioms",s):
+              if n in names:
+                  assert n not in found
+                  found[n]=[]
+          assert set(found)==names and len(found)==7
+          assert all(set(a)<={'propext','Classical.choice','Quot.sound'} for a in found.values())
+          source=Path('WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularCacheAssembly.lean')
+          Path('nf704-complete-audit.json').write_text(json.dumps({'schema':'NF704-triangular-cache-assembly-audit-v1','source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'theorems':found,'scope':'Generic exact reductions only; original matrix and vector gates remain independent obligations.'},indent=2)+'\n')
+          print('NF704 seven generic exact reductions LEAN PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf704-triangular-cache-audit
+          path: |
+            nf704-build.log
+            nf704-axioms.log
+            nf704-complete-audit.json
+          if-no-files-found: ignore
