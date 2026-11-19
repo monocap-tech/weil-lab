@@ -68,6 +68,17 @@ jobs:
           export PATH="$HOME/.elan/bin:$PATH"
           lake update
           lake exe cache get
+      - name: Restore NF707 reusable compiled original input artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: nf707-compiled-original-input
+          path: nf708-compiled-input
+          run-id: 44633937710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Authenticate source and Lean environment before reusing compiled input objects
+        run: |
+          set -euo pipefail
+          python scripts/nf708_global_matrix_attachment_driver.py restore-input
       - name: Compile actual complete input and cache data against authenticated sources
         timeout-minutes: 270
         run: |
@@ -95,6 +106,7 @@ jobs:
           path: |
             nf708-*.log
             nf708-binding.json
+            nf708-input-reuse.json
             nf708-complete-audit.json
             WeilDefect/Generated/NF704Frontier/
           if-no-files-found: ignore
