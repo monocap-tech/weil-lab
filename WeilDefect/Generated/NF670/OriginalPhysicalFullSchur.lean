@@ -48,11 +48,10 @@ theorem nf670OriginalFullNonnegative_iff_schur :
   constructor
   · intro hFull y
     apply nf670ActualPhysical_schur_necessary
-    · intro x y
-      have h := hFull (nf670AssembleOriginal x y)
-      rw [nf670FullPhysicalGram_blockEnergy] at h
-      exact h
-    · exact y
+    intro x y
+    have h := hFull (nf670AssembleOriginal x y)
+    rw [nf670FullPhysicalGram_blockEnergy] at h
+    exact h
   · intro hSchur z
     rw [nf670FullPhysicalGram_allCoefficients]
     exact nf670ActualPhysical_block_nonnegative_of_schur
