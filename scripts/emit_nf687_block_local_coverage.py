@@ -69,15 +69,17 @@ def nf687Index : NF616Frequency → ℕ :=
         assert "nf679Meta" not in body
         write(name,imports,body)
     common=["WeilDefect.Generated.NF682.Maps","WeilDefect.Generated.NF682.Partitions"]
-    write("Pilot",common+[MOD+".Compact"],"""
+    write("PointPilot",common+[MOD+".Compact"],"""
 theorem nf687PilotAt : neutralNF687SelectedAt nf687Read nf687Size nf687Index nf682Top 0 0=true := by
   decide +kernel
 
+#print axioms nf687PilotAt
+""")
+    write("Pilot",[MOD+".PointPilot"],"""
 theorem nf687PilotBatch : nf682HPart00.all
     (neutralNF687SelectedAt nf687Read nf687Size nf687Index nf682Top 0)=true := by
   decide +kernel
 
-#print axioms nf687PilotAt
 #print axioms nf687PilotBatch
 """)
     write("Reference",common+["WeilDefect.Generated.NF679.Metadata"],"""
