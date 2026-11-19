@@ -30,8 +30,8 @@ bounded row per original physical source, not a monolithic 242×242
 Boolean normal form. -/
 def neutralNF674OriginalRowCheck (M : NF622Moments)
     (p : NF625PaymentData) (i : Fin 242) : Bool :=
-  neutralNF674LowerRow M p i &&
-    neutralNF674CenterRow p i &&
+  (neutralNF674LowerRow M p i &&
+    neutralNF674CenterRow p i) &&
     neutralNF674MixedRow M p i
 
 /-- A fully authenticated array of 242 independent original rows
