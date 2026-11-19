@@ -12,10 +12,21 @@ theorem neutralNF678MassProjection
     (hD : s.D = t.D) (hy : s.y = t.y) (hw : s.w = t.w) :
     s.col = t.col ∧ s.rowMass = t.rowMass ∧
       s.total = t.total ∧ s.wMass = t.wMass ∧ s.yMass = t.yMass := by
-  simp only [NF626ScaledInputs.col, NF626ScaledInputs.rowMass,
-    NF626ScaledInputs.total, NF626ScaledInputs.wMass,
-    NF626ScaledInputs.yMass, hD, hy, hw] <;>
-    exact ⟨rfl, rfl, rfl, rfl, rfl⟩
+  have hc : s.col = t.col := by
+    funext i
+    unfold NF626ScaledInputs.col
+    rw [hD]
+  have hm : s.rowMass = t.rowMass := by
+    funext i
+    unfold NF626ScaledInputs.rowMass
+    rw [hD]
+  refine ⟨hc, hm, ?_, ?_, ?_⟩
+  · unfold NF626ScaledInputs.total
+    rw [hc]
+  · unfold NF626ScaledInputs.wMass
+    rw [hw]
+  · unfold NF626ScaledInputs.yMass
+    rw [hy, hc]
 
 theorem neutralNF678DyProjection
     (s t : NF626ScaledInputs) (i : Fin 242)
