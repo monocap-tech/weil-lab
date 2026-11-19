@@ -1,0 +1,118 @@
+name: NF658 original physical Gram 64-digit transfer
+on:
+  pull_request:
+    paths:
+      - "scripts/emit_nf658_original_gram_widenings.py"
+      - "WeilDefect/Generated/NF658/TransformPilot.lean"
+      - ".github/workflows/nf658-original-gram-coercivity-transfer.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf658-original-gram-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  physical-gram-transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve original pinned source and accepted proof artifacts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p inputs/archives
+          get() {
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" \
+              "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$1/zip" \
+              -o "inputs/archives/$2.zip"
+          }
+          get 14476203337 nf648-Pole
+          get 14476327246 nf648-Osc
+          get 14478132104 nf648-Mixed
+          get 14443955726 nf621-shard0
+          get 14443029185 nf621-shard1
+          get 14442993898 nf621-shard2
+          get 14443875632 nf621-shard3
+          get 14443830605 nf621-shard4
+          get 14443726709 nf621-shard5
+          get 14441839748 nf621-shard6
+          get 14442134710 nf621-shard7
+          get 14459025571 nf631-widened
+          get 14458696200 nf632-pi
+          echo 'e91a83cae117e98608aefa6849dac178e4ddb58dd1dffbfe37304ad248af9ed9  inputs/archives/nf631-widened.zip' | sha256sum -c -
+          echo 'd1769ab74275cc9c57452d3aa5ad3a30109efc500f7834ee392ed668612d9a37  inputs/archives/nf632-pi.zip' | sha256sum -c -
+          mkdir -p WeilDefect/Generated/NF632
+          unzip -q inputs/archives/nf632-pi.zip -d WeilDefect/Generated/NF632
+      - name: Reconstitute original certified moment and physical entry proposals
+        run: |
+          python scripts/prepare_nf655_certified_moment_gram.py inputs/archives WeilDefect/Generated
+      - name: Generate and independently audit the exact compact witness
+        run: |
+          python -m py_compile scripts/emit_nf657_compact_congruence.py scripts/verify_nf657_compact_congruence.py
+          python scripts/emit_nf657_compact_congruence.py inputs/archives/nf631-widened.zip inputs/nf658-compact.json
+          python scripts/verify_nf657_compact_congruence.py inputs/nf658-compact.json inputs/archives/nf631-widened.zip
+      - name: Create the exact 120 original-to-64-digit Lean widening certificates
+        run: |
+          python -m py_compile scripts/emit_nf658_original_gram_widenings.py
+          python scripts/emit_nf658_original_gram_widenings.py --archive inputs/archives/nf631-widened.zip --witness inputs/nf658-compact.json --output WeilDefect/Generated/NF658
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          p=Path('WeilDefect/Generated/NF658')
+          m=json.loads((p/'manifest.json').read_text())
+          assert m['original_entry_intervals']==120 and len(m['files'])==17
+          for x in m['files']:
+              assert hashlib.sha256((p/x['file']).read_bytes()).hexdigest()==x['sha256']
+          print('NF658 all 120 retained entry/64-digit widening proposals independently sourced')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf658-original-physical-64digit-proposals
+          path: |
+            WeilDefect/Generated/NF658/manifest.json
+            inputs/nf658-compact.json
+          if-no-files-found: error
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: True physical H symmetry and exact 15 scalar witness gates
+        timeout-minutes: 15
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramBlockSymmetry WeilDefect.Generated.NF658.WitnessData
+      - name: First and pole-row actual 64-digit entry widenings
+        timeout-minutes: 20
+        run: |
+          lake build WeilDefect.Generated.NF658.Row000 WeilDefect.Generated.NF658.Row241
+      - name: All 120 actual physical H enclosures at 64 digits
+        timeout-minutes: 25
+        run: |
+          lake build WeilDefect.Generated.NF658.Complete
+      - name: Exact transformed center and radius pilot gates
+        timeout-minutes: 15
+        run: |
+          lake build WeilDefect.Generated.NF658.TransformPilot
+      - name: Lean axiom audit of the physical matrix and finite-bound premises
+        run: |
+          cat >/tmp/nf658Audit.lean <<'EOF'
+          import WeilDefect.Generated.NF658.Complete
+          import WeilDefect.Generated.NF658.TransformPilot
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramBlockSymmetry
+          #print axioms WeilDefect.neutralNF657PhysicalH_symm
+          #print axioms WeilDefect.nf658MarginPos
+          #print axioms WeilDefect.nf658CoercivityIntegerGate
+          #print axioms WeilDefect.nf658H000_000Contains
+          #print axioms WeilDefect.nf658H241_000Contains
+          #print axioms WeilDefect.nf658H241_241Contains
+          #print axioms WeilDefect.nf658PoleCenterGate
+          EOF
+          lake env lean /tmp/nf658Audit.lean
