@@ -68,7 +68,7 @@ theorem neutralNF660SymmetricRowPayment_bound
         (if i = j then (0 : ℝ) else a i j * y i * y j) := by
     by_cases hij : i = j
     · subst j
-      simp [pow_two]
+      simp [pow_two] <;> ring
     · simp [hij]
   have hrow (i : Fin n) :
       (∑ j : Fin n, a i j * y i * y j) =

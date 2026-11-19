@@ -1,0 +1,110 @@
+name: NF662 original real Gram intervals and symmetry completion
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalGramRealIntervalTransport.lean"
+      - "WeilDefect/Generated/NF662/PhysicalPilots.lean"
+      - ".github/workflows/nf662-original-gram-intervals.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf662-real-gram-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  real-interval-transport:
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned Lean toolchain
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Generic original lower triangle and real congruence interval proof
+        timeout-minutes: 15
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramRealIntervalTransport
+      - name: Recover exact original archives and accepted proof artifacts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p inputs/archives
+          get() {
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" \
+              "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$1/zip" \
+              -o "inputs/archives/$2.zip"
+          }
+          get 14476203337 nf648-Pole
+          get 14476327246 nf648-Osc
+          get 14478132104 nf648-Mixed
+          get 14443955726 nf621-shard0
+          get 14443029185 nf621-shard1
+          get 14442993898 nf621-shard2
+          get 14443875632 nf621-shard3
+          get 14443830605 nf621-shard4
+          get 14443726709 nf621-shard5
+          get 14441839748 nf621-shard6
+          get 14442134710 nf621-shard7
+          get 14459025571 nf631-widened
+          get 14458696200 nf632-pi
+          echo 'e91a83cae117e98608aefa6849dac178e4ddb58dd1dffbfe37304ad248af9ed9  inputs/archives/nf631-widened.zip' | sha256sum -c -
+          echo 'd1769ab74275cc9c57452d3aa5ad3a30109efc500f7834ee392ed668612d9a37  inputs/archives/nf632-pi.zip' | sha256sum -c -
+          mkdir -p WeilDefect/Generated/NF632
+          unzip -q inputs/archives/nf632-pi.zip -d WeilDefect/Generated/NF632
+      - name: Recreate the original physical certified entry enclosures
+        run: |
+          python scripts/prepare_nf655_certified_moment_gram.py inputs/archives WeilDefect/Generated
+          python scripts/emit_nf657_compact_congruence.py inputs/archives/nf631-widened.zip inputs/nf662-compact.json
+          python scripts/verify_nf657_compact_congruence.py inputs/nf662-compact.json inputs/archives/nf631-widened.zip
+          python scripts/emit_nf658_original_gram_widenings.py --archive inputs/archives/nf631-widened.zip --witness inputs/nf662-compact.json --output WeilDefect/Generated/NF658
+      - name: Original oscillator and genuine pole entry pilots with exact compact witnesses
+        timeout-minutes: 25
+        run: |
+          lake build WeilDefect.Generated.NF662.PhysicalPilots
+      - name: Generate all 225 authentic original physical compact-entry proof proposals
+        run: |
+          python -m py_compile scripts/emit_nf662_original_real_intervals.py
+          python scripts/emit_nf662_original_real_intervals.py WeilDefect/Generated/NF662
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          p=Path('WeilDefect/Generated/NF662')
+          m=json.loads((p/'manifest.json').read_text())
+          assert m['physical_source_entry_theorems']==225
+          assert m['lower_triangular_original_NF658_inputs']==120
+          assert m['upper_triangular_from_symmetry']==105
+          assert len(m['files'])==16
+          for x in m['files']:
+              assert hashlib.sha256((p/x['file']).read_bytes()).hexdigest()==x['sha256']
+          PY
+      - name: First, middle and pole original physical real entry rows
+        timeout-minutes: 25
+        run: |
+          lake build WeilDefect.Generated.NF662.Row00 WeilDefect.Generated.NF662.Row07 WeilDefect.Generated.NF662.Row14
+      - name: Full 225 original real physical entry intervals and transformed real matrix
+        timeout-minutes: 35
+        run: |
+          lake build WeilDefect.Generated.NF662.Complete
+      - name: Standard axiom audit
+        run: |
+          cat >/tmp/nf662Audit.lean <<'EOF'
+          import WeilDefect.Generated.NF662.Complete
+          #print axioms WeilDefect.neutralNF662OriginalPhysicalLower_to_full
+          #print axioms WeilDefect.neutralNF662OriginalPhysicalCongruence_enclosed
+          #print axioms WeilDefect.nf662OriginalOscillator_contains
+          #print axioms WeilDefect.nf662OriginalPoleCross_contains
+          #print axioms WeilDefect.nf662OriginalUpperPoleCross_contains
+          #print axioms WeilDefect.nf662CompactBalls_symm
+          #print axioms WeilDefect.nf662AllOriginalPhysicalCompact
+          #print axioms WeilDefect.nf662AllOriginalTransformedRealEnclosed
+          EOF
+          lake env lean /tmp/nf662Audit.lean
