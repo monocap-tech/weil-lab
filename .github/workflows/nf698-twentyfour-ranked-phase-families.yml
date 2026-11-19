@@ -40,6 +40,12 @@ jobs:
           run-id: 44338849733
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: inputs/shards
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf693-complete-shared-phase-audit
+          run-id: 44585520709
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: inputs/accepted-nf693
       - name: Reconcile complete original phase schedule and twentyfour new ranked family batches
         run: |
           set -euo pipefail
@@ -61,6 +67,12 @@ jobs:
           assert m['previous_nf686_families']==['87/640','3/32']
           fresh=[g for g in families if not g['leaf_family_targeted_before']]
           assert m['previous_nf689_families']==['13/32','401/1280','19/1280','621/1280']
+          p693=Path('inputs/accepted-nf693/nf693-complete-audit.json')
+          a693=json.loads(p693.read_text())
+          assert (len(a693['tables']),a693['new_rows'])==(548,2608)
+          assert all(set(r['axioms'])<={'propext','Classical.choice','Quot.sound'} for r in a693['tables'])
+          assert m['previous_nf693_families']==a693['selected_families']
+          assert {tuple(r['key']) for r in m['groups']}.isdisjoint(tuple(r['key']) for r in a693['tables'])
           assert m['selected_families']==[g['abs_phase'] for g in fresh[:24]]
           assert len(set(m['selected_families']))==24
           assert set(m['selected_families']).isdisjoint(m['previous_nf686_families']+m['previous_nf689_families']+m['previous_nf693_families'])
