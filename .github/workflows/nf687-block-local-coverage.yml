@@ -86,6 +86,7 @@ jobs:
         timeout-minutes: 12
         run: |
           set -euo pipefail
+          /usr/bin/time -o nf687-point-time.txt -f 'elapsed=%e user=%U rss_kb=%M exit=%x' lake build WeilDefect.Generated.NF687.PointPilot 2>&1 | tee nf687-point.log
           /usr/bin/time -o nf687-pilot-time.txt -f 'elapsed=%e user=%U rss_kb=%M exit=%x' lake build WeilDefect.Generated.NF687.Pilot 2>&1 | tee nf687-pilot.log
       - name: Verify two complete genuine representative rows (first oscillator and pole)
         timeout-minutes: 25
