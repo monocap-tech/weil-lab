@@ -286,12 +286,12 @@ jobs:
           cat >/tmp/nf663PhysicalAudit.lean <<'EOF'
           import WeilDefect.Generated.NF671.OriginalPhysicalFullGramPSD
           import WeilDefect.Generated.NF670.OriginalPhysicalFullQuadratic
+          import WeilDefect.Generated.NF670.OriginalPhysicalFullSchur
+          import WeilDefect.Generated.NF670.OriginalPhysicalRieszResponse
           #print axioms WeilDefect.nf671OriginalPhysicalH_energy_eq_square
           #print axioms WeilDefect.nf671OriginalFullPhysicalGram_nonnegative
           #print axioms WeilDefect.nf671ActualPhysicalSchur_eq_integral_square
           #print axioms WeilDefect.nf671ActualPhysicalSchur_nonnegative
-          import WeilDefect.Generated.NF670.OriginalPhysicalFullSchur
-          import WeilDefect.Generated.NF670.OriginalPhysicalRieszResponse
           #print axioms WeilDefect.nf670OriginalFullSchurIdentity
           #print axioms WeilDefect.nf670OriginalFullNonnegative_iff_schur
           #print axioms WeilDefect.nf670FullSource_sum
