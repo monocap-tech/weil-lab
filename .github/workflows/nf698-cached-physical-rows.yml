@@ -1,0 +1,214 @@
+name: NF698 next sixteen concrete physical rows on restored bank
+on:
+  pull_request:
+    paths:
+      - "scripts/emit_nf698_concrete_bank_physical_rows.py"
+      - ".github/workflows/nf698-cached-physical-rows.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf698-physical-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  actual-bank-rows:
+    runs-on: ubuntu-latest
+    timeout-minutes: 260
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore exact original full numeric payload and accepted compact coverage source
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p WeilDefect/Generated/NF690
+          fetch() {
+            local id="$1" name="$2" digest="$3" dest="$4"
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" -o "$name.zip"
+            echo "$digest  $name.zip" | sha256sum -c -
+            unzip -q "$name.zip" -d "$dest"
+          }
+          fetch 14551493244 compact 37be910efa7d204c9db35f62bf9d5f818ece77c7026d94d9c84e4ddba0df41a5 WeilDefect/Generated
+          fetch 14558233793 payload 2327fbf952d4894c9f28f81cad9e94d226c93131d9ef2fafa14c35f482211b70 WeilDefect/Generated/NF690
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('WeilDefect/Generated')
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          d=root/'NF690'
+          m=json.loads((d/'manifest.json').read_text())
+          assert (m['keys'],m['rows'],m['chunks'],m['chunk_width'])==(7835,37994,490,16)
+          assert [r['index'] for r in m['slots']]==list(range(7835))
+          assert len({tuple(r['key']) for r in m['slots']})==7835
+          assert sum(r['rows'] for r in m['slots'])==37994
+          assert m['metadata_sha256']==sha(root/'NF679/Metadata.lean')
+          assert m['compact_manifest_sha256']==sha(root/'NF687/manifest.json')
+          for name in ('NF682','NF687','NF690'):
+              p=root/name
+              for f in json.loads((p/'manifest.json').read_text())['files']:
+                  assert sha(p/f['file'])==f['sha256']
+                  if 'bytes' in f: assert (p/f['file']).stat().st_size==f['bytes']
+          assert {f'Chunk{i:03d}.lean' for i in range(490)}|{'Bank.lean','Coverage.lean'} <= {f['file'] for f in m['files']}
+          out=root/'NF691'
+          out.mkdir(exist_ok=True)
+          (out/'OriginalLookup.lean').write_text("""import WeilDefect.Generated.NF690.Coverage
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalBlockLocalLookup
+
+          namespace WeilDefect
+
+          def nf691OriginalLookup : NF622Moments :=
+            neutralNF691Lookup nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalLookup_eq :
+              neutralNF624Lookup nf690OriginalBank (neutralNF624Index nf690OriginalBank) =
+                nf691OriginalLookup :=
+            neutralNF691Lookup_eq nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalCoverage :
+              neutralNF624CoverageCheck nf690OriginalBank (neutralNF624Index nf690OriginalBank)=true :=
+            nf690OriginalCoverage
+
+          #print axioms nf691OriginalLookup_eq
+          #print axioms nf691OriginalCoverage
+
+          end WeilDefect
+          """)
+          print('NF691 authenticated all 490 original chunks and exact coverage sources')
+          PY
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Bind independently restored exact bank source and Lean environment
+        run: python scripts/nf697_compiled_bank_binding.py
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf697-audited-compiled-bank
+          path: compiled-bank
+          run-id: 44598398608
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify producer binding and audit before restoring compiled objects
+        run: |
+          set -euo pipefail
+          cmp nf697-bank-binding.json compiled-bank/nf697-bank-binding.json
+          (cd compiled-bank && sha256sum -c nf697-project-build.sha256)
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('compiled-bank/nf691-complete-audit.json')
+          m=json.loads(p.read_text())
+          assert (m['keys'],m['rows'],m['chunks'])==(7835,37994,490)
+          assert len(m['theorems'])==14
+          assert {'nf691OriginalCoverage','nf691OriginalLookup_eq'}<=set(m['theorems'])
+          assert all(set(a)<={'propext','Classical.choice','Quot.sound'} for a in m['theorems'].values())
+          PY
+          tar -xzf compiled-bank/nf697-project-build.tar.gz
+      - name: Measure restored bank Lake build and audit imported exact bank
+        timeout-minutes: 120
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o nf697-reuse-time.txt -f 'elapsed=%e user=%U rss_kb=%M exit=%x' lake build WeilDefect.Generated.NF691.OriginalLookup 2>&1 | tee nf697-reuse.log
+          cat >/tmp/nf697BankAudit.lean <<'EOF'
+          import WeilDefect.Generated.NF691.OriginalLookup
+          #print axioms WeilDefect.nf691OriginalCoverage
+          #print axioms WeilDefect.nf691OriginalLookup_eq
+          EOF
+          lake env lean /tmp/nf697BankAudit.lean 2>&1 | tee nf697-bank-axioms.log
+      - name: Bind accepted NF691 audit and original NF631 payment source
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14562899400/zip" -o nf691-accepted.zip
+          echo 'c0d513078ecb64e1d6ff718fa0163f0e4af229034a11172eaea7d05d17398844  nf691-accepted.zip' | sha256sum -c -
+          unzip -q nf691-accepted.zip -d nf691-accepted
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14459025571/zip" -o nf631-original-widened.zip
+          echo 'e91a83cae117e98608aefa6849dac178e4ddb58dd1dffbfe37304ad248af9ed9  nf631-original-widened.zip' | sha256sum -c -
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('WeilDefect/Generated')
+          paths=list(Path('nf691-accepted').rglob('nf691-complete-audit.json'))
+          assert len(paths)==1
+          m=json.loads(paths[0].read_text())
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          assert (m['keys'],m['rows'],m['chunks'])==(7835,37994,490)
+          assert len(m['theorems'])==14 and {'nf691OriginalLookup_eq','nf691OriginalCoverage'}<=set(m['theorems'])
+          assert all(set(v)<={'propext','Classical.choice','Quot.sound'} for v in m['theorems'].values())
+          assert m['payload_manifest_sha256']==sha(root/'NF690/manifest.json')
+          assert m['compact_manifest_sha256']==sha(root/'NF687/manifest.json')
+          assert m['lookup_source_sha256']==sha(root/'NF691/OriginalLookup.lean')
+          print('NF698Physical exact NF691 accepted source and audit bound')
+          PY
+          python -m py_compile scripts/emit_nf698_concrete_bank_physical_rows.py
+          python scripts/emit_nf698_concrete_bank_physical_rows.py --archive nf631-original-widened.zip --output WeilDefect/Generated/NF698Physical
+      - name: Check concrete original bank row gates independently
+        timeout-minutes: 100
+        run: |
+          set -euo pipefail
+          : > nf698Physical-completed-rows.txt
+          for ((i=8;i<24;i++)); do
+            printf -v n '%03d' "$i"
+            /usr/bin/time -a -o nf698Physical-row-times.txt -f 'elapsed=%e user=%U rss_kb=%M exit=%x' lake build "WeilDefect.Generated.NF698Physical.Row$n" 2>&1 | tee "nf698Physical-row-$n.log"
+            echo "$i" >> nf698Physical-completed-rows.txt
+          done
+      - name: Strict audit concrete bank gates and conditional payment transport
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('WeilDefect/Generated/NF698Physical')
+          m=json.loads((root/'manifest.json').read_text())
+          names=['nf691OriginalLookup_eq','nf691OriginalCoverage']+[n for r in m['rows'] for n in r['theorems']]
+          Path('/tmp/nf698PhysicalAudit.lean').write_text(''.join(f'import WeilDefect.Generated.NF698Physical.Row{i:03d}\n' for i in range(8,24))+''.join(f'#print axioms WeilDefect.{n}\n' for n in names))
+          Path('nf698Physical-names.txt').write_text('\n'.join(names)+'\n')
+          PY
+          lake env lean /tmp/nf698PhysicalAudit.lean 2>&1 | tee nf698Physical-axioms.log
+          python - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          root=Path('WeilDefect/Generated/NF698Physical')
+          m=json.loads((root/'manifest.json').read_text())
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          names=set(Path('nf698Physical-names.txt').read_text().splitlines())
+          found={}
+          s=Path('nf698Physical-axioms.log').read_text()
+          for n,x in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",s):
+              if n in names:
+                  assert n not in found
+                  found[n]=[v.strip() for v in x.split(',') if v.strip()]
+          for n in re.findall(r"'WeilDefect\.(\w+)' does not depend on any axioms",s):
+              if n in names:
+                  assert n not in found
+                  found[n]=[]
+          assert set(found)==names and len(found)==50
+          assert all(set(x)<={'propext','Classical.choice','Quot.sound'} for x in found.values())
+          assert Path('nf698Physical-completed-rows.txt').read_text().splitlines()==[str(i) for i in range(8,24)]
+          assert [r['row'] for r in m['rows']]==list(range(8,24))
+          assert (sum(r['H'] for r in m['rows']),sum(r['V'] for r in m['rows']))==(264,64)
+          for r in m['rows']:
+              assert sha(root/r['file'])==r['sha256']
+          assert m['nf631_archive_sha256']==sha(Path('nf631-original-widened.zip'))
+          m['axioms']=found
+          m['nf691_accepted_zip_sha256']=sha(Path('nf691-accepted.zip'))
+          Path('nf698Physical-complete-audit.json').write_text(json.dumps(m,indent=2)+'\n')
+          print('NF698Physical actual original bank next sixteen row gates LEAN PASS; complete payment projection still required')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf698Physical-concrete-bank-row-audit
+          path: |
+            nf691-*.log
+            nf691-*.txt
+            nf698Physical-*.log
+            nf698Physical-*.txt
+            nf698Physical-complete-audit.json
+            WeilDefect/Generated/NF698Physical
+          if-no-files-found: ignore
