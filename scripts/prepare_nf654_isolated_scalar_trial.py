@@ -61,8 +61,13 @@ def main():
     for x in m['files']:
         n=x['file']; data=(a.proposals/n).read_bytes()
         if n=='Params.lean':
-            assert data.count(old)==1
-            data=data.replace(old,new)
+            # The only permitted source normalization is this import.
+            # Both historical and already-isolated retained Params forms
+            # are accepted only after all original file hashes are verified.
+            assert data.count(old)+data.count(new)==1
+            if old in data:
+                data=data.replace(old,new)
+            assert data.count(new)==1
         else: assert sha(data)==x['sha256']
         (a.output/n).write_bytes(data)
     report={'schema':'NF654-literal-scalar-trial-preflight-v1','proposal_manifest_sha256':sha(manifest.read_bytes()),'frozen_normalized_box_sha256':dig,'all_scalar_fees_replayed':242,'strict_selected_rows':242,'worst_selected_row':87,'max_ratio':str(max(ratios)),'unchanged_row_bytes':242,'scope':'external arithmetic; kernel proof pending'}
