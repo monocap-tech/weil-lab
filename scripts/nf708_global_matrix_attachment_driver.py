@@ -7,9 +7,11 @@ or a generated Lean source as kernel acceptance.
 import argparse
 import hashlib
 import json
+import platform
 import re
 import shutil
 import subprocess
+import tarfile
 from pathlib import Path
 
 N = 242
@@ -158,14 +160,73 @@ def verify_axioms(a):
     print(f"NF708 {2*m['columns']} concrete global HD/A gates; {len(names)} declarations LEAN PASS")
 
 
+
+def restore_input(a):
+    """Import NF707 compiled input objects only after source and environment binding."""
+    root = Path("nf708-compiled-input")
+    b = json.loads((root / "nf707-input-binding.json").read_text())
+    assert b["schema"] == "NF707-compiled-input-binding-v1"
+    original = Path("WeilDefect/Generated/NF702Inputs")
+    m = manifest(original)
+    assert b["input_manifest_sha256"] == sha(original / "manifest.json")
+    expected = {str(original / r["file"]) for r in m["files"]
+                if r["file"] == "Data.lean" or r["file"].startswith("Rows")}
+    assert len(expected) == 62 and set(b["input_sources"]) == expected
+    for file, digest in b["input_sources"].items():
+        assert sha(Path(file)) == digest, file
+    bank = b["bank_source_environment"]
+    assert bank["schema"] == "NF697-compiled-bank-binding-v1"
+    payload = {k: v for k, v in bank.items() if k != "fingerprint"}
+    fingerprint = hashlib.sha256(json.dumps(
+        payload, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    assert fingerprint == bank["fingerprint"]
+    env = bank["environment"]
+    actual = {
+        "lean": subprocess.check_output(["lean", "--version"], text=True).strip(),
+        "lake": subprocess.check_output(["lake", "--version"], text=True).strip(),
+        "machine": platform.machine(),
+        "os": platform.system(),
+        "mathlib": subprocess.check_output([
+            "git", "-C", ".lake/packages/mathlib", "rev-parse", "HEAD"
+        ], text=True).strip(),
+    }
+    assert actual == env, (actual, env)
+    # Every original binding source still present in this workspace is pinned.
+    available = {file: digest for file, digest in bank["files"].items()
+                 if Path(file).is_file()}
+    assert all(sha(Path(file)) == digest for file, digest in available.items())
+    archive = root / "nf707-input-build.tar.gz"
+    assert sha(archive) == b["compiled_tar_sha256"]
+    with tarfile.open(archive, "r:gz") as tar:
+        members = tar.getmembers()
+        assert members
+        for item in members:
+            path = Path(item.name)
+            assert not path.is_absolute() and ".." not in path.parts
+            assert path.parts[:2] == (".lake", "build"), item.name
+            assert item.isfile() or item.isdir(), item.name
+        tar.extractall(".", filter="data")
+    receipt = {
+        "schema": "NF708-accepted-compiled-input-reuse-v1",
+        "producer_binding_sha256": sha(root / "nf707-input-binding.json"),
+        "source_environment_fingerprint": fingerprint,
+        "input_manifest_sha256": sha(original / "manifest.json"),
+        "archive_sha256": sha(archive),
+        "rechecked_available_sources": len(available),
+        "verified_compiled_members": len(members),
+    }
+    Path("nf708-input-reuse.json").write_text(
+        json.dumps(receipt, indent=2, sort_keys=True) + "\n")
+    print("NF708 NF707 compiled-input reuse authenticated; cache remains to build")
+
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("stage", choices=("prepare", "axiom-file", "verify"))
+    p.add_argument("stage", choices=("prepare", "restore-input", "axiom-file", "verify"))
     p.add_argument("--receipts", type=Path, default=Path("nf708-receipts"))
     p.add_argument("--output", type=Path, default=Path("WeilDefect/Generated/NF704Frontier"))
     p.add_argument("--columns", type=int, default=8)
     a = p.parse_args()
-    {"prepare": prepare, "axiom-file": prepare_axioms, "verify": verify_axioms}[a.stage](a)
+    {"prepare": prepare, "restore-input": restore_input, "axiom-file": prepare_axioms, "verify": verify_axioms}[a.stage](a)
 
 
 if __name__ == "__main__":
