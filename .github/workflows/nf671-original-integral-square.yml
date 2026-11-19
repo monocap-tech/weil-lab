@@ -156,6 +156,7 @@ jobs:
           #print axioms WeilDefect.nf671OriginalPhysicalH_energy_eq_square
           #print axioms WeilDefect.nf671OriginalFullPhysicalGram_nonnegative
           #print axioms WeilDefect.nf671ActualPhysicalBlock_nonnegative
+          #print axioms WeilDefect.nf671ActualPhysicalSchur_eq_integral_square
           #print axioms WeilDefect.nf671ActualPhysicalSchur_nonnegative
           #print axioms WeilDefect.nf671OriginalFullSchur_twoNonnegative
           import WeilDefect.Generated.NF670.OriginalPhysicalFullSchur
@@ -210,6 +211,7 @@ jobs:
               "nf671OriginalPhysicalH_energy_eq_square",
               "nf671OriginalFullPhysicalGram_nonnegative",
               "nf671ActualPhysicalBlock_nonnegative",
+              "nf671ActualPhysicalSchur_eq_integral_square",
               "nf671ActualPhysicalSchur_nonnegative",
               "nf671OriginalFullSchur_twoNonnegative",
               "nf670OriginalFullSchurIdentity",
