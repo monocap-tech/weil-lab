@@ -1,0 +1,372 @@
+name: NF705 accepted NF698 concrete original slot attachments
+on:
+  pull_request:
+    paths:
+      - "scripts/emit_nf705_nf698_slot_attachments.py"
+      - ".github/workflows/nf705-nf698-slot-attachments.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf705-attachments-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  emit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate original payload, compact reader and accepted analytical sources and audits
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p staging WeilDefect/Generated audits
+          fetch() {
+            local id="$1" name="$2" digest="$3" dest="$4"
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" -o "staging/$name.zip"
+            echo "$digest  staging/$name.zip" | sha256sum -c -
+            mkdir -p "$dest"
+            unzip -q "staging/$name.zip" -d "$dest"
+          }
+          fetch 14558233793 payload 2327fbf952d4894c9f28f81cad9e94d226c93131d9ef2fafa14c35f482211b70 WeilDefect/Generated/NF690
+          fetch 14551493244 compact 37be910efa7d204c9db35f62bf9d5f818ece77c7026d94d9c84e4ddba0df41a5 WeilDefect/Generated
+          fetch 14576262070 p698 e5ccb75d630fdc10446660d357b7956ff31d55482fc6f40f60617147c054a8ee staging/p698
+          fetch 14578570918 a0 757b4bc1d690c7e87fb7b9211ad2eebc35df1cf3ffdfe8dbe69503fb965795ad audits/0
+          fetch 14575179829 a1 776fce4133337ce65bb83c6e88c66833c0646f54d0d1ffc0e90d9c8c0b658fa1 audits/1
+          fetch 14578601883 a2 abd487d5bec30c6707acec13a02bcc0af4808de24657fc87f367f0be2f7b44dd audits/2
+          fetch 14579062381 a3 a14b0e6ea75272dda33060a0cdb62aeecf3313995b29d4ab682e40a9f0c47daf audits/3
+          fetch 14580873448 a4 68bd19bfba7c9aae34c20cf66010ccc582858d442b60e7c681876685c2cb8d7b audits/4
+          fetch 14580069840 a5 985a2304da72452d7b8a445671ca4ef62addda3b62d67f0c15b4e74c5fff36f2 audits/5
+          fetch 14579566002 prior bb7655fc43eb94e4083bc27727bba86f95557873c6863bdd3195cea03c295687 staging/prior
+          for stage in NF692 NF696 NF701; do
+            mkdir -p WeilDefect/Generated/$stage
+            cp staging/prior/$stage/manifest.json WeilDefect/Generated/$stage/manifest.json
+          done
+          python - <<'PY'
+          import shutil
+          from pathlib import Path
+          root=Path('WeilDefect/Generated')
+          for name in ('p698',):
+              for p in (Path('staging')/name).rglob('*'):
+                  if not p.is_file(): continue
+                  rel=p.relative_to(Path('staging')/name)
+                  assert rel.parts[0] in {'NF632','NF698'},rel
+                  d=root/rel
+                  d.parent.mkdir(parents=True,exist_ok=True)
+                  if d.exists():
+                      assert p.read_bytes()==d.read_bytes(),rel
+                  else:
+                      shutil.copyfile(p,d)
+          PY
+      - name: Generate exact local and concrete original bank slot attachment proposals
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/emit_nf705_nf698_slot_attachments.py
+          python scripts/emit_nf705_nf698_slot_attachments.py --generated WeilDefect/Generated --audits audits --output WeilDefect/Generated/NF705
+          python - <<'PY'
+          import hashlib,json,shutil
+          from pathlib import Path
+          root=Path('WeilDefect/Generated')
+          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          m=json.loads((root/'NF705/manifest.json').read_text())
+          assert (m['tables'],m['rows'])==(475,2209)
+          assert len({r['index'] for r in m['records']})==475
+          for r in m['files']: assert h(root/'NF705'/r['file'])==r['sha256']
+          for name in ('NF632','NF698','NF687','NF705'):
+              shutil.copytree(root/name,Path('proposals')/name)
+          for stage in ('NF692','NF696','NF701'):
+              prior=Path('proposals')/stage
+              prior.mkdir()
+              shutil.copyfile(root/stage/'manifest.json',prior/'manifest.json')
+              assert m[stage.lower()+'_manifest_sha256']==h(prior/'manifest.json')
+          d=Path('proposals/NF690')
+          d.mkdir()
+          for name in {'manifest.json'}|{r['chunk']+'.lean' for r in m['records']}:
+              shutil.copyfile(root/'NF690'/name,d/name)
+          print('NF705 exact original slot reconciliation PASS; no new kernel proof asserted')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf705-original-slot-proposals
+          path: proposals/
+          if-no-files-found: error
+  concrete-audit:
+    needs: emit
+    name: Concrete NF698 pair ${{ matrix.shard }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 220
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        shard: ['0','1','2','3','4','5']
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore exact original full numeric payload and accepted compact coverage source
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p WeilDefect/Generated/NF690
+          fetch() {
+            local id="$1" name="$2" digest="$3" dest="$4"
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" -o "$name.zip"
+            echo "$digest  $name.zip" | sha256sum -c -
+            unzip -q "$name.zip" -d "$dest"
+          }
+          fetch 14551493244 compact 37be910efa7d204c9db35f62bf9d5f818ece77c7026d94d9c84e4ddba0df41a5 WeilDefect/Generated
+          fetch 14558233793 payload 2327fbf952d4894c9f28f81cad9e94d226c93131d9ef2fafa14c35f482211b70 WeilDefect/Generated/NF690
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('WeilDefect/Generated')
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          d=root/'NF690'
+          m=json.loads((d/'manifest.json').read_text())
+          assert (m['keys'],m['rows'],m['chunks'],m['chunk_width'])==(7835,37994,490,16)
+          assert [r['index'] for r in m['slots']]==list(range(7835))
+          assert len({tuple(r['key']) for r in m['slots']})==7835
+          assert sum(r['rows'] for r in m['slots'])==37994
+          assert m['metadata_sha256']==sha(root/'NF679/Metadata.lean')
+          assert m['compact_manifest_sha256']==sha(root/'NF687/manifest.json')
+          for name in ('NF682','NF687','NF690'):
+              p=root/name
+              for f in json.loads((p/'manifest.json').read_text())['files']:
+                  assert sha(p/f['file'])==f['sha256']
+                  if 'bytes' in f: assert (p/f['file']).stat().st_size==f['bytes']
+          assert {f'Chunk{i:03d}.lean' for i in range(490)}|{'Bank.lean','Coverage.lean'} <= {f['file'] for f in m['files']}
+          out=root/'NF691'
+          out.mkdir(exist_ok=True)
+          (out/'OriginalLookup.lean').write_text("""import WeilDefect.Generated.NF690.Coverage
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalBlockLocalLookup
+
+          namespace WeilDefect
+
+          def nf691OriginalLookup : NF622Moments :=
+            neutralNF691Lookup nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalLookup_eq :
+              neutralNF624Lookup nf690OriginalBank (neutralNF624Index nf690OriginalBank) =
+                nf691OriginalLookup :=
+            neutralNF691Lookup_eq nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalCoverage :
+              neutralNF624CoverageCheck nf690OriginalBank (neutralNF624Index nf690OriginalBank)=true :=
+            nf690OriginalCoverage
+
+          #print axioms nf691OriginalLookup_eq
+          #print axioms nf691OriginalCoverage
+
+          end WeilDefect
+          """)
+          print('NF691 authenticated all 490 original chunks and exact coverage sources')
+          PY
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Bind independently restored exact bank source and Lean environment
+        run: python scripts/nf697_compiled_bank_binding.py
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf697-audited-compiled-bank
+          path: compiled-bank
+          run-id: 44598398608
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify producer binding and audit before restoring compiled objects
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          a=json.loads(Path('compiled-bank/nf697-bank-binding.json').read_text())
+          b=json.loads(Path('nf697-bank-binding.json').read_text())
+          for x in (a,b):
+              f=x.pop('fingerprint')
+              assert hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()==f
+          assert a['schema']==b['schema'] and a['environment']==b['environment']
+          assert all(b['files'].get(k)==v for k,v in a['files'].items())
+          extra=set(b['files'])-set(a['files'])
+          assert extra=={'WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularCacheAssembly.lean'},extra
+          # Existing source closure must not reference the newly added module.
+          assert all('ActualZetaOriginalPhysicalTriangularCacheAssembly' not in Path(p).read_text()
+                     for p in a['files'] if p.endswith('.lean'))
+          print('NF705 all producer sources unchanged; exactly one new independent theorem module')
+          PY
+          (cd compiled-bank && sha256sum -c nf697-project-build.sha256)
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('compiled-bank/nf691-complete-audit.json')
+          m=json.loads(p.read_text())
+          assert (m['keys'],m['rows'],m['chunks'])==(7835,37994,490)
+          assert len(m['theorems'])==14
+          assert {'nf691OriginalCoverage','nf691OriginalLookup_eq'}<=set(m['theorems'])
+          assert all(set(a)<={'propext','Classical.choice','Quot.sound'} for a in m['theorems'].values())
+          PY
+          tar -xzf compiled-bank/nf697-project-build.tar.gz
+          test ! -e .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularCacheAssembly.olean
+      - name: Measure restored bank Lake build and audit imported exact bank
+        timeout-minutes: 120
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o nf697-reuse-time.txt -f 'elapsed=%e user=%U rss_kb=%M exit=%x' lake build WeilDefect.Generated.NF691.OriginalLookup 2>&1 | tee nf697-reuse.log
+          cat >/tmp/nf697BankAudit.lean <<'EOF'
+          import WeilDefect.Generated.NF691.OriginalLookup
+          #print axioms WeilDefect.nf691OriginalCoverage
+          #print axioms WeilDefect.nf691OriginalLookup_eq
+          EOF
+          lake env lean /tmp/nf697BankAudit.lean 2>&1 | tee nf697-bank-axioms.log
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf705-original-slot-proposals
+          path: nf705-proposals
+      - name: Validate exact proposal source and select concrete modules
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json,os,re,shutil
+          from pathlib import Path
+          src=Path('nf705-proposals')
+          root=Path('WeilDefect/Generated')
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          read=lambda p:json.loads(p.read_text())
+          m=read(src/'NF705/manifest.json')
+          assert (m['tables'],m['rows'])==(475,2209)
+          assert m['bank_manifest_sha256']==sha(root/'NF690/manifest.json')
+          prior=set()
+          for stage in ('NF692','NF696','NF701'):
+              p=src/stage/'manifest.json'
+              assert m[stage.lower()+'_manifest_sha256']==sha(p)
+              rows={r['index'] for r in read(p)['records']}
+              assert prior.isdisjoint(rows)
+              prior.update(rows)
+          assert len(prior)==946 and prior.isdisjoint(r['index'] for r in m['records'])
+          for stage in ('NF632','NF698','NF687','NF705'):
+              p=src/stage
+              for f in read(p/'manifest.json')['files']:
+                  assert sha(p/f['file'])==f['sha256']
+          for p in src.rglob('*'):
+              if not p.is_file(): continue
+              q=root/p.relative_to(src)
+              q.parent.mkdir(parents=True,exist_ok=True)
+              if q.exists(): assert p.read_bytes()==q.read_bytes(),str(q)
+              else: shutil.copyfile(p,q)
+          records=[r for r in m['records'] if r['shard']==os.environ['SHARD']]
+          selected={r['module'] for r in records}
+          assert selected and len(selected)==len(records)
+          done=set();targets=[]
+          for p in sorted((root/'NF705').glob('Concrete*.lean')):
+              slots=set(re.findall(r'^import WeilDefect\.Generated\.NF705\.(Slot\d+)$',p.read_text(),re.M))
+              assert slots
+              if not slots&selected: continue
+              assert slots<=selected and not slots&done
+              done|=slots;targets.append(p.stem)
+          assert done==selected
+          Path('nf705-targets.txt').write_text('\n'.join(targets)+'\n')
+          Path('nf705-records.json').write_text(json.dumps(records,indent=2)+'\n')
+          print('NF705 exact concrete targets',len(records),sum(r['rows'] for r in records))
+          PY
+      - name: Compile exact local and concrete slot theorems against restored bank
+        timeout-minutes: 160
+        run: |
+          set -euo pipefail
+          while read -r t; do
+            lake build "WeilDefect.Generated.NF705.$t" 2>&1 | tee -a nf705-build.log
+          done < nf705-targets.txt
+      - name: Strict standard-axiom audit of every local and concrete declaration
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          records=json.loads(Path('nf705-records.json').read_text())
+          names=['nf705'+r['module']+s for r in records for s in ('Key','Length','RowsEq','Sound','PayloadEq','Concrete')]
+          Path('/tmp/nf705Audit.lean').write_text(''.join(f'import WeilDefect.Generated.NF705.{t}\n' for t in Path('nf705-targets.txt').read_text().splitlines())+''.join(f'#print axioms WeilDefect.{n}\n' for n in names))
+          Path('nf705-names.txt').write_text('\n'.join(names)+'\n')
+          PY
+          lake env lean /tmp/nf705Audit.lean 2>&1 | tee nf705-axioms.log
+          python - <<'PY'
+          import hashlib,json,os,re
+          from pathlib import Path
+          records=json.loads(Path('nf705-records.json').read_text())
+          names=set(Path('nf705-names.txt').read_text().splitlines())
+          found={}
+          s=Path('nf705-axioms.log').read_text()
+          for n,x in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",s):
+              if n in names:
+                  assert n not in found
+                  found[n]=[v.strip() for v in x.split(',') if v.strip()]
+          for n in re.findall(r"'WeilDefect\.(\w+)' does not depend on any axioms",s):
+              if n in names:
+                  assert n not in found
+                  found[n]=[]
+          assert set(found)==names and len(found)==6*len(records)
+          assert all(set(v)<={'propext','Classical.choice','Quot.sound'} for v in found.values())
+          d=Path('WeilDefect/Generated/NF705')
+          m=hashlib.sha256((d/'manifest.json').read_bytes()).hexdigest()
+          Path('nf705-audit.json').write_text(json.dumps({'shard':os.environ['SHARD'],'records':records,'manifest_sha256':m,'theorems':found},indent=2)+'\n')
+          print('NF705 concrete original slots LEAN PASS',len(records),sum(r['rows'] for r in records))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf705-concrete-audit-${{ matrix.shard }}
+          path: |
+            nf705-*.log
+            nf705-audit.json
+            nf697-reuse.log
+            nf697-reuse-time.txt
+          if-no-files-found: ignore
+  aggregate:
+    needs: concrete-audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf705-original-slot-proposals
+          path: proposals
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf705-concrete-audit-*
+          path: audits
+      - name: Strict complete NF698 original slot audit
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          p=Path('proposals/NF705/manifest.json')
+          m=json.loads(p.read_text())
+          a=[json.loads(x.read_text()) for x in Path('audits').rglob('nf705-audit.json')]
+          assert len(a)==6 and {x['shard'] for x in a}==set(map(str,range(6)))
+          assert {x['manifest_sha256'] for x in a}=={hashlib.sha256(p.read_bytes()).hexdigest()}
+          rows=[r for x in a for r in x['records']]
+          assert len(rows)==len({r['index'] for r in rows})==475
+          assert {r['index']:r for r in rows}=={r['index']:r for r in m['records']}
+          assert sum(r['rows'] for r in rows)==2209
+          th={}
+          for x in a:
+              assert set(x['theorems'])=={'nf705'+r['module']+s for r in x['records'] for s in ('Key','Length','RowsEq','Sound','PayloadEq','Concrete')}
+              for n,v in x['theorems'].items():
+                  assert n not in th and set(v)<={'propext','Classical.choice','Quot.sound'}
+                  th[n]=v
+          assert len(th)==2850
+          Path('nf705-complete-audit.json').write_text(json.dumps({'schema':'NF705-concrete-slot-audit-v1','records':rows,'theorems':th,'manifest_sha256':a[0]['manifest_sha256']},indent=2)+'\n')
+          print('NF705 475 original concrete slots / 2209 moment rows / 2850 declarations LEAN PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf705-complete-concrete-audit
+          path: nf705-complete-audit.json
