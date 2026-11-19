@@ -1,0 +1,200 @@
+name: NF681 first complete original HD row and A column
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalMatrixProductReceipts.lean"
+      - "scripts/emit_nf681_original_matrix_frontier.py"
+      - ".github/workflows/nf681-original-matrix-frontier.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf681-matrix-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  emit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install python-flint==0.8.0
+      - name: Authenticate retained original archives
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p inputs
+          fetch() {
+            local id="$1" name="$2" digest="$3"
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" -o "inputs/$name.zip"
+            echo "$digest  inputs/$name.zip" | sha256sum -c -
+            unzip -q "inputs/$name.zip" -d "inputs/$name"
+          }
+          fetch 14443252637 frame 3621906bd54c007900ca082ae1d2ee783d05d28ab5f3caab78b4a870b33abc7c
+          fetch 14459025571 entries e91a83cae117e98608aefa6849dac178e4ddb58dd1dffbfe37304ad248af9ed9
+          fetch 14457911117 cache bb89b0c7b9bc4017b8c855f0e30474ee8b2f0589e29f99747fff965f44f3b1a7
+          fetch 14458146136 payments 8cbae72a7714dc555c0183edfbbda077096ef910b1e284d4abc91c4960d95e6e
+      - name: Reconcile 484 original matrix products and emit literal Lean candidates
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/emit_nf681_original_matrix_frontier.py
+          python scripts/emit_nf681_original_matrix_frontier.py --root . --historical inputs/frame/nf623-historical-entries.jsonl.gz --entries inputs/entries/nf631-widened-entries.jsonl.gz --payments inputs/payments/nf631-widened-payments.json --cache inputs/cache/nf631-center-cache.jsonl.gz --output WeilDefect/Generated/NF681
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF681')
+          m=json.loads((d/'manifest.json').read_text())
+          assert (m['HD_exact_external'],m['A_exact_external'],m['literal_gate_count'])==(242,242,484)
+          assert {v['file'] for v in m['files']}=={'Common.lean','AllColumns.lean'}|{f'Col{i:03d}.lean' for i in range(242)}
+          for v in m['files']:
+              assert hashlib.sha256((d/v['file']).read_bytes()).hexdigest()==v['sha256']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf681-original-matrix-proposals
+          path: WeilDefect/Generated/NF681/
+          if-no-files-found: error
+  product-shards:
+    needs: emit
+    name: Exact HD0 and A0 coordinates ${{ matrix.first }}-${{ matrix.last }}
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - {first: 0, last: 60}
+          - {first: 61, last: 120}
+          - {first: 121, last: 181}
+          - {first: 182, last: 241}
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf681-original-matrix-proposals
+          path: WeilDefect/Generated/NF681
+      - name: Validate generated original matrix source bytes
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF681')
+          for v in json.loads((d/'manifest.json').read_text())['files']:
+              assert hashlib.sha256((d/v['file']).read_bytes()).hexdigest()==v['sha256']
+          PY
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Compile matrix receipt transport and common data
+        run: lake build WeilDefect.Generated.NF681.Common
+      - name: Kernel check two genuine 242-term products per coordinate
+        timeout-minutes: 70
+        env:
+          FIRST: ${{ matrix.first }}
+          LAST: ${{ matrix.last }}
+        run: |
+          set -euo pipefail
+          for ((i=FIRST;i<=LAST;i++)); do
+            printf -v col '%03d' "$i"
+            lake build "WeilDefect.Generated.NF681.Col$col" 2>&1 | tee -a nf681-build.log
+          done
+      - name: Independent source-hash and strict axiom audit
+        env:
+          FIRST: ${{ matrix.first }}
+          LAST: ${{ matrix.last }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          a,b=int(os.environ['FIRST']),int(os.environ['LAST'])
+          names=['neutralNF681HDGate_of_projection','neutralNF681AGate_of_projection','neutralNF681CacheCheck_of_valid']+[f'nf681Col{i:03d}{s}' for i in range(a,b+1) for s in ('HD','A')]
+          Path('/tmp/nf681Audit.lean').write_text(''.join(f'import WeilDefect.Generated.NF681.Col{i:03d}\n' for i in range(a,b+1))+''.join(f'#print axioms WeilDefect.{n}\n' for n in names))
+          PY
+          lake env lean /tmp/nf681Audit.lean 2>&1 | tee nf681-axioms.log
+          python - <<'PY'
+          import hashlib,json,os,re
+          from pathlib import Path
+          a,b=int(os.environ['FIRST']),int(os.environ['LAST'])
+          names={'neutralNF681HDGate_of_projection','neutralNF681AGate_of_projection','neutralNF681CacheCheck_of_valid'}|{f'nf681Col{i:03d}{s}' for i in range(a,b+1) for s in ('HD','A')}
+          found={}
+          log=Path('nf681-axioms.log').read_text()
+          for n,x in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[s.strip() for s in x.split(',') if s.strip()]
+          for n in re.findall(r"'WeilDefect\.(\w+)' does not depend on any axioms",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[]
+          assert set(found)==names,(len(found),len(names))
+          assert all(set(x)<={'propext','Classical.choice','Quot.sound'} for x in found.values())
+          d=Path('WeilDefect/Generated/NF681')
+          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          Path('nf681-audit.json').write_text(json.dumps({'first':a,'last':b,'manifest_sha256':h(d/'manifest.json'),'common_sha256':h(d/'Common.lean'),'source_sha256':{f'Col{i:03d}.lean':h(d/f'Col{i:03d}.lean') for i in range(a,b+1)},'theorems':found},indent=2)+'\n')
+          print(f'NF681 {a}..{b}: {2*(b-a+1)} exact original matrix coordinates PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf681-coordinate-audit-${{ matrix.first }}-${{ matrix.last }}
+          path: |
+            nf681-build.log
+            nf681-axioms.log
+            nf681-audit.json
+          if-no-files-found: ignore
+  complete-audit:
+    needs: product-shards
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf681-coordinate-audit-*
+          path: audits
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf681-original-matrix-proposals
+          path: proposals
+      - name: Exact dense frontier audit
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('proposals')
+          m=json.loads((d/'manifest.json').read_text())
+          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          sources={v['file']:v['sha256'] for v in m['files']}
+          shards=[json.loads(p.read_text()) for p in Path('audits').rglob('nf681-audit.json')]
+          assert sorted((v['first'],v['last']) for v in shards)==[(0,60),(61,120),(121,181),(182,241)]
+          assert {v['manifest_sha256'] for v in shards}=={h(d/'manifest.json')}
+          assert {v['common_sha256'] for v in shards}=={sources['Common.lean']}
+          allcoords={}
+          generic={'neutralNF681HDGate_of_projection','neutralNF681AGate_of_projection','neutralNF681CacheCheck_of_valid'}
+          for u in shards:
+              a,b=u['first'],u['last']
+              assert u['source_sha256']=={f'Col{i:03d}.lean':sources[f'Col{i:03d}.lean'] for i in range(a,b+1)}
+              expected={f'nf681Col{i:03d}{s}' for i in range(a,b+1) for s in ('HD','A')}
+              assert set(u['theorems'])==expected|generic
+              assert all(set(x)<={'propext','Classical.choice','Quot.sound'} for x in u['theorems'].values())
+              for name in expected:
+                  assert name not in allcoords
+                  allcoords[name]=u['theorems'][name]
+          assert len(allcoords)==484
+          Path('nf681-complete-audit.json').write_text(json.dumps({'schema':'NF681-exact-matrix-frontier-audit-v1','manifest_sha256':h(d/'manifest.json'),'theorems':allcoords,'scope':'Local original HD row 0 and A column 0 only; aggregate module and global projections unverified.'},indent=2)+'\n')
+          print('NF681 all 484 exact original local matrix coordinates PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf681-complete-matrix-frontier-audit
+          path: nf681-complete-audit.json
+          if-no-files-found: error
