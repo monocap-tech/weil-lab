@@ -199,9 +199,14 @@ def main():
         "cache": (a.cache_audit, ca, cm["audit_theorems"], "axioms"),
         "vectors": (a.vector_audit, ve, expected_local, "theorems")
     }
+    audit_names = {"input": "nf702-input-complete-audit.json",
+                   "cache": "nf703-cache-complete-audit.json",
+                   "vectors": "nf680-complete-audit.json"}
+    receipt_files = {}
     for name, (path, directory, names, field) in receipts.items():
-        check_audit(find_receipt(path, path.name) if path.is_dir() else path,
-                    directory / "manifest.json", names, field)
+        receipt = find_receipt(path, audit_names[name]) if path.is_dir() else path
+        check_audit(receipt, directory / "manifest.json", names, field)
+        receipt_files[name] = receipt
     root = Path("WeilDefect/Generated")
     for src, stage in ((si, "NF702Inputs"), (ca, "NF703Cache"), (ve, "NF680"), (sc, "NF639")):
         dst = root / stage
@@ -237,8 +242,7 @@ def main():
                              "cache": sha(ca/"manifest.json"),
                              "vectors": sha(ve/"manifest.json"),
                              "scalar": sha(sc/"manifest.json")},
-        "accepted_audits": {k: sha(find_receipt(t[0], t[0].name) if t[0].is_dir() else t[0])
-                            for k, t in receipts.items()},
+        "accepted_audits": {k: sha(receipt_files[k]) for k in receipts},
         "scope": "Source-specific global vector gates for specified rows; full HD/A, remaining vector gates and cache validity stay separate."
     }
     (a.output / "manifest.json").write_text(json.dumps(report, indent=2) + "\n")
