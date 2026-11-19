@@ -14,8 +14,7 @@ theorem neutralNF680DefectRow_eq (c : NF626CenterCache)
     (s : NF626ScaledInputs) (i : Fin 242) (a : Fin 242 → ℤ)
     (den : ℤ) (ha : a = c.A i) (hd : den = s.adenZ) :
     neutralNF680DefectRow i den a = c.defectNum s i := by
-  rw [ha, hd]
-  rfl
+  rw [ha, hd] <;> rfl
 
 /-- Convert local exact proofs to the complete cache's vector gate.
 The full cache has to agree with the local row data; no such
