@@ -81,8 +81,10 @@ theorem NF626CenterCache.defect_eq (c : NF626CenterCache) (s : NF626ScaledInputs
       (if i=j then (1:ℚ) else 0)-s.payment.A i j =
         (((if i=j then s.adenZ else 0)-c.A i j : ℤ):ℚ)/s.aden := by
     rw [c.A_eq s hc i j]
-    split_ifs <;> push_cast <;> try rw [s.aden_cast] <;>
-      field_simp [ne_of_gt hd] <;> ring
+    by_cases hij : i = j
+    · simp only [if_pos hij, Int.cast_sub, s.aden_cast, sub_div,
+        div_self (ne_of_gt hd)]
+    · simp only [if_neg hij, Int.cast_sub, Int.cast_zero, sub_div, zero_div]
   simp_rw [ht,abs_div,abs_of_pos hd]
   rw [← Finset.sum_div]
   unfold NF626CenterCache.defectNum
