@@ -29,8 +29,8 @@ theorem nf665OriginalK_diagonal :
   decide +kernel
 
 theorem nf665OriginalK_isLowerTriangular :
-    (nf665OriginalRealK :
-      Matrix (Fin 15) (Fin 15) ℝ).IsLowerTriangular := by
+    Matrix.IsLowerTriangular
+      (nf665OriginalRealK : Matrix (Fin 15) (Fin 15) ℝ) := by
   change ∀ ⦃i j : Fin 15⦄, i < j →
       nf665OriginalRealK i j = 0
   intro i j hij
