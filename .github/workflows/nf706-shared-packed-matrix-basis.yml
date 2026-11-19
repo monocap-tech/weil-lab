@@ -1,0 +1,215 @@
+name: NF706 shared exact packed original matrix basis
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedProducts.lean"
+      - "scripts/emit_nf706_shared_packed_matrix_basis.py"
+      - ".github/workflows/nf706-shared-packed-matrix-basis.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf706-shared-packed-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  emit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install python-flint==0.8.0
+      - name: Authenticate retained original archives
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p inputs
+          fetch() {
+            local id="$1" name="$2" digest="$3"
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" -o "inputs/$name.zip"
+            echo "$digest  inputs/$name.zip" | sha256sum -c -
+            unzip -q "inputs/$name.zip" -d "inputs/$name"
+          }
+          fetch 14443252637 frame 3621906bd54c007900ca082ae1d2ee783d05d28ab5f3caab78b4a870b33abc7c
+          fetch 14459025571 entries e91a83cae117e98608aefa6849dac178e4ddb58dd1dffbfe37304ad248af9ed9
+          fetch 14457911117 cache bb89b0c7b9bc4017b8c855f0e30474ee8b2f0589e29f99747fff965f44f3b1a7
+          fetch 14458146136 payments 8cbae72a7714dc555c0183edfbbda077096ef910b1e284d4abc91c4960d95e6e
+      - name: Reconcile genuine original products and shared exact packed operands
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/emit_nf706_shared_packed_matrix_basis.py
+          python scripts/emit_nf706_shared_packed_matrix_basis.py --root . --historical inputs/frame/nf623-historical-entries.jsonl.gz --entries inputs/entries/nf631-widened-entries.jsonl.gz --payments inputs/payments/nf631-widened-payments.json --cache inputs/cache/nf631-center-cache.jsonl.gz --output WeilDefect/Generated/NF706
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF706')
+          m=json.loads((d/'manifest.json').read_text())
+          assert m['indices']==[6,7,8,9] and m['width']==8
+          assert (m['coordinates'],m['triangular_required_coordinates'],m['packed_equalities'],m['shared_prepack_gates'])==(1920,1906,246,31)
+          assert len(m['common_theorems'])==9 and len(m['blocks'])==31
+          assert [j for b in m['blocks'] for j in range(b['start'],b['stop'])]==list(range(242))
+          assert {x['file'] for x in m['files']}=={'Common.lean'}|{b['module']+'.lean' for b in m['blocks']}
+          for x in m['files']: assert hashlib.sha256((d/x['file']).read_bytes()).hexdigest()==x['sha256']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf706-shared-packed-proposals
+          path: WeilDefect/Generated/NF706/
+          if-no-files-found: error
+  kernel:
+    needs: emit
+    runs-on: ubuntu-latest
+    name: Shared packed blocks ${{ matrix.first }}-${{ matrix.last }}
+    timeout-minutes: 170
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - {first: 0, last: 3}
+          - {first: 4, last: 7}
+          - {first: 8, last: 11}
+          - {first: 12, last: 15}
+          - {first: 16, last: 19}
+          - {first: 20, last: 23}
+          - {first: 24, last: 27}
+          - {first: 28, last: 30}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf706-shared-packed-proposals
+          path: WeilDefect/Generated/NF706
+      - name: Validate exact generated source bytes
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF706')
+          for x in json.loads((d/'manifest.json').read_text())['files']:
+              assert hashlib.sha256((d/x['file']).read_bytes()).hexdigest()==x['sha256']
+          PY
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Compile exact shared-prepack recovery and original row mass bounds
+        run: lake build WeilDefect.Generated.NF706.Common
+      - name: Kernel check original shared-block products and record timings
+        timeout-minutes: 135
+        env:
+          FIRST: ${{ matrix.first }}
+          LAST: ${{ matrix.last }}
+        run: |
+          set -euo pipefail
+          for ((i=FIRST;i<=LAST;i++)); do
+            printf -v block 'Block%03d' "$i"
+            echo "TARGET $block" | tee -a nf706-timing.txt
+            /usr/bin/time -a -o nf706-timing.txt -f 'elapsed=%e user=%U rss_kb=%M exit=%x' lake build "WeilDefect.Generated.NF706.$block" 2>&1 | tee -a nf706-build.log
+          done
+      - name: Strict audit of common bounds, original shared operand packing and local coordinates
+        env:
+          FIRST: ${{ matrix.first }}
+          LAST: ${{ matrix.last }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          m=json.loads(Path('WeilDefect/Generated/NF706/manifest.json').read_text())
+          blocks=m['blocks'][int(os.environ['FIRST']):int(os.environ['LAST'])+1]
+          names=m['common_theorems']+[n for b in blocks for n in b['theorems']]
+          assert len(names)==len(set(names))
+          Path('/tmp/nf706Audit.lean').write_text(''.join(f"import WeilDefect.Generated.NF706.{b['module']}\n" for b in blocks)+''.join(f'#print axioms WeilDefect.{n}\n' for n in names))
+          Path('nf706-names.txt').write_text('\n'.join(names)+'\n')
+          PY
+          lake env lean /tmp/nf706Audit.lean 2>&1 | tee nf706-axioms.log
+          python - <<'PY'
+          import hashlib,json,os,re
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF706')
+          m=json.loads((d/'manifest.json').read_text())
+          lo,hi=int(os.environ['FIRST']),int(os.environ['LAST'])
+          blocks=m['blocks'][lo:hi+1]
+          names=set(Path('nf706-names.txt').read_text().splitlines())
+          found={}
+          log=Path('nf706-axioms.log').read_text()
+          for n,x in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[v.strip() for v in x.split(',') if v.strip()]
+          for n in re.findall(r"'WeilDefect\.(\w+)' does not depend on any axioms",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[]
+          assert set(found)==names
+          assert all(set(v)<={'propext','Classical.choice','Quot.sound'} for v in found.values())
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          for r in m['files']: assert sha(d/r['file'])==r['sha256']
+          Path('nf706-audit.json').write_text(json.dumps({'first':lo,'last':hi,'blocks':blocks,'manifest_sha256':sha(d/'manifest.json'),'theorems':found},indent=2)+'\n')
+          print('NF706 shared packed coordinate LEAN PASS',lo,hi,sum(r['coordinates'] for b in blocks for r in b['receipts']))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf706-shared-packed-audit-${{ matrix.first }}-${{ matrix.last }}
+          path: |
+            nf706-*.log
+            nf706-*.txt
+            nf706-audit.json
+          if-no-files-found: ignore
+  aggregate:
+    needs: kernel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf706-shared-packed-proposals
+          path: proposals
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf706-shared-packed-audit-*
+          path: audits
+      - name: Reconcile all original block and coordinate identities
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('proposals')
+          m=json.loads((d/'manifest.json').read_text())
+          a=sorted([json.loads(p.read_text()) for p in Path('audits').rglob('nf706-audit.json')],key=lambda x:x['first'])
+          assert [(r['first'],r['last']) for r in a]==[(0,3),(4,7),(8,11),(12,15),(16,19),(20,23),(24,27),(28,30)]
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          assert {r['manifest_sha256'] for r in a}=={sha(d/'manifest.json')}
+          blocks=[b for r in a for b in r['blocks']]
+          assert blocks==m['blocks'] and len(blocks)==31
+          found={}
+          common=set(m['common_theorems'])
+          for r in a:
+              assert set(r['theorems'])==common|{n for b in r['blocks'] for n in b['theorems']}
+              for n,v in r['theorems'].items():
+                  assert set(v)<={'propext','Classical.choice','Quot.sound'}
+                  if n in found: assert n in common and found[n]==v
+                  else: found[n]=v
+          receipts=[r for b in blocks for r in b['receipts']]
+          assert len(receipts)==246
+          coords={(r['kind'],r['index'],j) for r in receipts for j in range(r['start'],r['stop'])}
+          assert len(coords)==sum(r['coordinates'] for r in receipts)==1920
+          required={(kind,i,j) for i in range(6,10) for kind in ('HD','A') for j in range(0 if kind=='HD' else i,242)}
+          assert len(required)==1906 and required<=coords
+          assert sum(r['lower_required'] for r in receipts)==1906
+          assert len(found)==9+31*7+246*4==1210
+          Path('nf706-complete-audit.json').write_text(json.dumps({'schema':'NF706-shared-packed-original-audit-v1','manifest_sha256':sha(d/'manifest.json'),'blocks':blocks,'theorems':found,'coordinates':1920,'triangular_required_coordinates':1906,'scope':'Local exact products; global object projections and complete cache validity remain open.'},indent=2)+'\n')
+          print('NF706 shared original matrix basis: 1920 coordinates / 1210 declarations LEAN PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf706-complete-shared-packed-audit
+          path: nf706-complete-audit.json
