@@ -64,8 +64,10 @@ theorem neutralNF682Coverage_of_groups
         (neutralNF624SelectedSpec (top (g i)) s).key ∧
       (neutralNF624SelectedSpec i s).degree ≤
         (neutralNF624SelectedSpec (top (g i)) s).degree := by
+    have hh := hdom i
+    unfold neutralNF682DomRow at hh
     exact of_decide_eq_true
-      ((List.all_eq_true.mp (hdom i)) s (neutralNF624Sign_mem s))
+      ((List.all_eq_true.mp hh) s (neutralNF624Sign_mem s))
   have hr (i : Fin 68) :
       ((List.finRange 68).all (neutralNF682SelectedAt bank idx top i)) = true ∧
       ((List.finRange 33).all (neutralNF682MixedAt bank idx top i)) = true := by
