@@ -1,0 +1,127 @@
+name: NF688 complete original compact coverage and aggregate Lean theorem
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/nf688-complete-compact-coverage.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf688-complete-compact-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  complete-compact-coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@v4
+      - name: Authenticate and restore byte-identical successful NF687 proposals
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14551493244/zip" -o nf687.zip
+          echo '37be910efa7d204c9db35f62bf9d5f818ece77c7026d94d9c84e4ddba0df41a5  nf687.zip' | sha256sum -c -
+          unzip -q nf687.zip -d WeilDefect/Generated
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('WeilDefect/Generated')
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          m=json.loads((root/'NF687/manifest.json').read_text())
+          assert (m['keys'],m['rows'],m['blocks'],m['block_width'],m['group_proposals'])==(7835,37994,62,128,68)
+          assert sha(root/'NF679/Metadata.lean')==m['metadata_sha256']
+          assert sha(root/'NF682/manifest.json')==m['group_manifest_sha256']
+          for name in ('NF682','NF687'):
+              d=root/name
+              for r in json.loads((d/'manifest.json').read_text())['files']:
+                  assert sha(d/r['file'])==r['sha256']
+          source={r['file'] for r in m['files']}
+          assert {f'Group{i:02d}.lean' for i in range(68)}|{'AllGroups.lean','Compact.lean'} <= source
+          print('NF688 unchanged original compact reader and all 68 group proposals authenticated')
+          PY
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Build accepted compact reader and original exact source-map transport
+        run: lake build WeilDefect.Generated.NF687.Compact WeilDefect.Generated.NF682.Maps WeilDefect.Generated.NF682.Partitions
+      - name: Execute all 68 original representative groups in the same Lean environment
+        timeout-minutes: 80
+        run: |
+          set -euo pipefail
+          : > nf688-completed-groups.txt
+          : > nf688-group-times.txt
+          for ((i=0;i<68;i++)); do
+            printf -v group '%02d' "$i"
+            echo "GROUP $group" | tee -a nf688-group-times.txt
+            /usr/bin/time -a -o nf688-group-times.txt -f 'elapsed=%e user=%U rss_kb=%M exit=%x' lake build "WeilDefect.Generated.NF687.Group$group" 2>&1 | tee -a nf688-build.log
+            echo "$group" >> nf688-completed-groups.txt
+          done
+      - name: Compile the single aggregate Lean coverage theorem
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Generated.NF687.AllGroups 2>&1 | tee nf688-aggregate.log
+      - name: Strict standard-axiom audit of all 1156 group declarations and aggregate theorem
+        timeout-minutes: 8
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          base=['neutralNF687Lookup_eq','neutralNF687Search_eq','neutralNF687Index_eq','neutralNF687Coverage_of_groups',
+                'neutralNF682Coverage_of_groups','neutralNF682CoverageCheck_of_coverage','nf682DomGate','nf682DomAll',
+                'nf682HPartition','nf682VPartition','nf687AllRows','nf687CoverageOnBank']
+          names=base+[f'nf687Group{i:02d}{s}' for i in range(68) for s in [*[f'H{k:02d}' for k in range(9)],*[f'V{k:02d}' for k in range(5)],'HAll','VAll','Check']]
+          assert len(names)==len(set(names))==1168
+          Path('/tmp/nf688Audit.lean').write_text('import WeilDefect.Generated.NF687.AllGroups\n'+''.join(f'#print axioms WeilDefect.{n}\n' for n in names))
+          Path('nf688-names.txt').write_text('\n'.join(names)+'\n')
+          PY
+          lake env lean /tmp/nf688Audit.lean 2>&1 | tee nf688-axioms.log
+          python - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          root=Path('WeilDefect/Generated/NF687')
+          m=json.loads((root/'manifest.json').read_text())
+          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          names=set(Path('nf688-names.txt').read_text().splitlines())
+          found={}
+          log=Path('nf688-axioms.log').read_text()
+          for n,x in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[s.strip() for s in x.split(',') if s.strip()]
+          for n in re.findall(r"'WeilDefect\.(\w+)' does not depend on any axioms",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[]
+          assert set(found)==names and len(found)==1168,(len(found),len(names))
+          assert all(set(x)<={'propext','Classical.choice','Quot.sound'} for x in found.values())
+          assert Path('nf688-completed-groups.txt').read_text().splitlines()==[f'{i:02d}' for i in range(68)]
+          expected={r['file']:r['sha256'] for r in m['files']}
+          sources={f'Group{i:02d}.lean':h(root/f'Group{i:02d}.lean') for i in range(68)}
+          sources['AllGroups.lean']=h(root/'AllGroups.lean')
+          assert all(expected[k]==v for k,v in sources.items())
+          Path('nf688-complete-audit.json').write_text(json.dumps({
+              'schema':'NF688-complete-compact-coverage-audit-v1',
+              'manifest_sha256':h(root/'manifest.json'),'group_count':68,
+              'selected_requests':18496,'mixed_requests':8976,
+              'domination_requests':484,'source_sha256':sources,'theorems':found,
+              'scope':'Actual complete compact group gates and aggregate nf687CoverageOnBank, conditional on exact actual bank size/slot shape; actual bank shape and analytic truth not certified.'
+          },indent=2)+'\n')
+          print('NF688 all 68 original group rows, 27,472 exact signed lookups and aggregate bank-shape-conditional theorem: LEAN PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf688-complete-original-compact-coverage
+          path: |
+            nf688-*.log
+            nf688-*.txt
+            nf688-complete-audit.json
+            WeilDefect/Generated/NF687/manifest.json
+          if-no-files-found: ignore

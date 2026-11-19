@@ -1,0 +1,15 @@
+# NF688 — complete compact source coverage and single aggregate theorem
+
+## Accepted results recovered before new submission
+
+NF684 (run 44557791892, complete audit 135717663883): all five original moment tables / 79 in-range moment enclosures passed. NF685 (run 44558790333, audit 135718219002): all 87 additional tables / 522 rows passed. NF686 (run 44561984368, audit 135717327566): all 108 original tables / 909 rows passed. The three batches are distinct by their original keys and targeted phases: 200 new tables, 1,510 moment rows, with standard-axiom audits and exact source SHA checks. Their global numerical bank attachment is still open.
+
+NF687 run 44563616636, job 135705766729 SUCCESS: compact reader, exact lookup/search/index equality and group coverage transport; both literal full group checks (0 and 67) and pilot batches passed strict axiom audit. Group00 built in 21s and Group67 in 16s per Lean build log. The incumbent reference and eight original shape-sample job was still running its reference comparison at inspection; no measured matched speedup is asserted. NF682's older coverage run completed with all eight group jobs unsuccessful and the complete audit skipped.
+
+## New exact execution
+
+Authenticate original NF687 proposal ZIP 14551493244 (SHA256 37be910efa7d204c9db35f62bf9d5f818ece77c7026d94d9c84e4ddba0df41a5). Preserve the byte-identical compact reader, original 68 source group theorem proposals, NF682 maps and partitions, and aggregate theorem source. No changes to any checker or threshold. Rebuild all 68 groups in a single coherent Lean environment, collecting each individual group build and elapsed/resource receipts. Compile the actual aggregate AllGroups module in that environment, so individual proofs are joined by Lean rather than by a JSON audit. Strictly audit 1,156 group declarations and twelve generic/map/partition/aggregate declarations, total 1,168, with individual source hashes and exact index sequence.
+
+The exact aggregate nf687CoverageOnBank has hypotheses bank.size=nf687Size and every actual bank slot shape equal to nf687Read at its index. If accepted, this establishes original coverage conditional only on exact numerical bank shape attachment; it does NOT yet discharge actual full bank shape, moment-bank validity or full hcov for the original numerical bank. The pilot timings motivate a single runner, but no completion duration is promised; long execution or runner shutdown remain risks. The entire NF688 execution is pending. No unconditional Phase III closure, globally signed Weil positivity, RH, or main merge.
+
+Next: attach all actual numeric bank shapes to the compact reader, and use the compact index in original H/V entry certification. Continue batched actual moment proofs and scalable full exact HD/A verification.
