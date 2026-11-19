@@ -1,0 +1,163 @@
+name: NF709 genuine original cache vector gates from accepted local receipts
+on:
+  pull_request:
+    paths:
+      - "scripts/emit_nf709_original_global_vector_attachments.py"
+      - ".github/workflows/nf709-global-original-vector-attachments.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf709-global-vectors-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  vector-attachment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate immutable original scaled-input artifact
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p nf709-receipts/{input,cache-proposals,cache-audit,vectors,vector-audit}
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14582437652/zip" -o nf709-input.zip
+          echo "258637da71e96468ed7c6ac5b0a4480ce06cdee9989aef8e71a4cd09059789e0  nf709-input.zip" | sha256sum -c -
+          unzip -q nf709-input.zip -d nf709-receipts/input
+      - name: Restore accepted NF703 original cache source
+        uses: actions/download-artifact@v4
+        with:
+          name: nf703-original-cache-proposals
+          path: nf709-receipts/cache-proposals
+          run-id: 44627666710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore certified NF703 source-specific cache audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf703-original-cache-audit
+          path: nf709-receipts/cache-audit
+          run-id: 44627666710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore accepted original NF680 local vector/defect proof source
+        uses: actions/download-artifact@v4
+        with:
+          name: nf680-original-cache-vector-proposals
+          path: nf709-receipts/vectors
+          run-id: 44540497550
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore NF680 full 1210-declaration standard-axiom audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf680-complete-original-cache-vector-audit
+          path: nf709-receipts/vector-audit
+          run-id: 44540497550
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Reconcile all authenticated source objects and emit first global vector row attachments
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/emit_nf709_original_global_vector_attachments.py
+          python scripts/emit_nf709_original_global_vector_attachments.py \
+            --inputs nf709-receipts/input \
+            --cache nf709-receipts/cache-proposals \
+            --vectors nf709-receipts/vectors \
+            --input-audit nf709-receipts/input \
+            --cache-audit nf709-receipts/cache-audit \
+            --vector-audit nf709-receipts/vector-audit \
+            --output WeilDefect/Generated/NF709 \
+            --first 0 --count 16 2>&1 | tee nf709-source-reconciliation.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d = Path('WeilDefect/Generated/NF709')
+          m = json.loads((d/'manifest.json').read_text())
+          assert m['rows']==list(range(16)) and m['count']==16
+          assert len(m['theorems']) == 230 and len(m['files'])==17
+          PY
+      - name: Install original pinned Lean and Mathlib
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Reuse NF707 certified compiled original scaled inputs
+        uses: actions/download-artifact@v4
+        with:
+          name: nf707-compiled-original-input
+          path: nf708-compiled-input
+          run-id: 44633937710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Audit input producer source environment and restore compiled original input objects
+        run: |
+          set -euo pipefail
+          python scripts/nf708_global_matrix_attachment_driver.py restore-input
+      - name: Build actual original global cache and vector bridge
+        timeout-minutes: 225
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o nf709-data-time.log -f 'elapsed=%e user=%U rss_kb=%M exit=%x' lake build WeilDefect.Generated.NF703Cache.Data WeilDefect.Generated.NF709.Common 2>&1 | tee nf709-data-build.log
+      - name: Kernel-check first sixteen global vector gates independently
+        timeout-minutes: 95
+        run: |
+          set -euo pipefail
+          for ((i=0;i<16;i+=2)); do
+            printf -v a '%03d' "$i"
+            printf -v b '%03d' "$((i+1))"
+            lake build "WeilDefect.Generated.NF709.Row$a" "WeilDefect.Generated.NF709.Row$b" 2>&1 | tee -a nf709-vector-build.log
+          done
+      - name: Strict source-specific 230-theorem Lean axiom audit
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('WeilDefect/Generated/NF709/manifest.json').read_text())
+          imports = [f"import WeilDefect.Generated.NF709.Row{i:03d}" for i in m['rows']]
+          prints = [f"#print axioms WeilDefect.{s}" for s in m['theorems']]
+          Path('nf709Audit.lean').write_text('\n'.join(imports+prints)+'\n')
+          PY
+          lake env lean nf709Audit.lean 2>&1 | tee nf709-axioms.log
+          python - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF709')
+          m=json.loads((d/'manifest.json').read_text())
+          names=set(m['theorems'])
+          log=Path('nf709-axioms.log').read_text()
+          found={}
+          for n,x in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[z.strip() for z in x.split(',') if z.strip()]
+          for n in re.findall(r"'WeilDefect\.(\w+)' does not depend on any axioms",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[]
+          assert set(found)==names and len(found)==230, (len(found),len(names))
+          assert all(set(z)<= {'propext','Classical.choice','Quot.sound'} for z in found.values())
+          sha=lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+          for f in m['files']: assert sha(d/f['file'])==f['sha256']
+          audit={'schema':'NF709-first-global-original-vector-audit-v1','manifest_sha256':sha(d/'manifest.json'),
+                 'source_manifests':m['source_manifests'],'accepted_audits':m['accepted_audits'],
+                 'rows':m['rows'],'axioms':found,
+                 'scope':'16 original global vector gates only; full cache matrix products and further payment obligations remain open.'}
+          Path('nf709-complete-audit.json').write_text(json.dumps(audit,indent=2)+'\n')
+          print('NF709 sixteen genuine original global cache vector gates / 230 declarations LEAN PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf709-first-original-global-vector-attachments
+          path: |
+            nf709-*.log
+            nf709-input-reuse.json
+            nf708-input-reuse.json
+            nf709-complete-audit.json
+            WeilDefect/Generated/NF709/
+          if-no-files-found: ignore
