@@ -47,3 +47,15 @@ There are two different complementary claims:
 3. Neither physical Gram PSD nor this local/cofinite completion is equivalent to global signed Weil positivity or RH without additional signed Weil transport.
 
 Draft stacked PR; no merge to main.
+
+## NF670 final source-bound Schur identity (additional module)
+
+`WeilDefect/Generated/NF670/OriginalPhysicalFullSchur.lean` takes the full quadratic-form reindexing and the authentically constructed exact Riesz response together, proposing the *unconditional algebraic identity* for every original 242-source vector z:
+
+`Q_H(z) = Q_A(z_selected + U(z_remaining)) + S(z_remaining)`,
+
+where `S(y)=Q_C(y)-Q_A(U(y))`. This equality no longer assumes Riesz response existence and uses the original NF606 integrals for A/B/C throughout. It also formalizes the exact equivalence:
+
+`(∀z : Fin242 → ℝ, 0 ≤ Q_H(z)) ↔ (∀y : Fin227 → ℝ, 0 ≤ S(y)).`
+
+The right-hand Schur sign is **not** proved here. All NF670 theorem statements and proofs are still Lean-pending until the full source rebuild and explicit standard-axiom audit pass. The NF670 CI workflow includes the third module and prints both endpoint axioms.
