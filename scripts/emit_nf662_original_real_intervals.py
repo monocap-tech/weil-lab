@@ -55,7 +55,7 @@ def produce(out: Path):
                 "  have heq :",
                 f"      nf662PhysicalCompactBall ({a} : Fin 15) ({b} : Fin 15) =",
                 f"        {old}Ball := by",
-                "    apply NF591Ball.ext <;> decide +kernel",
+                "    apply nf662Ball_ext <;> decide +kernel",
                 "  rw [heq]",
                 "  simpa [neutralNF661PhysicalH, neutralNF661Source] using",
                 f"    {old}Contains",
