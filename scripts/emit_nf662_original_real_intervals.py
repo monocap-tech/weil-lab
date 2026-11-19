@@ -86,13 +86,13 @@ def produce(out: Path):
     for i in range(N):
         complete.append(f"  · exact nf662AllRow{i:02d} j")
     complete.append("""
-def nf662OriginalCenterReal (i j : Fin 15) : ℝ :=
+noncomputable def nf662OriginalCenterReal (i j : Fin 15) : ℝ :=
   ((nf662PhysicalCompactBall i j).mid : ℝ)
 
-def nf662OriginalRadiusReal (i j : Fin 15) : ℝ :=
+noncomputable def nf662OriginalRadiusReal (i j : Fin 15) : ℝ :=
   ((nf662PhysicalCompactBall i j).rad : ℝ)
 
-def nf662OriginalPreconditionerReal (i j : Fin 15) : ℝ :=
+noncomputable def nf662OriginalPreconditionerReal (i j : Fin 15) : ℝ :=
   (nf658Get nf658Kints i j : ℝ) / (10 ^ 64 : ℝ)
 
 /-- All 225 real transformed physical H entries are enclosed in

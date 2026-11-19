@@ -114,7 +114,11 @@ theorem neutralNF665Quadratic_congruence {n : ℕ}
           rw [Finset.sum_mul]
         _ = H p q * (∑ i : Fin n, y i * K i p) *
               (∑ j : Fin n, y j * K j q) := by
-          rw [Finset.mul_sum]
+          have hfactor :
+              (∑ i : Fin n, H p q * (y i * K i p)) =
+                H p q * (∑ i : Fin n, y i * K i p) := by
+            rw [Finset.mul_sum]
+          rw [hfactor]
     _ = ∑ p : Fin n, ∑ q : Fin n,
           H p q * neutralNF665TransposeAction K y p *
             neutralNF665TransposeAction K y q := rfl
@@ -127,8 +131,9 @@ theorem neutralNF665Transpose_surjective_of_lower {n : ℕ}
     (hDiag : ∀ i : Fin n, K i i ≠ 0) :
     ∀ x : Fin n → ℝ, ∃ y : Fin n → ℝ,
       neutralNF665TransposeAction K y = x := by
-  have hDet : K.det ≠ 0 :=
-    (hTri.det_ne_zero_iff).2 (fun i => hDiag i)
+  have hDet : K.det ≠ 0 := by
+    rw [Matrix.det_of_isLowerTriangular K hTri]
+    exact Finset.prod_ne_zero_iff.mpr (fun i _ => hDiag i)
   have hUnit : IsUnit K :=
     (Matrix.isUnit_iff_isUnit_det K).2
       (isUnit_iff_ne_zero.mpr hDet)
