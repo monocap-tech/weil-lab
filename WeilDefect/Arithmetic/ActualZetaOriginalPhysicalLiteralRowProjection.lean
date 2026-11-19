@@ -38,17 +38,18 @@ theorem neutralNF675OriginalRow_eq_of_projection
       decide (p.H0 i j = p.H0 j i) =
         decide (q.H0 i j = q.H0 j i) := by
     rw [hrow j, hcol j]
-  congr 1
-  · congr 1
-    · apply List.all_congr
-      intro j _
-      split_ifs <;> simp [hcheckH]
-    · apply List.all_congr
-      intro j _
-      exact hcenter j
-  · apply List.all_congr
-    intro j _
-    exact hcheckV j
+  have hl : (fun j : Fin 242 =>
+      if j.val ≤ i.val then neutralNF625EntryHCheck M p i j else true) =
+      (fun j : Fin 242 =>
+      if j.val ≤ i.val then neutralNF625EntryHCheck M q i j else true) := by
+    funext j
+    rw [hcheckH j]
+  have hs : (fun j : Fin 242 => decide (p.H0 i j = p.H0 j i)) =
+      (fun j : Fin 242 => decide (q.H0 i j = q.H0 j i)) :=
+    funext hcenter
+  have hv : neutralNF625EntryVCheck M p i =
+      neutralNF625EntryVCheck M q i := funext hcheckV
+  rw [hl, hs, hv]
 
 /-- An explicitly checked small original source row is a valid
 certificate for that row of the COMPLETE original payment, provided
