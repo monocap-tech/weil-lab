@@ -207,6 +207,9 @@ jobs:
           path: |
             nf691-*.log
             nf691-*.txt
+            nf697-reuse.log
+            nf697-reuse-time.txt
+            nf697-bank-binding.json
             nf698Physical-*.log
             nf698Physical-*.txt
             nf698Physical-complete-audit.json
