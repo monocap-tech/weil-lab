@@ -1,4 +1,5 @@
 import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalIntegerClosure
+import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalExecutableEntryChecks
 import Mathlib.Tactic
 
 namespace WeilDefect
@@ -16,31 +17,6 @@ Only 242*243/2 = 29,403 expensive H-ball widening comparisons remain,
 plus 242*4 = 968 mixed V comparisons and inexpensive rational-center
 symmetry comparisons. No numerical boolean is asserted true here.
 -/
-
-def neutralNF673LowerHEntryCheck
-    (M : NF622Moments) (p : NF625PaymentData) : Bool :=
-  (List.finRange 242).all (fun i =>
-    (List.finRange 242).all (fun j =>
-      if j.val ≤ i.val then neutralNF625EntryHCheck M p i j else true))
-
-def neutralNF673CenterSymmetryCheck (p : NF625PaymentData) : Bool :=
-  (List.finRange 242).all (fun i =>
-    (List.finRange 242).all (fun j =>
-      decide (p.H0 i j = p.H0 j i)))
-
-def neutralNF673MixedVEntryCheck
-    (M : NF622Moments) (p : NF625PaymentData) : Bool :=
-  (List.finRange 242).all (fun i =>
-    (List.finRange 4).all (neutralNF625EntryVCheck M p i))
-
-/-- The source-specific reduced interval receipt: H lower triangle,
-exact symmetry of historical rational H centers, and all four
-historical V columns. Its independent truth remains to be checked. -/
-def neutralNF673EntryCheck
-    (M : NF622Moments) (p : NF625PaymentData) : Bool :=
-  (neutralNF673LowerHEntryCheck M p &&
-    neutralNF673CenterSymmetryCheck p) &&
-    neutralNF673MixedVEntryCheck M p
 
 noncomputable section
 
