@@ -213,7 +213,6 @@ jobs:
           set -o pipefail
           lake env lean /tmp/nf663PhysicalAudit.lean | tee /tmp/nf667-terminal-axioms.txt
           python - <<'PY'
-          import re
           from pathlib import Path
           content = Path("/tmp/nf667-terminal-axioms.txt").read_text()
           names = [
@@ -231,11 +230,12 @@ jobs:
           ]
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           for name in names:
-              pattern = r"'WeilDefect\\." + re.escape(name) + r"' depends on axioms: \\[([^\\]]*)\\]"
-              m = re.search(pattern, content)
-              if m is None:
-                  raise SystemExit(f"Missing terminal axiom audit: {name}")
-              used = {x.strip() for x in m.group(1).split(",") if x.strip()}
+              marker = f"'WeilDefect.{name}' depends on axioms: ["
+              matches = [line for line in content.splitlines() if marker in line]
+              if len(matches) != 1:
+                  raise SystemExit(f"Missing or duplicated terminal axiom audit: {name}")
+              raw_axioms = matches[0].split(marker, 1)[1].split("]", 1)[0]
+              used = {x.strip() for x in raw_axioms.split(",") if x.strip()}
               if not used <= allowed:
                   raise SystemExit(f"Unexpected axiom in {name}: {used - allowed}")
           print(f"NF667 terminal strict axiom whitelist PASS: {len(names)} source-bound targets")
