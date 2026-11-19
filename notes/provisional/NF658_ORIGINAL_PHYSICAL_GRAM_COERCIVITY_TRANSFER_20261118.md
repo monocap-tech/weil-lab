@@ -27,11 +27,11 @@ Added `scripts/emit_nf658_original_gram_widenings.py` binding each 64-digit ball
 
 Also added `WeilDefect/Generated/NF658/TransformPilot.lean`: direct integer double-sum formulas for transformed centers/radii and two independent representative entries, one oscillator and one genuine pole. Added `ActualZetaOriginalPhysicalGramCoercivityLemmas.lean` with source-independent cross-term inequality and an exact bilinear interval lower bound. These are candidates with no `sorry`/new `axiom` instructions, and are not yet accepted.
 
-The focused CI workflow checks, in order: complete physical H symmetry candidate, fifteen stored integer margins/coercivity gate, first and pole source rows, all 120 rational widenings, cross-term/bilinear lemmas, two numerical transform pilots, explicit axiom audit. It regenerates original NF655 proof proposals from exactly the same GitHub artifact inventory that passed on run 44422031265 and uses the NF631 archive to independently regenerate the compact NF657 witness. **CI has not yet passed; do not mark NF658 formal positivity CLOSED.**
+The focused CI workflow checks, in order: recovered original physical H symmetry theorem, fifteen stored integer margins/coercivity gate, first and pole source rows, all 120 rational widenings, cross-term/bilinear lemmas, two numerical transform pilots, explicit axiom audit. It regenerates original NF655 proof proposals from exactly the same GitHub artifact inventory that passed on run 44422031265 and uses the NF631 archive to independently regenerate the compact NF657 witness. **CI has not yet passed; do not mark NF658 formal positivity CLOSED.**
 
 ## Remaining obligations
 
-1. Lean accept NF657 genuine physical H symmetry and all 120 NF658 rational-widening theorems.
+1. Original physical H symmetry is **already Lean-certified** as `neutralNF606PhysicalH_symm` in `ActualZetaOriginalPhysicalSolveResidual.lean` (integral product commutativity). NF658 now reuses that exact theorem instead of relying on a second unverified NF657 proof. Lean accept all 120 NF658 rational-widening theorems.
 2. Prove generic finite-dimensional diagonal-dominance lower bound and exact congruence/triangular invertibility in Lean, then bind all transformed center/radius sums to their printed integer results. Two transform arithmetic pilots have been proposed, not all 225.
 3. Conclude (x^\mathsf{T}H_Ix\ge10^{-60}\|x\|_2^2) as a **Lean theorem for this original fifteen-generator principal block**. The corresponding exact external mathematical certificate is already validated, but this Lean theorem remains OPEN.
 4. This is neither the complete 242-generator physical matrix, nor global Weil positivity or RH. The numerical solve containment is separate.
