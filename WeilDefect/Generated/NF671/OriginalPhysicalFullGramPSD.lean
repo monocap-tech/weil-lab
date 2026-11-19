@@ -77,6 +77,64 @@ theorem nf671ActualPhysicalBlock_nonnegative
   rw [nf670FullPhysicalGram_blockEnergy] at h
   exact h
 
+/-- Exact original 227-source cofinite Schur energy as the
+physical interval integral of the squared orthogonalized ORIGINAL
+242-source generator combination.
+
+The projection coefficients are the exact source-defined Riesz
+response, not rounded inverse entries. No positivity hypothesis
+for C or for the Schur remainder is used in this identity. -/
+theorem nf671ActualPhysicalSchur_eq_integral_square
+    (y : Fin 227 → ℝ) :
+    nf670ActualSchurEnergy y =
+      ∫ t in (-(11 / 10 : ℝ))..(11 / 10 : ℝ),
+        (∑ k : Fin 242,
+          (nf670AssembleOriginal
+            (fun i => -(nf670ActualRieszResponse y i)) y) k *
+              nf545OriginalSelectedRealGenerator k t)^2 := by
+  let x : Fin 15 → ℝ :=
+    fun i => -(nf670ActualRieszResponse y i)
+  have hcomplete := neutralNF669Schur_completion
+    nf669OriginalA nf669OriginalB nf669OriginalC
+    nf669OriginalA_symm nf670ActualRieszResponse
+    nf670ActualRiesz_crossIdentity x y
+  have hcancel :
+      (fun i : Fin 15 => x i + nf670ActualRieszResponse y i) =
+        (fun _ => (0 : ℝ)) := by
+    funext i
+    dsimp [x]
+    ring
+  rw [hcancel] at hcomplete
+  have hqzero :
+      neutralNF661Quadratic nf669OriginalA
+        (fun _ : Fin 15 => (0 : ℝ)) = 0 := by
+    simp [neutralNF661Quadratic]
+  rw [hqzero, zero_add] at hcomplete
+  have hblock :
+      neutralNF669BlockEnergy
+        nf669OriginalA nf669OriginalB nf669OriginalC x y =
+      nf670ActualSchurEnergy y := by
+    simpa [nf670ActualSchurEnergy] using hcomplete
+  calc
+    nf670ActualSchurEnergy y =
+        neutralNF669BlockEnergy
+          nf669OriginalA nf669OriginalB nf669OriginalC x y :=
+      hblock.symm
+    _ = neutralNF661Quadratic neutralNF606PhysicalH
+          (nf670AssembleOriginal x y) :=
+      (nf670FullPhysicalGram_blockEnergy x y).symm
+    _ = ∫ t in (-(11 / 10 : ℝ))..(11 / 10 : ℝ),
+          (∑ k : Fin 242,
+            (nf670AssembleOriginal x y) k *
+              nf545OriginalSelectedRealGenerator k t)^2 :=
+      nf671OriginalPhysicalH_energy_eq_square
+        (nf670AssembleOriginal x y)
+    _ = ∫ t in (-(11 / 10 : ℝ))..(11 / 10 : ℝ),
+          (∑ k : Fin 242,
+            (nf670AssembleOriginal
+              (fun i => -(nf670ActualRieszResponse y i)) y) k *
+              nf545OriginalSelectedRealGenerator k t)^2 := rfl
+
 /-- This is the central NF671 Schur closure: the original 227-source
 complementary remainder is nonnegative, without assuming it and
 without introducing a rounded cofinite eigenvalue certificate.
@@ -86,8 +144,10 @@ not an arbitrary blockwise inverse hypothesis. -/
 theorem nf671ActualPhysicalSchur_nonnegative
     (y : Fin 227 → ℝ) :
     0 ≤ nf670ActualSchurEnergy y := by
-  exact (nf670OriginalFullNonnegative_iff_schur).mp
-    nf671OriginalFullPhysicalGram_nonnegative y
+  rw [nf671ActualPhysicalSchur_eq_integral_square]
+  apply intervalIntegral.integral_nonneg_of_forall (by norm_num)
+  intro t
+  exact sq_nonneg _
 
 /-- Fully source-attached original physical Schur square completion:
 the positive A part and nonnegative authentic cofinite Schur part are
@@ -110,6 +170,7 @@ theorem nf671OriginalFullSchur_twoNonnegative
 #print axioms nf671OriginalPhysicalH_energy_eq_square
 #print axioms nf671OriginalFullPhysicalGram_nonnegative
 #print axioms nf671ActualPhysicalBlock_nonnegative
+#print axioms nf671ActualPhysicalSchur_eq_integral_square
 #print axioms nf671ActualPhysicalSchur_nonnegative
 #print axioms nf671OriginalFullSchur_twoNonnegative
 
