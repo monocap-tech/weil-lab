@@ -144,6 +144,7 @@ jobs:
           #print axioms WeilDefect.nf669Source_cover
           #print axioms WeilDefect.nf669SourceSum_injective
           #print axioms WeilDefect.nf669SourceSum_surjective
+          #print axioms WeilDefect.nf669OriginalReindexed_preservesH
           #print axioms WeilDefect.nf669OriginalA_coercivity
           #print axioms WeilDefect.nf669OriginalB_transpose
           #print axioms WeilDefect.nf665OriginalExactMarginGate
@@ -170,6 +171,7 @@ jobs:
               "nf669Source_cover",
               "nf669SourceSum_injective",
               "nf669SourceSum_surjective",
+              "nf669OriginalReindexed_preservesH",
               "nf669OriginalA_coercivity",
               "nf669OriginalB_transpose",
               "nf665OriginalExactMarginGate",
