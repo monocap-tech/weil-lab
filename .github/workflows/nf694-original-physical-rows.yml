@@ -1,0 +1,128 @@
+name: NF694 next exact original physical entry rows
+on:
+  pull_request:
+    paths:
+      - "scripts/emit_nf694_original_physical_rows.py"
+      - ".github/workflows/nf694-original-physical-rows.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf694-physical-rows-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  row:
+    name: Original physical row ${{ matrix.row }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        row: [1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf621-shard-*
+          path: receipts
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf621-complete-schedule-coverage
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Authenticate original NF631 archive and emit original exact row
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ROW: ${{ matrix.row }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14459025571/zip" -o nf631-original-widened.zip
+          echo 'e91a83cae117e98608aefa6849dac178e4ddb58dd1dffbfe37304ad248af9ed9  nf631-original-widened.zip' | sha256sum -c -
+          python -m py_compile scripts/emit_nf694_original_physical_rows.py
+          python scripts/emit_nf694_original_physical_rows.py --root . --shards receipts --archive nf631-original-widened.zip --coverage nf621-coverage.json --output WeilDefect/Generated/NF694 --row "$ROW"
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Check literal row with Lean kernel
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Generated.NF694.RowGate 2>&1 | tee nf694-build.log
+      - name: Verify exact source and standard axiom receipt
+        env:
+          ROW: ${{ matrix.row }}
+        run: |
+          set -euo pipefail
+          printf 'import WeilDefect.Generated.NF694.RowGate\n#print axioms WeilDefect.nf694OriginalRow%s\n' "$ROW" >/tmp/nf694Audit.lean
+          lake env lean /tmp/nf694Audit.lean 2>&1 | tee nf694-axioms.log
+          python - <<'PY'
+          import hashlib,json,os,re
+          from pathlib import Path
+          root=Path('WeilDefect/Generated/NF694')
+          m=json.loads((root/'row-manifest.json').read_text())
+          row=int(os.environ['ROW'])
+          assert (m['row'],m['H'],m['V'],m['symmetry'])==(row,row+1,4,242)
+          assert m['source_hashes']=={s['file']:s['sha256'] for s in json.loads(Path('nf621-coverage.json').read_text())['shards']}
+          assert m['original_archive']==hashlib.sha256(Path('nf631-original-widened.zip').read_bytes()).hexdigest()
+          for name,digest in m['files'].items():
+              assert hashlib.sha256((root/name).read_bytes()).hexdigest()==digest
+          name=f"WeilDefect.nf694OriginalRow{row}"
+          lines=[s for s in Path('nf694-axioms.log').read_text().splitlines() if f"'{name}'" in s]
+          assert len(lines)==1,lines
+          match=re.fullmatch(r"'"+re.escape(name)+r"' depends on axioms: \[([^\]]*)\]",lines[0])
+          if match:
+              axioms=[v.strip() for v in match[1].split(',') if v.strip()]
+          else:
+              assert lines[0]==f"'{name}' does not depend on any axioms",lines
+              axioms=[]
+          assert set(axioms)<={'propext','Classical.choice','Quot.sound'}
+          m['theorem']=name
+          m['axioms']=axioms
+          Path('nf694-audit.json').write_text(json.dumps(m,indent=2)+'\n')
+          print('NF694 literal original row LEAN PASS',row)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf694-original-row-${{ matrix.row }}
+          path: |
+            nf694-*.log
+            nf694-audit.json
+            WeilDefect/Generated/NF694
+          if-no-files-found: ignore
+  aggregate:
+    needs: row
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf694-original-row-*
+          path: receipts
+      - name: Reconcile disjoint accepted row receipts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=sorted((json.loads(p.read_text()) for p in Path('receipts').rglob('nf694-audit.json')),key=lambda m:m['row'])
+          assert [m['row'] for m in a]==[1,2,3]
+          assert sum(m['H'] for m in a)==9 and sum(m['V'] for m in a)==12
+          assert all(set(m['axioms'])<={'propext','Classical.choice','Quot.sound'} for m in a)
+          for field in ('original_archive','original_widened_digest','source_hashes','physical_eH','physical_eV'):
+              assert all(m[field]==a[0][field] for m in a)
+          Path('nf694-complete-audit.json').write_text(json.dumps(a,indent=2)+'\n')
+          print('NF694 three original local row gates PASS; full-bank and full-payment attachment not asserted')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf694-complete-row-audit
+          path: nf694-complete-audit.json
