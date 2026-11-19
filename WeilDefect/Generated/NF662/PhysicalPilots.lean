@@ -15,17 +15,25 @@ def nf662PhysicalCompactBall (i j : Fin 15) : NF591Ball :=
   ⟨(nf658Get nf658Centers i j : ℚ) / (10 ^ 64 : ℚ),
     (nf658Get nf658Radii i j : ℚ) / (10 ^ 64 : ℚ)⟩
 
+theorem nf662Ball_ext (a b : NF591Ball)
+    (hm : a.mid = b.mid) (hr : a.rad = b.rad) : a = b := by
+  cases a
+  cases b
+  cases hm
+  cases hr
+  rfl
+
 theorem nf662Ball_oscillator_eq :
     nf662PhysicalCompactBall 0 0 = nf658H000_000Ball := by
-  apply NF591Ball.ext <;> decide +kernel
+  apply nf662Ball_ext <;> decide +kernel
 
 theorem nf662Ball_poleCross_eq :
     nf662PhysicalCompactBall 14 0 = nf658H241_000Ball := by
-  apply NF591Ball.ext <;> decide +kernel
+  apply nf662Ball_ext <;> decide +kernel
 
 theorem nf662Ball_poleDiag_eq :
     nf662PhysicalCompactBall 14 14 = nf658H241_241Ball := by
-  apply NF591Ball.ext <;> decide +kernel
+  apply nf662Ball_ext <;> decide +kernel
 
 theorem nf662OriginalOscillator_contains :
     (nf662PhysicalCompactBall 0 0).Contains
@@ -60,7 +68,7 @@ theorem nf662CompactBalls_symm :
       nf658Get nf658Radii i j = nf658Get nf658Radii j i := by
     decide +kernel
   intro i j
-  apply NF591Ball.ext
+  apply nf662Ball_ext
   · simpa [nf662PhysicalCompactBall] using
       congrArg (fun t : ℤ => (t : ℚ) / (10 ^ 64 : ℚ)) (hc i j)
   · simpa [nf662PhysicalCompactBall] using
