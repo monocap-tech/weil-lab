@@ -1,0 +1,271 @@
+name: NF671 original 242-generator integral-square Gram and authentic 227-source Schur PSD
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalGramIntegralSquare.lean"
+      - "WeilDefect/Generated/NF671/OriginalPhysicalFullGramPSD.lean"
+      - ".github/workflows/nf671-integral-square-quadratic.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf671-integral-square-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  generic-integral-square-psd:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and mathlib cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Exact real continuous-generator interval Gram square and unconditional PSD
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramIntegralSquare
+      - name: Generic interval-square standard axiom audit
+        run: |
+          cat >/tmp/nf671SquareAudit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramIntegralSquare
+          #print axioms WeilDefect.neutralNF671Pair_intervalIntegrable
+          #print axioms WeilDefect.neutralNF671IntegralGram_energy_eq_square
+          #print axioms WeilDefect.neutralNF671IntegralGram_nonnegative
+          EOF
+          lake env lean /tmp/nf671SquareAudit.lean
+  original-physical-full-psd:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch pinned exact original source and prior accepted proof artifacts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p inputs/archives
+          get() {
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" \
+              "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$1/zip" \
+              -o "inputs/archives/$2.zip"
+          }
+          get 14476203337 nf648-Pole
+          get 14476327246 nf648-Osc
+          get 14478132104 nf648-Mixed
+          get 14443955726 nf621-shard0
+          get 14443029185 nf621-shard1
+          get 14442993898 nf621-shard2
+          get 14443875632 nf621-shard3
+          get 14443830605 nf621-shard4
+          get 14443726709 nf621-shard5
+          get 14441839748 nf621-shard6
+          get 14442134710 nf621-shard7
+          get 14459025571 nf631-widened
+          get 14458696200 nf632-pi
+          echo 'e91a83cae117e98608aefa6849dac178e4ddb58dd1dffbfe37304ad248af9ed9  inputs/archives/nf631-widened.zip' | sha256sum -c -
+          echo 'd1769ab74275cc9c57452d3aa5ad3a30109efc500f7834ee392ed668612d9a37  inputs/archives/nf632-pi.zip' | sha256sum -c -
+          mkdir -p WeilDefect/Generated/NF632
+          unzip -q inputs/archives/nf632-pi.zip -d WeilDefect/Generated/NF632
+      - name: Rebuild NF655 original analytic Gram sources and NF657 compact witness
+        run: |
+          python scripts/prepare_nf655_certified_moment_gram.py inputs/archives WeilDefect/Generated
+          python scripts/emit_nf657_compact_congruence.py inputs/archives/nf631-widened.zip inputs/nf663-compact.json
+          python scripts/verify_nf657_compact_congruence.py inputs/nf663-compact.json inputs/archives/nf631-widened.zip
+          python scripts/emit_nf658_original_gram_widenings.py --archive inputs/archives/nf631-widened.zip --witness inputs/nf663-compact.json --output WeilDefect/Generated/NF658
+      - name: Recreate all 450 exact NF659 integer gates and 225 original NF662 real entry proofs
+        run: |
+          python scripts/emit_nf659_gram_transformed_gates.py inputs/nf663-compact.json WeilDefect/Generated/NF659
+          python scripts/emit_nf662_original_real_intervals.py WeilDefect/Generated/NF662
+          python -m py_compile scripts/emit_nf663_original_real_scale_gates.py
+          python scripts/emit_nf663_original_real_scale_gates.py WeilDefect/Generated/NF663
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          p=Path('WeilDefect/Generated/NF663')
+          m=json.loads((p/'manifest.json').read_text())
+          assert m['center_gate_references']==225
+          assert m['radius_gate_references']==225
+          assert len(m['files'])==16
+          for x in m['files']:
+              assert hashlib.sha256((p/x['file']).read_bytes()).hexdigest()==x['sha256']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf663-real-physical-attachment-source-proposals
+          path: |
+            WeilDefect/Generated/NF663/manifest.json
+            inputs/nf663-compact.json
+          if-no-files-found: error
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Original actual H proof bank and representative exact NF659 gate bindings
+        timeout-minutes: 35
+        run: |
+          lake build WeilDefect.Generated.NF662.Complete WeilDefect.Generated.NF663.Row00 WeilDefect.Generated.NF663.Row07 WeilDefect.Generated.NF663.Row14
+      - name: Full original 225 transformed REAL entries in NF659 exact integer balls
+        timeout-minutes: 35
+        run: |
+          lake build WeilDefect.Generated.NF663.Complete
+      - name: Actual original physical transformed Gram coercivity from 15 integer margins
+        timeout-minutes: 20
+        run: |
+          lake build WeilDefect.Generated.NF664.OriginalTransformedCoercivity
+      - name: Original 15-generator physical real coercivity from authenticated integer and frame certificates
+        timeout-minutes: 25
+        run: |
+          lake build WeilDefect.Generated.NF665.OriginalPhysicalCoercivity
+      - name: Exact 242-source dictionary, original 15+227 partition and authentic Schur blocks
+        timeout-minutes: 20
+        run: |
+          lake build WeilDefect.Generated.NF669.OriginalPhysicalComplementDictionary
+      - name: Original full 242-source quadratic reindexing and exact 15+227 block identity
+        timeout-minutes: 30
+        run: |
+          lake build WeilDefect.Generated.NF670.OriginalPhysicalFullQuadratic
+      - name: Actual original A-matrix invertibility, 227-source Riesz existence, cross identity and Schur gate
+        timeout-minutes: 30
+        run: |
+          lake build WeilDefect.Generated.NF670.OriginalPhysicalRieszResponse
+      - name: Full original 242-source physical Schur identity and exact complementary sign equivalence
+        timeout-minutes: 25
+        run: |
+          lake build WeilDefect.Generated.NF670.OriginalPhysicalFullSchur
+      - name: Original NF606 242-generator physical integral square and genuine Schur nonnegativity
+        timeout-minutes: 30
+        run: |
+          lake build WeilDefect.Generated.NF671.OriginalPhysicalFullGramPSD
+      - name: Original 242-generator integral positivity, Schur and all prior certificate strict axiom audit
+        run: |
+          cat >/tmp/nf663PhysicalAudit.lean <<'EOF'
+          import WeilDefect.Generated.NF671.OriginalPhysicalFullGramPSD
+          import WeilDefect.Generated.NF670.OriginalPhysicalFullQuadratic
+          #print axioms WeilDefect.nf671OriginalRealSource_continuous
+          #print axioms WeilDefect.nf671OriginalPhysicalH_eq_integralGram
+          #print axioms WeilDefect.nf671OriginalPhysicalH_energy_eq_square
+          #print axioms WeilDefect.nf671OriginalFullPhysicalGram_nonnegative
+          #print axioms WeilDefect.nf671ActualPhysicalBlock_nonnegative
+          #print axioms WeilDefect.nf671ActualPhysicalSchur_nonnegative
+          #print axioms WeilDefect.nf671OriginalFullSchur_twoNonnegative
+          import WeilDefect.Generated.NF670.OriginalPhysicalFullSchur
+          import WeilDefect.Generated.NF670.OriginalPhysicalRieszResponse
+          #print axioms WeilDefect.nf670OriginalFullSchurIdentity
+          #print axioms WeilDefect.nf670OriginalFullNonnegative_iff_schur
+          #print axioms WeilDefect.nf670FullSource_sum
+          #print axioms WeilDefect.nf670FullSource_quadratic_reindex
+          #print axioms WeilDefect.nf670AssembleOriginal_source
+          #print axioms WeilDefect.nf670AssembleOriginal_roundtrip
+          #print axioms WeilDefect.nf670Mixed_physicalTransposed
+          #print axioms WeilDefect.nf670FullPhysicalGram_blockEnergy
+          #print axioms WeilDefect.nf670FullPhysicalGram_allCoefficients
+          #print axioms WeilDefect.nf670ActualA_injective
+          #print axioms WeilDefect.nf670ActualA_isUnit
+          #print axioms WeilDefect.nf670ActualA_surjective
+          #print axioms WeilDefect.nf670ActualRiesz_exists
+          #print axioms WeilDefect.nf670ActualRiesz_solves
+          #print axioms WeilDefect.nf670ActualRiesz_unique
+          #print axioms WeilDefect.nf670ActualRiesz_crossIdentity
+          #print axioms WeilDefect.nf670ActualPhysical_block_nonnegative_of_schur
+          #print axioms WeilDefect.nf670ActualPhysical_schur_necessary
+          #print axioms WeilDefect.nf669SelectedSource_injective
+          #print axioms WeilDefect.nf669ComplementSource_injective
+          #print axioms WeilDefect.nf669Source_disjoint
+          #print axioms WeilDefect.nf669Source_cover
+          #print axioms WeilDefect.nf669SourceSum_injective
+          #print axioms WeilDefect.nf669SourceSum_surjective
+          #print axioms WeilDefect.nf669OriginalReindexed_preservesH
+          #print axioms WeilDefect.nf669OriginalA_coercivity
+          #print axioms WeilDefect.nf669OriginalB_transpose
+          #print axioms WeilDefect.nf665OriginalExactMarginGate
+          #print axioms WeilDefect.nf665OriginalPhysical_coercivity
+          #print axioms WeilDefect.nf665OriginalK_surjective
+          #print axioms WeilDefect.nf665OriginalK_normBound
+          #print axioms WeilDefect.nf665OriginalPhysical_congruence
+          #print axioms WeilDefect.nf664OriginalIntegerMargin
+          #print axioms WeilDefect.nf664AuthenticatedOriginalTransformedCoercivity
+          #print axioms WeilDefect.nf663AllCenters
+          #print axioms WeilDefect.nf663AllRadii
+          #print axioms WeilDefect.nf663OriginalPhysical_sourceEnclosed
+          #print axioms WeilDefect.nf663ActualPhysical_transformedEnclosed
+          EOF
+          set -o pipefail
+          lake env lean /tmp/nf663PhysicalAudit.lean | tee /tmp/nf671-physical-audit.txt
+          python - <<'PY'
+          from pathlib import Path
+          content = Path("/tmp/nf671-physical-audit.txt").read_text()
+          names = [
+              "nf671OriginalRealSource_continuous",
+              "nf671OriginalPhysicalH_eq_integralGram",
+              "nf671OriginalPhysicalH_energy_eq_square",
+              "nf671OriginalFullPhysicalGram_nonnegative",
+              "nf671ActualPhysicalBlock_nonnegative",
+              "nf671ActualPhysicalSchur_nonnegative",
+              "nf671OriginalFullSchur_twoNonnegative",
+              "nf670OriginalFullSchurIdentity",
+              "nf670OriginalFullNonnegative_iff_schur",
+              "nf670FullSource_sum",
+              "nf670FullSource_quadratic_reindex",
+              "nf670AssembleOriginal_source",
+              "nf670AssembleOriginal_roundtrip",
+              "nf670Mixed_physicalTransposed",
+              "nf670FullPhysicalGram_blockEnergy",
+              "nf670FullPhysicalGram_allCoefficients",
+              "nf670ActualA_injective",
+              "nf670ActualA_isUnit",
+              "nf670ActualA_surjective",
+              "nf670ActualRiesz_exists",
+              "nf670ActualRiesz_solves",
+              "nf670ActualRiesz_unique",
+              "nf670ActualRiesz_crossIdentity",
+              "nf670ActualPhysical_block_nonnegative_of_schur",
+              "nf670ActualPhysical_schur_necessary",
+              "nf669SelectedSource_injective",
+              "nf669ComplementSource_injective",
+              "nf669Source_disjoint",
+              "nf669Source_cover",
+              "nf669SourceSum_injective",
+              "nf669SourceSum_surjective",
+              "nf669OriginalReindexed_preservesH",
+              "nf669OriginalA_coercivity",
+              "nf669OriginalB_transpose",
+              "nf665OriginalExactMarginGate",
+              "nf665OriginalPhysical_coercivity",
+              "nf665OriginalK_surjective",
+              "nf665OriginalK_normBound",
+              "nf665OriginalPhysical_congruence",
+              "nf664OriginalIntegerMargin",
+              "nf664AuthenticatedOriginalTransformedCoercivity",
+              "nf663AllCenters",
+              "nf663AllRadii",
+              "nf663OriginalPhysical_sourceEnclosed",
+              "nf663ActualPhysical_transformedEnclosed",
+          ]
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for name in names:
+              label = f"'WeilDefect.{name}'"
+              matches = [line for line in content.splitlines() if label in line]
+              if len(matches) != 1:
+                  raise SystemExit(f"Missing or duplicated axiom audit: {name} ({len(matches)})")
+              row = matches[0]
+              if "does not depend on any axioms" in row:
+                  continue
+              marker = f"{label} depends on axioms: ["
+              if marker not in row:
+                  raise SystemExit(f"Unrecognized audit line for {name}: {row}")
+              raw_axioms = row.split(marker, 1)[1].split("]", 1)[0]
+              used = {x.strip() for x in raw_axioms.split(",") if x.strip()}
+              if not used <= allowed:
+                  raise SystemExit(f"Unexpected axiom in {name}: {used - allowed}")
+          print(f"NF671 genuine full 242-generator integral-square and Schur PSD strict axiom whitelist PASS: {len(names)} source-bound targets")
+          PY
