@@ -17,15 +17,15 @@ def nf662PhysicalCompactBall (i j : Fin 15) : NF591Ball :=
 
 theorem nf662Ball_oscillator_eq :
     nf662PhysicalCompactBall 0 0 = nf658H000_000Ball := by
-  decide +kernel
+  apply NF591Ball.ext <;> decide +kernel
 
 theorem nf662Ball_poleCross_eq :
     nf662PhysicalCompactBall 14 0 = nf658H241_000Ball := by
-  decide +kernel
+  apply NF591Ball.ext <;> decide +kernel
 
 theorem nf662Ball_poleDiag_eq :
     nf662PhysicalCompactBall 14 14 = nf658H241_241Ball := by
-  decide +kernel
+  apply NF591Ball.ext <;> decide +kernel
 
 theorem nf662OriginalOscillator_contains :
     (nf662PhysicalCompactBall 0 0).Contains
@@ -53,7 +53,7 @@ real-analytic symmetry of the physical H integral. -/
 theorem nf662CompactBalls_symm :
     ∀ i j : Fin 15, nf662PhysicalCompactBall i j =
       nf662PhysicalCompactBall j i := by
-  decide +kernel
+  apply NF591Ball.ext <;> decide +kernel
 
 theorem nf662OriginalUpperPoleCross_contains :
     (nf662PhysicalCompactBall 0 14).Contains
