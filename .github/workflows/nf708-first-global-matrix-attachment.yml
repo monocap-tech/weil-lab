@@ -10,7 +10,7 @@ permissions:
   actions: read
 concurrency:
   group: nf708-global-matrix-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   global-attachment:
     runs-on: ubuntu-latest
