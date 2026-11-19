@@ -1,0 +1,208 @@
+name: NF682 original maximum-degree frequency-block coverage
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalFrequencyBlockCoverage.lean"
+      - "scripts/emit_nf682_frequency_block_coverage.py"
+      - ".github/workflows/nf682-original-frequency-block-coverage.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf682-frequency-block-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  emit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate exact retained NF679 metadata
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14537566871/zip" -o nf679.zip
+          echo '26d052a53a0d35079b37cc911c1da4b89fab1344c82a47ec1928914844b5934a  nf679.zip' | sha256sum -c -
+          unzip -q nf679.zip -d nf679-original
+          mkdir -p WeilDefect/Generated/NF679
+          cp nf679-original/Metadata.lean nf679-original/manifest.json WeilDefect/Generated/NF679/
+      - name: Generate original source representative and bounded lookup proof proposals
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/emit_nf682_frequency_block_coverage.py
+          python scripts/emit_nf682_frequency_block_coverage.py --root . --metadata WeilDefect/Generated/NF679 --output WeilDefect/Generated/NF682
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF682')
+          m=json.loads((d/'manifest.json').read_text())
+          assert (m['groups'],m['original_sources'],m['original_lookup_requests'])==(68,242,362032)
+          assert (m['group_selected_requests'],m['group_mixed_requests'],m['domination_requests'],m['lookup_batch_max'])==(18496,8976,484,32)
+          assert {x['file'] for x in m['files']}=={'Maps.lean','Partitions.lean','AllGroups.lean'}|{f'Group{i:02d}.lean' for i in range(68)}
+          for x in m['files']:
+              assert hashlib.sha256((d/x['file']).read_bytes()).hexdigest()==x['sha256']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf682-group-coverage-proposals
+          path: |
+            WeilDefect/Generated/NF679/
+            WeilDefect/Generated/NF682/
+          if-no-files-found: error
+  group-shards:
+    needs: emit
+    name: Original frequency groups ${{ matrix.first }}-${{ matrix.last }}
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - {first: 0, last: 8}
+          - {first: 9, last: 16}
+          - {first: 17, last: 25}
+          - {first: 26, last: 33}
+          - {first: 34, last: 42}
+          - {first: 43, last: 50}
+          - {first: 51, last: 59}
+          - {first: 60, last: 67}
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf682-group-coverage-proposals
+          path: WeilDefect/Generated
+      - name: Recheck exact source provenance
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF682')
+          m=json.loads((d/'manifest.json').read_text())
+          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          assert h(Path('WeilDefect/Generated/NF679/Metadata.lean'))==m['metadata_sha256']
+          assert h(Path('WeilDefect/Generated/NF679/manifest.json'))==m['metadata_manifest_sha256']
+          for x in m['files']:
+              assert h(d/x['file'])==x['sha256']
+          PY
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Check exact source domination and block partitions before any metadata lookup
+        run: lake build WeilDefect.Generated.NF682.Maps WeilDefect.Generated.NF682.Partitions
+      - name: Compile original compact metadata
+        run: lake build WeilDefect.Generated.NF679.Metadata
+      - name: Kernel check representative groups one module at a time
+        timeout-minutes: 70
+        env:
+          FIRST: ${{ matrix.first }}
+          LAST: ${{ matrix.last }}
+        run: |
+          set -euo pipefail
+          for ((i=FIRST;i<=LAST;i++)); do
+            printf -v group '%02d' "$i"
+            lake build "WeilDefect.Generated.NF682.Group$group" 2>&1 | tee -a nf682-build.log
+          done
+      - name: Strict individual proof audit
+        env:
+          FIRST: ${{ matrix.first }}
+          LAST: ${{ matrix.last }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          a,b=int(os.environ['FIRST']),int(os.environ['LAST'])
+          base=['neutralNF682Lookup_mono','neutralNF682CriticalKeyDegree','neutralNF682Coverage_of_groups','neutralNF682CoverageCheck_of_coverage','nf682DomGate','nf682DomAll','nf682HPartition','nf682VPartition']
+          names=base+[f'nf682Group{i:02d}{s}' for i in range(a,b+1) for s in [*[f'H{k:02d}' for k in range(9)],*[f'V{k:02d}' for k in range(5)],'HAll','VAll','Check']]
+          Path('/tmp/nf682Audit.lean').write_text(''.join(f'import WeilDefect.Generated.NF682.Group{i:02d}\n' for i in range(a,b+1))+''.join(f'#print axioms WeilDefect.{n}\n' for n in names))
+          Path('/tmp/nf682Names.txt').write_text('\n'.join(names))
+          PY
+          lake env lean /tmp/nf682Audit.lean 2>&1 | tee nf682-axioms.log
+          python - <<'PY'
+          import hashlib,json,os,re
+          from pathlib import Path
+          a,b=int(os.environ['FIRST']),int(os.environ['LAST'])
+          names=set(Path('/tmp/nf682Names.txt').read_text().splitlines())
+          found={}
+          log=Path('nf682-axioms.log').read_text()
+          for n,x in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[s.strip() for s in x.split(',') if s.strip()]
+          for n in re.findall(r"'WeilDefect\.(\w+)' does not depend on any axioms",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[]
+          assert set(found)==names,(len(found),len(names))
+          assert all(set(x)<={'propext','Classical.choice','Quot.sound'} for x in found.values())
+          d=Path('WeilDefect/Generated/NF682')
+          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          Path('nf682-audit.json').write_text(json.dumps({'first':a,'last':b,'manifest_sha256':h(d/'manifest.json'),'source_sha256':{f'Group{i:02d}.lean':h(d/f'Group{i:02d}.lean') for i in range(a,b+1)},'theorems':found},indent=2)+'\n')
+          print(f'NF682 group rows {a}..{b}: complete exact group lookup gates and source domination PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf682-group-audit-${{ matrix.first }}-${{ matrix.last }}
+          path: |
+            nf682-build.log
+            nf682-axioms.log
+            nf682-audit.json
+          if-no-files-found: ignore
+  complete-audit:
+    needs: group-shards
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf682-group-audit-*
+          path: audits
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf682-group-coverage-proposals
+          path: proposals
+      - name: Exact dense certificate-group coverage and source digest audit
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('proposals/NF682')
+          m=json.loads((d/'manifest.json').read_text())
+          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          sources={x['file']:x['sha256'] for x in m['files']}
+          shards=[json.loads(p.read_text()) for p in Path('audits').rglob('nf682-audit.json')]
+          assert len(shards)==8
+          assert {s['manifest_sha256'] for s in shards}=={h(d/'manifest.json')}
+          groups=[]; found={}
+          base={'neutralNF682Lookup_mono','neutralNF682CriticalKeyDegree','neutralNF682Coverage_of_groups','neutralNF682CoverageCheck_of_coverage','nf682DomGate','nf682DomAll','nf682HPartition','nf682VPartition'}
+          for s in shards:
+              a,b=s['first'],s['last']
+              groups+=list(range(a,b+1))
+              assert s['source_sha256']=={f'Group{i:02d}.lean':sources[f'Group{i:02d}.lean'] for i in range(a,b+1)}
+              expected={f'nf682Group{i:02d}{v}' for i in range(a,b+1) for v in [*[f'H{k:02d}' for k in range(9)],*[f'V{k:02d}' for k in range(5)],'HAll','VAll','Check']}
+              assert set(s['theorems'])==expected|base
+              assert all(set(x)<={'propext','Classical.choice','Quot.sound'} for x in s['theorems'].values())
+              for n in expected:
+                  assert n not in found
+                  found[n]=s['theorems'][n]
+          assert sorted(groups)==list(range(68)) and len(found)==68*17
+          Path('nf682-complete-audit.json').write_text(json.dumps({'schema':'NF682-complete-original-group-audit-v1','manifest_sha256':h(d/'manifest.json'),'theorems':found,'scope':'All group/local domination checks; aggregate AllGroups module not built here; numeric-bank shape and validity remain open.'},indent=2)+'\n')
+          print('NF682 all 68 group coverage checks, 27,472 lookups, 484 domination relations and generic transfer audited')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf682-complete-coverage-audit
+          path: nf682-complete-audit.json
+          if-no-files-found: error
