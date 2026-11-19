@@ -84,6 +84,17 @@ def emit(root,shards,archive,output):
             for p in shards.rglob("nf621-shard*.json.gz")}
     assert len(hashes)==8
     m=emit_bank(subset,output,32,hashes)
+    # NF627's emitter writes imports under its original module prefix.
+    # The row pilot is intentionally isolated in NF675; rewrite module
+    # paths only, never the original rational row literals.
+    for p in output.glob("*.lean"):
+        p.write_text(p.read_text().replace(
+            "WeilDefect.Generated.NF627.", "WeilDefect.Generated.NF675."))
+    for rec in m["files"]:
+        p=output/rec["file"]
+        rec["bytes"]=p.stat().st_size
+        rec["sha256"]=hashlib.sha256(p.read_bytes()).hexdigest()
+    (output/"manifest.json").write_text(json.dumps(m,indent=2)+"\n")
     body="set_option maxRecDepth 100000\nset_option maxHeartbeats 0\n\n"
     body+=vec("nf675PhysicalH0Centers",h0)
     body+=vec("nf675PhysicalV0Centers",v0)
@@ -114,7 +125,7 @@ theorem nf675OriginalRow0_actualEntryCheck :
 """
     (output/"OriginalRow0Gate.lean").write_text(filetext([
         "WeilDefect.Arithmetic.ActualZetaOriginalPhysicalLiteralRowProjection",
-        "WeilDefect.Generated.NF627.Bank",
+        "WeilDefect.Generated.NF675.Bank",
     ],body))
     info={
       "schema":"NF675-source-exact-original-row-0-candidate-v1",
