@@ -1,0 +1,213 @@
+name: NF680 exact original cache vector and defect numerator replay
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalCacheVectorReceipts.lean"
+      - "scripts/emit_nf680_original_cache_vector_receipts.py"
+      - ".github/workflows/nf680-original-cache-vector-receipts.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf680-cache-vectors-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  emit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install python-flint==0.8.0
+      - name: Pin all five original input archive bytes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p inputs
+          fetch() {
+            local id="$1" name="$2" digest="$3"
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" -o "inputs/$name.zip"
+            echo "$digest  inputs/$name.zip" | sha256sum -c -
+            unzip -q "inputs/$name.zip" -d "inputs/$name"
+          }
+          fetch 14443252637 frame 3621906bd54c007900ca082ae1d2ee783d05d28ab5f3caab78b4a870b33abc7c
+          fetch 14459025571 entries e91a83cae117e98608aefa6849dac178e4ddb58dd1dffbfe37304ad248af9ed9
+          fetch 14457911117 cache bb89b0c7b9bc4017b8c855f0e30474ee8b2f0589e29f99747fff965f44f3b1a7
+          fetch 14472975687 scalar 7c4e6f03364ed0290a54683c5b52688a0478a32ae00625b3e5f6f4231ad54582
+          fetch 14458146136 payments 8cbae72a7714dc555c0183edfbbda077096ef910b1e284d4abc91c4960d95e6e
+      - name: Reconstruct unchanged scalar and cache vector proof proposals
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/emit_nf680_original_cache_vector_receipts.py
+          python scripts/prepare_nf654_isolated_scalar_trial.py --root . --proposals inputs/scalar --payments inputs/payments/nf631-widened-payments.json --output WeilDefect/Generated/NF639
+          cp inputs/scalar/manifest.json WeilDefect/Generated/NF639/manifest.json
+          python scripts/emit_nf680_original_cache_vector_receipts.py --root . --historical inputs/frame/nf623-historical-entries.jsonl.gz --entries inputs/entries/nf631-widened-entries.jsonl.gz --payments inputs/payments/nf631-widened-payments.json --cache inputs/cache/nf631-center-cache.jsonl.gz --scalar WeilDefect/Generated/NF639 --output WeilDefect/Generated/NF680
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF680')
+          m=json.loads((d/'manifest.json').read_text())
+          assert m['rows']==242
+          assert {v['file'] for v in m['files']}=={'Common.lean'}|{f'Row{i:03d}.lean' for i in range(242)}
+          for v in m['files']:
+              assert hashlib.sha256((d/v['file']).read_bytes()).hexdigest()==v['sha256']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf680-original-cache-vector-proposals
+          path: |
+            WeilDefect/Generated/NF680/
+            WeilDefect/Generated/NF639/
+          if-no-files-found: error
+  cache-vector-shards:
+    needs: emit
+    name: Cache vector rows ${{ matrix.first }}-${{ matrix.last }}
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        include:
+          - {first: 0, last: 60}
+          - {first: 61, last: 120}
+          - {first: 121, last: 181}
+          - {first: 182, last: 241}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf680-original-cache-vector-proposals
+          path: WeilDefect/Generated
+      - name: Recheck exact generated source hashes
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF680')
+          for v in json.loads((d/'manifest.json').read_text())['files']:
+              assert hashlib.sha256((d/v['file']).read_bytes()).hexdigest()==v['sha256']
+          p=Path('WeilDefect/Generated/NF639')
+          for v in json.loads((p/'manifest.json').read_text())['files']:
+              if v['file']!='Params.lean':
+                  assert hashlib.sha256((p/v['file']).read_bytes()).hexdigest()==v['sha256']
+          PY
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Compile exact vector and defect transport and common data
+        run: lake build WeilDefect.Generated.NF680.Common
+      - name: Kernel-check each assigned original cache row
+        timeout-minutes: 85
+        env:
+          FIRST: ${{ matrix.first }}
+          LAST: ${{ matrix.last }}
+        run: |
+          set -euo pipefail
+          for ((start=FIRST;start<=LAST;start+=2)); do
+            targets=()
+            for ((i=start;i<start+2 && i<=LAST;i++)); do
+              printf -v row '%03d' "$i"
+              targets+=("WeilDefect.Generated.NF680.Row$row")
+            done
+            lake build "${targets[@]}" 2>&1 | tee -a nf680-rows.log
+          done
+      - name: Independently print and audit every assigned declaration
+        env:
+          FIRST: ${{ matrix.first }}
+          LAST: ${{ matrix.last }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          a,b=int(os.environ['FIRST']),int(os.environ['LAST'])
+          names=['neutralNF680DefectRow_eq','neutralNF680VectorGate_of_receipts']+[f'nf680Row{i:03d}{s}' for i in range(a,b+1) for s in ('Vw','B','Ay','Defect','CacheLiterals')]
+          Path('/tmp/nf680Audit.lean').write_text(''.join(f'import WeilDefect.Generated.NF680.Row{i:03d}\n' for i in range(a,b+1))+''.join(f'#print axioms WeilDefect.{n}\n' for n in names))
+          PY
+          lake env lean /tmp/nf680Audit.lean 2>&1 | tee nf680-axioms.log
+          python - <<'PY'
+          import hashlib,json,os,re
+          from pathlib import Path
+          a,b=int(os.environ['FIRST']),int(os.environ['LAST'])
+          names={'neutralNF680DefectRow_eq','neutralNF680VectorGate_of_receipts'}|{f'nf680Row{i:03d}{s}' for i in range(a,b+1) for s in ('Vw','B','Ay','Defect','CacheLiterals')}
+          found={}
+          log=Path('nf680-axioms.log').read_text()
+          for n,x in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[s.strip() for s in x.split(',') if s.strip()]
+          for n in re.findall(r"'WeilDefect\.(\w+)' does not depend on any axioms",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[]
+          assert set(found)==names,(len(found),len(names))
+          assert all(set(x)<={'propext','Classical.choice','Quot.sound'} for x in found.values())
+          d=Path('WeilDefect/Generated/NF680')
+          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          Path('nf680-audit.json').write_text(json.dumps({'first':a,'last':b,'manifest_sha256':h(d/'manifest.json'),'common_sha256':h(d/'Common.lean'),'source_sha256':{f'Row{i:03d}.lean':h(d/f'Row{i:03d}.lean') for i in range(a,b+1)},'theorems':found},indent=2)+'\n')
+          print(f'NF680 {a}..{b}: all {5*(b-a+1)} original local cache vector and defect proof declarations PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf680-vector-audit-${{ matrix.first }}-${{ matrix.last }}
+          path: |
+            nf680-rows.log
+            nf680-axioms.log
+            nf680-audit.json
+          if-no-files-found: ignore
+  complete-audit:
+    needs: cache-vector-shards
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf680-vector-audit-*
+          path: audits
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf680-original-cache-vector-proposals
+          path: proposals
+      - name: Verify exact dense source coverage and all 1210 prints
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('proposals/NF680')
+          m=json.loads((d/'manifest.json').read_text())
+          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          sources={v['file']:v['sha256'] for v in m['files']}
+          shards=[json.loads(p.read_text()) for p in Path('audits').rglob('nf680-audit.json')]
+          assert sorted((s['first'],s['last']) for s in shards)==[(0,60),(61,120),(121,181),(182,241)]
+          assert {s['manifest_sha256'] for s in shards}=={h(d/'manifest.json')}
+          assert {s['common_sha256'] for s in shards}=={sources['Common.lean']}
+          allrows={}
+          generic={'neutralNF680DefectRow_eq','neutralNF680VectorGate_of_receipts'}
+          for s in shards:
+              a,b=s['first'],s['last']
+              assert s['source_sha256']=={f'Row{i:03d}.lean':sources[f'Row{i:03d}.lean'] for i in range(a,b+1)}
+              expected={f'nf680Row{i:03d}{suffix}' for i in range(a,b+1) for suffix in ('Vw','B','Ay','Defect','CacheLiterals')}
+              assert set(s['theorems'])==expected|generic
+              assert all(set(x)<={'propext','Classical.choice','Quot.sound'} for x in s['theorems'].values())
+              for name in expected:
+                  assert name not in allrows
+                  allrows[name]=s['theorems'][name]
+          assert len(allrows)==1210
+          Path('nf680-complete-audit.json').write_text(json.dumps({'schema':'NF680-local-cache-vector-audit-v1','manifest_sha256':h(d/'manifest.json'),'theorems':allrows,'scope':'Local vector and defect receipts only; complete matrix identities and global attachment remain open.'},indent=2)+'\n')
+          print('NF680 all 242 original local vector/defect rows: 1210 clean literal theorem declarations')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf680-complete-original-cache-vector-audit
+          path: nf680-complete-audit.json
+          if-no-files-found: error
