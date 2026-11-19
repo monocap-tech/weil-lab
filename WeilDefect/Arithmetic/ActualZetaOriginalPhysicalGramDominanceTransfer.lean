@@ -146,9 +146,10 @@ theorem neutralNF660Interval_rowMargin
     linarith
   have habs (j : Fin n) : |a i j| ≤ |c i j| + r i j := by
     calc
-      |a i j| = |(a i j - c i j) + c i j| := by ring
+      |a i j| = |(a i j - c i j) + c i j| := by rw [sub_add_cancel]
       _ ≤ |a i j - c i j| + |c i j| := abs_add_le _ _
-      _ ≤ r i j + |c i j| := add_le_add_right (h i j) _
+      _ ≤ r i j + |c i j| := by
+          simpa only [add_comm] using (add_le_add_right (h i j) (|c i j|))
       _ = |c i j| + r i j := by ring
   have hpay :
       (∑ j : Fin n, if i = j then (0 : ℝ) else |a i j|) ≤
