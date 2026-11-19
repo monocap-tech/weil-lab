@@ -55,8 +55,7 @@ theorem neutralNF663Center_scale {n : ℕ}
       intro p _
       apply Finset.sum_congr rfl
       intro q _
-      field_simp [hS]
-      ring
+      field_simp [hS] <;> ring
     _ = (∑ p : Fin n, ∑ q : Fin n,
           (K i p : ℝ) * (K j q : ℝ) * (C p q : ℝ)) / S ^ 3 := by
       simp only [Finset.sum_div]
@@ -83,8 +82,7 @@ theorem neutralNF663Radius_scale {n : ℕ}
       intro q _
       rw [abs_mul, abs_div, abs_div, abs_of_pos hS]
       rw [abs_mul]
-      field_simp [ne_of_gt hS]
-      ring
+      field_simp [ne_of_gt hS] <;> ring
     _ = (∑ p : Fin n, ∑ q : Fin n,
           |(K i p : ℝ) * (K j q : ℝ)| * (E p q : ℝ)) / S ^ 3 := by
       simp only [Finset.sum_div]
