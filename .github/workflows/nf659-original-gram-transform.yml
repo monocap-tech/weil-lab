@@ -83,9 +83,9 @@ jobs:
           export PATH="$HOME/.elan/bin:$PATH"
           lake update
           lake exe cache get
-      - name: Generic finite real congruence interval theorem
+      - name: Generic congruence intervals and symmetric off-diagonal positivity
         run: |
-          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramCongruenceInterval
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramCongruenceInterval WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramDiagonalDominance
       - name: Accepted original entries and first transformed integer pilots
         timeout-minutes: 18
         run: |
@@ -103,7 +103,11 @@ jobs:
           cat >/tmp/nf659Audit.lean <<'EOF'
           import WeilDefect.Generated.NF659.Complete
           import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramCongruenceInterval
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramDiagonalDominance
           #print axioms WeilDefect.neutralNF659CongruenceEntry_bound
+          #print axioms WeilDefect.neutralNF659OffDiagonalEnergy_nonneg
+          #print axioms WeilDefect.neutralNF659OffDiagonalAbs_swap
+          #print axioms WeilDefect.nf659ExactCoercivityGate
           #print axioms WeilDefect.nf659MarginOfArray
           #print axioms WeilDefect.nf659C00_00
           #print axioms WeilDefect.nf659R07_07
