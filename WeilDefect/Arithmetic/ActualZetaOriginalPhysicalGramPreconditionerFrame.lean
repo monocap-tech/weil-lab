@@ -141,8 +141,8 @@ theorem neutralNF665Transpose_surjective_of_lower {n : ℕ}
   refine ⟨y, ?_⟩
   funext p
   have hp := congrArg (fun v : Fin n → ℝ => v p) hy
-  simpa [neutralNF665TransposeAction, Matrix.vecMul, dotProduct,
-    mul_comm] using hp
+  simpa only [neutralNF665TransposeAction, Matrix.vecMul_apply_eq_sum]
+    using hp
 
 #print axioms neutralNF665FrobeniusNorm_bound
 #print axioms neutralNF665FourSum_exchange
