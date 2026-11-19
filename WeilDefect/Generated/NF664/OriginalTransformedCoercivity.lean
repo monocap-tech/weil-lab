@@ -19,6 +19,18 @@ theorem nf664OriginalIntegerMargin (i : Fin 15) :
       nf659CenterAt i i - nf659RadiusAt i i -
         ∑ j : Fin 15, if i = j then (0 : ℤ)
           else |nf659CenterAt i j| + nf659RadiusAt i j := by
+  have hSum :
+      (∑ j : Fin 15, if i = j then (0 : ℤ)
+        else |nf659CenterAt i j| + nf659RadiusAt i j) =
+      (∑ j : Fin 15, if j = i then (0 : ℤ)
+        else |nf659CenterAt i j| + nf659RadiusAt i j) := by
+    apply Finset.sum_congr rfl
+    intro j _
+    by_cases hij : i = j
+    · simp [hij]
+    · have hji : j ≠ i := Ne.symm hij
+      simp [hij, hji]
+  rw [hSum]
   change nf658MinMargin ≤ nf659MarginAt i
   exact nf659MarginUniform i
 
