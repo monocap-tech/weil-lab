@@ -1,0 +1,177 @@
+name: NF690 shaped original numerical moment bank and exact receipt attachment
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalShapedBank.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTableReceiptClosure.lean"
+      - "scripts/emit_nf690_shaped_moment_bank.py"
+      - ".github/workflows/nf690-shaped-moment-bank.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf690-shaped-bank-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  emit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate original compact and local analytic proposal sources
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p WeilDefect/Generated
+          fetch() {
+            local id="$1" name="$2" digest="$3"
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" -o "$name.zip"
+            echo "$digest  $name.zip" | sha256sum -c -
+            unzip -q "$name.zip" -d WeilDefect/Generated
+          }
+          fetch 14551493244 compact 37be910efa7d204c9db35f62bf9d5f818ece77c7026d94d9c84e4ddba0df41a5
+          fetch 14546727896 local 98230a6ce56e8cc086801e80b6a63f13d5cf9ddb1e67430103d9fc0cda9c8c9d
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf621-shard-*
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: inputs/shards
+      - name: Reassemble every original table payload against the exact compiled metadata keys and lengths
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/emit_nf690_shaped_moment_bank.py
+          python scripts/emit_nf690_shaped_moment_bank.py --root . --shards inputs/shards --metadata WeilDefect/Generated/NF679 --compact WeilDefect/Generated/NF687 --local WeilDefect/Generated/NF684 --output WeilDefect/Generated/NF690
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF690')
+          m=json.loads((d/'manifest.json').read_text())
+          assert (m['keys'],m['rows'],m['chunks'],m['chunk_width'])==(7835,37994,490,16)
+          assert len(m['slots'])==7835 and [s['index'] for s in m['slots']]==list(range(7835))
+          assert len({tuple(s['key']) for s in m['slots']})==7835
+          assert sum(s['rows'] for s in m['slots'])==37994
+          assert m['pilot_key']==['0','285/128'] and m['pilot_rows']==22
+          for f in m['files']:
+              p=d/f['file']
+              assert p.stat().st_size==f['bytes']
+              assert hashlib.sha256(p.read_bytes()).hexdigest()==f['sha256']
+          # Keep the pilot small; it must never import the unbuilt full Bank or Coverage module.
+          pilot=Path('pilot/NF690')
+          pilot.mkdir(parents=True,exist_ok=True)
+          for name in ['manifest.json','Pilot.lean',m['pilot_chunk']+'.lean']:
+              (pilot/name).write_bytes((d/name).read_bytes())
+          print('NF690 complete original numeric payload source reconstruction PASS; no kernel truth asserted')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf690-original-full-bank-payload-proposals
+          path: WeilDefect/Generated/NF690/
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf690-pilot-source-proposals
+          path: pilot/
+          if-no-files-found: error
+  shaped-pilot:
+    needs: emit
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore exact previously audited compact and local proposal source bytes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p WeilDefect/Generated
+          fetch() {
+            local id="$1" name="$2" digest="$3"
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" -o "$name.zip"
+            echo "$digest  $name.zip" | sha256sum -c -
+            unzip -q "$name.zip" -d WeilDefect/Generated
+          }
+          fetch 14551493244 compact 37be910efa7d204c9db35f62bf9d5f818ece77c7026d94d9c84e4ddba0df41a5
+          fetch 14546727896 local 98230a6ce56e8cc086801e80b6a63f13d5cf9ddb1e67430103d9fc0cda9c8c9d
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf690-pilot-source-proposals
+          path: WeilDefect/Generated
+      - name: Verify input and pilot source digests
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated')
+          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          m=json.loads((d/'NF690/manifest.json').read_text())
+          assert m['metadata_sha256']==h(d/'NF679/Metadata.lean')
+          assert m['compact_manifest_sha256']==h(d/'NF687/manifest.json')
+          assert m['local_manifest_sha256']==h(d/'NF684/manifest.json')
+          for name in ('NF632','NF684','NF687'):
+              p=d/name
+              for r in json.loads((p/'manifest.json').read_text())['files']:
+                  assert h(p/r['file'])==r['sha256']
+          for n in ('Pilot.lean',m['pilot_chunk']+'.lean'):
+              r=next(f for f in m['files'] if f['file']==n)
+              assert h(d/'NF690'/n)==r['sha256']
+          PY
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Verify generic structural shape and original physical solve transport
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalShapedBank WeilDefect.Arithmetic.ActualZetaOriginalPhysicalTableReceiptClosure 2>&1 | tee nf690-generic.log
+      - name: Check exact original 22-row payload attachment, including full array equality
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Generated.NF690.Pilot 2>&1 | tee nf690-pilot.log
+      - name: Strict axiom audit
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          names=['neutralNF690FitRows_eq','neutralNF690Bank_size','neutralNF690Bank_read','neutralNF690Bank_shape','neutralNF690Bank_index','neutralNF690Table_eq','neutralNF690Lookup_sound','neutralNF690AllMoments_of_tables','neutralNF690OriginalPhysical_of_tables','nf690CrossSumKey','nf690CrossSumLength','nf690CrossSumRows','nf690CrossSumTableEq','nf690CrossSumSound']
+          Path('/tmp/nf690Audit.lean').write_text('import WeilDefect.Generated.NF690.Pilot\nimport WeilDefect.Arithmetic.ActualZetaOriginalPhysicalTableReceiptClosure\n'+''.join(f'#print axioms WeilDefect.{n}\n' for n in names))
+          Path('nf690-names.txt').write_text('\n'.join(names)+'\n')
+          PY
+          lake env lean /tmp/nf690Audit.lean 2>&1 | tee nf690-axioms.log
+          python - <<'PY'
+          import re,json,hashlib
+          from pathlib import Path
+          s=Path('nf690-axioms.log').read_text()
+          names=set(Path('nf690-names.txt').read_text().splitlines())
+          found={}
+          for n,x in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",s):
+              if n in names:
+                  assert n not in found
+                  found[n]=[v.strip() for v in x.split(',') if v.strip()]
+          for n in re.findall(r"'WeilDefect\.(\w+)' does not depend on any axioms",s):
+              if n in names:
+                  assert n not in found
+                  found[n]=[]
+          assert set(found)==names and len(found)==14,(len(found),len(names))
+          assert all(set(x)<={'propext','Classical.choice','Quot.sound'} for x in found.values())
+          p=Path('WeilDefect/Generated/NF690/manifest.json')
+          Path('nf690-audit.json').write_text(json.dumps({'schema':'NF690-shaped-bank-pilot-audit-v1','manifest_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'theorems':found,'attached_rows':22,'scope':'Generic shape and direct local analytic receipt transport, one actual array attachment; complete Bank/Coverage and all bank analytic truth unbuilt.'},indent=2)+'\n')
+          print('NF690 structural shape and direct receipt transport, exact 22 original payload rows: LEAN PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf690-exact-payload-pilot-audit
+          path: |
+            nf690-*.log
+            nf690-audit.json
+          if-no-files-found: ignore
