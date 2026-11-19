@@ -124,7 +124,7 @@ theorem nf675OriginalRow0_actualEntryCheck :
 #print axioms nf675OriginalRow0_actualEntryCheck
 """
     (output/"OriginalRow0Gate.lean").write_text(filetext([
-        "WeilDefect.Arithmetic.ActualZetaOriginalPhysicalLiteralRowProjection",
+        "WeilDefect.Arithmetic.ActualZetaOriginalPhysicalExecutableEntryChecks",
         "WeilDefect.Generated.NF675.Bank",
     ],body))
     info={
