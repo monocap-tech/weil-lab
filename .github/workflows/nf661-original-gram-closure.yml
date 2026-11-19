@@ -1,0 +1,42 @@
+name: NF661 original physical 15-source coercivity attachment
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalGramCoercivityClosure.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalGramDominanceTransfer.lean"
+      - ".github/workflows/nf661-original-gram-closure.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf661-physical-gram-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  analytic-closure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean toolchain
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Actual original 15-source block and generic quantitative basis transfer
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramCoercivityClosure
+      - name: Repaired generic NF660 diagonal dominance and interval transfer
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramDominanceTransfer
+      - name: Explicit standard axiom audit
+        run: |
+          cat >/tmp/nf661Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramCoercivityClosure
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramDominanceTransfer
+          #print axioms WeilDefect.neutralNF661PhysicalH_symm
+          #print axioms WeilDefect.neutralNF661Coercivity_of_preconditioned
+          #print axioms WeilDefect.neutralNF660Interval_coercivity
+          EOF
+          lake env lean /tmp/nf661Audit.lean
