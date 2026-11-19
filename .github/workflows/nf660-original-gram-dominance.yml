@@ -1,0 +1,38 @@
+name: NF660 generic finite physical Gram dominance transfer
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalGramDominanceTransfer.lean"
+      - ".github/workflows/nf660-original-gram-dominance.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf660-original-gram-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  finite-dominance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Symmetric quadratic and interval coercivity bridge
+        run: |
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramDominanceTransfer
+      - name: Standard axiom audit
+        run: |
+          cat >/tmp/nf660Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalGramDominanceTransfer
+          #print axioms WeilDefect.neutralNF660SymmetricRowPayment_bound
+          #print axioms WeilDefect.neutralNF660Dominance_coercivity
+          #print axioms WeilDefect.neutralNF660Interval_rowMargin
+          #print axioms WeilDefect.neutralNF660Interval_coercivity
+          EOF
+          lake env lean /tmp/nf660Audit.lean
