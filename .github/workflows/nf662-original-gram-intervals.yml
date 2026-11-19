@@ -70,15 +70,41 @@ jobs:
         timeout-minutes: 25
         run: |
           lake build WeilDefect.Generated.NF662.PhysicalPilots
+      - name: Generate all 225 authentic original physical compact-entry proof proposals
+        run: |
+          python -m py_compile scripts/emit_nf662_original_real_intervals.py
+          python scripts/emit_nf662_original_real_intervals.py WeilDefect/Generated/NF662
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          p=Path('WeilDefect/Generated/NF662')
+          m=json.loads((p/'manifest.json').read_text())
+          assert m['physical_source_entry_theorems']==225
+          assert m['lower_triangular_original_NF658_inputs']==120
+          assert m['upper_triangular_from_symmetry']==105
+          assert len(m['files'])==16
+          for x in m['files']:
+              assert hashlib.sha256((p/x['file']).read_bytes()).hexdigest()==x['sha256']
+          PY
+      - name: First, middle and pole original physical real entry rows
+        timeout-minutes: 25
+        run: |
+          lake build WeilDefect.Generated.NF662.Row00 WeilDefect.Generated.NF662.Row07 WeilDefect.Generated.NF662.Row14
+      - name: Full 225 original real physical entry intervals and transformed real matrix
+        timeout-minutes: 35
+        run: |
+          lake build WeilDefect.Generated.NF662.Complete
       - name: Standard axiom audit
         run: |
           cat >/tmp/nf662Audit.lean <<'EOF'
-          import WeilDefect.Generated.NF662.PhysicalPilots
+          import WeilDefect.Generated.NF662.Complete
           #print axioms WeilDefect.neutralNF662OriginalPhysicalLower_to_full
           #print axioms WeilDefect.neutralNF662OriginalPhysicalCongruence_enclosed
           #print axioms WeilDefect.nf662OriginalOscillator_contains
           #print axioms WeilDefect.nf662OriginalPoleCross_contains
           #print axioms WeilDefect.nf662OriginalUpperPoleCross_contains
           #print axioms WeilDefect.nf662CompactBalls_symm
+          #print axioms WeilDefect.nf662AllOriginalPhysicalCompact
+          #print axioms WeilDefect.nf662AllOriginalTransformedRealEnclosed
           EOF
           lake env lean /tmp/nf662Audit.lean
