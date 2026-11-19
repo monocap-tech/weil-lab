@@ -1,0 +1,231 @@
+name: NF685 shared original endpoint phase-family moment custody
+on:
+  pull_request:
+    paths:
+      - "scripts/emit_nf684_second_oscillator_moments.py"
+      - "scripts/emit_nf685_shared_phase_tables.py"
+      - ".github/workflows/nf685-shared-phase-tables.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf685-phase-families-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  emit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate retained original endpoint and certified pi proposals
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p inputs/bank WeilDefect/Generated/NF632
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14462990552/zip" -o inputs/bank.zip
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14458696200/zip" -o inputs/pi.zip
+          echo '2b0e45897c28a1ed8d671b2958c8a51646e818e742ecbcf4ed6fcf02f31ed363  inputs/bank.zip' | sha256sum -c -
+          echo 'd1769ab74275cc9c57452d3aa5ad3a30109efc500f7834ee392ed668612d9a37  inputs/pi.zip' | sha256sum -c -
+          unzip -q inputs/bank.zip -d inputs/bank
+          unzip -q inputs/pi.zip -d WeilDefect/Generated/NF632
+          echo 'b4d290d158af245635d17b58f1c8e9f8bfa5076f773c1a35aa7e789bf850b086  WeilDefect/Generated/NF632/manifest.json' | sha256sum -c -
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf621-shard-*
+          run-id: 44338849733
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: inputs/shards
+      - name: Replay original endpoint and moment literals; emit five unconditional proof proposals
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/emit_nf684_second_oscillator_moments.py
+          python scripts/emit_nf684_second_oscillator_moments.py --root . --shards inputs/shards --bank inputs/bank --pi WeilDefect/Generated/NF632 --output WeilDefect/Generated/NF684
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF684')
+          m=json.loads((d/'manifest.json').read_text())
+          expected={'CrossSum':(['0','285/128'],22),'CrossDiff':(['0','137/128'],22),'SecondSelf':(['0','211/64'],17),'SecondPole':(['1/2','211/128'],9),'SecondPoleOpp':(['-1/2','211/128'],9)}
+          assert {r['group']:(r['key'],r['rows']) for r in m['groups']}==expected
+          assert (m['rows'],m['leaf_count'],m['prefix_checks'])==(79,11,418)
+          for r in m['files']:
+              assert hashlib.sha256((d/r['file']).read_bytes()).hexdigest()==r['sha256']
+          print('NF684 five exact original tables / 79 moment rows reconstructed externally; Lean pending')
+          PY
+      - name: Expand all compatible canonical keys without additional Taylor chains
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/emit_nf685_shared_phase_tables.py
+          python scripts/emit_nf685_shared_phase_tables.py --root . --shards inputs/shards --bank inputs/bank --pi WeilDefect/Generated/NF632 --leaves WeilDefect/Generated/NF684 --output WeilDefect/Generated/NF685
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF685')
+          m=json.loads((d/'manifest.json').read_text())
+          assert (m['new_tables'],m['new_rows'],m['new_endpoint_leaves'],m['new_prefix_transitions'])==(87,522,0,0)
+          assert len({tuple(t['key']) for t in m['tables']})==87
+          assert len(m['families'])==4
+          for v in m['files']:
+              assert hashlib.sha256((d/v['file']).read_bytes()).hexdigest()==v['sha256']
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf685-shared-phase-proposals
+          path: |
+            WeilDefect/Generated/NF632/
+            WeilDefect/Generated/NF684/
+            WeilDefect/Generated/NF685/
+          if-no-files-found: error
+  phase-families:
+    needs: emit
+    name: Shared phase family ${{ matrix.family }}
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        family: [0,1,2,3]
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf685-shared-phase-proposals
+          path: WeilDefect/Generated
+      - name: Verify all original proposal hashes and selected family
+        env:
+          FAMILY: ${{ matrix.family }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json,os
+          from pathlib import Path
+          root=Path('WeilDefect/Generated')
+          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          for name in ('NF632','NF684','NF685'):
+              d=root/name
+              m=json.loads((d/'manifest.json').read_text())
+              for r in m['files']:
+                  assert h(d/r['file'])==r['sha256']
+          assert m['leaf_manifest_sha256']==h(root/'NF684/manifest.json')
+          assert m['pi_manifest_sha256']==h(root/'NF632/manifest.json')
+          family=int(os.environ['FAMILY'])
+          targets=[r['module'] for r in m['tables'] if r['family']==family]
+          assert targets and len(targets)==len(set(targets))
+          Path('nf685-targets.txt').write_text('\n'.join(targets)+'\n')
+          print('NF685 family',family,'tables',len(targets))
+          PY
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Check full common phase prefix once and each original table separately
+        timeout-minutes: 115
+        run: |
+          set -euo pipefail
+          while read -r target; do
+            lake build "WeilDefect.Generated.NF685.$target" 2>&1 | tee -a nf685-build.log
+          done < nf685-targets.txt
+      - name: Strict audit of every analytic moment theorem in family
+        env:
+          FAMILY: ${{ matrix.family }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          names=Path('nf685-targets.txt').read_text().splitlines()
+          Path('/tmp/nf685Audit.lean').write_text(''.join(f'import WeilDefect.Generated.NF685.{t}\n' for t in names)+''.join(f'#print axioms WeilDefect.nf685{t}Moment\n' for t in names))
+          PY
+          lake env lean /tmp/nf685Audit.lean 2>&1 | tee nf685-axioms.log
+          python - <<'PY'
+          import hashlib,json,os,re
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF685')
+          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          m=json.loads((d/'manifest.json').read_text())
+          f=int(os.environ['FAMILY'])
+          log=Path('nf685-axioms.log').read_text()
+          rows=[]
+          for t in m['tables']:
+              if t['family']!=f: continue
+              name=f"nf685{t['module']}Moment"
+              found=[s for s in log.splitlines() if f"'WeilDefect.{name}'" in s]
+              assert len(found)==1,(name,found)
+              s=found[0]
+              if 'does not depend on any axioms' in s:
+                  axioms=[]
+              else:
+                  match=re.search(r'depends on axioms: \[([^\]]*)\]',s)
+                  assert match,s
+                  axioms=[x.strip() for x in match[1].split(',') if x.strip()]
+              assert set(axioms)<={'propext','Classical.choice','Quot.sound'}
+              assert h(d/(t['module']+'.lean'))==t['sha256']
+              rows.append(dict(t,theorem=name,axioms=axioms))
+          assert len(rows)==m['families'][f]['tables']
+          assert sum(t['rows'] for t in rows)==m['families'][f]['rows']
+          Path('nf685-audit.json').write_text(json.dumps({'family':f,'manifest_sha256':h(d/'manifest.json'),'leaf_manifest_sha256':m['leaf_manifest_sha256'],'tables':rows},indent=2)+'\n')
+          print('NF685 family',f,'PASS:',len(rows),'tables;',sum(t['rows'] for t in rows),'moment rows')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf685-phase-audit-${{ matrix.family }}
+          path: |
+            nf685-build.log
+            nf685-axioms.log
+            nf685-audit.json
+          if-no-files-found: ignore
+  complete-audit:
+    needs: phase-families
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf685-shared-phase-proposals
+          path: proposals
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf685-phase-audit-*
+          path: audits
+      - name: Exact complete new table custody and common leaf source
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          d=Path('proposals/NF685')
+          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          m=json.loads((d/'manifest.json').read_text())
+          shards=[json.loads(p.read_text()) for p in Path('audits').rglob('nf685-audit.json')]
+          assert sorted(s['family'] for s in shards)==list(range(4))
+          assert {s['manifest_sha256'] for s in shards}=={h(d/'manifest.json')}
+          assert {s['leaf_manifest_sha256'] for s in shards}=={m['leaf_manifest_sha256']}
+          assert h(Path('proposals/NF684/manifest.json'))==m['leaf_manifest_sha256']
+          expected={r['module']:r for r in m['tables']}
+          rows=[r for s in shards for r in s['tables']]
+          assert len(rows)==len({r['module'] for r in rows})==87
+          assert {r['module'] for r in rows}==set(expected)
+          assert len({tuple(r['key']) for r in rows})==87
+          for r in rows:
+              t=r['module']
+              assert all(r[k]==v for k,v in expected[t].items())
+              assert r['theorem']==f'nf685{t}Moment'
+              assert h(d/(t+'.lean'))==r['sha256']
+              assert set(r['axioms'])<={'propext','Classical.choice','Quot.sound'}
+          assert sum(r['rows'] for r in rows)==522
+          Path('nf685-complete-audit.json').write_text(json.dumps({'schema':'NF685-complete-shared-phase-audit-v1','manifest_sha256':h(d/'manifest.json'),'tables':rows,'new_rows':522,'scope':'87 additional original analytic tables; not full-bank or physical entry custody.'},indent=2)+'\n')
+          print('NF685 87 additional exact original analytic moment tables / 522 moment rows PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf685-complete-shared-phase-audit
+          path: nf685-complete-audit.json
+          if-no-files-found: error
