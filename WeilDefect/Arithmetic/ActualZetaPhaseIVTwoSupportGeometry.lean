@@ -1,3 +1,4 @@
+import Mathlib.MeasureTheory.Measure.Lebesgue.Integral
 import Mathlib.MeasureTheory.Integral.Bochner.Basic
 import Mathlib.Tactic
 
