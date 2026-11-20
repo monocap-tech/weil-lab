@@ -324,10 +324,101 @@ def verify_pure():
     print("NF737 genuine original indexzero source-neutral 28-range logical cover LEAN PASS (if direct Lean and this strict audit succeeded); 436 new global HD/A numerical gates remain kernel OPEN")
 
 
+
+NUMERICAL_PILOT_FIRST=32
+NUMERICAL_PILOT_END=40
+NUMERICAL_AUDIT_NAMES=theorem_names(0)+expected_gate_names(
+    NUMERICAL_PILOT_FIRST,NUMERICAL_PILOT_END
+)
+assert len(NUMERICAL_AUDIT_NAMES)==35
+PILOT_LOG=Path("nf737-original-indexzero-032-039-axioms.log")
+PILOT_AUDIT=Path("nf737-original-indexzero-032-039-kernel-audit.json")
+PILOT_AXFILE=Path("nf737OriginalIndexZero032Audit.lean")
+
+
+def emit_numerical_pilot_audit():
+    """Print only 35 real original accepted/proposed declarations, not source-only truth."""
+    verify()
+    target=next(x for x in SHARDS if x==(NUMERICAL_PILOT_FIRST,NUMERICAL_PILOT_END))
+    assert target==(32,40)
+    imports=["import WeilDefect.Generated.NF704Frontier.Common"]+[
+        f"import WeilDefect.Generated.NF704Frontier.Col{i:03d}"
+        for i in range(*target)
+    ]
+    PILOT_AXFILE.write_text(
+        "\n".join(imports+[
+          f"#print axioms WeilDefect.{name}" for name in NUMERICAL_AUDIT_NAMES
+        ])+"\n"
+    )
+    assert PILOT_AXFILE.read_text().count("#print axioms WeilDefect.")==35
+    print("NF737 literal original HD row0/A col0 coordinates 32–39: 16 genuine numerical gate candidate propositions, 32 new + 3 shared strict Lean axiom audit declarations; NO NEW NUMERICAL LEAN PASS YET")
+
+
+def verify_numerical_pilot():
+    """Called only AFTER lake compiled all eight genuine original global modules."""
+    verify()
+    expected=NUMERICAL_AUDIT_NAMES
+    log=PILOT_LOG.read_text()
+    found={}
+    for name,raw in re.findall(
+      r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",log):
+        if name in expected:
+            assert name not in found,name
+            found[name]=[v.strip() for v in raw.split(",") if v.strip()]
+    for name in re.findall(
+      r"'WeilDefect\.(\w+)' does not depend on any axioms",log):
+        if name in expected:
+            assert name not in found,name
+            found[name]=[]
+    axiom_map(found,expected)
+    assert not re.search(r"(?:^|\n)[^\n]*(?:error:|##\[error\])",log,re.I)
+    receipt=read(BIND)
+    assert receipt["new_original_numeric_kernel_pass"] is False
+    assert receipt["original_global_source_manifest_sha256"]==sha(SOURCE/"manifest.json")
+    assert receipt["accepted_prior_source_module_hashes"]=={
+      f["file"]:f["sha256"] for f in check_manifest(
+          one("nf737-accepted-016-023","manifest.json").parent
+      )["files"]
+    }
+    block={
+       "schema":"NF737-actual-original-indexzero-032-039-global-HD-A-kernel-audit-v1",
+       "source_schedule_sha256":sha(BIND),
+       "genuine_original_full_source_manifest_sha256":sha(SOURCE/"manifest.json"),
+       "accepted_first_24_original_matrix_sources_sha256":
+           receipt["accepted_prior_original_indexzero_source_sha256"],
+       "new_original_numeric_HD_gate_indices":list(range(32,40)),
+       "new_original_numeric_A_gate_indices":list(range(32,40)),
+       "new_actual_global_numeric_gate_instances":16,
+       "new_proof_declaration_names":expected_gate_names(32,40),
+       "three_shared_projection_theorem_names":theorem_names(0),
+       "all_strict_standard_axioms":found,
+       "new_global_module_source_sha256":{
+         f"Col{i:03d}.lean":sha(SOURCE/f"Col{i:03d}.lean")
+         for i in range(32,40)
+       },
+       "accepted_original_indexzero_HD_prefix_before":list(range(24)),
+       "accepted_original_indexzero_A_prefix_before":list(range(24)),
+       "new_source_bound_indexzero_after_pass_HD":
+           list(range(24))+list(range(32,40)),
+       "new_source_bound_indexzero_after_pass_A":
+           list(range(24))+list(range(32,40)),
+       "numerical_gate_truth":"LEAN KERNEL PASS original NF702/NF703 HD row zero positions 32–39 and A column zero positions 32–39",
+       "NF734_gates_24_to_31_accepted_here":False,
+       "full_indexzero_universal_pass":False,
+       "original_global_full_matrix_enclosure_pass":False,
+       "global_Weil_positivity_proved":False,
+       "RH_proved":False,
+    }
+    PILOT_AUDIT.write_text(json.dumps(block,indent=2,sort_keys=True)+"\n")
+    print("NF737 ORIGINAL indexzero 32..39: 8 actual global HD + 8 actual global A numerical gates KERNEL PASS and 35 strict standard-axiom declarations verified; source-provenance audit PASS; NF734 24..31 separately OPEN unless independently certified")
+
+
 if __name__=="__main__":
     parser=argparse.ArgumentParser()
-    parser.add_argument("stage",choices=("prepare","verify","verify-pure"))
+    parser.add_argument("stage",choices=("prepare","verify","verify-pure","pilot-axiom-file","pilot-verify"))
     args=parser.parse_args()
     if args.stage=="prepare":prepare()
     elif args.stage=="verify":verify()
-    else:verify_pure()
+    elif args.stage=="verify-pure":verify_pure()
+    elif args.stage=="pilot-axiom-file":emit_numerical_pilot_audit()
+    else:verify_numerical_pilot()
