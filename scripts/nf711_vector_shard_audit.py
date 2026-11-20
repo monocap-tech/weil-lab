@@ -11,7 +11,8 @@ import json
 import re
 from pathlib import Path
 
-N, WIDTH = 242, ALLOWED = 242, 16, {"propext", "Classical.choice", "Quot.sound"}
+N, WIDTH = 242, 16
+ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 LOCAL_SUFFIXES = ("VGate", "VProjection", "DColGate", "DColProjection",
                   "ARowGate", "ARowProjection", "CacheB", "CacheAy", "CacheDy",
                   "VwGlobal", "BGlobal", "AyGlobal", "DyGlobal", "Vector")
