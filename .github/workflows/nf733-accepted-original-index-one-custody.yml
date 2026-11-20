@@ -1,0 +1,89 @@
+name: NF733 permanent accepted original HD row1 A col1 Lean source custody
+on:
+  pull_request:
+    paths:
+      - "scripts/nf733_accept_original_index_one_custody.py"
+      - "docs/NF733_ORIGINAL_INDEX_ONE_KERNEL_CUSTODY.md"
+      - ".github/workflows/nf733-accepted-original-index-one-custody.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  accepted-actual-original-index-one-custody:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate exact successful original index-one source-bound Lean kernel job and original immutable proof artifacts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,subprocess
+          repo=os.environ['GITHUB_REPOSITORY']
+          api=lambda p:json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/{p}'],text=True))
+          run=api('actions/runs/44774641598')
+          assert run['status']=='completed' and run['conclusion']=='success'
+          assert run['head_sha']=='dd04397d8c12aafd351ed2329c61580bfd6ba46d',run['head_sha']
+          jobs=api('actions/runs/44774641598/jobs?per_page=100')['jobs']
+          assert any(j['id']==136435817033 and j['name']=='kernel-complete-actual-original-index-one' and j['conclusion']=='success' for j in jobs)
+          assert any(j['name']=='kernel-direct-eight-quad-logical-cover' and j['conclusion']=='success' for j in jobs)
+          assert any(j['name']=='exact-original-source-candidates' and j['conclusion']=='success' for j in jobs)
+          arts=api('actions/runs/44774641598/artifacts?per_page=100')['artifacts']
+          expected={
+            'nf732-original-index-one-full-HD-A-eight-quad-source-candidates':14650533188,
+            'nf732-eight-original-quad-full-Fin242-pure-Lean-kernel':14651825109,
+            'nf732-actual-original-HD-row1-A-col1-complete-242-global-Lean-kernel-audit':14652985322,
+          }
+          actual={a['name']:a['id'] for a in arts if a['name'] in expected and not a['expired']}
+          assert actual==expected,(actual,expected)
+          upstream=api('actions/runs/44767040253/jobs?per_page=100')['jobs']
+          accepted={j['name'] for j in upstream if j['conclusion']=='success' and j['name'].startswith('authentic-numerical-quads (')}
+          assert accepted=={f'authentic-numerical-quads ({b:03d})' for b in (0,4,8,12,16,20,24,28)},accepted
+          print('NF733 immutable NF732 actual original HD/A universal Lean kernel SUCCESS, exact published SHA, eight original numerical upstream kernel jobs and original artifact identities PASS')
+          PY
+      - name: Restore immutable original complete HD/A theorem source and all eight original proof source families
+        uses: actions/download-artifact@v4
+        with:
+          name: nf732-original-index-one-full-HD-A-eight-quad-source-candidates
+          path: nf733-accepted-original-source
+          run-id: 44774641598
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore exact Lean-accepted original two universal gate theorem axiom and numerical proof-object audits
+        uses: actions/download-artifact@v4
+        with:
+          name: nf732-actual-original-HD-row1-A-col1-complete-242-global-Lean-kernel-audit
+          path: nf733-accepted-original-kernel
+          run-id: 44774641598
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Independently validate original source, 484 gate proposition instances, two accepted axioms and eight accepted numerical kernel object fingerprints
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf733_accept_original_index_one_custody.py
+          python scripts/nf733_accept_original_index_one_custody.py verify
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('nf733-original-index-one-custody.json').read_text())
+          assert m['schema']=='NF733-accepted-original-global-HD-row-one-A-column-one-Lean-custody-v1'
+          assert m['original_complete_index_one_product_gates']==484
+          assert m['accepted_independent_numerical_quads']==[0,4,8,12,16,20,24,28]
+          assert len(m['accepted_actual_original_numerical_quad_theorems'])==16
+          assert m['original_all_other_matrix_indices_kernel_accepted'] is False
+          assert m['original_complete_numerical_enclosure_closed'] is False
+          assert m['global_Weil_positivity_proved'] is False
+          assert m['RH_proved'] is False
+          print('NF733 exact immutable original index-one closure custody: PASS; all other original matrix/numerical/Weil positivity remains OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf733-permanent-source-bound-original-index-one-full-lean-kernel-custody
+          path: |
+            nf733-original-index-one-custody.json
+            docs/NF733_ORIGINAL_INDEX_ONE_KERNEL_CUSTODY.md
+          if-no-files-found: error
