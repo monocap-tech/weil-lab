@@ -28,7 +28,7 @@ theorem neutralNF734Nonnegative_of_dense_continuous
     intro x hx
     exact hpos x hx
   have hclose : closure S ⊆ {x : X | 0 ≤ Q x} :=
-    hc.closure_subset hs
+    closure_minimal hs hc
   intro x
   apply hclose
   rw [hS.closure_eq]
