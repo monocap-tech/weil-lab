@@ -211,6 +211,32 @@ def authenticate(a):
     assert all_coords == list(range(N))
     assert len(all_names) == sum(AUDIT_COUNT.values()) == 252
 
+    # The independently successful NF721 source-specific audit intentionally
+    # excluded NF717. Its precise 210-coordinate inventory plus NF717's
+    # separately kernel-accepted [32,64) is required to equal Fin 242.
+    ledger_path = exactly_one(a.ledger,"nf721-accepted-original-row-one-inventory.json")
+    ledger = read(ledger_path)
+    assert ledger["schema"] == (
+        "NF721-source-specific-original-global-row-one-accepted-inventory-v1")
+    previous = list(range(32)) + list(range(64,242))
+    assert ledger["accepted_coordinates"] == previous
+    assert ledger["unproved_coordinates"] == list(range(32,64))
+    assert ledger["total_accepted_original_HD_row_one_gates"] == 210
+    assert ledger["total_accepted_original_A_column_one_gates"] == 210
+    assert ledger["accepted_lean_declarations"] == 220
+    assert ledger["full_row_one_certified"] is False
+    assert ledger["source_manifests"] == a.baseline["source_manifests"]
+    assert ledger["accepted_local_source_audits"] == a.baseline["accepted_audits"]
+    assert ledger["authenticated_accepted_stages"] == [
+        "nf715","nf716","nf718","nf719","nf720"]
+    ledger_coords = set(ledger["accepted_coordinates"])
+    nf717_coords = set(range(32,64))
+    assert ledger_coords.isdisjoint(nf717_coords)
+    assert ledger_coords | nf717_coords == set(range(N))
+    assert {r["stage"] for r in stage_records} == set(
+        x[0] for x in STAGES)
+    ledger_audit_sha = sha(ledger_path)
+
     # NF718–NF720's accepted aggregate gate certificates are authenticated
     # independently against the individual accepted kernel shard audits.
     for stage in ("nf718","nf719","nf720"):
@@ -233,6 +259,8 @@ def authenticate(a):
         "actual_source_manifests":a.baseline["source_manifests"],
         "accepted_original_source_audits":a.baseline["accepted_audits"],
         "nf715_accepted_audit_sha256":nf715_audit_sha,
+        "nf721_independently_accepted_210_coordinate_ledger_sha256":ledger_audit_sha,
+        "nf717_newly_closed_coordinate_interval":[32,64],
         "accepted_stages":stage_records,
         "source_files":written,
         "accepted_prior_theorem_declarations":len(all_names),
@@ -326,6 +354,7 @@ def main():
     p.add_argument("stage",choices=("prepare","verify"))
     p.add_argument("--prior",type=Path,default=Path("nf723-accepted"))
     p.add_argument("--aggregate",type=Path,default=Path("nf723-aggregates"))
+    p.add_argument("--ledger",type=Path,default=Path("nf723-accepted-ledger"))
     a=p.parse_args()
     if a.stage=="prepare":
         baseline_path = Path("WeilDefect/Generated/NF715/manifest.json")
