@@ -45,6 +45,21 @@ theorem neutralIV003GraphMixed_linear_first_smul (a : ℝ)
   simp only [neutralIV003GraphMixed, map_smul, inner_smul_right, smul_eq_mul]
   ring
 
+/-- Genuine mixed Hermitian symmetry, not a positivity postulate.
+The two signed Hilbert inner products are separately Hermitian. -/
+theorem neutralIV003GraphMixed_hermitian (a : ℝ)
+    (u v : NeutralActualZetaSourceDomain a) :
+    neutralIV003GraphMixed a u v =
+      star (neutralIV003GraphMixed a v u) := by
+  unfold neutralIV003GraphMixed
+  rw [← inner_conj_symm
+        (neutralActualZetaPositiveAnalysis a v)
+        (neutralActualZetaPositiveAnalysis a u),
+      ← inner_conj_symm
+        (neutralActualZetaNegativeAnalysis a v)
+        (neutralActualZetaNegativeAnalysis a u)]
+  simp
+
 /-- The diagonal is REAL, with precisely the existing NF598 factor 1/2. -/
 theorem neutralIV003GraphMixed_self (a : ℝ)
     (u : NeutralActualZetaSourceDomain a) :
@@ -133,6 +148,7 @@ theorem neutralIV003LocalGraphDiagonal_coercive
 
 #print axioms neutralIV003GraphMixed_linear_first_add
 #print axioms neutralIV003GraphMixed_linear_first_smul
+#print axioms neutralIV003GraphMixed_hermitian
 #print axioms neutralIV003GraphMixed_self
 #print axioms neutralIV003GraphMixed_self_re
 #print axioms neutralIV003GraphMixed_continuous
