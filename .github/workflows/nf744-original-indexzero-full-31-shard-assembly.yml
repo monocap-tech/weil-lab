@@ -1,0 +1,124 @@
+name: NF744 full original matrix indexzero 31-range literal HD-A source compiler and direct Fin242 logic kernel
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalIndexZero31ShardFullCover.lean"
+      - "scripts/nf744_full_original_indexzero_31_shard_compiler.py"
+      - "docs/NF744_ORIGINAL_INDEXZERO_UNIVERSAL_COMPILER_CONTRACT.md"
+      - ".github/workflows/nf744-original-indexzero-full-31-shard-assembly.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  authentic-original-242-global-HD-A-source-and-31-range-compilation-plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently authenticate successful original source bank job and immutable SHA pinned original NF737 artifact
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,subprocess
+          repo=os.environ['GITHUB_REPOSITORY']
+          def api(path):
+            return json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/{path}'],text=True))
+          ids=[
+            (44791346863,136479519760,'authenticate-and-emit-remaining-original-indexzero',14660147684,'nf737-authenticated-original-indexzero-242-full-source-and-28-shard-candidates','11e31531cfd29187b648b207d85269c8b2a0a065a387b9182023a425e645a42f'),
+            (44782027897,136446941618,'accepted-actual-original-index-one-custody',14652498322,'nf733-permanent-source-bound-original-index-one-full-lean-kernel-custody',None)
+          ]
+          for run,job,jobname,art,name,digest in ids:
+            js=api(f'actions/runs/{run}/jobs?per_page=100')['jobs']
+            assert any(j['id']==job and j['name']==jobname and j['conclusion']=='success' for j in js),(run,jobname)
+            arts=api(f'actions/runs/{run}/artifacts?per_page=100')['artifacts']
+            good=[x for x in arts if x['id']==art and x['name']==name and not x['expired']]
+            assert len(good)==1,(run,art)
+            if digest is not None:
+              assert good[0]['digest']==f'sha256:{digest}',good[0]['digest']
+          print('NF744 original full frozen 242-indexzero source source-specific job and original index-one universal accepted custody: immutable successful upstream identities PASS')
+          PY
+      - name: Restore exact previously successful and complete 242-column NF702/NF703/NF681/NF704 original source bank
+        uses: actions/download-artifact@v4
+        with:
+          name: nf737-authenticated-original-indexzero-242-full-source-and-28-shard-candidates
+          run-id: 44791346863
+          path: .
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate 31 exact ORIGINAL numerical gate-shard Lean SOURCE modules and two proposed genuine full universal theorems
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf737_original_indexzero_complete_source_shard_schedule.py scripts/nf744_full_original_indexzero_31_shard_compiler.py
+          python scripts/nf737_original_indexzero_complete_source_shard_schedule.py verify
+          python scripts/nf744_full_original_indexzero_31_shard_compiler.py emit 2>&1 | tee nf744-original-31-shard-source-preflight.log
+          python scripts/nf744_full_original_indexzero_31_shard_compiler.py verify
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          m=json.loads(Path('WeilDefect/Generated/NF744/manifest.json').read_text())
+          assert m['schema']=='NF744-full-original-global-indexzero-HD-row-A-column-source-31-shards-v1'
+          assert m['shard_count']==31 and len(m['files'])==32
+          assert len(m['original_full_indexzero_HD_global_gate_indices'])==242
+          assert len(m['original_full_indexzero_A_global_gate_indices'])==242
+          assert m['terminal_two_coordinate_shard']==[240,242]
+          assert m['source_specific_shard_theorem_candidates']==62
+          assert m['source_specific_universal_theorem_candidates']==2
+          assert m['new_source_specific_theorem_candidates']==64
+          assert m['current_source_evidenced_accepted_gate_instance_total']==532
+          assert m['new_original_complete_indexzero_universal_lean_pass'] is False
+          print('NF744 31 authentic indexzero 242-coordinate original source-shard modules, 62 original range and 2 original universal theorem SOURCE CANDIDATES only. NO new genuine numerical gate accepted.')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf744-authenticated-original-indexzero-31-shards-plus-two-universal-source-candidates
+          path: |
+            WeilDefect/Generated/NF744/
+            WeilDefect/Arithmetic/ActualZetaOriginalIndexZero31ShardFullCover.lean
+            nf744-original-31-shard-source-preflight.log
+            docs/NF744_ORIGINAL_INDEXZERO_UNIVERSAL_COMPILER_CONTRACT.md
+          if-no-files-found: error
+  independent-31-way-complete-Fin242-pure-lean-axiom-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install original pinned Lean and Mathlib from cached toolchain
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Direct kernel-compile complete exact 31-range Fin242 logical cover and print axioms
+        timeout-minutes: 80
+        run: |
+          set -euo pipefail
+          mkdir -p .lake/build/lib/lean/WeilDefect/Arithmetic
+          /usr/bin/time -o nf744-original-31-shard-pure-time.log -f 'elapsed=%e rss_kb=%M exit=%x' \
+            lake env lean -o .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalIndexZero31ShardFullCover.olean \
+            WeilDefect/Arithmetic/ActualZetaOriginalIndexZero31ShardFullCover.lean 2>&1 | tee nf744-original-indexzero-31-shard-pure-axioms.log
+      - name: Strict original Fin242 31-shard direct Lean object, exact axioms and no numerical oracle check
+        run: |
+          set -euo pipefail
+          python scripts/nf744_full_original_indexzero_31_shard_compiler.py pure-verify
+          test -s nf744-original-indexzero-31-shard-lean-logical-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf744-full-original-indexzero-source-neutral-31-range-Fin242-Lean-kernel-audit
+          path: |
+            nf744-original-indexzero-31-shard-lean-logical-audit.json
+            nf744-original-indexzero-31-shard-pure-axioms.log
+            nf744-original-31-shard-pure-time.log
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalIndexZero31ShardFullCover.olean
+          include-hidden-files: true
+          if-no-files-found: ignore
