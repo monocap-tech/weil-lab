@@ -67,7 +67,7 @@ jobs:
           import json,os,subprocess
           repo=os.environ['GITHUB_REPOSITORY']
           api=lambda p:json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/{p}'],text=True))
-          expected=json.loads('{"44660635800":{"nf715-first-second-global-matrix-row-certificates":14597076473},"44664511419":{"nf716-second-original-global-matrix-row-continuation":14599006475},"44679426067":{"nf717-independent-original-global-matrix-row-attachment":14605916738},"44665952640":{"nf718-source-bound-8-12":14599636962,"nf718-source-bound-12-16":14600315333,"nf718-complete-original-global-matrix-row-one-64-coordinate-audit":14600591151},"44666765580":{"nf719-source-bound-16-20":14599913564,"nf719-source-bound-20-24":14600668002,"nf719-complete-original-global-matrix-row-one-64-coordinate-audit":14599649777},"44670251345":{"nf720-source-bound-24-28":14602630283,"nf720-source-bound-28-31":14601806691},"44679385691":{"nf720-recovered-complete-final-50-original-global-matrix-audit":14603193591}}')
+          expected=json.loads('{"44660635800":{"nf715-first-second-global-matrix-row-certificates":14597076473},"44664511419":{"nf716-second-original-global-matrix-row-continuation":14599006475},"44679426067":{"nf717-independent-original-global-matrix-row-attachment":14605916738},"44665952640":{"nf718-source-bound-8-12":14599636962,"nf718-source-bound-12-16":14600315333,"nf718-complete-original-global-matrix-row-one-64-coordinate-audit":14600591151},"44666765580":{"nf719-source-bound-16-20":14599913564,"nf719-source-bound-20-24":14600668002,"nf719-complete-original-global-matrix-row-one-64-coordinate-audit":14599649777},"44670251345":{"nf720-source-bound-24-28":14602630283,"nf720-source-bound-28-31":14601806691},"44679385691":{"nf720-recovered-complete-final-50-original-global-matrix-audit":14603193591},"44685250801":{"nf721-accepted-original-row-one-source-specific-inventory":14606522853}}')
           for run,exp in expected.items():
             obj=api(f'actions/runs/{run}')
             if run=='44670251345':
@@ -164,6 +164,13 @@ jobs:
           name: nf720-recovered-complete-final-50-original-global-matrix-audit
           path: nf723-aggregates/nf720
           run-id: 44679385691
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore independently accepted NF721 210-coordinate original proof inventory
+        uses: actions/download-artifact@v4
+        with:
+          name: nf721-accepted-original-row-one-source-specific-inventory
+          path: nf723-accepted-ledger
+          run-id: 44685250801
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Regenerate original NF702/NF703/NF700 source and reconcile every accepted stage
         run: |
