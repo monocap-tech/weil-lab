@@ -63,7 +63,19 @@ The CI workflow compiles it **directly in Lean**, prints its axioms, and rejects
 
 The same 28-shard structure can later be attached to the genuine original numerical gates only after each source-specific block has independently passed Lean.
 
-## 4. Strict certification ledger
+## 4. Independent genuine original numerical pilot: index-zero 32–39
+
+NF737 also attempts **eight actual global original HD row-zero gates and eight actual global original A column-zero gates** at positions 32–39, separately from NF734's 24–31 compiler. This is not merely abstract covering logic.
+
+The third NF737 CI job imports the full authenticated NF702/NF703/NF681 original source bank and NF707 pinned compiled original input, replays the source fingerprints, builds the genuine NF703 center cache and exactly eight original `NF704Frontier.Col032` through `Col039` modules, then independently audits **35** theorem declarations: **32 new** numerical/projection declarations and the three accepted shared projections.
+
+The new audit driver writes `nf737-original-indexzero-032-039-kernel-audit.json` **only after the eight actual numerical modules have compiled in Lean and the complete 35-name standard-axiom audit has passed**. This is an independent, noncontiguous new shard; it does not assert NF734's positions 24–31.
+
+If the pilot succeeds before NF734, the set of known accepted index-zero positions becomes `0–23 ∪ 32–39` (32 positions per family), **not** the contiguous prefix `0–39`. The cumulative cited original global HD/A gate count would then become **548**, provided no additional overlapping certificates are counted. If NF734 later succeeds independently, the contiguous index-zero prefix becomes `0–39` and the gate count becomes **564**.
+
+Until an actual successful NF737 original numerical kernel job is confirmed, all of these sixteen new gate propositions remain **OPEN**.
+
+## 5. Strict certification ledger
 
 | Obligation | Standing |
 | --- | --- |
@@ -74,11 +86,11 @@ The same 28-shard structure can later be attached to the genuine original numeri
 | NF734 positions 24–31 | NEW NUMERICAL KERNEL PENDING |
 | NF737 complete remaining 218-coordinate original source bank | SOURCE PREFLIGHT PENDING NF737 CI |
 | NF737 28-shard Fin242 logical lemma | KERNEL PENDING NF737 CI |
-| New original global index-zero HD/A positions 24–241 | **NUMERICAL LEAN OPEN** |
+| New original global index-zero HD/A positions 24–241 | **NUMERICAL LEAN OPEN** (NF737 32–39 pilot queued) |
 | Any other original physical matrix row/column index | **NOT CLOSED BY THIS WORK** |
 | Complete original numerical enclosure and payment/vector banks | OPEN |
 | Global Weil positivity and RH | **NOT PROVED** |
 
-The next numerical execution stage should certify small contiguous original index-zero ranges by importing their matching original local receipts, original cache object, and original source/compiled-object manifests, never by asserting 28 generic hypotheses as axioms.
+The next numerical execution stage should certify additional original index-zero ranges by importing their matching original local receipts, original cache object, and original source/compiled-object manifests, never by asserting 28 generic hypotheses as axioms.
 
 This NF737 branch is stacked on **Phase III NF734 PR #758**, not on the parallel **Phase IV NF736 PR #760**. Both branches share the repository-wide NF registry without merging unrelated work.
