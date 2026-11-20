@@ -1,0 +1,60 @@
+name: NF720 recover accepted original row-one terminal shard aggregation
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/nf720-recover-terminal-aggregate.yml"
+      - "scripts/nf720_complete_original_row_one_shards.py"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  accepted-shards-aggregate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate immutable successful NF720 source-bound shard jobs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,subprocess
+          name=os.environ['GITHUB_REPOSITORY']
+          api=lambda part: json.loads(subprocess.check_output(['gh','api',f'repos/{name}/{part}'],text=True))
+          jobs=api('actions/runs/44670251345/jobs?per_page=100')['jobs']
+          targets={'Original global row-one remaining blocks 24–28','Original global row-one remaining blocks 28–31'}
+          assert {j['name'] for j in jobs if j['conclusion']=='success' and j['name'] in targets}==targets
+          arts=api('actions/runs/44670251345/artifacts?per_page=100')['artifacts']
+          expect={'nf720-source-bound-24-28':14602630283,'nf720-source-bound-28-31':14601806691}
+          assert {a['name']:a['id'] for a in arts if a['name'] in expect and not a['expired']}==expect
+          print('NF720 two source-authenticated Lean shard jobs and exact artifact IDs verified PASS')
+          PY
+      - name: Restore accepted original matrix shard 24–28
+        uses: actions/download-artifact@v4
+        with:
+          name: nf720-source-bound-24-28
+          path: nf720-audits/nf720-source-bound-24-28
+          run-id: 44670251345
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore accepted terminal Fin 2 matrix shard 28–31
+        uses: actions/download-artifact@v4
+        with:
+          name: nf720-source-bound-28-31
+          path: nf720-audits/nf720-source-bound-28-31
+          run-id: 44670251345
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Strict final 50-coordinate disjointness, complete source SHA and 56-name axiom audit
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf720_complete_original_row_one_shards.py
+          python scripts/nf720_complete_original_row_one_shards.py aggregate --audits nf720-audits
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf720-recovered-complete-final-50-original-global-matrix-audit
+          path: nf720-complete-audit.json
+          if-no-files-found: error
