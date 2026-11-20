@@ -1,0 +1,124 @@
+name: NF713 authenticated original global HD/A matrix attachments, columns 8 through 15
+on:
+  pull_request:
+    paths:
+      - "scripts/nf713_second_global_matrix_driver.py"
+      - ".github/workflows/nf713-second-global-matrix-frontier.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf713-second-global-matrix-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  second-global-attachment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate accepted complete original inputs and full NF681 local product bank
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p nf708-receipts/{input,frontier,frontier-audit}
+          fetch() {
+            local id="$1" name="$2" digest="$3"
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" -o "$name.zip"
+            echo "$digest  $name.zip" | sha256sum -c -
+            unzip -q "$name.zip" -d "nf708-receipts/$name"
+          }
+          fetch 14582437652 input 258637da71e96468ed7c6ac5b0a4480ce06cdee9989aef8e71a4cd09059789e0
+          fetch 14541229354 frontier 13c2c0e296633ab5368b6e1be09c4e9b69d527001e0f3969ffc2f0af0c611ef5
+          fetch 14546201664 frontier-audit 86971af267f490dce4bcdba3403f3b566522f1cb9b38f9f77a10821b3772afb4
+      - name: Restore immutable NF703 complete cache source proposals
+        uses: actions/download-artifact@v4
+        with:
+          name: nf703-original-cache-proposals
+          path: nf708-receipts/cache-proposals
+          run-id: 44627666710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore NF703 complete cache kernel and standard axiom audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf703-original-cache-audit
+          path: nf708-receipts/cache-audit
+          run-id: 44627666710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Authenticate full cache and input proofs and emit original global HD/A gates
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf708_global_matrix_attachment_driver.py scripts/emit_nf704_first_global_matrix_attachment.py scripts/nf713_second_global_matrix_driver.py
+          python scripts/nf708_global_matrix_attachment_driver.py prepare --columns 16 2>&1 | tee nf713-emitter.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path('nf708-binding.json').read_text())
+          assert a['columns']==16 and len(a['theorems'])==67
+          assert set(a['source_manifests'])==set(a['accepted_audits'])=={'inputs','cache','frontier'}
+          PY
+      - name: Restore accepted NF708 first-eight global matrix axiom audit and unchanged source
+        uses: actions/download-artifact@v4
+        with:
+          name: nf708-first-original-global-matrix-attachments
+          path: nf713-prior
+          run-id: 44640227758
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Prove source identity with NF708's complete kernel certificate before extending
+        run: |
+          set -euo pipefail
+          python scripts/nf713_second_global_matrix_driver.py prepare 2>&1 | tee nf713-prior-binding.log
+      - name: Install pinned Lean, Lake and Mathlib cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Restore NF707 reusable compiled original input artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: nf707-compiled-original-input
+          path: nf708-compiled-input
+          run-id: 44633937710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Authenticate source and Lean environment before reusing compiled input objects
+        run: |
+          set -euo pipefail
+          python scripts/nf708_global_matrix_attachment_driver.py restore-input
+      - name: Compile accepted complete original input/cache data for the next global matrix block
+        timeout-minutes: 270
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o nf713-data-time.log -f 'elapsed=%e user=%U rss_kb=%M exit=%x' lake build WeilDefect.Generated.NF702Inputs.Data WeilDefect.Generated.NF703Cache.Frontier 2>&1 | tee nf713-data-build.log
+      - name: Kernel-check the second eight concrete global HD/A matrix-product attachments
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          for ((i=8;i<16;i++)); do
+            printf -v n '%03d' "$i"
+            lake build "WeilDefect.Generated.NF704Frontier.Col$n" 2>&1 | tee -a nf713-attachments.log
+          done
+      - name: Audit 32 new and 3 shared declarations against standard axioms only
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          python scripts/nf713_second_global_matrix_driver.py axiom-file
+          lake env lean nf713Audit.lean 2>&1 | tee nf713-axioms.log
+          python scripts/nf713_second_global_matrix_driver.py verify
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf713-second-original-global-matrix-attachments
+          path: |
+            nf713-*.log
+            nf708-binding.json
+            nf708-input-reuse.json
+            nf713-binding.json
+            nf713-complete-audit.json
+            WeilDefect/Generated/NF704Frontier/
+          if-no-files-found: ignore
