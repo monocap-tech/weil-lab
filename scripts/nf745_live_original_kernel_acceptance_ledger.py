@@ -317,7 +317,7 @@ def selftest():
       "actual_live_GitHub_current_status_not_inferred_from_fixtures":True
     }
     TEST_RECEIPT.write_text(json.dumps(r,indent=2,sort_keys=True)+"\n")
-    print("NF745 five fail-closed snapshot tests PASS: queued/source-only/failed/no-axioms/expired-artifact never count as original numerical Lean acceptance")
+    print("NF745 six fail-closed snapshot tests PASS: queued/source-only/failed/no-axioms/expired-artifact never count as original numerical Lean acceptance")
 
 def run():
     data=json.loads(FIXTURE.read_text())
