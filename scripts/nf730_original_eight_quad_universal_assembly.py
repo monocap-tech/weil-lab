@@ -119,7 +119,7 @@ def generate_universal():
        "/-! NF730 original HD row one and A column one complete, source-bound to "
        "four actual original numerical half theorems, themselves derived from "
        "16 accepted original NF729 numerical quad theorems. "
-       "Lean kernel and strict axiom acceptance still REQUIRED. -/\n\n"
+       "Lean kernel acceptance and independent declaration audit remain REQUIRED. -/\n\n"
     )
     for typ in ("HD","A"):
         name=f"nf730Original{typ}{'RowOneAll' if typ=='HD' else 'ColumnOneAll'}"
