@@ -1,0 +1,62 @@
+name: IV008 actual original zeta mixed Hermitian and finite real quadratic source
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalMixedHermitian.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVFiniteMixedWindowSystem.lean"
+      - "scripts/iv008_original_mixed_hermitian_audit.py"
+      - ".github/workflows/iv008-original-mixed-hermitian-source.yml"
+      - "docs/IV008_PHASE_IV_ORIGINAL_MIXED_HERMITIAN.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: iv008-original-mixed-hermitian-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  actual-original-mixed-hermitian:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source-specific original full-divisor Hermitian preflight
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/iv008_original_mixed_hermitian_audit.py
+          python scripts/iv008_original_mixed_hermitian_audit.py preflight
+      - name: Install pinned Lean Mathlib
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Direct build of original mixed Weil EF Hermitian Lean source
+        timeout-minutes: 190
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o iv008-build-resource.log -f 'elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalMixedHermitian 2>&1 | tee iv008-original-mixed-hermitian-build.log
+      - name: Direct axiom audit seven IV008 and three genuine upstream declarations
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalMixedHermitian.lean 2>&1 | tee iv008-original-mixed-hermitian-axioms.log
+          python scripts/iv008_original_mixed_hermitian_audit.py verify
+          test -s iv008-original-mixed-hermitian-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv008-original-zeta-mixed-hermitian-source-kernel-audit
+          path: |
+            iv008-original-mixed-hermitian-build.log
+            iv008-original-mixed-hermitian-axioms.log
+            iv008-original-mixed-hermitian-kernel-audit.json
+            iv008-build-resource.log
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalMixedHermitian.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
