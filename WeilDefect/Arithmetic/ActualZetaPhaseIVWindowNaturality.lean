@@ -182,6 +182,9 @@ theorem neutralNF741LiteralDiagonalWeil_natural
   exact congrArg Complex.re
     (neutralNF741LiteralMixedEF_natural a b hab s s hs hs)
 
+#print axioms neutralNF573WindowEvaluation_eq_raw_of_ae
+#print axioms neutralWindowCorrelation_eq_realBilinearConvolution
+#print axioms neutralActualZetaWindowCorrelation_literature_of_contDiff
 #print axioms neutralNF741Schwartz_window_ae
 #print axioms neutralNF741Schwartz_support_expand
 #print axioms neutralNF741WindowEvaluation_eq_of_support
