@@ -28,20 +28,17 @@ theorem neutralNF739HermitianTwoBlockPSD
     (ur ui vr vi : ℝ) :
     0 ≤ neutralNF739HermitianTwoBlockEnergy a b p q ur ui vr vi := by
   by_cases hzero : a = 0
-  · have hp : p = 0 := by
-      rw [hzero] at hdet
+  · have hzdet : p^2 + q^2 ≤ 0 := by
+      simpa [hzero] using hdet
+    have hp : p = 0 := by
       nlinarith [sq_nonneg p, sq_nonneg q]
     have hq : q = 0 := by
-      rw [hzero] at hdet
       nlinarith [sq_nonneg p, sq_nonneg q]
     subst a
     subst p
     subst q
-    change 0 ≤ (0:ℝ)*(ur^2+ui^2) +
-      2*(0*(ur*vr+ui*vi) + 0*(ur*vi-ui*vr)) +
-      b*(vr^2+vi^2)
-    simpa using mul_nonneg hb
-      (add_nonneg (sq_nonneg vr) (sq_nonneg vi))
+    simpa [neutralNF739HermitianTwoBlockEnergy] using
+      (mul_nonneg hb (add_nonneg (sq_nonneg vr) (sq_nonneg vi)))
   · have hapos : 0 < a := lt_of_le_of_ne ha (Ne.symm hzero)
     have he :
         a * neutralNF739HermitianTwoBlockEnergy a b p q ur ui vr vi =
