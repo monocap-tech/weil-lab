@@ -1,0 +1,82 @@
+name: NF734 Phase IV positivity type audit and explicit mixed-term obstruction
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVTypeAudit.lean"
+      - ".github/workflows/nf734-phaseiv-type-audit.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf734-phaseiv-type-audit-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  pure-type-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Kernel check actual density transfer and mixed-term counterexample
+        run: |
+          set -euo pipefail
+          mkdir -p .lake/build/lib/lean/WeilDefect/Arithmetic
+          lake env lean -o .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVTypeAudit.olean WeilDefect/Arithmetic/ActualZetaPhaseIVTypeAudit.lean 2>&1 | tee nf734-axioms.log
+      - name: Strict source and standard Lean axiom audit
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          src=Path('WeilDefect/Arithmetic/ActualZetaPhaseIVTypeAudit.lean')
+          text=src.read_text()
+          assert 'sorry' not in re.sub(r'/-!.*?-/', '', text, flags=re.S)
+          names=[
+            'neutralNF734Nonnegative_of_dense_continuous',
+            'neutralNF734Cross_left_nonnegative',
+            'neutralNF734Cross_right_nonnegative',
+            'neutralNF734Cross_sum_negative',
+          ]
+          log=Path('nf734-axioms.log').read_text()
+          audits={}
+          for name in names:
+              matches=[line for line in log.splitlines() if f"'WeilDefect.{name}'" in line]
+              assert len(matches)==1,(name,len(matches))
+              line=matches[0]
+              if 'does not depend on any axioms' in line:
+                  axioms=[]
+              else:
+                  m=re.search(r'depends on axioms: \[([^\]]*)\]',line)
+                  assert m,line
+                  axioms=[x.strip() for x in m[1].split(',') if x.strip()]
+              assert set(axioms)<={'propext','Classical.choice','Quot.sound'},(name,axioms)
+              audits[name]=axioms
+          assert len(audits)==4
+          p=Path('.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVTypeAudit.olean')
+          assert p.stat().st_size>0
+          Path('nf734-pure-audit.json').write_text(json.dumps({
+            'schema':'NF734-phaseIV-pure-type-audit-v1',
+            'source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),
+            'olean_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),
+            'theorems':audits,
+            'scope':'Abstract density transfer and explicit cross-term counterexample only; no global Weil positivity or original source-specific attachment.'
+          },indent=2)+'\n')
+          print('NF734 generic density interface and mixed-term countermodel: LEAN PASS; standard axioms only')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf734-phaseiv-generic-proof-audit
+          path: |
+            nf734-axioms.log
+            nf734-pure-audit.json
+          if-no-files-found: error
