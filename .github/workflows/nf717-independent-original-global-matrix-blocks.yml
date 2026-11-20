@@ -1,0 +1,159 @@
+name: NF717 independent original global matrix row-one packed blocks 004–007
+on:
+  pull_request:
+    paths:
+      - "scripts/nf717_independent_row_one_matrix_blocks.py"
+      - ".github/workflows/nf717-independent-original-global-matrix-blocks.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf717-independent-global-matrix-row-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  independent-matrix-next-blocks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate immutable original NF702 complete scaled input
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p nf717-receipts/{input,cache-proposals,cache-audit,packed-proposals,packed-audit}
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14582437652/zip" -o nf717-input.zip
+          echo "258637da71e96468ed7c6ac5b0a4480ce06cdee9989aef8e71a4cd09059789e0  nf717-input.zip" | sha256sum -c -
+          unzip -q nf717-input.zip -d nf717-receipts/input
+      - name: Restore immutable complete original NF703 center cache
+        uses: actions/download-artifact@v4
+        with:
+          name: nf703-original-cache-proposals
+          path: nf717-receipts/cache-proposals
+          run-id: 44627666710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore NF703 kernel source-specific complete-cache audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf703-original-cache-audit
+          path: nf717-receipts/cache-audit
+          run-id: 44627666710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore all 31 NF700 packed original row-one / column-one product blocks
+        uses: actions/download-artifact@v4
+        with:
+          name: nf700-packed-matrix-proposals
+          path: nf717-receipts/packed-proposals
+          run-id: 44623902055
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore the complete accepted NF700 527-theorem packed kernel audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf700-complete-packed-matrix-audit
+          path: nf717-receipts/packed-audit
+          run-id: 44623902055
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Authenticate completed upstream NF715 kernel run and final artifact before download
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,subprocess
+          run=json.loads(subprocess.check_output(['gh','api','repos/'+os.environ['GITHUB_REPOSITORY']+'/actions/runs/44660635800'],text=True))
+          assert run['status']=='completed' and run['conclusion']=='success', (run['status'],run['conclusion'])
+          artifacts=json.loads(subprocess.check_output(['gh','api','repos/'+os.environ['GITHUB_REPOSITORY']+'/actions/runs/44660635800/artifacts'],text=True))
+          matches=[a for a in artifacts['artifacts'] if a['name']=='nf715-first-second-global-matrix-row-certificates']
+          assert len(matches)==1 and matches[0]['id']==14597076473 and not matches[0]['expired'],matches
+          print('NF716 prerequisite: NF715 original global row-one 12-declaration kernel audit artifact confirmed')
+          PY
+      - name: Restore accepted NF715 initial second-row/column source and complete axiom audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf715-first-second-global-matrix-row-certificates
+          path: nf717-prior
+          run-id: 44660635800
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Independently reproduce accepted NF715 original source and emit four next packed global blocks
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf715_second_global_matrix_row_driver.py scripts/nf716_second_global_matrix_row_continuation.py scripts/nf717_independent_row_one_matrix_blocks.py
+          python scripts/nf717_independent_row_one_matrix_blocks.py preflight
+          python scripts/nf717_independent_row_one_matrix_blocks.py prepare 2>&1 | tee nf717-preflight.log
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF717')
+          m=json.loads((d/'manifest.json').read_text())
+          assert m['schema']=='NF717-independent-original-global-row-one-matrix-attachment-v1'
+          assert (m['original_index'],m['first'],m['end'])==(1,32,64)
+          assert m['blocks']==[4,5,6,7]
+          assert m['new_HD_gates']==m['new_A_gates']==32
+          assert len(m['files'])==4 and len(m['audit_theorems'])==32
+          assert set(m['source_manifests'])=={'inputs','cache','packed'}
+          assert set(m['accepted_source_audits'])=={'inputs','cache','packed'}
+          for f in m['files']:
+              assert hashlib.sha256((d/f['file']).read_bytes()).hexdigest()==f['sha256']
+          print('NF717 complete original provenance and 64-product proof-source inventory PASS')
+          PY
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Restore NF707 compiled original scaled input archive
+        uses: actions/download-artifact@v4
+        with:
+          name: nf707-compiled-original-input
+          path: nf708-compiled-input
+          run-id: 44633937710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify immutable input source and matching compiler environment before reuse
+        run: |
+          set -euo pipefail
+          python scripts/nf708_global_matrix_attachment_driver.py restore-input
+      - name: Compile original center cache first, then bounded NF700 packed blocks sequentially
+        timeout-minutes: 245
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o nf717-source-build-time.log -f 'cache elapsed=%e user=%U rss_kb=%M exit=%x' \
+            lake build WeilDefect.Generated.NF703Cache.Data WeilDefect.Generated.NF715.Common 2>&1 | tee nf717-source-build.log
+          for i in 4 5 6 7; do
+            printf -v b 'Block%03d' "$i"
+            /usr/bin/time -a -o nf717-source-build-time.log -f 'block='"$b"' elapsed=%e user=%U rss_kb=%M exit=%x' \
+              lake build "WeilDefect.Generated.NF700.$b" 2>&1 | tee -a nf717-source-build.log
+          done
+      - name: Kernel-check 64 genuine original second-row HD/A products over four independent blocks
+        timeout-minutes: 95
+        run: |
+          set -euo pipefail
+          for i in 4 5 6 7; do
+            printf -v block 'Block%03d' "$i"
+            lake build "WeilDefect.Generated.NF717.$block" 2>&1 | tee -a nf717-attachment-build.log
+          done
+      - name: Independently audit all 32 source-specific second-row global gate declarations
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          python scripts/nf717_independent_row_one_matrix_blocks.py axiom-file
+          lake env lean nf717Audit.lean 2>&1 | tee nf717-axioms.log
+          python scripts/nf717_independent_row_one_matrix_blocks.py verify
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf717-independent-original-global-matrix-row-attachment
+          path: |
+            nf717-*.log
+            nf717-*-time.log
+            nf708-input-reuse.json
+            nf717-complete-audit.json
+            WeilDefect/Generated/NF715/
+            WeilDefect/Generated/NF717/
+          if-no-files-found: ignore

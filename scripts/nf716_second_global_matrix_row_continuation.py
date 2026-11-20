@@ -46,9 +46,9 @@ def decls(block):
     return [prefix + suffix for suffix in SUFFIXES]
 
 
-def generated_block(block):
-    assert START_BLOCK <= block < END_BLOCK
-    prefix = f"nf716Block{block:03d}"
+def generated_block(block, *, stage="nf716", lower=START_BLOCK, upper=END_BLOCK):
+    assert lower <= block < upper
+    prefix = f"{stage}Block{block:03d}"
     source = f"nf700Block{block:03d}"
     start = block * WIDTH
     assert start + WIDTH <= 242
