@@ -229,6 +229,21 @@ def authenticate(a):
     assert ledger["accepted_local_source_audits"] == a.baseline["accepted_audits"]
     assert ledger["authenticated_accepted_stages"] == [
         "nf715","nf716","nf718","nf719","nf720"]
+    ledger_cert_paths = {
+        "nf715": exactly_one(a.prior/"nf715","nf715-complete-audit.json"),
+        "nf716": exactly_one(a.prior/"nf716","nf716-complete-audit.json"),
+        "nf718": exactly_one(a.aggregate/"nf718","nf718-complete-audit.json"),
+        "nf719": exactly_one(a.aggregate/"nf719","nf719-complete-audit.json"),
+        "nf720": exactly_one(a.aggregate/"nf720","nf720-complete-audit.json"),
+    }
+    assert set(ledger["stage_evidence"]) == set(ledger_cert_paths)
+    for stage,path in ledger_cert_paths.items():
+        # Exact identity, not merely matching declared coordinate counts.
+        assert ledger["stage_evidence"][stage]["certificate_sha256"] == sha(path),stage
+        assert ledger["stage_evidence"][stage]["source_manifests"] == (
+            a.baseline["source_manifests"])
+        assert ledger["stage_evidence"][stage]["accepted_source_audits"] == (
+            a.baseline["accepted_audits"])
     ledger_coords = set(ledger["accepted_coordinates"])
     nf717_coords = set(range(32,64))
     assert ledger_coords.isdisjoint(nf717_coords)
