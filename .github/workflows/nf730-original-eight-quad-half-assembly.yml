@@ -112,8 +112,8 @@ jobs:
         with:
           name: nf730-pure-original-index-one-quad-half-${{ matrix.side }}-lean-proof
           path: |
-            nf730-pure-${{ matrix.side }}-audit.json
-            nf730-pure-${{ matrix.side }}-axioms.log
+            nf730-pure-*-audit.json
+            nf730-pure-*-axioms.log
             nf730-pure-*.log
             .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalPhysicalEightQuad*Cover.olean
           include-hidden-files: true
