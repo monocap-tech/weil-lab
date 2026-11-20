@@ -249,8 +249,20 @@ def axioms(log_path,expected):
 
 def verify(i,kind):
     assert (i,i+4) in GROUPS or (i,31) in GROUPS
-    check_sources()
     assert kind in ("Finite","Original")
+    if kind=="Original":
+        check_sources()
+    else:
+        # The generic Mathlib-only proof job downloads only the authenticated
+        # NF729 source candidate artifact, not the 227MB original bank.
+        manifest=read(OUT/"manifest.json")
+        assert manifest["schema"]=="NF729-original-global-index-one-8-quads-source-custody-v1"
+        assert manifest["files"]=={name:sha(OUT/name) for name in manifest["files"]}
+        q=next(x for x in manifest["quads"] if x["first_block"]==i)
+        assert q["generic_theorem"]==f"nf729Quad{i:03d}Fin242"
+        text=(OUT/f"Quad{i:03d}Finite.lean").read_text()
+        assert text.startswith("import Mathlib.Tactic\\n".replace("\\\\","\\"))
+        assert not re.search(r"\\b(sorry|admit|axiom|unsafe)\\b",text)
     names=([f"nf729Quad{i:03d}Fin242"] if kind=="Finite" else
        [f"nf729Original{t}Quad{i:03d}" for t in ("HD","A")])
     got=axioms(f"nf729-{i:03d}-{kind.lower()}-axioms.log",names)
