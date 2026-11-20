@@ -1,0 +1,125 @@
+name: NF735 exact two-support geometry and local signed Weil span
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVTwoSupportGeometry.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVLocalSpan.lean"
+      - ".github/workflows/nf735-phaseiv-two-support.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf735-two-support-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  pure-moving-support:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned Lean toolchain and Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Compile exact cross-correlation support and determinant criterion
+        run: |
+          set -euo pipefail
+          mkdir -p .lake/build/lib/lean/WeilDefect/Arithmetic
+          lake env lean -o .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVTwoSupportGeometry.olean WeilDefect/Arithmetic/ActualZetaPhaseIVTwoSupportGeometry.lean 2>&1 | tee nf735-pure-axioms.log
+      - name: Strict finite theorem axiom and source audit
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json, re
+          from pathlib import Path
+          src=Path('WeilDefect/Arithmetic/ActualZetaPhaseIVTwoSupportGeometry.lean')
+          dst=Path('.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVTwoSupportGeometry.olean')
+          assert dst.stat().st_size>0
+          names=['neutralNF735CrossCorrelation_zero_outside','neutralNF735CrossCorrelation_log_zero_outside','neutralNF735RealTwoBlockPSD']
+          lines=Path('nf735-pure-axioms.log').read_text().splitlines()
+          records={}
+          for name in names:
+              matches=[x for x in lines if "'WeilDefect."+name+"'" in x]
+              assert len(matches)==1,(name,matches)
+              m=re.search(r'depends on axioms: \[([^\]]*)\]',matches[0])
+              assert m or 'does not depend on any axioms' in matches[0],matches[0]
+              axioms=[] if not m else [a.strip() for a in m[1].split(',') if a.strip()]
+              assert set(axioms)<={'propext','Quot.sound','Classical.choice'},(name,axioms)
+              records[name]=axioms
+          Path('nf735-pure-audit.json').write_text(json.dumps({
+              'schema':'NF735-pure-two-support-audit-v1',
+              'source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),
+              'olean_sha256':hashlib.sha256(dst.read_bytes()).hexdigest(),
+              'axioms':records,
+              'scope':'Unwindowed cross support and abstract 2x2 real Gram PSD only; no EF cross identity.'
+          },indent=2)+'\n')
+          print('NF735 pure cross-support geometry and two-block Gram arithmetic: LEAN PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf735-pure-cross-window-and-gram-audit
+          path: |
+            nf735-pure-axioms.log
+            nf735-pure-audit.json
+          if-no-files-found: error
+  authentic-local-span:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned Lean toolchain and Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Compile original literal EF and NF600 support-class coercivity dependency
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.ActualZetaPhaseIVLocalSpan 2>&1 | tee nf735-literal-build.log
+      - name: Strict original EF two-generator complex-span kernel and axioms
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVLocalSpan.lean 2>&1 | tee nf735-literal-axioms.log
+          python - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          src=Path('WeilDefect/Arithmetic/ActualZetaPhaseIVLocalSpan.lean')
+          lines=Path('nf735-literal-axioms.log').read_text().splitlines()
+          names=['neutralNF735OriginalCollars_add','neutralNF735OriginalCollars_smul','neutralNF735OriginalLocalSpanTwo_coercive','neutralNF735OriginalLocalSpanTwo_nonnegative']
+          records={}
+          for name in names:
+              matches=[x for x in lines if "'WeilDefect."+name+"'" in x]
+              assert len(matches)==1,(name,matches)
+              m=re.search(r'depends on axioms: \[([^\]]*)\]',matches[0])
+              assert m or 'does not depend on any axioms' in matches[0],matches[0]
+              axioms=[] if not m else [a.strip() for a in m[1].split(',') if a.strip()]
+              assert set(axioms)<={'propext','Quot.sound','Classical.choice'},(name,axioms)
+              records[name]=axioms
+          Path('nf735-literal-audit.json').write_text(json.dumps({
+              'schema':'NF735-original-literal-EF-local-span-audit-v1',
+              'source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),
+              'axioms':records,
+              'scope':'Actual NF600 literal signed Weil form on two complex Schwartz tests supported in fixed E only.'
+          },indent=2)+'\n')
+          print('NF735 literal original two-collar complex span coercivity: LEAN PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf735-original-local-complex-span-audit
+          path: |
+            nf735-literal-axioms.log
+            nf735-literal-audit.json
+          if-no-files-found: error
