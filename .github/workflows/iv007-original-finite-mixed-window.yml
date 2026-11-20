@@ -1,0 +1,62 @@
+name: IV007 original mixed finite-family EF and quadratic window system
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVFiniteMixedWindowSystem.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVWindowNaturality.lean"
+      - "scripts/iv007_original_finite_mixed_window_audit.py"
+      - ".github/workflows/iv007-original-finite-mixed-window.yml"
+      - "docs/IV007_PHASE_IV_FINITE_MIXED_WINDOW_SYSTEM.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: iv007-original-finite-mixed-window-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-finite-mixed-weil:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original source / all finite-family and IV006 anchor preflight
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/iv007_original_finite_mixed_window_audit.py
+          python scripts/iv007_original_finite_mixed_window_audit.py preflight
+      - name: Install repository-pinned Lean and Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Build actual original finite-family mixed Weil source module
+        timeout-minutes: 190
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o iv007-build-resource.log -f 'elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVFiniteMixedWindowSystem 2>&1 | tee iv007-original-finite-mixed-window-build.log
+      - name: Replay direct Lean axiom audit for seven IV007 and three IV006 declarations
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVFiniteMixedWindowSystem.lean 2>&1 | tee iv007-original-finite-mixed-window-axioms.log
+          python scripts/iv007_original_finite_mixed_window_audit.py verify
+          test -s iv007-original-finite-mixed-window-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv007-source-bound-original-finite-mixed-window-kernel
+          path: |
+            iv007-original-finite-mixed-window-build.log
+            iv007-original-finite-mixed-window-axioms.log
+            iv007-original-finite-mixed-window-kernel-audit.json
+            iv007-build-resource.log
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVFiniteMixedWindowSystem.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
