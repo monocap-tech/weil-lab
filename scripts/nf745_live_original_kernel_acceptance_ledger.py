@@ -33,16 +33,23 @@ ALLOWED={"propext","Classical.choice","Quot.sound"}
 PREVIOUS=(
   {"stage":"NF708", "run":44640227758, "job_id":135969102426,
    "job":"global-attachment", "artifact_id":14589570565,
-   "artifact":"nf708-first-original-global-matrix-attachments", "first":0, "end":8},
+   "artifact":"nf708-first-original-global-matrix-attachments",
+   "artifact_sha256":"4fe7460aec2a7e24ae44ee73797afcc6958fc426d503561c397a9bcf22eea840",
+   "first":0, "end":8},
   {"stage":"NF713", "run":44649041852, "job_id":135998999534,
    "job":"second-global-attachment", "artifact_id":14594190839,
-   "artifact":"nf713-second-original-global-matrix-attachments", "first":8, "end":16},
+   "artifact":"nf713-second-original-global-matrix-attachments",
+   "artifact_sha256":"9241a750a514f248e406e276e06ae42bb8280df22956786dfea1f0ba28c5af68",
+   "first":8, "end":16},
   {"stage":"NF715", "run":44669131044, "job_id":136065595864,
    "job":"third-global-attachment", "artifact_id":14599683589,
-   "artifact":"nf715-third-original-global-matrix-attachments", "first":16, "end":24},
+   "artifact":"nf715-third-original-global-matrix-attachments",
+   "artifact_sha256":"fb253e2b421a2f4c0191a8b871a84772e3553348d625d43c8b3858b5d5488c28",
+   "first":16, "end":24},
   {"stage":"NF733", "run":44782027897, "job_id":136446941618,
    "job":"accepted-actual-original-index-one-custody", "artifact_id":14652498322,
-   "artifact":"nf733-permanent-source-bound-original-index-one-full-lean-kernel-custody"},
+   "artifact":"nf733-permanent-source-bound-original-index-one-full-lean-kernel-custody",
+   "artifact_sha256":"37c302f7a5403a34bdcef4456201bdff6c4dc520fe25ed5328559ba9e1c5c685"},
 )
 SOURCE=(
   {"stage":"NF737-full-authentic-source", "run":44791346863,
@@ -53,7 +60,8 @@ SOURCE=(
   {"stage":"NF739-full-authentic-source", "run":44795709843,
    "job":"authenticate-and-emit-remaining-original-indexzero",
    "job_id":136494577562, "artifact_id":14663320765,
-   "artifact":"nf739-authenticated-original-indexzero-242-full-source-and-28-shard-candidates"},
+   "artifact":"nf739-authenticated-original-indexzero-242-full-source-and-28-shard-candidates",
+   "artifact_sha256":"156c2efe8aba26a68e0b7006c4e4fb0557087f12236687abfd3190eb94975952"},
 )
 PILOTS=(
   {"stage":"NF737", "run":44791346863,
