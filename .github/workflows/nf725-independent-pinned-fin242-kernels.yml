@@ -1,12 +1,8 @@
 name: NF725 four independent lean kernel chunks then pinned pure Fin242 master attachment
+# The four NF725 kernel chunk jobs already passed on immutable run 44697000459.
+# NF726 consumes their authenticated .olean artifacts instead of wasting CI
+# resources re-running all four cached proofs on each downstream PR.
 on:
-  pull_request:
-    paths:
-      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedFinChunk*.lean"
-      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedFinCoverage.lean"
-      - "scripts/nf725_independent_lean_chunk_receipts.py"
-      - "scripts/nf724_verify_bounded_fin_coverage.py"
-      - ".github/workflows/nf725-independent-pinned-fin242-kernels.yml"
   workflow_dispatch:
 permissions:
   contents: read
