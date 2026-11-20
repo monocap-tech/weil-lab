@@ -7,6 +7,7 @@ accepted compiled .olean imports. It does NOT assert any numerical theorem.
 The separate NF743 real kernel job and 35-name axiom audit remain mandatory.
 """
 import argparse
+import hashlib
 import json
 import re
 import tempfile
@@ -32,15 +33,21 @@ def source_for(module,root):
 def object_for(module,objects):
     return objects/Path(module.replace(".","/")+".olean")
 
+def sha(p):
+    return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+
 def check_order(root,objects,order):
     assert len(order)==len(set(order)),("duplicate declared module",order)
     assert len(order)>=2
     positions={m:i for i,m in enumerate(order)}
     edges=[]
     reused=[]
+    source_hashes={}
+    reused_hashes={}
     for i,module in enumerate(order):
         src=source_for(module,root)
         assert src.is_file(),("required original generated Lean source missing",str(src))
+        source_hashes[module]=sha(src)
         imported=imports(src.read_text())
         assert len(imported)==len(set(imported)),("duplicate original imports",module)
         for dep in imported:
@@ -56,6 +63,7 @@ def check_order(root,objects,order):
                     "unplanned missing original compiled dependency",
                     module,dep,str(obj))
                 reused.append(dep)
+                reused_hashes[dep]=sha(obj)
     # This precise historical error occurred after source/cache equality
     # succeeded: Frontier requires NF681.Common. A later source rewrite that
     # changes this edge is NOT silently accepted as the historical repair.
@@ -69,6 +77,8 @@ def check_order(root,objects,order):
         "compiler_order":list(order),
         "in_plan_direct_import_edges":edges,
         "out_of_plan_olean_imports_present":sorted(set(reused)),
+        "original_source_sha256":source_hashes,
+        "prior_compiled_dependency_olean_sha256":reused_hashes,
         "actual_recovered_Frontier_depends_on_NF681_Common":True,
         "new_original_numerical_kernel_pass":False,
         "global_Weil_positivity_proved":False,
