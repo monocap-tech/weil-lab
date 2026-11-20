@@ -51,15 +51,16 @@ def generated_block(block, *, stage="nf716", lower=START_BLOCK, upper=END_BLOCK)
     prefix = f"{stage}Block{block:03d}"
     source = f"nf700Block{block:03d}"
     start = block * WIDTH
-    assert start + WIDTH <= 242
+    width = min(WIDTH, 242 - start)
+    assert 0 < width <= WIDTH and start + width <= 242
     idx = f"(⟨{start} + j.val, by omega⟩ : Fin 242)"
     return f"""theorem {prefix}DGate :
-    (List.finRange 8).all (fun j : Fin 8 =>
+    (List.finRange {width}).all (fun j : Fin {width} =>
       (List.finRange 242).all (fun k : Fin 242 =>
         decide ({source}Y k j = nf702OriginalInputs.D k {idx}))) = true := by
   decide +kernel
 
-theorem {prefix}DProjection (j : Fin 8) :
+theorem {prefix}DProjection (j : Fin {width}) :
     (fun k => {source}Y k j) =
     (fun k => nf702OriginalInputs.D k {idx}) := by
   funext k
@@ -67,30 +68,30 @@ theorem {prefix}DProjection (j : Fin 8) :
   exact of_decide_eq_true ((List.all_eq_true.mp hj) k (by simp))
 
 theorem {prefix}HDTargetGate :
-    (List.finRange 8).all (fun j : Fin 8 =>
+    (List.finRange {width}).all (fun j : Fin {width} =>
       decide ({source}HDTarget j = nf703OriginalCache.HD 1 {idx})) = true := by
   decide +kernel
 
-theorem {prefix}HDTargetProjection (j : Fin 8) :
+theorem {prefix}HDTargetProjection (j : Fin {width}) :
     {source}HDTarget j = nf703OriginalCache.HD 1 {idx} :=
   of_decide_eq_true ((List.all_eq_true.mp {prefix}HDTargetGate) j (by simp))
 
 theorem {prefix}ATargetGate :
-    (List.finRange 8).all (fun j : Fin 8 =>
+    (List.finRange {width}).all (fun j : Fin {width} =>
       decide ({source}ATarget j = nf703OriginalCache.A {idx} 1)) = true := by
   decide +kernel
 
-theorem {prefix}ATargetProjection (j : Fin 8) :
+theorem {prefix}ATargetProjection (j : Fin {width}) :
     {source}ATarget j = nf703OriginalCache.A {idx} 1 :=
   of_decide_eq_true ((List.all_eq_true.mp {prefix}ATargetGate) j (by simp))
 
-/-- Eight actual global original HD row-one product gates.
+/-- {width} actual global original HD row-one product gates.
     NF700's complete source-bound packed dot-products are already accepted. -/
-theorem {prefix}GlobalHD (j : Fin 8) :
+theorem {prefix}GlobalHD (j : Fin {width}) :
     nf703OriginalCache.HDGate nf702OriginalInputs 1 {idx} = true := by
   exact neutralNF704HD_of_packed_receipt
     nf702OriginalInputs nf703OriginalCache (1 : Fin 242)
-    (fun j : Fin 8 => {idx})
+    (fun j : Fin {width} => {idx})
     nf700HRow1
     (fun j k => {source}Y k j)
     {source}HDTarget
@@ -99,12 +100,12 @@ theorem {prefix}GlobalHD (j : Fin 8) :
     (fun j => {prefix}HDTargetProjection j)
     {source}HDAllCoordinates j
 
-/-- Eight actual global original A column-one product gates. -/
-theorem {prefix}GlobalA (j : Fin 8) :
+/-- {width} actual global original A column-one product gates. -/
+theorem {prefix}GlobalA (j : Fin {width}) :
     nf703OriginalCache.AGate nf702OriginalInputs {idx} 1 = true := by
   exact neutralNF704A_of_packed_receipt
     nf702OriginalInputs nf703OriginalCache (1 : Fin 242)
-    (fun j : Fin 8 => {idx})
+    (fun j : Fin {width} => {idx})
     nf700HDCol1
     (fun j k => {source}Y k j)
     {source}ATarget
