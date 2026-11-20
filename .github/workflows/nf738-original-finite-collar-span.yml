@@ -1,0 +1,104 @@
+name: NF738 actual original literal Weil finite complex collar span coercivity
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVFiniteLocalSpan.lean"
+      - "scripts/nf738_phaseiv_original_finite_span_audit.py"
+      - "docs/NF738_ORIGINAL_FINITE_COLLAR_SPAN.md"
+      - ".github/workflows/nf738-original-finite-collar-span.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source-bind-original-infinite-dimensional-local-EF:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate independently accepted source-specific original NF600 two-generator span job despite distinct failed pure-geometry job
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os,json,subprocess
+          repo=os.environ['GITHUB_REPOSITORY']
+          api=lambda p:json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/{p}'],text=True))
+          jobs=api('actions/runs/44786163030/jobs?per_page=100')['jobs']
+          accepted=[j for j in jobs if j['id']==136461473716 and j['name']=='authentic-local-span' and j['conclusion']=='success']
+          assert len(accepted)==1,accepted
+          arts=api('actions/runs/44786163030/artifacts?per_page=100')['artifacts']
+          expected=[a for a in arts if a['id']==14656510729 and a['name']=='nf735-original-local-complex-span-audit' and not a['expired']]
+          assert len(expected)==1,expected
+          print('NF738 original literal EF NF600 two-generator complex-collar source kernel PASS as a standalone successful JOB; independent run geometry failure does NOT erase this accepted source theorem; new finite-span Lean kernel remains PENDING')
+          PY
+      - name: Restore successful immutable original literal EF complex two-generator span theorem axiom receipt
+        uses: actions/download-artifact@v4
+        with:
+          name: nf735-original-local-complex-span-audit
+          path: nf738-accepted-original-local-span
+          run-id: 44786163030
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify accepted original NF600 source/provenance and new exact arbitrary finite-family Lean candidate declarations
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf738_phaseiv_original_finite_span_audit.py
+          python scripts/nf738_phaseiv_original_finite_span_audit.py source
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf738-original-NF600-source-bound-arbitrary-finite-collar-candidates
+          path: |
+            nf738-accepted-original-local-span/nf735-literal-audit.json
+            WeilDefect/Arithmetic/ActualZetaPhaseIVFiniteLocalSpan.lean
+            docs/NF738_ORIGINAL_FINITE_COLLAR_SPAN.md
+          if-no-files-found: error
+  kernel-arbitrary-finite-original-literal-EF:
+    needs: source-bind-original-infinite-dimensional-local-EF
+    runs-on: ubuntu-latest
+    timeout-minutes: 220
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore exact successful NF600 original two-generator source-specific compiled kernel audit receipt
+        uses: actions/download-artifact@v4
+        with:
+          name: nf738-original-NF600-source-bound-arbitrary-finite-collar-candidates
+          path: .
+      - name: Install pinned original Lean Lake and Mathlib import cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Compile genuine original signed EF NF600 finite complex Schwartz span source with all original actual dependencies
+        timeout-minutes: 170
+        run: |
+          set -euo pipefail
+          python scripts/nf738_phaseiv_original_finite_span_audit.py source
+          /usr/bin/time -o nf738-original-finite-collar-build-time.log -f 'elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVFiniteLocalSpan 2>&1 | tee nf738-original-finite-collar-build.log
+      - name: Strict direct Lean source-specific 4-theorem standard-axiom audit for arbitrary finite complex collar spans
+        timeout-minutes: 45
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVFiniteLocalSpan.lean 2>&1 | tee nf738-finite-local-EF-axioms.log
+          python scripts/nf738_phaseiv_original_finite_span_audit.py verify
+          test -s nf738-original-finite-complex-collar-span-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf738-original-literal-EF-finite-complex-collar-span-lean-kernel-audit
+          path: |
+            nf738-original-finite-collar-build-time.log
+            nf738-original-finite-collar-build.log
+            nf738-finite-local-EF-axioms.log
+            nf738-original-finite-complex-collar-span-kernel-audit.json
+          if-no-files-found: ignore
