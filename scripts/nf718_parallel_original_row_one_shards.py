@@ -235,8 +235,8 @@ def aggregate(a):
         "global_A_gates": 64,
         "lean_declarations": 64,
         "shard_audit_sha256": [
-            sha(item[0] and path.parent/"nf718-shard-audit.json")
-            for item, _, path in audits
+            sha(manifest_path.parents[3]/"nf718-shard-audit.json")
+            for _, _, manifest_path in audits
         ],
         "accepted_nf715_audit_sha256": audits[0][0]["accepted_nf715_audit_sha256"],
         "source_manifests": audits[0][0]["source_manifests"],
