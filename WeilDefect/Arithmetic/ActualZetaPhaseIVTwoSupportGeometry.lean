@@ -1,4 +1,5 @@
 import Mathlib.MeasureTheory.Integral.Bochner.Basic
+import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
 import Mathlib.Tactic
 
 namespace WeilDefect
@@ -6,7 +7,7 @@ noncomputable section
 open MeasureTheory Set
 
 /-!
-NF735 pure support-geometry and two-block Gram pilot.
+Canonical NF736 (legacy NF735 theorem names): pure support-geometry and two-block Gram pilot.
 
 These are statements about arbitrary complex-valued functions and real
 matrices. No zeta source is imported and no statement of Weil positivity is
