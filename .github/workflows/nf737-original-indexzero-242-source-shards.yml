@@ -124,6 +124,9 @@ jobs:
           name: nf737-authenticated-original-indexzero-242-full-source-and-28-shard-candidates
           path: |
             WeilDefect/Generated/NF704Frontier/
+            WeilDefect/Generated/NF702Inputs/
+            WeilDefect/Generated/NF703Cache/
+            WeilDefect/Generated/NF681/
             WeilDefect/Arithmetic/ActualZetaOriginalIndexZeroRemainingCover.lean
             nf708-binding.json
             nf737-accepted-000-007/
@@ -176,4 +179,85 @@ jobs:
             nf737-logical-cover-time.log
             .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalIndexZeroRemainingCover.olean
           include-hidden-files: true
+          if-no-files-found: ignore
+  kernel-original-global-HD-A-indexzero-032-039:
+    needs: authenticate-and-emit-remaining-original-indexzero
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore immutable authenticated full original NF702 NF703 NF681 NF704 source and accepted prior 24 numerical gates
+        uses: actions/download-artifact@v4
+        with:
+          name: nf737-authenticated-original-indexzero-242-full-source-and-28-shard-candidates
+          path: .
+      - name: Verify original source exact SHA, first 24 accepted indexzero modules and new indices 32..39
+        run: |
+          set -euo pipefail
+          python scripts/nf737_original_indexzero_complete_source_shard_schedule.py verify
+          python scripts/nf737_original_indexzero_complete_source_shard_schedule.py pilot-axiom-file
+          python - <<'PY'
+          from pathlib import Path
+          x=Path('nf737OriginalIndexZero032Audit.lean').read_text()
+          assert x.count('#print axioms WeilDefect.')==35
+          assert all(f'import WeilDefect.Generated.NF704Frontier.Col{i:03d}' in x for i in range(32,40))
+          assert 'Col024' not in x and 'Col031' not in x
+          print('NF737 true original source-bound numerical independent shard 32–39, 16 original gate propositions, 32 new +3 shared strict axiom names: SOURCE AUTHENTICATED')
+          PY
+      - name: Install original pinned Lean and Mathlib cached imports
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Restore previously accepted NF707 compiled original scaled input source-bound archive
+        uses: actions/download-artifact@v4
+        with:
+          name: nf707-compiled-original-input
+          path: nf708-compiled-input
+          run-id: 44633937710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check exact original NF702 scaled-input and compatible compiler/Mathlib fingerprints
+        run: |
+          set -euo pipefail
+          python scripts/nf708_global_matrix_attachment_driver.py restore-input
+      - name: Build exact original NF702 inputs and full original NF703 physical center cache
+        timeout-minutes: 265
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o nf737-indexzero-center-cache-time.log -f 'elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Generated.NF702Inputs.Data WeilDefect.Generated.NF703Cache.Frontier 2>&1 | tee nf737-indexzero-center-cache-build.log
+      - name: Kernel-check eight genuine original global HD/A indexzero physical gate product modules 032 through 039
+        timeout-minutes: 65
+        run: |
+          set -euo pipefail
+          for ((i=32;i<40;i++)); do
+            printf -v col "%03d" "$i"
+            lake build "WeilDefect.Generated.NF704Frontier.Col$col" 2>&1 | tee -a nf737-indexzero-032-039-build.log
+          done
+      - name: Strict original numerical source-bound 35 theorem standard-axiom audit for HD/A zero-index coordinates 032 through 039
+        timeout-minutes: 30
+        run: |
+          set -euo pipefail
+          lake env lean nf737OriginalIndexZero032Audit.lean 2>&1 | tee nf737-original-indexzero-032-039-axioms.log
+          python scripts/nf737_original_indexzero_complete_source_shard_schedule.py pilot-verify
+          test -s nf737-original-indexzero-032-039-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf737-genuine-original-global-indexzero-032-039-HD-A-numerical-kernel-audit
+          path: |
+            nf737-indexzero-*.log
+            nf737-indexzero-center-cache-time.log
+            nf737-original-indexzero-032-039-axioms.log
+            nf737-original-indexzero-032-039-kernel-audit.json
+            nf737-original-indexzero-complete-source-schedule.json
+            nf708-input-reuse.json
+            nf737OriginalIndexZero032Audit.lean
+            WeilDefect/Generated/NF704Frontier/Col03*.lean
           if-no-files-found: ignore
