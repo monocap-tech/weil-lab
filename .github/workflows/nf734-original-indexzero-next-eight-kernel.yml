@@ -1,0 +1,206 @@
+name: NF734 authentic original matrix index-zero next eight HD-A gate kernel certificates
+on:
+  pull_request:
+    paths:
+      - "scripts/nf734_fourth_original_indexzero_global_attachment.py"
+      - ".github/workflows/nf734-original-indexzero-next-eight-kernel.yml"
+      - "docs/NF734_ORIGINAL_MATRIX_CERTIFICATION_FRONTIER.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  certified-index-frontier-inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - name: Authenticate immutable completed original matrix row-zero, row-one and accepted NF733 custody runs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os,json,subprocess
+          from pathlib import Path
+          repo=os.environ['GITHUB_REPOSITORY']
+          api=lambda p:json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/{p}'],text=True))
+          groups=[
+           (44640227758,135969102426,'global-attachment','nf708-first-original-global-matrix-attachments',14589570565,0,8),
+           (44649041852,135998999534,'second-global-attachment','nf713-second-original-global-matrix-attachments',14594190839,8,16),
+           (44669131044,136065595864,'third-global-attachment','nf715-third-original-global-matrix-attachments',14599683589,16,24),
+          ]
+          rows=[]
+          for runid,jobid,jobname,artifact_name,artifact_id,start,end in groups:
+            run=api(f'actions/runs/{runid}')
+            assert run['status']=='completed' and run['conclusion']=='success'
+            jobs=api(f'actions/runs/{runid}/jobs?per_page=100')['jobs']
+            assert any(j['id']==jobid and j['name']==jobname and j['conclusion']=='success' for j in jobs)
+            arts=api(f'actions/runs/{runid}/artifacts?per_page=100')['artifacts']
+            assert len([a for a in arts if a['name']==artifact_name and a['id']==artifact_id and not a['expired']])==1
+            rows.append({'run_id':runid,'job_id':jobid,'original_HD_row_zero_positions':[start,end],'original_A_column_zero_positions':[start,end],'accepted_artifact_name':artifact_name,'accepted_artifact_id':artifact_id})
+          run=api('actions/runs/44782027897')
+          assert run['status']=='completed' and run['conclusion']=='success'
+          jobs=api('actions/runs/44782027897/jobs?per_page=100')['jobs']
+          assert any(j['id']==136446941618 and j['name']=='accepted-actual-original-index-one-custody' and j['conclusion']=='success' for j in jobs)
+          arts=api('actions/runs/44782027897/artifacts?per_page=100')['artifacts']
+          assert len([a for a in arts if a['name']=='nf733-permanent-source-bound-original-index-one-full-lean-kernel-custody' and a['id']==14652498322 and not a['expired']])==1
+          d={
+            'schema':'NF734-immutable-original-matrix-gate-frontier-inventory-v1',
+            'accepted_HD_row_zero_positions':list(range(24)),
+            'accepted_A_column_zero_positions':list(range(24)),
+            'certified_universal_HD_row_indices':[1],
+            'certified_universal_A_column_indices':[1],
+            'accepted_HD_row_one_positions':list(range(242)),
+            'accepted_A_column_one_positions':list(range(242)),
+            'current_accepted_distinct_original_global_HD_A_gate_count':532,
+            'proposed_next_original_HD_row_zero_positions':list(range(24,32)),
+            'proposed_next_original_A_column_zero_positions':list(range(24,32)),
+            'new_numerical_gate_kernel_status':'PENDING until separate NF734 new eight-coordinate Lean and strict axioms job passes',
+            'accepted_indexzero_sources':rows,
+            'accepted_indexone_universal_custody_run':44782027897,
+            'accepted_indexone_universal_custody_artifact':14652498322,
+            'original_full_matrix_gate_bank_closed':False,
+            'original_vector_gate_bank_closed':False,
+            'original_physical_payment_row_bank_closed':False,
+            'global_Weil_positivity_proved':False,
+            'RH_proved':False,
+            'scope':'Audited known accepted NF708/NF713/NF715 matrix-index-zero + NF733 universal index-one. No exhaustive declaration about other unknown historical proof paths.',
+          }
+          Path('nf734-original-matrix-frontier-inventory.json').write_text(json.dumps(d,indent=2,sort_keys=True)+'\n')
+          print('NF734 accepted 24/242 original row-zero HD and column-zero A gates, complete 242/242 original index-one HD/A universal: verified 532 original global product gates; remaining row0 218 positions and all other indices are NOT closed by this provenance inventory')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf734-exact-accepted-matrix-index-frontier-inventory
+          path: nf734-original-matrix-frontier-inventory.json
+          if-no-files-found: error
+  kernel-original-indexzero-24-31:
+    needs: certified-index-frontier-inventory
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore frozen original NF702 scaled input and full NF681 local HD/A dot receipts with original SHA pinned
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p nf708-receipts/{input,frontier,frontier-audit}
+          fetch() {
+            local id="$1" name="$2" digest="$3"
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" -o "$name.zip"
+            echo "$digest  $name.zip" | sha256sum -c -
+            unzip -q "$name.zip" -d "nf708-receipts/$name"
+          }
+          fetch 14582437652 input 258637da71e96468ed7c6ac5b0a4480ce06cdee9989aef8e71a4cd09059789e0
+          fetch 14541229354 frontier 13c2c0e296633ab5368b6e1be09c4e9b69d527001e0f3969ffc2f0af0c611ef5
+          fetch 14546201664 frontier-audit 86971af267f490dce4bcdba3403f3b566522f1cb9b38f9f77a10821b3772afb4
+      - name: Restore completed original NF703 cache source and accepted axioms receipt
+        uses: actions/download-artifact@v4
+        with:
+          name: nf703-original-cache-proposals
+          path: nf708-receipts/cache-proposals
+          run-id: 44627666710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore accepted NF703 original complete center cache kernel audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf703-original-cache-audit
+          path: nf708-receipts/cache-audit
+          run-id: 44627666710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore exact source and accepted Lean axiom receipts for first eight original index-zero columns
+        uses: actions/download-artifact@v4
+        with:
+          name: nf708-first-original-global-matrix-attachments
+          path: nf734-first
+          run-id: 44640227758
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore exact source and accepted Lean axiom receipts for second eight original index-zero columns
+        uses: actions/download-artifact@v4
+        with:
+          name: nf713-second-original-global-matrix-attachments
+          path: nf734-second
+          run-id: 44649041852
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore exact source and accepted Lean axiom receipts for third eight original index-zero columns
+        uses: actions/download-artifact@v4
+        with:
+          name: nf715-third-original-global-matrix-attachments
+          path: nf734-third
+          run-id: 44669131044
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Reconstruct frozen original NF704 full row-zero/column-zero source through coordinate 31
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf708_global_matrix_attachment_driver.py scripts/emit_nf704_first_global_matrix_attachment.py scripts/nf734_fourth_original_indexzero_global_attachment.py
+          python scripts/nf708_global_matrix_attachment_driver.py prepare --columns 32 2>&1 | tee nf734-emitter.log
+          python scripts/nf734_fourth_original_indexzero_global_attachment.py prepare 2>&1 | tee nf734-source-preflight.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('nf734-indexzero-next-eight-binding.json').read_text())
+          assert m['existing_true_global_HD_A_gates']==532
+          assert m['proposed_indexzero_HD_indices']==list(range(24,32))
+          assert m['proposed_indexzero_A_indices']==list(range(24,32))
+          assert len(m['new_indexzero_source_hashes'])==8
+          assert m['new_numerical_gate_kernel_pass'] is False
+          print('NF734 all prior 24 original index-zero source proofs byte-identical; 16 new original matrix gates generated; Lean kernel pending')
+          PY
+      - name: Install pinned Lean Lake and Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Restore independently accepted matching NF707 compiled original frozen input artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: nf707-compiled-original-input
+          path: nf708-compiled-input
+          run-id: 44633937710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify frozen source/toolchain fingerprints before original input compiled object reuse
+        run: |
+          set -euo pipefail
+          python scripts/nf708_global_matrix_attachment_driver.py restore-input
+      - name: Recompile genuine original cache for additional true index-zero global products
+        timeout-minutes: 270
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o nf734-original-data-time.log -f 'elapsed=%e user=%U rss_kb=%M exit=%x' \
+            lake build WeilDefect.Generated.NF702Inputs.Data WeilDefect.Generated.NF703Cache.Frontier 2>&1 | tee nf734-original-data-build.log
+      - name: Lean kernel-check eight new original HD row-zero and A column-zero products 24..31
+        timeout-minutes: 60
+        run: |
+          set -euo pipefail
+          for ((i=24;i<32;i++)); do
+            printf -v n "%03d" "$i"
+            lake build "WeilDefect.Generated.NF704Frontier.Col$n" 2>&1 | tee -a nf734-new-original-gate-build.log
+          done
+      - name: Strict standard-axiom audit: original numerical 16 new HD/A index-zero gates and 19 proof support declarations
+        timeout-minutes: 30
+        run: |
+          set -euo pipefail
+          python scripts/nf734_fourth_original_indexzero_global_attachment.py axiom-file
+          lake env lean nf734IndexZeroAudit.lean 2>&1 | tee nf734-indexzero-axioms.log
+          python scripts/nf734_fourth_original_indexzero_global_attachment.py verify
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf734-original-indexzero-next-eight-HD-A-source-bound-kernel-audit
+          path: |
+            nf734-*.log
+            nf734-original-data-time.log
+            nf708-binding.json
+            nf708-input-reuse.json
+            nf734-indexzero-next-eight-binding.json
+            nf734-indexzero-accepted-audit.json
+            WeilDefect/Generated/NF704Frontier/
+          if-no-files-found: ignore
