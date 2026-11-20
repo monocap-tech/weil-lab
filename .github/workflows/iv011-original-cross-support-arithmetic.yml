@@ -1,0 +1,62 @@
+name: IV011 original mixed zeta prime-cutoff and sharp Schur witness
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportArithmeticCutoff.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportExtension.lean"
+      - "scripts/iv011_original_cross_support_arithmetic_audit.py"
+      - ".github/workflows/iv011-original-cross-support-arithmetic.yml"
+      - "docs/IV011_PHASE_IV_ORIGINAL_CROSS_SUPPORT_ARITHMETIC.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: iv011-original-cross-support-arithmetic-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  genuine-original-cross-support-prime-and-schur:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact actual arithmetic source preflight, not formal kernel verification
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/iv011_original_cross_support_arithmetic_audit.py
+          python scripts/iv011_original_cross_support_arithmetic_audit.py preflight
+      - name: Install pinned Lean toolchain and mathlib
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Compile full ORIGINAL arithmetic cross-support Prime/Schur source
+        timeout-minutes: 190
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o iv011-resource.log -f 'elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalCrossSupportArithmeticCutoff 2>&1 | tee iv011-original-cross-support-arithmetic-build.log
+      - name: Direct original Lean source and 16 declaration axiom audit
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportArithmeticCutoff.lean 2>&1 | tee iv011-original-cross-support-arithmetic-axioms.log
+          python scripts/iv011_original_cross_support_arithmetic_audit.py verify
+          test -s iv011-original-cross-support-arithmetic-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv011-genuine-zeta-cross-support-arithmetic-schur-kernel-audit
+          path: |
+            iv011-resource.log
+            iv011-original-cross-support-arithmetic-build.log
+            iv011-original-cross-support-arithmetic-axioms.log
+            iv011-original-cross-support-arithmetic-kernel-audit.json
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportArithmeticCutoff.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
