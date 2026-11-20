@@ -188,7 +188,7 @@ jobs:
           set -euo pipefail
           /usr/bin/time -o nf737-indexzero-center-cache-time.log -f 'elapsed=%e rss_kb=%M exit=%x' \
             lake build WeilDefect.Generated.NF702Inputs.Data WeilDefect.Generated.NF703Cache.Frontier 2>&1 | tee nf737-indexzero-center-cache-build.log
-      - name: Kernel-check eight genuine original global HD/A indexzero physical gate product modules 040 through 047
+      - name: Kernel-check eight genuine original global HD/A indexzero physical gate product modules 048 through 055
         timeout-minutes: 65
         run: |
           set -euo pipefail
@@ -196,7 +196,7 @@ jobs:
             printf -v col "%03d" "$i"
             lake build "WeilDefect.Generated.NF704Frontier.Col$col" 2>&1 | tee -a nf742-indexzero-048-055-build.log
           done
-      - name: Strict original numerical source-bound 35 theorem standard-axiom audit for HD/A zero-index coordinates 040 through 047
+      - name: Strict original numerical source-bound 35 theorem standard-axiom audit for HD/A zero-index coordinates 048 through 055
         timeout-minutes: 30
         run: |
           set -euo pipefail
