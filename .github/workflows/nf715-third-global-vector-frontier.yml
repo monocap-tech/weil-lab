@@ -1,0 +1,149 @@
+name: NF715 third authenticated original global vector gates, rows 32 through 47
+on:
+  pull_request:
+    paths:
+      - "scripts/nf715_third_global_frontier_driver.py"
+      - ".github/workflows/nf715-third-global-vector-frontier.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf715-third-global-vectors-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  third-vector-attachment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate immutable original scaled-input artifact
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p nf715-receipts/{input,cache-proposals,cache-audit,vectors,vector-audit}
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14582437652/zip" -o nf715-input.zip
+          echo "258637da71e96468ed7c6ac5b0a4480ce06cdee9989aef8e71a4cd09059789e0  nf715-input.zip" | sha256sum -c -
+          unzip -q nf715-input.zip -d nf715-receipts/input
+      - name: Restore accepted NF703 original cache source
+        uses: actions/download-artifact@v4
+        with:
+          name: nf703-original-cache-proposals
+          path: nf715-receipts/cache-proposals
+          run-id: 44627666710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore certified NF703 source-specific cache audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf703-original-cache-audit
+          path: nf715-receipts/cache-audit
+          run-id: 44627666710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore accepted original NF680 local vector/defect proof source
+        uses: actions/download-artifact@v4
+        with:
+          name: nf680-original-cache-vector-proposals
+          path: nf715-receipts/vectors
+          run-id: 44540497550
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore NF680 full 1210-declaration standard-axiom audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf680-complete-original-cache-vector-audit
+          path: nf715-receipts/vector-audit
+          run-id: 44540497550
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Reconcile exact original source objects and emit next sixteen global vector row attachments
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/emit_nf709_original_global_vector_attachments.py scripts/nf714_second_global_vector_driver.py
+          python scripts/emit_nf709_original_global_vector_attachments.py \
+            --inputs nf715-receipts/input \
+            --cache nf715-receipts/cache-proposals \
+            --vectors nf715-receipts/vectors \
+            --input-audit nf715-receipts/input \
+            --cache-audit nf715-receipts/cache-audit \
+            --vector-audit nf715-receipts/vector-audit \
+            --output WeilDefect/Generated/NF709 \
+            --first 32 --count 16 2>&1 | tee nf715-vector-source-reconciliation.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d = Path('WeilDefect/Generated/NF709')
+          m = json.loads((d/'manifest.json').read_text())
+          assert m['rows']==list(range(32,48)) and m['count']==16
+          assert len(m['theorems']) == 230 and len(m['files'])==17
+          PY
+      - name: Restore first accepted NF709 global vector proof bank and strict audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf709-first-original-global-vector-attachments
+          path: nf715-vector-first
+          run-id: 44641913509
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore second accepted NF714 global vector proof bank and strict audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf714-second-original-global-vector-attachments
+          path: nf715-vector-second
+          run-id: 44650561499
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Authenticate both accepted vector kernel audits and identical shared source
+        run: |
+          set -euo pipefail
+          python scripts/nf715_third_global_frontier_driver.py vector prepare 2>&1 | tee nf715-vector-prior-binding.log
+      - name: Install original pinned Lean and Mathlib
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Reuse NF707 certified compiled original scaled inputs
+        uses: actions/download-artifact@v4
+        with:
+          name: nf707-compiled-original-input
+          path: nf708-compiled-input
+          run-id: 44633937710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Audit input producer source environment and restore compiled original input objects
+        run: |
+          set -euo pipefail
+          python scripts/nf708_global_matrix_attachment_driver.py restore-input
+      - name: Build actual original global cache and vector bridge
+        timeout-minutes: 225
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o nf715-vector-data-time.log -f 'elapsed=%e user=%U rss_kb=%M exit=%x' lake build WeilDefect.Generated.NF703Cache.Data WeilDefect.Generated.NF709.Common 2>&1 | tee nf715-vector-data-build.log
+      - name: Kernel-check third sixteen global vector gates independently
+        timeout-minutes: 95
+        run: |
+          set -euo pipefail
+          for ((i=32;i<48;i+=2)); do
+            printf -v a '%03d' "$i"
+            printf -v b '%03d' "$((i+1))"
+            lake build "WeilDefect.Generated.NF709.Row$a" "WeilDefect.Generated.NF709.Row$b" 2>&1 | tee -a nf715-vector-build.log
+          done
+      - name: Strict original vector kernel audit of 224 new and 6 shared declarations
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          python scripts/nf715_third_global_frontier_driver.py vector axiom-file
+          lake env lean nf715VectorAudit.lean 2>&1 | tee nf715-vector-axioms.log
+          python scripts/nf715_third_global_frontier_driver.py vector verify
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf715-third-original-global-vector-attachments
+          path: |
+            nf715-vector-*.log
+            nf715-input-reuse.json
+            nf708-input-reuse.json
+            nf715-vector-complete-audit.json
+            nf715-vector-binding.json
+            WeilDefect/Generated/NF709/
+          if-no-files-found: ignore
