@@ -71,7 +71,9 @@ def analyze(root):
             "theorem_names": sorted(names),
         }
         if label in ("nf715", "nf716"):
-            mpath = one(d, "manifest.json")
+            candidates = [p for p in d.rglob("manifest.json") if p.parent.name == label.upper()]
+            assert len(candidates) == 1, (label, candidates)
+            mpath = candidates[0]
             manifest, digest = source_files(mpath.parent)
             record["source_manifest_sha256"] = digest
             assert manifest["audit_theorems"] == cert["audit_theorems"]
