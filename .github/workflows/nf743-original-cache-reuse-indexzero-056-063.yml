@@ -110,6 +110,7 @@ jobs:
           name: nf743-source-identical-accepted-original-center-cache-capsule
           path: |
             nf743-accepted-original-center-cache-reuse.json
+            nf747-original-indexzero-compiler-import-order.json
             nf743-original-cache-source-identical.log
             .lake/build/lib/lean/WeilDefect/Generated/NF702Inputs/
             .lake/build/lib/lean/WeilDefect/Generated/NF703Cache/
@@ -174,5 +175,6 @@ jobs:
             nf743-accepted-original-center-cache-reuse.json
             nf743-indexzero-056-063-source-binding.json
             nf743-original-indexzero-056-063-kernel-audit.json
+            nf747-original-indexzero-compiler-import-order.json
             nf743OriginalIndexZero056Audit.lean
           if-no-files-found: ignore
