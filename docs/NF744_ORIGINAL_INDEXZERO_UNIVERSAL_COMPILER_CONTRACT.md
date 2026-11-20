@@ -68,7 +68,19 @@ neutralNF744AllFin242Of31OriginalIndexZeroShards
 
 This proof is 30 exact finite-bound branches and a terminal `i.isLt` branch; no original numerical matrix, EF or oracle is imported. The NF744 workflow **directly compiles** this pure lemma in Lean and checks `#print axioms` against only `propext`, `Classical.choice`, `Quot.sound`, pinning the actual compiled `.olean` hash. **A successful pure lemma is only a logical range-covering implication, not an original numerical theorem.**
 
-## 5. Immediate certification staging
+## 5. Fail-closed future numerical kernel acceptance
+
+In addition to source generation, the NF744 driver provides two explicitly **deferred** operations:
+
+`python scripts/nf744_full_original_indexzero_31_shard_compiler.py full-axiom-file` generates an audit module importing the actual source-specific `NF744.ActualOriginalFull` master and printing axioms for **all 64 exact original numerical declarations**: 62 range theorems plus both 242-coordinate full universals.
+
+`python scripts/nf744_full_original_indexzero_31_shard_compiler.py verify-complete-kernel` is deliberately **NOT** run in NF744's current CI. It fails unless all **242 genuine original `NF704Frontier.ColNNN.olean`** numerical modules, all **31 source-bound original range `.olean`** modules and the **actual master universal `.olean`** are present and the 64-name `#print axioms` log is complete, error-free and limited to the three standard Lean axioms. It binds every original source, numerical compiled-object SHA, range object SHA, master source/compiled object and printed axiom receipt before it can write `nf744-actual-full-original-indexzero-universal-kernel-audit.json`.
+
+The future *actual GitHub kernel job* must construct those objects by compiling source modules under the frozen original Lean toolchain, rather than merely copying unverified files into place. A standalone run of the Python verifier without independently trusted kernel execution is not proof of Lean acceptance.
+
+When this deferred full original certification eventually passes, exactly **242 original HD row-zero** and **242 original A column-zero** gates will be universally certified, alongside the already accepted index-one 242+242 gates. The resulting two-index tally would be **968 distinct original global HD/A gate instances**, but still **not** the entire matrix or any global Weil positivity proof.
+
+## 6. Immediate certification staging
 
 The NF744 workflow has **two independent jobs**: first restores only the previously successful immutable NF737 authenticated full original source bank, rebuilds *no large center-cache objects*, verifies all original source fingerprints and generates the full 31-module source binder; second builds the pure Mathlib Fin242 31-shard logical theorem under pinned Lean and audits its exact axioms. Both publish separate artifacts.
 
