@@ -209,7 +209,7 @@ theorem neutralIV011SchurMinimizer_value
           (neutralIV011SchurMinimizer B D).im ^ 2) =
       (A * D - (B.re^2 + B.im^2)) / D := by
   dsimp [neutralIV011SchurMinimizer, Complex.mul_re]
-  field_simp
+  field_simp [hD]
   ring
 
 /-- Sharp strict negative witness when D>0 but
@@ -285,6 +285,33 @@ theorem neutralIV011OriginalCrossBound_necessary
       a b hab s u hs t ht hD hfail
   exact (not_lt_of_ge (hpos _)) hneg
 
+/-- Source-identical SHARP one-new-support equivalence, when the
+old original family has nonnegative mixed energy and the newly
+admitted diagonal is strictly positive. The RHS is the exact
+required ORIGINAL arithmetic cross estimate, not a proved fact. -/
+theorem neutralIV011OriginalOneNew_nonnegative_iff_crossBound
+    {n : ℕ} (a b : ℝ) (hab : a ≤ b)
+    (s : Fin n → 𝓢(ℝ, ℂ)) (u : Fin n → ℂ)
+    (hs : ∀ i : Fin n, ∀ x : ℝ,
+      x ∉ Set.Icc (-a) a → s i x = 0)
+    (t : 𝓢(ℝ, ℂ))
+    (ht : ∀ x : ℝ, x ∉ Set.Icc (-b) b → t x = 0)
+    (hOld : 0 ≤ (neutralIV007OriginalMixedEnergy a s u).re)
+    (hD : 0 < (neutralIV010Diagonal b t).re) :
+    (∀ v : ℂ, 0 ≤ (neutralIV010Diagonal b
+        (neutralIV009PhysicalSchwartzSum s u + v • t)).re) ↔
+      (neutralIV010Mixed b (neutralIV009PhysicalSchwartzSum s u) t).re^2 +
+        (neutralIV010Mixed b (neutralIV009PhysicalSchwartzSum s u) t).im^2 ≤
+        (neutralIV007OriginalMixedEnergy a s u).re *
+          (neutralIV010Diagonal b t).re := by
+  constructor
+  · intro hpos
+    exact neutralIV011OriginalCrossBound_necessary
+      a b hab s u hs t ht hD hpos
+  · intro hCross v
+    exact neutralIV010OriginalOneNewSource_nonnegative_of_crossBound
+      a b hab s u hs t ht hOld (le_of_lt hD) hCross v
+
 #print axioms neutralIV006Schwartz_window_ae
 #print axioms neutralIV010OldPlusNew_realBlock
 #print axioms neutralIV010OriginalOneNewSource_nonnegative_of_crossBound
@@ -300,6 +327,7 @@ theorem neutralIV011OriginalCrossBound_necessary
 #print axioms neutralIV011SchurFailure_negative
 #print axioms neutralIV011OriginalCrossFailure_negativeWitness
 #print axioms neutralIV011OriginalCrossBound_necessary
+#print axioms neutralIV011OriginalOneNew_nonnegative_iff_crossBound
 
 end
 end WeilDefect
