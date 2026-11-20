@@ -1,0 +1,199 @@
+name: NF732 source-bound eight-original-quad to universal HD-A index-one Lean kernel closure
+on:
+  pull_request:
+    paths:
+      - "scripts/nf732_original_full_from_eight_authenticated_quads.py"
+      - "scripts/nf732_accept_original_quad_kernel_objects.py"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalEightQuadFullCover.lean"
+      - ".github/workflows/nf732-actual-original-full-eight-quad-kernel.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  exact-original-source-candidates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate successful original NF729 31-block source run and immutable candidate artifact
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,subprocess
+          repo=os.environ['GITHUB_REPOSITORY']
+          api=lambda p:json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/{p}'],text=True))
+          jobs=api('actions/runs/44767040253/jobs?per_page=100')['jobs']
+          assert any(j['id']==136394313314 and j['name']=='prepare-authentic-original-quads' and j['conclusion']=='success' for j in jobs)
+          arts=api('actions/runs/44767040253/artifacts?per_page=100')['artifacts']
+          good=[a for a in arts if a['name']=='nf729-original-source-bound-8-quad-Lean-candidates' and a['id']==14645281954 and not a['expired']]
+          assert len(good)==1,good
+          print('NF732 exact original NF729 31-block source-preparation job and immutable source artifact PASS; new numerical universal kernel separate')
+          PY
+      - name: Restore exact source-authenticated eight original HD/A quad theorem candidates
+        uses: actions/download-artifact@v4
+        with:
+          name: nf729-original-source-bound-8-quad-Lean-candidates
+          path: .
+          run-id: 44767040253
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Emit two genuine original index-one universal HD/A Lean theorem sources
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf732_original_full_from_eight_authenticated_quads.py scripts/nf732_accept_original_quad_kernel_objects.py
+          python scripts/nf732_original_full_from_eight_authenticated_quads.py prepare 2>&1 | tee nf732-original-source-prepare.log
+          python scripts/nf732_original_full_from_eight_authenticated_quads.py source 2>&1 | tee nf732-original-source-audit.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf732-original-index-one-full-HD-A-eight-quad-source-candidates
+          path: |
+            WeilDefect/Generated/NF729/
+            WeilDefect/Generated/NF732/
+            nf732-original-source-prepare.log
+            nf732-original-source-audit.log
+          if-no-files-found: error
+  kernel-direct-eight-quad-logical-cover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned Lean and Mathlib cached imports
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Directly kernel-check original Fin242 eight numerical range implication
+        timeout-minutes: 75
+        run: |
+          set -euo pipefail
+          mkdir -p .lake/build/lib/lean/WeilDefect/Arithmetic
+          /usr/bin/time -o nf732-pure-time.log -f 'elapsed=%e rss_kb=%M exit=%x' \
+            lake env lean -o .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalPhysicalEightQuadFullCover.olean \
+              WeilDefect/Arithmetic/ActualZetaOriginalPhysicalEightQuadFullCover.lean 2>&1 | tee nf732-pure-axioms.log
+          python scripts/nf732_original_full_from_eight_authenticated_quads.py pure
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf732-eight-original-quad-full-Fin242-pure-Lean-kernel
+          path: |
+            nf732-pure-time.log
+            nf732-pure-axioms.log
+            nf732-pure-accepted-audit.json
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalPhysicalEightQuadFullCover.olean
+          include-hidden-files: true
+          if-no-files-found: ignore
+  numerical-quad-kernel-readiness:
+    runs-on: ubuntu-latest
+    outputs:
+      ready: ${{ steps.check.outputs.ready }}
+    steps:
+      - name: Check exact eight accepted original numerical Lean quad kernel jobs and artifacts
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os,json,subprocess
+          repo=os.environ['GITHUB_REPOSITORY']
+          api=lambda p:json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/{p}'],text=True))
+          jobs=api('actions/runs/44767040253/jobs?per_page=100')['jobs']
+          want={
+           'authentic-numerical-quads (000)':136399712401,
+           'authentic-numerical-quads (004)':136399712444,
+           'authentic-numerical-quads (008)':136399712642,
+           'authentic-numerical-quads (012)':136399712509,
+           'authentic-numerical-quads (016)':136399712717,
+           'authentic-numerical-quads (020)':136399712530,
+           'authentic-numerical-quads (024)':136399712479,
+           'authentic-numerical-quads (028)':136399712649,
+          }
+          accepted={j['name']:j['id'] for j in jobs if j['name'] in want and j['conclusion']=='success'}
+          arts=api('actions/runs/44767040253/artifacts?per_page=100')['artifacts']
+          expected={f'nf729-real-original-HD-A-quad-{b:03d}-source-bound-kernel-audit' for b in (0,4,8,12,16,20,24,28)}
+          good={a['name'] for a in arts if a['name'] in expected and not a['expired']}
+          ready=accepted==want and good==expected
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write('ready='+('true' if ready else 'false')+'\n')
+          print('NF732 actual original 8 numerical quad kernel readiness:',len(accepted),'/8 accepted jobs;',len(good),'/8 nonexpired compiled-object artifacts; final numerical kernel:', 'ELIGIBLE' if ready else 'DEFERRED')
+          PY
+  kernel-complete-actual-original-index-one:
+    needs:
+      - exact-original-source-candidates
+      - kernel-direct-eight-quad-logical-cover
+      - numerical-quad-kernel-readiness
+    if: ${{ needs.numerical-quad-kernel-readiness.outputs.ready == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore original source-authenticated full-row HD/A Lean candidates and eight original numerical ranges
+        uses: actions/download-artifact@v4
+        with:
+          name: nf732-original-index-one-full-HD-A-eight-quad-source-candidates
+          path: .
+      - name: Restore separately accepted original Fin242 eight-range direct assembly Lean object
+        uses: actions/download-artifact@v4
+        with:
+          name: nf732-eight-original-quad-full-Fin242-pure-Lean-kernel
+          path: .
+      - name: Install matching pinned Lean version and Mathlib imports
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Sequentially download and authenticate eight accepted numerical HD/A shard objects without exhausting disk
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        timeout-minutes: 125
+        run: |
+          set -euo pipefail
+          python scripts/nf732_original_full_from_eight_authenticated_quads.py source
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalPhysicalEightQuadFullCover.olean
+          for b in 000 004 008 012 016 020 024 028; do
+            name="nf729-real-original-HD-A-quad-$b-source-bound-kernel-audit"
+            tmp="nf732-temporary-numerical-quad-$b"
+            mkdir -p "$tmp"
+            gh run download 44767040253 --repo "$GITHUB_REPOSITORY" --name "$name" --dir "$tmp"
+            python scripts/nf732_accept_original_quad_kernel_objects.py ingest --quad "$((10#$b))" --root "$tmp"
+            rm -rf "$tmp"
+            df -h .
+          done
+          python scripts/nf732_accept_original_quad_kernel_objects.py finalize
+      - name: Kernel-check literal original 242 HD row-one and 242 A column-one universal gate theorems
+        timeout-minutes: 125
+        run: |
+          set -euo pipefail
+          mkdir -p .lake/build/lib/lean/WeilDefect/Generated/NF732
+          /usr/bin/time -o nf732-original-time.log -f 'elapsed=%e rss_kb=%M exit=%x' \
+            lake env lean -o .lake/build/lib/lean/WeilDefect/Generated/NF732/ActualOriginalFull.olean \
+              WeilDefect/Generated/NF732/ActualOriginalFull.lean 2>&1 | tee nf732-original-axioms.log
+          python scripts/nf732_original_full_from_eight_authenticated_quads.py original
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf732-actual-original-HD-row1-A-col1-complete-242-global-Lean-kernel-audit
+          path: |
+            nf732-original-axioms.log
+            nf732-original-time.log
+            nf732-accepted-original-numerical-inputs.json
+            nf732-original-complete-audit.json
+            WeilDefect/Generated/NF732/manifest.json
+          if-no-files-found: ignore
