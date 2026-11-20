@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""NF719: parallel, source-authenticated original global HD/A index-one blocks 8..15.
+"""NF719: parallel, source-authenticated original global HD/A index-one blocks 16..23.
 
-Two independent four-block jobs certify coordinates 64..95 and 96..127.
-Neither depends on the provisional NF716 or NF717 proof results; each
+Two independent four-block jobs certify coordinates 128..159 and 160..191.
+Neither depends on provisional NF716, NF717 or NF718 proof results; each
 independently replays the accepted NF715 source and its kernel-axiom receipt
 from the same immutable NF702, NF703, NF700 proposals and audits.
 
@@ -242,7 +242,7 @@ def aggregate(a):
         "source_manifests": audits[0][0]["source_manifests"],
         "accepted_source_audits": audits[0][0]["accepted_source_audits"],
         "axioms": found,
-        "scope": "128 genuine original index-one global matrix gates for 64..127 only. Does not close full global cache; no assumption of NF716/NF717 acceptance.",
+        "scope": "128 genuine original index-one global matrix gates for 64..127 only. Does not close full global cache; no assumption of NF716/NF717/NF718 acceptance.",
     }
     Path("nf719-complete-audit.json").write_text(
         json.dumps(result, indent=2, sort_keys=True)+"\n")
