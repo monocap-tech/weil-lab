@@ -1,11 +1,7 @@
 name: NF724 bounded Fin242 four-shard formal coverage and source-bound gluing bridge
+# Legacy eager lake-build diagnostic is manual-only after NF725 replaces
+# monolithic compilation with four source-bound direct Lean kernel jobs.
 on:
-  pull_request:
-    paths:
-      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedFinCoverage.lean"
-      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedRowOneFiniteClosure.lean"
-      - "scripts/nf724_verify_bounded_fin_coverage.py"
-      - ".github/workflows/nf724-bounded-fin242-kernel-coverage.yml"
   workflow_dispatch:
 permissions:
   contents: read

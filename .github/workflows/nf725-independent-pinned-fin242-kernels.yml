@@ -1,0 +1,103 @@
+name: NF725 four independent lean kernel chunks then pinned pure Fin242 master attachment
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedFinChunk*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedFinCoverage.lean"
+      - "scripts/nf725_independent_lean_chunk_receipts.py"
+      - "scripts/nf724_verify_bounded_fin_coverage.py"
+      - ".github/workflows/nf725-independent-pinned-fin242-kernels.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  finite-chunks:
+    strategy:
+      fail-fast: false
+      matrix:
+        block: ["000", "008", "016", "024"]
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate all 31 original block coordinate declarations
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf724_verify_bounded_fin_coverage.py scripts/nf725_independent_lean_chunk_receipts.py
+          python scripts/nf724_verify_bounded_fin_coverage.py source
+      - name: Install pinned Lean and Mathlib cached imports
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Compile one exact bounded arithmetic theorem directly with Lean, not the giant project build graph
+        timeout-minutes: 60
+        run: |
+          set -euo pipefail
+          b="${{ matrix.block }}"
+          mkdir -p .lake/build/lib/lean/WeilDefect/Arithmetic
+          /usr/bin/time -o "nf725-time-$b.log" -f "elapsed=%e user=%U rss_kb=%M exit=%x" \
+            lake env lean -o ".lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedFinChunk$b.olean" \
+              "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedFinChunk$b.lean" \
+              2>&1 | tee "nf725-axioms-$b.log"
+          python scripts/nf725_independent_lean_chunk_receipts.py chunk --block "$b"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf725-kernel-chunk-${{ matrix.block }}
+          path: |
+            nf725-kernel-object/
+          if-no-files-found: ignore
+  complete-242-coverage:
+    needs: finite-chunks
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install original pinned Lean and Mathlib cached imports
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Restore four immutable kernel-generated source-bound Lean chunk objects
+        uses: actions/download-artifact@v4
+        with:
+          pattern: nf725-kernel-chunk-*
+          path: nf725-receipts
+          merge-multiple: false
+      - name: Authenticate same Lean compiler, pinned Mathlib, four original source and binary object SHA digests
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf725_independent_lean_chunk_receipts.py scripts/nf724_verify_bounded_fin_coverage.py
+          python scripts/nf725_independent_lean_chunk_receipts.py assemble
+      - name: Kernel-check direct pure Mathlib Fin242 master using four certified Lean objects
+        timeout-minutes: 65
+        run: |
+          set -euo pipefail
+          mkdir -p .lake/build/lib/lean/WeilDefect/Arithmetic
+          /usr/bin/time -o nf725-master-time.log -f 'elapsed=%e user=%U rss_kb=%M exit=%x' \
+            lake env lean -o .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedFinCoverage.olean \
+              WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedFinCoverage.lean 2>&1 | tee nf725-master-axioms.log
+          python scripts/nf725_independent_lean_chunk_receipts.py final
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf725-authenticated-5-theorem-242-coordinate-lean-kernel-coverage
+          path: |
+            nf725-master-axioms.log
+            nf725-master-time.log
+            nf725-assembled-chunks.json
+            nf725-complete-audit.json
+          if-no-files-found: ignore
