@@ -148,7 +148,10 @@ theorem neutralIV008OriginalMixedEnergy_im_zero
     intro i _
     apply Finset.sum_congr rfl
     intro j _
-    rw [neutralIV008OriginalMixedEntry_hermitian a s hs j i]
+    have hji := neutralIV008OriginalMixedEntry_hermitian a s hs j i
+    change u j * conj (neutralIV007OriginalMixedEntry a s j i) * conj (u i) =
+      conj (u i) * neutralIV007OriginalMixedEntry a s i j * u j
+    rw [hji]
     ring
   have h := congrArg Complex.im hc
   simp only [Complex.conj_im] at h
