@@ -1,0 +1,67 @@
+name: NF722 kernel-certified 31-block Fin 242 original row-one logical closure
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedRowOneFiniteClosure.lean"
+      - "scripts/nf722_verify_packed_row_one_glue.py"
+      - ".github/workflows/nf722-original-row-one-packed-finite-closure.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  kernel-finite-gluing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact finite block inventory and Python audit syntax
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf722_verify_packed_row_one_glue.py
+          python - <<'PY'
+          import sys
+          sys.path.insert(0, 'scripts')
+          from nf722_verify_packed_row_one_glue import source_plan
+          blocks=source_plan()
+          assert len(blocks)==31
+          assert blocks[-1]=={'block':30,'start':240,'end':242,'width':2}
+          assert [x['start'] for x in blocks]==list(range(0,241,8))
+          print('NF722 exact 31-block/242-coordinate Fin 2 terminal source preflight PASS')
+          PY
+      - name: Install original pinned Lean and Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Lean kernel-check three finite block gluing theorems
+        timeout-minutes: 90
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o nf722-compiler-time.log -f 'elapsed=%e user=%U rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalPackedRowOneFiniteClosure 2>&1 | tee nf722-build.log
+      - name: Strict exact three-theorem Lean axiom audit
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          cat > nf722Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalPackedRowOneFiniteClosure
+          #print axioms WeilDefect.neutralNF722Fin242OfPackedBlocks
+          #print axioms WeilDefect.neutralNF722HDIndexOneOfPackedBlocks
+          #print axioms WeilDefect.neutralNF722AIndexOneOfPackedBlocks
+          EOF
+          lake env lean nf722Audit.lean 2>&1 | tee nf722-axioms.log
+          python scripts/nf722_verify_packed_row_one_glue.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf722-31-block-original-row-one-finite-gluing-audit
+          path: |
+            nf722-*.log
+            nf722-complete-audit.json
+          if-no-files-found: ignore
