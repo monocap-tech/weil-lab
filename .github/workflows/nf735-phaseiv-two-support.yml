@@ -1,4 +1,4 @@
-name: NF735 exact two-support geometry and local signed Weil span
+name: NF736 canonical two-support mixed geometry (legacy NF735 source identifiers)
 on:
   pull_request:
     paths:
