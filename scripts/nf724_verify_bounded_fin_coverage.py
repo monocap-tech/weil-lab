@@ -18,10 +18,10 @@ ALLOWED={"propext","Classical.choice","Quot.sound"}
 
 def source():
     s = SRC.read_text()
-    assert re.findall(r"^theorem (neutralNF724\\w+)", s, re.M) == [
+    assert re.findall(r"^theorem (neutralNF724\w+)", s, re.M) == [
         "neutralNF724Fin242OfPackedBlocks"
     ]
-    assert not re.search(r"\\b(sorry|admit|axiom|unsafe)\\b", s)
+    assert not re.search(r"\b(sorry|admit|axiom|unsafe)\b", s)
     assert "exact neutralNF726Half000 P" in s
     assert "exact neutralNF726Half016 P" in s
     blocks = []
@@ -33,9 +33,9 @@ def source():
         h=hpath.read_text()
         assert (f"import WeilDefect.Arithmetic."
                 f"ActualZetaOriginalPhysicalPackedFinHalf{half:03d}") in s
-        assert re.findall(r"^theorem (neutralNF726\\w+)",h,re.M)==[name]
+        assert re.findall(r"^theorem (neutralNF726\w+)",h,re.M)==[name]
         assert f"#print axioms {name}" in h
-        assert not re.search(r"\\b(sorry|admit|axiom|unsafe)\\b", h)
+        assert not re.search(r"\b(sorry|admit|axiom|unsafe)\b", h)
         halves[half]=h
     for chunk in (0, 8, 16, 24):
         cname = f"neutralNF724Chunk{chunk:03d}"
@@ -44,10 +44,10 @@ def source():
         local = path.read_text()
         half=0 if chunk<16 else 16
         h=halves[half]
-        assert local.startswith("import Mathlib.Tactic\\n")
-        assert re.findall(r"^theorem (neutralNF724\\w+)",local,re.M)==[cname]
+        assert local.startswith("import Mathlib.Tactic\n")
+        assert re.findall(r"^theorem (neutralNF724\w+)",local,re.M)==[cname]
         assert f"#print axioms {cname}" in local
-        assert not re.search(r"\\b(sorry|admit|axiom|unsafe)\\b", local)
+        assert not re.search(r"\b(sorry|admit|axiom|unsafe)\b", local)
         assert (f"import WeilDefect.Arithmetic."
                 f"ActualZetaOriginalPhysicalPackedFinChunk{chunk:03d}") in h
         assert f"exact {cname} P" in h
@@ -71,7 +71,7 @@ def source():
     assert "import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalPackedFinCoverage" in bridge
     assert "exact neutralNF724Fin242OfPackedBlocks P" in bridge
     for b in range(31):
-        assert f"    h{b:03d}\\n" in bridge
+        assert f"    h{b:03d}\n" in bridge
     return blocks
 
 def audit(logname):
