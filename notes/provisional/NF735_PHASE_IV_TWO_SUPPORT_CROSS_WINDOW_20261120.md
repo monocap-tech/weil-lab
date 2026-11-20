@@ -1,8 +1,10 @@
-# NF735 — Two-support pilot: exact moving cross window and mixed Gram condition
+# NF736 (canonical; legacy NF735) — Two-support pilot: exact moving cross window and mixed Gram condition
 
 ## 0. Scope and provenance
 
-Phase IV research-only branch, stacked on NF734. No Phase III numerical dependencies are changed, and no global Weil positivity or RH result is claimed. The mathematical observations below refer separately to (a) authenticated Weil-Lab source definitions, (b) a new abstract proof proposal, and (c) an *external unreviewed preprint*.
+> **Registry correction (2026-11-20):** This research pass is canonical **NF736**, following the canonical Phase IV NF735 type audit. Legacy branch `research/nf735-phaseiv-two-support-geometry`, the note filename, workflow filename, and any `nf735…` identifiers remain intact as source/artifact aliases; they do not allocate a second canonical NF735. This does not assert a new Lean kernel pass.
+
+Phase IV research-only branch, stacked on canonical NF735 (the Phase IV type audit, originally named NF734). No Phase III numerical dependencies are changed, and no global Weil positivity or RH result is claimed. The mathematical observations below refer separately to (a) authenticated Weil-Lab source definitions, (b) a new abstract proof proposal, and (c) an *external unreviewed preprint*.
 
 ### Source-checked repository facts
 
