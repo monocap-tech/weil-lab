@@ -1,0 +1,68 @@
+name: NF739 complex Hermitian 2x2 Gram PSD and three-support nontransfer Lean kernels
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVHermitianTwoBlockPSD.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVThreeSupportObstruction.lean"
+      - "scripts/nf739_phaseiv_gram_pilot_audit.py"
+      - "docs/NF739_PHASE_IV_MIXED_GRAM_CUSTODY.md"
+      - ".github/workflows/nf739-mixed-hermitian-gram-and-three-support.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independently-verify-pure-mixed-gram-kernels:
+    strategy:
+      fail-fast: false
+      matrix:
+        stage: ["complex", "three"]
+    runs-on: ubuntu-latest
+    timeout-minutes: 105
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Confirm exact source-level finite Gram theorem declarations and no original global Weil positivity claim
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf739_phaseiv_gram_pilot_audit.py
+          python scripts/nf739_phaseiv_gram_pilot_audit.py "${{ matrix.stage }}" source
+      - name: Install pinned Mathlib cache and Lean for independent pure finite Gram kernel
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Direct Lean kernel-compile complex Hermitian PSD or three-block countermodel
+        timeout-minutes: 80
+        run: |
+          set -euo pipefail
+          stage="${{ matrix.stage }}"
+          if [[ "$stage" == "complex" ]]; then
+            mod="ActualZetaPhaseIVHermitianTwoBlockPSD"
+          else
+            mod="ActualZetaPhaseIVThreeSupportObstruction"
+          fi
+          mkdir -p .lake/build/lib/lean/WeilDefect/Arithmetic
+          /usr/bin/time -o "nf739-$stage-time.log" -f "elapsed=%e rss_kb=%M exit=%x" \
+            lake env lean -o ".lake/build/lib/lean/WeilDefect/Arithmetic/$mod.olean" \
+              "WeilDefect/Arithmetic/$mod.lean" 2>&1 | tee "nf739-$stage-axioms.log"
+      - name: Strict independent actual Lean compiled object, source SHA and theorem-level standard-axiom verification
+        run: |
+          set -euo pipefail
+          python scripts/nf739_phaseiv_gram_pilot_audit.py "${{ matrix.stage }}" verify
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf739-${{ matrix.stage }}-finite-gram-lean-standard-axiom-audit
+          path: |
+            nf739-${{ matrix.stage }}-time.log
+            nf739-${{ matrix.stage }}-axioms.log
+            nf739-${{ matrix.stage }}-lean-audit.json
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVHermitianTwoBlockPSD.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVThreeSupportObstruction.olean
+          include-hidden-files: true
+          if-no-files-found: ignore
