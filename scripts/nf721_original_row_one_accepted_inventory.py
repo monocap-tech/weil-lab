@@ -2,10 +2,10 @@
 """NF721: exact accepted original second-row certificate inventory.
 
 This *does not* prove new Lean propositions. It checks the complete upstream
-standard-axiom certificates for NF715, NF716, NF718 and NF719, their original
+standard-axiom certificates for NF715, NF716, NF718, NF719 and NF720, their original
 source/projection provenance, exact coordinate disjointness and missing gaps.
-Only 160 genuine HD row-one and 160 A column-one identities are admitted here.
-The NF717 and NF720 intervals are explicitly OPEN until their own final audits.
+Only 210 genuine HD row-one and 210 A column-one identities are admitted here.
+The NF717 32-coordinate interval remains OPEN until its final Lean audit.
 """
 import argparse
 import hashlib
@@ -19,8 +19,9 @@ STAGES = (
     ("nf716", 8, 32, 24),
     ("nf718", 64, 128, 64),
     ("nf719", 128, 192, 64),
+    ("nf720", 192, 242, 56),
 )
-PENDING = ((32, 64, "NF717"), (192, 242, "NF720"))
+PENDING = ((32, 64, "NF717"),)
 
 
 def sha(p):
@@ -117,8 +118,8 @@ def analyze(root):
                 f"NF{label[-3:]}-complete-parallel-original-global-row-one-audit-v1")
             assert (cert["index"],cert["first"],cert["end"]) == (1,lo,hi)
             assert cert["coordinates"] == list(range(lo,hi))
-            assert cert["global_HD_gates"] == cert["global_A_gates"] == 64
-            assert cert["lean_declarations"] == 64
+            assert cert["global_HD_gates"] == cert["global_A_gates"] == hi-lo
+            assert cert["lean_declarations"] == n
             assert len(cert["shard_audit_sha256"]) == 2
             assert all(isinstance(x,str) and len(x)==64 for x in cert["shard_audit_sha256"])
             assert cert["source_manifests"] == evidence["nf715"]["source_manifests"]
@@ -130,23 +131,23 @@ def analyze(root):
         evidence[label] = record
 
     all_coords = sorted(x for r in evidence.values() for x in r["coordinates"])
-    assert len(all_coords) == len(set(all_coords)) == 160
-    expected = list(range(0,32)) + list(range(64,192))
+    assert len(all_coords) == len(set(all_coords)) == 210
+    expected = list(range(0,32)) + list(range(64,242))
     assert all_coords == expected
     missing = [i for i in range(N) if i not in set(all_coords)]
-    assert missing == list(range(32,64)) + list(range(192,242))
-    assert sum(r["lean_theorem_declarations"] for r in evidence.values()) == 164
+    assert missing == list(range(32,64))
+    assert sum(r["lean_theorem_declarations"] for r in evidence.values()) == 220
     theorem_sets = [set(r["theorem_names"]) for r in evidence.values()]
-    assert len(set.union(*theorem_sets)) == 164
+    assert len(set.union(*theorem_sets)) == 220
     assertion = {
         "schema": "NF721-source-specific-original-global-row-one-accepted-inventory-v1",
         "source": "Accepted source-specific Lean standard-axiom audit artifacts only",
         "original_index": 1,
         "authenticated_accepted_stages": list(evidence),
-        "total_accepted_original_HD_row_one_gates": 160,
-        "total_accepted_original_A_column_one_gates": 160,
-        "total_accepted_gate_identities": 320,
-        "accepted_lean_declarations": 164,
+        "total_accepted_original_HD_row_one_gates": 210,
+        "total_accepted_original_A_column_one_gates": 210,
+        "total_accepted_gate_identities": 420,
+        "accepted_lean_declarations": 220,
         "accepted_coordinates": all_coords,
         "pending_intervals": [
             {"first":a,"end":b,"required_final_audit":stage}
@@ -157,7 +158,7 @@ def analyze(root):
         "source_manifests": evidence["nf715"]["source_manifests"],
         "accepted_local_source_audits": evidence["nf715"]["accepted_source_audits"],
         "stage_evidence": evidence,
-        "scope": "Precisely 160 genuine original index-one HD and A coordinate pairs accepted. NF717 32 and NF720 50 pairs excluded. This is a source-bound audit inventory, not a new Lean proof of an all-coordinate theorem or any full-cache, payment, Weil-positivity or RH result."
+        "scope": "Precisely 210 genuine original index-one HD and A coordinate pairs accepted. Only NF717 32 coordinate pairs excluded. This is a source-bound audit inventory, not a new Lean proof of an all-coordinate theorem or any full-cache, payment, Weil-positivity or RH result."
     }
     return assertion
 
@@ -169,7 +170,7 @@ def main():
     a = p.parse_args()
     cert = analyze(a.inputs)
     a.output.write_text(json.dumps(cert, indent=2, sort_keys=True)+"\n")
-    print("NF721 authenticated 160 original HD row-one and 160 A column-one global gates / 164 standard-axiom theorem declarations; exact 82-pair NF717/NF720 gap remains OPEN")
+    print("NF721 authenticated 210 original HD row-one and 210 A column-one global gates / 220 standard-axiom theorem declarations; exact 32-pair NF717 gap remains OPEN")
 
 
 if __name__ == "__main__":
