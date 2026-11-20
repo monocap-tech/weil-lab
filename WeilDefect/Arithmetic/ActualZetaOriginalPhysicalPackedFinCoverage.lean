@@ -1,7 +1,5 @@
-import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalPackedFinChunk000
-import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalPackedFinChunk008
-import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalPackedFinChunk016
-import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalPackedFinChunk024
+import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalPackedFinHalf000
+import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalPackedFinHalf016
 
 namespace WeilDefect
 
@@ -45,8 +43,8 @@ theorem neutralNF724Fin242OfPackedBlocks
     (h030 : ∀ k : Fin 2, P (⟨240 + k.val, by omega⟩ : Fin 242))
     : ∀ i : Fin 242, P i := by
   intro i
-  by_cases h0 : i.val < 64
-  · exact neutralNF724Chunk000 P
+  by_cases hmid : i.val < 128
+  · exact neutralNF726Half000 P
       h000
       h001
       h002
@@ -55,43 +53,32 @@ theorem neutralNF724Fin242OfPackedBlocks
       h005
       h006
       h007
-      i (by omega) h0
-  · by_cases h1 : i.val < 128
-    · exact neutralNF724Chunk008 P
-        h008
-        h009
-        h010
-        h011
-        h012
-        h013
-        h014
-        h015
-        i (by omega) h1
-    · by_cases h2 : i.val < 192
-      · exact neutralNF724Chunk016 P
-          h016
-          h017
-          h018
-          h019
-          h020
-          h021
-          h022
-          h023
-          i (by omega) h2
-      · exact neutralNF724Chunk024 P
-          h024
-          h025
-          h026
-          h027
-          h028
-          h029
-          h030
-          i (by omega) i.isLt
-
-#print axioms WeilDefect.neutralNF724Chunk000
-#print axioms WeilDefect.neutralNF724Chunk008
-#print axioms WeilDefect.neutralNF724Chunk016
-#print axioms WeilDefect.neutralNF724Chunk024
+      h008
+      h009
+      h010
+      h011
+      h012
+      h013
+      h014
+      h015
+      i hmid
+  · exact neutralNF726Half016 P
+      h016
+      h017
+      h018
+      h019
+      h020
+      h021
+      h022
+      h023
+      h024
+      h025
+      h026
+      h027
+      h028
+      h029
+      h030
+      i (by omega)
 #print axioms WeilDefect.neutralNF724Fin242OfPackedBlocks
 
 end WeilDefect

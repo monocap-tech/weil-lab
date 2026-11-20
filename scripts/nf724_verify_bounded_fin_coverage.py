@@ -22,22 +22,35 @@ def source():
         "neutralNF724Fin242OfPackedBlocks"
     ]
     assert not re.search(r"\b(sorry|admit|axiom|unsafe)\b", s)
-    assert "exact neutralNF724Chunk000 P" in s
-    assert "exact neutralNF724Chunk008 P" in s
-    assert "exact neutralNF724Chunk016 P" in s
-    assert "exact neutralNF724Chunk024 P" in s
+    assert "exact neutralNF726Half000 P" in s
+    assert "exact neutralNF726Half016 P" in s
     blocks = []
+    halves = {}
+    for half in (0,16):
+        name=f"neutralNF726Half{half:03d}"
+        hpath=SRC.with_name(
+            f"ActualZetaOriginalPhysicalPackedFinHalf{half:03d}.lean")
+        h=hpath.read_text()
+        assert (f"import WeilDefect.Arithmetic."
+                f"ActualZetaOriginalPhysicalPackedFinHalf{half:03d}") in s
+        assert re.findall(r"^theorem (neutralNF726\w+)",h,re.M)==[name]
+        assert f"#print axioms {name}" in h
+        assert not re.search(r"\b(sorry|admit|axiom|unsafe)\b", h)
+        halves[half]=h
     for chunk in (0, 8, 16, 24):
         cname = f"neutralNF724Chunk{chunk:03d}"
         path = SRC.with_name(
             f"ActualZetaOriginalPhysicalPackedFinChunk{chunk:03d}.lean")
         local = path.read_text()
+        half=0 if chunk<16 else 16
+        h=halves[half]
         assert local.startswith("import Mathlib.Tactic\n")
         assert re.findall(r"^theorem (neutralNF724\w+)",local,re.M)==[cname]
         assert f"#print axioms {cname}" in local
         assert not re.search(r"\b(sorry|admit|axiom|unsafe)\b", local)
         assert (f"import WeilDefect.Arithmetic."
-                f"ActualZetaOriginalPhysicalPackedFinChunk{chunk:03d}") in s
+                f"ActualZetaOriginalPhysicalPackedFinChunk{chunk:03d}") in h
+        assert f"exact {cname} P" in h
         for b in range(chunk,min(chunk+8,31)):
             first=b*8
             width=min(8,242-first)
@@ -47,9 +60,11 @@ def source():
             label=f"h{b:03d}"
             expected=f"({label} : ∀ k : Fin {width}, P {term})"
             assert local.count(expected)==1,(b,local.count(expected))
+            assert h.count(expected)==1,(b,h.count(expected))
             assert s.count(expected)==1,(b,s.count(expected))
             blocks.append({"index":b,"first":first,"end":first+width,
-                           "width":width,"source":str(path)})
+                           "width":width,"source":str(path),
+                           "half":half})
     assert blocks[-1]["end"]==242 and blocks[-1]["width"]==2
     assert sum(x["width"] for x in blocks)==242
     bridge=SPLIT.read_text()

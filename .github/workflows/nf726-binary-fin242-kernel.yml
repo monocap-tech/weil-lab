@@ -1,0 +1,138 @@
+name: NF726 original Fin242 binary Lean half-certificates and pinned master kernel
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedFinHalf*.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedFinCoverage.lean"
+      - "scripts/nf724_verify_bounded_fin_coverage.py"
+      - "scripts/nf726_binary_cover_source_objects.py"
+      - ".github/workflows/nf726-binary-fin242-kernel.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  authenticated-halves:
+    strategy:
+      fail-fast: false
+      matrix:
+        half: ["000", "016"]
+    runs-on: ubuntu-latest
+    timeout-minutes: 140
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify original four NF725 kernel jobs and immutable artifact identifiers
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,subprocess
+          repo=os.environ['GITHUB_REPOSITORY']
+          api=lambda p:json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/{p}'],text=True))
+          jobs=api('actions/runs/44697000459/jobs?per_page=100')['jobs']
+          expected={'finite-chunks (000)':136156029368,'finite-chunks (008)':136156029417,'finite-chunks (016)':136156029060,'finite-chunks (024)':136156029491}
+          assert {j['name']:j['id'] for j in jobs if j['name'] in expected and j['conclusion']=='success'} == expected
+          arts=api('actions/runs/44697000459/artifacts?per_page=100')['artifacts']
+          expected_arts={'nf725-kernel-chunk-000':14610874146,'nf725-kernel-chunk-008':14611477675,'nf725-kernel-chunk-016':14610514956,'nf725-kernel-chunk-024':14612185454}
+          assert {a['name']:a['id'] for a in arts if a['name'] in expected_arts and not a['expired']} == expected_arts
+          print('NF726 authentic four independently PASS Lean kernel jobs and exact immutable artifacts verified')
+          PY
+      - name: Restore prior four accepted compiled Lean chunk objects
+        uses: actions/download-artifact@v4
+        with:
+          pattern: nf725-kernel-chunk-*
+          path: nf725-receipts
+          run-id: 44697000459
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          merge-multiple: false
+      - name: Install original pinned Lean and Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Restore accepted original chunk objects with source, compiler and digest verification
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf724_verify_bounded_fin_coverage.py scripts/nf725_independent_lean_chunk_receipts.py scripts/nf726_binary_cover_source_objects.py
+          python scripts/nf724_verify_bounded_fin_coverage.py source
+          python scripts/nf725_independent_lean_chunk_receipts.py assemble
+      - name: Kernel-check first or second bounded 128/114 coordinate half proof
+        timeout-minutes: 70
+        run: |
+          set -euo pipefail
+          half="${{ matrix.half }}"
+          mkdir -p .lake/build/lib/lean/WeilDefect/Arithmetic
+          /usr/bin/time -o "nf726-half-$half-time.log" -f "elapsed=%e rss_kb=%M exit=%x" \
+            lake env lean -o ".lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedFinHalf$half.olean" \
+            "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedFinHalf$half.lean" \
+            2>&1 | tee "nf726-half-$half-axioms.log"
+          python scripts/nf726_binary_cover_source_objects.py half --half "$((10#$half))"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf726-source-bound-half-${{ matrix.half }}
+          path: |
+            nf726-half-${{ matrix.half }}/
+          if-no-files-found: ignore
+  final-242-cover:
+    needs: authenticated-halves
+    runs-on: ubuntu-latest
+    timeout-minutes: 140
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore four previously accepted source-specific NF725 chunk objects
+        uses: actions/download-artifact@v4
+        with:
+          pattern: nf725-kernel-chunk-*
+          path: nf725-receipts
+          run-id: 44697000459
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          merge-multiple: false
+      - name: Restore both independently certified and source-bound NF726 Lean half objects
+        uses: actions/download-artifact@v4
+        with:
+          pattern: nf726-source-bound-half-*
+          path: nf726-receipts
+          merge-multiple: false
+      - name: Install matching pinned Lean and Mathlib
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Recover and authenticate all four chunk objects and both half-proof objects
+        run: |
+          set -euo pipefail
+          python scripts/nf725_independent_lean_chunk_receipts.py assemble
+          python scripts/nf726_binary_cover_source_objects.py assemble
+      - name: Lean kernel-check exact complete 242-coordinate master from two binary halves
+        timeout-minutes: 70
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o nf726-master-time.log -f 'elapsed=%e rss_kb=%M exit=%x' \
+            lake env lean -o .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedFinCoverage.olean \
+              WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedFinCoverage.lean \
+              2>&1 | tee nf726-master-axioms.log
+          python scripts/nf726_binary_cover_source_objects.py master
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf726-pinned-binary-242-coordinate-master-lean-audit
+          path: |
+            nf726-assembled-halves.json
+            nf726-full-cover-audit.json
+            nf726-master-axioms.log
+            nf726-master-time.log
+          if-no-files-found: ignore
