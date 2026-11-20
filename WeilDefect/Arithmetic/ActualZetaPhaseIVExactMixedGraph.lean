@@ -87,6 +87,35 @@ theorem neutralIV003GraphMixed_continuous (a : ℝ) :
     hnv.inner (𝕜 := ℂ) hnu
   exact (hP.sub hN).div_const 2
 
+/-- The EXISTING genuine full-divisor source algebra already knows the
+*off-diagonal* P/N difference at each actual zero and multiplicity copy.
+This is an exact mixed zero-side dictionary, not a positivity bound,
+and it does not yet sum to an unrestricted external EF mixed formula. -/
+theorem neutralIV003GraphMixed_coordinate (a : ℝ)
+    (u v : NeutralActualZetaSourceDomain a)
+    (q : NeutralActualZetaDivisorCoordinate) :
+    conj (neutralActualZetaPositiveAnalysis a u q) *
+        neutralActualZetaPositiveAnalysis a v q -
+      conj (neutralActualZetaNegativeAnalysis a u q) *
+        neutralActualZetaNegativeAnalysis a v q =
+      conj (neutralWindowEvaluation a
+        (conj (neutralActualZetaDivisorOrdinate q))
+        (neutralNF598GraphPhysical a u)) *
+        neutralWindowEvaluation a (neutralActualZetaDivisorOrdinate q)
+          (neutralNF598GraphPhysical a v) +
+      conj (neutralWindowEvaluation a (neutralActualZetaDivisorOrdinate q)
+        (neutralNF598GraphPhysical a u)) *
+        neutralWindowEvaluation a
+          (conj (neutralActualZetaDivisorOrdinate q))
+          (neutralNF598GraphPhysical a v) := by
+  have hu := neutralActualZetaSourceAnalysis_sampling a u q
+  have hv := neutralActualZetaSourceAnalysis_sampling a v q
+  rw [hu.1, hu.2, hv.1, hv.2]
+  exact neutralLogPairSource_mixed_difference a
+    (neutralActualZetaDivisorOrdinate q)
+    (neutralActualZetaSourcePhysical a u)
+    (neutralActualZetaSourcePhysical a v)
+
 /-- The local EF support bound also controls the exact signed full
 source-graph mixed diagonal, provided the lift represents that
 supported test. It supplies NO mixed estimate for separated supports. -/
@@ -107,6 +136,7 @@ theorem neutralIV003LocalGraphDiagonal_coercive
 #print axioms neutralIV003GraphMixed_self
 #print axioms neutralIV003GraphMixed_self_re
 #print axioms neutralIV003GraphMixed_continuous
+#print axioms neutralIV003GraphMixed_coordinate
 #print axioms neutralIV003LocalGraphDiagonal_coercive
 
 end WeilDefect
