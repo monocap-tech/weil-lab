@@ -331,8 +331,9 @@ def main():
         baseline_path = Path("WeilDefect/Generated/NF715/manifest.json")
         assert baseline_path.is_file()
         a.baseline=read(baseline_path)
-        assert set(a.baseline["source_manifests"])==(
-            set(a.baseline["accepted_audits"])=={"inputs","cache","packed"})
+        assert (set(a.baseline["source_manifests"]) ==
+                set(a.baseline["accepted_audits"]) ==
+                {"inputs","cache","packed"})
         b=authenticate(a)
         emit(a,b)
     else:
