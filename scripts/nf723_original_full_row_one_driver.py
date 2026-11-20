@@ -198,8 +198,12 @@ def authenticate(a):
                     assert sha(dest) == digest
                 else:
                     shutil.copy2(src,dest)
-                assert file not in written[module], (module,file)
-                written[module][file] = digest
+                if file in written[module]:
+                    # NF715's authentic source was independently regenerated
+                    # from the original input/cache/packed bank above.
+                    assert stage == "nf715" and written[module][file] == digest
+                else:
+                    written[module][file] = digest
         assert len(names) == AUDIT_COUNT[stage], stage
         assert coords == list(range(8*lo,min(8*hi,N))), stage
         all_coords.extend(coords)
