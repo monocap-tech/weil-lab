@@ -31,6 +31,7 @@ jobs:
             44664511419:('nf716-second-original-global-matrix-row-continuation',14599006475),
             44665952640:('nf718-complete-original-global-matrix-row-one-64-coordinate-audit',14600591151),
             44666765580:('nf719-complete-original-global-matrix-row-one-64-coordinate-audit',14599649777),
+            44679385691:('nf720-recovered-complete-final-50-original-global-matrix-audit',14603193591),
           }
           for run,(name,artifact) in expected.items():
             obj=api(f'actions/runs/{run}')
@@ -67,6 +68,13 @@ jobs:
           name: nf719-complete-original-global-matrix-row-one-64-coordinate-audit
           path: nf721-audits/nf719
           run-id: 44666765580
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore recovered NF720 terminal 50-coordinate strict Lean aggregate
+        uses: actions/download-artifact@v4
+        with:
+          name: nf720-recovered-complete-final-50-original-global-matrix-audit
+          path: nf721-audits/nf720
+          run-id: 44679385691
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Audit original source hashes, theorem whitelist, exact gaps and disjoint gate inventory
         run: |
