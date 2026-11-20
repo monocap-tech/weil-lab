@@ -1,0 +1,76 @@
+name: IV003 manual-only authentic mixed zeta source graph theorem audit
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: iv003-mixed-graph-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  exact-mixed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned Lean toolchain and Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Build actual full-divisor signed source dependency and IV003 mixed kernel
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.ActualZetaPhaseIVExactMixedGraph 2>&1 | tee iv003-build.log
+      - name: Strict audit every actual source-specific theorem and frozen source file
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVExactMixedGraph.lean 2>&1 | tee iv003-axioms.log
+          python - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          source=Path('WeilDefect/Arithmetic/ActualZetaPhaseIVExactMixedGraph.lean')
+          raw=source.read_text()
+          assert not re.search(r'^\s*(sorry|admit|axiom|unsafe)\b',raw,re.M)
+          names=[
+            'neutralIV003GraphMixed_linear_first_add',
+            'neutralIV003GraphMixed_linear_first_smul',
+            'neutralIV003GraphMixed_hermitian',
+            'neutralIV003GraphMixed_self',
+            'neutralIV003GraphMixed_self_re',
+            'neutralIV003GraphMixed_continuous',
+            'neutralIV003GraphMixed_coordinate',
+            'neutralIV003LocalGraphDiagonal_coercive'
+          ]
+          log=Path('iv003-axioms.log').read_text()
+          results={}
+          for name in names:
+              prefix="'WeilDefect."+name+"'"
+              m=re.search(re.escape(prefix)+r' depends on axioms: \[([^\]]*)\]',log,re.S)
+              if m: axioms=[x.strip() for x in m[1].split(',') if x.strip()]
+              else:
+                  assert prefix+' does not depend on any axioms' in log, name
+                  axioms=[]
+              assert set(axioms)<={'propext','Classical.choice','Quot.sound'},(name,axioms)
+              results[name]=axioms
+          assert len(results)==8
+          Path('iv003-exact-audit.json').write_text(json.dumps({
+             'schema':'IV003-real-original-full-divisor-mixed-source-audit-v1',
+             'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),
+             'axioms':results,
+             'scope':'Original actual source graph mixed P/N Hermitian pairing and its diagonal, topology, and per-divisor dictionary; no full cross EF sum, RH, or Phase III matrix result.'
+          },indent=2)+'\n')
+          print('IV003 actual signed full-divisor mixed graph: LEAN KERNEL PASS; standard axioms only')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iv003-actual-mixed-graph-source-lean-audit
+          path: |
+            iv003-axioms.log
+            iv003-exact-audit.json
+          if-no-files-found: error
