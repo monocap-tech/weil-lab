@@ -1,0 +1,63 @@
+name: IV012 genuine original Weil cross-support prime pole Gamma arithmetic budget
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportArithmeticEnvelope.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportArithmeticCutoff.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalMixedHermitian.lean"
+      - "scripts/iv012_original_cross_support_arithmetic_envelope_audit.py"
+      - ".github/workflows/iv012-original-cross-support-arithmetic-envelope.yml"
+      - "docs/IV012_PHASE_IV_ORIGINAL_CROSS_SUPPORT_ARITHMETIC_BUDGET.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: iv012-original-cross-support-arithmetic-budget-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  genuine-original-prime-pole-gamma-arithmetic-envelope:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source-bound arithmetic/Schur proof preflight (not kernel acceptance)
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/iv012_original_cross_support_arithmetic_envelope_audit.py
+          python scripts/iv012_original_cross_support_arithmetic_envelope_audit.py preflight
+      - name: Install pinned Lean Mathlib and original project cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Direct Lean kernel build of original zeta mixed arithmetic budgets
+        timeout-minutes: 190
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o iv012-arithmetic-envelope-resources.log -f 'elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalCrossSupportArithmeticEnvelope 2>&1 | tee iv012-original-arithmetic-envelope-build.log
+      - name: Direct Lean standard axioms for 13 original and 4 source anchor declarations
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportArithmeticEnvelope.lean 2>&1 | tee iv012-original-arithmetic-envelope-axioms.log
+          python scripts/iv012_original_cross_support_arithmetic_envelope_audit.py verify
+          test -s iv012-original-arithmetic-envelope-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv012-original-zeta-cross-support-prime-pole-gamma-kernel-audit
+          path: |
+            iv012-arithmetic-envelope-resources.log
+            iv012-original-arithmetic-envelope-build.log
+            iv012-original-arithmetic-envelope-axioms.log
+            iv012-original-arithmetic-envelope-kernel-audit.json
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportArithmeticEnvelope.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
