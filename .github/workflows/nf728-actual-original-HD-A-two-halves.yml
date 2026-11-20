@@ -1,0 +1,463 @@
+name: NF728 real original complete HD/A two-half source-bound kernel certification
+on:
+  pull_request:
+    paths:
+      - "scripts/nf728_actual_original_binary_halves.py"
+      - ".github/workflows/nf728-actual-original-HD-A-two-halves.yml"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalFiniteBinaryGluing.lean"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf728-real-original-two-half-kernel-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  authenticate-and-emit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 125
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate immutable NF702 complete original scaled input
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p nf723-receipts/{input,cache-proposals,cache-audit,packed-proposals,packed-audit}
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14582437652/zip" -o nf723-original-input.zip
+          echo "258637da71e96468ed7c6ac5b0a4480ce06cdee9989aef8e71a4cd09059789e0  nf723-original-input.zip" | sha256sum -c -
+          unzip -q nf723-original-input.zip -d nf723-receipts/input
+      - name: Restore accepted nf703-original-cache-proposals
+        uses: actions/download-artifact@v4
+        with:
+          name: nf703-original-cache-proposals
+          path: nf723-receipts/cache-proposals
+          run-id: 44627666710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore accepted nf703-original-cache-audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf703-original-cache-audit
+          path: nf723-receipts/cache-audit
+          run-id: 44627666710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore accepted nf700-packed-matrix-proposals
+        uses: actions/download-artifact@v4
+        with:
+          name: nf700-packed-matrix-proposals
+          path: nf723-receipts/packed-proposals
+          run-id: 44623902055
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore accepted nf700-complete-packed-matrix-audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf700-complete-packed-matrix-audit
+          path: nf723-receipts/packed-audit
+          run-id: 44623902055
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Require completed upstream kernel runs and exact immutable audit artifact IDs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,subprocess
+          repo=os.environ['GITHUB_REPOSITORY']
+          api=lambda p:json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/{p}'],text=True))
+          expected=json.loads('{"44660635800":{"nf715-first-second-global-matrix-row-certificates":14597076473},"44664511419":{"nf716-second-original-global-matrix-row-continuation":14599006475},"44679426067":{"nf717-independent-original-global-matrix-row-attachment":14605916738},"44665952640":{"nf718-source-bound-8-12":14599636962,"nf718-source-bound-12-16":14600315333,"nf718-complete-original-global-matrix-row-one-64-coordinate-audit":14600591151},"44666765580":{"nf719-source-bound-16-20":14599913564,"nf719-source-bound-20-24":14600668002,"nf719-complete-original-global-matrix-row-one-64-coordinate-audit":14599649777},"44670251345":{"nf720-source-bound-24-28":14602630283,"nf720-source-bound-28-31":14601806691},"44679385691":{"nf720-recovered-complete-final-50-original-global-matrix-audit":14603193591},"44685250801":{"nf721-accepted-original-row-one-source-specific-inventory":14606522853}}')
+          for run,exp in expected.items():
+            obj=api(f'actions/runs/{run}')
+            if run=='44670251345':
+              jobs=api(f'actions/runs/{run}/jobs?per_page=100')['jobs']
+              good={j['name'] for j in jobs if j['conclusion']=='success'}
+              assert {'Original global row-one remaining blocks 24–28','Original global row-one remaining blocks 28–31'}<=good,run
+            else:
+              assert obj['status']=='completed' and obj['conclusion']=='success',(run,obj['conclusion'])
+            arts=api(f'actions/runs/{run}/artifacts?per_page=100')['artifacts']
+            got={a['name']:a['id'] for a in arts if a['name'] in exp and not a['expired']}
+            assert got==exp,(run,got,exp)
+          print('NF723 all previously accepted original source-specific product theorem and aggregate artifacts authenticated')
+          PY
+      - name: Restore accepted nf715-first-second-global-matrix-row-certificates
+        uses: actions/download-artifact@v4
+        with:
+          name: nf715-first-second-global-matrix-row-certificates
+          path: nf723-accepted/nf715
+          run-id: 44660635800
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore accepted nf716-second-original-global-matrix-row-continuation
+        uses: actions/download-artifact@v4
+        with:
+          name: nf716-second-original-global-matrix-row-continuation
+          path: nf723-accepted/nf716
+          run-id: 44664511419
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore accepted nf717-independent-original-global-matrix-row-attachment
+        uses: actions/download-artifact@v4
+        with:
+          name: nf717-independent-original-global-matrix-row-attachment
+          path: nf723-accepted/nf717
+          run-id: 44679426067
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore accepted nf718-source-bound-8-12
+        uses: actions/download-artifact@v4
+        with:
+          name: nf718-source-bound-8-12
+          path: nf723-accepted/nf718-a
+          run-id: 44665952640
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore accepted nf718-source-bound-12-16
+        uses: actions/download-artifact@v4
+        with:
+          name: nf718-source-bound-12-16
+          path: nf723-accepted/nf718-b
+          run-id: 44665952640
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore accepted nf719-source-bound-16-20
+        uses: actions/download-artifact@v4
+        with:
+          name: nf719-source-bound-16-20
+          path: nf723-accepted/nf719-a
+          run-id: 44666765580
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore accepted nf719-source-bound-20-24
+        uses: actions/download-artifact@v4
+        with:
+          name: nf719-source-bound-20-24
+          path: nf723-accepted/nf719-b
+          run-id: 44666765580
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore accepted nf720-source-bound-24-28
+        uses: actions/download-artifact@v4
+        with:
+          name: nf720-source-bound-24-28
+          path: nf723-accepted/nf720-a
+          run-id: 44670251345
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore accepted nf720-source-bound-28-31
+        uses: actions/download-artifact@v4
+        with:
+          name: nf720-source-bound-28-31
+          path: nf723-accepted/nf720-b
+          run-id: 44670251345
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore accepted nf718-complete-original-global-matrix-row-one-64-coordinate-audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf718-complete-original-global-matrix-row-one-64-coordinate-audit
+          path: nf723-aggregates/nf718
+          run-id: 44665952640
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore accepted nf719-complete-original-global-matrix-row-one-64-coordinate-audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf719-complete-original-global-matrix-row-one-64-coordinate-audit
+          path: nf723-aggregates/nf719
+          run-id: 44666765580
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore accepted nf720-recovered-complete-final-50-original-global-matrix-audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf720-recovered-complete-final-50-original-global-matrix-audit
+          path: nf723-aggregates/nf720
+          run-id: 44679385691
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore independently accepted NF721 210-coordinate original proof inventory
+        uses: actions/download-artifact@v4
+        with:
+          name: nf721-accepted-original-row-one-source-specific-inventory
+          path: nf723-accepted-ledger
+          run-id: 44685250801
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Regenerate original NF702/NF703/NF700 source and reconcile every accepted stage
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf715_second_global_matrix_row_driver.py scripts/nf723_original_full_row_one_driver.py
+          python scripts/nf715_second_global_matrix_row_driver.py prepare --receipts nf723-receipts --output WeilDefect/Generated/NF715 2>&1 | tee nf723-source-reconstruction.log
+          python scripts/nf723_original_full_row_one_driver.py prepare 2>&1 | tee nf723-accepted-source-binding.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('WeilDefect/Generated/NF723/manifest.json').read_text())
+          assert m['accepted_prior_theorem_declarations']==252
+          assert m['accepted_original_coordinate_pairs']==242
+          assert sum(len(r['theorems']) for r in m['accepted_stages'])==252
+          assert len(m['accepted_stages'])==9
+          assert m['new_universal_theorems']==['nf723OriginalHDRowOneAll','nf723OriginalAColumnOneAll']
+          print('NF723 31 accepted source-specific blocks and two actual global row theorem candidates reconciled')
+          PY
+      - name: Audit actual original source-specific 31-block Lean theorem candidate imports and original 484 gate names
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,re,hashlib
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF723')
+          m=json.loads((d/'manifest.json').read_text())
+          src=(d/'OriginalRowOne.lean').read_text()
+          sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+          assert sha(d/'OriginalRowOne.lean')==m['new_source_sha256']
+          assert m['accepted_prior_theorem_declarations']==252
+          assert m['accepted_original_coordinate_pairs']==242
+          assert len(m['accepted_stages'])==9
+          assert m['nf717_newly_closed_coordinate_interval']==[32,64]
+          assert m['new_universal_theorems']==['nf723OriginalHDRowOneAll','nf723OriginalAColumnOneAll']
+          assert 'theorem nf723OriginalHDRowOneAll' in src
+          assert 'theorem nf723OriginalAColumnOneAll' in src
+          assert len(re.findall(r'^import WeilDefect.Generated.NF7[0-9]+.Block[0-9]{3}$',src,re.M))==31
+          assert len(re.findall(r'^    nf7[0-9]+Block[0-9]{3}GlobalHD$',src,re.M))==31
+          assert len(re.findall(r'^    nf7[0-9]+Block[0-9]{3}GlobalA$',src,re.M))==31
+          assert all(x['source_files'] for x in m['accepted_stages'])
+          assert not any(tok in src for tok in ('sorry','admit'))
+          print('NF727 authentic original 31 index-one packed certificate source files and two full-row Lean theorem candidates: SOURCE-BOUND PREPARE PASS; new complete row proof KERNEL PENDING')
+          PY
+      - name: Verify immutable NF727 original source preflight run and exact generated candidate artifact
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,subprocess
+          repo=os.environ['GITHUB_REPOSITORY']
+          api=lambda path:json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/{path}'],text=True))
+          obj=api('actions/runs/44760318280')
+          assert obj['status']=='completed' and obj['conclusion']=='success'
+          arts=api('actions/runs/44760318280/artifacts?per_page=100')['artifacts']
+          name='nf727-exact-original-31-block-source-only-HD-A-attachment-preflight'
+          matches=[x for x in arts if x['name']==name and not x['expired']]
+          assert len(matches)==1 and matches[0]['id']==14641426213,matches
+          print('NF728 successful original NF727 31-block source preflight certificate run + immutable artifact identity authenticated')
+          PY
+      - name: Restore independently accepted original NF723 full-row source candidates and source manifest
+        uses: actions/download-artifact@v4
+        with:
+          name: nf727-exact-original-31-block-source-only-HD-A-attachment-preflight
+          path: nf728-prior-original
+          run-id: 44760318280
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Emit and independently source-audit four actual HD/A half-gate Lean claims and two complete claims
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf728_actual_original_binary_halves.py
+          python scripts/nf728_actual_original_binary_halves.py prepare 2>&1 | tee nf728-original-source-prepare.log
+          python scripts/nf728_actual_original_binary_halves.py source 2>&1 | tee nf728-original-source-verify.log
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF728')
+          m=json.loads((d/'manifest.json').read_text())
+          assert m['accepted_prior_global_product_theorem_declarations']==252
+          assert m['accepted_original_index_one_HD_coordinate_gates']==242
+          assert m['accepted_original_index_one_A_coordinate_gates']==242
+          assert len(m['blocks'])==31
+          assert m['half_theorems']==['nf728OriginalHDLeft','nf728OriginalALeft','nf728OriginalHDRight','nf728OriginalARight']
+          assert m['full_theorems']==['nf728OriginalHDRowOneAll','nf728OriginalAColumnOneAll']
+          assert {x['part'] for x in m['half_ranges']}=={'Left','Right'}
+          assert all(hashlib.sha256((d/f).read_bytes()).hexdigest()==h for f,h in m['files'].items())
+          print('NF728 4 genuine original half and 2 genuine original full Lean theorem source candidates PASS preflight; 6 NEW kernel proofs pending')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf728-authenticated-original-HD-A-two-half-source-bank
+          path: |
+            WeilDefect/Generated/
+            nf723-binding.json
+            nf728-original-source-prepare.log
+            nf728-original-source-verify.log
+          if-no-files-found: error
+  kernel-check-actual-halves:
+    needs: authenticate-and-emit
+    strategy:
+      fail-fast: false
+      matrix:
+        half: ["Left", "Right"]
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore complete NF728 original literal source bank and real half theorem candidates
+        uses: actions/download-artifact@v4
+        with:
+          name: nf728-authenticated-original-HD-A-two-half-source-bank
+          path: .
+      - name: Restore immutable accepted original NF723 source fingerprint for independent recheck
+        uses: actions/download-artifact@v4
+        with:
+          name: nf727-exact-original-31-block-source-only-HD-A-attachment-preflight
+          path: nf728-prior-original
+          run-id: 44760318280
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Strict source and 31-block full-bank original HD/A provenance verification
+        run: |
+          set -euo pipefail
+          python scripts/nf728_actual_original_binary_halves.py source
+      - name: Install pinned Lean toolchain and original Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Restore source-bound NF707 compiled original input with source fingerprint
+        uses: actions/download-artifact@v4
+        with:
+          name: nf707-compiled-original-input
+          path: nf708-compiled-input
+          run-id: 44633937710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify original scaled-input source and compiler fingerprint before reuse
+        run: |
+          set -euo pipefail
+          python scripts/nf708_global_matrix_attachment_driver.py restore-input
+      - name: Kernel compile original complete center cache and global projection common module
+        timeout-minutes: 245
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o nf728-source-time.log -f 'elapsed=%e user=%U rss_kb=%M exit=%x' \
+            lake build WeilDefect.Generated.NF703Cache.Data WeilDefect.Generated.NF715.Common 2>&1 | tee nf728-source-build.log
+      - name: Kernel compile the applicable original NF700 local signed-digit blocks one at a time
+        timeout-minutes: 180
+        run: |
+          set -euo pipefail
+          if [[ "${{ matrix.half }}" == "Left" ]]; then lo=0; hi=16; else lo=16; hi=31; fi
+          for ((i=lo;i<hi;i++)); do
+            printf -v block "Block%03d" "$i"
+            /usr/bin/time -a -o nf728-local-time.log -f "block=$block elapsed=%e rss_kb=%M exit=%x" \
+              lake build "WeilDefect.Generated.NF700.$block" 2>&1 | tee -a nf728-local-build.log
+          done
+      - name: Kernel compile exact original accepted global HD/A source-specific packed product blocks
+        timeout-minutes: 180
+        run: |
+          set -euo pipefail
+          if [[ "${{ matrix.half }}" == "Left" ]]; then lo=0; hi=16; else lo=16; hi=31; fi
+          for ((i=lo;i<hi;i++)); do
+            printf -v block "Block%03d" "$i"
+            if ((i==0)); then stage=NF715
+            elif ((i<4)); then stage=NF716
+            elif ((i<8)); then stage=NF717
+            elif ((i<16)); then stage=NF718
+            elif ((i<24)); then stage=NF719
+            else stage=NF720
+            fi
+            /usr/bin/time -a -o nf728-global-time.log -f "stage=$stage block=$block elapsed=%e rss_kb=%M exit=%x" \
+              lake build "WeilDefect.Generated.$stage.$block" 2>&1 | tee -a nf728-global-build.log
+          done
+      - name: Kernel-check actual two original HD/A half-range theorems on accepted physical sources
+        timeout-minutes: 90
+        run: |
+          set -euo pipefail
+          side="${{ matrix.half }}"
+          lake build "WeilDefect.Generated.NF728.Actual$side" 2>&1 | tee "nf728-${side,,}-axioms.log"
+          python scripts/nf728_actual_original_binary_halves.py verify-half --half "$side"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf728-actual-original-HD-A-half-${{ matrix.half }}-kernel-audit
+          path: |
+            nf728-*.log
+            nf728-*-audit.json
+            .lake/build/lib/lean/WeilDefect/
+          include-hidden-files: true
+          if-no-files-found: ignore
+  finish-actual-original-row-one:
+    needs: kernel-check-actual-halves
+    runs-on: ubuntu-latest
+    timeout-minutes: 250
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore immutable NF728 original source bank and both actual half proof candidates
+        uses: actions/download-artifact@v4
+        with:
+          name: nf728-authenticated-original-HD-A-two-half-source-bank
+          path: .
+      - name: Restore NF727 audited original row-one source snapshot for exact provenance
+        uses: actions/download-artifact@v4
+        with:
+          name: nf727-exact-original-31-block-source-only-HD-A-attachment-preflight
+          path: nf728-prior-original
+          run-id: 44760318280
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Recover separately accepted two original HD/A half proofs
+        uses: actions/download-artifact@v4
+        with:
+          pattern: nf728-actual-original-HD-A-half-*-kernel-audit
+          path: nf728-audited-halves
+          merge-multiple: false
+      - name: Install pinned Lean compiler and Mathlib cached imports
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Verify each successful original half standard-axiom audit and recover exact compatible Lean imports
+        run: |
+          set -euo pipefail
+          python scripts/nf728_actual_original_binary_halves.py source
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib,shutil
+          sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+          root=Path('nf728-audited-halves')
+          assert len(list(root.glob('nf728-actual-original-HD-A-half-*-kernel-audit')))==2
+          for side in ('Left','Right'):
+            dirs=list(root.glob(f'nf728-actual-original-HD-A-half-{side}-kernel-audit'))
+            assert len(dirs)==1,dirs
+            folder=dirs[0]
+            f=folder/f'nf728-{side.lower()}-audit.json'
+            cert=json.loads(f.read_text())
+            assert cert['schema']=='NF728-real-original-HD-A-half-lean-proof-audit-v1'
+            assert cert['half']==side
+            assert cert['status'].startswith('LEAN KERNEL PASS')
+            assert cert['source_sha256']==sha(f'WeilDefect/Generated/NF728/Actual{side}.lean')
+            assert cert['manifest_sha256']==sha('WeilDefect/Generated/NF728/manifest.json')
+            assert set(cert['axioms'])=={f'nf728Original{t}{side}' for t in ('HD','A')}
+            assert all(set(v)<={'propext','Classical.choice','Quot.sound'} for v in cert['axioms'].values())
+            imported=folder/'WeilDefect'
+            assert imported.is_dir()
+            for item in imported.rglob('*.olean'):
+              destination=Path('.lake/build/lib/lean/WeilDefect')/item.relative_to(imported)
+              destination.parent.mkdir(parents=True,exist_ok=True)
+              if destination.exists():
+                assert sha(destination)==sha(item),(side,item,destination)
+              else:shutil.copy2(item,destination)
+            target=Path(f'.lake/build/lib/lean/WeilDefect/Generated/NF728/Actual{side}.olean')
+            assert target.is_file() and target.stat().st_size>1024
+          print('NF728 both source-bound authentic original HD/A half theorem audits and compiled Lean objects verified')
+          PY
+      - name: Build and kernel-check minimal generic NF727 binary bridge before actual original universal assembly
+        timeout-minutes: 65
+        run: |
+          set -euo pipefail
+          mkdir -p .lake/build/lib/lean/WeilDefect/Arithmetic
+          lake env lean -o .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalPhysicalFiniteBinaryGluing.olean \
+            WeilDefect/Arithmetic/ActualZetaOriginalPhysicalFiniteBinaryGluing.lean 2>&1 | tee nf728-binary-bridge.log
+      - name: Kernel-check two complete actual original universal HD/A index-one product families
+        timeout-minutes: 75
+        run: |
+          set -euo pipefail
+          mkdir -p .lake/build/lib/lean/WeilDefect/Generated/NF728
+          lake env lean -o .lake/build/lib/lean/WeilDefect/Generated/NF728/ActualComplete.olean \
+            WeilDefect/Generated/NF728/ActualComplete.lean 2>&1 | tee nf728-complete-axioms.log
+          python scripts/nf728_actual_original_binary_halves.py verify-complete
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf728-original-complete-index-one-HD-A-global-universal-lean-audit
+          path: |
+            nf728-binary-bridge.log
+            nf728-complete-axioms.log
+            nf728-complete-audit.json
+            WeilDefect/Generated/NF728/manifest.json
+          if-no-files-found: ignore
