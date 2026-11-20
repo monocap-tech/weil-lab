@@ -1,0 +1,231 @@
+name: NF729 eight original HD-A index-one four-block numerical shard kernel certificates
+on:
+  pull_request:
+    paths:
+      - "scripts/nf729_original_index_one_quad_shards.py"
+      - ".github/workflows/nf729-original-HD-A-quad-shards.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  prepare-authentic-original-quads:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Require accepted immutable NF728 original complete source-bank and exact artifact
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os,json,subprocess
+          repo=os.environ['GITHUB_REPOSITORY']
+          api=lambda p:json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/{p}'],text=True))
+          jobs=api('actions/runs/44764979145/jobs?per_page=100')['jobs']
+          assert any(j['id']==136387054732 and j['name']=='authenticate-and-emit' and j['conclusion']=='success' for j in jobs),jobs
+          arts=api('actions/runs/44764979145/artifacts?per_page=100')['artifacts']
+          expected=[a for a in arts if a['id']==14644051272 and a['name']=='nf728-authenticated-original-HD-A-two-half-source-bank' and not a['expired']]
+          assert len(expected)==1,expected
+          print('NF729 authenticated immutable accepted NF728 original physical complete source-bank and its successful source-preparation job')
+          PY
+      - name: Restore genuine NF728 complete original NF702-NF703-NF700-NF715–NF720 proof source bank
+        uses: actions/download-artifact@v4
+        with:
+          name: nf728-authenticated-original-HD-A-two-half-source-bank
+          path: .
+          run-id: 44764979145
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate eight source-bound original HD/A 4-block quad proof candidates
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf729_original_index_one_quad_shards.py
+          python scripts/nf729_original_index_one_quad_shards.py prepare 2>&1 | tee nf729-quad-prepare.log
+          python scripts/nf729_original_index_one_quad_shards.py source 2>&1 | tee nf729-quad-source-audit.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('WeilDefect/Generated/NF729/manifest.json').read_text())
+          assert m['quad_count']==8 and m['new_generic_lean_theorems']==8
+          assert m['new_genuine_original_source_specific_theorems']==16
+          assert sum(x['end_coordinate']-x['first_coordinate'] for x in m['quads'])==242
+          assert len(m['files'])==16
+          assert m['accepted_original_index_one_HD_gates']==m['accepted_original_index_one_A_gates']==242
+          print('NF729 original 31 packed blocks divided into 8 disjoint 4-block families with exact final Fin2: source preflight PASS; NEW Lean theorems pending')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf729-original-source-bound-8-quad-Lean-candidates
+          path: |
+            WeilDefect/Generated/NF729/
+            nf729-quad-prepare.log
+            nf729-quad-source-audit.log
+          if-no-files-found: error
+  pure-quad-index-kernels:
+    needs: prepare-authentic-original-quads
+    strategy:
+      fail-fast: false
+      matrix:
+        quad: ["000", "004", "008", "012", "016", "020", "024", "028"]
+    runs-on: ubuntu-latest
+    timeout-minutes: 115
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore only small generated NF729 source candidates
+        uses: actions/download-artifact@v4
+        with:
+          name: nf729-original-source-bound-8-quad-Lean-candidates
+          path: .
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Direct kernel-check one bounded original-coordinate quad without any physical matrix imports
+        timeout-minutes: 80
+        run: |
+          set -euo pipefail
+          b="${{ matrix.quad }}"
+          mkdir -p .lake/build/lib/lean/WeilDefect/Generated/NF729
+          /usr/bin/time -o "nf729-$b-finite-time.log" -f "elapsed=%e rss_kb=%M exit=%x" \
+            lake env lean -o ".lake/build/lib/lean/WeilDefect/Generated/NF729/Quad${b}Finite.olean" \
+              "WeilDefect/Generated/NF729/Quad${b}Finite.lean" 2>&1 | tee "nf729-$b-finite-axioms.log"
+          python scripts/nf729_original_index_one_quad_shards.py verify --quad "$((10#$b))" --kind Finite
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf729-source-bound-finite-quad-${{ matrix.quad }}-kernel-audit
+          path: |
+            nf729-${{ matrix.quad }}-finite-axioms.log
+            nf729-${{ matrix.quad }}-finite-time.log
+            nf729-${{ matrix.quad }}-finite-audit.json
+            .lake/build/lib/lean/WeilDefect/Generated/NF729/Quad${{ matrix.quad }}Finite.olean
+          include-hidden-files: true
+          if-no-files-found: ignore
+  authentic-numerical-quads:
+    needs: pure-quad-index-kernels
+    strategy:
+      fail-fast: false
+      matrix:
+        quad: ["000", "004", "008", "012", "016", "020", "024", "028"]
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore immutable accepted original global product source bank
+        uses: actions/download-artifact@v4
+        with:
+          name: nf728-authenticated-original-HD-A-two-half-source-bank
+          path: .
+          run-id: 44764979145
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore corresponding source-specific original quad candidates
+        uses: actions/download-artifact@v4
+        with:
+          name: nf729-original-source-bound-8-quad-Lean-candidates
+          path: .
+      - name: Restore independently accepted exact finite-index quad theorem compiled object
+        uses: actions/download-artifact@v4
+        with:
+          name: nf729-source-bound-finite-quad-${{ matrix.quad }}-kernel-audit
+          path: .
+      - name: Verify all 31 genuine original global proof blocks, 242 coordinates and downloaded matching finite proof
+        run: |
+          set -euo pipefail
+          python scripts/nf729_original_index_one_quad_shards.py source
+          python - <<'PY'
+          import os,hashlib,json
+          from pathlib import Path
+          b=int(os.environ['QUAD'])
+          m=json.loads(Path('WeilDefect/Generated/NF729/manifest.json').read_text())
+          a=json.loads(Path(f'nf729-{b:03d}-finite-audit.json').read_text())
+          assert a['schema']=='NF729-independent-original-quad-lean-kernel-audit-v1'
+          assert a['kind']=='Finite' and a['quad_first_block']==b
+          assert a['manifest_sha256']==hashlib.sha256(Path('WeilDefect/Generated/NF729/manifest.json').read_bytes()).hexdigest()
+          assert a['source_sha256']==m['files'][f'Quad{b:03d}Finite.lean']
+          assert all(set(v)<={'propext','Classical.choice','Quot.sound'} for v in a['axioms'].values())
+          assert Path(f'.lake/build/lib/lean/WeilDefect/Generated/NF729/Quad{b:03d}Finite.olean').stat().st_size>1024
+          print('NF729 original numerical quad kernel prerequisite: matching accepted finite Lean object, exact source SHA and axioms PASS')
+          PY
+        env:
+          QUAD: ${{ matrix.quad }}
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Restore accepted compiled original NF702 scaled input with exact source/compiler fingerprint
+        uses: actions/download-artifact@v4
+        with:
+          name: nf707-compiled-original-input
+          path: nf708-compiled-input
+          run-id: 44633937710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Authenticate original compiled input reuse and build original center cache once
+        timeout-minutes: 245
+        run: |
+          set -euo pipefail
+          python scripts/nf708_global_matrix_attachment_driver.py restore-input
+          /usr/bin/time -o nf729-center-cache-time.log -f 'elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Generated.NF703Cache.Data WeilDefect.Generated.NF715.Common 2>&1 | tee nf729-center-cache-build.log
+      - name: Kernel-check only four genuine original local signed-digit blocks and source-bound global products
+        timeout-minutes: 160
+        run: |
+          set -euo pipefail
+          first=$((10#${{ matrix.quad }}))
+          last=$((first+4)); if ((last>31)); then last=31; fi
+          for ((i=first;i<last;i++)); do
+            printf -v block "Block%03d" "$i"
+            lake build "WeilDefect.Generated.NF700.$block" 2>&1 | tee -a nf729-local-build.log
+          done
+          for ((i=first;i<last;i++)); do
+            printf -v block "Block%03d" "$i"
+            if ((i==0)); then stage=NF715
+            elif ((i<4)); then stage=NF716
+            elif ((i<8)); then stage=NF717
+            elif ((i<16)); then stage=NF718
+            elif ((i<24)); then stage=NF719
+            else stage=NF720
+            fi
+            lake build "WeilDefect.Generated.$stage.$block" 2>&1 | tee -a nf729-global-build.log
+          done
+      - name: Kernel-check two ORIGINAL numerical HD and A index-one quad coordinate theorems
+        timeout-minutes: 90
+        run: |
+          set -euo pipefail
+          b="${{ matrix.quad }}"
+          mkdir -p .lake/build/lib/lean/WeilDefect/Generated/NF729
+          /usr/bin/time -o "nf729-$b-original-time.log" -f "elapsed=%e rss_kb=%M exit=%x" \
+            lake env lean -o ".lake/build/lib/lean/WeilDefect/Generated/NF729/Quad${b}Original.olean" \
+              "WeilDefect/Generated/NF729/Quad${b}Original.lean" 2>&1 | tee "nf729-$b-original-axioms.log"
+          python scripts/nf729_original_index_one_quad_shards.py verify --quad "$((10#$b))" --kind Original
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf729-real-original-HD-A-quad-${{ matrix.quad }}-source-bound-kernel-audit
+          path: |
+            nf729-${{ matrix.quad }}-original-axioms.log
+            nf729-${{ matrix.quad }}-original-time.log
+            nf729-${{ matrix.quad }}-original-audit.json
+            nf729-global-build.log
+            nf729-local-build.log
+            nf729-center-cache-build.log
+            .lake/build/lib/lean/WeilDefect/
+          include-hidden-files: true
+          if-no-files-found: ignore
