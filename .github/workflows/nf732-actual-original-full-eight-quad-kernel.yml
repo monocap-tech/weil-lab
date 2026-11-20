@@ -135,7 +135,7 @@ jobs:
       - numerical-quad-kernel-readiness
     if: ${{ needs.numerical-quad-kernel-readiness.outputs.ready == 'true' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 200
+    timeout-minutes: 300
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -151,14 +151,6 @@ jobs:
         with:
           name: nf732-eight-original-quad-full-Fin242-pure-Lean-kernel
           path: .
-      - name: Restore all eight separately accepted original numerical HD/A shard compiled Lean objects
-        uses: actions/download-artifact@v4
-        with:
-          pattern: nf729-real-original-HD-A-quad-*-source-bound-kernel-audit
-          path: nf732-original-quads
-          merge-multiple: false
-          run-id: 44767040253
-          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Install matching pinned Lean version and Mathlib imports
         run: |
           set -euo pipefail
@@ -167,12 +159,24 @@ jobs:
           export PATH="$HOME/.elan/bin:$PATH"
           lake update
           lake exe cache get
-      - name: Authenticate all eight genuine original matrix numerical quad source/theorem axioms and compiled-object SHA
+      - name: Sequentially download and authenticate eight accepted numerical HD/A shard objects without exhausting disk
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        timeout-minutes: 125
         run: |
           set -euo pipefail
           python scripts/nf732_original_full_from_eight_authenticated_quads.py source
-          python scripts/nf732_accept_original_quad_kernel_objects.py
           test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalPhysicalEightQuadFullCover.olean
+          for b in 000 004 008 012 016 020 024 028; do
+            name="nf729-real-original-HD-A-quad-$b-source-bound-kernel-audit"
+            tmp="nf732-temporary-numerical-quad-$b"
+            mkdir -p "$tmp"
+            gh run download 44767040253 --repo "$GITHUB_REPOSITORY" --name "$name" --dir "$tmp"
+            python scripts/nf732_accept_original_quad_kernel_objects.py ingest --quad "$((10#$b))" --root "$tmp"
+            rm -rf "$tmp"
+            df -h .
+          done
+          python scripts/nf732_accept_original_quad_kernel_objects.py finalize
       - name: Kernel-check literal original 242 HD row-one and 242 A column-one universal gate theorems
         timeout-minutes: 125
         run: |
