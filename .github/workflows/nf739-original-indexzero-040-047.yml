@@ -161,7 +161,7 @@ jobs:
           assert x.count('#print axioms WeilDefect.')==35
           assert all(f'import WeilDefect.Generated.NF704Frontier.Col{i:03d}' in x for i in range(40,48))
           assert 'Col024' not in x and 'Col031' not in x and 'Col032' not in x and 'Col039' not in x
-          print('NF737 true original source-bound numerical independent shard 40–47, 16 original gate propositions, 32 new +3 shared strict axiom names: SOURCE AUTHENTICATED')
+          print('NF739 true original source-bound numerical independent shard 40–47, 16 original gate propositions, 32 new +3 shared strict axiom names: SOURCE AUTHENTICATED')
           PY
       - name: Install original pinned Lean and Mathlib cached imports
         run: |
@@ -194,7 +194,7 @@ jobs:
           set -euo pipefail
           for ((i=40;i<48;i++)); do
             printf -v col "%03d" "$i"
-            lake build "WeilDefect.Generated.NF704Frontier.Col$col" 2>&1 | tee -a nf737-indexzero-040-047-build.log
+            lake build "WeilDefect.Generated.NF704Frontier.Col$col" 2>&1 | tee -a nf739-indexzero-040-047-build.log
           done
       - name: Strict original numerical source-bound 35 theorem standard-axiom audit for HD/A zero-index coordinates 040 through 047
         timeout-minutes: 30
@@ -206,9 +206,10 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: nf737-genuine-original-global-indexzero-040-047-HD-A-numerical-kernel-audit
+          name: nf739-genuine-original-global-indexzero-040-047-HD-A-numerical-kernel-audit
           path: |
-            nf737-indexzero-*.log
+            nf737-indexzero-center-cache-build.log
+            nf739-indexzero-*.log
             nf737-indexzero-center-cache-time.log
             nf739-original-indexzero-040-047-axioms.log
             nf739-original-indexzero-040-047-kernel-audit.json
