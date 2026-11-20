@@ -24,7 +24,8 @@ import zipfile
 from pathlib import Path
 
 BASE=Path("WeilDefect/Generated")
-FAMILIES=("NF702Inputs","NF703Cache","NF681")
+FAMILIES=("NF702Inputs","NF703Cache")  # cached source ancestry only
+LOCAL_FAMILY="NF681"  # NF737 source verified independently, not assumed in NF728
 SOURCE_ZIP=Path("nf743-nf728-accepted-original-source.zip")
 OBJECT_ZIP=Path("nf743-nf729-accepted-original-quad000-objects.zip")
 OUTPUT=Path("nf743-accepted-original-center-cache-reuse.json")
@@ -52,26 +53,41 @@ def file_hash(stream):
     return h.hexdigest()
 
 def assert_original_source_matches():
+    """Require exact byte-identical old/new CACHE sources, not unrelated NF681.
+
+    NF728's original index-one proof used the NF700 packed blocks. Its source
+    archive need not contain NF737's later index-zero NF681 local source bank.
+    Absence of that unrelated family must not be confused with a difference
+    in the immutable old NF702/NF703 cache source.
+    """
     assert sha(SOURCE_ZIP)==EXPECTED_SRC_DIGEST, "Immutable NF728 original source ZIP artifact digest mismatch"
     assert FULL_SOURCE.is_file()
     fromzip={}
+    historic_local={}
     with zipfile.ZipFile(SOURCE_ZIP) as z:
         for entry in z.infolist():
-            # GitHub upload-artifact may record the ZIP with a hidden
-            # leading root; normalize only by exact known directory marker.
             if entry.is_dir() or not entry.filename.endswith(".lean"):
                 continue
-            name=entry.filename
+            path=entry.filename
             marker="WeilDefect/Generated/"
-            ix=name.find(marker)
-            if ix<0:
+            # Account for exactly the two GitHub upload-artifact root layouts.
+            if marker in path:
+                name=path[path.index(marker)+len(marker):]
+            elif path.startswith(tuple(fam+"/" for fam in FAMILIES+(LOCAL_FAMILY,))):
+                name=path
+            else:
                 continue
-            name=name[ix+len(marker):]
-            if not any(name.startswith(family+"/") for family in FAMILIES):
+            assert ".." not in Path(name).parts and not Path(name).is_absolute(),name
+            if any(name.startswith(family+"/") for family in FAMILIES):
+                dest=fromzip
+            elif name.startswith(LOCAL_FAMILY+"/"):
+                dest=historic_local
+            else:
                 continue
-            assert name not in fromzip,(name,"duplicate historic source")
+            assert name not in dest,(name,"duplicate historic source")
             with z.open(entry) as src:
-                fromzip[name]=file_hash(src)
+                dest[name]=file_hash(src)
+
     current={}
     for family in FAMILIES:
         folder=BASE/family
@@ -79,20 +95,40 @@ def assert_original_source_matches():
         for p in folder.rglob("*.lean"):
             name=p.relative_to(BASE).as_posix()
             current[name]=sha(p)
-    assert all(any(name.startswith(fam+"/") for name in fromzip)
-             for fam in FAMILIES),("Missing required genuine original source family",FAMILIES)
-    assert len(fromzip)>=300,("Incomplete genuine original numeric source ancestry",len(fromzip))
+    historical_families={
+        family:sum(k.startswith(family+"/") for k in fromzip)
+        for family in FAMILIES
+    }
+    assert all(historical_families.values()),(
+        "NF728 lacks REQUIRED accepted original center/input cache family",
+        historical_families,sorted(fromzip)[:12],sorted(historic_local)[:12])
+    assert len(fromzip)>=3,(
+        "NF728 accepted center/input cache source corpus incomplete",len(fromzip))
     assert set(fromzip)==set(current),(
-        "NF728 accepted original source / NF737 full original source family does NOT match",
+        "Historical NF728 vs current NF737 source-set mismatch for reused CACHE ONLY",
         len(fromzip),len(current),
         sorted(set(fromzip)-set(current))[:20],
         sorted(set(current)-set(fromzip))[:20])
-    assert fromzip==current,"Actual original generated NF702/NF703/NF681 source file SHA mismatch"
-    assert "NF702Inputs/Data.lean" in fromzip
-    assert "NF703Cache/Data.lean" in fromzip
-    assert "NF703Cache/Frontier.lean" in fromzip
-    assert any(name.startswith("NF681/Col056.lean") for name in fromzip)
-    return current
+    assert fromzip==current,(
+        "Actual original NF702/NF703 cache source SHA mismatch",
+        [x for x in fromzip if fromzip[x]!=current[x]][:20])
+    for required in ("NF702Inputs/Data.lean",
+                     "NF703Cache/Data.lean","NF703Cache/Frontier.lean"):
+        assert required in fromzip,("Required genuine original cache source missing",required)
+
+    # The separate preceding NF737 verify step authenticates all original
+    # NF681 local sources. Do not attribute this family to NF728.
+    local={}
+    folder=BASE/LOCAL_FAMILY
+    assert folder.is_dir(),folder
+    for p in folder.rglob("*.lean"):
+        local[p.relative_to(BASE).as_posix()]=sha(p)
+    assert all(f"NF681/Col{i:03d}.lean" in local for i in range(242)),(
+        "Full genuine NF737 NF681 local source corpus missing",len(local))
+    for name,digest in historic_local.items():
+        assert name in local and local[name]==digest,(
+            "Optional overlapping NF728/NF737 NF681 source differs",name)
+    return current,historic_local,local
 
 def install_accepted_compiled_objects():
     assert sha(OBJECT_ZIP)==EXPECTED_OBJ_DIGEST,"NF729 successful original compiled object ZIP mismatch"
@@ -147,7 +183,7 @@ def install_accepted_compiled_objects():
     return written,existing
 
 def ingest():
-    sources=assert_original_source_matches()
+    sources,old_local,current_local=assert_original_source_matches()
     new,reused=install_accepted_compiled_objects()
     meta={
       "schema":"NF743-original-cache-source-equal-to-NF728-accepted-lean-object-v1",
@@ -164,6 +200,11 @@ def ingest():
       "accepted_NF729_compiled_olean_source_match":True,
       "matched_original_source_files_sha256":sources,
       "matched_original_source_file_count":len(sources),
+      "cache_source_families_exactly_verified":["NF702Inputs","NF703Cache"],
+      "compared_entire_NF728_archive_to_NF737":False,
+      "historical_NF681_overlapping_files_compared":len(old_local),
+      "current_NF737_NF681_local_source_files":len(current_local),
+      "NF681_local_corpus_distinct_from_cache_reuse_claim":True,
       "accepted_compiled_original_center_modules":
           sum(x.startswith("Generated/NF703Cache/")
               for x in list(new)+list(reused)),
@@ -174,11 +215,12 @@ def ingest():
       "full_global_original_matrix_closed":False,
       "global_Weil_positivity_proved":False,
       "RH_proved":False,
-      "scope":"Only cache reuse from accepted NF729 original numerical Lean job with byte-identical NF728 vs NF737 frozen numerical sources. Actual NF743 HD/A indices 56..63 require separate Lean kernels and axioms."
+      "scope":"Cache-only NF702Inputs/NF703Cache byte equivalence from accepted NF728 to NF737, optional historical NF681 overlap, and separate NF737-verified 242 NF681 original local sources. No new NF743 HD/A 56..63 numerical kernel theorem is inferred."
     }
     OUTPUT.write_text(json.dumps(meta,indent=2,sort_keys=True)+"\n")
-    print("NF743 original NF703 Lean cache: exact NF728/NF737 source file hashes",len(sources),
-          "PASS; only successful NF729 original numerical compiled .olean files accepted",
+    print("NF746 repaired NF743 cache: exact NF728/NF737 NF702/NF703 cache source hashes",len(sources),
+          "PASS; optional historic NF681 overlap",len(old_local),"independent NF737 NF681 sources",len(current_local),
+          "; only successful NF729 original numerical compiled .olean files accepted",
           len(new),"new +",len(reused),"byte-identical reuse, center modules",
           meta["accepted_compiled_original_center_modules"],
           "; NEW original 056–063 numerical gates not yet proved")
@@ -192,14 +234,18 @@ def check():
     assert m["accepted_NF729_original_numerical_quad_artifact_id"]==ACCEPTED_OBJECT_ARTIFACT_ID
     assert m["verified_against_original_NF728_complete_source_bank"] is True
     assert m["accepted_NF729_compiled_olean_source_match"] is True
-    assert m["matched_original_source_file_count"]>=300
+    assert m["matched_original_source_file_count"]>=3
+    assert m["cache_source_families_exactly_verified"]==["NF702Inputs","NF703Cache"]
+    assert m["compared_entire_NF728_archive_to_NF737"] is False
+    assert m["current_NF737_NF681_local_source_files"]>=242
+    assert m["NF681_local_corpus_distinct_from_cache_reuse_claim"] is True
     assert m["new_original_indexzero_numerical_gate_accepted"] is False
     for name,digest in {**m["reused_accepted_original_lean_object_sha256"],
                         **m["preexisting_byte_identical_accepted_lean_object_sha256"]}.items():
         assert sha(LIB/name)==digest,(name,digest)
     assert (LIB/"Generated/NF703Cache/Data.olean").stat().st_size>1024
     assert (LIB/"Generated/NF702Inputs/Data.olean").stat().st_size>1024
-    print("NF743 accepted original compiled cache objects and exact current original source SHA custody PASS; independent numerical kernel still required")
+    print("NF746 recovered NF743 accepted original cache objects, exact NF702/NF703 source SHA; NF681 separate source custody; numerical kernel still required")
 
 if __name__=="__main__":
     p=argparse.ArgumentParser()
