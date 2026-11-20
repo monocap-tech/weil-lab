@@ -308,14 +308,18 @@ theorem neutralIV009OriginalCollars_mixedEnergy_lower
       (neutralNF738OriginalFiniteCollarSpan_coercive
         (Finset.univ : Finset (Fin n)) s u
         (by intro i _; exact hs i))
-  exact hlocal.trans_eq (by
-    change
-      (Zeta23.EF.literatureRHS
-        (neutralWindowCorrelation (11/10:ℝ)
-          ((neutralIV009PhysicalSchwartzSum s u).toLp 2 volume)
-          ((neutralIV009PhysicalSchwartzSum s u).toLp 2 volume))).re =
-        (neutralIV007OriginalMixedEnergy (11/10:ℝ) s u).re
-    exact hbridge.symm)
+  calc
+    (2/5:ℝ) *
+        ‖(neutralIV009PhysicalSchwartzSum s u).toLp 2 volume‖ ^ 2 ≤
+      neutralNF598SmoothWeil (neutralIV009PhysicalSchwartzSum s u) := hlocal
+    _ = (neutralIV007OriginalMixedEnergy (11/10:ℝ) s u).re := by
+      change
+        (Zeta23.EF.literatureRHS
+          (neutralWindowCorrelation (11/10:ℝ)
+            ((neutralIV009PhysicalSchwartzSum s u).toLp 2 volume)
+            ((neutralIV009PhysicalSchwartzSum s u).toLp 2 volume))).re =
+          (neutralIV007OriginalMixedEnergy (11/10:ℝ) s u).re
+      exact hbridge.symm
 
 #print axioms neutralWindowEvaluation_eq_inner
 #print axioms neutralActualZetaDivisor_rawTransform_summable_of_contDiff
