@@ -57,6 +57,20 @@ jobs:
           path: nf716-receipts/packed-audit
           run-id: 44623902055
           github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Authenticate completed upstream NF715 kernel run and final artifact before download
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,subprocess
+          run=json.loads(subprocess.check_output(['gh','api','repos/'+os.environ['GITHUB_REPOSITORY']+'/actions/runs/44660635800'],text=True))
+          assert run['status']=='completed' and run['conclusion']=='success', (run['status'],run['conclusion'])
+          artifacts=json.loads(subprocess.check_output(['gh','api','repos/'+os.environ['GITHUB_REPOSITORY']+'/actions/runs/44660635800/artifacts'],text=True))
+          matches=[a for a in artifacts['artifacts'] if a['name']=='nf715-first-second-global-matrix-row-certificates']
+          assert len(matches)==1 and matches[0]['id']==14597076473 and not matches[0]['expired'],matches
+          print('NF716 prerequisite: NF715 original global row-one 12-declaration kernel audit artifact confirmed')
+          PY
       - name: Restore accepted NF715 initial second-row/column source and complete axiom audit
         uses: actions/download-artifact@v4
         with:
