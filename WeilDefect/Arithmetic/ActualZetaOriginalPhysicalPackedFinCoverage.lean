@@ -79,10 +79,6 @@ theorem neutralNF724Fin242OfPackedBlocks
       h029
       h030
       i (by omega)
-#print axioms WeilDefect.neutralNF724Chunk000
-#print axioms WeilDefect.neutralNF724Chunk008
-#print axioms WeilDefect.neutralNF724Chunk016
-#print axioms WeilDefect.neutralNF724Chunk024
 #print axioms WeilDefect.neutralNF724Fin242OfPackedBlocks
 
 end WeilDefect
