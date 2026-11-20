@@ -261,7 +261,7 @@ def generate(a):
         "scope": "Original HD row 1, A column 1, first 8 entries. Complete matrix and cache validity remain independent obligations.",
     }
     (a.output / "manifest.json").write_text(json.dumps(m, indent=2) + "\n")
-    print("NF715 exact original source and 577 accepted upstream theorem declarations authenticated; 16 global row1/column1 product candidates, 12 new declarations; kernel pending")
+    print("NF715 exact original source and 584 accepted upstream theorem declarations authenticated; 16 global row1/column1 product candidates, 12 new declarations; kernel pending")
 
 
 def make_axioms(a):
