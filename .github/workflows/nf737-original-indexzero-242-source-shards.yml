@@ -1,0 +1,179 @@
+name: NF737 original matrix index-zero 242-source exact shard custody and pure coverage
+on:
+  pull_request:
+    paths:
+      - "scripts/nf737_original_indexzero_complete_source_shard_schedule.py"
+      - ".github/workflows/nf737-original-indexzero-242-source-shards.yml"
+      - "docs/NF737_ORIGINAL_INDEXZERO_COMPLETE_SOURCE_SCHEDULE.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  authenticate-and-emit-remaining-original-indexzero:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact successful upstream immutable original global matrix source/axiom and NF733 index-one custody receipts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,subprocess
+          repo=os.environ['GITHUB_REPOSITORY']
+          api=lambda p:json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/{p}'],text=True))
+          stages=[
+           (44640227758,135969102426,'global-attachment','nf708-first-original-global-matrix-attachments',14589570565),
+           (44649041852,135998999534,'second-global-attachment','nf713-second-original-global-matrix-attachments',14594190839),
+           (44669131044,136065595864,'third-global-attachment','nf715-third-original-global-matrix-attachments',14599683589)
+          ]
+          for run_id,job_id,job_name,art_name,art_id in stages:
+            run=api(f'actions/runs/{run_id}')
+            assert run['status']=='completed' and run['conclusion']=='success'
+            jobs=api(f'actions/runs/{run_id}/jobs?per_page=100')['jobs']
+            assert any(j['id']==job_id and j['name']==job_name and j['conclusion']=='success' for j in jobs)
+            arts=api(f'actions/runs/{run_id}/artifacts?per_page=100')['artifacts']
+            assert len([a for a in arts if a['id']==art_id and a['name']==art_name and not a['expired']])==1
+          run=api('actions/runs/44782027897')
+          assert run['status']=='completed' and run['conclusion']=='success'
+          jobs=api('actions/runs/44782027897/jobs?per_page=100')['jobs']
+          assert any(j['id']==136446941618 and j['conclusion']=='success' for j in jobs)
+          arts=api('actions/runs/44782027897/artifacts?per_page=100')['artifacts']
+          assert any(a['id']==14652498322 and a['name']=='nf733-permanent-source-bound-original-index-one-full-lean-kernel-custody' and not a['expired'] for a in arts)
+          print('NF737 all three original matrix index-zero prefix Lean jobs and immutable source/audit receipts PASS; original index-one universal NF733 custody also PASS. No new numerical source gates claimed.')
+          PY
+      - name: Restore source- and digest-pinned complete frozen original NF702 inputs and 242 local NF681 HD/A source proofs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p nf708-receipts/{input,frontier,frontier-audit}
+          fetch() {
+            local id="$1" name="$2" digest="$3"
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" -o "$name.zip"
+            echo "$digest  $name.zip" | sha256sum -c -
+            unzip -q "$name.zip" -d "nf708-receipts/$name"
+          }
+          fetch 14582437652 input 258637da71e96468ed7c6ac5b0a4480ce06cdee9989aef8e71a4cd09059789e0
+          fetch 14541229354 frontier 13c2c0e296633ab5368b6e1be09c4e9b69d527001e0f3969ffc2f0af0c611ef5
+          fetch 14546201664 frontier-audit 86971af267f490dce4bcdba3403f3b566522f1cb9b38f9f77a10821b3772afb4
+      - name: Restore genuine NF703 original cache source and its seven-theorem accepted Lean audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf703-original-cache-proposals
+          path: nf708-receipts/cache-proposals
+          run-id: 44627666710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore original NF703 center-cache standard axiom proof receipt
+        uses: actions/download-artifact@v4
+        with:
+          name: nf703-original-cache-audit
+          path: nf708-receipts/cache-audit
+          run-id: 44627666710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore first eight accepted original HD row-zero and A column-zero source and kernel audits
+        uses: actions/download-artifact@v4
+        with:
+          name: nf708-first-original-global-matrix-attachments
+          path: nf737-accepted-000-007
+          run-id: 44640227758
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore second eight accepted original index-zero original numerical source and kernel audits
+        uses: actions/download-artifact@v4
+        with:
+          name: nf713-second-original-global-matrix-attachments
+          path: nf737-accepted-008-015
+          run-id: 44649041852
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore third eight accepted original index-zero original numerical source and kernel audits
+        uses: actions/download-artifact@v4
+        with:
+          name: nf715-third-original-global-matrix-attachments
+          path: nf737-accepted-016-023
+          run-id: 44669131044
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Regenerate full 242 literal original HD row-zero / A column-zero numerical source candidates against real NF702 / NF703 data
+        timeout-minutes: 45
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf737_original_indexzero_complete_source_shard_schedule.py scripts/nf708_global_matrix_attachment_driver.py scripts/emit_nf704_first_global_matrix_attachment.py
+          python scripts/nf708_global_matrix_attachment_driver.py prepare --columns 242 2>&1 | tee nf737-full-original-global-indexzero-emitter.log
+          python scripts/nf737_original_indexzero_complete_source_shard_schedule.py prepare 2>&1 | tee nf737-original-indexzero-source-preflight.log
+          python scripts/nf737_original_indexzero_complete_source_shard_schedule.py verify
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('nf737-original-indexzero-complete-source-schedule.json')
+          m=json.loads(p.read_text())
+          assert m['new_original_global_gate_candidates']==436
+          assert m['new_original_Lean_declaration_candidates']==872
+          assert m['full_original_indexzero_Lean_declarations']==971
+          assert len(m['shards'])==28 and m['terminal_shard_exact_coordinates']==[240,241]
+          assert m['original_indexzero_HD_accepted']==m['original_indexzero_A_accepted']==24
+          assert m['distinct_original_indexzero_and_indexone_currently_accepted_gates']==532
+          assert m['new_original_numeric_kernel_pass'] is False
+          print('NF737 complete original HD row zero/A col zero 242+242 real source banks emitted, 24+24 actual accepted, 436 new numerical gate candidates split into 28 exact shards, terminal two included: SOURCE ONLY, NEW NUMERIC KERNEL PENDING')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf737-authenticated-original-indexzero-242-full-source-and-28-shard-candidates
+          path: |
+            WeilDefect/Generated/NF704Frontier/
+            WeilDefect/Arithmetic/ActualZetaOriginalIndexZeroRemainingCover.lean
+            nf708-binding.json
+            nf737-accepted-000-007/
+            nf737-accepted-008-015/
+            nf737-accepted-016-023/
+            nf737-original-indexzero-complete-source-schedule.json
+            nf737-original-indexzero-source-preflight.log
+            nf737-full-original-global-indexzero-emitter.log
+          if-no-files-found: error
+  kernel-source-neutral-28-shard-indexzero-cover:
+    needs: authenticate-and-emit-remaining-original-indexzero
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore original accepted 24-column source chain and full literal 242-source schedule for independent axiom audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf737-authenticated-original-indexzero-242-full-source-and-28-shard-candidates
+          path: .
+      - name: Install pinned Lean toolchain and Mathlib cached pure finite arithmetic
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Direct Lean kernel-check exact original indexzero 28-range Fin242 logical transfer and audit standard axioms
+        timeout-minutes: 80
+        run: |
+          set -euo pipefail
+          python scripts/nf737_original_indexzero_complete_source_shard_schedule.py verify
+          mkdir -p .lake/build/lib/lean/WeilDefect/Arithmetic
+          /usr/bin/time -o nf737-logical-cover-time.log -f 'elapsed=%e rss_kb=%M exit=%x' \
+            lake env lean -o .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalIndexZeroRemainingCover.olean \
+              WeilDefect/Arithmetic/ActualZetaOriginalIndexZeroRemainingCover.lean 2>&1 | tee nf737-remaining-indexzero-pure-axioms.log
+          python scripts/nf737_original_indexzero_complete_source_shard_schedule.py verify-pure
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf737-original-indexzero-remaining-28-shard-source-neutral-Lean-logical-audit
+          path: |
+            nf737-original-indexzero-coverage-audit.json
+            nf737-original-indexzero-complete-source-schedule.json
+            nf737-remaining-indexzero-pure-axioms.log
+            nf737-logical-cover-time.log
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalIndexZeroRemainingCover.olean
+          include-hidden-files: true
+          if-no-files-found: ignore
