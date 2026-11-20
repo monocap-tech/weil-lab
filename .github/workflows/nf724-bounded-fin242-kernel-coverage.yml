@@ -1,0 +1,107 @@
+name: NF724 bounded Fin242 four-shard formal coverage and source-bound gluing bridge
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedFinCoverage.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalPackedRowOneFiniteClosure.lean"
+      - "scripts/nf724_verify_bounded_fin_coverage.py"
+      - ".github/workflows/nf724-bounded-fin242-kernel-coverage.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded-arithmetic-coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact four bounded chunks and original 31-block coordinates
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf724_verify_bounded_fin_coverage.py
+          python scripts/nf724_verify_bounded_fin_coverage.py source
+      - name: Install pinned Lean and verified Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Kernel-check four independent arithmetic chunks and complete Fin242 coverage
+        timeout-minutes: 90
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o nf724-lean-time.log -f 'elapsed=%e user=%U rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalPackedFinCoverage 2>&1 | tee nf724-lean-build.log
+      - name: Strict five-theorem source-bound pure-arithmetic axiom audit
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          cat > nf724Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalPackedFinCoverage
+          #print axioms WeilDefect.neutralNF724Chunk000
+          #print axioms WeilDefect.neutralNF724Chunk008
+          #print axioms WeilDefect.neutralNF724Chunk016
+          #print axioms WeilDefect.neutralNF724Chunk024
+          #print axioms WeilDefect.neutralNF724Fin242OfPackedBlocks
+          EOF
+          lake env lean nf724Audit.lean 2>&1 | tee nf724-axioms.log
+          python scripts/nf724_verify_bounded_fin_coverage.py audit
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf724-bounded-pure-arithmetic-31-block-kernel-audit
+          path: |
+            nf724-*.log
+            nf724-lean-time.log
+            nf724-axiom-audit.json
+          if-no-files-found: ignore
+  existing-nf722-contract:
+    needs: bounded-arithmetic-coverage
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Kernel-check stable NF722 original HD/A numerical-block gluing interface
+        timeout-minutes: 95
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o nf724-bridge-time.log -f 'elapsed=%e user=%U rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalPackedRowOneFiniteClosure 2>&1 | tee nf724-bridge-build.log
+      - name: Audit original NF722 exact three-name gluing interface
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          cat > nf722Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalPackedRowOneFiniteClosure
+          #print axioms WeilDefect.neutralNF722Fin242OfPackedBlocks
+          #print axioms WeilDefect.neutralNF722HDIndexOneOfPackedBlocks
+          #print axioms WeilDefect.neutralNF722AIndexOneOfPackedBlocks
+          EOF
+          lake env lean nf722Audit.lean 2>&1 | tee nf722-axioms.log
+          python scripts/nf722_verify_packed_row_one_glue.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf724-stable-NF722-three-declaration-original-row-glue-audit
+          path: |
+            nf724-*.log
+            nf724-bridge-time.log
+            nf722-axioms.log
+            nf722-complete-audit.json
+          if-no-files-found: ignore
