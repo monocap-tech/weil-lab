@@ -119,17 +119,17 @@ jobs:
         run: |
           set -euo pipefail
           python scripts/nf708_global_matrix_attachment_driver.py restore-input
-      - name: Compile original complete center cache and four further NF700 packed blocks
+      - name: Compile original center cache first, then bounded NF700 packed blocks sequentially
         timeout-minutes: 245
         run: |
           set -euo pipefail
-          /usr/bin/time -o nf717-source-build-time.log -f 'elapsed=%e user=%U rss_kb=%M exit=%x' \
-            lake build WeilDefect.Generated.NF703Cache.Data \
-              WeilDefect.Generated.NF715.Common \
-              WeilDefect.Generated.NF700.Block004 \
-              WeilDefect.Generated.NF700.Block005 \
-              WeilDefect.Generated.NF700.Block006 \
-              WeilDefect.Generated.NF700.Block007 2>&1 | tee nf717-source-build.log
+          /usr/bin/time -o nf717-source-build-time.log -f 'cache elapsed=%e user=%U rss_kb=%M exit=%x' \
+            lake build WeilDefect.Generated.NF703Cache.Data WeilDefect.Generated.NF715.Common 2>&1 | tee nf717-source-build.log
+          for i in 4 5 6 7; do
+            printf -v b 'Block%03d' "$i"
+            /usr/bin/time -a -o nf717-source-build-time.log -f 'block='"$b"' elapsed=%e user=%U rss_kb=%M exit=%x' \
+              lake build "WeilDefect.Generated.NF700.$b" 2>&1 | tee -a nf717-source-build.log
+          done
       - name: Kernel-check 64 genuine original second-row HD/A products over four independent blocks
         timeout-minutes: 95
         run: |
