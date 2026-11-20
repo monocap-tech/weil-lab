@@ -320,10 +320,115 @@ def pure_verify():
     PURE_RECEIPT.write_text(json.dumps(r,sort_keys=True,indent=2)+"\n")
     print("NF744 31-shard full Fin242 logical cover Lean kernel + strict standard axioms PASS; all 436 previously unaccepted actual original indexzero numerical gate instances remain OPEN")
 
+
+# Deferred source-specific full assembly: NO numerical truth follows from an
+# emitted source, a finite-range cover, or the presence of cached object names.
+# A FUTURE genuine full-kernel job must compile all 242 original numeric gate
+# modules and 31 source-bound shards, then check all 64 theorem axioms.
+FULL_AXFILE=Path("nf744ActualOriginalAll31AxiomAudit.lean")
+FULL_AXLOG=Path("nf744-actual-full-original-indexzero-axioms.log")
+FULL_AUDIT=Path("nf744-actual-full-original-indexzero-universal-kernel-audit.json")
+COMPILED_ROOT=Path(".lake/build/lib/lean/WeilDefect/Generated")
+
+def emit_complete_axiom_file():
+    verify()
+    names=[
+        shard_name(a,typ)
+        for a,b in RANGES for typ in ("HD","A")
+    ]+FULL_THEOREMS
+    assert len(names)==len(set(names))==64
+    lines=[
+      "import WeilDefect.Generated.NF744.ActualOriginalFull",
+      ""
+    ]+[f"#print axioms WeilDefect.{name}" for name in names]
+    FULL_AXFILE.write_text("\n".join(lines)+"\n")
+    assert FULL_AXFILE.read_text().count("#print axioms WeilDefect.")==64
+    print("NF744 FULL original NF702/NF703 matrix row0 HD/col0 A 64-name strict proof-object axiom audit file PREPARED; no claim of numerical or full-universal kernel PASS")
+
+def verify_complete_kernel():
+    """Only after independently compiling every original numeric dependency.
+
+    This is intentionally NOT run in NF744 source-only CI: individual original
+    indexzero gates 24..241 remain pending. A future full-kernel workflow must
+    build 242 actual original modules and 31 shards plus full master, then
+    call this checker after compiling the all-64-axioms import file.
+    """
+    verify()
+    emit_complete_axiom_file()
+    assert FULL_AXLOG.is_file(),("Missing genuine final Lean axiom log",FULL_AXLOG)
+    source=read(DEST/"manifest.json")
+    assert not source["new_original_indexzero_range_numerical_lean_pass"]
+    assert not source["new_original_complete_indexzero_universal_lean_pass"]
+    objects={}
+    for i in range(242):
+        path=COMPILED_ROOT/f"NF704Frontier/Col{i:03d}.olean"
+        assert path.is_file() and path.stat().st_size>1024,(
+          "Not every genuine original source-specific numeric gate was compiled",
+          path)
+        objects[f"NF704Frontier/Col{i:03d}.olean"]=sha(path)
+    for a,b in RANGES:
+        path=COMPILED_ROOT/f"NF744/Shard{a:03d}.olean"
+        assert path.is_file() and path.stat().st_size>1024,(
+          "Not every source-bound original range shard compiled",path)
+        objects[f"NF744/Shard{a:03d}.olean"]=sha(path)
+    master=COMPILED_ROOT/"NF744/ActualOriginalFull.olean"
+    assert master.is_file() and master.stat().st_size>1024,master
+    allnames=[
+        shard_name(a,typ)
+        for a,b in RANGES for typ in ("HD","A")
+    ]+FULL_THEOREMS
+    log=FULL_AXLOG.read_text()
+    found={}
+    for name,raw in re.findall(
+      r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",log):
+        if name in allnames:
+            assert name not in found,name
+            found[name]=[x.strip() for x in raw.split(",") if x.strip()]
+    for name in re.findall(
+      r"'WeilDefect\.(\w+)' does not depend on any axioms",log):
+        if name in allnames:
+            assert name not in found,name
+            found[name]=[]
+    assert set(found)==set(allnames),(
+      "Not all 62 actual original shard and 2 full universal declaration axioms were printed",
+      set(allnames)-set(found))
+    assert all(set(v)<=ALLOWED for v in found.values()),found
+    assert not re.search(r"\berror:|sorryAx|declaration uses .sorry.",log,re.I)
+    result={
+      "schema":"NF744-authentic-original-global-indexzero-HD-A-31-shard-full-Lean-kernel-v1",
+      "original_source_bank_sha256":source["accepted_original_source_bank_sha256"],
+      "original_full_31_shard_source_manifest_sha256":sha(DEST/"manifest.json"),
+      "original_full_master_source_sha256":sha(DEST/"ActualOriginalFull.lean"),
+      "original_full_master_olean_sha256":sha(master),
+      "actual_original_NF704_numerical_gate_compiled_module_count":242,
+      "actual_original_NF744_31_shard_compiled_module_count":31,
+      "actual_original_compiled_module_sha256":objects,
+      "source_bound_original_theorems":allnames,
+      "original_full_HD_row0_Lean_theorem":"nf744OriginalHDRowZeroAll",
+      "original_full_A_column0_Lean_theorem":"nf744OriginalAColumnZeroAll",
+      "printed_full_kernel_axioms_sha256":sha(FULL_AXLOG),
+      "standard_axioms":found,
+      "new_original_global_HD_row0_gate_instances":218,
+      "new_original_global_A_column0_gate_instances":218,
+      "original_indexzero_universal_gate_instance_count":484,
+      "original_indexone_universal_gate_instance_count":484,
+      "original_HDA_indexzero_plus_indexone_gate_instances":968,
+      "original_complete_242x242_matrix_enclosure_closed":False,
+      "global_Weil_positivity_proved":False,
+      "RH_proved":False,
+      "scope":"Only complete genuine frozen original NF702/NF703 HD row0 and A column0. All 242 original numeric modules/31 source-bound shards/2 full universal Lean declarations kernel compiled, exact 64 standard axiom lists and source/olean hashes required. Other matrix rows, vectors, payments, global Weil positivity remain OPEN.",
+      "status":"GENUINE ORIGINAL HD ROW0 AND A COL0 FULL NUMERICAL LEAN PASS, only if all required original source and compiled kernel objects and the printed 64 theorem axioms were actually accepted"
+    }
+    FULL_AUDIT.write_text(json.dumps(result,indent=2,sort_keys=True)+"\n")
+    print("NF744 genuine ORIGINAL HD row0 242/242 plus A col0 242/242 UNIVERSAL Lean KERNEL PASS and 64 theorem strict axioms PASS; full matrix, payments, global Weil positivity and RH OPEN")
+
+
 if __name__=="__main__":
     p=argparse.ArgumentParser()
-    p.add_argument("stage",choices=("emit","verify","pure-verify"))
+    p.add_argument("stage",choices=("emit","verify","pure-verify","full-axiom-file","verify-complete-kernel"))
     args=p.parse_args()
     if args.stage=="emit":emit()
     elif args.stage=="verify":verify()
-    else:pure_verify()
+    elif args.stage=="pure-verify":pure_verify()
+    elif args.stage=="full-axiom-file":emit_complete_axiom_file()
+    else:verify_complete_kernel()
