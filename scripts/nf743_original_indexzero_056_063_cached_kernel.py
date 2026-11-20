@@ -134,6 +134,20 @@ def audit():
     assert cache["accepted_NF729_compiled_olean_source_match"] is True
     assert cache["accepted_compiled_original_center_modules"]>=1
 
+    # NF747: source-specific prerequisite order is now SHA-bound and must be
+    # independently rechecked at final real original gate kernel acceptance.
+    from nf747_original_indexzero_import_order_guard import (
+        RECEIPT as IMPORT_RECEIPT, ORDER as IMPORT_ORDER,
+        ROOT as IMPORT_ROOT, OBJECTS as IMPORT_OBJECTS, check_order
+    )
+    assert IMPORT_RECEIPT.is_file(),"NF747 original import-order acceptance receipt required"
+    imported=read(IMPORT_RECEIPT)
+    assert imported["schema"]=="NF747-source-actual-original-NF743-import-DAG-v1"
+    assert imported["actual_recovered_Frontier_depends_on_NF681_Common"] is True
+    assert imported["compiler_order"]==list(IMPORT_ORDER)
+    assert imported==check_order(IMPORT_ROOT,IMPORT_OBJECTS,IMPORT_ORDER),(
+        "Original Lean imported-source or accepted compiled-dependency SHA altered since plan")
+    
     original,files=authentic_source()
     proposed=read(BIND)
     assert proposed["schema"]=="NF743-authentic-original-global-indexzero-056-063-source-v1"
@@ -173,6 +187,7 @@ def audit():
         "cache_original_source_identity_verified":True,
         "axiom_log_sha256":sha(AXLOG),
         "axiom_source_sha256":sha(AXFILE),
+        "source_bound_compiler_import_order_sha256":sha(IMPORT_RECEIPT),
         "new_original_HD_row_zero_indices_Lean_PASS":list(range(FIRST,STOP)),
         "new_original_A_col_zero_indices_Lean_PASS":list(range(FIRST,STOP)),
         "independently_evidenced_distinct_global_gate_instances_at_least":548,

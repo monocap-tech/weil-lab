@@ -1,0 +1,27 @@
+name: NF747 source-specific original indexzero Lean import-order regression
+on:
+  pull_request:
+    paths:
+      - "scripts/nf747_original_indexzero_import_order_guard.py"
+      - "scripts/nf743_original_indexzero_056_063_cached_kernel.py"
+      - ".github/workflows/nf743-original-cache-reuse-indexzero-056-063.yml"
+      - ".github/workflows/nf747-original-indexzero-import-order.yml"
+      - "docs/NF747_ORIGINAL_INDEXZERO_CACHE_FRONTIER_KERNEL_ORDER.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-import-source-order-synthetic-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check source-authenticated original dependency planner and four fail-closed synthetic counterfactuals
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf747_original_indexzero_import_order_guard.py scripts/nf743_original_indexzero_056_063_cached_kernel.py
+          python scripts/nf747_original_indexzero_import_order_guard.py selftest
+          echo "NF747 source-only import-order regression PASS; real original numerical Lean 56..63 remains dependent on independent NF743 kernel and strict axioms"

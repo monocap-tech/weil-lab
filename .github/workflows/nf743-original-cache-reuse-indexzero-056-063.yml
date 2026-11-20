@@ -4,6 +4,8 @@ on:
     paths:
       - "scripts/nf743_reuse_accepted_original_nf703_cache.py"
       - "scripts/nf743_original_indexzero_056_063_cached_kernel.py"
+      - "scripts/nf747_original_indexzero_import_order_guard.py"
+      - "docs/NF747_ORIGINAL_INDEXZERO_CACHE_FRONTIER_KERNEL_ORDER.md"
       - "docs/NF743_ORIGINAL_ACCEPTED_CACHE_REUSE.md"
       - ".github/workflows/nf743-original-cache-reuse-indexzero-056-063.yml"
   workflow_dispatch:
@@ -108,6 +110,7 @@ jobs:
           name: nf743-source-identical-accepted-original-center-cache-capsule
           path: |
             nf743-accepted-original-center-cache-reuse.json
+            nf747-original-indexzero-compiler-import-order.json
             nf743-original-cache-source-identical.log
             .lake/build/lib/lean/WeilDefect/Generated/NF702Inputs/
             .lake/build/lib/lean/WeilDefect/Generated/NF703Cache/
@@ -125,8 +128,14 @@ jobs:
             lake env lean -o "$dest" "$src" 2>&1 | tee -a nf743-original-cache-direct-compile.log
           }
           python scripts/nf743_reuse_accepted_original_nf703_cache.py check
-          compile_missing Generated.NF703Cache.Frontier
+          # Actual recovered NF746 kernel failure: NF703Cache.Frontier imports
+          # NF681.Common, whose compiled .olean is absent from NF729's accepted
+          # index-one cache capsule. Establish the prerequisite FIRST.
+          python scripts/nf747_original_indexzero_import_order_guard.py verify
           compile_missing Generated.NF681.Common
+          test -s .lake/build/lib/lean/WeilDefect/Generated/NF681/Common.olean
+          compile_missing Generated.NF703Cache.Frontier
+          test -s .lake/build/lib/lean/WeilDefect/Generated/NF703Cache/Frontier.olean
           for ((i=56;i<64;i++)); do
             printf -v col "%03d" "$i"
             compile_missing "Generated.NF681.Col$col"
@@ -166,5 +175,6 @@ jobs:
             nf743-accepted-original-center-cache-reuse.json
             nf743-indexzero-056-063-source-binding.json
             nf743-original-indexzero-056-063-kernel-audit.json
+            nf747-original-indexzero-compiler-import-order.json
             nf743OriginalIndexZero056Audit.lean
           if-no-files-found: ignore
