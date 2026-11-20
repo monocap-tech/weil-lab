@@ -1,5 +1,4 @@
 import Mathlib.Tactic
-import Mathlib.Topology.Algebra.Order
 
 namespace WeilDefect
 
