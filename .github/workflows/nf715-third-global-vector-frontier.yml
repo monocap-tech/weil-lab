@@ -60,7 +60,7 @@ jobs:
       - name: Reconcile exact original source objects and emit next sixteen global vector row attachments
         run: |
           set -euo pipefail
-          python -m py_compile scripts/emit_nf709_original_global_vector_attachments.py scripts/nf714_second_global_vector_driver.py
+          python -m py_compile scripts/emit_nf709_original_global_vector_attachments.py scripts/nf715_third_global_frontier_driver.py
           python scripts/emit_nf709_original_global_vector_attachments.py \
             --inputs nf715-receipts/input \
             --cache nf715-receipts/cache-proposals \
