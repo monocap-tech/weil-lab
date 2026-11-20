@@ -126,6 +126,10 @@ def audit():
     assert cache["schema"]=="NF743-original-cache-source-equal-to-NF728-accepted-lean-object-v1"
     assert cache["source_manifest_sha256"]==sha(SOURCE/"manifest.json")
     assert cache["verified_against_original_NF728_complete_source_bank"] is True
+    assert cache["cache_source_families_exactly_verified"]==["NF702Inputs","NF703Cache"]
+    assert cache["compared_entire_NF728_archive_to_NF737"] is False
+    assert cache["current_NF737_NF681_local_source_files"]>=242
+    assert cache["NF681_local_corpus_distinct_from_cache_reuse_claim"] is True
     assert cache["accepted_NF729_original_numeric_quad_000_job_success"] is True
     assert cache["accepted_NF729_compiled_olean_source_match"] is True
     assert cache["accepted_compiled_original_center_modules"]>=1
