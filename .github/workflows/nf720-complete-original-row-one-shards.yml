@@ -181,7 +181,7 @@ jobs:
       - name: Strict source SHA, disjoint-coverage, exact 56-name and standard-axiom aggregate
         run: |
           set -euo pipefail
-          python -m py_compile scripts/nf720_parallel_original_row_one_shards.py
+          python -m py_compile scripts/nf720_complete_original_row_one_shards.py
           python scripts/nf720_complete_original_row_one_shards.py aggregate \
             --audits nf720-audits
       - uses: actions/upload-artifact@v4
