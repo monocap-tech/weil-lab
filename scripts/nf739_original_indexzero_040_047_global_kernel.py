@@ -52,7 +52,7 @@ def authentic_source():
     """NF737 verifies 3 accepted source/axiom artifacts and ALL 242 source modules."""
     source737.verify()
     old = read(source737.BIND)
-    assert old["schema"] == "NF737-original-indexzero-complete-source-schedule-v1",old["schema"]
+    assert old["schema"] == "NF737-original-indexzero-242-complete-global-HD-A-source-schedule-v1",old["schema"]
     assert old["new_original_numeric_kernel_pass"] is False
     assert old["complete_original_indexzero_universal_Lean_PASS"] is False
     assert old["original_indexzero_HD_accepted"] == old["original_indexzero_A_accepted"] == 24
