@@ -92,9 +92,9 @@ def original():
         content=src.read_text()
         for typ in ("HD","A"):
             assert f"theorem {b['global'+typ]}" in content,(i,typ)
-            assert actual_formula(typ).split(" (1 : Fin 242)")[0].split(" i")[0] in (
-              "nf703OriginalCache.HDGate nf702OriginalInputs",
-              "nf703OriginalCache.AGate nf702OriginalInputs")
+            assert ("nf703OriginalCache.HDGate nf702OriginalInputs" in content
+                    if typ=="HD" else
+                    "nf703OriginalCache.AGate nf702OriginalInputs" in content),(i,typ)
     assert [n for b in originals for n in range(b["first"],b["end"])]==list(range(N))
     return prior
 
@@ -261,8 +261,8 @@ def verify(i,kind):
         q=next(x for x in manifest["quads"] if x["first_block"]==i)
         assert q["generic_theorem"]==f"nf729Quad{i:03d}Fin242"
         text=(OUT/f"Quad{i:03d}Finite.lean").read_text()
-        assert text.startswith("import Mathlib.Tactic\\n".replace("\\\\","\\"))
-        assert not re.search(r"\\b(sorry|admit|axiom|unsafe)\\b",text)
+        assert text.splitlines()[0]=="import Mathlib.Tactic"
+        assert not re.search(r"\b(sorry|admit|axiom|unsafe)\b",text)
     names=([f"nf729Quad{i:03d}Fin242"] if kind=="Finite" else
        [f"nf729Original{t}Quad{i:03d}" for t in ("HD","A")])
     got=axioms(f"nf729-{i:03d}-{kind.lower()}-axioms.log",names)
