@@ -1,4 +1,6 @@
-# NF734 — Phase IV type audit: local support positivity versus universal Weil positivity
+# NF735 (canonical; legacy NF734) — Phase IV type audit: local support positivity versus universal Weil positivity
+
+> **Registry correction (2026-11-20):** This Phase IV investigation is canonical **NF735**, following Phase III NF734 (PR #758). The existing branch `research/nf734-phaseiv-collar-type-audit`, source filename, and `neutralNF734…` Lean theorem identifiers are retained as immutable legacy source identifiers. Canonical numbering does not imply these new Lean proofs are accepted; the original CI run 44784200222 failed on a closure proof-term type mismatch, repaired in a later commit and subject to a fresh kernel check.
 
 Status: **analytical investigation and standalone generic Lean proof candidates**. No universal Weil claim, no RH claim. Numerical Phase III continues independently.
 
@@ -59,7 +61,7 @@ The window parameter `11/10` is *literal*, not a free parameter. For supported t
 
 The classical target is positivity of the **Weil autocorrelation quadratic form** for every admissible test, not positivity of an arbitrary linear functional on arbitrary functions. See Lagarias, *The Riemann Hypothesis: Arithmetic and Geometry*, Theorem 3.2, equation `W^(1)(f * tilde(f)) ≥ 0` for all nice tests: https://websites.umich.edu/lagarias/doc/mt-holyoke-rev.pdf .
 
-The repo's EF sign, Fourier convention, window normalization, complex involution, pole terms and test-class restrictions must be reconciled **on the nose** before invoking that criterion. No extant NF734 result identifies the exact repo `neutralNF598SmoothWeil` at arbitrary support with that external global form. Published equivalents are mathematical references, not imported Lean axioms or source-specific kernel certificates.
+The repo's EF sign, Fourier convention, window normalization, complex involution, pole terms and test-class restrictions must be reconciled **on the nose** before invoking that criterion. No extant Phase IV result identifies the exact repo `neutralNF598SmoothWeil` at arbitrary support with that external global form. Published equivalents are mathematical references, not imported Lean axioms or source-specific kernel certificates.
 
 ## 4. The actual missing type conversions
 
