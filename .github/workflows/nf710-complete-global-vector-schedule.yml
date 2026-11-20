@@ -1,0 +1,104 @@
+name: NF710 complete original vector certification schedule and aggregate candidates
+on:
+  pull_request:
+    paths:
+      - "scripts/emit_nf710_complete_global_vector_schedule.py"
+      - ".github/workflows/nf710-complete-global-vector-schedule.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf710-vector-schedule-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  source-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download and authenticate the original NF702 scaled-input receipt
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p nf710-receipts/{inputs,cache-proposals,cache-audit,vectors,vector-audit}
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14582437652/zip" -o nf710-original-inputs.zip
+          echo "258637da71e96468ed7c6ac5b0a4480ce06cdee9989aef8e71a4cd09059789e0  nf710-original-inputs.zip" | sha256sum -c -
+          unzip -q nf710-original-inputs.zip -d nf710-receipts/inputs
+      - name: Restore accepted NF703 complete original cache source
+        uses: actions/download-artifact@v4
+        with:
+          name: nf703-original-cache-proposals
+          path: nf710-receipts/cache-proposals
+          run-id: 44627666710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore NF703 seven-theorem kernel cache audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf703-original-cache-audit
+          path: nf710-receipts/cache-audit
+          run-id: 44627666710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore accepted NF680 242-row vector and original scalar sources
+        uses: actions/download-artifact@v4
+        with:
+          name: nf680-original-cache-vector-proposals
+          path: nf710-receipts/vectors
+          run-id: 44540497550
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore NF680 complete local 1210-declaration Lean axiom audit
+        uses: actions/download-artifact@v4
+        with:
+          name: nf680-complete-original-cache-vector-audit
+          path: nf710-receipts/vector-audit
+          run-id: 44540497550
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Emit all 242 source-specific vector gates and bounded terminal aggregation proof candidates
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/emit_nf709_original_global_vector_attachments.py scripts/emit_nf710_complete_global_vector_schedule.py
+          python scripts/emit_nf710_complete_global_vector_schedule.py \
+            --inputs nf710-receipts/inputs \
+            --cache nf710-receipts/cache-proposals \
+            --vectors nf710-receipts/vectors \
+            --input-audit nf710-receipts/inputs \
+            --cache-audit nf710-receipts/cache-audit \
+            --vector-audit nf710-receipts/vector-audit \
+            --output WeilDefect/Generated/NF710Vectors 2>&1 | tee nf710-schedule.log
+      - name: Strict source and aggregate theorem coverage preflight
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('WeilDefect/Generated')
+          m=json.loads((root/'NF710Vectors/manifest.json').read_text())
+          src=json.loads((root/'NF709/manifest.json').read_text())
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          assert m['rows']==242 and m['width']==16 and len(m['shards'])==16
+          assert m['global_vector_gates']==242 and m['source_declarations']==3394
+          assert m['source_manifests']==src['source_manifests']
+          assert m['accepted_prior_audits']==src['accepted_audits']
+          assert m['local_source_manifest_sha256']==sha(root/'NF709/manifest.json')
+          assert [i for g in m['shards'] for i in g['rows']]==list(range(242))
+          assert len(set(i for g in m['shards'] for i in g['rows']))==242
+          assert len(m['terminal_theorems'])==2
+          assert len(m['files'])==17 and len(m['shard_theorems'])==16
+          for stage in ('NF709','NF710Vectors'):
+              d=root/stage
+              for f in json.loads((d/'manifest.json').read_text())['files']:
+                  assert sha(d/f['file'])==f['sha256']
+          print('NF710 source-authenticated exhaustive shard plan and proposed aggregate: EXTERNAL PREFLIGHT PASS. Lean pending.')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf710-all-original-global-vector-proof-candidates
+          path: |
+            WeilDefect/Generated/NF709/
+            WeilDefect/Generated/NF710Vectors/
+            nf710-schedule.log
+          if-no-files-found: error
