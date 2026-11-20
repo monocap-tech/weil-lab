@@ -92,8 +92,12 @@ def analyze(root):
             else:
                 assert manifest["schema"] == (
                     "NF716-second-original-global-matrix-row-continuation-v1")
+                # NF716's verified audit JSON deliberately inherits the source
+                # manifest schema via its final **m merge. Distinguish the
+                # accepted audit by its dedicated source_manifest_sha256 and
+                # complete 24-name standard-axiom map, not a fabricated tag.
                 assert cert["schema"] == (
-                    "NF716-second-original-global-matrix-row-continuation-audit-v1")
+                    "NF716-second-original-global-matrix-row-continuation-v1")
                 assert (cert["original_index"],cert["first"],cert["end"]) == (
                     1,8,32)
                 assert cert["source_manifest_sha256"] == digest
