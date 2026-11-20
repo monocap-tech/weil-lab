@@ -1,0 +1,76 @@
+name: NF712 terminal original physical row and triangular cache closure
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTerminalTriangularClosure.lean"
+      - ".github/workflows/nf712-terminal-original-triangular-closure.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf712-original-terminal-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Kernel-check exact original physical row conversion and terminal triangular assembly
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalTerminalTriangularClosure 2>&1 | tee nf712-build.log
+      - name: Strict standard-axiom audit of all three terminal bridge declarations
+        run: |
+          set -euo pipefail
+          cat > nf712Audit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalTerminalTriangularClosure
+          #print axioms WeilDefect.neutralNF712EntryRow_of_original
+          #print axioms WeilDefect.neutralNF712OriginalPhysical_of_triangular
+          #print axioms WeilDefect.neutralNF712OriginalStrict_of_triangular
+          EOF
+          lake env lean nf712Audit.lean 2>&1 | tee nf712-axioms.log
+          python - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          names={"neutralNF712EntryRow_of_original",
+                 "neutralNF712OriginalPhysical_of_triangular",
+                 "neutralNF712OriginalStrict_of_triangular"}
+          log=Path('nf712-axioms.log').read_text()
+          found={}
+          for n,x in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[v.strip() for v in x.split(',') if v.strip()]
+          for n in re.findall(r"'WeilDefect\.(\w+)' does not depend on any axioms",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[]
+          assert set(found)==names and len(found)==3
+          assert all(set(v)<={'propext','Classical.choice','Quot.sound'} for v in found.values())
+          source=Path("WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTerminalTriangularClosure.lean")
+          Path('nf712-complete-audit.json').write_text(json.dumps({
+              "schema":"NF712-terminal-original-physical-triangular-bridge-audit-v1",
+              "source_sha256":hashlib.sha256(source.read_bytes()).hexdigest(),
+              "theorems":found,
+              "scope":"Exact generic terminal implication only; full source-bound matrix, vector, entry, payment and analytic checks independently required."
+          },indent=2)+"\n")
+          print('NF712 exact original triangular-to-physical terminal bridge: three theorems LEAN PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf712-original-terminal-triangular-audit
+          path: |
+            nf712-build.log
+            nf712-axioms.log
+            nf712-complete-audit.json
+          if-no-files-found: ignore
