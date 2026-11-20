@@ -57,6 +57,12 @@ def source_context():
     assert m==meta, "NF727 accepted original full-row manifest / source receipt disagree"
     assert m["schema"]=="NF723-actual-original-complete-row-one-source-attachment-v1"
     assert sha(original)==m["new_source_sha256"]
+    local=Path("WeilDefect/Generated/NF723")
+    if local.exists():
+        assert sha(local/"manifest.json")==sha(original_manifest), (
+          "Regenerated original NF723 provenance differs from successful immutable preflight")
+        assert sha(local/"OriginalRowOne.lean")==sha(original), (
+          "Regenerated original full-row source differs from successful immutable preflight")
     assert m["new_module"]=="WeilDefect.Generated.NF723.OriginalRowOne"
     assert m["accepted_prior_theorem_declarations"]==252
     assert m["accepted_original_coordinate_pairs"]==242
