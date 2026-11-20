@@ -1,0 +1,120 @@
+name: NF730 authenticated original HD-A eight-quad assembly and pure half kernels
+on:
+  pull_request:
+    paths:
+      - "scripts/nf730_original_eight_quad_universal_assembly.py"
+      - "scripts/nf730_pure_eight_quad_cover_audit.py"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalEightQuad*Cover.lean"
+      - ".github/workflows/nf730-original-eight-quad-half-assembly.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  authenticate-original-source-and-emit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check original NF729 accepted 31-block source preparation and immutable artifact ID
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,subprocess
+          repo=os.environ['GITHUB_REPOSITORY']
+          api=lambda p:json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/{p}'],text=True))
+          jobs=api('actions/runs/44767040253/jobs?per_page=100')['jobs']
+          assert any(j['id']==136394313314 and j['name']=='prepare-authentic-original-quads' and j['conclusion']=='success' for j in jobs)
+          arts=api('actions/runs/44767040253/artifacts?per_page=100')['artifacts']
+          name='nf729-original-source-bound-8-quad-Lean-candidates'
+          got=[a for a in arts if a['id']==14645281954 and a['name']==name and not a['expired']]
+          assert len(got)==1,got
+          print('NF730 upstream genuine NF729 original source-preparation PASSED; artifact exact original ID 14645281954 authenticated')
+          PY
+      - name: Restore original NF729 31-block authenticated eight-quad numerical source candidates
+        uses: actions/download-artifact@v4
+        with:
+          name: nf729-original-source-bound-8-quad-Lean-candidates
+          path: .
+          run-id: 44767040253
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Emit real original numerical half and universal HD/A Lean candidate sources
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf730_original_eight_quad_universal_assembly.py scripts/nf730_pure_eight_quad_cover_audit.py
+          python scripts/nf730_original_eight_quad_universal_assembly.py prepare 2>&1 | tee nf730-source-prepare.log
+          python scripts/nf730_original_eight_quad_universal_assembly.py source 2>&1 | tee nf730-source-authenticate.log
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/NF730')
+          m=json.loads((d/'manifest.json').read_text())
+          assert m['prior_original_lean_declarations']==252
+          assert m['prior_original_HD_index_one_gates']==m['prior_original_A_index_one_gates']==242
+          assert m['nf729_source_preflight_artifact_id']==14645281954
+          assert [b['first_block'] for b in m['quads']]==[0,4,8,12,16,20,24,28]
+          assert [(b['first_coordinate'],b['end_coordinate']) for b in m['quads']]==[(0,32),(32,64),(64,96),(96,128),(128,160),(160,192),(192,224),(224,242)]
+          assert len(m['new_half_theorems'])==4 and len(m['new_universal_theorems'])==2
+          assert all(hashlib.sha256((d/name).read_bytes()).hexdigest()==sha for name,sha in m['source_files'].items())
+          print('NF730 original 484 individual HD/A gates and 31 accepted source blocks reconciled; actual 6 new theorem source CANDIDATES emitted, kernel PENDING')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf730-source-bound-original-eight-quad-HD-A-half-and-full-proposals
+          path: |
+            WeilDefect/Generated/NF730/
+            nf730-source-prepare.log
+            nf730-source-authenticate.log
+          if-no-files-found: ignore
+  independently-audit-binary-half-index-logic:
+    strategy:
+      fail-fast: false
+      matrix:
+        side: ["Left", "Right"]
+    runs-on: ubuntu-latest
+    timeout-minutes: 105
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate literal 4-quad split and independent proposition limits
+        run: |
+          set -euo pipefail
+          python scripts/nf730_pure_eight_quad_cover_audit.py source --side "${{ matrix.side }}"
+      - name: Install pinned Lean toolchain and Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Direct Lean kernel-check one four-quad half independent of original full numerical bank
+        timeout-minutes: 75
+        run: |
+          set -euo pipefail
+          side="${{ matrix.side }}"
+          low="${side,,}"
+          mkdir -p .lake/build/lib/lean/WeilDefect/Arithmetic
+          /usr/bin/time -o "nf730-pure-$low-time.log" -f "elapsed=%e rss_kb=%M exit=%x" \
+            lake env lean -o ".lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalPhysicalEightQuad${side}Cover.olean" \
+              "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalEightQuad${side}Cover.lean" 2>&1 | tee "nf730-pure-$low-axioms.log"
+          python scripts/nf730_pure_eight_quad_cover_audit.py verify --side "$side"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf730-pure-original-index-one-quad-half-${{ matrix.side }}-lean-proof
+          path: |
+            nf730-pure-*-audit.json
+            nf730-pure-*-axioms.log
+            nf730-pure-*.log
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalPhysicalEightQuad*Cover.olean
+          include-hidden-files: true
+          if-no-files-found: ignore
