@@ -1,4 +1,4 @@
-name: NF734 Phase IV positivity type audit and explicit mixed-term obstruction
+name: NF735 canonical Phase IV positivity type audit (legacy NF734 source identifiers)
 on:
   pull_request:
     paths:
