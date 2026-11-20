@@ -1,0 +1,87 @@
+name: NF727 kernel-checked two-premise Fin242 HD-A binary bridge and accepted halves custody
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalFiniteBinaryGluing.lean"
+      - "scripts/nf727_binary_fin242_gluing_audit.py"
+      - "scripts/nf727_accepted_two_half_receipts.py"
+      - ".github/workflows/nf727-two-premise-binary-kernel-bridge.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  exact-two-premise-kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently verify both already accepted NF726 half kernel jobs and artifact IDs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,subprocess
+          repo=os.environ['GITHUB_REPOSITORY']
+          api=lambda x: json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/{x}'],text=True))
+          jobs=api('actions/runs/44699835930/jobs?per_page=100')['jobs']
+          expected={'authenticated-halves (000)':136165238061,'authenticated-halves (016)':136165238542}
+          good={j['name']:j['id'] for j in jobs if j['name'] in expected and j['conclusion']=='success'}
+          assert good==expected,(good,expected)
+          arts=api('actions/runs/44699835930/artifacts?per_page=100')['artifacts']
+          expected_art={'nf726-source-bound-half-000':14613196175,'nf726-source-bound-half-016':14613037846}
+          got={a['name']:a['id'] for a in arts if a['name'] in expected_art and not a['expired']}
+          assert got==expected_art,(got,expected_art)
+          print('NF727 separately successful NF726 original half proof jobs, exact artifact IDs, and nonexpired objects PASS')
+          PY
+      - name: Restore the two individually kernel-accepted NF726 proof objects
+        uses: actions/download-artifact@v4
+        with:
+          name: nf726-source-bound-half-000
+          path: nf727-accepted-nf726/nf726-source-bound-half-000
+          run-id: 44699835930
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore the independently certified NF726 right-half object
+        uses: actions/download-artifact@v4
+        with:
+          name: nf726-source-bound-half-016
+          path: nf727-accepted-nf726/nf726-source-bound-half-016
+          run-id: 44699835930
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify all original 242 indices, two independent half source hashes, both objects and source compiler fingerprints
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf727_binary_fin242_gluing_audit.py scripts/nf727_accepted_two_half_receipts.py
+          python scripts/nf727_accepted_two_half_receipts.py
+          python scripts/nf727_binary_fin242_gluing_audit.py source
+      - name: Install matching pinned Lean and Mathlib cached imports
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Direct Lean-kernel-check two-premise finite-HD-A bridge without original large matrix build graph
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          mkdir -p .lake/build/lib/lean/WeilDefect/Arithmetic
+          /usr/bin/time -o nf727-compiler-time.log -f 'elapsed=%e rss_kb=%M exit=%x' \
+            lake env lean -o .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalPhysicalFiniteBinaryGluing.olean \
+              WeilDefect/Arithmetic/ActualZetaOriginalPhysicalFiniteBinaryGluing.lean 2>&1 | tee nf727-bridge-axioms.log
+          python scripts/nf727_binary_fin242_gluing_audit.py verify
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf727-source-bound-binary-HD-A-two-premise-lean-bridge
+          path: |
+            nf727-compiler-time.log
+            nf727-bridge-axioms.log
+            nf727-bridge-audit.json
+            nf727-half-provenance.json
+          if-no-files-found: ignore
