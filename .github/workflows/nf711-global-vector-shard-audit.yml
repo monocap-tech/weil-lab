@@ -1,0 +1,59 @@
+name: NF711 full original vector shard audit design and safety preflight
+on:
+  pull_request:
+    paths:
+      - "scripts/nf711_vector_shard_audit.py"
+      - ".github/workflows/nf711-global-vector-shard-audit.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf711-vector-shard-design-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  proof-plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check the exhaustive 242-source finite shard plan and audit driver syntax
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            scripts/emit_nf709_original_global_vector_attachments.py \
+            scripts/emit_nf710_complete_global_vector_schedule.py \
+            scripts/nf711_vector_shard_audit.py
+          python scripts/nf711_vector_shard_audit.py preflight
+      - name: Verify the strict axiom parser rejects missing, duplicate and nonstandard proofs
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import sys
+          sys.path.insert(0,'scripts')
+          from nf711_vector_shard_audit import parse_axioms,proof_names,LOCAL_SUFFIXES,COMMON
+          shard={'rows':list(range(16)),'theorem':'nf710VectorShard000'}
+          names=proof_names(shard)
+          assert len(names)==6+16*14+1==231
+          assert len(set(names))==231
+          assert len(COMMON)==6 and len(LOCAL_SUFFIXES)==14
+          lines=["'WeilDefect."+name+"' depends on axioms: [propext, Classical.choice, Quot.sound]"
+                 for name in names]
+          clean='\n'.join(lines)
+          assert set(parse_axioms(clean,names))==set(names)
+          invalids=[
+              '\n'.join(lines[:-1]),
+              clean+'\n'+lines[0],
+              clean.replace('Quot.sound','someUnapprovedAxiom',1),
+          ]
+          for bad in invalids:
+              try:
+                  parse_axioms(bad,names)
+              except AssertionError:
+                  pass
+              else:
+                  raise AssertionError('Unsafe or incomplete proof-log accepted')
+          print('NF711 strict parser safety tests PASS; no Lean kernel acceptance asserted')
+          PY
