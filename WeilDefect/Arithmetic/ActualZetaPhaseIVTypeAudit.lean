@@ -3,7 +3,7 @@ import Mathlib.Tactic
 namespace WeilDefect
 
 /-!
-NF734: Phase-IV typing audit, entirely source-independent.
+Canonical NF735 (original NF734 Phase-IV branch): typing audit, entirely source-independent.
 These are small mathematical interface checks, NOT a proof of global Weil
 positivity, not a claim about the actual original zeta quadratic form.
 
@@ -28,7 +28,7 @@ theorem neutralNF734Nonnegative_of_dense_continuous
     intro x hx
     exact hpos x hx
   have hclose : closure S ⊆ {x : X | 0 ≤ Q x} :=
-    hc.closure_subset hs
+    closure_minimal hs hc
   intro x
   apply hclose
   rw [hS.closure_eq]
