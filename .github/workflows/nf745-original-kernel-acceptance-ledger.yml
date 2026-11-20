@@ -1,0 +1,106 @@
+name: NF745 live original HD-A true numerical Lean gate acceptance reconciliation
+on:
+  pull_request:
+    paths:
+      - "scripts/nf745_live_original_kernel_acceptance_ledger.py"
+      - ".github/workflows/nf745-original-kernel-acceptance-ledger.yml"
+      - "docs/NF745_TRUE_ORIGINAL_NUMERICAL_KERNEL_LEDGER.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  live-original-gate-kernel-acceptance-reconciliation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit-test six fail-closed cases before live GitHub evidence is read
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf745_live_original_kernel_acceptance_ledger.py
+          python scripts/nf745_live_original_kernel_acceptance_ledger.py selftest
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('nf745-ledger-selftest.json').read_text())
+          assert len(m['passed_cases'])==6
+          assert m['baseline_actual_original_gates']==532
+          assert m['one_successful_actual_original_eight_HD_eight_A_shard_gates']==548
+          assert m['false_success_promotions_rejected'] is True
+          print('NF745 acceptance control-plane SELFTEST PASS: no queued/source-only/failed/expired/missing-proof-artifact gate promoted')
+          PY
+      - name: Retrieve actual immutable source and genuine numerical kernel job+artifact states for exact upstream successful and pending runs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,subprocess,os
+          from pathlib import Path
+          repo=os.environ['GITHUB_REPOSITORY']
+          # Fetch EXACT live GitHub Actions status, not estimates from source names.
+          ids=[
+            44640227758,44649041852,44669131044,44782027897,
+            44791346863,44795709843,44800994258,44813177950,44814853311,
+          ]
+          def api(suffix):
+            out=subprocess.check_output(['gh','api',f'repos/{repo}/{suffix}'],text=True)
+            return json.loads(out)
+          runs={}
+          for rid in ids:
+            run=api(f'actions/runs/{rid}')
+            jobs=api(f'actions/runs/{rid}/jobs?per_page=100')['jobs']
+            arts=api(f'actions/runs/{rid}/artifacts?per_page=100')['artifacts']
+            assert run['id']==rid
+            runs[str(rid)]={
+              'run_id':rid,'run_name':run['name'],'head_sha':run['head_sha'],
+              'run_status':run['status'],'run_conclusion':run['conclusion'],
+              'jobs':[
+                {'id':j['id'],'name':j['name'],'status':j['status'],
+                 'conclusion':j['conclusion'],'steps':[
+                  {'name':x['name'],'status':x['status'],'conclusion':x['conclusion']}
+                  for x in (j.get('steps') or [])]}
+                for j in jobs],
+              'artifacts':[
+                {'id':a['id'],'name':a['name'],'expired':a['expired'],
+                 'digest':a.get('digest'),'size_in_bytes':a['size_in_bytes']}
+                for a in arts]}
+            print('NF745 GitHub original evidence run',rid,run['status'],run['conclusion'],
+                  'jobs',len(jobs),'artifacts',len(arts))
+          obj={'schema':'NF745-live-github-original-gate-jobs-snapshot-v1','runs':runs}
+          Path('nf745-original-github-status-snapshot.json').write_text(
+            json.dumps(obj,indent=2,sort_keys=True)+'\n')
+          PY
+      - name: Independently reconcile strictly authenticated original gate certificates, no source/preflight promotions
+        run: |
+          set -euo pipefail
+          python scripts/nf745_live_original_kernel_acceptance_ledger.py evaluate 2>&1 | tee nf745-original-acceptance-ledger.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          s=json.loads(Path('nf745-original-numerical-kernel-acceptance-ledger.json').read_text())
+          assert s['schema']=='NF745-live-original-HD-A-source-bound-numerical-kernel-acceptance-ledger-v1'
+          assert s['historical_base_gate_instances_before_candidates']==532
+          assert s['source_evidenced_accepted_original_global_HD_A_gate_instances']==(532+s['new_source_bound_numerical_gate_instances'])
+          assert 0<=s['new_source_bound_numerical_gate_instances']<=64
+          assert s['indexzero_24_to_31_NOT_VERIFIED_BY_THIS_LEDGER'] is True
+          assert s['complete_original_indexzero_universal_theorems_proved'] is False
+          assert s['original_full_242x242_matrix_enclosure_proved'] is False
+          assert s['global_Weil_positivity_proved'] is False
+          assert s['RH_proved'] is False
+          print('NF745 GENUINE original Lean custody baseline and live pending/accepted numerical matrix gate count reconciled without invented proof acceptance')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf745-immutable-live-original-HD-A-kernel-acceptance-ledger
+          path: |
+            nf745-ledger-selftest.json
+            nf745-original-github-status-snapshot.json
+            nf745-original-numerical-kernel-acceptance-ledger.json
+            nf745-original-acceptance-ledger.log
+          if-no-files-found: ignore
