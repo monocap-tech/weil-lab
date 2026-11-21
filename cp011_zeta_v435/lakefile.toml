@@ -109,3 +109,14 @@ name = "CP021GermLeaf"
 # no numerical JSON assertions or hidden source rank/curvature axioms.
 [[lean_lib]]
 name = "CP026OriginalPointBridge"
+
+# CP027 pointwise-only original Zeta/Mathlib leaf; requires no
+# local CP013–CP026 .olean and no all-circle complex Cauchy.
+[[lean_lib]]
+name = "CP027PointwiseBorwein"
+
+# Separate original full HardyZ IVT integration, conditional
+# ONLY on two finite A6,256 true numerical sign certificates.
+# Explicitly imports original CP026 and CP027 source leaves.
+[[lean_lib]]
+name = "CP027TwoFiniteSigns"

@@ -140,6 +140,20 @@ jobs:
           grep -F 'CP026 THREE ORIGINAL POINTS 10^55 INTEGER-DIRECTED SOURCE REPLAY: PASS NOT LEAN' cp026-original-point-bridge-source-replay-NOT-LEAN.log
           grep -F 'CP026_TRUE_ORIGINAL_UPSTREAM_SOURCE_BRIDGE_AND_DIRECTED_POINT_REPLAY_PASS_NOT_LEAN' cp026-original-point-bridge-source-replay-NOT-LEAN.log
           test -s cp026-original-point-bridge-conditional-source-replay-NOT-LEAN.json
+      - name: CP027 TWO genuine source-point Borwein cap discharge candidates and exact 328/27 Fraction arithmetic NOT LEAN
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp027_original_center_borwein_328_over_27_source_gate.py
+          python scripts/cp027_original_center_borwein_328_over_27_source_gate.py \
+            --self-test --source-check \
+            --original-zeta cp021-frozen-zeta \
+            --original-mathlib cp021-frozen-mathlib \
+            --receipt cp027-original-two-center-Borwein-NOT-LEAN.json \
+            2>&1 | tee cp027-original-two-center-Borwein-NOT-LEAN.log
+          grep -F 'CP027 ORIGINAL TWO POINTS B14/POC13/328div27 FRACTION BOUND: PASS NOT LEAN' cp027-original-two-center-Borwein-NOT-LEAN.log
+          grep -F 'CP027 UPSTREAM-ONLY POINT LEAF AND TWO FINITE SIGN BRIDGE SOURCE: 12/12 CONTRACT PASS NOT LEAN' cp027-original-two-center-Borwein-NOT-LEAN.log
+          grep -F 'CP027 FIVE IMMUTABLE ORIGINAL ZETA/MATHLIB SOURCE GATES: 5/5 PASS NOT LEAN' cp027-original-two-center-Borwein-NOT-LEAN.log
+          test -s cp027-original-two-center-Borwein-NOT-LEAN.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -155,4 +169,6 @@ jobs:
             cp025-external-original-source-anchor-and-narrow-sign-interval-NOT-LEAN.json
             cp026-original-point-bridge-conditional-source-replay-NOT-LEAN.json
             cp026-original-point-bridge-source-replay-NOT-LEAN.log
+            cp027-original-two-center-Borwein-NOT-LEAN.log
+            cp027-original-two-center-Borwein-NOT-LEAN.json
           if-no-files-found: ignore
