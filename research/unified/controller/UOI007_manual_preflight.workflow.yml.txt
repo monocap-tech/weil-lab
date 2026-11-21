@@ -1,0 +1,60 @@
+# UOI007 DRAFT ONLY. DO NOT install into .github/workflows until manual review.
+# To function, the approved workflow file MUST exist on default branch main.
+# Candidate uses a review-only source key, NOT an arbitrary branch or shell command.
+name: UOI manual source-pinned preflight (read-only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_key:
+        description: Frozen research source to inspect
+        required: true
+        type: choice
+        options:
+          - NF768
+          - IV025
+      mode:
+        description: No execution permitted
+        required: true
+        type: choice
+        options:
+          - inspect_only
+
+permissions:
+  contents: read
+
+concurrency:
+  group: uoi-readonly-preflight
+  cancel-in-progress: false
+
+jobs:
+  inspect-source-custody:
+    if: ${{ github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout immutable trusted controller revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 1
+      - name: Assert default-branch controller source SHA
+        env:
+          UOI_CONTROLLER_SHA: ${{ github.sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$UOI_CONTROLLER_SHA"
+      - name: Python environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate inspection-only authority; NEVER run research source
+        env:
+          UOI_SOURCE_KEY: ${{ inputs.source_key }}
+          UOI_MODE: ${{ inputs.mode }}
+          UOI_OBLIGATION_ID: CI-FANOUT
+        run: |
+          python scripts/uoi007_preflight.py \
+            --manifest research/unified/obligations.json \
+            --catalog research/unified/controller/UOI007_frozen_sources.json \
+            --from-env
