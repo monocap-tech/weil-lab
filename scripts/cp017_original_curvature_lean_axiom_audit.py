@@ -2,7 +2,7 @@
 """CP017 genuine external Zeta 4.35 original Hardy-Z rational budget kernel audit.
 
 Only real compiled .olean of CP017 and all imported CP013-016 source
-candidate dependencies plus SIX actual #print axioms standard-only
+candidate dependencies plus SEVEN actual #print axioms standard-only
 receipts may emit a kernel PASS. Even then the analytical hypotheses
 (derivative anchor, uniform curvature and new zero existence)
 remain UNPROVED.
@@ -32,6 +32,7 @@ TARGETS=(
   "CP017CurvatureBudget.strictMonoOn_original_hardyZ_of_rational_budget",
   "CP017CurvatureBudget.derivative_variation_of_curvature_bound",
   "CP017CurvatureBudget.strictMonoOn_original_hardyZ_of_curvature_bound",
+  "CP017CurvatureBudget.narrowRightLtOriginalGram",
   "CP017CurvatureBudget.refined_narrow_root_is_source_53rd_of_rational_budget",
 )
 
