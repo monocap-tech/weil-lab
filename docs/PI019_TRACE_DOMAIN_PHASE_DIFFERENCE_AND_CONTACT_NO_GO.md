@@ -267,3 +267,51 @@ At N=1 this is **exactly \(-1/6\)**. The independent Fraction preflight evaluate
 **Updated PI020 priority:** Before launching another common-compiler Gamma theorem, determine whether the genuine Chapter 13 moment-domain trace claim is actually proved and applies to norm-radial diagonal autocorrelations in \(F=\mathbb Q\). If it does, the two transversal domains may **remove the diagonal scalar ambiguity** without a guessed operator extension. If it does not, record the exact missing analytic theorem and continue the independent finite-part/cutoff study from (10.4.2.10).
 
 Original primary-source screenshots: PDF index 458–460 (Thm. 10.4.2.1, Rmk. 10.4.2.3), 518–519 (Thm. 12.5.1.1), **521 (Thm. 13.3.1.1, stated moments and visible editorial caveats)**.
+
+
+## 10. Essential source correction: Chapter 13's spectral divisor is NOT the Chapter 12 divisor
+
+The same printed p.522 that states the Chapter 13 moment restriction makes an important definition:
+\[
+\boxed{
+N_{\rm spec}(c):=\min\{N(c),[F:\mathbb Q]\}.
+}
+\tag{PI019-multiplicity}
+\]
+For \(F=\mathbb Q\), this is \(\min(N(c),1)\), **not necessarily** the full zero multiplicity \(N(c)\). In Theorem 13.3.1.1 the displayed spectral sum is restricted to \(\sigma(c)=1/2\), whereas the displayed main Theorem 12.5.1.1 sums the full \(N(c)\) over zeros in its specified vertical strip. Their identification on a common domain is **NOT** an immediate consequence of the test-domain comparison; it could require deep and presently unproved zero-location and multiplicity information, or a different source spectral trace formula.
+
+Therefore do NOT use the abstract transversality lemma from Section 9 to claim the two manuscript formulas are automatically identical or that their domains automatically determine a common trace. The transversality lemma says only that **IF** two consistently normalized versions of the **same** functional are established on both hyperplanes, then their common extension is unique. It does not prove those spectral/arithmetical formulations agree. In particular, one cannot silently replace \(N_{\rm spec}\) by \(N\), or a critical-line sum by a full-strip sum, because that would assume part of the intended global zero theorem.
+
+### The exact overlap domain gives a nontrivial falsifier before any diagonal extension
+
+For the **derivative-bump** family \(\phi=\rho'\), all \(h_\beta\) have \(\int h_\beta=0\) and \(h_\beta(0)=J>0\). Their phase difference
+\[
+D_{\rm even}:=h_1-h_{-1}
+\]
+satisfies **both**
+\[
+\boxed{
+D_{\rm even}(0)=0,\qquad \int_{\mathbb R}D_{\rm even}(u)\,du=0,
+\qquad A(D_{\rm even})=-2I_a>0.
+}
+\tag{PI019-intersection}
+\]
+Thus \(D_{\rm even}\) is a genuinely nonzero smooth source test in the **intersection** of the Chapter 12 zero-contact subspace and the Chapter 13 proposed zero-Mellin-moment subspace, for the stated \(F=\mathbb Q\) norm-radial lift. It cannot be dismissed as a trivial test, a finite overlap graph, a contact-only term, or a vanishing Gamma evaluation.
+
+If both purported spectral trace identities were valid under identical normalizations and genuinely represented the same whole Weil functional, their evaluations on \(D_{\rm even}\) MUST coincide, after accounting for every archimedean place, prime, pole, Mellin character, zero-multiplicity and cutoff contribution. A discrepancy on this common domain is a **direct source/projection mismatch that no \(c\,h(0)\) or \(d\,\int h\) correction can repair**, because both contact and total Mellin moment are zero on D.
+
+### Conditional gluing theorem, formulated without assuming RH or simplicity
+
+Let E be the complex vector space of compact smooth radial tests, \(E_e=\ker(h\mapsto h(0))\) and \(E_m=\ker(h\mapsto\int h)\). Since these are distinct hyperplanes and \(E_e+E_m=E\), suppose two independently defined linear source functionals
+\[
+L_e:E_e\to\mathbb C,\qquad L_m:E_m\to\mathbb C
+\]
+have been established with consistent signs and conventions and **agree on \(E_e\cap E_m\)**.
+
+Then there exists a **unique** linear \(L:E\to\mathbb C\) extending both.
+
+Proof: choose a smooth compact h0 with \(\int h_0=0\), \(h_0(0)=1\) (normalize a derivative-bump autocorrelation). Any h decomposes \(h=(h-h(0)h_0)+h(0)h_0\), with first part in \(E_e\) and second in \(E_m\). Define L by applying L_e to the first part and L_m to the second. Independence of the choice of h0 follows from overlap agreement. Uniqueness follows because \(E_e+E_m=E\).
+
+**What this does and does not pay:** it eliminates a *linear functional's* one-dimensional contact extension ambiguity **IF the independent Chapter 13 identity and exact overlap agreement are truly proved**. It does not establish a positive operator on a Hilbert space, validate the spectral zero representation or solve RH. A continuity assertion needs boundedness/continuity of the two source functionals and a chosen compatible topology; the algebraic gluing theorem alone makes no automatic continuity claim.
+
+**Next PI020 strict analytic gate:** audit Theorem 13.3.1.1's **actual proof**, its critical-line/capped-multiplicity right side and any outstanding annotations, then test its source functional against the Theorem 12.5.1.1 functional on the explicit \(D_{\rm even}\in E_e\cap E_m\). **Only after the overlap is paid** should the transversal diagonal tests be used to attempt the independent scalar contact normalization. No new Lean or Actions until the existing queue drains.
