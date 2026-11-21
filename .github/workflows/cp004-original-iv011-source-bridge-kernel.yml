@@ -1,0 +1,55 @@
+name: CP004 companion original IV011 mixed-source bridge actual Lean kernel
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaCrossProjectionPrimeAttachment.lean"
+      - "scripts/cp004_original_source_bridge_axiom_audit.py"
+      - ".github/workflows/cp004-original-iv011-source-bridge-kernel.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cp004-original-iv011-bridge-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-iv011-bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate audit source — NOT a kernel receipt
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp004_original_source_bridge_axiom_audit.py
+      - name: Install pinned original Lean and Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Actually compile original IV011 CP004 conditional bridge
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.ActualZetaCrossProjectionPrimeAttachment 2>&1 | tee cp004-original-iv011-build.log
+      - name: Require real standard-only axiom receipts and source-olean hashes
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaCrossProjectionPrimeAttachment.lean 2>&1 | tee cp004-original-iv011-axioms.log
+          python scripts/cp004_original_source_bridge_axiom_audit.py
+          test -s cp004-original-source-bridge-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp004-original-iv011-conditional-bridge-build-audit
+          path: |
+            cp004-original-iv011-build.log
+            cp004-original-iv011-axioms.log
+            cp004-original-source-bridge-audit.json
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaCrossProjectionPrimeAttachment.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
