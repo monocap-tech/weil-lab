@@ -35,6 +35,8 @@ ORIG_MATHLIB={
   "Mathlib/RingTheory/Polynomial/Pochhammer.lean":"f3503627af3430a48c087b85b03095e84dfb2824",
   "Mathlib/NumberTheory/Bernoulli.lean":"45d389886738789e80185fd2a6da4185727ab502",
   "Mathlib/Analysis/Calculus/IteratedDeriv/Lemmas.lean":"d9348833bece1297dd8ffe57e6b976fcc268af38",
+  "Mathlib/Analysis/Complex/Norm.lean":"0e2b6317a777c4d168a9098fb17ad33323efd4c3",
+  "Mathlib/Analysis/SpecialFunctions/Pow/Real.lean":"97c12aed7085a7fc77727567d87e508064b49a18",
 }
 NAMES={
 "CP021BorweinLeaf":(
@@ -70,6 +72,12 @@ ORIGINAL_SIGNATURES={
     "def bernoulli' (n : ℕ)", "def bernoulli (n : ℕ)"),
   "Mathlib/Analysis/Calculus/IteratedDeriv/Lemmas.lean":(
     "lemma Filter.EventuallyEq.iteratedDeriv_eq",),
+  "Mathlib/Analysis/Complex/Norm.lean":(
+    "theorem abs_re_le_norm",),
+  "Mathlib/Analysis/SpecialFunctions/Pow/Real.lean":(
+    "theorem norm_cpow_eq_rpow_re_of_pos",
+    "theorem rpow_neg",
+    "theorem rpow_le_rpow_of_exponent_le"),
 }
 ALLOWED={"propext","Classical.choice","Quot.sound"}
 AXLOG=BASE/"cp021-real-original-leaf-axioms.log"
@@ -122,6 +130,16 @@ def verify_leaf_sources():
     expected=[mod+"."+t for t in targets]
     if declarations!=list(targets) or prints!=expected:
       raise ValueError(f"{mod}: malformed source theorem/#print axioms roster {declarations!r},{prints!r}")
+  borwein=(BASE/"CP021BorweinLeaf.lean").read_text("utf-8")
+  if "abs_of_nonneg ht.1" in borwein:
+    raise ValueError("SOURCE-TYPE ERROR: abs_of_nonneg requires 0<=t, not a<=t")
+  if not all(s in borwein for s in (
+      "have ht_nonneg : (0 : ℝ) ≤ t := by",
+      "have ha_nonneg : (0 : ℝ) ≤ a := by norm_num [a]",
+      "exact ha_nonneg.trans ht.1",
+      "abs_of_nonneg ht_nonneg",
+      "simpa only [hdist] using this")):
+    raise ValueError("CP022 concrete positive-ordinate geometry repair missing from upstream-only leaf")
   print("CP021 ORIGINAL-ZETA/ORIGINAL-MATHLIB-ONLY LEAF DEPENDENCY CUT: 2/2 SOURCE PASS NOT LEAN")
   print("  zero CP013–CP020 imports; 13 exact kernel-declaration target names.")
 
@@ -135,7 +153,7 @@ def verify_upstream(zeta,mathlib):
       for needle in ORIGINAL_SIGNATURES[name]:
         if needle not in txt:
           raise ValueError(f"{name}: genuine original theorem signature {needle!r} absent")
-  print("CP021 FIVE FROZEN UPSTREAM ORIGINAL GIT BLOB+API GATES: 5/5 PASS NOT LEAN")
+  print("CP022 SEVEN FROZEN UPSTREAM ORIGINAL GIT BLOB+API GATES: 7/7 PASS NOT LEAN")
 
 def genuine_kernel_audit():
   verify_leaf_sources()
