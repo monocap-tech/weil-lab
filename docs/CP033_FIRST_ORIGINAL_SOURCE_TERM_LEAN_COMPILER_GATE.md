@@ -1,0 +1,29 @@
+# Weil-Lab CP033 — original Zeta v4.35 first genuine unit-term compiler gate
+
+CP033 is an upstream-only, single-leaf Lean v4.35 experiment stacked on CP032 PR #854, then CP031 #853. It does not import the pending CP026/27/28/30 modules or touch original IV/NF/PI sources. No claim of LEAN PASS is made before actual compiler and strict axiom acceptance.
+
+## Original source mathematics
+
+The genuinely original Dirichlet n=1 term is (1:Complex)^(-s) = 1 at every real height. Two new original-source proof candidates in CP032OriginalTermSplit.lean establish:
+(1) dirichlet_one: dirichletTerm t 1 = 1;
+(2) dirichlet_one_exact_cells: real = 1 and imaginary = 0, each with exact rational upper/lower bounds on the 10^15 integer grid.
+
+If Lean compiles, this pays the n=1 complex term at BOTH endpoint heights, or 2/526 actual complex term memberships. The earlier CP032 broad n=1 external cells were real [999999999999999,1000000000000001], imaginary [-1,1] on that grid; source 1 and 0 sharpen them exactly without a numerical oracle.
+
+The full source module has FOUR theorem candidates: original_M6N256_finite_expansion, component_sum_interval, dirichlet_one, and dirichlet_one_exact_cells; four true print-axioms queries. The source is pinned to Git blob 23c9459e94d8828296779690ce730d1935550b15.
+
+## Bounded compiler gate and precise evidence
+
+One new workflow cp033-original-source-split-first-cell-kernel.yml uses pull_request filtered to precisely three CP033 source/gate/workflow paths, or workflow_dispatch. At the moment the branch was prepared, GitHub Actions reported 0 queued and 0 in progress. All 37 inherited workflows were checked in the previous CP032 source-fanout audit; no existing broad ordinary PR paths match the three changed CP033 paths. No IV/NF/PI workflow is intentionally invoked and no shared lakefile.toml was changed.
+
+This job (a) executes strict source-blob/4-theorem/4-axiom/toolchain/import audit; (b) installs original Lean v4.35; (c) runs lake update BEFORE manifest-sensitive steps, then checks actual original Zeta commit c06b4e13d9c847e50a32c3d738271cbad62ae9f3; (d) restores mathlib cache; (e) compiles one Lean file to an actual .olean; (f) executes and parses four genuine print-axioms lines; and (g) uploads first compiler error/axioms/logs/.olean under an always-run evidence step.
+
+New Python cp033_original_source_split_first_cell_kernel_gate.py rejects absent .olean/logs, missing/duplicate axiom lines, unknown axioms, errors and sorry, or drifted original Lean source/commit requirements. The only allowed axioms are propext, Classical.choice and Quot.sound. A Python source-only PASS is EXPLICITLY NOT LEAN. No external numeric JSON can count as a theorem.
+
+Whether the PR event actually schedules this new first compiler, and whether it compiles, MUST be determined from run logs. The local container lacks lean and lake; no local original kernel pass is claimed.
+
+## Current unresolved obligations
+
+All other 524 complex source-term memberships, the two original phase sine/cosine pairs, the source term-level cpow/log/trig attachments, the CP029 11-lemma Borwein original compiler, and the CP026–28 source HardyZ/IVT chain remain outstanding. Nor are ordinal53, uniqueness, signed Weil–spectral equality, support-independent signed Weil positivity or RH certified. NF 692/968 frontier unchanged.
+
+NEXT CP034: read first actual Lean compiler diagnostic and repair the first failing source proof; if 4/4 theorem strict actual kernel pass occurs, promote ONLY that small source-split and n=1 term fact, not the entire 526-term or HardyZ program.
