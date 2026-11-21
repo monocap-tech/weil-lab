@@ -25,6 +25,7 @@ ENGINE = ROOT / 'scripts/cp025_original_EM_integer_directed_firstjet_root_bracke
 LEAN = ROOT / 'cp011_zeta_v435/CP030FiniteComponentCells.lean'
 CP028 = ROOT / 'cp011_zeta_v435/CP028CoarseFiniteBoxes.lean'
 ENGINE_BLOB = 'e392ad4d5ded49f8314006335fa95ed15c7381de'
+CP028_BLOB = '5cc23f986d575cf94343a6afc19e9de2ee1ea536'
 ORIGINAL_ZETA_COMMIT = 'c06b4e13d9c847e50a32c3d738271cbad62ae9f3'
 SCALE = 10**9
 HEIGHTS = {'left': F(15005352,100000), 'right': F(15005353,100000)}
@@ -57,6 +58,8 @@ def source_audit() -> None:
               'sourceFiniteZ tRight','original_narrow_zero_of_two_coarse_boxes'):
         if x not in s:
             raise ValueError('CP030 original source expressions were changed: ' + x)
+    if git_blob(CP028) != CP028_BLOB:
+        raise ValueError('CP028 original coarse box source drift')
     prior = CP028.read_text('utf8')
     if 'def FiniteLeftBox : Prop' not in prior or 'def FiniteRightBox : Prop' not in prior:
         raise ValueError('CP028 original coarse box interfaces are not present')
