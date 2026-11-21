@@ -1,0 +1,76 @@
+name: CP018 OPT-IN original Zeta v4.35 8-cell and complex jet conditional Lean kernel
+# Source-only and actual Lean conditional proof checks; actual analytic
+# enclosures remain OPEN. No routine PR/push runner fanout.
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [labeled]
+permissions:
+  contents: read
+concurrency:
+  group: cp018-external-zeta-435-source-eight-cell-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-source-eight-cell-jet-kernel:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'cp018-jet-lean' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact genuine Zeta-v1-1e6 original Lean v4.35
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Pin immutable original Zeta and Mathlib v4.35 and verify source math identity APIs
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 65
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          test "$(git -C .lake/packages/Zeta rev-parse HEAD)" = c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.35.0
+          python ../scripts/cp018_hardy_jet_eight_cell_preflight.py \
+            --self-test --zeta .lake/packages/Zeta \
+            --mathlib .lake/packages/mathlib \
+            --receipt cp018-original-source-jet-signatures.json
+      - name: ACTUAL original v4.35 compiler of complete source rank and two CP018 theorem modules
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 155
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get
+          lake build CP013RSOnly CP013Seam CP014FiniteCut CP014ZetaCut \
+            CP014HardyRank CP015SourceWitnesses CP016FirstRSRank \
+            CP016MonotoneAttach CP017CurvatureBudget \
+            CP018EightCell CP018HardyJet 2>&1 | tee cp018-real-original-kernel-build.log
+      - name: Actual Lean 4.35 seven CP018 conditional theorem standard-only axiom receipts
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          (
+            cd cp011_zeta_v435
+            lake env lean CP018EightCell.lean
+            lake env lean CP018HardyJet.lean
+          ) 2>&1 | tee cp011_zeta_v435/cp018-original-hardy-eight-cell-actual-axioms.log
+          python scripts/cp018_hardy_eight_cell_lean_axiom_audit.py
+          test -s cp011_zeta_v435/cp018-original-hardy-8-cell-conditional-kernel-receipt.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp018-original-Zeta4.35-8cell-source-complex-jet-conditional-kernel-only
+          path: |
+            cp011_zeta_v435/cp018-original-source-jet-signatures.json
+            cp011_zeta_v435/cp018-real-original-kernel-build.log
+            cp011_zeta_v435/cp018-original-hardy-eight-cell-actual-axioms.log
+            cp011_zeta_v435/cp018-original-hardy-8-cell-conditional-kernel-receipt.json
+            cp011_zeta_v435/.lake/build/lib/lean/CP018EightCell.olean
+            cp011_zeta_v435/.lake/build/lib/lean/CP018HardyJet.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
