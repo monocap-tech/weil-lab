@@ -1,0 +1,62 @@
+name: CP014 original Zeta 149.5 seam exact-count source and finite rank negative controls
+on:
+  pull_request:
+    paths:
+      - "scripts/cp014_seam_N_cut_and_derivative_screen.py"
+      - "scripts/cp014_exact_seam_lean_axiom_audit.py"
+      - "cp011_zeta_v435/CP014EulerCutLower.lean"
+      - "cp011_zeta_v435/CP014FiniteCut.lean"
+      - "cp011_zeta_v435/CP014ZetaCut.lean"
+      - "cp011_zeta_v435/lakefile.toml"
+      - "docs/CP014_EXACT_EULER_SEAM_COUNT_AND_LOCAL_RANK.md"
+      - ".github/workflows/cp014-original-seam-source-preflight.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-Zeta-source-boundary-not-kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact finite 52 / 1747950 partition and missing local rank negative controls
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp014_seam_N_cut_and_derivative_screen.py scripts/cp014_exact_seam_lean_axiom_audit.py
+          python scripts/cp014_seam_N_cut_and_derivative_screen.py --self-test | tee cp014-cut-logic.log
+          grep -F 'CP014 EXACT FINITE ROOT-COUNT EXHAUSTION AND CUT NEGATIVE CONTROLS: PASS' cp014-cut-logic.log
+      - name: Read real external original zero-simple count and HardyZ source pinned at release SHA
+        run: |
+          set -euo pipefail
+          commit=c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          for file in \
+            Zeta/Zeros/RiemannHypothesisUpTo/Basic.lean \
+            Zeta/Zeros/CountCertificates.lean \
+            Zeta/Zeros/Certificates/Basic.lean \
+            Zeta/Zeros/HardyZ.lean; do
+            mkdir -p "cp014-external-source/$(dirname "$file")"
+            curl -fLSs --retry 3 \
+              "https://raw.githubusercontent.com/smmercuri/zeta/$commit/$file" \
+              -o "cp014-external-source/$file"
+          done
+      - name: Verify ALL four original Git SHA blobs and honest new formal hypothesis boundary
+        run: |
+          set -euo pipefail
+          python scripts/cp014_seam_N_cut_and_derivative_screen.py \
+            --source-root cp014-external-source \
+            --receipt cp014-seam-source-only.json \
+            | tee cp014-genuine-source-gate.log
+          grep -F 'CP014_SOURCE_SIGNATURE_AND_EXACT_LOGIC_PASS_NOT_KERNEL' cp014-genuine-source-gate.log
+          test -s cp014-seam-source-only.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp014-original-Zeta-seam-Fraction-and-source-not-kernel
+          path: |
+            cp014-cut-logic.log
+            cp014-genuine-source-gate.log
+            cp014-seam-source-only.json
+          if-no-files-found: ignore
