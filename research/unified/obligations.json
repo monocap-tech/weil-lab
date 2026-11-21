@@ -104,7 +104,8 @@
         "https://github.com/monocap-tech/weil-lab/issues/814",
         "https://github.com/monocap-tech/weil-lab/issues/861",
         "https://github.com/monocap-tech/weil-lab/issues/865",
-        "https://github.com/monocap-tech/weil-lab/issues/866"
+        "https://github.com/monocap-tech/weil-lab/issues/866",
+        "https://github.com/monocap-tech/weil-lab/issues/867"
       ],
       "evidence": [
         {
@@ -120,6 +121,16 @@
         {
           "kind": "exact_source_four_workflow_PR_paths_staged_not_applied",
           "reference": "https://github.com/monocap-tech/weil-lab/issues/866",
+          "accepts_obligation": false
+        },
+        {
+          "kind": "source_pinned_NF450_NF505_full_slice_69_files_two_branch_ci_no_go",
+          "reference": "https://github.com/monocap-tech/weil-lab/blob/governance/uoi000-unified-operative-investigation/research/unified/receipts/UOI006_nf450_505_lineage_inventory.json",
+          "accepts_obligation": false
+        },
+        {
+          "kind": "default_branch_dispatch_precondition_unpaid",
+          "reference": "https://github.com/monocap-tech/weil-lab/issues/867",
           "accepts_obligation": false
         }
       ],
