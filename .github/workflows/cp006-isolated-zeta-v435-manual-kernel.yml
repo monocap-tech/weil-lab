@@ -1,0 +1,65 @@
+name: CP006 manual isolated external Zeta v4.35 kernel and count audit
+# Heavy 887MB upstream library must not compete automatically with IV### CI.
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  upstream-zeta-kernel-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned upstream Lean 4.35 via elan
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Require external Zeta v1-1e6 tag resolve to exact release source SHA
+        working-directory: cp006_zeta_v435
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          test "$(git -C .lake/packages/Zeta rev-parse HEAD)" = c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.35.0
+          git -C .lake/packages/Zeta status --porcelain | tee cp006-upstream-git-status.txt
+      - name: Verify exact published external prebuilt archive SHA-256 before possible Lake use
+        working-directory: cp006_zeta_v435
+        timeout-minutes: 45
+        run: |
+          set -euo pipefail
+          curl -fLSs --retry 3 https://github.com/smmercuri/zeta/releases/download/v1-1e6/Zeta-x86_64-unknown-linux-gnu.tar.gz -o cp006-zeta-release.tar.gz
+          echo "f777b515af89a486654052f0052b8f6760e822c88c15e0be8af753c9542c2ea2  cp006-zeta-release.tar.gz" | sha256sum -c
+          rm cp006-zeta-release.tar.gz
+      - name: Fetch upstream Mathlib dependency cache and ACTUALLY build v4.35 bridge
+        working-directory: cp006_zeta_v435
+        timeout-minutes: 150
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get
+          lake build CP006ZeroBridge 2>&1 | tee cp006-upstream-build.log
+      - name: Real original imported standard-axiom receipts / SHA-bound .olean
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          (cd cp006_zeta_v435 && lake env lean CP006ZeroBridge.lean 2>&1 | tee cp006-upstream-axiom-log.txt)
+          python scripts/cp006_v435_lean_axiom_audit.py
+          test -s cp006_zeta_v435/cp006-external-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp006-isolated-v435-original-zeta-count-axiom-build
+          path: |
+            cp006_zeta_v435/cp006-upstream-build.log
+            cp006_zeta_v435/cp006-upstream-axiom-log.txt
+            cp006_zeta_v435/cp006-external-kernel-audit.json
+            cp006_zeta_v435/cp006-upstream-git-status.txt
+            cp006_zeta_v435/.lake/build/lib/lean/CP006ZeroBridge.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
