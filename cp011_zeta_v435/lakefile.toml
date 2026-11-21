@@ -65,3 +65,19 @@ name = "CP018EightCell"
 
 [[lean_lib]]
 name = "CP018HardyJet"
+
+# CP019: actual original theta first+second derivative, actual original
+# HardyZ first derivative, holomorphic M=6,N=256 Euler–Maclaurin source
+# remainder on moving 1/4 complex disks and conditional original
+# Borwein->Cauchy k=0..3 derivative error transfer.
+[[lean_lib]]
+name = "CP019OriginalFirstJet"
+
+[[lean_lib]]
+name = "CP019ThetaSecond"
+
+[[lean_lib]]
+name = "CP019HolomorphicRemainder"
+
+[[lean_lib]]
+name = "CP019CauchyRemainder"
