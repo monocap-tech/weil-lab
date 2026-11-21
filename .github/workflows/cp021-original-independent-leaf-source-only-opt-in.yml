@@ -126,6 +126,20 @@ jobs:
           grep -F 'CP025 SIX ORIGINAL A/PHASE SOURCE GIT SHA+THEOREM GATES: 6/6 PASS NOT LEAN' cp025-external-original-source-integer-interval-NOT-LEAN.log
           grep -F 'CP025_EXTERNAL_INTEGER_DIRECTED_ORIGINAL_M6N256_INTERVAL_PASS_NOT_LEAN' cp025-external-original-source-integer-interval-NOT-LEAN.log
           test -s cp025-external-original-source-anchor-and-narrow-sign-interval-NOT-LEAN.json
+      - name: CP026 original HardyZ source bridge four explicit UNPAID Lean premises and independent 3-point integer-directed replay (NOT LEAN)
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp026_original_point_receipt_replay_and_conditional_lean_gate.py
+          python scripts/cp026_original_point_receipt_replay_and_conditional_lean_gate.py \
+            --source-check --self-test \
+            --original-zeta cp021-frozen-zeta \
+            --receipt cp026-original-point-bridge-conditional-source-replay-NOT-LEAN.json \
+            2>&1 | tee cp026-original-point-bridge-source-replay-NOT-LEAN.log
+          grep -F 'CP026 ORIGINAL HARDYZ SOURCE ZERO-BRIDGE FOUR-EXPLICIT-PREMISE LEAN CANDIDATES: 4/4 SOURCE CHECK PASS NOT LEAN' cp026-original-point-bridge-source-replay-NOT-LEAN.log
+          grep -F 'CP026 THREE ORIGINAL POINTS 10^55 INTEGER-DIRECTED SOURCE REPLAY: PASS NOT LEAN' cp026-original-point-bridge-source-replay-NOT-LEAN.log
+          grep -F 'CP026_TRUE_ORIGINAL_UPSTREAM_SOURCE_BRIDGE_AND_DIRECTED_POINT_REPLAY_PASS_NOT_LEAN' cp026-original-point-bridge-source-replay-NOT-LEAN.log
+          test -s cp026-original-point-bridge-conditional-source-replay-NOT-LEAN.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -139,4 +153,6 @@ jobs:
             cp024-original-phase-Stirling-Cauchy-NOT-LEAN.log
             cp025-external-original-source-integer-interval-NOT-LEAN.log
             cp025-external-original-source-anchor-and-narrow-sign-interval-NOT-LEAN.json
+            cp026-original-point-bridge-conditional-source-replay-NOT-LEAN.json
+            cp026-original-point-bridge-source-replay-NOT-LEAN.log
           if-no-files-found: ignore

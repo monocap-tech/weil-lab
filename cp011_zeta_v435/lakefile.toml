@@ -103,3 +103,9 @@ name = "CP021BorweinLeaf"
 
 [[lean_lib]]
 name = "CP021GermLeaf"
+
+# CP026 standalone ORIGINAL source HardyZ finite-point transfer:
+# genuine upstream Zeta/Mathlib only; no local CP013–CP025 imports,
+# no numerical JSON assertions or hidden source rank/curvature axioms.
+[[lean_lib]]
+name = "CP026OriginalPointBridge"
