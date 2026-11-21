@@ -115,11 +115,15 @@ def classify(c1,c2,n,sign):
     assert sign in (-1,1)
     assert n>=2 and is_prime_power(n)
     lo,hi=rigorous_log(n)
+    # ORIGINAL source correlation is f_i(x)*conj(f_j(x-τ)).
+    # Therefore x ∈ C_i ∩ (C_j+τ), so a +log(n) overlap obeys
+    # c_i-c_j-log(n)≈0, NOT c_i-c_j+log(n)≈0. Keep directed
+    # edge signs consistent with the literal signed Weil source.
     d=c1.center-c2.center
     if sign==1:
-        low,high=d+lo,d+hi
-    else:
         low,high=d-hi,d-lo
+    else:
+        low,high=d+lo,d+hi
     r=c1.radius+c2.radius
     lower=abs_lower(low,high)-r
     upper=abs_upper(low,high)-r
@@ -177,14 +181,19 @@ def preflight():
 
     edges,min_clear,digest=build_graph(CELLS)
     assert len(edges)==2,("Expected historical n=9 only",edges)
-    for key,left,right in edges:
-        a,b,n,sign=key
-        assert n==9
-        assert {left,right}=={"old_left","old_right"}
-        assert sign in (-1,1)
-    assert set((x[1],x[2]) for x in edges)=={
-        ("old_left","old_right"),("old_right","old_left")
-    }
+    # Sign-sensitive regression against the EXACT original
+    # t(x)*conj(U(x-τ)) source orientation. Mere undirected
+    # overlap counting does not suffice for source transport.
+    assert {
+        (left,right,key[2],key[3]) for key,left,right in edges
+    } == {
+        ("old_left","old_right",9,-1),
+        ("old_right","old_left",9,1),
+    },("original source ±log(9) directed labels reversed",edges)
+    assert classify(CELLS[0],CELLS[1],9,-1)[0]=="OVERLAP"
+    assert classify(CELLS[0],CELLS[1],9,1)[0]=="CLEAR"
+    assert classify(CELLS[1],CELLS[0],9,1)[0]=="OVERLAP"
+    assert classify(CELLS[1],CELLS[0],9,-1)[0]=="CLEAR"
     assert min_clear>Q(0)
     width,gamma,poles,prime,margin=source_signed_margin(CELLS)
     assert (width,gamma,poles,prime,margin)==(
@@ -241,6 +250,12 @@ def preflight():
         ],
         "all_new_prime_edges_absent":True,
         "old_original_n9_edges_retained":True,
+        "exact_original_source_correlation_convention":"C_ij(tau) = integral f_i(x)*conj(f_j(x-tau)) dx",
+        "signed_old_n9_edges":[
+            "old_left -> old_right at tau=-log(9)",
+            "old_right -> old_left at tau=+log(9)",
+        ],
+        "opposite_signs_are_rigorously_clear":True,
         "smallest_positive_rigorous_clearance_lower_bound_1e6":frac(lower6(min_clear)),
         "complete_rational_classification_sha256":digest,
         "true_original_physical_measure":frac(width),
