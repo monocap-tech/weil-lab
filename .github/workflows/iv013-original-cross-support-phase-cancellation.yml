@@ -2,6 +2,8 @@ name: IV013 original zeta cross-support phase cancellation and prime-free tests
 on:
   pull_request:
     paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
+      - "scripts/iv009_original_schwartz_polarization_audit.py"
       - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportPhaseCancellation.lean"
       - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportArithmeticEnvelope.lean"
       - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
