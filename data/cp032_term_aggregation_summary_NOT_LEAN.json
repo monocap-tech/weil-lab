@@ -1,0 +1,86 @@
+{
+  "status": "CP032_526_SOURCE_ORIENTED_TERM_CELLS_EXTERNAL_NOT_LEAN",
+  "numerator_scale": 1000000000000000,
+  "final_scale": 1000000000,
+  "each_endpoint_original_terms": 263,
+  "term_structure": "255 Dirichlet + 1 pole + 1 half + 6 Bernoulli corrections",
+  "full_local_manifest_sha256": "0e1ac8fff81121c0ffba3df87f387c47381d784d65e80d5ad921c435e55e9885",
+  "full_local_manifest_bytes": 116168,
+  "provenance_note": "Local complete manifest generated using locally mounted CP031 independent reconstruction; GitHub script separately pins exact repository CP031 implementation. This summary is not a GitHub execution result.",
+  "left": {
+    "rational_t": "1875669/12500",
+    "real_1e15": [
+      -515401799,
+      -515401535
+    ],
+    "imag_1e15": [
+      -446241931,
+      -446241667
+    ],
+    "rotated_1e15": [
+      -681741062,
+      -681740689
+    ],
+    "theta_sin_1e15": [
+      -654562190654390,
+      -654562190654389
+    ],
+    "theta_cos_1e15": [
+      756008160383025,
+      756008160383026
+    ],
+    "real_1e9": [
+      -516,
+      -515
+    ],
+    "imag_1e9": [
+      -447,
+      -446
+    ],
+    "rotated_1e9": [
+      -682,
+      -681
+    ]
+  },
+  "right": {
+    "rational_t": "15005353/100000",
+    "real_1e15": [
+      11733226104,
+      11733226368
+    ],
+    "imag_1e15": [
+      10158461695,
+      10158461959
+    ],
+    "rotated_1e15": [
+      15519759624,
+      15519759999
+    ],
+    "theta_sin_1e15": [
+      -654550196074845,
+      -654550196074844
+    ],
+    "theta_cos_1e15": [
+      756018545287338,
+      756018545287339
+    ],
+    "real_1e9": [
+      11733,
+      11734
+    ],
+    "imag_1e9": [
+      10158,
+      10159
+    ],
+    "rotated_1e9": [
+      15519,
+      15520
+    ]
+  },
+  "original_source_complex_term_membership_Lean_proved": false,
+  "actual_original_Lean45_olean_receipt": false,
+  "CP029_Borwein_original_Lean_receipt": false,
+  "original_zero_ordinal53_proved": false,
+  "unconditional_narrow_zeta_zero_proved": false,
+  "global_Weil_positivity_or_RH_proved": false
+}
