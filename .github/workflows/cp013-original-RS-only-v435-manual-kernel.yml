@@ -1,0 +1,68 @@
+name: CP013 MANUAL original Zeta v4.35 1747950 RS-only source reconstruction
+# Manual only. Protect the existing IV###/NF### Lean and full-bank queues.
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cp013-zeta-v435-source-rs-only-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  real-original-RS-only-and-Euler-seam-kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact original upstream v4.35 Lean toolchain
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Freeze original upstream commit, source lineage and original toolchain
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          test "$(git -C .lake/packages/Zeta rev-parse HEAD)" = c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.35.0
+          python ../scripts/cp013_rs_only_batch_source_lineage.py \
+            --self-test --original-root .lake/packages/Zeta \
+            --receipt cp013-source-signatures-prebuild.json
+      - name: Actually kernel-check 124 original RS batch prefix + 69 source groups and Euler split
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 170
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get
+          lake build CP013RSOnly CP013Seam 2>&1 | tee cp013-original-RS-only-build.log
+      - name: Actual original two source modules standard Lean axiom receipts
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          (
+            cd cp011_zeta_v435
+            lake env lean CP013RSOnly.lean
+            lake env lean CP013Seam.lean
+          ) 2>&1 | tee cp011_zeta_v435/cp013-original-RS-only-axioms.log
+          python scripts/cp013_original_rs_only_lean_axiom_audit.py
+          test -s cp011_zeta_v435/cp013-original-RS-only-kernel-receipt.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp013-Zeta435-original-source-RS-only-kernel-conditional-cut-interface
+          path: |
+            cp011_zeta_v435/cp013-source-signatures-prebuild.json
+            cp011_zeta_v435/cp013-original-RS-only-build.log
+            cp011_zeta_v435/cp013-original-RS-only-axioms.log
+            cp011_zeta_v435/cp013-original-RS-only-kernel-receipt.json
+            cp011_zeta_v435/.lake/build/lib/lean/CP013RSOnly.olean
+            cp011_zeta_v435/.lake/build/lib/lean/CP013Seam.olean
+          if-no-files-found: ignore
+          include-hidden-files: true

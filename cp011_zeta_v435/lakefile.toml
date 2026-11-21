@@ -14,3 +14,11 @@ name = "CP011CanonicalRoster"
 # conditional exact source-index-to-kernel slot attachment interface.
 [[lean_lib]]
 name = "CP012RowReceipt"
+
+# CP013 separate ORIGINAL RS-only source-source certificate reassembly:
+# the missing first 52 Euler rows are not mixed into the RS root count.
+[[lean_lib]]
+name = "CP013RSOnly"
+
+[[lean_lib]]
+name = "CP013Seam"

@@ -1,0 +1,60 @@
+name: CP013 genuine original 52 Euler plus 1747950 RS batches source-lineage gate
+on:
+  pull_request:
+    paths:
+      - "scripts/cp013_rs_only_batch_source_lineage.py"
+      - "scripts/cp013_original_rs_only_lean_axiom_audit.py"
+      - "cp011_zeta_v435/CP013RSOnly.lean"
+      - "cp011_zeta_v435/CP013Seam.lean"
+      - "cp011_zeta_v435/lakefile.toml"
+      - "docs/CP013_ORIGINAL_RS_ONLY_SEAM_AND_53RD_RANK_CUT.md"
+      - ".github/workflows/cp013-original-RS-only-source-lineage.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cp013-source-first-original-RS-only-count-not-Lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact integer seam and source stage negative controls
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp013_rs_only_batch_source_lineage.py scripts/cp013_original_rs_only_lean_axiom_audit.py
+          python scripts/cp013_rs_only_batch_source_lineage.py --self-test | tee cp013-exact-seam-preflight.log
+          grep -F 'CP013 EXACT SOURCE RS-ONLY / EULER SEAM COUNT NEGATIVE CONTROLS: PASS' cp013-exact-seam-preflight.log
+      - name: Fetch original frozen group1 and top-level full compiler assembly sources
+        run: |
+          set -euo pipefail
+          commit=c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          for file in \
+              Zeta/Zeros/Certificates/Groups/Level1/Group0001.lean \
+              Zeta/Zeros/Certificates.lean; do
+            mkdir -p "cp013-original-source/$(dirname "$file")"
+            curl -fLSs --retry 3 \
+              "https://raw.githubusercontent.com/smmercuri/zeta/$commit/$file" \
+              -o "cp013-original-source/$file"
+          done
+      - name: Exact original Git SHA + 124 genuine RS batches + remaining 69 groups
+        run: |
+          set -euo pipefail
+          python scripts/cp013_rs_only_batch_source_lineage.py \
+            --original-root cp013-original-source \
+            --receipt cp013-original-RS-only-source-lineage.json \
+            | tee cp013-real-source-lineage.log
+          grep -F 'CP013 GENERATED SOURCE DEPENDENCY/CUT-SEAM ARITHMETIC PREFLIGHT: PASS' cp013-real-source-lineage.log
+          grep -F 'CP013_ORIGINAL_RS_ONLY_SIGNATURES_AND_149500_SEAM_SOURCE_PASS_NOT_KERNEL' cp013-real-source-lineage.log
+          test -s cp013-original-RS-only-source-lineage.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp013-authentic-original-RS-only-source-signatures-not-Lean-kernel
+          path: |
+            cp013-exact-seam-preflight.log
+            cp013-real-source-lineage.log
+            cp013-original-RS-only-source-lineage.json
+          if-no-files-found: ignore
