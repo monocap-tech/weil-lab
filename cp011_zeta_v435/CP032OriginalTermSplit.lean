@@ -63,7 +63,24 @@ def cellMembership (x : ℝ) (lo hi : ℤ) : Prop :=
   (lo : ℝ) / (10 : ℝ) ^ 15 ≤ x ∧
     x ≤ (hi : ℝ) / (10 : ℝ) ^ 15
 
+/-- CP033 first unconditional ORIGINAL Dirichlet term, at EVERY real height.
+This is the actual source n=1 complex power, not a JSON axiom. -/
+theorem dirichlet_one (t : ℝ) :
+    dirichletTerm t 1 = 1 := by
+  simp [dirichletTerm]
+
+/-- CP033 first exact rational term membership on the 10^15 grid.
+Both endpoints are a specialization of this universal source fact.
+The generated CP032 broad n=1 interval is compatible but not trusted. -/
+theorem dirichlet_one_exact_cells (t : ℝ) :
+    cellMembership (dirichletTerm t 1).re 1000000000000000 1000000000000000 ∧
+      cellMembership (dirichletTerm t 1).im 0 0 := by
+  rw [dirichlet_one]
+  norm_num [cellMembership]
+
 end CP032OriginalTermSplit
 
 #print axioms CP032OriginalTermSplit.original_M6N256_finite_expansion
 #print axioms CP032OriginalTermSplit.component_sum_interval
+#print axioms CP032OriginalTermSplit.dirichlet_one
+#print axioms CP032OriginalTermSplit.dirichlet_one_exact_cells
