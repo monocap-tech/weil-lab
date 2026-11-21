@@ -111,6 +111,7 @@ def actual_source_gate(upstream,mathlib,receipt):
         "theorem N_at_original_least_RS_root_eq_52",
         "theorem original_53rd_positive_zeta_zero_exists",
         "theorem original_first_RS_zero_has_no_preceding_zero",
+        "theorem original_least_RS_root_unique",
     ]:
         if target not in source:
             raise ValueError("Missing first-RS exact ordinal Lean source theorem "+target)
