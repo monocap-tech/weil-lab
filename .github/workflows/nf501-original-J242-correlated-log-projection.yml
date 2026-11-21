@@ -7,6 +7,10 @@ on:
       - '.github/workflows/nf501-original-J242-correlated-log-projection.yml'
       - 'scripts/verify_nf501_original_J242_correlated_log_projector_native.py'
   pull_request:
+    paths:
+      - '.github/workflows/nf501-original-J242-correlated-log-projection.yml'
+      - 'scripts/verify_nf501_original_J242_correlated_log_projector_native.py'
+      - 'scripts/local_replay/verify_nf501_original_J242_log_one_ray_fraction_audit.py'
   workflow_dispatch:
 permissions:
   contents: read

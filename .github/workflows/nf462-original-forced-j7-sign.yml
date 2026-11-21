@@ -1,6 +1,9 @@
 name: NF462 original forced J7 signed deficit
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf462-original-forced-j7-sign.yml'
+      - 'scripts/local_replay/verify_nf462_original_j7_required_signed_deficit.py'
   workflow_dispatch:
 jobs:
   original-source-exact:

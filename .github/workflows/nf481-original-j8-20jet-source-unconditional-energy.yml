@@ -1,6 +1,11 @@
 name: NF481 original J8 20-jet unconditional full energy tail source certificate
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf481-original-j8-20jet-source-unconditional-energy.yml'
+      - 'scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py'
+      - 'scripts/local_replay/nf481_original_J8_twenty_jet_source_native.py'
+      - 'scripts/local_replay/verify_nf481_original_J8_unconditional_energy_tail_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

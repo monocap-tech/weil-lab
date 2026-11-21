@@ -1,6 +1,12 @@
 name: NF474 original J7 right [53/50,27/25] 12000-image signed moments
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf474-original-j7-right-panel-correlated-signed-moments.yml'
+      - 'scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py'
+      - 'scripts/local_replay/nf474_original_J7_right_macro_signed_native.py'
+      - 'scripts/local_replay/nf474_original_J7_left_boundary_compact_joint_native.py'
+      - 'scripts/local_replay/verify_nf474_original_J7_right_panel_and_partial_union_exact.py'
   workflow_dispatch:
 jobs:
   central:

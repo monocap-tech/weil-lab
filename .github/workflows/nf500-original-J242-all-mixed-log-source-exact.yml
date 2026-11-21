@@ -1,6 +1,10 @@
 name: NF500 original 242 selected old J242 full physical Ulog mixed moments exact native
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf500-original-J242-all-mixed-log-source-exact.yml'
+      - 'scripts/local_replay/nf500_original_J242_full_smooth_log_mixed_source_native.py'
+      - 'scripts/local_replay/verify_nf500_original_J242_all_smooth_log_moments_source_exact.py'
   workflow_dispatch:
 permissions:
   contents: read
