@@ -1,0 +1,152 @@
+name: UOI030 single-lane original Fourier Lean compiler (manual, source-pinned)
+run-name: UOI030 ${{ inputs.mode }} | source 614ba879
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'audit: source/custody only; compile: one UOI030 Lean module'
+        type: choice
+        options:
+          - audit
+          - compile
+        default: audit
+        required: true
+      heavy_confirmation:
+        description: 'For compile only, type RUN-PINNED-UOI030'
+        type: string
+        required: false
+        default: 'NO'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: weil-uoi030-single-lane-source-pinned
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    if: github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      RESEARCH_SHA: '614ba879f7389fdb620c474adaee273b00eac71c'
+      UOI030_SHA256: '7a4ffd5b1cadc830c835c42fc5f514ba702865d74dac8d6b02c6c0704f218b98'
+    steps:
+      - name: Checkout only this dispatch revision for immutable UOI030 inputs
+        uses: actions/checkout@v4
+        with:
+          path: inputs
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Checkout pinned original IV023 research source (never a moving research branch)
+        uses: actions/checkout@v4
+        with:
+          path: research
+          ref: '614ba879f7389fdb620c474adaee273b00eac71c'
+          persist-credentials: false
+
+      - name: Verify source identity, pins, and exact UOI030 candidate bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = "$RESEARCH_SHA"
+          test "$(cat research/lean-toolchain)" = 'leanprover/lean4:v4.34.0'
+          grep -Fxq 'rev = "v4.34.0"' research/lakefile.toml
+          actual=$(sha256sum inputs/verification/uoi030/UOI030CorrelationFourierFactorization.lean | cut -d ' ' -f1)
+          test "$actual" = "$UOI030_SHA256"
+          test -s research/WeilDefect/Arithmetic/ActualZetaCorrelationFourierAgreement.lean
+          sha256sum research/lean-toolchain research/lakefile.toml \
+            research/WeilDefect/Arithmetic/ActualZetaCorrelationFourierAgreement.lean \
+            inputs/verification/uoi030/UOI030CorrelationFourierFactorization.lean \
+            > uoi030-pinned-inputs.sha256
+          echo 'Pinned source and candidate check PASS. This is NOT Lean compilation.'
+
+      - name: Require explicit authorization for the single Lean module
+        if: inputs.mode == 'compile'
+        shell: bash
+        env:
+          HEAVY_CONFIRMATION: ${{ inputs.heavy_confirmation }}
+        run: |
+          set -euo pipefail
+          test "$HEAVY_CONFIRMATION" = 'RUN-PINNED-UOI030'
+          echo 'Confirmed: run only one UOI030 Lean compiler lane.'
+
+      - name: Install pinned Lean and initialize Lake before any manifest checks
+        if: inputs.mode == 'compile'
+        shell: bash
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake --version
+          lake update
+          test -s lake-manifest.json
+          sha256sum lake-manifest.json > ../uoi030-generated-manifest.sha256
+
+      - name: Retrieve pinned Mathlib cache
+        if: inputs.mode == 'compile'
+        shell: bash
+        working-directory: research
+        run: |
+          set -euo pipefail
+          lake exe cache get
+
+      - name: Compile original unchanged source dependency first
+        if: inputs.mode == 'compile'
+        shell: bash
+        working-directory: research
+        timeout-minutes: 95
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.ActualZetaCorrelationFourierAgreement 2>&1 | tee ../uoi030-upstream-build.log
+
+      - name: Stage exactly one UOI030 Lake module without rewriting any proof
+        if: inputs.mode == 'compile'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p research/WeilDefect/Research
+          cp inputs/verification/uoi030/UOI030CorrelationFourierFactorization.lean \
+             research/WeilDefect/Research/UOI030CorrelationFourierFactorization.lean
+          test "$(sha256sum research/WeilDefect/Research/UOI030CorrelationFourierFactorization.lean | cut -d ' ' -f1)" = "$UOI030_SHA256"
+
+      - name: Genuine UOI030 Lean compilation, stop at first diagnostic
+        if: inputs.mode == 'compile'
+        shell: bash
+        working-directory: research
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Research.UOI030CorrelationFourierFactorization 2>&1 | tee ../uoi030-build.log
+          test -s .lake/build/lib/lean/WeilDefect/Research/UOI030CorrelationFourierFactorization.olean
+
+      - name: Print actual theorem axioms for strict independent review
+        if: inputs.mode == 'compile'
+        shell: bash
+        working-directory: research
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Research/UOI030CorrelationFourierFactorization.lean 2>&1 | tee ../uoi030-axioms.log
+          echo 'Raw Lean axiom output captured; acceptance still requires strict audit.'
+
+      - name: Preserve source pin, compiler diagnostics and genuine receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: uoi030-single-lane-${{ github.run_id }}
+          path: |
+            uoi030-pinned-inputs.sha256
+            uoi030-generated-manifest.sha256
+            uoi030-upstream-build.log
+            uoi030-build.log
+            uoi030-axioms.log
+            research/.lake/build/lib/lean/WeilDefect/Research/UOI030CorrelationFourierFactorization.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
+          retention-days: 60
