@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "UOI003",
+  "date_utc": "2026-11-21",
+  "evidence_class": "offline_governance_test_and_provenance_only",
+  "authoritative_issue": "https://github.com/monocap-tech/weil-lab/issues/864",
+  "original_plan_not_satisfied": [
+    "UOI-INTAKE",
+    "CI-FANOUT"
+  ],
+  "install": {
+    "files": {
+      "scripts/uoi_validate.py": {
+        "git_blob_sha": "4dc0c95d789c62587630fc1d8e716207ffae34a8",
+        "sha256": "1b6d1fa8e4fb6de8772767909a5d28507a0e5dcb28f5b2054eda01f2de8b53cb"
+      },
+      "scripts/test_uoi.py": {
+        "git_blob_sha": "61776314a3ddadfc4ccc108e6e2fc809fa23ed1c",
+        "sha256": "198296bc4902411f6f477b84f532e3d4ca746f446b15cc9977d59213513d7e39"
+      },
+      "research/unified/obligations.json": {
+        "git_blob_sha": "b5fe16797677b585df82da5a5d0273210dedc72d",
+        "sha256": "34e99fa4832bff0fa4a22dd06f607bf8eab186b9ec17302f042c364565958bef"
+      }
+    }
+  },
+  "offline_direct_tests": {
+    "invocation": "python -m unittest discover -s scripts -p test_uoi.py -v",
+    "count": 16,
+    "passed": 16,
+    "failed": 0,
+    "reconstructed_exact_git_blob_sha": true,
+    "full_git_checkout": false,
+    "remote_github_actions_run": false
+  },
+  "planner": {
+    "node_count": 13,
+    "review_only": [
+      "UOI-INTAKE",
+      "CI-FANOUT"
+    ],
+    "blocked_count": 11,
+    "dispatch_authorized": false,
+    "mathematical_promotion_authorized": false
+  },
+  "cf_custody": {
+    "CF019": {
+      "original_sha256": "7db1771c9172df7227d15c2b8d05c1d724579db78c33ee88b700aa945511b5ff",
+      "repo_git_blob_sha": "d6cc8fc5a6e46475c7f1042584f6e31724fbea09",
+      "standing": "original_analytic_note_no_lean"
+    },
+    "CF021": {
+      "original_sha256": "cc14fccefdb5422088965cb6157207b88ae73852b97ad25acc7d7bed63dfb287",
+      "repo_git_blob_sha": "5d881a3ee5499220746a2431d528f204fed63118",
+      "standing": "original_analytic_note_no_lean"
+    }
+  },
+  "ci_observation": {
+    "queued": 0,
+    "in_progress": 0,
+    "cp034_pr": 856,
+    "matching_scoped_workflow": ".github/workflows/cp033-original-source-split-first-cell-kernel.yml",
+    "nf_iv_exhaustive_fanout_audit": false,
+    "required_checks_verified": false,
+    "lake_manifest_order_all_lineages_verified": false
+  },
+  "math_claim": {
+    "original_signed_weil_global_positivity": "open",
+    "RH": "open",
+    "cf_endpoint_null_exclusion": "open"
+  }
+}
