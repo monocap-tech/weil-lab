@@ -1,0 +1,75 @@
+name: CP021 OPT-IN genuine Zeta 4.35 leaf-only compiler, 13 standard axiom receipts
+# Does NOT build any CP013–CP020 source draft, despite parent PR stack.
+# Explicit label/manual dispatch only; protect original IV/NF queued CI.
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [labeled]
+permissions:
+  contents: read
+concurrency:
+  group: cp021-upstream-original-Zeta435-two-independent-leaves-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  actual-original-Zeta435-two-leaf-kernel:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'cp021-leaf-lean' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install genuine external Zeta4.35 compiler
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Pin original source immutable SHA and exact 13-leaf theorem gates
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 65
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          test "$(git -C .lake/packages/Zeta rev-parse HEAD)" = c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.35.0
+          python ../scripts/cp021_independent_leaf_v435_source_kernel_gate.py \
+            --self-test --source-check \
+            --original-zeta .lake/packages/Zeta \
+            --original-mathlib .lake/packages/mathlib \
+            2>&1 | tee cp021-actual-original-Zeta-source-gate.log
+      - name: Original genuine Lean compiler run of TWO LEAF TARGETS ONLY — no CP013–CP020 builds
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 155
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get
+          lake build CP021BorweinLeaf CP021GermLeaf 2>&1 \
+            | tee cp021-actual-upstream-only-two-leaf-build.log
+      - name: REAL standard-only 13 axioms, require both compiled leaf oleans
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          (
+            cd cp011_zeta_v435
+            lake env lean CP021BorweinLeaf.lean
+            lake env lean CP021GermLeaf.lean
+          ) 2>&1 | tee cp011_zeta_v435/cp021-real-original-leaf-axioms.log
+          python scripts/cp021_independent_leaf_v435_source_kernel_gate.py --kernel-audit
+          test -s cp011_zeta_v435/cp021-independent-original-leaf-actual-kernel.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp021-actual-standalone-original-Zeta435-13-theorem-LEAF-kernel
+          path: |
+            cp011_zeta_v435/cp021-actual-original-Zeta-source-gate.log
+            cp011_zeta_v435/cp021-actual-upstream-only-two-leaf-build.log
+            cp011_zeta_v435/cp021-real-original-leaf-axioms.log
+            cp011_zeta_v435/cp021-independent-original-leaf-actual-kernel.json
+            cp011_zeta_v435/.lake/build/lib/lean/CP021BorweinLeaf.olean
+            cp011_zeta_v435/.lake/build/lib/lean/CP021GermLeaf.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
