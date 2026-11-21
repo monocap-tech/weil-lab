@@ -1,0 +1,35 @@
+name: CP009 exact 1747950-root safe dyadic precision and source error-budget gate
+on:
+  pull_request:
+    paths:
+      - "scripts/cp009_riemann_siegel_precision_policy.py"
+      - "docs/CP009_ALL_RS_DYADIC_PRECISION_AND_ANALYTIC_ERROR_GAP.md"
+      - ".github/workflows/cp009-rs-precision-policy.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cp009-precision-policy-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  full-roster-exact-rational-policy-not-a-zero-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify source-bounded all-RS root rational error budgets and negative controls
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp009_riemann_siegel_precision_policy.py
+          python scripts/cp009_riemann_siegel_precision_policy.py --self-test | tee cp009-rs-policy-rational.log
+          grep -F 'CP009 EXACT RATIONAL CONDITIONAL SCHEDULE PASS' cp009-rs-policy-rational.log
+          grep -F 'ORIGINAL RS ANALYTIC ERROR FLOOR' cp009-rs-policy-rational.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp009-rs-dyadic-exact-rational-policy-NOT-kernel-or-roster
+          path: cp009-rs-policy-rational.log
+          if-no-files-found: ignore
