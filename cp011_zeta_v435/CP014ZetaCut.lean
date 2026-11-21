@@ -76,6 +76,26 @@ theorem zerosUnder_cut_filter {c g : ℝ} (hcg : c ≤ g) :
     exact ⟨(mem_zerosUnder_iff g z).mpr
       ⟨⟨hzim.1,hzim.2.trans_le hcg⟩,hzero⟩,hzim.2⟩
 
+/-- The genuine published original Zeta v4.35 Turing certificate has
+exactly 1,748,002 distinct positive-height zeros below its terminal Gram
+point, since the original original-source count also proves all are
+SIMPLE there. The result uses no new Euler/RS root enclosures. -/
+theorem original_full_source_finite_zero_card :
+    (zerosUnder (gramPoint certifiedZeroCount.minIdx)).card = 1748002 := by
+  have hN := N_eq_card_below_original_gram certifiedZeroCount
+    (gramPoint certifiedZeroCount.minIdx) (le_refl _)
+  have hT : riemannZeta.N (gramPoint certifiedZeroCount.minIdx) =
+      certifiedZeroCount.intervals.length :=
+    riemannZeta.N_gramPoint_eq certifiedZeroCount
+  have hlength : certifiedZeroCount.intervals.length = 1748002 := by
+    change certifiedZeroIntervals.intervals.length = 1748002
+    exact certifiedZeroIntervals_length
+  have hcast : ((zerosUnder (gramPoint certifiedZeroCount.minIdx)).card : ℝ) =
+      1748002 := by
+    rw [← hN]
+    exact hT.trans (by exact_mod_cast hlength)
+  exact_mod_cast hcast
+
 /-- Exactly 52 original source Euler roots below 149.5, provided the
 separate source-verified Euler and RS witness finsets E,R each carry
 their genuine root membership and order information and together
@@ -93,9 +113,9 @@ theorem N_at_Euler_RS_seam_eq_52_of_source_witnesses
     (hdisjoint : Disjoint E R)
     (hEbelow : ∀ z ∈ E, z.im < (149500 : ℝ) / 1000)
     (hRabove : ∀ z ∈ R, (149500 : ℝ) / 1000 < z.im)
-    (hcut : (149500 : ℝ) / 1000 ≤ gramPoint certifiedZeroCount.minIdx)
-    (hfull : (zerosUnder (gramPoint certifiedZeroCount.minIdx)).card = 1748002) :
+    (hcut : (149500 : ℝ) / 1000 ≤ gramPoint certifiedZeroCount.minIdx) :
     riemannZeta.N ((149500 : ℝ) / 1000) = 52 := by
+  have hfull := original_full_source_finite_zero_card
   have htotal :
       (zerosUnder (gramPoint certifiedZeroCount.minIdx)).card =
       E.card + R.card := by omega
@@ -114,5 +134,6 @@ theorem N_at_Euler_RS_seam_eq_52_of_source_witnesses
 end CP014ZetaCut
 
 #print axioms CP014ZetaCut.N_eq_card_below_original_gram
+#print axioms CP014ZetaCut.original_full_source_finite_zero_card
 #print axioms CP014ZetaCut.zerosUnder_cut_filter
 #print axioms CP014ZetaCut.N_at_Euler_RS_seam_eq_52_of_source_witnesses
