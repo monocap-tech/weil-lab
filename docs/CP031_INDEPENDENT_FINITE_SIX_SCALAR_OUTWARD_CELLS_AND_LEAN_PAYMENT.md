@@ -57,7 +57,7 @@ Using the original published theta error ≤12/t^4 (for these t>150), PLUS the s
     E_R ≤ (12/150^4)*(21893/10^9)+3/10^13
         = 138197/168750000000000000 ≈ 8.1894519×10^-13.
 
-Meanwhile F(tL) ≤ −681/10^9 and F(tR) ≥15519/10^9. Thus BOTH original finite signs are separated from zero by large numerical margins IF AND ONLY IF the corresponding exact source expressions have been proved to lie within the quoted cells and the source error bounds have been kernel-certified. More precisely, the cells and error cap *suffice* for the sign conclusions; the converse is not needed and has not been shown.
+Meanwhile F(tL) ≤ −681/10^9 and F(tR) ≥15519/10^9. Thus, IF the corresponding exact source expressions are proved to lie within these cells and the error bounds are kernel-certified, BOTH original finite signs are separated from zero by large margins. This is a sufficient condition; its converse is neither required nor proved.
 
 ### 4. Remaining exact Lean proof duties
 
