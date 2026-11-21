@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "UOI005",
+  "recorded_utc": "2026-11-21",
+  "authoritative_issue": "https://github.com/monocap-tech/weil-lab/issues/866",
+  "evidence_type": "source_pinned_repair_preview_no_source_branch_mutation",
+  "candidate_source": {
+    "branch": "research/nf768-original-indexzero-104-111-controlled-kernel",
+    "sha": "b477d9a8eb6c33781a8eee7c1208de93c705f307",
+    "source_tree_entries": 8783,
+    "tree_truncated": false,
+    "workflow_count": 608
+  },
+  "staged_artifacts": {
+    "research/unified/repairs/UOI005_nf768_four_source_scopes.json": {
+      "git_blob": "845b871615fd02df56f330796a98d4043689d817"
+    },
+    "scripts/uoi_source_scope_patch.py": {
+      "git_blob": "228f8ee8b761b1106ac98b7af09579f9be1d2213",
+      "sha256": "b6f90cf10cb949092d4db9674f5b3a7fc43186d36538253fcb8ecc6b689c2080"
+    },
+    "scripts/test_uoi_source_scope_patch.py": {
+      "git_blob": "879930f7cfbb8f1d7653a12c546cdf0401bb824d",
+      "sha256": "1d30971faa585eefd7ecd9df71fff6300ad7396336860c796718ade5520b2918"
+    },
+    "research/unified/repairs/UOI005_nf768_four_source_scopes.patch": {
+      "git_blob": "cb041a0a17fd2fa499efd8e584adf03cbfaa9106"
+    }
+  },
+  "sources_audited": {
+    "workflows": 4,
+    "workflow_plus_direct_inputs": 28,
+    "missing_pinned_paths": 0,
+    "workflow_sha_mismatches": 0,
+    "patch_event_context_matches": 4,
+    "unchanged_jobs_bodies": 4,
+    "preserved_workflow_dispatch": 4
+  },
+  "verification": {
+    "unit_tests": {
+      "count": 23,
+      "passed": 23,
+      "executed_locally": true,
+      "synthetic_source_fixtures": true
+    },
+    "git_patch_fixture": {
+      "git_apply_check": true,
+      "git_apply": true,
+      "source_context_equivalent_fixtures": true,
+      "full_exact_branch_checkout": false
+    },
+    "source_identity": {
+      "four_original_github_workflow_blobs_verified": true,
+      "all_direct_input_paths_sha_verified_via_recursive_git_tree": true
+    },
+    "entire_608_workflow_semantics_audited": false,
+    "branch_rules_and_required_checks_verified": false,
+    "push_trigger_fanout_verified": false
+  },
+  "execution_authority": {
+    "research_branch_patched": false,
+    "branch_created": false,
+    "pull_request_created": false,
+    "github_actions_dispatched": false,
+    "automatic_dispatch": false,
+    "approved_for_pr": false,
+    "approved_for_push": false,
+    "ci_fanout": "open",
+    "uoi_intake": "open",
+    "RH": "open"
+  }
+}
