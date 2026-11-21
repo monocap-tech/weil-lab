@@ -29,7 +29,7 @@ certificates. No use of an untrusted JSON/Python boolean.
 
 SOURCE PROOF CANDIDATES only. This Lean file has NOT been
 compiled and has NO new v4.35 kernel receipt. Even a standard
-axiom audit of the conditional theorem would NOT pay the
+standard-axiom audit of the conditional theorem would NOT pay the
 four coarse finite arithmetic premise instances.
 -/
 
