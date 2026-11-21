@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "id": "UOI004",
+  "date_utc": "2026-11-21",
+  "authority_issue": "https://github.com/monocap-tech/weil-lab/issues/865",
+  "classification": "governance_source_custody_not_ci_or_math_acceptance",
+  "source_files": {
+    "scripts/uoi_ci_fanout_gate.py": {
+      "git_blob": "ccc0a82ff58cef664b59045af0eb4998f8fd0de4",
+      "sha256": "f96c6b040ebb1b64c8014142dc14333ad281b0d54afefab4ccf3463ff95d4407"
+    },
+    "scripts/test_uoi_ci_fanout_gate.py": {
+      "git_blob": "e624cdb7538850269665aa8a1da185f2f60c2337",
+      "sha256": "ea7c1e04b1f433ed0b452f235a09bfa61ea522a016d16d183e9ac353edc35880"
+    },
+    "research/unified/obligations.json": {
+      "git_blob": "31ce7a1a6c16aa39828636546aa45ceef2e222cb"
+    }
+  },
+  "offline_tests": {
+    "fanout_auditor": {
+      "tests": 16,
+      "passed": 16,
+      "git_blob_matched": true
+    },
+    "original_planner": {
+      "tests": 16,
+      "passed": 16,
+      "git_blob_matched": true
+    },
+    "remote_github_actions": false
+  },
+  "obligations": {
+    "node_count": 13,
+    "ready_for_review_only": [
+      "UOI-INTAKE",
+      "CI-FANOUT"
+    ],
+    "blocked_count": 11,
+    "ci_fanout": "open",
+    "execution_policy": "consolidation_hold",
+    "dispatch_authorized": false,
+    "mathematical_promotion_authorized": false
+  },
+  "live_source_evidence": {
+    "nf753": {
+      "pr": 797,
+      "workflow_count": 607,
+      "unrestricted_head_examples": {
+        "nf457-original-log-peel.yml": "25bb13e47e87150d54e13240ddd41a3a793fbb3c",
+        "nf463-original-j7-spatial-necessity.yml": "f96a10937fc703850209d1502b13b696a08d320e"
+      }
+    },
+    "iv023": {
+      "pr": 805,
+      "workflow_count": 611,
+      "unrestricted_head_examples": {
+        "nf458-original-endpoint-leverage-gate.yml": "fa932e125909f312d8660bcaea821ed53367a7b5",
+        "nf459-native-original-christoffel.yml": "fe9991d3e4af8f84c1ed2409c9fcedbeadf667ac",
+        "nf471-original-j7-joint-arch-macroscopic-mean.yml": "f93fbb51a56a073bb329e2e6079ca8edf781e532"
+      }
+    },
+    "current_lineages": {
+      "nf768_workflow_count": 608,
+      "iv025_workflow_count": 612,
+      "nf768_unrestricted_example": "nf458-original-endpoint-leverage-gate.yml",
+      "iv025_unrestricted_example": "nf459-native-original-christoffel.yml"
+    }
+  },
+  "unpaid_safety_gates": [
+    "full_base_head_static_audit",
+    "stacked_required_checks_authoritative_access",
+    "Lake_generated_manifest_preflight_order",
+    "operator_approved_one_job_lease"
+  ],
+  "not_performed": [
+    "heavy_workflow_dispatch",
+    "research_pull_request",
+    "full_600_workflow_content_scan",
+    "kernel_compiler_audit",
+    "mathematical_promotion"
+  ]
+}
