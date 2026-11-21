@@ -28,7 +28,7 @@ N_TOTAL = 1_748_002
 
 
 def gitblob(data: bytes) -> str:
-    return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\\0" + data).hexdigest()
+    return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
 
 
 def parse_original52(path=SOURCE_ROWS):
