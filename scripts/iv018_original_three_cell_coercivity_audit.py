@@ -87,6 +87,7 @@ DEPS=[
     ROOT/"ActualZetaOriginalCollarLiteralArch.lean",
     ROOT/"ActualZetaOriginalCollar242Correction.lean",
     Path("WeilDefect/External/Zeta23/Definitions/Def_Zeta23_ExplicitFormula.lean"),
+    Path("lakefile.toml"),
     Path("lean-toolchain"),
     Path("lake-manifest.json"),
 ]
@@ -174,6 +175,8 @@ def source_preflight():
     ):
         assert marker in b,("Missing real original n9 prime support transfer",marker)
     for path in DEPS:
+        if path.name == "lake-manifest.json":
+            continue  # Lake generates this AFTER source preflight.
         assert path.is_file(),("Missing original source dependency",path)
     exact_rationals()
     print("IV018 ORIGINAL source-only preflight PASS: 20 new three-cell signed/prime source Lean candidates + 8 genuine upstream anchors, not a kernel result.")
@@ -196,6 +199,7 @@ def parse_log(path,names):
 
 def kernel_verify():
     source_preflight()
+    assert Path("lake-manifest.json").is_file(), "Missing Lake-generated manifest: lake update must run before KERNEL verification"
     oleans=[OLEAN/(p.stem+".olean") for p in (MOD_A,MOD_B)]
     for p in oleans:
         assert p.is_file() and p.stat().st_size>0,("Actual compiled Lean object required",p)
