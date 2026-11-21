@@ -105,7 +105,8 @@
         "https://github.com/monocap-tech/weil-lab/issues/861",
         "https://github.com/monocap-tech/weil-lab/issues/865",
         "https://github.com/monocap-tech/weil-lab/issues/866",
-        "https://github.com/monocap-tech/weil-lab/issues/867"
+        "https://github.com/monocap-tech/weil-lab/issues/867",
+        "https://github.com/monocap-tech/weil-lab/issues/868"
       ],
       "evidence": [
         {
@@ -131,6 +132,11 @@
         {
           "kind": "default_branch_dispatch_precondition_unpaid",
           "reference": "https://github.com/monocap-tech/weil-lab/issues/867",
+          "accepts_obligation": false
+        },
+        {
+          "kind": "UOI007_offline_30_test_inspection_controller_draft_not_deployed",
+          "reference": "https://github.com/monocap-tech/weil-lab/blob/governance/uoi000-unified-operative-investigation/research/unified/receipts/UOI007_inspection_controller_static.json",
           "accepts_obligation": false
         }
       ],
