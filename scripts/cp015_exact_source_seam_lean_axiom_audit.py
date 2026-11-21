@@ -33,6 +33,8 @@ REQUIRED=(
     "CP015SourceWitnesses.eulerRoots_subset",
     "CP015SourceWitnesses.rsRoots_subset",
     "CP015SourceWitnesses.euler_rs_disjoint",
+    "CP015SourceWitnesses.original_complete_positive_roster_is_euler_union_rs",
+    "CP015SourceWitnesses.no_original_zero_exactly_at_149500_div1000",
     "CP015SourceWitnesses.original_N_at_149500_div1000_eq_52",
 )
 ALLOWED={"propext","Classical.choice","Quot.sound"}
@@ -73,7 +75,7 @@ def main():
         axioms[target]=sorted(deps)
     result={
         "status":"CP015_ORIGINAL_ZETA_UNCONDITIONAL_N_1495_EQ_52_KERNEL_PASS",
-        "scope":"Exact original first52 Euler / 1747950 RS source witnesses + original N(g) global count and zero simplicity; NOT original ordinal53 numeric enclosure or global RH",
+        "scope":"Original first52 Euler / 1747950 RS source-root saturation, NO zero at exact 149.5 seam, N(149.5)=52; NOT original ordinal53 numeric enclosure or global RH",
         "external_pinned_upstream_commit":COMMIT,
         "real_upstream_Lean":"leanprover/lean4:v4.35.0",
         "source_sha256":sha(SOURCE),
@@ -83,6 +85,7 @@ def main():
         "actual_axioms":axioms,
         "unconditional_N_1495_eq_52_if_this_receipt_exists":True,
         "local_N_15005353_eq_53_proved":False,
+        "no_original_zero_at_1495_Lean_proved_if_receipt_exists":True,
         "root53_Euler_sign_proof_accepted":False,
         "original_batch_index53_decimal_endpoints_proved":False,
         "global_Weil_positivity_or_RH":False,
