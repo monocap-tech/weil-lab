@@ -1,0 +1,44 @@
+{
+  "schema": "weil-lab/pi015-dual-source-lock/v1",
+  "custody_status": "source references inspected; no dual Lean compiler pass",
+  "upstream": {
+    "repository": "anthropics/formal-math",
+    "commit": "16a5ce41304fcdaea4e0be7c132e1c361dc26da5",
+    "project_subdir": "zeta23",
+    "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
+    "mathlib_ref": "v4.33.0-rc2",
+    "mathlib_commit": "51e6992efd06126df61a496bebf8f49482a4e129",
+    "source_blobs": {
+      "zeta23/lean-toolchain": "c084c7fbe586b0276863b66f16d2955a43bc3fc6",
+      "zeta23/lakefile.toml": "43d9da33fb523dce999b070df74e7cdd03381e2b",
+      "zeta23/lake-manifest.json": "af9ef405e4e292f2e0176b12b6cb66f547575314",
+      "zeta23/Zeta23/Defs.lean": "8024700cbfefb54d763b487afa84c03fef58a550",
+      "zeta23/Zeta23/ExplicitFormula.lean": "11119489556113fd419d7b6fb45ccbaa2e493e2a",
+      "zeta23/Zeta23/GammaFacts/Series.lean": "2c6cf90050c2e6d5cbef0745d0445e3a8d02394a"
+    }
+  },
+  "local": {
+    "repository": "monocap-tech/weil-lab",
+    "base_branch": "research/pi014-literal-kernel-character-and-zeta23-dependency-gate",
+    "lean_toolchain": "leanprover/lean4:v4.34.0",
+    "mathlib_ref": "v4.34.0",
+    "mathlib_tag_commit": "5ed2965256430c3649e86755f9576b54eca72435",
+    "source_blobs": {
+      "lean-toolchain": "664e12dc06fe1ec82414cccb8e8f8e34d33d9f3f",
+      "lakefile.toml": "e567c529fc39eff8a175b3361a2831763e5dcc2c",
+      "WeilDefect/Arithmetic/PI007FiniteGammaKernel.lean": "598fe925b129fcf8eb7d5fd5b94e7849a9e82ef9",
+      "WeilDefect/Arithmetic/PI008FiniteDigammaSymbol.lean": "276d2b3caca7686aacceafaa19e723655b03e3a1",
+      "WeilDefect/Arithmetic/PI014KernelCharacterBridge.lean": "87b423ef892b49976a573bde8f5637e3b3d0bcf7"
+    }
+  },
+  "assertions": {
+    "external_paperFT_positive_fourier_sign": true,
+    "dual_toolchain_versions_match": false,
+    "cross_version_lean_import_proved": false,
+    "internal_local_model_is_external_import": false,
+    "finite_symbol_classical_identity": true,
+    "finite_symbol_lean_accepted": false,
+    "original_IV011_lean_transport_proved": false,
+    "masullo_operator_contact_equivalence_proved": false
+  }
+}

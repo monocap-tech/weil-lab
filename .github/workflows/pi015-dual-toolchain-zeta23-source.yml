@@ -1,0 +1,169 @@
+name: PI015 dual-toolchain authentic Zeta23 source custody
+
+# Manual-only. Existing PI009–PI013 PR-triggered Lean jobs were queued.
+# Manual dispatch requires the workflow to be available on the default
+# branch or another supported dispatch configuration; the mere presence
+# of this file in the PI draft PR is NOT a compiler receipt.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  upstream-original-zeta23-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 115
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare source pin and verification record
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p pi015-audit
+          python3 -m py_compile scripts/pi015_dual_source_lean_audit.py \
+            scripts/pi015_finite_symbol_preflight.py
+          python3 scripts/pi015_finite_symbol_preflight.py \
+            2>&1 | tee pi015-audit/finite-exact-preflight.log
+          git rev-parse HEAD | tee pi015-audit/checked-out-PI-commit.txt
+
+      - name: Fetch actual upstream source at the immutable commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --filter=blob:none \
+            https://github.com/anthropics/formal-math.git pi015-upstream
+          git -C pi015-upstream checkout \
+            16a5ce41304fcdaea4e0be7c132e1c361dc26da5
+          test "$(git -C pi015-upstream rev-parse HEAD)" = \
+            16a5ce41304fcdaea4e0be7c132e1c361dc26da5
+          git -C pi015-upstream hash-object \
+            zeta23/lean-toolchain zeta23/lakefile.toml \
+            zeta23/lake-manifest.json zeta23/Zeta23/Defs.lean \
+            zeta23/Zeta23/ExplicitFormula.lean \
+            zeta23/Zeta23/GammaFacts/Series.lean \
+            | tee pi015-audit/upstream-source-blobs.txt
+
+      - name: Install elan for the source's true Lean 4.33.0-rc2
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Build the ACTUAL upstream Zeta23.Defs package
+        working-directory: pi015-upstream/zeta23
+        shell: bash
+        timeout-minutes: 90
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = \
+            51e6992efd06126df61a496bebf8f49482a4e129
+          lake exe cache get
+          lake build Zeta23.Defs \
+            2>&1 | tee "$GITHUB_WORKSPACE/pi015-audit/upstream-defs-build.log"
+          test -s .lake/build/lib/lean/Zeta23/Defs.olean
+
+      - name: Direct genuine Zeta23 import theorem and object
+        working-directory: pi015-upstream/zeta23
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake env lean \
+            -o "$GITHUB_WORKSPACE/pi015-audit/PI015ExternalPaperFT.olean" \
+            "$GITHUB_WORKSPACE/compat/pi015/PI015ExternalPaperFT.lean" \
+            2>&1 | tee "$GITHUB_WORKSPACE/pi015-audit/upstream-axioms.log"
+          test -s "$GITHUB_WORKSPACE/pi015-audit/PI015ExternalPaperFT.olean"
+
+      - name: Fail-closed upstream source and axiom receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/pi015_dual_source_lean_audit.py \
+            --mode upstream \
+            --upstream pi015-upstream \
+            --log pi015-audit/upstream-axioms.log \
+            --olean pi015-audit/PI015ExternalPaperFT.olean \
+            --out pi015-audit/upstream-receipt.json
+          test -s pi015-audit/upstream-receipt.json
+
+      - name: Preserve actual upstream evidence on PASS or FAIL
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pi015-authentic-zeta23-4-33-upstream
+          path: pi015-audit/
+          if-no-files-found: ignore
+
+  weil-lab-local-finite-gamma-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 115
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare independent local source and exact algebra
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p pi015-audit
+          python3 -m py_compile scripts/pi015_dual_source_lean_audit.py \
+            scripts/pi015_finite_symbol_preflight.py
+          python3 scripts/pi015_finite_symbol_preflight.py \
+            2>&1 | tee pi015-audit/local-exact-preflight.log
+          git rev-parse HEAD | tee pi015-audit/checked-out-PI-commit.txt
+
+      - name: Install elan and source-pinned Weil-Lab Lean 4.34.0
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+
+      - name: Direct compiled PI015 finite-symbol target
+        shell: bash
+        timeout-minutes: 90
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.PI015FiniteGammaSymbolBridge \
+            2>&1 | tee pi015-audit/local-direct-build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/PI015FiniteGammaSymbolBridge.olean
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/PI014KernelCharacterBridge.olean
+
+      - name: Direct Lean axiom logs and exact source object
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/PI015FiniteGammaSymbolBridge.lean \
+            2>&1 | tee pi015-audit/local-axioms.log
+
+      - name: Fail-closed local exact source/olean/five-axiom receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/pi015_dual_source_lean_audit.py \
+            --mode local \
+            --log pi015-audit/local-axioms.log \
+            --olean .lake/build/lib/lean/WeilDefect/Arithmetic/PI015FiniteGammaSymbolBridge.olean \
+            --out pi015-audit/local-receipt.json
+          test -s pi015-audit/local-receipt.json
+
+      - name: Preserve actual local evidence on PASS or FAIL
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pi015-weil-lab-4-34-finite-gamma
+          path: |
+            pi015-audit/
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI015FiniteGammaSymbolBridge.olean
+          if-no-files-found: ignore
