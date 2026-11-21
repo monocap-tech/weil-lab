@@ -1,0 +1,87 @@
+name: IV018 original THREE-cell signed zeta Weil one-quarter coercivity and n9 prime transfer
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalThreeCellSignedEnvelope.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalThreeCellPrime9Transfer.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalNarrowSignedGamma.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalNarrowDiagonalCoercivity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalConcreteGapPrimeFreeDiagonal.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalTwoCollarPrimeFreeBump.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalNonzeroPrimeFreeSchwartzBump.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalActivePrimeSupportGeometry.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollarPrimeBound.lean"
+      - "scripts/iv018_original_three_cell_coercivity_audit.py"
+      - ".github/workflows/iv018-original-three-cell-signed-coercivity.yml"
+      - "docs/IV018_PHASE_IV_ORIGINAL_THREE_CELL_SIGNED_COERCIVITY.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: iv018-original-three-cell-signed-onequarter-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-nf543-two-collars-plus-real-new-interval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned genuine original Lean Mathlib toolchain and immutable cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          test -s lake-manifest.json
+      - name: Exact rational three-cell physical/gamma/two-pole/n9 budget and source preflight — NOT Lean certification
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/iv018_original_three_cell_coercivity_audit.py
+          python scripts/iv018_original_three_cell_coercivity_audit.py preflight
+          test -s iv018-original-three-cell-rational-ledger.json
+      - name: Fetch pinned Mathlib cache after strict source preflight
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get
+      - name: Direct Lean kernel source build of real three-cell physical measure, signed Gamma and two real poles
+        timeout-minutes: 100
+        run: |
+          set -euo pipefail
+          /usr/bin/time -a -o iv018-source-resources.log -f 'phase=threecellSigned elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalThreeCellSignedEnvelope 2>&1 | tee iv018-original-three-cell-signed-envelope-build.log
+      - name: Direct Lean kernel source build of ALL active prime-power transfer and original 1over4 expanded Weil bound
+        timeout-minutes: 100
+        run: |
+          set -euo pipefail
+          /usr/bin/time -a -o iv018-source-resources.log -f 'phase=prime9Transfer elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalThreeCellPrime9Transfer 2>&1 | tee iv018-original-three-cell-prime9-transfer-build.log
+      - name: Direct source-bound standard Lean axiom verification of 20 new original and eight true upstream declarations
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalThreeCellSignedEnvelope.lean 2>&1 | tee iv018-original-three-cell-signed-envelope-axioms.log
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalThreeCellPrime9Transfer.lean 2>&1 | tee iv018-original-three-cell-prime9-transfer-axioms.log
+          python scripts/iv018_original_three_cell_coercivity_audit.py verify
+          test -s iv018-original-three-cell-source-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv018-original-zeta-three-cell-n9-prime-transfer-onequarter-kernel-audit
+          path: |
+            iv018-original-three-cell-rational-ledger.json
+            iv018-source-resources.log
+            iv018-original-three-cell-signed-envelope-build.log
+            iv018-original-three-cell-prime9-transfer-build.log
+            iv018-original-three-cell-signed-envelope-axioms.log
+            iv018-original-three-cell-prime9-transfer-axioms.log
+            iv018-original-three-cell-source-kernel-audit.json
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalThreeCellSignedEnvelope.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalThreeCellPrime9Transfer.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
