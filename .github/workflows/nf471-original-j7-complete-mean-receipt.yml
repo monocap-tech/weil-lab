@@ -1,6 +1,5 @@
 name: NF471 original J7 complete mean exact receipt audit
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   exact-receipt:

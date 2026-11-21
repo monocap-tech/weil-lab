@@ -1,6 +1,5 @@
 name: NF469 J7 native jet order gate
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   rational-jet-gate:

@@ -1,6 +1,5 @@
 name: NF470 original J7 native regular mean and joint compact source nodes
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   regular-mean:

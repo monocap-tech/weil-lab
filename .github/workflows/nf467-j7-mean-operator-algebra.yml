@@ -1,6 +1,5 @@
 name: NF467 J7 mean operator algebra
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   exact-algebra:

@@ -1,6 +1,5 @@
 name: NF465 J7 derivative-only resolution stop
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   exact-rational-method-gate:

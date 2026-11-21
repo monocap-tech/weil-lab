@@ -1,6 +1,5 @@
 name: NF464 original J7 rearrangement macroscopic necessity
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   source-exact-original-j7:
