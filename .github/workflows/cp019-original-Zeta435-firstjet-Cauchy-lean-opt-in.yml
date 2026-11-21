@@ -1,0 +1,79 @@
+name: CP019 OPT-IN genuine original Zeta v4.35 HardyZ jet / Cauchy conditional Lean kernel
+# Deliberate opt-in label only to avoid original IV/NF queued compiler fan-out.
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [labeled]
+permissions:
+  contents: read
+concurrency:
+  group: cp019-original-zeta-435-hardyJet-and-Cauchy-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  actual-original-hardyZ-firstjet-Cauchy-kernel:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'cp019-cauchy-lean' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install original external Zeta v4.35 exact compiler
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Pin immutable original Zeta and true mathlib source, seven SHA and Cauchy Fraction
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 65
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          test "$(git -C .lake/packages/Zeta rev-parse HEAD)" = c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.35.0
+          python ../scripts/cp019_original_cauchy_exact_fraction_preflight.py \
+            --self-test --zeta .lake/packages/Zeta --mathlib .lake/packages/mathlib \
+            --receipt cp019-original-source-actual-SHA-and-exact-Fraction.json
+      - name: Real external original Lean4.35 build of CP013–CP019 with real imported theorems
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 155
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get
+          lake build CP013RSOnly CP013Seam CP014FiniteCut CP014ZetaCut CP014HardyRank \
+            CP015SourceWitnesses CP016FirstRSRank CP016MonotoneAttach \
+            CP017CurvatureBudget CP018EightCell CP018HardyJet \
+            CP019OriginalFirstJet CP019ThetaSecond CP019HolomorphicRemainder CP019CauchyRemainder \
+            2>&1 | tee cp019-real-original-kernel-build.log
+      - name: Actual original Zeta4.35 four new oleans plus 17 standard-only axiom receipts
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          (
+            cd cp011_zeta_v435
+            lake env lean CP019OriginalFirstJet.lean
+            lake env lean CP019ThetaSecond.lean
+            lake env lean CP019HolomorphicRemainder.lean
+            lake env lean CP019CauchyRemainder.lean
+          ) 2>&1 | tee cp011_zeta_v435/cp019-original-source-actual-axioms.log
+          python scripts/cp019_original_lean_source_and_cauchy_axiom_audit.py
+          test -s cp011_zeta_v435/cp019-original-first-jet-and-conditional-Cauchy-kernel-receipt.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp019-Zeta-v435-original-theta-Hardy-jet-and-Cauchy-conditional-kernel
+          path: |
+            cp011_zeta_v435/cp019-original-source-actual-SHA-and-exact-Fraction.json
+            cp011_zeta_v435/cp019-real-original-kernel-build.log
+            cp011_zeta_v435/cp019-original-source-actual-axioms.log
+            cp011_zeta_v435/cp019-original-first-jet-and-conditional-Cauchy-kernel-receipt.json
+            cp011_zeta_v435/.lake/build/lib/lean/CP019OriginalFirstJet.olean
+            cp011_zeta_v435/.lake/build/lib/lean/CP019ThetaSecond.olean
+            cp011_zeta_v435/.lake/build/lib/lean/CP019HolomorphicRemainder.olean
+            cp011_zeta_v435/.lake/build/lib/lean/CP019CauchyRemainder.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
