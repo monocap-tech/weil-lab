@@ -1,0 +1,57 @@
+name: CP007 manual full original 1748002-zero source interval precision audit
+# Manual-only to avoid further backlog on canonical IV### Lean/GitHub CI.
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cp007-full-original-upstream-zero-store-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  complete-upstream-zero-source-precision:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download original eight published source stores plus manifests and real Lean BatchSpec
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          commit=c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          root=cp007-pinned-original-source
+          for file in \
+              python/out/euler_maclaurin/zeros/manifest.json \
+              python/out/euler_maclaurin/zeros/zeros_00001.txt \
+              python/out/riemann_siegel/zeros/manifest.json \
+              python/out/riemann_siegel/zeros/zeros_00001.txt \
+              python/out/riemann_siegel/zeros/zeros_00002.txt \
+              python/out/riemann_siegel/zeros/zeros_00003.txt \
+              python/out/riemann_siegel/zeros/zeros_00004.txt \
+              python/out/riemann_siegel/zeros/zeros_00005.txt \
+              python/out/riemann_siegel/zeros/zeros_00006.txt \
+              python/out/riemann_siegel/zeros/zeros_00007.txt \
+              Zeta/Zeros/Certificates/EulerMaclaurin/Batch0001.lean; do
+            mkdir -p "$root/$(dirname "$file")"
+            curl -fLSs --retry 3 "https://raw.githubusercontent.com/smmercuri/zeta/$commit/$file" -o "$root/$file"
+          done
+      - name: ACTUAL all 1748002 zero-store rows SHA-bound, source-bounded dyadic Fraction budget
+        timeout-minutes: 30
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp007_full_original_store_band_audit.py
+          python scripts/cp007_full_original_store_band_audit.py \
+            --upstream-source-root cp007-pinned-original-source \
+            --out cp007-original-full-store-interval-error-report.json \
+            | tee cp007-full-source-band-audit.log
+          test -s cp007-original-full-store-interval-error-report.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp007-source-locked-full-1748002-roster-band-budget-NOT-LEAN
+          path: |
+            cp007-full-source-band-audit.log
+            cp007-original-full-store-interval-error-report.json
+          if-no-files-found: ignore
