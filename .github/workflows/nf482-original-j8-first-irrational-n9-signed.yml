@@ -1,6 +1,5 @@
 name: NF482 original physical J8 first irrational n9 signed source panel
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

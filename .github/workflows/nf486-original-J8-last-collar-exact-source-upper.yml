@@ -1,6 +1,5 @@
 name: NF486 original J8 last microscopic collar exact signed upper
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

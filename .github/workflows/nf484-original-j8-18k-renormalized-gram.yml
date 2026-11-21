@@ -1,6 +1,5 @@
 name: NF484 source-original 18k same-U(B) renormalized J8 finite image Gram
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

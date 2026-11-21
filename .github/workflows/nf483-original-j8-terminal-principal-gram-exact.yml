@@ -1,6 +1,5 @@
 name: NF483 exact original source J8 full principal and terminal Gram witness
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

@@ -1,6 +1,5 @@
 name: NF484 fast original immutable 18k source image Gram + independent replay
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read
