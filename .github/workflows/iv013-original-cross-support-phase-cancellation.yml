@@ -1,0 +1,63 @@
+name: IV013 original zeta cross-support phase cancellation and prime-free tests
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportPhaseCancellation.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportArithmeticEnvelope.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
+      - "scripts/iv013_original_phase_cancellation_audit.py"
+      - ".github/workflows/iv013-original-cross-support-phase-cancellation.yml"
+      - "docs/IV013_PHASE_IV_ORIGINAL_CROSS_SUPPORT_PHASE_CANCELLATION.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: iv013-original-phase-cancellation-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-zeta-phase-cancellation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact original arithmetic-source preflight — NOT kernel acceptance
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/iv013_original_phase_cancellation_audit.py
+          python scripts/iv013_original_phase_cancellation_audit.py preflight
+      - name: Install pinned Lean and Mathlib with cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Direct ORIGINAL mixed prime/pole/Gamma phase-interference Lean build
+        timeout-minutes: 190
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o iv013-resources.log -f 'elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalCrossSupportPhaseCancellation 2>&1 | tee iv013-original-phase-cancellation-build.log
+      - name: Direct Lean axioms audit for 9 IV013 theorems and 4 source anchors
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportPhaseCancellation.lean 2>&1 | tee iv013-original-phase-cancellation-axioms.log
+          python scripts/iv013_original_phase_cancellation_audit.py verify
+          test -s iv013-original-phase-cancellation-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv013-original-zeta-phase-cancellation-prime-separated-kernel-audit
+          path: |
+            iv013-resources.log
+            iv013-original-phase-cancellation-build.log
+            iv013-original-phase-cancellation-axioms.log
+            iv013-original-phase-cancellation-kernel-audit.json
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportPhaseCancellation.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
