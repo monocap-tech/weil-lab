@@ -67,12 +67,18 @@
         "https://github.com/monocap-tech/weil-lab/issues/761",
         "https://github.com/monocap-tech/weil-lab/issues/792",
         "https://github.com/monocap-tech/weil-lab/issues/841",
-        "https://github.com/monocap-tech/weil-lab/issues/857"
+        "https://github.com/monocap-tech/weil-lab/issues/857",
+        "https://github.com/monocap-tech/weil-lab/issues/864"
       ],
       "evidence": [
         {
           "kind": "partial_source_audit",
           "reference": "https://github.com/monocap-tech/weil-lab/issues/862",
+          "accepts_obligation": false
+        },
+        {
+          "kind": "exact_source_hash_planner_16_of_16_test_pass",
+          "reference": "https://github.com/monocap-tech/weil-lab/issues/864",
           "accepts_obligation": false
         }
       ],
@@ -170,9 +176,17 @@
       "acceptance": "Original-source precise endpoint theorem established on correct form domain with universal quantifiers, including control of neutral/null or escaping modes; CF custody source SHA recovered.",
       "sources": [
         "https://github.com/monocap-tech/weil-lab/issues/193",
-        "https://github.com/monocap-tech/weil-lab/issues/861"
+        "https://github.com/monocap-tech/weil-lab/issues/861",
+        "https://github.com/monocap-tech/weil-lab/blob/ef70d890b5c1f4b205956ab686657a3b1ac05e26/docs/uoi/intake/CF019_reference_cross_kernel_proof_note.md",
+        "https://github.com/monocap-tech/weil-lab/blob/ef70d890b5c1f4b205956ab686657a3b1ac05e26/docs/uoi/intake/CF021_sharp_cutoff_and_infinite_dyadic_domain.md"
       ],
-      "evidence": [],
+      "evidence": [
+        {
+          "kind": "byte_identical_original_analytic_notes_not_lean",
+          "reference": "https://github.com/monocap-tech/weil-lab/issues/864",
+          "accepts_obligation": false
+        }
+      ],
       "closure_receipt": null
     },
     {
