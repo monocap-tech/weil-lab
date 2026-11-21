@@ -57,7 +57,6 @@ def preflight() -> None:
         "neutralWindowEvaluation_eq_inner",
         "SchwartzMap.toLpCLM",
         "neutralActualZetaDivisor_rawTransform_summable_of_contDiff",
-        "neutralWindowCorrelation_rawTransform",
         "neutralIV008OriginalMixedEntry_eq_divisor",
         "neutralIV009OriginalPairTerm",
         "neutralIV009WeightedPairTerm",
