@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "source": "UOI006",
+  "mode": "inspect_only",
+  "candidate_controller_location": "main",
+  "security_state": {
+    "required_checks_authenticated": false,
+    "research_execution_enabled": false,
+    "external_operator_approval_authenticated": false
+  },
+  "sources": {
+    "NF768": {
+      "repository": "monocap-tech/weil-lab",
+      "branch": "research/nf768-original-indexzero-104-111-controlled-kernel",
+      "commit_sha": "b477d9a8eb6c33781a8eee7c1208de93c705f307",
+      "source_issue": "https://github.com/monocap-tech/weil-lab/issues/867",
+      "purpose": "historical_ci_source_inspection"
+    },
+    "IV025": {
+      "repository": "monocap-tech/weil-lab",
+      "branch": "research/iv025-original-manifest-preflight-recovery",
+      "commit_sha": "f89952aebfbb1e9775a9fb0dbbe71995ae636b04",
+      "source_issue": "https://github.com/monocap-tech/weil-lab/issues/867",
+      "purpose": "historical_ci_source_inspection"
+    }
+  }
+}
