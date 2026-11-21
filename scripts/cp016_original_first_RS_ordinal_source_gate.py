@@ -63,8 +63,8 @@ def abstract_ordinal_model():
     # A NEW independently certified root may be in a narrow bracket,
     # but without a local count/monotonicity or source-index certificate
     # we cannot deduce it is the same global first RS zero.
-    other=F(151)
-    assert sorted(S).index(other)+1==54 if other in S else True
+    other=F(152)
+    assert sorted(S).index(other)+1==54
     alternative_S=set(euler)|{F(1498,10),F(150053524,1000000)}
     new_candidate=F(150053524,1000000)
     assert sum(x<cut for x in alternative_S)==52
