@@ -1,6 +1,5 @@
 name: NF505 independently audit genuine original J8 physical support-saturated 242D exterior Schur
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

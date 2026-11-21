@@ -1,6 +1,5 @@
 name: NF504 original full J8 support-saturated physical quotient 4096bit source native
 on:
-  pull_request:
   push:
     branches:
       - research/nf504-original-J8-saturated-quotient-native
