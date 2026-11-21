@@ -187,3 +187,83 @@ There are **zero new .lean files, workflows, draft PRs or Actions runs in PI019*
 4. Feed the resulting **phase-bearing**, **gauge-covariant** compatibility condition into IV and CP analytic investigations without launching compiler jobs. A finite zero count or a support graph is not a substitute for a test-level spectral/Weil equality.
 
 **PI019 conclusion:** the manuscript already specifies nuclear cutoff operators on more tests than its headline trace formula covers; the missing theorem is the *normalized diagonal trace identity*, not bare operator existence. Moreover, opposite-phase diagonal correlations produce a nonzero, gauge-independent, theorem-admissible **difference**. This is the first discriminating interface test to run BEFORE attempting diagonal scalar calibration.
+
+
+## 9. Second primary-source discovery: Chapter 13 proposes a TRANSVERSAL moment-zero domain containing diagonals
+
+Directly re-read Masullo's manuscript printed p.522 (PDF index 521), **Theorem 13.3.1.1**, equation **(13.3.1.2)**, with its visible footnote "Correct statement." The author states a trace formula on a finite-codimensional space of tests annihilated by certain Mellin moments, expressed in terms of ALL unitary idele-class characters and derivatives of order \(0\le k\le [F:\mathbb Q]-1\). The chapter also visibly contains an unfinished Theorem 13.3.1.2 ("Insert statement") and proof-plan remarks; thus we do NOT elevate the Chapter 13 statement to an independently established theorem or accepted Lean result. It is, however, a **real source-stated potential diagonal interface** and should not be ignored.
+
+For the **special case \(F=\mathbb Q\)**, \([F:\mathbb Q]=1\), so only **\(k=0\)** occurs. For a **norm-radial** test \(\varphi_h(g)=h(\log|g|_{\mathbb Q})\), integrate first over the compact norm-one fiber. Nontrivial unitary characters of the fiber average to zero. A character trivial on the fiber is \(|g|_{\mathbb Q}^{it}\), and its frequency factor cancels at the source's indicated evaluation \(s=-ix_0(\chi)\). Assuming the source's Haar disintegration and the radial test's admissibility, the collection of Chapter 13 moment conditions therefore reduces to
+\[
+\boxed{\int_{\mathbb R}h(u)\,du=0.}
+\tag{PI019-moment}
+\]
+This is a DIFFERENT codimension-one condition from the Chapter 12 formula's \(h(0)=0\).
+
+### Genuine smooth nonzero-diagonal autocorrelations in the moment-zero class
+
+Choose \(\rho\in C_c^\infty(\mathbb R;\mathbb R_{\ge0})\), nonzero, and set \(\phi=\rho'\). Then
+\[
+\int_{\mathbb R}\phi(x)\,dx=0,\qquad
+J=\|\phi\|_2^2>0.
+\]
+For \(a=\log9\) larger than the support diameter, put \(\psi(x)=\phi(x-a)\) and \(s_\beta=(\phi+\beta\psi)/\sqrt2\). All four autocorrelations \(h_\beta=h_{s_\beta,s_\beta}\) are smooth and compact. The elementary correlation identities give
+\[
+\boxed{
+h_\beta(0)=\|s_\beta\|_2^2=J>0,\qquad
+\int_{\mathbb R}h_\beta(u)\,du
+=\left|\int_{\mathbb R}s_\beta(x)\,dx\right|^2=0.}
+\tag{PI019-diagonal-moment}
+\]
+Therefore the *same four phase-opposed, genuine diagonal tests* excluded by Chapter 12's main vanishing-on-\(C_{\mathbb Q}^1\) hypothesis would be **eligible for the different Chapter 13 moment-condition class**, IF its full stated trace theorem and lift/dictionary are valid. This is a more precise analytic lead than trying to extend the Chapter 12 identity by assertion.
+
+The sign of their phase-sensitive archimedean contrast remains **strictly nonzero**, despite \(\int\phi=0\). Let \(C(v)=\int\phi(x)\phi(x-v)dx\), and \(\lambda_n=2n+1/2\). Because \(a\) exceeds the support diameter, expand
+\[
+\begin{aligned}
+I_a
+&=\int C(v)K(a+v)dv\\
+&=\sum_{n\ge0}e^{-\lambda_n a}
+  \left(\int\phi(x)e^{-\lambda_n x}dx\right)
+  \left(\int\phi(y)e^{+\lambda_n y}dy\right)\\
+&=\boxed{-\sum_{n\ge0}e^{-\lambda_n a}\lambda_n^2
+  \left(\int\rho(x)e^{-\lambda_n x}dx\right)
+  \left(\int\rho(y)e^{+\lambda_n y}dy\right)<0.}
+\end{aligned}
+\tag{PI019-derivative-phase}
+\]
+Each Laplace integral of the nonnegative \(\rho\) is strictly positive; the sum converges exponentially by \(a>\mathrm{diam}(\mathrm{supp}\,\rho)\). Thus for this **moment-zero diagonal family**, the original Gamma phase contrast \(A(h_1)-A(h_{-1})=-2I_a\) is **strictly positive**, not accidentally annihilated by the moment condition.
+
+The earlier positive-bump result (Section 3) has \(I_a>0\) and a *negative* contrast. They are two distinct smooth experiments, with the sign determined by the bump shape rather than by support adjacency alone.
+
+### Conditional transversality theorem: the scalar gap disappears if BOTH source domains are genuinely paid
+
+Let E be the complex space of compact smooth radial tests, \(e(h)=h(0)\) and \(m(h)=\int h\). These are linearly independent continuous linear functionals (as shown by the derivative-bump autocorrelation). The Chapter 12 theorem domain is \(E_e=\ker e\); the proposed Chapter 13 domain is \(E_m=\ker m\).
+
+**Algebraic uniqueness lemma.** If two continuous complex-linear functionals \(L_{\rm spec}\) and \(L_{\rm orig}\) on E agree on **both** \(E_e\) and \(E_m\), then they agree on **all of E**.
+
+Proof: agreement on \(E_e\) implies \(L_{\rm spec}-L_{\rm orig}=c\,e\), by the PI019 affine-extension lemma. Choose any derivative-bump autocorrelation \(h\in E_m\) with \(e(h)=J>0\). Agreement on \(E_m\) forces \(0=cJ\), hence \(c=0\). No density or operator norm claim is hidden in this elementary linear statement.
+
+**This is the conditional cross-projection opportunity:** a source-exact, independently justified second moment-domain trace law, compatible with the SAME whole arithmetic/pole/prime/Gamma functional and test lift, could **determine the formerly undetermined contact scalar**. It would not, without genuine spectral operator representation, whole signed Weil positivity or global RH proof, establish any of those stronger conclusions.
+
+The conditions cannot be mixed casually: the Chapter 13 source is NOT Chapter 12's proved trace theorem on a larger domain; it has different moment hypotheses and visible unfinished surrounding text. Even if a formula holds on \(E_m\), its prime, archimedean, Mellin pole, Haar and zero multiplicity data must be matched to the SAME global functional already identified on \(E_e\). If the two "extensions" use different renormalized cutoff conventions, agreement on the subspaces need not be meaningful until a common normalization is established.
+
+### Independent exact signed zero-moment control
+
+New analytic-only script \`scripts/pi019_zero_moment_diagonal_exact_preflight.py\` evaluates a **discrete signed two-atom model** (not a smooth test) \(\phi_{\rm disc}=\delta_0-\delta_{\log4}\), whose correlation is
+\[
+C_{\rm disc}=2\delta_0-\delta_{\log4}-\delta_{-\log4}.
+\]
+For every N≥1 the finite physical source kernel satisfies the exact rational inequality
+\[
+2K_N(\log9)-K_N(\log36)-K_N(\log(9/4))<0.
+\]
+Indeed the nth summand equals
+\[
+-9^{-\lambda_n}(2^{\lambda_n}-2^{-\lambda_n})^2<0,
+\quad \lambda_n=2n+1/2.
+\]
+At N=1 this is **exactly \(-1/6\)**. The independent Fraction preflight evaluates N=1,…,100 and confirms the strict sign. This is a **regression for the algebraic phase mechanism**, not a substitute for the preceding proof with genuinely smooth derivative bumps, nor proof of the author-stated Chapter 13 theorem.
+
+**Updated PI020 priority:** Before launching another common-compiler Gamma theorem, determine whether the genuine Chapter 13 moment-domain trace claim is actually proved and applies to norm-radial diagonal autocorrelations in \(F=\mathbb Q\). If it does, the two transversal domains may **remove the diagonal scalar ambiguity** without a guessed operator extension. If it does not, record the exact missing analytic theorem and continue the independent finite-part/cutoff study from (10.4.2.10).
+
+Original primary-source screenshots: PDF index 458–460 (Thm. 10.4.2.1, Rmk. 10.4.2.3), 518–519 (Thm. 12.5.1.1), **521 (Thm. 13.3.1.1, stated moments and visible editorial caveats)**.
