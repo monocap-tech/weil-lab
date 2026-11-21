@@ -88,17 +88,13 @@ private theorem witness_members_same_slot_eq (Z : CertifiedZeroCount)
   have heqJ : J = A := by
     by_contra hne
     rcases original_slots_separated Z hJ hA hne with h | h
-    · exact absurd (lt_of_lt_of_le hJroot.2 h |>.trans hJI.1)
-        (not_lt.mpr le_rfl)
-    · exact absurd (lt_of_lt_of_le hJI.2 h |>.trans hJroot.1)
-        (not_lt.mpr le_rfl)
+    · linarith [hJroot.2, hJI.1, h]
+    · linarith [hJI.2, hJroot.1, h]
   have heqK : K = A := by
     by_contra hne
     rcases original_slots_separated Z hK hA hne with h | h
-    · exact absurd (lt_of_lt_of_le hKroot.2 h |>.trans hKI.1)
-        (not_lt.mpr le_rfl)
-    · exact absurd (lt_of_lt_of_le hKI.2 h |>.trans hKroot.1)
-        (not_lt.mpr le_rfl)
+    · linarith [hKroot.2, hKI.1, h]
+    · linarith [hKI.2, hKroot.1, h]
   subst J
   subst K
   rfl
