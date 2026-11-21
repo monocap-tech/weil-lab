@@ -1,6 +1,5 @@
 name: NF492 source-original 4096bit U(B-d) and full analytic log carrier x=549/500
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

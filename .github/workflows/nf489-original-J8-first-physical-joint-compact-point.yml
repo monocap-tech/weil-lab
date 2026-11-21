@@ -1,6 +1,5 @@
 name: NF489 first real original J8 joint compact source-native point
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

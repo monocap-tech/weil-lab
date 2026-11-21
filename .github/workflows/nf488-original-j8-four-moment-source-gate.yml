@@ -1,6 +1,5 @@
 name: NF488 exact original J8 physical cusp four-moment source gate
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

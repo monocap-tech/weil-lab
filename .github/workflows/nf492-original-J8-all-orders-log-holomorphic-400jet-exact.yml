@@ -1,6 +1,5 @@
 name: NF492 original J8 all-orders physical log peel 400-jet holomorphic source gate
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

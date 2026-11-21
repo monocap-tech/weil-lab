@@ -1,6 +1,5 @@
 name: NF489 original J8 exact joint compact physical source method preflight
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

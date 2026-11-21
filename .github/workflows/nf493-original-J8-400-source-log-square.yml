@@ -1,6 +1,5 @@
 name: NF493 actual 400 original full U(B-d) source log jets and first genuine log-square moment
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

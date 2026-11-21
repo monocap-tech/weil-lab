@@ -1,6 +1,5 @@
 name: NF489 independent accepted NF482 original J8 physical endpoint from 11 full source blocks
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read
