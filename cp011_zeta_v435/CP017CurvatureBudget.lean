@@ -28,7 +28,7 @@ modules are candidates until a REAL original Lean 4.35 compiler pass.
 
 @[expose] public section
 
-open Set
+open Set Zeta.Certificates.Gram
 
 namespace CP017CurvatureBudget
 
@@ -114,6 +114,22 @@ theorem strictMonoOn_original_hardyZ_of_curvature_bound
   strictMonoOn_original_hardyZ_of_rational_budget
     hanchor (derivative_variation_of_curvature_bound hdiff hcurvature)
 
+/-- The proposed narrow right endpoint is STRICTLY beneath the
+genuine original certified Gram height. This is discharged solely from
+original published exact Gram bounds; it is not another analytic
+hypothesis in the numerical source-rank attachment theorem. -/
+theorem narrowRightLtOriginalGram :
+    b < gramPoint certifiedZeroCount.minIdx := by
+  change b < gramPoint certifiedGramBlockSeq.minIdx
+  have hlast :
+      (1000449286 : ℝ) / 1000 ≤
+        gramPoint certifiedGramBlockSeq.minIdx := by
+    refine le_trans ?_ certifiedGramBlockSeq.head_left_le_gramPoint
+    norm_num [certifiedGramBlockSeq, Enclosure.sfrac]
+  have hwidth : b < (1000449286 : ℝ) / 1000 := by
+    norm_num [b]
+  exact hwidth.trans_le hlast
+
 /-- If a new critical-line zero in CP010's narrow candidate interval
 has been independently kernel-certified, then rational budget A+B
 IDENTIFIES it with source-defined ordinal 53.
@@ -129,7 +145,7 @@ theorem refined_narrow_root_is_source_53rd_of_rational_budget
     (hvariation : ∀ u ∈ Icc a b,
       |deriv Zeta.hardyZ u - deriv Zeta.hardyZ a|
         ≤ 4 * (u - a))
-    (hb : b < gramPoint certifiedZeroCount.minIdx) :
+    :
     ∃ z : ℂ, z ∈ CP015SourceWitnesses.rsRoots ∧
       riemannZeta.N z.im = 52 ∧
       z = 1 / 2 + Complex.I * (t : ℂ) := by
@@ -140,7 +156,7 @@ theorem refined_narrow_root_is_source_53rd_of_rational_budget
         _ < t := hnarrow.1
     · exact hnarrow.2
   exact CP016MonotoneAttach.refined_root_equals_original_53rd_of_hardy_monotone
-    ht hb
+    ht narrowRightLtOriginalGram
     (strictMonoOn_original_hardyZ_of_rational_budget hanchor hvariation)
     hzero
 
@@ -151,4 +167,5 @@ end CP017CurvatureBudget
 #print axioms CP017CurvatureBudget.strictMonoOn_original_hardyZ_of_rational_budget
 #print axioms CP017CurvatureBudget.derivative_variation_of_curvature_bound
 #print axioms CP017CurvatureBudget.strictMonoOn_original_hardyZ_of_curvature_bound
+#print axioms CP017CurvatureBudget.narrowRightLtOriginalGram
 #print axioms CP017CurvatureBudget.refined_narrow_root_is_source_53rd_of_rational_budget
