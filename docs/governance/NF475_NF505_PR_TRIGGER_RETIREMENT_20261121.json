@@ -1,0 +1,300 @@
+{
+  "schema": "weil-lab-workflow-retirement-v1",
+  "date": "2026-11-21",
+  "repository": "monocap-tech/weil-lab",
+  "baseline_branch": "maintenance/nf453-474-manual-retirement-20261121",
+  "baseline_head": "7e5b5dc9937a1600ae4e54eaf5056a1956687094",
+  "staged_branch": "maintenance/nf453-nf505-trigger-retirement-20261121",
+  "workflow_count_before": 613,
+  "workflow_count_after": 613,
+  "retired_unrestricted_pr_trigger_count": 40,
+  "mechanical_diff": "One deleted pull_request event line per workflow; no edits to jobs, source, or proof artifacts",
+  "non_manual_replays_kept": [
+    "nf501-original-J242-correlated-log-projection.yml",
+    "nf504-original-J8-saturated-exterior-native.yml"
+  ],
+  "CI_invoked": false,
+  "strict_audit_passed": false,
+  "workflows": [
+    {
+      "path": ".github/workflows/nf475-original-j7-fast-exact-fraction-audit.yml",
+      "original_git_blob_sha": "50603173b0ee2cda2ef97eea136e6359a872d661",
+      "retained_git_blob_sha": "40d46b78efdc7bece362246ecec9796f84deba0a",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf475-original-j7-near-b-24000-image-signed.yml",
+      "original_git_blob_sha": "b6b8c830b1da44284c369f507f7102f68559a3e3",
+      "retained_git_blob_sha": "42f846cf099d5485204582c7fe8b4cc4946fde57",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf476-original-j7-irrational-left-seam-signed.yml",
+      "original_git_blob_sha": "76c7a3eb2c291c0ef4f752150f10114384227f94",
+      "retained_git_blob_sha": "7d2be488b7f4538a8a3aef879ffd27f0ff4924c2",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf477-original-j7-fast-exact-image-tail-audit.yml",
+      "original_git_blob_sha": "7153a9a6a2e6bddb637da58f361e7859c4a4cb2b",
+      "retained_git_blob_sha": "48ddc2e0ed7d057ae9df14f4be895dfd2ea807c5",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf477-original-j7-source-contracted-high-image-tail.yml",
+      "original_git_blob_sha": "1997deb741fe36d280dfb5b16e33e0c0837ffb73",
+      "retained_git_blob_sha": "29f7e3faac16ce23e39e92daf5b64e894ab833c4",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf478-original-J7-fast-source-reassembly-audit.yml",
+      "original_git_blob_sha": "60ed037c82a7062aef6fee41356c3a3f62f0afbd",
+      "retained_git_blob_sha": "cf808824c78b38343956222621ba6cc2481b7c8d",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf478-original-J7-independent-direct-exact-D7.yml",
+      "original_git_blob_sha": "7a325d0ac7a580f285b199c3d7682557cb330c83",
+      "retained_git_blob_sha": "dca2b65d72562679292f99b949b32124b23dde10",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf478-original-J7-last-two-source-signed-full-cell.yml",
+      "original_git_blob_sha": "bb7721494132476f88f77add76dc04c00a7e5ca5",
+      "retained_git_blob_sha": "d68ec8975e7601964a3f636a7d766429f0ec5843",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf479-original-j8-positive-NF404-transfer-exact.yml",
+      "original_git_blob_sha": "d2c5e29ba9696fa29be316d119b79d73b3b8ca64",
+      "retained_git_blob_sha": "c57b704d882678208519142227cba8ada0266fee",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf480-original-J8-12jet-endpoint-L2-exact.yml",
+      "original_git_blob_sha": "857a66519ac6d26845e293ffbd0768c144001e21",
+      "retained_git_blob_sha": "b310512611911dbf34440ef583a5dda121b91540",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf481-original-j8-20jet-source-unconditional-energy.yml",
+      "original_git_blob_sha": "0fe920d2c9653ba04b5d45c62220d1c8f7595d1e",
+      "retained_git_blob_sha": "66db1e86d8412c458fb8d6849a8e8b11d3c56eda",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf482-original-j8-fast-focused-fraction.yml",
+      "original_git_blob_sha": "3201d0d7c09050101569688751411b37fc1d3f54",
+      "retained_git_blob_sha": "098c912c45545c98da0232d67e59efe8667b071b",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf482-original-j8-fast-source-reassembly-exact.yml",
+      "original_git_blob_sha": "d26b32bdd6d65feeaee067b1c8fcb428067779ef",
+      "retained_git_blob_sha": "184a984666b9c791bfc00bbc88b1f0d5ecf06579",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf482-original-j8-first-independent-11-source-block-Fraction.yml",
+      "original_git_blob_sha": "4355f6ea7d202c85f2ec0dba992b544200fddc61",
+      "retained_git_blob_sha": "b0a6500f9caea312ca9a4f731b0473fe5b946595",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf482-original-j8-first-irrational-n9-signed.yml",
+      "original_git_blob_sha": "57faa50c719a83ecc5b5cf79a99cef94546449ee",
+      "retained_git_blob_sha": "cb21b27a6d493812ac920a27096e0da97f137f3f",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf483-original-j8-terminal-principal-gram-exact.yml",
+      "original_git_blob_sha": "b68ae7c24f51c30e861a0b32284cf1aa0dcdb1ae",
+      "retained_git_blob_sha": "02ec7bb9ddd809f768303042b5c6bb9f91e4f467",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf484-original-j8-18k-renormalized-gram.yml",
+      "original_git_blob_sha": "08053c7cf70c1f716141e89f718def2e7a569b6b",
+      "retained_git_blob_sha": "6564eb134cd150d049c08848a3f3ecad7174eb54",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf484-original-j8-fast-immutable-gram-replay.yml",
+      "original_git_blob_sha": "df2a493828354a4822864e756077941ee6bb7f44",
+      "retained_git_blob_sha": "2ce12d14d976ef5e367594322de26e7cd46fd919",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf485-j8-principal-image-log-moment-algebra.yml",
+      "original_git_blob_sha": "2f9e2213dacea24ce5a08a0db392f40342aee544",
+      "retained_git_blob_sha": "d6573e78fbbd4a397bc60769edbec55f54f727e6",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf486-original-J8-last-collar-exact-source-upper.yml",
+      "original_git_blob_sha": "a55e2feb8795b784e79ba66b3b67664e3e47010c",
+      "retained_git_blob_sha": "99a52fab4665edc63eb76f5317d335506b0b6432",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf487-original-J8-joint-compact-log-cusp-exact.yml",
+      "original_git_blob_sha": "17f8825dd44b4e7f92c63f16d7f7d159bcde1803",
+      "retained_git_blob_sha": "902cef55994ee4a56a8e56752979dd5d0f2c80fc",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf488-original-j8-four-moment-source-gate.yml",
+      "original_git_blob_sha": "3d4801428f0e65557d8a51d62cf23a74845b4c20",
+      "retained_git_blob_sha": "381ed5bb2fa37e70acc850851534eb576b8019ad",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf489-original-J8-first-physical-joint-compact-point.yml",
+      "original_git_blob_sha": "3153f9013a31e57a9b86fbd0c218cace19c18cc2",
+      "retained_git_blob_sha": "e6d2a9cbb28f4ceac76d0f3c1410a97668918803",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf489-original-j8-joint-compact-exact-method-preflight.yml",
+      "original_git_blob_sha": "f8d60d7d688adb27159eebfaa6cc3d7a57d57fbc",
+      "retained_git_blob_sha": "cfc3b3c861705491136305e273f44f31a4fa9380",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf489-original-j8-legacy-NF482-boundary-exact.yml",
+      "original_git_blob_sha": "d36996bf210d29439cf7c3515231090f0a156e9d",
+      "retained_git_blob_sha": "44fe2bacfe7ca86d578b8366941d14f0dd1a499d",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf492-original-J8-all-orders-log-holomorphic-400jet-exact.yml",
+      "original_git_blob_sha": "6e4fbb402d65d394f7437999cfc00b801fd4bd49",
+      "retained_git_blob_sha": "f621390cbfb5ac4943b441ff5a5e19c98a0270de",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf492-original-J8-physical-full-log-source-native.yml",
+      "original_git_blob_sha": "a9425d232a33b025e0e1919e7e46f980078f7c94",
+      "retained_git_blob_sha": "b1cf6feea5e318d4e41e4ed1206c0fe75071e2ca",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf493-original-J8-400-source-log-square.yml",
+      "original_git_blob_sha": "dcb9c284e4d04bdb94a76d348fb6c66a265b558c",
+      "retained_git_blob_sha": "f23071079227dcde98d068440b7473ee2f8a0e42",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf494-independent-original-J8-whole-square-exact.yml",
+      "original_git_blob_sha": "229dda8b5fe9d3c02f325cb57e4ec46d7426872a",
+      "retained_git_blob_sha": "3bdddcc2ac2580f8122086f133a266c371192595",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf494-original-J8-analytic-H400-exact-method.yml",
+      "original_git_blob_sha": "a21a452873d4f7f8ffe5995e65775e704bef1cf4",
+      "retained_git_blob_sha": "f7d1cb02e698ca74bc5b75805855f60aaac0106d",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf494-original-J8-whole-analytic-H400-native.yml",
+      "original_git_blob_sha": "c9450a557d3dff1b19e64cb3bf96a6d6fc7a196b",
+      "retained_git_blob_sha": "68d7d801f2f74f5469eb344a7b62ffa9921a66ef",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf496-original-center-invariant-J242-complement-exact.yml",
+      "original_git_blob_sha": "6c316797be68fdf6cded4c241225d49d7b392814",
+      "retained_git_blob_sha": "9826fefa1091c44668b8edbf1e0648906452e556",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf497-original-source-box-projector-capture-exact.yml",
+      "original_git_blob_sha": "13d2dd4e0dd0ac7a58c51c8e96978054e97bcf01",
+      "retained_git_blob_sha": "4065a263021defc7108570c5d2ece471d8822503",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf498-original-endpoint-log-carrier-rankone-domain-exact.yml",
+      "original_git_blob_sha": "afeec661098b7e9f395f09cfd9d95680cfc3cf48",
+      "retained_git_blob_sha": "7ebffc8362c3811c39d8d379769714fd6ec1a3da",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf499-original-smooth-log-collar-source-exact.yml",
+      "original_git_blob_sha": "dfca7cb8fa3e23b310be6f62385f45c61d1c604c",
+      "retained_git_blob_sha": "bd8f3c8d64479cab0c4167fd89f4381a1051fded",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf500-independent-242-native-source-artifact-replay.yml",
+      "original_git_blob_sha": "30ebc0ea26189fb19d2ead29ad9893d9fb1ed28c",
+      "retained_git_blob_sha": "d506aa8d50a4dcea893ea4ba03db638c889208bd",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf500-original-J242-all-mixed-log-source-exact.yml",
+      "original_git_blob_sha": "8125d127dda66f72263bbc8844ce62df138605ec",
+      "retained_git_blob_sha": "09a5681cfa27915a1e6ab76711029edc673d4c5e",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    },
+    {
+      "path": ".github/workflows/nf501-original-J242-correlated-log-projection.yml",
+      "original_git_blob_sha": "7cecea6ddfc342289aac5260ae97f7a345750a22",
+      "retained_git_blob_sha": "6078244d22b5f8243febb53b27ed4d96a5cf49b3",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": true
+    },
+    {
+      "path": ".github/workflows/nf504-original-J8-saturated-exterior-native.yml",
+      "original_git_blob_sha": "65c0ef2d24b0f7d32f99b093cf0e8368a9e2cbb9",
+      "retained_git_blob_sha": "4267565ece287f99b3b34545cca029d3c1d65dc4",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": true
+    },
+    {
+      "path": ".github/workflows/nf505-original-J8-support-saturated-independent.yml",
+      "original_git_blob_sha": "2fd3f0f0f1066c3ee36d4ea0051775d893dd98be",
+      "retained_git_blob_sha": "fd7a0f24f93a45ecc035313aa35c89d21e3008a0",
+      "automatic_pull_request_removed": true,
+      "other_auto_events_preserved": false
+    }
+  ]
+}
