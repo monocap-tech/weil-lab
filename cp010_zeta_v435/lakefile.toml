@@ -1,0 +1,11 @@
+name = "cp010_zeta_v435"
+version = "0.0.1"
+
+# Separate upstream Lean v4.35.0, never modify original Weil-Lab v4.34.0.
+[[require]]
+name = "Zeta"
+git = "https://github.com/smmercuri/zeta"
+rev = "v1-1e6"
+
+[[lean_lib]]
+name = "CP010DualMethods"
