@@ -1,0 +1,82 @@
+name: PI009 direct finite-Gamma Lean custody
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/PI007FiniteGammaKernel.lean"
+      - "WeilDefect/Arithmetic/PI008FiniteDigammaSymbol.lean"
+      - "scripts/pi009_strict_direct_lean_audit.py"
+      - ".github/workflows/pi009-direct-lean-custody.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  direct-pi007-pi008-olean-axiom-custody:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare audit and check Python syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile scripts/pi009_strict_direct_lean_audit.py
+          mkdir -p pi009-audit
+          git rev-parse HEAD | tee pi009-audit/checked-out-commit.txt
+          git hash-object WeilDefect/Arithmetic/PI007FiniteGammaKernel.lean \
+            WeilDefect/Arithmetic/PI008FiniteDigammaSymbol.lean \
+            | tee pi009-audit/lean-source-blobs.txt
+
+      - name: Install exact Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+
+      - name: Build the TWO ACTUAL PI targets (not the generic historical target)
+        shell: bash
+        timeout-minutes: 85
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.PI007FiniteGammaKernel \
+            WeilDefect.Arithmetic.PI008FiniteDigammaSymbol \
+            2>&1 | tee pi009-audit/direct-modules-build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/PI007FiniteGammaKernel.olean
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/PI008FiniteDigammaSymbol.olean
+
+      - name: Direct Lean source compilation and axiom prints
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/PI007FiniteGammaKernel.lean \
+            2>&1 | tee pi009-audit/PI007FiniteGammaKernel-axioms.log
+          lake env lean WeilDefect/Arithmetic/PI008FiniteDigammaSymbol.lean \
+            2>&1 | tee pi009-audit/PI008FiniteDigammaSymbol-axioms.log
+
+      - name: Fail-closed standard-axiom and object receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/pi009_strict_direct_lean_audit.py \
+            --logs pi009-audit \
+            --out pi009-audit/receipt.json
+          test -s pi009-audit/receipt.json
+
+      - name: Upload actual evidence, including logs on failure
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pi009-direct-lean-olean-axioms
+          path: |
+            pi009-audit/
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI007FiniteGammaKernel.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI008FiniteDigammaSymbol.olean
+          if-no-files-found: ignore
