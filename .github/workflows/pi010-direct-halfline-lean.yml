@@ -1,0 +1,79 @@
+name: PI010 direct complex Fourier half-line Lean audit
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/PI010FourierHalflineAtom.lean"
+      - "scripts/pi010_strict_halfline_audit.py"
+      - "scripts/pi010_halfline_rational_preflight.py"
+      - ".github/workflows/pi010-direct-halfline-lean.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  direct-halfline-source-kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Exact external arithmetic and script syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p pi010-audit
+          python3 -m py_compile scripts/pi010_strict_halfline_audit.py \
+            scripts/pi010_halfline_rational_preflight.py
+          python3 scripts/pi010_halfline_rational_preflight.py \
+            | tee pi010-audit/exact-rational-preflight.log
+          git rev-parse HEAD | tee pi010-audit/commit.txt
+          git hash-object WeilDefect/Arithmetic/PI010FourierHalflineAtom.lean \
+            | tee pi010-audit/source-blob.txt
+
+      - name: Install pinned Lean 4.34.0 and Mathlib
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+
+      - name: Direct build of actual PI010 theorem module
+        timeout-minutes: 85
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.PI010FourierHalflineAtom \
+            2>&1 | tee pi010-audit/direct-build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/PI010FourierHalflineAtom.olean
+
+      - name: Direct compiler and #print axioms
+        timeout-minutes: 15
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/PI010FourierHalflineAtom.lean \
+            2>&1 | tee pi010-audit/PI010FourierHalflineAtom-axioms.log
+
+      - name: Strict source, olean, five declarations and axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/pi010_strict_halfline_audit.py \
+            --log pi010-audit/PI010FourierHalflineAtom-axioms.log \
+            --receipt pi010-audit/receipt.json
+          test -s pi010-audit/receipt.json
+
+      - name: Preserve actual evidence even on failure
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pi010-direct-halfline-lean-receipt
+          path: |
+            pi010-audit/
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI010FourierHalflineAtom.olean
+          if-no-files-found: ignore
