@@ -3,7 +3,7 @@ diff --git a/.github/workflows/nf459-native-original-christoffel.yml b/.github/w
 +++ b/.github/workflows/nf459-native-original-christoffel.yml
 @@ -2,4 +2,17 @@
  on:
-  pull_request:
+   pull_request:
 +    paths:
 +      - '.github/workflows/nf459-native-original-christoffel.yml'
 +      - 'scripts/verify_nf459_original_native_244D_christoffel.py'
@@ -25,7 +25,7 @@ diff --git a/.github/workflows/nf460-original-bulk-seam-h1.yml b/.github/workflo
 +++ b/.github/workflows/nf460-original-bulk-seam-h1.yml
 @@ -2,4 +2,14 @@
  on:
-  pull_request:
+   pull_request:
 +    paths:
 +      - '.github/workflows/nf460-original-bulk-seam-h1.yml'
 +      - 'scripts/local_replay/verify_nf460_original_bulk_jumps_h1.py'
@@ -44,7 +44,7 @@ diff --git a/.github/workflows/nf465-j7-derivative-resolution-stop.yml b/.github
 +++ b/.github/workflows/nf465-j7-derivative-resolution-stop.yml
 @@ -2,4 +2,7 @@
  on:
-  pull_request:
+   pull_request:
 +    paths:
 +      - '.github/workflows/nf465-j7-derivative-resolution-stop.yml'
 +      - 'scripts/local_replay/verify_nf465_j7_lipschitz_resolution_stop.py'
@@ -56,7 +56,7 @@ diff --git a/.github/workflows/nf471-original-j7-joint-arch-macroscopic-mean.yml
 +++ b/.github/workflows/nf471-original-j7-joint-arch-macroscopic-mean.yml
 @@ -2,4 +2,10 @@
  on:
-  pull_request:
+   pull_request:
 +    paths:
 +      - '.github/workflows/nf471-original-j7-joint-arch-macroscopic-mean.yml'
 +      - 'scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py'
