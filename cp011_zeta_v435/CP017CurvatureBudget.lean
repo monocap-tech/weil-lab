@@ -144,8 +144,7 @@ theorem refined_narrow_root_is_source_53rd_of_rational_budget
     (hanchor : (12 : ℝ) / 5 ≤ deriv Zeta.hardyZ a)
     (hvariation : ∀ u ∈ Icc a b,
       |deriv Zeta.hardyZ u - deriv Zeta.hardyZ a|
-        ≤ 4 * (u - a))
-    :
+        ≤ 4 * (u - a)) :
     ∃ z : ℂ, z ∈ CP015SourceWitnesses.rsRoots ∧
       riemannZeta.N z.im = 52 ∧
       z = 1 / 2 + Complex.I * (t : ℂ) := by
