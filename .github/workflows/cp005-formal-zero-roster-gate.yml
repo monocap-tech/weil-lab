@@ -1,0 +1,31 @@
+name: CP005 exact-rational finite-zero external-evidence readiness gate
+on:
+  pull_request:
+    paths:
+      - "scripts/cp005_formal_zero_roster_adapter.py"
+      - "docs/CP005_FINITE_ZERO_ROSTER_AND_ERROR_ALLOCATION.md"
+      - ".github/workflows/cp005-formal-zero-roster-gate.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-rational-formal-zero-readiness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify local exact rational million-height tail/localization allocation only
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp005_formal_zero_roster_adapter.py
+          python scripts/cp005_formal_zero_roster_adapter.py --self-test | tee cp005-rational-readiness.log
+          test -s cp005-rational-readiness.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp005-exact-rational-readiness-not-zeta-proof
+          path: cp005-rational-readiness.log
+          if-no-files-found: ignore
