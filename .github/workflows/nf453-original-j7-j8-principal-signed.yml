@@ -1,6 +1,5 @@
 name: NF453 original J7 J8 principal exact replay
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   exact-original:

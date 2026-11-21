@@ -1,6 +1,5 @@
 name: NF454 original two-cell energy gate exact replay
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   exact-reduction:
