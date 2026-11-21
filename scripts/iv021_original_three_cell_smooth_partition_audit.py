@@ -42,6 +42,9 @@ NEW=[
     "neutralIV021WholeThreeCellOriginalWeil_oneTenth",
 ]
 ALLOWED={"propext","Classical.choice","Quot.sound"}
+# Lake generates this lockfile after the source-only preflight (via `lake update`).
+# The real kernel verifier still requires and SHA256-binds the generated file.
+MANIFEST = Path("lake-manifest.json")
 DEPS=[
     Path("WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWiderThreeCellSourceMeasure.lean"),
     Path("WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWiderThreeCellPrime9Coercivity.lean"),
@@ -71,7 +74,6 @@ DEPS=[
     Path("WeilDefect/Arithmetic/ActualZetaOriginalCollar242Correction.lean"),
     Path("WeilDefect/External/Zeta23/Definitions/Def_Zeta23_ExplicitFormula.lean"),
     Path("lean-toolchain"),
-    Path("lake-manifest.json"),
 ]
 SCHEMA="IV021-genuine-entire-original-three-cell-Schwartz-partition-one-tenth-kernel-v1"
 
@@ -158,6 +160,7 @@ def preflight():
 
 def verify():
     preflight()
+    assert MANIFEST.is_file(), ("Missing generated Lake manifest after update", str(MANIFEST))
     assert OLEAN.is_file() and OLEAN.stat().st_size>0,"Original source compiled .olean REQUIRED"
     raw=LOG.read_text()
     assert not re.search(
@@ -175,7 +178,7 @@ def verify():
     data={
         "schema":SCHEMA,
         "scope":"EVERY complex Schwartz f supported in genuine frozen NF543 two collars plus wider central interval, exact smooth complex Schwartz old/new partition, original source prime n9 identity and true signed 1/10 Weil diagonal coercivity.",
-        "real_original_source_sha256":{str(p):digest(p) for p in [SRC]+DEPS},
+        "real_original_source_sha256":{str(p):digest(p) for p in [SRC]+DEPS+[MANIFEST]},
         "real_compiled_original_olean_sha256":digest(OLEAN),
         "exact_rational_plateau_geometry_receipt_sha256":digest(GEOM),
         "seven_new_original_Lean_declarations":NEW,
