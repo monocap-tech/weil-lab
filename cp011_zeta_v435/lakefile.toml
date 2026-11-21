@@ -22,3 +22,14 @@ name = "CP013RSOnly"
 
 [[lean_lib]]
 name = "CP013Seam"
+
+# CP014: original Euler 52-root one-sided count; generic finite exact
+# partition; conditional original zero-count to-source split interface.
+[[lean_lib]]
+name = "CP014EulerCutLower"
+
+[[lean_lib]]
+name = "CP014FiniteCut"
+
+[[lean_lib]]
+name = "CP014ZetaCut"
