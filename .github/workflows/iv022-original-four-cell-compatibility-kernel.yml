@@ -1,0 +1,79 @@
+name: IV022 true original four-cell prime-shift geometry and conditional one-sixteenth capacity
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSecondNewCellPrimeGeometry.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalFourCellSignedCapacity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWholeThreeCellSchwartzPartition.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWiderThreeCellPrime9Coercivity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollarPrimeBound.lean"
+      - "scripts/iv022_original_four_cell_prime_capacity_audit.py"
+      - "scripts/iv015_frozen_collar_exact_log_gap.py"
+      - ".github/workflows/iv022-original-four-cell-compatibility-kernel.yml"
+      - "docs/IV022_PHASE_IV_ORIGINAL_FOUR_CELL_COMPATIBILITY.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: iv022-original-four-cell-compatibility-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-four-cell-source-capacity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact Fraction ALL true signed log0..9 geometry and original n9 negative control — NOT Lean
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/iv015_frozen_collar_exact_log_gap.py scripts/iv022_original_four_cell_prime_capacity_audit.py
+          python scripts/iv022_original_four_cell_prime_capacity_audit.py preflight
+          test -s iv022-original-four-cell-prime-geometry-exact-rational.json
+      - name: Install pinned original Lean and Mathlib dependency cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Direct original Lean kernel proof of new independent second Schwartz direction and genuine prime gaps
+        timeout-minutes: 100
+        run: |
+          set -euo pipefail
+          /usr/bin/time -a -o iv022-source-resources.log -f 'phase=secondCellOriginalPrimeGeometry elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalSecondNewCellPrimeGeometry 2>&1 | tee iv022-original-second-cell-prime-geometry-build.log
+      - name: Direct original Lean kernel proof of fourth physical cell Lebesgue measure and conditional one-sixteenth Weil capacity
+        timeout-minutes: 100
+        run: |
+          set -euo pipefail
+          /usr/bin/time -a -o iv022-source-resources.log -f 'phase=fourCellSignedPhysicalCapacity elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalFourCellSignedCapacity 2>&1 | tee iv022-original-four-cell-signed-capacity-build.log
+      - name: Strict actual Lean axiom receipt audit of 16 new original source theorems plus eight upstream anchors
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSecondNewCellPrimeGeometry.lean 2>&1 | tee iv022-original-second-cell-prime-geometry-axioms.log
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalFourCellSignedCapacity.lean 2>&1 | tee iv022-original-four-cell-signed-capacity-axioms.log
+          python scripts/iv022_original_four_cell_prime_capacity_audit.py verify
+          test -s iv022-original-four-cell-conditional-capacity-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv022-actual-original-four-cell-second-prime-free-direction-conditional-one-sixteenth
+          path: |
+            iv022-original-four-cell-prime-geometry-exact-rational.json
+            iv022-source-resources.log
+            iv022-original-second-cell-prime-geometry-build.log
+            iv022-original-four-cell-signed-capacity-build.log
+            iv022-original-second-cell-prime-geometry-axioms.log
+            iv022-original-four-cell-signed-capacity-axioms.log
+            iv022-original-four-cell-conditional-capacity-kernel-audit.json
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSecondNewCellPrimeGeometry.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalFourCellSignedCapacity.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
