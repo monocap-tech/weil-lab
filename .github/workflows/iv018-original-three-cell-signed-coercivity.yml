@@ -2,6 +2,9 @@ name: IV018 original THREE-cell signed zeta Weil one-quarter coercivity and n9 p
 on:
   pull_request:
     paths:
+      - "lean-toolchain"
+      - "lakefile.toml"
+      - "lake-manifest.json"
       - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalThreeCellSignedEnvelope.lean"
       - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalThreeCellPrime9Transfer.lean"
       - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalNarrowSignedGamma.lean"
