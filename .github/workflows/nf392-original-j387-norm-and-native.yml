@@ -55,7 +55,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install exactly inherited original Arb native
-        run: pip install --only-binary=:all: python-flint==0.8.0 numpy scipy
+        run: 'pip install --only-binary=:all: python-flint==0.8.0 numpy scipy'
       - name: Download historic original complete signed J archive with exact SHA pin
         env:
           GH_TOKEN: ${{ github.token }}

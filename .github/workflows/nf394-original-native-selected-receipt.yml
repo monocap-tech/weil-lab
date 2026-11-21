@@ -29,7 +29,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Pinned Arb / exact original source dependencies
-        run: pip install --only-binary=:all: python-flint==0.8.0 numpy scipy
+        run: 'pip install --only-binary=:all: python-flint==0.8.0 numpy scipy'
       - name: Source-only actual SHA-pinned original signed/pole input preflight
         run: |
           python3 -m py_compile scripts/verify_nf390_original_j387_selected_moment.py \

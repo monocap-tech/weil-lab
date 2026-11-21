@@ -38,7 +38,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install --only-binary=:all: python-flint==0.8.0
+      - run: 'pip install --only-binary=:all: python-flint==0.8.0'
       - name: Recompute original NF504 complete 242D exterior true physical Gram and full H400 U400 matched real source J8 two-collar support saturation in 4096bit source arithmetic
         run: |
           python -m py_compile scripts/verify_nf504_original_J8_support_saturated_exterior_native.py
