@@ -1,0 +1,26 @@
+{
+  "rows": 1,
+  "rows_per_file": 1,
+  "height": "150.10",
+  "end": 150.1,
+  "cols": [
+    "idx",
+    "left",
+    "right"
+  ],
+  "params": {
+    "method": "riemann_siegel",
+    "prec": 200,
+    "bisection_depth": 0,
+    "epsilon": 0.125,
+    "widen": false,
+    "candidate_origin": "Numerically screened first RS zero; not a certificate of a zero or original source containment"
+  },
+  "files": [
+    {
+      "file": "zeros_00001.txt",
+      "rows": 1,
+      "height": "150.10"
+    }
+  ]
+}
