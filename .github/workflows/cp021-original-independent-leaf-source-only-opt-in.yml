@@ -1,0 +1,62 @@
+name: CP021 OPT-IN original upstream-only Borwein/germ leaf source gate
+# Exactly source/Fraction, no kernel; no ordinary push/PR-runner fanout.
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [labeled]
+permissions:
+  contents: read
+jobs:
+  true-independent-leaf-source-audit-NOT-LEAN:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'cp021-leaf-source' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact Fraction and genuine two-leaf direct original imports only
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp021_independent_leaf_v435_source_kernel_gate.py
+          python scripts/cp021_independent_leaf_v435_source_kernel_gate.py \
+            --self-test --source-check 2>&1 | tee cp021-fraction-and-leaf-source.log
+          grep -F 'CP021 ORIGINAL-ZETA/ORIGINAL-MATHLIB-ONLY LEAF DEPENDENCY CUT' cp021-fraction-and-leaf-source.log
+      - name: Download five actual frozen Zeta/Mathlib primary sources
+        run: |
+          set -euo pipefail
+          ref=c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          for path in \
+            Zeta/EulerMaclaurin/Continuation.lean \
+            Zeta/EulerMaclaurin/ErrorBound.lean; do
+            mkdir -p "cp021-frozen-zeta/$(dirname "$path")"
+            curl -fLSs --retry 3 \
+              "https://raw.githubusercontent.com/smmercuri/zeta/$ref/$path" \
+              -o "cp021-frozen-zeta/$path"
+          done
+          for path in \
+            Mathlib/RingTheory/Polynomial/Pochhammer.lean \
+            Mathlib/NumberTheory/Bernoulli.lean \
+            Mathlib/Analysis/Calculus/IteratedDeriv/Lemmas.lean; do
+            mkdir -p "cp021-frozen-mathlib/$(dirname "$path")"
+            curl -fLSs --retry 3 \
+              "https://raw.githubusercontent.com/leanprover-community/mathlib4/v4.35.0/$path" \
+              -o "cp021-frozen-mathlib/$path"
+          done
+      - name: Five verified primary Git blobs and genuine theorem API signatures
+        run: |
+          set -euo pipefail
+          python scripts/cp021_independent_leaf_v435_source_kernel_gate.py \
+            --original-zeta cp021-frozen-zeta \
+            --original-mathlib cp021-frozen-mathlib \
+            | tee cp021-upstream-source-five-sha-only.log
+          grep -F 'CP021 FIVE FROZEN UPSTREAM ORIGINAL GIT BLOB+API GATES: 5/5 PASS NOT LEAN' cp021-upstream-source-five-sha-only.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp021-standalone-Zeta435-original-upstream-only-13-source-check-NOT-KERNEL
+          path: |
+            cp021-fraction-and-leaf-source.log
+            cp021-upstream-source-five-sha-only.log
+          if-no-files-found: ignore
