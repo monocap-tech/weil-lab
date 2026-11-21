@@ -1,0 +1,69 @@
+name: IV016 actual original two-collar Lean log gap and prime-free new diagonal
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalConcreteGapPrimeFreeDiagonal.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalNonzeroPrimeFreeSchwartzBump.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalTwoCollarPrimeFreeBump.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalActivePrimeSupportGeometry.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
+      - "scripts/iv016_original_concrete_log_gap_kernel_audit.py"
+      - "scripts/iv015_frozen_collar_exact_log_gap.py"
+      - ".github/workflows/iv016-original-concrete-gap-primefree-diagonal.yml"
+      - "docs/IV016_PHASE_IV_LEAN_LOG_GAP_PRIMEFREE_DIAGONAL.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: iv016-original-concrete-gap-prime-free-diagonal-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-Lean-certified-true-collar-gap-primefree-diagonal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Preflight exact frozen geometry and real-source declarations — NOT Lean acceptance
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/iv016_original_concrete_log_gap_kernel_audit.py scripts/iv015_frozen_collar_exact_log_gap.py
+          python scripts/iv015_frozen_collar_exact_log_gap.py selftest
+          python scripts/iv015_frozen_collar_exact_log_gap.py preflight
+          python scripts/iv016_original_concrete_log_gap_kernel_audit.py preflight
+      - name: Install pinned original Lean Mathlib toolchain and cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Direct Lean build with actual original two-collar ±log n arithmetic and prime-free Schwartz diagonal
+        timeout-minutes: 195
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o iv016-source-resources.log -f 'elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalConcreteGapPrimeFreeDiagonal 2>&1 | tee iv016-original-concrete-gap-primefree-diagonal-build.log
+      - name: Strict kernel standard-axiom audit of 10 IV016 + 4 original upstream source declarations
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalConcreteGapPrimeFreeDiagonal.lean 2>&1 | tee iv016-original-concrete-prime-gap-diagonal-axioms.log
+          python scripts/iv016_original_concrete_log_gap_kernel_audit.py verify
+          test -s iv016-original-concrete-prime-gap-diagonal-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv016-original-frozen-two-collar-Lean-log-gap-and-primefree-diagonal
+          path: |
+            iv015-frozen-collar-exact-rational-log-gap.json
+            iv016-source-resources.log
+            iv016-original-concrete-gap-primefree-diagonal-build.log
+            iv016-original-concrete-prime-gap-diagonal-axioms.log
+            iv016-original-concrete-prime-gap-diagonal-kernel-audit.json
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalConcreteGapPrimeFreeDiagonal.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
