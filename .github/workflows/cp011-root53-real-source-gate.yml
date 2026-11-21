@@ -1,0 +1,57 @@
+name: CP011 authentic first RS source row and canonical slot logic preflight
+on:
+  pull_request:
+    paths:
+      - "scripts/cp011_first_rs_source_slot_identity.py"
+      - "scripts/cp011_original_roster_lean_axiom_audit.py"
+      - "cp011_zeta_v435/CP011CanonicalRoster.lean"
+      - "docs/CP011_CANONICAL_ZERO_IDENTITY_AND_SOURCE_REFINEMENT_BRIDGE.md"
+      - ".github/workflows/cp011-root53-real-source-gate.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  first-rs-source-bridge-NOT-kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact source-index model and missing-hypothesis negative controls
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp011_first_rs_source_slot_identity.py scripts/cp011_original_roster_lean_axiom_audit.py
+          python scripts/cp011_first_rs_source_slot_identity.py --self-test | tee cp011-canonical-slot-model.log
+          grep -F 'necessary-hypotheses tests: PASS' cp011-canonical-slot-model.log
+      - name: Download EXACT original 7.3MB RS source shard and its 200-root Lean batch at pinned source commit
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          commit=c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          curl -fLSs --retry 3 \
+            "https://raw.githubusercontent.com/smmercuri/zeta/$commit/python/out/riemann_siegel/zeros/zeros_00001.txt" \
+            -o cp011-original-first-RS-shard.txt
+          curl -fLSs --retry 3 \
+            "https://raw.githubusercontent.com/smmercuri/zeta/$commit/Zeta/Zeros/Certificates/RiemannSiegel/Batch0001.lean" \
+            -o cp011-original-first-200-RS-batch.lean
+      - name: Verify ACTUAL source-row 1 and both candidate containments; NEVER claim root proof
+        run: |
+          set -euo pipefail
+          python scripts/cp011_first_rs_source_slot_identity.py \
+            --original-rs-shard cp011-original-first-RS-shard.txt \
+            --original-rs-batch cp011-original-first-200-RS-batch.lean \
+            --receipt cp011-original-first-RS-slot-receipt.json \
+            | tee cp011-first-RS-source-gate.log
+          test -s cp011-original-first-RS-slot-receipt.json
+          grep -F 'NOT A NEW LEAN OR SPECTRAL CERTIFICATE' cp011-first-RS-source-gate.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp011-original-root53-sha-source-boundaries-and-slot-model-NOT-Lean
+          path: |
+            cp011-canonical-slot-model.log
+            cp011-first-RS-source-gate.log
+            cp011-original-first-RS-slot-receipt.json
+          if-no-files-found: ignore
