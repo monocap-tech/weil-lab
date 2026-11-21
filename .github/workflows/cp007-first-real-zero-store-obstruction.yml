@@ -1,0 +1,37 @@
+name: CP007 real pinned Euler first52 zero source precision obstruction
+on:
+  pull_request:
+    paths:
+      - "data/cp007_original_euler_maclaurin_first52.txt"
+      - "scripts/cp007_original_first52_precision_obstruction.py"
+      - "scripts/cp007_full_original_store_band_audit.py"
+      - "scripts/cp007_upstream_store_source_manifest.json"
+      - "docs/CP007_REAL_SOURCE_INTERVAL_PRECISION_OBSTRUCTION.md"
+      - ".github/workflows/cp007-first-real-zero-store-obstruction.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-first52-real-data-negative-control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax and ACTUAL SHA-verified first52 zero-store source analysis (NOT Lean)
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp007_original_first52_precision_obstruction.py scripts/cp007_full_original_store_band_audit.py scripts/cp006_dyadic_zero_bracket_budget.py
+          python scripts/cp007_original_first52_precision_obstruction.py | tee cp007-first52-source-obstruction.log
+          python scripts/cp007_full_original_store_band_audit.py --self-test | tee cp007-first52-source-metadata.log
+          grep -F 'CP007 ORIGINAL STORE PRECISION OBSTRUCTION: EXACT FRACTION PASS' cp007-first52-source-obstruction.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp007-original-first52-source-provenance-and-precision-failure-not-Lean
+          path: |
+            cp007-first52-source-obstruction.log
+            cp007-first52-source-metadata.log
+          if-no-files-found: ignore
