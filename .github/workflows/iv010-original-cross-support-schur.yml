@@ -2,6 +2,8 @@ name: IV010 genuine original zeta one-new-support mixed Schur PSD gate
 on:
   pull_request:
     paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
+      - "scripts/iv009_original_schwartz_polarization_audit.py"
       - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportExtension.lean"
       - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
       - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalMixedHermitian.lean"
