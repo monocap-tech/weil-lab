@@ -75,6 +75,7 @@ def audit(repo: Path, check: bool) -> dict:
         }
     mode_counts = Counter(v["mode"] for v in entries.values())
     failures, checked = [], 0
+    archived_count, active_count = 0, 0
     for ledger_path in LEDGERS:
         file_path = repo / ledger_path
         if not file_path.is_file():
@@ -86,14 +87,25 @@ def audit(repo: Path, check: bool) -> dict:
             checked += 1
             actual = entries.get(path)
             expected = record.get("manual_only_git_blob_sha") or record.get("retained_git_blob_sha")
+            archive = repo / "docs/governance/archived-workflows" / (Path(path).name + ".txt")
             if actual is None:
-                failures.append(f"missing retained workflow: {path}")
-            elif actual["blob"] != expected:
-                failures.append(f"changed Git blob since custody ledger: {path}")
-            elif "pull_request" in actual["events"] or "pull_request_target" in actual["events"]:
-                failures.append(f"automatic PR trigger restored: {path}")
-            elif "workflow_dispatch" not in actual["events"]:
-                failures.append(f"manual dispatch missing: {path}")
+                if not archive.is_file():
+                    failures.append(f"missing active and archived workflow: {path}")
+                elif git_blob_sha(archive.read_bytes()) != expected:
+                    failures.append(f"archived workflow Git blob mismatch: {path}")
+                else:
+                    archived_count += 1
+            else:
+                if archive.exists():
+                    failures.append(f"both active and archived copies exist: {path}")
+                if actual["blob"] != expected:
+                    failures.append(f"changed Git blob since custody ledger: {path}")
+                elif "pull_request" in actual["events"] or "pull_request_target" in actual["events"]:
+                    failures.append(f"automatic PR trigger restored: {path}")
+                elif "workflow_dispatch" not in actual["events"]:
+                    failures.append(f"manual dispatch missing: {path}")
+                else:
+                    active_count += 1
     summary = {
         "workflow_count": len(entries),
         "trigger_modes": dict(sorted(mode_counts.items())),
@@ -101,6 +113,8 @@ def audit(repo: Path, check: bool) -> dict:
             path for path, data in entries.items() if data["mode"] == "unrestricted_pull_request"
         ),
         "custody_records_checked": checked,
+        "custody_archived_records": archived_count,
+        "custody_active_records": active_count,
         "custody_errors": failures,
         "scope": "static source audit only, not YAML/Actions semantics or Lean certification",
     }
