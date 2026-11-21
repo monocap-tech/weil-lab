@@ -1,0 +1,60 @@
+name: CP018 OPT-IN original HardyZ source derivative jets and 8-cell exact preflight
+# Only explicit PR label or manual dispatch. Zero ordinary PR/push fanout.
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [labeled]
+permissions:
+  contents: read
+jobs:
+  source-8cell-jet-not-Lean-kernel:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'cp018-jet-source' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact rational eight-cell coverage, curvature slack and false-bound negative controls
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp018_hardy_jet_eight_cell_preflight.py scripts/cp018_hardy_eight_cell_lean_axiom_audit.py
+          python scripts/cp018_hardy_jet_eight_cell_preflight.py --self-test \
+            | tee cp018-eight-cell-rational.log
+          grep -F 'CP018 EXACT 8-CELL RATIONAL COVERAGE/CURVATURE BUDGET: PASS' cp018-eight-cell-rational.log
+      - name: Fetch actual original Zeta HardyZ, LogGamma derivative bridge and Mathlib mean-value source
+        run: |
+          set -euo pipefail
+          commit=c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          for file in \
+            Zeta/Zeros/HardyZ.lean \
+            Zeta/Gamma/LogGammaBranch.lean \
+            Zeta/Zeros/RiemannHypothesisUpTo/Basic.lean; do
+            mkdir -p "cp018-source-zeta/$(dirname "$file")"
+            curl -fLSs --retry 3 \
+              "https://raw.githubusercontent.com/smmercuri/zeta/$commit/$file" \
+              -o "cp018-source-zeta/$file"
+          done
+          file=Mathlib/Analysis/Calculus/MeanValue.lean
+          mkdir -p "cp018-source-mathlib/$(dirname "$file")"
+          curl -fLSs --retry 3 \
+            "https://raw.githubusercontent.com/leanprover-community/mathlib4/v4.35.0/$file" \
+            -o "cp018-source-mathlib/$file"
+      - name: Verify four real primary source Git blob SHAs and existence/limits of derivative proofs
+        run: |
+          set -euo pipefail
+          python scripts/cp018_hardy_jet_eight_cell_preflight.py \
+            --zeta cp018-source-zeta --mathlib cp018-source-mathlib \
+            --receipt cp018-source-only-eight-cell.json | tee cp018-source-sha-audit.log
+          grep -F 'CP018_FOUR_ORIGINAL_SOURCE_SHA_AND_EIGHT_CELL_EXACT_LOGIC_PASS_NOT_LEAN' cp018-source-sha-audit.log
+          test -s cp018-source-only-eight-cell.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp018-eight-cell-source-jet-rational-and-original-SHA-NOT-Lean
+          path: |
+            cp018-eight-cell-rational.log
+            cp018-source-sha-audit.log
+            cp018-source-only-eight-cell.json
+          if-no-files-found: ignore
