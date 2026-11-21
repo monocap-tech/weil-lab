@@ -33,12 +33,12 @@ noncomputable abbrev halfTerm (t : ℝ) : ℂ :=
   (256 : ℂ) ^ (-point t) / 2
 
 noncomputable abbrev bernoulliTerm (t : ℝ) (k : ℕ) : ℂ :=
-  ((bernoulli (2 * k) : ℝ) / ((2 * k)! : ℝ) : ℂ) *
+  ((bernoulli (2 * k) : ℝ) / (Nat.factorial (2 * k) : ℝ) : ℂ) *
       (ascPochhammer ℂ (2 * k - 1)).eval (point t) *
       (256 : ℂ) ^ (-point t - ((2 * k - 1 : ℕ) : ℂ))
 
 /-- Original M=6,N=256 definitional source identity; this is an
-UNCOMPILED proof candidate, with no imported numeric certificate. -/
+Kernel-frozen original source identity; no imported numeric certificate. -/
 theorem original_M6N256_finite_expansion (t : ℝ) :
     zetaApproximant (point t) 6 256 =
       (∑ n ∈ Finset.Ico 1 256, dirichletTerm t n) +

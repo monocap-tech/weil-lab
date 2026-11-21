@@ -19,7 +19,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 PKG=ROOT/"cp011_zeta_v435"
 SRC=PKG/"CP032OriginalTermSplit.lean"
-PIN="23c9459e94d8828296779690ce730d1935550b15"
+PIN="75024762ea2f9fff12f1d6205af652ce9d21f747"
 ORIGINAL_ZETA="c06b4e13d9c847e50a32c3d738271cbad62ae9f3"
 TOOLCHAIN="leanprover/lean4:v4.35.0"
 IMPORTS=["Zeta.EulerMaclaurin.Continuation","Zeta.Zeros.HardyZ"]
@@ -62,6 +62,51 @@ def source_check():
         raise ValueError("original Zeta revision tag mismatch")
     print("CP033 PINNED ORIGINAL ZETA435 FOUR SOURCES + FOUR AXIOM REQUESTS PASS — NOT LEAN")
 
+def parse_original_axioms(ax: str) -> dict[str,list[str]]:
+    # Lean's actual v4.35 build output prefixes #print axioms with
+    # "info: path:line:column:" and may wrap bracket contents across lines.
+    # Require exactly the expected theorem labels, uniquely; tolerate
+    # prefix/line wrapping but never an extra declaration or axiom.
+    observed=re.findall(
+        r"'CP032OriginalTermSplit\.([A-Za-z0-9_']+)'\s+"
+        r"(?:depends on axioms:|does not depend on any axioms)", ax)
+    if sorted(observed)!=sorted(TARGETS):
+        raise ValueError("not exactly four genuine source-axiom declarations: "+repr(observed))
+    result={}
+    for theorem in TARGETS:
+        tag=re.escape("'CP032OriginalTermSplit."+theorem+"'")
+        regexp=rf"{tag}\s+(?:depends on axioms:\s*\[([^\]]*)\]|does not depend on any axioms)"
+        hits=re.findall(regexp,ax)
+        if len(hits)!=1:
+            raise ValueError("missing or duplicate original v4.35 #print axioms: "+theorem)
+        symbols={item.strip() for item in hits[0].split(",") if item.strip()}
+        if not symbols<=STANDARD:
+            raise ValueError("nonstandard axiom for "+theorem+": "+repr(symbols-STANDARD))
+        result[theorem]=sorted(symbols)
+    return result
+
+def parser_self_test():
+    lines=[]
+    for i,name in enumerate(TARGETS):
+        lines.append(
+            f"info: CP032OriginalTermSplit.lean:{83+i}:0: "
+            f"'CP032OriginalTermSplit.{name}' depends on axioms: "
+            "[propext,\n Classical.choice,\n Quot.sound]")
+    good="\n".join(lines)
+    got=parse_original_axioms(good)
+    if set(got)!=set(TARGETS):
+        raise ValueError("self-test dropped a genuine four-axiom item")
+    for bad in (
+        good.replace("propext,", "sorryAx,", 1),
+        good.replace("Quot.sound]", "Invented.axiom]", 1),
+        good.replace(lines[-1], "", 1),
+        good+"\n"+lines[-1]
+    ):
+        try: parse_original_axioms(bad)
+        except ValueError: continue
+        raise ValueError("the strict source axiom parser admitted a negative control")
+    print("CP034 ACTUAL v4.35 PREFIX/MULTILINE FOUR AXIOM PARSER + FOUR NEGATIVE CONTROLS: PASS NOT LEAN")
+
 def kernel_check():
     source_check()
     if not OLEAN.exists() or OLEAN.stat().st_size==0:
@@ -75,27 +120,19 @@ def kernel_check():
     for label,log in (("build",bs),("axioms",ax)):
         if re.search(r"(?i)(?:^|\n)[^\n]*(?:error:|unsolved goals|sorryAx|declaration uses 'sorry'|admit)",log):
             raise ValueError(label+" original source v4.35 compiler reports failure or admitted proof")
-    result={}
-    for theorem in TARGETS:
-        tag=re.escape("'CP032OriginalTermSplit."+theorem+"'")
-        regexp=rf"(?m)^{tag}\s+(?:depends on axioms:\s*\[([^\]]*)\]|does not depend on any axioms)\s*$"
-        hits=re.findall(regexp,ax)
-        if len(hits)!=1:
-            raise ValueError("missing or duplicate genuine original v4.35 #print axioms: "+theorem)
-        set_={item.strip() for item in hits[0].split(",") if item.strip()}
-        if not set_<=STANDARD:
-            raise ValueError("forbidden source axiom in "+theorem+": "+repr(set_-STANDARD))
-        result[theorem]=sorted(set_)
+    result=parse_original_axioms(ax)
     print("CP033 ORIGINAL-ZETA435 CP032 SOURCE SPLIT + FIRST UNIT CELL 4/4 ACTUAL LEAN KERNEL+AXIOM PASS")
     return result
 
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--source-check",action="store_true")
+    p.add_argument("--parser-self-test",action="store_true")
     p.add_argument("--kernel-audit",action="store_true")
     p.add_argument("--receipt",type=Path)
     a=p.parse_args()
     if a.source_check: source_check()
+    if a.parser_self_test: parser_self_test()
     evidence=kernel_check() if a.kernel_audit else None
     if a.receipt:
         if evidence is None:
@@ -121,7 +158,7 @@ def main():
         }
         a.receipt.write_text(json.dumps(receipt,indent=2)+"\n",encoding="utf8")
         print(receipt["status"])
-    if not (a.source_check or a.kernel_audit): p.print_help()
+    if not (a.source_check or a.kernel_audit or a.parser_self_test): p.print_help()
 
 if __name__=="__main__":
     try:main()
