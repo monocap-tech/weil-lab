@@ -1,0 +1,138 @@
+{
+  "schema": "weil-lab-workflow-retirement-v1",
+  "date": "2026-11-21",
+  "repository": "monocap-tech/weil-lab",
+  "baseline_branch": "maintenance/iv026-lake-bootstrap-and-trigger-custody-20261121",
+  "baseline_head": "1bd031c2523081148ed7420184ad379254d8a936",
+  "staged_branch": "maintenance/nf453-474-manual-retirement-20261121",
+  "classification": "historical-automatic-PR-trigger-retirement",
+  "policy": "Keep verification source, job bodies and workflow_dispatch; remove only unrestricted pull_request event",
+  "workflow_count_before": 613,
+  "workflow_count_after": 613,
+  "retired_count": 24,
+  "proof_certificates_modified": false,
+  "CI_invoked": false,
+  "branch_protection_verification": "NOT VERIFIED: GitHub integration cannot read branch protection (403)",
+  "workflows": [
+    {
+      "path": ".github/workflows/nf453-original-j7-j8-principal-signed.yml",
+      "original_git_blob_sha": "e44bf3843d1fc8509b399812dd5de216cf92680b",
+      "manual_only_git_blob_sha": "703b77c70262ea7acee4011361d788101be50e55"
+    },
+    {
+      "path": ".github/workflows/nf454-original-square-energy.yml",
+      "original_git_blob_sha": "ba37ff2cfc825f81b1ee0b8aa9a4d535780254f0",
+      "manual_only_git_blob_sha": "a59e6112f5b788b525dd95f9782e5315adb7bdb8"
+    },
+    {
+      "path": ".github/workflows/nf455-original-j78-projection-floor.yml",
+      "original_git_blob_sha": "7751b39bd18a4bcf4c0b7d6d892970b9e4828a97",
+      "manual_only_git_blob_sha": "1cb04f243ce5f635e3247ef2fe7457eece3fd00d"
+    },
+    {
+      "path": ".github/workflows/nf456-original-two-ray-residual-budget.yml",
+      "original_git_blob_sha": "249eef499a0b208faea7f211937e4a45b813c413",
+      "manual_only_git_blob_sha": "3cfa9cb891d8ce721f709603bbee9fac244a125f"
+    },
+    {
+      "path": ".github/workflows/nf457-original-log-peel.yml",
+      "original_git_blob_sha": "25bb13e47e87150d54e13240ddd41a3a793fbb3c",
+      "manual_only_git_blob_sha": "253db52d751605c83e9f483e23c35ab49d5e905c"
+    },
+    {
+      "path": ".github/workflows/nf458-original-endpoint-leverage-gate.yml",
+      "original_git_blob_sha": "fa932e125909f312d8660bcaea821ed53367a7b5",
+      "manual_only_git_blob_sha": "c6d1e64d07af0270555fa3f69b19872dbac54055"
+    },
+    {
+      "path": ".github/workflows/nf459-native-original-christoffel.yml",
+      "original_git_blob_sha": "fe9991d3e4af8f84c1ed2409c9fcedbeadf667ac",
+      "manual_only_git_blob_sha": "99a5f899fcc257f6d78e0f990abf591735ac1d83"
+    },
+    {
+      "path": ".github/workflows/nf460-original-bulk-seam-h1.yml",
+      "original_git_blob_sha": "8b8c399211523dc1d2711ed7689e617bd9837f26",
+      "manual_only_git_blob_sha": "073c9915da558d1c73e8771da10cd46a86b6aa1c"
+    },
+    {
+      "path": ".github/workflows/nf462-original-forced-j7-sign.yml",
+      "original_git_blob_sha": "ea049c773b7238edba60d7f485bcaeb8f1da9ca2",
+      "manual_only_git_blob_sha": "01f4e9754b382650ffc8edabb9d9684377272f7c"
+    },
+    {
+      "path": ".github/workflows/nf463-original-j7-spatial-necessity.yml",
+      "original_git_blob_sha": "f96a10937fc703850209d1502b13b696a08d320e",
+      "manual_only_git_blob_sha": "2d8c7d653dfb0d2760f0ea6c8c33226058347bbb"
+    },
+    {
+      "path": ".github/workflows/nf464-original-j7-macroscopic-necessity.yml",
+      "original_git_blob_sha": "5743a4c3a2042262ecab68b3b4de3df0b40947a4",
+      "manual_only_git_blob_sha": "dedc9905887f622ac80ba118bc305cb1968eaffb"
+    },
+    {
+      "path": ".github/workflows/nf465-j7-derivative-resolution-stop.yml",
+      "original_git_blob_sha": "775939c38730184d1fe4f735700b6f98e01fa437",
+      "manual_only_git_blob_sha": "6ee15f51add67e6eb10567b0ad2b3060c85b7b60"
+    },
+    {
+      "path": ".github/workflows/nf466-j7-correlated-moment-algebra.yml",
+      "original_git_blob_sha": "93173c89e6342e683379bb02856cb8995b8a3faf",
+      "manual_only_git_blob_sha": "5c775da639bef768a9e954ff1ee10dcc0b449704"
+    },
+    {
+      "path": ".github/workflows/nf467-j7-mean-operator-algebra.yml",
+      "original_git_blob_sha": "cb3d18375e39ecd948504bb7736bd1f861494fcc",
+      "manual_only_git_blob_sha": "b07e422f977ae34fa49b09e8ad7952cb80351ba9"
+    },
+    {
+      "path": ".github/workflows/nf468-j7-original-mean-coarse-enclosure.yml",
+      "original_git_blob_sha": "b0a310d688daaf1b701750741ca61d53b46b1d34",
+      "manual_only_git_blob_sha": "c0fd3953e235ee12d88d56147b26ed31709b9e53"
+    },
+    {
+      "path": ".github/workflows/nf469-j7-native-jet-order-gate.yml",
+      "original_git_blob_sha": "1635f49f492712e506dc6fdb8657fc86928db67c",
+      "manual_only_git_blob_sha": "f1d5c1ea7e8cac317ac58ce48627dd9628106bc0"
+    },
+    {
+      "path": ".github/workflows/nf470-original-j7-native-regular-mean-joint-nodes.yml",
+      "original_git_blob_sha": "e72db2f853905e98c950bf0130a0aab341760075",
+      "manual_only_git_blob_sha": "ece0fa4a3f0dca917de94e2b9530fb06780728a2"
+    },
+    {
+      "path": ".github/workflows/nf471-original-j7-complete-mean-receipt.yml",
+      "original_git_blob_sha": "a1c33ea0910a5378c0ea21bfc422994153101477",
+      "manual_only_git_blob_sha": "739389888807ccd581916bcb5d678fb73fd55dc6"
+    },
+    {
+      "path": ".github/workflows/nf471-original-j7-joint-arch-macroscopic-mean.yml",
+      "original_git_blob_sha": "f93fbb51a56a073bb329e2e6079ca8edf781e532",
+      "manual_only_git_blob_sha": "9cb396ed1182c9d02095846507eaea7d3e4ed2ed"
+    },
+    {
+      "path": ".github/workflows/nf472-original-j7-correlated-signed-moments.yml",
+      "original_git_blob_sha": "2236c391dbcbc5c530bdc5b2875ddac97b2f89fa",
+      "manual_only_git_blob_sha": "3f02ccb9072df39e0db0ea6c4a7db841af659798"
+    },
+    {
+      "path": ".github/workflows/nf472-original-j7-signed-moments-receipt.yml",
+      "original_git_blob_sha": "89ced3936869041d4d4864fac6818a450c279d68",
+      "manual_only_git_blob_sha": "fd25a0bbde5a8489a053d8f4b36d5717bdd08e9c"
+    },
+    {
+      "path": ".github/workflows/nf473-original-j7-left-panel-correlated-signed-moments.yml",
+      "original_git_blob_sha": "cf9a91c7e2a5f2bbab977840520b74689d8b46f5",
+      "manual_only_git_blob_sha": "88ea36b8300293820d7d821b39fe8b9479080880"
+    },
+    {
+      "path": ".github/workflows/nf474-original-j7-fast-source-independent-fraction-audit.yml",
+      "original_git_blob_sha": "491638f3d699ebaac70d73ae8b6f57c01cf55c5f",
+      "manual_only_git_blob_sha": "88848b5942c64e409862cc9a4602194b5029eb83"
+    },
+    {
+      "path": ".github/workflows/nf474-original-j7-right-panel-correlated-signed-moments.yml",
+      "original_git_blob_sha": "9cfd50d982e3847d8aa04d8a3d2ad2258c040be9",
+      "manual_only_git_blob_sha": "eece7ae1fc1d9c47a7575326a59239bda360ae61"
+    }
+  ]
+}
