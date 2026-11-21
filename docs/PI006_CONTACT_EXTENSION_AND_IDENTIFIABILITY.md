@@ -116,3 +116,23 @@ PI007 should attempt the **source-bound Lean companion** proving PI006-R and PI0
 A later PI### stage must separately extract Alpöge's weighted von Mangoldt test functional and match it to the PI003 \(n=9\) source term; matching an algebraic coefficient alone is not the claimed theta-lift bridge.
 
 **Conclusion:** PI's arithmetic and archimedean dictionary is source-consistent on admissible mixed tests, and now has an exact mathematical extension construction for the Gamma **distribution**. Whether the Masullo **operator trace** supplies this same extension remains the indispensable missing hypothesis.
+
+
+## 7. Verified formal-library bottleneck (pin actual v4.34.0)
+
+The existing Phase IV source specifies Mathlib \`v4.34.0\` in \`lakefile.toml\`. Inspected the **exact tag** \`Mathlib/Analysis/SpecialFunctions/Gamma/Digamma.lean\`:
+https://github.com/leanprover-community/mathlib4/blob/v4.34.0/Mathlib/Analysis/SpecialFunctions/Gamma/Digamma.lean
+
+Its header explicitly lists **TODO: "Prove Gauss' integral representation of the digamma function."** The module defines \`Complex.digamma\` and proves recurrence/reflection/duplication, but **does not itself supply the integral formula** used in the paper-level derivation of (PI006-R). There is therefore a substantive Lean proof obligation—not merely an import/name mismatch—before the full source-bound archimedean bridge can be claimed.
+
+A promising existing formal starting point was independently located in
+https://github.com/anthropics/formal-math/blob/main/zeta23/Zeta23/GammaFacts/Series.lean
+(Git blob \`2c6cf90050c2e6d5cbef0745d0445e3a8d02394a\`):
+\`Zeta23.DigammaSeries.hasSum_digamma_series\` proves the source-exact partial-fraction series
+\[
+\sum_{n\ge0}\left(\frac1{n+1}-\frac1{z+n+1}\right)
+=\psi(z)+\gamma+\frac1z
+\]
+away from its poles. A genuine Lean PI companion could derive (i) a half-plane Laplace integral for each reciprocal, (ii) rigorous summation/integration interchange with a near-zero subtraction, and (iii) the Fourier inversion against compact smooth h with h(0)=0. A simple \`rfl\` lemma for \`gammaBracket\` would not close (PI006-R).
+
+**This is an inspected source gap and proposed proof route, not an assertion that the entire Lean library lacks every equivalent theorem.** Search and reuse a proof elsewhere if one is found, otherwise establish the missing lemma with actual Mathlib proofs and strict axiom receipts.
