@@ -70,6 +70,7 @@ DEPS=[
     Path("WeilDefect/Arithmetic/ActualZetaOriginalCollarLiteralArch.lean"),
     Path("WeilDefect/Arithmetic/ActualZetaOriginalCollar242Correction.lean"),
     Path("WeilDefect/External/Zeta23/Definitions/Def_Zeta23_ExplicitFormula.lean"),
+    Path("lakefile.toml"),
     Path("lean-toolchain"),
     Path("lake-manifest.json"),
 ]
@@ -151,6 +152,8 @@ def preflight():
     ):
         assert required in s,("missing source-specific smooth Schwartz/old prime anchor",required)
     for p in DEPS:
+        if p.name == "lake-manifest.json":
+            continue  # Lake generates this AFTER source preflight.
         assert p.is_file(),("missing true source",str(p))
     exact_geometry()
     print("IV021 SOURCE PREFLIGHT PASS: 7 new full original three-cell smooth Schwartz/correlation/coercivity candidate theorems + 4 original source strict axiom anchors. KERNEL PENDING.")
@@ -158,6 +161,7 @@ def preflight():
 
 def verify():
     preflight()
+    assert Path("lake-manifest.json").is_file(), "Missing Lake-generated manifest: lake update must run before KERNEL verification"
     assert OLEAN.is_file() and OLEAN.stat().st_size>0,"Original source compiled .olean REQUIRED"
     raw=LOG.read_text()
     assert not re.search(
