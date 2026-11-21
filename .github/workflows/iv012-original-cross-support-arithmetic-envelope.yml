@@ -2,6 +2,8 @@ name: IV012 genuine original Weil cross-support prime pole Gamma arithmetic budg
 on:
   pull_request:
     paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
+      - "scripts/iv009_original_schwartz_polarization_audit.py"
       - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportArithmeticEnvelope.lean"
       - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportArithmeticCutoff.lean"
       - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalMixedHermitian.lean"
