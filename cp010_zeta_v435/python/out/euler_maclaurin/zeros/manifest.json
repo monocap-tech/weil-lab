@@ -1,0 +1,33 @@
+{
+  "rows": 1,
+  "rows_per_file": 1,
+  "height": "150.05353",
+  "end": 150.05353,
+  "cols": [
+    "idx",
+    "left",
+    "right",
+    "left_cutoff",
+    "right_cutoff",
+    "left_bernoulli",
+    "right_bernoulli"
+  ],
+  "params": {
+    "method": "euler_maclaurin",
+    "prec": 1000,
+    "M": 20,
+    "N": null,
+    "b": 1.25,
+    "bisection_depth": 0,
+    "epsilon": 0.125,
+    "widen": false,
+    "candidate_origin": "Independent 53rd zero Euler-Maclaurin pilot using prior authentic Euler last-row site cutoffs 92,93 and Bernoulli M=20. No source kernel receipt."
+  },
+  "files": [
+    {
+      "file": "zeros_00001.txt",
+      "rows": 1,
+      "height": "150.05353"
+    }
+  ]
+}
