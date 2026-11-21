@@ -1,0 +1,79 @@
+name: IV019 original signed width capacity and real double-radius Schwartz prime geometry
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalVariableWidthSignedBudget.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWiderPrimeFreeBump.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalThreeCellSignedEnvelope.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalThreeCellPrime9Transfer.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalNarrowSignedGamma.lean"
+      - "scripts/iv019_original_width_capacity_kernel_audit.py"
+      - "scripts/iv015_frozen_collar_exact_log_gap.py"
+      - ".github/workflows/iv019-original-width-capacity-and-primefree-bump.yml"
+      - "docs/IV019_PHASE_IV_ORIGINAL_VARIABLE_WIDTH_CAPACITY.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: iv019-original-signed-width-capacity-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  genuine-original-zeta-signed-width-and-wider-Schwartz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent EXACT Fraction original two-collar geometry and 1/10 signed budget — NOT kernel
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/iv015_frozen_collar_exact_log_gap.py scripts/iv019_original_width_capacity_kernel_audit.py
+          python scripts/iv019_original_width_capacity_kernel_audit.py preflight
+          test -s iv019-original-wider-physical-capacity-exact-rational.json
+      - name: Install exact pinned real Lean Mathlib toolchain and dependency cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Direct original signed Gamma TWO-pole and authentic n9-prime L1 budget Lean kernel build
+        timeout-minutes: 105
+        run: |
+          set -euo pipefail
+          /usr/bin/time -a -o iv019-resources.log -f 'phase=signedSourceCapacity elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalVariableWidthSignedBudget 2>&1 | tee iv019-original-variable-width-signed-budget-build.log
+      - name: Direct original actual double-radius complex Schwartz support and prime-free geometry Lean build
+        timeout-minutes: 105
+        run: |
+          set -euo pipefail
+          /usr/bin/time -a -o iv019-resources.log -f 'phase=widerPrimeFreeSchwartz elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalWiderPrimeFreeBump 2>&1 | tee iv019-original-wider-primefree-bump-build.log
+      - name: Strict source-bound real #print axioms, two genuine compiled Lean objects and full SHA custody
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalVariableWidthSignedBudget.lean 2>&1 | tee iv019-original-variable-width-signed-budget-axioms.log
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWiderPrimeFreeBump.lean 2>&1 | tee iv019-original-wider-primefree-bump-axioms.log
+          python scripts/iv019_original_width_capacity_kernel_audit.py verify
+          test -s iv019-original-width-capacity-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv019-original-signed-width-capacity-and-double-radius-prime-free-Schwartz
+          path: |
+            iv019-original-wider-physical-capacity-exact-rational.json
+            iv019-resources.log
+            iv019-original-variable-width-signed-budget-build.log
+            iv019-original-wider-primefree-bump-build.log
+            iv019-original-variable-width-signed-budget-axioms.log
+            iv019-original-wider-primefree-bump-axioms.log
+            iv019-original-width-capacity-kernel-audit.json
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalVariableWidthSignedBudget.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWiderPrimeFreeBump.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
