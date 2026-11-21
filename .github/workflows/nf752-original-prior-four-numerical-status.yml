@@ -4,7 +4,7 @@ on:
     paths:
       - "scripts/nf752_original_pending_numerical_status.py"
       - "docs/NF752_ORIGINAL_INDEXZERO_088_095_AND_STATUS_CUSTODY.md"
-      - ".github/workflows/nf752-original-prior-numerical-status.yml"
+      - ".github/workflows/nf752-original-prior-four-numerical-status.yml"
   workflow_dispatch:
 permissions:
   contents: read
@@ -23,7 +23,7 @@ jobs:
           set -euo pipefail
           python -m py_compile scripts/nf752_original_pending_numerical_status.py
           python scripts/nf752_original_pending_numerical_status.py selftest
-      - name: Query LIVE exact prior NF748 NF749 NF750 numerical jobs and immutable artifact metadata
+      - name: Query LIVE exact prior NF748 NF749 NF750 NF751 numerical jobs and immutable artifact metadata
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
