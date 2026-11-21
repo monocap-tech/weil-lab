@@ -108,8 +108,8 @@ theorem neutralIV009OriginalPairTerm_summable
   have hsource := neutralActualZetaDivisor_rawTransform_summable_of_contDiff
     (neutralWindowCorrelation a (f.toLp 2 volume) (g.toLp 2 volume))
     hreg (neutralWindowCorrelation_hasCompactSupport a _ _)
-  simpa only [neutralIV009OriginalPairTerm,
-    neutralWindowCorrelation_rawTransform] using hsource
+  change Summable (neutralIV009OriginalPairTerm a f g) at hsource
+  exact hsource
 
 /-- The ORIGINAL first-antilinear/second-linear Weil summand, multiplied
 by the two finite-family coefficients. -/
