@@ -67,6 +67,8 @@ NEW2=[
  "neutralIV023EveryFourCell_originalPrime_real_bound",
  "neutralIV023WholeFourCellOriginalWeil_oneSixteenth",
 ]
+# Generated only by `lake update` after source preflight; SHA-bound by real verifier.
+MANIFEST=Path("lake-manifest.json")
 DEPS=[
  ROOT/"ActualZetaPhaseIVOriginalSecondNewCellPrimeGeometry.lean",
  ROOT/"ActualZetaPhaseIVOriginalFourCellSignedCapacity.lean",
@@ -101,7 +103,6 @@ DEPS=[
  Path("scripts/iv015_frozen_collar_exact_log_gap.py"),
  Path("scripts/iv022_original_four_cell_prime_capacity_audit.py"),
  Path("lean-toolchain"),
- Path("lake-manifest.json"),
 ]
 
 def h(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
@@ -247,6 +248,7 @@ def parse_log(path,names):
 
 def verify():
     source_preflight()
+    assert MANIFEST.is_file(), ("Missing generated Lake manifest after update", str(MANIFEST))
     objs=[OLEANS/(p.stem+".olean") for p in (M1,M2)]
     for p in objs:
         assert p.is_file() and p.stat().st_size>0,("real compiled .olean REQUIRED",str(p))
@@ -255,7 +257,7 @@ def verify():
     report={
         "schema":SCHEMA,
         "scope":"EVERY genuine complex Schwartz function supported in the ORIGINAL frozen strict two collars plus first wide [99/500,101/500] and second [-801/4000,-799/4000] new cells: actual smooth three-component partition, genuine complete original prime = old n9 only, signed original Weil 1/16 coercivity.",
-        "source_sha256":{str(p):h(p) for p in [M1,M2]+DEPS},
+        "source_sha256":{str(p):h(p) for p in [M1,M2]+DEPS+[MANIFEST]},
         "compiled_original_Lean_olean_sha256":{str(p):h(p) for p in objs},
         "independent_exact_Fraction_receipt_sha256":h(EXACT),
         "new_original_Lean_proved_theorems":NEW1+NEW2,
