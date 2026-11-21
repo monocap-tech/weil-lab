@@ -212,7 +212,7 @@ A verified PASS requires both ORIGINAL .olean objects, all 20 new and eight upst
 ## 8. Current distinction and next stage
 
 - IV006–IV008 genuine original Lean source kernel/axiom audits: accepted as previously recorded.
-- IV009's source recovery was still in progress on the last live Actions check; IV015 and IV016 were queued. IV017 and IV018 source candidates have no terminal kernel PASS at creation.
+- **IV009 historical run 44844586039 FAILED** at line 111: Lean rejected a `change` from the real original raw correlation transform summability function to the Schwartz divisor pair term. Its dependent statements consequently showed `sorryAx` during the failed elaboration; that is NOT a successful axiom audit. A source-specific repair replaces the invalid definitional conversion with an explicit pointwise equality from `neutralWindowCorrelation_rawTransform`, and the same change has been propagated through IV010–IV018 stacked branches. **The repaired IV009 run 44850887402 was QUEUED at the last check.** IV015/IV016, IV017 and IV018 have no accepted terminal Lean kernel/strict axiom receipts at creation.
 - The full original three-cell source-specific coercivity is therefore **UNVERIFIED BY LEAN**. It must be treated as a proposed theorem until the full dependency chain and strict original source kernel audits succeed.
 - It is not a complete Phase III physical numerical enclosure, a general global Weil support theorem, or RH.
 
