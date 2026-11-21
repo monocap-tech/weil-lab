@@ -1,0 +1,25 @@
+{
+  "repo": "smmercuri/zeta",
+  "tag": "v1-1e6",
+  "commit": "c06b4e13d9c847e50a32c3d738271cbad62ae9f3",
+  "upstream_lean": "leanprover/lean4:v4.35.0",
+  "original_weil_lab_lean": "leanprover/lean4:v4.34.0",
+  "release_archive": "Zeta-x86_64-unknown-linux-gnu.tar.gz",
+  "published_release_sha256": "f777b515af89a486654052f0052b8f6760e822c88c15e0be8af753c9542c2ea2",
+  "files": {
+    "lean-toolchain": "a6aff065db2882c535684f8c5bcd4f16e9a23915",
+    "lakefile.toml": "bbec128d14c0ddaac4abb40900dc61bd43138561",
+    "Zeta/Main.lean": "20e5a9ae3ae3cdab3462e5f85865e918ec672e00",
+    "Zeta/Zeros/Certificates.lean": "54fce07cbc5bf0913ceccb108cbf73f1227857c0",
+    "Zeta/Zeros/CountCertificates.lean": "a3e729d23802c3731432de9a3c7d46d18252ba10",
+    "Zeta/Zeros/Count.lean": "b8c458cca723b20cdf71a5f8d662d9d8e952c983",
+    "Zeta/Zeros/RiemannHypothesisUpTo/Basic.lean": "c2b1da101a580cc91cfb0a43d72d5839fd97265c"
+  },
+  "expected": {
+    "certified_intervals_count": 1748002,
+    "last_interval_right_rational": "1000449286/1000",
+    "rh_theorem": "riemannHypothesisUpTo_1000449",
+    "simple_theorem": "simpleZerosUpTo_1000449",
+    "count_theorem": "riemannZeta.N_gramPoint_eq"
+  }
+}

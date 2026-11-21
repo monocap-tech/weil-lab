@@ -1,0 +1,11 @@
+name = "cp006_zeta_v435"
+version = "0.0.1"
+
+# Completely separate Lean 4.35 environment, never added to Weil-Lab IV###.
+[[require]]
+name = "Zeta"
+git = "https://github.com/smmercuri/zeta"
+rev = "v1-1e6"
+
+[[lean_lib]]
+name = "CP006ZeroBridge"

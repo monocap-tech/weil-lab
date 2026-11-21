@@ -1,0 +1,47 @@
+name: CP006 pinned external zero source and adaptive rational error preflight
+on:
+  pull_request:
+    paths:
+      - "scripts/cp006_dyadic_zero_bracket_budget.py"
+      - "scripts/cp006_external_zero_source_lock.py"
+      - "scripts/cp006_upstream_zeta_source_lock.json"
+      - "scripts/cp005_formal_zero_roster_adapter.py"
+      - "docs/CP006_SOURCE_LOCKED_ADAPTIVE_ZERO_BANDS.md"
+      - ".github/workflows/cp006-pinned-source-adaptive-budget.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-pinned-exact-rational-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact Fraction adaptive Fourier-decay budget — NOT a zero proof
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp006_dyadic_zero_bracket_budget.py scripts/cp006_external_zero_source_lock.py
+          python scripts/cp006_dyadic_zero_bracket_budget.py --self-test | tee cp006-adaptive-selftest.log
+          python scripts/cp006_external_zero_source_lock.py --self-test | tee cp006-source-lock-selftest.log
+      - name: Fetch exact upstream small source files at immutable full commit SHA
+        run: |
+          set -euo pipefail
+          commit=c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          mkdir -p cp006-upstream-source
+          for file in lean-toolchain lakefile.toml Zeta/Main.lean Zeta/Zeros/Certificates.lean Zeta/Zeros/CountCertificates.lean Zeta/Zeros/Count.lean Zeta/Zeros/RiemannHypothesisUpTo/Basic.lean; do
+            mkdir -p "cp006-upstream-source/$(dirname "$file")"
+            curl --fail --location --silent --show-error --retry 3 "https://raw.githubusercontent.com/smmercuri/zeta/$commit/$file" -o "cp006-upstream-source/$file"
+          done
+          python scripts/cp006_external_zero_source_lock.py --source-dir cp006-upstream-source | tee cp006-source-lock-live.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp006-source-lock-and-rational-bands-not-kernel
+          path: |
+            cp006-adaptive-selftest.log
+            cp006-source-lock-selftest.log
+            cp006-source-lock-live.log
+          if-no-files-found: ignore
