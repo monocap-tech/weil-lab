@@ -1,0 +1,31 @@
+name: CP004 exact rational finite spectral incompatibility negative controls
+on:
+  pull_request:
+    paths:
+      - "scripts/cp004_finite_spectral_falsifier.py"
+      - "docs/CP004_FINITE_VERIFIED_HEIGHT_SPECTRAL_DICTIONARY.md"
+      - ".github/workflows/cp004-finite-spectral-falsifier.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-rational-structural-negative-controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax and synthetic fail-closed negative controls — NOT a Weil certificate
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp004_finite_spectral_falsifier.py
+          python scripts/cp004_finite_spectral_falsifier.py --self-test | tee cp004-negative-controls.log
+          test -s cp004-negative-controls.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp004-rational-synthetic-negative-controls
+          path: cp004-negative-controls.log
+          if-no-files-found: ignore
