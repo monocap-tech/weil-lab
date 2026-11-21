@@ -64,7 +64,7 @@ def sha256(path:Path)->str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def git_blob(path:Path)->str:
-    h=hashlib.sha1(b"blob "+str(path.stat().st_size).encode()+b"\\0")
+    h=hashlib.sha1(b"blob "+str(path.stat().st_size).encode()+b"\0")
     with path.open("rb") as fh:
         for part in iter(lambda:fh.read(1<<20),b""):
             h.update(part)
@@ -74,14 +74,14 @@ def source_audit():
     source=SOURCE.read_text(encoding="utf8")
     if git_blob(SOURCE)!=EXPECTED_SOURCE_BLOB:
         raise ValueError("CP027 ORIGINAL source was modified: freeze changes and recheck compiler target before running")
-    imports=re.findall(r"(?m)^public import\\s+([^\\n]+)",source)
+    imports=re.findall(r"(?m)^public import\s+([^\n]+)",source)
     if imports!=EXPECTED_IMPORTS:
         raise ValueError("point-only leaf imports not exactly four published upstream modules")
-    names=re.findall(r"(?m)^theorem\\s+([A-Za-z0-9_']+)",source)
-    printed=re.findall(r"(?m)^#print axioms\\s+CP027PointwiseBorwein\\.([A-Za-z0-9_']+)",source)
+    names=re.findall(r"(?m)^theorem\s+([A-Za-z0-9_']+)",source)
+    printed=re.findall(r"(?m)^#print axioms\s+CP027PointwiseBorwein\.([A-Za-z0-9_']+)",source)
     if names!=TARGETS or printed!=TARGETS:
         raise ValueError("eleven original theorem declarations / axiom queries do not match")
-    if re.search(r"(?m)^\\s*(?:sorry|axiom|opaque|constant|unsafe)\\b",source):
+    if re.search(r"(?m)^\s*(?:sorry|axiom|opaque|constant|unsafe)\b",source):
         raise ValueError("source admissions or new unsafe declarations forbidden")
     if 'name = "CP027PointwiseBorwein"' not in (BASE/"lakefile.toml").read_text("utf8"):
         raise ValueError("original standalone Lake target no longer registered")
@@ -105,15 +105,15 @@ def kernel_audit():
     if not build.strip() or not axioms.strip():
         raise ValueError("empty Lean compiler transcript")
     for kind,log in (("build",build),("axioms",axioms)):
-        if re.search(r"(?i)(?:^|\\n)[^\\n]*(?:error:|unsolved goals|sorryAx|declaration uses 'sorry'|admit)",log):
+        if re.search(r"(?i)(?:^|\n)[^\n]*(?:error:|unsolved goals|sorryAx|declaration uses 'sorry'|admit)",log):
             raise ValueError(kind+" original v4.35 compiler output contains errors/admissions")
     acceptance={}
     for theorem in TARGETS:
         tag=re.escape("'CP027PointwiseBorwein."+theorem+"'")
         regex=(
-            rf"(?m)^{tag}\\s+"
-            r"(?:depends on axioms:\\s*\\[([^\\]]*)\\]"
-            r"|does not depend on any axioms)\\s*$"
+            rf"(?m)^{tag}\s+"
+            r"(?:depends on axioms:\s*\[([^\]]*)\]"
+            r"|does not depend on any axioms)\s*$"
         )
         matches=re.findall(regex,axioms)
         if len(matches)!=1:
@@ -158,7 +158,7 @@ def main():
             "signed_Weil_spectral_matrix_equivalence":False,
             "global_signed_Weil_positivity_or_RH":False,
         }
-        a.receipt.write_text(json.dumps(data,indent=2)+"\\n",encoding="utf8")
+        a.receipt.write_text(json.dumps(data,indent=2)+"\n",encoding="utf8")
         print(data["status"])
     if not a.source_check and not a.kernel_audit:p.print_help()
 
