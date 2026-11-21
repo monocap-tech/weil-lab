@@ -31,6 +31,12 @@ def imaginary_mode_delta_limit(q: Q,k: int) -> Q:
     return -(k*k)*(q**k + q**(-k))
 
 
+def imaginary_mode_odd_delta_limit(q: Q,k: int) -> Q:
+    """IMAGINARY coefficient of Fourier_+ D_odd at z=i*k."""
+    assert q>1 and k>=0
+    return (k*k)*(q**k - q**(-k))
+
+
 def dual_functionals(v: tuple[Q,Q,Q]) -> tuple[Q,Q]:
     """Coordinates in (contact-normalized f, moment-normalized g, overlap D)."""
     return v[0],v[1]
@@ -45,13 +51,15 @@ def main()->None:
     assert imaginary_mode_delta_limit(Q(9),1)==-Q(82,9)
     assert imaginary_mode_delta_limit(Q(9),2)==-Q(26248,81)
     assert imaginary_mode_delta_limit(Q(4),1)==-Q(17,4)
+    assert imaginary_mode_odd_delta_limit(Q(9),1)==Q(80,9)
+    assert imaginary_mode_odd_delta_limit(Q(9),2)==Q(26240,81)
     modes=0
     for q in (Q(4),Q(9),Q(16),Q(25),Q(49)):
         for k in range(1,51):
             value=imaginary_mode_delta_limit(q,k)
             assert value<0
-            # symmetry of the cosine Fourier spectral witness
-            assert value==imaginary_mode_delta_limit(q,-k) if k<0 else value<0
+            # Odd-phase witness is i * (strictly positive rational).
+            assert imaginary_mode_odd_delta_limit(q,k)>0
             modes+=1
 
     # At z=0 the exact smooth D_a has W(0)=W'(0)=0, and
@@ -87,9 +95,10 @@ def main()->None:
                 arbitrary_functional((Q(0),Q(1),Q(0)),c,d,Q(0)))==(c,d)
 
     print("PI020 EXACT DOUBLE-ANNIHILATOR / FOURIER-WITNESS PREFLIGHT PASS")
-    print(f"{modes} noncentral imaginary-frequency exact sensitivity checks")
+    print(f"{modes} even and {modes} odd noncentral mode checks")
     print(f"{checks} two-functional intersection annihilator checks")
-    print("At q=9, formal narrow-bump W(i)=-82/9, W(2i)=-26248/81")
+    print("At q=9: even W(i)=-82/9, W(2i)=-26248/81")
+    print("At q=9: odd W(i)=i*80/9, W(2i)=i*26240/81")
     print("The smooth transform has a double zero at the central mode z=0")
     print("NO actual zeta zeros, source Ch13 theorem, trace, Lean, or RH verified")
 
