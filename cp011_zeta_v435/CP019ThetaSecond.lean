@@ -23,6 +23,8 @@ and remains a NEW Lean SOURCE CANDIDATE until actual v4.35 acceptance.
 
 namespace CP019ThetaSecond
 
+open Filter
+
 /-- Actual original complex digamma derivative along the quarter
 vertical line, recovered from the original source's TrigammaDecay
 proof pattern. No extraneous analytic assumption. -/
