@@ -1,0 +1,61 @@
+name: CP017 OPT-IN exact rational HardyZ curvature and original 4-source SHA
+# Only explicit PR-label or manual dispatch. No ordinary pull_request or push fanout.
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [labeled]
+permissions:
+  contents: read
+jobs:
+  exact-rational-curvature-source-only:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'cp017-curvature-source' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact rational derivative-budget and deliberate false-bound negative controls
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp017_hardyZ_curvature_budget_preflight.py scripts/cp017_original_curvature_lean_axiom_audit.py
+          python scripts/cp017_hardyZ_curvature_budget_preflight.py --self-test | tee cp017-fraction-margin.log
+          grep -F 'CP017 EXACT RATIONAL DERIVATIVE CURVATURE SUFFICIENCY: PASS' cp017-fraction-margin.log
+      - name: Fetch genuine frozen upstream original Zeta and Mathlib mean-value modules
+        run: |
+          set -euo pipefail
+          original=c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          for file in \
+            Zeta/Zeros/HardyZ.lean \
+            Zeta/Zeros/RiemannHypothesisUpTo/Basic.lean; do
+            mkdir -p "cp017-actual-zeta/$(dirname "$file")"
+            curl -fLSs --retry 3 \
+              "https://raw.githubusercontent.com/smmercuri/zeta/$original/$file" \
+              -o "cp017-actual-zeta/$file"
+          done
+          for file in \
+            Mathlib/Analysis/Calculus/Deriv/MeanValue.lean \
+            Mathlib/Analysis/Calculus/MeanValue.lean; do
+            mkdir -p "cp017-actual-mathlib/$(dirname "$file")"
+            curl -fLSs --retry 3 \
+              "https://raw.githubusercontent.com/leanprover-community/mathlib4/v4.35.0/$file" \
+              -o "cp017-actual-mathlib/$file"
+          done
+      - name: Exact original Git SHA and both real Mathlib derivative theorems
+        run: |
+          set -euo pipefail
+          python scripts/cp017_hardyZ_curvature_budget_preflight.py \
+            --zeta cp017-actual-zeta --mathlib cp017-actual-mathlib \
+            --receipt cp017-source-only-budget.json | tee cp017-real-source-gate.log
+          grep -F 'CP017_PINNED_MATHLIB_HARDYZ_DERIVATIVE_BUDGET_SOURCE_PASS_NOT_KERNEL' cp017-real-source-gate.log
+          test -s cp017-source-only-budget.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp017-exact-fraction-curvature-sufficiency-original-SHA-NOT-Lean
+          path: |
+            cp017-fraction-margin.log
+            cp017-real-source-gate.log
+            cp017-source-only-budget.json
+          if-no-files-found: ignore
