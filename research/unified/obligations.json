@@ -103,7 +103,8 @@
         "https://github.com/monocap-tech/weil-lab/issues/834",
         "https://github.com/monocap-tech/weil-lab/issues/814",
         "https://github.com/monocap-tech/weil-lab/issues/861",
-        "https://github.com/monocap-tech/weil-lab/issues/865"
+        "https://github.com/monocap-tech/weil-lab/issues/865",
+        "https://github.com/monocap-tech/weil-lab/issues/866"
       ],
       "evidence": [
         {
@@ -114,6 +115,11 @@
         {
           "kind": "offline_read_only_fanout_gate_16_tests_pass",
           "reference": "https://github.com/monocap-tech/weil-lab/blob/governance/uoi000-unified-operative-investigation/scripts/test_uoi_ci_fanout_gate.py",
+          "accepts_obligation": false
+        },
+        {
+          "kind": "exact_source_four_workflow_PR_paths_staged_not_applied",
+          "reference": "https://github.com/monocap-tech/weil-lab/issues/866",
           "accepts_obligation": false
         }
       ],
