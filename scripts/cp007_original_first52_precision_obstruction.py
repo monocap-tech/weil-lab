@@ -96,6 +96,14 @@ def self_test():
     a=parse_original52()
     stats=assess(a)
     assert dyadic_band(F(1))==0
+    assert bin_sums(a)=={
+        0:F(8423,1000),4:F(17621,2000),5:F(15167,1000),
+        6:F(62393,2000),7:F(10653,1000)
+    }, "Original exact rational source dyadic band digest changed"
+    assert stats[str(F(1,1000))]["first_bracket_localization"]==F(93183649,640000000)
+    assert stats[str(F(1,500))]["first_bracket_localization"]==F(185617651,960000000)
+    assert stats[str(F(1,1000))]["first_52_localization"]==F(3285711,2560000)
+    assert stats[str(F(1,500))]["first_52_localization"]==F(2181663,1280000)
     assert len(bin_sums(a))>1
     # Negative control: point-like synthetic precision greatly reduces its
     # first-row contribution. It is NOT a certified zero bracket!
