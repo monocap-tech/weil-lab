@@ -108,7 +108,18 @@ theorem neutralIV009OriginalPairTerm_summable
   have hsource := neutralActualZetaDivisor_rawTransform_summable_of_contDiff
     (neutralWindowCorrelation a (f.toLp 2 volume) (g.toLp 2 volume))
     hreg (neutralWindowCorrelation_hasCompactSupport a _ _)
-  change Summable (neutralIV009OriginalPairTerm a f g) at hsource
+  have hpairFunction :
+      (fun q : NeutralActualZetaDivisorCoordinate =>
+        neutralRawTransform
+          (neutralWindowCorrelation a
+            (f.toLp 2 volume) (g.toLp 2 volume))
+          (neutralActualZetaDivisorOrdinate q)) =
+        neutralIV009OriginalPairTerm a f g := by
+    funext q
+    exact neutralWindowCorrelation_rawTransform
+      a (f.toLp 2 volume) (g.toLp 2 volume)
+      (neutralActualZetaDivisorOrdinate q)
+  rw [hpairFunction] at hsource
   exact hsource
 
 /-- The ORIGINAL first-antilinear/second-linear Weil summand, multiplied
