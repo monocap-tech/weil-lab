@@ -1,0 +1,380 @@
+{
+  "schema_version": 1,
+  "authority": {
+    "objective": "Riemann hypothesis: open",
+    "control_plane": "UOI planning-only overlay; historical certificates and source SHA remain authoritative",
+    "operational_cursor": "UOI-INTAKE",
+    "historical_manifest": "research/obligations.json (active W-ODD-NEG remains unchanged)",
+    "execution_policy": "consolidation_hold",
+    "automatic_dispatch": false,
+    "automatic_mathematical_promotion": false,
+    "historical_source_preservation": true,
+    "maximum_concurrent_heavy_jobs": 1,
+    "canonical_issue": "https://github.com/monocap-tech/weil-lab/issues/861"
+  },
+  "tracks": [
+    "UOI",
+    "CI",
+    "NF",
+    "IV",
+    "CF",
+    "GA",
+    "CP",
+    "PI",
+    "RD"
+  ],
+  "terminal_routes": [
+    {
+      "name": "original-signed-Weil",
+      "all_of": [
+        "W-GLOBAL-FORM",
+        "W-RH-TRANSFER"
+      ],
+      "interpretation": "AND within the complete original signed Weil route; universal positivity, common domain, and terminal criterion must all be paid."
+    },
+    {
+      "name": "independent-arithmetic",
+      "all_of": [
+        "RD-ARITH-ESTIMATE",
+        "RD-TERMINAL-TRANSFER"
+      ],
+      "interpretation": "Independent arithmetic route, not automatically inherited from original Weil positivity; an implication alone never pays its premise."
+    }
+  ],
+  "obligations": [
+    {
+      "id": "UOI-INTAKE",
+      "lead": "UOI",
+      "contributors": [
+        "NF",
+        "IV",
+        "CF",
+        "GA",
+        "CP",
+        "PI",
+        "RD"
+      ],
+      "kind": "governance",
+      "standing": "open",
+      "depends_on": [],
+      "priority": 1,
+      "run_class": "read_only",
+      "statement": "Reconcile all active proof frontiers, exact original objects, domains, source SHAs, named Lean receipts, dependencies and inconsistencies without modifying historical evidence.",
+      "acceptance": "Each of the seven functions has a source-bound, scope-typed signed-off handoff; contradictory statuses are resolved in append-only records, and the dependency map is independently reviewed.",
+      "sources": [
+        "https://github.com/monocap-tech/weil-lab/issues/861",
+        "https://github.com/monocap-tech/weil-lab/issues/862",
+        "https://github.com/monocap-tech/weil-lab/issues/761",
+        "https://github.com/monocap-tech/weil-lab/issues/792",
+        "https://github.com/monocap-tech/weil-lab/issues/841",
+        "https://github.com/monocap-tech/weil-lab/issues/857"
+      ],
+      "evidence": [
+        {
+          "kind": "partial_source_audit",
+          "reference": "https://github.com/monocap-tech/weil-lab/issues/862",
+          "accepts_obligation": false
+        }
+      ],
+      "closure_receipt": null
+    },
+    {
+      "id": "CI-FANOUT",
+      "lead": "CI",
+      "contributors": [
+        "NF",
+        "IV",
+        "CP"
+      ],
+      "kind": "operations",
+      "standing": "open",
+      "depends_on": [],
+      "priority": 2,
+      "run_class": "read_only",
+      "statement": "Audit effective PR base/head lineage, PR workflow triggers, required-check satisfiability and generated Lake manifest ordering before permitting heavy work.",
+      "acceptance": "Actual source-scoped trigger audit for relevant stacked lineage, a tested bound on unrelated PR fan-out, satisfied required checks and safe preflight order are independently documented.",
+      "sources": [
+        "https://github.com/monocap-tech/weil-lab/issues/834",
+        "https://github.com/monocap-tech/weil-lab/issues/814",
+        "https://github.com/monocap-tech/weil-lab/issues/861"
+      ],
+      "evidence": [],
+      "closure_receipt": null
+    },
+    {
+      "id": "NF-FRONTIER",
+      "lead": "NF",
+      "contributors": [
+        "UOI"
+      ],
+      "kind": "verification",
+      "standing": "open",
+      "depends_on": [
+        "UOI-INTAKE",
+        "CI-FANOUT"
+      ],
+      "priority": 3,
+      "run_class": "heavy_manual",
+      "statement": "Complete original HD/A indexed-gate source-specific certification while retaining all provenance and strict Lean axiom audits.",
+      "acceptance": "968/968 source-specific original gate instances independently reconciled; no implicit inference to physical 242×242 full matrix or full signed Weil positivity.",
+      "sources": [
+        "https://github.com/monocap-tech/weil-lab/issues/761"
+      ],
+      "evidence": [
+        {
+          "kind": "accepted_subset",
+          "reference": "NF768 accepted 708/968 original HD/A gate instances in issue #761",
+          "accepts_obligation": false
+        }
+      ],
+      "closure_receipt": null
+    },
+    {
+      "id": "W-SOURCE-DOMAIN",
+      "lead": "IV",
+      "contributors": [
+        "GA",
+        "PI"
+      ],
+      "kind": "source_identity",
+      "standing": "open",
+      "depends_on": [
+        "UOI-INTAKE"
+      ],
+      "priority": 4,
+      "run_class": "local",
+      "statement": "Attach exact original signed Weil form to a common source/test/form domain including full Gamma, true signed von Mangoldt interactions, both poles and complex conjugation conventions.",
+      "acceptance": "Literal source-to-form and admissible-domain identity proved for exact original object, with phase, signs, all normalizations and admissibility independently verified.",
+      "sources": [
+        "https://github.com/monocap-tech/weil-lab/issues/826",
+        "https://github.com/monocap-tech/weil-lab/issues/814"
+      ],
+      "evidence": [],
+      "closure_receipt": null
+    },
+    {
+      "id": "CF-BOUNDARY",
+      "lead": "CF",
+      "contributors": [
+        "IV",
+        "GA"
+      ],
+      "kind": "mathematics",
+      "standing": "open",
+      "depends_on": [
+        "UOI-INTAKE"
+      ],
+      "priority": 5,
+      "run_class": "local",
+      "statement": "Specify and prove the support endpoint/neutral observability statement needed to extend fixed-support positivity, if this route uses it.",
+      "acceptance": "Original-source precise endpoint theorem established on correct form domain with universal quantifiers, including control of neutral/null or escaping modes; CF custody source SHA recovered.",
+      "sources": [
+        "https://github.com/monocap-tech/weil-lab/issues/193",
+        "https://github.com/monocap-tech/weil-lab/issues/861"
+      ],
+      "evidence": [],
+      "closure_receipt": null
+    },
+    {
+      "id": "GA-ASSEMBLY",
+      "lead": "GA",
+      "contributors": [
+        "IV",
+        "CF"
+      ],
+      "kind": "mathematics",
+      "standing": "open",
+      "depends_on": [
+        "W-SOURCE-DOMAIN"
+      ],
+      "priority": 6,
+      "run_class": "local",
+      "statement": "Prove source-faithful Gamma/prime/pole and finite/high-mode assembly including complete mixed and infinite interactions.",
+      "acceptance": "Original native signed form identity plus finite/high-mode Loewner or Schur estimates and all source/domain completion hypotheses independently proved and, where claimed, Lean accepted.",
+      "sources": [
+        "https://github.com/monocap-tech/weil-lab/issues/841"
+      ],
+      "evidence": [],
+      "closure_receipt": null
+    },
+    {
+      "id": "W-EXTENSION",
+      "lead": "IV",
+      "contributors": [
+        "CF",
+        "GA"
+      ],
+      "kind": "mathematics",
+      "standing": "open",
+      "depends_on": [
+        "W-SOURCE-DOMAIN",
+        "CF-BOUNDARY",
+        "GA-ASSEMBLY"
+      ],
+      "priority": 7,
+      "run_class": "local",
+      "statement": "Extend literal original signed form control beyond fixed supports to all admissible supports while retaining newly active prime interactions and cross terms.",
+      "acceptance": "Universal domain-preserving extension with all mixed couplings, full complement, prime activations and infinite tails controlled; not a fixed-window statement.",
+      "sources": [
+        "https://github.com/monocap-tech/weil-lab/issues/826",
+        "https://github.com/monocap-tech/weil-lab/issues/193"
+      ],
+      "evidence": [],
+      "closure_receipt": null
+    },
+    {
+      "id": "W-GLOBAL-FORM",
+      "lead": "IV",
+      "contributors": [
+        "GA",
+        "CF",
+        "NF"
+      ],
+      "kind": "terminal_mathematics",
+      "standing": "open",
+      "depends_on": [
+        "W-EXTENSION"
+      ],
+      "priority": 8,
+      "run_class": "heavy_manual",
+      "statement": "Prove positivity of literal original signed Weil quadratic form on every admissible Schwartz test, not only a selected Gram or fixed support.",
+      "acceptance": "Full universal source/domain correct positivity including Gamma, primes, both poles, cross-interactions and full infinite remainder.",
+      "sources": [
+        "https://github.com/monocap-tech/weil-lab/issues/193"
+      ],
+      "evidence": [],
+      "closure_receipt": null
+    },
+    {
+      "id": "W-RH-TRANSFER",
+      "lead": "PI",
+      "contributors": [
+        "IV",
+        "UOI"
+      ],
+      "kind": "terminal_implication",
+      "standing": "open",
+      "depends_on": [
+        "W-SOURCE-DOMAIN"
+      ],
+      "priority": 9,
+      "run_class": "local",
+      "statement": "Prove an exact application of the canonical Weil criterion to the original source and test domain.",
+      "acceptance": "Standalone noncircular source-normalized positivity-implies-RH theorem with complete test/domain/approximation premises paid.",
+      "sources": [
+        "https://github.com/monocap-tech/weil-lab/issues/826",
+        "https://github.com/monocap-tech/weil-lab/issues/193"
+      ],
+      "evidence": [],
+      "closure_receipt": null
+    },
+    {
+      "id": "RD-TERMINAL-TRANSFER",
+      "lead": "RD",
+      "contributors": [
+        "PI"
+      ],
+      "kind": "terminal_implication",
+      "standing": "open",
+      "depends_on": [
+        "UOI-INTAKE"
+      ],
+      "priority": 10,
+      "run_class": "local",
+      "statement": "Source-pin and independently prove exact terminal implication from candidate one-sided window or weighted-energy property to classical RH.",
+      "acceptance": "Full exact exponents and quantifiers preserved, independent Lean compiler and named standard axiom logs with no assumed arithmetic premise silently accepted.",
+      "sources": [
+        "https://github.com/monocap-tech/weil-lab/issues/858",
+        "https://github.com/monocap-tech/weil-lab/issues/859"
+      ],
+      "evidence": [
+        {
+          "kind": "conditional_analytic_reduction",
+          "reference": "https://github.com/monocap-tech/weil-lab/issues/859",
+          "accepts_obligation": false
+        }
+      ],
+      "closure_receipt": null
+    },
+    {
+      "id": "RD-ARITH-ESTIMATE",
+      "lead": "RD",
+      "contributors": [
+        "CP",
+        "PI"
+      ],
+      "kind": "mathematics",
+      "standing": "open",
+      "depends_on": [
+        "UOI-INTAKE"
+      ],
+      "priority": 11,
+      "run_class": "local",
+      "statement": "Prove a noncircular RH-strength arithmetic estimate for literal centered von Mangoldt sum on arbitrarily late windows.",
+      "acceptance": "Precise all-k/all-eta/unbounded-window arithmetic estimate proved for genuine original G independently of RH, a zero-free equivalent or a PNT-only envelope.",
+      "sources": [
+        "https://github.com/monocap-tech/weil-lab/issues/860"
+      ],
+      "evidence": [
+        {
+          "kind": "negative_control",
+          "reference": "https://github.com/monocap-tech/weil-lab/issues/860",
+          "accepts_obligation": false
+        }
+      ],
+      "closure_receipt": null
+    },
+    {
+      "id": "PI-DICTIONARY",
+      "lead": "PI",
+      "contributors": [
+        "CP",
+        "IV",
+        "RD"
+      ],
+      "kind": "interface",
+      "standing": "open",
+      "depends_on": [
+        "W-SOURCE-DOMAIN"
+      ],
+      "priority": 12,
+      "run_class": "local",
+      "statement": "Investigate exact source-faithful dictionaries between original signed Weil form and independent arithmetic/spectral objects.",
+      "acceptance": "Clearly defined independent target and full sesquilinear domain-aware map proved, or a precise falsifier; preserves phase, both poles, Gamma, signed shifts, and normalization.",
+      "sources": [
+        "https://github.com/monocap-tech/weil-lab/issues/792",
+        "https://github.com/monocap-tech/weil-lab/issues/826"
+      ],
+      "evidence": [],
+      "closure_receipt": null
+    },
+    {
+      "id": "CP-STRUCTURAL",
+      "lead": "CP",
+      "contributors": [
+        "PI",
+        "RD"
+      ],
+      "kind": "interface",
+      "standing": "open",
+      "depends_on": [
+        "UOI-INTAKE"
+      ],
+      "priority": 13,
+      "run_class": "local",
+      "statement": "Compare independently defined arithmetic/spectral invariants with exact source normalization and tested preservation laws.",
+      "acceptance": "Either precise independently verified common invariant and dictionary or source-specific falsifying counterexample; numerical finite cells alone do not imply equivalence.",
+      "sources": [
+        "https://github.com/monocap-tech/weil-lab/issues/826"
+      ],
+      "evidence": [
+        {
+          "kind": "narrow_compiler_receipt",
+          "reference": "https://github.com/monocap-tech/weil-lab/pull/856 (CP034 four source-split declarations only)",
+          "accepts_obligation": false
+        }
+      ],
+      "closure_receipt": null
+    }
+  ]
+}
