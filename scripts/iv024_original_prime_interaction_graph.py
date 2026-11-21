@@ -31,6 +31,7 @@ import hashlib
 import json
 from dataclasses import dataclass
 from fractions import Fraction as Q
+from functools import lru_cache
 from pathlib import Path
 
 from iv015_frozen_collar_exact_log_gap import log_bracket, abs_lower
@@ -68,6 +69,10 @@ CELLS=(
     Cell("new_plus",Q(1,5),Q(1,500)),
     Cell("new_minus",-Q(1,5),Q(1,4000)),
 )
+
+@lru_cache(maxsize=None)
+def rigorous_log(n):
+    return log_bracket(n,SERIES)
 
 def frac(x):
     return f"{x.numerator}/{x.denominator}"
@@ -109,7 +114,7 @@ def classify(c1,c2,n,sign):
     physical overlap range. If unresolved, output UNKNOWN."""
     assert sign in (-1,1)
     assert n>=2 and is_prime_power(n)
-    lo,hi=log_bracket(n,SERIES)
+    lo,hi=rigorous_log(n)
     d=c1.center-c2.center
     if sign==1:
         low,high=d+lo,d+hi
@@ -167,7 +172,7 @@ def source_signed_margin(cells):
 def preflight():
     assert active()==(2,3,4,5,7,8,9)
     assert not is_prime_power(6)
-    lo10,hi10=log_bracket(10,SERIES)
+    lo10,hi10=rigorous_log(10)
     assert lo10>2*B, "Actual original n>=10 source cutoff unverified"
 
     edges,min_clear,digest=build_graph(CELLS)
