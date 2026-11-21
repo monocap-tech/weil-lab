@@ -113,6 +113,7 @@ def genuine_source_pin(zeta,mathlib,receipt):
         "theorem derivative_variation_of_curvature_bound",
         "theorem strictMonoOn_original_hardyZ_of_curvature_bound",
         "theorem refined_narrow_root_is_source_53rd_of_rational_budget",
+        "theorem narrowRightLtOriginalGram",
         "∀ t ∈ Ico a b",
         "(hanchor : (12 : ℝ) / 5 ≤ deriv Zeta.hardyZ a)",
         "(hvariation :",
