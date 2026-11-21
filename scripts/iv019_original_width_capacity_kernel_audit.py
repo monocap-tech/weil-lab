@@ -69,6 +69,9 @@ NEW_B=[
     "neutralIV019ExistsWiderOriginalMixedAndSelfPrimeFree",
 ]
 
+# Lake generates this lockfile after the source-only preflight (via `lake update`).
+# The real kernel verifier still requires and SHA256-binds the generated file.
+MANIFEST = Path("lake-manifest.json")
 DEPS=[
     ROOT/"ActualZetaPhaseIVOriginalThreeCellSignedEnvelope.lean",
     ROOT/"ActualZetaPhaseIVOriginalThreeCellPrime9Transfer.lean",
@@ -95,7 +98,6 @@ DEPS=[
     Path("scripts/iv015_frozen_collar_exact_log_gap.py"),
     Path("scripts/iv018_original_three_cell_coercivity_audit.py"),
     Path("lean-toolchain"),
-    Path("lake-manifest.json"),
 ]
 
 def hashbytes(p):
@@ -238,6 +240,7 @@ def check_log(path,names):
 
 def verify():
     source_preflight()
+    assert MANIFEST.is_file(), ("Missing generated Lake manifest after update", str(MANIFEST))
     objects=[OLEAN_ROOT/(p.stem+".olean") for p in (MOD_A,MOD_B)]
     for p in objects:
         assert p.is_file() and p.stat().st_size>0,("actual compiled Lean object missing",p)
@@ -245,7 +248,7 @@ def verify():
     b=check_log(LOG_B,UP_B+NEW_B)
     data={
       "schema":SCHEMA,
-      "true_original_source_and_toolchain_sha256":{str(p):hashbytes(p) for p in [MOD_A,MOD_B]+DEPS},
+      "true_original_source_and_toolchain_sha256":{str(p):hashbytes(p) for p in [MOD_A,MOD_B]+DEPS+[MANIFEST]},
       "compiled_Lean_source_objects_sha256":{str(p):hashbytes(p) for p in objects},
       "independent_exact_rational_capacity_sha256":hashbytes(RATIONAL),
       "new_IV019_proved_Lean_declarations":NEW_A+NEW_B,
