@@ -100,6 +100,7 @@ DEPS=[
  Path("WeilDefect/External/Zeta23/Definitions/Def_Zeta23_ExplicitFormula.lean"),
  Path("scripts/iv015_frozen_collar_exact_log_gap.py"),
  Path("scripts/iv022_original_four_cell_prime_capacity_audit.py"),
+ Path("lakefile.toml"),
  Path("lean-toolchain"),
  Path("lake-manifest.json"),
 ]
@@ -227,7 +228,10 @@ def source_preflight():
       "neutralIV023WholeFourCellOriginalWeil_oneSixteenth",
     ):
         assert marker in b,("missing real source prime/coercivity",marker)
-    for p in DEPS:assert p.is_file(),("real original upstream source absent",str(p))
+    for p in DEPS:
+        if p.name == "lake-manifest.json":
+            continue  # Lake generates this AFTER source preflight.
+        assert p.is_file(),("real original upstream source absent",str(p))
     exact_source_receipt()
     print("IV023 ORIGINAL source preflight: 18 new original Schwartz/primes/coercivity Lean theorem CANDIDATES +8 upstream strict axiom anchors, no kernel receipt yet.")
 
@@ -247,6 +251,7 @@ def parse_log(path,names):
 
 def verify():
     source_preflight()
+    assert Path("lake-manifest.json").is_file(), "Missing Lake-generated manifest: lake update must run before KERNEL verification"
     objs=[OLEANS/(p.stem+".olean") for p in (M1,M2)]
     for p in objs:
         assert p.is_file() and p.stat().st_size>0,("real compiled .olean REQUIRED",str(p))
