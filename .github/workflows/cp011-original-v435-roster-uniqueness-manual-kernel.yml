@@ -1,0 +1,59 @@
+name: CP011 MANUAL original Zeta v4.35 canonical zero-roster uniqueness Lean kernel
+# Manual-only; do not compete automatically with Weil-Lab Phase IV / NF compiler.
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cp011-unique-source-roster-v435-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-verified-count-uniqueness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Lean 4.35 from pinned upstream toolchain
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Require exact original Zeta source release 1e6 commit and correct toolchain
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 70
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          test "$(git -C .lake/packages/Zeta rev-parse HEAD)" = c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.35.0
+      - name: Actual Lean kernel build of original source count-exhaustive slot theorem candidates
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 150
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get
+          lake build CP011CanonicalRoster 2>&1 | tee cp011-canonical-roster-build.log
+      - name: Actual no-sorry standard-axioms and compiled .olean SHA custody
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          (cd cp011_zeta_v435 && lake env lean CP011CanonicalRoster.lean 2>&1 | tee cp011-actual-axioms.log)
+          python scripts/cp011_original_roster_lean_axiom_audit.py
+          test -s cp011_zeta_v435/cp011-canonical-source-roster-kernel.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp011-original-Zeta-lean4.35-canonical-zero-slot-uniqueness-kernel
+          path: |
+            cp011_zeta_v435/cp011-canonical-roster-build.log
+            cp011_zeta_v435/cp011-actual-axioms.log
+            cp011_zeta_v435/cp011-canonical-source-roster-kernel.json
+            cp011_zeta_v435/.lake/build/lib/lean/CP011CanonicalRoster.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
