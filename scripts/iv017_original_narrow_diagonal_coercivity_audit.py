@@ -47,6 +47,7 @@ SOURCE_DEPS=[
     Path("WeilDefect/Arithmetic/ActualZetaCorrelationPoles.lean"),
     Path("WeilDefect/Arithmetic/ActualZetaOriginalCollar242Correction.lean"),
     Path("WeilDefect/External/Zeta23/Definitions/Def_Zeta23_ExplicitFormula.lean"),
+    Path("lakefile.toml"),
     Path("lean-toolchain"),
     Path("lake-manifest.json"),
 ]
@@ -165,6 +166,8 @@ def source_preflight():
     ):
         assert marker in raw_b,("missing real original pole/Gamma/Schur source",marker)
     for p in SOURCE_DEPS:
+        if p.name == "lake-manifest.json":
+            continue  # Lake generates this AFTER source preflight.
         assert p.is_file(),("missing original dependency",p)
     exact_rational_preflight()
     print("IV017 original source preflight PASS: 17 new original pole/Gamma signed physical source candidates and 8 upstream axioms, NOT kernel certification")
@@ -189,6 +192,7 @@ def verify_log(p:Path, names):
 
 def kernel_verify():
     source_preflight()
+    assert Path("lake-manifest.json").is_file(), "Missing Lake-generated manifest: lake update must run before KERNEL verification"
     oleans=[OLEAN_ROOT/(p.stem+".olean") for p in (MODULE_A,MODULE_B)]
     for o in oleans:
         assert o.is_file() and o.stat().st_size>0,("real Lean compiled object absent",o)
