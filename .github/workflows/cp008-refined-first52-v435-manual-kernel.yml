@@ -1,0 +1,60 @@
+name: CP008 MANUAL original Zeta v4.35 Euler first52 narrow Lean batch kernel
+# Manual-only, to avoid overloading IV###/NF### queued CI.
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cp008-real-first52-v435-lean-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  refined-euler-batch-original-kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 220
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned original upstream Lean 4.35
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Freeze true upstream source identity and preflight exact candidate nesting
+        working-directory: cp008_zeta_v435
+        timeout-minutes: 60
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          test "$(git -C .lake/packages/Zeta rev-parse HEAD)" = c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.35.0
+          python ../scripts/cp008_real_first52_refinement_preflight.py --arithmetic
+      - name: Actually Lean kernel build 52 proposed narrow ORIGINAL Euler sign-change brackets
+        working-directory: cp008_zeta_v435
+        timeout-minutes: 140
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get
+          lake build CP008First52 2>&1 | tee cp008-refined-first52-build.log
+      - name: Require strict standard-only actual Lean axiom receipt for refined 52 batch
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          (cd cp008_zeta_v435 && lake env lean CP008First52.lean 2>&1 | tee cp008-direct-lean-axioms.log)
+          python scripts/cp008_refined_first52_lean_audit.py
+          test -s cp008_zeta_v435/cp008-refined-first52-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp008-real-refined-52-batch-lean-build-source-olean-audit
+          path: |
+            cp008_zeta_v435/cp008-refined-first52-build.log
+            cp008_zeta_v435/cp008-direct-lean-axioms.log
+            cp008_zeta_v435/cp008-refined-first52-kernel-audit.json
+            cp008_zeta_v435/.lake/build/lib/lean/CP008First52.olean
+          if-no-files-found: ignore
+          include-hidden-files: true

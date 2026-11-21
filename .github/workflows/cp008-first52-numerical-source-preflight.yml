@@ -1,0 +1,42 @@
+name: CP008 original source-linked first52 narrow bracket exact-rational and numerical preflight
+on:
+  pull_request:
+    paths:
+      - "scripts/cp008_real_first52_refinement_preflight.py"
+      - "scripts/cp008_refined_first52_lean_audit.py"
+      - "cp008_zeta_v435/**"
+      - "data/cp007_original_euler_maclaurin_first52.txt"
+      - ".github/workflows/cp008-first52-numerical-source-preflight.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cp008-preflight-NOT-kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install mpmath ONLY for optional nonrigorous Hardy Z sign screen
+        run: python -m pip install "mpmath==1.3.0"
+      - name: Exact Fraction source nesting and improved localization bound — NOT a Lean theorem
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp008_real_first52_refinement_preflight.py scripts/cp008_refined_first52_lean_audit.py
+          python scripts/cp008_real_first52_refinement_preflight.py --arithmetic | tee cp008-first52-rational.log
+          grep -F 'CP008 SOURCE-SUBSET/EXACT-FRACTION ERROR PREFLIGHT PASS' cp008-first52-rational.log
+      - name: Independently screen actual candidate Hardy Z endpoint signs using mpmath — NOT rigorous
+        run: |
+          set -euo pipefail
+          python scripts/cp008_real_first52_refinement_preflight.py --numeric-screen | tee cp008-first52-numerical.log
+          grep -F 'NOT RIGOROUS' cp008-first52-numerical.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp008-source-subset-and-numerical-sign-screen-not-kernel
+          path: |
+            cp008-first52-rational.log
+            cp008-first52-numerical.log
+          if-no-files-found: ignore

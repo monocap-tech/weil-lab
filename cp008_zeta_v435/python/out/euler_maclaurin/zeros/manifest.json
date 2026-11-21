@@ -1,0 +1,35 @@
+{
+  "rows": 52,
+  "rows_per_file": 52,
+  "height": "147.42277",
+  "end": 149.5,
+  "cols": [
+    "idx",
+    "left",
+    "right",
+    "left_cutoff",
+    "right_cutoff",
+    "left_bernoulli",
+    "right_bernoulli"
+  ],
+  "params": {
+    "method": "euler_maclaurin",
+    "prec": 1000,
+    "M": 20,
+    "N": null,
+    "b": 1.25,
+    "bisection_depth": 0,
+    "epsilon": 0.125,
+    "widen": false,
+    "window_retries": 100,
+    "halving_depth": 10,
+    "candidate_origin": "CP008 independent mpmath 75-dps numerical Hardy-Z sign screen, NOT certified; original four cutoff/Bernoulli columns preserved"
+  },
+  "files": [
+    {
+      "file": "zeros_00001.txt",
+      "rows": 52,
+      "height": "147.42277"
+    }
+  ]
+}
