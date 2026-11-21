@@ -1,0 +1,101 @@
+name: PI014 local finite-kernel Fourier source gate
+
+# Deliberately manual-only: previous PI009–PI013 Lean CI jobs were queued.
+# This workflow must not consume extra PR runners until manually selected.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  local-kernel-character-lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Exact independent arithmetic, source identity and Python syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p pi014-audit
+          python3 -m py_compile scripts/pi014_exact_preflight.py \
+            scripts/pi014_zeta23_source_gate.py \
+            scripts/pi014_strict_local_kernel_audit.py
+          python3 scripts/pi014_exact_preflight.py \
+            2>&1 | tee pi014-audit/exact-fraction-preflight.log
+          git rev-parse HEAD | tee pi014-audit/checked-out-commit.txt
+          git hash-object WeilDefect/Arithmetic/PI014KernelCharacterBridge.lean \
+            WeilDefect/Arithmetic/PI007FiniteGammaKernel.lean \
+            WeilDefect/Arithmetic/PI013FiniteFourierSum.lean \
+            | tee pi014-audit/source-blobs.txt
+
+      - name: Source-byte-check ACTUAL upstream Zeta23 (NOT a Lean import)
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL \
+            https://raw.githubusercontent.com/anthropics/formal-math/main/zeta23/Zeta23/Defs.lean \
+            -o pi014-audit/Zeta23-Defs.lean
+          curl -fsSL \
+            https://raw.githubusercontent.com/anthropics/formal-math/main/zeta23/lakefile.toml \
+            -o pi014-audit/Zeta23-lakefile.toml
+          python3 scripts/pi014_zeta23_source_gate.py \
+            --defs pi014-audit/Zeta23-Defs.lean \
+            --upstream-lake pi014-audit/Zeta23-lakefile.toml \
+            2>&1 | tee pi014-audit/external-source-gate.log
+          # Source comparison is PASS only for exact hashes and syntax.
+          # The different Mathlib revision remains explicitly OPEN.
+
+      - name: Install pinned local Lean and Mathlib
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+
+      - name: Compile ACTUAL local PI014 theorem target and imports
+        shell: bash
+        timeout-minutes: 95
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.PI014KernelCharacterBridge \
+            2>&1 | tee pi014-audit/direct-build.log
+          for mod in PI007FiniteGammaKernel PI008FiniteDigammaSymbol \
+              PI010FourierHalflineAtom PI011WholeLineFourierAtom \
+              PI012ComplexRationalIdentity PI012SourceFourierAtom \
+              PI013GammaAtomCast PI013FiniteFourierSum \
+              PI014KernelCharacterBridge; do
+            test -s ".lake/build/lib/lean/WeilDefect/Arithmetic/$mod.olean"
+          done
+
+      - name: Direct source compilation and #print axioms for local theorem
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/PI014KernelCharacterBridge.lean \
+            2>&1 | tee pi014-audit/PI014KernelCharacterBridge-axioms.log
+
+      - name: Fail-closed local source, imported object, axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/pi014_strict_local_kernel_audit.py \
+            --logs pi014-audit/PI014KernelCharacterBridge-axioms.log \
+            --out pi014-audit/local-receipt.json
+          test -s pi014-audit/local-receipt.json
+
+      - name: Preserve true evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pi014-local-kernel-source-and-lean-audit
+          path: |
+            pi014-audit/
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI014KernelCharacterBridge.olean
+          if-no-files-found: ignore
