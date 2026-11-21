@@ -25,7 +25,7 @@ jobs:
         run: |
           set -euo pipefail
           python -m py_compile scripts/cp033_original_source_split_first_cell_kernel_gate.py
-          python scripts/cp033_original_source_split_first_cell_kernel_gate.py --source-check \
+          python scripts/cp033_original_source_split_first_cell_kernel_gate.py --source-check --parser-self-test \
             2>&1 | tee cp033-frozen-source-NOT-LEAN.log
       - name: Install original pinned Lean v4.35
         run: |
