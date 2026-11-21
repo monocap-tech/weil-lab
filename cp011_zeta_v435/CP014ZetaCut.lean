@@ -45,7 +45,7 @@ theorem N_eq_card_below_original_gram (Z : CertifiedZeroCount) (T : ℝ)
   let S : Finset ℂ := zerosUnder T
   have horder : ∀ z ∈ S, riemannZeta.order z = 1 := by
     intro z hz
-    obtain ⟨hzim, hz⟩ := mem_zerosUnder_iff T z |>.mp hz
+    obtain ⟨hzim, hz⟩ := (mem_zerosUnder_iff T z).mp hz
     exact riemannZeta.order_eq_one_upto Z
       ⟨hzim.1, hzim.2.trans_le hT⟩ hz
   calc
