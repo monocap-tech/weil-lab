@@ -68,14 +68,14 @@ def parse_original_axioms(ax: str) -> dict[str,list[str]]:
     # Require exactly the expected theorem labels, uniquely; tolerate
     # prefix/line wrapping but never an extra declaration or axiom.
     observed=re.findall(
-        r"'CP032OriginalTermSplit\\.([A-Za-z0-9_']+)'\\s+"
+        r"'CP032OriginalTermSplit\.([A-Za-z0-9_']+)'\s+"
         r"(?:depends on axioms:|does not depend on any axioms)", ax)
     if sorted(observed)!=sorted(TARGETS):
         raise ValueError("not exactly four genuine source-axiom declarations: "+repr(observed))
     result={}
     for theorem in TARGETS:
         tag=re.escape("'CP032OriginalTermSplit."+theorem+"'")
-        regexp=rf"{tag}\\s+(?:depends on axioms:\\s*\\[([^\\]]*)\\]|does not depend on any axioms)"
+        regexp=rf"{tag}\s+(?:depends on axioms:\s*\[([^\]]*)\]|does not depend on any axioms)"
         hits=re.findall(regexp,ax)
         if len(hits)!=1:
             raise ValueError("missing or duplicate original v4.35 #print axioms: "+theorem)
@@ -91,8 +91,8 @@ def parser_self_test():
         lines.append(
             f"info: CP032OriginalTermSplit.lean:{83+i}:0: "
             f"'CP032OriginalTermSplit.{name}' depends on axioms: "
-            "[propext,\\n Classical.choice,\\n Quot.sound]")
-    good="\\n".join(lines)
+            "[propext,\n Classical.choice,\n Quot.sound]")
+    good="\n".join(lines)
     got=parse_original_axioms(good)
     if set(got)!=set(TARGETS):
         raise ValueError("self-test dropped a genuine four-axiom item")
@@ -100,7 +100,7 @@ def parser_self_test():
         good.replace("propext,", "sorryAx,", 1),
         good.replace("Quot.sound]", "Invented.axiom]", 1),
         good.replace(lines[-1], "", 1),
-        good+"\\n"+lines[-1]
+        good+"\n"+lines[-1]
     ):
         try: parse_original_axioms(bad)
         except ValueError: continue
