@@ -43,7 +43,7 @@ jobs:
           set -euo pipefail
           export PATH="$HOME/.elan/bin:$PATH"
           lake exe cache get
-          lake build CP013RSOnly CP013Seam CP014EulerCutLower CP014FiniteCut CP014ZetaCut 2>&1 \
+          lake build CP013RSOnly CP013Seam CP014EulerCutLower CP014FiniteCut CP014ZetaCut CP014HardyRank 2>&1 \
             | tee cp014-original-source-Lean-build.log
       - name: Require genuine original CP013 source split axiom audit
         timeout-minutes: 20
@@ -66,6 +66,7 @@ jobs:
             lake env lean CP014EulerCutLower.lean
             lake env lean CP014FiniteCut.lean
             lake env lean CP014ZetaCut.lean
+            lake env lean CP014HardyRank.lean
           ) 2>&1 | tee cp011_zeta_v435/cp014-original-seam-actual-axioms.log
           python scripts/cp014_exact_seam_lean_axiom_audit.py
           test -s cp011_zeta_v435/cp014-cut-count-conditional-kernel-receipt.json
@@ -83,5 +84,6 @@ jobs:
             cp011_zeta_v435/.lake/build/lib/lean/CP014EulerCutLower.olean
             cp011_zeta_v435/.lake/build/lib/lean/CP014FiniteCut.olean
             cp011_zeta_v435/.lake/build/lib/lean/CP014ZetaCut.olean
+            cp011_zeta_v435/.lake/build/lib/lean/CP014HardyRank.olean
           if-no-files-found: ignore
           include-hidden-files: true
