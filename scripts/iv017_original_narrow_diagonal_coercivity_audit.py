@@ -28,6 +28,8 @@ LOG_B=Path("iv017-original-narrow-diagonal-coercivity-axioms.log")
 PILOT=Path("iv017-original-narrow-coercivity-exact-rational-preflight.json")
 RESULT=Path("iv017-original-narrow-coercivity-kernel-audit.json")
 
+# Only `lake update` generates this dependency lock; bind it after setup.
+MANIFEST=Path("lake-manifest.json")
 SOURCE_DEPS=[
     Path("WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalConcreteGapPrimeFreeDiagonal.lean"),
     Path("WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalNonzeroPrimeFreeSchwartzBump.lean"),
@@ -48,7 +50,6 @@ SOURCE_DEPS=[
     Path("WeilDefect/Arithmetic/ActualZetaOriginalCollar242Correction.lean"),
     Path("WeilDefect/External/Zeta23/Definitions/Def_Zeta23_ExplicitFormula.lean"),
     Path("lean-toolchain"),
-    Path("lake-manifest.json"),
 ]
 UPSTREAM_A=[
     "neutralNF599GammaLower",
@@ -189,6 +190,7 @@ def verify_log(p:Path, names):
 
 def kernel_verify():
     source_preflight()
+    assert MANIFEST.is_file(), ("Missing generated Lake manifest after update", str(MANIFEST))
     oleans=[OLEAN_ROOT/(p.stem+".olean") for p in (MODULE_A,MODULE_B)]
     for o in oleans:
         assert o.is_file() and o.stat().st_size>0,("real Lean compiled object absent",o)
@@ -197,7 +199,7 @@ def kernel_verify():
     out={
         "schema":SCHEMA,
         "scope":"Genuine narrow complex Schwartz original source L1/Plancherel, signed gamma lower and true two-pole coercivity; original vonMangoldt self-prime 0 via IV016.",
-        "source_sha256":{str(p):sha(p) for p in [MODULE_A,MODULE_B]+SOURCE_DEPS},
+        "source_sha256":{str(p):sha(p) for p in [MODULE_A,MODULE_B]+SOURCE_DEPS+[MANIFEST]},
         "source_exact_Fraction_preflight_sha256":sha(PILOT),
         "real_compiled_original_Lean_object_sha256":{str(p):sha(p) for p in oleans},
         "new_IV017_Lean_theorems":ALL_NEW,
