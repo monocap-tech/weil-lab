@@ -1,6 +1,5 @@
 name: NF497 original 4096-bit dyadic source-box response stability and projector capture necessary gate
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

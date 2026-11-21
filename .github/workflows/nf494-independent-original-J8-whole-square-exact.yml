@@ -1,6 +1,5 @@
 name: NF494 independent full ORIGINAL J8 physical square from ACCEPTED 4096bit H400 source
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

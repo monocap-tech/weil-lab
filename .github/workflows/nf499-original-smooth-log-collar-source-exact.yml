@@ -1,6 +1,5 @@
 name: NF499 actual original smooth Cc-infinity log-collar trial physical source L2 rank-one gate
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

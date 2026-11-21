@@ -1,6 +1,5 @@
 name: NF498 original actual J8 endpoint log-carrier rank-one Schur trial and source-domain gate
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

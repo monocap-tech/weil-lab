@@ -1,6 +1,5 @@
 name: NF494 original J8 whole analytic H400 fixed-window source exact method preflight
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

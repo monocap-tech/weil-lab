@@ -1,6 +1,5 @@
 name: NF494 original full J8 joint-compact analytic H400 source native
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

@@ -1,6 +1,5 @@
 name: NF496 original J242 center-invariant complement quantitative no-go source exact
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read
