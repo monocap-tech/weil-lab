@@ -26,6 +26,8 @@ OUT_DEFAULT=Path("cp011-root53-source-identity-receipt.json")
 GLOBAL_ZERO_INDEX=53
 EULER_COUNT=52
 RS_LOCAL_INDEX=1
+SOURCE_RS_BATCH_SHA="12848f56d0b62df858dcb89b708a858f4f7b28fb"
+SOURCE_RS_BATCH_DECLARATION="theorem batch : BatchSpec 200 149500 1000 474603 1000 := by build_batch_rs 0 200"
 
 
 def gitblob_sha(path):
@@ -74,7 +76,11 @@ def read_original_rs_first(original_shard):
     return a,b
 
 
-def real_slot_source_custody(original_shard,report):
+def real_slot_source_custody(original_shard,original_batch,report):
+    if gitblob_sha(original_batch)!=SOURCE_RS_BATCH_SHA:
+        raise ValueError("Original RS first 200-root kernel batch source Git SHA mismatch")
+    if SOURCE_RS_BATCH_DECLARATION not in original_batch.read_text("utf-8"):
+        raise ValueError("Actual first RS batch Lean source theorem not found")
     assert strict_candidates(), "CP010 genuine candidate stores do not match"
     pin=json.loads(PIN.read_text(encoding="utf-8"))
     assert pin["pinned_commit"]==SOURCE_TAG
@@ -91,6 +97,7 @@ def real_slot_source_custody(original_shard,report):
         "status":"EXACT_SOURCE_SLOT_CONTAINMENT_ONLY_NOT_LEAN",
         "original_upstream":SOURCE_TAG,
         "original_first_rs_shard_git_blob":SOURCE_RS_SHA,
+        "original_original_first200_RS_lean_git_blob":SOURCE_RS_BATCH_SHA,
         "global_positive_zero_index":GLOBAL_ZERO_INDEX,
         "rs_local_row_index":RS_LOCAL_INDEX,
         "euler_preceding_rows":EULER_COUNT,
@@ -109,13 +116,16 @@ def main():
     p=argparse.ArgumentParser()
     p.add_argument("--self-test",action="store_true")
     p.add_argument("--original-rs-shard",type=Path)
+    p.add_argument("--original-rs-batch",type=Path)
     p.add_argument("--receipt",type=Path,default=OUT_DEFAULT)
     args=p.parse_args()
     if args.self_test:
         finite_count_abstract_model()
+    if bool(args.original_rs_shard)!=bool(args.original_rs_batch):
+        raise SystemExit("NOT_READY: original first RS SHA-verified source shard AND compiled-source batch required together")
     if args.original_rs_shard:
         try:
-            real_slot_source_custody(args.original_rs_shard,args.receipt)
+            real_slot_source_custody(args.original_rs_shard,args.original_rs_batch,args.receipt)
         except (OSError,ValueError,AssertionError,IndexError,KeyError) as e:
             raise SystemExit("NOT_READY: "+str(e))
     if not args.self_test and args.original_rs_shard is None:
