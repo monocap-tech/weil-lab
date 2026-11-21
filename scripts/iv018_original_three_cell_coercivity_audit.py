@@ -88,6 +88,7 @@ DEPS=[
     ROOT/"ActualZetaOriginalCollar242Correction.lean",
     Path("WeilDefect/External/Zeta23/Definitions/Def_Zeta23_ExplicitFormula.lean"),
     Path("lean-toolchain"),
+    Path("lakefile.toml"),
     Path("lake-manifest.json"),
 ]
 
