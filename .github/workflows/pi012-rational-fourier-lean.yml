@@ -1,0 +1,96 @@
+name: PI012 exact rational Fourier Lean source audit
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/PI012ComplexRationalIdentity.lean"
+      - "WeilDefect/Arithmetic/PI012SourceFourierAtom.lean"
+      - "scripts/pi012_complex_fourier_atom_preflight.py"
+      - "scripts/pi012_strict_rational_fourier_audit.py"
+      - ".github/workflows/pi012-rational-fourier-lean.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pi012-core-and-source-rational-fourier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 115
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Audit source identities and exact independent arithmetic
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p pi012-audit
+          python3 -m py_compile scripts/pi012_complex_fourier_atom_preflight.py \
+            scripts/pi012_strict_rational_fourier_audit.py
+          python3 scripts/pi012_complex_fourier_atom_preflight.py \
+            2>&1 | tee pi012-audit/exact-fraction-preflight.log
+          git rev-parse HEAD | tee pi012-audit/checked-out-commit.txt
+          git hash-object \
+            WeilDefect/Arithmetic/PI010FourierHalflineAtom.lean \
+            WeilDefect/Arithmetic/PI011WholeLineFourierAtom.lean \
+            WeilDefect/Arithmetic/PI012ComplexRationalIdentity.lean \
+            WeilDefect/Arithmetic/PI012SourceFourierAtom.lean \
+            | tee pi012-audit/source-blobs.txt
+
+      - name: Install pinned Lean and Mathlib v4.34.0
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+
+      - name: Build all four true source and dependency modules
+        shell: bash
+        timeout-minutes: 90
+        run: |
+          set -euo pipefail
+          lake build \
+            WeilDefect.Arithmetic.PI010FourierHalflineAtom \
+            WeilDefect.Arithmetic.PI011WholeLineFourierAtom \
+            WeilDefect.Arithmetic.PI012ComplexRationalIdentity \
+            WeilDefect.Arithmetic.PI012SourceFourierAtom \
+            2>&1 | tee pi012-audit/direct-build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/PI010FourierHalflineAtom.olean
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/PI011WholeLineFourierAtom.olean
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/PI012ComplexRationalIdentity.olean
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/PI012SourceFourierAtom.olean
+
+      - name: Direct kernel elaboration and print axioms for exact new theorem files
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/PI012ComplexRationalIdentity.lean \
+            2>&1 | tee pi012-audit/PI012ComplexRationalIdentity-axioms.log
+          lake env lean WeilDefect/Arithmetic/PI012SourceFourierAtom.lean \
+            2>&1 | tee pi012-audit/PI012SourceFourierAtom-axioms.log
+
+      - name: Fail-closed source/olean/eight-declaration standard axiom receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/pi012_strict_rational_fourier_audit.py \
+            --audit-dir pi012-audit \
+            --receipt pi012-audit/receipt.json
+          test -s pi012-audit/receipt.json
+
+      - name: Preserve exact receipts and failures
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pi012-complex-fourier-olean-and-axiom-receipts
+          path: |
+            pi012-audit/
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI010FourierHalflineAtom.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI011WholeLineFourierAtom.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI012ComplexRationalIdentity.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI012SourceFourierAtom.olean
+          if-no-files-found: ignore
