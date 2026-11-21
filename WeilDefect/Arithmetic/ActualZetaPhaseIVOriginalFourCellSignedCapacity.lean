@@ -29,8 +29,8 @@ That prime allowance is EXPLICIT in this module. IV022 DOES
 NOT claim a complete four-cell prime transfer or unconditional
 four-cell Weil positivity: separate authentic source arithmetic
 coupling of all four cells remains an open formal obligation.
-These are Lean candidates until actual kernel and standard
-axiom audits succeed.
+These are Lean candidates until actual kernel and strict
+standard-axiom verification is successful.
 -/
 
 /-- The literal physical SECOND new cell; both endpoints fixed
