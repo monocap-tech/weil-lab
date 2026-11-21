@@ -1,0 +1,151 @@
+name: PI016 one-graph source-exact Zeta23 Fourier custody
+
+# Deliberately manual-only: numerous PI009–PI015 runs remain queued.
+# A draft PR containing this file is NOT itself a runnable/accepted receipt;
+# GitHub may require the workflow on the repository default branch to dispatch.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  authentic-upstream-source-in-local-lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Inspect source, scripts, checked-out commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p pi016-audit
+          python3 -m py_compile scripts/pi016_co_resident_source_lean_audit.py
+          git rev-parse HEAD | tee pi016-audit/local-source-commit.txt
+          git hash-object \
+            WeilDefect/Arithmetic/PI007FiniteGammaKernel.lean \
+            WeilDefect/Arithmetic/PI014KernelCharacterBridge.lean \
+            WeilDefect/Arithmetic/PI015FiniteGammaSymbolBridge.lean \
+            WeilDefect/Arithmetic/PI016ImportedPaperFTCore.lean \
+            WeilDefect/Arithmetic/PI016ImportedFiniteGamma.lean \
+            | tee pi016-audit/local-source-blobs.txt
+
+      - name: Checkout unmodified upstream Zeta23 source at exact commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --filter=blob:none \
+            https://github.com/anthropics/formal-math.git pi016-upstream
+          git -C pi016-upstream checkout \
+            16a5ce41304fcdaea4e0be7c132e1c361dc26da5
+          test "$(git -C pi016-upstream rev-parse HEAD)" = \
+            16a5ce41304fcdaea4e0be7c132e1c361dc26da5
+          test "$(git -C pi016-upstream hash-object zeta23/Zeta23/Defs.lean)" = \
+            8024700cbfefb54d763b487afa84c03fef58a550
+          git -C pi016-upstream hash-object \
+            zeta23/lean-toolchain zeta23/lakefile.toml \
+            zeta23/Zeta23/Defs.lean \
+            | tee pi016-audit/authentic-upstream-source-blobs.txt
+
+      - name: Install local pinned Lean 4.34.0 and Mathlib
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = \
+            5ed2965256430c3649e86755f9576b54eca72435
+          lake exe cache get
+
+      - name: Compile actual PI007 source before importing external module
+        shell: bash
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.PI007FiniteGammaKernel \
+            2>&1 | tee pi016-audit/pi007-source-build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/PI007FiniteGammaKernel.olean
+
+      - name: Compile the UNMODIFIED external Zeta23.Defs under 4.34
+        shell: bash
+        timeout-minutes: 45
+        run: |
+          set -euo pipefail
+          mkdir -p .lake/build/lib/lean/Zeta23
+          # The actual source file is passed to lean, not a pasted lookalike.
+          # The resulting Zeta23/Defs.olean has LOCAL Lean/Mathlib ABI.
+          lake env lean \
+            -o .lake/build/lib/lean/Zeta23/Defs.olean \
+            pi016-upstream/zeta23/Zeta23/Defs.lean \
+            2>&1 | tee pi016-audit/upstream-Defs-under-4.34-build.log
+          test -s .lake/build/lib/lean/Zeta23/Defs.olean
+
+      - name: Compile minimal genuine co-resident PI007 + Zeta23 theorem
+        shell: bash
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          mkdir -p .lake/build/lib/lean/WeilDefect/Arithmetic
+          lake env lean \
+            -o .lake/build/lib/lean/WeilDefect/Arithmetic/PI016ImportedPaperFTCore.olean \
+            WeilDefect/Arithmetic/PI016ImportedPaperFTCore.lean \
+            2>&1 | tee pi016-audit/PI016ImportedPaperFTCore-axioms.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/PI016ImportedPaperFTCore.olean
+
+      - name: Audit minimal genuine co-resident source only
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/pi016_co_resident_source_lean_audit.py \
+            --stage core \
+            --upstream pi016-upstream \
+            --logs pi016-audit \
+            --out pi016-audit/core-receipt.json
+          test -s pi016-audit/core-receipt.json
+
+      - name: Build existing PI008–PI015 finite Fourier/Gamma local stack
+        shell: bash
+        timeout-minutes: 90
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.PI015FiniteGammaSymbolBridge \
+            2>&1 | tee pi016-audit/local-PI008-to-PI015-dependency-build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/PI015FiniteGammaSymbolBridge.olean
+
+      - name: Compile full imported original-source finite Gamma theorem
+        shell: bash
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          lake env lean \
+            -o .lake/build/lib/lean/WeilDefect/Arithmetic/PI016ImportedFiniteGamma.olean \
+            WeilDefect/Arithmetic/PI016ImportedFiniteGamma.lean \
+            2>&1 | tee pi016-audit/PI016ImportedFiniteGamma-axioms.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/PI016ImportedFiniteGamma.olean
+
+      - name: Strict full one-graph source, object and five-theorem axiom receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/pi016_co_resident_source_lean_audit.py \
+            --stage full \
+            --upstream pi016-upstream \
+            --logs pi016-audit \
+            --out pi016-audit/full-receipt.json
+          test -s pi016-audit/full-receipt.json
+
+      - name: Preserve exact source/Lean evidence on success or failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pi016-source-exact-zeta23-4-34-one-graph
+          path: |
+            pi016-audit/
+            .lake/build/lib/lean/Zeta23/Defs.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI016ImportedPaperFTCore.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI016ImportedFiniteGamma.olean
+          if-no-files-found: ignore
