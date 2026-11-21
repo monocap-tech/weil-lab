@@ -1,0 +1,97 @@
+name: PI013 finite Gamma Fourier direct Lean certificate
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/PI013GammaAtomCast.lean"
+      - "WeilDefect/Arithmetic/PI013FiniteFourierSum.lean"
+      - "scripts/pi013_strict_finite_fourier_lean_audit.py"
+      - "scripts/pi013_finite_gamma_atom_preflight.py"
+      - ".github/workflows/pi013-finite-gamma-fourier-lean.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-gamma-finite-sum-direct-lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 115
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Exact Fraction checks and source record
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p pi013-audit
+          python3 -m py_compile scripts/pi013_finite_gamma_atom_preflight.py \
+            scripts/pi013_strict_finite_fourier_lean_audit.py
+          python3 scripts/pi013_finite_gamma_atom_preflight.py \
+            2>&1 | tee pi013-audit/exact-fraction-preflight.log
+          git rev-parse HEAD | tee pi013-audit/checked-out-commit.txt
+          git hash-object WeilDefect/Arithmetic/PI013GammaAtomCast.lean \
+            WeilDefect/Arithmetic/PI013FiniteFourierSum.lean \
+            WeilDefect/Arithmetic/PI008FiniteDigammaSymbol.lean \
+            WeilDefect/Arithmetic/PI012SourceFourierAtom.lean \
+            | tee pi013-audit/import-and-source-blobs.txt
+
+      - name: Install exact pinned Lean 4.34.0 and Mathlib
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+
+      - name: Build two exact PI013 targets and transitive source imports
+        shell: bash
+        timeout-minutes: 90
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.PI013GammaAtomCast \
+            WeilDefect.Arithmetic.PI013FiniteFourierSum \
+            2>&1 | tee pi013-audit/direct-build.log
+          for unit in PI007FiniteGammaKernel PI008FiniteDigammaSymbol \
+            PI010FourierHalflineAtom PI011WholeLineFourierAtom \
+            PI012ComplexRationalIdentity PI012SourceFourierAtom \
+            PI013GammaAtomCast PI013FiniteFourierSum; do
+            test -s ".lake/build/lib/lean/WeilDefect/Arithmetic/$unit.olean"
+          done
+
+      - name: Compile exact PI013 source files and print their eight axiom records
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/PI013GammaAtomCast.lean \
+            2>&1 | tee pi013-audit/PI013GammaAtomCast-axioms.log
+          lake env lean WeilDefect/Arithmetic/PI013FiniteFourierSum.lean \
+            2>&1 | tee pi013-audit/PI013FiniteFourierSum-axioms.log
+
+      - name: Strict source/olean/axiom audit; fail closed
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/pi013_strict_finite_fourier_lean_audit.py \
+            --logs pi013-audit --receipt pi013-audit/receipt.json
+          test -s pi013-audit/receipt.json
+
+      - name: Save actual compiler evidence on PASS or FAIL
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pi013-eight-declaration-finite-gamma-lean
+          path: |
+            pi013-audit/
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI007FiniteGammaKernel.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI008FiniteDigammaSymbol.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI010FourierHalflineAtom.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI011WholeLineFourierAtom.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI012ComplexRationalIdentity.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI012SourceFourierAtom.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI013GammaAtomCast.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI013FiniteFourierSum.olean
+          if-no-files-found: ignore
