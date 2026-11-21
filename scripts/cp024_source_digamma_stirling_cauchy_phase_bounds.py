@@ -140,7 +140,6 @@ def test_exact():
     # Original upstream im psi'(w)<=0 gives theta''>=0.
     assert Q_LO==0
     # Improved actual HardyZ phase remainder conditional buffers.
-    assert R1==R0/R
     # Attention: R=1/8 here is DIGAMMA disk, not ζ disk radius 1/4.
     # ζ Cauchy derivative recurrences use 1/4, not R.
     assert R1==R0/Q(1,4)
