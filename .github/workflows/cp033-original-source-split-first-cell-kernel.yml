@@ -1,0 +1,105 @@
+name: CP033 isolated original Zeta435 source split + first exact unit-term cell
+# One bounded source-scoped v4.35 job, no NF/IV or CP029 all-circle imports.
+on:
+  pull_request:
+    paths:
+      - "cp011_zeta_v435/CP032OriginalTermSplit.lean"
+      - "scripts/cp033_original_source_split_first_cell_kernel_gate.py"
+      - ".github/workflows/cp033-original-source-split-first-cell-kernel.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cp033-original-Zeta435-one-source-leaf
+  cancel-in-progress: false
+jobs:
+  original-source-split-unit-cell:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Exact frozen original source preflight (NOT LEAN)
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp033_original_source_split_first_cell_kernel_gate.py
+          python scripts/cp033_original_source_split_first_cell_kernel_gate.py --source-check \
+            2>&1 | tee cp033-frozen-source-NOT-LEAN.log
+      - name: Install original pinned Lean v4.35
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Lake update FIRST, then original Zeta pin verification
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 45
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version | tee cp033-lean-version.log
+          test "$(cat lean-toolchain)" = "leanprover/lean4:v4.35.0"
+          lake update 2>&1 | tee cp033-lake-update.log
+          test "$(git -C .lake/packages/Zeta rev-parse HEAD)" = "c06b4e13d9c847e50a32c3d738271cbad62ae9f3"
+      - name: Restore original v4.35 Mathlib artifacts
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 40
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get 2>&1 | tee cp033-mathlib-cache.log
+      - name: ACTUAL one-leaf v4.35 compile and .olean production
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 85
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          mkdir -p .lake/build/lib/lean
+          lake env lean -o .lake/build/lib/lean/CP032OriginalTermSplit.olean CP032OriginalTermSplit.lean \
+            2>&1 | tee cp033-CP032-original-actual-build.log
+          test -s .lake/build/lib/lean/CP032OriginalTermSplit.olean
+      - name: Genuine four #print axioms and fail-closed kernel receipt
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake env lean CP032OriginalTermSplit.lean \
+            2>&1 | tee cp033-CP032-original-four-genuine-axioms.log
+          python ../scripts/cp033_original_source_split_first_cell_kernel_gate.py \
+            --kernel-audit --receipt cp033-REAL-original-four-kernel-axioms.json \
+            2>&1 | tee cp033-original-kernel-audit.log
+          test -s cp033-REAL-original-four-kernel-axioms.json
+      - name: Capture first genuine compiler error
+        if: always()
+        working-directory: cp011_zeta_v435
+        run: |
+          set -euo pipefail
+          log=cp033-CP032-original-actual-build.log
+          if test -s "$log"; then
+            if grep -nEm1 '(^|[[:space:]])(error:|unsolved goals|type mismatch|unknown identifier|application type mismatch|failed to synthesize)' "$log" > cp033-first-compiler-error.txt; then
+              cat cp033-first-compiler-error.txt
+            else
+              echo "No source-level compiler error found; consult actual .olean and strict axiom audit." > cp033-first-compiler-error.txt
+            fi
+          else
+            echo "No compiler log: earlier original Lake/toolchain/cache/source step failed; NOT LEAN." > cp033-first-compiler-error.txt
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp033-original-Zeta435-one-source-leaf-genuine-compiler-and-axiom-evidence
+          path: |
+            cp033-frozen-source-NOT-LEAN.log
+            cp011_zeta_v435/cp033-lean-version.log
+            cp011_zeta_v435/cp033-lake-update.log
+            cp011_zeta_v435/cp033-mathlib-cache.log
+            cp011_zeta_v435/cp033-CP032-original-actual-build.log
+            cp011_zeta_v435/cp033-CP032-original-four-genuine-axioms.log
+            cp011_zeta_v435/cp033-original-kernel-audit.log
+            cp011_zeta_v435/cp033-first-compiler-error.txt
+            cp011_zeta_v435/cp033-REAL-original-four-kernel-axioms.json
+            cp011_zeta_v435/.lake/build/lib/lean/CP032OriginalTermSplit.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
