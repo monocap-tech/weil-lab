@@ -1,0 +1,43 @@
+name: CP010 original first RS zero two-method exact rational numerical preflight
+on:
+  pull_request:
+    paths:
+      - "cp010_zeta_v435/**"
+      - "scripts/cp010_dual_method_root53_pilot.py"
+      - "scripts/cp010_dual_method_lean_axiom_audit.py"
+      - "docs/CP010_FIRST_RS_TWO_METHOD_SIGN_AND_PRECISION.md"
+      - ".github/workflows/cp010-root53-dual-method-numerical.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  actual-first-RS-zero-numerical-not-kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical screener (NOT a proof evaluator)
+        run: python -m pip install "mpmath==1.3.0"
+      - name: Check source cutoffs, two authentic method layouts, and exact conditional error
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp010_dual_method_root53_pilot.py scripts/cp010_dual_method_lean_axiom_audit.py
+          python scripts/cp010_dual_method_root53_pilot.py --self-test --out cp010-dual-method-conditional-ledger.json | tee cp010-rational-first-RS.log
+          grep -F 'CP010 REAL 53RD ZERO TWO-METHOD EXACT RATIONAL BUDGET PASS' cp010-rational-first-RS.log
+      - name: Numerical only (untrusted) Hardy-Z sign pilot, never used as Lean proof
+        run: |
+          set -euo pipefail
+          python scripts/cp010_dual_method_root53_pilot.py --numeric-screen | tee cp010-nonrigorous-hardyz-screen.log
+          grep -F 'NUMERICAL SCREEN NOT A ZERO CERTIFICATE' cp010-nonrigorous-hardyz-screen.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp010-nonrigorous-root53-dual-sign-and-rational-budget
+          path: |
+            cp010-rational-first-RS.log
+            cp010-nonrigorous-hardyz-screen.log
+            cp010-dual-method-conditional-ledger.json
+          if-no-files-found: ignore

@@ -1,0 +1,65 @@
+name: CP010 MANUAL original Zeta v4.35 genuine RS+Euler first-zero Lean kernel
+# Manual-only: minimize new automatic backlog on original Weil-Lab IV### NF###.
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cp010-root53-real-lean-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  first-RS-zero-cross-method-sign-kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install external upstream pinned Lean v4.35
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Pin genuine upstream SHA and ORIGINAL first RS source file
+        working-directory: cp010_zeta_v435
+        timeout-minutes: 60
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          test "$(git -C .lake/packages/Zeta rev-parse HEAD)" = c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.35.0
+          curl -fLSs --retry 3 \
+            "https://raw.githubusercontent.com/smmercuri/zeta/c06b4e13d9c847e50a32c3d738271cbad62ae9f3/python/out/riemann_siegel/zeros/zeros_00001.txt" \
+            -o source_original_first_rs.txt
+          python ../scripts/cp010_dual_method_root53_pilot.py --self-test --original-rs-shard source_original_first_rs.txt \
+            | tee cp010-original-first-RS-source-subset.log
+      - name: Actually kernel-check BOTH genuine method-specific proof candidates
+        working-directory: cp010_zeta_v435
+        timeout-minutes: 140
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get
+          lake build CP010DualMethods 2>&1 | tee cp010-dual-methods-build.log
+      - name: Genuine .olean+source+original first RS source/axiom custody
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          (cd cp010_zeta_v435 && lake env lean CP010DualMethods.lean 2>&1 | tee cp010-direct-axioms.log)
+          python scripts/cp010_dual_method_lean_axiom_audit.py
+          test -s cp010_zeta_v435/cp010-dual-methods-lean-receipt.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp010-real-v435-first-RS-coarse-and-Euler-narrow-olean-axiom-logs
+          path: |
+            cp010_zeta_v435/cp010-original-first-RS-source-subset.log
+            cp010_zeta_v435/cp010-dual-methods-build.log
+            cp010_zeta_v435/cp010-direct-axioms.log
+            cp010_zeta_v435/cp010-dual-methods-lean-receipt.json
+            cp010_zeta_v435/.lake/build/lib/lean/CP010DualMethods.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
