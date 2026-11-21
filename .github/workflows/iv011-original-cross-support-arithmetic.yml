@@ -2,6 +2,8 @@ name: IV011 original mixed zeta prime-cutoff and sharp Schur witness
 on:
   pull_request:
     paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
+      - "scripts/iv009_original_schwartz_polarization_audit.py"
       - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportArithmeticCutoff.lean"
       - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportExtension.lean"
       - "scripts/iv011_original_cross_support_arithmetic_audit.py"
