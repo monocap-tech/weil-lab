@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "id": "UOI007",
+  "date_utc": "2026-11-21",
+  "issue": "https://github.com/monocap-tech/weil-lab/issues/868",
+  "class": "offline_readonly_controller_preflight; not deployed Actions; not proof",
+  "source_blobs": {
+    "scripts/uoi007_preflight.py": {
+      "git_sha1": "b908c69d7ca510f6ce8b629dee1f531490f794c7",
+      "sha256": "eb78ac7829537977773cae85d983c81a5f4d6a3395e2a9e1121f204dcf76173c"
+    },
+    "scripts/test_uoi007_preflight.py": {
+      "git_sha1": "be82d224ce53ef716d3b295eb717f77b908c2686",
+      "sha256": "95f3d09db932d3a021afc49e888bcee7503ab951405ae893d79168113db4a5f6"
+    },
+    "research/unified/controller/UOI007_frozen_sources.json": {
+      "git_sha1": "fa82133ed35e40d97ca029c8d7780225bdfb1ab6",
+      "sha256": "c4633ca7ab7b5686f6d2540f7064a7d0279a366ccb21930da1533fd939faade6"
+    },
+    "research/unified/controller/UOI007_manual_preflight.workflow.yml.txt": {
+      "git_sha1": "de69277e287bd41df8a1d4910803132acf7963ad",
+      "sha256": "44e101c76c352a22b813d602d728d8d6a88e598543b20daf3f725777bc395b03"
+    },
+    "docs/UOI007_EXECUTION_CONTROLLER_DESIGN.md": {
+      "git_sha1": "16d865d9ae60bd45227ca818588834ffb8b248fe",
+      "sha256": "16dbd6cfd917349fb5a8fc85fdb3b68674e332a1218444081fd1f616e0077efa"
+    }
+  },
+  "offline_execution": {
+    "unittest_tests": 30,
+    "passed": 30,
+    "failed": 0,
+    "python_version": "3.13.5",
+    "github_actions_run": false,
+    "manifest_fixture": "Earlier UOI000 13-node schema-compatible fixture; NOT the current GitHub UOI manifest bytes",
+    "installed_code_exact_blob_match": true,
+    "yaml_draft_base_loader_parsed": true,
+    "yaml_event_only": "workflow_dispatch",
+    "main_guard": true,
+    "script_not_in_actions_dir": true,
+    "bad_nonmain_event_denied": true,
+    "live_current_manifest_structural_review": {
+      "node_count": 13,
+      "unique_ids": 13,
+      "unknown_dependencies": 0,
+      "ci_fanout": "open",
+      "uoi_intake": "open",
+      "execution_policy": "consolidation_hold",
+      "automatic_dispatch": false,
+      "review_only": [
+        "UOI-INTAKE",
+        "CI-FANOUT"
+      ],
+      "blocked": 11
+    }
+  },
+  "source_pin_custody": {
+    "NF768": "b477d9a8eb6c33781a8eee7c1208de93c705f307",
+    "IV025": "f89952aebfbb1e9775a9fb0dbbe71995ae636b04",
+    "fresh_remote_ref_readback": true,
+    "source_commit_ancestry_in_controller": false
+  },
+  "deployment": {
+    "main_workflow_added": false,
+    "research_source_edited": false,
+    "pull_request_created": false,
+    "github_actions_job_dispatched": false,
+    "heavy_lease_issued": false,
+    "dispatch_authorized": false,
+    "operator_approval_authenticated": false,
+    "required_checks_authenticated": false,
+    "full_workflow_audit_done": false,
+    "RH_proven": false
+  },
+  "next_requirements": [
+    "independent branch protection and required checks contract",
+    "review of immutable action SHAs",
+    "complete two-tree NF/IV workflow audit",
+    "reviewed main-branch deployment of inspection-only YAML",
+    "remote SHA source attestation",
+    "separate approved cross-workflow heavy execution lease"
+  ]
+}
