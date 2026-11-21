@@ -12,7 +12,7 @@ import re
 from pathlib import Path
 
 BASE=Path(__file__).resolve().parents[1]/"cp011_zeta_v435"
-MODULES=("CP014EulerCutLower","CP014FiniteCut","CP014ZetaCut")
+MODULES=("CP014EulerCutLower","CP014FiniteCut","CP014ZetaCut","CP014HardyRank")
 DEPS=("CP013RSOnly","CP013Seam")
 NAMES={
     "CP014EulerCutLower":(
@@ -22,6 +22,9 @@ NAMES={
         "CP014FiniteCut.exhausted_by_two_disjoint_parts",
         "CP014FiniteCut.exact_low_partition",
         "CP014FiniteCut.original_seam_root_cardinality",
+    ),
+    "CP014HardyRank":(
+        "CP014HardyRank.unique_critical_zero_of_hardy_strictMonoOn",
     ),
     "CP014ZetaCut":(
         "CP014ZetaCut.N_eq_card_below_original_gram",
@@ -45,7 +48,7 @@ def main():
     oleans={x:BASE/f".lake/build/lib/lean/{x}.olean" for x in MODULES+DEPS}
     required=[*src.values(),*oleans.values(),LOG,BASE/"lean-toolchain"]
     if not all(x.is_file() for x in required):
-        raise SystemExit("NOT_READY: original CP013 plus actual CP014 compiled three .olean and real axiom logs missing")
+        raise SystemExit("NOT_READY: original CP013 plus actual CP014 compiled four .olean and real axiom logs missing")
     if (BASE/"lean-toolchain").read_text("utf-8").strip()!="leanprover/lean4:v4.35.0":
         raise SystemExit("NOT_READY: original external toolchain drift")
     for m,s in src.items():
@@ -74,7 +77,7 @@ def main():
             claims[target]=sorted(ax)
     output={
         "status":"CP014_ORIGINAL_ZETA_SEAM_PARTIAL_KERNEL_ONLY",
-        "meaning":"Original 52<=N(149.5), original full zero count as finset cardinal, conditional N(149.5)=52 given authentic source witness cover",
+        "meaning":"Original 52<=N(149.5), original full zero count as finset cardinal, conditional N(149.5)=52 given authentic source witness cover, conditional HardyZ monotone uniqueness",
         "upstream_original_commit":UPSTREAM_COMMIT,
         "original_upstream_toolchain":"leanprover/lean4:v4.35.0",
         "source_sha256":{x:sha(p) for x,p in src.items()},
@@ -84,6 +87,7 @@ def main():
         "new_unconditional_N_1495_eq_52_Lean_proved":False,
         "new_source_Euler_RS_zero_finset_coverage_Lean_proved":False,
         "N_15005353_le_53_Lean_proved":False,
+        "HardyZ_strict_monotonicity_on_root53_window_proved":False,
         "CP010_refined_root_exists_Lean_proved":False,
         "signed_Weil_to_spectral_dictionary_Lean_proved":False,
     }
