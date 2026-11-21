@@ -23,6 +23,17 @@ jobs:
           python scripts/cp021_independent_leaf_v435_source_kernel_gate.py \
             --self-test --source-check 2>&1 | tee cp021-fraction-and-leaf-source.log
           grep -F 'CP021 ORIGINAL-ZETA/ORIGINAL-MATHLIB-ONLY LEAF DEPENDENCY CUT' cp021-fraction-and-leaf-source.log
+      - name: Exact CP023 phase-aware complex zeta remainder derivative/curvature interface (NOT LEAN)
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp023_original_phase_remainder_fraction_budget.py
+          python scripts/cp023_original_phase_remainder_fraction_budget.py \
+            --self-test --source-contract \
+            --receipt cp023-exact-phase-remainder-budget-NOT-LEAN.json \
+            | tee cp023-exact-phase-remainder-NOT-LEAN.log
+          grep -F 'CP023 EXACT PHASE/COMPLEX-EM-REMAINDER JET BUDGET: PASS NOT LEAN' cp023-exact-phase-remainder-NOT-LEAN.log
+          grep -F 'CP023 ORIGINAL HARDY-Z PHASE-JET / ZETA LEAF SOURCE CONTRACT: PASS NOT LEAN' cp023-exact-phase-remainder-NOT-LEAN.log
+          test -s cp023-exact-phase-remainder-budget-NOT-LEAN.json
       - name: Download seven actual frozen Zeta/Mathlib primary sources
         run: |
           set -euo pipefail
@@ -60,5 +71,7 @@ jobs:
           name: cp021-standalone-Zeta435-original-upstream-only-13-source-check-NOT-KERNEL
           path: |
             cp021-fraction-and-leaf-source.log
+            cp023-exact-phase-remainder-NOT-LEAN.log
+            cp023-exact-phase-remainder-budget-NOT-LEAN.json
             cp021-upstream-source-five-sha-only.log
           if-no-files-found: ignore
