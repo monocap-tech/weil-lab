@@ -55,8 +55,12 @@ jobs:
         run: |
           set -euo pipefail
           export PATH="$HOME/.elan/bin:$PATH"
-          mkdir -p .lake/build/lib/lean
-          lake env lean -o .lake/build/lib/lean/CP032OriginalTermSplit.olean CP032OriginalTermSplit.lean \
+          # CP033 first genuine run 44913102413 proved direct "lake env lean"
+          # cannot see original Zeta .olean dependencies: unknown module prefix Zeta.
+          # Register this one target ONLY in the ephemeral runner workspace.
+          # No change is committed to shared cp011_zeta_v435/lakefile.toml.
+          printf '\n[[lean_lib]]\nname = "CP032OriginalTermSplit"\n' >> lakefile.toml
+          lake build CP032OriginalTermSplit \
             2>&1 | tee cp033-CP032-original-actual-build.log
           test -s .lake/build/lib/lean/CP032OriginalTermSplit.olean
       - name: Genuine four #print axioms and fail-closed kernel receipt
