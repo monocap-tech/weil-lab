@@ -39,7 +39,18 @@ jobs:
             --original-zeta .lake/packages/Zeta \
             --original-mathlib .lake/packages/mathlib \
             2>&1 | tee cp021-actual-original-Zeta-source-gate.log
-      - name: Actual original v4.35 compile the simpler ζ=EM germ leaf FIRST
+      - name: CP027 FIRST isolated original two-point Borwein source LEAF — no CP013–CP026 imports
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 65
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get
+          lake build CP027PointwiseBorwein 2>&1 \
+            | tee cp027-actual-original-two-point-Borwein-leaf-build.log
+          lake env lean CP027PointwiseBorwein.lean \
+            2>&1 | tee CP027PointwiseBorwein-actual-source-axioms.log
+      - name: Actual original v4.35 compile the simpler ζ=EM germ leaf after CP027 pointwise
         working-directory: cp011_zeta_v435
         timeout-minutes: 100
         run: |
@@ -90,6 +101,18 @@ jobs:
             --kernel-audit
           grep -F "depends on axioms:" \
             cp011_zeta_v435/cp026-actual-original-point-bridge-axioms.log
+      - name: CP027 two-final-finite-sign bridge, actual original v4.35 compile and 12 genuine standard-only axiom check
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build CP027TwoFiniteSigns 2>&1 \
+            | tee cp027-actual-two-finitemargin-conditional-bridge-build.log
+          lake env lean CP027TwoFiniteSigns.lean \
+            2>&1 | tee CP027TwoFiniteSigns-actual-source-axioms.log
+          python ../scripts/cp027_original_center_borwein_328_over_27_source_gate.py \
+            --kernel-audit
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -105,5 +128,11 @@ jobs:
             cp011_zeta_v435/cp026-actual-original-conditional-root-bridge-build.log
             cp011_zeta_v435/cp026-actual-original-point-bridge-axioms.log
             cp011_zeta_v435/.lake/build/lib/lean/CP026OriginalPointBridge.olean
+            cp011_zeta_v435/cp027-actual-original-two-point-Borwein-leaf-build.log
+            cp011_zeta_v435/CP027PointwiseBorwein-actual-source-axioms.log
+            cp011_zeta_v435/cp027-actual-two-finitemargin-conditional-bridge-build.log
+            cp011_zeta_v435/CP027TwoFiniteSigns-actual-source-axioms.log
+            cp011_zeta_v435/.lake/build/lib/lean/CP027PointwiseBorwein.olean
+            cp011_zeta_v435/.lake/build/lib/lean/CP027TwoFiniteSigns.olean
           if-no-files-found: ignore
           include-hidden-files: true
