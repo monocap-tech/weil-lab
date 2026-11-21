@@ -1,0 +1,101 @@
+{
+  "schema": "UOI005-proposed-NF768-scoped-PR-repair-v1",
+  "research_branch": "research/nf768-original-indexzero-104-111-controlled-kernel",
+  "research_branch_sha": "b477d9a8eb6c33781a8eee7c1208de93c705f307",
+  "status": "source-verified-dry-run-proposal-NOT-APPLIED",
+  "approved_for_push": false,
+  "approved_for_pr": false,
+  "dispatch_authorized": false,
+  "accepted_theorems_modified": false,
+  "path_scoping_model": "Changed direct source/config files trigger ordinary pull_request; workflow_dispatch remains for transitive/external dependency changes.",
+  "workflows": [
+    {
+      "workflow": ".github/workflows/nf459-native-original-christoffel.yml",
+      "git_blob_sha": "3ef43267450c93ae65c5603d63167c57cd902a7f",
+      "pr_paths": [
+        ".github/workflows/nf459-native-original-christoffel.yml",
+        "scripts/verify_nf459_original_native_244D_christoffel.py",
+        "notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json",
+        "notes/data/provisional/NF404_original_selected_pole_shear_exact.json",
+        "notes/data/provisional/NF403_original_joint_complement_power_exact.json",
+        "notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json",
+        "notes/data/provisional/NF389_original_n513_signed_native.json",
+        "notes/data/provisional/NF457_original_log_peel_info_ceiling_custody.json",
+        "notes/data/provisional/NF451_original_J8_terminal_collar_custody_index.json",
+        "notes/data/provisional/NF450_original_B_complete_Laplace_native_sign_custody_index.json",
+        "notes/data/provisional/NF411_original_source_boundary_jet.json",
+        "notes/data/provisional/NF407_original_prime_jump_log_power_exact.json"
+      ],
+      "source_blobs": {
+        "scripts/verify_nf459_original_native_244D_christoffel.py": "0a393f26984003a50cbf3e4d4e1dd0ad1b9d5169",
+        "notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json": "38d438c1858d398c29b3515d3cf3cda0975fa86b",
+        "notes/data/provisional/NF404_original_selected_pole_shear_exact.json": "d8e536802e9a41df38a9fdc5adebc9a1070320e0",
+        "notes/data/provisional/NF403_original_joint_complement_power_exact.json": "6829f8f3a8c88be7b40b22b814a7aa2f9f3acbd8",
+        "notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json": "2d36a70401d9dc8bd1f00232028a21124d49c96a",
+        "notes/data/provisional/NF389_original_n513_signed_native.json": "c71c0dca54e5e9e0ab753485a6c6aa9dd38d4f8a",
+        "notes/data/provisional/NF457_original_log_peel_info_ceiling_custody.json": "3e0a626f01a4ccf9a64772f8768d1812aedec135",
+        "notes/data/provisional/NF451_original_J8_terminal_collar_custody_index.json": "3efd2558b1f988b4f61d1c27b79d65ccba429a12",
+        "notes/data/provisional/NF450_original_B_complete_Laplace_native_sign_custody_index.json": "edf6cd41203bd061a72aa25d036a63842cb0df14",
+        "notes/data/provisional/NF411_original_source_boundary_jet.json": "73d573123c9a9fee6f99fa51c95fb77b3cfe6359",
+        "notes/data/provisional/NF407_original_prime_jump_log_power_exact.json": "ab84b425df980bdef921f90d5ab8f6abc3f8645c"
+      },
+      "review_notes": "Direct runtime inputs identified from the frozen script; not a transitive completeness proof."
+    },
+    {
+      "workflow": ".github/workflows/nf460-original-bulk-seam-h1.yml",
+      "git_blob_sha": "8b8c399211523dc1d2711ed7689e617bd9837f26",
+      "pr_paths": [
+        ".github/workflows/nf460-original-bulk-seam-h1.yml",
+        "scripts/local_replay/verify_nf460_original_bulk_jumps_h1.py",
+        "notes/data/provisional/NF411_original_source_boundary_jet.json",
+        "notes/data/provisional/NF407_original_prime_jump_log_power_exact.json",
+        "notes/data/provisional/NF406_original_prime_support_partition_exact.json",
+        "notes/data/provisional/NF404_original_selected_pole_shear_exact.json",
+        "notes/data/provisional/NF403_original_joint_complement_power_exact.json",
+        "notes/data/provisional/NF459_original_native_244D_terminal_K_custody.json",
+        "notes/data/provisional/NF458_original_endpoint_leverage_gate_custody.json"
+      ],
+      "source_blobs": {
+        "scripts/local_replay/verify_nf460_original_bulk_jumps_h1.py": "1c2da47c14c820443dc218f5129f902c1db5a31a",
+        "notes/data/provisional/NF411_original_source_boundary_jet.json": "73d573123c9a9fee6f99fa51c95fb77b3cfe6359",
+        "notes/data/provisional/NF407_original_prime_jump_log_power_exact.json": "ab84b425df980bdef921f90d5ab8f6abc3f8645c",
+        "notes/data/provisional/NF406_original_prime_support_partition_exact.json": "9f7d2f5ed463ccecb45ded6cca2d2a9d4448e889",
+        "notes/data/provisional/NF404_original_selected_pole_shear_exact.json": "d8e536802e9a41df38a9fdc5adebc9a1070320e0",
+        "notes/data/provisional/NF403_original_joint_complement_power_exact.json": "6829f8f3a8c88be7b40b22b814a7aa2f9f3acbd8",
+        "notes/data/provisional/NF459_original_native_244D_terminal_K_custody.json": "591c12e60c33ff2a1d4f1670e0edecfe497910d9",
+        "notes/data/provisional/NF458_original_endpoint_leverage_gate_custody.json": "8c909a7bf0f0f6e7c538917f936734112c2232e5"
+      },
+      "review_notes": "Direct runtime inputs identified from the frozen script; not a transitive completeness proof."
+    },
+    {
+      "workflow": ".github/workflows/nf465-j7-derivative-resolution-stop.yml",
+      "git_blob_sha": "775939c38730184d1fe4f735700b6f98e01fa437",
+      "pr_paths": [
+        ".github/workflows/nf465-j7-derivative-resolution-stop.yml",
+        "scripts/local_replay/verify_nf465_j7_lipschitz_resolution_stop.py"
+      ],
+      "source_blobs": {
+        "scripts/local_replay/verify_nf465_j7_lipschitz_resolution_stop.py": "7345dabea310157ad69d071326f429165c005158"
+      },
+      "review_notes": "Direct runtime inputs identified from the frozen script; not a transitive completeness proof."
+    },
+    {
+      "workflow": ".github/workflows/nf471-original-j7-joint-arch-macroscopic-mean.yml",
+      "git_blob_sha": "f93fbb51a56a073bb329e2e6079ca8edf781e532",
+      "pr_paths": [
+        ".github/workflows/nf471-original-j7-joint-arch-macroscopic-mean.yml",
+        "scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py",
+        "notes/data/provisional/NF470_original_J7_native_regular_mean_and_two_joint_points_custody.json",
+        "notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json",
+        "notes/data/provisional/NF406_original_prime_support_partition_exact.json"
+      ],
+      "source_blobs": {
+        "scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py": "92113cee84b0d347e57fcca0f0154f52b8435f15",
+        "notes/data/provisional/NF470_original_J7_native_regular_mean_and_two_joint_points_custody.json": "5d3c9b64b3d504e5023b9fefc71d8b6b5f3ef3dd",
+        "notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json": "971d111218bf973a5652c205c6cc1fe61c7ffc14",
+        "notes/data/provisional/NF406_original_prime_support_partition_exact.json": "9f7d2f5ed463ccecb45ded6cca2d2a9d4448e889"
+      },
+      "review_notes": "Direct runtime inputs identified from the frozen script; not a transitive completeness proof."
+    }
+  ]
+}
