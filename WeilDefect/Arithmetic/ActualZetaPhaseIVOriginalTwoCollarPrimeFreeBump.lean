@@ -1,5 +1,6 @@
 import WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalNonzeroPrimeFreeSchwartzBump
 import WeilDefect.Arithmetic.ActualZetaPhaseIVFiniteLocalSpan
+import Mathlib.Analysis.Complex.ExponentialBounds
 import Mathlib.Tactic
 
 namespace WeilDefect
@@ -210,6 +211,68 @@ theorem neutralIV015ExistsOriginalTwoCollarPrimeFreeDirection
   rw [htc, hcZero] at hv
   exact one_ne_zero hv
 
+/-- The ORIGINAL 11/10 physical radius has a fully kernel-reducible
+cutoff N=10. This uses explicit rigorous Mathlib rational log 2 and
+log 5 bounds, not a floating-point value of log 10. -/
+theorem neutralIV015FrozenConcrete_logCutoff
+    (m : ℕ) (hm : 10 ≤ m) :
+    (11/10:ℝ) + (11/10:ℝ) < Real.log (m : ℝ) := by
+  have hten : (11/5 : ℝ) < Real.log (10 : ℝ) := by
+    rw [Real.log_ten_eq]
+    have htwo := Real.log_two_gt_d9
+    have hfive := Real.log_five_gt_d9
+    linarith
+  have hmR : (10 : ℝ) ≤ (m : ℝ) := by exact_mod_cast hm
+  have hmon : Real.log (10 : ℝ) ≤ Real.log (m : ℝ) :=
+    Real.log_le_log (by norm_num) hmR
+  linarith
+
+/-- Source-specific fixed rational center c=1/5 and radius 1/1000,
+strictly inside the original 11/10 window BUT OUTSIDE the unchanged
+two original strict frozen 1/500 collars. -/
+theorem neutralIV015FrozenConcrete_centerOutside :
+    (1/5 : ℝ) ∉ neutralNF543OriginalCollars := by
+  unfold neutralNF543OriginalCollars
+  simp only [Set.mem_union, Set.mem_Ioo, not_or]
+  norm_num
+
+/-- The EXACT physical complex Schwartz witness at rational center
+1/5 follows from ONE finite numerical arithmetic leaf: the original
+signed ±log n frozen-two-collar gap for n<10.
+The genuine infinite-prime cutoff itself is already discharged by
+the Mathlib-based exact real log(10) inequality above.
+
+The accompanying exact-Fraction arithmetic script INDEPENDENTLY
+verifies the finite gap, but the present Lean theorem KEEPS that
+finite inequality as an EXPLICIT hypothesis until it is discharged
+by a direct kernel theorem. No proof promotion from Python. -/
+theorem neutralIV015FrozenConcrete_originalPrimeFreeBump_of_gap
+    {n : ℕ}
+    (s : Fin n → 𝓢(ℝ, ℂ)) (u : Fin n → ℂ)
+    (hs : ∀ i : Fin n, neutralNF735InOriginalCollars (s i))
+    (hgap :
+      neutralIV015FrozenTwoCollarActiveGap
+        (1/5:ℝ) (1/1000:ℝ) 10) :
+    ∃ t : 𝓢(ℝ, ℂ),
+      t (1/5:ℝ) = 1 ∧
+      (∀ x : ℝ, x ∉ Set.Icc (-(11/10:ℝ)) (11/10:ℝ) →
+        t x = 0) ∧
+      ¬ neutralNF735InOriginalCollars t ∧
+      t ≠ neutralIV009PhysicalSchwartzSum s u ∧
+      neutralIV011OriginalMixedPrime (11/10:ℝ)
+        (neutralIV009PhysicalSchwartzSum s u) t = 0 ∧
+      neutralIV010Mixed (11/10:ℝ)
+        (neutralIV009PhysicalSchwartzSum s u) t =
+        neutralIV013OriginalMixedAnalyticRemainder
+          (11/10:ℝ) (neutralIV009PhysicalSchwartzSum s u) t := by
+  exact neutralIV015ExistsOriginalTwoCollarPrimeFreeDirection
+    (11/10:ℝ) (1/5:ℝ) (1/1000:ℝ) 10
+    (le_refl _) s u hs
+    (by norm_num)
+    (by norm_num)
+    neutralIV015FrozenConcrete_centerOutside
+    hgap neutralIV015FrozenConcrete_logCutoff
+
 #print axioms neutralIV015ExistsComplexSchwartzBump
 #print axioms neutralNF738OriginalCollars_finset_linear
 #print axioms neutralIV014ActiveMixedPrime_zero
@@ -219,6 +282,9 @@ theorem neutralIV015ExistsOriginalTwoCollarPrimeFreeDirection
 #print axioms neutralIV015FrozenCollar_activeSeparated_of_gap
 #print axioms neutralIV015ExistsNonzeroNewTwoCollarPrimeSeparatedBump
 #print axioms neutralIV015ExistsOriginalTwoCollarPrimeFreeDirection
+#print axioms neutralIV015FrozenConcrete_logCutoff
+#print axioms neutralIV015FrozenConcrete_centerOutside
+#print axioms neutralIV015FrozenConcrete_originalPrimeFreeBump_of_gap
 
 end
 end WeilDefect
