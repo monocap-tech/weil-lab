@@ -183,6 +183,45 @@ theorem euler_rs_disjoint : Disjoint eulerRoots rsRoots := by
   exact (lt_asymm (eulerRoots_below z hzE)
     (rsRoots_above z hzR))
 
+/-- The TWO independently source-certified witness sets ACTUALLY
+exhaust the genuine original Zeta finite-height zero set, even though
+their BatchSpec.bundle Classical.choose witnesses are not definitionally
+the same as the one original global count bundle's witnesses. -/
+theorem original_complete_positive_roster_is_euler_union_rs :
+    CP014ZetaCut.zerosUnder (gramPoint certifiedZeroCount.minIdx) =
+      eulerRoots ∪ rsRoots := by
+  classical
+  apply CP014FiniteCut.exhausted_by_two_disjoint_parts
+    (CP014ZetaCut.zerosUnder (gramPoint certifiedZeroCount.minIdx))
+    eulerRoots rsRoots
+  · exact Finset.union_subset eulerRoots_subset rsRoots_subset
+  · exact euler_rs_disjoint
+  · rw [CP014ZetaCut.original_full_source_finite_zero_card,
+      eulerRoots_card, rsRoots_card]
+    norm_num
+
+/-- The exact original shared source boundary t = 149.5 is NOT a zeta
+zero of ANY real part. This is stronger than the number N(149.5)=52
+alone: N counts roots at *strictly smaller* heights. No numerical
+Hardy Z evaluation is needed after the complete source partition. -/
+theorem no_original_zero_exactly_at_149500_div1000 (z : ℂ)
+    (hheight : z.im = (149500 : ℝ) / 1000) :
+    riemannZeta z ≠ 0 := by
+  intro hz
+  have hmem :
+      z ∈ CP014ZetaCut.zerosUnder (gramPoint certifiedZeroCount.minIdx) :=
+    (CP014ZetaCut.mem_zerosUnder_iff _ z).mpr
+      ⟨⟨by rw [hheight]; norm_num, by rw [hheight]; exact eulerCutLeGram⟩,
+        hz⟩
+  rw [original_complete_positive_roster_is_euler_union_rs] at hmem
+  rcases Finset.mem_union.mp hmem with hE | hR
+  · have hl := eulerRoots_below z hE
+    rw [hheight] at hl
+    exact (lt_irrefl ((149500 : ℝ) / 1000)) hl
+  · have hl := rsRoots_above z hR
+    rw [hheight] at hl
+    exact (lt_irrefl ((149500 : ℝ) / 1000)) hl
+
 /-- CP015's actual proof target. ALL the source-root witness finset
 hypotheses of CP014 are DISCHARGED, so there is NO new mathematical
 premise in this theorem's signature. Its proof relies on the original
@@ -204,4 +243,6 @@ end CP015SourceWitnesses
 #print axioms CP015SourceWitnesses.eulerRoots_subset
 #print axioms CP015SourceWitnesses.rsRoots_subset
 #print axioms CP015SourceWitnesses.euler_rs_disjoint
+#print axioms CP015SourceWitnesses.original_complete_positive_roster_is_euler_union_rs
+#print axioms CP015SourceWitnesses.no_original_zero_exactly_at_149500_div1000
 #print axioms CP015SourceWitnesses.original_N_at_149500_div1000_eq_52
