@@ -111,6 +111,7 @@ def main() -> None:
     p.add_argument("--upstream", type=Path, default=Path("pi016-upstream"))
     p.add_argument("--logs", type=Path, default=Path("pi016-audit"))
     p.add_argument("--out", type=Path, default=Path("pi016-audit/receipt.json"))
+    p.add_argument("--stage", choices=("core", "full"), default="full")
     args = p.parse_args()
 
     if Path("lean-toolchain").read_text().strip() != LOCAL_TOOLCHAIN:
@@ -142,17 +143,20 @@ def main() -> None:
     compiled = {
         "source_original_upstream_Defs_under_local_lean": object_record(defs_obj),
         "PI016_imported_core": object_record(core_obj),
-        "PI016_complete_finite_dictionary": object_record(full_obj),
     }
+    if args.stage == "full":
+        compiled["PI016_complete_finite_dictionary"] = object_record(full_obj)
 
     dependencies = {}
-    for module in TRANSITIVE:
+    for module in (TRANSITIVE if args.stage == "full" else ["PI007FiniteGammaKernel"]):
         path = build_root / f"WeilDefect/Arithmetic/{module}.olean"
         dependencies[module] = object_record(path)
 
     source_info = {}
     axiom_info = {}
     for module, required in EXPECTED.items():
+        if args.stage == "core" and module != "PI016ImportedPaperFTCore":
+            continue
         source = Path("WeilDefect/Arithmetic") / f"{module}.lean"
         raw = require_file(source)
         if UNSAFE.search(raw.decode()):
@@ -164,7 +168,7 @@ def main() -> None:
         axiom_info[module] = axiom_record(log_path, required)
 
     report = {
-        "status": "PASS_PI016_UNCHANGED_UPSTREAM_SOURCE_COINHABITS_LOCAL_LEAN_ONLY",
+        "status": f"PASS_PI016_{args.stage.upper()}_UNCHANGED_UPSTREAM_SOURCE_IN_LOCAL_LEAN_ONLY",
         "github_run_id": os.environ.get("GITHUB_RUN_ID"),
         "current_weil_lab_commit": git_head(Path(".")),
         "upstream_root_commit": UPSTREAM_ROOT,
@@ -193,6 +197,7 @@ def main() -> None:
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
     print("PI016 DIRECT ONE-TOOLCHAIN SOURCE/LEAN/AXIOM AUDIT: PASS")
+    print(f"Source certificate stage: {args.stage}")
     print("The authentic unchanged upstream Zeta23.Defs source was compiled")
     print("in the SAME local 4.34.0 environment as the literal PI007/PI008/PI014 terms.")
 
