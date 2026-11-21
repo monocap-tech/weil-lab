@@ -100,6 +100,32 @@ jobs:
           grep -F 'CP024 SIX ORIGINAL DIGAMMA/CAUCHY/LOG-BOUND GIT-BLOB AND API CHECKS: 6/6 PASS NOT LEAN' cp024-original-phase-Stirling-Cauchy-NOT-LEAN.log
           grep -F 'CP024 SOURCE_BASED_STIRLING_CAUCHY_PHASE_BUDGET_PASS_NOT_LEAN' cp024-original-phase-Stirling-Cauchy-NOT-LEAN.log
           test -s cp024-original-phase-Stirling-Cauchy-NOT-LEAN.json
+      - name: Fetch two ADDITIONAL real original Hardy theta/order-two Gamma source files
+        run: |
+          set -euo pipefail
+          ref=c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          for path in \
+            Zeta/Zeros/HardyZ.lean \
+            Zeta/Gamma/LogGammaStirling.lean; do
+            mkdir -p "cp021-frozen-zeta/$(dirname "$path")"
+            curl -fLSs --retry 3 \
+              "https://raw.githubusercontent.com/smmercuri/zeta/$ref/$path" \
+              -o "cp021-frozen-zeta/$path"
+          done
+      - name: CP025 genuine original M6N256 255-term integer-directed root-sign and derivative-anchor interval certificate NOT LEAN
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp025_original_EM_integer_directed_firstjet_root_bracket.py
+          python scripts/cp025_original_EM_integer_directed_firstjet_root_bracket.py \
+            --self-test \
+            --original-zeta cp021-frozen-zeta \
+            --receipt cp025-external-original-source-anchor-and-narrow-sign-interval-NOT-LEAN.json \
+            2>&1 | tee cp025-external-original-source-integer-interval-NOT-LEAN.log
+          grep -F 'CP025 ORIGINAL M6N256 INTEGER DIRECTED FIRST-JET + NARROW BRACKET: PASS NOT LEAN' cp025-external-original-source-integer-interval-NOT-LEAN.log
+          grep -F 'CP025 SIX ORIGINAL A/PHASE SOURCE GIT SHA+THEOREM GATES: 6/6 PASS NOT LEAN' cp025-external-original-source-integer-interval-NOT-LEAN.log
+          grep -F 'CP025_EXTERNAL_INTEGER_DIRECTED_ORIGINAL_M6N256_INTERVAL_PASS_NOT_LEAN' cp025-external-original-source-integer-interval-NOT-LEAN.log
+          test -s cp025-external-original-source-anchor-and-narrow-sign-interval-NOT-LEAN.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -111,4 +137,6 @@ jobs:
             cp021-upstream-source-five-sha-only.log
             cp024-original-phase-Stirling-Cauchy-NOT-LEAN.json
             cp024-original-phase-Stirling-Cauchy-NOT-LEAN.log
+            cp025-external-original-source-integer-interval-NOT-LEAN.log
+            cp025-external-original-source-anchor-and-narrow-sign-interval-NOT-LEAN.json
           if-no-files-found: ignore
