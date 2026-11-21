@@ -1,0 +1,68 @@
+name: IV021 ORIGINAL whole three-cell smooth Schwartz partition and one-tenth Weil coercivity
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWholeThreeCellSchwartzPartition.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWiderThreeCellPrime9Coercivity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWiderThreeCellSourceMeasure.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalVariableWidthSignedBudget.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollarPrimeBound.lean"
+      - "scripts/iv021_original_three_cell_smooth_partition_audit.py"
+      - ".github/workflows/iv021-original-whole-three-cell-schwartz-partition.yml"
+      - "docs/IV021_PHASE_IV_WHOLE_ORIGINAL_THREE_CELL_SCHWARTZ_PARTITION.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: iv021-original-entire-physical-three-cell-Schwartz-partition-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-entire-three-cell-Schwartz-partition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact Fraction source real physical cutoff plateau and strict candidate preflight — NOT a Lean proof
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/iv021_original_three_cell_smooth_partition_audit.py
+          python scripts/iv021_original_three_cell_smooth_partition_audit.py preflight
+          test -s iv021-original-three-cell-smooth-cutoff-exact-rational.json
+      - name: Install pinned original Lean Mathlib and dependency cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Genuine direct Lean kernel compilation of ORIGINAL full three-cell complex Schwartz cutoff and signed one-tenth Weil theorem
+        timeout-minutes: 195
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o iv021-original-source-resources.log -f 'phase=fullOriginalSchwartzPartition elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalWholeThreeCellSchwartzPartition 2>&1 | tee iv021-original-whole-three-cell-Schwartz-partition-build.log
+      - name: Direct strict Lean standard-only axiom audit for seven new and four upstream original source declarations
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWholeThreeCellSchwartzPartition.lean 2>&1 | tee iv021-original-whole-three-cell-Schwartz-partition-axioms.log
+          python scripts/iv021_original_three_cell_smooth_partition_audit.py verify
+          test -s iv021-original-whole-three-cell-Schwartz-partition-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv021-true-original-entire-three-cell-smooth-Schwartz-partition-one-tenth-kernel
+          path: |
+            iv021-original-three-cell-smooth-cutoff-exact-rational.json
+            iv021-original-source-resources.log
+            iv021-original-whole-three-cell-Schwartz-partition-build.log
+            iv021-original-whole-three-cell-Schwartz-partition-axioms.log
+            iv021-original-whole-three-cell-Schwartz-partition-kernel-audit.json
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWholeThreeCellSchwartzPartition.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
