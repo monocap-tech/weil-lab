@@ -37,7 +37,7 @@ def main():
     if (ROOT/"lean-toolchain").read_text("utf-8").strip()!="leanprover/lean4:v4.35.0":
         raise SystemExit("NOT_READY: original upstream toolchain drift")
     source=SOURCE.read_text("utf-8")
-    if re.search(r"\bsorry\b",source) or re.search(r"(?m)^\\s*axiom\\s+", source):
+    if re.search(r"\bsorry\b",source) or re.search(r"(?m)^\s*axiom\s+", source):
         raise SystemExit("NOT_READY: source contains sorry or new axiom declaration")
     if "structure IndexedSlotContains" not in source:
         raise SystemExit("NOT_READY: missing explicit indexed source containment premise")
