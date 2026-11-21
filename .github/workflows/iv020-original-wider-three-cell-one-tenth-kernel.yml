@@ -1,0 +1,80 @@
+name: IV020 authentic original wider THREE-cell n9 transfer and one-tenth signed Weil coercivity
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWiderThreeCellSourceMeasure.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWiderThreeCellPrime9Coercivity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalVariableWidthSignedBudget.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWiderPrimeFreeBump.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalThreeCellPrime9Transfer.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalThreeCellSignedEnvelope.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollarPrimeBound.lean"
+      - "scripts/iv020_original_wider_three_cell_kernel_audit.py"
+      - ".github/workflows/iv020-original-wider-three-cell-one-tenth-kernel.yml"
+      - "docs/IV020_PHASE_IV_ORIGINAL_WIDER_THREE_CELL_ONE_TENTH.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: iv020-original-wider-three-cell-source-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  authentic-original-nf543-two-collars-plus-wider-real-Schwartz-cell:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source-only original wider one-tenth rational custody and strict Lean proof-declaration preflight
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/iv020_original_wider_three_cell_kernel_audit.py
+          python scripts/iv020_original_wider_three_cell_kernel_audit.py preflight
+          test -s iv020-original-doubled-radius-exact-rational-budget.json
+      - name: Install exactly pinned authentic original Lean Mathlib toolchain and cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Real Lean kernel source measure proof for original collars plus wider 1over500 radius new Schwartz cell
+        timeout-minutes: 100
+        run: |
+          set -euo pipefail
+          /usr/bin/time -a -o iv020-source-resources.log -f 'phase=widerOriginalPhysicalMeasure elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalWiderThreeCellSourceMeasure 2>&1 | tee iv020-original-wide-source-measure-build.log
+      - name: Real Lean kernel proof of complete original n9 prime transfer and one-tenth signed Weil coercivity
+        timeout-minutes: 100
+        run: |
+          set -euo pipefail
+          /usr/bin/time -a -o iv020-source-resources.log -f 'phase=originalN9PrimeOneTenth elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalWiderThreeCellPrime9Coercivity 2>&1 | tee iv020-original-wide-prime9-coercivity-build.log
+      - name: Direct strict Lean standard axiom audit for 18 new authentic and seven upstream original source declarations
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWiderThreeCellSourceMeasure.lean 2>&1 | tee iv020-original-wide-source-measure-axioms.log
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWiderThreeCellPrime9Coercivity.lean 2>&1 | tee iv020-original-wide-prime9-coercivity-axioms.log
+          python scripts/iv020_original_wider_three_cell_kernel_audit.py verify
+          test -s iv020-original-wide-three-cell-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv020-authentic-original-wide-three-cell-n9-transfer-one-tenth-kernel
+          path: |
+            iv020-original-doubled-radius-exact-rational-budget.json
+            iv020-source-resources.log
+            iv020-original-wide-source-measure-build.log
+            iv020-original-wide-prime9-coercivity-build.log
+            iv020-original-wide-source-measure-axioms.log
+            iv020-original-wide-prime9-coercivity-axioms.log
+            iv020-original-wide-three-cell-kernel-audit.json
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWiderThreeCellSourceMeasure.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWiderThreeCellPrime9Coercivity.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
