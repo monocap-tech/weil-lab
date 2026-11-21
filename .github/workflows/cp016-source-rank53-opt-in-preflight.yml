@@ -1,0 +1,63 @@
+name: CP016 OPT-IN original source first RS ordinal53 and Mathlib minimum preflight
+# No automatic job on PR creation, PR commits, or push. One exact PR label only.
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [labeled]
+permissions:
+  contents: read
+jobs:
+  authentic-original-zeta-source-firstRS-rank-not-kernel:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'cp016-source-preflight' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact mathematical finite-first-RS-rank model and negative control
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp016_original_first_RS_ordinal_source_gate.py scripts/cp016_original_firstRS_rank_lean_axiom_audit.py
+          python scripts/cp016_original_first_RS_ordinal_source_gate.py --self-test \
+            | tee cp016-ordinal53-exact-model.log
+          grep -F 'CP016 EXACT ORIGINAL-FIRST-RS LEAST-ORDINAL-53 MODEL: PASS' cp016-ordinal53-exact-model.log
+      - name: Download FOUR actual Zeta original SHA-pinned proof files and genuine Mathlib v4.35 finite-min theorem
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          commit=c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          for file in \
+            Zeta/Zeros/Interval.lean \
+            Zeta/Zeros/CountCertificates.lean \
+            Zeta/Zeros/RiemannHypothesisUpTo/Basic.lean \
+            Zeta/Zeros/HardyZ.lean; do
+            mkdir -p "cp016-upstream-source/$(dirname "$file")"
+            curl -fLSs --retry 3 \
+              "https://raw.githubusercontent.com/smmercuri/zeta/$commit/$file" \
+              -o "cp016-upstream-source/$file"
+          done
+          file=Mathlib/Data/Set/Finite/Lemmas.lean
+          mkdir -p "cp016-mathlib-source/$(dirname "$file")"
+          curl -fLSs --retry 3 \
+            "https://raw.githubusercontent.com/leanprover-community/mathlib4/v4.35.0/$file" \
+            -o "cp016-mathlib-source/$file"
+      - name: Verify all frozen original SHA hashes, Mathlib min proof and strict-seam repair
+        run: |
+          set -euo pipefail
+          python scripts/cp016_original_first_RS_ordinal_source_gate.py \
+            --upstream cp016-upstream-source --mathlib cp016-mathlib-source \
+            --receipt cp016-first-RS-source-ordinal53.json \
+            | tee cp016-original-source-audit.log
+          grep -F 'CP016 PINNED SOURCE API AND STRICT-GRAM REPAIR: PASS' cp016-original-source-audit.log
+          test -s cp016-first-RS-source-ordinal53.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp016-first-RS-global-ordinal53-Zeta-Mathlib-source-only-NOT-Lean
+          path: |
+            cp016-ordinal53-exact-model.log
+            cp016-original-source-audit.log
+            cp016-first-RS-source-ordinal53.json
+          if-no-files-found: ignore
