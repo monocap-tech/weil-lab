@@ -1,0 +1,69 @@
+name: IV026 MANUAL SINGLE-LANE original IV009 real Lean recovery (NO automatic PR fan-out)
+on:
+  workflow_dispatch:
+    inputs:
+      acknowledgement:
+        description: "Manual IV009 original signed Weil kernel check, NOT general RH proof"
+        required: false
+        default: "IV009 only"
+permissions:
+  contents: read
+concurrency:
+  group: iv026-manual-original-iv009-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  one-original-lean-iv009-only:
+    name: Original IV009 compiled Schwartz-polarization ONLY — strict kernel and axioms
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Preflight original source manifest timing and first-error parser tests (NONKERNEL)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile scripts/iv025_manifest_order_source_regression.py scripts/iv026_first_original_lean_failure.py
+          python3 scripts/iv025_manifest_order_source_regression.py
+          python3 scripts/iv026_first_original_lean_failure.py --selftest
+          test -s iv025-lake-manifest-order-source-regression-NOT-LEAN.json
+      - name: Install pinned v4.34.0 original Lean/Mathlib toolchain WITHOUT generating another PR check-suite
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          command -v lake
+          lake --version
+      - name: REAL direct ORIGINAL IV009 Lean source compiler, .olean and strict standard axiom audit
+        timeout-minutes: 220
+        run: |
+          set -euo pipefail
+          bash scripts/iv025_recover_first_original_lean.sh 2>&1 |
+            tee iv026-original-iv009-manual-recovery.log
+          test -s iv009-original-schwartz-polarization-kernel-audit.json
+      - name: Capture true first IV009 compiler error or correctly say NOT RUN / NOT CERTIFIED
+        if: always()
+        run: |
+          set -euo pipefail
+          python3 scripts/iv026_first_original_lean_failure.py \
+            --log iv025-original-iv009-first-kernel-build.log \
+            --output iv026-first-original-Lean-kernel-diagnostic.json
+          test -s iv026-first-original-Lean-kernel-diagnostic.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv026-MANUAL-ONLY-REAL-IV009-kernel-and-first-error-custody
+          path: |
+            iv025-lake-manifest-order-source-regression-NOT-LEAN.json
+            iv025-original-pinned-config-sha256.txt
+            iv025-original-Lake-generated-manifest-sha256.txt
+            iv026-original-iv009-manual-recovery.log
+            iv025-original-iv009-first-kernel-build.log
+            iv009-original-schwartz-polarization-axioms.log
+            iv009-original-schwartz-polarization-kernel-audit.json
+            iv026-first-original-Lean-kernel-diagnostic.json
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
