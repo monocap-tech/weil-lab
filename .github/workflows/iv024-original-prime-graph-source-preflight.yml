@@ -1,0 +1,61 @@
+name: IV024 independent ORIGINAL prime interaction graph and fail-closed Phase IV source custody — NOT LEAN
+on:
+  pull_request:
+    paths:
+      - "scripts/iv024_original_prime_interaction_graph.py"
+      - "scripts/iv024_phaseiv_source_chain_gate.py"
+      - "scripts/iv015_frozen_collar_exact_log_gap.py"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalFourCellSmoothSchwartzPartition.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalFourCellPrimeTransferCoercivity.lean"
+      - ".github/workflows/iv024-original-prime-graph-source-preflight.yml"
+      - "docs/IV024_PHASE_IV_ORIGINAL_PRIME_GRAPH_AND_CERTIFICATION_CUSTODY.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: iv024-original-prime-graph-source-preflight-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  exact-independent-arithmetic-graph:
+    name: Exact original prime-power interval graph — NONKERNEL
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Strict pure-Python independent exact rational original arithmetic graph and counterexamples
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/iv015_frozen_collar_exact_log_gap.py scripts/iv024_original_prime_interaction_graph.py
+          python scripts/iv024_original_prime_interaction_graph.py selftest
+          test -s iv024-original-prime-interaction-graph-exact-receipt.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv024-EXACT-PRIME-GRAPH-only-NOT-LEAN
+          path: iv024-original-prime-interaction-graph-exact-receipt.json
+          if-no-files-found: ignore
+  original-source-chain-readiness:
+    name: Original IV009 and IV017–IV023 source custody — NONKERNEL
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source theorem/import/axiom-target inventory — NEVER a substitute for Lean .olean or axioms
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/iv024_phaseiv_source_chain_gate.py
+          python scripts/iv024_phaseiv_source_chain_gate.py
+          test -s iv024-source-chain-readiness-only-NOT-LEAN.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv024-SOURCE-INVENTORY-only-NOT-LEAN
+          path: iv024-source-chain-readiness-only-NOT-LEAN.json
+          if-no-files-found: ignore
