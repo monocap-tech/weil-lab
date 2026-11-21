@@ -298,6 +298,80 @@ theorem neutralIV017ExistsNonzeroNewSource_diagonalNonnegative :
   refine ⟨t,htc,hnon,?_⟩
   linarith only [hdiag,hm]
 
+/-- NEW ORIGINAL SUPPORT-EXTENSION GATE with BOTH diagonal
+nonnegativity assumptions DISCHARGED from their physical sources.
+The accepted old NF738 collar 2/5 coercivity supplies A>=0;
+the new IV017 narrow-source 19/20 bound supplies D>=0.
+
+Only the original mixed pole/Gamma cross-SCHUR estimate remains
+a REAL analytic premise. It is deliberately not implied by the
+positive new diagonal or a synthetic matrix. The coefficients,
+unchanged signed zeta EF and full true finite physical Schwartz
+combination are preserved. -/
+theorem neutralIV017OneNewSource_nonnegative_of_singleResidualBound
+    {n : ℕ}
+    (s : Fin n → 𝓢(ℝ,ℂ)) (u : Fin n → ℂ)
+    (hs : ∀ i : Fin n, neutralNF735InOriginalCollars (s i))
+    (t : 𝓢(ℝ,ℂ))
+    (ht : ∀ x : ℝ,
+      x ∉ Set.Icc ((1/5:ℝ)-(1/1000:ℝ))
+        ((1/5:ℝ)+(1/1000:ℝ)) → t x = 0)
+    (hResidual :
+      (neutralIV010Mixed (11/10:ℝ)
+        (neutralIV009PhysicalSchwartzSum s u) t).re^2 +
+      (neutralIV010Mixed (11/10:ℝ)
+        (neutralIV009PhysicalSchwartzSum s u) t).im^2 ≤
+        (neutralIV007OriginalMixedEnergy (11/10:ℝ) s u).re *
+          ((19/20:ℝ) * neutralNF600Mass t))
+    (v : ℂ) :
+    0 ≤ (neutralIV010Diagonal (11/10:ℝ)
+      (neutralIV009PhysicalSchwartzSum s u + v • t)).re := by
+  have hswide :
+      ∀ i : Fin n, ∀ x : ℝ,
+        x ∉ Set.Icc (-(11/10:ℝ)) (11/10:ℝ) →
+          s i x = 0 := by
+    intro i
+    exact neutralIV009OriginalCollars_supported_window (s i) (hs i)
+  have htwide :
+      ∀ x : ℝ, x ∉ Set.Icc (-(11/10:ℝ)) (11/10:ℝ) →
+        t x = 0 :=
+    neutralIV015Bump_supported_largeWindow
+      (11/10:ℝ) (1/5:ℝ) (1/1000:ℝ)
+      (by norm_num) t ht
+  have hOldBound :=
+    neutralIV009OriginalCollars_mixedEnergy_lower s u hs
+  have hOld :
+      0 ≤ (neutralIV007OriginalMixedEnergy
+        (11/10:ℝ) s u).re := by
+    have hnon :
+        0 ≤ (2/5:ℝ) *
+          ‖(neutralIV009PhysicalSchwartzSum s u).toLp 2 volume‖^2 := by
+      positivity
+    linarith
+  have hdiag := neutralIV017NarrowOriginalDiagonal_coercive t ht
+  have hmass : 0 ≤ neutralNF600Mass t := by
+    unfold neutralNF600Mass
+    positivity
+  have hNew :
+      0 ≤ (neutralIV010Diagonal (11/10:ℝ) t).re := by
+    linarith
+  have hCross :
+      (neutralIV010Mixed (11/10:ℝ)
+        (neutralIV009PhysicalSchwartzSum s u) t).re^2 +
+      (neutralIV010Mixed (11/10:ℝ)
+        (neutralIV009PhysicalSchwartzSum s u) t).im^2 ≤
+        (neutralIV007OriginalMixedEnergy
+          (11/10:ℝ) s u).re *
+          (neutralIV010Diagonal (11/10:ℝ) t).re := by
+    calc
+      _ ≤ (neutralIV007OriginalMixedEnergy
+            (11/10:ℝ) s u).re *
+          ((19/20:ℝ) * neutralNF600Mass t) := hResidual
+      _ ≤ _ := mul_le_mul_of_nonneg_left hdiag hOld
+  exact neutralIV010OriginalOneNewSource_nonnegative_of_crossBound
+    (11/10:ℝ) (11/10:ℝ) (le_refl _) s u hswide
+    t htwide hOld hNew hCross v
+
 #print axioms neutralIV016FrozenSmallBump_selfPrime_zero
 #print axioms neutralIV012OriginalMixedPole_norm_le_momentBudget
 #print axioms neutralNF573WindowEvaluation_eq_raw_of_ae
@@ -309,6 +383,7 @@ theorem neutralIV017ExistsNonzeroNewSource_diagonalNonnegative :
 #print axioms neutralIV017OriginalWindowArch_real_eq_spectral
 #print axioms neutralIV017NarrowOriginalDiagonal_coercive
 #print axioms neutralIV017ExistsNonzeroNewSource_diagonalNonnegative
+#print axioms neutralIV017OneNewSource_nonnegative_of_singleResidualBound
 
 end
 end WeilDefect
