@@ -41,6 +41,8 @@ NEW = [
     "neutralIV016ExistsConcretePrimeFreeMixedAndDiagonal",
 ]
 NAMES = UPSTREAM + NEW
+# Only `lake update` generates this dependency lock; bind it after setup.
+MANIFEST=Path("lake-manifest.json")
 DEPS = [
     Path("WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalNonzeroPrimeFreeSchwartzBump.lean"),
     Path("WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalTwoCollarPrimeFreeBump.lean"),
@@ -59,7 +61,6 @@ DEPS = [
     Path("scripts/iv015_frozen_collar_exact_log_gap.py"),
     Path("scripts/iv015_original_nonzero_two_collar_schwartz_audit.py"),
     Path("lean-toolchain"),
-    Path("lake-manifest.json"),
 ]
 
 def sha(p):
@@ -98,6 +99,7 @@ def source_preflight():
 
 def kernel_verify():
     source_preflight()
+    assert MANIFEST.is_file(), ("Missing generated Lake manifest after update", str(MANIFEST))
     assert OLEAN.is_file() and OLEAN.stat().st_size > 0, (
         "Real compiled original ±log n kernel theorem object REQUIRED")
     raw = LOG.read_text()
@@ -119,7 +121,7 @@ def kernel_verify():
     report = {
         "schema":"IV016-original-true-two-collar-complete-Lean-log-gap-prime-free-diagonal-v1",
         "scope":"Original NF543 two-collar nonzero Schwartz t(c)=1, finite n<10 exact Real.log inequality closed in Lean, genuine original mixed and new diagonal von-Mangoldt contribution zero, pole+Gamma unchanged.",
-        "source_sha256":{str(p):sha(p) for p in [LEAN]+DEPS},
+        "source_sha256":{str(p):sha(p) for p in [LEAN]+DEPS+[MANIFEST]},
         "compiled_olean_sha256":sha(OLEAN),
         "upstream_true_source_anchors":UPSTREAM,
         "new_proved_Lean_declarations":NEW,
