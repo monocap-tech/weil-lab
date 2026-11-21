@@ -1,0 +1,65 @@
+name: CP020 OPT-IN genuine original Borwein all-circle SHA/Fraction source proof preflight
+# Explicit label/manual only. No routine PR/push CI fanout against NF/IV queue.
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [labeled]
+permissions:
+  contents: read
+jobs:
+  exact-source-allcircle-Borwein-not-Lean:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'cp020-borwein-source' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Genuine exact source Bernoulli/Pochhammer/Cauchy arithmetic and negative controls
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp020_original_borwein_circle_fraction_source_gate.py scripts/cp020_original_Borwein_and_germ_kernel_axiom_audit.py
+          python scripts/cp020_original_borwein_circle_fraction_source_gate.py --self-test | tee cp020-original-exact-fraction.log
+          grep -F 'CP020 EXACT ORIGINAL BORWEIN COMPLEX-CIRCLE ENVELOPE: PASS' cp020-original-exact-fraction.log
+      - name: Fetch SIX authentic frozen original source files; no ungrounded URL/SHA
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          commit=c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          for file in \
+            Zeta/EulerMaclaurin/Continuation.lean \
+            Zeta/EulerMaclaurin/ErrorBound.lean; do
+            mkdir -p "cp020-real-Zeta/$(dirname "$file")"
+            curl -fLSs --retry 3 \
+              "https://raw.githubusercontent.com/smmercuri/zeta/$commit/$file" \
+              -o "cp020-real-Zeta/$file"
+          done
+          for file in \
+            Mathlib/RingTheory/Polynomial/Pochhammer.lean \
+            Mathlib/NumberTheory/Bernoulli.lean \
+            Mathlib/Analysis/Calculus/IteratedDeriv/Lemmas.lean \
+            Mathlib/Analysis/Complex/Liouville.lean; do
+            mkdir -p "cp020-real-mathlib/$(dirname "$file")"
+            curl -fLSs --retry 3 \
+              "https://raw.githubusercontent.com/leanprover-community/mathlib4/v4.35.0/$file" \
+              -o "cp020-real-mathlib/$file"
+          done
+      - name: Verify six original immutable Git blobs and all 17 source theorem interfaces
+        run: |
+          set -euo pipefail
+          python scripts/cp020_original_borwein_circle_fraction_source_gate.py \
+            --zeta cp020-real-Zeta --mathlib cp020-real-mathlib \
+            --receipt cp020-original-borwein-6sha-source-only.json \
+            | tee cp020-original-6-source-signatures.log
+          grep -F 'CP020_ORIGINAL_SIX_BLOB_SOURCE_AND_FRACTION_PASS_NOT_KERNEL' cp020-original-6-source-signatures.log
+          test -s cp020-original-borwein-6sha-source-only.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp020-Borwein-six-original-SHA-exact-Fraction-and-germ-NOT-LEAN
+          path: |
+            cp020-original-exact-fraction.log
+            cp020-original-6-source-signatures.log
+            cp020-original-borwein-6sha-source-only.json
+          if-no-files-found: ignore
