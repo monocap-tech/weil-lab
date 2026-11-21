@@ -1,0 +1,72 @@
+name: CP015 MANUAL authentic Zeta v4.35 unconditional N(149.5)=52 root-witness Lean kernel
+# Explicit opt-in PR labeled event or workflow_dispatch only; no normal PR/push triggers.
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [labeled]
+permissions:
+  contents: read
+concurrency:
+  group: cp015-original-zeta-1495-unconditional-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-upstream-unconditional-1495-root-witness-kernel:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'cp015-lean-kernel' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact genuine original Zeta Lean 4.35 toolchain
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Require true upstream Zeta source SHA and all original source witness signatures
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 60
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          test "$(git -C .lake/packages/Zeta rev-parse HEAD)" = c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.35.0
+          python ../scripts/cp013_rs_only_batch_source_lineage.py \
+            --self-test --original-root .lake/packages/Zeta \
+            --receipt cp015-inherited-cp013-original-source.json
+          python ../scripts/cp015_unconditional_seam_source_preflight.py \
+            --self-test --upstream-source .lake/packages/Zeta \
+            --receipt cp015-seven-original-source-signatures.json
+      - name: ACTUAL original Zeta kernel build of original split and all missing witness-cover lemmas
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 155
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get
+          lake build CP013RSOnly CP013Seam CP014FiniteCut CP014ZetaCut CP015SourceWitnesses 2>&1 \
+            | tee cp015-original-1495-source-real-Lean-build.log
+      - name: REAL original v4.35 Lean standard-only nine theorem axiom receipts
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          (cd cp011_zeta_v435 && lake env lean CP015SourceWitnesses.lean) 2>&1 \
+            | tee cp011_zeta_v435/cp015-original-1495-source-actual-axioms.log
+          python scripts/cp015_exact_source_seam_lean_axiom_audit.py
+          test -s cp011_zeta_v435/cp015-1495-unconditional-lean-receipt.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp015-original-Zeta-4.35-UNCONDITIONAL-N1495-and-no-seam-zero-if-kernel-passes
+          path: |
+            cp011_zeta_v435/cp015-inherited-cp013-original-source.json
+            cp011_zeta_v435/cp015-seven-original-source-signatures.json
+            cp011_zeta_v435/cp015-original-1495-source-real-Lean-build.log
+            cp011_zeta_v435/cp015-original-1495-source-actual-axioms.log
+            cp011_zeta_v435/cp015-1495-unconditional-lean-receipt.json
+            cp011_zeta_v435/.lake/build/lib/lean/CP015SourceWitnesses.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
