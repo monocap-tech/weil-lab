@@ -101,6 +101,7 @@ DEPS=[
  Path("scripts/iv015_frozen_collar_exact_log_gap.py"),
  Path("scripts/iv022_original_four_cell_prime_capacity_audit.py"),
  Path("lean-toolchain"),
+ Path("lakefile.toml"),
  Path("lake-manifest.json"),
 ]
 
