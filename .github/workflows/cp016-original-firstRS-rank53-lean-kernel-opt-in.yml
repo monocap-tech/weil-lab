@@ -1,0 +1,78 @@
+name: CP016 OPT-IN original Zeta v4.35 53rd source zero RANK genuine Lean kernel
+# Explicit PR label only; no push or regular pull-request CI fanout.
+# Protected independent original IV###/NF### large compiler queues.
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [labeled]
+permissions:
+  contents: read
+concurrency:
+  group: cp016-original-zeta-53rd-source-rank-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  actual-original-upstream-53rd-source-zero-Lean:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'cp016-lean-kernel' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install original immutable Zeta v4.35 Lean compiler
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Pin original Zeta immutable source commit and Mathlib original minimality API Git SHA
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 65
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          test "$(git -C .lake/packages/Zeta rev-parse HEAD)" = c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.35.0
+          python ../scripts/cp013_rs_only_batch_source_lineage.py \
+            --self-test --original-root .lake/packages/Zeta \
+            --receipt cp016-inherited-original-193-source-stage.json
+          python ../scripts/cp016_original_first_RS_ordinal_source_gate.py \
+            --self-test --upstream .lake/packages/Zeta --mathlib .lake/packages/mathlib \
+            --receipt cp016-original-ordinal-source-pin.json
+      - name: True full imported original source Lean kernel build of 53rd ordinal and conditional attachment
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 150
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get
+          lake build CP013RSOnly CP013Seam CP014FiniteCut CP014ZetaCut CP014HardyRank \
+            CP015SourceWitnesses CP016FirstRSRank CP016MonotoneAttach 2>&1 \
+            | tee cp016-actual-original-source-kernel-build.log
+      - name: ACTUAL seven CP016 new declarations real standard Lean axioms and all dependency oleans
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          (
+            cd cp011_zeta_v435
+            lake env lean CP016FirstRSRank.lean
+            lake env lean CP016MonotoneAttach.lean
+          ) 2>&1 | tee cp011_zeta_v435/cp016-real-zeta-ordinal-axioms.log
+          python scripts/cp016_original_firstRS_rank_lean_axiom_audit.py
+          test -s cp011_zeta_v435/cp016-original-firstRS-ordinal53-kernel.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp016-genuine-original-Zeta-4.35-53rd-source-zero-rank-and-conditional-attach
+          path: |
+            cp011_zeta_v435/cp016-inherited-original-193-source-stage.json
+            cp011_zeta_v435/cp016-original-ordinal-source-pin.json
+            cp011_zeta_v435/cp016-actual-original-source-kernel-build.log
+            cp011_zeta_v435/cp016-real-zeta-ordinal-axioms.log
+            cp011_zeta_v435/cp016-original-firstRS-ordinal53-kernel.json
+            cp011_zeta_v435/.lake/build/lib/lean/CP016FirstRSRank.olean
+            cp011_zeta_v435/.lake/build/lib/lean/CP016MonotoneAttach.olean
+          if-no-files-found: ignore
+          include-hidden-files: true

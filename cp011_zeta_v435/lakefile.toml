@@ -42,3 +42,11 @@ name = "CP014HardyRank"
 # and derives the actual unconditional 149.5 zero-count theorem candidate.
 [[lean_lib]]
 name = "CP015SourceWitnesses"
+
+# CP016 source-defined first RS zero global ordinal 53 and conditional
+# HardyZ monotone exact root attachment, original Zeta v4.35 only.
+[[lean_lib]]
+name = "CP016FirstRSRank"
+
+[[lean_lib]]
+name = "CP016MonotoneAttach"
