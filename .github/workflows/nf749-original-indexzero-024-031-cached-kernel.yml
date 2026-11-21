@@ -6,7 +6,7 @@ on:
       - "scripts/nf748_original_596_kernel_rollforward.py"
       - "scripts/nf749_original_indexzero_024_031_cached_kernel.py"
       - "scripts/nf749_original_indexzero_import_order_guard.py"
-      - "docs/NF749_596_ORIGINAL_GATES_AND_INDEXZERO_024_031.md"
+      - "docs/NF749_ORIGINAL_INDEXZERO_024_031_GAP_RETRY.md"
       - "docs/NF747_ORIGINAL_INDEXZERO_CACHE_FRONTIER_KERNEL_ORDER.md"
       - "docs/NF743_ORIGINAL_ACCEPTED_CACHE_REUSE.md"
       - ".github/workflows/nf749-original-indexzero-024-031-cached-kernel.yml"
