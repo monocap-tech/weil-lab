@@ -1,0 +1,599 @@
+{
+  "schema_version": 1,
+  "track": "UOI006",
+  "date": "2026-11-21",
+  "safety_status": "NO_GO",
+  "scope": "69 NF450-NF505 numbered workflow files only, NOT a complete YAML parse of 608/612 workflows",
+  "frozen_branches": {
+    "NF768": {
+      "source_sha": "b477d9a8eb6c33781a8eee7c1208de93c705f307",
+      "total_workflows": 608
+    },
+    "IV025": {
+      "source_sha": "f89952aebfbb1e9775a9fb0dbbe71995ae636b04",
+      "total_workflows": 612
+    }
+  },
+  "cross_branch": {
+    "shared_workflow_paths": 589,
+    "shared_identical_blobs": 560,
+    "historical_slice_files": 69,
+    "historical_slice_divergent_blobs": 21
+  },
+  "classified_event_count": {
+    "NF768": {
+      "unrestricted": 45,
+      "path_scoped": 22,
+      "no_pull_request": 2
+    },
+    "IV025": {
+      "unrestricted": 64,
+      "path_scoped": 3,
+      "no_pull_request": 2
+    }
+  },
+  "method": "Each NF historical YAML blob was read from GitHub and classified by its literal 'on:' ordinary 'pull_request' stanza. Only 21 differing IV YAML blobs required independent reads; same blob identity transfers exact source classification. Workflow event parsing is a conservative text-level scope audit, not GitHub Actions full workflow validation.",
+  "limitations": [
+    "539 and 543 workflows outside this named historical slice not YAML-content classified",
+    "workflow_dispatch intentionally preserved in historical source",
+    "push handling not completely surveyed across entire repo",
+    "path filters may miss transitive runtime dependencies",
+    "required check branch protection unavailable to integration (403)",
+    "unknown/nonstandard YAML/event forms outside range not audited",
+    "frozen historical source SHAs and accepted numerical artifacts must not be mutated"
+  ],
+  "rows": [
+    {
+      "path": ".github/workflows/nf450-original-B-laplace-moments.yml",
+      "nf768_blob": "a5d1c2720b02963573526e7218d61db3512103b8",
+      "iv025_blob": "a5d1c2720b02963573526e7218d61db3512103b8",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "path_scoped",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf451-original-j8-collar.yml",
+      "nf768_blob": "3404ef1f5601c43fe2e26a0b740c3e6320be1507",
+      "iv025_blob": "3404ef1f5601c43fe2e26a0b740c3e6320be1507",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "path_scoped",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf452-original-j8-terminal-moments.yml",
+      "nf768_blob": "ec263399b44d1afdcecd27375087ddd996352921",
+      "iv025_blob": "ec263399b44d1afdcecd27375087ddd996352921",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "path_scoped",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf453-original-j7-j8-principal-signed.yml",
+      "nf768_blob": "1c88316affc576ed1b50cbc8104bcc430dc0d581",
+      "iv025_blob": "e44bf3843d1fc8509b399812dd5de216cf92680b",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf454-original-square-energy.yml",
+      "nf768_blob": "f4281d8832002230bae2eb11a76e1d5e62e8ac79",
+      "iv025_blob": "ba37ff2cfc825f81b1ee0b8aa9a4d535780254f0",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf455-original-j78-projection-floor.yml",
+      "nf768_blob": "0f364b6203b8a06743a241d691761148bb7d2143",
+      "iv025_blob": "7751b39bd18a4bcf4c0b7d6d892970b9e4828a97",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf456-original-two-ray-residual-budget.yml",
+      "nf768_blob": "53093caf6b58f1d0a58ca8464c92449882247420",
+      "iv025_blob": "249eef499a0b208faea7f211937e4a45b813c413",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf457-original-log-peel.yml",
+      "nf768_blob": "25bb13e47e87150d54e13240ddd41a3a793fbb3c",
+      "iv025_blob": "25bb13e47e87150d54e13240ddd41a3a793fbb3c",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf458-original-endpoint-leverage-gate.yml",
+      "nf768_blob": "fa932e125909f312d8660bcaea821ed53367a7b5",
+      "iv025_blob": "fa932e125909f312d8660bcaea821ed53367a7b5",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf459-native-original-christoffel.yml",
+      "nf768_blob": "3ef43267450c93ae65c5603d63167c57cd902a7f",
+      "iv025_blob": "fe9991d3e4af8f84c1ed2409c9fcedbeadf667ac",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf460-original-bulk-seam-h1.yml",
+      "nf768_blob": "8b8c399211523dc1d2711ed7689e617bd9837f26",
+      "iv025_blob": "8b8c399211523dc1d2711ed7689e617bd9837f26",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf462-original-forced-j7-sign.yml",
+      "nf768_blob": "274f800795247c44eb37aacc46420921af0292c6",
+      "iv025_blob": "ea049c773b7238edba60d7f485bcaeb8f1da9ca2",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf463-original-j7-spatial-necessity.yml",
+      "nf768_blob": "f96a10937fc703850209d1502b13b696a08d320e",
+      "iv025_blob": "f96a10937fc703850209d1502b13b696a08d320e",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf464-original-j7-macroscopic-necessity.yml",
+      "nf768_blob": "5743a4c3a2042262ecab68b3b4de3df0b40947a4",
+      "iv025_blob": "5743a4c3a2042262ecab68b3b4de3df0b40947a4",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf465-j7-derivative-resolution-stop.yml",
+      "nf768_blob": "775939c38730184d1fe4f735700b6f98e01fa437",
+      "iv025_blob": "775939c38730184d1fe4f735700b6f98e01fa437",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf466-j7-correlated-moment-algebra.yml",
+      "nf768_blob": "5e3ce0b598171c65613298f3498d52e2f6e18ce9",
+      "iv025_blob": "93173c89e6342e683379bb02856cb8995b8a3faf",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf467-j7-mean-operator-algebra.yml",
+      "nf768_blob": "12e1c4d6f34e6a13651b1c3d4d750b30bdbcdef5",
+      "iv025_blob": "cb3d18375e39ecd948504bb7736bd1f861494fcc",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf468-j7-original-mean-coarse-enclosure.yml",
+      "nf768_blob": "a15e7303730781156ea10a4ddb394757b850cf18",
+      "iv025_blob": "b0a310d688daaf1b701750741ca61d53b46b1d34",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf469-j7-native-jet-order-gate.yml",
+      "nf768_blob": "303b20cb77b9c655f53e9334a0a5803ba92fe5d2",
+      "iv025_blob": "1635f49f492712e506dc6fdb8657fc86928db67c",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf470-original-j7-native-regular-mean-joint-nodes.yml",
+      "nf768_blob": "63e6d7edf3ba38fd66c5ee88d3711fb875cedf0f",
+      "iv025_blob": "e72db2f853905e98c950bf0130a0aab341760075",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf471-original-j7-complete-mean-receipt.yml",
+      "nf768_blob": "ba05b1f2007f6daaa90a5f087b696ccc73569518",
+      "iv025_blob": "a1c33ea0910a5378c0ea21bfc422994153101477",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf471-original-j7-joint-arch-macroscopic-mean.yml",
+      "nf768_blob": "f93fbb51a56a073bb329e2e6079ca8edf781e532",
+      "iv025_blob": "f93fbb51a56a073bb329e2e6079ca8edf781e532",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf472-original-j7-correlated-signed-moments.yml",
+      "nf768_blob": "2236c391dbcbc5c530bdc5b2875ddac97b2f89fa",
+      "iv025_blob": "2236c391dbcbc5c530bdc5b2875ddac97b2f89fa",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf472-original-j7-signed-moments-receipt.yml",
+      "nf768_blob": "89ced3936869041d4d4864fac6818a450c279d68",
+      "iv025_blob": "89ced3936869041d4d4864fac6818a450c279d68",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf473-original-j7-left-panel-correlated-signed-moments.yml",
+      "nf768_blob": "2fbd6958780d70270a131b516ec7e1d7ffa1c7c1",
+      "iv025_blob": "cf9a91c7e2a5f2bbab977840520b74689d8b46f5",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf474-original-j7-fast-source-independent-fraction-audit.yml",
+      "nf768_blob": "a2bc4787d6b8e00e26f012fb033b05fa6c5d086a",
+      "iv025_blob": "491638f3d699ebaac70d73ae8b6f57c01cf55c5f",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf474-original-j7-right-panel-correlated-signed-moments.yml",
+      "nf768_blob": "544a08dbddc1589fb9fe249c57bce941918cec5d",
+      "iv025_blob": "9cfd50d982e3847d8aa04d8a3d2ad2258c040be9",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf475-original-j7-fast-exact-fraction-audit.yml",
+      "nf768_blob": "50603173b0ee2cda2ef97eea136e6359a872d661",
+      "iv025_blob": "50603173b0ee2cda2ef97eea136e6359a872d661",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf475-original-j7-near-b-24000-image-signed.yml",
+      "nf768_blob": "b6b8c830b1da44284c369f507f7102f68559a3e3",
+      "iv025_blob": "b6b8c830b1da44284c369f507f7102f68559a3e3",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf476-original-j7-irrational-left-seam-signed.yml",
+      "nf768_blob": "76c7a3eb2c291c0ef4f752150f10114384227f94",
+      "iv025_blob": "76c7a3eb2c291c0ef4f752150f10114384227f94",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf477-original-j7-fast-exact-image-tail-audit.yml",
+      "nf768_blob": "7153a9a6a2e6bddb637da58f361e7859c4a4cb2b",
+      "iv025_blob": "7153a9a6a2e6bddb637da58f361e7859c4a4cb2b",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf477-original-j7-source-contracted-high-image-tail.yml",
+      "nf768_blob": "1997deb741fe36d280dfb5b16e33e0c0837ffb73",
+      "iv025_blob": "1997deb741fe36d280dfb5b16e33e0c0837ffb73",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf478-original-J7-fast-source-reassembly-audit.yml",
+      "nf768_blob": "60ed037c82a7062aef6fee41356c3a3f62f0afbd",
+      "iv025_blob": "60ed037c82a7062aef6fee41356c3a3f62f0afbd",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf478-original-J7-independent-direct-exact-D7.yml",
+      "nf768_blob": "7a325d0ac7a580f285b199c3d7682557cb330c83",
+      "iv025_blob": "7a325d0ac7a580f285b199c3d7682557cb330c83",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf478-original-J7-last-two-source-signed-full-cell.yml",
+      "nf768_blob": "bb7721494132476f88f77add76dc04c00a7e5ca5",
+      "iv025_blob": "bb7721494132476f88f77add76dc04c00a7e5ca5",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf479-original-j8-positive-NF404-transfer-exact.yml",
+      "nf768_blob": "d2c5e29ba9696fa29be316d119b79d73b3b8ca64",
+      "iv025_blob": "d2c5e29ba9696fa29be316d119b79d73b3b8ca64",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf480-original-J8-12jet-endpoint-L2-exact.yml",
+      "nf768_blob": "857a66519ac6d26845e293ffbd0768c144001e21",
+      "iv025_blob": "857a66519ac6d26845e293ffbd0768c144001e21",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf481-original-j8-20jet-source-unconditional-energy.yml",
+      "nf768_blob": "b1edb8a0504b87d7b7d8010e06388c51653ce3d9",
+      "iv025_blob": "0fe920d2c9653ba04b5d45c62220d1c8f7595d1e",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf482-original-j8-fast-focused-fraction.yml",
+      "nf768_blob": "3201d0d7c09050101569688751411b37fc1d3f54",
+      "iv025_blob": "3201d0d7c09050101569688751411b37fc1d3f54",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf482-original-j8-fast-source-reassembly-exact.yml",
+      "nf768_blob": "d26b32bdd6d65feeaee067b1c8fcb428067779ef",
+      "iv025_blob": "d26b32bdd6d65feeaee067b1c8fcb428067779ef",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf482-original-j8-first-independent-11-source-block-Fraction.yml",
+      "nf768_blob": "4355f6ea7d202c85f2ec0dba992b544200fddc61",
+      "iv025_blob": "4355f6ea7d202c85f2ec0dba992b544200fddc61",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf482-original-j8-first-irrational-n9-signed.yml",
+      "nf768_blob": "57faa50c719a83ecc5b5cf79a99cef94546449ee",
+      "iv025_blob": "57faa50c719a83ecc5b5cf79a99cef94546449ee",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf483-original-j8-terminal-principal-gram-exact.yml",
+      "nf768_blob": "b68ae7c24f51c30e861a0b32284cf1aa0dcdb1ae",
+      "iv025_blob": "b68ae7c24f51c30e861a0b32284cf1aa0dcdb1ae",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf484-original-j8-18k-renormalized-gram.yml",
+      "nf768_blob": "08053c7cf70c1f716141e89f718def2e7a569b6b",
+      "iv025_blob": "08053c7cf70c1f716141e89f718def2e7a569b6b",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf484-original-j8-fast-immutable-gram-replay.yml",
+      "nf768_blob": "df2a493828354a4822864e756077941ee6bb7f44",
+      "iv025_blob": "df2a493828354a4822864e756077941ee6bb7f44",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf485-j8-principal-image-log-moment-algebra.yml",
+      "nf768_blob": "dabfe5c1d6193ac1dbc8703e4a9cf5bc4a6312d9",
+      "iv025_blob": "2f9e2213dacea24ce5a08a0db392f40342aee544",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf486-original-J8-last-collar-exact-source-upper.yml",
+      "nf768_blob": "a55e2feb8795b784e79ba66b3b67664e3e47010c",
+      "iv025_blob": "a55e2feb8795b784e79ba66b3b67664e3e47010c",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf487-original-J8-joint-compact-log-cusp-exact.yml",
+      "nf768_blob": "17f8825dd44b4e7f92c63f16d7f7d159bcde1803",
+      "iv025_blob": "17f8825dd44b4e7f92c63f16d7f7d159bcde1803",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf488-original-j8-four-moment-source-gate.yml",
+      "nf768_blob": "3d4801428f0e65557d8a51d62cf23a74845b4c20",
+      "iv025_blob": "3d4801428f0e65557d8a51d62cf23a74845b4c20",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf489-original-J8-first-physical-joint-compact-point.yml",
+      "nf768_blob": "3153f9013a31e57a9b86fbd0c218cace19c18cc2",
+      "iv025_blob": "3153f9013a31e57a9b86fbd0c218cace19c18cc2",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf489-original-j8-joint-compact-exact-method-preflight.yml",
+      "nf768_blob": "f8d60d7d688adb27159eebfaa6cc3d7a57d57fbc",
+      "iv025_blob": "f8d60d7d688adb27159eebfaa6cc3d7a57d57fbc",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf489-original-j8-legacy-NF482-boundary-exact.yml",
+      "nf768_blob": "d36996bf210d29439cf7c3515231090f0a156e9d",
+      "iv025_blob": "d36996bf210d29439cf7c3515231090f0a156e9d",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf492-original-J8-all-orders-log-holomorphic-400jet-exact.yml",
+      "nf768_blob": "6e4fbb402d65d394f7437999cfc00b801fd4bd49",
+      "iv025_blob": "6e4fbb402d65d394f7437999cfc00b801fd4bd49",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf492-original-J8-physical-full-log-source-native.yml",
+      "nf768_blob": "a9425d232a33b025e0e1919e7e46f980078f7c94",
+      "iv025_blob": "a9425d232a33b025e0e1919e7e46f980078f7c94",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf493-original-J8-400-source-log-square.yml",
+      "nf768_blob": "8b67b69ecd24d6ce0a34eb1e34604af780594d4a",
+      "iv025_blob": "dcb9c284e4d04bdb94a76d348fb6c66a265b558c",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf494-independent-original-J8-whole-square-exact.yml",
+      "nf768_blob": "229dda8b5fe9d3c02f325cb57e4ec46d7426872a",
+      "iv025_blob": "229dda8b5fe9d3c02f325cb57e4ec46d7426872a",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf494-original-J8-analytic-H400-exact-method.yml",
+      "nf768_blob": "a21a452873d4f7f8ffe5995e65775e704bef1cf4",
+      "iv025_blob": "a21a452873d4f7f8ffe5995e65775e704bef1cf4",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf494-original-J8-whole-analytic-H400-native.yml",
+      "nf768_blob": "c9450a557d3dff1b19e64cb3bf96a6d6fc7a196b",
+      "iv025_blob": "c9450a557d3dff1b19e64cb3bf96a6d6fc7a196b",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf496-original-center-invariant-J242-complement-exact.yml",
+      "nf768_blob": "6c316797be68fdf6cded4c241225d49d7b392814",
+      "iv025_blob": "6c316797be68fdf6cded4c241225d49d7b392814",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf497-original-source-box-projector-capture-exact.yml",
+      "nf768_blob": "13d2dd4e0dd0ac7a58c51c8e96978054e97bcf01",
+      "iv025_blob": "13d2dd4e0dd0ac7a58c51c8e96978054e97bcf01",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf498-original-endpoint-log-carrier-rankone-domain-exact.yml",
+      "nf768_blob": "afeec661098b7e9f395f09cfd9d95680cfc3cf48",
+      "iv025_blob": "afeec661098b7e9f395f09cfd9d95680cfc3cf48",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf499-original-smooth-log-collar-source-exact.yml",
+      "nf768_blob": "dfca7cb8fa3e23b310be6f62385f45c61d1c604c",
+      "iv025_blob": "dfca7cb8fa3e23b310be6f62385f45c61d1c604c",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf500-independent-242-native-source-artifact-replay.yml",
+      "nf768_blob": "30ebc0ea26189fb19d2ead29ad9893d9fb1ed28c",
+      "iv025_blob": "30ebc0ea26189fb19d2ead29ad9893d9fb1ed28c",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf500-original-J242-all-mixed-log-source-exact.yml",
+      "nf768_blob": "e2b035a96cf36d4dcb6ba76b86731c8b02fb6390",
+      "iv025_blob": "8125d127dda66f72263bbc8844ce62df138605ec",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf501-original-J242-correlated-log-projection.yml",
+      "nf768_blob": "2515e24595968582d8a9a5290808cb3ae3cf67df",
+      "iv025_blob": "7cecea6ddfc342289aac5260ae97f7a345750a22",
+      "nf768_pr_source_event": "path_scoped",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    },
+    {
+      "path": ".github/workflows/nf502-original-J242-log-cone-separation-exact.yml",
+      "nf768_blob": "b0f7c082f502bbe0ea238feb4cddf1105324c91d",
+      "iv025_blob": "b0f7c082f502bbe0ea238feb4cddf1105324c91d",
+      "nf768_pr_source_event": "no_pull_request",
+      "iv025_pr_source_event": "no_pull_request",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf503-original-support-saturated-exterior-quotient-exact.yml",
+      "nf768_blob": "b5cef83d55a2efd722093069cf1e7366b24ca107",
+      "iv025_blob": "b5cef83d55a2efd722093069cf1e7366b24ca107",
+      "nf768_pr_source_event": "no_pull_request",
+      "iv025_pr_source_event": "no_pull_request",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf504-original-J8-saturated-exterior-native.yml",
+      "nf768_blob": "65c0ef2d24b0f7d32f99b093cf0e8368a9e2cbb9",
+      "iv025_blob": "65c0ef2d24b0f7d32f99b093cf0e8368a9e2cbb9",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": true
+    },
+    {
+      "path": ".github/workflows/nf505-original-J8-support-saturated-independent.yml",
+      "nf768_blob": "b73957197a4f4bdd85b427fb120cfe1bfff77743",
+      "iv025_blob": "2fd3f0f0f1066c3ee36d4ea0051775d893dd98be",
+      "nf768_pr_source_event": "unrestricted",
+      "iv025_pr_source_event": "unrestricted",
+      "same_source_blob": false
+    }
+  ]
+}
