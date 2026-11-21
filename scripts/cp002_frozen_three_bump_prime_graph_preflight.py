@@ -72,6 +72,13 @@ def check_radius(r):
     margin=F(7,10)-75*width
     expected=F(1,4) if r==F(1,1000) else F(1,10)
     assert margin==expected
+    # This specific three-bump family occupies a STRICT subset of the old collars.
+    # The support-length bound is weaker than its exact bump-shape L1 capacity.
+    frozen_width=4*H+2*r
+    assert frozen_width==(F(1,250) if r==F(1,1000) else F(3,500))
+    assert log_interval(3)[1]<F(6,5), "Lambda(9)/sqrt(9)=log3/3 < 2/5"
+    conditional_frozen_floor=F(11,10)-75*frozen_width-F(2,5)
+    assert conditional_frozen_floor==(F(2,5) if r==F(1,1000) else F(1,4))
     # Common translation preserves support differences, not the fixed window.
     shift=F(1,50)
     shifted_diff=diff(tuple(v+shift for v in intervals["plus"]),
