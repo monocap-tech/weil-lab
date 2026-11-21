@@ -2,6 +2,9 @@ name: IV023 actual original four-cell smooth Schwartz partition, n9 prime transf
 on:
   pull_request:
     paths:
+      - "lean-toolchain"
+      - "lakefile.toml"
+      - "lake-manifest.json"
       - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalFourCellSmoothSchwartzPartition.lean"
       - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalFourCellPrimeTransferCoercivity.lean"
       - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSecondNewCellPrimeGeometry.lean"
