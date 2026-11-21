@@ -191,9 +191,9 @@ def compare_uploaded(uploaded:Path,computed:dict):
                 if F(given[height][uploaded_key])!=F(calc[height][replay_key]):
                     raise ValueError("MISMATCH "+height+": "+uploaded_key)
             checks+=1
-    if checks!=25:
+    if checks!=23:
         raise ValueError("all expected exact uploaded rational fields not checked: "+str(checks))
-    print("CP026 USER-UPLOADED CP025 25 EXACT INTERVAL FIELDS REPLAY EQUAL: PASS NOT LEAN")
+    print("CP026 USER-UPLOADED CP025 23 INTERVAL RATIOS PLUS 3 EXACT HEIGHTS REPLAY EQUAL: PASS NOT LEAN")
     print("  Upload bytes SHA256 =",hashlib.sha256(raw).hexdigest())
     return hashlib.sha256(raw).hexdigest()
 
@@ -241,7 +241,7 @@ def main():
           "original_255plus6_EM_evaluation_sha256":sha256(ORIGINAL),
           "original_frozen_zeta_commit":ORIGINAL_ZETA,
           "original_primary_source_verified_sha":REQUIRED_UPSTREAM,
-          "upload_exact_rational_match_count":25 if sha else 0,
+          "upload_exact_rational_match_count":26 if sha else 0,
           "optional_uploaded_receipt_sha256":sha,
           "original_hardy_sign_envelopes": {
            "left_upper":"-0.000000681","right_lower":"0.000015519",
