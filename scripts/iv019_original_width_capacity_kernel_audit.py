@@ -94,6 +94,7 @@ DEPS=[
     Path("WeilDefect/External/Zeta23/Definitions/Def_Zeta23_ExplicitFormula.lean"),
     Path("scripts/iv015_frozen_collar_exact_log_gap.py"),
     Path("scripts/iv018_original_three_cell_coercivity_audit.py"),
+    Path("lakefile.toml"),
     Path("lean-toolchain"),
     Path("lake-manifest.json"),
 ]
@@ -216,6 +217,8 @@ def source_preflight():
     ):
         assert symbol in MOD_B.read_text(),symbol
     for p in DEPS:
+        if p.name == "lake-manifest.json":
+            continue  # Lake generates this AFTER source preflight.
         assert p.is_file(),("Missing actual source dependency",str(p))
     exact_capacity_receipt()
     print("IV019 SOURCE PREFLIGHT PASS: 16 new true original-source Lean candidates, 7 upstream standard axiom anchors; actual Lean verification PENDING.")
@@ -238,6 +241,7 @@ def check_log(path,names):
 
 def verify():
     source_preflight()
+    assert Path("lake-manifest.json").is_file(), "Missing Lake-generated manifest: lake update must run before KERNEL verification"
     objects=[OLEAN_ROOT/(p.stem+".olean") for p in (MOD_A,MOD_B)]
     for p in objects:
         assert p.is_file() and p.stat().st_size>0,("actual compiled Lean object missing",p)
