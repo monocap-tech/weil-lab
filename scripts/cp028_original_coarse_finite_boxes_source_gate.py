@@ -122,6 +122,68 @@ def original_exact_replay():
     print("CP028 ORIGINAL BOTH FINITE A6N256 10^55 INTEGER-DIRECTED COARSE BOXES: 2/2 PASS NOT LEAN")
     return rows
 
+def uploaded_cp025_coarse_ratio_crosscheck(path:Path, rows:dict|None):
+    """Decode source-era exact rational evidence conservatively.
+
+    The uploaded CP025 receipt was already independently replayed
+    26/26 in CP026. This OPTIONAL check recovers the original norm
+    upper bound encoded in the receipt's EXACT symmetric error rule
+
+       z_lo = finite_lo - (phase_error * A_norm_up + Rcap)
+       z_hi = finite_hi + (phase_error * A_norm_up + Rcap).
+
+    This is a consistency audit on EXTERNAL interval evidence,
+    not a Lean proof and NOT a substitute for fresh CP025 replay.
+    """
+    obj=json.loads(path.read_text("utf8"))
+    if obj.get("source_original_zeta_commit")!="c06b4e13d9c847e50a32c3d738271cbad62ae9f3":
+        raise ValueError("uploaded original source SHA provenance drift")
+    if obj.get("genuine_Lean_v435_olean_or_axiom_receipts_for_new_CP") is not False:
+        raise ValueError("uploaded source numerical witness improperly claims Lean certification")
+    evidence=obj.get("exact_point_evidence",{})
+    proofs={}
+    for side,key,t in (("left","150.05352",L),("right","150.05353",R)):
+        p=evidence.get(key)
+        if p is None or F(p["t"])!=t:
+            raise ValueError("uploaded true original rational height missing "+key)
+        finite_lo=F(p["z_finite_lo"])
+        finite_hi=F(p["z_finite_hi"])
+        z_lo=F(p["actual_Z_lower_conditional"])
+        z_hi=F(p["actual_Z_upper_conditional"])
+        phase=F(p["theta_error_upper"])
+        rem=F(p["zeta_R_value_bound"])
+        if phase!=F(12,t**4) or rem!=BORWEIN:
+            raise ValueError("uploaded published theta/source zeta error incorrect")
+        if phase<=0:raise ValueError("original published theta cap nonpositive")
+        e_lo=finite_lo-z_lo
+        e_hi=z_hi-finite_hi
+        if e_lo!=e_hi:
+            raise ValueError("CP025 asymmetrical outward interval-error evidence")
+        if e_lo<rem:
+            raise ValueError("uploaded complex A norm deduction negative")
+        A_norm=(e_lo-rem)/phase
+        if not (0<=A_norm<=MAX_NORM):
+            raise ValueError("uploaded actual original A norm upper exceeds coarse box")
+        if not (finite_hi<-SIGN if side=="left" else finite_lo>SIGN):
+            raise ValueError("uploaded original signed finite strict bound false")
+        if rows is not None:
+            if A_norm!=F(rows[side]["actual_255plus6_original_A_complex_interval_norm_upper"]):
+                raise ValueError("uploaded norm does not match NEW actual 255-term integer replay")
+            if finite_lo!=F(rows[side]["original_finite_rotated_lower"]):
+                raise ValueError("uploaded finite lower does not match NEW actual directed replay")
+            if finite_hi!=F(rows[side]["original_finite_rotated_upper"]):
+                raise ValueError("uploaded finite upper does not match NEW actual directed replay")
+        proofs[side]={
+            "t":str(t),
+            "original_norm_upper_inferred_from_CP025_symmetric_exact_error":str(A_norm),
+            "original_finite_real_lower":str(finite_lo),
+            "original_finite_real_upper":str(finite_hi),
+            "external_true_original_coarse_box":True,
+            "new_source_Lean_kernel_paid":False,
+        }
+    print("CP028 UPLOADED CP025 EXACT ORIGINAL A-NORM/SIGN RATIO COARSE BOX CHECK: 2/2 PASS NOT LEAN")
+    return proofs
+
 def source_audit():
     s=SRC.read_text("utf8")
     names=re.findall(r"(?m)^theorem\s+(\w+)\b",s)
@@ -172,6 +234,7 @@ def main():
     p.add_argument("--self-test",action="store_true")
     p.add_argument("--source-check",action="store_true")
     p.add_argument("--kernel-audit",action="store_true")
+    p.add_argument("--uploaded-cp025",type=Path)
     p.add_argument("--receipt",type=Path)
     a=p.parse_args()
     if a.self_test:
@@ -179,6 +242,7 @@ def main():
         res=original_exact_replay()
     else:res=None
     if a.source_check:source_audit()
+    uploaded=uploaded_cp025_coarse_ratio_crosscheck(a.uploaded_cp025,res) if a.uploaded_cp025 else None
     if a.kernel_audit:actual_kernel_audit()
     if a.receipt:
         if not (a.self_test and a.source_check):
@@ -193,6 +257,7 @@ def main():
             "coarse_finite_norm_upper":str(MAX_NORM),
             "coarse_finite_absolute_sign_lower":str(SIGN),
             "two_original_endpoints":res,
+            "optional_uploaded_CP025_original_exact_norm_ratio":uploaded,
             "new_original_Lean_v435_kernel_accepted":False,
             "two_original_finite_numeric_Lean_enclosures_discharge":False,
             "original_Borwein_point_source_Lean_kernel_accepted":False,
@@ -205,7 +270,7 @@ def main():
         }
         a.receipt.write_text(json.dumps(o,indent=2)+"\n",encoding="utf8")
         print(o["status"])
-    if not (a.self_test or a.source_check or a.kernel_audit):p.print_help()
+    if not (a.self_test or a.source_check or a.kernel_audit or a.uploaded_cp025):p.print_help()
 
 if __name__=="__main__":
     try:main()
