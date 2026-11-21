@@ -24,7 +24,9 @@ permissions:
   contents: read
 
 concurrency:
-  group: weil-iv018-single-lane-pinned
+  group: weil-uoi030-single-lane-source-pinned
+  # Shared with default-branch UOI030 manual workflow: prevents simultaneous IV018/UOI030 runs.
+  # This is NOT a global lease: RPB108/legacy manual workflows still require operator coordination.
   cancel-in-progress: false
 
 jobs:
