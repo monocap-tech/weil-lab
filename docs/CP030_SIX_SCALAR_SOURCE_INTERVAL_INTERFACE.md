@@ -58,3 +58,16 @@ The JSON will explicitly mark all six Lean source-membership facts, original nar
 CP030 changes precisely one new Lean conditional source candidate, one external source-aware interval script, and this document. It changes no historical source identity, no shared Lake registry, no ordinary CI workflow, no labels, and dispatches no heavy CI. The branch inherits CP029's read-only trigger audit: ordinary PR workflows were path-scoped and none previously depended on these three new paths. Recheck the head before any further CI submission.
 
 **Still open:** CP029's 11 original pointwise Borwein Lean 4.35 proofs and strict axiom receipts; all six original CP030 finite scalar source proofs; actual CP026/27/28/30 chain compilation; source ordinal53/uniqueness; normalized original signed Weil↔spectral preservation, support-independent original positivity, and RH. The protected NF 692/968 kernel frontier does not advance from CP030.
+
+
+### 5. Additional exact error-budget improvement (conditional)
+
+If the four true source real/imaginary component inequalities hold, the proven elementary upper bound is norm(A) <= 2/10000, so the original published theta cap and the CP027 source-derived (but still uncompiled) remainder bound yield
+
+    E(t) <= (12/150^4)*(2/10000) + 3/10^13
+         = 1361/270000000000000
+         ≈ 5.04074074074074e-12 < 1/10^11.
+
+This rational equality and comparison were checked independently using Python Fraction arithmetic. They tighten CP028's conditional 6481/270000000000000 budget by approximately 4.76x; the rounded CP028 1e-10 ceiling is almost 20x larger. They **do not** establish the six original finite scalar inequalities or the pending CP027 original Lean theorem.
+
+The source-only gate additionally pins the exact inherited CP028 coarse-box Git blob 5cc23f986d575cf94343a6afc19e9de2ee1ea536, rejecting drift before numerical receipt creation.
