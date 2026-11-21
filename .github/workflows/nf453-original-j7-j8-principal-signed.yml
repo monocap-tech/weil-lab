@@ -1,6 +1,16 @@
 name: NF453 original J7 J8 principal exact replay
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf453-original-j7-j8-principal-signed.yml'
+      - 'scripts/local_replay/verify_nf453_original_j7_j8_principal_energy_signed_island.py'
+      - 'notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json'
+      - 'notes/data/provisional/NF406_original_prime_support_partition_exact.json'
+      - 'notes/data/provisional/NF411_original_source_boundary_jet.json'
+      - 'notes/data/provisional/NF410_original_signed_taylor_moments.json'
+      - 'notes/data/provisional/NF417_original_cell7_full_z_pointwise_native.json'
+      - 'notes/data/provisional/NF418_original_hotspot_cellwide_lipschitz_envelopes_exact.json'
+      - 'notes/data/provisional/NF452_original_J8_terminal_signed_moments_custody_index.json'
   workflow_dispatch:
 jobs:
   exact-original:

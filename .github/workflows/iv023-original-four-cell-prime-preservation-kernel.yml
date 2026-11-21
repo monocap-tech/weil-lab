@@ -1,0 +1,85 @@
+name: IV023 actual original four-cell smooth Schwartz partition, n9 prime transfer and one-sixteenth Weil gate
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalFourCellSmoothSchwartzPartition.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalFourCellPrimeTransferCoercivity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSecondNewCellPrimeGeometry.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalFourCellSignedCapacity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalWholeThreeCellSchwartzPartition.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollarPrimeBound.lean"
+      - "scripts/iv023_original_four_cell_prime_transfer_audit.py"
+      - "scripts/iv015_frozen_collar_exact_log_gap.py"
+      - ".github/workflows/iv023-original-four-cell-prime-preservation-kernel.yml"
+      - "docs/IV023_PHASE_IV_ORIGINAL_FOUR_CELL_PRIME_PRESERVATION.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: iv023-original-four-cell-prime-preservation-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  full-original-four-cell-prime-dictionary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact original pinned Lean Mathlib toolchain and cached dependencies
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          test -s lake-manifest.json
+      - name: Independently exact Fraction four-cell cutoff and false-log2-collision negatives — NOT Lean proof
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/iv015_frozen_collar_exact_log_gap.py scripts/iv023_original_four_cell_prime_transfer_audit.py
+          python scripts/iv023_original_four_cell_prime_transfer_audit.py preflight
+          test -s iv023-original-four-cell-prime-preservation-exact-rational.json
+      - name: Fetch pinned Mathlib cache after strict source preflight
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get
+      - name: Direct real Lean kernel build of true SECOND C-infinity Schwartz partition for EVERY original four-cell test
+        timeout-minutes: 100
+        run: |
+          set -euo pipefail
+          /usr/bin/time -a -o iv023-source-resources.log -f 'phase=allFourCellPhysicalSchwartzPartition elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalFourCellSmoothSchwartzPartition 2>&1 | tee iv023-original-four-cell-schwartz-partition-build.log
+      - name: Direct real Lean kernel build of exact original full n9 prime preservation and whole-class one-sixteenth signed Weil
+        timeout-minutes: 100
+        run: |
+          set -euo pipefail
+          /usr/bin/time -a -o iv023-source-resources.log -f 'phase=originalFullPrimeTransferOneSixteenth elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalFourCellPrimeTransferCoercivity 2>&1 | tee iv023-original-four-cell-prime-transfer-coercivity-build.log
+      - name: Direct source-bound Lean standard-only axiom and true compiled .olean SHA audit — 18 new and eight upstream
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalFourCellSmoothSchwartzPartition.lean 2>&1 | tee iv023-original-four-cell-schwartz-partition-axioms.log
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalFourCellPrimeTransferCoercivity.lean 2>&1 | tee iv023-original-four-cell-prime-transfer-coercivity-axioms.log
+          python scripts/iv023_original_four_cell_prime_transfer_audit.py verify
+          test -s iv023-original-four-cell-prime-transfer-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv023-original-four-cell-complete-prime-transfer-oneSixteenth-restricted-Weil
+          path: |
+            iv023-original-four-cell-prime-preservation-exact-rational.json
+            iv023-source-resources.log
+            iv023-original-four-cell-schwartz-partition-build.log
+            iv023-original-four-cell-prime-transfer-coercivity-build.log
+            iv023-original-four-cell-schwartz-partition-axioms.log
+            iv023-original-four-cell-prime-transfer-coercivity-axioms.log
+            iv023-original-four-cell-prime-transfer-kernel-audit.json
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalFourCellSmoothSchwartzPartition.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalFourCellPrimeTransferCoercivity.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
