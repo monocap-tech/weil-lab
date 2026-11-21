@@ -119,6 +119,35 @@ theorem original_53rd_positive_zeta_zero_exists :
   refine ⟨z, hz, hzroot.2, CP015SourceWitnesses.rsRoots_above z hz,
     N_at_original_least_RS_root_eq_52 hz hzmin, hzmin⟩
 
+/-- Any TWO source-chosen least RS roots are the SAME complex zero.
+Their minimal ordinates agree, and upstream original bounded-height RH
+places every original source root on Re=1/2. No source numeric first
+RS interval or extra zero uniqueness axiom is assumed. -/
+theorem original_least_RS_root_unique
+    {z w : ℂ}
+    (hz : z ∈ CP015SourceWitnesses.rsRoots)
+    (hw : w ∈ CP015SourceWitnesses.rsRoots)
+    (hminz : ∀ v ∈ CP015SourceWitnesses.rsRoots, z.im ≤ v.im)
+    (hminw : ∀ v ∈ CP015SourceWitnesses.rsRoots, w.im ≤ v.im) :
+    z = w := by
+  have hzim : z.im = w.im :=
+    le_antisymm (hminz w hw) (hminw z hz)
+  have hzg := (CP014ZetaCut.mem_zerosUnder_iff _ z).mp
+    (CP015SourceWitnesses.rsRoots_subset hz)
+  have hwg := (CP014ZetaCut.mem_zerosUnder_iff _ w).mp
+    (CP015SourceWitnesses.rsRoots_subset hw)
+  have hzre : z.re = 1 / 2 := by
+    by_contra hne
+    exact (riemannZeta.ne_zero_of_re_ne_half_upto
+      certifiedZeroCount hzg.1 hne) hzg.2
+  have hwre : w.re = 1 / 2 := by
+    by_contra hne
+    exact (riemannZeta.ne_zero_of_re_ne_half_upto
+      certifiedZeroCount hwg.1 hne) hwg.2
+  apply Complex.ext
+  · exact hzre.trans hwre.symm
+  · exact hzim
+
 /-- The original canonical first RS zero is the FIRST genuine positive
 zero above 149.5. Proves an EMPTY OPEN GAP between the method seam and
 that source-defined zero, without demanding a numerical right endpoint. -/
@@ -151,3 +180,4 @@ end CP016FirstRSRank
 #print axioms CP016FirstRSRank.N_at_original_least_RS_root_eq_52
 #print axioms CP016FirstRSRank.original_53rd_positive_zeta_zero_exists
 #print axioms CP016FirstRSRank.original_first_RS_zero_has_no_preceding_zero
+#print axioms CP016FirstRSRank.original_least_RS_root_unique
