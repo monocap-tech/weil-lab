@@ -28,7 +28,7 @@
       "lakefile.toml": "e567c529fc39eff8a175b3361a2831763e5dcc2c",
       "WeilDefect/Arithmetic/PI007FiniteGammaKernel.lean": "598fe925b129fcf8eb7d5fd5b94e7849a9e82ef9",
       "WeilDefect/Arithmetic/PI008FiniteDigammaSymbol.lean": "276d2b3caca7686aacceafaa19e723655b03e3a1",
-      "WeilDefect/Arithmetic/PI014KernelCharacterBridge.lean": ""
+      "WeilDefect/Arithmetic/PI014KernelCharacterBridge.lean": "87b423ef892b49976a573bde8f5637e3b3d0bcf7"
     }
   },
   "assertions": {
