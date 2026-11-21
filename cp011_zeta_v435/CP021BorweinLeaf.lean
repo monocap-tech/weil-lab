@@ -91,6 +91,9 @@ theorem source_circle_geometry (t : ℝ) (ht : t ∈ Icc a b)
     linarith
   have hcentre_re : (center t).re = (1 : ℝ) / 2 := by
     simp [center]
+  have ht_nonneg : (0 : ℝ) ≤ t := by
+    have ha_nonneg : (0 : ℝ) ≤ a := by norm_num [a]
+    exact ha_nonneg.trans ht.1
   have hcentre_norm : ‖center t‖ ≤ (1 : ℝ) / 2 + t := by
     calc
       ‖center t‖ =
@@ -98,11 +101,11 @@ theorem source_circle_geometry (t : ℝ) (ht : t ∈ Icc a b)
       _ ≤ ‖(1 / 2 : ℂ)‖ + ‖Complex.I * (t : ℂ)‖ :=
         norm_add_le _ _
       _ = (1 : ℝ) / 2 + t := by
-        simp [norm_mul, abs_of_nonneg ht.1]
+        simp [norm_mul, abs_of_nonneg ht_nonneg]
   have hnorm : ‖z‖ ≤ (1 : ℝ) / 4 + ‖center t‖ := by
     have := norm_add_le (z - center t) (center t)
     rw [sub_add_cancel] at this
-    rwa [hdist] at this
+    simpa only [hdist] using this
   constructor
   · have heq : z.re = (z - center t).re + (1 : ℝ) / 2 := by
       rw [Complex.sub_re, hcentre_re]
