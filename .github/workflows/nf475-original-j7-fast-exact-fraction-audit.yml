@@ -1,6 +1,5 @@
 name: NF475 independent original source signed Fraction custody audit
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

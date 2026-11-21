@@ -1,6 +1,5 @@
 name: NF476 original J7 [log8-B,1] irrational n8 seam signed moments
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   central:

@@ -1,6 +1,5 @@
 name: NF477 exact original high-image source-resolvent witness
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

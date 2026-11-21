@@ -1,6 +1,5 @@
 name: NF477 true original J7 source-contracted high-image tail certificate
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   original-high-image-resolvent:

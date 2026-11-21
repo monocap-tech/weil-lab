@@ -1,6 +1,5 @@
 name: NF478 independent original seven-panel J7 raw signed exact audit
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read
