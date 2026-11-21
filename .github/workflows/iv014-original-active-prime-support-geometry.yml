@@ -1,0 +1,67 @@
+name: IV014 genuine original zeta Lambda-active prime support geometry and residual
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalActivePrimeSupportGeometry.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportPhaseCancellation.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportArithmeticEnvelope.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportArithmeticCutoff.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalMixedHermitian.lean"
+      - "scripts/iv014_original_active_prime_geometry_audit.py"
+      - "scripts/iv009_original_schwartz_polarization_audit.py"
+      - ".github/workflows/iv014-original-active-prime-support-geometry.yml"
+      - "docs/IV014_PHASE_IV_ORIGINAL_ACTIVE_PRIME_SUPPORT_GEOMETRY.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: iv014-original-active-prime-support-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-zeta-active-prime-support-geometry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source preflight for real arithmetic Lambda-active geometry — not kernel acceptance
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/iv014_original_active_prime_geometry_audit.py
+          python scripts/iv014_original_active_prime_geometry_audit.py preflight
+      - name: Install pinned original Lean Mathlib toolchain and cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Direct original-source Lambda-active interval and Weil residual Lean kernel build
+        timeout-minutes: 190
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o iv014-source-resources.log -f 'elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalActivePrimeSupportGeometry 2>&1 | tee iv014-original-active-prime-geometry-build.log
+      - name: Direct strict Lean standard-axiom audit ten IV014 and four genuine source declarations
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalActivePrimeSupportGeometry.lean 2>&1 | tee iv014-original-active-prime-geometry-axioms.log
+          python scripts/iv014_original_active_prime_geometry_audit.py verify
+          test -s iv014-original-active-prime-geometry-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv014-original-zeta-active-prime-support-residual-kernel-audit
+          path: |
+            iv014-source-resources.log
+            iv014-original-active-prime-geometry-build.log
+            iv014-original-active-prime-geometry-axioms.log
+            iv014-original-active-prime-geometry-kernel-audit.json
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalActivePrimeSupportGeometry.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
