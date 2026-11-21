@@ -121,6 +121,23 @@ theorem unique_zero_in_original_slot (Z : CertifiedZeroCount)
     (every_positive_zero_is_original_witness Z hsG hzs)
     (every_positive_zero_is_original_witness Z htG hzt) hsA htA
 
+/-- A kernel-certified refined root with ordinate strictly inside slot k
+must equal that source slot's already certified zero. The full indexed
+dictionary needs no independent uniqueness axiom after the Turing count.
+The proof is still only a source CANDIDATE until compilation and axioms pass. -/
+theorem refined_root_identifies_original_slot (Z : CertifiedZeroCount)
+    (k : Fin Z.intervals.length) {s : ℂ}
+    (hs : s.im ∈ Ioo (Z.intervals.get k).fst (Z.intervals.get k).snd)
+    (hz : riemannZeta s = 0) :
+    ∃ t : ℝ,
+      t ∈ Ioo (Z.intervals.get k).fst (Z.intervals.get k).snd ∧
+      riemannZeta (1 / 2 + Complex.I * (t : ℂ)) = 0 ∧
+      s = 1 / 2 + Complex.I * (t : ℂ) := by
+  obtain ⟨t, ht, hzt⟩ := Z.has_zero _ (List.get_mem _ k)
+  refine ⟨t, ht, hzt, ?_⟩
+  exact unique_zero_in_original_slot Z (List.get_mem _ k)
+    hs (by simpa using ht) hz hzt
+
 /-- Concrete pinned 1,748,002-root Turing-certificate specialization.
 This gives exact membership of every positive zero below the source Gram point,
 not a numerical ordinate enclosure or a new RH claim. -/
@@ -135,4 +152,5 @@ end CP011CanonicalRoster
 
 #print axioms CP011CanonicalRoster.every_positive_zero_is_original_witness
 #print axioms CP011CanonicalRoster.unique_zero_in_original_slot
+#print axioms CP011CanonicalRoster.refined_root_identifies_original_slot
 #print axioms CP011CanonicalRoster.pinned_external_positive_root_is_member
