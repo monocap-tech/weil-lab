@@ -184,7 +184,7 @@ jobs:
             printf -v n "%03d" "$i"
             lake build "WeilDefect.Generated.NF704Frontier.Col$n" 2>&1 | tee -a nf734-new-original-gate-build.log
           done
-      - name: Strict standard-axiom audit: original numerical 16 new HD/A index-zero gates and 19 proof support declarations
+      - name: "Strict standard-axiom audit: original numerical 16 new HD/A index-zero gates and 19 proof support declarations"
         timeout-minutes: 30
         run: |
           set -euo pipefail
