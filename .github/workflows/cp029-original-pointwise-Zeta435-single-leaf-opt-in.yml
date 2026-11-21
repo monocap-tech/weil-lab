@@ -87,6 +87,24 @@ jobs:
             --receipt cp029-original-v435-11-axioms-actual-LEAN-kernel.json \
             2>&1 | tee cp029-original-pointwise-actual-kernel-audit.log
           test -s cp029-original-v435-11-axioms-actual-LEAN-kernel.json
+      - name: Capture first actual compiler error or explain why no build diagnostic exists
+        if: always()
+        working-directory: cp011_zeta_v435
+        run: |
+          set -euo pipefail
+          log=CP027PointwiseBorwein-cp029-isolated-actual-build.log
+          if test -s "$log"; then
+            if grep -nEm1 '(^|[[:space:]])(error:|unsolved goals|type mismatch|unknown identifier|application type mismatch|failed to synthesize)' "$log" \
+              > cp029-first-original-compiler-error.txt; then
+              cat cp029-first-original-compiler-error.txt
+            else
+              printf '%s\n' 'No source-level compiler error pattern found. Consult complete build log and genuine axiom audit before claiming success.' \
+                > cp029-first-original-compiler-error.txt
+            fi
+          else
+            printf '%s\n' 'No CP027 build transcript exists: earlier source/installation/cache stage may have failed; inspect job steps. This is NOT kernel success.' \
+              > cp029-first-original-compiler-error.txt
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -97,6 +115,7 @@ jobs:
             cp011_zeta_v435/cp029-original-frozen-Zeta-Mathlib-source-SHA-gate.log
             cp011_zeta_v435/cp029-mathlib-cache-preparation.log
             cp011_zeta_v435/CP027PointwiseBorwein-cp029-isolated-actual-build.log
+            cp011_zeta_v435/cp029-first-original-compiler-error.txt
             cp011_zeta_v435/CP027PointwiseBorwein-cp029-isolated-actual-axioms.log
             cp011_zeta_v435/cp029-original-pointwise-actual-kernel-audit.log
             cp011_zeta_v435/cp029-original-v435-11-axioms-actual-LEAN-kernel.json
