@@ -50,3 +50,9 @@ name = "CP016FirstRSRank"
 
 [[lean_lib]]
 name = "CP016MonotoneAttach"
+
+# CP017: exact rational Hardy-Z derivative anchor 12/5 and curvature 4
+# give 0.18588 strict positivity and conditional source ordinal-53
+# attachment. BOTH analytic hypotheses remain unproved source inputs.
+[[lean_lib]]
+name = "CP017CurvatureBudget"
