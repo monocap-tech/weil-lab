@@ -1,6 +1,5 @@
 name: NF456 original J242 two-ray residual budget
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   original-source-exact:

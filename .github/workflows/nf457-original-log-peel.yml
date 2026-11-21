@@ -1,6 +1,5 @@
 name: NF457 source-original endpoint log peel
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   original-endpoint-exact:

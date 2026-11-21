@@ -1,6 +1,5 @@
 name: NF463 original J7 genuine island and spatial necessity
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   original-j7-exact-source:

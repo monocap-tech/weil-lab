@@ -1,6 +1,5 @@
 name: NF455 original projection J7 J8 energy floor
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   original-exact:

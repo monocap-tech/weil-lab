@@ -1,6 +1,5 @@
 name: NF460 original bulk seam and H1 obstruction
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   original-source-exact:

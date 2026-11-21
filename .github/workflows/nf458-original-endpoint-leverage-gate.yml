@@ -1,6 +1,5 @@
 name: NF458 authentic original 244D endpoint projection gate
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   original-exact-source-preflight:

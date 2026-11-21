@@ -1,6 +1,5 @@
 name: NF462 original forced J7 signed deficit
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   original-source-exact:

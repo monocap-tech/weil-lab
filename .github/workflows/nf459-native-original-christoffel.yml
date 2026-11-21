@@ -1,6 +1,5 @@
 name: NF459 original 244D native physical Christoffel collar
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   original-native-244D:
