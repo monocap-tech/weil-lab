@@ -1,0 +1,81 @@
+{
+  "source_repository": "smmercuri/zeta",
+  "pinned_commit": "c06b4e13d9c847e50a32c3d738271cbad62ae9f3",
+  "license": "Apache-2.0 (source data from external release; see repository LICENSE)",
+  "euler_maclaurin": {
+    "manifest_path": "python/out/euler_maclaurin/zeros/manifest.json",
+    "manifest_git_sha": "72a4a851de388383a885709fda35c8ec3c9c06e0",
+    "store_path": "python/out/euler_maclaurin/zeros/zeros_00001.txt",
+    "store_git_sha": "6958515f7dd1be86ebe823ff6fd67ec110ec90f7",
+    "rows": 52,
+    "columns": [
+      "idx",
+      "left",
+      "right",
+      "left_cutoff",
+      "right_cutoff",
+      "left_bernoulli",
+      "right_bernoulli"
+    ],
+    "last_right": "149.500",
+    "compiler_batch_path": "Zeta/Zeros/Certificates/EulerMaclaurin/Batch0001.lean",
+    "compiler_batch_git_sha": "a4f28786abb75420cf950ae701f5c7befcda560d",
+    "compiler_batch_statement": "theorem batch : BatchSpec 52 1000 1000 149500 1000 := by build_batch 0 52"
+  },
+  "riemann_siegel": {
+    "manifest_path": "python/out/riemann_siegel/zeros/manifest.json",
+    "manifest_git_sha": "9cb5d0ca577927109dabc0024cff39e2b3df51d9",
+    "rows": 1747950,
+    "columns": [
+      "idx",
+      "left",
+      "right"
+    ],
+    "files": [
+      [
+        "zeros_00001.txt",
+        "1029bed8a315d1b39d7c45e55a6476acbbf8baf1",
+        250000,
+        "170602.749"
+      ],
+      [
+        "zeros_00002.txt",
+        "60dcb7662a17e1ecfafe2a0af0b0d7c467984efd",
+        250000,
+        "319417.763"
+      ],
+      [
+        "zeros_00003.txt",
+        "e423883247631abe001278f1d04103c47f193660",
+        250000,
+        "461803.682"
+      ],
+      [
+        "zeros_00004.txt",
+        "b92550cebcddeaec4485488366134a369faae5db",
+        250000,
+        "600298.404"
+      ],
+      [
+        "zeros_00005.txt",
+        "e856345f097b9f33868b2aedd08971c3e543bc55",
+        250000,
+        "736031.456"
+      ],
+      [
+        "zeros_00006.txt",
+        "77feb1b1dcb9054007ed1145124ea2d0a18bc24d",
+        250000,
+        "869638.124"
+      ],
+      [
+        "zeros_00007.txt",
+        "265af527707ebb13df8b298790ad3f71bd76af89",
+        247950,
+        "1000449.286"
+      ]
+    ]
+  },
+  "total": 1748002,
+  "zero_count_lean_source": "Zeta/Zeros/Certificates.lean / Zeta/Zeros/CountCertificates.lean / Zeta/Zeros/RiemannHypothesisUpTo/Basic.lean"
+}
