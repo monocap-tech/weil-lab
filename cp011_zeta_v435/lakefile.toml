@@ -37,3 +37,8 @@ name = "CP014ZetaCut"
 # Optional local root-rank route: genuine Hardy Z StrictMonoOn conditional.
 [[lean_lib]]
 name = "CP014HardyRank"
+
+# CP015 discharges CP014's remaining source-root E/R witness coverage
+# and derives the actual unconditional 149.5 zero-count theorem candidate.
+[[lean_lib]]
+name = "CP015SourceWitnesses"
