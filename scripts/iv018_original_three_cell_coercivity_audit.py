@@ -65,6 +65,8 @@ NEW_B=[
     "neutralIV018OriginalFiniteOldPlusNew_oneQuarter",
     "neutralIV018ExistsGenuineNewThreeCellPositiveDirection",
 ]
+# Generated only by `lake update` after source preflight; SHA-bound by real verifier.
+MANIFEST=Path("lake-manifest.json")
 DEPS=[
     ROOT/"ActualZetaPhaseIVOriginalNarrowSignedGamma.lean",
     ROOT/"ActualZetaPhaseIVOriginalNarrowDiagonalCoercivity.lean",
@@ -88,7 +90,6 @@ DEPS=[
     ROOT/"ActualZetaOriginalCollar242Correction.lean",
     Path("WeilDefect/External/Zeta23/Definitions/Def_Zeta23_ExplicitFormula.lean"),
     Path("lean-toolchain"),
-    Path("lake-manifest.json"),
 ]
 
 def digest(path):
@@ -196,6 +197,7 @@ def parse_log(path,names):
 
 def kernel_verify():
     source_preflight()
+    assert MANIFEST.is_file(), ("Missing generated Lake manifest after update", str(MANIFEST))
     oleans=[OLEAN/(p.stem+".olean") for p in (MOD_A,MOD_B)]
     for p in oleans:
         assert p.is_file() and p.stat().st_size>0,("Actual compiled Lean object required",p)
@@ -204,7 +206,7 @@ def kernel_verify():
     report={
         "schema":SCHEMA,
         "scope":"Unchanged original literal zeta signed Weil form on historical two strict NF543 collars PLUS true narrow Schwartz interval: physical 3/500 Gamma+2-pole and EXACT n9 prime transfer from old original source.",
-        "original_source_sha256":{str(p):digest(p) for p in [MOD_A,MOD_B]+DEPS},
+        "original_source_sha256":{str(p):digest(p) for p in [MOD_A,MOD_B]+DEPS+[MANIFEST]},
         "actual_compiled_Lean_object_sha256":{str(p):digest(p) for p in oleans},
         "independent_exact_rational_budget_sha256":digest(PILOT),
         "original_upstream_axiom_anchors":UPSTREAM_A+UPSTREAM_B,
