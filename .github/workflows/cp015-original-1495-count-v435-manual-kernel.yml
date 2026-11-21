@@ -1,7 +1,9 @@
 name: CP015 MANUAL authentic Zeta v4.35 unconditional N(149.5)=52 root-witness Lean kernel
-# Intentionally NOT PR-triggered: protects independent IV### and NF### compiler queues.
+# Explicit opt-in PR labeled event or workflow_dispatch only; no normal PR/push triggers.
 on:
   workflow_dispatch:
+  pull_request:
+    types: [labeled]
 permissions:
   contents: read
 concurrency:
@@ -9,6 +11,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   original-upstream-unconditional-1495-root-witness-kernel:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'cp015-lean-kernel' }}
     runs-on: ubuntu-latest
     timeout-minutes: 240
     steps:
