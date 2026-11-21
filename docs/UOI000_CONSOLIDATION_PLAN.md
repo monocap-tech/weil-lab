@@ -108,4 +108,4 @@ python scripts/uoi_validate.py research/unified/obligations.json --plan
 python -m unittest discover -s scripts -p 'test_uoi.py' -v
 ```
 
-The checked-in prototype is **planning-only**; it cannot use network tokens, dispatch a GitHub Action, merge branches, or accept a proof. The doc and manifest should be reviewed against the active research lineage before any PR or CI installation.
+The accompanying **local planning prototype** is not yet committed or installed as a GitHub workflow. It is **planning-only**: it cannot use network tokens, dispatch Actions, merge branches or accept a proof. The commands above show the proposed repository paths after reviewed staging; in the local package run `python validate_uoi.py obligations.json --plan` and `python -m unittest -v test_uoi.py`. Review the exact active research lineage before any PR or CI installation.
