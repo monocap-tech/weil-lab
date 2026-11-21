@@ -30,12 +30,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Exact rational three-cell physical/gamma/two-pole/n9 budget and source preflight — NOT Lean certification
-        run: |
-          set -euo pipefail
-          python -m py_compile scripts/iv018_original_three_cell_coercivity_audit.py
-          python scripts/iv018_original_three_cell_coercivity_audit.py preflight
-          test -s iv018-original-three-cell-rational-ledger.json
       - name: Install pinned genuine original Lean Mathlib toolchain and immutable cache
         run: |
           set -euo pipefail
@@ -43,6 +37,17 @@ jobs:
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
           export PATH="$HOME/.elan/bin:$PATH"
           lake update
+          test -s lake-manifest.json
+      - name: Exact rational three-cell physical/gamma/two-pole/n9 budget and source preflight — NOT Lean certification
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/iv018_original_three_cell_coercivity_audit.py
+          python scripts/iv018_original_three_cell_coercivity_audit.py preflight
+          test -s iv018-original-three-cell-rational-ledger.json
+      - name: Fetch pinned Mathlib cache after strict source preflight
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
           lake exe cache get
       - name: Direct Lean kernel source build of real three-cell physical measure, signed Gamma and two real poles
         timeout-minutes: 100

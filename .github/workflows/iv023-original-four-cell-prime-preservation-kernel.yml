@@ -28,12 +28,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Independently exact Fraction four-cell cutoff and false-log2-collision negatives — NOT Lean proof
-        run: |
-          set -euo pipefail
-          python -m py_compile scripts/iv015_frozen_collar_exact_log_gap.py scripts/iv023_original_four_cell_prime_transfer_audit.py
-          python scripts/iv023_original_four_cell_prime_transfer_audit.py preflight
-          test -s iv023-original-four-cell-prime-preservation-exact-rational.json
       - name: Install exact original pinned Lean Mathlib toolchain and cached dependencies
         run: |
           set -euo pipefail
@@ -41,6 +35,17 @@ jobs:
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
           export PATH="$HOME/.elan/bin:$PATH"
           lake update
+          test -s lake-manifest.json
+      - name: Independently exact Fraction four-cell cutoff and false-log2-collision negatives — NOT Lean proof
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/iv015_frozen_collar_exact_log_gap.py scripts/iv023_original_four_cell_prime_transfer_audit.py
+          python scripts/iv023_original_four_cell_prime_transfer_audit.py preflight
+          test -s iv023-original-four-cell-prime-preservation-exact-rational.json
+      - name: Fetch pinned Mathlib cache after strict source preflight
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
           lake exe cache get
       - name: Direct real Lean kernel build of true SECOND C-infinity Schwartz partition for EVERY original four-cell test
         timeout-minutes: 100
