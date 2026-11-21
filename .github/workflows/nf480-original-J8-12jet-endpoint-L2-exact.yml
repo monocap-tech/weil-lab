@@ -1,6 +1,5 @@
 name: NF480 exact original source J8 endpoint-regularized 12-jet infinite-image L2
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

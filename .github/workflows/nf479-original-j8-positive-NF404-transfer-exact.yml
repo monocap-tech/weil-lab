@@ -1,6 +1,5 @@
 name: NF479 exact original J8 forced sign and NF404 logical transfer audit
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

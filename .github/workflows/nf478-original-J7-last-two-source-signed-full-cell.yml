@@ -1,6 +1,5 @@
 name: NF478 true original J7 final two physical signed panels and complete D7
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

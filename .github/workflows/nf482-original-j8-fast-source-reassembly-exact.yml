@@ -1,6 +1,5 @@
 name: NF482 original J8 first physical source fast exact reassembly
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

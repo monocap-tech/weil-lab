@@ -1,6 +1,5 @@
 name: NF481 original J8 20-jet unconditional full energy tail source certificate
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

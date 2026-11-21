@@ -1,6 +1,5 @@
 name: NF482 independent exact original full source J8 signed first 11 artifacts
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read
