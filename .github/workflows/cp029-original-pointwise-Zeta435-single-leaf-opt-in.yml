@@ -1,0 +1,105 @@
+name: CP029 OPT-IN isolated original Zeta v4.35 CP027 pointwise kernel
+# ONE original pointwise leaf only, 11 strict axiom receipts.
+# Zero ordinary push / PR-created / PR-synchronize fanout.
+# A PR must be EXPLICITLY labeled cp029-pointwise-lean, or
+# this can be manually dispatched after the workflow is available
+# on the default branch. Do NOT apply the label before coordinating
+# with original Phase IV/NF runner workload.
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [labeled]
+permissions:
+  contents: read
+concurrency:
+  group: cp029-original-zeta435-one-pointwise-leaf-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+jobs:
+  cp029-actual-original-Zeta435-pointwise-only:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'cp029-pointwise-lean' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: FIRST source-only true original CP027 pointwise 11 declaration/axiom gate (NOT LEAN)
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            scripts/cp027_original_center_borwein_328_over_27_source_gate.py \
+            scripts/cp029_original_one_leaf_kernel_receipt_gate.py
+          python scripts/cp027_original_center_borwein_328_over_27_source_gate.py \
+            --self-test --source-check \
+            2>&1 | tee cp029-original-pointwise-source-and-exact-math-NOT-LEAN.log
+          python scripts/cp029_original_one_leaf_kernel_receipt_gate.py \
+            --source-check \
+            2>&1 | tee cp029-standalone-source-frozen-target-NOT-LEAN.log
+          grep -F 'CP029 ORIGINAL STANDALONE POINTWISE SOURCE/11 AXIOMS/4 UPSTREAM IMPORTS: PASS NOT LEAN' \
+            cp029-standalone-source-frozen-target-NOT-LEAN.log
+      - name: Install ORIGINAL pinned Lean v4.35 via elan
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve original immutable Zeta source and strict upstream API SHA gates
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 45
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.35.0
+          lake update
+          test "$(git -C .lake/packages/Zeta rev-parse HEAD)" = c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          python ../scripts/cp027_original_center_borwein_328_over_27_source_gate.py \
+            --original-zeta .lake/packages/Zeta \
+            --original-mathlib .lake/packages/mathlib \
+            2>&1 | tee cp029-original-frozen-Zeta-Mathlib-source-SHA-gate.log
+          grep -F 'CP027 FIVE IMMUTABLE ORIGINAL ZETA/MATHLIB SOURCE GATES: 5/5 PASS NOT LEAN' \
+            cp029-original-frozen-Zeta-Mathlib-source-SHA-gate.log
+      - name: Retrieve upstream mathlib source cache for the original v4.35 toolchain
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get 2>&1 | tee cp029-mathlib-cache-preparation.log
+      - name: ACTUAL original Zeta435 compile CP027PointwiseBorwein ONLY — first real elaboration errors captured
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 95
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build CP027PointwiseBorwein \
+            2>&1 | tee CP027PointwiseBorwein-cp029-isolated-actual-build.log
+      - name: Actual 11 source #print axioms and FAIL-CLOSED original .olean gate
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake env lean CP027PointwiseBorwein.lean \
+            2>&1 | tee CP027PointwiseBorwein-cp029-isolated-actual-axioms.log
+          python ../scripts/cp029_original_one_leaf_kernel_receipt_gate.py \
+            --kernel-audit \
+            --receipt cp029-original-v435-11-axioms-actual-LEAN-kernel.json \
+            2>&1 | tee cp029-original-pointwise-actual-kernel-audit.log
+          test -s cp029-original-v435-11-axioms-actual-LEAN-kernel.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp029-ONE-actual-original-Zeta435-pointwise-leaf-11-kernel-diagnostics
+          path: |
+            cp029-original-pointwise-source-and-exact-math-NOT-LEAN.log
+            cp029-standalone-source-frozen-target-NOT-LEAN.log
+            cp011_zeta_v435/cp029-original-frozen-Zeta-Mathlib-source-SHA-gate.log
+            cp011_zeta_v435/cp029-mathlib-cache-preparation.log
+            cp011_zeta_v435/CP027PointwiseBorwein-cp029-isolated-actual-build.log
+            cp011_zeta_v435/CP027PointwiseBorwein-cp029-isolated-actual-axioms.log
+            cp011_zeta_v435/cp029-original-pointwise-actual-kernel-audit.log
+            cp011_zeta_v435/cp029-original-v435-11-axioms-actual-LEAN-kernel.json
+            cp011_zeta_v435/.lake/build/lib/lean/CP027PointwiseBorwein.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
