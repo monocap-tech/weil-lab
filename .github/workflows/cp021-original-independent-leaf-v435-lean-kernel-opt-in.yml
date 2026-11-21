@@ -69,6 +69,27 @@ jobs:
           ) 2>&1 | tee cp011_zeta_v435/cp021-real-original-leaf-axioms.log
           python scripts/cp021_independent_leaf_v435_source_kernel_gate.py --kernel-audit
           test -s cp011_zeta_v435/cp021-independent-original-leaf-actual-kernel.json
+      - name: CP026 source original Hardy-Z finite error to strict sign and OPEN interval zero — conditional isolated Lean v4.35 target
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build CP026OriginalPointBridge 2>&1 \
+            | tee cp026-actual-original-conditional-root-bridge-build.log
+      - name: Genuine CP026 four-theorem standard-only axiom output — 4 numerical premises remain UNPAID
+        timeout-minutes: 10
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          (
+            cd cp011_zeta_v435
+            lake env lean CP026OriginalPointBridge.lean
+          ) 2>&1 | tee cp011_zeta_v435/cp026-actual-original-point-bridge-axioms.log
+          python scripts/cp026_original_point_receipt_replay_and_conditional_lean_gate.py \
+            --kernel-audit
+          grep -F "depends on axioms:" \
+            cp011_zeta_v435/cp026-actual-original-point-bridge-axioms.log
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -81,5 +102,8 @@ jobs:
             cp011_zeta_v435/cp021-independent-original-leaf-actual-kernel.json
             cp011_zeta_v435/.lake/build/lib/lean/CP021BorweinLeaf.olean
             cp011_zeta_v435/.lake/build/lib/lean/CP021GermLeaf.olean
+            cp011_zeta_v435/cp026-actual-original-conditional-root-bridge-build.log
+            cp011_zeta_v435/cp026-actual-original-point-bridge-axioms.log
+            cp011_zeta_v435/.lake/build/lib/lean/CP026OriginalPointBridge.olean
           if-no-files-found: ignore
           include-hidden-files: true
