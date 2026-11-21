@@ -1,7 +1,7 @@
 # Weil-Lab — CP002
 ## Exact original prime-compression topology and a quantitative zero-side tail interface
 
-**Separate cross-projection track, stacked on CP001 PR #790.** Preserve Phase IV's original IV020 PR #788 (uncompiled 1/10 enlarged-support proof candidates) and Phase III's original NF### numerical-custody chain. This is NOT a kernel certificate, an unconditional spectral matrix computation, an equivalence theorem for other RH approaches, or RH.
+**Separate cross-projection track, stacked on CP001 PR #790.** Preserve Phase IV's original IV020 PR #788 and successor IV021 PR #794 (both source-candidate stages, not newly kernel accepted) and Phase III's original NF### numerical-custody chain. This is NOT a kernel certificate, an unconditional spectral matrix computation, an equivalence theorem for other RH approaches, or RH.
 
 ### 1. Real source audit: frozen tests and literal signed arithmetic
 
@@ -49,6 +49,37 @@ Here `Lambda(9)=log3` and `sqrt9=3`. The **prime contribution to the signed Weil
 Its ordinary eigenvalues are `-lambda9*I9, 0, +lambda9*I9`; its generalized `G_r`-relative eigenvalues are `-lambda9*I9/m0, 0, +lambda9*I9/m0`. This signed PRIME-only compression is indefinite. **No contradiction with IV018/IV020's proposed positive bounds for the FULL original pole-minus-prime-plus-Gamma source** follows: the analytic pole/Gamma blocks remain and can compensate. Also `P(f_-,t_r)=P(f_+,t_r)=P(t_r,t_r)=0` does NOT say the entire mixed Weil entries involving `t_r` vanish.
 
 Under an invertible basis change `C`, `A_prime -> C* A_prime C` and `G -> C* G C`; raw edge placement is coordinate-dependent while inertia and the generalized eigenvalues remain unchanged. A simultaneous physical translation preserves relative difference sets and prime-graph topology, but may move a test outside the original fixed window; source-window admissibility is NOT translation-invariant.
+
+### 2.5. TWO exact subspace invariants, with different extension behavior
+
+The CP001 three-bump sources are deliberately **strictly smaller** than the entire NF543 two-collar support class. Their actual occupied support has length `4*h + 2*r = 1/500+2*r`, not the coarser complete-collar union `1/250+2*r`. The bound `1/250+2*r` remains appropriate for unrestricted two-collar functions, but should not be mistaken for the intrinsic embedding capacity of this specific 3D subspace.
+
+Put `phi(u)=exp(1-1/(1-u²))` on `|u|<1`, and 0 otherwise; `a1=integral phi`, `a2=integral phi²`, `eta=a1²/a2`. Then `0<eta<2` by strict Cauchy--Schwarz on [-1,1] (the nonconstant bump is not almost everywhere a constant). Because `b_(c,h)(x)=phi((x-c)/h)`, one has `||b_(c,h)||_1=h*a1` and `||b_(c,h)||_2²=h*a2`.
+
+For a direct sum of functions of pairwise disjoint supports, the optimization
+`
+ sup_(a,b,c not all zero) ||a*f_- + b*f_+ + c*t_r||_1²
+                            / ||a*f_- + b*f_+ + c*t_r||_2²
+`
+is EXACTLY `sum_i ||f_i||_1² / ||f_i||_2²`, by weighted Cauchy--Schwarz and equality achievable by choosing the absolute coefficients proportional to `||f_i||_1/||f_i||_2²`. Thus
+`
+ kappa(V_r) = eta*(2*h+r) = eta*(1/1000+r)
+            < 2*(1/1000+r) = 4*h+2*r.
+`
+This is basis-independent **given the physical L1/L2 embedding and actual subspace**, not an invariant of the Weil form alone. It increases strictly with r.
+
+The prime-only matrix above yields the EXACT mass-relative prime burden
+`
+ pi_A(V_r) := sup_(f in V_r, f !=0) |Re P_original(f,f)|/M(f)
+            = (log3/3)*I9/m0,
+`
+since the generalized prime-only eigenvalues are `-lambda9*I9/m0,0,+lambda9*I9/m0`. In particular **pi_A(V_r) is INDEPENDENT of the central radius r**, because the central bump has no prime interaction and the original old bumps do not change. Cauchy--Schwarz implies `0<I9<=m0`, so `pi_A(V_r)<=log3/3<2/5`; the latter strict rational-log comparison is independently checked by the Fraction atanh preflight.
+
+If the authentic IV019 signed original analytic envelope is valid for this family and the CP002 prime-matrix attachment is formally proved, the true lower Rayleigh energy obeys the IMPROVED family-specific sufficient criterion
+`
+ lambda_A(V_r) >= 11/10 - 75*eta*(1/1000+r) - (log3/3)*I9/m0.
+`
+Hence **strictly greater than 2/5** at `r=1/1000` and **strictly greater than 1/4** at `r=1/500`, using only `eta<2` and `pi_A(V_r)<2/5`. These are **conditional mathematical deductions on the frozen three-bump family**, not Lean-accepted Weil lower bounds and not assertions for the entire two-collar plus central support class. They sharply distinguish an intrinsic mass-normalized arithmetic interaction from a support-dependent embedding capacity and from the earlier coarse 1/10 wide whole-class certificate.
 
 ### 3. A *quantitative* zeros-side tail estimate without assuming RH
 
