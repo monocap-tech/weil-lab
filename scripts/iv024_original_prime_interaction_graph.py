@@ -115,10 +115,13 @@ def classify(c1,c2,n,sign):
     assert sign in (-1,1)
     assert n>=2 and is_prime_power(n)
     lo,hi=rigorous_log(n)
-    # ORIGINAL source correlation is f_i(x)*conj(f_j(x-τ)).
-    # Therefore x ∈ C_i ∩ (C_j+τ), so a +log(n) overlap obeys
-    # c_i-c_j-log(n)≈0, NOT c_i-c_j+log(n)≈0. Keep directed
-    # edge signs consistent with the literal signed Weil source.
+    # Original source neutralWindowCorrelation(first,second;τ) is
+    # integral SECOND(x)*conj(FIRST(x-τ)). Thus graph a=from is the
+    # UNSHIFTED source SECOND argument, and b=to is the SHIFTED
+    # source FIRST argument: x ∈ C_a ∩ (C_b+τ). Hence the +log(n)
+    # overlap uses d=c_a-c_b-log(n), preserving true τ direction.
+    # Graph (from,to) order is NOT original source (first,second).
+    # See IV029's exact argument-swap and adjoint identity audit.
     d=c1.center-c2.center
     if sign==1:
         low,high=d-hi,d-lo
