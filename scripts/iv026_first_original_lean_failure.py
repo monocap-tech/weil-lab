@@ -102,8 +102,7 @@ def selftest():
             "NO_ERROR_FOUND_IN_BUILD_LOG_ONLY")
         assert actual==want,(want,actual)
         assert ((int(matches[0].group("line")) if matches else None)==line)
-    assert LEAN_LOC.search("not a compiler proof")
-    is None
+    assert LEAN_LOC.search("not a compiler proof") is None
     print("IV026 FIRST-ERROR source diagnostic parser: located original Lean failure, toolchain failure, false green build-only control all PASS. Not a Lean kernel proof.")
 
 def main():
