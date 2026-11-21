@@ -33,3 +33,7 @@ name = "CP014FiniteCut"
 
 [[lean_lib]]
 name = "CP014ZetaCut"
+
+# Optional local root-rank route: genuine Hardy Z StrictMonoOn conditional.
+[[lean_lib]]
+name = "CP014HardyRank"
