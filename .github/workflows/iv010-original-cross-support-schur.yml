@@ -1,0 +1,66 @@
+name: IV010 genuine original zeta one-new-support mixed Schur PSD gate
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
+      - "scripts/iv009_original_schwartz_polarization_audit.py"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportExtension.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalMixedHermitian.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVFiniteMixedWindowSystem.lean"
+      - "scripts/iv010_original_cross_support_audit.py"
+      - ".github/workflows/iv010-original-cross-support-schur.yml"
+      - "docs/IV010_PHASE_IV_ORIGINAL_CROSS_SUPPORT_SCHUR.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: iv010-original-cross-support-schur-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  actual-original-cross-support-one-new-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authentic original source/conditional-Schur theorem preflight (NOT kernel PASS)
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/iv010_original_cross_support_audit.py
+          python scripts/iv010_original_cross_support_audit.py preflight
+      - name: Install pinned original Lean toolchain and Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Direct full-source Lean build of exact old/new mixed zeta Weil block
+        timeout-minutes: 190
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o iv010-cross-support-resources.log -f 'elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalCrossSupportExtension 2>&1 | tee iv010-original-cross-support-build.log
+      - name: Direct Lean axiom audit 9 IV010 and 4 genuine source anchors
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportExtension.lean 2>&1 | tee iv010-original-cross-support-axioms.log
+          python scripts/iv010_original_cross_support_audit.py verify
+          test -s iv010-original-cross-support-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv010-original-zeta-one-new-support-mixed-schur-kernel-audit
+          path: |
+            iv010-original-cross-support-build.log
+            iv010-original-cross-support-axioms.log
+            iv010-original-cross-support-kernel-audit.json
+            iv010-cross-support-resources.log
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalCrossSupportExtension.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
