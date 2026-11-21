@@ -142,6 +142,17 @@ private theorem eulerCutLeGram :
     _ ≤ gramPoint certifiedZeroCount.minIdx :=
       original_source_end_le_gram
 
+/-- Strict cut below the genuine original source Gram point; needed
+because N(T) counts only positive-height zeros STRICTLY below T and
+a point on the seam must be inside the full height-g zero roster. -/
+private theorem eulerCutLtGram :
+    (149500 : ℝ) / 1000 <
+      gramPoint certifiedZeroCount.minIdx := by
+  calc
+    (149500 : ℝ) / 1000 < (1000449286 : ℝ) / 1000 := by norm_num
+    _ ≤ gramPoint certifiedZeroCount.minIdx :=
+      original_source_end_le_gram
+
 private theorem eulerHeightLeGram :
     E.height ≤ gramPoint certifiedZeroCount.minIdx :=
   eulerHeightLeCut.trans eulerCutLeGram
@@ -211,7 +222,7 @@ theorem no_original_zero_exactly_at_149500_div1000 (z : ℂ)
   have hmem :
       z ∈ CP014ZetaCut.zerosUnder (gramPoint certifiedZeroCount.minIdx) :=
     (CP014ZetaCut.mem_zerosUnder_iff _ z).mpr
-      ⟨⟨by rw [hheight]; norm_num, by rw [hheight]; exact eulerCutLeGram⟩,
+      ⟨⟨by rw [hheight]; norm_num, by rw [hheight]; exact eulerCutLtGram⟩,
         hz⟩
   rw [original_complete_positive_roster_is_euler_union_rs] at hmem
   rcases Finset.mem_union.mp hmem with hE | hR
