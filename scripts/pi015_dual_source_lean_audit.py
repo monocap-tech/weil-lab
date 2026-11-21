@@ -116,7 +116,19 @@ def source_check(lock: dict, upstream_dir: Path, mode: str) -> dict:
         for name, sha in local["source_blobs"].items()
     }
 
-    result = {"local_sources": local_files}
+    resolved_local = Path(".lake/packages/mathlib")
+    if not resolved_local.is_dir():
+        raise RuntimeError("Local actual Mathlib checkout missing")
+    local_sha = git_head(resolved_local)
+    if local_sha != local["mathlib_tag_commit"]:
+        raise RuntimeError(
+            f"Local actual Mathlib revision mismatched: {local_sha}"
+        )
+
+    result = {
+        "local_sources": local_files,
+        "local_resolved_mathlib_sha": local_sha,
+    }
 
     if mode == "upstream":
         upstream = lock["upstream"]
