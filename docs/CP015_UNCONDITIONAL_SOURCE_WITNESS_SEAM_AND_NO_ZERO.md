@@ -16,7 +16,7 @@ It also proposes stronger source-defined lemmas showing the genuine Euler/RS wit
 
 **Do NOT promote these CP015 SOURCE THEOREMS to accepted kernel facts** until the genuine external Lean v4.35 `CP013RSOnly.olean`, `CP013Seam.olean`, `CP014FiniteCut.olean`, `CP014ZetaCut.olean`, `CP015SourceWitnesses.olean` and actual no-sorry, standard-only `#print axioms` receipts exist. The code is not yet kernel accepted, and CP014 prerequisites have not been compiled. The theorem's lack of a formal premise does **not** imply a compiler pass. No narrow CP010 Hardy-Z root proof, ordinal 53 indexed proof, source-row decimal equality, complete cross-projection spectral matrix or RH/global Weil positivity follows.
 
-At kickoff the original CP014 PR #831 workflow `44862100024` and original CP013 source verification `44862100005` were **queued**, along with inherited CP012; no later accepted receipts observed. In view of repository workflow multiplication, CP015 deliberately adds **two manual-only** workflows and no new PR-triggered workflow.
+At kickoff the original CP014 PR #831 workflow `44862100024` and original CP013 source verification `44862100005` were **queued**, along with inherited CP012; no later accepted receipts observed. In view of repository workflow multiplication, CP015 adds **two opt-in-only** workflows (explicit PR label or manual dispatch), and no jobs on normal pushes, PR creation, or PR synchronization.
 
 ## 1. Actual original source definitions: genuine zero roots already exist in the certificate API
 
@@ -116,10 +116,10 @@ Committed source and audit files:
 - `cp011_zeta_v435/CP015SourceWitnesses.lean`: true original `CertifiedZeroIntervals.zeros` constructed finite sets, exact original method-side inequalities, complete source cardinality union, no root at seam, and `N(149.5)=52`. No new axioms or `sorry` declarations; all are original-v4.35 **SOURCE CANDIDATES**.
 - `scripts/cp015_unconditional_seam_source_preflight.py`: SHA1 Git-blob verifier for all seven actually inspected upstream source files; exact rational Gram margin and 52+1747950 source count, absence-of-seam-root abstract negative controls and source theorem signature checks. Returns only `CP015_SOURCE_WITNESS_COVER_AND_SEAM_SIGNATURES_PASS_NOT_KERNEL`.
 - `scripts/cp015_exact_source_seam_lean_axiom_audit.py`: requires genuine compiled original CP013+CP014 dependency `.olean` files and CP015 `.olean`, all **NINE real** standard-only `#print axioms` lines, source SHA receipts, and no admitted axioms. Only then reports `CP015_ORIGINAL_ZETA_UNCONDITIONAL_N_1495_EQ_52_KERNEL_PASS`, expressly not ordinal 53 or spectral equality.
-- `.github/workflows/cp015-source-witness-seam-manual-preflight.yml`: explicitly **MANUAL-ONLY** cheap seven-source authenticated preflight. No extra PR CI event emitted during current repo-wide queued workflow congestion.
-- `.github/workflows/cp015-original-1495-count-v435-manual-kernel.yml`: **MANUAL-ONLY** real Zeta v4.35 compiler and strict axiom audit for CP013 RS-only, CP014 finite count, and CP015 new source witness proof; no changes to original IV###/NF### compilers.
+- `.github/workflows/cp015-source-witness-seam-manual-preflight.yml`: explicitly **OPT-IN ONLY** cheap seven-source authenticated preflight; trigger by adding PR label `cp015-source-preflight` or through `workflow_dispatch` after GitHub registers the workflow on the default branch. Ordinary PR commits do not enqueue jobs.
+- `.github/workflows/cp015-original-1495-count-v435-manual-kernel.yml`: **OPT-IN ONLY** original Zeta v4.35 compiler and strict axiom audit; trigger with PR label `cp015-lean-kernel` or eligible `workflow_dispatch`. Normal PR updates do not run expensive compilation. No IV###/NF### source mutations.
 
-**No new Lean kernel acceptance has been reported for CP015; its manual workflow has not been dispatched.** The source proofs and external SHA checks are a new auditable compiler work item, not an executed kernel result. If a source-level type/lemma proof fails, the precise compiler errors must be repaired in a new reviewed commit before any result can be promoted.
+**No new Lean kernel acceptance has been reported for CP015; neither opt-in workflow has been triggered.** The source proofs and external SHA checks are a new auditable compiler work item, not an executed kernel result. If a source-level type/lemma proof fails, the precise compiler errors must be repaired in a new reviewed commit before any result can be promoted.
 
 ## 5. Root-53 rank remains an independent mathematical gate
 
