@@ -94,3 +94,12 @@ name = "CP020BorweinCircle"
 
 [[lean_lib]]
 name = "CP020DerivativeTransport"
+
+# CP021 truly independent compiler leaf targets, no CP013–CP020 imports.
+# Their original Zeta + Mathlib only typechecks isolate the source-bound
+# and complex analytic germ equality from 15 inherited uncompiled modules.
+[[lean_lib]]
+name = "CP021BorweinLeaf"
+
+[[lean_lib]]
+name = "CP021GermLeaf"
