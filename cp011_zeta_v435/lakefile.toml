@@ -1,0 +1,11 @@
+name = "cp011_zeta_v435"
+version = "0.0.1"
+
+# Isolated original upstream Zeta toolchain; Weil-Lab IV### stays v4.34.
+[[require]]
+name = "Zeta"
+git = "https://github.com/smmercuri/zeta"
+rev = "v1-1e6"
+
+[[lean_lib]]
+name = "CP011CanonicalRoster"
