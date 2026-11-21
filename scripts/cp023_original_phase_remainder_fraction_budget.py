@@ -150,6 +150,8 @@ def main():
     if args.source_contract:source_contract()
     if args.numeric_screen:optional_screen()
     if args.receipt:
+        if not (args.self_test and args.source_contract):
+            raise ValueError("fail closed: --receipt requires BOTH --self-test and --source-contract")
         args.receipt.write_text(json.dumps(REPORT,indent=2)+"\n",encoding="utf-8")
     if not (args.self_test or args.source_contract or args.numeric_screen):
         ap.print_help()
