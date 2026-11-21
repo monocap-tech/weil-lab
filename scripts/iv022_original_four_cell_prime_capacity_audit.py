@@ -69,6 +69,8 @@ NEW2=[
  "neutralIV022AdditionalCell_radiusMargin_iff",
  "neutralIV022FourthCell_exactMargin",
 ]
+# Generated only by `lake update` after source preflight; SHA-bound by real verifier.
+MANIFEST=Path("lake-manifest.json")
 DEPS=[
  ROOT/"ActualZetaPhaseIVOriginalWholeThreeCellSchwartzPartition.lean",
  ROOT/"ActualZetaPhaseIVOriginalWiderThreeCellPrime9Coercivity.lean",
@@ -101,7 +103,6 @@ DEPS=[
  Path("scripts/iv019_original_width_capacity_kernel_audit.py"),
  Path("scripts/iv021_original_three_cell_smooth_partition_audit.py"),
  Path("lean-toolchain"),
- Path("lake-manifest.json"),
 ]
 SCHEMA="IV022-original-four-physical-cells-prime-gap-and-conditional-oneSixteenth-kernel-v1"
 
@@ -261,6 +262,7 @@ def check_log(logpath,names):
 
 def verify():
     preflight()
+    assert MANIFEST.is_file(), ("Missing generated Lake manifest after update", str(MANIFEST))
     objs=[OLEAN_ROOT/(mod.stem+".olean") for mod in (MODULE1,MODULE2)]
     for p in objs:assert p.is_file() and p.stat().st_size>0,("compiled original Lean object missing",str(p))
     a=check_log(LOG1,UP1+NEW1)
@@ -268,7 +270,7 @@ def verify():
     report={
       "schema":SCHEMA,
       "scope":"Authentic unchanged original signed zeta four physical cells; second complex Schwartz direction independent of original plus first source; strict original ±log active prime gaps; exact physical measure; conditional original 1/16 Weil margin.",
-      "source_sha256":{str(p):sha(p) for p in [MODULE1,MODULE2]+DEPS},
+      "source_sha256":{str(p):sha(p) for p in [MODULE1,MODULE2]+DEPS+[MANIFEST]},
       "real_olean_sha256":{str(p):sha(p) for p in objs},
       "exact_rational_receipt_sha256":sha(EXACT),
       "new_compiled_source_Lean_theorems":NEW1+NEW2,
