@@ -7,6 +7,7 @@ on:
       - "cp011_zeta_v435/CP014EulerCutLower.lean"
       - "cp011_zeta_v435/CP014FiniteCut.lean"
       - "cp011_zeta_v435/CP014ZetaCut.lean"
+      - "cp011_zeta_v435/CP014HardyRank.lean"
       - "cp011_zeta_v435/lakefile.toml"
       - "docs/CP014_EXACT_EULER_SEAM_COUNT_AND_LOCAL_RANK.md"
       - ".github/workflows/cp014-original-seam-source-preflight.yml"
