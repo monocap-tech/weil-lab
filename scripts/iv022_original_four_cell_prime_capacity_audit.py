@@ -100,6 +100,7 @@ DEPS=[
  Path("scripts/iv015_frozen_collar_exact_log_gap.py"),
  Path("scripts/iv019_original_width_capacity_kernel_audit.py"),
  Path("scripts/iv021_original_three_cell_smooth_partition_audit.py"),
+ Path("lakefile.toml"),
  Path("lean-toolchain"),
  Path("lake-manifest.json"),
 ]
@@ -241,7 +242,10 @@ def preflight():
        "neutralIV019OriginalSignedWeil_massBudget_of_prime",
        "neutralIV022FourCell_oneSixteenth_of_originalPrime"):
         assert name in s,("source signed capacity missing",name)
-    for path in DEPS:assert path.is_file(),("missing source dependency",str(path))
+    for path in DEPS:
+        if path.name == "lake-manifest.json":
+            continue  # Lake generates this AFTER source preflight.
+        assert path.is_file(),("missing source dependency",str(path))
     exact_preflight()
     print("IV022 SOURCE-ONLY PREFLIGHT PASS: 16 new authentic original source candidates and eight upstream axiom anchors. Real Lean KERNEL PENDING.")
 
@@ -261,6 +265,7 @@ def check_log(logpath,names):
 
 def verify():
     preflight()
+    assert Path("lake-manifest.json").is_file(), "Missing Lake-generated manifest: lake update must run before KERNEL verification"
     objs=[OLEAN_ROOT/(mod.stem+".olean") for mod in (MODULE1,MODULE2)]
     for p in objs:assert p.is_file() and p.stat().st_size>0,("compiled original Lean object missing",str(p))
     a=check_log(LOG1,UP1+NEW1)
