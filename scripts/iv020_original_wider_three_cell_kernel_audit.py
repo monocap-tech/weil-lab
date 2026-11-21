@@ -91,6 +91,7 @@ DEPS = [
     Path("WeilDefect/External/Zeta23/Definitions/Def_Zeta23_ExplicitFormula.lean"),
     Path("scripts/iv019_original_width_capacity_kernel_audit.py"),
     Path("scripts/iv015_frozen_collar_exact_log_gap.py"),
+    Path("lakefile.toml"),
     Path("lean-toolchain"),
     Path("lake-manifest.json"),
 ]
@@ -185,6 +186,8 @@ def source_preflight():
     assert "neutralIV017NarrowPhysicalInterval" not in b, "Wider source mistakenly restricted to narrower IV017 interval"
     assert "neutralIV016FrozenConcrete_allIntegerGap" not in b, "Wider source mistakenly reusing old radius numerical gap"
     for p in DEPS:
+        if p.name == "lake-manifest.json":
+            continue  # Lake generates this AFTER source preflight.
         assert p.is_file(),("Missing physical source dependency",str(p))
     exact_ledger()
     print("IV020 ORIGINAL SOURCE preflight PASS: 18 new original direct Lean candidates + 7 genuine prior strict source anchors. NOT kernel acceptance.")
@@ -208,6 +211,7 @@ def parse_axioms(log_path,names):
 
 def verify():
     source_preflight()
+    assert Path("lake-manifest.json").is_file(), "Missing Lake-generated manifest: lake update must run before KERNEL verification"
     object_files=[OLEAN/(m.stem+".olean") for m in (M1,M2)]
     for o in object_files:
         assert o.is_file() and o.stat().st_size>0,("actual direct Lean compiled source object required",str(o))
