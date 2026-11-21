@@ -81,3 +81,16 @@ name = "CP019HolomorphicRemainder"
 
 [[lean_lib]]
 name = "CP019CauchyRemainder"
+
+# CP020 original Zeta v4.35: exact Bernoulli B14 and 13-factor
+# Pochhammer norm; fully quantified M6 N256 Borwein all-circle
+# 3e-13 bound; open-domain ζ=approximant+remainder germ
+# transported to every complex derivative via original Mathlib.
+[[lean_lib]]
+name = "CP020Pochhammer"
+
+[[lean_lib]]
+name = "CP020BorweinCircle"
+
+[[lean_lib]]
+name = "CP020DerivativeTransport"
