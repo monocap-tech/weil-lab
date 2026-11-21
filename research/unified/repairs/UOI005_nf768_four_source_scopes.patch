@@ -1,0 +1,67 @@
+diff --git a/.github/workflows/nf459-native-original-christoffel.yml b/.github/workflows/nf459-native-original-christoffel.yml
+--- a/.github/workflows/nf459-native-original-christoffel.yml
++++ b/.github/workflows/nf459-native-original-christoffel.yml
+@@ -2,4 +2,17 @@
+ on:
+  pull_request:
++    paths:
++      - '.github/workflows/nf459-native-original-christoffel.yml'
++      - 'scripts/verify_nf459_original_native_244D_christoffel.py'
++      - 'notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json'
++      - 'notes/data/provisional/NF404_original_selected_pole_shear_exact.json'
++      - 'notes/data/provisional/NF403_original_joint_complement_power_exact.json'
++      - 'notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json'
++      - 'notes/data/provisional/NF389_original_n513_signed_native.json'
++      - 'notes/data/provisional/NF457_original_log_peel_info_ceiling_custody.json'
++      - 'notes/data/provisional/NF451_original_J8_terminal_collar_custody_index.json'
++      - 'notes/data/provisional/NF450_original_B_complete_Laplace_native_sign_custody_index.json'
++      - 'notes/data/provisional/NF411_original_source_boundary_jet.json'
++      - 'notes/data/provisional/NF407_original_prime_jump_log_power_exact.json'
+   workflow_dispatch:
+ jobs:
+
+diff --git a/.github/workflows/nf460-original-bulk-seam-h1.yml b/.github/workflows/nf460-original-bulk-seam-h1.yml
+--- a/.github/workflows/nf460-original-bulk-seam-h1.yml
++++ b/.github/workflows/nf460-original-bulk-seam-h1.yml
+@@ -2,4 +2,14 @@
+ on:
+  pull_request:
++    paths:
++      - '.github/workflows/nf460-original-bulk-seam-h1.yml'
++      - 'scripts/local_replay/verify_nf460_original_bulk_jumps_h1.py'
++      - 'notes/data/provisional/NF411_original_source_boundary_jet.json'
++      - 'notes/data/provisional/NF407_original_prime_jump_log_power_exact.json'
++      - 'notes/data/provisional/NF406_original_prime_support_partition_exact.json'
++      - 'notes/data/provisional/NF404_original_selected_pole_shear_exact.json'
++      - 'notes/data/provisional/NF403_original_joint_complement_power_exact.json'
++      - 'notes/data/provisional/NF459_original_native_244D_terminal_K_custody.json'
++      - 'notes/data/provisional/NF458_original_endpoint_leverage_gate_custody.json'
+   workflow_dispatch:
+ jobs:
+
+diff --git a/.github/workflows/nf465-j7-derivative-resolution-stop.yml b/.github/workflows/nf465-j7-derivative-resolution-stop.yml
+--- a/.github/workflows/nf465-j7-derivative-resolution-stop.yml
++++ b/.github/workflows/nf465-j7-derivative-resolution-stop.yml
+@@ -2,4 +2,7 @@
+ on:
+  pull_request:
++    paths:
++      - '.github/workflows/nf465-j7-derivative-resolution-stop.yml'
++      - 'scripts/local_replay/verify_nf465_j7_lipschitz_resolution_stop.py'
+   workflow_dispatch:
+ jobs:
+
+diff --git a/.github/workflows/nf471-original-j7-joint-arch-macroscopic-mean.yml b/.github/workflows/nf471-original-j7-joint-arch-macroscopic-mean.yml
+--- a/.github/workflows/nf471-original-j7-joint-arch-macroscopic-mean.yml
++++ b/.github/workflows/nf471-original-j7-joint-arch-macroscopic-mean.yml
+@@ -2,4 +2,10 @@
+ on:
+  pull_request:
++    paths:
++      - '.github/workflows/nf471-original-j7-joint-arch-macroscopic-mean.yml'
++      - 'scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py'
++      - 'notes/data/provisional/NF470_original_J7_native_regular_mean_and_two_joint_points_custody.json'
++      - 'notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json'
++      - 'notes/data/provisional/NF406_original_prime_support_partition_exact.json'
+   workflow_dispatch:
+ jobs:
