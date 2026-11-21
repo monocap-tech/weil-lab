@@ -261,14 +261,10 @@ theorem neutralIV014ActiveOneNew_nonnegative_of_residual
       neutralIV012OriginalGammaAbsoluteBudget b S t :=
     neutralIV014ActiveMixed_norm_le_residualBudget
       a b hab S t hS ht N hN hsep
-  have hn : 0 ≤ ‖neutralIV010Mixed b S t‖ := norm_nonneg _
   have hsq : ‖neutralIV010Mixed b S t‖^2 ≤
       (neutralIV012OriginalPoleMomentBudget b S t +
         neutralIV012OriginalGammaAbsoluteBudget b S t)^2 :=
-    (sq_le_sq₀ hn
-      (add_nonneg
-        (neutralIV012OriginalPoleMomentBudget_nonnegative b S t)
-        (neutralIV012OriginalGammaAbsoluteBudget_nonnegative b S t))).mpr hbound
+    pow_le_pow_left₀ (norm_nonneg _) hbound 2
   have he : (neutralIV010Mixed b S t).re^2 +
       (neutralIV010Mixed b S t).im^2 =
       ‖neutralIV010Mixed b S t‖^2 := by
