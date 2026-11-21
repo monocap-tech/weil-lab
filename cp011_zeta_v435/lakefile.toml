@@ -9,3 +9,8 @@ rev = "v1-1e6"
 
 [[lean_lib]]
 name = "CP011CanonicalRoster"
+
+# CP012 additionally imports the CP011 source candidate and exposes the
+# conditional exact source-index-to-kernel slot attachment interface.
+[[lean_lib]]
+name = "CP012RowReceipt"
