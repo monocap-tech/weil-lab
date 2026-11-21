@@ -1,0 +1,67 @@
+name: CP019 OPT-IN original EM complex Cauchy and first HardyZ jet source / Fraction audit
+# Explicit PR label or eligible manual dispatch only; no push or ordinary PR fanout.
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [labeled]
+permissions:
+  contents: read
+jobs:
+  actual-seven-original-source-Borwein-Fraction-not-kernel:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'cp019-cauchy-source' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact Bernoulli B14 recurrence and strict M6 N256 Cauchy rational majorants
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp019_original_cauchy_exact_fraction_preflight.py scripts/cp019_original_lean_source_and_cauchy_axiom_audit.py
+          python scripts/cp019_original_cauchy_exact_fraction_preflight.py --self-test \
+            | tee cp019-exact-source-Borwein-Cauchy.log
+          grep -F 'CP019 EXACT ORIGINAL BORWEIN UNIFORM COMPLEX CIRCLE ENVELOPE: PASS' cp019-exact-source-Borwein-Cauchy.log
+      - name: Download seven genuine pinned original source files, no approximated external signatures
+        timeout-minutes: 13
+        run: |
+          set -euo pipefail
+          zeta=c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          for file in \
+            Zeta/Gram/Averaging.lean \
+            Zeta/Gamma/TrigammaDecay.lean \
+            Zeta/EulerMaclaurin/Continuation.lean \
+            Zeta/EulerMaclaurin/ErrorBound.lean \
+            Zeta/Zeros/HardyZ.lean; do
+            mkdir -p "cp019-original-zeta/$(dirname "$file")"
+            curl -fLSs --retry 3 \
+              "https://raw.githubusercontent.com/smmercuri/zeta/$zeta/$file" \
+              -o "cp019-original-zeta/$file"
+          done
+          for file in \
+            Mathlib/Analysis/Complex/Liouville.lean \
+            Mathlib/Analysis/Complex/RealDeriv.lean; do
+            mkdir -p "cp019-original-mathlib/$(dirname "$file")"
+            curl -fLSs --retry 3 \
+              "https://raw.githubusercontent.com/leanprover-community/mathlib4/v4.35.0/$file" \
+              -o "cp019-original-mathlib/$file"
+          done
+      - name: Actual seven SHA source checks and first-jet/Cauchy missing proof audit
+        run: |
+          set -euo pipefail
+          python scripts/cp019_original_cauchy_exact_fraction_preflight.py \
+            --zeta cp019-original-zeta --mathlib cp019-original-mathlib \
+            --receipt cp019-seven-source-Cauchy-not-kernel.json \
+            | tee cp019-original-source-signature.log
+          grep -F 'CP019_SEVEN_PINNED_SOURCES_AND_EXACT_CAUCHY_BUDGET_PASS_NOT_KERNEL' cp019-original-source-signature.log
+          test -s cp019-seven-source-Cauchy-not-kernel.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp019-seven-original-source-Git-SHA-exact-Cauchy-Fraction-NOT-LEAN
+          path: |
+            cp019-exact-source-Borwein-Cauchy.log
+            cp019-original-source-signature.log
+            cp019-seven-source-Cauchy-not-kernel.json
+          if-no-files-found: ignore
