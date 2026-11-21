@@ -85,7 +85,7 @@ theorem neutralIV016NatLog_nonnegative (m : ℕ) :
 
 /-- Two strict rational alternatives directly imply a strict
 absolute-value clearance. This uses only real order. -/
-private theorem neutralIV016AbsClearance
+theorem neutralIV016AbsClearance
     (z : ℝ)
     (h : (1/500:ℝ) < z ∨ z < -(1/500:ℝ)) :
     (1/500:ℝ) < |z| := by
@@ -354,6 +354,7 @@ theorem neutralIV016ExistsConcretePrimeFreeMixedAndDiagonal
 #print axioms neutralIV015FrozenCollar_activeSeparated_of_gap
 #print axioms neutralIV016FrozenLogBand_lt10
 #print axioms neutralIV016NatLog_nonnegative
+#print axioms neutralIV016AbsClearance
 #print axioms neutralIV016FrozenFourSignedGaps_of_band
 #print axioms neutralIV016FrozenConcrete_allIntegerGap
 #print axioms neutralIV016FrozenConcrete_originalPrimeFreeBump
