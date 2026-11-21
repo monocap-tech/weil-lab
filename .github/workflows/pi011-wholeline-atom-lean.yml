@@ -1,0 +1,85 @@
+name: PI011 direct whole-line Fourier atom Lean audit
+
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/PI011WholeLineFourierAtom.lean"
+      - "scripts/pi011_strict_wholeline_lean_audit.py"
+      - ".github/workflows/pi011-wholeline-atom-lean.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  actual-wholeline-atom-lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 115
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Inspect source and audit scripts
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p pi011-audit
+          python3 -m py_compile scripts/pi011_strict_wholeline_lean_audit.py
+          git rev-parse HEAD | tee pi011-audit/checked-out-commit.txt
+          git hash-object WeilDefect/Arithmetic/PI010FourierHalflineAtom.lean \
+            WeilDefect/Arithmetic/PI011WholeLineFourierAtom.lean \
+            | tee pi011-audit/source-blobs.txt
+
+      - name: Install source-pinned Lean and Mathlib
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+
+      - name: Build genuine PI010 and PI011 modules
+        shell: bash
+        timeout-minutes: 90
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.PI010FourierHalflineAtom \
+            WeilDefect.Arithmetic.PI011WholeLineFourierAtom \
+            2>&1 | tee pi011-audit/direct-build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/PI010FourierHalflineAtom.olean
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/PI011WholeLineFourierAtom.olean
+
+      - name: Direct PI010 and PI011 source axiom logs
+        shell: bash
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/PI010FourierHalflineAtom.lean \
+            2>&1 | tee pi011-audit/PI010FourierHalflineAtom-axioms.log
+          lake env lean WeilDefect/Arithmetic/PI011WholeLineFourierAtom.lean \
+            2>&1 | tee pi011-audit/PI011WholeLineFourierAtom-axioms.log
+
+      - name: Fail-closed imported PI010 and new PI011 object and axiom audits
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/pi010_strict_halfline_audit.py \
+            --log pi011-audit/PI010FourierHalflineAtom-axioms.log \
+            --receipt pi011-audit/pi010-dependency-receipt.json
+          python3 scripts/pi011_strict_wholeline_lean_audit.py \
+            --log pi011-audit/PI011WholeLineFourierAtom-axioms.log \
+            --out pi011-audit/receipt.json
+          test -s pi011-audit/pi010-dependency-receipt.json
+          test -s pi011-audit/receipt.json
+
+      - name: Upload real receipts, even on failure
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pi011-source-halfline-wholeline-lean-audit
+          path: |
+            pi011-audit/
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI010FourierHalflineAtom.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/PI011WholeLineFourierAtom.olean
+          if-no-files-found: ignore
