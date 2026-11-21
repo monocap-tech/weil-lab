@@ -33,10 +33,12 @@ Both values exceed **the ENTIRE planned normalized error tolerance (1/500=0.002)
 
 Summing the actual first 52 source rows in the same CP006 exact-rational dyadic formula gives approximately
 `
- E_loc^CP006(first 52 source intervals, r=1/1000) ≈ 1.283480859375,
- E_loc^CP006(first 52 source intervals, r=1/500)  ≈ 1.70442421875.
+ E_loc^CP006(first 52 source intervals, r=1/1000)
+    = 3285711/2560000 = 1.283480859375,
+ E_loc^CP006(first 52 source intervals, r=1/500)
+    = 2181663/1280000 = 1.70442421875.
 `
-The new reproducible checker calculates the full results with `fractions.Fraction`, verifies the immutable Git SHA, every source index and all 52 seven-column records, and uses the prior source-bounded CP006 function rather than an independent unaudited reimplementation.
+An independent local exact-Fraction recheck verified the original 1,855-byte source Git blob and BOTH complete 52-row fractions above. The new reproducible checker also calculates these results with `fractions.Fraction`, verifies the immutable Git SHA, every source index and all 52 seven-column records, and uses the prior source-bounded CP006 function rather than an independent unaudited reimplementation.
 
 **Logic of the negative result:** CP006's localization error estimate is a NONNEGATIVE UPPER BOUND obtained by summing per-interval derivative terms. A single published raw row contributes more than the desired allowance. Consequently the **present error certificate cannot close when applied directly to the raw upstream widened brackets**. This does NOT prove the true approximation error is large; it does NOT falsify the full zeta explicit formula, CP-C1's mathematical compatibility conjecture, or RH.
 
