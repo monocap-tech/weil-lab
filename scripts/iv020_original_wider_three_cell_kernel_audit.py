@@ -63,6 +63,9 @@ NEW2 = [
     "neutralIV020WideOriginalFiniteOldPlusNew_oneTenth",
     "neutralIV020WideExistsGenuineNewThreeCellPositiveDirection",
 ]
+# Lake generates this lockfile after the source-only preflight (via `lake update`).
+# The real kernel verifier still requires and SHA256-binds the generated file.
+MANIFEST = Path("lake-manifest.json")
 DEPS = [
     ROOT / "ActualZetaPhaseIVOriginalVariableWidthSignedBudget.lean",
     ROOT / "ActualZetaPhaseIVOriginalWiderPrimeFreeBump.lean",
@@ -92,7 +95,6 @@ DEPS = [
     Path("scripts/iv019_original_width_capacity_kernel_audit.py"),
     Path("scripts/iv015_frozen_collar_exact_log_gap.py"),
     Path("lean-toolchain"),
-    Path("lake-manifest.json"),
 ]
 
 def digest(p):
@@ -208,6 +210,7 @@ def parse_axioms(log_path,names):
 
 def verify():
     source_preflight()
+    assert MANIFEST.is_file(), ("Missing generated Lake manifest after update", str(MANIFEST))
     object_files=[OLEAN/(m.stem+".olean") for m in (M1,M2)]
     for o in object_files:
         assert o.is_file() and o.stat().st_size>0,("actual direct Lean compiled source object required",str(o))
@@ -216,7 +219,7 @@ def verify():
     report={
         "schema":SCHEMA,
         "scope":"Authentic original Zeta23 signed Weil quadratic coercivity 1/10 for all genuine two-collar Schwartz S plus doubled-radius new Schwartz t and v complex; literal NF600 n9 prime source remains, and actual two pole/Gamma terms retained.",
-        "original_source_SHA256":{str(p):digest(p) for p in [M1,M2]+DEPS},
+        "original_source_SHA256":{str(p):digest(p) for p in [M1,M2]+DEPS+[MANIFEST]},
         "actual_compiled_original_Lean_oleans_SHA256":{str(o):digest(o) for o in object_files},
         "independent_exact_Fraction_source_budget_SHA256":digest(LEDGER),
         "genuine_source_upstream_anchors":OLD1+OLD2,
