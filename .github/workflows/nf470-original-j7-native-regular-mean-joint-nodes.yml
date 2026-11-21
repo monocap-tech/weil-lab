@@ -1,6 +1,10 @@
 name: NF470 original J7 native regular mean and joint compact source nodes
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf470-original-j7-native-regular-mean-joint-nodes.yml'
+      - 'scripts/local_replay/nf470_original_J7_native_regular_mean_and_joint_point.py'
+      - 'scripts/local_replay/verify_nf470_original_J7_second_signed_island_exact.py'
   workflow_dispatch:
 jobs:
   regular-mean:

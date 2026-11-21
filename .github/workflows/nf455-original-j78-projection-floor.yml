@@ -1,6 +1,9 @@
 name: NF455 original projection J7 J8 energy floor
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf455-original-j78-projection-floor.yml'
+      - 'scripts/local_replay/verify_nf455_projection_energy_floor.py'
   workflow_dispatch:
 jobs:
   original-exact:
