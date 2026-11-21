@@ -1,0 +1,11 @@
+name = "cp008_euler_refinement"
+version = "0.0.1"
+
+# Isolated external Lean 4.35; NEVER alter original Weil-Lab IV's 4.34 toolchain.
+[[require]]
+name = "Zeta"
+git = "https://github.com/smmercuri/zeta"
+rev = "v1-1e6"
+
+[[lean_lib]]
+name = "CP008First52"
