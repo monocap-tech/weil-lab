@@ -39,15 +39,24 @@ jobs:
             --original-zeta .lake/packages/Zeta \
             --original-mathlib .lake/packages/mathlib \
             2>&1 | tee cp021-actual-original-Zeta-source-gate.log
-      - name: Original genuine Lean compiler run of TWO LEAF TARGETS ONLY — no CP013–CP020 builds
+      - name: Actual original v4.35 compile the simpler ζ=EM germ leaf FIRST
         working-directory: cp011_zeta_v435
-        timeout-minutes: 155
+        timeout-minutes: 100
         run: |
           set -euo pipefail
           export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
           lake exe cache get
-          lake build CP021BorweinLeaf CP021GermLeaf 2>&1 \
-            | tee cp021-actual-upstream-only-two-leaf-build.log
+          lake build CP021GermLeaf 2>&1 \
+            | tee cp022-first-actual-upstream-germ-leaf-build.log
+      - name: Compile the independent harder Borwein leaf only AFTER germ passes
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 110
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build CP021BorweinLeaf 2>&1 \
+            | tee cp022-second-actual-upstream-borwein-leaf-build.log
       - name: REAL standard-only 13 axioms, require both compiled leaf oleans
         timeout-minutes: 20
         run: |
@@ -66,7 +75,8 @@ jobs:
           name: cp021-actual-standalone-original-Zeta435-13-theorem-LEAF-kernel
           path: |
             cp011_zeta_v435/cp021-actual-original-Zeta-source-gate.log
-            cp011_zeta_v435/cp021-actual-upstream-only-two-leaf-build.log
+            cp011_zeta_v435/cp022-first-actual-upstream-germ-leaf-build.log
+            cp011_zeta_v435/cp022-second-actual-upstream-borwein-leaf-build.log
             cp011_zeta_v435/cp021-real-original-leaf-axioms.log
             cp011_zeta_v435/cp021-independent-original-leaf-actual-kernel.json
             cp011_zeta_v435/.lake/build/lib/lean/CP021BorweinLeaf.olean
