@@ -27,6 +27,7 @@ TARGETS=(
     "CP016FirstRSRank.N_at_original_least_RS_root_eq_52",
     "CP016FirstRSRank.original_53rd_positive_zeta_zero_exists",
     "CP016FirstRSRank.original_first_RS_zero_has_no_preceding_zero",
+    "CP016FirstRSRank.original_least_RS_root_unique",
     "CP016MonotoneAttach.refined_critical_root_is_RS_source_witness",
     "CP016MonotoneAttach.refined_root_equals_original_53rd_of_hardy_monotone",
 )
