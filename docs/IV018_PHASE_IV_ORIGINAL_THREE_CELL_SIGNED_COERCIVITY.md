@@ -168,7 +168,7 @@ and proves the candidate bound simultaneously for every complex old coefficient 
 
 The final source theorem candidate constructs an ACTUAL nonzero complex Schwartz bump t centered at c=1/5, with t(c)=1 while every old original collar test vanishes at c, and quantifies this same 1/4 original Weil inequality uniformly for all such u,v.
 
-**This is a potential genuine source-support extension with a quantitative margin that bypasses the mixed Schur obstacle.** Its certification is entirely contingent on actual Lean kernel acceptance. It is not global Weil positivity because E_3 is only a specially chosen finite union of tiny physical support cells, not the space of all admissible Weil tests.
+**This is a potential genuine source-support extension with a quantitative margin that bypasses the mixed Schur obstacle.** Its certification is entirely contingent on actual Lean kernel acceptance. The formal full-original-source coercivity theorem applies to ALL sums S+v•t with old S supported in E_old and new t supported in E_new; the analytic 13/20 bound separately applies to EVERY Schwartz f supported in E_3. A smooth partition of unity could mathematically decompose an arbitrary three-cell-supported f into old/new components, but that decomposition has NOT been formalized in IV018 and must not be silently promoted. It is not global Weil positivity because E_3 is only a specially chosen finite union of tiny physical support cells, not the space of all admissible Weil tests.
 
 ## 7. Audit ledger
 
