@@ -1,0 +1,78 @@
+name: CP020 OPT-IN genuine original Zeta v4.35 Borwein circle/germ kernel and standard axioms
+# Opt-in only: preserve original NF###/IV### compiler congestion.
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [labeled]
+permissions:
+  contents: read
+concurrency:
+  group: cp020-original-Zeta4.35-borwein-all-circle-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  genuine-source-Borwein-circle-and-derivative-error:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'cp020-borwein-lean' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install genuine external Zeta source Lean v4.35
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Pin upstream original Zeta immutable Git commit and Mathlib all-circle APIs
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 65
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          test "$(git -C .lake/packages/Zeta rev-parse HEAD)" = c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.35.0
+          python ../scripts/cp020_original_borwein_circle_fraction_source_gate.py \
+            --self-test --zeta .lake/packages/Zeta --mathlib .lake/packages/mathlib \
+            --receipt cp020-original-source-exact-Fraction-stage.json
+      - name: Full ACTUAL original-v4.35 kernel build (all 15 prerequisites and 3 CP020 theorems)
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 155
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get
+          lake build CP013RSOnly CP013Seam CP014FiniteCut CP014ZetaCut CP014HardyRank \
+            CP015SourceWitnesses CP016FirstRSRank CP016MonotoneAttach \
+            CP017CurvatureBudget CP018EightCell CP018HardyJet \
+            CP019OriginalFirstJet CP019ThetaSecond CP019HolomorphicRemainder CP019CauchyRemainder \
+            CP020Pochhammer CP020BorweinCircle CP020DerivativeTransport \
+            2>&1 | tee cp020-real-original-lean-build.log
+      - name: Actual SEVENTEEN full original source standard-only Lean axiom receipts, all oleans
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          (
+            cd cp011_zeta_v435
+            lake env lean CP020Pochhammer.lean
+            lake env lean CP020BorweinCircle.lean
+            lake env lean CP020DerivativeTransport.lean
+          ) 2>&1 | tee cp011_zeta_v435/cp020-original-source-genuine-axioms.log
+          python scripts/cp020_original_Borwein_and_germ_kernel_axiom_audit.py
+          test -s cp011_zeta_v435/cp020-original-Borwein-circle-and-transport-kernel-receipt.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp020-external-Zeta4.35-original-Borwein-fully-quantified-Cauchy-kernel
+          path: |
+            cp011_zeta_v435/cp020-original-source-exact-Fraction-stage.json
+            cp011_zeta_v435/cp020-real-original-lean-build.log
+            cp011_zeta_v435/cp020-original-source-genuine-axioms.log
+            cp011_zeta_v435/cp020-original-Borwein-circle-and-transport-kernel-receipt.json
+            cp011_zeta_v435/.lake/build/lib/lean/CP020Pochhammer.olean
+            cp011_zeta_v435/.lake/build/lib/lean/CP020BorweinCircle.olean
+            cp011_zeta_v435/.lake/build/lib/lean/CP020DerivativeTransport.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
