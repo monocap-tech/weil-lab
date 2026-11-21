@@ -1,0 +1,60 @@
+name: CP012 original upstream public BatchSpec indexed-row opacity negative control
+on:
+  pull_request:
+    paths:
+      - "scripts/cp012_batchspec_indexed_row_no_go.py"
+      - "scripts/cp012_row_bridge_lean_axiom_audit.py"
+      - "cp011_zeta_v435/CP012RowReceipt.lean"
+      - "cp011_zeta_v435/lakefile.toml"
+      - "docs/CP012_BATCHSPEC_ROW_OPACITY_AND_MINIMAL_BINDING.md"
+      - ".github/workflows/cp012-original-batchspec-interface-audit.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cp012-true-original-interface-and-missing-source-row-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact rational no-go for source-indexed row endpoints even with complete simple root count
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp012_batchspec_indexed_row_no_go.py scripts/cp012_row_bridge_lean_axiom_audit.py
+          python scripts/cp012_batchspec_indexed_row_no_go.py --self-test | tee cp012-batchspec-countermodel.log
+          grep -F 'CP012 EXACT FRACTION BATCHSPEC INDEXED-ROW NONIDENTIFIABILITY: PASS' cp012-batchspec-countermodel.log
+      - name: Fetch THREE actual small original external Lean source modules at immutable commit
+        run: |
+          set -euo pipefail
+          commit=c06b4e13d9c847e50a32c3d738271cbad62ae9f3
+          root=cp012-external-source
+          for file in \
+              Zeta/Zeros/Certificates/Basic.lean \
+              Zeta/Zeros/Certificates/Fold.lean \
+              Zeta/Zeros/Certificates/RiemannSiegel/Batch0001.lean; do
+            mkdir -p "$root/$(dirname "$file")"
+            curl -fLSs --retry 3 \
+              "https://raw.githubusercontent.com/smmercuri/zeta/$commit/$file" \
+              -o "$root/$file"
+          done
+      - name: SHA-verify genuine original Lean source and exact exported BatchSpec signature
+        run: |
+          set -euo pipefail
+          python scripts/cp012_batchspec_indexed_row_no_go.py \
+            --upstream-source-root cp012-external-source \
+            --receipt cp012-original-BatchSpec-source-interface.json \
+            | tee cp012-actual-batchspec-source-gate.log
+          grep -F 'CP012 EXACT SOURCE BATCHSPEC OPACITY AUDIT: PASS' cp012-actual-batchspec-source-gate.log
+          test -s cp012-original-BatchSpec-source-interface.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cp012-actual-BatchSpec-source-opacity-Fraction-countermodel-NOT-Lean
+          path: |
+            cp012-batchspec-countermodel.log
+            cp012-actual-batchspec-source-gate.log
+            cp012-original-BatchSpec-source-interface.json
+          if-no-files-found: ignore
