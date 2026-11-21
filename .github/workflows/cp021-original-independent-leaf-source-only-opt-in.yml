@@ -154,6 +154,19 @@ jobs:
           grep -F 'CP027 UPSTREAM-ONLY POINT LEAF AND TWO FINITE SIGN BRIDGE SOURCE: 12/12 CONTRACT PASS NOT LEAN' cp027-original-two-center-Borwein-NOT-LEAN.log
           grep -F 'CP027 FIVE IMMUTABLE ORIGINAL ZETA/MATHLIB SOURCE GATES: 5/5 PASS NOT LEAN' cp027-original-two-center-Borwein-NOT-LEAN.log
           test -s cp027-original-two-center-Borwein-NOT-LEAN.json
+      - name: CP028 exact coarse-original-finite A6N256 complex boxes from source-directed replay — NOT LEAN
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cp028_original_coarse_finite_boxes_source_gate.py
+          python scripts/cp028_original_coarse_finite_boxes_source_gate.py \
+            --self-test --source-check \
+            --receipt cp028-original-coarse-finite-boxes-NOT-LEAN.json \
+            2>&1 | tee cp028-original-coarse-finite-boxes-NOT-LEAN.log
+          grep -F 'CP028 EXACT COARSE-FINITE-PHASE ERROR RATIONAL BRIDGE: PASS NOT LEAN' cp028-original-coarse-finite-boxes-NOT-LEAN.log
+          grep -F 'CP028 ORIGINAL BOTH FINITE A6N256 10^55 INTEGER-DIRECTED COARSE BOXES: 2/2 PASS NOT LEAN' cp028-original-coarse-finite-boxes-NOT-LEAN.log
+          grep -F 'CP028 ORIGINAL TRUE SOURCE TWO COARSE FINITE BOXES / FOUR AXIOMS: 4/4 SOURCE PASS NOT LEAN' cp028-original-coarse-finite-boxes-NOT-LEAN.log
+          test -s cp028-original-coarse-finite-boxes-NOT-LEAN.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -171,4 +184,6 @@ jobs:
             cp026-original-point-bridge-source-replay-NOT-LEAN.log
             cp027-original-two-center-Borwein-NOT-LEAN.log
             cp027-original-two-center-Borwein-NOT-LEAN.json
+            cp028-original-coarse-finite-boxes-NOT-LEAN.log
+            cp028-original-coarse-finite-boxes-NOT-LEAN.json
           if-no-files-found: ignore
