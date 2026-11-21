@@ -62,7 +62,7 @@ private theorem original_slots_separated (Z : CertifiedZeroCount)
   obtain ⟨j, hj, rfl⟩ := List.mem_iff_getElem.mp hB
   rcases lt_trichotomy i j with h | h | h
   · exact Or.inl (hpg i j hi hj h)
-  · subst j; exact absurd rfl hne
+  · subst h; exact absurd rfl hne
   · exact Or.inr (hpg j i hj hi h)
 
 /-- The concrete original witness list has AT MOST ONE chosen zero whose
