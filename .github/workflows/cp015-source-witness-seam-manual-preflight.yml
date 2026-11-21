@@ -1,12 +1,15 @@
 name: CP015 MANUAL cheap original Euler-RS zero-witness source and 149.5 seam gate
-# Manual only: the repository has many queued PR CI jobs from independent tracks.
+# Manual workflow_dispatch or explicit opt-in PR label only; no push/sync fanout.
 # This source validation is NOT Lean kernel certification.
 on:
   workflow_dispatch:
+  pull_request:
+    types: [labeled]
 permissions:
   contents: read
 jobs:
   original-zero-witness-source-not-kernel:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.label.name == 'cp015-source-preflight' }}
     runs-on: ubuntu-latest
     timeout-minutes: 18
     steps:
