@@ -56,3 +56,12 @@ name = "CP016MonotoneAttach"
 # attachment. BOTH analytic hypotheses remain unproved source inputs.
 [[lean_lib]]
 name = "CP017CurvatureBudget"
+
+# CP018: source exact eight rational second-derivative boxes and
+# conditional complex HardyZ/phase-zeta derivative-jet interface.
+# Original v4.35 only; no mutation of original IV/NF trees.
+[[lean_lib]]
+name = "CP018EightCell"
+
+[[lean_lib]]
+name = "CP018HardyJet"
