@@ -36,18 +36,18 @@ No new axiom, sorry, unsafe, classical oracle, or external JSON fact.
 
 namespace CP026OriginalPointBridge
 
-private abbrev tLeft : ℝ := (15005352 : ℝ) / 100000
-private abbrev tRight : ℝ := (15005353 : ℝ) / 100000
+abbrev tLeft : ℝ := (15005352 : ℝ) / 100000
+abbrev tRight : ℝ := (15005353 : ℝ) / 100000
 
-private noncomputable def sourcePoint (t : ℝ) : ℂ :=
+noncomputable def sourcePoint (t : ℝ) : ℂ :=
   1 / 2 + Complex.I * (t : ℂ)
-private noncomputable def sourceA (t : ℝ) : ℂ :=
+noncomputable def sourceA (t : ℝ) : ℂ :=
   zetaApproximant (sourcePoint t) 6 256
-private noncomputable def sourceThetaApprox (t : ℝ) : ℝ :=
+noncomputable def sourceThetaApprox (t : ℝ) : ℝ :=
   riemannSiegelThetaApproximant 2 0 t
-private noncomputable def sourceFiniteZ (t : ℝ) : ℝ :=
+noncomputable def sourceFiniteZ (t : ℝ) : ℝ :=
   (Complex.exp (Complex.I * (sourceThetaApprox t : ℂ)) * sourceA t).re
-private noncomputable def sourcePointError (t : ℝ) : ℝ :=
+noncomputable def sourcePointError (t : ℝ) : ℝ :=
   (12 : ℝ) / t ^ 4 * ‖sourceA t‖ + 3 / (10 : ℝ) ^ 13
 
 private theorem sourcePoint_re (t : ℝ) :
