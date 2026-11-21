@@ -142,7 +142,7 @@ theorem original_Borwein_omitted_term_le (z : ℂ)
     _ ≤ ((7 : ℝ) / (6 * ((14 : ℕ).factorial : ℝ))) *
           (∏ j ∈ Finset.range 13, ((151 : ℝ) + j)) *
           (1 / (256 : ℝ) ^ 13) := by
-      gcongr
+      gcongr <;> assumption
     _ = ((7 : ℝ) / (6 * ((14 : ℕ).factorial : ℝ))) *
           (∏ j ∈ Finset.range 13, ((151 : ℝ) + j)) /
           (256 : ℝ) ^ 13 := by ring
