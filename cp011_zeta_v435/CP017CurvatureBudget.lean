@@ -2,6 +2,7 @@ module
 
 public import CP016MonotoneAttach
 public import Mathlib.Analysis.Calculus.Deriv.MeanValue
+public import Mathlib.Analysis.Calculus.MeanValue
 
 /-!
 CP017: a RATIONAL SUFFICIENCY CERTIFICATE for original Hardy-Z
