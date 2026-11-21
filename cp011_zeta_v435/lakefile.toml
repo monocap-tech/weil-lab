@@ -120,3 +120,9 @@ name = "CP027PointwiseBorwein"
 # Explicitly imports original CP026 and CP027 source leaves.
 [[lean_lib]]
 name = "CP027TwoFiniteSigns"
+
+# CP028: tiny coarse source finite BOX implication; 2 grouped
+# external complex interval proofs remain UNPAID. Inherits
+# CP027 two-sign integration, not independent proof acceptance.
+[[lean_lib]]
+name = "CP028CoarseFiniteBoxes"

@@ -113,6 +113,18 @@ jobs:
             2>&1 | tee CP027TwoFiniteSigns-actual-source-axioms.log
           python ../scripts/cp027_original_center_borwein_328_over_27_source_gate.py \
             --kernel-audit
+      - name: CP028 ORIGINAL simple finite interval boxes imply 2 source finite HardyZ signs — conditional v4.35 compiler only
+        working-directory: cp011_zeta_v435
+        timeout-minutes: 20
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build CP028CoarseFiniteBoxes 2>&1 \
+            | tee cp028-actual-original-coarse-finite-source-bridge-build.log
+          lake env lean CP028CoarseFiniteBoxes.lean 2>&1 \
+            | tee CP028CoarseFiniteBoxes-actual-source-axioms.log
+          python ../scripts/cp028_original_coarse_finite_boxes_source_gate.py \
+            --kernel-audit
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -134,5 +146,8 @@ jobs:
             cp011_zeta_v435/CP027TwoFiniteSigns-actual-source-axioms.log
             cp011_zeta_v435/.lake/build/lib/lean/CP027PointwiseBorwein.olean
             cp011_zeta_v435/.lake/build/lib/lean/CP027TwoFiniteSigns.olean
+            cp011_zeta_v435/cp028-actual-original-coarse-finite-source-bridge-build.log
+            cp011_zeta_v435/CP028CoarseFiniteBoxes-actual-source-axioms.log
+            cp011_zeta_v435/.lake/build/lib/lean/CP028CoarseFiniteBoxes.olean
           if-no-files-found: ignore
           include-hidden-files: true
