@@ -1,6 +1,11 @@
 name: NF473 original physical J7 adjacent [1,26/25] signed moments
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf473-original-j7-left-panel-correlated-signed-moments.yml'
+      - 'scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py'
+      - 'scripts/local_replay/nf473_original_J7_left_macro_signed_native.py'
+      - 'scripts/local_replay/verify_nf473_original_J7_left_panel_and_partial_union_exact.py'
   workflow_dispatch:
 jobs:
   central:

@@ -50,7 +50,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Pinned Arb dependencies
-        run: pip install --only-binary=:all: python-flint==0.8.0 numpy scipy
+        run: 'pip install --only-binary=:all: python-flint==0.8.0 numpy scipy'
       - name: Retrieve historical original 242 signed J matrix and original 968 mixed columns
         env:
           GH_TOKEN: ${{ github.token }}
