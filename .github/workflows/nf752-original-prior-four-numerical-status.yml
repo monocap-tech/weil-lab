@@ -1,0 +1,50 @@
+name: NF752 actual live original numerical compiler status and strict acceptance distinction
+on:
+  pull_request:
+    paths:
+      - "scripts/nf752_original_pending_numerical_status.py"
+      - "docs/NF752_ORIGINAL_INDEXZERO_088_095_AND_STATUS_CUSTODY.md"
+      - ".github/workflows/nf752-original-prior-numerical-status.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  observe-prior-original-numerical-jobs-without-promoting-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile Python and reject synthetic false original numerical certification
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf752_original_pending_numerical_status.py
+          python scripts/nf752_original_pending_numerical_status.py selftest
+      - name: Query LIVE exact prior NF748 NF749 NF750 numerical jobs and immutable artifact metadata
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python scripts/nf752_original_pending_numerical_status.py live
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("nf752-prior-four-original-numerical-ci-status.json")
+          x=json.loads(p.read_text())
+          assert x["historical_accepted_original_HD_A_frontier_gates"]==596
+          assert x["total_original_gate_instances_promoted_by_this_observer"]==0
+          assert len(x["observed_stages"])==4
+          assert all(not y["LEAN_PASS_certified_by_this_script"] for y in x["observed_stages"])
+          print("NF752 live CI status receipt: source-specific proof acceptance remains separate")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf752-independent-live-original-numerical-CI-status-not-Lean-certificate
+          path: |
+            nf752-prior-four-original-numerical-ci-status.json
+            nf752-original-numerical-status-selftest.json
+          if-no-files-found: ignore
