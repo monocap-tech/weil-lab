@@ -2,6 +2,12 @@ name: UOI030 single-lane original Fourier Lean compiler (manual, source-pinned)
 run-name: UOI030 ${{ inputs.mode }} | source 614ba879
 
 on:
+  # A single deliberately isolated automatic compile request. This marker path
+  # is outside every other main-branch workflow's automatic path filters.
+  push:
+    branches: [main]
+    paths:
+      - 'verification/uoi030/UOI030_ONE_SHOT_COMPILE_20261121.txt'
   workflow_dispatch:
     inputs:
       mode:
@@ -64,18 +70,23 @@ jobs:
             > uoi030-pinned-inputs.sha256
           echo 'Pinned source and candidate check PASS. This is NOT Lean compilation.'
 
-      - name: Require explicit authorization for the single Lean module
-        if: inputs.mode == 'compile'
+      - name: Authorize dedicated one-shot push request or explicit manual compilation
+        if: github.event_name == 'push' || inputs.mode == 'compile'
         shell: bash
         env:
           HEAVY_CONFIRMATION: ${{ inputs.heavy_confirmation }}
         run: |
           set -euo pipefail
-          test "$HEAVY_CONFIRMATION" = 'RUN-PINNED-UOI030'
-          echo 'Confirmed: run only one UOI030 Lean compiler lane.'
+          if [ "${{ github.event_name }}" = 'push' ]; then
+            test "$(cat inputs/verification/uoi030/UOI030_ONE_SHOT_COMPILE_20261121.txt)" = 'RUN-PINNED-UOI030'
+            echo 'Dedicated source-pinned UOI030 one-shot compiler request verified.'
+          else
+            test "$HEAVY_CONFIRMATION" = 'RUN-PINNED-UOI030'
+            echo 'Manual UOI030 compiler request verified.'
+          fi
 
       - name: Install pinned Lean and initialize Lake before any manifest checks
-        if: inputs.mode == 'compile'
+        if: github.event_name == 'push' || inputs.mode == 'compile'
         shell: bash
         working-directory: research
         run: |
@@ -89,7 +100,7 @@ jobs:
           sha256sum lake-manifest.json > ../uoi030-generated-manifest.sha256
 
       - name: Retrieve pinned Mathlib cache
-        if: inputs.mode == 'compile'
+        if: github.event_name == 'push' || inputs.mode == 'compile'
         shell: bash
         working-directory: research
         run: |
@@ -97,7 +108,7 @@ jobs:
           lake exe cache get
 
       - name: Compile original unchanged source dependency first
-        if: inputs.mode == 'compile'
+        if: github.event_name == 'push' || inputs.mode == 'compile'
         shell: bash
         working-directory: research
         timeout-minutes: 95
@@ -106,7 +117,7 @@ jobs:
           lake build WeilDefect.Arithmetic.ActualZetaCorrelationFourierAgreement 2>&1 | tee ../uoi030-upstream-build.log
 
       - name: Stage exactly one UOI030 Lake module without rewriting any proof
-        if: inputs.mode == 'compile'
+        if: github.event_name == 'push' || inputs.mode == 'compile'
         shell: bash
         run: |
           set -euo pipefail
@@ -116,7 +127,7 @@ jobs:
           test "$(sha256sum research/WeilDefect/Research/UOI030CorrelationFourierFactorization.lean | cut -d ' ' -f1)" = "$UOI030_SHA256"
 
       - name: Genuine UOI030 Lean compilation, stop at first diagnostic
-        if: inputs.mode == 'compile'
+        if: github.event_name == 'push' || inputs.mode == 'compile'
         shell: bash
         working-directory: research
         timeout-minutes: 40
@@ -126,7 +137,7 @@ jobs:
           test -s .lake/build/lib/lean/WeilDefect/Research/UOI030CorrelationFourierFactorization.olean
 
       - name: Print actual theorem axioms for strict independent review
-        if: inputs.mode == 'compile'
+        if: github.event_name == 'push' || inputs.mode == 'compile'
         shell: bash
         working-directory: research
         timeout-minutes: 15
