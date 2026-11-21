@@ -17,6 +17,19 @@
 
 Published proof baseline: Platt–Trudgian (2021) independently verifies RH up to height 3e12. This can be an additional finite-line-location cross-check but does NOT provide the CP005 required precise full list and Mellin-compression estimates.
 
+### 1.5. Exact upstream source and *identified toolchain incompatibility*
+
+GitHub API inspection of the immutable release resolves `v1-1e6` to commit **`c06b4e13d9c847e50a32c3d738271cbad62ae9f3`**. The release advertises the x86_64 prebuilt library with published SHA-256 **`f777b515af89a486654052f0052b8f6760e822c88c15e0be8af753c9542c2ea2`**; this is metadata, NOT a downloaded-and-rehashed certificate in CP005. The source `Zeta/Main.lean` explicitly contains the desired theorem `Zeta.riemannHypothesisUpTo_1000449` and the additional `Zeta.simpleZerosUpTo_1000449`, with source-level standard-axiom `#guard_msgs` assertions.
+
+Importantly, `Zeta/Zeros/CountCertificates.lean` declares the original `certifiedZeroCount : CertifiedZeroCount` with a real Turing `count` proof and a `below` proof, sourced from the generated Gram-block and individual zero-interval bundles. `Zeta/Zeros/RiemannHypothesisUpTo/Basic.lean` contains the exact theorem
+`
+  riemannZeta.N_gramPoint_eq (Z : CertifiedZeroCount) :
+    riemannZeta.N (gramPoint Z.minIdx) = Z.intervals.length
+`
+plus simplicity and no-off-line-zero consequences. This is the precise missing **zero-roster ↔ Turing completeness dictionary**, not merely a general finite-height RH assertion. It still must be applied to the *exported specific interval rows* with a verified hash/ordering map.
+
+**Hard current dependency mismatch:** Original Weil-Lab IV022 has `leanprover/lean4:v4.34.0` and Mathlib `v4.34.0`. External `smmercuri/zeta@v1-1e6` has **Lean v4.35.0 / Mathlib v4.35.0** and a separately pinned `PrimeNumberTheoremAnd` dependency. Consequently **do not add a direct Lake `require Zeta` to the existing Phase IV branch** or import its public `.olean` with the wrong toolchain. For CP006, use a separate pinned v4.35 formal adapter and explicit mathematical statement export, or an independently proved compatibility port. Avoid silently upgrading canonical Phase IV.
+
 ## 2. Replace CP004's T=2^20 with a certifiably reachable boundary
 
 Set the **finite spectral cutoff at the first certified Gram point** `g` *above* 1,000,449, with all 1,748,002 positive-height zeros counted below it, and rigorously prove `g>1,000,000`. Do NOT equate the integer height 1,000,449 with this Gram point. Rather than trying to guess the exact number `N_+(1,000,000)`, include all certified intervals through `g`. Since `g>10^6`, the remaining zero tail is a subset of the tail above `T_0=10^6`, for which the previous CP003 unconditional zero-count argument applies.
