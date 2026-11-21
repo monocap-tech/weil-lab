@@ -1,0 +1,244 @@
+# Branch-only NF768 variant of the default-registered RPB108 manual workflow;
+# manual dispatch only, and main's RPB108 entrypoint is NOT modified.
+name: NF768 original HD/A 104–111 single kernel and strict 35-axiom audit
+on:
+  workflow_dispatch:
+    inputs:
+      checkpoint:
+        description: 'Exact NF768 research head SHA'
+        required: true
+        type: string
+      mode:
+        description: 'Use custody for the authorized NF768 pass'
+        required: true
+        default: custody
+        type: choice
+        options:
+          - replay
+          - custody
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: nf768-single-original-indexzero-104-111
+  cancel-in-progress: false
+jobs:
+  authenticate-reuse-and-kernel-actual-original-indexzero-104-111:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - name: Reject unrelated ref, mode or unpinned source before any heavy work
+        shell: bash
+        env:
+          CHECKPOINT: ${{ inputs.checkpoint }}
+          MODE: ${{ inputs.mode }}
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = 'monocap-tech/weil-lab'
+          test "$GITHUB_REF" = 'refs/heads/research/nf768-original-indexzero-104-111-controlled-kernel'
+          test "$GITHUB_EVENT_NAME" = 'workflow_dispatch'
+          test "$MODE" = 'custody'
+          test "$CHECKPOINT" = "$GITHUB_SHA"
+          test "${#GITHUB_SHA}" -eq 40
+          echo "Exact NF768 source SHA pinned: $GITHUB_SHA"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate 596 previously kernel accepted original HD/A gate instances (LIVE Actions + strict artifact digests)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf748_original_596_kernel_rollforward.py
+          python scripts/nf748_original_596_kernel_rollforward.py selftest
+          python scripts/nf748_original_596_kernel_rollforward.py live
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('nf748-original-596-accepted-gate-rollforward.json').read_text())
+          assert r['original_gate_instances_accepted']==596
+          assert len(r['original_indexzero_HD_positions_accepted'])==56
+          assert r['original_indexzero_HD_positions_accepted']==r['original_indexzero_A_positions_accepted']
+          assert not r['new_64_to_71_original_HD_A_gates_accepted_by_this_ledger']
+          assert not r['nf734_24_to_31_accepted_by_this_ledger']
+          print('NF768 immutable true original gate rollforward: 596 certified, proposed 104–111 not counted')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf768-live-original-HD-A-596-accepted-kernel-rollforward
+          path: |
+            nf748-original-596-accepted-gate-rollforward.json
+            nf748-original-596-accepted-gate-rollforward-selftest.json
+          if-no-files-found: error
+      - name: Authenticate six prior actual original Lean kernel batches NF748-NF753
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf768_original_prior_692_custody.py
+          python scripts/nf768_original_prior_692_custody.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf768-accepted-prior-692-original-HD-A-kernel-custody
+          path: nf768-accepted-prior-692-kernel-custody.json
+          if-no-files-found: error
+      - name: Require immutable successful NF728 original source, NF729 numerical Lean quad and NF737 complete source artifact identities
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,subprocess
+          repo=os.environ['GITHUB_REPOSITORY']
+          api=lambda suffix:json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/{suffix}'],text=True))
+          stages=[
+            (44764979145,136387054732,'authenticate-and-emit',14644051272,'nf728-authenticated-original-HD-A-two-half-source-bank','12bb99f055e9fe8843b33ca110877729114331b6e68361b98f8b449357ae3a55'),
+            (44767040253,136399712401,'authentic-numerical-quads (000)',14647164240,'nf729-real-original-HD-A-quad-000-source-bound-kernel-audit','e9f31c3780a7ea2c52a6b4f3df0e9c22f351b123fe9fde94be0161eec2c6a687'),
+            (44791346863,136479519760,'authenticate-and-emit-remaining-original-indexzero',14660147684,'nf737-authenticated-original-indexzero-242-full-source-and-28-shard-candidates','11e31531cfd29187b648b207d85269c8b2a0a065a387b9182023a425e645a42f'),
+          ]
+          for run_id,job_id,job_name,artifact_id,artifact_name,digest in stages:
+            jobs=api(f'actions/runs/{run_id}/jobs?per_page=100')['jobs']
+            assert any(j['id']==job_id and j['name']==job_name and j['conclusion']=='success' for j in jobs),(run_id,job_id,job_name)
+            arts=api(f'actions/runs/{run_id}/artifacts?per_page=100')['artifacts']
+            good=[a for a in arts if a['id']==artifact_id and a['name']==artifact_name and a.get('digest')=='sha256:'+digest and not a['expired']]
+            assert len(good)==1,(run_id,artifact_id,artifact_name)
+          print('NF768 exact three independently successful original proof source/numerical jobs, immutable artifact IDs and SHA256 archives verified; any further 104–111 numerical theorem remains KERNEL PENDING')
+          PY
+      - name: Restore already-successful full authentic original 242-column NF737 source bank without regenerating 227MB of numerical source
+        uses: actions/download-artifact@v4
+        with:
+          name: nf737-authenticated-original-indexzero-242-full-source-and-28-shard-candidates
+          path: .
+          run-id: 44791346863
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Authenticate all 242 literal original source modules and prepare eight 104–111 actual indexzero numerical gate candidates
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf737_original_indexzero_complete_source_shard_schedule.py scripts/nf743_reuse_accepted_original_nf703_cache.py scripts/nf768_original_indexzero_104_111_cached_kernel.py scripts/nf768_original_indexzero_import_order_guard.py scripts/nf768_original_prior_692_custody.py
+          python scripts/nf737_original_indexzero_complete_source_shard_schedule.py verify 2>&1 | tee nf768-recovered-full-original-source.log
+          python scripts/nf768_original_indexzero_104_111_cached_kernel.py prepare 2>&1 | tee nf768-original-104-111-preflight.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('nf768-indexzero-104-111-source-binding.json')
+          m=json.loads(p.read_text())
+          assert m['new_indices_HD']==m['new_indices_A']==list(range(104,112))
+          assert m['new_gate_instances']==16 and m['new_declarations']==32
+          assert len(m['strict_axiom_names'])==35
+          assert m['cache_reuse_required'] is True
+          assert m['new_numerical_kernel_accepted'] is False
+          assert m['nf734_024_031_accepted_by_this_stage'] is False
+          assert m['nf737_032_039_accepted_by_this_stage'] is False
+          assert m['nf739_040_047_accepted_by_this_stage'] is False
+          assert m['nf742_048_055_accepted_by_this_stage'] is False
+          print('NF768 16 genuine original global indexzero 104–111 gate proof SOURCES authenticated; original kernel not yet attempted')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf768-genuine-original-indexzero-104-111-source-only-custody
+          path: |
+            nf768-indexzero-104-111-source-binding.json
+            nf768OriginalIndexZero104Audit.lean
+            nf768-original-104-111-preflight.log
+          if-no-files-found: error
+      - name: Fetch exact historical accepted NF728 original source and NF729 original NUMERICAL kernel-object ZIP archives
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 4 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14644051272/zip" -o nf743-nf728-accepted-original-source.zip
+          curl -fsSL --retry 4 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14647164240/zip" -o nf743-nf729-accepted-original-quad000-objects.zip
+          echo '12bb99f055e9fe8843b33ca110877729114331b6e68361b98f8b449357ae3a55  nf743-nf728-accepted-original-source.zip' | sha256sum -c -
+          echo 'e9f31c3780a7ea2c52a6b4f3df0e9c22f351b123fe9fde94be0161eec2c6a687  nf743-nf729-accepted-original-quad000-objects.zip' | sha256sum -c -
+      - name: Install original pinned Lean toolchain and exact Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Match accepted original 300+ NF702 NF703 NF681 source files SHA exactly and extract ONLY prior Lean accepted WeilDefect compiled objects
+        timeout-minutes: 75
+        run: |
+          set -euo pipefail
+          python scripts/nf743_reuse_accepted_original_nf703_cache.py ingest 2>&1 | tee nf768-original-cache-source-identical.log
+          python scripts/nf743_reuse_accepted_original_nf703_cache.py check
+          rm -f nf743-nf728-accepted-original-source.zip nf743-nf729-accepted-original-quad000-objects.zip
+          df -h .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf768-source-identical-accepted-original-center-cache-capsule
+          path: |
+            nf743-accepted-original-center-cache-reuse.json
+            nf768-original-indexzero-compiler-import-order.json
+            nf768-original-cache-source-identical.log
+            .lake/build/lib/lean/WeilDefect/Generated/NF702Inputs/
+            .lake/build/lib/lean/WeilDefect/Generated/NF703Cache/
+          include-hidden-files: true
+          if-no-files-found: error
+      - name: Kernel-compile exact original cache frontier, local products and original HD/A global common when genuinely missing
+        timeout-minutes: 135
+        run: |
+          set -euo pipefail
+          compile_missing() {
+            local mod="$1" src="WeilDefect/${1//.//}.lean" dest=".lake/build/lib/lean/WeilDefect/${1//.//}.olean"
+            if [[ -s "$dest" ]]; then echo "NF743 reuse accepted source-identical Lean object: $mod"; return 0; fi
+            test -s "$src"
+            mkdir -p "$(dirname "$dest")"
+            lake env lean -o "$dest" "$src" 2>&1 | tee -a nf768-original-cache-direct-compile.log
+          }
+          python scripts/nf743_reuse_accepted_original_nf703_cache.py check
+          # Actual recovered NF746 kernel failure: NF703Cache.Frontier imports
+          # NF681.Common, whose compiled .olean is absent from NF729's accepted
+          # index-one cache capsule. Establish the prerequisite FIRST.
+          python scripts/nf768_original_indexzero_import_order_guard.py verify
+          compile_missing Generated.NF681.Common
+          test -s .lake/build/lib/lean/WeilDefect/Generated/NF681/Common.olean
+          compile_missing Generated.NF703Cache.Frontier
+          test -s .lake/build/lib/lean/WeilDefect/Generated/NF703Cache/Frontier.olean
+          for ((i=104;i<112;i++)); do
+            printf -v col "%03d" "$i"
+            compile_missing "Generated.NF681.Col$col"
+          done
+          compile_missing Generated.NF704Frontier.Common
+      - name: Direct kernel-compile eight actual original frozen NF702 NF703 global HD/A indexzero Col104 through Col111 gate source modules
+        timeout-minutes: 110
+        run: |
+          set -euo pipefail
+          for ((i=104;i<112;i++)); do
+            printf -v col "%03d" "$i"
+            name="Generated/NF704Frontier/Col$col"
+            test -s "WeilDefect/$name.lean"
+            mkdir -p .lake/build/lib/lean/WeilDefect/Generated/NF704Frontier
+            /usr/bin/time -a -o nf768-indexzero-gates-time.log -f "column=%C elapsed=%e rss_kb=%M exit=%x" \
+              lake env lean -o ".lake/build/lib/lean/WeilDefect/$name.olean" "WeilDefect/$name.lean" 2>&1 | tee -a nf768-original-104-111-gates-build.log
+          done
+      - name: Strict 35-name original source-bound Lean theorem axiom and accepted prior cache-object audit
+        timeout-minutes: 30
+        run: |
+          set -euo pipefail
+          python scripts/nf743_reuse_accepted_original_nf703_cache.py check
+          lake env lean nf768OriginalIndexZero104Audit.lean 2>&1 | tee nf768-original-indexzero-104-111-axioms.log
+          python scripts/nf768_original_indexzero_104_111_cached_kernel.py audit
+          test -s nf768-original-indexzero-104-111-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf768-original-source-identical-cache-real-global-HD-A-104-111-Lean-kernel-audit
+          path: |
+            nf768-original-104-111-preflight.log
+            nf768-original-cache-source-identical.log
+            nf768-original-cache-direct-compile.log
+            nf768-original-104-111-gates-build.log
+            nf768-original-indexzero-104-111-axioms.log
+            nf768-indexzero-gates-time.log
+            nf743-accepted-original-center-cache-reuse.json
+            nf768-indexzero-104-111-source-binding.json
+            nf768-original-indexzero-104-111-kernel-audit.json
+            nf768-accepted-prior-692-kernel-custody.json
+            nf748-original-596-accepted-gate-rollforward.json
+            nf768-original-indexzero-compiler-import-order.json
+            nf768OriginalIndexZero104Audit.lean
+          if-no-files-found: ignore
