@@ -23,6 +23,8 @@ DELTA = Q(1, 10**9)
 E_QUAD_ALLOWANCE = Q(1, 50000)
 EPS_MAX = Q(1, 500)
 TAG = "v1-1e6"
+COMMIT = "c06b4e13d9c847e50a32c3d738271cbad62ae9f3"
+RELEASE_SHA256 = "f777b515af89a486654052f0052b8f6760e822c88c15e0be8af753c9542c2ea2"
 THEOREM = "Zeta.riemannHypothesisUpTo_1000449"
 AXIOMS = ["Classical.choice", "Quot.sound", "propext"]
 
@@ -74,8 +76,12 @@ def parse_manifest(manifest_path):
     if meta.get("trust_layer") != "kernel" or meta.get("axioms") != AXIOMS:
         raise ValueError("Fail closed: must be Zeta kernel layer and only standard axiom set")
     commit=meta.get("full_upstream_commit_sha")
-    if not isinstance(commit,str) or not re.fullmatch("[a-f0-9]{40}",commit):
-        raise ValueError("Full immutable upstream source commit SHA is mandatory")
+    if commit != COMMIT:
+        raise ValueError("Pinned upstream full source commit SHA mismatch")
+    if meta.get("upstream_release_sha256") != RELEASE_SHA256:
+        raise ValueError("Published upstream release archive digest mismatch")
+    if meta.get("upstream_lean_version") != "v4.35.0" or meta.get("weil_lean_version") != "v4.34.0":
+        raise ValueError("Explicit v4.35 upstream / v4.34 original toolchain mismatch must be acknowledged")
     if not isinstance(meta.get("roster_sha256"),str) or not re.fullmatch("[a-f0-9]{64}",meta["roster_sha256"]):
         raise ValueError("Source roster SHA-256 must be pinned")
     if meta.get("expected_positive_zeros_below_gram") != ROOT_COUNT:
