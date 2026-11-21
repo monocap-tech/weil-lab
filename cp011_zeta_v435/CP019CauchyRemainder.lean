@@ -2,6 +2,7 @@ module
 
 public import Zeta.EulerMaclaurin.ErrorBound
 public import Zeta.EulerMaclaurin.Continuation
+public import CP019HolomorphicRemainder
 public import Mathlib.Analysis.Complex.Liouville
 
 /-!
@@ -143,6 +144,37 @@ theorem third_derivative_original_zeta_EM_remainder_budget (t : ℝ)
     hholomorphic hBorweinOnCircle
   convert h using 1 <;> norm_num [radius, C, Nat.factorial]
 
+/-- NEW stronger Cauchy theorem: the genuine original source
+complex remainder holomorphy is now DISCHARGED by CP019HolomorphicRemainder.
+Only the all-circle FINITE NUMERICAL Borwein envelope proof is missing.
+No source HardyZ real value-error inequality is differentiated. -/
+theorem original_zeta_EM_cauchy_of_Borwein_circle_only (t : ℝ) (k : ℕ)
+    (hBorweinOnCircle :
+      ∀ z ∈ sphere (sourceCenter t) radius,
+        zetaRemainderBound z 6 256 ≤ C) :
+    ‖iteratedDeriv k (fun z : ℂ => zetaRemainder z 6 256)
+        (sourceCenter t)‖ ≤
+      (k.factorial : ℝ) * C / radius ^ k := by
+  apply original_zeta_EM_remainder_cauchy_budget
+  · simpa [sourceCenter, CP019HolomorphicRemainder.sourceCenter,
+      radius] using
+        CP019HolomorphicRemainder.original_zeta_remainder_diffContOnCl_ball t
+  · exact hBorweinOnCircle
+
+/-- Source-analytic third complex derivative of the actual Euler–
+Maclaurin remainder is at most 1.152×10^-10. The TRUE remaining
+formal/numerical task is the finite Borwein circle inequality; no
+extra holomorphy or derivative regularity assumption is present. -/
+theorem original_EM_third_deriv_of_Borwein_circle_only (t : ℝ)
+    (hBorweinOnCircle :
+      ∀ z ∈ sphere (sourceCenter t) radius,
+        zetaRemainderBound z 6 256 ≤ C) :
+    ‖iteratedDeriv 3 (fun z : ℂ => zetaRemainder z 6 256)
+        (sourceCenter t)‖ ≤ (1152 : ℝ) / (10 : ℝ) ^ 13 := by
+  have h := original_zeta_EM_cauchy_of_Borwein_circle_only t 3
+    hBorweinOnCircle
+  convert h using 1 <;> norm_num [radius, C, Nat.factorial]
+
 end CP019CauchyRemainder
 
 #print axioms CP019CauchyRemainder.sphere_re_quarter_le
@@ -151,3 +183,5 @@ end CP019CauchyRemainder
 #print axioms CP019CauchyRemainder.exact_Borwein_majorant_lt_three_1e13
 #print axioms CP019CauchyRemainder.original_zeta_EM_remainder_cauchy_budget
 #print axioms CP019CauchyRemainder.third_derivative_original_zeta_EM_remainder_budget
+#print axioms CP019CauchyRemainder.original_zeta_EM_cauchy_of_Borwein_circle_only
+#print axioms CP019CauchyRemainder.original_EM_third_deriv_of_Borwein_circle_only
