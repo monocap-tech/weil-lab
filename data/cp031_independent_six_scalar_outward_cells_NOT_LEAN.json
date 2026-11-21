@@ -1,0 +1,63 @@
+{
+  "status": "CP031_INDEPENDENT_RECONSTRUCTED_SIX_SCALAR_OUTWARD_INTERVALS_NOT_LEAN",
+  "authority": "external rational interval calculation; neither pinned CP025 replay nor new Lean theorem",
+  "original_zeta_source_commit_advertised": "c06b4e13d9c847e50a32c3d738271cbad62ae9f3",
+  "source_identity_independently_verified_in_this_replay": false,
+  "local_executed_script_sha256": "683437dd5f439fa2acad3cc46689d64b61b5ae344a97fab552e28cc0e426c9c4",
+  "fixed_integer_scales_crosschecked": [
+    "10^50",
+    "10^55"
+  ],
+  "outward_cell_denominator": "1000000000",
+  "tLeft": "15005352/100000",
+  "tRight": "15005353/100000",
+  "cells": {
+    "left": {
+      "A_real": [
+        -516,
+        -515
+      ],
+      "A_imag": [
+        -447,
+        -446
+      ],
+      "finite_rotated_real": [
+        -682,
+        -681
+      ]
+    },
+    "right": {
+      "A_real": [
+        11733,
+        11734
+      ],
+      "A_imag": [
+        10158,
+        10159
+      ],
+      "finite_rotated_real": [
+        15519,
+        15520
+      ]
+    }
+  },
+  "six_CP030_scalar_targets_external_pass": true,
+  "bound_certification_kind": "exact rational comparisons conditional on source expression identification",
+  "conditional_component_l1_norm_caps": {
+    "left": "963/1000000000",
+    "right": "21893/1000000000"
+  },
+  "conditional_HardyZ_error_caps": {
+    "left": "6053/18750000000000000",
+    "right": "138197/168750000000000000"
+  },
+  "conditional_source_remainder_cap": "3/10000000000000",
+  "direct_pinned_CP025_git_blob_engine_executed": false,
+  "published_source_expressions_L4_membership_proven": false,
+  "CP029_original_Borwein_11_Lean_certified": false,
+  "six_original_scalar_memberships_Lean_proven": false,
+  "CP030_conditional_chain_Lean_compiled": false,
+  "unconditional_original_narrow_zero_Lean_proven": false,
+  "source_zero_rank53_proven": false,
+  "global_signed_Weil_positivity_or_RH": false
+}
