@@ -1,0 +1,81 @@
+name: IV017 genuine original narrow Schwartz signed Gamma and 19over20 new diagonal
+on:
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalNarrowSignedGamma.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalNarrowDiagonalCoercivity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalConcreteGapPrimeFreeDiagonal.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalTwoCollarPrimeFreeBump.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalNonzeroPrimeFreeSchwartzBump.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollarFourierMass.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollarGammaLower.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollarPoleBound.lean"
+      - "scripts/iv017_original_narrow_diagonal_coercivity_audit.py"
+      - ".github/workflows/iv017-original-narrow-diagonal-coercivity.yml"
+      - "docs/IV017_PHASE_IV_ORIGINAL_NARROW_DIAGONAL_COERCIVITY.md"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: iv017-original-narrow-diagonal-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  signed-gamma-narrow-original-new-diagonal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact rational 1over500 Fourier/Gamma/pole margin and genuine source preflight — NOT Lean
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/iv017_original_narrow_diagonal_coercivity_audit.py
+          python scripts/iv017_original_narrow_diagonal_coercivity_audit.py preflight
+          test -s iv017-original-narrow-coercivity-exact-rational-preflight.json
+      - name: Install exact pinned original Lean and Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Original physical 1over500 Schwartz L1/Plancherel and signed Gamma direct Lean build
+        timeout-minutes: 100
+        run: |
+          set -euo pipefail
+          /usr/bin/time -a -o iv017-source-resources.log -f 'phase=signedGamma elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalNarrowSignedGamma 2>&1 | tee iv017-original-narrow-signed-gamma-build.log
+      - name: Real original 2-pole source and 19over20 NEW diagonal direct Lean build
+        timeout-minutes: 100
+        run: |
+          set -euo pipefail
+          /usr/bin/time -a -o iv017-source-resources.log -f 'phase=originalDiagonal elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalNarrowDiagonalCoercivity 2>&1 | tee iv017-original-narrow-diagonal-coercivity-build.log
+      - name: Strict REAL Lean axiom audit for all 17 new source proofs and eight upstream anchors
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalNarrowSignedGamma.lean 2>&1 | tee iv017-original-narrow-signed-gamma-axioms.log
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalNarrowDiagonalCoercivity.lean 2>&1 | tee iv017-original-narrow-diagonal-coercivity-axioms.log
+          python scripts/iv017_original_narrow_diagonal_coercivity_audit.py verify
+          test -s iv017-original-narrow-coercivity-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv017-original-narrow-signed-gamma-two-pole-19over20-diagonal-kernel
+          path: |
+            iv017-original-narrow-coercivity-exact-rational-preflight.json
+            iv017-source-resources.log
+            iv017-original-narrow-signed-gamma-build.log
+            iv017-original-narrow-diagonal-coercivity-build.log
+            iv017-original-narrow-signed-gamma-axioms.log
+            iv017-original-narrow-diagonal-coercivity-axioms.log
+            iv017-original-narrow-coercivity-kernel-audit.json
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalNarrowSignedGamma.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalNarrowDiagonalCoercivity.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
