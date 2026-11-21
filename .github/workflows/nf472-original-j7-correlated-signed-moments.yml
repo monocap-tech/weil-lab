@@ -1,6 +1,5 @@
 name: NF472 original physical J7 signed mixed and quadratic source moments
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   central:

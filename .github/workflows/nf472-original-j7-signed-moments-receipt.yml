@@ -1,6 +1,5 @@
 name: NF472 J7 signed-moment exact rational custody witness
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   exact-original-signed-witness:

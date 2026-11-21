@@ -1,6 +1,5 @@
 name: NF471 original J7 complete joint arch macroscopic source mean
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   central:

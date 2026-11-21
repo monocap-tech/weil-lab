@@ -1,6 +1,5 @@
 name: NF474 independent original signed J7 raw-artifact Fraction audit
 on:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read
