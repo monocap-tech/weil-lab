@@ -20,7 +20,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install inherited native Arb
-        run: pip install --only-binary=:all: python-flint==0.8.0 numpy scipy
+        run: 'pip install --only-binary=:all: python-flint==0.8.0 numpy scipy'
       - name: Retrieve exactly SHA-pinned original selected signed archive
         env:
           GH_TOKEN: ${{ github.token }}

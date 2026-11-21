@@ -33,7 +33,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install --only-binary=:all: python-flint==0.8.0
+      - run: 'pip install --only-binary=:all: python-flint==0.8.0'
       - name: Genuine source SHA-pinned NF494 H400/U400 240-jet analytic tail and local log exact Fraction preflight
         run: |
           python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf512_H4095_source_analytic_preflight_exact.py \
