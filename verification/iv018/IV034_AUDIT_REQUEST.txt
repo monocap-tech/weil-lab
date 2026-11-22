@@ -7,3 +7,5 @@ No extra GitHub Actions paths are intentionally touched in this commit.
 Retry: authenticate the exact changed-file path against the canonical GitHub commit API (after IV034 harness correction).
 
 IV035 candidate checkout test: 4601b05683de3acc8fcf7c277fb1413f756e07fc; two upstream Lean proof goals repaired, source-pinned audit before compiler.
+
+IV037: audit pinned original Lean repair source 64ad66d9ae44d39698346eec08be212c928a28ec; exact single-file Schur minimizer tactical source repair only.
