@@ -1,5 +1,5 @@
 # Formalization F40 NF770: main-registered review-only PR source checks plus explicitly gated manual Lean pass.
-# Never dispatch from a historical 600-workflow branch; no automatic heavy trigger.
+# No historical-branch fan-out. Heavy execution has exactly one marker path and an exact commit-message/source guard.
 name: F40 NF770 original HD/A 120–127 source and one Lean kernel
 on:
   # This exact marker can request ONE accepted-source compiler pass.
