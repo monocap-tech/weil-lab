@@ -40,7 +40,7 @@ def compiled_objects():
         src = d.SOURCE / (name + ".lean")
         obj = OBJECT_DIR / (name + ".olean")
         assert src.is_file() and obj.is_file() and obj.stat().st_size > 0, name
-        matches = [r for r in rows if re.search(rf"\\b{name}\\.lean\\b", r)
+        matches = [r for r in rows if re.search(rf"\b{name}\.lean\b", r)
                    and "exit=0" in r and "lake env lean" in r]
         assert len(matches) == 1, ("Direct source-bound compiler receipt missing or duplicated", name, matches)
         hashes[name + ".olean"] = sha(obj)
@@ -51,20 +51,20 @@ def strict_axiom_receipt():
     expected = ["import WeilDefect.Generated.NF704Frontier.Common"] + [
         f"import WeilDefect.Generated.NF704Frontier.Col{i:03d}" for i in range(128,136)
     ] + [f"#print axioms WeilDefect.{n}" for n in d.NAMES]
-    assert d.AXFILE.read_text() == "\\n".join(expected) + "\\n", "Axiom query source mutated"
+    assert d.AXFILE.read_text() == "\n".join(expected) + "\n", "Axiom query source mutated"
     log = d.AXLOG.read_text()
     found = {}
-    for name, values in re.findall(r"'WeilDefect\\.(\\w+)' depends on axioms: \\[([^\\]]*)\\]", log):
+    for name, values in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]", log):
         if name in d.NAMES:
             assert name not in found
             found[name] = [t.strip() for t in values.split(",") if t.strip()]
-    for name in re.findall(r"'WeilDefect\\.(\\w+)' does not depend on any axioms", log):
+    for name in re.findall(r"'WeilDefect\.(\w+)' does not depend on any axioms", log):
         if name in d.NAMES:
             assert name not in found
             found[name] = []
     assert set(found) == set(d.NAMES) and len(found) == 35, (set(d.NAMES)-set(found), len(found))
     assert all(set(values) <= ALLOWED for values in found.values())
-    assert not re.search(r"\\berror:|sorryAx|declaration uses `sorry`", log, re.I)
+    assert not re.search(r"\berror:|sorryAx|declaration uses `sorry`", log, re.I)
     return found
 
 def audit():
@@ -143,7 +143,7 @@ def audit():
         "global_Weil_positivity_proved": False,
         "RH_proved": False
     })
-    OUT.write_text(json.dumps(final, indent=2, sort_keys=True) + "\\n")
+    OUT.write_text(json.dumps(final, indent=2, sort_keys=True) + "\n")
     print("NF771 128..135: direct Lean eight objects + 35 genuine standard-only named axioms locally AUDITED; separate original ZIP reconciliation required before acceptance.")
 
 if __name__ == "__main__":
