@@ -1,0 +1,50 @@
+name: IV068 original source pilot — single-lane pinned Lean verdict
+on:
+  push:
+    branches:
+      - research/iv068-original-source-kernel-gate
+    paths:
+      - ".github/workflows/iv068-original-source-kernel-gate.yml"
+      - "WeilDefect/Arithmetic/IV066OriginalSourcePilot.lean"
+      - "verification/IV066AxiomAudit.lean"
+      - "iv066/IV066_source_gate.py"
+      - "iv067/iv067_source_gate.py"
+      - "iv067/iv067_compile_one_lane.sh"
+permissions:
+  contents: read
+concurrency:
+  group: iv068-original-source-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-source-lean-verdict:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install source-pinned Lean 4.34.0
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake --version
+      - name: Static source preflight (not a kernel result)
+        run: python3 iv067/iv067_source_gate.py --mode local --root .
+      - name: Genuine source-pinned Lean build and strict theorem axiom audit
+        run: bash iv067/iv067_compile_one_lane.sh
+      - name: Preserve compiler and axiom diagnostics regardless of verdict
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iv068-original-lean-verdict-${{ github.sha }}
+          path: |
+            verification/iv067/out/
+            .lake/build/lib/lean/WeilDefect/Arithmetic/IV066OriginalSourcePilot.olean
+          if-no-files-found: warn
+          include-hidden-files: true
