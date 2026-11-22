@@ -6,3 +6,5 @@ Required: pinned Lake manifest, IV018 signed-three-cell and prime9-transfer .ole
 Scope: restricted original three-cell one-quarter candidate; no global Weil positivity or RH.
 
 IV035 targeted proof-repair compilation against immutable commit 4601b05683de3acc8fcf7c277fb1413f756e07fc. Source-pinned audit PASS run 44986588135; no new theorem axioms, rational edits or historical certificate changes.
+
+IV037: run exact new source 64ad66d9ae44d39698346eec08be212c928a28ec after audit #44988169150 PASS; target fix: expand Complex.mul_re in Schur minimizer normalization; preserve 28 named axioms and original original budget.
