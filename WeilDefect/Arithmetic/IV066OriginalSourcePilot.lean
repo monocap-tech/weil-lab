@@ -1,3 +1,5 @@
+import WeilDefect.Arithmetic.ActualZetaNativeWeilForm
+
 /-!
   Weil-Lab IV066 — original arbitrary C² source pilot.
 
@@ -9,7 +11,6 @@
   convolution, nor that the digamma atom limit or closed form domain has
   been formalized. Those are separate IV066 obligations.
 -/
-import WeilDefect.Arithmetic.ActualZetaNativeWeilForm
 
 namespace WeilDefect
 
