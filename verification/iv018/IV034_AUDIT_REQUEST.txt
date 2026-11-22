@@ -23,3 +23,5 @@ IV042 one-shot audit candidate 85442371a1a0e27f4015d138396f04dea662c810: single 
 IV043 source-only exact immutable audit: 75931f92fe03ac18941191a1b43483fe5ddf8edc, one Lean syntax repair of C-infinity to ContDiff ℝ (⊤ : ℕ∞) q in original compactly supported nonzero complex Schwartz bump. No theorem statement, sign, support, rational constants, or axioms altered. Honor shared F40 heavy lane.
 
 IV044 immutable source-only audit 9a4f1f28eaf0e057840a77d4e7a2b93d8727dfb2: explicit exact finite log m=0,1 nonnegative rational norm_num leaves, Nat.cast_ofNat normalization before log_four_eq both sides, and removed malformed '+/-' Lean doc comment opening. Theorems/signs/support and original prime/Gamma arithmetic retained; 551-workflow and 64-record custody must still PASS.
+
+IV045 immutable source-only audit for 030bc4dfc43ba3920057d1d68aeaf31f8cb9c226. One Mathlib API name correction Nat.IsPrimePow to IsPrimePow in original genuine von Mangoldt self-prime clearance; preserve original Schur/three-cell signs, support and exact margins. Run source custody only, wait for active F40 NF773 shared heavy lane before authorized compiler.
