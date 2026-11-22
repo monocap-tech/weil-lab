@@ -29,6 +29,16 @@ jobs:
           python3 -m py_compile scripts/cpc1e_frozen_cp001_prime_geometry.py scripts/cpc1e_frozen_flat_kernel_gate.py
           python3 scripts/cpc1e_frozen_flat_kernel_gate.py selftest 2>&1 | tee cpc1e-parser-selftest-NOT-LEAN.log
           python3 scripts/cpc1e_frozen_flat_kernel_gate.py preflight 2>&1 | tee cpc1e-source-preflight-NOT-LEAN.log
+      - name: Install pinned Lean v4.34 and Lake after source preflight
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          test "$(cat lean-toolchain)" = "leanprover/lean4:v4.34.0"
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version | tee cpc1e-lean-version.log
+          lake --version | tee cpc1e-lake-version.log
       - name: Pinned original Lean4.34 B then C then D then exact frozen E build and standard-only axiom receipts
         run: |
           set -euo pipefail
@@ -55,6 +65,8 @@ jobs:
             cpc1e-frozen-cp001-prime-geometry.json
             cpc1e-parser-selftest-NOT-LEAN.log
             cpc1e-source-preflight-NOT-LEAN.log
+            cpc1e-lean-version.log
+            cpc1e-lake-version.log
             .lake/build/lib/lean/WeilDefect/Arithmetic/CP_C1B_OriginalNineProbeSource.olean
             .lake/build/lib/lean/WeilDefect/Arithmetic/CP_C1C_OriginalCompleteDivisorFinite3.olean
             .lake/build/lib/lean/WeilDefect/Arithmetic/CP_C1D_OriginalNineProbeCompatibility.olean
