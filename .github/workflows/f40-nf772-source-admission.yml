@@ -43,6 +43,8 @@ jobs:
           assert 'def audit()' not in d
           assert 'range(136,144)' in g
           assert '45045201368' in p and '14763746318' in p
+          assert '5726980f4b3d342fc6a41224e0c3840ac17231ef5d0d69b0429608a35a19eebb' in p
+          assert 'Col128 through Col135' in p
           assert '"new_original_Lean_gates_accepted": False' in p
           print('NF772 original 136..143 candidate source and fail-closed admission PASS; no Lean compiler')
           PY
