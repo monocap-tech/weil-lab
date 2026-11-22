@@ -1,0 +1,81 @@
+name: CP-C1B opt-in original IV009 Weil phase-polarization kernel
+# Only an explicit labeled PR can start the source leaf, never push/PR opened.
+on:
+  pull_request:
+    types: [labeled]
+    paths:
+      - "WeilDefect/Arithmetic/CP_C1B_OriginalNineProbeSource.lean"
+      - "scripts/cpc1b_original_source_gate.py"
+      - "scripts/cpc1b_original_kernel_receipt_gate.py"
+      - ".github/workflows/cpc1b-original-iv009-one-leaf-kernel.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cpc1b-one-original-source-lean434
+  cancel-in-progress: false
+jobs:
+  original-iv009-six-lemma-leaf:
+    if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'cpc1b-original-kernel'
+    runs-on: ubuntu-latest
+    timeout-minutes: 200
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original source + immutable dependency gate and parser negative controls (NOT LEAN)
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/cpc1b_original_source_gate.py scripts/cpc1b_original_kernel_receipt_gate.py
+          python scripts/cpc1b_original_source_gate.py --upstream 2>&1 | tee cpc1b-source-check-NOT-LEAN.log
+          python scripts/cpc1b_original_kernel_receipt_gate.py selftest 2>&1 | tee cpc1b-parser-selftest-NOT-LEAN.log
+          python scripts/cpc1b_original_kernel_receipt_gate.py preflight 2>&1 | tee cpc1b-source-blobs-NOT-LEAN.log
+      - name: Initialize pinned Lean v4.34 and Lake BEFORE manifest-sensitive work
+        timeout-minutes: 55
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version | tee cpc1b-lean-version.log
+          test "$(cat lean-toolchain)" = "leanprover/lean4:v4.34.0"
+          lake update 2>&1 | tee cpc1b-lake-update.log
+          lake exe cache get 2>&1 | tee cpc1b-mathlib-cache.log
+      - name: ACTUAL original signed Weil CP-C1B source compilation
+        timeout-minutes: 125
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          /usr/bin/time -o cpc1b-build-resources.log -f 'elapsed=%e rss_kb=%M exit=%x' \
+            lake build WeilDefect.Arithmetic.CP_C1B_OriginalNineProbeSource \
+            2>&1 | tee cpc1b-original-Lean-build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/CP_C1B_OriginalNineProbeSource.olean
+      - name: Actual 8 original theorem #print axioms and SHA-bound strict receipt
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake env lean WeilDefect/Arithmetic/CP_C1B_OriginalNineProbeSource.lean \
+            2>&1 | tee cpc1b-original-kernel-axioms.log
+          python scripts/cpc1b_original_kernel_receipt_gate.py verify \
+            2>&1 | tee cpc1b-strict-kernel-audit.log
+          test -s cpc1b-original-kernel-receipt.json
+      - name: Preserve first real source diagnostic
+        if: always()
+        run: |
+          set -euo pipefail
+          test ! -s cpc1b-original-Lean-build.log || \
+            (grep -nEm1 '(error:|unsolved goals|type mismatch|failed to synthesize|unknown identifier)' \
+              cpc1b-original-Lean-build.log > cpc1b-first-source-error.txt || true)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cpc1b-original-Weil-source-kernel-leaf-receipt
+          path: |
+            cpc1b-*log
+            cpc1b-first-source-error.txt
+            cpc1b-original-kernel-receipt.json
+            .lake/build/lib/lean/WeilDefect/Arithmetic/CP_C1B_OriginalNineProbeSource.olean
+          if-no-files-found: ignore
+          include-hidden-files: true

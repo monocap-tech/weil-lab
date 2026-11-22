@@ -128,9 +128,9 @@ theorem neutralCPC1BOriginal_phaseResponse
   -- Do NOT unfold the diagonal alias in hdiag: the goal uses that alias.
   simp only [Complex.add_re, Complex.mul_re, Complex.mul_im,
     Complex.conj_re, Complex.conj_im]
-  change (neutralCPC1BOriginalMixed a g g).im = 0 at hdiag
+  -- Keep the authentic original diagonal alias in hdiag.
+  -- IV010's earlier failure came from unfolding that alias first.
   rw [hdiag]
-  simp only [neutralCPC1BOriginalDiagonal]
   ring
 
 /-- The REAL component of the actual mixed original Weil entry is
