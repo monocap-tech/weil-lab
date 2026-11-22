@@ -1,0 +1,6 @@
+IV034 ONE-SHOT REAL ORIGINAL IV018 LEAN KERNEL REQUEST
+Mode: heavy; source-pinned compiler and strict named axiom verification.
+Source SHA: 72794db0df1739a35a4f98d272306655dfebf532
+Prerequisite hosted audit: 44980604608 (PASS, 551 YAML definitions, 64 custody records).
+Required: pinned Lake manifest, IV018 signed-three-cell and prime9-transfer .olean objects, 28 standard-only named #print axioms receipts, authenticated source hashes.
+Scope: restricted original three-cell one-quarter candidate; no global Weil positivity or RH.
