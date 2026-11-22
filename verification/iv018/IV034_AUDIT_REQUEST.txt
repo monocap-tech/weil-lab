@@ -9,3 +9,5 @@ Retry: authenticate the exact changed-file path against the canonical GitHub com
 IV035 candidate checkout test: 4601b05683de3acc8fcf7c277fb1413f756e07fc; two upstream Lean proof goals repaired, source-pinned audit before compiler.
 
 IV037: audit pinned original Lean repair source 64ad66d9ae44d39698346eec08be212c928a28ec; exact single-file Schur minimizer tactical source repair only.
+
+IV038 exact source audit: 376f1894f9738e5010179e19eb81c519cf0ffd98. Only original complex pole-minus-prime triangle norm arguments made explicit; no signed arithmetic or theorem-statement changes.
