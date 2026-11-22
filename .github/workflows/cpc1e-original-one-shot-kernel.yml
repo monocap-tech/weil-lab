@@ -1,0 +1,61 @@
+name: CP-C1E isolated original IV009 BCD-E strict Lean4.34 kernel
+# One-shot source branch push trigger: only changing THIS workflow can start it.
+# Do not reopen a general PR: historic NF pull_request hooks are unrestricted.
+on:
+  push:
+    branches:
+      - research/cpc1b-original-iv009-nine-probe-source
+    paths:
+      - .github/workflows/cpc1e-original-one-shot-kernel.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cpc1e-original-source-one-lean434
+  cancel-in-progress: false
+jobs:
+  actual-original-source-lean:
+    if: github.ref == 'refs/heads/research/cpc1b-original-iv009-nine-probe-source'
+    runs-on: ubuntu-latest
+    timeout-minutes: 200
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact frozen CP001 ratio/source preflight and 7 fake-receipt negative controls (NOT LEAN)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile scripts/cpc1e_frozen_cp001_prime_geometry.py scripts/cpc1e_frozen_flat_kernel_gate.py
+          python3 scripts/cpc1e_frozen_flat_kernel_gate.py selftest 2>&1 | tee cpc1e-parser-selftest-NOT-LEAN.log
+          python3 scripts/cpc1e_frozen_flat_kernel_gate.py preflight 2>&1 | tee cpc1e-source-preflight-NOT-LEAN.log
+      - name: Pinned original Lean4.34 B then C then D then exact frozen E build and standard-only axiom receipts
+        run: |
+          set -euo pipefail
+          bash scripts/cpc1e_frozen_flat_local_kernel_lane.sh
+      - name: Preserve genuine source diagnostics and receipts even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cpc1e-original-real-lean434-run
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            cpc1b-original-Lean-build.log
+            cpc1c-original-Lean-build.log
+            cpc1d-original-Lean-build.log
+            cpc1e-original-Lean-build.log
+            cpc1b-original-kernel-axioms.log
+            cpc1c-original-kernel-axioms.log
+            cpc1d-original-kernel-axioms.log
+            cpc1e-original-kernel-axioms.log
+            cpc1b-original-kernel-receipt.json
+            cpc1c-cpc1d-original-kernel-receipt.json
+            cpc1e-original-kernel-receipt.json
+            cpc1e-frozen-cp001-prime-geometry.json
+            cpc1e-parser-selftest-NOT-LEAN.log
+            cpc1e-source-preflight-NOT-LEAN.log
+            .lake/build/lib/lean/WeilDefect/Arithmetic/CP_C1B_OriginalNineProbeSource.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/CP_C1C_OriginalCompleteDivisorFinite3.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/CP_C1D_OriginalNineProbeCompatibility.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/CP_C1E_FrozenFlatSchwartz.olean
