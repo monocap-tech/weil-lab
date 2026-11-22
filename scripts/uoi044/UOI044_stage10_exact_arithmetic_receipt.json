@@ -1,0 +1,756 @@
+{
+  "assumptions": [
+    "analytically established UOI040 Gamma lower G on local 3-moment neutral compact smooth tests",
+    "original source literal full +/-log n prime normalization and both pole moments",
+    "exact integer prime-power classification via exhaustive trial division",
+    "Schur bound and disjoint translations on narrower right collar"
+  ],
+  "edge_resonance_summary": [
+    {
+      "alpha_upper_micro": 247489,
+      "first_12_prime_powers": [
+        8
+      ],
+      "j": 0,
+      "k": 1,
+      "largest_candidate": 8,
+      "prime_power_count": 1,
+      "smallest_candidate": 8
+    },
+    {
+      "alpha_upper_micro": 87501,
+      "first_12_prime_powers": [
+        64
+      ],
+      "j": 0,
+      "k": 2,
+      "largest_candidate": 64,
+      "prime_power_count": 1,
+      "smallest_candidate": 64
+    },
+    {
+      "alpha_upper_micro": 30937,
+      "first_12_prime_powers": [
+        512
+      ],
+      "j": 0,
+      "k": 3,
+      "largest_candidate": 512,
+      "prime_power_count": 1,
+      "smallest_candidate": 512
+    },
+    {
+      "alpha_upper_micro": 186490,
+      "first_12_prime_powers": [
+        4093,
+        4096,
+        4099
+      ],
+      "j": 0,
+      "k": 4,
+      "largest_candidate": 4100,
+      "prime_power_count": 3,
+      "smallest_candidate": 4092
+    },
+    {
+      "alpha_upper_micro": 145163,
+      "first_12_prime_powers": [
+        32749,
+        32761,
+        32768,
+        32771,
+        32779,
+        32783,
+        32789,
+        32797
+      ],
+      "j": 0,
+      "k": 5,
+      "largest_candidate": 32800,
+      "prime_power_count": 8,
+      "smallest_candidate": 32736
+    },
+    {
+      "alpha_upper_micro": 159792,
+      "first_12_prime_powers": [
+        261887,
+        261917,
+        261959,
+        261971,
+        261973,
+        261977,
+        261983,
+        262007,
+        262027,
+        262049,
+        262051,
+        262069
+      ],
+      "j": 0,
+      "k": 6,
+      "largest_candidate": 262406,
+      "prime_power_count": 43,
+      "smallest_candidate": 261882
+    },
+    {
+      "alpha_upper_micro": 172267,
+      "first_12_prime_powers": [
+        2095057,
+        2095061,
+        2095081,
+        2095099,
+        2095109,
+        2095117,
+        2095127,
+        2095151,
+        2095189,
+        2095193,
+        2095201,
+        2095211
+      ],
+      "j": 0,
+      "k": 7,
+      "largest_candidate": 2099250,
+      "prime_power_count": 288,
+      "smallest_candidate": 2095056
+    },
+    {
+      "alpha_upper_micro": 185413,
+      "first_12_prime_powers": [
+        16760449,
+        16760459,
+        16760461,
+        16760483,
+        16760503,
+        16760507,
+        16760509,
+        16760531,
+        16760539,
+        16760573,
+        16760591,
+        16760651
+      ],
+      "j": 0,
+      "k": 8,
+      "largest_candidate": 16794001,
+      "prime_power_count": 2038,
+      "smallest_candidate": 16760448
+    },
+    {
+      "alpha_upper_micro": 195985,
+      "first_12_prime_powers": [
+        134083591,
+        134083603,
+        134083643,
+        134083657,
+        134083687,
+        134083717,
+        134083727,
+        134083769,
+        134083783,
+        134083787,
+        134083853,
+        134083861
+      ],
+      "j": 0,
+      "k": 9,
+      "largest_candidate": 134352012,
+      "prime_power_count": 14387,
+      "smallest_candidate": 134083578
+    },
+    {
+      "alpha_upper_micro": 247489,
+      "first_12_prime_powers": [
+        8
+      ],
+      "j": 1,
+      "k": 2,
+      "largest_candidate": 8,
+      "prime_power_count": 1,
+      "smallest_candidate": 8
+    },
+    {
+      "alpha_upper_micro": 87501,
+      "first_12_prime_powers": [
+        64
+      ],
+      "j": 1,
+      "k": 3,
+      "largest_candidate": 64,
+      "prime_power_count": 1,
+      "smallest_candidate": 64
+    },
+    {
+      "alpha_upper_micro": 30937,
+      "first_12_prime_powers": [
+        512
+      ],
+      "j": 1,
+      "k": 4,
+      "largest_candidate": 512,
+      "prime_power_count": 1,
+      "smallest_candidate": 512
+    },
+    {
+      "alpha_upper_micro": 10939,
+      "first_12_prime_powers": [
+        4096
+      ],
+      "j": 1,
+      "k": 5,
+      "largest_candidate": 4096,
+      "prime_power_count": 1,
+      "smallest_candidate": 4096
+    },
+    {
+      "alpha_upper_micro": 58132,
+      "first_12_prime_powers": [
+        32768,
+        32771
+      ],
+      "j": 1,
+      "k": 6,
+      "largest_candidate": 32772,
+      "prime_power_count": 2,
+      "smallest_candidate": 32764
+    },
+    {
+      "alpha_upper_micro": 65275,
+      "first_12_prime_powers": [
+        262121,
+        262127,
+        262133,
+        262139,
+        262144,
+        262147,
+        262151,
+        262153
+      ],
+      "j": 1,
+      "k": 7,
+      "largest_candidate": 262176,
+      "prime_power_count": 8,
+      "smallest_candidate": 262112
+    },
+    {
+      "alpha_upper_micro": 61031,
+      "first_12_prime_powers": [
+        2096893,
+        2096909,
+        2096911,
+        2096923,
+        2096947,
+        2096957,
+        2096959,
+        2096971,
+        2096987,
+        2096993,
+        2097013,
+        2097023
+      ],
+      "j": 1,
+      "k": 8,
+      "largest_candidate": 2097414,
+      "prime_power_count": 37,
+      "smallest_candidate": 2096890
+    },
+    {
+      "alpha_upper_micro": 65218,
+      "first_12_prime_powers": [
+        16775131,
+        16775147,
+        16775149,
+        16775153,
+        16775177,
+        16775179,
+        16775197,
+        16775201,
+        16775219,
+        16775221,
+        16775237,
+        16775249
+      ],
+      "j": 1,
+      "k": 9,
+      "largest_candidate": 16779313,
+      "prime_power_count": 253,
+      "smallest_candidate": 16775119
+    },
+    {
+      "alpha_upper_micro": 247489,
+      "first_12_prime_powers": [
+        8
+      ],
+      "j": 2,
+      "k": 3,
+      "largest_candidate": 8,
+      "prime_power_count": 1,
+      "smallest_candidate": 8
+    },
+    {
+      "alpha_upper_micro": 87501,
+      "first_12_prime_powers": [
+        64
+      ],
+      "j": 2,
+      "k": 4,
+      "largest_candidate": 64,
+      "prime_power_count": 1,
+      "smallest_candidate": 64
+    },
+    {
+      "alpha_upper_micro": 30937,
+      "first_12_prime_powers": [
+        512
+      ],
+      "j": 2,
+      "k": 5,
+      "largest_candidate": 512,
+      "prime_power_count": 1,
+      "smallest_candidate": 512
+    },
+    {
+      "alpha_upper_micro": 10939,
+      "first_12_prime_powers": [
+        4096
+      ],
+      "j": 2,
+      "k": 6,
+      "largest_candidate": 4096,
+      "prime_power_count": 1,
+      "smallest_candidate": 4096
+    },
+    {
+      "alpha_upper_micro": 3868,
+      "first_12_prime_powers": [
+        32768
+      ],
+      "j": 2,
+      "k": 7,
+      "largest_candidate": 32768,
+      "prime_power_count": 1,
+      "smallest_candidate": 32768
+    },
+    {
+      "alpha_upper_micro": 24648,
+      "first_12_prime_powers": [
+        262144,
+        262147
+      ],
+      "j": 2,
+      "k": 8,
+      "largest_candidate": 262148,
+      "prime_power_count": 2,
+      "smallest_candidate": 262140
+    },
+    {
+      "alpha_upper_micro": 20361,
+      "first_12_prime_powers": [
+        2097131,
+        2097133,
+        2097143,
+        2097152,
+        2097169
+      ],
+      "j": 2,
+      "k": 9,
+      "largest_candidate": 2097184,
+      "prime_power_count": 5,
+      "smallest_candidate": 2097120
+    },
+    {
+      "alpha_upper_micro": 247489,
+      "first_12_prime_powers": [
+        8
+      ],
+      "j": 3,
+      "k": 4,
+      "largest_candidate": 8,
+      "prime_power_count": 1,
+      "smallest_candidate": 8
+    },
+    {
+      "alpha_upper_micro": 87501,
+      "first_12_prime_powers": [
+        64
+      ],
+      "j": 3,
+      "k": 5,
+      "largest_candidate": 64,
+      "prime_power_count": 1,
+      "smallest_candidate": 64
+    },
+    {
+      "alpha_upper_micro": 30937,
+      "first_12_prime_powers": [
+        512
+      ],
+      "j": 3,
+      "k": 6,
+      "largest_candidate": 512,
+      "prime_power_count": 1,
+      "smallest_candidate": 512
+    },
+    {
+      "alpha_upper_micro": 10939,
+      "first_12_prime_powers": [
+        4096
+      ],
+      "j": 3,
+      "k": 7,
+      "largest_candidate": 4096,
+      "prime_power_count": 1,
+      "smallest_candidate": 4096
+    },
+    {
+      "alpha_upper_micro": 3868,
+      "first_12_prime_powers": [
+        32768
+      ],
+      "j": 3,
+      "k": 8,
+      "largest_candidate": 32768,
+      "prime_power_count": 1,
+      "smallest_candidate": 32768
+    },
+    {
+      "alpha_upper_micro": 1369,
+      "first_12_prime_powers": [
+        262144
+      ],
+      "j": 3,
+      "k": 9,
+      "largest_candidate": 262144,
+      "prime_power_count": 1,
+      "smallest_candidate": 262144
+    },
+    {
+      "alpha_upper_micro": 247489,
+      "first_12_prime_powers": [
+        8
+      ],
+      "j": 4,
+      "k": 5,
+      "largest_candidate": 8,
+      "prime_power_count": 1,
+      "smallest_candidate": 8
+    },
+    {
+      "alpha_upper_micro": 87501,
+      "first_12_prime_powers": [
+        64
+      ],
+      "j": 4,
+      "k": 6,
+      "largest_candidate": 64,
+      "prime_power_count": 1,
+      "smallest_candidate": 64
+    },
+    {
+      "alpha_upper_micro": 30937,
+      "first_12_prime_powers": [
+        512
+      ],
+      "j": 4,
+      "k": 7,
+      "largest_candidate": 512,
+      "prime_power_count": 1,
+      "smallest_candidate": 512
+    },
+    {
+      "alpha_upper_micro": 10939,
+      "first_12_prime_powers": [
+        4096
+      ],
+      "j": 4,
+      "k": 8,
+      "largest_candidate": 4096,
+      "prime_power_count": 1,
+      "smallest_candidate": 4096
+    },
+    {
+      "alpha_upper_micro": 3868,
+      "first_12_prime_powers": [
+        32768
+      ],
+      "j": 4,
+      "k": 9,
+      "largest_candidate": 32768,
+      "prime_power_count": 1,
+      "smallest_candidate": 32768
+    },
+    {
+      "alpha_upper_micro": 247489,
+      "first_12_prime_powers": [
+        8
+      ],
+      "j": 5,
+      "k": 6,
+      "largest_candidate": 8,
+      "prime_power_count": 1,
+      "smallest_candidate": 8
+    },
+    {
+      "alpha_upper_micro": 87501,
+      "first_12_prime_powers": [
+        64
+      ],
+      "j": 5,
+      "k": 7,
+      "largest_candidate": 64,
+      "prime_power_count": 1,
+      "smallest_candidate": 64
+    },
+    {
+      "alpha_upper_micro": 30937,
+      "first_12_prime_powers": [
+        512
+      ],
+      "j": 5,
+      "k": 8,
+      "largest_candidate": 512,
+      "prime_power_count": 1,
+      "smallest_candidate": 512
+    },
+    {
+      "alpha_upper_micro": 10939,
+      "first_12_prime_powers": [
+        4096
+      ],
+      "j": 5,
+      "k": 9,
+      "largest_candidate": 4096,
+      "prime_power_count": 1,
+      "smallest_candidate": 4096
+    },
+    {
+      "alpha_upper_micro": 247489,
+      "first_12_prime_powers": [
+        8
+      ],
+      "j": 6,
+      "k": 7,
+      "largest_candidate": 8,
+      "prime_power_count": 1,
+      "smallest_candidate": 8
+    },
+    {
+      "alpha_upper_micro": 87501,
+      "first_12_prime_powers": [
+        64
+      ],
+      "j": 6,
+      "k": 8,
+      "largest_candidate": 64,
+      "prime_power_count": 1,
+      "smallest_candidate": 64
+    },
+    {
+      "alpha_upper_micro": 30937,
+      "first_12_prime_powers": [
+        512
+      ],
+      "j": 6,
+      "k": 9,
+      "largest_candidate": 512,
+      "prime_power_count": 1,
+      "smallest_candidate": 512
+    },
+    {
+      "alpha_upper_micro": 247489,
+      "first_12_prime_powers": [
+        8
+      ],
+      "j": 7,
+      "k": 8,
+      "largest_candidate": 8,
+      "prime_power_count": 1,
+      "smallest_candidate": 8
+    },
+    {
+      "alpha_upper_micro": 87501,
+      "first_12_prime_powers": [
+        64
+      ],
+      "j": 7,
+      "k": 9,
+      "largest_candidate": 64,
+      "prime_power_count": 1,
+      "smallest_candidate": 64
+    },
+    {
+      "alpha_upper_micro": 247489,
+      "first_12_prime_powers": [
+        8
+      ],
+      "j": 8,
+      "k": 9,
+      "largest_candidate": 8,
+      "prime_power_count": 1,
+      "smallest_candidate": 8
+    }
+  ],
+  "family": "UOI040 D_10: I_j=( (j+1/2)log8 -1/(1000*8^j), (j+1/2)log8+1/(1000*8^j) ) for 0<=j<10",
+  "gamma_lower_fraction": "2195428693/1996093750",
+  "gamma_minus_target_lower": "1204542897/7984375000",
+  "matrix_upper_microgrid_int": [
+    [
+      0,
+      247489,
+      87501,
+      30937,
+      186490,
+      145163,
+      159792,
+      172267,
+      185413,
+      195985
+    ],
+    [
+      247489,
+      0,
+      247489,
+      87501,
+      30937,
+      10939,
+      58132,
+      65275,
+      61031,
+      65218
+    ],
+    [
+      87501,
+      247489,
+      0,
+      247489,
+      87501,
+      30937,
+      10939,
+      3868,
+      24648,
+      20361
+    ],
+    [
+      30937,
+      87501,
+      247489,
+      0,
+      247489,
+      87501,
+      30937,
+      10939,
+      3868,
+      1369
+    ],
+    [
+      186490,
+      30937,
+      87501,
+      247489,
+      0,
+      247489,
+      87501,
+      30937,
+      10939,
+      3868
+    ],
+    [
+      145163,
+      10939,
+      30937,
+      87501,
+      247489,
+      0,
+      247489,
+      87501,
+      30937,
+      10939
+    ],
+    [
+      159792,
+      58132,
+      10939,
+      30937,
+      87501,
+      247489,
+      0,
+      247489,
+      87501,
+      30937
+    ],
+    [
+      172267,
+      65275,
+      3868,
+      10939,
+      30937,
+      87501,
+      247489,
+      0,
+      247489,
+      87501
+    ],
+    [
+      185413,
+      61031,
+      24648,
+      3868,
+      10939,
+      30937,
+      87501,
+      247489,
+      0,
+      247489
+    ],
+    [
+      195985,
+      65218,
+      20361,
+      1369,
+      3868,
+      10939,
+      30937,
+      87501,
+      247489,
+      0
+    ]
+  ],
+  "maximum_weighted_upper": "13369883/14093750",
+  "not_proved": [
+    "Lean source/domain identity for arbitrary support",
+    "any uniform m\u2192infinity bound",
+    "whole Schwartz Weil positivity",
+    "RH"
+  ],
+  "original_source_sha": "614ba879f7389fdb620c474adaee273b00eac71c",
+  "positive_schur_vector": [
+    451,
+    298,
+    239,
+    233,
+    313,
+    319,
+    344,
+    342,
+    315,
+    250
+  ],
+  "prime_quadratic": "P(f)=sum_n Lambda(n)/sqrt(n)(C_f(log n)+C_f(-log n))",
+  "row_weighted_upper_fractions": [
+    "13369883/14093750",
+    "2204521/2328125",
+    "28259571/29875000",
+    "13781173/14562500",
+    "147973233/156500000",
+    "301515531/319000000",
+    "325487377/344000000",
+    "107728069/114000000",
+    "298507259/315000000",
+    "47247277/50000000"
+  ],
+  "scalar_operator_microgrid_denominator": 1000000,
+  "schema": "UOI044-exact-arithmetic-stage10-prime-operator-screen-v1",
+  "simplified_Weil_lower": "3/20",
+  "status": "analytic integer arithmetic; NOT Lean kernel accepted",
+  "target_upper": "949/1000"
+}
