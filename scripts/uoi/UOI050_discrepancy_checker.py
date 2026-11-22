@@ -45,6 +45,6 @@ receipt={
     'Lean_kernel_verified':False,
     'source_to_native_verified':False,
 }
-path=Path('/mnt/data/UOI050_discrepancy_receipt.json')
+path=Path(__file__).resolve().parents[2]/'research/unified/receipts/'/'UOI050_discrepancy_receipt.json'
 path.write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
 print('PASS: exact derivative, 3 exponential moments, and 8-adic collar scaling')
