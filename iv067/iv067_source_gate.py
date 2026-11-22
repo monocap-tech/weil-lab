@@ -32,9 +32,9 @@ THEOREMS = (
  'iv066_native_signed_multiplier',
 )
 ALLOWED = {'propext', 'Quot.sound', 'Classical.choice'}
-# IV068 import-placement repair: source re-pinned explicitly; original axiom audit unchanged.
+# IV069 compiler-guided Real.pi cast correction: source re-pinned; axiom inventory unchanged.
 PINNED_IV066 = {
- LEAN: 'be4d663d414638dfdc695c8987bdc755a3e6c7d4857f25dc67eda2b3b6152cfe',
+ LEAN: 'be287351931c08bef941199b47240dcb307027abebe3222f55fc49d4f05000b7',
  AUDIT: '424bb2a4b1cc3d86813e33863f8ae4e5bb6c3e0d636190b0507a11ed12c922f8',
  IV066_GATE: '84f705735537fc8ad9c5a2de37dcd418fcfc1659eeffd301e1acb512679ceae4',
 }

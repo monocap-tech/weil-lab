@@ -51,7 +51,7 @@ theorem iv066_original_general_source_signed
       Zeta23.paperFT k (I / 2) + Zeta23.paperFT k (-I / 2)
       - ∑' n : ℕ, ((ArithmeticFunction.vonMangoldt n / Real.sqrt n : ℝ) : ℂ) *
           (k (Real.log n) + k (-Real.log n))
-      + (1 / (2 * π) : ℂ) * ∫ r : ℝ,
+      + (1 / (2 * (Real.pi : ℂ)) : ℂ) * ∫ r : ℝ,
           Zeta23.paperFT k r * (Zeta23.EF.gammaBracket r : ℂ) := by
   have h := ((Zeta23.WeilEF.EF_lit_zeta Zeta23.zetaSeam) k hk hkc).2
   simpa only [Zeta23.EF.literatureRHS] using h
