@@ -45,6 +45,49 @@ jobs:
           assert '"new_original_Lean_gates_accepted": False' in p
           print('NF781 208–215 source-only scope / refusal tests PASS; NO new original Lean compilation or acceptance')
           PY
+      - name: Verify NF781 original 208–215 kernel workflow is main-only and source-bound (NO Lean)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check PyYAML==6.0.2
+          python - <<'PY'
+          from pathlib import Path
+          import ast, yaml
+          p=Path('.github/workflows/f40-nf781-single-lane.yml')
+          txt=p.read_text()
+          def unique(node):
+              if isinstance(node,yaml.nodes.MappingNode):
+                  ks=[k.value for k,v in node.value]
+                  assert len(ks)==len(set(ks)),('duplicate YAML keys',ks)
+                  for k,v in node.value: unique(k); unique(v)
+              elif isinstance(node,yaml.nodes.SequenceNode):
+                  for v in node.value: unique(v)
+          unique(yaml.compose(txt,Loader=yaml.BaseLoader))
+          m=yaml.load(txt,Loader=yaml.BaseLoader)
+          assert set(m['on'])=={'push','workflow_dispatch'}
+          assert m['on']['push']['branches']==['main']
+          assert m['on']['push']['paths']==['verification/f40/nf781/NF781_ONE_SHOT_COMPILE_REQUEST.txt']
+          assert len(m['jobs'])==1
+          j=m['jobs']['authenticate-reuse-and-kernel-actual-original-indexzero-208-215']
+          assert j['concurrency']['group']=='weil-uoi030-single-lane-source-pinned'
+          assert j['concurrency']['cancel-in-progress']=='false'
+          assert 'refs/heads/main' in j['if']
+          for marker in ('RUN-PINNED-F40-NF781', 'Col208 through Col215',
+                         'for ((i=208;i<216;i++))',
+                         'nf781_original_prior_900_custody.py',
+                         'nf780_original_prior_884_custody.py',
+                         'nf781_original_indexzero_208_215_kernel_audit.py',
+                         '11e31531cfd29187b648b207d85269c8b2a0a065a387b9182023a425e645a42f'):
+              assert marker in txt,marker
+          auditor=Path('verification/f40/nf781/nf781_original_indexzero_208_215_kernel_audit.py').read_text()
+          ast.parse(auditor)
+          for marker in ('compiled_objects()', 'strict_axiom_receipt()',
+                         'independent_postrun_artifact_zip_reconciliation_done',
+                         'accepted_original_predecessor_900_metadata_sha256'):
+              assert marker in auditor,marker
+          assert not Path('verification/f40/nf781/NF781_ONE_SHOT_COMPILE_REQUEST.txt').exists()
+          print('NF781 strict YAML and source-bound 208–215 candidate audit CONTRACTS PASS; NO Lean')
+          PY
       - name: Verify genuine accepted NF780 900 live GitHub job and archive metadata (no new Lean)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -66,4 +109,103 @@ jobs:
         with:
           name: nf781-prior900-metadata-only-no-new-lean
           path: nf781-prior900-live-metadata.json
+          if-no-files-found: ignore
+
+  original-nf737-source-authentication:
+    if: github.event_name == 'pull_request' && github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - name: Checkout immutable NF769 research source without pushing any historical branch
+        uses: actions/checkout@v4
+        with:
+          ref: 'a431f903254000bb5ad8edbc276ccc8599da98f5'
+          path: original
+          persist-credentials: false
+      - name: Checkout exact NF781 candidate revision for isolated source driver overlay
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: candidate
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate original 242-column artifact identity and exact two source revisions (NO Lean)
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CANDIDATE_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git -C original rev-parse HEAD)" = 'a431f903254000bb5ad8edbc276ccc8599da98f5'
+          test "$(git -C candidate rev-parse HEAD)" = "$CANDIDATE_SHA"
+          test "$(cat original/lean-toolchain)" = 'leanprover/lean4:v4.34.0'
+          python - <<'PY'
+          import json, subprocess
+          repo = "monocap-tech/weil-lab"
+          run = json.loads(subprocess.check_output(["gh","api",f"repos/{repo}/actions/runs/44791346863"],text=True))
+          assert run["status"] == "completed" and run["conclusion"] == "success"
+          jobs = json.loads(subprocess.check_output(["gh","api",f"repos/{repo}/actions/runs/44791346863/jobs?per_page=100"],text=True))["jobs"]
+          assert any(j["id"] == 136479519760 and j["name"] == "authenticate-and-emit-remaining-original-indexzero" and j["conclusion"] == "success" for j in jobs)
+          arts=json.loads(subprocess.check_output(["gh","api",f"repos/{repo}/actions/runs/44791346863/artifacts?per_page=100"],text=True))["artifacts"]
+          exact=[a for a in arts if a["id"]==14660147684 and a["name"]=="nf737-authenticated-original-indexzero-242-full-source-and-28-shard-candidates" and a.get("digest")=="sha256:11e31531cfd29187b648b207d85269c8b2a0a065a387b9182023a425e645a42f" and a["size_in_bytes"]==227348147 and not a["expired"]]
+          assert len(exact)==1
+          print("Immutable NF737 artifact/job/run SHA-256 metadata PASS")
+          PY
+      - name: Restore original NF737 source ZIP only after authenticating full archive bytes
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 4 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14660147684/zip" -o nf781-original-nf737-source.zip
+          echo "11e31531cfd29187b648b207d85269c8b2a0a065a387b9182023a425e645a42f  nf781-original-nf737-source.zip" | sha256sum -c -
+          sha256sum nf781-original-nf737-source.zip | tee nf781-full-original-source-archive-sha256.txt
+          cd original
+          unzip -q ../nf781-original-nf737-source.zip
+          test -s WeilDefect/Generated/NF704Frontier/Col208.lean
+          test -s WeilDefect/Generated/NF704Frontier/Col215.lean
+          test -s WeilDefect/Generated/NF704Frontier/manifest.json
+          rm -f ../nf781-original-nf737-source.zip
+      - name: Verify all 242 recovered original NF737 source modules and exact NF781 208–215 35-name queries
+        shell: bash
+        run: |
+          set -euo pipefail
+          for f in nf781_original_indexzero_208_215_source_preflight.py nf781_original_indexzero_import_order_guard.py; do
+            test -s "candidate/verification/f40/nf781/$f"
+            cp "candidate/verification/f40/nf781/$f" "original/scripts/$f"
+          done
+          (
+            cd original
+            python -m py_compile scripts/nf737_original_indexzero_complete_source_shard_schedule.py scripts/nf781_original_indexzero_208_215_source_preflight.py
+            python scripts/nf737_original_indexzero_complete_source_shard_schedule.py verify | tee ../nf781-full-original-nf737-242-source-verification.log
+            python scripts/nf781_original_indexzero_208_215_source_preflight.py | tee ../nf781-original-indexzero-208-215-source-only-preflight.log
+            python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          b=json.loads(Path("nf781-indexzero-208-215-source-binding.json").read_text())
+          assert b["schema"]=="NF781-authentic-original-global-indexzero-208-215-source-v1"
+          assert b["new_indices_HD"]==b["new_indices_A"]==list(range(208,216))
+          assert b["new_gate_instances"]==16 and b["new_declarations"]==32
+          assert len(b["strict_axiom_names"])==35
+          assert b["new_numerical_kernel_accepted"] is False
+          assert len(b["actual_original_new_col_module_sha256"])==8
+          q=Path("nf781OriginalIndexZero208Audit.lean").read_text()
+          assert q.count("#print axioms WeilDefect.")==35
+          assert q.count("import WeilDefect.Generated.NF704Frontier.Col")==8
+          print("SOURCE HASH FULL 242 + ORIGINAL COL208–215 + 35 exact axiom queries PASS; NO KERNEL")
+          PY
+          )
+      - name: Preserve genuine source binding and queries but NO new numerical certificate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf781-original-nf737-source-208-215-authenticated-no-lean
+          path: |
+            nf781-full-original-source-archive-sha256.txt
+            nf781-full-original-nf737-242-source-verification.log
+            nf781-original-indexzero-208-215-source-only-preflight.log
+            original/nf781-indexzero-208-215-source-binding.json
+            original/nf781OriginalIndexZero208Audit.lean
           if-no-files-found: ignore
