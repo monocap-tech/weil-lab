@@ -1,0 +1,17 @@
+c=0.4, active n=2, κ=0.4901290717
+ell        D-exact     Elog approx   Elog-L      lower bound     D/Elog    upper A(ell)
+    0.05   0.2097074      2.191296   -0.80444      1.021796   0.095700      0.914359
+           omitted positive Fourier tail <= 0.00755
+    0.02   0.2309223      2.827323   -1.08470      1.361249   0.081675      0.635735
+           omitted positive Fourier tail <= 0.00828
+    0.01   0.2379935      3.388548   -1.21662      1.661046   0.070235      0.494444
+           omitted positive Fourier tail <= 0.00883
+   0.005   0.2415290      3.998269   -1.30005      1.982481   0.060408      0.393612
+           omitted positive Fourier tail <= 0.00937
+   0.001   0.2443574      5.519942   -1.38781      2.766138   0.044268      0.251871
+           omitted positive Fourier tail <= 0.01065
+  0.0001   0.2449938      7.793522   -1.41682      3.912566   0.031436      0.155771
+           omitted positive Fourier tail <= 0.01247
+Asymptotic Elog(1_[0,ell]/sqrt(ell)) - log(1/ell) -> 1 - EulerGamma - log(2pi) = -1.41509273
+Asymptotic log(1/ell)*D/(||f||log ||v||log) -> κ/2 = 0.2450645359
+PASS: exact triangular correlation, logarithmic capacity, and mixed-discrepancy bound numerically checked.
