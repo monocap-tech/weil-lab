@@ -1,3 +1,5 @@
+> **UOI052 RECOVERY CORRECTION:** The complete original UOI048 analytic report has since been recovered and committed as [UOI048_gamma_tail_decoupling_and_schur_criterion.md](UOI048_gamma_tail_decoupling_and_schur_criterion.md). This file is the **earlier summary-only intake**, retained for provenance. Its statements about the full report being unavailable describe the earlier audit state and are superseded. Neither report is Lean/kernel certification.
+
 # Weil-Lab — UOI048: Gamma core–tail coupling intake (source-summary custody)
 
 **2026-11-21 PT.** This file preserves the source *summary* supplied in conversation and the recovered exact-rational checker. The full mathematical derivation and exact original source-to-native attachment were **not** independently reconstructed in this repository recovery; this is NOT a kernel or complete analytic certification.
