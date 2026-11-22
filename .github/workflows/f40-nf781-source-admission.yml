@@ -1,0 +1,69 @@
+# NF781 lightweight source-only admission; no Lean or large source archive download.
+name: F40 NF781 208-215 source-only syntax and predecessor admission
+on:
+  pull_request:
+    paths:
+      - 'verification/f40/nf781/**'
+      - '.github/workflows/f40-nf781-source-admission.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  admission:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact source scope, Python syntax and negative-control selftests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile verification/f40/nf781/*.py
+          python verification/f40/nf781/nf781_original_indexzero_import_order_guard.py selftest
+          python verification/f40/nf781/nf781_original_prior_900_custody.py selftest
+          python - <<'PY'
+          from pathlib import Path
+          import ast
+          root=Path('verification/f40/nf781')
+          for f in root.glob('*.py'): ast.parse(f.read_text())
+          d=(root/'nf781_original_indexzero_208_215_source_preflight.py').read_text()
+          g=(root/'nf781_original_indexzero_import_order_guard.py').read_text()
+          p=(root/'nf781_original_prior_900_custody.py').read_text()
+          assert 'FIRST, STOP = 208, 216' in d
+          assert 'len(NAMES) == 35' in d
+          assert 'source737.verify()' in d
+          assert 'range(208,216)' in g
+          assert 'NF781-source-actual-original-indexzero-208-215-import-DAG-v1' in g
+          assert '45084550708' in p and '137400074105' in p and '14778259486' in p
+          assert '5358a9b1815d06cb392c8b010fb7810e6f69a9483770549f08d41f2556dade5d' in p
+          assert '"new_original_Lean_gates_accepted": False' in p
+          print('NF781 208–215 source-only scope / refusal tests PASS; NO new original Lean compilation or acceptance')
+          PY
+      - name: Verify genuine accepted NF780 900 live GitHub job and archive metadata (no new Lean)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python verification/f40/nf781/nf781_original_prior_900_custody.py live
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path('nf781-prior900-live-metadata.json').read_text())
+          assert a['previous_accepted_original_HD_A_gates']==900
+          assert a['new_indexzero_HD_candidate']==a['new_indexzero_A_candidate']==list(range(208,216))
+          assert a['new_original_Lean_gates_accepted'] is False
+          print('NF781 accepted prior-900 run/job/artifact metadata PASS; new gates NOT accepted')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf781-prior900-metadata-only-no-new-lean
+          path: nf781-prior900-live-metadata.json
+          if-no-files-found: ignore
