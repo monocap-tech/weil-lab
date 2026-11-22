@@ -1,0 +1,6 @@
+PASS kernel: K_gamma = q_res + exp(-s/2), q_res <= 1/(2s)
+PASS complex two-sided sharp split: identity=0.1969952654; 2Re(cross)=0.1969952654; abs error=6.38e-16
+PASS Carleman+rank-one interface bound: I_K=0.3396470093 <= 1.1149671408
+PASS dyadic Gamma partition: sum shell E=1.4455050228; full E=1.5026087762; cross reconstruction error=4.02e-16
+PASS dyadic row bound: excess=-0.0571037534 <= (pi+2+sqrt(2)+a)mass=1.5100382542
+NOTE: local numerical checks only; no actual neutral mode or RH test.
