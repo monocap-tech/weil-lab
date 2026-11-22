@@ -14,3 +14,5 @@ IV038 compile request: original source commit 376f1894f9738e5010179e19eb81c519cf
 IV039 compiler request: repaired immutable research source f221b925aad0ac863f18f181eb4d4e87073b7525. Hosted audit 44994017756 PASS. Type-correct triangle inequality orientation add_le_add_left, 13 theorems unchanged. Require 2 genuine Lean .olean files, 28 standard-only named axiom receipts and full source-bound verification.
 
 IV040 first genuine compile sentinel: exact source 616115a4506cde0bdd78968cd1fe9604a9a8fe2a. Audit 44996052903 completed SUCCESS, Phase III F40 NF770 44995765488 completed SUCCESS, shared lane zero active/queued before request. Require both IV018 targets and strict 28 named standard-only axioms; no acceptance from audit only.
+
+IV041 compiler request: exact proof-only commit c7d65fcc45df3764596076b4ea94be2749aea1bd. Source-only audit 45036437193 PASS. Former line-223 missing implicit real measure resolved explicitly with (μ := (volume : Measure ℝ)). Strict two-target Lean / standard-only 28 named axioms remain required.
