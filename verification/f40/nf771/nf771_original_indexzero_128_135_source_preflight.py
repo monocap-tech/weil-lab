@@ -1,7 +1,7 @@
 # F40 NF771 candidate: no Lean execution or new acceptance.
 #!/usr/bin/env python3
 """NF771: authenticate and independently kernel-certify genuine ORIGINAL NF702/NF703
-matrix index-zero HD row 0 / A column 0 coordinates 120..127.
+matrix index-zero HD row 0 / A column 0 coordinates 128..135.
 
 This is a SOURCE-ONLY prospective certification preparation, using the FULL
 immutable NF737 source schedule. The NF734 24..31, NF737 32..39 and NF739 40..47 and NF742 48..55 pilots
@@ -26,10 +26,10 @@ SOURCE = Path("WeilDefect/Generated/NF704Frontier")
 INPUT = Path("WeilDefect/Generated/NF702Inputs")
 CACHE = Path("WeilDefect/Generated/NF703Cache")
 LOCAL = Path("WeilDefect/Generated/NF681")
-BIND = Path("nf771-indexzero-120-127-source-binding.json")
+BIND = Path("nf771-indexzero-128-135-source-binding.json")
 AXFILE = Path("nf771OriginalIndexZero128Audit.lean")
-AXLOG = Path("nf771-original-indexzero-120-127-axioms.log")
-RESULT = Path("nf771-original-indexzero-120-127-kernel-audit.json")
+AXLOG = Path("nf771-original-indexzero-128-135-axioms.log")
+RESULT = Path("nf771-original-indexzero-128-135-kernel-audit.json")
 SHARED = theorem_names(0)
 NAMES = SHARED + [
     f"nf704Col{i:03d}{tail}"
@@ -84,7 +84,7 @@ def prepare():
     ])+"\n")
     assert AXFILE.read_text().count("#print axioms WeilDefect.")==35
     record={
-        "schema":"NF771-authentic-original-global-indexzero-120-127-source-v1",
+        "schema":"NF771-authentic-original-global-indexzero-128-135-source-v1",
         "upstream_full_schedule_schema":old["schema"],
         "upstream_full_schedule_sha256":sha(source737.BIND),
         "original_full_source_manifest_sha256":sha(SOURCE/"manifest.json"),
@@ -117,7 +117,7 @@ def prepare():
         "scope":"Source-only until real Lean original NF702/NF703 numerical theorem build, all 35 strict axioms, and independent source audit succeed."
     }
     BIND.write_text(json.dumps(record,indent=2,sort_keys=True)+"\n")
-    print("NF771 8 HD row-zero + 8 A column-zero ORIGINAL numeric gate CANDIDATES for 120..127; 35 #print axioms prepared; earlier 24 real gates plus index-one universal theorems authenticated; no new kernel acceptance")
+    print("NF771 ORIGINAL 128..135: 16 prospective HD/A gates, 35 axiom queries; NO NEW KERNEL ACCEPTANCE")
 
 
 if __name__ == "__main__":
