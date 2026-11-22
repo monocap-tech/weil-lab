@@ -11,3 +11,5 @@ IV035 candidate checkout test: 4601b05683de3acc8fcf7c277fb1413f756e07fc; two ups
 IV037: audit pinned original Lean repair source 64ad66d9ae44d39698346eec08be212c928a28ec; exact single-file Schur minimizer tactical source repair only.
 
 IV038 exact source audit: 376f1894f9738e5010179e19eb81c519cf0ffd98. Only original complex pole-minus-prime triangle norm arguments made explicit; no signed arithmetic or theorem-statement changes.
+
+IV039 audit request for exact immutable source f221b925aad0ac863f18f181eb4d4e87073b7525. Only one Lean proof-site orientation swapped add_le_add_right to add_le_add_left, matching original A+C inequality. No arithmetic, axioms or support changes.
