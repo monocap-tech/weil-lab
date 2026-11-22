@@ -5,3 +5,5 @@ Workflow: .github/workflows/iv018-source-pinned-single-lane.yml
 No extra GitHub Actions paths are intentionally touched in this commit.
 
 Retry: authenticate the exact changed-file path against the canonical GitHub commit API (after IV034 harness correction).
+
+IV035 candidate checkout test: 4601b05683de3acc8fcf7c277fb1413f756e07fc; two upstream Lean proof goals repaired, source-pinned audit before compiler.
