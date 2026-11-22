@@ -56,7 +56,7 @@ jobs:
           assert 'nf770_new_120_127_numerical_kernel_accepted":False' in p
           assert "group: weil-uoi030-single-lane-source-pinned" in w
           assert "RUN-PINNED-F40-NF770" in w
-          assert '\\n  push:' not in w
+          assert chr(10)+'  push:' not in w
           print('Exact draft source, Python AST, nonpromoting gate and manual-only runner contracts PASS; NO NUMERICAL CERTIFICATION')
           PY
       - name: Verify live 724 accepted predecessor GitHub Actions custody, no Lean
