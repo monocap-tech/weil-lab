@@ -1,0 +1,253 @@
+# Review gate: immutable IV018; manual dispatch plus two exact one-shot main push sentinels.
+# On main, only the two named sentinel paths may initiate a push-triggered audit/compiler.
+name: IV018 one-lane audit and original Lean kernel (source-pinned)
+run-name: IV018 ${{ inputs.mode }} pinned 72794db0
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'verification/iv018/IV034_AUDIT_REQUEST.txt'
+      - 'verification/iv018/IV034_COMPILE_REQUEST.txt'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'audit = source/custody/YAML check; iv018 = one authentic Lean job'
+        type: choice
+        options:
+          - audit
+          - iv018
+        required: true
+        default: audit
+      heavy_confirmation:
+        description: 'For iv018 only, type RUN-PINNED-IV018'
+        type: string
+        required: false
+        default: 'NO'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: weil-uoi030-single-lane-source-pinned
+  # Shared with default-branch UOI030 manual workflow: prevents simultaneous IV018/UOI030 runs.
+  # This is NOT a global lease: RPB108/legacy manual workflows still require operator coordination.
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Audit source first; compile IV018 only with explicit confirmation
+    if: github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    env:
+      SOURCE_SHA: '72794db0df1739a35a4f98d272306655dfebf532'
+      RUN_HEAVY: "${{ (github.event_name == 'workflow_dispatch' && inputs.mode == 'iv018') || (github.event_name == 'push' && github.event.head_commit.message == 'IV034: compile pinned IV018') }}"
+    steps:
+      - name: Checkout immutable original research commit (not moving branch)
+        uses: actions/checkout@v4
+        with:
+          ref: '72794db0df1739a35a4f98d272306655dfebf532'
+          persist-credentials: false
+
+      - name: Verify exact commit, pinned toolchain and tracked Lake configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          test "$(cat lean-toolchain)" = 'leanprover/lean4:v4.34.0'
+          grep -Fxq 'rev = "v4.34.0"' lakefile.toml
+          test -f scripts/iv018_original_three_cell_coercivity_audit.py
+          test -f scripts/workflow_retirement_inventory.py
+          sha256sum lean-toolchain lakefile.toml \
+            scripts/iv018_original_three_cell_coercivity_audit.py \
+            WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalThreeCellSignedEnvelope.lean \
+            WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalThreeCellPrime9Transfer.lean \
+            > iv018-pinned-inputs-sha256.txt
+
+      - name: Install isolated Python for exact static YAML and custody audit
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Authenticate exact one-shot push path and commit message
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
+          allowed = {
+              'IV034: audit pinned IV018': 'verification/iv018/IV034_AUDIT_REQUEST.txt',
+              'IV034: compile pinned IV018': 'verification/iv018/IV034_COMPILE_REQUEST.txt',
+          }
+          assert event['ref'] == 'refs/heads/main'
+          assert event.get('deleted') is False
+          assert event['head_commit']['id'] == os.environ['GITHUB_SHA']
+          assert len(event.get('commits', [])) == 1, 'one-shot event must contain one commit'
+          commit = event['commits'][0]
+          assert commit['id'] == os.environ['GITHUB_SHA']
+          assert commit['message'] in allowed, 'unauthorized push command'
+          changed = set(commit.get('added', []) + commit.get('modified', []) + commit.get('removed', []))
+          assert changed == {allowed[commit['message']]}, ('unexpected changed paths', changed)
+          assert not commit.get('removed'), 'sentinel deletion is not a valid request'
+          print('IV034 immutable-source one-shot push authorization PASS:', commit['message'])
+          PY
+
+      - name: Install pinned source-audit YAML parser
+        shell: bash
+        run: 'python -m pip install --disable-pip-version-check --only-binary=:all: PyYAML==6.0.2'
+
+      - name: Audit all 551 workflow definitions and all 64 historical custody records (NO Lean)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/workflow_retirement_inventory.py --check \
+            --output iv018-source-pinned-workflow-custody.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          import yaml
+
+          class UniqueStringLoader(yaml.BaseLoader):
+              pass
+
+          def unique_mapping(loader, node):
+              pairs = loader.construct_pairs(node, deep=True)
+              result = {}
+              for key, value in pairs:
+                  if key in result:
+                      raise ValueError(f'duplicate YAML key {key!r} at line {node.start_mark.line + 1}')
+                  result[key] = value
+              return result
+
+          UniqueStringLoader.add_constructor(
+              yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, unique_mapping)
+          paths = sorted(Path('.github/workflows').glob('*.yml')) + sorted(
+              Path('.github/workflows').glob('*.yaml'))
+          assert len(paths) == 551, ('unexpected audited file count', len(paths))
+          for path in paths:
+              data = yaml.load(path.read_text(encoding='utf-8'), Loader=UniqueStringLoader)
+              assert isinstance(data, dict), ('workflow not a mapping', str(path))
+              assert isinstance(data.get('on'), (str, dict)), ('missing on trigger', str(path))
+              assert isinstance(data.get('jobs'), dict) and data['jobs'], (
+                  'missing jobs mapping', str(path))
+          custody = json.loads(Path('iv018-source-pinned-workflow-custody.json').read_text())
+          assert custody['workflow_count'] == 551
+          assert custody['custody_records_checked'] == 64
+          assert custody['custody_archived_records'] == 62
+          assert custody['custody_active_records'] == 2
+          assert not custody['custody_errors']
+          Path('iv018-source-pinned-yaml-audit.json').write_text(
+              json.dumps({'workflow_files_parsed': len(paths),
+                          'no_duplicate_yaml_keys': True,
+                          'custody_records_checked': 64,
+                          'kernel_certified': False}, indent=2) + '\n')
+          print('SOURCE AUDIT PASSED: 551 YAML files parsed, 64 custody records; NOT Lean.')
+          PY
+
+      - name: Verify explicit heavy-work authorization before any Lean installation
+        if: env.RUN_HEAVY == 'true'
+        env:
+          HEAVY_CONFIRMATION: ${{ inputs.heavy_confirmation }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "$GITHUB_EVENT_NAME" == 'workflow_dispatch' ]]; then
+            test "$HEAVY_CONFIRMATION" = 'RUN-PINNED-IV018'
+          else
+            test "$GITHUB_EVENT_NAME" = 'push'
+            test "$GITHUB_REF" = 'refs/heads/main'
+          fi
+          echo 'Authorized one-shot IV018. Immutable source pin and exact upstream audit required.'
+
+      - name: Install pinned Lean, resolve and SHA-fingerprint generated manifest
+        if: env.RUN_HEAVY == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake --version
+          lake update
+          test -s lake-manifest.json
+          sha256sum lake-manifest.json > iv018-pinned-lake-manifest-sha256.txt
+
+      - name: Exact IV018 source preflight, unchanged strict rational and prime audits
+        if: env.RUN_HEAVY == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile scripts/iv018_original_three_cell_coercivity_audit.py
+          python3 scripts/iv018_original_three_cell_coercivity_audit.py preflight
+          test -s iv018-original-three-cell-rational-ledger.json
+
+      - name: Fetch pinned Mathlib source cache
+        if: env.RUN_HEAVY == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get
+
+      - name: Genuine IV018 signed three-cell Lean compiler
+        if: env.RUN_HEAVY == 'true'
+        timeout-minutes: 100
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalThreeCellSignedEnvelope 2>&1 \
+            | tee iv018-original-three-cell-signed-envelope-build.log
+
+      - name: Genuine IV018 prime-9 transfer Lean compiler
+        if: env.RUN_HEAVY == 'true'
+        timeout-minutes: 100
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalThreeCellPrime9Transfer 2>&1 \
+            | tee iv018-original-three-cell-prime9-transfer-build.log
+
+      - name: Direct standard-only axioms, compiled olean and source-bound IV018 receipt
+        if: env.RUN_HEAVY == 'true'
+        timeout-minutes: 35
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalThreeCellSignedEnvelope.lean 2>&1 \
+            | tee iv018-original-three-cell-signed-envelope-axioms.log
+          lake env lean WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalThreeCellPrime9Transfer.lean 2>&1 \
+            | tee iv018-original-three-cell-prime9-transfer-axioms.log
+          python3 scripts/iv018_original_three_cell_coercivity_audit.py verify
+          test -s iv018-original-three-cell-source-kernel-audit.json
+
+      - name: Preserve source, YAML-audit and (only if compiled) real Lean evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iv018-single-lane-pinned-${{ github.run_id }}
+          path: |
+            iv018-pinned-inputs-sha256.txt
+            iv018-source-pinned-workflow-custody.json
+            iv018-source-pinned-yaml-audit.json
+            iv018-pinned-lake-manifest-sha256.txt
+            iv018-original-three-cell-rational-ledger.json
+            iv018-original-three-cell-signed-envelope-build.log
+            iv018-original-three-cell-prime9-transfer-build.log
+            iv018-original-three-cell-signed-envelope-axioms.log
+            iv018-original-three-cell-prime9-transfer-axioms.log
+            iv018-original-three-cell-source-kernel-audit.json
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalThreeCellSignedEnvelope.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalThreeCellPrime9Transfer.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
+          retention-days: 90
