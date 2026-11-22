@@ -1,0 +1,5 @@
+IV034 ONE-SHOT CI AUDIT REQUEST
+Mode: source-and-custody-audit only; no Lean installation or mathematical certification.
+Pinned original research source: 72794db0df1739a35a4f98d272306655dfebf532
+Workflow: .github/workflows/iv018-source-pinned-single-lane.yml
+No extra GitHub Actions paths are intentionally touched in this commit.
