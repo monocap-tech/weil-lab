@@ -42,6 +42,6 @@ receipt = {
     'verified_infinite_prime_operator_compact': False,
     'checks': checks,
 }
-path=Path('/mnt/data/UOI049_prime_resonance_receipt.json')
+path=Path(__file__).resolve().parents[2]/'research/unified/receipts/'/'UOI049_prime_resonance_receipt.json'
 path.write_text(json.dumps(receipt,indent=2)+'\n')
 print('PASS:',len(checks),'exact rational log-gap contact checks; no Lean or analytical norm proof')
