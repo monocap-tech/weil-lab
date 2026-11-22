@@ -21,3 +21,5 @@ IV041 source-only one-shot audit for candidate c7d65fcc45df3764596076b4ea94be274
 IV042 one-shot audit candidate 85442371a1a0e27f4015d138396f04dea662c810: single proof tactic in original phase-cancellation correlation vanishing, simp [sub_neg_eq_add, hsx] replaces insufficient restricted simplification 0 = 0 x; unchanged source theorem statement, rational/Gamma/prime signs and custody.
 
 IV043 source-only exact immutable audit: 75931f92fe03ac18941191a1b43483fe5ddf8edc, one Lean syntax repair of C-infinity to ContDiff ℝ (⊤ : ℕ∞) q in original compactly supported nonzero complex Schwartz bump. No theorem statement, sign, support, rational constants, or axioms altered. Honor shared F40 heavy lane.
+
+IV044 immutable source-only audit 9a4f1f28eaf0e057840a77d4e7a2b93d8727dfb2: explicit exact finite log m=0,1 nonnegative rational norm_num leaves, Nat.cast_ofNat normalization before log_four_eq both sides, and removed malformed '+/-' Lean doc comment opening. Theorems/signs/support and original prime/Gamma arithmetic retained; 551-workflow and 64-record custody must still PASS.
