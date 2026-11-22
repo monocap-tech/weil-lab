@@ -1,9 +1,15 @@
-# Review gate: source-pinned IV018 only; no automatic GitHub Actions trigger.
-# This file belongs on main solely to register workflow_dispatch.
+# Review gate: immutable IV018; manual dispatch plus two exact one-shot main push sentinels.
+# On main, only the two named sentinel paths may initiate a push-triggered audit/compiler.
 name: IV018 one-lane audit and original Lean kernel (source-pinned)
 run-name: IV018 ${{ inputs.mode }} pinned 72794db0
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'verification/iv018/IV034_AUDIT_REQUEST.txt'
+      - 'verification/iv018/IV034_COMPILE_REQUEST.txt'
   workflow_dispatch:
     inputs:
       mode:
@@ -37,6 +43,7 @@ jobs:
     timeout-minutes: 240
     env:
       SOURCE_SHA: '72794db0df1739a35a4f98d272306655dfebf532'
+      RUN_HEAVY: ${{ (github.event_name == 'workflow_dispatch' && inputs.mode == 'iv018') || (github.event_name == 'push' && github.event.head_commit.message == 'IV034: compile pinned IV018') }}
     steps:
       - name: Checkout immutable original research commit (not moving branch)
         uses: actions/checkout@v4
@@ -63,6 +70,34 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: Authenticate exact one-shot push path and commit message
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
+          allowed = {
+              'IV034: audit pinned IV018': 'verification/iv018/IV034_AUDIT_REQUEST.txt',
+              'IV034: compile pinned IV018': 'verification/iv018/IV034_COMPILE_REQUEST.txt',
+          }
+          assert event['ref'] == 'refs/heads/main'
+          assert event.get('deleted') is False
+          assert event['head_commit']['id'] == os.environ['GITHUB_SHA']
+          assert len(event.get('commits', [])) == 1, 'one-shot event must contain one commit'
+          commit = event['commits'][0]
+          assert commit['id'] == os.environ['GITHUB_SHA']
+          assert commit['message'] in allowed, 'unauthorized push command'
+          changed = set(commit.get('added', []) + commit.get('modified', []) + commit.get('removed', []))
+          assert changed == {allowed[commit['message']]}, ('unexpected changed paths', changed)
+          assert not commit.get('removed'), 'sentinel deletion is not a valid request'
+          print('IV034 immutable-source one-shot push authorization PASS:', commit['message'])
+          PY
 
       - name: Install pinned source-audit YAML parser
         shell: bash
@@ -117,17 +152,22 @@ jobs:
           PY
 
       - name: Verify explicit heavy-work authorization before any Lean installation
-        if: inputs.mode == 'iv018'
+        if: env.RUN_HEAVY == 'true'
         env:
           HEAVY_CONFIRMATION: ${{ inputs.heavy_confirmation }}
         shell: bash
         run: |
           set -euo pipefail
-          test "$HEAVY_CONFIRMATION" = 'RUN-PINNED-IV018'
-          echo 'IV018 only. Exact original pinned source and preflight passed.'
+          if [[ "$GITHUB_EVENT_NAME" == 'workflow_dispatch' ]]; then
+            test "$HEAVY_CONFIRMATION" = 'RUN-PINNED-IV018'
+          else
+            test "$GITHUB_EVENT_NAME" = 'push'
+            test "$GITHUB_REF" = 'refs/heads/main'
+          fi
+          echo 'Authorized one-shot IV018. Immutable source pin and exact upstream audit required.'
 
       - name: Install pinned Lean, resolve and SHA-fingerprint generated manifest
-        if: inputs.mode == 'iv018'
+        if: env.RUN_HEAVY == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -140,7 +180,7 @@ jobs:
           sha256sum lake-manifest.json > iv018-pinned-lake-manifest-sha256.txt
 
       - name: Exact IV018 source preflight, unchanged strict rational and prime audits
-        if: inputs.mode == 'iv018'
+        if: env.RUN_HEAVY == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -149,7 +189,7 @@ jobs:
           test -s iv018-original-three-cell-rational-ledger.json
 
       - name: Fetch pinned Mathlib source cache
-        if: inputs.mode == 'iv018'
+        if: env.RUN_HEAVY == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -157,7 +197,7 @@ jobs:
           lake exe cache get
 
       - name: Genuine IV018 signed three-cell Lean compiler
-        if: inputs.mode == 'iv018'
+        if: env.RUN_HEAVY == 'true'
         timeout-minutes: 100
         shell: bash
         run: |
@@ -167,7 +207,7 @@ jobs:
             | tee iv018-original-three-cell-signed-envelope-build.log
 
       - name: Genuine IV018 prime-9 transfer Lean compiler
-        if: inputs.mode == 'iv018'
+        if: env.RUN_HEAVY == 'true'
         timeout-minutes: 100
         shell: bash
         run: |
@@ -177,7 +217,7 @@ jobs:
             | tee iv018-original-three-cell-prime9-transfer-build.log
 
       - name: Direct standard-only axioms, compiled olean and source-bound IV018 receipt
-        if: inputs.mode == 'iv018'
+        if: env.RUN_HEAVY == 'true'
         timeout-minutes: 35
         shell: bash
         run: |
