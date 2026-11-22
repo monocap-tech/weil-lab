@@ -128,8 +128,9 @@ theorem neutralCPC1BOriginal_phaseResponse
   -- Do NOT unfold the diagonal alias in hdiag: the goal uses that alias.
   simp only [Complex.add_re, Complex.mul_re, Complex.mul_im,
     Complex.conj_re, Complex.conj_im]
-  -- Keep the authentic original diagonal alias in hdiag.
-  -- IV010's earlier failure came from unfolding that alias first.
+  -- Actual compiler diagnostic: the GOAL already unfolds the diagonal
+  -- alias; expose the identical original mixed expression in hdiag.
+  dsimp only [neutralCPC1BOriginalDiagonal] at hdiag ⊢
   rw [hdiag]
   ring
 
@@ -173,4 +174,5 @@ theorem neutralCPC1BOriginal_im_from_three_probes
 #print axioms neutralCPC1BOriginal_re_from_three_probes
 #print axioms neutralCPC1BOriginal_im_from_three_probes
 
+end
 end WeilDefect
