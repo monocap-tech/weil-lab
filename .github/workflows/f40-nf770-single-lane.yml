@@ -101,17 +101,41 @@ jobs:
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = 'a431f903254000bb5ad8edbc276ccc8599da98f5'
+          test "$(git -C nf770-inputs rev-parse HEAD)" = "$GITHUB_SHA"
           test "$(cat lean-toolchain)" = 'leanprover/lean4:v4.34.0'
           grep -Fxq 'rev = "v4.34.0"' lakefile.toml
           for n in nf770_original_prior_724_custody.py nf770_original_indexzero_import_order_guard.py nf770_original_indexzero_120_127_cached_kernel.py; do
             test -s "nf770-inputs/verification/f40/nf770/$n"
             cp "nf770-inputs/verification/f40/nf770/$n" "scripts/$n"
           done
-          python -m py_compile scripts/nf770_*.py
-          python scripts/nf770_original_indexzero_import_order_guard.py selftest
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Run isolated F40 source syntax and import-DAG tests
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf770_*.py
+          python scripts/nf770_original_indexzero_import_order_guard.py selftest
+      - name: Fail closed if another repository Actions job is already active
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,subprocess
+          repo=os.environ['GITHUB_REPOSITORY']; own=int(os.environ['GITHUB_RUN_ID'])
+          for status in ('queued','in_progress','waiting','pending'):
+              page=1
+              while True:
+                  raw=subprocess.check_output(['gh','api',f'repos/{repo}/actions/runs?status={status}&per_page=100&page={page}'],text=True)
+                  runs=json.loads(raw).get('workflow_runs',[])
+                  other=[(x['id'],x['name']) for x in runs if x['id']!=own]
+                  if other:
+                      raise SystemExit(f'F40 one-heavy-job lane HOLD: other {status} runs {other[:5]}')
+                  if len(runs)<100: break
+                  page+=1
+          print('F40 idle-queue snapshot PASS; not an atomic repository-wide lease')
+          PY
       - name: Authenticate 596 previously kernel accepted original HD/A gate instances (LIVE Actions + strict artifact digests)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -162,6 +186,7 @@ jobs:
           name: nf770-accepted-prior-724-original-HD-A-kernel-custody
           path: |
             nf770-accepted-prior-724-kernel-custody.json
+            nf769-accepted-prior-708-kernel-custody.json
             nf768-accepted-prior-692-kernel-custody.json
           if-no-files-found: error
       - name: Require immutable successful NF728 original source, NF729 numerical Lean quad and NF737 complete source artifact identities
