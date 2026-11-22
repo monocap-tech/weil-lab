@@ -1,7 +1,7 @@
 # Review gate: immutable IV018; manual dispatch plus two exact one-shot main push sentinels.
 # On main, only the two named sentinel paths may initiate a push-triggered audit/compiler.
 name: IV018 one-lane audit and original Lean kernel (source-pinned)
-run-name: IV018 ${{ inputs.mode }} pinned 376f1894
+run-name: IV018 ${{ inputs.mode }} pinned f221b925
 
 on:
   push:
@@ -42,13 +42,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 240
     env:
-      SOURCE_SHA: '376f1894f9738e5010179e19eb81c519cf0ffd98'
+      SOURCE_SHA: 'f221b925aad0ac863f18f181eb4d4e87073b7525'
       RUN_HEAVY: "${{ (github.event_name == 'workflow_dispatch' && inputs.mode == 'iv018') || (github.event_name == 'push' && github.event.head_commit.message == 'IV034: compile pinned IV018') }}"
     steps:
       - name: Checkout immutable original research commit (not moving branch)
         uses: actions/checkout@v4
         with:
-          ref: '376f1894f9738e5010179e19eb81c519cf0ffd98'
+          ref: 'f221b925aad0ac863f18f181eb4d4e87073b7525'
           persist-credentials: false
 
       - name: Verify exact commit, pinned toolchain and tracked Lake configuration
