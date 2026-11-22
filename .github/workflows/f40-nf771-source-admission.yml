@@ -46,6 +46,51 @@ jobs:
           assert '"new_original_Lean_gates_accepted": False' in p
           print('NF771 original 128..135 candidate source and fail-closed admission PASS; no Lean compiler')
           PY
+      - name: Parse proposed NF771 kernel workflow, exact trigger safety and 128–135 source audit contracts (NO Lean)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check PyYAML==6.0.2
+          python - <<'PY'
+          from pathlib import Path
+          import yaml, ast
+          p=Path('.github/workflows/f40-nf771-single-lane.yml')
+          txt=p.read_text()
+          root=yaml.compose(txt,Loader=yaml.BaseLoader)
+          def check(node):
+              if isinstance(node,yaml.nodes.MappingNode):
+                  keys=[k.value for k,v in node.value]
+                  assert len(keys)==len(set(keys)),('Duplicate YAML mapping key',keys)
+                  for k,v in node.value: check(k); check(v)
+              elif isinstance(node,yaml.nodes.SequenceNode):
+                  for v in node.value: check(v)
+          check(root)
+          m=yaml.load(txt,Loader=yaml.BaseLoader)
+          assert set(m['on'])=={'push','workflow_dispatch'}
+          assert m['on']['push']['branches']==['main']
+          assert m['on']['push']['paths']==['verification/f40/nf771/NF771_ONE_SHOT_COMPILE_REQUEST.txt']
+          assert len(m['jobs'])==1
+          j=m['jobs']['authenticate-reuse-and-kernel-actual-original-indexzero-128-135']
+          assert j['concurrency']['group']=='weil-uoi030-single-lane-source-pinned'
+          assert j['concurrency']['cancel-in-progress']=='false'
+          assert 'refs/heads/main' in j['if']
+          assert 'RUN-PINNED-F40-NF771' in txt
+          assert 'a431f903254000bb5ad8edbc276ccc8599da98f5' in txt
+          assert 'Col128 through Col135' in txt
+          assert 'for ((i=128;i<136;i++))' in txt
+          assert 'nf771_original_indexzero_128_135_kernel_audit.py' in txt
+          assert 'nf770_original_prior_724_custody.py' in txt
+          assert 'nf771_original_prior_740_custody.py' in txt
+          assert '11e31531cfd29187b648b207d85269c8b2a0a065a387b9182023a425e645a42f' in txt
+          q=Path('verification/f40/nf771/nf771_original_indexzero_128_135_kernel_audit.py')
+          a=q.read_text()
+          ast.parse(a)
+          for critical in ('compiled_objects()','strict_axiom_receipt()',
+                           'independent_postrun_artifact_zip_reconciliation_done'):
+              assert critical in a
+          assert 'sorryAx' in a and 'axioms' in a
+          print('NF771 strict YAML duplicate-key, exact safe triggers, direct-compiler/audit contracts PASS; no Lean execution.')
+          PY
       - name: Recheck accepted NF770 740 live run, named compiler steps and artifact metadata
         shell: bash
         env:
