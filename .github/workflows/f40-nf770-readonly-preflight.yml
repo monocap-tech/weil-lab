@@ -1,0 +1,95 @@
+# One-time, read-only F40/NF770 source and predecessor preflight.
+# This workflow is intentionally unable to start a heavy Lean compile.
+name: F40 NF770 hosted preflight (source-only)
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/f40-nf770-readonly-preflight.yml'
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: f40-nf770-readonly-preflight
+  cancel-in-progress: false
+jobs:
+  preflight:
+    if: github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout exactly accepted NF769 original source
+        uses: actions/checkout@v4
+        with:
+          ref: 'a431f903254000bb5ad8edbc276ccc8599da98f5'
+          path: original
+          persist-credentials: false
+      - name: Checkout exact NF770 draft source, not a mutable branch
+        uses: actions/checkout@v4
+        with:
+          ref: 'c503170f5250d1dfadb20306a515010759b45910'
+          path: candidate
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify both source commits and scripts, no generation and no Lean
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C original rev-parse HEAD)" = 'a431f903254000bb5ad8edbc276ccc8599da98f5'
+          test "$(git -C candidate rev-parse HEAD)" = 'c503170f5250d1dfadb20306a515010759b45910'
+          python -m py_compile candidate/verification/f40/nf770/*.py
+          python candidate/verification/f40/nf770/nf770_original_indexzero_import_order_guard.py selftest
+          python - <<'PY'
+          from pathlib import Path
+          import ast,sys
+          root=Path('candidate/verification/f40/nf770')
+          d=(root/'nf770_original_indexzero_120_127_cached_kernel.py').read_text()
+          p=(root/'nf770_original_prior_724_custody.py').read_text()
+          w=Path('candidate/.github/workflows/f40-nf770-single-lane.yml').read_text()
+          for f in sorted(root.glob('*.py')): ast.parse(f.read_text())
+          assert 'FIRST, STOP = 120, 128' in d
+          assert 'len(NAMES) == 35' in d
+          assert 'nf770OriginalIndexZero120Audit.lean' in d
+          assert '44990743795' in p and '14741942304' in p
+          assert 'nf770_new_120_127_numerical_kernel_accepted":False' in p
+          assert "group: weil-uoi030-single-lane-source-pinned" in w
+          assert "RUN-PINNED-F40-NF770" in w
+          assert '\\n  push:' not in w
+          print('Exact draft source, Python AST, nonpromoting gate and manual-only runner contracts PASS; NO NUMERICAL CERTIFICATION')
+          PY
+      - name: Verify live 724 accepted predecessor GitHub Actions custody, no Lean
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          for n in nf770_original_indexzero_120_127_cached_kernel.py nf770_original_indexzero_import_order_guard.py nf770_original_prior_724_custody.py; do
+            cp "candidate/verification/f40/nf770/$n" "original/scripts/$n"
+          done
+          (
+            cd original
+            python scripts/nf770_original_prior_724_custody.py
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('nf770-accepted-prior-724-kernel-custody.json').read_text())
+          assert d['accepted_original_HD_A_gate_instances']==724
+          assert d['accepted_original_indexzero_positions_HD']==list(range(120))
+          assert d['accepted_original_indexzero_positions_A']==list(range(120))
+          assert d['candidate_new_original_indices']==list(range(120,128))
+          assert d['nf770_new_120_127_numerical_kernel_accepted'] is False
+          assert d['nf769_original_112_to_119_success_and_digest_verified'] is True
+          print('LIVE PREDECESSOR 724/968 pass; proposed NF770 16 gates still UNCOMPILED')
+          PY
+          )
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: f40-nf770-source-only-preflight-no-gate-promotion
+          path: |
+            original/nf770-accepted-prior-724-kernel-custody.json
+            original/nf769-accepted-prior-708-kernel-custody.json
+            original/nf768-accepted-prior-692-kernel-custody.json
+          if-no-files-found: ignore
