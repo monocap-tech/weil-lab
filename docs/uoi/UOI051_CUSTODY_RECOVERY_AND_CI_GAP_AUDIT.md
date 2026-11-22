@@ -1,3 +1,5 @@
+> **UOI052 RECOVERY CORRECTION (2026-11-21 PT):** The original UOI035–UOI048 analytic reports and available checkers/receipts have now been recovered onto this research branch, along with CF017/018/020 full notes, CF017–021 validator sources and numerical transcript files. The full UOI047 and UOI048 texts are present. See `research/unified/receipts/UOI052_cross_thread_recovery_index.json`. Earlier statements below describing UOI047/UOI048 as unrecovered are historical, superseded, and must not be used as current custody status. Seven recorded original UOI044–UOI046 SHA-256 hashes were independently matched after restoring terminal LF; the UOI045 Gamma checker itself remains unrecovered and the later cubic-flatness checker is a distinct file. No new Lean acceptance or source-to-native proof follows.
+
 # UOI051 — Recovery audit: UOI049/UOI050 repository custody and unresolved gates
 
 **Date:** 2026-11-21 PT. **Type:** corrective custody record; NOT a new accepted theorem.
