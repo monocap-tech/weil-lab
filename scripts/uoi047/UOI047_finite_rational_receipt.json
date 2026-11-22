@@ -1,0 +1,70 @@
+{
+  "claim_finite_S10_collars_1_to_9": "P(f) < 43/100 Gamma(f); W_lit(f) > 57/100 Gamma(f)",
+  "schema": "uoi047-finite-envelope-illustration-v1",
+  "source_sha256": "54a572c37347d935d0fc0fc66a014dd60232cac42ce355098daa73790d81c7ba",
+  "status": "exact finite rational matrix illustration only; all-stage BT/Gamma/Schur proof NOT checked by this script",
+  "ten_stage_tail_rows": [
+    {
+      "M": 0,
+      "largest_ratio_decimal": 1.64265075669383,
+      "largest_ratio_exact": "1411037/859000",
+      "largest_row_index": 0
+    },
+    {
+      "M": 1,
+      "largest_ratio_decimal": 0.42941877998629197,
+      "largest_ratio_exact": "313261/729500",
+      "largest_row_index": 1
+    },
+    {
+      "M": 2,
+      "largest_ratio_decimal": 0.23677773599097404,
+      "largest_ratio_exact": "78699/332375",
+      "largest_row_index": 3
+    },
+    {
+      "M": 3,
+      "largest_ratio_decimal": 0.19276557226142987,
+      "largest_ratio_exact": "628223/3259000",
+      "largest_row_index": 4
+    },
+    {
+      "M": 4,
+      "largest_ratio_decimal": 0.161791915003887,
+      "largest_ratio_exact": "124871/771800",
+      "largest_row_index": 5
+    },
+    {
+      "M": 5,
+      "largest_ratio_decimal": 0.13756806458847276,
+      "largest_ratio_exact": "76677/557375",
+      "largest_row_index": 6
+    },
+    {
+      "M": 6,
+      "largest_ratio_decimal": 0.1151371812611188,
+      "largest_ratio_exact": "582479/5059000",
+      "largest_row_index": 7
+    },
+    {
+      "M": 7,
+      "largest_ratio_decimal": 0.08746739706661955,
+      "largest_ratio_exact": "247489/2829500",
+      "largest_row_index": 8
+    },
+    {
+      "M": 8,
+      "largest_ratio_decimal": 0.04373369853330977,
+      "largest_ratio_exact": "247489/5659000",
+      "largest_row_index": 8
+    },
+    {
+      "M": 9,
+      "largest_ratio_decimal": 0.0,
+      "largest_ratio_exact": "0",
+      "largest_row_index": 9
+    }
+  ],
+  "verified_Lean_kernel": false,
+  "verified_infinite_stage": false
+}
