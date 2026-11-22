@@ -2,6 +2,12 @@
 # Never dispatch from a historical 600-workflow branch; no automatic heavy trigger.
 name: F40 NF770 original HD/A 120–127 source and one Lean kernel
 on:
+  # This exact marker can request ONE accepted-source compiler pass.
+  # No other changed path starts a heavyweight runner.
+  push:
+    branches: [main]
+    paths:
+      - 'verification/f40/nf770/NF770_ONE_SHOT_COMPILE_REQUEST.txt'
   pull_request:
     paths:
       - 'verification/f40/nf770/**'
@@ -62,7 +68,13 @@ jobs:
           print('NF770 source-only syntax, 120–127 index scope and prior-724 contract PASS (NO Lean)')
           PY
   authenticate-reuse-and-kernel-actual-original-indexzero-120-127:
-    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'compile' && github.ref == 'refs/heads/main' && github.repository == 'monocap-tech/weil-lab'
+    if: >-
+      github.repository == 'monocap-tech/weil-lab' &&
+      github.ref == 'refs/heads/main' &&
+      (
+        (github.event_name == 'workflow_dispatch' && inputs.mode == 'compile') ||
+        (github.event_name == 'push' && github.event.head_commit.message == 'F40 NF770: compile exactly one original 120-127 batch')
+      )
     concurrency:
       group: weil-uoi030-single-lane-source-pinned
       cancel-in-progress: false
@@ -72,15 +84,22 @@ jobs:
       - name: Reject unrelated ref, mode or unpinned source before any heavy work
         shell: bash
         env:
-          CHECKPOINT: ${{ inputs.checkpoint }}
-          MODE: ${{ inputs.mode }}
-          HEAVY_CONFIRMATION: ${{ inputs.heavy_confirmation }}
+          CHECKPOINT: ${{ github.event_name == 'push' && 'a431f903254000bb5ad8edbc276ccc8599da98f5' || inputs.checkpoint }}
+          MODE: ${{ github.event_name == 'push' && 'compile' || inputs.mode }}
+          HEAVY_CONFIRMATION: ${{ github.event_name == 'push' && 'RUN-PINNED-F40-NF770' || inputs.heavy_confirmation }}
+          REQUEST_COMMIT_MSG: ${{ github.event.head_commit.message }}
         run: |
           set -euo pipefail
           test "$GITHUB_REPOSITORY" = 'monocap-tech/weil-lab'
           test "$GITHUB_REF" = 'refs/heads/main'
-          test "$GITHUB_EVENT_NAME" = 'workflow_dispatch'
-          test "$MODE" = 'compile'
+          case "$GITHUB_EVENT_NAME" in
+            workflow_dispatch) test "$MODE" = 'compile' ;;
+            push)
+              test "$MODE" = 'compile'
+              test "$REQUEST_COMMIT_MSG" = 'F40 NF770: compile exactly one original 120-127 batch'
+              ;;
+            *) echo 'Unsupported event'; exit 1 ;;
+          esac
           test "$CHECKPOINT" = 'a431f903254000bb5ad8edbc276ccc8599da98f5'
           test "$HEAVY_CONFIRMATION" = 'RUN-PINNED-F40-NF770'
           test "${#GITHUB_SHA}" -eq 40
@@ -96,6 +115,15 @@ jobs:
           path: nf770-inputs
           ref: ${{ github.sha }}
           persist-credentials: false
+      - name: Require exact one-shot marker for push-triggered compiler path
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          set -euo pipefail
+          p=nf770-inputs/verification/f40/nf770/NF770_ONE_SHOT_COMPILE_REQUEST.txt
+          test -f "$p"
+          test "$(cat "$p")" = 'COMPILE-NF770-120-127-ONCE:a431f903254000bb5ad8edbc276ccc8599da98f5'
+          test "$GITHUB_REF" = 'refs/heads/main'
       - name: Require pinned research identity and overlay only the three new source drivers
         shell: bash
         run: |
