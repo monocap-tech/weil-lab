@@ -73,7 +73,7 @@ def check_order(root,objects,order):
         "actual original Frontier no longer has recovered NF681.Common import")
     assert [common,frontier] in edges,("specific original missing-import edge not covered")
     return {
-        "schema":"NF771-source-actual-original-indexzero-120-127-import-DAG-v1",
+        "schema":"NF771-source-actual-original-indexzero-128-135-import-DAG-v1",
         "compiler_order":list(order),
         "in_plan_direct_import_edges":edges,
         "out_of_plan_olean_imports_present":sorted(set(reused)),
@@ -108,6 +108,7 @@ def selftest():
         accepted.write_bytes(b"synthetic accepted module placeholder, NOT REAL LEAN")
         assert check_order(root,objects,(first,second))[
             "actual_recovered_Frontier_depends_on_NF681_Common"]
+        assert check_order(root,objects,(first,second))["schema"] == "NF771-source-actual-original-indexzero-128-135-import-DAG-v1"
         cases=["correct_direct_import_order"]
         try:
             check_order(root,objects,(second,first))
