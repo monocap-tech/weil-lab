@@ -15,3 +15,5 @@ IV038 exact source audit: 376f1894f9738e5010179e19eb81c519cf0ffd98. Only origina
 IV039 audit request for exact immutable source f221b925aad0ac863f18f181eb4d4e87073b7525. Only one Lean proof-site orientation swapped add_le_add_right to add_le_add_left, matching original A+C inequality. No arithmetic, axioms or support changes.
 
 IV040 audit only: immutable source 616115a4506cde0bdd78968cd1fe9604a9a8fe2a. Genuine complex 1/(2*pi) scalar norm normalization in original Gamma bound; no original source statement or arithmetic change. Separate Phase III F40 heavy job remains separately coordinated.
+
+IV041 source-only one-shot audit for candidate c7d65fcc45df3764596076b4ea94be2749aea1bd. Exactly one original Gamma proof invocation changed, supplying (μ := (volume : Measure ℝ)) to norm_integral_le_integral_norm. Strict source and all workflow custody unchanged.
