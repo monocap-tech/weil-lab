@@ -12,3 +12,5 @@ IV037: run exact new source 64ad66d9ae44d39698346eec08be212c928a28ec after audit
 IV038 compile request: original source commit 376f1894f9738e5010179e19eb81c519cf0ffd98. Audit #44991919836 PASS. Sole change is explicit existing complex pole/prime arguments for norm_sub_le in arithmetic envelope. Require genuine .olean and strict 28 axioms receipts.
 
 IV039 compiler request: repaired immutable research source f221b925aad0ac863f18f181eb4d4e87073b7525. Hosted audit 44994017756 PASS. Type-correct triangle inequality orientation add_le_add_left, 13 theorems unchanged. Require 2 genuine Lean .olean files, 28 standard-only named axiom receipts and full source-bound verification.
+
+IV040 first genuine compile sentinel: exact source 616115a4506cde0bdd78968cd1fe9604a9a8fe2a. Audit 44996052903 completed SUCCESS, Phase III F40 NF770 44995765488 completed SUCCESS, shared lane zero active/queued before request. Require both IV018 targets and strict 28 named standard-only axioms; no acceptance from audit only.
