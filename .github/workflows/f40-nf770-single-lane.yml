@@ -25,7 +25,7 @@ on:
         description: 'For compile only, type RUN-PINNED-F40-NF770'
         required: false
         type: string
-        default: NO
+        default: 'NO'
 permissions:
   contents: read
   actions: read
@@ -61,7 +61,6 @@ jobs:
           assert 'nf770_new_120_127_numerical_kernel_accepted":False' in p
           print('NF770 source-only syntax, 120–127 index scope and prior-724 contract PASS (NO Lean)')
           PY
-  authenticate-reuse-and-kernel-actual-original-indexzero-120-127:
   authenticate-reuse-and-kernel-actual-original-indexzero-120-127:
     if: github.event_name == 'workflow_dispatch' && inputs.mode == 'compile' && github.ref == 'refs/heads/main' && github.repository == 'monocap-tech/weil-lab'
     concurrency:
