@@ -1,0 +1,68 @@
+{
+  "schema": "UOI045-paper-math-plus-exact-finite-arithmetic-v1",
+  "status": "analytic Gamma comparison + exact rational stage-10 Schur checks, not Lean",
+  "prior_integer_matrix_source": "/mnt/data/uoi044/UOI044_stage10_exact_arithmetic_receipt.json",
+  "prior_integer_matrix_sha256": "54a572c37347d935d0fc0fc66a014dd60232cac42ce355098daa73790d81c7ba",
+  "source_pin": "614ba879f7389fdb620c474adaee273b00eac71c",
+  "checks": {
+    "exp_69_over_10_lt_1000": true,
+    "exp_69_over_10_upper_decimal": 992.2747156050259,
+    "exp_2_lt_8": true,
+    "exp_2_upper_decimal": 7.38905609893065,
+    "exp_999_over_1000_gt_5_over_2": true,
+    "exp_999_over_1000_lower_decimal": 2.6641676665,
+    "r_lt_3_over_8": true,
+    "gamma_cross_row_sum_bound": "3/3125",
+    "gamma_cross_quadratic_bound": "3/6250"
+  },
+  "finite_stage_count": 10,
+  "gamma_spatial_weight_fractions": [
+    "859/1000",
+    "1459/1000",
+    "2059/1000",
+    "2659/1000",
+    "3259/1000",
+    "3859/1000",
+    "4459/1000",
+    "5059/1000",
+    "5659/1000",
+    "6259/1000"
+  ],
+  "weighted_schur_vector": [
+    181,
+    116,
+    69,
+    42,
+    47,
+    33,
+    31,
+    27,
+    24,
+    20
+  ],
+  "weighted_schur_upper": "11/25",
+  "largest_exact_weighted_row_ratio": "18660353/42449000",
+  "weighted_row_ratio_fractions": [
+    "67575429/155479000",
+    "73695939/169244000",
+    "2563197/5919625",
+    "8120097/18613000",
+    "8228794/19146625",
+    "18660353/42449000",
+    "424289/987350",
+    "4931837/11382750",
+    "3892139/9054400",
+    "54305073/125180000"
+  ],
+  "signed_weil_weighted_factor": "14/25",
+  "signed_weil_L2_margin_floor": "6013/12500",
+  "reported_weaker_rational_margin": "12/25",
+  "not_proved": [
+    "literal original/native universal form identification",
+    "Lean digamma comparison",
+    "PNT infinite envelope asymptotic in Lean",
+    "any m-independent bound on complete original P/Gamma",
+    "all-Schwartz positivity",
+    "RH"
+  ]
+}
