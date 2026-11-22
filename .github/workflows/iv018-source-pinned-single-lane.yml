@@ -73,6 +73,8 @@ jobs:
 
       - name: Authenticate exact one-shot push path and commit message
         if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
@@ -80,6 +82,7 @@ jobs:
           import json
           import os
           from pathlib import Path
+          from urllib.request import Request, urlopen
 
           event = json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text())
           allowed = {
@@ -93,9 +96,23 @@ jobs:
           commit = event['commits'][0]
           assert commit['id'] == os.environ['GITHUB_SHA']
           assert commit['message'] in allowed, 'unauthorized push command'
-          changed = set(commit.get('added', []) + commit.get('modified', []) + commit.get('removed', []))
-          assert changed == {allowed[commit['message']]}, ('unexpected changed paths', changed)
-          assert not commit.get('removed'), 'sentinel deletion is not a valid request'
+          # GitHub-hosted push event files may be omitted. Authenticate the actual
+          # committed Git tree delta through the GitHub REST commit object instead.
+          url = f"https://api.github.com/repos/{os.environ['GITHUB_REPOSITORY']}/commits/{os.environ['GITHUB_SHA']}"
+          req = Request(url, headers={
+              'Authorization': f"Bearer {os.environ['GH_TOKEN']}",
+              'Accept': 'application/vnd.github+json',
+              'X-GitHub-Api-Version': '2022-11-28',
+          })
+          with urlopen(req, timeout=30) as response:
+              actual_commit = json.load(response)
+          assert actual_commit['sha'] == os.environ['GITHUB_SHA']
+          assert len(actual_commit['parents']) == 1, 'single-parent one-shot required'
+          assert actual_commit['commit']['message'] == commit['message']
+          files = actual_commit['files']
+          changed = {item['filename'] for item in files}
+          assert changed == {allowed[commit['message']]}, ('unexpected committed paths', changed)
+          assert all(item['status'] in ('added', 'modified') for item in files), 'sentinel deletion forbidden'
           print('IV034 immutable-source one-shot push authorization PASS:', commit['message'])
           PY
 
