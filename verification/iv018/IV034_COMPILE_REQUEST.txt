@@ -8,3 +8,5 @@ Scope: restricted original three-cell one-quarter candidate; no global Weil posi
 IV035 targeted proof-repair compilation against immutable commit 4601b05683de3acc8fcf7c277fb1413f756e07fc. Source-pinned audit PASS run 44986588135; no new theorem axioms, rational edits or historical certificate changes.
 
 IV037: run exact new source 64ad66d9ae44d39698346eec08be212c928a28ec after audit #44988169150 PASS; target fix: expand Complex.mul_re in Schur minimizer normalization; preserve 28 named axioms and original original budget.
+
+IV038 compile request: original source commit 376f1894f9738e5010179e19eb81c519cf0ffd98. Audit #44991919836 PASS. Sole change is explicit existing complex pole/prime arguments for norm_sub_le in arithmetic envelope. Require genuine .olean and strict 28 axioms receipts.
