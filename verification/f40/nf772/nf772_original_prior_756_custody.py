@@ -8,7 +8,7 @@ from pathlib import Path
 RUN, JOB, ART = 45045201368, 137278184082, 14763746318
 MAIN_SHA = "8cdf6add10aa3d3a7ab824910836154eaa180006"
 SOURCE_SHA = "a431f903254000bb5ad8edbc276ccc8599da98f5"
-DIGEST = "8c33bdcfa7a1cc1b1fc26371a3a335eeb159a844107097045f14fbdace15ab54"
+DIGEST = "5726980f4b3d342fc6a41224e0c3840ac17231ef5d0d69b0429608a35a19eebb"
 NAME = "nf771-original-source-identical-cache-real-global-HD-A-128-135-Lean-kernel-audit"
 COMPILE = "Direct kernel-compile eight actual original frozen NF702 NF703 global HD/A indexzero Col128 through Col135 gate source modules"
 AXIOMS = "Strict 35-name original source-bound Lean theorem axiom and accepted prior cache-object audit"
