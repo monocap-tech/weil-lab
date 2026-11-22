@@ -17,3 +17,5 @@ IV039 audit request for exact immutable source f221b925aad0ac863f18f181eb4d4e870
 IV040 audit only: immutable source 616115a4506cde0bdd78968cd1fe9604a9a8fe2a. Genuine complex 1/(2*pi) scalar norm normalization in original Gamma bound; no original source statement or arithmetic change. Separate Phase III F40 heavy job remains separately coordinated.
 
 IV041 source-only one-shot audit for candidate c7d65fcc45df3764596076b4ea94be2749aea1bd. Exactly one original Gamma proof invocation changed, supplying (μ := (volume : Measure ℝ)) to norm_integral_le_integral_norm. Strict source and all workflow custody unchanged.
+
+IV042 one-shot audit candidate 85442371a1a0e27f4015d138396f04dea662c810: single proof tactic in original phase-cancellation correlation vanishing, simp [sub_neg_eq_add, hsx] replaces insufficient restricted simplification 0 = 0 x; unchanged source theorem statement, rational/Gamma/prime signs and custody.
