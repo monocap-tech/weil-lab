@@ -1,0 +1,63 @@
+name: CP-C1FG isolated frozen-source nine-reading and two-radius kernel
+on:
+  push:
+    branches:
+      - research/cpc1b-original-iv009-nine-probe-source
+    paths:
+      - ".github/workflows/cpc1fg-original-one-shot-kernel.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cpc1fg-one-frozen-source-lean434
+  cancel-in-progress: false
+jobs:
+  source-fg-lean434:
+    if: github.ref == 'refs/heads/research/cpc1b-original-iv009-nine-probe-source'
+    runs-on: ubuntu-latest
+    timeout-minutes: 200
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Strict original E/D pins and FG source+negative axiom tests (NOT LEAN)
+        run: |
+          set -euo pipefail
+          python3 -m py_compile scripts/cpc1fg_frozen_kernel_receipt_gate.py
+          python3 scripts/cpc1fg_frozen_kernel_receipt_gate.py preflight 2>&1 | tee cpc1fg-source-NOT-LEAN.log
+          python3 scripts/cpc1fg_frozen_kernel_receipt_gate.py selftest 2>&1 | tee cpc1fg-parser-NOT-LEAN.log
+      - name: Install original pinned Lean 4.34 / Lake
+        timeout-minutes: 35
+        run: |
+          set -euo pipefail
+          test "$(cat lean-toolchain)" = "leanprover/lean4:v4.34.0"
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version | tee cpc1fg-lean-version.log
+          lake --version | tee cpc1fg-lake-version.log
+      - name: Actual B C D E then FG direct Lean builds and strict axiom receipts
+        timeout-minutes: 155
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          bash scripts/cpc1fg_frozen_local_kernel_lane.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cpc1fg-frozen-original-source-real-lean434
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            cpc1fg-*log
+            cpc1fg-*.json
+            cpc1e-*log
+            cpc1e-*.json
+            cpc1b-original-kernel-receipt.json
+            cpc1c-cpc1d-original-kernel-receipt.json
+            cpc1b-original-Lean-build.log
+            cpc1c-original-Lean-build.log
+            cpc1d-original-Lean-build.log
+            .lake/build/lib/lean/WeilDefect/Arithmetic/CP_C1FG_FrozenTargetAndRadiusGlue.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/CP_C1E_FrozenFlatSchwartz.olean
