@@ -1,0 +1,206 @@
+# F40 NF771 source-only. No Lean, Mathlib, heavy Actions or gate promotion.
+name: F40 NF771 128–135 source-only admission
+on:
+  pull_request:
+    paths:
+      - 'verification/f40/nf771/**'
+      - '.github/workflows/f40-nf771-source-admission.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source-only:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax and nonpromoting synthetic regression tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile verification/f40/nf771/*.py
+          python verification/f40/nf771/nf771_original_indexzero_import_order_guard.py selftest
+          python verification/f40/nf771/nf771_original_prior_740_custody.py selftest
+          python - <<'PY'
+          from pathlib import Path
+          import ast
+          root=Path('verification/f40/nf771')
+          d=(root/'nf771_original_indexzero_128_135_source_preflight.py').read_text()
+          g=(root/'nf771_original_indexzero_import_order_guard.py').read_text()
+          p=(root/'nf771_original_prior_740_custody.py').read_text()
+          for f in root.glob('*.py'): ast.parse(f.read_text())
+          assert 'FIRST, STOP = 128, 136' in d
+          assert 'len(NAMES) == 35' in d
+          assert 'source737.verify()' in d
+          assert 'def authenticated_direct_kernel_objects' not in d
+          assert 'def audit()' not in d
+          assert 'range(128,136)' in g
+          assert '44995765488' in p and '14743614902' in p
+          assert '"new_original_Lean_gates_accepted": False' in p
+          print('NF771 original 128..135 candidate source and fail-closed admission PASS; no Lean compiler')
+          PY
+      - name: Parse proposed NF771 kernel workflow, exact trigger safety and 128–135 source audit contracts (NO Lean)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check PyYAML==6.0.2
+          python - <<'PY'
+          from pathlib import Path
+          import yaml, ast
+          p=Path('.github/workflows/f40-nf771-single-lane.yml')
+          txt=p.read_text()
+          root=yaml.compose(txt,Loader=yaml.BaseLoader)
+          def check(node):
+              if isinstance(node,yaml.nodes.MappingNode):
+                  keys=[k.value for k,v in node.value]
+                  assert len(keys)==len(set(keys)),('Duplicate YAML mapping key',keys)
+                  for k,v in node.value: check(k); check(v)
+              elif isinstance(node,yaml.nodes.SequenceNode):
+                  for v in node.value: check(v)
+          check(root)
+          m=yaml.load(txt,Loader=yaml.BaseLoader)
+          assert set(m['on'])=={'push','workflow_dispatch'}
+          assert m['on']['push']['branches']==['main']
+          assert m['on']['push']['paths']==['verification/f40/nf771/NF771_ONE_SHOT_COMPILE_REQUEST.txt']
+          assert len(m['jobs'])==1
+          j=m['jobs']['authenticate-reuse-and-kernel-actual-original-indexzero-128-135']
+          assert j['concurrency']['group']=='weil-uoi030-single-lane-source-pinned'
+          assert j['concurrency']['cancel-in-progress']=='false'
+          assert 'refs/heads/main' in j['if']
+          assert 'RUN-PINNED-F40-NF771' in txt
+          assert 'a431f903254000bb5ad8edbc276ccc8599da98f5' in txt
+          assert 'Col128 through Col135' in txt
+          assert 'for ((i=128;i<136;i++))' in txt
+          assert 'nf771_original_indexzero_128_135_kernel_audit.py' in txt
+          assert 'nf770_original_prior_724_custody.py' in txt
+          assert 'nf771_original_prior_740_custody.py' in txt
+          assert '11e31531cfd29187b648b207d85269c8b2a0a065a387b9182023a425e645a42f' in txt
+          q=Path('verification/f40/nf771/nf771_original_indexzero_128_135_kernel_audit.py')
+          a=q.read_text()
+          ast.parse(a)
+          for critical in ('compiled_objects()','strict_axiom_receipt()',
+                           'independent_postrun_artifact_zip_reconciliation_done'):
+              assert critical in a
+          assert 'sorryAx' in a and 'axioms' in a
+          print('NF771 strict YAML duplicate-key, exact safe triggers, direct-compiler/audit contracts PASS; no Lean execution.')
+          PY
+      - name: Recheck accepted NF770 740 live run, named compiler steps and artifact metadata
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python verification/f40/nf771/nf771_original_prior_740_custody.py live
+      - name: Preserve nonpromoting source-only predecessor receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf771-original-128-135-predecessor-740-metadata-only
+          path: nf771-prior740-live-metadata.json
+          if-no-files-found: ignore
+
+  original-nf737-source-authentication:
+    if: github.event_name == 'pull_request' && github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - name: Checkout immutable NF769 research source without pushing any historical branch
+        uses: actions/checkout@v4
+        with:
+          ref: 'a431f903254000bb5ad8edbc276ccc8599da98f5'
+          path: original
+          persist-credentials: false
+      - name: Checkout exact NF771 candidate revision for isolated source driver overlay
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: candidate
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authenticate original 242-column artifact identity and exact two source revisions (NO Lean)
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CANDIDATE_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git -C original rev-parse HEAD)" = 'a431f903254000bb5ad8edbc276ccc8599da98f5'
+          test "$(git -C candidate rev-parse HEAD)" = "$CANDIDATE_SHA"
+          test "$(cat original/lean-toolchain)" = 'leanprover/lean4:v4.34.0'
+          python - <<'PY'
+          import json, subprocess
+          repo = "monocap-tech/weil-lab"
+          run = json.loads(subprocess.check_output(["gh","api",f"repos/{repo}/actions/runs/44791346863"],text=True))
+          assert run["status"] == "completed" and run["conclusion"] == "success"
+          jobs = json.loads(subprocess.check_output(["gh","api",f"repos/{repo}/actions/runs/44791346863/jobs?per_page=100"],text=True))["jobs"]
+          assert any(j["id"] == 136479519760 and j["name"] == "authenticate-and-emit-remaining-original-indexzero" and j["conclusion"] == "success" for j in jobs)
+          arts=json.loads(subprocess.check_output(["gh","api",f"repos/{repo}/actions/runs/44791346863/artifacts?per_page=100"],text=True))["artifacts"]
+          exact=[a for a in arts if a["id"]==14660147684 and a["name"]=="nf737-authenticated-original-indexzero-242-full-source-and-28-shard-candidates" and a.get("digest")=="sha256:11e31531cfd29187b648b207d85269c8b2a0a065a387b9182023a425e645a42f" and a["size_in_bytes"]==227348147 and not a["expired"]]
+          assert len(exact)==1
+          print("Immutable NF737 artifact/job/run SHA-256 metadata PASS")
+          PY
+      - name: Restore original NF737 source ZIP only after authenticating full archive bytes
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 4 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14660147684/zip" -o nf771-original-nf737-source.zip
+          echo "11e31531cfd29187b648b207d85269c8b2a0a065a387b9182023a425e645a42f  nf771-original-nf737-source.zip" | sha256sum -c -
+          sha256sum nf771-original-nf737-source.zip | tee nf771-full-original-source-archive-sha256.txt
+          cd original
+          unzip -q ../nf771-original-nf737-source.zip
+          test -s WeilDefect/Generated/NF704Frontier/Col128.lean
+          test -s WeilDefect/Generated/NF704Frontier/Col135.lean
+          test -s WeilDefect/Generated/NF704Frontier/manifest.json
+          rm -f ../nf771-original-nf737-source.zip
+      - name: Verify all 242 recovered original NF737 source modules and exact NF771 128–135 35-name queries
+        shell: bash
+        run: |
+          set -euo pipefail
+          for f in nf771_original_indexzero_128_135_source_preflight.py nf771_original_indexzero_import_order_guard.py; do
+            test -s "candidate/verification/f40/nf771/$f"
+            cp "candidate/verification/f40/nf771/$f" "original/scripts/$f"
+          done
+          (
+            cd original
+            python -m py_compile scripts/nf737_original_indexzero_complete_source_shard_schedule.py scripts/nf771_original_indexzero_128_135_source_preflight.py
+            python scripts/nf737_original_indexzero_complete_source_shard_schedule.py verify | tee ../nf771-full-original-nf737-242-source-verification.log
+            python scripts/nf771_original_indexzero_128_135_source_preflight.py | tee ../nf771-original-indexzero-128-135-source-only-preflight.log
+            python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          b=json.loads(Path("nf771-indexzero-128-135-source-binding.json").read_text())
+          assert b["schema"]=="NF771-authentic-original-global-indexzero-128-135-source-v1"
+          assert b["new_indices_HD"]==b["new_indices_A"]==list(range(128,136))
+          assert b["new_gate_instances"]==16 and b["new_declarations"]==32
+          assert len(b["strict_axiom_names"])==35
+          assert b["new_numerical_kernel_accepted"] is False
+          assert len(b["actual_original_new_col_module_sha256"])==8
+          q=Path("nf771OriginalIndexZero128Audit.lean").read_text()
+          assert q.count("#print axioms WeilDefect.")==35
+          assert q.count("import WeilDefect.Generated.NF704Frontier.Col")==8
+          print("SOURCE HASH FULL 242 + ORIGINAL COL128–135 + 35 exact axiom queries PASS; NO KERNEL")
+          PY
+          )
+      - name: Preserve genuine source binding and queries but NO new numerical certificate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf771-original-nf737-source-128-135-authenticated-no-lean
+          path: |
+            nf771-full-original-source-archive-sha256.txt
+            nf771-full-original-nf737-242-source-verification.log
+            nf771-original-indexzero-128-135-source-only-preflight.log
+            original/nf771-indexzero-128-135-source-binding.json
+            original/nf771OriginalIndexZero128Audit.lean
+          if-no-files-found: ignore
