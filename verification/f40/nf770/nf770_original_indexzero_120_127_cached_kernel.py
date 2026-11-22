@@ -139,7 +139,7 @@ def authenticated_direct_kernel_objects():
         assert src.is_file() and obj.is_file() and obj.stat().st_size>0, (
             "Missing genuine original new numerical .olean",stem)
         matches=[line for line in rows
-                 if re.search(rf"\\b{stem}\\.lean\\b",line)
+                 if re.search(rf"\b{stem}\.lean\b",line)
                  and "exit=0" in line
                  and "lake env lean" in line]
         assert len(matches)==1,("Missing/duplicate direct Lean exit-zero trace",stem,matches)
@@ -204,7 +204,7 @@ def audit():
         f"import WeilDefect.Generated.NF704Frontier.Col{i:03d}"
         for i in range(FIRST,STOP)
     ]+[f"#print axioms WeilDefect.{name}" for name in NAMES]
-    assert AXFILE.read_text()=="\\n".join(expected_queries)+"\\n", (
+    assert AXFILE.read_text()=="\n".join(expected_queries)+"\n", (
         "Actual named-axiom source differs from 35 required literal declarations")
     compiled_objects,compile_timing_sha=authenticated_direct_kernel_objects()
     log=AXLOG.read_text()
