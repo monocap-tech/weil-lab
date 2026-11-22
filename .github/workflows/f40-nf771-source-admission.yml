@@ -1,0 +1,62 @@
+# F40 NF771 source-only. No Lean, Mathlib, heavy Actions or gate promotion.
+name: F40 NF771 128–135 source-only admission
+on:
+  pull_request:
+    paths:
+      - 'verification/f40/nf771/**'
+      - '.github/workflows/f40-nf771-source-admission.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source-only:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax and nonpromoting synthetic regression tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile verification/f40/nf771/*.py
+          python verification/f40/nf771/nf771_original_indexzero_import_order_guard.py selftest
+          python verification/f40/nf771/nf771_original_prior_740_custody.py selftest
+          python - <<'PY'
+          from pathlib import Path
+          import ast
+          root=Path('verification/f40/nf771')
+          d=(root/'nf771_original_indexzero_128_135_source_preflight.py').read_text()
+          g=(root/'nf771_original_indexzero_import_order_guard.py').read_text()
+          p=(root/'nf771_original_prior_740_custody.py').read_text()
+          for f in root.glob('*.py'): ast.parse(f.read_text())
+          assert 'FIRST, STOP = 128, 136' in d
+          assert 'len(NAMES) == 35' in d
+          assert 'source737.verify()' in d
+          assert 'def authenticated_direct_kernel_objects' not in d
+          assert 'def audit()' not in d
+          assert 'range(128,136)' in g
+          assert '44995765488' in p and '14743614902' in p
+          assert '"new_original_Lean_gates_accepted": False' in p
+          print('NF771 original 128..135 candidate source and fail-closed admission PASS; no Lean compiler')
+          PY
+      - name: Recheck accepted NF770 740 live run, named compiler steps and artifact metadata
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python verification/f40/nf771/nf771_original_prior_740_custody.py live
+      - name: Preserve nonpromoting source-only predecessor receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf771-original-128-135-predecessor-740-metadata-only
+          path: nf771-prior740-live-metadata.json
+          if-no-files-found: ignore
