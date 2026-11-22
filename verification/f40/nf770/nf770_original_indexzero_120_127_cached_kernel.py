@@ -119,6 +119,36 @@ def prepare():
     print("NF770 8 HD row-zero + 8 A column-zero ORIGINAL numeric gate CANDIDATES for 120..127; 35 #print axioms prepared; earlier 24 real gates plus index-one universal theorems authenticated; no new kernel acceptance")
 
 
+def authenticated_direct_kernel_objects():
+    """Require eight actual new Lean objects and eight per-column exit-zero traces.
+
+    The independent GitHub Actions job/ZIP audit is still the final acceptance
+    authority; these checks prevent a standalone axiom-text receipt from
+    masquerading as a new source-bound Lean kernel compilation.
+    """
+    object_dir=Path(".lake/build/lib/lean/WeilDefect/Generated/NF704Frontier")
+    timing=Path("nf770-indexzero-gates-time.log")
+    assert timing.is_file() and timing.stat().st_size>0, (
+        "Original per-column /usr/bin/time compiler exit receipt required")
+    rows=timing.read_text().splitlines()
+    object_hashes={}
+    for i in range(FIRST,STOP):
+        stem=f"Col{i:03d}"
+        src=SOURCE/(stem+".lean")
+        obj=object_dir/(stem+".olean")
+        assert src.is_file() and obj.is_file() and obj.stat().st_size>0, (
+            "Missing genuine original new numerical .olean",stem)
+        matches=[line for line in rows
+                 if re.search(rf"\\b{stem}\\.lean\\b",line)
+                 and "exit=0" in line
+                 and "lake env lean" in line]
+        assert len(matches)==1,("Missing/duplicate direct Lean exit-zero trace",stem,matches)
+        object_hashes[stem+".olean"]=sha(obj)
+    assert len(object_hashes)==8 and len(set(object_hashes.values()))==8, (
+        "Missing or duplicated original compiled column objects")
+    return object_hashes,sha(timing)
+
+
 def audit():
     assert BIND.exists() and AXFILE.exists() and AXLOG.exists()
     cache_receipt=Path("nf743-accepted-original-center-cache-reuse.json")
@@ -168,6 +198,15 @@ def audit():
     assert proposed["actual_original_new_col_module_sha256"]==files
     assert proposed["strict_axiom_names"]==NAMES
     assert proposed["new_numerical_kernel_accepted"] is False
+    assert proposed["new_indices_HD"]==list(range(FIRST,STOP))
+    assert proposed["new_indices_A"]==list(range(FIRST,STOP))
+    expected_queries=["import WeilDefect.Generated.NF704Frontier.Common"]+[
+        f"import WeilDefect.Generated.NF704Frontier.Col{i:03d}"
+        for i in range(FIRST,STOP)
+    ]+[f"#print axioms WeilDefect.{name}" for name in NAMES]
+    assert AXFILE.read_text()=="\\n".join(expected_queries)+"\\n", (
+        "Actual named-axiom source differs from 35 required literal declarations")
+    compiled_objects,compile_timing_sha=authenticated_direct_kernel_objects()
     log=AXLOG.read_text()
     found={}
     for name,values in re.findall(
@@ -222,6 +261,8 @@ def audit():
         "cache_original_source_identity_verified":True,
         "axiom_log_sha256":sha(AXLOG),
         "axiom_source_sha256":sha(AXFILE),
+        "new_eight_original_col_olean_sha256":compiled_objects,
+        "original_direct_compiler_timing_sha256":compile_timing_sha,
         "source_bound_compiler_import_order_sha256":sha(IMPORT_RECEIPT),
         "new_original_HD_row_zero_indices_Lean_PASS":list(range(FIRST,STOP)),
         "new_original_A_col_zero_indices_Lean_PASS":list(range(FIRST,STOP)),
