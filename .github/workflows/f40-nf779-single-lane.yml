@@ -1,0 +1,593 @@
+# Formalization F40 NF779: main-registered review-only PR source checks plus explicitly gated manual Lean pass.
+# No historical-branch fan-out. Heavy execution has exactly one marker path and an exact commit-message/source guard.
+name: F40 NF779 original HD/A 192–199 one explicitly authorized kernel lane
+on:
+  # This exact marker can request ONE original-source compiler CANDIDATE; never directly an accepted certificate.
+  # No other changed path starts a heavyweight runner.
+  push:
+    branches: [main]
+    paths:
+      - 'verification/f40/nf779/NF779_ONE_SHOT_COMPILE_REQUEST.txt'
+  workflow_dispatch:
+    inputs:
+      checkpoint:
+        description: 'Exact immutable accepted NF769 source SHA'
+        type: string
+        required: true
+        default: 'a431f903254000bb5ad8edbc276ccc8599da98f5'
+      mode:
+        description: 'audit: source-only; compile: one source-pinned 192–199 Lean pass'
+        type: choice
+        options:
+          - audit
+          - compile
+        required: true
+        default: audit
+      heavy_confirmation:
+        description: 'For compile only, type RUN-PINNED-F40-NF779'
+        required: false
+        type: string
+        default: 'NO'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  authenticate-reuse-and-kernel-actual-original-indexzero-192-199:
+    if: >-
+      github.repository == 'monocap-tech/weil-lab' &&
+      github.ref == 'refs/heads/main' &&
+      (
+        (github.event_name == 'workflow_dispatch' && inputs.mode == 'compile') ||
+        (github.event_name == 'push' && github.event.head_commit.message == 'F40 NF779: compile exactly one original 192-199 batch')
+      )
+    concurrency:
+      group: weil-uoi030-single-lane-source-pinned
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - name: Reject unrelated ref, mode or unpinned source before any heavy work
+        shell: bash
+        env:
+          CHECKPOINT: ${{ github.event_name == 'push' && 'a431f903254000bb5ad8edbc276ccc8599da98f5' || inputs.checkpoint }}
+          MODE: ${{ github.event_name == 'push' && 'compile' || inputs.mode }}
+          HEAVY_CONFIRMATION: ${{ github.event_name == 'push' && 'RUN-PINNED-F40-NF779' || inputs.heavy_confirmation }}
+          REQUEST_COMMIT_MSG: ${{ github.event.head_commit.message }}
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = 'monocap-tech/weil-lab'
+          test "$GITHUB_REF" = 'refs/heads/main'
+          case "$GITHUB_EVENT_NAME" in
+            workflow_dispatch) test "$MODE" = 'compile' ;;
+            push)
+              test "$MODE" = 'compile'
+              test "$REQUEST_COMMIT_MSG" = 'F40 NF779: compile exactly one original 192-199 batch'
+              ;;
+            *) echo 'Unsupported event'; exit 1 ;;
+          esac
+          test "$CHECKPOINT" = 'a431f903254000bb5ad8edbc276ccc8599da98f5'
+          test "$HEAVY_CONFIRMATION" = 'RUN-PINNED-F40-NF779'
+          test "${#GITHUB_SHA}" -eq 40
+          echo "Immutable accepted NF769 source pin: $CHECKPOINT; invoking main head: $GITHUB_SHA"
+      - name: Checkout immutable accepted NF769 research files into working root
+        uses: actions/checkout@v4
+        with:
+          ref: 'a431f903254000bb5ad8edbc276ccc8599da98f5'
+          persist-credentials: false
+      - name: Checkout exact main revision containing new NF779 proof drivers
+        uses: actions/checkout@v4
+        with:
+          path: nf779-inputs
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Require exact one-shot marker for push-triggered compiler path
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          set -euo pipefail
+          p=nf779-inputs/verification/f40/nf779/NF779_ONE_SHOT_COMPILE_REQUEST.txt
+          test -f "$p"
+          test "$(cat "$p")" = 'COMPILE-NF779-192-199-ONCE:a431f903254000bb5ad8edbc276ccc8599da98f5'
+          test "$GITHUB_REF" = 'refs/heads/main'
+      - name: Require pinned research identity and overlay only the three new source drivers
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = 'a431f903254000bb5ad8edbc276ccc8599da98f5'
+          test "$(git -C nf779-inputs rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(cat lean-toolchain)" = 'leanprover/lean4:v4.34.0'
+          grep -Fxq 'rev = "v4.34.0"' lakefile.toml
+          test -s nf779-inputs/verification/f40/nf770/nf770_original_prior_724_custody.py
+          test -s nf779-inputs/verification/f40/nf771/nf771_original_prior_740_custody.py
+          cp nf779-inputs/verification/f40/nf771/nf771_original_prior_740_custody.py scripts/
+          cp nf779-inputs/verification/f40/nf770/nf770_original_prior_724_custody.py scripts/
+          test -s nf779-inputs/verification/f40/nf772/nf772_original_prior_756_custody.py
+          cp nf779-inputs/verification/f40/nf772/nf772_original_prior_756_custody.py scripts/
+          test -s nf779-inputs/verification/f40/nf773/nf773_original_prior_772_custody.py
+          cp nf779-inputs/verification/f40/nf773/nf773_original_prior_772_custody.py scripts/
+          test -s nf779-inputs/verification/f40/nf774/nf774_original_prior_788_custody.py
+          cp nf779-inputs/verification/f40/nf774/nf774_original_prior_788_custody.py scripts/
+          test -s nf779-inputs/verification/f40/nf775/nf775_original_prior_804_custody.py
+          cp nf779-inputs/verification/f40/nf775/nf775_original_prior_804_custody.py scripts/
+          test -s nf779-inputs/verification/f40/nf776/nf776_original_prior_820_custody.py
+          cp nf779-inputs/verification/f40/nf776/nf776_original_prior_820_custody.py scripts/
+          test -s nf779-inputs/verification/f40/nf777/nf777_original_prior_836_custody.py
+          cp nf779-inputs/verification/f40/nf777/nf777_original_prior_836_custody.py scripts/
+          test -s nf779-inputs/verification/f40/nf778/nf778_original_prior_852_custody.py
+          cp nf779-inputs/verification/f40/nf778/nf778_original_prior_852_custody.py scripts/
+          for n in nf779_original_prior_868_custody.py nf779_original_indexzero_import_order_guard.py nf779_original_indexzero_192_199_source_preflight.py nf779_original_indexzero_192_199_kernel_audit.py; do
+            test -s "nf779-inputs/verification/f40/nf779/$n"
+            cp "nf779-inputs/verification/f40/nf779/$n" "scripts/$n"
+          done
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run isolated F40 source syntax and import-DAG tests
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf779_*.py scripts/nf770_original_prior_724_custody.py scripts/nf771_original_prior_740_custody.py scripts/nf772_original_prior_756_custody.py scripts/nf773_original_prior_772_custody.py scripts/nf774_original_prior_788_custody.py scripts/nf775_original_prior_804_custody.py scripts/nf776_original_prior_820_custody.py scripts/nf777_original_prior_836_custody.py scripts/nf778_original_prior_852_custody.py
+          python scripts/nf779_original_indexzero_import_order_guard.py selftest
+      - name: Fail closed if another repository Actions job is already active
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,subprocess
+          repo=os.environ['GITHUB_REPOSITORY']; own=int(os.environ['GITHUB_RUN_ID'])
+          for status in ('queued','in_progress','waiting','pending'):
+              page=1
+              while True:
+                  raw=subprocess.check_output(['gh','api',f'repos/{repo}/actions/runs?status={status}&per_page=100&page={page}'],text=True)
+                  runs=json.loads(raw).get('workflow_runs',[])
+                  other=[(x['id'],x['name']) for x in runs if x['id']!=own]
+                  if other:
+                      raise SystemExit(f'F40 one-heavy-job lane HOLD: other {status} runs {other[:5]}')
+                  if len(runs)<100: break
+                  page+=1
+          print('F40 idle-queue snapshot PASS; not an atomic repository-wide lease')
+          PY
+      - name: Authenticate 596 previously kernel accepted original HD/A gate instances (LIVE Actions + strict artifact digests)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf748_original_596_kernel_rollforward.py
+          python scripts/nf748_original_596_kernel_rollforward.py selftest
+          python scripts/nf748_original_596_kernel_rollforward.py live
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('nf748-original-596-accepted-gate-rollforward.json').read_text())
+          assert r['original_gate_instances_accepted']==596
+          assert len(r['original_indexzero_HD_positions_accepted'])==56
+          assert r['original_indexzero_HD_positions_accepted']==r['original_indexzero_A_positions_accepted']
+          assert not r['new_64_to_71_original_HD_A_gates_accepted_by_this_ledger']
+          assert not r['nf734_24_to_31_accepted_by_this_ledger']
+          print('NF779 immutable true original gate rollforward: 596 certified, proposed 192–199 not counted')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf779-live-original-HD-A-596-accepted-kernel-rollforward
+          path: |
+            nf748-original-596-accepted-gate-rollforward.json
+            nf748-original-596-accepted-gate-rollforward-selftest.json
+          if-no-files-found: error
+      - name: Authenticate six prior actual original Lean kernel batches NF748-NF753
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf768_original_prior_692_custody.py
+          python scripts/nf768_original_prior_692_custody.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf779-accepted-prior-692-original-HD-A-kernel-custody
+          path: nf768-accepted-prior-692-kernel-custody.json
+          if-no-files-found: error
+      - name: Authenticate prior NF769 112-119 real Lean and all prior batches, forming accepted 724 gates
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf770_original_prior_724_custody.py
+          python scripts/nf770_original_prior_724_custody.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf779-accepted-prior-724-original-HD-A-kernel-custody
+          path: |
+            nf770-accepted-prior-724-kernel-custody.json
+            nf769-accepted-prior-708-kernel-custody.json
+            nf768-accepted-prior-692-kernel-custody.json
+          if-no-files-found: error
+      - name: Authenticate NF770 direct Lean/35-axiom gate and original artifact metadata, accepted 740
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python scripts/nf771_original_prior_740_custody.py selftest
+          python scripts/nf771_original_prior_740_custody.py live
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("nf771-prior740-live-metadata.json")
+          j=json.loads(p.read_text())
+          assert j["schema"]=="NF771-live-NF770-740-metadata-nonpromoting-v1"
+          assert j["previous_accepted_original_HD_A_gates"]==740
+          assert j["new_indexzero_HD_candidate"]==j["new_indexzero_A_candidate"]==list(range(128,136))
+          assert j["new_original_Lean_gates_accepted"] is False
+          print("NF779 prior 740 real NF770 kernel/axiom/artifact metadata PASS, candidate unchanged")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf779-original-HD-A-prior-740-predecessor-custody
+          path: nf771-prior740-live-metadata.json
+          if-no-files-found: error
+      - name: Authenticate NF771 original Col128–135 direct Lean and 35 axiom audit, accepted 756
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python scripts/nf772_original_prior_756_custody.py selftest
+          python scripts/nf772_original_prior_756_custody.py live
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path("nf772-prior756-live-metadata.json").read_text())
+          assert data["schema"]=="NF772-live-NF771-756-metadata-nonpromoting-v1"
+          assert data["previous_accepted_original_HD_A_gates"]==756
+          assert data["new_indexzero_HD_candidate"]==data["new_indexzero_A_candidate"]==list(range(136,144))
+          assert data["new_original_Lean_gates_accepted"] is False
+          print("NF779 prior756 source-bound successful Lean and artifact metadata PASS; new gates NOT yet accepted")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf779-original-HD-A-prior-756-predecessor-custody
+          path: nf772-prior756-live-metadata.json
+          if-no-files-found: error
+      - name: Authenticate accepted NF772 original Col136–143 direct Lean and 35-axiom audit, predecessor 772
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python scripts/nf773_original_prior_772_custody.py selftest
+          python scripts/nf773_original_prior_772_custody.py live
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path('nf773-prior772-live-metadata.json').read_text())
+          assert j["schema"]=="NF773-live-NF772-772-metadata-nonpromoting-v1"
+          assert j["previous_accepted_original_HD_A_gates"]==772
+          assert j["previous_source_bound_artifact_id"]==14765130567
+          assert j["new_indexzero_HD_candidate"]==j["new_indexzero_A_candidate"]==list(range(144,152))
+          assert j["new_original_Lean_gates_accepted"] is False
+          print("NF779 exact old 772 original source-bound prior run/job/artifact metadata PASS; new 192–199 NOT accepted")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf779-original-HD-A-prior-772-predecessor-custody
+          path: nf773-prior772-live-metadata.json
+          if-no-files-found: error
+      - name: Authenticate successful NF773 original Col144–151 direct Lean and strict 35-axiom metadata, accepted 788
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python scripts/nf774_original_prior_788_custody.py selftest
+          python scripts/nf774_original_prior_788_custody.py live
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path('nf774-prior788-live-metadata.json').read_text())
+          assert j["schema"]=="NF774-live-NF773-788-metadata-nonpromoting-v1"
+          assert j["previous_accepted_original_HD_A_gates"]==788
+          assert j["previous_source_bound_artifact_id"]==14765799538
+          assert j["new_indexzero_HD_candidate"]==j["new_indexzero_A_candidate"]==list(range(152,160))
+          assert j["new_original_Lean_gates_accepted"] is False
+          print("NF779 accepted NF773 source-bound 788 predecessor metadata PASS; new 192–199 remains UNACCEPTED")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf779-original-HD-A-prior-788-predecessor-custody
+          path: nf774-prior788-live-metadata.json
+          if-no-files-found: error
+      - name: Authenticate accepted NF774 original Col152–159 direct Lean and strict 35-axiom metadata, predecessor 804
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python scripts/nf775_original_prior_804_custody.py selftest
+          python scripts/nf775_original_prior_804_custody.py live
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path('nf775-prior804-live-metadata.json').read_text())
+          assert j["schema"]=="NF775-live-NF774-804-metadata-nonpromoting-v1"
+          assert j["previous_accepted_original_HD_A_gates"]==804
+          assert j["previous_source_bound_artifact_id"]==14767539019
+          assert j["new_indexzero_HD_candidate"]==j["new_indexzero_A_candidate"]==list(range(160,168))
+          assert j["new_original_Lean_gates_accepted"] is False
+          print("NF779 accepted NF774 source-bound 804 predecessor metadata PASS; new 192–199 UNACCEPTED")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf779-original-HD-A-prior-804-predecessor-custody
+          path: nf775-prior804-live-metadata.json
+          if-no-files-found: error
+      - name: Authenticate accepted NF775 original Col160–167 direct Lean and strict 35-axiom metadata, predecessor 820
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python scripts/nf776_original_prior_820_custody.py selftest
+          python scripts/nf776_original_prior_820_custody.py live
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path('nf776-prior820-live-metadata.json').read_text())
+          assert j["schema"]=="NF776-live-NF775-820-metadata-nonpromoting-v1"
+          assert j["previous_accepted_original_HD_A_gates"]==820
+          assert j["previous_source_bound_artifact_id"]==14768513855
+          assert j["new_indexzero_HD_candidate"]==j["new_indexzero_A_candidate"]==list(range(168,176))
+          assert j["new_original_Lean_gates_accepted"] is False
+          print("NF779 accepted NF775 source-bound 820 predecessor metadata PASS; new 192–199 UNACCEPTED")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf779-original-HD-A-prior-820-predecessor-custody
+          path: nf776-prior820-live-metadata.json
+          if-no-files-found: error
+      - name: Authenticate accepted NF776 original Col168–175 direct Lean and strict 35-axiom metadata, predecessor 836
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python scripts/nf777_original_prior_836_custody.py selftest
+          python scripts/nf777_original_prior_836_custody.py live
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path('nf777-prior836-live-metadata.json').read_text())
+          assert j["schema"]=="NF777-live-NF776-836-metadata-nonpromoting-v1"
+          assert j["previous_accepted_original_HD_A_gates"]==836
+          assert j["previous_source_bound_artifact_id"]==14770692376
+          assert j["new_indexzero_HD_candidate"]==j["new_indexzero_A_candidate"]==list(range(176,184))
+          assert j["new_original_Lean_gates_accepted"] is False
+          print("NF779 accepted NF776 source-bound 836 predecessor metadata PASS; new 192–199 UNACCEPTED")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf779-original-HD-A-prior-836-predecessor-custody
+          path: nf777-prior836-live-metadata.json
+          if-no-files-found: error
+      - name: Authenticate accepted NF777 original Col176–183 direct Lean and strict 35-axiom metadata, predecessor 852
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python scripts/nf778_original_prior_852_custody.py selftest
+          python scripts/nf778_original_prior_852_custody.py live
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path('nf778-prior852-live-metadata.json').read_text())
+          assert j["schema"]=="NF778-live-NF777-852-metadata-nonpromoting-v1"
+          assert j["previous_accepted_original_HD_A_gates"]==852
+          assert j["previous_source_bound_artifact_id"]==14771807211
+          assert j["new_indexzero_HD_candidate"]==j["new_indexzero_A_candidate"]==list(range(184,192))
+          assert j["new_original_Lean_gates_accepted"] is False
+          print("NF779 accepted NF777 source-bound 852 predecessor metadata PASS; new 192–199 UNACCEPTED")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf779-original-HD-A-prior-852-predecessor-custody
+          path: nf778-prior852-live-metadata.json
+          if-no-files-found: error
+      - name: Authenticate accepted NF778 original Col184–191 direct Lean and strict 35-axiom metadata, predecessor 868
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python scripts/nf779_original_prior_868_custody.py selftest
+          python scripts/nf779_original_prior_868_custody.py live
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path('nf779-prior868-live-metadata.json').read_text())
+          assert j["schema"]=="NF779-live-NF778-868-metadata-nonpromoting-v1"
+          assert j["previous_accepted_original_HD_A_gates"]==868
+          assert j["previous_source_bound_artifact_id"]==14772855150
+          assert j["new_indexzero_HD_candidate"]==j["new_indexzero_A_candidate"]==list(range(192,200))
+          assert j["new_original_Lean_gates_accepted"] is False
+          print("NF779 accepted NF778 source-bound 868 predecessor metadata PASS; new 192–199 UNACCEPTED")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf779-original-HD-A-prior-868-predecessor-custody
+          path: nf779-prior868-live-metadata.json
+          if-no-files-found: error
+      - name: Require immutable successful NF728 original source, NF729 numerical Lean quad and NF737 complete source artifact identities
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,subprocess
+          repo=os.environ['GITHUB_REPOSITORY']
+          api=lambda suffix:json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/{suffix}'],text=True))
+          stages=[
+            (44764979145,136387054732,'authenticate-and-emit',14644051272,'nf728-authenticated-original-HD-A-two-half-source-bank','12bb99f055e9fe8843b33ca110877729114331b6e68361b98f8b449357ae3a55'),
+            (44767040253,136399712401,'authentic-numerical-quads (000)',14647164240,'nf729-real-original-HD-A-quad-000-source-bound-kernel-audit','e9f31c3780a7ea2c52a6b4f3df0e9c22f351b123fe9fde94be0161eec2c6a687'),
+            (44791346863,136479519760,'authenticate-and-emit-remaining-original-indexzero',14660147684,'nf737-authenticated-original-indexzero-242-full-source-and-28-shard-candidates','11e31531cfd29187b648b207d85269c8b2a0a065a387b9182023a425e645a42f'),
+          ]
+          for run_id,job_id,job_name,artifact_id,artifact_name,digest in stages:
+            jobs=api(f'actions/runs/{run_id}/jobs?per_page=100')['jobs']
+            assert any(j['id']==job_id and j['name']==job_name and j['conclusion']=='success' for j in jobs),(run_id,job_id,job_name)
+            arts=api(f'actions/runs/{run_id}/artifacts?per_page=100')['artifacts']
+            good=[a for a in arts if a['id']==artifact_id and a['name']==artifact_name and a.get('digest')=='sha256:'+digest and not a['expired']]
+            assert len(good)==1,(run_id,artifact_id,artifact_name)
+          print('NF779 exact three independently successful original proof source/numerical jobs, immutable artifact IDs and SHA256 archives verified; any further 192–199 numerical theorem remains KERNEL PENDING')
+          PY
+      - name: Restore immutable 242-column NF737 archive only if exact original ZIP matches registered SHA256
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 4 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14660147684/zip" -o nf779-original-nf737-source.zip
+          echo '11e31531cfd29187b648b207d85269c8b2a0a065a387b9182023a425e645a42f  nf779-original-nf737-source.zip' | sha256sum -c -
+          sha256sum nf779-original-nf737-source.zip | tee nf779-original-nf737-archive-sha256.txt
+          unzip -q nf779-original-nf737-source.zip
+          test -s WeilDefect/Generated/NF704Frontier/Col192.lean
+          test -s WeilDefect/Generated/NF704Frontier/Col199.lean
+          rm -f nf779-original-nf737-source.zip
+      - name: Authenticate all 242 literal original source modules and prepare eight 192–199 actual indexzero numerical gate candidates
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/nf737_original_indexzero_complete_source_shard_schedule.py scripts/nf743_reuse_accepted_original_nf703_cache.py scripts/nf779_original_indexzero_192_199_source_preflight.py scripts/nf779_original_indexzero_192_199_kernel_audit.py scripts/nf779_original_indexzero_import_order_guard.py scripts/nf771_original_prior_740_custody.py scripts/nf772_original_prior_756_custody.py scripts/nf773_original_prior_772_custody.py scripts/nf774_original_prior_788_custody.py scripts/nf775_original_prior_804_custody.py scripts/nf776_original_prior_820_custody.py scripts/nf777_original_prior_836_custody.py scripts/nf778_original_prior_852_custody.py scripts/nf779_original_prior_868_custody.py scripts/nf768_original_prior_692_custody.py scripts/nf770_original_prior_724_custody.py
+          python scripts/nf737_original_indexzero_complete_source_shard_schedule.py verify 2>&1 | tee nf779-recovered-full-original-source.log
+          python scripts/nf779_original_indexzero_192_199_source_preflight.py 2>&1 | tee nf779-original-192-199-preflight.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('nf779-indexzero-192-199-source-binding.json')
+          m=json.loads(p.read_text())
+          assert m['new_indices_HD']==m['new_indices_A']==list(range(192,200))
+          assert m['new_gate_instances']==16 and m['new_declarations']==32
+          assert len(m['strict_axiom_names'])==35
+          assert m['cache_reuse_required'] is True
+          assert m['new_numerical_kernel_accepted'] is False
+          assert m['nf734_024_031_accepted_by_this_stage'] is False
+          assert m['nf737_032_039_accepted_by_this_stage'] is False
+          assert m['nf739_040_047_accepted_by_this_stage'] is False
+          assert m['nf742_048_055_accepted_by_this_stage'] is False
+          print('NF779 16 genuine original global indexzero 192–199 gate proof SOURCES authenticated; original kernel not yet attempted')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf779-genuine-original-indexzero-192-199-source-only-custody
+          path: |
+            nf779-indexzero-192-199-source-binding.json
+            nf779OriginalIndexZero192Audit.lean
+            nf779-original-192-199-preflight.log
+          if-no-files-found: error
+      - name: Fetch exact historical accepted NF728 original source and NF729 original NUMERICAL kernel-object ZIP archives
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 4 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14644051272/zip" -o nf743-nf728-accepted-original-source.zip
+          curl -fsSL --retry 4 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14647164240/zip" -o nf743-nf729-accepted-original-quad000-objects.zip
+          echo '12bb99f055e9fe8843b33ca110877729114331b6e68361b98f8b449357ae3a55  nf743-nf728-accepted-original-source.zip' | sha256sum -c -
+          echo 'e9f31c3780a7ea2c52a6b4f3df0e9c22f351b123fe9fde94be0161eec2c6a687  nf743-nf729-accepted-original-quad000-objects.zip' | sha256sum -c -
+      - name: Install original pinned Lean toolchain and exact Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Match accepted original 300+ NF702 NF703 NF681 source files SHA exactly and extract ONLY prior Lean accepted WeilDefect compiled objects
+        timeout-minutes: 75
+        run: |
+          set -euo pipefail
+          python scripts/nf743_reuse_accepted_original_nf703_cache.py ingest 2>&1 | tee nf779-original-cache-source-identical.log
+          python scripts/nf743_reuse_accepted_original_nf703_cache.py check
+          rm -f nf743-nf728-accepted-original-source.zip nf743-nf729-accepted-original-quad000-objects.zip
+          df -h .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf779-source-identical-accepted-original-center-cache-capsule
+          path: |
+            nf743-accepted-original-center-cache-reuse.json
+            nf779-original-indexzero-compiler-import-order.json
+            nf779-original-cache-source-identical.log
+            .lake/build/lib/lean/WeilDefect/Generated/NF702Inputs/
+            .lake/build/lib/lean/WeilDefect/Generated/NF703Cache/
+          include-hidden-files: true
+          if-no-files-found: error
+      - name: Kernel-compile exact original cache frontier, local products and original HD/A global common when genuinely missing
+        timeout-minutes: 135
+        run: |
+          set -euo pipefail
+          compile_missing() {
+            local mod="$1" src="WeilDefect/${1//.//}.lean" dest=".lake/build/lib/lean/WeilDefect/${1//.//}.olean"
+            if [[ -s "$dest" ]]; then echo "NF743 reuse accepted source-identical Lean object: $mod"; return 0; fi
+            test -s "$src"
+            mkdir -p "$(dirname "$dest")"
+            lake env lean -o "$dest" "$src" 2>&1 | tee -a nf779-original-cache-direct-compile.log
+          }
+          python scripts/nf743_reuse_accepted_original_nf703_cache.py check
+          # Actual recovered NF746 kernel failure: NF703Cache.Frontier imports
+          # NF681.Common, whose compiled .olean is absent from NF729's accepted
+          # index-one cache capsule. Establish the prerequisite FIRST.
+          python scripts/nf779_original_indexzero_import_order_guard.py verify
+          compile_missing Generated.NF681.Common
+          test -s .lake/build/lib/lean/WeilDefect/Generated/NF681/Common.olean
+          compile_missing Generated.NF703Cache.Frontier
+          test -s .lake/build/lib/lean/WeilDefect/Generated/NF703Cache/Frontier.olean
+          for ((i=192;i<200;i++)); do
+            printf -v col "%03d" "$i"
+            compile_missing "Generated.NF681.Col$col"
+          done
+          compile_missing Generated.NF704Frontier.Common
+      - name: Direct kernel-compile eight actual original frozen NF702 NF703 global HD/A indexzero Col192 through Col199 gate source modules
+        timeout-minutes: 110
+        run: |
+          set -euo pipefail
+          for ((i=192;i<200;i++)); do
+            printf -v col "%03d" "$i"
+            name="Generated/NF704Frontier/Col$col"
+            test -s "WeilDefect/$name.lean"
+            mkdir -p .lake/build/lib/lean/WeilDefect/Generated/NF704Frontier
+            /usr/bin/time -a -o nf779-indexzero-gates-time.log -f "column=%C elapsed=%e rss_kb=%M exit=%x" \
+              lake env lean -o ".lake/build/lib/lean/WeilDefect/$name.olean" "WeilDefect/$name.lean" 2>&1 | tee -a nf779-original-192-199-gates-build.log
+          done
+      - name: Strict 35-name original source-bound Lean theorem axiom and accepted prior cache-object audit
+        timeout-minutes: 30
+        run: |
+          set -euo pipefail
+          python scripts/nf743_reuse_accepted_original_nf703_cache.py check
+          lake env lean nf779OriginalIndexZero192Audit.lean 2>&1 | tee nf779-original-indexzero-192-199-axioms.log
+          python scripts/nf779_original_indexzero_192_199_kernel_audit.py
+          test -s nf779-original-indexzero-192-199-kernel-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf779-original-source-identical-cache-real-global-HD-A-192-199-Lean-kernel-audit
+          path: |
+            nf779-original-192-199-preflight.log
+            nf779-original-cache-source-identical.log
+            nf779-original-cache-direct-compile.log
+            nf779-original-192-199-gates-build.log
+            nf779-original-indexzero-192-199-axioms.log
+            nf779-indexzero-gates-time.log
+            nf743-accepted-original-center-cache-reuse.json
+            nf779-indexzero-192-199-source-binding.json
+            nf779-original-indexzero-192-199-kernel-audit.json
+            nf768-accepted-prior-692-kernel-custody.json
+            nf769-accepted-prior-708-kernel-custody.json
+            nf770-accepted-prior-724-kernel-custody.json
+            nf748-original-596-accepted-gate-rollforward.json
+            nf779-original-indexzero-compiler-import-order.json
+            nf771-prior740-live-metadata.json
+            nf772-prior756-live-metadata.json
+            nf773-prior772-live-metadata.json
+            nf774-prior788-live-metadata.json
+            nf775-prior804-live-metadata.json
+            nf776-prior820-live-metadata.json
+            nf777-prior836-live-metadata.json
+            nf778-prior852-live-metadata.json
+            nf779-prior868-live-metadata.json
+            nf779-original-nf737-archive-sha256.txt
+            nf779OriginalIndexZero192Audit.lean
+          if-no-files-found: ignore
