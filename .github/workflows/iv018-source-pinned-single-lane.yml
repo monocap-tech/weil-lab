@@ -43,7 +43,7 @@ jobs:
     timeout-minutes: 240
     env:
       SOURCE_SHA: '72794db0df1739a35a4f98d272306655dfebf532'
-      RUN_HEAVY: ${{ (github.event_name == 'workflow_dispatch' && inputs.mode == 'iv018') || (github.event_name == 'push' && github.event.head_commit.message == 'IV034: compile pinned IV018') }}
+      RUN_HEAVY: "${{ (github.event_name == 'workflow_dispatch' && inputs.mode == 'iv018') || (github.event_name == 'push' && github.event.head_commit.message == 'IV034: compile pinned IV018') }}"
     steps:
       - name: Checkout immutable original research commit (not moving branch)
         uses: actions/checkout@v4
