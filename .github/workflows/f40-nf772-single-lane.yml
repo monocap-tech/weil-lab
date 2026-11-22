@@ -201,7 +201,7 @@ jobs:
           j=json.loads(p.read_text())
           assert j["schema"]=="NF771-live-NF770-740-metadata-nonpromoting-v1"
           assert j["previous_accepted_original_HD_A_gates"]==740
-          assert j["new_indexzero_HD_candidate"]==j["new_indexzero_A_candidate"]==list(range(136,144))
+          assert j["new_indexzero_HD_candidate"]==j["new_indexzero_A_candidate"]==list(range(128,136))
           assert j["new_original_Lean_gates_accepted"] is False
           print("NF772 prior 740 real NF770 kernel/axiom/artifact metadata PASS, candidate unchanged")
           PY
