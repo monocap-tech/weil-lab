@@ -27,7 +27,7 @@ jobs:
       - name: Checkout exact NF770 draft source, not a mutable branch
         uses: actions/checkout@v4
         with:
-          ref: 'c503170f5250d1dfadb20306a515010759b45910'
+          ref: '9cdc946313f8b3adcce499759a624ab80b5b0a84'
           path: candidate
           persist-credentials: false
       - uses: actions/setup-python@v5
@@ -38,12 +38,13 @@ jobs:
         run: |
           set -euo pipefail
           test "$(git -C original rev-parse HEAD)" = 'a431f903254000bb5ad8edbc276ccc8599da98f5'
-          test "$(git -C candidate rev-parse HEAD)" = 'c503170f5250d1dfadb20306a515010759b45910'
+          test "$(git -C candidate rev-parse HEAD)" = '9cdc946313f8b3adcce499759a624ab80b5b0a84'
+          python -m pip install --disable-pip-version-check PyYAML==6.0.2
           python -m py_compile candidate/verification/f40/nf770/*.py
           python candidate/verification/f40/nf770/nf770_original_indexzero_import_order_guard.py selftest
           python - <<'PY'
           from pathlib import Path
-          import ast,sys
+          import ast,sys,yaml
           root=Path('candidate/verification/f40/nf770')
           d=(root/'nf770_original_indexzero_120_127_cached_kernel.py').read_text()
           p=(root/'nf770_original_prior_724_custody.py').read_text()
@@ -56,7 +57,25 @@ jobs:
           assert 'nf770_new_120_127_numerical_kernel_accepted":False' in p
           assert "group: weil-uoi030-single-lane-source-pinned" in w
           assert "RUN-PINNED-F40-NF770" in w
-          assert chr(10)+'  push:' not in w
+          assert "'verification/f40/nf770/NF770_ONE_SHOT_COMPILE_REQUEST.txt'" in w
+          assert 'F40 NF770: compile exactly one original 120-127 batch' in w
+          assert 'COMPILE-NF770-120-127-ONCE:a431f903' in w
+          assert 'authenticated_direct_kernel_objects()' in d
+          assert 'new_eight_original_col_olean_sha256' in d
+          rootnode=yaml.compose(w,Loader=yaml.BaseLoader)
+          def detect_duplicate_keys(node):
+              if isinstance(node,yaml.nodes.MappingNode):
+                  keys=[x.value for x,_ in node.value]
+                  assert len(keys)==len(set(keys)),('Duplicate YAML keys',keys)
+                  for k,v in node.value: detect_duplicate_keys(k); detect_duplicate_keys(v)
+              elif isinstance(node,yaml.nodes.SequenceNode):
+                  for v in node.value: detect_duplicate_keys(v)
+          detect_duplicate_keys(rootnode)
+          wf=yaml.load(w,Loader=yaml.BaseLoader)
+          assert set(wf['on'])=={'push','pull_request','workflow_dispatch'}
+          assert wf['on']['push']['branches']==['main']
+          assert set(wf['jobs'])=={'source-preflight','authenticate-reuse-and-kernel-actual-original-indexzero-120-127'}
+          assert wf['jobs']['authenticate-reuse-and-kernel-actual-original-indexzero-120-127']['concurrency']['group']=='weil-uoi030-single-lane-source-pinned'
           print('Exact draft source, Python AST, nonpromoting gate and manual-only runner contracts PASS; NO NUMERICAL CERTIFICATION')
           PY
       - name: Verify live 724 accepted predecessor GitHub Actions custody, no Lean
@@ -71,6 +90,19 @@ jobs:
           (
             cd original
             python scripts/nf770_original_prior_724_custody.py
+            python - <<'PY'
+          import sys
+          sys.path.insert(0,'scripts')
+          import nf770_original_indexzero_120_127_cached_kernel as d
+          assert (d.FIRST,d.STOP)==(120,128) and len(d.NAMES)==35
+          try:
+              d.authenticated_direct_kernel_objects()
+          except AssertionError:
+              pass
+          else:
+              raise AssertionError('UNSAFE: draft audit accepted without 8 actual Lean objects')
+          print('NF770 new kernel acceptance correctly rejects missing .olean/timing receipts')
+          PY
             python - <<'PY'
           import json
           from pathlib import Path
