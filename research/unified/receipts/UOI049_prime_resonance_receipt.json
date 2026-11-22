@@ -1,0 +1,89 @@
+{
+  "schema": "uoi049-prime-power-contact-arithmetic-v1",
+  "scope": "exact rational log-gap isolation; the Gamma-energy lower bound is a separate analytic obligation",
+  "geometry_assumption": "centres x_j = a + j*log(8), collar widths at least delta*8^(-j), delta=1/1000",
+  "contact": "N=8^M is a genuine prime power, Lambda(N)=log(2)",
+  "three_moments": "physical differential operator D_x*(D_x^2-1/4) kills integrals against 1 and exp(+-x/2), by parts",
+  "verified_Lean_kernel": false,
+  "verified_source_to_native": false,
+  "verified_infinite_prime_operator_compact": false,
+  "checks": [
+    {
+      "M": 1,
+      "N_prime_power": 8,
+      "N_factorization": "2^(3*1)",
+      "mangoldt_at_N": "log(2)",
+      "prime_translation_weight": "log(2)/sqrt(8)",
+      "packet_diameter": "1/8000",
+      "nearest_integer_log_gap_lower": "1/9",
+      "gap_comparison": "PASS",
+      "UOI048_Gamma_kappa_upper": "1/263760"
+    },
+    {
+      "M": 2,
+      "N_prime_power": 64,
+      "N_factorization": "2^(3*2)",
+      "mangoldt_at_N": "log(2)",
+      "prime_translation_weight": "log(2)/sqrt(64)",
+      "packet_diameter": "1/64000",
+      "nearest_integer_log_gap_lower": "1/65",
+      "gap_comparison": "PASS",
+      "UOI048_Gamma_kappa_upper": "1/2110080"
+    },
+    {
+      "M": 3,
+      "N_prime_power": 512,
+      "N_factorization": "2^(3*3)",
+      "mangoldt_at_N": "log(2)",
+      "prime_translation_weight": "log(2)/sqrt(512)",
+      "packet_diameter": "1/512000",
+      "nearest_integer_log_gap_lower": "1/513",
+      "gap_comparison": "PASS",
+      "UOI048_Gamma_kappa_upper": "1/16880640"
+    },
+    {
+      "M": 5,
+      "N_prime_power": 32768,
+      "N_factorization": "2^(3*5)",
+      "mangoldt_at_N": "log(2)",
+      "prime_translation_weight": "log(2)/sqrt(32768)",
+      "packet_diameter": "1/32768000",
+      "nearest_integer_log_gap_lower": "1/32769",
+      "gap_comparison": "PASS",
+      "UOI048_Gamma_kappa_upper": "1/1080360960"
+    },
+    {
+      "M": 10,
+      "N_prime_power": 1073741824,
+      "N_factorization": "2^(3*10)",
+      "mangoldt_at_N": "log(2)",
+      "prime_translation_weight": "log(2)/sqrt(1073741824)",
+      "packet_diameter": "1/1073741824000",
+      "nearest_integer_log_gap_lower": "1/1073741825",
+      "gap_comparison": "PASS",
+      "UOI048_Gamma_kappa_upper": "1/35401267937280"
+    },
+    {
+      "M": 15,
+      "N_prime_power": 35184372088832,
+      "N_factorization": "2^(3*15)",
+      "mangoldt_at_N": "log(2)",
+      "prime_translation_weight": "log(2)/sqrt(35184372088832)",
+      "packet_diameter": "1/35184372088832000",
+      "nearest_integer_log_gap_lower": "1/35184372088833",
+      "gap_comparison": "PASS",
+      "UOI048_Gamma_kappa_upper": "1/1160028747768791040"
+    },
+    {
+      "M": 30,
+      "N_prime_power": 1237940039285380274899124224,
+      "N_factorization": "2^(3*30)",
+      "mangoldt_at_N": "log(2)",
+      "prime_translation_weight": "log(2)/sqrt(1237940039285380274899124224)",
+      "packet_diameter": "1/1237940039285380274899124224000",
+      "nearest_integer_log_gap_lower": "1/1237940039285380274899124225",
+      "gap_comparison": "PASS",
+      "UOI048_Gamma_kappa_upper": "1/40814883095238987663424125665280"
+    }
+  ]
+}
