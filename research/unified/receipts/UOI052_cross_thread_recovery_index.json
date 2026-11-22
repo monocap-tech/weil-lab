@@ -1,0 +1,320 @@
+{
+  "schema": "weil-lab-uoi052-cross-thread-recovery-v1",
+  "date_local": "2026-11-21",
+  "repository": "monocap-tech/weil-lab",
+  "branch": "research/uoi049-uoi050-prime-core-tail-custody-20261121",
+  "pr_url": "https://github.com/monocap-tech/weil-lab/pull/899",
+  "source_context": "Earlier Weil-Lab conversation files (personal Library, retrieved through authenticated project Files) and formalization issue #898; files written into a dedicated non-main research branch.",
+  "original_research_source_pin": "614ba879f7389fdb620c474adaee273b00eac71c",
+  "source_file_count_before_index": 56,
+  "historically_sha256_attested_count": 7,
+  "source_custody_scope": [
+    "UOI035-UOI050 analytic sources and recovered elementary scripts/receipts",
+    "CF017, CF018, CF020 original notes",
+    "CF017-CF021 exploratory validators and available transcript outputs",
+    "CF019 and CF021 source notes are already tracked on governance/uoi000-unified-operative-investigation, not duplicated here"
+  ],
+  "historical_shas_verified_against_current_git_readback": true,
+  "explicit_exceptions": [
+    "Earlier UOI045 name collision: cubic-flatness variant is at docs/uoi/intake/UOI045_three_moment_cubic_flatness.md and scripts/uoi045_cubic/check_uoi045.py (also mirrored at scripts/uoi/check_uoi045.py). Its hash does not equal the historical GAMMA checker SHA expected in issue #898.",
+    "Historical UOI045 Gamma checker with expected SHA256 0e8ff00b98d1d015daaa58ca6c2e6b487f4f7395f255607ff6e41c9eb0bdb014 was not recovered as original bytes; do not relabel cubic checker as its replacement.",
+    "Full UOI047 and UOI048 analytic texts are now recovered; earlier UOI051 statements that they were unavailable are superseded by this manifest.",
+    "Git source custody, exact rational files and upstream analytical research are not independent Lean kernel evidence or a proof of source-to-native Weil equivalence.",
+    "Unverified original Gamma norm completion, sign/phase/pole normalization, infinite prime operator estimate, gamma-tail coercivity transfer, and all-support positivity remain open.",
+    "PR is an additive research source intake, not a CI workflow. No heavy Actions dispatch."
+  ],
+  "formalization_issues": [
+    "https://github.com/monocap-tech/weil-lab/issues/898",
+    "https://github.com/monocap-tech/weil-lab/issues/861",
+    "https://github.com/monocap-tech/weil-lab/issues/834"
+  ],
+  "files": [
+    {
+      "path": "docs/uoi/UOI048_050_REPLAY_INSTRUCTIONS.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/UOI051_CUSTODY_RECOVERY_AND_CI_GAP_AUDIT.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/intake/CF017_reopening_readonly_memo.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/intake/CF018_boundary_capacity_proof_note.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/intake/CF020_adjacent_dyadic_boundary_screening.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/intake/UOI035_prime_shell_chiral_locality.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/intake/UOI036_microcollar_full_weil_coercivity.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/intake/UOI037_pole_radical_and_prime_phase.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/intake/UOI038_local_pole_cancellation_fourier_flatness.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/intake/UOI039_sparse_support_prime_cycles_and_uniform_margin.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/intake/UOI040_nested_support_arithmetic_leakage.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/intake/UOI041_unbounded_off_ladder_prime_leakage.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/intake/UOI042_scale_matched_gamma_vs_prime.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/intake/UOI043_gamma_normalized_prime_spectral_reduction.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/intake/UOI044_principal_mode_screening_and_ten_stage_margin.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/intake/UOI045_gamma_spatial_localization_and_weighted_ten_stage_margin.md",
+      "kind": "research_report_or_instruction",
+      "custody": "historical_sha256_exact",
+      "historical_sha256": "7eeed1c828040f12525c8c1f8e4daa07c310f74edf75f8655b9f4e1cc4d56e04"
+    },
+    {
+      "path": "docs/uoi/intake/UOI045_three_moment_cubic_flatness.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/intake/UOI046_frequency_sliced_full_prime_relative_boundedness.md",
+      "kind": "research_report_or_instruction",
+      "custody": "historical_sha256_exact",
+      "historical_sha256": "77b0be83f79c25acb79b565ff01e68c768d03441da8dedc0263729fc9e789dec"
+    },
+    {
+      "path": "docs/uoi/intake/UOI047_asymptotic_tail_coercivity_and_core_reduction.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/intake/UOI048_gamma_core_tail_summary_intake.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/intake/UOI048_gamma_tail_decoupling_and_schur_criterion.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/intake/UOI049_prime_core_tail_investigation.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "docs/uoi/intake/UOI050_prime_density_cancellation.md",
+      "kind": "research_report_or_instruction",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "research/unified/receipts/CF018_local_validation_output.txt",
+      "kind": "transcript_or_dependency",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "research/unified/receipts/CF019_reference_cross_output.txt",
+      "kind": "transcript_or_dependency",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "research/unified/receipts/CF020_adjacent_dyadic_output.txt",
+      "kind": "transcript_or_dependency",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "research/unified/receipts/CF021_sharp_cutoff_dyadic_output.txt",
+      "kind": "transcript_or_dependency",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "research/unified/receipts/UOI048_exact_constant_receipt.json",
+      "kind": "receipt",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "research/unified/receipts/UOI049_prime_resonance_receipt.json",
+      "kind": "receipt",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "research/unified/receipts/UOI050_discrepancy_receipt.json",
+      "kind": "receipt",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/cf/cf017_discrepancy_validation.py",
+      "kind": "source_checker",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/cf/cf018_boundary_capacity_validation.py",
+      "kind": "source_checker",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/cf/cf019_reference_cross_validator.py",
+      "kind": "source_checker",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/cf/cf020_adjacent_dyadic_validator.py",
+      "kind": "source_checker",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/cf/cf021_sharp_cutoff_dyadic_validator.py",
+      "kind": "source_checker",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/uoi/UOI049_prime_resonance_checker.py",
+      "kind": "source_checker",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/uoi/UOI050_discrepancy_checker.py",
+      "kind": "source_checker",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/uoi/check_uoi045.py",
+      "kind": "source_checker",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/uoi/check_uoi048.py",
+      "kind": "source_checker",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/uoi/requirements-uoi048-050.txt",
+      "kind": "transcript_or_dependency",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/uoi036/UOI036_microcollar_checks.py",
+      "kind": "source_checker",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/uoi037/check_uoi037.py",
+      "kind": "source_checker",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/uoi038/check_uoi038.py",
+      "kind": "source_checker",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/uoi039/check_uoi039.py",
+      "kind": "source_checker",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/uoi040/check_uoi040.py",
+      "kind": "source_checker",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/uoi041/check_uoi041.py",
+      "kind": "source_checker",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/uoi042/check_uoi042.py",
+      "kind": "source_checker",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/uoi043/check_uoi043.py",
+      "kind": "source_checker",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/uoi044/UOI044_stage10_exact_arithmetic_receipt.json",
+      "kind": "receipt",
+      "custody": "historical_sha256_exact",
+      "historical_sha256": "54a572c37347d935d0fc0fc66a014dd60232cac42ce355098daa73790d81c7ba"
+    },
+    {
+      "path": "scripts/uoi044/rigorous_uoi044.py",
+      "kind": "source_checker",
+      "custody": "historical_sha256_exact",
+      "historical_sha256": "63a3ca89b1fe9320fcebb5151518258d9fe646c1aeb9ff161c42669dd237680d"
+    },
+    {
+      "path": "scripts/uoi045_cubic/check_uoi045.py",
+      "kind": "source_checker",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/uoi045_gamma/UOI045_exact_rational_receipt.json",
+      "kind": "receipt",
+      "custody": "historical_sha256_exact",
+      "historical_sha256": "4e3d6a4447f69d26b08b542a8fac27e086bb77b48c2b72a708ec67aea6a49815"
+    },
+    {
+      "path": "scripts/uoi046/UOI046_finite_sanity_receipt.json",
+      "kind": "receipt",
+      "custody": "historical_sha256_exact",
+      "historical_sha256": "705638e32b6d327904ceaeeda10313e87c2e70d193a4ed08f2620fbd4e547f82"
+    },
+    {
+      "path": "scripts/uoi046/check_uoi046.py",
+      "kind": "source_checker",
+      "custody": "historical_sha256_exact",
+      "historical_sha256": "1e1dbec2bbac953f35c63215cb22b0aaaba075b0c8caf117f89b43db76d096af"
+    },
+    {
+      "path": "scripts/uoi047/UOI047_finite_rational_receipt.json",
+      "kind": "receipt",
+      "custody": "recovered_text_or_preexisting_recovery"
+    },
+    {
+      "path": "scripts/uoi047/check_uoi047.py",
+      "kind": "source_checker",
+      "custody": "recovered_text_or_preexisting_recovery"
+    }
+  ]
+}
