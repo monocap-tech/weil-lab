@@ -18,3 +18,5 @@ IV040 first genuine compile sentinel: exact source 616115a4506cde0bdd78968cd1fe9
 IV041 compiler request: exact proof-only commit c7d65fcc45df3764596076b4ea94be2749aea1bd. Source-only audit 45036437193 PASS. Former line-223 missing implicit real measure resolved explicitly with (μ := (volume : Measure ℝ)). Strict two-target Lean / standard-only 28 named axioms remain required.
 
 IV042 one-shot compiler source 85442371a1a0e27f4015d138396f04dea662c810. Hosted immutable audit 45039107524 PASS; shared lane confirmed zero queued/active. The only fix is full simp normalizing 0 = 0 x in negative log-frequency prime separation. Demand 2 genuine modules and 28 strict standard-only named axiom receipts.
+
+IV043 one-shot heavy Lean compiler requested for immutable candidate 75931f92fe03ac18941191a1b43483fe5ddf8edc after hosted source-only audit #45048851319 PASS and F40 NF772 #45047986914 PASS, shared queue and running both zero. Single syntactic ContDiff ℝ (⊤ : ℕ∞) q correction in true nonzero Schwartz bump. Require signed three-cell and prime9 module oleans, 28 strict standard-only named axiom checks.
