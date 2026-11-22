@@ -68,7 +68,8 @@
         "https://github.com/monocap-tech/weil-lab/issues/792",
         "https://github.com/monocap-tech/weil-lab/issues/841",
         "https://github.com/monocap-tech/weil-lab/issues/857",
-        "https://github.com/monocap-tech/weil-lab/issues/864"
+        "https://github.com/monocap-tech/weil-lab/issues/864",
+        "https://github.com/monocap-tech/weil-lab/pull/899"
       ],
       "evidence": [
         {
@@ -79,6 +80,11 @@
         {
           "kind": "exact_source_hash_planner_16_of_16_test_pass",
           "reference": "https://github.com/monocap-tech/weil-lab/issues/864",
+          "accepts_obligation": false
+        },
+        {
+          "kind": "UOI052_historical_7_sha256_recovered_analytic_source_files",
+          "reference": "https://github.com/monocap-tech/weil-lab/blob/research/uoi049-uoi050-prime-core-tail-custody-20261121/research/unified/receipts/UOI052_cross_thread_recovery_index.json",
           "accepts_obligation": false
         }
       ],
@@ -188,9 +194,16 @@
       "acceptance": "Literal source-to-form and admissible-domain identity proved for exact original object, with phase, signs, all normalizations and admissibility independently verified.",
       "sources": [
         "https://github.com/monocap-tech/weil-lab/issues/826",
-        "https://github.com/monocap-tech/weil-lab/issues/814"
+        "https://github.com/monocap-tech/weil-lab/issues/814",
+        "https://github.com/monocap-tech/weil-lab/blob/research/uoi049-uoi050-prime-core-tail-custody-20261121/docs/uoi/intake/UOI044_principal_mode_screening_and_ten_stage_margin.md"
       ],
-      "evidence": [],
+      "evidence": [
+        {
+          "kind": "UOI044_046_phase_faithful_full_prime_and_gamma_source_custody",
+          "reference": "https://github.com/monocap-tech/weil-lab/blob/research/uoi049-uoi050-prime-core-tail-custody-20261121/docs/uoi/intake/UOI045_gamma_spatial_localization_and_weighted_ten_stage_margin.md",
+          "accepts_obligation": false
+        }
+      ],
       "closure_receipt": null
     },
     {
@@ -213,12 +226,19 @@
         "https://github.com/monocap-tech/weil-lab/issues/193",
         "https://github.com/monocap-tech/weil-lab/issues/861",
         "https://github.com/monocap-tech/weil-lab/blob/ef70d890b5c1f4b205956ab686657a3b1ac05e26/docs/uoi/intake/CF019_reference_cross_kernel_proof_note.md",
-        "https://github.com/monocap-tech/weil-lab/blob/ef70d890b5c1f4b205956ab686657a3b1ac05e26/docs/uoi/intake/CF021_sharp_cutoff_and_infinite_dyadic_domain.md"
+        "https://github.com/monocap-tech/weil-lab/blob/ef70d890b5c1f4b205956ab686657a3b1ac05e26/docs/uoi/intake/CF021_sharp_cutoff_and_infinite_dyadic_domain.md",
+        "https://github.com/monocap-tech/weil-lab/blob/research/uoi049-uoi050-prime-core-tail-custody-20261121/docs/uoi/intake/CF017_reopening_readonly_memo.md",
+        "https://github.com/monocap-tech/weil-lab/blob/research/uoi049-uoi050-prime-core-tail-custody-20261121/docs/uoi/intake/CF018_boundary_capacity_proof_note.md"
       ],
       "evidence": [
         {
           "kind": "byte_identical_original_analytic_notes_not_lean",
           "reference": "https://github.com/monocap-tech/weil-lab/issues/864",
+          "accepts_obligation": false
+        },
+        {
+          "kind": "CF017_021_source_notes_and_exploratory_numerical_validation_recovered",
+          "reference": "https://github.com/monocap-tech/weil-lab/blob/research/uoi049-uoi050-prime-core-tail-custody-20261121/docs/uoi/intake/CF020_adjacent_dyadic_boundary_screening.md",
           "accepts_obligation": false
         }
       ],
@@ -266,9 +286,16 @@
       "acceptance": "Universal domain-preserving extension with all mixed couplings, full complement, prime activations and infinite tails controlled; not a fixed-window statement.",
       "sources": [
         "https://github.com/monocap-tech/weil-lab/issues/826",
-        "https://github.com/monocap-tech/weil-lab/issues/193"
+        "https://github.com/monocap-tech/weil-lab/issues/193",
+        "https://github.com/monocap-tech/weil-lab/blob/research/uoi049-uoi050-prime-core-tail-custody-20261121/docs/uoi/intake/UOI048_gamma_tail_decoupling_and_schur_criterion.md"
       ],
-      "evidence": [],
+      "evidence": [
+        {
+          "kind": "UOI035_048_nested_support_prime_tail_analytic_recovery",
+          "reference": "https://github.com/monocap-tech/weil-lab/blob/research/uoi049-uoi050-prime-core-tail-custody-20261121/docs/uoi/intake/UOI047_asymptotic_tail_coercivity_and_core_reduction.md",
+          "accepts_obligation": false
+        }
+      ],
       "closure_receipt": null
     },
     {
