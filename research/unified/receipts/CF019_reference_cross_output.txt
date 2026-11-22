@@ -1,0 +1,17 @@
+CF019 exact reference-kernel controls (noncertifying)
+s= 0.0500, K_gamma=10.248880305, q=K_gamma-exp(-s/2)=9.273570393, relative_tail=0.90483742
+s= 0.2000, K_gamma=2.744593377, q=K_gamma-exp(-s/2)=1.839755959, relative_tail=0.67032005
+s= 0.6931, K_gamma=0.942809042, q=K_gamma-exp(-s/2)=0.235702260, relative_tail=0.25000000
+s= 1.8000, K_gamma=0.417990722, q=K_gamma-exp(-s/2)=0.011421062, relative_tail=0.02732372
+s= 4.0000, K_gamma=0.135380698, q=K_gamma-exp(-s/2)=0.000045415, relative_tail=0.00033546
+Adjacent packets: B_ref=negative integral q(r+s)/ell
+ell= 0.2000, B_ref=-0.560907429, limit=-0.693147181, error=0.1322398
+ell= 0.1000, B_ref=-0.622759786, limit=-0.693147181, error=0.0703874
+ell= 0.0400, B_ref=-0.663902263, limit=-0.693147181, error=0.0292449
+ell= 0.0100, B_ref=-0.685694915, limit=-0.693147181, error=0.0074523
+ell= 0.0020, B_ref=-0.691649096, limit=-0.693147181, error=0.0014981
+Prime-separated one-prime pair c=0.4, a=log(2)
+ell=0.0200: gamma=-0.018858154, pole=+0.042426760, prime=-0.490129072, B_ref=-0.004715901, D=+0.230922282, B_W=-0.466560466, B_ref/ell=-0.235795047
+ell=0.0050: gamma=-0.004714076, pole=+0.010606607, prime=-0.490129072, B_ref=-0.001178540, D=+0.241529000, B_W=-0.484236541, B_ref/ell=-0.235708058
+ell=0.0010: gamma=-0.000942809, pole=+0.002121320, prime=-0.490129072, B_ref=-0.000235702, D=+0.244357429, B_W=-0.488950561, B_ref/ell=-0.235702492
+PASS gamma tail cancellation, Laplace series, adjacent limit, original-vs-discrepancy mixed forms, complex polarization.
