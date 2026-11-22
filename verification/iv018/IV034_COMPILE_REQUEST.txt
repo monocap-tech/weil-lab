@@ -4,3 +4,5 @@ Source SHA: 72794db0df1739a35a4f98d272306655dfebf532
 Prerequisite hosted audit: 44980604608 (PASS, 551 YAML definitions, 64 custody records).
 Required: pinned Lake manifest, IV018 signed-three-cell and prime9-transfer .olean objects, 28 standard-only named #print axioms receipts, authenticated source hashes.
 Scope: restricted original three-cell one-quarter candidate; no global Weil positivity or RH.
+
+IV035 targeted proof-repair compilation against immutable commit 4601b05683de3acc8fcf7c277fb1413f756e07fc. Source-pinned audit PASS run 44986588135; no new theorem axioms, rational edits or historical certificate changes.
