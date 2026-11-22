@@ -123,8 +123,11 @@ theorem neutralCPC1BOriginal_phaseResponse
   have hdiag := neutralCPC1BOriginal_diagonal_im_zero a g hg
   rw [neutralCPC1BOriginal_exactTwoProbe a f g hf hg v]
   rw [hherm]
-  simp only [Complex.add_re, Complex.mul_re, Complex.conj_re, Complex.conj_im]
-  dsimp [neutralCPC1BOriginalDiagonal] at hdiag
+  -- Include the imaginary-product expansion, so the real diagonal's
+  -- imaginary part occurs literally in the goal before rewriting.
+  -- Do NOT unfold the diagonal alias in hdiag: the goal uses that alias.
+  simp only [Complex.add_re, Complex.mul_re, Complex.mul_im,
+    Complex.conj_re, Complex.conj_im]
   rw [hdiag]
   ring
 
