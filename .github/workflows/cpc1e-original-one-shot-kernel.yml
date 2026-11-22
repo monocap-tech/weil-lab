@@ -1,6 +1,7 @@
 name: CP-C1E isolated original IV009 BCD-E strict Lean4.34 kernel
 # One-shot source branch push trigger: only changing THIS workflow can start it.
 # Do not reopen a general PR: historic NF pull_request hooks are unrestricted.
+# Repeat single source diagnostic: CP-C1(E) three Lean type/coercion repairs.
 on:
   push:
     branches:

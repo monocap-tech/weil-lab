@@ -89,7 +89,8 @@ theorem neutralCPC1EFlatReal_zero_outside
   rw [abs_div, abs_of_pos hr]
   apply (le_div_iff₀ hr).2
   by_contra h
-  have hs : |x - c| < r := lt_of_not_ge h
+  have hs : |x - c| < r := by
+    simpa only [one_mul] using (lt_of_not_ge h)
   have hlohi := abs_lt.mp hs
   exact hx ⟨by linarith [hlohi.1], by linarith [hlohi.2]⟩
 
@@ -100,7 +101,7 @@ theorem neutralCPC1EFlatReal_contDiff (c r : ℝ) :
     (contDiff_id.sub contDiff_const).mul contDiff_const
   change ContDiff ℝ (⊤ : ℕ∞)
     (fun x : ℝ => neutralCPC1EFlatProfile ((x - c) / r))
-  simpa only [div_eq_mul_inv] using
+  simpa only [Function.comp_def, div_eq_mul_inv] using
     neutralCPC1EFlatProfile_contDiff.comp hAffine
 
 def neutralCPC1EFlatComplex (c r : ℝ) (x : ℝ) : ℂ :=
@@ -157,7 +158,7 @@ def neutralCPC1EFrozenFamily
 theorem neutralCPC1EFrozenFamily_supportedOriginal
     (r : ℝ) (hr : 0 < r) (hrmax : r ≤ 1 / 500) :
     ∀ i : Fin 3, ∀ x : ℝ,
-      x ∉ Set.Icc (-11/10) (11/10) →
+      x ∉ Set.Icc (-(11/10)) (11/10) →
         neutralCPC1EFrozenFamily r hr i x = 0 := by
   intro i x hx
   fin_cases i
