@@ -4,7 +4,7 @@
 
 ## Repository action and scope
 
-The UOI049 and UOI050 analytic notes, elementary checkers, and exact-arithmetic receipts were initially emitted only as conversation artifacts, contrary to the project's GitHub-first research custody practice. This branch records those six files unchanged in meaning (no new claim of kernel verification). They were replayed locally with `python`, both reporting PASS on their explicitly narrow checks. The original analytic obligations remain open.
+The UOI049 and UOI050 analytic notes, elementary checkers, and exact-arithmetic receipts were initially emitted only as conversation artifacts, contrary to the project's GitHub-first research custody practice. This branch records those six files without promoting their mathematical claims. Both checkers replayed locally with `python`, reporting PASS on their explicitly narrow checks. The two checkers were subsequently adapted to write their receipts under the repository-relative `research/unified/receipts/` path instead of the nonportable conversation-only `/mnt/data/` path; locally tested copies reproduced the original JSON byte-for-byte. The source history preserves the initial received code as separate commits. The original analytic obligations remain open.
 
 The accepted numerical frontier remains the independently reconciled **708/968** in issue #761 / #898; this branch does not change any accepted certificate or Lean theorem.
 
@@ -30,13 +30,13 @@ The separate `governance/uoi000-unified-operative-investigation` branch diverged
 4. **Compactness:** Neither a uniform `Gamma`-normalized prime operator bound nor the tail norm limit is proved; the UOI050 prime-number-theorem estimate is only fixed-smooth-head (or finite-dimensional head) and loses a derivative.
 5. **Tail positivity:** No positive infinite-tail `tau_M`, sufficiently small upper bound on `beta_M`, nor Schur closure `(beta_M + kappa_M)^2 < alpha_M tau_M` is certified.
 6. **Checker coverage:** UOI049 checks only rational prime-contact spacing; UOI050 checks symbolic derivative, three moment cancellations and collar scaling. Neither checks PNT, infinite operator norms, source identity, Lean, or RH. UOI050's polynomial precursor is only finitely differentiable after zero extension; do not describe it as a Schwartz test.
-7. **Missing preceding custody:** The issue/PR search for UOI048, UOI049, and UOI050 found no matching repository issue/PR before this recovery. The UOI048 source derivation and checkers are **not contained in this branch** and still require source-bound independent intake. Do not fabricate their full proof from an executive summary.
+7. **Preceding UOI048 custody only partly recovered:** The issue/PR search for UOI048, UOI049, and UOI050 found no matching repository issue/PR before this recovery. This branch now includes the independently recovered UOI048 exact-rational checker and its original receipt, plus a clearly labelled summary from the user's report. The **complete mathematical derivation and source-defined collar geometry were not recovered**, and require independent source-bound intake. Do not fabricate their full proof from an executive summary.
 
 ## Acceptance / next actions
 
 - Review the exact six source files and their statuses; treat this as **research custody only**.
 - Reconcile with the separate UOI governance controller through a reviewed append-only intake; do not assume cherry-pick compatibility between diverged branches.
-- Verify UOI048 source/checker custody and earlier UOI045-047 ancestry; open individual unpaid theorem nodes in the formalization queue without displacing F40 → F41 → F42 priorities.
+- Independently recover the full UOI048 analytic derivation and verify the earlier UOI045–047 source ancestry. UOI048's exact checker and receipt are now present, but certify only arithmetic. Record unpaid theorem nodes without displacing F40 → F41 → F42 priorities.
 - Independently validate original collar geometry and mixed form, then seek a `Gamma`-uniform arithmetic square-function or operator estimate.
 - Before *any* heavy Lean submission on a particular old research branch, audit that branch's effective workflow fan-out and Lake setup ordering. Nothing in this custody PR triggers heavy Lean.
 
