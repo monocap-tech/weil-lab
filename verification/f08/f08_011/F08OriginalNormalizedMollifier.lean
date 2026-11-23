@@ -43,9 +43,12 @@ theorem f08_011_complexMollifier_integral
     (φ : ContDiffBump (0 : ℝ)) :
     (∫ x : ℝ, f08_011_complexMollifier φ x ∂volume) = (1 : ℂ) := by
   change (∫ x : ℝ, (φ.normed volume x : ℂ) ∂volume) = (1 : ℂ)
+  have hc : (∫ x : ℝ, (φ.normed volume x : ℂ) ∂volume) =
+      (((∫ x : ℝ, φ.normed volume x ∂volume) : ℝ) : ℂ) :=
+    integral_complex_ofReal
   calc
-    _ = ((∫ x : ℝ, φ.normed volume x ∂volume) : ℂ) :=
-      integral_complex_ofReal
+    (∫ x : ℝ, (φ.normed volume x : ℂ) ∂volume) =
+        (((∫ x : ℝ, φ.normed volume x ∂volume) : ℝ) : ℂ) := hc
     _ = 1 := by rw [φ.integral_normed (μ := volume)]; norm_num
 
 /-- The complex norm equals the underlying positive real bump. -/
@@ -95,11 +98,11 @@ theorem f08_011_complexMollifier_hasCompactSupport
     exact hx (f08_011_complexMollifier_support φ h)
   exact Function.notMem_support.mp hn
 
-/-- The true normalized mollifier is C-infinity, not only an L¹ test. -/
+/-- The true normalized mollifier is smooth of order omega (C-infinity), not analytically top-order: ↑(\u22a4 : \u2115\u221e) differs from ⊤ in the ContDiff order type. -/
 theorem f08_011_complexMollifier_smooth
     (φ : ContDiffBump (0 : ℝ)) :
-    ContDiff ℝ ⊤ (f08_011_complexMollifier φ) := by
-  change ContDiff ℝ ⊤ (fun x : ℝ => (φ.normed volume x : ℂ))
+    ContDiff ℝ (↑(⊤ : ℕ∞)) (f08_011_complexMollifier φ) := by
+  change ContDiff ℝ (↑(⊤ : ℕ∞)) (fun x : ℝ => (φ.normed volume x : ℂ))
   simpa only [Function.comp_def, Complex.ofRealCLM_apply] using
     (Complex.ofRealCLM.contDiff.comp
       (φ.contDiff_normed (n := ⊤) (μ := volume)))
