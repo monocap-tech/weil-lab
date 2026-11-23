@@ -1,0 +1,9 @@
+# F41-010 — staged independent archive auditor for original physical H/V row51
+
+**STATUS: SOURCE ONLY; NO PROOF OR ARCHIVE ACCEPTANCE.** Successful prior F41 row checks 0–50 are independently accepted (51/242). F41-009 [PR #928](https://github.com/monocap-tech/weil-lab/pull/928) is the next genuine original full-payment row51 Lean candidate. Its [Actions run 45175769270](https://github.com/monocap-tech/weil-lab/actions/runs/45175769270) must report completed/success, with nine permitted-standard-axiom prints, before any F41-010 acceptance work is admissible.
+
+This source-only staged auditor checks the future original row51 (52 lower-H, 4 mixed-V, 242 center symmetry), exact NF690/NF691 moment bank, original NF631 physical H/V global radii, exact full `nf702OriginalInputs.payment`, five attachment equalities, SHA-frozen original source, archive provenance/CRC/source and SHA links, 9 exact named standard-only `#print axioms` declarations, and explicitly FALSE hbank/hcache/hpay/F42/RH promotions. It refuses changed numeric row index in both Lean sources and runs four negative axiom/error mutations.
+
+**Before accepting row51:** Obtain genuine completed/success Lean run and producer artifact, independently download/re-hash full ZIP, pin exact producer source commit/artifact ID/digest, then create a separate source-only GitHub Actions receipt workflow using this staged auditor. The independent CI result and its actual custody JSON must pass; no inference from this staged code alone.
+
+Only successful genuine compiler plus independent archival audit can raise the **original NF674 full-payment Boolean** row frontier to **52/242**, with 190 rows left (52–241). Separate original analytical moment-bank `hbank`, complete `htri`, integer cache `hcache`, payment `hpay`, inverse/residual/conditioning, complete original physical enclosure, global signed Weil positivity F42 and RH remain unproved.
