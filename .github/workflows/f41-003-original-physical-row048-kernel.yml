@@ -83,23 +83,28 @@ jobs:
                   if 'bytes' in f:assert (p/f['file']).stat().st_size==f['bytes']
           assert {f'Chunk{i:03d}.lean' for i in range(490)}|{'Bank.lean','Coverage.lean'} <= {f['file'] for f in m['files']}
           out=root/'NF691';out.mkdir(exist_ok=True)
-          (out/'OriginalLookup.lean').write_text('''import WeilDefect.Generated.NF690.Coverage
+          (out/'OriginalLookup.lean').write_text("""import WeilDefect.Generated.NF690.Coverage
           import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalBlockLocalLookup
 
           namespace WeilDefect
+
           def nf691OriginalLookup : NF622Moments :=
             neutralNF691Lookup nf687Read nf687Size nf690Payload
+
           theorem nf691OriginalLookup_eq :
               neutralNF624Lookup nf690OriginalBank (neutralNF624Index nf690OriginalBank) =
                 nf691OriginalLookup :=
             neutralNF691Lookup_eq nf687Read nf687Size nf690Payload
+
           theorem nf691OriginalCoverage :
               neutralNF624CoverageCheck nf690OriginalBank (neutralNF624Index nf690OriginalBank)=true :=
             nf690OriginalCoverage
+
           #print axioms nf691OriginalLookup_eq
           #print axioms nf691OriginalCoverage
+
           end WeilDefect
-          ''')
+          """)
           print('F41-003 authentic NF691 source bank and 490 chunks restored')
           PY
       - name: Initialize pinned Lean 4.34.0 and Lake/Mathlib before manifest checks
