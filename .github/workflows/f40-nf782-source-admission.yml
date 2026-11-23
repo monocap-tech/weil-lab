@@ -59,7 +59,7 @@ jobs:
           assert a['previous_accepted_original_HD_A_gates']==916
           assert a['new_indexzero_HD_candidate']==a['new_indexzero_A_candidate']==list(range(216,224))
           assert a['new_original_Lean_gates_accepted'] is False
-          print('NF782 accepted prior-900 run/job/artifact metadata PASS; new gates NOT accepted')
+          print('NF782 accepted prior-916 run/job/artifact metadata PASS; new gates NOT accepted')
           PY
       - uses: actions/upload-artifact@v4
         if: always()
