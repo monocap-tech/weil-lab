@@ -14,8 +14,8 @@ jobs:
     timeout-minutes: 20
     env:
       F08_RUN: '45235584776'
-      F08_ARTIFACT: '-1'
-      F08_ARTIFACT_SHA: 'PENDING_PRODUCER_DIGEST'
+      F08_ARTIFACT: '14848279115'
+      F08_ARTIFACT_SHA: 'badb1a98314ca33269c4ef6b21d8a32693749e78effd73376383a33f961c90f3'
     steps:
       - uses: actions/checkout@v4
       - name: Source-only preflight and four negative controls
