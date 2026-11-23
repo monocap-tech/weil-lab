@@ -1,0 +1,13 @@
+# F08-008 — independent source/ZIP/axiom audit of the original physical-window Fourier dictionary
+
+**Genuine F08-007 Lean success, source-reconciled independently only after this audit passes.**
+
+Producer [F08-007 PR #944](https://github.com/monocap-tech/weil-lab/pull/944), exact compiler source head `35db6076439e24751bab335a1d1250ff3c6a8b77`, pinned actual original research revision `614ba879f7389fdb620c474adaee273b00eac71c`, original `ActualZetaCorrelationFourierAgreement.lean` blob `60453bd214c43feedb0fa64d74a15bd452e48998`, generated `OriginalWindowMollifierFourier.lean` blob `606d324ca9fcfd53d059efe1b57d1b0e30349476`.
+
+True [Lean run 45232969334](https://github.com/monocap-tech/weil-lab/actions/runs/45232969334), job `137897127897`, completed **SUCCESS**, 9,032-job direct imported Lean build `WeilDefect.Generated.F08.OriginalWindowMollifierFourier`; strict three named actual `#print axioms` reports accepted, each only `propext`, `Classical.choice`, `Quot.sound`. This replaces the initial run 45231015520, which *compiled successfully* but failed its source-only acceptance step because the original axiom-print checker incorrectly assumed Lean always prints an axiom set on one line. The updated checker is multiline-aware and still refuses unexpected lines, names or axioms.
+
+Original compiler evidence artifact **14847734165**, exact name `f08-007-original-window-mollifier-fourier-compiler-evidence`, 6,897 bytes, GitHub ZIP SHA256 `293452f14f23904f1f4799184d7fdd9a4c9556044983932aded4de08d5cba31a`.
+
+This separate source-only workflow must recheck exact producer run/head/job and artifact metadata, download entire original ZIP, independently check the full ZIP SHA256, CRC and member inventory, verify the actual generated source Git blob, require actual compiler success in original stdout, parse **3 exact named standard-only axiom outputs even when Lean line wraps**, reject four adversarial mutations, and publish a separate machine-readable receipt. No Lean compilation occurs in the independent auditor.
+
+**Acceptance boundary on PASS:** original window representative L¹; exact ordinary complex Fourier of its convolution with any L¹ complex `rho` equals original physical window sample at `-2πξ` times `𝓕rho`; same identity for the original positive-exponent raw transform. These are not Schwartz dense-core, actual positive normalized compact mollifier existence, Fourier multiplier contraction/limit for a specific mollifier, physical support-gap or weighted-L² Fourier equivalence, all-Schwartz original `Zeta23.EF.literatureRHS`↔native identity, global support positivity, F42 or RH. Parent obligation #932.
