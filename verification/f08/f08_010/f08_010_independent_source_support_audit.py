@@ -75,7 +75,7 @@ def verify(archive):
     assert not re.search(r"(^|\n).*?error:", build, re.I), "compiler errors"
     results = read_axioms(axioms)
     return {
-        "schema": "F08-010-original-window-fourier-independent-receipt-v1",
+        "schema": "F08-010-original-window-convolution-support-independent-receipt-v1",
         "actual_producer_run": PRODUCER_RUN,
         "actual_producer_source_commit": PRODUCER_SHA,
         "source_original_math_blob_git_sha1": ORIGINAL_SOURCE_BLOB,
@@ -123,7 +123,7 @@ def main():
     assert args.archive and args.out
     result = verify(args.archive)
     args.out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
-    print("F08-010 independent original physical-window Fourier ZIP/source/axiom audit PASS, no F08 density or RH")
+    print("F08-010 independent original physical-window convolution support ZIP/source/axiom audit PASS, no F08 density or RH")
 
 if __name__ == "__main__":
     main()
