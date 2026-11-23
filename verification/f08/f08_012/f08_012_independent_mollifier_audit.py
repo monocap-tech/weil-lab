@@ -130,7 +130,7 @@ def main():
     assert args.archive and args.out
     result = verify(args.archive)
     args.out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
-    print("F08-012 independent original physical-window convolution support ZIP/source/axiom audit PASS, no F08 density or RH")
+    print("F08-012 independent genuine normalized smooth mollifier ZIP/source/axiom audit PASS, no F08 density or RH")
 
 if __name__ == "__main__":
     main()
