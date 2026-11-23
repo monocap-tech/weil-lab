@@ -54,7 +54,7 @@ jobs:
           log=pathlib.Path('f08-007-axioms.log').read_text()
           # Lean's axiom pretty printer may wrap a single declaration across lines.
           # Match complete bracketed reports, preserving strict unexplained-output refusal.
-          pat=r"'WeilDefect\\.(\\w+)' depends on axioms: \\[([^\\]]*)\\]"
+          pat=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]"
           for m in re.finditer(pat,log,re.S):
               assert m[1] not in found,('duplicate axiom name',m[1])
               found[m[1]]={x.strip() for x in m[2].split(',') if x.strip()}
