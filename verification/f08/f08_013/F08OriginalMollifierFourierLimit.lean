@@ -34,8 +34,8 @@ theorem f08_013_original_fourier_phase_error
     calc
       |2 * Real.pi * (-(x * ξ))| =
           (2 * Real.pi * |ξ|) * |x| := by
-        rw [abs_mul, abs_neg, abs_mul,
-          abs_of_nonneg (show 0 ≤ (2 : ℝ) * Real.pi by positivity)]
+        simp only [abs_neg, abs_mul, abs_of_pos Real.pi_pos]
+        norm_num
         ring
       _ ≤ (2 * Real.pi * |ξ|) * ε :=
         mul_le_mul_of_nonneg_left hx (by positivity)
@@ -60,8 +60,8 @@ theorem f08_013_original_mollifier_character_error
           f08_011_complexMollifier φ x‖ =
           ‖((𝐞 (-(x * ξ))) : ℂ) - 1‖ *
             ‖f08_011_complexMollifier φ x‖ := by
-        rw [Circle.smul_def, ← sub_mul, norm_mul]
-        simp only [one_mul]
+        simp only [Circle.smul_def, smul_eq_mul, sub_mul, one_mul,
+          norm_mul]
       _ ≤ _ := mul_le_mul_of_nonneg_right hp (norm_nonneg _)
   · have hz : f08_011_complexMollifier φ x = 0 :=
       Function.notMem_support.mp hx
@@ -81,7 +81,7 @@ theorem f08_013_original_mollifier_fourier_error_bound
   have hchar : Integrable (fun x : ℝ => 𝐞 (-(x * ξ)) • ρ x) volume := by
     convert (Real.fourierIntegral_convergent_iff ξ).2 hρ using 1
     ext x
-    simp
+    rw [mul_comm ξ x]
   have heq : (𝓕 ρ) ξ - 1 =
       ∫ x : ℝ, ((𝐞 (-(x * ξ))) • ρ x - ρ x) ∂volume := by
     rw [Real.fourier_real_eq ρ ξ, ← f08_011_complexMollifier_integral φ]
