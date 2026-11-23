@@ -1,0 +1,11 @@
+# F08-006 — independent evidence custody of F08-005 weighted multiplier convergence
+
+**Genuine compiler PASS; independent audit PENDING.** Accept only when this separate hosted audit passes run/head/artifact source SHA and ZIP CRC/digest, original Lean stdout, all three named standard-only axiom reports and adversarial controls.
+
+The actual mathematical object is the original `logarithmicFourierWeight ξ=log(e+|ξ|)` and the genuine `RealComplexL2` coordinate in `NeutralCanonicalFormDomain` at frozen IV023 source revision `614ba879f7389fdb620c474adaee273b00eac71c`, immutable original native form-domain blob `2bf19165fce3a0cfa6e4d782d68caab268aaf82b`.
+
+Producer [F08-005 PR #941](https://github.com/monocap-tech/weil-lab/pull/941) seeks three actual source-specific theorems: an explicit factor-four log-energy error bound, weighted error integrability, and dominated-convergence of the weighted error for pointwise-to-one complex multipliers bounded by one. First [compiler run 45219448713](https://github.com/monocap-tech/weil-lab/actions/runs/45219448713) failed at a *wrong-sided* helper proof step `add_le_add_right`; it does **not** certify any theorem. A narrow original real-inequality repair produced a successful pinned [Lean run 45220909373](https://github.com/monocap-tech/weil-lab/actions/runs/45220909373), job `137854579298`, head `4391c564089ff82b1bc6aead906c54acb4eb1b1f`; genuine full `.olean` build and 3/3 strict standard-only axiom reports PASS. Evidence ZIP artifact **14841811812**, 5,876 bytes, SHA256 `984c3302fc7da41ebfc34fac824ba6054ca22549bc3ff804511c9b44b62482e8`; source Git SHA `2a8199ff817f59d1437fa173518a588cbbd467b9`.
+
+**Outstanding outside this scope:** the exact Fourier transform of a true compact physical mollifier, a positivity-preserving normalized approximate identity, the support-gap construction, strong physical inward dilation, exact dense smooth logarithmic core, the arbitrary complex Schwartz original `Zeta23.EF.literatureRHS`→native mixed identity, support-independent form positivity, F42, and RH.
+
+The auditor's artifact ID and ZIP SHA are independently pinned to the actual successful run. This file alone is not acceptance: the separate independent workflow must re-fetch and verify full evidence.
