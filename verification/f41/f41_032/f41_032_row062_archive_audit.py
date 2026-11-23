@@ -22,6 +22,17 @@ NF631_INNER = '9e76e2dea4f46ed5fc3ff8875f804c186cd0cacb86c47295f0cd93d189b9f7e6'
 NF702_ZIP = '258637da71e96468ed7c6ac5b0a4480ce06cdee9989aef8e71a4cd09059789e0'
 NF631_PAY = 'e6eac42fde8404c5198c78eebe56fdd3fb543549079695a641c9cc60acca9b03'
 ALLOWED = {'propext','Classical.choice','Quot.sound'}
+# Expected seven mathematical source hashes bound to immutable original commit.
+# Compare against independently fixed values, not just a count in producer metadata.
+ORIGINAL_SOURCE_SHA256 = {
+    'WeilDefect/Arithmetic/ActualZetaOriginalPhysicalEnclosurePropagation.lean': '98c5e0498e916e2bcd0b372f73eaeb3b1435eba5ab93c95f79018d50d68d585f',
+    'WeilDefect/Arithmetic/ActualZetaOriginalPhysicalExecutableEntryChecks.lean': 'b242dc674dbda0525c797e8ba1335197bcbe569e19cf1c5ed5505d12243d57eb',
+    'WeilDefect/Arithmetic/ActualZetaOriginalPhysicalGramSchurAlgebra.lean': '90132de4c7dd9bfb201ebc6db671f345f34c0c98fc406af3bc0674d8bc9c8602',
+    'WeilDefect/Arithmetic/ActualZetaOriginalPhysicalIntegerCenters.lean': '1421fb8134eb195de9ddd8443961636da7f35cb7cb28ca7482da757694632161',
+    'WeilDefect/Arithmetic/ActualZetaOriginalPhysicalShardedEntryCustody.lean': '53ba365e9b49748fee58ca4dc14ee9cd49c110a53fadd77aaf39cd23ec14a097',
+    'WeilDefect/Arithmetic/ActualZetaOriginalPhysicalSolveResidual.lean': '0269b5274aba72e7a8f4a2caf726fac912efc1481c14f6c31120207eabd0eb71',
+    'WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularEntryCustody.lean': '45169dea8d256690eeb1084a209df702a9628c1730de21106fc4149ee0909e98',
+}
 ROW = 62
 N = 242
 PREV_ACCEPTED = 62
@@ -94,7 +105,7 @@ def verify_archive(z:zipfile.ZipFile):
     original=json.loads(z.read('f41-031-original-source.json'))
     assert original['historical_original_immutable_source_commit']==ORIGINAL
     assert original['source_anchor_checks']==42
-    assert len(original['source_sha256'])==7
+    assert original['source_sha256']==ORIGINAL_SOURCE_SHA256, 'original immutable mathematical source SHA mismatch'
     assert original['data_dependent_full_HV_entry_check_proved'] is False
     assert original['physical_full_matrix_certified'] is False
     # Require concrete original inputs, exact rule, and five proof gate names in source;
