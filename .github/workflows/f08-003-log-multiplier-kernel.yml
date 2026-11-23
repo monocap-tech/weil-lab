@@ -3,7 +3,7 @@ on:
   pull_request:
     paths:
       - 'verification/f08/f08_003/**'
-      - '.github/workflows/f08-003-log-weight-dilation-kernel.yml'
+      - '.github/workflows/f08-003-log-multiplier-kernel.yml'
 permissions:
   contents: read
 jobs:
