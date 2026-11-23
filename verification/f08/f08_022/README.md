@@ -1,6 +1,6 @@
 # F08-022 — independent native RealComplexL2 physical-window Fourier-coordinate custody
 
-**STAGED, NONPROMOTING.** [F08-021 producer PR #973](https://github.com/monocap-tech/weil-lab/pull/973) source head `a93d9592ebb3ab86f4a3e1917b33f59eb1d9ae27`, new additive `OriginalSmoothedWindowNativeFourier.lean` Git blob `c86e1537279b68e488573f03e7b99d754b7e361c`, [true pinned Lean run 45279398643](https://github.com/monocap-tech/weil-lab/actions/runs/45279398643), exact six named ordinary-axiom reports required. No independent result can be accepted until the original direct source kernel build succeeds, an actual original archive artifact ID and full ZIP SHA256 are pinned, and this separate custody run verifies their bytes.
+**STAGED, NONPROMOTING.** [F08-021 producer PR #973](https://github.com/monocap-tech/weil-lab/pull/973) source head `6fc58b60ee13bcabd7b1faa64b40f0d3e0a39fec`, new additive `OriginalSmoothedWindowNativeFourier.lean` Git blob `f7f769dd120810645a6bed9fa3ef379c94986a77`, [true pinned Lean run 45281337186](https://github.com/monocap-tech/weil-lab/actions/runs/45281337186), exact six named ordinary-axiom reports required. No independent result can be accepted until the original direct source kernel build succeeds, an actual original archive artifact ID and full ZIP SHA256 are pinned, and this separate custody run verifies their bytes.
 
 ## Original mathematical source and imported source custody
 
