@@ -3,7 +3,7 @@ on:
   pull_request:
     paths:
       - 'verification/f08/f08_013/**'
-      - '.github/workflows/f08-013-original-normalized-mollifier-kernel.yml'
+      - '.github/workflows/f08-013-original-mollifier-fourier-limit-kernel.yml'
 permissions:
   contents: read
 jobs:
