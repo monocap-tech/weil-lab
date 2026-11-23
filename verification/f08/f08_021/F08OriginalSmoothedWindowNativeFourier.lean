@@ -41,7 +41,7 @@ theorem f08_021_original_smoothed_window_native_integrable
     (a : ℝ) (f : RealComplexL2) (φ : ContDiffBump (0 : ℝ)) :
     Integrable (f08_021_originalSmoothedWindowL2 a f φ : ℝ → ℂ) volume := by
   exact (f08_019_original_smoothed_window_integrable a f φ).congr
-    (f08_021_original_smoothed_window_native_ae a f φ)
+    (f08_021_original_smoothed_window_native_ae a f φ).symm
 
 /-- The actual native complex L² representative has the original physical
 support radius almost everywhere, without asserting the arbitrary canonical
