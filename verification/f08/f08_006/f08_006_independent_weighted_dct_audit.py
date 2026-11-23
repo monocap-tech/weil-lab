@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Independent source/ZIP/axiom custody for the two actual F08-005 Lean lemmas.
+"""Independent source/ZIP/axiom custody for the three actual F08-005 Lean lemmas.
 
 This source-only verifier does not prove density, the original form identity,
 positive operators or RH. It accepts only the original compiler evidence.
@@ -124,7 +124,7 @@ def main():
     assert args.archive and args.out
     result = verify(args.archive)
     args.out.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
-    print("F08-006 independent original scalar log-weight ZIP/source/axiom audit PASS, no F08 density or RH")
+    print("F08-006 independent original weighted Fourier DCT ZIP/source/axiom audit PASS, no F08 density or RH")
 
 if __name__ == "__main__":
     main()
