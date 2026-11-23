@@ -38,6 +38,7 @@ jobs:
           t=p.read_text()
           names=[
             'neutralNF599GammaGainSeries',
+            'neutralIV071GammaFinite_tendsto',
             'neutralIV071GammaFinite_le',
             'neutralIV071GammaFinite_succ',
             'neutralIV071GammaFinite_mono',
@@ -46,7 +47,7 @@ jobs:
           ]
           for name in names:
             assert t.count('#print axioms '+name)==1, name
-          print('IV071 static preflight: six actual source/axiom queries present')
+          print('IV071 static preflight: seven actual source/axiom queries present')
           PY
       - name: Install exact Lean 4.34.0 and Mathlib cache
         run: |
@@ -77,6 +78,7 @@ jobs:
           log=Path('iv071/out/axioms.log').read_text()
           names=[
             'neutralNF599GammaGainSeries',
+            'neutralIV071GammaFinite_tendsto',
             'neutralIV071GammaFinite_le',
             'neutralIV071GammaFinite_succ',
             'neutralIV071GammaFinite_mono',
