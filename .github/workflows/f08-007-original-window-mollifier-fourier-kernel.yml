@@ -51,18 +51,14 @@ jobs:
           import pathlib,re
           names={'f08_007_original_window_representative_integrable','f08_007_original_window_convolution_fourier','f08_007_original_window_convolution_raw_transform'}
           found={}
-          for line in pathlib.Path('f08-007-axioms.log').read_text().splitlines():
-              m=re.fullmatch(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",line)
-              if m:
-                  assert m[1] not in found
-                  found[m[1]]={x.strip() for x in m[2].split(',') if x.strip()}
-                  continue
-              m=re.fullmatch(r"'WeilDefect\.(\w+)' does not depend on any axioms",line)
-              if m:
-                  assert m[1] not in found
-                  found[m[1]]=set()
-                  continue
-              assert not line,('unexpected compiler output',line)
+          log=pathlib.Path('f08-007-axioms.log').read_text()
+          # Lean's axiom pretty printer may wrap a single declaration across lines.
+          # Match complete bracketed reports, preserving strict unexplained-output refusal.
+          pat=r"'WeilDefect\\.(\\w+)' depends on axioms: \\[([^\\]]*)\\]"
+          for m in re.finditer(pat,log,re.S):
+              assert m[1] not in found,('duplicate axiom name',m[1])
+              found[m[1]]={x.strip() for x in m[2].split(',') if x.strip()}
+          assert not re.sub(pat,'',log,flags=re.S).strip(),('unexpected compiler output',log)
           assert set(found)==names,(found,names)
           assert all(a <= {'propext','Classical.choice','Quot.sound'} for a in found.values()),found
           print('F08-007 exact original physical Fourier source dictionary: 3/3 standard-only axioms')
