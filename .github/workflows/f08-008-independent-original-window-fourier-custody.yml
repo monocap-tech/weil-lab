@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
-      F08_RUN: '45231015520'
+      F08_RUN: '45232969334'
       F08_ARTIFACT: '-1'
       F08_ARTIFACT_SHA: 'PENDING_ARCHIVE_SHA256'
     steps:
@@ -32,7 +32,7 @@ jobs:
           python3 - <<'PY'
           import json,os,urllib.request
           root=os.environ['GITHUB_API_URL']+'/repos/'+os.environ['GITHUB_REPOSITORY']
-          head='d34de77d44f591a6a304f320fac318d3cdd71dd4'
+          head='35db6076439e24751bab335a1d1250ff3c6a8b77'
           hdr={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'}
           def get(path):
               with urllib.request.urlopen(urllib.request.Request(root+path,headers=hdr),timeout=30) as r:return json.load(r)
