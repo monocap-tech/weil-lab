@@ -26,6 +26,7 @@ jobs:
           set -euo pipefail
           python -m py_compile verification/f40/nf785/*.py
           python verification/f40/nf785/nf785_original_indexzero_import_order_guard.py selftest
+          python verification/f40/nf785/nf785_original_prior_964_custody.py selftest
           python - <<'PY'
           from pathlib import Path
           import ast
@@ -44,6 +45,79 @@ jobs:
           assert not (root/'NF785_ONE_SHOT_COMPILE_REQUEST.txt').exists()
           print('NF785 terminal shard [240,242): exact two source modules/4 HD-A instances/11 axiom queries scope PASS; NO LEAN')
           PY
+      - name: Strictly parse NF785 terminal main-only two-column compiler and 11-axiom audit (NO Lean)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check PyYAML==6.0.2
+          python - <<'PY'
+          from pathlib import Path
+          import ast,yaml
+          p=Path('.github/workflows/f40-nf785-single-lane.yml')
+          txt=p.read_text()
+          def unique(node):
+              if isinstance(node,yaml.nodes.MappingNode):
+                  ks=[k.value for k,v in node.value]
+                  assert len(ks)==len(set(ks)),('duplicate YAML keys',ks)
+                  for k,v in node.value:unique(k);unique(v)
+              elif isinstance(node,yaml.nodes.SequenceNode):
+                  for v in node.value:unique(v)
+          unique(yaml.compose(txt,Loader=yaml.BaseLoader))
+          m=yaml.load(txt,Loader=yaml.BaseLoader)
+          assert set(m['on'])=={'push','workflow_dispatch'}
+          assert m['on']['push']['branches']==['main']
+          assert m['on']['push']['paths']==['verification/f40/nf785/NF785_ONE_SHOT_COMPILE_REQUEST.txt']
+          assert len(m['jobs'])==1
+          job=m['jobs']['authenticate-reuse-and-kernel-actual-original-indexzero-240-241']
+          assert 'refs/heads/main' in job['if']
+          assert job['concurrency']['group']=='weil-uoi030-single-lane-source-pinned'
+          assert job['concurrency']['cancel-in-progress']=='false'
+          for x in ('RUN-PINNED-F40-NF785', 'Col240 through Col241',
+                    'for ((i=240;i<242;i++))',
+                    'Direct kernel-compile two actual original',
+                    'Strict 11-name original source-bound Lean',
+                    'nf784_original_prior_948_custody.py',
+                    'nf785_original_prior_964_custody.py',
+                    'nf785-prior964-live-metadata.json',
+                    'nf785_original_indexzero_240_241_kernel_audit.py',
+                    '11e31531cfd29187b648b207d85269c8b2a0a065a387b9182023a425e645a42f'):
+              assert x in txt,x
+          src=Path('verification/f40/nf785/nf785_original_indexzero_240_241_kernel_audit.py').read_text()
+          ast.parse(src)
+          for x in ('compiled_objects()', 'strict_axiom_receipt()',
+                    'actual_two_direct_olean_sha256', 'actual_11_named_standard_axioms',
+                    'accepted_original_predecessor_964_metadata_sha256',
+                    'independent_postrun_artifact_zip_reconciliation_done',
+                    '"local_combined_gate_count_if_independently_reconciled": 968'):
+              assert x in src,x
+          assert not Path('verification/f40/nf785/NF785_ONE_SHOT_COMPILE_REQUEST.txt').exists()
+          print('NF785 exact terminal [240,242) two modules, 11 axioms, strict main-only runner PASS; NO LEAN')
+          PY
+      - name: Authenticate genuinely accepted NF784 964-gate predecessor metadata (NO Lean)
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python verification/f40/nf785/nf785_original_prior_964_custody.py live
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path('nf785-prior964-live-metadata.json').read_text())
+          assert j['schema']=='NF785-live-NF784-964-metadata-nonpromoting-v1'
+          assert j['previous_accepted_original_HD_A_gates']==964
+          assert j['new_indexzero_HD_candidate']==j['new_indexzero_A_candidate']==[240,241]
+          assert j['new_candidate_gate_instances']==4
+          assert j['new_original_Lean_gates_accepted'] is False
+          print('NF785 authentic accepted NF784 964 predecessor PASS; final four gates UNACCEPTED')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf785-prior964-metadata-only-no-new-lean
+          path: nf785-prior964-live-metadata.json
+          if-no-files-found: ignore
+
   original-nf737-source-authentication:
     if: github.event_name == 'pull_request' && github.repository == 'monocap-tech/weil-lab'
     runs-on: ubuntu-latest
