@@ -1,0 +1,9 @@
+# F41-006 — Independent archive custody for original physical H/V row49
+
+**Evidence acceptance scope: one original H/V full-payment row Boolean, not the complete physical matrix.** Historical rows 0–47 were independently recovered by F41-002, and new original row48 was genuinely compiled and separately accepted by F41-003/004, establishing a **49/242** accepted row baseline.
+
+F41-005 [PR #924](https://github.com/monocap-tech/weil-lab/pull/924) genuine new Lean kernel run [45126317509](https://github.com/monocap-tech/weil-lab/actions/runs/45126317509) succeeded on exact source head `077b9da597709d8f657574152535a946532164c9`. Its original 242-row source, unchanged original NF690/NF691 moment lookup, original NF631 H/V global radii and complete `nf702OriginalInputs.payment` were pinned. Hosted artifact `14796433075` has independent full ZIP SHA256 `460ec60837f7e5cad5249de6610f7d7ebad0c616a48daa50584b032b6c2df3f5`, 368,376 bytes.
+
+This separate **source-only** verifier checks GitHub's actual producer workflow conclusion, original commit hash and artifact identity/digest, downloads the entire source+compiler ZIP, verifies archive integrity, all original source/manifest hashes, two concrete generated Lean source modules, the exact row49 full-payment transport, nine named standard-only Lean axiom statements, immutable original physical source anchors, and nonpromotion flags. Four mutation controls must reject malformed or unsafe axiom receipts. No new Lean happens in this gate.
+
+Only after this independent audit succeeds may the original H/V full-payment **Boolean** row49 predicate advance the accepted frontier to **50/242**, leaving 192 original row predicates 50–241. This does **not** prove analytic NF690 moment-bank soundness (`hbank`), all 242 source rows (`htri`), original integer cache (`hcache`) or full payment (`hpay`), the entire 242×242 physical matrix enclosure, inverse/residual/conditioning, global signed Weil positivity (F42), or RH.
