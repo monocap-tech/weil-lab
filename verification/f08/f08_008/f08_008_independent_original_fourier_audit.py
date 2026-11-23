@@ -75,7 +75,7 @@ def verify(archive):
     assert not re.search(r"(^|\n).*?error:", build, re.I), "compiler errors"
     results = read_axioms(axioms)
     return {
-        "schema": "F08-008-original-log-weight-independent-receipt-v1",
+        "schema": "F08-008-original-window-fourier-independent-receipt-v1",
         "actual_producer_run": PRODUCER_RUN,
         "actual_producer_source_commit": PRODUCER_SHA,
         "source_original_math_blob_git_sha1": ORIGINAL_SOURCE_BLOB,
