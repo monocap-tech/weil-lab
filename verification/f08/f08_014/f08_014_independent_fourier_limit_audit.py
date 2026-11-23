@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Independent source/ZIP/axiom custody for the ten actual F08-013 original mollifier Fourier limit lemmas.
+"""Independent source/ZIP/axiom custody for the four actual F08-013 original mollifier Fourier limit lemmas.
 
 This source-only verifier does not prove density, the original form identity,
 positive operators or RH. It accepts only the original compiler evidence.
@@ -19,9 +19,9 @@ NAMES = {
 }
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 ORIGINAL_SOURCE_BLOB = "60453bd214c43feedb0fa64d74a15bd452e48998"
-CANDIDATE_SOURCE_BLOB = "2af1522cee9012500ba609762348e9dd02260739"
-PRODUCER_SHA = "1422a1135ab723eeb365c58e1678287ffa859edd"
-PRODUCER_RUN = 45251521126
+CANDIDATE_SOURCE_BLOB = "4ce2075c5a9f9cb5c3890d9618404bc2f858738f"
+PRODUCER_SHA = "2d151423c03d2ef1d1b66c1735078158f341ac95"
+PRODUCER_RUN = 45253147004
 ARTIFACT_ID = -1
 ARTIFACT_SHA = "PENDING_PRODUCER_SHA"
 SOURCE_PATH = "WeilDefect/Generated/F08/OriginalMollifierFourierLimit.lean"
