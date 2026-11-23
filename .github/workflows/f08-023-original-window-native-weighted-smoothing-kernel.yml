@@ -1,0 +1,111 @@
+name: F08-023 source actual original window native Fourier logarithmic smoothing convergence Lean gate
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_023/**'
+      - '.github/workflows/f08-023-original-window-native-weighted-smoothing-kernel.yml'
+permissions:
+  contents: read
+jobs:
+  original-source-window-smoothing:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout immutable IV023 original research source
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Verify source blob and stage all genuine additive Lean modules
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Arithmetic/ActualZetaCorrelationFourierAgreement.lean)" = 60453bd214c43feedb0fa64d74a15bd452e48998
+          test "$(git -C research hash-object WeilDefect/Arithmetic/ActualZetaCorrelationTransform.lean)" = d5aa1095b2fe64933ad8db64732d232631d3d3b7
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          ! grep -Eq 'sorry|admit|unsafe' candidate/verification/f08/f08_023/F08OriginalWindowNativeWeightedSmoothing.lean
+          mkdir -p research/WeilDefect/Generated/F08
+          test "$(git -C candidate hash-object verification/f08/f08_005/F08WeightedMollifierMultiplier.lean)" = 2a8199ff817f59d1437fa173518a588cbbd467b9
+          ! grep -Eq 'sorry|admit|unsafe' candidate/verification/f08/f08_005/F08WeightedMollifierMultiplier.lean
+          cp candidate/verification/f08/f08_005/F08WeightedMollifierMultiplier.lean research/WeilDefect/Generated/F08/OriginalWeightedMollifierMultiplier.lean
+          test "$(git -C candidate hash-object verification/f08/f08_007/F08OriginalWindowMollifierFourier.lean)" = 606d324ca9fcfd53d059efe1b57d1b0e30349476
+          ! grep -Eq 'sorry|admit|unsafe' candidate/verification/f08/f08_007/F08OriginalWindowMollifierFourier.lean
+          cp candidate/verification/f08/f08_007/F08OriginalWindowMollifierFourier.lean research/WeilDefect/Generated/F08/OriginalWindowMollifierFourier.lean
+          test "$(git -C candidate hash-object verification/f08/f08_009/F08OriginalWindowConvolutionSupport.lean)" = 6badab7f17605d3131ee414282683d390c6f1964
+          ! grep -Eq 'sorry|admit|unsafe' candidate/verification/f08/f08_009/F08OriginalWindowConvolutionSupport.lean
+          cp candidate/verification/f08/f08_009/F08OriginalWindowConvolutionSupport.lean research/WeilDefect/Generated/F08/OriginalWindowConvolutionSupport.lean
+          test "$(git -C candidate hash-object verification/f08/f08_011/F08OriginalNormalizedMollifier.lean)" = b1f53459762df682f6d1d358aae9c82b5396c5a7
+          ! grep -Eq 'sorry|admit|unsafe' candidate/verification/f08/f08_011/F08OriginalNormalizedMollifier.lean
+          cp candidate/verification/f08/f08_011/F08OriginalNormalizedMollifier.lean research/WeilDefect/Generated/F08/OriginalNormalizedMollifier.lean
+          test "$(git -C candidate hash-object verification/f08/f08_013/F08OriginalMollifierFourierLimit.lean)" = 7b91eda87ce5a0d7691fdc643865e72fb153287c
+          ! grep -Eq 'sorry|admit|unsafe' candidate/verification/f08/f08_013/F08OriginalMollifierFourierLimit.lean
+          cp candidate/verification/f08/f08_013/F08OriginalMollifierFourierLimit.lean research/WeilDefect/Generated/F08/OriginalMollifierFourierLimit.lean
+          test "$(git -C candidate hash-object verification/f08/f08_015/F08ActualMollifierWeightedDCT.lean)" = f1969dede41f0d799788411420c0cb2a63c5e53a
+          ! grep -Eq 'sorry|admit|unsafe' candidate/verification/f08/f08_015/F08ActualMollifierWeightedDCT.lean
+          cp candidate/verification/f08/f08_015/F08ActualMollifierWeightedDCT.lean research/WeilDefect/Generated/F08/ActualMollifierWeightedDCT.lean
+          test "$(git -C candidate hash-object verification/f08/f08_017/F08ExplicitShrinkingPhysicalMollifier.lean)" = b767da47b302734c9b1de0bd0fde38b727c84b20
+          ! grep -Eq 'sorry|admit|unsafe' candidate/verification/f08/f08_017/F08ExplicitShrinkingPhysicalMollifier.lean
+          cp candidate/verification/f08/f08_017/F08ExplicitShrinkingPhysicalMollifier.lean research/WeilDefect/Generated/F08/ExplicitShrinkingPhysicalMollifier.lean
+          test "$(git -C candidate hash-object verification/f08/f08_019/F08OriginalSmoothedWindow.lean)" = efe3260cbd8798ad7192142c1e656f31a6729d13
+          ! grep -Eq 'sorry|admit|unsafe' candidate/verification/f08/f08_019/F08OriginalSmoothedWindow.lean
+          cp candidate/verification/f08/f08_019/F08OriginalSmoothedWindow.lean research/WeilDefect/Generated/F08/OriginalSmoothedWindow.lean
+          test "$(git -C candidate hash-object verification/f08/f08_021/F08OriginalSmoothedWindowNativeFourier.lean)" = f7f769dd120810645a6bed9fa3ef379c94986a77
+          ! grep -Eq 'sorry|admit|unsafe' candidate/verification/f08/f08_021/F08OriginalSmoothedWindowNativeFourier.lean
+          cp candidate/verification/f08/f08_021/F08OriginalSmoothedWindowNativeFourier.lean research/WeilDefect/Generated/F08/OriginalSmoothedWindowNativeFourier.lean
+          cp candidate/verification/f08/f08_023/F08OriginalWindowNativeWeightedSmoothing.lean research/WeilDefect/Generated/F08/OriginalWindowNativeWeightedSmoothing.lean
+      - name: Initialize frozen Lean and Mathlib source
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Direct Lean kernel build with strict seven named source-actual axioms
+        working-directory: research
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build WeilDefect.Generated.F08.OriginalWindowNativeWeightedSmoothing 2>&1 | tee f08-023-build.log
+          printf '%s\n' 'import WeilDefect.Generated.F08.OriginalWindowNativeWeightedSmoothing' '#print axioms WeilDefect.f08_023_original_window_memLp_two' '#print axioms WeilDefect.f08_023_original_window_native_ae' '#print axioms WeilDefect.f08_023_original_window_native_integrable' '#print axioms WeilDefect.f08_023_original_window_native_fourier_ae' '#print axioms WeilDefect.f08_023_original_window_native_mollifier_fourier_difference_ae' '#print axioms WeilDefect.f08_023_original_window_native_log_error_integral_eq' '#print axioms WeilDefect.f08_023_original_window_native_weighted_smoothing_tendsto_zero' > /tmp/f08-023-axioms.lean
+          lake env lean /tmp/f08-023-axioms.lean 2>&1 | tee f08-023-axioms.log
+          python3 - <<'PY'
+          import pathlib,re
+          names={'f08_023_original_window_memLp_two','f08_023_original_window_native_ae','f08_023_original_window_native_integrable','f08_023_original_window_native_fourier_ae','f08_023_original_window_native_mollifier_fourier_difference_ae','f08_023_original_window_native_log_error_integral_eq','f08_023_original_window_native_weighted_smoothing_tendsto_zero'}
+          found={}
+          log=pathlib.Path('f08-023-axioms.log').read_text()
+          pat=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]"
+          for m in re.finditer(pat,log,re.S):
+              assert m[1] not in found,('duplicate axiom name',m[1])
+              found[m[1]]={x.strip() for x in m[2].split(',') if x.strip()}
+          assert not re.sub(pat,'',log,flags=re.S).strip(),('unexpected compiler output',log)
+          assert set(found)==names,(found,names)
+          assert all(a <= {'propext','Classical.choice','Quot.sound'} for a in found.values()),found
+          print('F08-023 actual original native Fourier window weighted smoothing: 7/7 standard-only axioms')
+          PY
+      - name: Archive original compiler and exact eight staged Lean source files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-023-original-window-native-weighted-smoothing-compiler-evidence
+          path: |
+            research/f08-023-build.log
+            research/f08-023-axioms.log
+            research/WeilDefect/Generated/F08/OriginalWindowNativeWeightedSmoothing.lean
+            research/WeilDefect/Generated/F08/OriginalSmoothedWindowNativeFourier.lean
+            research/WeilDefect/Generated/F08/OriginalSmoothedWindow.lean
+            research/WeilDefect/Generated/F08/OriginalWeightedMollifierMultiplier.lean
+            research/WeilDefect/Generated/F08/OriginalWindowMollifierFourier.lean
+            research/WeilDefect/Generated/F08/OriginalWindowConvolutionSupport.lean
+            research/WeilDefect/Generated/F08/OriginalNormalizedMollifier.lean
+            research/WeilDefect/Generated/F08/OriginalMollifierFourierLimit.lean
+            research/WeilDefect/Generated/F08/ActualMollifierWeightedDCT.lean
+            research/WeilDefect/Generated/F08/ExplicitShrinkingPhysicalMollifier.lean
+          if-no-files-found: ignore
