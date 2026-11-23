@@ -1,0 +1,67 @@
+name: F08-024 independent original native sharp-window logarithmic weighted smoothing custody
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_024/**'
+      - '.github/workflows/f08-024-independent-native-window-weighted-smoothing-custody.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  independent-original-log-weight:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      F08_RUN: '45291844221'
+      F08_ARTIFACT: '14875336695'
+      F08_ARTIFACT_SHA: '40baae31eaaf1f8690a1543a22d375bf861f05c268a81d4d5b480b5217042e1a'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Source-only preflight and four negative controls
+        run: |
+          set -euo pipefail
+          python3 -m py_compile verification/f08/f08_024/f08_024_independent_native_window_weighted_smoothing_audit.py
+          python3 verification/f08/f08_024/f08_024_independent_native_window_weighted_smoothing_audit.py --selftest
+      - name: Independently validate actual producer Lean run and artifact metadata
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p f08-024-receipt
+          python3 - <<'PY'
+          import json,os,urllib.request
+          root=os.environ['GITHUB_API_URL']+'/repos/'+os.environ['GITHUB_REPOSITORY']
+          head='1a87927ba08ce273d4ed180defc355aa725aef2a'
+          hdr={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'}
+          def get(path):
+              with urllib.request.urlopen(urllib.request.Request(root+path,headers=hdr),timeout=30) as r:return json.load(r)
+          run=get('/actions/runs/'+os.environ['F08_RUN'])
+          assert run['status']=='completed' and run['conclusion']=='success'
+          assert run['head_sha']==head and run['head_repository']['full_name']=='monocap-tech/weil-lab'
+          assert run['name']=='F08-023 source actual original window native Fourier logarithmic smoothing convergence Lean gate'
+          jobs=get('/actions/runs/'+os.environ['F08_RUN']+'/jobs')
+          assert any(j['conclusion']=='success' and any(
+              s['name']=='Direct Lean kernel build with strict seven named source-actual axioms' and s['conclusion']=='success'
+              for s in j['steps']) for j in jobs['jobs'])
+          artifact=get('/actions/artifacts/'+os.environ['F08_ARTIFACT'])
+          assert artifact['workflow_run']['id']==int(os.environ['F08_RUN'])
+          assert artifact['name']=='f08-023-original-window-native-weighted-smoothing-compiler-evidence'
+          assert artifact['digest']=='sha256:'+os.environ['F08_ARTIFACT_SHA']
+          assert artifact['size_in_bytes']>0 and not artifact['expired']
+          with open('f08-024-receipt/source-producer.json','w') as f:json.dump(
+              {'producer_commit_sha':head,'run_id':int(os.environ['F08_RUN']),'artifact_id':int(os.environ['F08_ARTIFACT']),
+               'outer_zip_sha256':os.environ['F08_ARTIFACT_SHA'],'successful':True},f,sort_keys=True,indent=2)
+          print('F08-024 independently confirmed successful pinned Lean source and artifact digest')
+          PY
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$F08_ARTIFACT/zip" -o f08-024-receipt/f08-023-producer.zip
+          echo "$F08_ARTIFACT_SHA  f08-024-receipt/f08-023-producer.zip" | sha256sum -c -
+          python3 verification/f08/f08_024/f08_024_independent_native_window_weighted_smoothing_audit.py --archive f08-024-receipt/f08-023-producer.zip --out f08-024-receipt/f08-024-original-independent-axiom-audit.json
+      - name: Archive independent source-only custody
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-024-original-window-native-weighted-smoothing-independent-source-audit
+          path: |
+            f08-024-receipt/source-producer.json
+            f08-024-receipt/f08-024-original-independent-axiom-audit.json
+          if-no-files-found: error
