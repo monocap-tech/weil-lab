@@ -1,0 +1,9 @@
+# F08-011 — an actual physical normalized compact smooth mollifier
+
+This is an explicit source-attached mollifier construction in the original real-log physical variable, **not** merely a hypothetical Fourier multiplier. It uses Mathlib v4.34.0 `ContDiffBump (0 : ℝ)` and the mathematically defined nonnegative mass-one bump `φ.normed volume`, included into complex scalars as `f08_011_complexMollifier φ x := ((φ.normed volume x):ℂ)`.
+
+Ten exact, independently checkable candidate statements: positive real part; physical L¹ integrability; complex integral =1; complex norm = underlying positive bump; integral norm =1; physical support in `Icc(-φ.rOut,φ.rOut)`; hasCompactSupport; real `C^∞`; support radius `≤ε` if `φ.rOut≤ε`; true ordinary Fourier magnitude ≤1 at every real ξ.
+
+The source mathematics is frozen at IV023 research commit `614ba879f7389fdb620c474adaee273b00eac71c`, original Fourier Agreement blob `60453bd214c43feedb0fa64d74a15bd452e48998`, original physical window file blob `d5aa1095b2fe64933ad8db64732d232631d3d3b7`. Uses pinned `Mathlib.Analysis.Calculus.BumpFunction.Normed` `ContDiffBump.integral_normed`, `nonneg_normed`, `support_normed_eq`, `integrable_normed`, `contDiff_normed`, and the original `Real.norm_fourier_le_integral_norm`. This is a genuine physical function in the identical real coordinate—not a variant of Weil's formula.
+
+**Acceptance** requires direct Lean 4.34.0 `.olean` build, strict 10/10 named ordinary axioms, then a separate independent source/ZIP SHA/axiom receipt with refusals. A compiled nonnegative normalized `ρ_φ` does not yet prove `𝓕ρ_{φ_n}(ξ)→1` for shrinking radius, convolution gives source-weighted Fourier-equivalent `RealComplexL2` coordinate, or that a general compact-window `f` is C∞ after convolution. Interior smooth logarithmic core density, inward dilation strong convergence and original full signed source/native mixed form pairing remain OPEN. No F42 or RH claim.
