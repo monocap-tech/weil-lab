@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Independent source/ZIP/axiom custody for the three actual F08-011 original normalized smooth mollifier lemmas.
+"""Independent source/ZIP/axiom custody for the ten actual F08-011 original normalized smooth mollifier lemmas.
 
 This source-only verifier does not prove density, the original form identity,
 positive operators or RH. It accepts only the original compiler evidence.
@@ -102,15 +102,15 @@ def verify(archive):
     }
 
 def selftest():
-    good = "\\n".join(
+    good = "\n".join(
         "'WeilDefect.%s' depends on axioms: [propext, Classical.choice, Quot.sound]" % n
         for n in sorted(NAMES))
     assert set(read_axioms(good)) == NAMES
     bad = [
         good.replace("propext", "sorryAx"),
         good.replace("f08_011_complexMollifier_fourier_norm_le_one", "wrongLemma"),
-        good + "\\n" + good.splitlines()[0],
-        good + "\\nerror: compiler failed",
+        good + "\n" + good.splitlines()[0],
+        good + "\nerror: compiler failed",
     ]
     for mutant in bad:
         try: read_axioms(mutant)
