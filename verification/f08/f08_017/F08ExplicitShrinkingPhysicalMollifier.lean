@@ -26,7 +26,6 @@ def f08_017_shrinkingBump (n : ℕ) : ContDiffBump (0 : ℝ) where
   rIn_pos := by positivity
   rIn_lt_rOut := by
     have hp : 0 < ((n : ℝ) + 1)⁻¹ := by positivity
-    dsimp
     nlinarith
 
 /-- The physical support radius is an explicit, genuine positive real number. -/
