@@ -1,0 +1,9 @@
+# F41-018 — staged independent archive custody for original physical H/V row55
+
+**STAGED SOURCE ONLY; NO ROW55 CERTIFICATE.** F41 accepted original full-payment H/V Boolean rows 0–54 = **55/242**, after F41-015 genuine Lean and F41-016 independent archive custody. F41-017 [PR #946](https://github.com/monocap-tech/weil-lab/pull/946) is the next original row55 genuine kernel check. A separately independently SHA-verified compiler artifact and completed/success producer are prerequisites to running F41-018.
+
+This source-only verifier checks the original NF690/NF691 moment lookup and full `nf702OriginalInputs.payment`, **56 original lower-H, 4 mixed V, 242 H-center symmetry**, five exact H-row/H-column/V/eH/eV full-payment projections, immutable original mathematical SHA/42 anchors and NF631/NF702 numerical archives, source and ZIP hashes, valid ZIP CRC/no duplicate paths, **nine exact standard-only Lean named axiom reports**, and explicit false F41-full-matrix/F42/RH promotion flags. It refuses a changed literal `(55:Fin 242)` source index and includes four synthetic tampered axiom/error controls.
+
+**Requirements to accept:** Obtain genuine F41-017 `completed/success` Lean run and its bounded `f41-017-original-full-payment-row055-kernel-evidence` ZIP; externally download/re-hash entire ZIP, record producer exact HEAD/artifact ID/GitHub published digest and then add a separate CI workflow to check those records against GitHub, run the independent auditor and publish its own machine JSON. No acceptance is possible from staging alone.
+
+If and only if both gates succeed, original physical H/V **Boolean** row predicates advance to **56/242** (186 remaining). This is not the entire original 242×242 physical H/V enclosure, analytic moment-bank `hbank`, complete `htri`, integer cache `hcache`, payment `hpay`, inverse/residual/conditioning, F42 signed Weil positivity, or RH. F40 HD/A remains separately 968/968.
