@@ -1,0 +1,11 @@
+# F08-012 — independent source/ZIP/axiom custody: actual normalized smooth complex mollifier
+
+**Nonpromoting stage.** Genuine source-actual [F08-011 PR #951](https://github.com/monocap-tech/weil-lab/pull/951), candidate head `80b5d54a1c63b805491d511a856aba41e25d70c7`, hosted pinned [compiler run 45241363295](https://github.com/monocap-tech/weil-lab/actions/runs/45241363295). No acceptance without completed source-pinned direct Lean `.olean` with **10 exact standard-only named axioms** followed by this separate independent producer-archive audit.
+
+True source frozen original IV023 commit `614ba879f7389fdb620c474adaee273b00eac71c`, original physical `ActualZetaCorrelationFourierAgreement.lean` blob `60453bd214c43feedb0fa64d74a15bd452e48998`, original window `ActualZetaCorrelationTransform.lean` blob `d5aa1095b2fe64933ad8db64732d232631d3d3b7`; candidate true additive source `OriginalNormalizedMollifier.lean` blob `210272ae03b9900fd6e867e3d09ad2f1ce6ce843`.
+
+The verifier must independently check successful GitHub producer run/head/job, exact artifact name/ID/external ZIP SHA256, download the full ZIP and verify SHA256/CRC/member inventory, recompute the generated additive Lean source Git blob, independently parse exact compiler success logs and **10 named `#print axioms` outputs** even when multiline, then reject **4/4 adversarial refusal tests** (unsafe axiom, wrong name, duplicate, compiler error). The producer artifact ID/SHA are intentionally placeholders here until a real completed successful compiler run exists.
+
+Only upon success may F08 accept an actual `ρ_φ=(φ.normed volume : ℂ)` for `φ:ContDiffBump(0:ℝ)` with positive real part, L¹ integrability, total complex mass 1, L¹ norm 1, compact physical support in `[-φ.rOut,φ.rOut]`, C∞ regularity, support in `[-ε,ε]` if `φ.rOut≤ε`, and ordinary real Fourier bound `|𝓕ρ_φ(ξ)|≤1`. This does **not** prove Fourier multiplier convergence as radius shrinks, ordinary Fourier identification with weighted `RealComplexL2`, original physical convolution smoothness, inward dilation, full smooth logarithmic form core, complete original signed Weil mixed source/native identity or global positivity, F42 or RH.
+
+Parents: original mathematical obligation #932; master custody obligation #898.
