@@ -1,0 +1,11 @@
+# F08-014 — independent source/ZIP/axiom custody of actual F08-013 Fourier limit
+
+**STAGED ONLY, NONPROMOTING.** Genuine source-actual [F08-013 PR #956](https://github.com/monocap-tech/weil-lab/pull/956), original prospective head `1422a1135ab723eeb365c58e1678287ffa859edd`, source-pinned [compiler run 45251521126](https://github.com/monocap-tech/weil-lab/actions/runs/45251521126). Until that compiler succeeds and a genuine artifact ID and full ZIP SHA256 can be bound, no independent acceptance is possible.
+
+Immutable original IV023 research commit `614ba879f7389fdb620c474adaee273b00eac71c`, original mathematical Fourier source `ActualZetaCorrelationFourierAgreement.lean` Git blob `60453bd214c43feedb0fa64d74a15bd452e48998`; exact accepted physical normalized bump dependency [F08-011](https://github.com/monocap-tech/weil-lab/pull/951), original generated physical Lean source Git blob **`b1f53459762df682f6d1d358aae9c82b5396c5a7`**. Candidate new source `OriginalMollifierFourierLimit.lean` Git blob **`2af1522cee9012500ba609762348e9dd02260739`**. Auditor checks the *exact bytes of both* from a genuine downloaded producer archive, not merely the names.
+
+Independent workflow must re-query successful GitHub producer run/head/job/artifact metadata; independently download the full original Lean evidence ZIP, SHA256 and CRC verify, source-blob verify both staged Lean files, check actual compiler stdout success, parse **four precise standard-only named axiom records**, refuse 4/4 adversarial mutations, and produce independent receipt. It does not compile any mathematical source itself.
+
+On success, accept only the exact original `-2πxξ` phase deviation and actual positive compact bump pointwise error, quantitative `‖𝓕ρ_φ(ξ)−1‖≤2π|ξ|φ.rOut` and pointwise convergence to one for any family of actual `ContDiffBump (0:ℝ)` whose `rOut` tends to zero. **The theorem assumes a shrinking family; it does not itself construct one.** This would discharge the F08-005 pointwise Fourier multiplier hypothesis in source coordinates, not the physical convolution-to-native Fourier `RealComplexL2` pairing, inward dilation, full supported `C_c^∞` log-Hilbert core, arbitrary original signed `Zeta23.EF.literatureRHS` mixed identity, F42 global positivity, or RH.
+
+Parent mathematical ledger #932; program ledger #898.
