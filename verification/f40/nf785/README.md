@@ -15,3 +15,7 @@ No `NF785_ONE_SHOT_COMPILE_REQUEST.txt` marker is in this candidate PR. The kern
 ## Narrow NF785 pre-Lean repair
 
 The initial one-shot main run [45103178026](https://github.com/monocap-tech/weil-lab/actions/runs/45103178026) **failed before Lean** in source-preparation step #48, after NF737 authentic full-source and accepted-964 predecessor checks passed. Live logs show the original terminal 2-column source-binding correctly generated 4 gates, 8 declarations, 11 axiom queries, but the copied eight-column workflow assertions still expected 16 gates, 32 declarations, 35 queries. This repair changes exactly those three assertions, corrects the descriptive source print, and introduces unique retry-token `COMPILE-NF785-240-241-RETRY2-ONCE`. The original marker remains in reviewed PR; the source-only admission explicitly authenticates its old content. **No new Lean acceptance or original mathematics change.** After green source CI and merge, one further new main marker update plus a fresh lane-idle check is required to trigger corrected compiler. No archive promotion from failed run.
+
+### CI admission guard
+
+This repair branch requires the source-only workflow to re-check exactly two terminal columns, four HD/A instances, eight column declarations, eleven named axiom queries and the historical first marker content. Merely passing that admission does not prove a final gate or change 964/968.
