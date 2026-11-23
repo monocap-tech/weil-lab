@@ -1,0 +1,58 @@
+name: CP-C1H1 original NF600 positive-negative shift pointwise Lean434
+on:
+  push:
+    branches:
+      - research/cpc1b-original-iv009-nine-probe-source
+    paths:
+      - ".github/workflows/cpc1h-original-pointwise-kernel.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cpc1h1-original-pointwise-Lean434
+  cancel-in-progress: false
+jobs:
+  original-nf600-pointwise-kernel:
+    if: github.ref == 'refs/heads/research/cpc1b-original-iv009-nine-probe-source'
+    runs-on: ubuntu-latest
+    timeout-minutes: 200
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fail-closed source, upstream blob pins and axiom negative controls
+        run: |
+          set -euo pipefail
+          python3 scripts/cpc1h_original_pointwise_kernel_gate.py preflight
+          python3 scripts/cpc1h_original_pointwise_kernel_gate.py selftest
+      - name: Install pinned Lean and Lake
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          test "$(cat lean-toolchain)" = "leanprover/lean4:v4.34.0"
+          lean --version
+      - name: Source B-G strict kernel and H1 direct compilation and axiom gate
+        timeout-minutes: 160
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          bash scripts/cpc1fg_frozen_local_kernel_lane.sh
+          lake build WeilDefect.Arithmetic.CP_C1H_OriginalPointwisePrimeCorrelation 2>&1 | tee cpc1h1-original-Lean-build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/CP_C1H_OriginalPointwisePrimeCorrelation.olean
+          lake env lean WeilDefect/Arithmetic/CP_C1H_OriginalPointwisePrimeCorrelation.lean 2>&1 | tee cpc1h1-original-kernel-axioms.log
+          python3 scripts/cpc1h_original_pointwise_kernel_gate.py verify
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cpc1h1-nf600-original-pointwise-Lean434
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            cpc1h1-*log
+            cpc1h1-*.json
+            cpc1fg-original-kernel-receipt.json
+            cpc1e-original-kernel-receipt.json
+            .lake/build/lib/lean/WeilDefect/Arithmetic/CP_C1H_OriginalPointwisePrimeCorrelation.olean
