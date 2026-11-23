@@ -35,15 +35,16 @@ pointwise multiplier. -/
 theorem f08_011_complexMollifier_integrable
     (φ : ContDiffBump (0 : ℝ)) :
     Integrable (f08_011_complexMollifier φ) volume := by
-  simpa [f08_011_complexMollifier, Function.comp_def] using
-    Complex.ofRealCLM.integrable_comp (φ.integrable_normed (μ := volume))
+  change Integrable (fun x : ℝ => (φ.normed volume x : ℂ)) volume
+  exact Complex.ofRealCLM.integrable_comp (φ.integrable_normed (μ := volume))
 
 /-- Normalization in the actual complex Fourier/convolution scalar field. -/
 theorem f08_011_complexMollifier_integral
     (φ : ContDiffBump (0 : ℝ)) :
     (∫ x : ℝ, f08_011_complexMollifier φ x ∂volume) = (1 : ℂ) := by
-  simp [f08_011_complexMollifier, integral_ofReal,
-    φ.integral_normed (μ := volume)]
+  change (∫ x : ℝ, (φ.normed volume x : ℂ) ∂volume) = (1 : ℂ)
+  rw [integral_ofReal, φ.integral_normed (μ := volume)]
+  norm_num
 
 /-- The complex norm equals the underlying positive real bump. -/
 theorem f08_011_complexMollifier_norm
@@ -96,9 +97,9 @@ theorem f08_011_complexMollifier_hasCompactSupport
 theorem f08_011_complexMollifier_smooth
     (φ : ContDiffBump (0 : ℝ)) :
     ContDiff ℝ ⊤ (f08_011_complexMollifier φ) := by
-  simpa [f08_011_complexMollifier, Function.comp_def] using
-    (Complex.ofRealCLM.contDiff.comp
-      (φ.contDiff_normed (n := ⊤) (μ := volume)))
+  change ContDiff ℝ ⊤ (fun x : ℝ => (φ.normed volume x : ℂ))
+  exact Complex.ofRealCLM.contDiff.comp
+    (φ.contDiff_normed (n := ⊤) (μ := volume))
 
 /-- Source-physical support parameter: any bump radius below ε yields
 an actual normalized smooth mollifier supported in [-ε,ε]. -/
@@ -120,7 +121,8 @@ theorem f08_011_complexMollifier_fourier_norm_le_one
   calc
     ‖(𝓕 (f08_011_complexMollifier φ)) ξ‖ ≤
         ∫ x : ℝ, ‖f08_011_complexMollifier φ x‖ ∂volume :=
-      Real.norm_fourier_le_integral_norm _ _
+      (VectorFourier.norm_fourierIntegral_le_integral_norm
+        𝐞 volume (innerₗ ℝ) (f08_011_complexMollifier φ) ξ)
     _ = 1 := f08_011_complexMollifier_integral_norm φ
 
 #print axioms f08_011_complexMollifier_nonneg
