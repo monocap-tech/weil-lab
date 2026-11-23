@@ -156,6 +156,43 @@ theorem neutralIV072FullLine_integral_eq_halves
           rw [neutralIV072LeftFourierResolvent alpha r ha,
             neutralIV072RightFourierResolvent alpha r ha]
 
+/-- This is the actual positive-frequency, exponentially damped
+physical Fourier kernel. It is an *integrand equality*, before any
+full original Zeta23 correlation or Gamma symbol is attached. -/
+theorem neutralIV072FullLine_eq_damped_fourier
+    (alpha r x : ℝ) :
+    neutralIV072FullLineIntegrand alpha r x =
+      Complex.exp (((-alpha * |x| : ℝ) : ℂ) +
+        Complex.I * (r : ℂ) * (x : ℂ)) := by
+  by_cases hx : 0 < x
+  · have habs : |x| = x := abs_of_pos hx
+    simp only [neutralIV072FullLineIntegrand, if_pos hx, habs,
+      neutralIV072RightCoefficient]
+    congr 1
+    push_cast
+    ring
+  · have hle : x ≤ 0 := le_of_not_gt hx
+    have habs : |x| = -x := abs_of_nonpos hle
+    simp only [neutralIV072FullLineIntegrand, if_neg hx, habs,
+      neutralIV072LeftCoefficient]
+    congr 1
+    push_cast
+    ring
+
+/-- Direct physical whole-line positive-exponent Fourier transform,
+already reduced to the TWO rigorous Mathlib resolvent integrals.
+The algebraic simplification to 2α/(α²+r²), and the attachment to
+`Zeta23.paperFT`, are separate named kernel obligations. -/
+theorem neutralIV072DampedFourier_integral_eq_halves
+    (alpha r : ℝ) (ha : 0 < alpha) :
+    (∫ x : ℝ,
+      Complex.exp (((-alpha * |x| : ℝ) : ℂ) +
+        Complex.I * (r : ℂ) * (x : ℂ))) =
+      1 / neutralIV072LeftCoefficient alpha r +
+        (-1 / neutralIV072RightCoefficient alpha r) := by
+  simpa only [← neutralIV072FullLine_eq_damped_fourier] using
+    neutralIV072FullLine_integral_eq_halves alpha r ha
+
 #print axioms neutralIV072Exp_right_integrable
 #print axioms neutralIV072Exp_left_integrable
 #print axioms neutralIV072Exp_right_integral
@@ -167,6 +204,8 @@ theorem neutralIV072FullLine_integral_eq_halves
 #print axioms neutralIV072FullLine_integrable_left
 #print axioms neutralIV072FullLine_integrable_right
 #print axioms neutralIV072FullLine_integral_eq_halves
+#print axioms neutralIV072FullLine_eq_damped_fourier
+#print axioms neutralIV072DampedFourier_integral_eq_halves
 
 end
 end WeilDefect
