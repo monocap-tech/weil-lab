@@ -32,7 +32,8 @@ theorem f08_005_log_multiplier_error_pointwise
         mul_le_mul_of_nonneg_right (norm_sub_le _ _) (norm_nonneg _)
       _ ≤ 2 * ‖F ξ‖ := by
         have hh : ‖m ξ‖ + ‖(1 : ℂ)‖ ≤ 2 := by
-          simpa only [norm_one] using add_le_add_right (hm ξ) 1
+          simp only [norm_one]
+          linarith [hm ξ]
         exact mul_le_mul_of_nonneg_right hh (norm_nonneg _)
   have hdiff : 0 ≤ 2 * ‖F ξ‖ - ‖(m ξ - 1) * F ξ‖ :=
     sub_nonneg.mpr hnorm
