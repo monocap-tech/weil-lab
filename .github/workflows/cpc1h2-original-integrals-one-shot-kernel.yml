@@ -2,7 +2,7 @@ name: CP-C1H2 original frozen plus-minus log9 integral and prime phase kernel
 on:
   push:
     branches:
-      - research/cpc1b-original-iv009-nine-probe-source
+      - cp-c1-h2-r1-integral-repair
     paths:
       - ".github/workflows/cpc1h2-original-integrals-one-shot-kernel.yml"
       - "WeilDefect/Arithmetic/CP_C1H2_OriginalFrozenCorrelationIntegrals.lean"
@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   frozen-original-integral-kernel:
-    if: github.ref == 'refs/heads/research/cpc1b-original-iv009-nine-probe-source'
+    if: github.ref == 'refs/heads/cp-c1-h2-r1-integral-repair'
     runs-on: ubuntu-latest
     timeout-minutes: 210
     steps:
