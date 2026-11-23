@@ -1,0 +1,70 @@
+name: F41-002 historical original physical global row 000-047 custody (NO Lean)
+on:
+  pull_request:
+    paths:
+      - 'verification/f41/f41_002/**'
+      - '.github/workflows/f41-002-global-physical-row-custody.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-row-recovery:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout exact source-only candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Static integrity and adversarial axiom refusal (NO Lean)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile verification/f41/f41_002/f41_002_historical_global_row_custody.py
+          python verification/f41/f41_002/f41_002_historical_global_row_custody.py selftest
+      - name: Download EXACT four authentic historical archived original Lean evidence ZIPs (NO Lean)
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p historical
+          for spec in '14562899400 nf691' '14569367307 nf695' '14582437652 nf702' '14589561404 nf707'; do
+            set -- $spec
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$1/zip" -o "historical/$2.zip"
+          done
+          echo 'c0d513078ecb64e1d6ff718fa0163f0e4af229034a11172eaea7d05d17398844  historical/nf691.zip' | sha256sum -c -
+          echo '68a5fafe7ba038639ae628ab87baed86f7e68a07e90a07976633a4dede681015  historical/nf695.zip' | sha256sum -c -
+          echo '258637da71e96468ed7c6ac5b0a4480ce06cdee9989aef8e71a4cd09059789e0  historical/nf702.zip' | sha256sum -c -
+          echo '46eef0146bd479ca8991b9630581b21c0a37fe1f662dac4fc8c8befbe2660cbe  historical/nf707.zip' | sha256sum -c -
+      - name: Independently re-audit 48 original global full-payment rows, 290 axioms, 110 source hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python verification/f41/f41_002/f41_002_historical_global_row_custody.py audit --archive-dir historical --output f41-002-audit.json | tee f41-002-source-only.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('f41-002-audit.json').read_text())
+          assert d['schema']=='F41-002-independent-historical-original-global-row000-047-custody-v1'
+          assert d['recovered_unique_original_full_payment_row_checks']==48
+          assert d['remaining_original_HV_rows']==194
+          assert d['source_member_sha256_links_checked']==110
+          assert d['strict_NF702_named_axiom_reports']+d['strict_NF707_named_axiom_reports']==290
+          for key in ('new_Lean_compilation_performed','F41_full_physical_matrix_complete','original_full_cache_and_payment_certified','F42_signed_Weil_positive','RH_proved'):
+              assert d[key] is False,key
+          print('NF702/NF707 historical original global H/V row predicates RECOVERED, NOT new Lean; F41 COMPLETE FALSE')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: f41-002-historical-48-original-global-HV-rows-no-new-Lean
+          path: |
+            f41-002-audit.json
+            f41-002-source-only.log
+          if-no-files-found: ignore
