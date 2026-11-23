@@ -1,0 +1,111 @@
+name: IV071 original NF599 finite Gamma prelude — real Lean gate
+on:
+  push:
+    branches:
+      - research/iv071-nf599-finite-resolvent-gate
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaIV071GammaFinitePrelude.lean"
+      - ".github/workflows/iv071-nf599-finite-resolvent-gate.yml"
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaIV071GammaFinitePrelude.lean"
+      - ".github/workflows/iv071-nf599-finite-resolvent-gate.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: iv071-original-nf599-finite-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-finite-nf599-source-axioms:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fail on placeholders and check pinned Lean toolchain
+        run: |
+          set -euo pipefail
+          grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
+          if grep -nE '\b(sorry|admit|sorryAx)\b' WeilDefect/Arithmetic/ActualZetaIV071GammaFinitePrelude.lean; then
+            echo "IV071 source contains placeholder proof"; exit 1
+          fi
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('WeilDefect/Arithmetic/ActualZetaIV071GammaFinitePrelude.lean')
+          t=p.read_text()
+          names=[
+            'neutralNF599GammaGainSeries',
+            'neutralIV071GammaFinite_tendsto',
+            'neutralIV071GammaFinite_le',
+            'neutralIV071GammaFinite_succ',
+            'neutralIV071GammaFinite_mono',
+            'neutralIV071PoleGammaFirstMode_algebra',
+            'neutralIV071GammaGain_rationalResolvent',
+          ]
+          for name in names:
+            assert t.count('#print axioms '+name)==1, name
+          print('IV071 static preflight: seven actual source/axiom queries present')
+          PY
+      - name: Install exact Lean 4.34.0 and Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake --version
+          lake update
+          lake exe cache get
+      - name: Compile native original NF599 finite-source Lean module
+        run: |
+          set -euo pipefail
+          mkdir -p iv071/out
+          touch iv071/out/start.stamp
+          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV071GammaFinitePrelude.olean
+          lake build WeilDefect.Arithmetic.ActualZetaIV071GammaFinitePrelude 2>&1 | tee iv071/out/build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV071GammaFinitePrelude.olean
+          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV071GammaFinitePrelude.olean -nt iv071/out/start.stamp
+      - name: Compile exact original source and verify strict standard axioms
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV071GammaFinitePrelude.lean 2>&1 | tee iv071/out/axioms.log
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          log=Path('iv071/out/axioms.log').read_text()
+          names=[
+            'neutralNF599GammaGainSeries',
+            'neutralIV071GammaFinite_tendsto',
+            'neutralIV071GammaFinite_le',
+            'neutralIV071GammaFinite_succ',
+            'neutralIV071GammaFinite_mono',
+            'neutralIV071PoleGammaFirstMode_algebra',
+            'neutralIV071GammaGain_rationalResolvent',
+          ]
+          allowed={'propext','Quot.sound','Classical.choice'}
+          receipts={}
+          for name in names:
+            full='WeilDefect.'+name
+            pat=re.compile(r"^'"+re.escape(full)+r"' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)\s*$",re.M)
+            matches=list(pat.finditer(log))
+            assert len(matches)==1, (full,len(matches),log[-1000:])
+            axioms=({a.strip() for a in matches[0].group(1).split(',') if a.strip()}
+                     if matches[0].group(1) is not None else set())
+            assert axioms<=allowed,(full,axioms-allowed)
+            receipts[full]=sorted(axioms)
+          assert not re.search(r'(?m)^\s*(?:error:|.*: error:)',log)
+          Path('iv071/out/receipts.json').write_text(json.dumps(receipts,indent=2,sort_keys=True)+'\n')
+          print('IV071 genuine strict native axiom audit:',len(receipts),'PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv071-original-nf599-finite-gamma-lean-receipts
+          path: |
+            iv071/out/
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV071GammaFinitePrelude.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
