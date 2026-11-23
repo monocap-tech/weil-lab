@@ -27,7 +27,7 @@ theorem f08_023_original_window_memLp_two
     (a : ℝ) (f : RealComplexL2) :
     MemLp (neutralWindowRepresentative a f) 2 volume := by
   change MemLp ((Set.Icc (-a) a).indicator (f : ℝ → ℂ)) 2 volume
-  exact MemLp.indicator measurableSet_Icc.nullMeasurableSet (Lp.memLp f)
+  exact MemLp.indicator measurableSet_Icc (Lp.memLp f)
 
 /-- The genuine original sharp-window native L2 class; no artificial
 frequency carrier is introduced. -/
