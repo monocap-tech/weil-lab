@@ -1,0 +1,11 @@
+# F08-017 — explicit shrinking nonnegative normalized smooth source-log physical mollifier
+
+**Unaccepted until genuine source Lean and independent F08-018 custody.** Actual `ContDiffBump (0 : ℝ)` explicitly constructed with `rIn(n)=1/(n+1)` and `rOut(n)=2/(n+1)`; the radius tends to zero. The bundled bump from the original Mathlib `HasContDiffBump ℝ` instance is then normalized and embedded in ℂ via the previously certified F08-011, giving physical `C^∞`, unit mass, nonnegativity and compact support.
+
+Six distinct candidate declarations: formula of true outer radius; proof outer radii→0; actual smooth complex mass-one bump for every n; eventual physical support inside **any** fixed positive epsilon collar; unconditional pointwise `𝓕ρ_n(ξ)→1`; and unconditional (no shrinking-family hypothesis) application of F08-015's original logarithmic weighted spectral DCT for every `F : RealComplexL2` with finite integral `∫ log(e+|ξ|) ‖F ξ‖²`.
+
+Original immutable IV023 source commit `614ba879f7389fdb620c474adaee273b00eac71c`, actual `ActualZetaCorrelationFourierAgreement.lean` blob `60453bd214c43feedb0fa64d74a15bd452e48998`; original weight domain `NeutralCanonicalFormDomain.lean` blob `2bf19165fce3a0cfa6e4d782d68caab268aaf82b`. Every needed additive module is compiled together atop actual source with exact Git blobs: F08-005 `2a8199ff817f59d1437fa173518a588cbbd467b9`, F08-011 `b1f53459762df682f6d1d358aae9c82b5396c5a7`, F08-013 `7b91eda87ce5a0d7691fdc643865e72fb153287c`, F08-015 `f1969dede41f0d799788411420c0cb2a63c5e53a`.
+
+**This closes the *existence of a shrinking actual smooth physical bump family* and the corresponding *weighted Fourier error integral* only**, if compiler/custody pass. Does not prove source physical convolution `C_c^∞` for arbitrary L² input, Schwartz source window Fourier/Plancherel a.e. identification with its original `RealComplexL2` carrier, inward dilation convergence, full dense original supported log form core, original signed `Zeta23.EF.literatureRHS`↔native mixed form identity, F42/global Weil positivity or RH.
+
+Acceptance: actual Lean 4.34.0 `.olean` + 6/6 ordinary named strict axioms, followed by independent real ZIP/Git/SHA/CRC source audit including 4/4 negatives.
