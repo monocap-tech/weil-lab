@@ -1,0 +1,111 @@
+name: IV072 source-normalized Fourier halfline resolvent — kernel pilot
+
+on:
+  push:
+    branches:
+      - research/iv072-original-fourier-halfline-pilot
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaIV072FourierHalflinePilot.lean"
+      - ".github/workflows/iv072-original-fourier-halfline-pilot.yml"
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaIV072FourierHalflinePilot.lean"
+      - ".github/workflows/iv072-original-fourier-halfline-pilot.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: iv072-original-fourier-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  original-positive-exponent-halfline-lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict source preflight with original pinned Lean version
+        run: |
+          set -euo pipefail
+          grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path("WeilDefect/Arithmetic/ActualZetaIV072FourierHalflinePilot.lean")
+          s=p.read_text()
+          names=[
+            "neutralIV072Exp_right_integrable",
+            "neutralIV072Exp_left_integrable",
+            "neutralIV072Exp_right_integral",
+            "neutralIV072Exp_left_integral",
+            "neutralIV072RightCoefficient_re_neg",
+            "neutralIV072LeftCoefficient_re_pos",
+            "neutralIV072RightFourierResolvent",
+            "neutralIV072LeftFourierResolvent",
+          ]
+          assert all(s.count("#print axioms "+n)==1 for n in names)
+          assert not re.search(r"\b(?:sorry|admit|sorryAx)\b",s)
+          print("IV072 original Fourier halfline preflight: 8 source/axiom targets")
+          PY
+      - name: Install frozen Lean toolchain, pinned Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake --version
+          lake exe cache get
+      - name: Fresh real Lean proof build
+        run: |
+          set -euo pipefail
+          mkdir -p iv072/out
+          touch iv072/out/fresh.stamp
+          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV072FourierHalflinePilot.olean
+          lake build WeilDefect.Arithmetic.ActualZetaIV072FourierHalflinePilot 2>&1 | tee iv072/out/build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV072FourierHalflinePilot.olean
+          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV072FourierHalflinePilot.olean -nt iv072/out/fresh.stamp
+      - name: Direct source strict axiom receipts
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV072FourierHalflinePilot.lean 2>&1 | tee iv072/out/axioms.log
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re
+          t=Path("iv072/out/axioms.log").read_text()
+          names=[
+            "neutralIV072Exp_right_integrable",
+            "neutralIV072Exp_left_integrable",
+            "neutralIV072Exp_right_integral",
+            "neutralIV072Exp_left_integral",
+            "neutralIV072RightCoefficient_re_neg",
+            "neutralIV072LeftCoefficient_re_pos",
+            "neutralIV072RightFourierResolvent",
+            "neutralIV072LeftFourierResolvent",
+          ]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          found={}
+          for name in names:
+            full="WeilDefect."+name
+            pat=re.compile(r"^'"+re.escape(full)+r"' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)\s*$",re.M)
+            results=list(pat.finditer(t))
+            assert len(results)==1, (full,len(results),t[-1000:])
+            axioms=({a.strip() for a in results[0].group(1).split(",") if a.strip()}
+                    if results[0].group(1) is not None else set())
+            assert axioms<=allowed,(full,axioms-allowed)
+            found[full]=sorted(axioms)
+          assert not re.search(r'(?m)^\s*(?:error:|.*: error:)',t)
+          Path("iv072/out/receipts.json").write_text(json.dumps(found,sort_keys=True,indent=2)+"\n")
+          print("IV072: eight strictly audited Lean declarations PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv072-original-fourier-halfline-real-lean-receipts
+          path: |
+            iv072/out/
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV072FourierHalflinePilot.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
