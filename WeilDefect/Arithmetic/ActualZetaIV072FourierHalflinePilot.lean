@@ -1,4 +1,5 @@
 import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
+import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
 import Mathlib.Tactic
 
 namespace WeilDefect
@@ -80,6 +81,81 @@ theorem neutralIV072LeftFourierResolvent
   neutralIV072Exp_left_integral _
     (neutralIV072LeftCoefficient_re_pos alpha r ha)
 
+/-- A single full-line source built from the two pinned Mathlib
+complex exponential halfline integrands. The original Fourier sign
+is +i r x. At x=0 the left branch is used, but this is immaterial
+to the real Lebesgue integral. -/
+def neutralIV072FullLineIntegrand (alpha r : ℝ) (x : ℝ) : ℂ :=
+  if 0 < x then
+    Complex.exp (neutralIV072RightCoefficient alpha r * (x : ℂ))
+  else
+    Complex.exp (neutralIV072LeftCoefficient alpha r * (x : ℂ))
+
+/-- Physical full-line resolvent is integrable on the LEFT region:
+this is an actual source function, not an abstract matrix entry. -/
+theorem neutralIV072FullLine_integrable_left
+    (alpha r : ℝ) (ha : 0 < alpha) :
+    IntegrableOn (neutralIV072FullLineIntegrand alpha r) (Iic 0) := by
+  apply (neutralIV072Exp_left_integrable _
+    (neutralIV072LeftCoefficient_re_pos alpha r ha)).congr_fun
+      (s := Iic (0 : ℝ)) ?_ measurableSet_Iic
+  intro x hx
+  have hnot : ¬ (0 : ℝ) < x := not_lt.mpr hx
+  simp [neutralIV072FullLineIntegrand, hnot]
+
+/-- Physical full-line resolvent is integrable on the RIGHT region. -/
+theorem neutralIV072FullLine_integrable_right
+    (alpha r : ℝ) (ha : 0 < alpha) :
+    IntegrableOn (neutralIV072FullLineIntegrand alpha r) (Ioi 0) := by
+  apply (neutralIV072Exp_right_integrable _
+    (neutralIV072RightCoefficient_re_neg alpha r ha)).congr_fun
+      (s := Ioi (0 : ℝ)) ?_ measurableSet_Ioi
+  intro x hx
+  simp [neutralIV072FullLineIntegrand, hx]
+
+/-- The authentic whole-real-line complex Bochner integral equals
+the sum of the two pinned halfline rational resolvents.
+It uses the pinned real Lebesgue decomposition
+`integral_Iic_add_Ioi`, and does NOT assert a zeta source theorem. -/
+theorem neutralIV072FullLine_integral_eq_halves
+    (alpha r : ℝ) (ha : 0 < alpha) :
+    (∫ x : ℝ, neutralIV072FullLineIntegrand alpha r x) =
+      1 / neutralIV072LeftCoefficient alpha r +
+        (-1 / neutralIV072RightCoefficient alpha r) := by
+  have hL := neutralIV072FullLine_integrable_left alpha r ha
+  have hR := neutralIV072FullLine_integrable_right alpha r ha
+  have hsplit := integral_Iic_add_Ioi hL hR
+  have hleft :
+      (∫ x : ℝ in Iic (0 : ℝ),
+        neutralIV072FullLineIntegrand alpha r x) =
+      (∫ x : ℝ in Iic (0 : ℝ),
+        Complex.exp (neutralIV072LeftCoefficient alpha r * (x : ℂ))) := by
+    apply setIntegral_congr_fun measurableSet_Iic
+    intro x hx
+    have hnot : ¬ (0 : ℝ) < x := not_lt.mpr hx
+    simp [neutralIV072FullLineIntegrand, hnot]
+  have hright :
+      (∫ x : ℝ in Ioi (0 : ℝ),
+        neutralIV072FullLineIntegrand alpha r x) =
+      (∫ x : ℝ in Ioi (0 : ℝ),
+        Complex.exp (neutralIV072RightCoefficient alpha r * (x : ℂ))) := by
+    apply setIntegral_congr_fun measurableSet_Ioi
+    intro x hx
+    simp [neutralIV072FullLineIntegrand, hx]
+  calc
+    (∫ x : ℝ, neutralIV072FullLineIntegrand alpha r x) =
+      (∫ x : ℝ in Iic (0 : ℝ), neutralIV072FullLineIntegrand alpha r x) +
+      (∫ x : ℝ in Ioi (0 : ℝ), neutralIV072FullLineIntegrand alpha r x) :=
+        hsplit.symm
+    _ = (∫ x : ℝ in Iic (0 : ℝ),
+            Complex.exp (neutralIV072LeftCoefficient alpha r * (x : ℂ))) +
+        (∫ x : ℝ in Ioi (0 : ℝ),
+            Complex.exp (neutralIV072RightCoefficient alpha r * (x : ℂ))) := by
+          rw [hleft, hright]
+    _ = _ := by
+          rw [neutralIV072LeftFourierResolvent alpha r ha,
+            neutralIV072RightFourierResolvent alpha r ha]
+
 #print axioms neutralIV072Exp_right_integrable
 #print axioms neutralIV072Exp_left_integrable
 #print axioms neutralIV072Exp_right_integral
@@ -88,6 +164,9 @@ theorem neutralIV072LeftFourierResolvent
 #print axioms neutralIV072LeftCoefficient_re_pos
 #print axioms neutralIV072RightFourierResolvent
 #print axioms neutralIV072LeftFourierResolvent
+#print axioms neutralIV072FullLine_integrable_left
+#print axioms neutralIV072FullLine_integrable_right
+#print axioms neutralIV072FullLine_integral_eq_halves
 
 end
 end WeilDefect
