@@ -4,7 +4,7 @@
 
 ## Immutable mathematical source and producer
 
-IV023 frozen original mathematical source commit `614ba879f7389fdb620c474adaee273b00eac71c`, source Fourier agreement Git blob `60453bd214c43feedb0fa64d74a15bd452e48998`, source physical transform `d5aa1095b2fe64933ad8db64732d232631d3d3b7`, original logarithmic source-domain blob `2bf19165fce3a0cfa6e4d782d68caab268aaf82b`. F08-023 source head `62fe6318dd9a1fba8dfdbcbb75da76e5c8a75fb2`, exact new Lean source Git blob `55739eeed4b8b0762af137f50efc600feefe0df2`, original-source [compiler run 45288037176](https://github.com/monocap-tech/weil-lab/actions/runs/45288037176).
+IV023 frozen original mathematical source commit `614ba879f7389fdb620c474adaee273b00eac71c`, source Fourier agreement Git blob `60453bd214c43feedb0fa64d74a15bd452e48998`, source physical transform `d5aa1095b2fe64933ad8db64732d232631d3d3b7`, original logarithmic source-domain blob `2bf19165fce3a0cfa6e4d782d68caab268aaf82b`. F08-023 source head `5cdbf1c175fc02eda56a721c4821cee522107fd4`, exact new Lean source Git blob `2be155dbefe9d04db6499d5d3e091b29d86ec0a0`, original-source [compiler run 45290382605](https://github.com/monocap-tech/weil-lab/actions/runs/45290382605).
 
 Source custody requires exact all-nine imported Lean modules from the same real compiler ZIP: F08-005 `2a8199ff817f59d1437fa173518a588cbbd467b9`; F08-007 `606d324ca9fcfd53d059efe1b57d1b0e30349476`; F08-009 `6badab7f17605d3131ee414282683d390c6f1964`; F08-011 `b1f53459762df682f6d1d358aae9c82b5396c5a7`; F08-013 `7b91eda87ce5a0d7691fdc643865e72fb153287c`; F08-015 `f1969dede41f0d799788411420c0cb2a63c5e53a`; F08-017 `b767da47b302734c9b1de0bd0fde38b727c84b20`; F08-019 `efe3260cbd8798ad7192142c1e656f31a6729d13`; F08-021 `f7f769dd120810645a6bed9fa3ef379c94986a77`.
 
