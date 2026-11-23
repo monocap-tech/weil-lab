@@ -2,6 +2,7 @@ import WeilDefect.Morphology.NeutralCanonicalFormDomain
 
 namespace WeilDefect
 noncomputable section
+open MeasureTheory
 
 /-- F08-003: contraction of the *original* logarithmic Fourier energy
 under a pointwise complex multiplier of modulus at most one.
