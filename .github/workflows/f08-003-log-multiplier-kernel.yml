@@ -1,0 +1,79 @@
+name: F08-003 source-typed logarithmic complex multiplier Lean gate
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_003/**'
+      - '.github/workflows/f08-003-log-multiplier-kernel.yml'
+permissions:
+  contents: read
+jobs:
+  source-logarithmic-weight:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout source-pinned actual IV023 research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Verify actual source and stage purely additive Lean module
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          ! grep -Eq 'sorry|admit|unsafe' candidate/verification/f08/f08_003/F08LogMultiplierContract.lean
+          mkdir -p research/WeilDefect/Generated/F08
+          cp candidate/verification/f08/f08_003/F08LogMultiplierContract.lean research/WeilDefect/Generated/F08/LogMultiplierContract.lean
+      - name: Initialize pinned Lean and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Genuine pinned kernel build plus strict two-name axiom audit
+        working-directory: research
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build WeilDefect.Generated.F08.LogMultiplierContract 2>&1 | tee f08-003-build.log
+          printf '%s\n' 'import WeilDefect.Generated.F08.LogMultiplierContract' '#print axioms WeilDefect.f08_log_weight_multiplier_pointwise_le' '#print axioms WeilDefect.f08_log_weight_multiplier_integrable' > /tmp/f08-003-axioms.lean
+          lake env lean /tmp/f08-003-axioms.lean 2>&1 | tee f08-003-axioms.log
+          python3 - <<'PY'
+          import pathlib,re
+          names={'f08_log_weight_multiplier_pointwise_le','f08_log_weight_multiplier_integrable'}
+          found={}
+          for line in pathlib.Path('f08-003-axioms.log').read_text().splitlines():
+              m=re.fullmatch(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",line)
+              if m:
+                  assert m[1] not in found
+                  found[m[1]]={x.strip() for x in m[2].split(',') if x.strip()}
+                  continue
+              m=re.fullmatch(r"'WeilDefect\.(\w+)' does not depend on any axioms",line)
+              if m:
+                  assert m[1] not in found
+                  found[m[1]]=set()
+                  continue
+              assert not line,('unexpected compiler output',line)
+          assert set(found)==names,(found,names)
+          assert all(a <= {'propext','Classical.choice','Quot.sound'} for a in found.values()),found
+          print('F08-003 exact logarithmic multiplier source lemmas: 2/2 standard-only axioms')
+          PY
+      - name: Archive source and genuine compiler logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-003-original-log-weight-compiler-evidence
+          path: |
+            research/f08-003-build.log
+            research/f08-003-axioms.log
+            research/WeilDefect/Generated/F08/LogMultiplierContract.lean
+          if-no-files-found: ignore
