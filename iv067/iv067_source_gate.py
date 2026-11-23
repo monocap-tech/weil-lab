@@ -32,10 +32,10 @@ THEOREMS = (
  'iv066_native_signed_multiplier',
 )
 ALLOWED = {'propext', 'Quot.sound', 'Classical.choice'}
-# IV069 compiler-guided Real.pi cast correction: source re-pinned; axiom inventory unchanged.
+# IV070 compiler-guided axiom import-order repair: original proof source and six queries unchanged.
 PINNED_IV066 = {
  LEAN: 'be287351931c08bef941199b47240dcb307027abebe3222f55fc49d4f05000b7',
- AUDIT: '424bb2a4b1cc3d86813e33863f8ae4e5bb6c3e0d636190b0507a11ed12c922f8',
+ AUDIT: '982cd195009f9067c34840f751da7e702cd7d89bd984239a6aeac432e9863c4a',
  IV066_GATE: '84f705735537fc8ad9c5a2de37dcd418fcfc1659eeffd301e1acb512679ceae4',
 }
 SOURCE_BLOBS = {
@@ -89,6 +89,8 @@ def local_audit(root: Path):
   assert (root/name).is_file() and digest(root/name) == expected, f'broken IV066 pin {name}'
  lean=(root/LEAN).read_text()
  audit=(root/AUDIT).read_text()
+ assert lean.lstrip().startswith('import '), 'pilot import must be first'
+ assert audit.lstrip().startswith('import '), 'axiom audit import must be first'
  for th in THEOREMS:
   assert re.search(r'^theorem\s+'+re.escape(th)+r'\b', lean, flags=re.M), f'theorem missing: {th}'
   assert audit.count('#print axioms WeilDefect.'+th+'\n') == 1, f'axiom query missing/duplicate: {th}'
