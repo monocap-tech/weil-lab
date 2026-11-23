@@ -1,0 +1,71 @@
+name: F41-001 original physical H/V source-contract admission (NO Lean)
+on:
+  pull_request:
+    paths:
+      - 'verification/f41/f41_001/**'
+      - '.github/workflows/f41-001-original-physical-source-contract.yml'
+permissions:
+  contents: read
+jobs:
+  original-source-contract:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout exact source-contract candidate only
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: candidate
+          persist-credentials: false
+      - name: Checkout original immutable NF769 source
+        uses: actions/checkout@v4
+        with:
+          ref: a431f903254000bb5ad8edbc276ccc8599da98f5
+          path: original
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify exact two Git revisions, Python syntax and negative controls (NO Lean)
+        shell: bash
+        env:
+          CANDIDATE_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git -C candidate rev-parse HEAD)" = "$CANDIDATE_SHA"
+          test "$(git -C original rev-parse HEAD)" = 'a431f903254000bb5ad8edbc276ccc8599da98f5'
+          test "$(cat original/lean-toolchain)" = 'leanprover/lean4:v4.34.0'
+          python -m py_compile candidate/verification/f41/f41_001/f41_original_physical_entry_source_contract.py
+          python candidate/verification/f41/f41_001/f41_original_physical_entry_source_contract.py selftest
+      - name: Authenticate exact original H/V, 242 source row predicates and all binding premises (NO Lean)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python candidate/verification/f41/f41_001/f41_original_physical_entry_source_contract.py source --source-root original --out f41-001-original-physical-HV-contract.json | tee f41-001-source-only.log
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path('f41-001-original-physical-HV-contract.json').read_text())
+          assert j['schema']=='F41-001-immutable-original-physical-HV-entry-contract-nonpromoting-v1'
+          assert j['historical_original_immutable_source_commit']=='a431f903254000bb5ad8edbc276ccc8599da98f5'
+          assert j['physical_H_full_entries']==58564
+          assert j['physical_H_independent_lower_triangle_entry_comparisons']==29403
+          assert j['physical_V_full_mixed_entries']==968
+          assert len(j['source_specific_HV_rows_to_certify'])==242
+          assert j['data_dependent_full_HV_entry_check_proved'] is False
+          assert j['physical_full_matrix_certified'] is False
+          assert j['F40_claim_reverified_by_this_source_only_run'] is False
+          assert j['original_signed_Weil_form_attached'] is False
+          assert j['RH_proved'] is False
+          print('F41-001 source pinned original matrix/HV contract PASS, NO F41/F42 OR RH CERTIFICATE')
+          PY
+      - name: Preserve nonpromoting original H/V source and requirement inventory
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: f41-001-source-pinned-original-physical-HV-contract-NO-LEAN
+          path: |
+            f41-001-original-physical-HV-contract.json
+            f41-001-source-only.log
+          if-no-files-found: ignore
