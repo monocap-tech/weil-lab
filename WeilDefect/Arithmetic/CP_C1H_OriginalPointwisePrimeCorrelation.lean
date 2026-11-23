@@ -14,8 +14,8 @@ integral transport are separate H2 obligations. This source does not
 establish a sign for the full pole-prime-Gamma Weil form or RH.
 -/
 
-private def cpHLeftCollar : Set ℝ := Ioo (-11/10) (-11/10 + 1/500)
-private def cpHRightCollar : Set ℝ := Ioo (11/10 - 1/500) (11/10)
+private def cpHLeftCollar : Set ℝ := Ioo (-(11/10:ℝ)) (-(11/10:ℝ)+1/500)
+private def cpHRightCollar : Set ℝ := Ioo ((11/10:ℝ)-1/500) (11/10:ℝ)
 
 private theorem cpHcollars_disjoint (x : ℝ)
     (hxL : x ∈ cpHLeftCollar) (hxR : x ∈ cpHRightCollar) : False := by

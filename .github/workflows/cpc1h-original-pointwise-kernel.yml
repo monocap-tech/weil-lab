@@ -5,6 +5,7 @@ on:
       - research/cpc1b-original-iv009-nine-probe-source
     paths:
       - ".github/workflows/cpc1h-original-pointwise-kernel.yml"
+      - "WeilDefect/Arithmetic/CP_C1H_OriginalPointwisePrimeCorrelation.lean"
   workflow_dispatch:
 permissions:
   contents: read
