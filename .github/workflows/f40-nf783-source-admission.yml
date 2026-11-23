@@ -45,6 +45,51 @@ jobs:
           assert '"new_original_Lean_gates_accepted": False' in p
           print('NF783 224–231 source-only scope / refusal tests PASS; NO new original Lean compilation or acceptance')
           PY
+      - name: Strictly parse NF783 proposed original Lean workflow and source-bound audit (NO Lean)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check PyYAML==6.0.2
+          python - <<'PY'
+          from pathlib import Path
+          import ast,yaml
+          p=Path('.github/workflows/f40-nf783-single-lane.yml')
+          txt=p.read_text()
+          def unique(node):
+              if isinstance(node,yaml.nodes.MappingNode):
+                  ks=[k.value for k,v in node.value]
+                  assert len(ks)==len(set(ks)),('duplicate YAML keys',ks)
+                  for k,v in node.value: unique(k);unique(v)
+              elif isinstance(node,yaml.nodes.SequenceNode):
+                  for v in node.value: unique(v)
+          unique(yaml.compose(txt,Loader=yaml.BaseLoader))
+          m=yaml.load(txt,Loader=yaml.BaseLoader)
+          assert set(m['on'])=={'push','workflow_dispatch'}
+          assert m['on']['push']['branches']==['main']
+          assert m['on']['push']['paths']==['verification/f40/nf783/NF783_ONE_SHOT_COMPILE_REQUEST.txt']
+          assert len(m['jobs'])==1
+          j=m['jobs']['authenticate-reuse-and-kernel-actual-original-indexzero-224-231']
+          assert 'refs/heads/main' in j['if']
+          assert j['concurrency']['group']=='weil-uoi030-single-lane-source-pinned'
+          assert j['concurrency']['cancel-in-progress']=='false'
+          for marker in ('RUN-PINNED-F40-NF783','Col224 through Col231',
+                         'for ((i=224;i<232;i++))',
+                         'nf782_original_prior_916_custody.py',
+                         'nf783_original_prior_932_custody.py',
+                         'nf783-prior932-live-metadata.json',
+                         'nf783_original_indexzero_224_231_kernel_audit.py',
+                         '11e31531cfd29187b648b207d85269c8b2a0a065a387b9182023a425e645a42f'):
+              assert marker in txt,marker
+          a=Path('verification/f40/nf783/nf783_original_indexzero_224_231_kernel_audit.py').read_text()
+          ast.parse(a)
+          for marker in ('compiled_objects()', 'strict_axiom_receipt()',
+                         'accepted_original_predecessor_932_metadata_sha256',
+                         'independent_postrun_artifact_zip_reconciliation_done',
+                         '"local_combined_gate_count_if_independently_reconciled": 948'):
+              assert marker in a,marker
+          assert not Path('verification/f40/nf783/NF783_ONE_SHOT_COMPILE_REQUEST.txt').exists()
+          print('NF783 strict main-only source/axiom/auditor contracts PASS, NO LEAN')
+          PY
       - name: Verify genuine accepted NF782 932 live GitHub job and archive metadata (no new Lean)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
