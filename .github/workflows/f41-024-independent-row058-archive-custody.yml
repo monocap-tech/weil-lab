@@ -1,0 +1,79 @@
+name: F41-024 independent original row058 archive custody (NO new Lean)
+on:
+  pull_request:
+    paths:
+      - 'verification/f41/f41_024/**'
+      - '.github/workflows/f41-024-independent-row058-archive-custody.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: f41-024-receipt-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  independent-original-row058:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      F41_RUN_ID: '45256548706'
+      F41_ARTIFACT_ID: '14859222571'
+      F41_ZIP_SHA256: 'cc50e00d2cde68ca76c7d4c83dc099976af1d16d22990b382b8bd188be3b7278'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Source-only Python preflight and four negative controls
+        run: |
+          set -euo pipefail
+          python3 -m py_compile verification/f41/f41_024/f41_024_row058_archive_audit.py
+          python3 verification/f41/f41_024/f41_024_row058_archive_audit.py selftest
+      - name: Independently verify successful F41-023 original compiler run and pinned ZIP artifact
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p f41-024-receipt
+          python3 - <<'PY'
+          import json,os,re,urllib.request
+          runid=os.environ['F41_RUN_ID']
+          artifactid=os.environ['F41_ARTIFACT_ID']
+          expected=os.environ['F41_ZIP_SHA256']
+          assert re.fullmatch(r'\d+',runid) and re.fullmatch(r'\d+',artifactid)
+          assert re.fullmatch(r'[0-9a-f]{64}',expected)
+          root=os.environ['GITHUB_API_URL']+'/repos/'+os.environ['GITHUB_REPOSITORY']
+          hdr={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'}
+          def get(url):
+              with urllib.request.urlopen(urllib.request.Request(url,headers=hdr),timeout=30) as r:
+                  return json.load(r)
+          run=get(root+'/actions/runs/'+runid)
+          assert run['status']=='completed' and run['conclusion']=='success'
+          assert run['head_sha']=='dc9405d25c4c3435e91bcac9d4b57dd6c24cc052'
+          assert run['name']=='F41-023 original physical H/V row058 actual full-payment Lean gate'
+          assert run['head_repository']['full_name']=='monocap-tech/weil-lab'
+          artifact=get(root+'/actions/artifacts/'+artifactid)
+          assert artifact['workflow_run']['id']==int(runid)
+          assert artifact['name']=='f41-023-original-full-payment-row058-kernel-evidence'
+          assert not artifact['expired']
+          assert artifact['digest']=='sha256:'+expected
+          assert artifact['size_in_bytes']>0
+          with open('f41-024-receipt/validated-producer.json','w') as f:
+              json.dump({'run_id':int(runid),'artifact_id':int(artifactid),'run_head_sha':run['head_sha'],
+                  'run_conclusion':'success','artifact_zip_sha256':expected},f,indent=2)
+          print('F41-024 externally confirmed successful original compiler and pinned ZIP digest')
+          PY
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$F41_ARTIFACT_ID/zip" -o f41-024-receipt/f41-023-original-row058.zip
+          echo "$F41_ZIP_SHA256  f41-024-receipt/f41-023-original-row058.zip" | sha256sum -c -
+          python3 verification/f41/f41_024/f41_024_row058_archive_audit.py audit \
+            --zip f41-024-receipt/f41-023-original-row058.zip \
+            --expected-zip-sha256 "$F41_ZIP_SHA256" \
+            --run-url "https://github.com/monocap-tech/weil-lab/actions/runs/$F41_RUN_ID" \
+            --run-status success \
+            --output f41-024-receipt/f41-024-original-row058-independent-custody.json
+      - name: Preserve independent row58 custody evidence (only after audit)
+        uses: actions/upload-artifact@v4
+        with:
+          name: f41-024-original-physical-row058-independent-audit
+          path: |
+            f41-024-receipt/validated-producer.json
+            f41-024-receipt/f41-024-original-row058-independent-custody.json
+          if-no-files-found: error
