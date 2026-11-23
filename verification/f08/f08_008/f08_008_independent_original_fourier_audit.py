@@ -31,22 +31,21 @@ def git_blob(b):
     return hashlib.sha1(b"blob " + str(len(b)).encode() + b"\0" + b).hexdigest()
 
 def read_axioms(raw):
+    """Strictly parse Lean's single- or multiline pretty-printed named axioms."""
     found = {}
-    for line in raw.splitlines():
-        line = line.strip()
-        m = re.fullmatch(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]", line)
-        if m:
-            assert m[1] not in found, ("duplicate", m[1])
-            found[m[1]] = {x.strip() for x in m[2].split(",") if x.strip()}
-            continue
-        m = re.fullmatch(r"'WeilDefect\.(\w+)' does not depend on any axioms", line)
-        if m:
-            assert m[1] not in found, ("duplicate", m[1])
-            found[m[1]] = set()
-            continue
-        assert not line, ("unexpected output", line)
+    pattern = re.compile(
+        r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]"
+        r"|'WeilDefect\.(\w+)' does not depend on any axioms", re.S)
+    for match in pattern.finditer(raw):
+        name = match[1] or match[3]
+        assert name not in found, ("duplicate", name)
+        found[name] = (
+            {x.strip() for x in match[2].split(",") if x.strip()}
+            if match[2] is not None else set())
+    remainder = pattern.sub("", raw)
+    assert not remainder.strip(), ("unexpected output", remainder)
     assert set(found) == NAMES, ("unexpected names", found)
-    assert all(s <= ALLOWED for s in found.values()), ("unsafe axioms", found)
+    assert all(values <= ALLOWED for values in found.values()), ("unsafe axioms", found)
     return found
 
 def unique_suffix(z, suffix):
