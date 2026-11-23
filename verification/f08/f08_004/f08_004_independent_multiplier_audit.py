@@ -65,7 +65,7 @@ def verify(archive):
         build = unique_suffix(z, "f08-003-build.log").decode()
         axioms = unique_suffix(z, "f08-003-axioms.log").decode()
     assert git_blob(src) == CANDIDATE_SOURCE_BLOB, "source not equal to exact producer PR source"
-    assert b"import WeilDefect.Arithmetic.LogarithmicForm" in src
+    assert b"import WeilDefect.Morphology.NeutralCanonicalFormDomain" in src
     assert b"f08_log_weight_multiplier_pointwise_le" in src
     assert b"f08_log_weight_multiplier_integrable" in src
     assert b"sorry" not in src and b"admit" not in src and b"unsafe" not in src
