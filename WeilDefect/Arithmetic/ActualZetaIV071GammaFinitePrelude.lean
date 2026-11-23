@@ -70,7 +70,25 @@ theorem neutralIV071GammaGain_rationalResolvent
   field_simp [ha0,hd0,he0]
   <;> ring
 
+/-- The exact original NF599 Gamma symbol is the pointwise limit of
+the finite *source-defined* rational-resolvent truncations. This
+uses the imported proven HasSum, not an alternative multiplier.
+It is only pointwise: physical Fourier-integral interchange remains
+a separate IV obligation. -/
+theorem neutralIV071GammaFinite_tendsto (r : ℝ) :
+    Filter.Tendsto (fun N : ℕ => neutralIV071GammaFinite N r)
+      Filter.atTop (nhds (Zeta23.EF.gammaBracket r)) := by
+  have hs := (neutralNF599GammaGainSeries r).tendsto_sum_nat
+  have ht := (tendsto_const_nhds
+    (x := Zeta23.EF.gammaBracket 0 +
+      neutralNF599Gain (1/4) r)).add hs
+  convert ht using 1
+  · funext N
+    rfl
+  · ring
+
 #print axioms neutralNF599GammaGainSeries
+#print axioms neutralIV071GammaFinite_tendsto
 #print axioms neutralIV071GammaFinite_le
 #print axioms neutralIV071GammaFinite_succ
 #print axioms neutralIV071GammaFinite_mono
