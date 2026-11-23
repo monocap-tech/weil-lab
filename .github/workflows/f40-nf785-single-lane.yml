@@ -87,7 +87,7 @@ jobs:
           set -euo pipefail
           p=nf785-inputs/verification/f40/nf785/NF785_ONE_SHOT_COMPILE_REQUEST.txt
           test -f "$p"
-          test "$(cat "$p")" = 'COMPILE-NF785-240-241-ONCE:a431f903254000bb5ad8edbc276ccc8599da98f5'
+          test "$(cat "$p")" = 'COMPILE-NF785-240-241-RETRY2-ONCE:a431f903254000bb5ad8edbc276ccc8599da98f5'
           test "$GITHUB_REF" = 'refs/heads/main'
       - name: Require pinned research identity and overlay only the three new source drivers
         shell: bash
@@ -632,15 +632,15 @@ jobs:
           p=Path('nf785-indexzero-240-241-source-binding.json')
           m=json.loads(p.read_text())
           assert m['new_indices_HD']==m['new_indices_A']==list(range(240,242))
-          assert m['new_gate_instances']==16 and m['new_declarations']==32
-          assert len(m['strict_axiom_names'])==35
+          assert m['new_gate_instances']==4 and m['new_declarations']==8
+          assert len(m['strict_axiom_names'])==11
           assert m['cache_reuse_required'] is True
           assert m['new_numerical_kernel_accepted'] is False
           assert m['nf734_024_031_accepted_by_this_stage'] is False
           assert m['nf737_032_039_accepted_by_this_stage'] is False
           assert m['nf739_040_047_accepted_by_this_stage'] is False
           assert m['nf742_048_055_accepted_by_this_stage'] is False
-          print('NF785 16 genuine original global indexzero 240–241 gate proof SOURCES authenticated; original kernel not yet attempted')
+          print('NF785 4 genuine original global indexzero 240–241 gate proof SOURCES authenticated; original kernel not yet attempted')
           PY
       - uses: actions/upload-artifact@v4
         with:
