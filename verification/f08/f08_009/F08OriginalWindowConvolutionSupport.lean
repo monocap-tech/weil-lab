@@ -4,7 +4,7 @@ import Mathlib.Analysis.Fourier.Convolution
 namespace WeilDefect
 noncomputable section
 open MeasureTheory
-open scoped Convolution
+open scoped Convolution Pointwise
 
 /-!
 F08-009 — Original physical compact-window convolution support control.
