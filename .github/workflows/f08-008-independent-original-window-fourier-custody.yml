@@ -1,4 +1,4 @@
-name: F08-008 independent original log-multiplier Lean source ZIP axiom custody
+name: F08-008 independent original physical-window Fourier Lean archive custody
 on:
   pull_request:
     paths:
@@ -60,7 +60,7 @@ jobs:
       - name: Archive independent source-only custody
         uses: actions/upload-artifact@v4
         with:
-          name: f08-008-original-log-weight-independent-source-audit
+          name: f08-008-original-window-fourier-independent-source-audit
           path: |
             f08-008-receipt/source-producer.json
             f08-008-receipt/f08-008-original-independent-axiom-audit.json
