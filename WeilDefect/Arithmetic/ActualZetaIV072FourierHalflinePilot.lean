@@ -1,0 +1,93 @@
+import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
+import Mathlib.Tactic
+
+namespace WeilDefect
+noncomputable section
+
+open MeasureTheory Set
+
+/-!
+IV072: original positive-exponent Fourier resolvent, strictly finite prelude.
+
+These lemmas evaluate the TWO separate exponential halfline integrals.
+They use real complex Lebesgue integrals from the pinned Mathlib package.
+No assertion about the true original mixed Zeta23 Gamma integral is made
+here. The full-line Fourier pair, physical Schwartz inversion, and
+spectral/physical limits remain subsequent obligations.
+
+Frozen original Weil source: 165981950e193a8b6ea219f7b31e379db495befa
+-/
+
+/-- Exact Mathlib-supported integrability of the right halfline
+exponential with negative real exponent. -/
+theorem neutralIV072Exp_right_integrable (z : ℂ) (hz : z.re < 0) :
+    IntegrableOn (fun x : ℝ => Complex.exp (z * (x : ℂ))) (Ioi 0) :=
+  integrableOn_exp_mul_complex_Ioi hz 0
+
+/-- Exact Mathlib-supported integrability of the left halfline
+exponential with positive real exponent. -/
+theorem neutralIV072Exp_left_integrable (z : ℂ) (hz : 0 < z.re) :
+    IntegrableOn (fun x : ℝ => Complex.exp (z * (x : ℂ))) (Iic 0) :=
+  integrableOn_exp_mul_complex_Iic hz 0
+
+/-- Right halfline resolvent is the source-normalized improper integral. -/
+theorem neutralIV072Exp_right_integral (z : ℂ) (hz : z.re < 0) :
+    (∫ x : ℝ in Ioi 0, Complex.exp (z * (x : ℂ))) = -1 / z := by
+  simpa using (integral_exp_mul_complex_Ioi (a := z) hz 0)
+
+/-- Left halfline resolvent uses the complementary sign. -/
+theorem neutralIV072Exp_left_integral (z : ℂ) (hz : 0 < z.re) :
+    (∫ x : ℝ in Iic 0, Complex.exp (z * (x : ℂ))) = 1 / z := by
+  simpa using (integral_exp_mul_complex_Iic (a := z) hz 0)
+
+/-- The original *positive-exponent* Fourier convention, with
+physical decay exp(-alpha |u|), has these two coefficients. -/
+def neutralIV072RightCoefficient (alpha r : ℝ) : ℂ :=
+  -(alpha : ℂ) + Complex.I * (r : ℂ)
+
+def neutralIV072LeftCoefficient (alpha r : ℝ) : ℂ :=
+  (alpha : ℂ) + Complex.I * (r : ℂ)
+
+/-- Positive physical decay forces the correct right halfline sign. -/
+theorem neutralIV072RightCoefficient_re_neg
+    (alpha r : ℝ) (ha : 0 < alpha) :
+    (neutralIV072RightCoefficient alpha r).re < 0 := by
+  simpa [neutralIV072RightCoefficient, Complex.mul_re] using ha
+
+/-- Positive physical decay forces the correct left halfline sign. -/
+theorem neutralIV072LeftCoefficient_re_pos
+    (alpha r : ℝ) (ha : 0 < alpha) :
+    0 < (neutralIV072LeftCoefficient alpha r).re := by
+  simpa [neutralIV072LeftCoefficient, Complex.mul_re] using ha
+
+/-- Right original Fourier exponential evaluated from genuine Mathlib
+Bochner integral, no unproved original Weil/Fourier source identity. -/
+theorem neutralIV072RightFourierResolvent
+    (alpha r : ℝ) (ha : 0 < alpha) :
+    (∫ x : ℝ in Ioi 0,
+      Complex.exp (neutralIV072RightCoefficient alpha r * (x : ℂ))) =
+      -1 / neutralIV072RightCoefficient alpha r :=
+  neutralIV072Exp_right_integral _
+    (neutralIV072RightCoefficient_re_neg alpha r ha)
+
+/-- Left original Fourier exponential in the same positive-exponent
+convention, with positive physical decay on the negative halfline. -/
+theorem neutralIV072LeftFourierResolvent
+    (alpha r : ℝ) (ha : 0 < alpha) :
+    (∫ x : ℝ in Iic 0,
+      Complex.exp (neutralIV072LeftCoefficient alpha r * (x : ℂ))) =
+      1 / neutralIV072LeftCoefficient alpha r :=
+  neutralIV072Exp_left_integral _
+    (neutralIV072LeftCoefficient_re_pos alpha r ha)
+
+#print axioms neutralIV072Exp_right_integrable
+#print axioms neutralIV072Exp_left_integrable
+#print axioms neutralIV072Exp_right_integral
+#print axioms neutralIV072Exp_left_integral
+#print axioms neutralIV072RightCoefficient_re_neg
+#print axioms neutralIV072LeftCoefficient_re_pos
+#print axioms neutralIV072RightFourierResolvent
+#print axioms neutralIV072LeftFourierResolvent
+
+end
+end WeilDefect
