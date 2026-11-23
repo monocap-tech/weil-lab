@@ -1,0 +1,17 @@
+# F08-020 — independent original physical L² Weil window smoothing ZIP/source/axiom custody
+
+**STAGED, NONPROMOTING until a genuine successful F08-019 Lean .olean and source-verified original compiler archive exist.** [F08-019 producer draft PR #970](https://github.com/monocap-tech/weil-lab/pull/970), originally submitted commit `7bb39ea92764a070a119d6c616cc397517340698`; [Lean run 45276809638](https://github.com/monocap-tech/weil-lab/actions/runs/45276809638). The original source build and exact eight named ordinary axioms are necessary but not sufficient: this separate independent audit checks the true archived bytes.
+
+## Original mathematical source custody
+
+Frozen IV023 research `614ba879f7389fdb620c474adaee273b00eac71c`; original physical Fourier agreement file blob `60453bd214c43feedb0fa64d74a15bd452e48998`, original physical `ActualZetaCorrelationTransform.lean` blob `d5aa1095b2fe64933ad8db64732d232631d3d3b7`, original logarithmic source domain blob `2bf19165fce3a0cfa6e4d782d68caab268aaf82b`. Original candidate F08-019 `F08OriginalSmoothedWindow.lean` Git blob `efe3260cbd8798ad7192142c1e656f31a6729d13`.
+
+All **seven previously independently accepted Lean dependencies** must match their precise Git blobs inside the *same producer archive*: F08-005 `2a8199ff817f59d1437fa173518a588cbbd467b9`, F08-007 `606d324ca9fcfd53d059efe1b57d1b0e30349476`, F08-009 `6badab7f17605d3131ee414282683d390c6f1964`, F08-011 `b1f53459762df682f6d1d358aae9c82b5396c5a7`, F08-013 `7b91eda87ce5a0d7691fdc643865e72fb153287c`, F08-015 `f1969dede41f0d799788411420c0cb2a63c5e53a`, F08-017 `b767da47b302734c9b1de0bd0fde38b727c84b20`.
+
+Separate audit must re-query successful original GitHub producer head/run/job/step/artifact metadata, independently download the entire actual compiler source ZIP and verify full SHA256/CRC/path inventory, all **eight** Lean source blobs, strict successful `Built WeilDefect.Generated.F08.OriginalSmoothedWindow` and exactly **eight named** standard-only `#print axioms` with no `sorryAx`, and refuse four adversarial mutations (new unsafe axiom, renamed theorem, duplicate theorem, compiler error). Independent receipt is mandatory.
+
+## Scope on actual success
+
+Only the following exact source-physical claims are eligible: identification of ℂ/ℝ bilinear convolution with the **original source** complex multiplication; actual sharp-window `neutralWindowRepresentative a f` convolution with physically normalized smooth compact `f08_011_complexMollifier φ` is integrable and real `C∞` as a complex function despite arbitrary non-smooth `f : RealComplexL2`, physical support controlled by `a + φ.rOut`, genuinely compactly supported and `MemLp 2 volume`, exact original ordinary negative-`2π` Fourier factorization, and eventually supported in any expanded physical window under the explicit F08-017 shrinking bumps.
+
+**Still open:** native Fourier coordinate a.e. identification of the newly generated `RealComplexL2` representative and its original spectral multiplier; support-preserving inward dilation strong continuity; fixed strict-support `C_c∞((-a,a))` logarithmic form-core density; original arbitrary Schwartz literal signed `Zeta23.EF.literatureRHS`↔native mixed pairing, global positivity, F42, RH. Parent #932 and ledger #898.
