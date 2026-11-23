@@ -31,9 +31,9 @@ theorem f08_005_log_multiplier_error_pointwise
       _ ≤ (‖m ξ‖ + ‖(1 : ℂ)‖) * ‖F ξ‖ :=
         mul_le_mul_of_nonneg_right (norm_sub_le _ _) (norm_nonneg _)
       _ ≤ 2 * ‖F ξ‖ := by
-        have hh := hm ξ
-        norm_num at *
-        nlinarith [norm_nonneg (F ξ)]
+        have hh : ‖m ξ‖ + ‖(1 : ℂ)‖ ≤ 2 := by
+          simpa only [norm_one] using add_le_add_right (hm ξ) 1
+        exact mul_le_mul_of_nonneg_right hh (norm_nonneg _)
   have hdiff : 0 ≤ 2 * ‖F ξ‖ - ‖(m ξ - 1) * F ξ‖ :=
     sub_nonneg.mpr hnorm
   have hsum : 0 ≤ 2 * ‖F ξ‖ + ‖(m ξ - 1) * F ξ‖ := by positivity
@@ -126,7 +126,7 @@ theorem f08_005_log_multiplier_error_tendsto_zero
         atTop (𝓝 (logarithmicFourierWeight ξ * (0 : ℝ))))
   have h := tendsto_integral_of_dominated_convergence
     (μ := volume)
-    (F := fun n ξ : ℕ × ℝ => logarithmicFourierWeight ξ *
+    (F := fun (n : ℕ) (ξ : ℝ) => logarithmicFourierWeight ξ *
       ‖(m n ξ - 1) * F ξ‖ ^ 2)
     (f := fun _ : ℝ => (0 : ℝ))
     (fun ξ : ℝ => 4 * (logarithmicFourierWeight ξ * ‖F ξ‖ ^ 2))
