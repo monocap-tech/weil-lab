@@ -1,0 +1,11 @@
+# F40 NF781 — Original global index-zero 208–215, source-only preparation
+
+Current independently reconciled original HD/A F40 acceptance is **900/968** (NF780); **68** remain. Index-one 0–241 both families and index-zero 0–207 both families are accepted. New Col208–215 HD/A pairs represent **16 candidate instances**, NOT an accepted 916/968 frontier.
+
+Original frozen research source SHA: a431f903254000bb5ad8edbc276ccc8599da98f5. Canonical NF737 full 242-column original source archive SHA256: 11e31531cfd29187b648b207d85269c8b2a0a065a387b9182023a425e645a42f. The next authentic original col names are NF704Frontier.Col208 through Col215, the three shared plus 32 column-specific strict named axiom queries, and the NF681.Common → NF703Cache.Frontier → eight NF681.Col208–215 → NF704Frontier.Common source import order.
+
+New predecessor NF780 source-bound run 45084550708, direct compiler job 137400074105 completed success, main one-shot SHA 8860a17cb494f852f89d783acdb7f497f89297e5; original archive 14778259486 54,670 bytes, independently downloaded SHA256 5358a9b1815d06cb392c8b010fb7810e6f69a9483770549f08d41f2556dade5d; 26/26 independently verified evidence files and four negative refusal controls in accepted original history #761. New NF781 prior-900 verifier checks GitHub run/job/axiom-step/ZIP metadata, not a new proof.
+
+This PR stages only Python source-preflight, source import guard, live prior-900 metadata custody and a lightweight PR-only admission job. The admission job performs Python syntax, synthetic import negative controls, historical run/job/artifact metadata, and source-scope assertions **without installing Lean, restoring the full NF737 archive, producing new .olean objects, or launching heavyweight jobs**. Full source-bank byte authentication, original compiler workflow, 35 real named axiom outputs and independent downloaded new ZIP audit are all deliberately unpaid next gates.
+
+Concurrency governance: NF780 overlapped CP-C1FG and IV068 heavy jobs. No NF781 compiler trigger or main push is authorized without a cross-workflow one-heavy-job lease and fresh queue review. F41 complete 242×242 physical mixed matrix, F42 native signed Weil form/domain/normalization, global positivity and RH remain open.
