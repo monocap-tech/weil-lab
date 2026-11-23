@@ -47,10 +47,12 @@ jobs:
             "neutralIV072FullLine_integrable_left",
             "neutralIV072FullLine_integrable_right",
             "neutralIV072FullLine_integral_eq_halves",
+            "neutralIV072FullLine_eq_damped_fourier",
+            "neutralIV072DampedFourier_integral_eq_halves",
           ]
           assert all(s.count("#print axioms "+n)==1 for n in names)
           assert not re.search(r"\b(?:sorry|admit|sorryAx)\b",s)
-          print("IV072 original Fourier halfline preflight: 11 source/axiom targets")
+          print("IV072 original Fourier halfline preflight: 13 source/axiom targets")
           PY
       - name: Install frozen Lean toolchain, pinned Mathlib cache
         run: |
@@ -90,6 +92,8 @@ jobs:
             "neutralIV072FullLine_integrable_left",
             "neutralIV072FullLine_integrable_right",
             "neutralIV072FullLine_integral_eq_halves",
+            "neutralIV072FullLine_eq_damped_fourier",
+            "neutralIV072DampedFourier_integral_eq_halves",
           ]
           allowed={"propext","Classical.choice","Quot.sound"}
           found={}
@@ -104,7 +108,7 @@ jobs:
             found[full]=sorted(axioms)
           assert not re.search(r'(?m)^\s*(?:error:|.*: error:)',t)
           Path("iv072/out/receipts.json").write_text(json.dumps(found,sort_keys=True,indent=2)+"\n")
-          print("IV072: eleven strictly audited Lean declarations PASS")
+          print("IV072: thirteen strictly audited Lean declarations PASS")
           PY
       - uses: actions/upload-artifact@v4
         if: always()
