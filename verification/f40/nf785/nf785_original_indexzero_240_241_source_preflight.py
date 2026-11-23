@@ -117,7 +117,7 @@ def prepare():
         "scope":"Source-only until real Lean original NF702/NF703 numerical theorem build, all 11 strict axioms, and independent source audit succeed."
     }
     BIND.write_text(json.dumps(record,indent=2,sort_keys=True)+"\n")
-    print("NF785 ORIGINAL 240..241: 16 prospective HD/A gates, 11 axiom queries; NO NEW KERNEL ACCEPTANCE")
+    print("NF785 ORIGINAL 240..241: 4 prospective HD/A gates, 11 axiom queries; NO NEW KERNEL ACCEPTANCE")
 
 
 if __name__ == "__main__":

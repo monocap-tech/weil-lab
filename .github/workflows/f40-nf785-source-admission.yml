@@ -42,7 +42,7 @@ jobs:
           assert 'source737.verify()' in source
           assert 'range(240,242)' in guard
           assert 'NF785-source-actual-original-indexzero-240-241-import-DAG-v1' in guard
-          assert not (root/'NF785_ONE_SHOT_COMPILE_REQUEST.txt').exists()
+          assert (root/'NF785_ONE_SHOT_COMPILE_REQUEST.txt').read_text().strip() == 'COMPILE-NF785-240-241-ONCE:a431f903254000bb5ad8edbc276ccc8599da98f5'
           print('NF785 terminal shard [240,242): exact two source modules/4 HD-A instances/11 axiom queries scope PASS; NO LEAN')
           PY
       - name: Strictly parse NF785 terminal main-only two-column compiler and 11-axiom audit (NO Lean)
@@ -70,6 +70,7 @@ jobs:
           assert len(m['jobs'])==1
           job=m['jobs']['authenticate-reuse-and-kernel-actual-original-indexzero-240-241']
           assert 'refs/heads/main' in job['if']
+          assert 'COMPILE-NF785-240-241-RETRY2-ONCE:a431f903254000bb5ad8edbc276ccc8599da98f5' in txt
           assert job['concurrency']['group']=='weil-uoi030-single-lane-source-pinned'
           assert job['concurrency']['cancel-in-progress']=='false'
           for x in ('RUN-PINNED-F40-NF785', 'Col240 through Col241',
@@ -90,7 +91,7 @@ jobs:
                     'independent_postrun_artifact_zip_reconciliation_done',
                     '"local_combined_gate_count_if_independently_reconciled": 968'):
               assert x in src,x
-          assert not Path('verification/f40/nf785/NF785_ONE_SHOT_COMPILE_REQUEST.txt').exists()
+          assert Path('verification/f40/nf785/NF785_ONE_SHOT_COMPILE_REQUEST.txt').read_text().strip() == 'COMPILE-NF785-240-241-ONCE:a431f903254000bb5ad8edbc276ccc8599da98f5'
           print('NF785 exact terminal [240,242) two modules, 11 axioms, strict main-only runner PASS; NO LEAN')
           PY
       - name: Authenticate genuinely accepted NF784 964-gate predecessor metadata (NO Lean)
