@@ -101,7 +101,7 @@ theorem neutralCPC1HLeft_supportedLC :
     (-1099/1000) (1/2000) (by norm_num) x
   intro h
   apply hx
-  change x ∈ Ioo (-11/10) (-11/10 + 1/500)
+  change x ∈ Ioo (-(11/10:ℝ)) (-(11/10:ℝ) + 1/500)
   exact ⟨by linarith [h.1], by linarith [h.2]⟩
 
 theorem neutralCPC1HRight_supportedRC :
@@ -111,7 +111,7 @@ theorem neutralCPC1HRight_supportedRC :
     (1099/1000) (1/2000) (by norm_num) x
   intro h
   apply hx
-  change x ∈ Ioo (11/10 - 1/500) (11/10)
+  change x ∈ Ioo ((11/10:ℝ) - 1/500) (11/10:ℝ)
   exact ⟨by linarith [h.1], by linarith [h.2]⟩
 
 /-- The actual CP001 flat Schwartz values are real, not complex phases.
@@ -147,7 +147,7 @@ theorem neutralCPC1H_overlap_shift :
       ∫ x : ℝ, neutralCPC1HRight (x + Real.log 9) *
         conj (neutralCPC1HLeft x) := by
           simpa only [sub_add_cancel] using
-            (integral_sub_right_eq_self
+            (integral_sub_right_eq_self (μ := (volume : Measure ℝ))
               (f := fun y : ℝ => neutralCPC1HRight (y + Real.log 9) *
                 conj (neutralCPC1HLeft y)))
     _ = ∫ x : ℝ, neutralCPC1HLeft x *
@@ -177,7 +177,7 @@ theorem neutralCPC1H_overlap_as_real :
             Complex.ofReal_mul, Complex.conj_ofReal]
     _ = (neutralCPC1HOverlapReal : ℂ) := by
       simpa only [neutralCPC1HOverlapReal] using
-        (integral_ofReal (f := fun x : ℝ =>
+        (integral_ofReal (μ := (volume : Measure ℝ)) (f := fun x : ℝ =>
           neutralCPC1EFlatReal (-1099/1000) (1/2000) x *
           neutralCPC1EFlatReal (1099/1000) (1/2000)
             (x + Real.log 9)))
