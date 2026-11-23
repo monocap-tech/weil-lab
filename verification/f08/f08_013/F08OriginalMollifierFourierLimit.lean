@@ -60,8 +60,13 @@ theorem f08_013_original_mollifier_character_error
           f08_011_complexMollifier φ x‖ =
           ‖((𝐞 (-(x * ξ))) : ℂ) - 1‖ *
             ‖f08_011_complexMollifier φ x‖ := by
-        simp only [Circle.smul_def, smul_eq_mul, sub_mul, one_mul,
-          norm_mul]
+        calc
+          _ = ‖(((𝐞 (-(x * ξ))) : ℂ) - 1) *
+                f08_011_complexMollifier φ x‖ := by
+            simp only [Circle.smul_def, smul_eq_mul]
+            congr 1
+            ring
+          _ = _ := norm_mul _ _
       _ ≤ _ := mul_le_mul_of_nonneg_right hp (norm_nonneg _)
   · have hz : f08_011_complexMollifier φ x = 0 :=
       Function.notMem_support.mp hx
@@ -81,6 +86,7 @@ theorem f08_013_original_mollifier_fourier_error_bound
   have hchar : Integrable (fun x : ℝ => 𝐞 (-(x * ξ)) • ρ x) volume := by
     convert (Real.fourierIntegral_convergent_iff ξ).2 hρ using 1
     ext x
+    change (𝐞 (-(x * ξ))) • ρ x = (𝐞 (-(ξ * x))) • ρ x
     rw [mul_comm ξ x]
   have heq : (𝓕 ρ) ξ - 1 =
       ∫ x : ℝ, ((𝐞 (-(x * ξ))) • ρ x - ρ x) ∂volume := by
