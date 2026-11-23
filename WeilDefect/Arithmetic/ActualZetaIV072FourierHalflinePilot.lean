@@ -111,7 +111,8 @@ theorem neutralIV072FullLine_integrable_right
     (neutralIV072RightCoefficient_re_neg alpha r ha)).congr_fun
       (s := Ioi (0 : ℝ)) ?_ measurableSet_Ioi
   intro x hx
-  simp [neutralIV072FullLineIntegrand, hx]
+  have hpos : (0 : ℝ) < x := hx
+  simp [neutralIV072FullLineIntegrand, hpos]
 
 /-- The authentic whole-real-line complex Bochner integral equals
 the sum of the two pinned halfline rational resolvents.
@@ -124,7 +125,7 @@ theorem neutralIV072FullLine_integral_eq_halves
         (-1 / neutralIV072RightCoefficient alpha r) := by
   have hL := neutralIV072FullLine_integrable_left alpha r ha
   have hR := neutralIV072FullLine_integrable_right alpha r ha
-  have hsplit := integral_Iic_add_Ioi hL hR
+  have hsplit := intervalIntegral.integral_Iic_add_Ioi hL hR
   have hleft :
       (∫ x : ℝ in Iic (0 : ℝ),
         neutralIV072FullLineIntegrand alpha r x) =
@@ -141,7 +142,8 @@ theorem neutralIV072FullLine_integral_eq_halves
         Complex.exp (neutralIV072RightCoefficient alpha r * (x : ℂ))) := by
     apply setIntegral_congr_fun measurableSet_Ioi
     intro x hx
-    simp [neutralIV072FullLineIntegrand, hx]
+    have hpos : (0 : ℝ) < x := hx
+    simp [neutralIV072FullLineIntegrand, hpos]
   calc
     (∫ x : ℝ, neutralIV072FullLineIntegrand alpha r x) =
       (∫ x : ℝ in Iic (0 : ℝ), neutralIV072FullLineIntegrand alpha r x) +
