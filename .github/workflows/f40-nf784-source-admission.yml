@@ -45,6 +45,51 @@ jobs:
           assert '"new_original_Lean_gates_accepted": False' in p
           print('NF784 232–239 source-only scope / refusal tests PASS; NO new original Lean compilation or acceptance')
           PY
+      - name: Strictly parse guarded NF784 proposed kernel workflow and original audit contracts (NO Lean)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check PyYAML==6.0.2
+          python - <<'PY'
+          from pathlib import Path
+          import ast,yaml
+          p=Path('.github/workflows/f40-nf784-single-lane.yml')
+          txt=p.read_text()
+          def keys(node):
+              if isinstance(node,yaml.nodes.MappingNode):
+                  ks=[k.value for k,v in node.value]
+                  assert len(ks)==len(set(ks)),('duplicate YAML keys',ks)
+                  for k,v in node.value: keys(k);keys(v)
+              elif isinstance(node,yaml.nodes.SequenceNode):
+                  for v in node.value: keys(v)
+          keys(yaml.compose(txt,Loader=yaml.BaseLoader))
+          data=yaml.load(txt,Loader=yaml.BaseLoader)
+          assert set(data['on'])=={'push','workflow_dispatch'}
+          assert data['on']['push']['branches']==['main']
+          assert data['on']['push']['paths']==['verification/f40/nf784/NF784_ONE_SHOT_COMPILE_REQUEST.txt']
+          assert len(data['jobs'])==1
+          j=data['jobs']['authenticate-reuse-and-kernel-actual-original-indexzero-232-239']
+          assert 'refs/heads/main' in j['if']
+          assert j['concurrency']['group']=='weil-uoi030-single-lane-source-pinned'
+          assert j['concurrency']['cancel-in-progress']=='false'
+          for marker in ('RUN-PINNED-F40-NF784','Col232 through Col239',
+                         'for ((i=232;i<240;i++))',
+                         'nf783_original_prior_932_custody.py',
+                         'nf784_original_prior_948_custody.py',
+                         'nf784-prior948-live-metadata.json',
+                         'nf784_original_indexzero_232_239_kernel_audit.py',
+                         '11e31531cfd29187b648b207d85269c8b2a0a065a387b9182023a425e645a42f'):
+              assert marker in txt,marker
+          audit=Path('verification/f40/nf784/nf784_original_indexzero_232_239_kernel_audit.py').read_text()
+          ast.parse(audit)
+          for marker in ('compiled_objects()','strict_axiom_receipt()',
+                         'accepted_original_predecessor_948_metadata_sha256',
+                         'independent_postrun_artifact_zip_reconciliation_done',
+                         '"local_combined_gate_count_if_independently_reconciled": 964'):
+              assert marker in audit,marker
+          assert not Path('verification/f40/nf784/NF784_ONE_SHOT_COMPILE_REQUEST.txt').exists()
+          print('NF784 main-only strict one-shot workflow + original source-bound audit contracts PASS; NO Lean')
+          PY
       - name: Verify genuine accepted NF783 948 live GitHub job and archive metadata (no new Lean)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
