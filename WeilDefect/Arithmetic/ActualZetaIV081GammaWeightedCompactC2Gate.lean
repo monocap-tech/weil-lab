@@ -70,9 +70,11 @@ theorem neutralIV081GammaMinus_integrable
   convert hcomp using 1
   funext r
   simp only [neg_one_mul, neg_neg]
-  apply congrArg (logDeriv Complex.Gammaℝ)
-  push_cast
-  ring
+  have harg : (1 / 2 : ℂ) - (r : ℂ) * Complex.I =
+      (1 / 2 : ℂ) + ((-r : ℝ) : ℂ) * Complex.I := by
+    push_cast
+    ring
+  rw [harg]
 
 /-- Genuine original source gammaBracket paired with the Fourier
 profile is integrable. Both signed Gamma_R components are controlled
