@@ -52,6 +52,7 @@ theorem neutralIV078Gain_spectral_integrable
   funext r
   rw [neutralIV077NF599Gain_eq_rational a r ha]
   push_cast
+  simp only [Pi.sub_apply]
   ring
 
 /-- The literal finite Gamma truncation is L¹ when weighted by the
@@ -77,6 +78,7 @@ theorem neutralIV078Finite_spectral_integrable
       funext r
       simp only [neutralIV071GammaFinite, Finset.range_zero, Finset.sum_empty, add_zero]
       push_cast
+      simp only [Pi.add_apply]
       ring
   | succ N ih =>
       have ha : 0 < (N : ℝ) + 1 + 1 / 4 := by positivity
@@ -88,6 +90,7 @@ theorem neutralIV078Finite_spectral_integrable
       funext r
       rw [neutralIV071GammaFinite_succ]
       push_cast
+      simp only [Pi.add_apply]
       ring
 
 /-- The source-normalized finite physical expression has the same
