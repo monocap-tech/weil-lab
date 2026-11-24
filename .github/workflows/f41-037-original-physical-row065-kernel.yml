@@ -1,0 +1,228 @@
+name: F41-037 original physical H/V row065 actual full-payment Lean gate
+on:
+  pull_request:
+    paths:
+      - 'verification/f41/f41_037/**'
+      - '.github/workflows/f41-037-original-physical-row065-kernel.yml'
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: f41-037-row065-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-row065:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    defaults:
+      run:
+        working-directory: research
+        shell: bash
+    steps:
+      - name: Checkout exact F41-037 PR candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: candidate
+          persist-credentials: false
+      - name: Checkout historically successful NF707 compiler source
+        uses: actions/checkout@v4
+        with:
+          ref: 3d3fa66956bef3a63f90ed9b5325141afaf43cb5
+          path: research
+          persist-credentials: false
+      - name: Checkout immutable original mathematical research source
+        uses: actions/checkout@v4
+        with:
+          ref: a431f903254000bb5ad8edbc276ccc8599da98f5
+          path: frozen
+          persist-credentials: false
+      - name: Reverify seven exact mathematical source files and three unchanged git refs
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = 3d3fa66956bef3a63f90ed9b5325141afaf43cb5
+          test "$(git -C ../frozen rev-parse HEAD)" = a431f903254000bb5ad8edbc276ccc8599da98f5
+          test "$(git -C ../candidate rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.34.0
+          for f in ActualZetaOriginalPhysicalSolveResidual ActualZetaOriginalPhysicalExecutableEntryChecks ActualZetaOriginalPhysicalTriangularEntryCustody ActualZetaOriginalPhysicalShardedEntryCustody ActualZetaOriginalPhysicalEnclosurePropagation ActualZetaOriginalPhysicalIntegerCenters ActualZetaOriginalPhysicalGramSchurAlgebra; do
+            cmp "WeilDefect/Arithmetic/$f.lean" "../frozen/WeilDefect/Arithmetic/$f.lean"
+          done
+          python -m py_compile ../candidate/verification/f41/f41_037/f41_037_original_row065.py
+          python ../candidate/verification/f41/f41_037/f41_037_original_row065.py selftest
+          python ../candidate/verification/f41/f41_001/f41_original_physical_entry_source_contract.py source --source-root ../frozen --out f41-037-original-source.json
+      - name: Restore original exact accepted bank source (NF690/NF691)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p WeilDefect/Generated/NF690
+          fetch() {
+            local id="$1" name="$2" digest="$3" dest="$4"
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" -o "$name.zip"
+            echo "$digest  $name.zip" | sha256sum -c -
+            unzip -q "$name.zip" -d "$dest"
+          }
+          fetch 14551493244 compact 37be910efa7d204c9db35f62bf9d5f818ece77c7026d94d9c84e4ddba0df41a5 WeilDefect/Generated
+          fetch 14558233793 payload 2327fbf952d4894c9f28f81cad9e94d226c93131d9ef2fafa14c35f482211b70 WeilDefect/Generated/NF690
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('WeilDefect/Generated'); sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          m=json.loads((root/'NF690/manifest.json').read_text());d=root/'NF690'
+          assert (m['keys'],m['rows'],m['chunks'],m['chunk_width'])==(7835,37994,490,16)
+          assert [r['index'] for r in m['slots']]==list(range(7835))
+          assert len({tuple(r['key']) for r in m['slots']})==7835
+          assert sum(r['rows'] for r in m['slots'])==37994
+          assert m['metadata_sha256']==sha(root/'NF679/Metadata.lean')
+          assert m['compact_manifest_sha256']==sha(root/'NF687/manifest.json')
+          for name in ('NF682','NF687','NF690'):
+              p=root/name
+              for f in json.loads((p/'manifest.json').read_text())['files']:
+                  assert sha(p/f['file'])==f['sha256']
+                  if 'bytes' in f:assert (p/f['file']).stat().st_size==f['bytes']
+          assert {f'Chunk{i:03d}.lean' for i in range(490)}|{'Bank.lean','Coverage.lean'} <= {f['file'] for f in m['files']}
+          out=root/'NF691';out.mkdir(exist_ok=True)
+          (out/'OriginalLookup.lean').write_text("""import WeilDefect.Generated.NF690.Coverage
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalBlockLocalLookup
+
+          namespace WeilDefect
+
+          def nf691OriginalLookup : NF622Moments :=
+            neutralNF691Lookup nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalLookup_eq :
+              neutralNF624Lookup nf690OriginalBank (neutralNF624Index nf690OriginalBank) =
+                nf691OriginalLookup :=
+            neutralNF691Lookup_eq nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalCoverage :
+              neutralNF624CoverageCheck nf690OriginalBank (neutralNF624Index nf690OriginalBank)=true :=
+            nf690OriginalCoverage
+
+          #print axioms nf691OriginalLookup_eq
+          #print axioms nf691OriginalCoverage
+
+          end WeilDefect
+          """)
+          print('F41-037 authentic NF691 source bank and 490 chunks restored')
+          PY
+      - name: Initialize pinned Lean 4.34.0 and Lake/Mathlib before manifest checks
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Bind unchanged bank sources and environment
+        run: python scripts/nf697_compiled_bank_binding.py
+      - name: Download historically audited compiled-bank objects
+        uses: actions/download-artifact@v4
+        with:
+          name: nf697-audited-compiled-bank
+          path: research/compiled-bank
+          run-id: 44598398608
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify original compiled-bank producer binding and restore
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          a=json.loads(Path('compiled-bank/nf697-bank-binding.json').read_text())
+          b=json.loads(Path('nf697-bank-binding.json').read_text())
+          for x in (a,b):
+              dig=x.pop('fingerprint')
+              assert hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()==dig
+          assert a['schema']==b['schema'] and a['environment']==b['environment']
+          assert all(b['files'].get(k)==v for k,v in a['files'].items())
+          assert set(b['files'])-set(a['files'])=={'WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularCacheAssembly.lean'}
+          assert all('ActualZetaOriginalPhysicalTriangularCacheAssembly' not in Path(p).read_text() for p in a['files'] if p.endswith('.lean'))
+          PY
+          (cd compiled-bank && sha256sum -c nf697-project-build.sha256)
+          tar -xzf compiled-bank/nf697-project-build.tar.gz
+          lake build WeilDefect.Generated.NF691.OriginalLookup 2>&1 | tee f41-037-bank-build.log
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install original numerical generator dependency
+        run: pip install python-flint==0.8.0
+      - name: Restore the original NF631 H/V and NF702 full input source archives
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p receipts/nf702 receipts/nf631
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14582437652/zip" -o receipts/nf702.zip
+          echo '258637da71e96468ed7c6ac5b0a4480ce06cdee9989aef8e71a4cd09059789e0  receipts/nf702.zip' | sha256sum -c -
+          unzip -q receipts/nf702.zip -d receipts/nf702
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14459025571/zip" -o receipts/nf631.zip
+          echo 'e91a83cae117e98608aefa6849dac178e4ddb58dd1dffbfe37304ad248af9ed9  receipts/nf631.zip' | sha256sum -c -
+          python - <<'PY'
+          import shutil
+          from pathlib import Path
+          found=[p.parent for p in Path('receipts/nf702').rglob('manifest.json') if p.parent.name=='NF702Inputs']
+          assert len(found)==1
+          shutil.copytree(found[0],Path('WeilDefect/Generated/NF702Inputs'))
+          PY
+          PYTHONPATH=scripts python ../candidate/verification/f41/f41_037/f41_037_original_row065.py emit --archive receipts/nf631.zip --input-dir receipts/nf702 --output WeilDefect/Generated/F41037
+      - name: Restore authenticated original NF707 compiled full-payment input
+        uses: actions/download-artifact@v4
+        with:
+          name: nf707-compiled-original-input
+          path: research/compiled-input
+          run-id: 44633937710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Validate exact imported NF702 source, compiled-input and bank binding
+        run: |
+          set -euo pipefail
+          (cd compiled-input && sha256sum -c nf707-input-build.sha256)
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+          m=json.loads(Path('WeilDefect/Generated/F41037/manifest.json').read_text())
+          b=json.loads(Path('compiled-input/nf707-input-binding.json').read_text())
+          bank=json.loads(Path('nf697-bank-binding.json').read_text())
+          assert b['schema']=='NF707-compiled-input-binding-v1'
+          assert b['bank_source_environment']==bank
+          assert b['input_manifest_sha256']==m['nf702_input_manifest_sha256']
+          assert len(b['input_sources'])==62
+          assert all(sha(p)==dig for p,dig in b['input_sources'].items())
+          assert b['compiled_tar_sha256']==sha('compiled-input/nf707-input-build.tar.gz')
+          assert m['original_nf631_entries_archive_sha256']=='e91a83cae117e98608aefa6849dac178e4ddb58dd1dffbfe37304ad248af9ed9'
+          PY
+          tar -xzf compiled-input/nf707-input-build.tar.gz
+          lake build WeilDefect.Generated.NF702Inputs.Data 2>&1 | tee f41-037-input-build.log
+      - name: Compile row65 source-bound genuine lookup and full-payment projections
+        timeout-minutes: 160
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Generated.F41037.Row065 2>&1 | tee f41-037-local-row.log
+          lake build WeilDefect.Generated.F41037.Attach065 2>&1 | tee f41-037-full-attach.log
+      - name: Strict original row65 nine named axioms and immutable source audit
+        timeout-minutes: 25
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=Path('WeilDefect/Generated/F41037')
+          m=json.loads((d/'manifest.json').read_text())
+          names=m['axiom_names']
+          assert len(names)==len(set(names))==9
+          Path('/tmp/f41_037_audit.lean').write_text('import WeilDefect.Generated.F41037.Attach065\n'+''.join(f'#print axioms WeilDefect.{n}\n' for n in names))
+          PY
+          lake env lean /tmp/f41_037_audit.lean 2>&1 | tee f41-037-axioms.log
+          python ../candidate/verification/f41/f41_037/f41_037_original_row065.py audit --output WeilDefect/Generated/F41037 --axioms-log f41-037-axioms.log
+      - name: Preserve bounded original compiler and proof receipts (not global F41)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: f41-037-original-full-payment-row065-kernel-evidence
+          path: |
+            research/f41-037-*.log
+            research/f41-037-original-source.json
+            research/WeilDefect/Generated/F41037/
+          if-no-files-found: ignore
