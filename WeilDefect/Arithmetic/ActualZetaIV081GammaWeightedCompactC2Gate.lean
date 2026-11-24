@@ -70,7 +70,8 @@ theorem neutralIV081GammaMinus_integrable
   convert hcomp using 1
   funext r
   simp only [neg_one_mul, neg_neg]
-  congr 1
+  apply congrArg (logDeriv Complex.Gammaℝ)
+  push_cast
   ring
 
 /-- Genuine original source gammaBracket paired with the Fourier
@@ -116,6 +117,7 @@ theorem neutralIV081GammaEnvelope_integrable_of_decay
   convert hconst.add hgammanorm using 1
   funext r
   unfold neutralIV081GammaEnvelope
+  simp only [Pi.add_apply]
   ring
 
 /-- Original compact C² test with *literal* paperFT and actual
