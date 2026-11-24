@@ -1,0 +1,77 @@
+name: F08-029 genuine original native L2 scaled-measure norm Lean gate
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_029/**'
+      - '.github/workflows/f08-029-native-L2-pushforward-norm-kernel.yml'
+permissions:
+  contents: read
+jobs:
+  original-native-L2-pushforward-norm:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout immutable original research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Verify original source and accepted predecessor files
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C candidate hash-object verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean)" = eecfe2a849fa79aa13810ede85e9ba625eba7777
+          ! grep -Eq 'sorry|admit|unsafe' candidate/verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean
+          ! grep -Eq 'sorry|admit|unsafe' candidate/verification/f08/f08_029/F08NativeL2PushforwardNorm.lean
+          mkdir -p research/WeilDefect/Generated/F08
+          cp candidate/verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean research/WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean
+          cp candidate/verification/f08/f08_029/F08NativeL2PushforwardNorm.lean research/WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean
+      - name: Install pinned Lean and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Genuine source-native Lean build with four strict axiom reports
+        working-directory: research
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build WeilDefect.Generated.F08.NativeL2PushforwardNorm 2>&1 | tee f08-029-build.log
+          printf '%s\n' 'import WeilDefect.Generated.F08.NativeL2PushforwardNorm' '#print axioms WeilDefect.f08_029_volumeLp_memLp_pushforward' '#print axioms WeilDefect.f08_029_volumeLpToPushforward_ae' '#print axioms WeilDefect.f08_029_volumeLp_eLpNorm_jacobian' '#print axioms WeilDefect.f08_029_volumeLpToPushforward_norm' > /tmp/f08-029-axioms.lean
+          lake env lean /tmp/f08-029-axioms.lean 2>&1 | tee f08-029-axioms.log
+          python3 - <<'PY'
+          import pathlib,re
+          names={'f08_029_volumeLp_memLp_pushforward','f08_029_volumeLpToPushforward_ae','f08_029_volumeLp_eLpNorm_jacobian','f08_029_volumeLpToPushforward_norm'}
+          found={}
+          log=pathlib.Path('f08-029-axioms.log').read_text()
+          pat=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]"
+          for m in re.finditer(pat,log,re.S):
+              assert m[1] not in found,('duplicate named axiom',m[1])
+              found[m[1]]={x.strip() for x in m[2].split(',') if x.strip()}
+          assert not re.sub(pat,'',log,flags=re.S).strip(),('unexpected source axiom output',log)
+          assert set(found)==names,(found,names)
+          assert all(a <= {'propext','Classical.choice','Quot.sound'} for a in found.values()),found
+          print('F08-029 exact original native L2 scaled-measure norm: 4/4 standard-only axioms')
+          PY
+      - name: Archive original Lean compiler and axiom evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-029-native-L2-pushforward-norm-compiler-evidence
+          path: |
+            research/f08-029-build.log
+            research/f08-029-axioms.log
+            research/WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean
+            research/WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean
+          if-no-files-found: ignore
