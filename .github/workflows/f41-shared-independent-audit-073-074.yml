@@ -1,0 +1,145 @@
+name: F41-054/056 independent shared producer custody rows073-074
+on:
+  pull_request:
+    paths:
+      - 'verification/f41/f41_054/**'
+      - 'verification/f41/f41_056/**'
+      - '.github/workflows/f41-shared-independent-audit-073-074.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: f41-shared-audit-073-074-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  independent-original-row073:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      F41_RUN_ID: '45415416844'
+      F41_ARTIFACT_ID: '14935180938'
+      F41_ZIP_SHA256: '5c4a4327ae3e9251da90ac04beb1ed0a4d5adbdda63bf52a640c3a14cb7a0bb4'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Source-only Python preflight and four negative controls
+        run: |
+          set -euo pipefail
+          python3 -m py_compile verification/f41/f41_054/f41_054_row073_archive_audit.py
+          python3 verification/f41/f41_054/f41_054_row073_archive_audit.py selftest
+      - name: Independently verify successful F41-053 original compiler run and pinned ZIP artifact
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p f41-054-receipt
+          python3 - <<'PY'
+          import json,os,re,urllib.request
+          runid=os.environ['F41_RUN_ID']
+          artifactid=os.environ['F41_ARTIFACT_ID']
+          expected=os.environ['F41_ZIP_SHA256']
+          assert re.fullmatch(r'\d+',runid) and re.fullmatch(r'\d+',artifactid)
+          assert re.fullmatch(r'[0-9a-f]{64}',expected)
+          root=os.environ['GITHUB_API_URL']+'/repos/'+os.environ['GITHUB_REPOSITORY']
+          hdr={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'}
+          def get(url):
+              with urllib.request.urlopen(urllib.request.Request(url,headers=hdr),timeout=30) as r:
+                  return json.load(r)
+          run=get(root+'/actions/runs/'+runid)
+          assert run['status']=='completed' and run['conclusion']=='success'
+          assert run['head_sha']=='72932baa40a7a9f7a0929879fda3b634995b78cf'
+          assert run['name']=='F41 shared compiler pilot original rows073-074'
+          assert run['head_repository']['full_name']=='monocap-tech/weil-lab'
+          artifact=get(root+'/actions/artifacts/'+artifactid)
+          assert artifact['workflow_run']['id']==int(runid)
+          assert artifact['name']=='f41-053-original-full-payment-row073-kernel-evidence'
+          assert not artifact['expired']
+          assert artifact['digest']=='sha256:'+expected
+          assert artifact['size_in_bytes']>0
+          with open('f41-054-receipt/validated-producer.json','w') as f:
+              json.dump({'run_id':int(runid),'artifact_id':int(artifactid),'run_head_sha':run['head_sha'],
+                  'run_conclusion':'success','artifact_zip_sha256':expected},f,indent=2)
+          print('F41-054 externally confirmed successful original compiler and pinned ZIP digest')
+          PY
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$F41_ARTIFACT_ID/zip" -o f41-054-receipt/f41-053-original-row073.zip
+          echo "$F41_ZIP_SHA256  f41-054-receipt/f41-053-original-row073.zip" | sha256sum -c -
+          python3 verification/f41/f41_054/f41_054_row073_archive_audit.py audit \
+            --zip f41-054-receipt/f41-053-original-row073.zip \
+            --expected-zip-sha256 "$F41_ZIP_SHA256" \
+            --run-url "https://github.com/monocap-tech/weil-lab/actions/runs/$F41_RUN_ID" \
+            --run-status success \
+            --output f41-054-receipt/f41-054-original-row073-independent-custody.json
+      - name: Preserve independent row73 custody evidence (only after audit)
+        uses: actions/upload-artifact@v4
+        with:
+          name: f41-054-original-physical-row073-independent-audit
+          path: |
+            f41-054-receipt/validated-producer.json
+            f41-054-receipt/f41-054-original-row073-independent-custody.json
+          if-no-files-found: error
+  independent-original-row074:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      F41_RUN_ID: '45415416844'
+      F41_ARTIFACT_ID: '14934461550'
+      F41_ZIP_SHA256: '16b4b7ad6986ee50f16fb9287f24e2c261f72fa8fd18fe9542ed54d39a6c28c9'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Source-only Python preflight and four negative controls
+        run: |
+          set -euo pipefail
+          python3 -m py_compile verification/f41/f41_056/f41_056_row074_archive_audit.py
+          python3 verification/f41/f41_056/f41_056_row074_archive_audit.py selftest
+      - name: Independently verify successful F41-055 original compiler run and pinned ZIP artifact
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p f41-056-receipt
+          python3 - <<'PY'
+          import json,os,re,urllib.request
+          runid=os.environ['F41_RUN_ID']
+          artifactid=os.environ['F41_ARTIFACT_ID']
+          expected=os.environ['F41_ZIP_SHA256']
+          assert re.fullmatch(r'\d+',runid) and re.fullmatch(r'\d+',artifactid)
+          assert re.fullmatch(r'[0-9a-f]{64}',expected)
+          root=os.environ['GITHUB_API_URL']+'/repos/'+os.environ['GITHUB_REPOSITORY']
+          hdr={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'}
+          def get(url):
+              with urllib.request.urlopen(urllib.request.Request(url,headers=hdr),timeout=30) as r:
+                  return json.load(r)
+          run=get(root+'/actions/runs/'+runid)
+          assert run['status']=='completed' and run['conclusion']=='success'
+          assert run['head_sha']=='72932baa40a7a9f7a0929879fda3b634995b78cf'
+          assert run['name']=='F41 shared compiler pilot original rows073-074'
+          assert run['head_repository']['full_name']=='monocap-tech/weil-lab'
+          artifact=get(root+'/actions/artifacts/'+artifactid)
+          assert artifact['workflow_run']['id']==int(runid)
+          assert artifact['name']=='f41-055-original-full-payment-row074-kernel-evidence'
+          assert not artifact['expired']
+          assert artifact['digest']=='sha256:'+expected
+          assert artifact['size_in_bytes']>0
+          with open('f41-056-receipt/validated-producer.json','w') as f:
+              json.dump({'run_id':int(runid),'artifact_id':int(artifactid),'run_head_sha':run['head_sha'],
+                  'run_conclusion':'success','artifact_zip_sha256':expected},f,indent=2)
+          print('F41-056 externally confirmed successful original compiler and pinned ZIP digest')
+          PY
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$F41_ARTIFACT_ID/zip" -o f41-056-receipt/f41-055-original-row074.zip
+          echo "$F41_ZIP_SHA256  f41-056-receipt/f41-055-original-row074.zip" | sha256sum -c -
+          python3 verification/f41/f41_056/f41_056_row074_archive_audit.py audit \
+            --zip f41-056-receipt/f41-055-original-row074.zip \
+            --expected-zip-sha256 "$F41_ZIP_SHA256" \
+            --run-url "https://github.com/monocap-tech/weil-lab/actions/runs/$F41_RUN_ID" \
+            --run-status success \
+            --output f41-056-receipt/f41-056-original-row074-independent-custody.json
+      - name: Preserve independent row74 custody evidence (only after audit)
+        uses: actions/upload-artifact@v4
+        with:
+          name: f41-056-original-physical-row074-independent-audit
+          path: |
+            f41-056-receipt/validated-producer.json
+            f41-056-receipt/f41-056-original-row074-independent-custody.json
+          if-no-files-found: error
