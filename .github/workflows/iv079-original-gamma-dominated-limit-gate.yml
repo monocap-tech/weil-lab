@@ -1,4 +1,4 @@
-name: IV079 source source Gamma dominated-limit conditional transfer — kernel gate
+name: IV079 source Gamma dominated-limit conditional transfer — kernel gate
 
 on:
   push:
@@ -7,11 +7,13 @@ on:
     paths:
       - "WeilDefect/Arithmetic/ActualZetaIV079GammaDominatedLimitGate.lean"
       - "WeilDefect/Arithmetic/ActualZetaIV071GammaFinitePrelude.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV078FiniteGammaTruncationGate.lean"
       - ".github/workflows/iv079-original-gamma-dominated-limit-gate.yml"
   pull_request:
     paths:
       - "WeilDefect/Arithmetic/ActualZetaIV079GammaDominatedLimitGate.lean"
       - "WeilDefect/Arithmetic/ActualZetaIV071GammaFinitePrelude.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV078FiniteGammaTruncationGate.lean"
       - ".github/workflows/iv079-original-gamma-dominated-limit-gate.yml"
   workflow_dispatch:
 
