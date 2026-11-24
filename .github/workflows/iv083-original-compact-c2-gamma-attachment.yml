@@ -3,7 +3,7 @@ name: IV083 original compact C2 finite-to-infinite Gamma attachment — kernel g
 on:
   push:
     branches:
-      - research/iv083-original-compact-c2-gamma-attachment-gate
+      - research/iv083-compact-c2-original-gamma-finite-to-infinite-gate
     paths:
       - "WeilDefect/Arithmetic/ActualZetaIV083CompactC2OriginalGammaLimitGate.lean"
       - "WeilDefect/Arithmetic/ActualZetaIV071GammaFinitePrelude.lean"
@@ -11,7 +11,7 @@ on:
       - "WeilDefect/Arithmetic/ActualZetaIV079GammaDominatedLimitGate.lean"
       - "WeilDefect/Arithmetic/ActualZetaIV081GammaWeightedCompactC2Gate.lean"
       - "WeilDefect/Arithmetic/ActualZetaIV082CompactC2FourierL1Gate.lean"
-      - ".github/workflows/iv083-original-compact-c2-gamma-attachment-gate.yml"
+      - ".github/workflows/iv083-original-compact-c2-gamma-attachment.yml"
   pull_request:
     paths:
       - "WeilDefect/Arithmetic/ActualZetaIV083CompactC2OriginalGammaLimitGate.lean"
@@ -20,7 +20,7 @@ on:
       - "WeilDefect/Arithmetic/ActualZetaIV079GammaDominatedLimitGate.lean"
       - "WeilDefect/Arithmetic/ActualZetaIV081GammaWeightedCompactC2Gate.lean"
       - "WeilDefect/Arithmetic/ActualZetaIV082CompactC2FourierL1Gate.lean"
-      - ".github/workflows/iv083-original-compact-c2-gamma-attachment-gate.yml"
+      - ".github/workflows/iv083-original-compact-c2-gamma-attachment.yml"
   workflow_dispatch:
 
 permissions:
