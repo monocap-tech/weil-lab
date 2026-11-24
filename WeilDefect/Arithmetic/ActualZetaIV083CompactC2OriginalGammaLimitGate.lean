@@ -65,7 +65,7 @@ theorem neutralIV083FiniteSpatial_tendsto_compactC2
     (hsupp : ∀ u : ℝ, k u ≠ 0 → |u| ≤ Lam) :
     Filter.Tendsto (fun N : ℕ => neutralIV078FiniteSpatial N k)
       Filter.atTop
-      (nhds ((1 / (2 * Real.pi) : ℂ) *
+      (𝓝 ((1 / (2 * Real.pi) : ℂ) *
         (∫ r : ℝ, Zeta23.paperFT k (r : ℂ) *
           (Zeta23.EF.gammaBracket r : ℂ)))) := by
   have hkc : HasCompactSupport k :=
