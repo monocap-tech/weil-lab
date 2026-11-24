@@ -101,8 +101,10 @@ theorem neutralIV088PhysicalMixedEnergy_im_tendsto_zero
   have h := (Complex.continuous_im.tendsto
     (neutralIV007OriginalMixedEnergy a s u)).comp
       (neutralIV088PhysicalMixedEnergy_tendsto_original a ha s u hs M hM)
-  simpa only [Function.comp_apply, neutralIV008OriginalMixedEnergy_im_zero a s hs u]
-    using h
+  change Tendsto (fun N : ℕ => (neutralIV088PhysicalMixedEnergy a s u M N).im)
+    atTop (𝓝 (neutralIV007OriginalMixedEnergy a s u).im) at h
+  rw [neutralIV008OriginalMixedEnergy_im_zero a s hs u] at h
+  exact h
 
 #print axioms neutralIV088PhysicalMixedEnergy_tendsto_original
 #print axioms neutralIV088PhysicalMixedEnergy_tendsto_divisor
