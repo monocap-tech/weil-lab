@@ -82,8 +82,8 @@ theorem neutralIV074Kernel_fourier_eq_rational
   have hsource :
       Zeta23.paperFT (neutralIV074Kernel alpha) (((-2 * Real.pi * xi : ℝ) : ℂ)) =
         ((neutralIV074Rational alpha (-2 * Real.pi * xi) : ℝ) : ℂ) := by
-    simpa only [neutralIV074Kernel, neutralIV074Rational] using
-      neutralIV073PaperFT_exp_eq_rational alpha (-2 * Real.pi * xi) ha
+    unfold neutralIV074Kernel neutralIV074Rational
+    exact neutralIV073PaperFT_exp_eq_rational alpha (-2 * Real.pi * xi) ha
   rw [hsource, hfreq] at hdict
   exact hdict.symm
 
@@ -133,8 +133,8 @@ theorem neutralIV074Kernel_inversion_rational
   apply integral_congr_ae
   filter_upwards [] with r
   congr 1
-  simpa only [neutralIV074Kernel, neutralIV074Rational] using
-    neutralIV073PaperFT_exp_eq_rational alpha r ha
+  unfold neutralIV074Kernel neutralIV074Rational
+  exact neutralIV073PaperFT_exp_eq_rational alpha r ha
 
 #print axioms neutralIV074Kernel_continuous
 #print axioms neutralIV074Kernel_integrable
