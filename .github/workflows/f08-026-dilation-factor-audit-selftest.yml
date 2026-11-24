@@ -1,4 +1,4 @@
-name: F08-026 independent source-only audit selftest (NONPROMOTING)
+name: F08-026 independent original dilation factor source ZIP and five axiom custody
 on:
   pull_request:
     paths:
@@ -6,28 +6,95 @@ on:
       - '.github/workflows/f08-026-dilation-factor-audit-selftest.yml'
 permissions:
   contents: read
+  actions: read
 jobs:
-  audit-selftest-only:
+  independent-source-custody:
     if: github.repository == 'monocap-tech/weil-lab'
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
+    env:
+      F08_RUN: '45299562850'
+      F08_ARTIFACT: '14879135556'
+      F08_ARTIFACT_SHA: '60984424d6d914fe909887b4cbd07453fbe84ec7bcf1c5d5398367f32e07ab2c'
+      F08_HEAD: '4c53e94fcfb75c5da3f456580bee71e79019aac1'
     steps:
-      - uses: actions/checkout@v4
-      - name: Strict fail-closed verifier syntax and adversarial refusal selftests
+      - name: Checkout independent auditor and candidate
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout frozen actual original IV023 research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Validate independent frozen research and exact five-name source
         run: |
           set -euo pipefail
-          python3 -m py_compile verification/f08/f08_026/f08_026_independent_log_dilation_factor_audit.py
-          python3 verification/f08/f08_026/f08_026_independent_log_dilation_factor_audit.py --selftest
-      - name: Assert original evidence acceptance pins deliberately absent
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Arithmetic/LogarithmicForm.lean)" = ae932d4f3f7e4d6d06dbd778a5708927172238dc
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C candidate hash-object verification/f08/f08_001/F08LogWeightDilation.lean)" = 5dce3a647223afbf75ef09f72d90c8afb331ee81
+          test "$(git -C candidate hash-object verification/f08/f08_025/F08NativeLogDilationFactor.lean)" = d208814f79f04a9926c2059d427419e73d6abb4b
+          python3 -m py_compile candidate/verification/f08/f08_026/f08_026_independent_log_dilation_factor_audit.py
+          python3 candidate/verification/f08/f08_026/f08_026_independent_log_dilation_factor_audit.py --selftest
+      - name: Verify original run head, successful compiler step, source and artifact metadata
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
+          mkdir -p f08-026-receipt
           python3 - <<'PY'
-          import importlib.util
-          from pathlib import Path
-          path=Path('verification/f08/f08_026/f08_026_independent_log_dilation_factor_audit.py')
-          spec=importlib.util.spec_from_file_location('audit',path)
-          mod=importlib.util.module_from_spec(spec)
-          spec.loader.exec_module(mod)
-          assert mod.ARTIFACT_ID is None and mod.ARTIFACT_SHA256 is None
-          print('NONPROMOTING: no producer acceptance receipt has been issued')
+          import json,os,urllib.request
+          api=os.environ['GITHUB_API_URL']+'/repos/'+os.environ['GITHUB_REPOSITORY']
+          hdr={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
+          def get(path):
+              with urllib.request.urlopen(urllib.request.Request(api+path,headers=hdr),timeout=30) as response:
+                  return json.load(response)
+          run_id=int(os.environ['F08_RUN'])
+          artifact_id=int(os.environ['F08_ARTIFACT'])
+          run=get('/actions/runs/'+str(run_id))
+          assert run['status']=='completed' and run['conclusion']=='success',('producer not PASS',run['status'],run['conclusion'])
+          assert run['head_sha']==os.environ['F08_HEAD']
+          assert run['head_repository']['full_name']=='monocap-tech/weil-lab'
+          assert run['name']=='F08-025 original logarithmic dilation multiplier first Lean kernel'
+          jobs=get('/actions/runs/'+str(run_id)+'/jobs')
+          assert any(j['conclusion']=='success' and
+              any(s['name']=='Genuine Lean build and strict five-name axiom audit'
+                  and s['conclusion']=='success' for s in j['steps'])
+              for j in jobs['jobs']), 'no genuine source compiler and exact five-axiom PASS'
+          artifact=get('/actions/artifacts/'+str(artifact_id))
+          assert artifact['workflow_run']['id']==run_id
+          assert artifact['workflow_run']['head_sha']==os.environ['F08_HEAD']
+          assert artifact['name']=='f08-025-original-dilation-factor-compiler-evidence'
+          assert artifact['digest']=='sha256:'+os.environ['F08_ARTIFACT_SHA']
+          assert artifact['size_in_bytes']>0 and not artifact['expired']
+          meta={
+             'head_sha':os.environ['F08_HEAD'],
+             'run_id':run_id,
+             'artifact_id':artifact_id,
+             'sha256':os.environ['F08_ARTIFACT_SHA'],
+             'completed_success':True,
+             'compiler_job_success':True
+          }
+          with open('f08-026-receipt/producer-metadata.json','w') as f:
+              json.dump(meta,f,sort_keys=True,indent=2)
+          print('F08-026 independently authenticated actual original F08-025 producer and artifact metadata')
           PY
+      - name: Download entire original ZIP and perform strict five-name source/axiom archive audit
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$F08_ARTIFACT/zip" -o f08-026-receipt/f08-025-producer.zip
+          echo "$F08_ARTIFACT_SHA  f08-026-receipt/f08-025-producer.zip" | sha256sum -c -
+          python3 candidate/verification/f08/f08_026/f08_026_independent_log_dilation_factor_audit.py --archive f08-026-receipt/f08-025-producer.zip --producer-metadata f08-026-receipt/producer-metadata.json --out f08-026-receipt/independent-original-dilation-factor-audit.json
+      - name: Preserve independent report and producer identity
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-026-independent-dilation-factor-source-custody
+          path: |
+            f08-026-receipt/producer-metadata.json
+            f08-026-receipt/independent-original-dilation-factor-audit.json
+          if-no-files-found: ignore
