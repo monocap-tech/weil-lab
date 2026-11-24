@@ -26,9 +26,9 @@ DEPENDENCY_GIT_BLOB = "5dce3a647223afbf75ef09f72d90c8afb331ee81"
 CANDIDATE_GIT_BLOB = "d208814f79f04a9926c2059d427419e73d6abb4b"
 PRODUCER_HEAD = "4c53e94fcfb75c5da3f456580bee71e79019aac1"
 PRODUCER_RUN = 45299562850
-# Fail closed pending genuine successful original-source producer ZIP:
-ARTIFACT_ID = None
-ARTIFACT_SHA256 = None
+# Exact immutable successful original-source producer artifact:
+ARTIFACT_ID = 14879135556
+ARTIFACT_SHA256 = "60984424d6d914fe909887b4cbd07453fbe84ec7bcf1c5d5398367f32e07ab2c"
 
 SOURCES = {
     "WeilDefect/Generated/F08/LogWeightDilation.lean": DEPENDENCY_GIT_BLOB,
