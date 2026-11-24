@@ -55,7 +55,7 @@ theorem neutralIV075Joint_integrable
       neutralIV075Osc p.1 p.2) := by
     unfold neutralIV075Osc
     fun_prop
-  refine hbase.mono'
+  refine hbase.mono
     (hbase.aestronglyMeasurable.mul hosc.aestronglyMeasurable) ?_
   filter_upwards [] with p
   rw [norm_mul, neutralIV075Osc_norm_one, mul_one]
