@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""F08-032 independent exact original IV023 native L2 pushforward-norm custody.
+"""F08-032 independent exact original IV023 native same-volume L2 dilation custody.
 
 This verifier deliberately fails closed until the original F08-030 producer
 is genuinely kernel-PASS and its immutable ZIP digest is pinned.
@@ -80,12 +80,12 @@ def verify(archive, metadata):
         src = unique_file(z, SOURCE_PATH)
         build = unique_file(z, BUILD_PATH).decode()
         axioms = unique_file(z, AXIOMS_PATH).decode()
+        predecessor27 = unique_file(z, "WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean")
+        predecessor29 = unique_file(z, "WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean")
     assert git_blob(src) == SOURCE_BLOB, "wrong original Git source blob"
-    # This stage genuinely compiles two earlier source slices; validate both
-    # original staged exact Git source blobs rather than a copy substituted
-    # inside the audited producer ZIP.
-    assert git_blob(unique_file(z, "WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean")) == "eecfe2a849fa79aa13810ede85e9ba625eba7777"
-    assert git_blob(unique_file(z, "WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean")) == "4da65f9b9df7cae6ea30a4a7f25d3e6c1606c294"
+    # Validate both actual staged predecessor source blobs, not merely names.
+    assert git_blob(predecessor27) == "eecfe2a849fa79aa13810ede85e9ba625eba7777"
+    assert git_blob(predecessor29) == "4da65f9b9df7cae6ea30a4a7f25d3e6c1606c294"
     assert b"import WeilDefect.Generated.F08.NativeL2PushforwardNorm" in src
     assert b"f08_027_nativeFrequencyPullback" in src
     assert b"f08_029_volumeLpToPushforward" in src
