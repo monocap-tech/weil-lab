@@ -61,8 +61,7 @@ theorem neutralIV082PaperFT_integrable_compactC2
   apply Integrable.mono' hmaj hcont.aestronglyMeasurable
   filter_upwards [] with r
   have hb := hdecay r
-  simpa only [Real.norm_eq_abs, abs_of_nonneg (by positivity),
-    div_eq_mul_inv] using hb
+  simpa only [div_eq_mul_inv] using hb
 
 /-- Genuine Mathlib Fourier L¹ recovered from the source paperFT by
 the exact original Fourier dictionary, with nonzero -2π dilation. -/
