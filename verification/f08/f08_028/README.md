@@ -1,11 +1,9 @@
-# F08-028 — independent original native frequency-scaling custody
+# F08-028 — independent original native frequency-scaling source custody
 
-**Source-only, fail-closed preflight only. Not an accepted theorem.**
+**Producer Lean kernel PASS; independent custody pending.** Direct original F08-027 Lean v4.34.0 [run 45325224186](https://github.com/monocap-tech/weil-lab/actions/runs/45325224186), commit `ebb4e2ba7825fcd8a898f5b1e7aa2a301fd305d7`, passed genuine `.olean` build and **4/4 strict standard-only named axioms**. The producer artifact is `14890139181` (full ZIP SHA256 `ae1361599357228abe4d6e056a401a1cdca506b87a65d04261ce649560492091`).
 
-Parent F08-027 is [PR #1006](https://github.com/monocap-tech/weil-lab/pull/1006); genuine producer run [45325224186](https://github.com/monocap-tech/weil-lab/actions/runs/45325224186) has been submitted, but is not accepted as compiler PASS without final status and exact four named ordinary-only axioms.
+This distinct auditor authenticates the original successful producer run/head/actual build step and artifact identity through GitHub API, checks original frozen IV023 `614ba879f7389fdb620c474adaee273b00eac71c` with canonical-source blob `2bf19165fce3a0cfa6e4d782d68caab268aaf82b`, and redownloads the entire original producer ZIP. It verifies full outer ZIP SHA256, path uniqueness/CRC, exact staged source Git blob `eecfe2a849fa79aa13810ede85e9ba625eba7777`, genuine original Lean build transcript, exactly four standard-only axioms, and 4/4 adversarial refusal controls.
 
-This auditor independently verifies the exact source blob, actual original full archive SHA256/CRC, original direct Lean compiler log, and the four distinct named axiom reports. Four adversarial altered logs must be rejected. Accepted checks apply only to the **native pullback across different measures**, not the genuine same-original-volume dilation operator or strong form-norm continuity.
+**Do not count the four additional F08-027 declarations in independently accepted inventory until the independently hosted archive audit succeeds.** No new mathematical theorem is compiled here; custody attaches only to F08-027's correct native pullback `L²(μλ)→L²(volume)` and Jacobian `μλ=|λ|⁻¹•volume`.
 
-At the time of source-only staging, the original producer artifact ID and SHA256 are deliberately null. The verifier **refuses to produce an acceptance receipt** until the actual successful producer artifact, source commit, run identity, and independent GitHub API metadata are pinned and independently redownloaded. Selftest alone is nonpromoting.
-
-The scope remains original IV023 `RealComplexL2`, not a surrogate representation. No original signed Weil source pairing, dense fixed support smooth form core, F42 or RH.
+Not proved: same-volume `Uλ k(ξ)=sqrt(λ)k(λξ)`, strong `L²` continuity, physical paper-convention Fourier scaling, supported smooth form core, full literal signed Weil mixed source identity, F42 or RH. Parent #932, ledger #898.
