@@ -5,11 +5,11 @@ on:
     branches:
       - research/iv074-original-exponential-inversion-gate
     paths:
-      - "WeilDefect/Arithmetic/ActualZetaIV074PaperFTRationalGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV074ExponentialInversionGate.lean"
       - ".github/workflows/iv074-original-exponential-inversion-gate.yml"
   pull_request:
     paths:
-      - "WeilDefect/Arithmetic/ActualZetaIV074PaperFTRationalGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV074ExponentialInversionGate.lean"
       - ".github/workflows/iv074-original-exponential-inversion-gate.yml"
   workflow_dispatch:
 
@@ -33,7 +33,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import re
-          s=Path("WeilDefect/Arithmetic/ActualZetaIV074PaperFTRationalGate.lean").read_text()
+          s=Path("WeilDefect/Arithmetic/ActualZetaIV074ExponentialInversionGate.lean").read_text()
           names=[
               "neutralIV074Kernel_continuous",
               "neutralIV074Kernel_integrable",
@@ -61,14 +61,14 @@ jobs:
           set -euo pipefail
           mkdir -p iv074/out
           touch iv074/out/fresh.stamp
-          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV074PaperFTRationalGate.olean
-          lake build WeilDefect.Arithmetic.ActualZetaIV074PaperFTRationalGate 2>&1 | tee iv074/out/build.log
-          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV074PaperFTRationalGate.olean
-          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV074PaperFTRationalGate.olean -nt iv074/out/fresh.stamp
+          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV074ExponentialInversionGate.olean
+          lake build WeilDefect.Arithmetic.ActualZetaIV074ExponentialInversionGate 2>&1 | tee iv074/out/build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV074ExponentialInversionGate.olean
+          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV074ExponentialInversionGate.olean -nt iv074/out/fresh.stamp
       - name: Exact strict named axiom audit
         run: |
           set -euo pipefail
-          lake env lean WeilDefect/Arithmetic/ActualZetaIV074PaperFTRationalGate.lean 2>&1 | tee iv074/out/axioms.log
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV074ExponentialInversionGate.lean 2>&1 | tee iv074/out/axioms.log
           python3 - <<'PY'
           from pathlib import Path
           import json,re
@@ -103,6 +103,6 @@ jobs:
           name: iv074-original-exponential-inversion-native-lean-receipts
           path: |
             iv074/out/
-            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV074PaperFTRationalGate.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV074ExponentialInversionGate.olean
           if-no-files-found: ignore
           include-hidden-files: true
