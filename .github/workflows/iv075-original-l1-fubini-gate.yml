@@ -5,11 +5,11 @@ on:
     branches:
       - research/iv075-original-l1-fubini-gate
     paths:
-      - "WeilDefect/Arithmetic/ActualZetaIV075ExponentialInversionGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV075L1FubiniGate.lean"
       - ".github/workflows/iv075-original-l1-fubini-gate.yml"
   pull_request:
     paths:
-      - "WeilDefect/Arithmetic/ActualZetaIV075ExponentialInversionGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV075L1FubiniGate.lean"
       - ".github/workflows/iv075-original-l1-fubini-gate.yml"
   workflow_dispatch:
 
@@ -33,7 +33,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import re
-          s=Path("WeilDefect/Arithmetic/ActualZetaIV075ExponentialInversionGate.lean").read_text()
+          s=Path("WeilDefect/Arithmetic/ActualZetaIV075L1FubiniGate.lean").read_text()
           names=[
               "neutralIV075Rational_even",
               "neutralIV075Osc_norm_one",
@@ -60,14 +60,14 @@ jobs:
           set -euo pipefail
           mkdir -p iv075/out
           touch iv075/out/fresh.stamp
-          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV075ExponentialInversionGate.olean
-          lake build WeilDefect.Arithmetic.ActualZetaIV075ExponentialInversionGate 2>&1 | tee iv075/out/build.log
-          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV075ExponentialInversionGate.olean
-          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV075ExponentialInversionGate.olean -nt iv075/out/fresh.stamp
+          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV075L1FubiniGate.olean
+          lake build WeilDefect.Arithmetic.ActualZetaIV075L1FubiniGate 2>&1 | tee iv075/out/build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV075L1FubiniGate.olean
+          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV075L1FubiniGate.olean -nt iv075/out/fresh.stamp
       - name: Exact strict named axiom audit
         run: |
           set -euo pipefail
-          lake env lean WeilDefect/Arithmetic/ActualZetaIV075ExponentialInversionGate.lean 2>&1 | tee iv075/out/axioms.log
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV075L1FubiniGate.lean 2>&1 | tee iv075/out/axioms.log
           python3 - <<'PY'
           from pathlib import Path
           import json,re
@@ -101,6 +101,6 @@ jobs:
           name: iv075-original-l1-fubini-native-lean-receipts
           path: |
             iv075/out/
-            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV075ExponentialInversionGate.olean
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV075L1FubiniGate.olean
           if-no-files-found: ignore
           include-hidden-files: true
