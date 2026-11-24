@@ -1,4 +1,5 @@
 import WeilDefect.Arithmetic.ActualZetaIV080GammaLinearEnvelopeGate
+import WeilDefect.External.Zeta23.Theorems.Thm_Zeta23_norm_paperFT_mul_sq_le
 import Mathlib.Tactic
 
 namespace WeilDefect
