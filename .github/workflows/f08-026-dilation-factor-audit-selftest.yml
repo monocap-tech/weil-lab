@@ -1,0 +1,33 @@
+name: F08-026 independent source-only audit selftest (NONPROMOTING)
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_026/**'
+      - '.github/workflows/f08-026-dilation-factor-audit-selftest.yml'
+permissions:
+  contents: read
+jobs:
+  audit-selftest-only:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict fail-closed verifier syntax and adversarial refusal selftests
+        run: |
+          set -euo pipefail
+          python3 -m py_compile verification/f08/f08_026/f08_026_independent_log_dilation_factor_audit.py
+          python3 verification/f08/f08_026/f08_026_independent_log_dilation_factor_audit.py --selftest
+      - name: Assert original evidence acceptance pins deliberately absent
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import importlib.util
+          from pathlib import Path
+          path=Path('verification/f08/f08_026/f08_026_independent_log_dilation_factor_audit.py')
+          spec=importlib.util.spec_from_file_location('audit',path)
+          mod=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(mod)
+          assert mod.ARTIFACT_ID is None and mod.ARTIFACT_SHA256 is None
+          print('NONPROMOTING: no producer acceptance receipt has been issued')
+          PY
