@@ -4,6 +4,7 @@ namespace WeilDefect
 noncomputable section
 
 open MeasureTheory
+open scoped ENNReal
 
 /-!
 F08-029: rigorous source-native passage of a genuine RealComplexL2
