@@ -1,9 +1,9 @@
-name: F08-031 original native frequency scaling independent ZIP/source/axiom custody
+name: F08-031 independent original L2 pushforward norm ZIP/source/axiom custody
 on:
   pull_request:
     paths:
       - 'verification/f08/f08_031/**'
-      - '.github/workflows/f08-031-native-scaling-custody-selftest.yml'
+      - '.github/workflows/f08-031-native-L2-pushforward-norm-custody.yml'
 permissions:
   contents: read
   actions: read
@@ -65,7 +65,7 @@ jobs:
           artifact=get('/actions/artifacts/'+str(artifact_id))
           assert artifact['workflow_run']['id']==run_id
           assert artifact['workflow_run']['head_sha']==os.environ['F08_HEAD']
-          assert artifact['name']=='f08-027-native-L2-pushforward-norm-compiler-evidence'
+          assert artifact['name']=='f08-029-native-L2-pushforward-norm-compiler-evidence'
           assert artifact['digest']=='sha256:'+os.environ['F08_ARTIFACT_SHA']
           assert artifact['size_in_bytes']>0 and not artifact['expired']
           info={'producer_commit':os.environ['F08_HEAD'], 'producer_run':run_id,
