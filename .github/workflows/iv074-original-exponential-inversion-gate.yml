@@ -1,0 +1,108 @@
+name: IV074 source exponential Fourier inversion instance — kernel gate
+
+on:
+  push:
+    branches:
+      - research/iv074-original-exponential-inversion-gate
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaIV074PaperFTRationalGate.lean"
+      - ".github/workflows/iv074-original-exponential-inversion-gate.yml"
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaIV074PaperFTRationalGate.lean"
+      - ".github/workflows/iv074-original-exponential-inversion-gate.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: iv074-original-paperft-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  original-exponential-inversion-lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict IV074 original-source preflight
+        run: |
+          set -euo pipefail
+          grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path("WeilDefect/Arithmetic/ActualZetaIV074PaperFTRationalGate.lean").read_text()
+          names=[
+              "neutralIV074Kernel_continuous",
+              "neutralIV074Kernel_integrable",
+              "neutralIV074Rational_integrable",
+              "neutralIV074Kernel_fourier_eq_rational",
+              "neutralIV074Kernel_fourier_integrable",
+              "neutralIV074Kernel_paper_inversion",
+              "neutralIV074Kernel_inversion_rational",
+          ]
+          assert all(s.count("#print axioms "+n)==1 for n in names)
+          assert not re.search(r"\b(?:sorry|admit|sorryAx)\b",s)
+          print("IV074 strict preflight: seven exact original-source bridge declarations")
+          PY
+      - name: Install pinned Lean and Mathlib
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake --version
+          lake exe cache get
+      - name: Native fresh Lean source build
+        run: |
+          set -euo pipefail
+          mkdir -p iv074/out
+          touch iv074/out/fresh.stamp
+          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV074PaperFTRationalGate.olean
+          lake build WeilDefect.Arithmetic.ActualZetaIV074PaperFTRationalGate 2>&1 | tee iv074/out/build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV074PaperFTRationalGate.olean
+          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV074PaperFTRationalGate.olean -nt iv074/out/fresh.stamp
+      - name: Exact strict named axiom audit
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV074PaperFTRationalGate.lean 2>&1 | tee iv074/out/axioms.log
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re
+          t=Path("iv074/out/axioms.log").read_text()
+          names=[
+              "neutralIV074Kernel_continuous",
+              "neutralIV074Kernel_integrable",
+              "neutralIV074Rational_integrable",
+              "neutralIV074Kernel_fourier_eq_rational",
+              "neutralIV074Kernel_fourier_integrable",
+              "neutralIV074Kernel_paper_inversion",
+              "neutralIV074Kernel_inversion_rational",
+          ]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          found={}
+          for name in names:
+              full="WeilDefect."+name
+              pat=re.compile(r"^'"+re.escape(full)+r"' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)\s*$",re.M)
+              hits=list(pat.finditer(t))
+              assert len(hits)==1, (full,len(hits),t[-1200:])
+              axioms=({a.strip() for a in hits[0].group(1).split(",") if a.strip()}
+                      if hits[0].group(1) is not None else set())
+              assert axioms<=allowed,(full,axioms-allowed)
+              found[full]=sorted(axioms)
+          assert not re.search(r'(?m)^\s*(?:error:|.*: error:)',t)
+          Path("iv074/out/receipts.json").write_text(json.dumps(found,sort_keys=True,indent=2)+"\n")
+          print("IV074 seven strict source/axiom receipts PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv074-original-exponential-inversion-native-lean-receipts
+          path: |
+            iv074/out/
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV074PaperFTRationalGate.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
