@@ -4,6 +4,9 @@ import WeilDefect.Generated.F08.LogWeightDilation
 namespace WeilDefect
 noncomputable section
 
+open Filter
+open scoped Topology
+
 /-!
 F08-025 first kernel slice: the exact frequency-coordinate correction factor
 for inward physical dilation in the original log(e + |ξ|) form norm.
@@ -39,6 +42,7 @@ theorem f08_025_logDilationFactor_sq_le
   have hpos : 0 < lam := by linarith
   have hscale : lam * xi / lam = xi := by
     field_simp [ne_of_gt hpos]
+    ring
   have hw := f08_logarithmicFourierWeight_dilation_uniform
     lam (lam * xi) hlo hhi
   rw [hscale] at hw
