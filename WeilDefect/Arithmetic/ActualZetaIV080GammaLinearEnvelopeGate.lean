@@ -116,7 +116,9 @@ theorem neutralIV080GammaFinite_linear
         _ ≤ |r| / (2 * (((n : ℝ) + 1 + 1 / 4) ^ 2)) :=
           neutralIV080NF599Gain_linear _ r (by positivity)
         _ = (|r| / 2) *
-            (1 / (((n : ℝ) + 1 + 1 / 4) ^ 2)) := by ring
+            (1 / (((n : ℝ) + 1 + 1 / 4) ^ 2)) := by
+              simp only [div_eq_mul_inv, mul_inv_rev, one_mul]
+              ring
     have hsum := Finset.sum_le_sum
       (s := Finset.range N) (fun n _ => hterm n)
     have hpartial := neutralIV080TailReciprocal_partial N
