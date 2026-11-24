@@ -1,0 +1,100 @@
+name: IV073 source paperFT rational bridge — kernel gate
+
+on:
+  push:
+    branches:
+      - research/iv073-original-paperft-rational-gate
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaIV073PaperFTRationalGate.lean"
+      - ".github/workflows/iv073-original-paperft-rational-gate.yml"
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaIV073PaperFTRationalGate.lean"
+      - ".github/workflows/iv073-original-paperft-rational-gate.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: iv073-original-paperft-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  original-paperft-rational-lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict IV073 original-source preflight
+        run: |
+          set -euo pipefail
+          grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path("WeilDefect/Arithmetic/ActualZetaIV073PaperFTRationalGate.lean").read_text()
+          names=[
+              "neutralIV073Resolvent_rational",
+              "neutralIV073PaperFT_exp_eq_halves",
+              "neutralIV073PaperFT_exp_eq_rational",
+          ]
+          assert all(s.count("#print axioms "+n)==1 for n in names)
+          assert not re.search(r"\b(?:sorry|admit|sorryAx)\b",s)
+          print("IV073 strict preflight: three exact original-source bridge declarations")
+          PY
+      - name: Install pinned Lean and Mathlib
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake --version
+          lake exe cache get
+      - name: Native fresh Lean source build
+        run: |
+          set -euo pipefail
+          mkdir -p iv073/out
+          touch iv073/out/fresh.stamp
+          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV073PaperFTRationalGate.olean
+          lake build WeilDefect.Arithmetic.ActualZetaIV073PaperFTRationalGate 2>&1 | tee iv073/out/build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV073PaperFTRationalGate.olean
+          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV073PaperFTRationalGate.olean -nt iv073/out/fresh.stamp
+      - name: Exact strict named axiom audit
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV073PaperFTRationalGate.lean 2>&1 | tee iv073/out/axioms.log
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re
+          t=Path("iv073/out/axioms.log").read_text()
+          names=[
+              "neutralIV073Resolvent_rational",
+              "neutralIV073PaperFT_exp_eq_halves",
+              "neutralIV073PaperFT_exp_eq_rational",
+          ]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          found={}
+          for name in names:
+              full="WeilDefect."+name
+              pat=re.compile(r"^'"+re.escape(full)+r"' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)\s*$",re.M)
+              hits=list(pat.finditer(t))
+              assert len(hits)==1, (full,len(hits),t[-1200:])
+              axioms=({a.strip() for a in hits[0].group(1).split(",") if a.strip()}
+                      if hits[0].group(1) is not None else set())
+              assert axioms<=allowed,(full,axioms-allowed)
+              found[full]=sorted(axioms)
+          assert not re.search(r'(?m)^\s*(?:error:|.*: error:)',t)
+          Path("iv073/out/receipts.json").write_text(json.dumps(found,sort_keys=True,indent=2)+"\n")
+          print("IV073 three strict source/axiom receipts PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv073-original-paperft-rational-native-lean-receipts
+          path: |
+            iv073/out/
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV073PaperFTRationalGate.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
