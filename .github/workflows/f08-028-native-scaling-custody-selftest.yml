@@ -1,0 +1,20 @@
+name: F08-028 native frequency scaling independent auditor selftest NONPROMOTING
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_028/**'
+      - '.github/workflows/f08-028-native-scaling-custody-selftest.yml'
+permissions:
+  contents: read
+jobs:
+  auditor-source-only:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify verifier syntax and four adversarial refusals without producer promotion
+        run: |
+          set -euo pipefail
+          python3 -m py_compile verification/f08/f08_028/f08_028_independent_native_scaling_audit.py
+          python3 verification/f08/f08_028/f08_028_independent_native_scaling_audit.py --selftest
