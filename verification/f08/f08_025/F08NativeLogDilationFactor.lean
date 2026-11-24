@@ -42,7 +42,6 @@ theorem f08_025_logDilationFactor_sq_le
   have hpos : 0 < lam := by linarith
   have hscale : lam * xi / lam = xi := by
     field_simp [ne_of_gt hpos]
-    ring
   have hw := f08_logarithmicFourierWeight_dilation_uniform
     lam (lam * xi) hlo hhi
   rw [hscale] at hw
