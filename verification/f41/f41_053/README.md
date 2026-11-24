@@ -1,0 +1,3 @@
+# F41-053 — original physical H/V row73 candidate
+
+SOURCE ONLY. No Lean compilation or row73 acceptance. Preserve immutable original source, NF690/NF691 lookup, original NF631 data and full NF702 payment. Target row 73, 74 lower H / 4 mixed V / 242 symmetry, five original full-payment projection gates and nine named standard-only Lean axiom reports. Submit only after row72 genuine producer and independent F41-052 acceptance (73/242). F41-054 separately authenticates the actual successful producer ZIP. Only then may the accepted frontier become 74/242, 168 remaining. Full analytic H/V enclosure, F42 and RH remain open.
