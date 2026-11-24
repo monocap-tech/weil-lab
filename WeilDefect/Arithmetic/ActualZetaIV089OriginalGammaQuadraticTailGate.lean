@@ -22,7 +22,9 @@ theorem neutralIV089Gain_le_envelope_drop (n : ℕ) (r : ℝ) :
     neutralNF599Gain ((n : ℝ) + 1 + 1/4) r ≤
       neutralIV089TailEnvelope n r - neutralIV089TailEnvelope (n+1) r := by
   let x : ℝ := (n : ℝ) + 1
-  have hx : 1 ≤ x := by dsimp [x]; positivity
+  have hx : 1 ≤ x := by
+    dsimp [x]
+    linarith [Nat.cast_nonneg (α := ℝ) n]
   have hx0 : 0 < x := by linarith
   have hx1 : 0 < x + 1 := by linarith
   have hd : x^3 ≤ (x+1/4)*( (x+1/4)^2 + (r/2)^2) := by
