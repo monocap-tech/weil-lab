@@ -23,8 +23,8 @@ ORIGINAL_DOMAIN_BLOB = "2bf19165fce3a0cfa6e4d782d68caab268aaf82b"
 SOURCE_BLOB = "eecfe2a849fa79aa13810ede85e9ba625eba7777"
 PRODUCER_COMMIT = "ebb4e2ba7825fcd8a898f5b1e7aa2a301fd305d7"
 PRODUCER_RUN = 45325224186
-ARTIFACT_ID = None
-ARTIFACT_SHA256 = None
+ARTIFACT_ID = 14890139181
+ARTIFACT_SHA256 = "ae1361599357228abe4d6e056a401a1cdca506b87a65d04261ce649560492091"
 SOURCE_PATH = "WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean"
 BUILD_PATH = "f08-027-build.log"
 AXIOMS_PATH = "f08-027-axioms.log"
@@ -131,9 +131,8 @@ def selftest():
             pass
         else:
             raise AssertionError("invalid evidence accepted")
-    assert ARTIFACT_ID is None and ARTIFACT_SHA256 is None, (
-        "selftest-only verifier must stay nonpromoting")
-    print("F08-028 source-only selftest PASS 4/4 mutated reports rejected; NONPROMOTING")
+    assert ARTIFACT_ID == 14890139181 and ARTIFACT_SHA256 is not None
+    print("F08-028 auditor selftest PASS 4/4 mutated reports rejected")
 
 
 def main():
