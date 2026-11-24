@@ -1,0 +1,102 @@
+name: IV076 source full normalized positive-frequency rational pairing — kernel gate
+
+on:
+  push:
+    branches:
+      - research/iv076-original-l1-positive-frequency-gate
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaIV076L1PositiveFrequencyGate.lean"
+      - ".github/workflows/iv076-original-l1-positive-frequency-gate.yml"
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaIV076L1PositiveFrequencyGate.lean"
+      - ".github/workflows/iv076-original-l1-positive-frequency-gate.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: iv076-original-paperft-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  original-l1-positive-frequency-lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict IV076 original-source preflight
+        run: |
+          set -euo pipefail
+          grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path("WeilDefect/Arithmetic/ActualZetaIV076L1PositiveFrequencyGate.lean").read_text()
+          names=[
+              "neutralIV076Kernel_inversion_osc",
+              "neutralIV076L1_pairing_negative",
+              "neutralIV076Rational_frequency_reversal",
+              "neutralIV076L1_pairing_positive",
+          ]
+          assert all(s.count("#print axioms "+n)==1 for n in names)
+          assert not re.search(r"\b(?:sorry|admit|sorryAx)\b",s)
+          print("IV076 strict preflight: four exact original-source bridge declarations")
+          PY
+      - name: Install pinned Lean and Mathlib
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake --version
+          lake exe cache get
+      - name: Native fresh Lean source build
+        run: |
+          set -euo pipefail
+          mkdir -p iv076/out
+          touch iv076/out/fresh.stamp
+          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV076L1PositiveFrequencyGate.olean
+          lake build WeilDefect.Arithmetic.ActualZetaIV076L1PositiveFrequencyGate 2>&1 | tee iv076/out/build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV076L1PositiveFrequencyGate.olean
+          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV076L1PositiveFrequencyGate.olean -nt iv076/out/fresh.stamp
+      - name: Exact strict named axiom audit
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV076L1PositiveFrequencyGate.lean 2>&1 | tee iv076/out/axioms.log
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re
+          t=Path("iv076/out/axioms.log").read_text()
+          names=[
+              "neutralIV076Kernel_inversion_osc",
+              "neutralIV076L1_pairing_negative",
+              "neutralIV076Rational_frequency_reversal",
+              "neutralIV076L1_pairing_positive",
+          ]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          found={}
+          for name in names:
+              full="WeilDefect."+name
+              pat=re.compile(r"^'"+re.escape(full)+r"' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)\s*$",re.M)
+              hits=list(pat.finditer(t))
+              assert len(hits)==1, (full,len(hits),t[-1200:])
+              axioms=({a.strip() for a in hits[0].group(1).split(",") if a.strip()}
+                      if hits[0].group(1) is not None else set())
+              assert axioms<=allowed,(full,axioms-allowed)
+              found[full]=sorted(axioms)
+          assert not re.search(r'(?m)^\s*(?:error:|.*: error:)',t)
+          Path("iv076/out/receipts.json").write_text(json.dumps(found,sort_keys=True,indent=2)+"\n")
+          print("IV076 four strict source/axiom receipts PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv076-original-l1-positive-frequency-native-lean-receipts
+          path: |
+            iv076/out/
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV076L1PositiveFrequencyGate.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
