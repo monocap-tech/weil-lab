@@ -72,7 +72,8 @@ theorem neutralIV082Fourier_integrable_compactC2
     Integrable (𝓕 k) := by
   have hpaper :=
     neutralIV082PaperFT_integrable_compactC2 k hk hLam hsupp
-  have hnonzero : (-(2 * Real.pi) : ℝ) ≠ 0 := by positivity
+  have hnonzero : (-(2 * Real.pi) : ℝ) ≠ 0 := by
+    exact neg_ne_zero.mpr (mul_ne_zero (by norm_num) Real.pi_ne_zero)
   have hcomp : Integrable (fun w : ℝ =>
       Zeta23.paperFT k (((-(2 * Real.pi)) * w : ℝ) : ℂ)) :=
     hpaper.comp_mul_left' hnonzero
@@ -81,7 +82,6 @@ theorem neutralIV082Fourier_integrable_compactC2
   rw [Zeta23.EF.paperFT_ofReal_eq_fourier_Zeta23_EF_paper_inversion]
   congr 1
   field_simp
-  ring
 
 /-- No auxiliary weighted-L¹ or Fourier-L¹ premise survives for the
 authentic compact-C² original EF test. This attaches independent
