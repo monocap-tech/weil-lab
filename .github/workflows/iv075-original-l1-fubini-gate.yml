@@ -1,0 +1,106 @@
+name: IV075 source arbitrary L1 true Fubini pairing — kernel gate
+
+on:
+  push:
+    branches:
+      - research/iv075-original-l1-fubini-gate
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaIV075ExponentialInversionGate.lean"
+      - ".github/workflows/iv075-original-l1-fubini-gate.yml"
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaIV075ExponentialInversionGate.lean"
+      - ".github/workflows/iv075-original-l1-fubini-gate.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: iv075-original-paperft-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  original-l1-fubini-lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict IV075 original-source preflight
+        run: |
+          set -euo pipefail
+          grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path("WeilDefect/Arithmetic/ActualZetaIV075ExponentialInversionGate.lean").read_text()
+          names=[
+              "neutralIV075Rational_even",
+              "neutralIV075Osc_norm_one",
+              "neutralIV075Joint_integrable",
+              "neutralIV075Fubini_swap",
+              "neutralIV075PaperFT_neg",
+              "neutralIV075Fubini_raw",
+          ]
+          assert all(s.count("#print axioms "+n)==1 for n in names)
+          assert not re.search(r"\b(?:sorry|admit|sorryAx)\b",s)
+          print("IV075 strict preflight: six exact original-source bridge declarations")
+          PY
+      - name: Install pinned Lean and Mathlib
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake --version
+          lake exe cache get
+      - name: Native fresh Lean source build
+        run: |
+          set -euo pipefail
+          mkdir -p iv075/out
+          touch iv075/out/fresh.stamp
+          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV075ExponentialInversionGate.olean
+          lake build WeilDefect.Arithmetic.ActualZetaIV075ExponentialInversionGate 2>&1 | tee iv075/out/build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV075ExponentialInversionGate.olean
+          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV075ExponentialInversionGate.olean -nt iv075/out/fresh.stamp
+      - name: Exact strict named axiom audit
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV075ExponentialInversionGate.lean 2>&1 | tee iv075/out/axioms.log
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re
+          t=Path("iv075/out/axioms.log").read_text()
+          names=[
+              "neutralIV075Rational_even",
+              "neutralIV075Osc_norm_one",
+              "neutralIV075Joint_integrable",
+              "neutralIV075Fubini_swap",
+              "neutralIV075PaperFT_neg",
+              "neutralIV075Fubini_raw",
+          ]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          found={}
+          for name in names:
+              full="WeilDefect."+name
+              pat=re.compile(r"^'"+re.escape(full)+r"' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)\s*$",re.M)
+              hits=list(pat.finditer(t))
+              assert len(hits)==1, (full,len(hits),t[-1200:])
+              axioms=({a.strip() for a in hits[0].group(1).split(",") if a.strip()}
+                      if hits[0].group(1) is not None else set())
+              assert axioms<=allowed,(full,axioms-allowed)
+              found[full]=sorted(axioms)
+          assert not re.search(r'(?m)^\s*(?:error:|.*: error:)',t)
+          Path("iv075/out/receipts.json").write_text(json.dumps(found,sort_keys=True,indent=2)+"\n")
+          print("IV075 six strict source/axiom receipts PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv075-original-l1-fubini-native-lean-receipts
+          path: |
+            iv075/out/
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV075ExponentialInversionGate.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
