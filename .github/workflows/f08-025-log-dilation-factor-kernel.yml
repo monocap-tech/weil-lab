@@ -1,0 +1,78 @@
+name: F08-025 original logarithmic dilation multiplier first Lean kernel
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_025/**'
+      - '.github/workflows/f08-025-log-dilation-factor-kernel.yml'
+permissions:
+  contents: read
+jobs:
+  original-logarithmic-dilation-factor:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout immutable original IV023 research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Verify source and attach accepted F08-001 weight inequalities
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Arithmetic/LogarithmicForm.lean)" = ae932d4f3f7e4d6d06dbd778a5708927172238dc
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C candidate hash-object verification/f08/f08_001/F08LogWeightDilation.lean)" = 5dce3a647223afbf75ef09f72d90c8afb331ee81
+          ! grep -Eq 'sorry|admit|unsafe' candidate/verification/f08/f08_001/F08LogWeightDilation.lean
+          ! grep -Eq 'sorry|admit|unsafe' candidate/verification/f08/f08_025/F08NativeLogDilationFactor.lean
+          mkdir -p research/WeilDefect/Generated/F08
+          cp candidate/verification/f08/f08_001/F08LogWeightDilation.lean research/WeilDefect/Generated/F08/LogWeightDilation.lean
+          cp candidate/verification/f08/f08_025/F08NativeLogDilationFactor.lean research/WeilDefect/Generated/F08/NativeLogDilationFactor.lean
+      - name: Initialize frozen Lean and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Genuine Lean build and strict five-name axiom audit
+        working-directory: research
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build WeilDefect.Generated.F08.NativeLogDilationFactor 2>&1 | tee f08-025-build.log
+          printf '%s\n' 'import WeilDefect.Generated.F08.NativeLogDilationFactor' '#print axioms WeilDefect.f08_025_logDilationFactor_nonneg' '#print axioms WeilDefect.f08_025_logDilationFactor_one' '#print axioms WeilDefect.f08_025_logDilationFactor_sq_le' '#print axioms WeilDefect.f08_025_logDilationFactor_continuousAt_one' '#print axioms WeilDefect.f08_025_logDilationFactor_tendsto_one' > /tmp/f08-025-axioms.lean
+          lake env lean /tmp/f08-025-axioms.lean 2>&1 | tee f08-025-axioms.log
+          python3 - <<'PY'
+          import pathlib,re
+          names={'f08_025_logDilationFactor_nonneg','f08_025_logDilationFactor_one','f08_025_logDilationFactor_sq_le','f08_025_logDilationFactor_continuousAt_one','f08_025_logDilationFactor_tendsto_one'}
+          found={}
+          log=pathlib.Path('f08-025-axioms.log').read_text()
+          pat=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]"
+          for m in re.finditer(pat,log,re.S):
+              assert m[1] not in found,('duplicate axiom name',m[1])
+              found[m[1]]={x.strip() for x in m[2].split(',') if x.strip()}
+          assert not re.sub(pat,'',log,flags=re.S).strip(),('unexpected compiler output',log)
+          assert set(found)==names,(found,names)
+          assert all(a <= {'propext','Classical.choice','Quot.sound'} for a in found.values()),found
+          print('F08-025 first source log dilation correction factor: 5/5 standard-only axioms')
+          PY
+      - name: Archive actual compiler logs and complete staged Lean sources
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-025-original-dilation-factor-compiler-evidence
+          path: |
+            research/f08-025-build.log
+            research/f08-025-axioms.log
+            research/WeilDefect/Generated/F08/LogWeightDilation.lean
+            research/WeilDefect/Generated/F08/NativeLogDilationFactor.lean
+          if-no-files-found: ignore
