@@ -84,11 +84,18 @@ theorem neutralIV077PaperFT_rational_integrable
       Zeta23.paperFT h (r : ℂ) *
         (neutralIV074Rational (2 * a) r : ℂ)) := by
   have hpaper := neutralIV077PaperFT_integrable h hF
-  have hweight : AEStronglyMeasurable
-      (fun r : ℝ => (neutralIV074Rational (2 * a) r : ℂ)) volume := by
-    apply Continuous.aestronglyMeasurable
+  have hcontinuous_real :
+      Continuous (fun r : ℝ => neutralIV074Rational (2 * a) r) := by
     unfold neutralIV074Rational
-    fun_prop (discharger := positivity)
+    apply Continuous.div₀
+    · fun_prop
+    · fun_prop
+    · intro r
+      have hd : 0 < (2 * a) ^ 2 + r ^ 2 := by positivity
+      exact ne_of_gt hd
+  have hweight : AEStronglyMeasurable
+      (fun r : ℝ => (neutralIV074Rational (2 * a) r : ℂ)) volume :=
+    (Complex.continuous_ofReal.comp hcontinuous_real).aestronglyMeasurable
   apply hpaper.mul_bdd hweight
   filter_upwards [] with r
   have hb := neutralIV077Rational_bound a r ha
