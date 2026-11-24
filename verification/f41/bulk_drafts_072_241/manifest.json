@@ -1,0 +1,4604 @@
+{
+  "schema": "F41-bulk-source-drafts-v1",
+  "source_templates": {
+    "generator": "4fe58202aa42b43ca1332838028dca138ad2ac5c",
+    "auditor": "307ed1aca8e1285ec21bb120c07256524efcef49",
+    "workflow": "4fe58202aa42b43ca1332838028dca138ad2ac5c"
+  },
+  "accepted_frontier_at_creation": 72,
+  "rows": [
+    {
+      "row": 72,
+      "kernel_gate": "F41-051",
+      "audit_gate": "F41-052",
+      "status": "source_draft_only",
+      "H_lower": 73,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41051Attach072ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/072/f41_051_original_row072.py",
+          "destination": "verification/f41/f41_051/f41_051_original_row072.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/072/f41_052_row072_archive_audit.py",
+          "destination": "verification/f41/f41_052/f41_052_row072_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/072/f41-051-original-physical-row072-kernel.yml",
+          "destination": ".github/workflows/f41-051-original-physical-row072-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 73,
+      "kernel_gate": "F41-053",
+      "audit_gate": "F41-054",
+      "status": "source_draft_only",
+      "H_lower": 74,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41053Attach073ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/073/f41_053_original_row073.py",
+          "destination": "verification/f41/f41_053/f41_053_original_row073.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/073/f41_054_row073_archive_audit.py",
+          "destination": "verification/f41/f41_054/f41_054_row073_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/073/f41-053-original-physical-row073-kernel.yml",
+          "destination": ".github/workflows/f41-053-original-physical-row073-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 74,
+      "kernel_gate": "F41-055",
+      "audit_gate": "F41-056",
+      "status": "source_draft_only",
+      "H_lower": 75,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41055Attach074ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/074/f41_055_original_row074.py",
+          "destination": "verification/f41/f41_055/f41_055_original_row074.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/074/f41_056_row074_archive_audit.py",
+          "destination": "verification/f41/f41_056/f41_056_row074_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/074/f41-055-original-physical-row074-kernel.yml",
+          "destination": ".github/workflows/f41-055-original-physical-row074-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 75,
+      "kernel_gate": "F41-057",
+      "audit_gate": "F41-058",
+      "status": "source_draft_only",
+      "H_lower": 76,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41057Attach075ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/075/f41_057_original_row075.py",
+          "destination": "verification/f41/f41_057/f41_057_original_row075.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/075/f41_058_row075_archive_audit.py",
+          "destination": "verification/f41/f41_058/f41_058_row075_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/075/f41-057-original-physical-row075-kernel.yml",
+          "destination": ".github/workflows/f41-057-original-physical-row075-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 76,
+      "kernel_gate": "F41-059",
+      "audit_gate": "F41-060",
+      "status": "source_draft_only",
+      "H_lower": 77,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41059Attach076ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/076/f41_059_original_row076.py",
+          "destination": "verification/f41/f41_059/f41_059_original_row076.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/076/f41_060_row076_archive_audit.py",
+          "destination": "verification/f41/f41_060/f41_060_row076_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/076/f41-059-original-physical-row076-kernel.yml",
+          "destination": ".github/workflows/f41-059-original-physical-row076-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 77,
+      "kernel_gate": "F41-061",
+      "audit_gate": "F41-062",
+      "status": "source_draft_only",
+      "H_lower": 78,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41061Attach077ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/077/f41_061_original_row077.py",
+          "destination": "verification/f41/f41_061/f41_061_original_row077.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/077/f41_062_row077_archive_audit.py",
+          "destination": "verification/f41/f41_062/f41_062_row077_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/077/f41-061-original-physical-row077-kernel.yml",
+          "destination": ".github/workflows/f41-061-original-physical-row077-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 78,
+      "kernel_gate": "F41-063",
+      "audit_gate": "F41-064",
+      "status": "source_draft_only",
+      "H_lower": 79,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41063Attach078ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/078/f41_063_original_row078.py",
+          "destination": "verification/f41/f41_063/f41_063_original_row078.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/078/f41_064_row078_archive_audit.py",
+          "destination": "verification/f41/f41_064/f41_064_row078_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/078/f41-063-original-physical-row078-kernel.yml",
+          "destination": ".github/workflows/f41-063-original-physical-row078-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 79,
+      "kernel_gate": "F41-065",
+      "audit_gate": "F41-066",
+      "status": "source_draft_only",
+      "H_lower": 80,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41065Attach079ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/079/f41_065_original_row079.py",
+          "destination": "verification/f41/f41_065/f41_065_original_row079.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/079/f41_066_row079_archive_audit.py",
+          "destination": "verification/f41/f41_066/f41_066_row079_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/079/f41-065-original-physical-row079-kernel.yml",
+          "destination": ".github/workflows/f41-065-original-physical-row079-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 80,
+      "kernel_gate": "F41-067",
+      "audit_gate": "F41-068",
+      "status": "source_draft_only",
+      "H_lower": 81,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41067Attach080ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/080/f41_067_original_row080.py",
+          "destination": "verification/f41/f41_067/f41_067_original_row080.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/080/f41_068_row080_archive_audit.py",
+          "destination": "verification/f41/f41_068/f41_068_row080_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/080/f41-067-original-physical-row080-kernel.yml",
+          "destination": ".github/workflows/f41-067-original-physical-row080-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 81,
+      "kernel_gate": "F41-069",
+      "audit_gate": "F41-070",
+      "status": "source_draft_only",
+      "H_lower": 82,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41069Attach081ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/081/f41_069_original_row081.py",
+          "destination": "verification/f41/f41_069/f41_069_original_row081.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/081/f41_070_row081_archive_audit.py",
+          "destination": "verification/f41/f41_070/f41_070_row081_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/081/f41-069-original-physical-row081-kernel.yml",
+          "destination": ".github/workflows/f41-069-original-physical-row081-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 82,
+      "kernel_gate": "F41-071",
+      "audit_gate": "F41-072",
+      "status": "source_draft_only",
+      "H_lower": 83,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41071Attach082ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/082/f41_071_original_row082.py",
+          "destination": "verification/f41/f41_071/f41_071_original_row082.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/082/f41_072_row082_archive_audit.py",
+          "destination": "verification/f41/f41_072/f41_072_row082_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/082/f41-071-original-physical-row082-kernel.yml",
+          "destination": ".github/workflows/f41-071-original-physical-row082-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 83,
+      "kernel_gate": "F41-073",
+      "audit_gate": "F41-074",
+      "status": "source_draft_only",
+      "H_lower": 84,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41073Attach083ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/083/f41_073_original_row083.py",
+          "destination": "verification/f41/f41_073/f41_073_original_row083.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/083/f41_074_row083_archive_audit.py",
+          "destination": "verification/f41/f41_074/f41_074_row083_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/083/f41-073-original-physical-row083-kernel.yml",
+          "destination": ".github/workflows/f41-073-original-physical-row083-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 84,
+      "kernel_gate": "F41-075",
+      "audit_gate": "F41-076",
+      "status": "source_draft_only",
+      "H_lower": 85,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41075Attach084ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/084/f41_075_original_row084.py",
+          "destination": "verification/f41/f41_075/f41_075_original_row084.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/084/f41_076_row084_archive_audit.py",
+          "destination": "verification/f41/f41_076/f41_076_row084_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/084/f41-075-original-physical-row084-kernel.yml",
+          "destination": ".github/workflows/f41-075-original-physical-row084-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 85,
+      "kernel_gate": "F41-077",
+      "audit_gate": "F41-078",
+      "status": "source_draft_only",
+      "H_lower": 86,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41077Attach085ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/085/f41_077_original_row085.py",
+          "destination": "verification/f41/f41_077/f41_077_original_row085.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/085/f41_078_row085_archive_audit.py",
+          "destination": "verification/f41/f41_078/f41_078_row085_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/085/f41-077-original-physical-row085-kernel.yml",
+          "destination": ".github/workflows/f41-077-original-physical-row085-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 86,
+      "kernel_gate": "F41-079",
+      "audit_gate": "F41-080",
+      "status": "source_draft_only",
+      "H_lower": 87,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41079Attach086ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/086/f41_079_original_row086.py",
+          "destination": "verification/f41/f41_079/f41_079_original_row086.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/086/f41_080_row086_archive_audit.py",
+          "destination": "verification/f41/f41_080/f41_080_row086_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/086/f41-079-original-physical-row086-kernel.yml",
+          "destination": ".github/workflows/f41-079-original-physical-row086-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 87,
+      "kernel_gate": "F41-081",
+      "audit_gate": "F41-082",
+      "status": "source_draft_only",
+      "H_lower": 88,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41081Attach087ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/087/f41_081_original_row087.py",
+          "destination": "verification/f41/f41_081/f41_081_original_row087.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/087/f41_082_row087_archive_audit.py",
+          "destination": "verification/f41/f41_082/f41_082_row087_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/087/f41-081-original-physical-row087-kernel.yml",
+          "destination": ".github/workflows/f41-081-original-physical-row087-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 88,
+      "kernel_gate": "F41-083",
+      "audit_gate": "F41-084",
+      "status": "source_draft_only",
+      "H_lower": 89,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41083Attach088ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/088/f41_083_original_row088.py",
+          "destination": "verification/f41/f41_083/f41_083_original_row088.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/088/f41_084_row088_archive_audit.py",
+          "destination": "verification/f41/f41_084/f41_084_row088_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/088/f41-083-original-physical-row088-kernel.yml",
+          "destination": ".github/workflows/f41-083-original-physical-row088-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 89,
+      "kernel_gate": "F41-085",
+      "audit_gate": "F41-086",
+      "status": "source_draft_only",
+      "H_lower": 90,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41085Attach089ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/089/f41_085_original_row089.py",
+          "destination": "verification/f41/f41_085/f41_085_original_row089.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/089/f41_086_row089_archive_audit.py",
+          "destination": "verification/f41/f41_086/f41_086_row089_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/089/f41-085-original-physical-row089-kernel.yml",
+          "destination": ".github/workflows/f41-085-original-physical-row089-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 90,
+      "kernel_gate": "F41-087",
+      "audit_gate": "F41-088",
+      "status": "source_draft_only",
+      "H_lower": 91,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41087Attach090ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/090/f41_087_original_row090.py",
+          "destination": "verification/f41/f41_087/f41_087_original_row090.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/090/f41_088_row090_archive_audit.py",
+          "destination": "verification/f41/f41_088/f41_088_row090_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/090/f41-087-original-physical-row090-kernel.yml",
+          "destination": ".github/workflows/f41-087-original-physical-row090-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 91,
+      "kernel_gate": "F41-089",
+      "audit_gate": "F41-090",
+      "status": "source_draft_only",
+      "H_lower": 92,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41089Attach091ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/091/f41_089_original_row091.py",
+          "destination": "verification/f41/f41_089/f41_089_original_row091.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/091/f41_090_row091_archive_audit.py",
+          "destination": "verification/f41/f41_090/f41_090_row091_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/091/f41-089-original-physical-row091-kernel.yml",
+          "destination": ".github/workflows/f41-089-original-physical-row091-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 92,
+      "kernel_gate": "F41-091",
+      "audit_gate": "F41-092",
+      "status": "source_draft_only",
+      "H_lower": 93,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41091Attach092ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/092/f41_091_original_row092.py",
+          "destination": "verification/f41/f41_091/f41_091_original_row092.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/092/f41_092_row092_archive_audit.py",
+          "destination": "verification/f41/f41_092/f41_092_row092_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/092/f41-091-original-physical-row092-kernel.yml",
+          "destination": ".github/workflows/f41-091-original-physical-row092-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 93,
+      "kernel_gate": "F41-093",
+      "audit_gate": "F41-094",
+      "status": "source_draft_only",
+      "H_lower": 94,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41093Attach093ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/093/f41_093_original_row093.py",
+          "destination": "verification/f41/f41_093/f41_093_original_row093.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/093/f41_094_row093_archive_audit.py",
+          "destination": "verification/f41/f41_094/f41_094_row093_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/093/f41-093-original-physical-row093-kernel.yml",
+          "destination": ".github/workflows/f41-093-original-physical-row093-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 94,
+      "kernel_gate": "F41-095",
+      "audit_gate": "F41-096",
+      "status": "source_draft_only",
+      "H_lower": 95,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41095Attach094ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/094/f41_095_original_row094.py",
+          "destination": "verification/f41/f41_095/f41_095_original_row094.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/094/f41_096_row094_archive_audit.py",
+          "destination": "verification/f41/f41_096/f41_096_row094_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/094/f41-095-original-physical-row094-kernel.yml",
+          "destination": ".github/workflows/f41-095-original-physical-row094-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 95,
+      "kernel_gate": "F41-097",
+      "audit_gate": "F41-098",
+      "status": "source_draft_only",
+      "H_lower": 96,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41097Attach095ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/095/f41_097_original_row095.py",
+          "destination": "verification/f41/f41_097/f41_097_original_row095.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/095/f41_098_row095_archive_audit.py",
+          "destination": "verification/f41/f41_098/f41_098_row095_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/095/f41-097-original-physical-row095-kernel.yml",
+          "destination": ".github/workflows/f41-097-original-physical-row095-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 96,
+      "kernel_gate": "F41-099",
+      "audit_gate": "F41-100",
+      "status": "source_draft_only",
+      "H_lower": 97,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41099Attach096ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/096/f41_099_original_row096.py",
+          "destination": "verification/f41/f41_099/f41_099_original_row096.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/096/f41_100_row096_archive_audit.py",
+          "destination": "verification/f41/f41_100/f41_100_row096_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/096/f41-099-original-physical-row096-kernel.yml",
+          "destination": ".github/workflows/f41-099-original-physical-row096-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 97,
+      "kernel_gate": "F41-101",
+      "audit_gate": "F41-102",
+      "status": "source_draft_only",
+      "H_lower": 98,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41101Attach097ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/097/f41_101_original_row097.py",
+          "destination": "verification/f41/f41_101/f41_101_original_row097.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/097/f41_102_row097_archive_audit.py",
+          "destination": "verification/f41/f41_102/f41_102_row097_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/097/f41-101-original-physical-row097-kernel.yml",
+          "destination": ".github/workflows/f41-101-original-physical-row097-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 98,
+      "kernel_gate": "F41-103",
+      "audit_gate": "F41-104",
+      "status": "source_draft_only",
+      "H_lower": 99,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41103Attach098ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/098/f41_103_original_row098.py",
+          "destination": "verification/f41/f41_103/f41_103_original_row098.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/098/f41_104_row098_archive_audit.py",
+          "destination": "verification/f41/f41_104/f41_104_row098_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/098/f41-103-original-physical-row098-kernel.yml",
+          "destination": ".github/workflows/f41-103-original-physical-row098-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 99,
+      "kernel_gate": "F41-105",
+      "audit_gate": "F41-106",
+      "status": "source_draft_only",
+      "H_lower": 100,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41105Attach099ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/099/f41_105_original_row099.py",
+          "destination": "verification/f41/f41_105/f41_105_original_row099.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/099/f41_106_row099_archive_audit.py",
+          "destination": "verification/f41/f41_106/f41_106_row099_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/099/f41-105-original-physical-row099-kernel.yml",
+          "destination": ".github/workflows/f41-105-original-physical-row099-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 100,
+      "kernel_gate": "F41-107",
+      "audit_gate": "F41-108",
+      "status": "source_draft_only",
+      "H_lower": 101,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41107Attach100ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/100/f41_107_original_row100.py",
+          "destination": "verification/f41/f41_107/f41_107_original_row100.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/100/f41_108_row100_archive_audit.py",
+          "destination": "verification/f41/f41_108/f41_108_row100_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/100/f41-107-original-physical-row100-kernel.yml",
+          "destination": ".github/workflows/f41-107-original-physical-row100-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 101,
+      "kernel_gate": "F41-109",
+      "audit_gate": "F41-110",
+      "status": "source_draft_only",
+      "H_lower": 102,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41109Attach101ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/101/f41_109_original_row101.py",
+          "destination": "verification/f41/f41_109/f41_109_original_row101.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/101/f41_110_row101_archive_audit.py",
+          "destination": "verification/f41/f41_110/f41_110_row101_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/101/f41-109-original-physical-row101-kernel.yml",
+          "destination": ".github/workflows/f41-109-original-physical-row101-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 102,
+      "kernel_gate": "F41-111",
+      "audit_gate": "F41-112",
+      "status": "source_draft_only",
+      "H_lower": 103,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41111Attach102ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/102/f41_111_original_row102.py",
+          "destination": "verification/f41/f41_111/f41_111_original_row102.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/102/f41_112_row102_archive_audit.py",
+          "destination": "verification/f41/f41_112/f41_112_row102_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/102/f41-111-original-physical-row102-kernel.yml",
+          "destination": ".github/workflows/f41-111-original-physical-row102-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 103,
+      "kernel_gate": "F41-113",
+      "audit_gate": "F41-114",
+      "status": "source_draft_only",
+      "H_lower": 104,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41113Attach103ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/103/f41_113_original_row103.py",
+          "destination": "verification/f41/f41_113/f41_113_original_row103.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/103/f41_114_row103_archive_audit.py",
+          "destination": "verification/f41/f41_114/f41_114_row103_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/103/f41-113-original-physical-row103-kernel.yml",
+          "destination": ".github/workflows/f41-113-original-physical-row103-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 104,
+      "kernel_gate": "F41-115",
+      "audit_gate": "F41-116",
+      "status": "source_draft_only",
+      "H_lower": 105,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41115Attach104ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/104/f41_115_original_row104.py",
+          "destination": "verification/f41/f41_115/f41_115_original_row104.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/104/f41_116_row104_archive_audit.py",
+          "destination": "verification/f41/f41_116/f41_116_row104_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/104/f41-115-original-physical-row104-kernel.yml",
+          "destination": ".github/workflows/f41-115-original-physical-row104-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 105,
+      "kernel_gate": "F41-117",
+      "audit_gate": "F41-118",
+      "status": "source_draft_only",
+      "H_lower": 106,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41117Attach105ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/105/f41_117_original_row105.py",
+          "destination": "verification/f41/f41_117/f41_117_original_row105.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/105/f41_118_row105_archive_audit.py",
+          "destination": "verification/f41/f41_118/f41_118_row105_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/105/f41-117-original-physical-row105-kernel.yml",
+          "destination": ".github/workflows/f41-117-original-physical-row105-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 106,
+      "kernel_gate": "F41-119",
+      "audit_gate": "F41-120",
+      "status": "source_draft_only",
+      "H_lower": 107,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41119Attach106ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/106/f41_119_original_row106.py",
+          "destination": "verification/f41/f41_119/f41_119_original_row106.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/106/f41_120_row106_archive_audit.py",
+          "destination": "verification/f41/f41_120/f41_120_row106_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/106/f41-119-original-physical-row106-kernel.yml",
+          "destination": ".github/workflows/f41-119-original-physical-row106-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 107,
+      "kernel_gate": "F41-121",
+      "audit_gate": "F41-122",
+      "status": "source_draft_only",
+      "H_lower": 108,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41121Attach107ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/107/f41_121_original_row107.py",
+          "destination": "verification/f41/f41_121/f41_121_original_row107.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/107/f41_122_row107_archive_audit.py",
+          "destination": "verification/f41/f41_122/f41_122_row107_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/107/f41-121-original-physical-row107-kernel.yml",
+          "destination": ".github/workflows/f41-121-original-physical-row107-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 108,
+      "kernel_gate": "F41-123",
+      "audit_gate": "F41-124",
+      "status": "source_draft_only",
+      "H_lower": 109,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41123Attach108ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/108/f41_123_original_row108.py",
+          "destination": "verification/f41/f41_123/f41_123_original_row108.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/108/f41_124_row108_archive_audit.py",
+          "destination": "verification/f41/f41_124/f41_124_row108_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/108/f41-123-original-physical-row108-kernel.yml",
+          "destination": ".github/workflows/f41-123-original-physical-row108-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 109,
+      "kernel_gate": "F41-125",
+      "audit_gate": "F41-126",
+      "status": "source_draft_only",
+      "H_lower": 110,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41125Attach109ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/109/f41_125_original_row109.py",
+          "destination": "verification/f41/f41_125/f41_125_original_row109.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/109/f41_126_row109_archive_audit.py",
+          "destination": "verification/f41/f41_126/f41_126_row109_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/109/f41-125-original-physical-row109-kernel.yml",
+          "destination": ".github/workflows/f41-125-original-physical-row109-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 110,
+      "kernel_gate": "F41-127",
+      "audit_gate": "F41-128",
+      "status": "source_draft_only",
+      "H_lower": 111,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41127Attach110ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/110/f41_127_original_row110.py",
+          "destination": "verification/f41/f41_127/f41_127_original_row110.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/110/f41_128_row110_archive_audit.py",
+          "destination": "verification/f41/f41_128/f41_128_row110_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/110/f41-127-original-physical-row110-kernel.yml",
+          "destination": ".github/workflows/f41-127-original-physical-row110-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 111,
+      "kernel_gate": "F41-129",
+      "audit_gate": "F41-130",
+      "status": "source_draft_only",
+      "H_lower": 112,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41129Attach111ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/111/f41_129_original_row111.py",
+          "destination": "verification/f41/f41_129/f41_129_original_row111.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/111/f41_130_row111_archive_audit.py",
+          "destination": "verification/f41/f41_130/f41_130_row111_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/111/f41-129-original-physical-row111-kernel.yml",
+          "destination": ".github/workflows/f41-129-original-physical-row111-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 112,
+      "kernel_gate": "F41-131",
+      "audit_gate": "F41-132",
+      "status": "source_draft_only",
+      "H_lower": 113,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41131Attach112ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/112/f41_131_original_row112.py",
+          "destination": "verification/f41/f41_131/f41_131_original_row112.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/112/f41_132_row112_archive_audit.py",
+          "destination": "verification/f41/f41_132/f41_132_row112_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/112/f41-131-original-physical-row112-kernel.yml",
+          "destination": ".github/workflows/f41-131-original-physical-row112-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 113,
+      "kernel_gate": "F41-133",
+      "audit_gate": "F41-134",
+      "status": "source_draft_only",
+      "H_lower": 114,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41133Attach113ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/113/f41_133_original_row113.py",
+          "destination": "verification/f41/f41_133/f41_133_original_row113.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/113/f41_134_row113_archive_audit.py",
+          "destination": "verification/f41/f41_134/f41_134_row113_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/113/f41-133-original-physical-row113-kernel.yml",
+          "destination": ".github/workflows/f41-133-original-physical-row113-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 114,
+      "kernel_gate": "F41-135",
+      "audit_gate": "F41-136",
+      "status": "source_draft_only",
+      "H_lower": 115,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41135Attach114ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/114/f41_135_original_row114.py",
+          "destination": "verification/f41/f41_135/f41_135_original_row114.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/114/f41_136_row114_archive_audit.py",
+          "destination": "verification/f41/f41_136/f41_136_row114_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/114/f41-135-original-physical-row114-kernel.yml",
+          "destination": ".github/workflows/f41-135-original-physical-row114-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 115,
+      "kernel_gate": "F41-137",
+      "audit_gate": "F41-138",
+      "status": "source_draft_only",
+      "H_lower": 116,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41137Attach115ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/115/f41_137_original_row115.py",
+          "destination": "verification/f41/f41_137/f41_137_original_row115.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/115/f41_138_row115_archive_audit.py",
+          "destination": "verification/f41/f41_138/f41_138_row115_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/115/f41-137-original-physical-row115-kernel.yml",
+          "destination": ".github/workflows/f41-137-original-physical-row115-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 116,
+      "kernel_gate": "F41-139",
+      "audit_gate": "F41-140",
+      "status": "source_draft_only",
+      "H_lower": 117,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41139Attach116ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/116/f41_139_original_row116.py",
+          "destination": "verification/f41/f41_139/f41_139_original_row116.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/116/f41_140_row116_archive_audit.py",
+          "destination": "verification/f41/f41_140/f41_140_row116_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/116/f41-139-original-physical-row116-kernel.yml",
+          "destination": ".github/workflows/f41-139-original-physical-row116-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 117,
+      "kernel_gate": "F41-141",
+      "audit_gate": "F41-142",
+      "status": "source_draft_only",
+      "H_lower": 118,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41141Attach117ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/117/f41_141_original_row117.py",
+          "destination": "verification/f41/f41_141/f41_141_original_row117.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/117/f41_142_row117_archive_audit.py",
+          "destination": "verification/f41/f41_142/f41_142_row117_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/117/f41-141-original-physical-row117-kernel.yml",
+          "destination": ".github/workflows/f41-141-original-physical-row117-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 118,
+      "kernel_gate": "F41-143",
+      "audit_gate": "F41-144",
+      "status": "source_draft_only",
+      "H_lower": 119,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41143Attach118ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/118/f41_143_original_row118.py",
+          "destination": "verification/f41/f41_143/f41_143_original_row118.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/118/f41_144_row118_archive_audit.py",
+          "destination": "verification/f41/f41_144/f41_144_row118_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/118/f41-143-original-physical-row118-kernel.yml",
+          "destination": ".github/workflows/f41-143-original-physical-row118-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 119,
+      "kernel_gate": "F41-145",
+      "audit_gate": "F41-146",
+      "status": "source_draft_only",
+      "H_lower": 120,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41145Attach119ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/119/f41_145_original_row119.py",
+          "destination": "verification/f41/f41_145/f41_145_original_row119.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/119/f41_146_row119_archive_audit.py",
+          "destination": "verification/f41/f41_146/f41_146_row119_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/119/f41-145-original-physical-row119-kernel.yml",
+          "destination": ".github/workflows/f41-145-original-physical-row119-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 120,
+      "kernel_gate": "F41-147",
+      "audit_gate": "F41-148",
+      "status": "source_draft_only",
+      "H_lower": 121,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41147Attach120ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/120/f41_147_original_row120.py",
+          "destination": "verification/f41/f41_147/f41_147_original_row120.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/120/f41_148_row120_archive_audit.py",
+          "destination": "verification/f41/f41_148/f41_148_row120_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/120/f41-147-original-physical-row120-kernel.yml",
+          "destination": ".github/workflows/f41-147-original-physical-row120-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 121,
+      "kernel_gate": "F41-149",
+      "audit_gate": "F41-150",
+      "status": "source_draft_only",
+      "H_lower": 122,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41149Attach121ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/121/f41_149_original_row121.py",
+          "destination": "verification/f41/f41_149/f41_149_original_row121.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/121/f41_150_row121_archive_audit.py",
+          "destination": "verification/f41/f41_150/f41_150_row121_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/121/f41-149-original-physical-row121-kernel.yml",
+          "destination": ".github/workflows/f41-149-original-physical-row121-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 122,
+      "kernel_gate": "F41-151",
+      "audit_gate": "F41-152",
+      "status": "source_draft_only",
+      "H_lower": 123,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41151Attach122ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/122/f41_151_original_row122.py",
+          "destination": "verification/f41/f41_151/f41_151_original_row122.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/122/f41_152_row122_archive_audit.py",
+          "destination": "verification/f41/f41_152/f41_152_row122_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/122/f41-151-original-physical-row122-kernel.yml",
+          "destination": ".github/workflows/f41-151-original-physical-row122-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 123,
+      "kernel_gate": "F41-153",
+      "audit_gate": "F41-154",
+      "status": "source_draft_only",
+      "H_lower": 124,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41153Attach123ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/123/f41_153_original_row123.py",
+          "destination": "verification/f41/f41_153/f41_153_original_row123.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/123/f41_154_row123_archive_audit.py",
+          "destination": "verification/f41/f41_154/f41_154_row123_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/123/f41-153-original-physical-row123-kernel.yml",
+          "destination": ".github/workflows/f41-153-original-physical-row123-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 124,
+      "kernel_gate": "F41-155",
+      "audit_gate": "F41-156",
+      "status": "source_draft_only",
+      "H_lower": 125,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41155Attach124ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/124/f41_155_original_row124.py",
+          "destination": "verification/f41/f41_155/f41_155_original_row124.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/124/f41_156_row124_archive_audit.py",
+          "destination": "verification/f41/f41_156/f41_156_row124_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/124/f41-155-original-physical-row124-kernel.yml",
+          "destination": ".github/workflows/f41-155-original-physical-row124-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 125,
+      "kernel_gate": "F41-157",
+      "audit_gate": "F41-158",
+      "status": "source_draft_only",
+      "H_lower": 126,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41157Attach125ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/125/f41_157_original_row125.py",
+          "destination": "verification/f41/f41_157/f41_157_original_row125.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/125/f41_158_row125_archive_audit.py",
+          "destination": "verification/f41/f41_158/f41_158_row125_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/125/f41-157-original-physical-row125-kernel.yml",
+          "destination": ".github/workflows/f41-157-original-physical-row125-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 126,
+      "kernel_gate": "F41-159",
+      "audit_gate": "F41-160",
+      "status": "source_draft_only",
+      "H_lower": 127,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41159Attach126ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/126/f41_159_original_row126.py",
+          "destination": "verification/f41/f41_159/f41_159_original_row126.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/126/f41_160_row126_archive_audit.py",
+          "destination": "verification/f41/f41_160/f41_160_row126_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/126/f41-159-original-physical-row126-kernel.yml",
+          "destination": ".github/workflows/f41-159-original-physical-row126-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 127,
+      "kernel_gate": "F41-161",
+      "audit_gate": "F41-162",
+      "status": "source_draft_only",
+      "H_lower": 128,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41161Attach127ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/127/f41_161_original_row127.py",
+          "destination": "verification/f41/f41_161/f41_161_original_row127.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/127/f41_162_row127_archive_audit.py",
+          "destination": "verification/f41/f41_162/f41_162_row127_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/127/f41-161-original-physical-row127-kernel.yml",
+          "destination": ".github/workflows/f41-161-original-physical-row127-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 128,
+      "kernel_gate": "F41-163",
+      "audit_gate": "F41-164",
+      "status": "source_draft_only",
+      "H_lower": 129,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41163Attach128ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/128/f41_163_original_row128.py",
+          "destination": "verification/f41/f41_163/f41_163_original_row128.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/128/f41_164_row128_archive_audit.py",
+          "destination": "verification/f41/f41_164/f41_164_row128_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/128/f41-163-original-physical-row128-kernel.yml",
+          "destination": ".github/workflows/f41-163-original-physical-row128-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 129,
+      "kernel_gate": "F41-165",
+      "audit_gate": "F41-166",
+      "status": "source_draft_only",
+      "H_lower": 130,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41165Attach129ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/129/f41_165_original_row129.py",
+          "destination": "verification/f41/f41_165/f41_165_original_row129.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/129/f41_166_row129_archive_audit.py",
+          "destination": "verification/f41/f41_166/f41_166_row129_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/129/f41-165-original-physical-row129-kernel.yml",
+          "destination": ".github/workflows/f41-165-original-physical-row129-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 130,
+      "kernel_gate": "F41-167",
+      "audit_gate": "F41-168",
+      "status": "source_draft_only",
+      "H_lower": 131,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41167Attach130ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/130/f41_167_original_row130.py",
+          "destination": "verification/f41/f41_167/f41_167_original_row130.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/130/f41_168_row130_archive_audit.py",
+          "destination": "verification/f41/f41_168/f41_168_row130_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/130/f41-167-original-physical-row130-kernel.yml",
+          "destination": ".github/workflows/f41-167-original-physical-row130-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 131,
+      "kernel_gate": "F41-169",
+      "audit_gate": "F41-170",
+      "status": "source_draft_only",
+      "H_lower": 132,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41169Attach131ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/131/f41_169_original_row131.py",
+          "destination": "verification/f41/f41_169/f41_169_original_row131.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/131/f41_170_row131_archive_audit.py",
+          "destination": "verification/f41/f41_170/f41_170_row131_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/131/f41-169-original-physical-row131-kernel.yml",
+          "destination": ".github/workflows/f41-169-original-physical-row131-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 132,
+      "kernel_gate": "F41-171",
+      "audit_gate": "F41-172",
+      "status": "source_draft_only",
+      "H_lower": 133,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41171Attach132ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/132/f41_171_original_row132.py",
+          "destination": "verification/f41/f41_171/f41_171_original_row132.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/132/f41_172_row132_archive_audit.py",
+          "destination": "verification/f41/f41_172/f41_172_row132_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/132/f41-171-original-physical-row132-kernel.yml",
+          "destination": ".github/workflows/f41-171-original-physical-row132-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 133,
+      "kernel_gate": "F41-173",
+      "audit_gate": "F41-174",
+      "status": "source_draft_only",
+      "H_lower": 134,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41173Attach133ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/133/f41_173_original_row133.py",
+          "destination": "verification/f41/f41_173/f41_173_original_row133.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/133/f41_174_row133_archive_audit.py",
+          "destination": "verification/f41/f41_174/f41_174_row133_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/133/f41-173-original-physical-row133-kernel.yml",
+          "destination": ".github/workflows/f41-173-original-physical-row133-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 134,
+      "kernel_gate": "F41-175",
+      "audit_gate": "F41-176",
+      "status": "source_draft_only",
+      "H_lower": 135,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41175Attach134ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/134/f41_175_original_row134.py",
+          "destination": "verification/f41/f41_175/f41_175_original_row134.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/134/f41_176_row134_archive_audit.py",
+          "destination": "verification/f41/f41_176/f41_176_row134_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/134/f41-175-original-physical-row134-kernel.yml",
+          "destination": ".github/workflows/f41-175-original-physical-row134-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 135,
+      "kernel_gate": "F41-177",
+      "audit_gate": "F41-178",
+      "status": "source_draft_only",
+      "H_lower": 136,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41177Attach135ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/135/f41_177_original_row135.py",
+          "destination": "verification/f41/f41_177/f41_177_original_row135.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/135/f41_178_row135_archive_audit.py",
+          "destination": "verification/f41/f41_178/f41_178_row135_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/135/f41-177-original-physical-row135-kernel.yml",
+          "destination": ".github/workflows/f41-177-original-physical-row135-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 136,
+      "kernel_gate": "F41-179",
+      "audit_gate": "F41-180",
+      "status": "source_draft_only",
+      "H_lower": 137,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41179Attach136ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/136/f41_179_original_row136.py",
+          "destination": "verification/f41/f41_179/f41_179_original_row136.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/136/f41_180_row136_archive_audit.py",
+          "destination": "verification/f41/f41_180/f41_180_row136_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/136/f41-179-original-physical-row136-kernel.yml",
+          "destination": ".github/workflows/f41-179-original-physical-row136-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 137,
+      "kernel_gate": "F41-181",
+      "audit_gate": "F41-182",
+      "status": "source_draft_only",
+      "H_lower": 138,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41181Attach137ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/137/f41_181_original_row137.py",
+          "destination": "verification/f41/f41_181/f41_181_original_row137.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/137/f41_182_row137_archive_audit.py",
+          "destination": "verification/f41/f41_182/f41_182_row137_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/137/f41-181-original-physical-row137-kernel.yml",
+          "destination": ".github/workflows/f41-181-original-physical-row137-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 138,
+      "kernel_gate": "F41-183",
+      "audit_gate": "F41-184",
+      "status": "source_draft_only",
+      "H_lower": 139,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41183Attach138ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/138/f41_183_original_row138.py",
+          "destination": "verification/f41/f41_183/f41_183_original_row138.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/138/f41_184_row138_archive_audit.py",
+          "destination": "verification/f41/f41_184/f41_184_row138_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/138/f41-183-original-physical-row138-kernel.yml",
+          "destination": ".github/workflows/f41-183-original-physical-row138-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 139,
+      "kernel_gate": "F41-185",
+      "audit_gate": "F41-186",
+      "status": "source_draft_only",
+      "H_lower": 140,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41185Attach139ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/139/f41_185_original_row139.py",
+          "destination": "verification/f41/f41_185/f41_185_original_row139.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/139/f41_186_row139_archive_audit.py",
+          "destination": "verification/f41/f41_186/f41_186_row139_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/139/f41-185-original-physical-row139-kernel.yml",
+          "destination": ".github/workflows/f41-185-original-physical-row139-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 140,
+      "kernel_gate": "F41-187",
+      "audit_gate": "F41-188",
+      "status": "source_draft_only",
+      "H_lower": 141,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41187Attach140ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/140/f41_187_original_row140.py",
+          "destination": "verification/f41/f41_187/f41_187_original_row140.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/140/f41_188_row140_archive_audit.py",
+          "destination": "verification/f41/f41_188/f41_188_row140_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/140/f41-187-original-physical-row140-kernel.yml",
+          "destination": ".github/workflows/f41-187-original-physical-row140-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 141,
+      "kernel_gate": "F41-189",
+      "audit_gate": "F41-190",
+      "status": "source_draft_only",
+      "H_lower": 142,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41189Attach141ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/141/f41_189_original_row141.py",
+          "destination": "verification/f41/f41_189/f41_189_original_row141.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/141/f41_190_row141_archive_audit.py",
+          "destination": "verification/f41/f41_190/f41_190_row141_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/141/f41-189-original-physical-row141-kernel.yml",
+          "destination": ".github/workflows/f41-189-original-physical-row141-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 142,
+      "kernel_gate": "F41-191",
+      "audit_gate": "F41-192",
+      "status": "source_draft_only",
+      "H_lower": 143,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41191Attach142ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/142/f41_191_original_row142.py",
+          "destination": "verification/f41/f41_191/f41_191_original_row142.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/142/f41_192_row142_archive_audit.py",
+          "destination": "verification/f41/f41_192/f41_192_row142_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/142/f41-191-original-physical-row142-kernel.yml",
+          "destination": ".github/workflows/f41-191-original-physical-row142-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 143,
+      "kernel_gate": "F41-193",
+      "audit_gate": "F41-194",
+      "status": "source_draft_only",
+      "H_lower": 144,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41193Attach143ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/143/f41_193_original_row143.py",
+          "destination": "verification/f41/f41_193/f41_193_original_row143.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/143/f41_194_row143_archive_audit.py",
+          "destination": "verification/f41/f41_194/f41_194_row143_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/143/f41-193-original-physical-row143-kernel.yml",
+          "destination": ".github/workflows/f41-193-original-physical-row143-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 144,
+      "kernel_gate": "F41-195",
+      "audit_gate": "F41-196",
+      "status": "source_draft_only",
+      "H_lower": 145,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41195Attach144ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/144/f41_195_original_row144.py",
+          "destination": "verification/f41/f41_195/f41_195_original_row144.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/144/f41_196_row144_archive_audit.py",
+          "destination": "verification/f41/f41_196/f41_196_row144_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/144/f41-195-original-physical-row144-kernel.yml",
+          "destination": ".github/workflows/f41-195-original-physical-row144-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 145,
+      "kernel_gate": "F41-197",
+      "audit_gate": "F41-198",
+      "status": "source_draft_only",
+      "H_lower": 146,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41197Attach145ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/145/f41_197_original_row145.py",
+          "destination": "verification/f41/f41_197/f41_197_original_row145.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/145/f41_198_row145_archive_audit.py",
+          "destination": "verification/f41/f41_198/f41_198_row145_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/145/f41-197-original-physical-row145-kernel.yml",
+          "destination": ".github/workflows/f41-197-original-physical-row145-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 146,
+      "kernel_gate": "F41-199",
+      "audit_gate": "F41-200",
+      "status": "source_draft_only",
+      "H_lower": 147,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41199Attach146ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/146/f41_199_original_row146.py",
+          "destination": "verification/f41/f41_199/f41_199_original_row146.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/146/f41_200_row146_archive_audit.py",
+          "destination": "verification/f41/f41_200/f41_200_row146_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/146/f41-199-original-physical-row146-kernel.yml",
+          "destination": ".github/workflows/f41-199-original-physical-row146-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 147,
+      "kernel_gate": "F41-201",
+      "audit_gate": "F41-202",
+      "status": "source_draft_only",
+      "H_lower": 148,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41201Attach147ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/147/f41_201_original_row147.py",
+          "destination": "verification/f41/f41_201/f41_201_original_row147.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/147/f41_202_row147_archive_audit.py",
+          "destination": "verification/f41/f41_202/f41_202_row147_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/147/f41-201-original-physical-row147-kernel.yml",
+          "destination": ".github/workflows/f41-201-original-physical-row147-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 148,
+      "kernel_gate": "F41-203",
+      "audit_gate": "F41-204",
+      "status": "source_draft_only",
+      "H_lower": 149,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41203Attach148ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/148/f41_203_original_row148.py",
+          "destination": "verification/f41/f41_203/f41_203_original_row148.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/148/f41_204_row148_archive_audit.py",
+          "destination": "verification/f41/f41_204/f41_204_row148_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/148/f41-203-original-physical-row148-kernel.yml",
+          "destination": ".github/workflows/f41-203-original-physical-row148-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 149,
+      "kernel_gate": "F41-205",
+      "audit_gate": "F41-206",
+      "status": "source_draft_only",
+      "H_lower": 150,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41205Attach149ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/149/f41_205_original_row149.py",
+          "destination": "verification/f41/f41_205/f41_205_original_row149.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/149/f41_206_row149_archive_audit.py",
+          "destination": "verification/f41/f41_206/f41_206_row149_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/149/f41-205-original-physical-row149-kernel.yml",
+          "destination": ".github/workflows/f41-205-original-physical-row149-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 150,
+      "kernel_gate": "F41-207",
+      "audit_gate": "F41-208",
+      "status": "source_draft_only",
+      "H_lower": 151,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41207Attach150ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/150/f41_207_original_row150.py",
+          "destination": "verification/f41/f41_207/f41_207_original_row150.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/150/f41_208_row150_archive_audit.py",
+          "destination": "verification/f41/f41_208/f41_208_row150_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/150/f41-207-original-physical-row150-kernel.yml",
+          "destination": ".github/workflows/f41-207-original-physical-row150-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 151,
+      "kernel_gate": "F41-209",
+      "audit_gate": "F41-210",
+      "status": "source_draft_only",
+      "H_lower": 152,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41209Attach151ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/151/f41_209_original_row151.py",
+          "destination": "verification/f41/f41_209/f41_209_original_row151.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/151/f41_210_row151_archive_audit.py",
+          "destination": "verification/f41/f41_210/f41_210_row151_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/151/f41-209-original-physical-row151-kernel.yml",
+          "destination": ".github/workflows/f41-209-original-physical-row151-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 152,
+      "kernel_gate": "F41-211",
+      "audit_gate": "F41-212",
+      "status": "source_draft_only",
+      "H_lower": 153,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41211Attach152ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/152/f41_211_original_row152.py",
+          "destination": "verification/f41/f41_211/f41_211_original_row152.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/152/f41_212_row152_archive_audit.py",
+          "destination": "verification/f41/f41_212/f41_212_row152_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/152/f41-211-original-physical-row152-kernel.yml",
+          "destination": ".github/workflows/f41-211-original-physical-row152-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 153,
+      "kernel_gate": "F41-213",
+      "audit_gate": "F41-214",
+      "status": "source_draft_only",
+      "H_lower": 154,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41213Attach153ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/153/f41_213_original_row153.py",
+          "destination": "verification/f41/f41_213/f41_213_original_row153.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/153/f41_214_row153_archive_audit.py",
+          "destination": "verification/f41/f41_214/f41_214_row153_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/153/f41-213-original-physical-row153-kernel.yml",
+          "destination": ".github/workflows/f41-213-original-physical-row153-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 154,
+      "kernel_gate": "F41-215",
+      "audit_gate": "F41-216",
+      "status": "source_draft_only",
+      "H_lower": 155,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41215Attach154ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/154/f41_215_original_row154.py",
+          "destination": "verification/f41/f41_215/f41_215_original_row154.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/154/f41_216_row154_archive_audit.py",
+          "destination": "verification/f41/f41_216/f41_216_row154_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/154/f41-215-original-physical-row154-kernel.yml",
+          "destination": ".github/workflows/f41-215-original-physical-row154-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 155,
+      "kernel_gate": "F41-217",
+      "audit_gate": "F41-218",
+      "status": "source_draft_only",
+      "H_lower": 156,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41217Attach155ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/155/f41_217_original_row155.py",
+          "destination": "verification/f41/f41_217/f41_217_original_row155.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/155/f41_218_row155_archive_audit.py",
+          "destination": "verification/f41/f41_218/f41_218_row155_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/155/f41-217-original-physical-row155-kernel.yml",
+          "destination": ".github/workflows/f41-217-original-physical-row155-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 156,
+      "kernel_gate": "F41-219",
+      "audit_gate": "F41-220",
+      "status": "source_draft_only",
+      "H_lower": 157,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41219Attach156ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/156/f41_219_original_row156.py",
+          "destination": "verification/f41/f41_219/f41_219_original_row156.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/156/f41_220_row156_archive_audit.py",
+          "destination": "verification/f41/f41_220/f41_220_row156_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/156/f41-219-original-physical-row156-kernel.yml",
+          "destination": ".github/workflows/f41-219-original-physical-row156-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 157,
+      "kernel_gate": "F41-221",
+      "audit_gate": "F41-222",
+      "status": "source_draft_only",
+      "H_lower": 158,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41221Attach157ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/157/f41_221_original_row157.py",
+          "destination": "verification/f41/f41_221/f41_221_original_row157.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/157/f41_222_row157_archive_audit.py",
+          "destination": "verification/f41/f41_222/f41_222_row157_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/157/f41-221-original-physical-row157-kernel.yml",
+          "destination": ".github/workflows/f41-221-original-physical-row157-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 158,
+      "kernel_gate": "F41-223",
+      "audit_gate": "F41-224",
+      "status": "source_draft_only",
+      "H_lower": 159,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41223Attach158ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/158/f41_223_original_row158.py",
+          "destination": "verification/f41/f41_223/f41_223_original_row158.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/158/f41_224_row158_archive_audit.py",
+          "destination": "verification/f41/f41_224/f41_224_row158_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/158/f41-223-original-physical-row158-kernel.yml",
+          "destination": ".github/workflows/f41-223-original-physical-row158-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 159,
+      "kernel_gate": "F41-225",
+      "audit_gate": "F41-226",
+      "status": "source_draft_only",
+      "H_lower": 160,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41225Attach159ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/159/f41_225_original_row159.py",
+          "destination": "verification/f41/f41_225/f41_225_original_row159.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/159/f41_226_row159_archive_audit.py",
+          "destination": "verification/f41/f41_226/f41_226_row159_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/159/f41-225-original-physical-row159-kernel.yml",
+          "destination": ".github/workflows/f41-225-original-physical-row159-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 160,
+      "kernel_gate": "F41-227",
+      "audit_gate": "F41-228",
+      "status": "source_draft_only",
+      "H_lower": 161,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41227Attach160ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/160/f41_227_original_row160.py",
+          "destination": "verification/f41/f41_227/f41_227_original_row160.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/160/f41_228_row160_archive_audit.py",
+          "destination": "verification/f41/f41_228/f41_228_row160_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/160/f41-227-original-physical-row160-kernel.yml",
+          "destination": ".github/workflows/f41-227-original-physical-row160-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 161,
+      "kernel_gate": "F41-229",
+      "audit_gate": "F41-230",
+      "status": "source_draft_only",
+      "H_lower": 162,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41229Attach161ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/161/f41_229_original_row161.py",
+          "destination": "verification/f41/f41_229/f41_229_original_row161.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/161/f41_230_row161_archive_audit.py",
+          "destination": "verification/f41/f41_230/f41_230_row161_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/161/f41-229-original-physical-row161-kernel.yml",
+          "destination": ".github/workflows/f41-229-original-physical-row161-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 162,
+      "kernel_gate": "F41-231",
+      "audit_gate": "F41-232",
+      "status": "source_draft_only",
+      "H_lower": 163,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41231Attach162ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/162/f41_231_original_row162.py",
+          "destination": "verification/f41/f41_231/f41_231_original_row162.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/162/f41_232_row162_archive_audit.py",
+          "destination": "verification/f41/f41_232/f41_232_row162_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/162/f41-231-original-physical-row162-kernel.yml",
+          "destination": ".github/workflows/f41-231-original-physical-row162-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 163,
+      "kernel_gate": "F41-233",
+      "audit_gate": "F41-234",
+      "status": "source_draft_only",
+      "H_lower": 164,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41233Attach163ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/163/f41_233_original_row163.py",
+          "destination": "verification/f41/f41_233/f41_233_original_row163.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/163/f41_234_row163_archive_audit.py",
+          "destination": "verification/f41/f41_234/f41_234_row163_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/163/f41-233-original-physical-row163-kernel.yml",
+          "destination": ".github/workflows/f41-233-original-physical-row163-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 164,
+      "kernel_gate": "F41-235",
+      "audit_gate": "F41-236",
+      "status": "source_draft_only",
+      "H_lower": 165,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41235Attach164ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/164/f41_235_original_row164.py",
+          "destination": "verification/f41/f41_235/f41_235_original_row164.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/164/f41_236_row164_archive_audit.py",
+          "destination": "verification/f41/f41_236/f41_236_row164_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/164/f41-235-original-physical-row164-kernel.yml",
+          "destination": ".github/workflows/f41-235-original-physical-row164-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 165,
+      "kernel_gate": "F41-237",
+      "audit_gate": "F41-238",
+      "status": "source_draft_only",
+      "H_lower": 166,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41237Attach165ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/165/f41_237_original_row165.py",
+          "destination": "verification/f41/f41_237/f41_237_original_row165.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/165/f41_238_row165_archive_audit.py",
+          "destination": "verification/f41/f41_238/f41_238_row165_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/165/f41-237-original-physical-row165-kernel.yml",
+          "destination": ".github/workflows/f41-237-original-physical-row165-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 166,
+      "kernel_gate": "F41-239",
+      "audit_gate": "F41-240",
+      "status": "source_draft_only",
+      "H_lower": 167,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41239Attach166ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/166/f41_239_original_row166.py",
+          "destination": "verification/f41/f41_239/f41_239_original_row166.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/166/f41_240_row166_archive_audit.py",
+          "destination": "verification/f41/f41_240/f41_240_row166_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/166/f41-239-original-physical-row166-kernel.yml",
+          "destination": ".github/workflows/f41-239-original-physical-row166-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 167,
+      "kernel_gate": "F41-241",
+      "audit_gate": "F41-242",
+      "status": "source_draft_only",
+      "H_lower": 168,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41241Attach167ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/167/f41_241_original_row167.py",
+          "destination": "verification/f41/f41_241/f41_241_original_row167.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/167/f41_242_row167_archive_audit.py",
+          "destination": "verification/f41/f41_242/f41_242_row167_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/167/f41-241-original-physical-row167-kernel.yml",
+          "destination": ".github/workflows/f41-241-original-physical-row167-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 168,
+      "kernel_gate": "F41-243",
+      "audit_gate": "F41-244",
+      "status": "source_draft_only",
+      "H_lower": 169,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41243Attach168ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/168/f41_243_original_row168.py",
+          "destination": "verification/f41/f41_243/f41_243_original_row168.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/168/f41_244_row168_archive_audit.py",
+          "destination": "verification/f41/f41_244/f41_244_row168_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/168/f41-243-original-physical-row168-kernel.yml",
+          "destination": ".github/workflows/f41-243-original-physical-row168-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 169,
+      "kernel_gate": "F41-245",
+      "audit_gate": "F41-246",
+      "status": "source_draft_only",
+      "H_lower": 170,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41245Attach169ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/169/f41_245_original_row169.py",
+          "destination": "verification/f41/f41_245/f41_245_original_row169.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/169/f41_246_row169_archive_audit.py",
+          "destination": "verification/f41/f41_246/f41_246_row169_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/169/f41-245-original-physical-row169-kernel.yml",
+          "destination": ".github/workflows/f41-245-original-physical-row169-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 170,
+      "kernel_gate": "F41-247",
+      "audit_gate": "F41-248",
+      "status": "source_draft_only",
+      "H_lower": 171,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41247Attach170ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/170/f41_247_original_row170.py",
+          "destination": "verification/f41/f41_247/f41_247_original_row170.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/170/f41_248_row170_archive_audit.py",
+          "destination": "verification/f41/f41_248/f41_248_row170_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/170/f41-247-original-physical-row170-kernel.yml",
+          "destination": ".github/workflows/f41-247-original-physical-row170-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 171,
+      "kernel_gate": "F41-249",
+      "audit_gate": "F41-250",
+      "status": "source_draft_only",
+      "H_lower": 172,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41249Attach171ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/171/f41_249_original_row171.py",
+          "destination": "verification/f41/f41_249/f41_249_original_row171.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/171/f41_250_row171_archive_audit.py",
+          "destination": "verification/f41/f41_250/f41_250_row171_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/171/f41-249-original-physical-row171-kernel.yml",
+          "destination": ".github/workflows/f41-249-original-physical-row171-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 172,
+      "kernel_gate": "F41-251",
+      "audit_gate": "F41-252",
+      "status": "source_draft_only",
+      "H_lower": 173,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41251Attach172ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/172/f41_251_original_row172.py",
+          "destination": "verification/f41/f41_251/f41_251_original_row172.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/172/f41_252_row172_archive_audit.py",
+          "destination": "verification/f41/f41_252/f41_252_row172_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/172/f41-251-original-physical-row172-kernel.yml",
+          "destination": ".github/workflows/f41-251-original-physical-row172-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 173,
+      "kernel_gate": "F41-253",
+      "audit_gate": "F41-254",
+      "status": "source_draft_only",
+      "H_lower": 174,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41253Attach173ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/173/f41_253_original_row173.py",
+          "destination": "verification/f41/f41_253/f41_253_original_row173.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/173/f41_254_row173_archive_audit.py",
+          "destination": "verification/f41/f41_254/f41_254_row173_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/173/f41-253-original-physical-row173-kernel.yml",
+          "destination": ".github/workflows/f41-253-original-physical-row173-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 174,
+      "kernel_gate": "F41-255",
+      "audit_gate": "F41-256",
+      "status": "source_draft_only",
+      "H_lower": 175,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41255Attach174ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/174/f41_255_original_row174.py",
+          "destination": "verification/f41/f41_255/f41_255_original_row174.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/174/f41_256_row174_archive_audit.py",
+          "destination": "verification/f41/f41_256/f41_256_row174_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/174/f41-255-original-physical-row174-kernel.yml",
+          "destination": ".github/workflows/f41-255-original-physical-row174-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 175,
+      "kernel_gate": "F41-257",
+      "audit_gate": "F41-258",
+      "status": "source_draft_only",
+      "H_lower": 176,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41257Attach175ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/175/f41_257_original_row175.py",
+          "destination": "verification/f41/f41_257/f41_257_original_row175.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/175/f41_258_row175_archive_audit.py",
+          "destination": "verification/f41/f41_258/f41_258_row175_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/175/f41-257-original-physical-row175-kernel.yml",
+          "destination": ".github/workflows/f41-257-original-physical-row175-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 176,
+      "kernel_gate": "F41-259",
+      "audit_gate": "F41-260",
+      "status": "source_draft_only",
+      "H_lower": 177,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41259Attach176ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/176/f41_259_original_row176.py",
+          "destination": "verification/f41/f41_259/f41_259_original_row176.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/176/f41_260_row176_archive_audit.py",
+          "destination": "verification/f41/f41_260/f41_260_row176_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/176/f41-259-original-physical-row176-kernel.yml",
+          "destination": ".github/workflows/f41-259-original-physical-row176-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 177,
+      "kernel_gate": "F41-261",
+      "audit_gate": "F41-262",
+      "status": "source_draft_only",
+      "H_lower": 178,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41261Attach177ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/177/f41_261_original_row177.py",
+          "destination": "verification/f41/f41_261/f41_261_original_row177.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/177/f41_262_row177_archive_audit.py",
+          "destination": "verification/f41/f41_262/f41_262_row177_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/177/f41-261-original-physical-row177-kernel.yml",
+          "destination": ".github/workflows/f41-261-original-physical-row177-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 178,
+      "kernel_gate": "F41-263",
+      "audit_gate": "F41-264",
+      "status": "source_draft_only",
+      "H_lower": 179,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41263Attach178ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/178/f41_263_original_row178.py",
+          "destination": "verification/f41/f41_263/f41_263_original_row178.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/178/f41_264_row178_archive_audit.py",
+          "destination": "verification/f41/f41_264/f41_264_row178_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/178/f41-263-original-physical-row178-kernel.yml",
+          "destination": ".github/workflows/f41-263-original-physical-row178-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 179,
+      "kernel_gate": "F41-265",
+      "audit_gate": "F41-266",
+      "status": "source_draft_only",
+      "H_lower": 180,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41265Attach179ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/179/f41_265_original_row179.py",
+          "destination": "verification/f41/f41_265/f41_265_original_row179.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/179/f41_266_row179_archive_audit.py",
+          "destination": "verification/f41/f41_266/f41_266_row179_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/179/f41-265-original-physical-row179-kernel.yml",
+          "destination": ".github/workflows/f41-265-original-physical-row179-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 180,
+      "kernel_gate": "F41-267",
+      "audit_gate": "F41-268",
+      "status": "source_draft_only",
+      "H_lower": 181,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41267Attach180ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/180/f41_267_original_row180.py",
+          "destination": "verification/f41/f41_267/f41_267_original_row180.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/180/f41_268_row180_archive_audit.py",
+          "destination": "verification/f41/f41_268/f41_268_row180_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/180/f41-267-original-physical-row180-kernel.yml",
+          "destination": ".github/workflows/f41-267-original-physical-row180-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 181,
+      "kernel_gate": "F41-269",
+      "audit_gate": "F41-270",
+      "status": "source_draft_only",
+      "H_lower": 182,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41269Attach181ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/181/f41_269_original_row181.py",
+          "destination": "verification/f41/f41_269/f41_269_original_row181.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/181/f41_270_row181_archive_audit.py",
+          "destination": "verification/f41/f41_270/f41_270_row181_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/181/f41-269-original-physical-row181-kernel.yml",
+          "destination": ".github/workflows/f41-269-original-physical-row181-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 182,
+      "kernel_gate": "F41-271",
+      "audit_gate": "F41-272",
+      "status": "source_draft_only",
+      "H_lower": 183,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41271Attach182ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/182/f41_271_original_row182.py",
+          "destination": "verification/f41/f41_271/f41_271_original_row182.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/182/f41_272_row182_archive_audit.py",
+          "destination": "verification/f41/f41_272/f41_272_row182_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/182/f41-271-original-physical-row182-kernel.yml",
+          "destination": ".github/workflows/f41-271-original-physical-row182-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 183,
+      "kernel_gate": "F41-273",
+      "audit_gate": "F41-274",
+      "status": "source_draft_only",
+      "H_lower": 184,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41273Attach183ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/183/f41_273_original_row183.py",
+          "destination": "verification/f41/f41_273/f41_273_original_row183.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/183/f41_274_row183_archive_audit.py",
+          "destination": "verification/f41/f41_274/f41_274_row183_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/183/f41-273-original-physical-row183-kernel.yml",
+          "destination": ".github/workflows/f41-273-original-physical-row183-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 184,
+      "kernel_gate": "F41-275",
+      "audit_gate": "F41-276",
+      "status": "source_draft_only",
+      "H_lower": 185,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41275Attach184ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/184/f41_275_original_row184.py",
+          "destination": "verification/f41/f41_275/f41_275_original_row184.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/184/f41_276_row184_archive_audit.py",
+          "destination": "verification/f41/f41_276/f41_276_row184_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/184/f41-275-original-physical-row184-kernel.yml",
+          "destination": ".github/workflows/f41-275-original-physical-row184-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 185,
+      "kernel_gate": "F41-277",
+      "audit_gate": "F41-278",
+      "status": "source_draft_only",
+      "H_lower": 186,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41277Attach185ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/185/f41_277_original_row185.py",
+          "destination": "verification/f41/f41_277/f41_277_original_row185.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/185/f41_278_row185_archive_audit.py",
+          "destination": "verification/f41/f41_278/f41_278_row185_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/185/f41-277-original-physical-row185-kernel.yml",
+          "destination": ".github/workflows/f41-277-original-physical-row185-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 186,
+      "kernel_gate": "F41-279",
+      "audit_gate": "F41-280",
+      "status": "source_draft_only",
+      "H_lower": 187,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41279Attach186ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/186/f41_279_original_row186.py",
+          "destination": "verification/f41/f41_279/f41_279_original_row186.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/186/f41_280_row186_archive_audit.py",
+          "destination": "verification/f41/f41_280/f41_280_row186_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/186/f41-279-original-physical-row186-kernel.yml",
+          "destination": ".github/workflows/f41-279-original-physical-row186-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 187,
+      "kernel_gate": "F41-281",
+      "audit_gate": "F41-282",
+      "status": "source_draft_only",
+      "H_lower": 188,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41281Attach187ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/187/f41_281_original_row187.py",
+          "destination": "verification/f41/f41_281/f41_281_original_row187.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/187/f41_282_row187_archive_audit.py",
+          "destination": "verification/f41/f41_282/f41_282_row187_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/187/f41-281-original-physical-row187-kernel.yml",
+          "destination": ".github/workflows/f41-281-original-physical-row187-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 188,
+      "kernel_gate": "F41-283",
+      "audit_gate": "F41-284",
+      "status": "source_draft_only",
+      "H_lower": 189,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41283Attach188ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/188/f41_283_original_row188.py",
+          "destination": "verification/f41/f41_283/f41_283_original_row188.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/188/f41_284_row188_archive_audit.py",
+          "destination": "verification/f41/f41_284/f41_284_row188_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/188/f41-283-original-physical-row188-kernel.yml",
+          "destination": ".github/workflows/f41-283-original-physical-row188-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 189,
+      "kernel_gate": "F41-285",
+      "audit_gate": "F41-286",
+      "status": "source_draft_only",
+      "H_lower": 190,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41285Attach189ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/189/f41_285_original_row189.py",
+          "destination": "verification/f41/f41_285/f41_285_original_row189.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/189/f41_286_row189_archive_audit.py",
+          "destination": "verification/f41/f41_286/f41_286_row189_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/189/f41-285-original-physical-row189-kernel.yml",
+          "destination": ".github/workflows/f41-285-original-physical-row189-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 190,
+      "kernel_gate": "F41-287",
+      "audit_gate": "F41-288",
+      "status": "source_draft_only",
+      "H_lower": 191,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41287Attach190ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/190/f41_287_original_row190.py",
+          "destination": "verification/f41/f41_287/f41_287_original_row190.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/190/f41_288_row190_archive_audit.py",
+          "destination": "verification/f41/f41_288/f41_288_row190_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/190/f41-287-original-physical-row190-kernel.yml",
+          "destination": ".github/workflows/f41-287-original-physical-row190-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 191,
+      "kernel_gate": "F41-289",
+      "audit_gate": "F41-290",
+      "status": "source_draft_only",
+      "H_lower": 192,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41289Attach191ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/191/f41_289_original_row191.py",
+          "destination": "verification/f41/f41_289/f41_289_original_row191.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/191/f41_290_row191_archive_audit.py",
+          "destination": "verification/f41/f41_290/f41_290_row191_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/191/f41-289-original-physical-row191-kernel.yml",
+          "destination": ".github/workflows/f41-289-original-physical-row191-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 192,
+      "kernel_gate": "F41-291",
+      "audit_gate": "F41-292",
+      "status": "source_draft_only",
+      "H_lower": 193,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41291Attach192ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/192/f41_291_original_row192.py",
+          "destination": "verification/f41/f41_291/f41_291_original_row192.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/192/f41_292_row192_archive_audit.py",
+          "destination": "verification/f41/f41_292/f41_292_row192_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/192/f41-291-original-physical-row192-kernel.yml",
+          "destination": ".github/workflows/f41-291-original-physical-row192-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 193,
+      "kernel_gate": "F41-293",
+      "audit_gate": "F41-294",
+      "status": "source_draft_only",
+      "H_lower": 194,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41293Attach193ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/193/f41_293_original_row193.py",
+          "destination": "verification/f41/f41_293/f41_293_original_row193.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/193/f41_294_row193_archive_audit.py",
+          "destination": "verification/f41/f41_294/f41_294_row193_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/193/f41-293-original-physical-row193-kernel.yml",
+          "destination": ".github/workflows/f41-293-original-physical-row193-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 194,
+      "kernel_gate": "F41-295",
+      "audit_gate": "F41-296",
+      "status": "source_draft_only",
+      "H_lower": 195,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41295Attach194ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/194/f41_295_original_row194.py",
+          "destination": "verification/f41/f41_295/f41_295_original_row194.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/194/f41_296_row194_archive_audit.py",
+          "destination": "verification/f41/f41_296/f41_296_row194_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/194/f41-295-original-physical-row194-kernel.yml",
+          "destination": ".github/workflows/f41-295-original-physical-row194-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 195,
+      "kernel_gate": "F41-297",
+      "audit_gate": "F41-298",
+      "status": "source_draft_only",
+      "H_lower": 196,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41297Attach195ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/195/f41_297_original_row195.py",
+          "destination": "verification/f41/f41_297/f41_297_original_row195.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/195/f41_298_row195_archive_audit.py",
+          "destination": "verification/f41/f41_298/f41_298_row195_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/195/f41-297-original-physical-row195-kernel.yml",
+          "destination": ".github/workflows/f41-297-original-physical-row195-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 196,
+      "kernel_gate": "F41-299",
+      "audit_gate": "F41-300",
+      "status": "source_draft_only",
+      "H_lower": 197,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41299Attach196ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/196/f41_299_original_row196.py",
+          "destination": "verification/f41/f41_299/f41_299_original_row196.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/196/f41_300_row196_archive_audit.py",
+          "destination": "verification/f41/f41_300/f41_300_row196_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/196/f41-299-original-physical-row196-kernel.yml",
+          "destination": ".github/workflows/f41-299-original-physical-row196-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 197,
+      "kernel_gate": "F41-301",
+      "audit_gate": "F41-302",
+      "status": "source_draft_only",
+      "H_lower": 198,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41301Attach197ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/197/f41_301_original_row197.py",
+          "destination": "verification/f41/f41_301/f41_301_original_row197.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/197/f41_302_row197_archive_audit.py",
+          "destination": "verification/f41/f41_302/f41_302_row197_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/197/f41-301-original-physical-row197-kernel.yml",
+          "destination": ".github/workflows/f41-301-original-physical-row197-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 198,
+      "kernel_gate": "F41-303",
+      "audit_gate": "F41-304",
+      "status": "source_draft_only",
+      "H_lower": 199,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41303Attach198ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/198/f41_303_original_row198.py",
+          "destination": "verification/f41/f41_303/f41_303_original_row198.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/198/f41_304_row198_archive_audit.py",
+          "destination": "verification/f41/f41_304/f41_304_row198_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/198/f41-303-original-physical-row198-kernel.yml",
+          "destination": ".github/workflows/f41-303-original-physical-row198-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 199,
+      "kernel_gate": "F41-305",
+      "audit_gate": "F41-306",
+      "status": "source_draft_only",
+      "H_lower": 200,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41305Attach199ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/199/f41_305_original_row199.py",
+          "destination": "verification/f41/f41_305/f41_305_original_row199.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/199/f41_306_row199_archive_audit.py",
+          "destination": "verification/f41/f41_306/f41_306_row199_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/199/f41-305-original-physical-row199-kernel.yml",
+          "destination": ".github/workflows/f41-305-original-physical-row199-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 200,
+      "kernel_gate": "F41-307",
+      "audit_gate": "F41-308",
+      "status": "source_draft_only",
+      "H_lower": 201,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41307Attach200ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/200/f41_307_original_row200.py",
+          "destination": "verification/f41/f41_307/f41_307_original_row200.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/200/f41_308_row200_archive_audit.py",
+          "destination": "verification/f41/f41_308/f41_308_row200_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/200/f41-307-original-physical-row200-kernel.yml",
+          "destination": ".github/workflows/f41-307-original-physical-row200-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 201,
+      "kernel_gate": "F41-309",
+      "audit_gate": "F41-310",
+      "status": "source_draft_only",
+      "H_lower": 202,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41309Attach201ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/201/f41_309_original_row201.py",
+          "destination": "verification/f41/f41_309/f41_309_original_row201.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/201/f41_310_row201_archive_audit.py",
+          "destination": "verification/f41/f41_310/f41_310_row201_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/201/f41-309-original-physical-row201-kernel.yml",
+          "destination": ".github/workflows/f41-309-original-physical-row201-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 202,
+      "kernel_gate": "F41-311",
+      "audit_gate": "F41-312",
+      "status": "source_draft_only",
+      "H_lower": 203,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41311Attach202ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/202/f41_311_original_row202.py",
+          "destination": "verification/f41/f41_311/f41_311_original_row202.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/202/f41_312_row202_archive_audit.py",
+          "destination": "verification/f41/f41_312/f41_312_row202_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/202/f41-311-original-physical-row202-kernel.yml",
+          "destination": ".github/workflows/f41-311-original-physical-row202-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 203,
+      "kernel_gate": "F41-313",
+      "audit_gate": "F41-314",
+      "status": "source_draft_only",
+      "H_lower": 204,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41313Attach203ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/203/f41_313_original_row203.py",
+          "destination": "verification/f41/f41_313/f41_313_original_row203.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/203/f41_314_row203_archive_audit.py",
+          "destination": "verification/f41/f41_314/f41_314_row203_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/203/f41-313-original-physical-row203-kernel.yml",
+          "destination": ".github/workflows/f41-313-original-physical-row203-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 204,
+      "kernel_gate": "F41-315",
+      "audit_gate": "F41-316",
+      "status": "source_draft_only",
+      "H_lower": 205,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41315Attach204ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/204/f41_315_original_row204.py",
+          "destination": "verification/f41/f41_315/f41_315_original_row204.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/204/f41_316_row204_archive_audit.py",
+          "destination": "verification/f41/f41_316/f41_316_row204_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/204/f41-315-original-physical-row204-kernel.yml",
+          "destination": ".github/workflows/f41-315-original-physical-row204-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 205,
+      "kernel_gate": "F41-317",
+      "audit_gate": "F41-318",
+      "status": "source_draft_only",
+      "H_lower": 206,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41317Attach205ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/205/f41_317_original_row205.py",
+          "destination": "verification/f41/f41_317/f41_317_original_row205.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/205/f41_318_row205_archive_audit.py",
+          "destination": "verification/f41/f41_318/f41_318_row205_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/205/f41-317-original-physical-row205-kernel.yml",
+          "destination": ".github/workflows/f41-317-original-physical-row205-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 206,
+      "kernel_gate": "F41-319",
+      "audit_gate": "F41-320",
+      "status": "source_draft_only",
+      "H_lower": 207,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41319Attach206ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/206/f41_319_original_row206.py",
+          "destination": "verification/f41/f41_319/f41_319_original_row206.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/206/f41_320_row206_archive_audit.py",
+          "destination": "verification/f41/f41_320/f41_320_row206_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/206/f41-319-original-physical-row206-kernel.yml",
+          "destination": ".github/workflows/f41-319-original-physical-row206-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 207,
+      "kernel_gate": "F41-321",
+      "audit_gate": "F41-322",
+      "status": "source_draft_only",
+      "H_lower": 208,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41321Attach207ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/207/f41_321_original_row207.py",
+          "destination": "verification/f41/f41_321/f41_321_original_row207.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/207/f41_322_row207_archive_audit.py",
+          "destination": "verification/f41/f41_322/f41_322_row207_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/207/f41-321-original-physical-row207-kernel.yml",
+          "destination": ".github/workflows/f41-321-original-physical-row207-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 208,
+      "kernel_gate": "F41-323",
+      "audit_gate": "F41-324",
+      "status": "source_draft_only",
+      "H_lower": 209,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41323Attach208ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/208/f41_323_original_row208.py",
+          "destination": "verification/f41/f41_323/f41_323_original_row208.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/208/f41_324_row208_archive_audit.py",
+          "destination": "verification/f41/f41_324/f41_324_row208_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/208/f41-323-original-physical-row208-kernel.yml",
+          "destination": ".github/workflows/f41-323-original-physical-row208-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 209,
+      "kernel_gate": "F41-325",
+      "audit_gate": "F41-326",
+      "status": "source_draft_only",
+      "H_lower": 210,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41325Attach209ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/209/f41_325_original_row209.py",
+          "destination": "verification/f41/f41_325/f41_325_original_row209.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/209/f41_326_row209_archive_audit.py",
+          "destination": "verification/f41/f41_326/f41_326_row209_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/209/f41-325-original-physical-row209-kernel.yml",
+          "destination": ".github/workflows/f41-325-original-physical-row209-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 210,
+      "kernel_gate": "F41-327",
+      "audit_gate": "F41-328",
+      "status": "source_draft_only",
+      "H_lower": 211,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41327Attach210ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/210/f41_327_original_row210.py",
+          "destination": "verification/f41/f41_327/f41_327_original_row210.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/210/f41_328_row210_archive_audit.py",
+          "destination": "verification/f41/f41_328/f41_328_row210_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/210/f41-327-original-physical-row210-kernel.yml",
+          "destination": ".github/workflows/f41-327-original-physical-row210-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 211,
+      "kernel_gate": "F41-329",
+      "audit_gate": "F41-330",
+      "status": "source_draft_only",
+      "H_lower": 212,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41329Attach211ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/211/f41_329_original_row211.py",
+          "destination": "verification/f41/f41_329/f41_329_original_row211.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/211/f41_330_row211_archive_audit.py",
+          "destination": "verification/f41/f41_330/f41_330_row211_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/211/f41-329-original-physical-row211-kernel.yml",
+          "destination": ".github/workflows/f41-329-original-physical-row211-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 212,
+      "kernel_gate": "F41-331",
+      "audit_gate": "F41-332",
+      "status": "source_draft_only",
+      "H_lower": 213,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41331Attach212ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/212/f41_331_original_row212.py",
+          "destination": "verification/f41/f41_331/f41_331_original_row212.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/212/f41_332_row212_archive_audit.py",
+          "destination": "verification/f41/f41_332/f41_332_row212_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/212/f41-331-original-physical-row212-kernel.yml",
+          "destination": ".github/workflows/f41-331-original-physical-row212-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 213,
+      "kernel_gate": "F41-333",
+      "audit_gate": "F41-334",
+      "status": "source_draft_only",
+      "H_lower": 214,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41333Attach213ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/213/f41_333_original_row213.py",
+          "destination": "verification/f41/f41_333/f41_333_original_row213.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/213/f41_334_row213_archive_audit.py",
+          "destination": "verification/f41/f41_334/f41_334_row213_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/213/f41-333-original-physical-row213-kernel.yml",
+          "destination": ".github/workflows/f41-333-original-physical-row213-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 214,
+      "kernel_gate": "F41-335",
+      "audit_gate": "F41-336",
+      "status": "source_draft_only",
+      "H_lower": 215,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41335Attach214ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/214/f41_335_original_row214.py",
+          "destination": "verification/f41/f41_335/f41_335_original_row214.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/214/f41_336_row214_archive_audit.py",
+          "destination": "verification/f41/f41_336/f41_336_row214_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/214/f41-335-original-physical-row214-kernel.yml",
+          "destination": ".github/workflows/f41-335-original-physical-row214-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 215,
+      "kernel_gate": "F41-337",
+      "audit_gate": "F41-338",
+      "status": "source_draft_only",
+      "H_lower": 216,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41337Attach215ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/215/f41_337_original_row215.py",
+          "destination": "verification/f41/f41_337/f41_337_original_row215.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/215/f41_338_row215_archive_audit.py",
+          "destination": "verification/f41/f41_338/f41_338_row215_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/215/f41-337-original-physical-row215-kernel.yml",
+          "destination": ".github/workflows/f41-337-original-physical-row215-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 216,
+      "kernel_gate": "F41-339",
+      "audit_gate": "F41-340",
+      "status": "source_draft_only",
+      "H_lower": 217,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41339Attach216ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/216/f41_339_original_row216.py",
+          "destination": "verification/f41/f41_339/f41_339_original_row216.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/216/f41_340_row216_archive_audit.py",
+          "destination": "verification/f41/f41_340/f41_340_row216_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/216/f41-339-original-physical-row216-kernel.yml",
+          "destination": ".github/workflows/f41-339-original-physical-row216-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 217,
+      "kernel_gate": "F41-341",
+      "audit_gate": "F41-342",
+      "status": "source_draft_only",
+      "H_lower": 218,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41341Attach217ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/217/f41_341_original_row217.py",
+          "destination": "verification/f41/f41_341/f41_341_original_row217.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/217/f41_342_row217_archive_audit.py",
+          "destination": "verification/f41/f41_342/f41_342_row217_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/217/f41-341-original-physical-row217-kernel.yml",
+          "destination": ".github/workflows/f41-341-original-physical-row217-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 218,
+      "kernel_gate": "F41-343",
+      "audit_gate": "F41-344",
+      "status": "source_draft_only",
+      "H_lower": 219,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41343Attach218ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/218/f41_343_original_row218.py",
+          "destination": "verification/f41/f41_343/f41_343_original_row218.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/218/f41_344_row218_archive_audit.py",
+          "destination": "verification/f41/f41_344/f41_344_row218_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/218/f41-343-original-physical-row218-kernel.yml",
+          "destination": ".github/workflows/f41-343-original-physical-row218-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 219,
+      "kernel_gate": "F41-345",
+      "audit_gate": "F41-346",
+      "status": "source_draft_only",
+      "H_lower": 220,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41345Attach219ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/219/f41_345_original_row219.py",
+          "destination": "verification/f41/f41_345/f41_345_original_row219.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/219/f41_346_row219_archive_audit.py",
+          "destination": "verification/f41/f41_346/f41_346_row219_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/219/f41-345-original-physical-row219-kernel.yml",
+          "destination": ".github/workflows/f41-345-original-physical-row219-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 220,
+      "kernel_gate": "F41-347",
+      "audit_gate": "F41-348",
+      "status": "source_draft_only",
+      "H_lower": 221,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41347Attach220ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/220/f41_347_original_row220.py",
+          "destination": "verification/f41/f41_347/f41_347_original_row220.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/220/f41_348_row220_archive_audit.py",
+          "destination": "verification/f41/f41_348/f41_348_row220_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/220/f41-347-original-physical-row220-kernel.yml",
+          "destination": ".github/workflows/f41-347-original-physical-row220-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 221,
+      "kernel_gate": "F41-349",
+      "audit_gate": "F41-350",
+      "status": "source_draft_only",
+      "H_lower": 222,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41349Attach221ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/221/f41_349_original_row221.py",
+          "destination": "verification/f41/f41_349/f41_349_original_row221.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/221/f41_350_row221_archive_audit.py",
+          "destination": "verification/f41/f41_350/f41_350_row221_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/221/f41-349-original-physical-row221-kernel.yml",
+          "destination": ".github/workflows/f41-349-original-physical-row221-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 222,
+      "kernel_gate": "F41-351",
+      "audit_gate": "F41-352",
+      "status": "source_draft_only",
+      "H_lower": 223,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41351Attach222ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/222/f41_351_original_row222.py",
+          "destination": "verification/f41/f41_351/f41_351_original_row222.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/222/f41_352_row222_archive_audit.py",
+          "destination": "verification/f41/f41_352/f41_352_row222_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/222/f41-351-original-physical-row222-kernel.yml",
+          "destination": ".github/workflows/f41-351-original-physical-row222-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 223,
+      "kernel_gate": "F41-353",
+      "audit_gate": "F41-354",
+      "status": "source_draft_only",
+      "H_lower": 224,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41353Attach223ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/223/f41_353_original_row223.py",
+          "destination": "verification/f41/f41_353/f41_353_original_row223.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/223/f41_354_row223_archive_audit.py",
+          "destination": "verification/f41/f41_354/f41_354_row223_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/223/f41-353-original-physical-row223-kernel.yml",
+          "destination": ".github/workflows/f41-353-original-physical-row223-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 224,
+      "kernel_gate": "F41-355",
+      "audit_gate": "F41-356",
+      "status": "source_draft_only",
+      "H_lower": 225,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41355Attach224ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/224/f41_355_original_row224.py",
+          "destination": "verification/f41/f41_355/f41_355_original_row224.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/224/f41_356_row224_archive_audit.py",
+          "destination": "verification/f41/f41_356/f41_356_row224_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/224/f41-355-original-physical-row224-kernel.yml",
+          "destination": ".github/workflows/f41-355-original-physical-row224-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 225,
+      "kernel_gate": "F41-357",
+      "audit_gate": "F41-358",
+      "status": "source_draft_only",
+      "H_lower": 226,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41357Attach225ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/225/f41_357_original_row225.py",
+          "destination": "verification/f41/f41_357/f41_357_original_row225.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/225/f41_358_row225_archive_audit.py",
+          "destination": "verification/f41/f41_358/f41_358_row225_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/225/f41-357-original-physical-row225-kernel.yml",
+          "destination": ".github/workflows/f41-357-original-physical-row225-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 226,
+      "kernel_gate": "F41-359",
+      "audit_gate": "F41-360",
+      "status": "source_draft_only",
+      "H_lower": 227,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41359Attach226ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/226/f41_359_original_row226.py",
+          "destination": "verification/f41/f41_359/f41_359_original_row226.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/226/f41_360_row226_archive_audit.py",
+          "destination": "verification/f41/f41_360/f41_360_row226_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/226/f41-359-original-physical-row226-kernel.yml",
+          "destination": ".github/workflows/f41-359-original-physical-row226-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 227,
+      "kernel_gate": "F41-361",
+      "audit_gate": "F41-362",
+      "status": "source_draft_only",
+      "H_lower": 228,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41361Attach227ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/227/f41_361_original_row227.py",
+          "destination": "verification/f41/f41_361/f41_361_original_row227.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/227/f41_362_row227_archive_audit.py",
+          "destination": "verification/f41/f41_362/f41_362_row227_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/227/f41-361-original-physical-row227-kernel.yml",
+          "destination": ".github/workflows/f41-361-original-physical-row227-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 228,
+      "kernel_gate": "F41-363",
+      "audit_gate": "F41-364",
+      "status": "source_draft_only",
+      "H_lower": 229,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41363Attach228ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/228/f41_363_original_row228.py",
+          "destination": "verification/f41/f41_363/f41_363_original_row228.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/228/f41_364_row228_archive_audit.py",
+          "destination": "verification/f41/f41_364/f41_364_row228_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/228/f41-363-original-physical-row228-kernel.yml",
+          "destination": ".github/workflows/f41-363-original-physical-row228-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 229,
+      "kernel_gate": "F41-365",
+      "audit_gate": "F41-366",
+      "status": "source_draft_only",
+      "H_lower": 230,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41365Attach229ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/229/f41_365_original_row229.py",
+          "destination": "verification/f41/f41_365/f41_365_original_row229.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/229/f41_366_row229_archive_audit.py",
+          "destination": "verification/f41/f41_366/f41_366_row229_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/229/f41-365-original-physical-row229-kernel.yml",
+          "destination": ".github/workflows/f41-365-original-physical-row229-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 230,
+      "kernel_gate": "F41-367",
+      "audit_gate": "F41-368",
+      "status": "source_draft_only",
+      "H_lower": 231,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41367Attach230ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/230/f41_367_original_row230.py",
+          "destination": "verification/f41/f41_367/f41_367_original_row230.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/230/f41_368_row230_archive_audit.py",
+          "destination": "verification/f41/f41_368/f41_368_row230_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/230/f41-367-original-physical-row230-kernel.yml",
+          "destination": ".github/workflows/f41-367-original-physical-row230-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 231,
+      "kernel_gate": "F41-369",
+      "audit_gate": "F41-370",
+      "status": "source_draft_only",
+      "H_lower": 232,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41369Attach231ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/231/f41_369_original_row231.py",
+          "destination": "verification/f41/f41_369/f41_369_original_row231.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/231/f41_370_row231_archive_audit.py",
+          "destination": "verification/f41/f41_370/f41_370_row231_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/231/f41-369-original-physical-row231-kernel.yml",
+          "destination": ".github/workflows/f41-369-original-physical-row231-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 232,
+      "kernel_gate": "F41-371",
+      "audit_gate": "F41-372",
+      "status": "source_draft_only",
+      "H_lower": 233,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41371Attach232ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/232/f41_371_original_row232.py",
+          "destination": "verification/f41/f41_371/f41_371_original_row232.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/232/f41_372_row232_archive_audit.py",
+          "destination": "verification/f41/f41_372/f41_372_row232_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/232/f41-371-original-physical-row232-kernel.yml",
+          "destination": ".github/workflows/f41-371-original-physical-row232-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 233,
+      "kernel_gate": "F41-373",
+      "audit_gate": "F41-374",
+      "status": "source_draft_only",
+      "H_lower": 234,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41373Attach233ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/233/f41_373_original_row233.py",
+          "destination": "verification/f41/f41_373/f41_373_original_row233.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/233/f41_374_row233_archive_audit.py",
+          "destination": "verification/f41/f41_374/f41_374_row233_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/233/f41-373-original-physical-row233-kernel.yml",
+          "destination": ".github/workflows/f41-373-original-physical-row233-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 234,
+      "kernel_gate": "F41-375",
+      "audit_gate": "F41-376",
+      "status": "source_draft_only",
+      "H_lower": 235,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41375Attach234ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/234/f41_375_original_row234.py",
+          "destination": "verification/f41/f41_375/f41_375_original_row234.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/234/f41_376_row234_archive_audit.py",
+          "destination": "verification/f41/f41_376/f41_376_row234_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/234/f41-375-original-physical-row234-kernel.yml",
+          "destination": ".github/workflows/f41-375-original-physical-row234-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 235,
+      "kernel_gate": "F41-377",
+      "audit_gate": "F41-378",
+      "status": "source_draft_only",
+      "H_lower": 236,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41377Attach235ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/235/f41_377_original_row235.py",
+          "destination": "verification/f41/f41_377/f41_377_original_row235.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/235/f41_378_row235_archive_audit.py",
+          "destination": "verification/f41/f41_378/f41_378_row235_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/235/f41-377-original-physical-row235-kernel.yml",
+          "destination": ".github/workflows/f41-377-original-physical-row235-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 236,
+      "kernel_gate": "F41-379",
+      "audit_gate": "F41-380",
+      "status": "source_draft_only",
+      "H_lower": 237,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41379Attach236ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/236/f41_379_original_row236.py",
+          "destination": "verification/f41/f41_379/f41_379_original_row236.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/236/f41_380_row236_archive_audit.py",
+          "destination": "verification/f41/f41_380/f41_380_row236_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/236/f41-379-original-physical-row236-kernel.yml",
+          "destination": ".github/workflows/f41-379-original-physical-row236-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 237,
+      "kernel_gate": "F41-381",
+      "audit_gate": "F41-382",
+      "status": "source_draft_only",
+      "H_lower": 238,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41381Attach237ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/237/f41_381_original_row237.py",
+          "destination": "verification/f41/f41_381/f41_381_original_row237.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/237/f41_382_row237_archive_audit.py",
+          "destination": "verification/f41/f41_382/f41_382_row237_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/237/f41-381-original-physical-row237-kernel.yml",
+          "destination": ".github/workflows/f41-381-original-physical-row237-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 238,
+      "kernel_gate": "F41-383",
+      "audit_gate": "F41-384",
+      "status": "source_draft_only",
+      "H_lower": 239,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41383Attach238ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/238/f41_383_original_row238.py",
+          "destination": "verification/f41/f41_383/f41_383_original_row238.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/238/f41_384_row238_archive_audit.py",
+          "destination": "verification/f41/f41_384/f41_384_row238_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/238/f41-383-original-physical-row238-kernel.yml",
+          "destination": ".github/workflows/f41-383-original-physical-row238-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 239,
+      "kernel_gate": "F41-385",
+      "audit_gate": "F41-386",
+      "status": "source_draft_only",
+      "H_lower": 240,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41385Attach239ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/239/f41_385_original_row239.py",
+          "destination": "verification/f41/f41_385/f41_385_original_row239.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/239/f41_386_row239_archive_audit.py",
+          "destination": "verification/f41/f41_386/f41_386_row239_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/239/f41-385-original-physical-row239-kernel.yml",
+          "destination": ".github/workflows/f41-385-original-physical-row239-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 240,
+      "kernel_gate": "F41-387",
+      "audit_gate": "F41-388",
+      "status": "source_draft_only",
+      "H_lower": 241,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41387Attach240ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/240/f41_387_original_row240.py",
+          "destination": "verification/f41/f41_387/f41_387_original_row240.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/240/f41_388_row240_archive_audit.py",
+          "destination": "verification/f41/f41_388/f41_388_row240_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/240/f41-387-original-physical-row240-kernel.yml",
+          "destination": ".github/workflows/f41-387-original-physical-row240-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    },
+    {
+      "row": 241,
+      "kernel_gate": "F41-389",
+      "audit_gate": "F41-390",
+      "status": "source_draft_only",
+      "H_lower": 242,
+      "V_mixed": 4,
+      "H_symmetry": 242,
+      "full_payment_equalities": 5,
+      "expected_axiom_reports": 9,
+      "terminal_declaration": "WeilDefect.f41389Attach241ActualPayment",
+      "files": [
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/241/f41_389_original_row241.py",
+          "destination": "verification/f41/f41_389/f41_389_original_row241.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/241/f41_390_row241_archive_audit.py",
+          "destination": "verification/f41/f41_390/f41_390_row241_archive_audit.py"
+        },
+        {
+          "path": "verification/f41/bulk_drafts_072_241/rows/241/f41-389-original-physical-row241-kernel.yml",
+          "destination": ".github/workflows/f41-389-original-physical-row241-kernel.yml"
+        }
+      ],
+      "independent_workflow": "not rendered: requires successful producer run, HEAD, artifact ID and verified ZIP SHA256"
+    }
+  ],
+  "global_F41_certified": false,
+  "F42_positive": false,
+  "RH_proved": false
+}
