@@ -9,7 +9,7 @@ import Mathlib.Tactic
 namespace WeilDefect
 noncomputable section
 
-open MeasureTheory
+open MeasureTheory Complex
 open scoped FourierTransform
 
 /-!
