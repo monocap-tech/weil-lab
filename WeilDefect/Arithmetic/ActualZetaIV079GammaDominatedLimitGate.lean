@@ -6,7 +6,7 @@ namespace WeilDefect
 noncomputable section
 
 open MeasureTheory Filter
-open scoped FourierTransform
+open scoped FourierTransform Topology
 
 /-!
 IV079 — literal original finite NF599 Gamma to original infinite
