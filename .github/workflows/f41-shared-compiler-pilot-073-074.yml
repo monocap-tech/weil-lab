@@ -240,7 +240,8 @@ jobs:
             research/f41-053-*.log
             research/f41-053-original-source.json
             research/WeilDefect/Generated/F41053/
-          if-no-files-found: ignore      - name: Compile row74 source-bound genuine lookup and full-payment projections
+          if-no-files-found: ignore
+      - name: Compile row74 source-bound genuine lookup and full-payment projections
         timeout-minutes: 160
         run: |
           set -euo pipefail
