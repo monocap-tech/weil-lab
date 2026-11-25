@@ -169,8 +169,10 @@ theorem neutralIV098Mass_integral (s : 𝓢(ℝ,ℂ)) :
   have hinner := inner_self_eq_norm_sq_to_K (𝕜 := ℂ) f
   rw [MeasureTheory.L2.inner_def] at hinner
   simp only [inner_self_eq_norm_sq_to_K] at hinner
+  change (∫ x : ℝ, (‖f x‖ : ℂ)^2) = (‖f‖ : ℂ)^2 at hinner
+  simp only [← Complex.ofReal_pow] at hinner
   rw [integral_complex_ofReal] at hinner
-  have hm : (∫ x : ℝ, ‖f x‖^2) = ‖f‖^2 := by exact_mod_cast hinner
+  have hm : (∫ x : ℝ, ‖f x‖^2) = ‖f‖^2 := Complex.ofReal_injective hinner
   rw [← hm]
   apply integral_congr_ae
   filter_upwards [s.coeFn_toLp 2 volume] with x hx
