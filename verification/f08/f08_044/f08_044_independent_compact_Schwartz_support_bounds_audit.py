@@ -92,7 +92,7 @@ def verify(archive, metadata):
     assert not re.search(rb"\b(sorry|admit|unsafe)\b", src)
     for name in NAMES:
         assert name.encode() in src, ("missing literal declaration", name)
-    assert "Built WeilDefect.Generated.F08.CompactSchwartzNativeL2Dense" in build
+    assert "Built WeilDefect.Generated.F08.CompactSchwartzSupportRadiusAndBound" in build
     assert not re.search(r"(^|\n)[^\n]*error:", build, re.I)
     found = read_axioms(axioms)
     return {
