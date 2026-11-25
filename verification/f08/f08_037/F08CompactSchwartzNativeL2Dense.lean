@@ -45,11 +45,11 @@ theorem f08_037_compactSchwartz_denseInOriginalL2 :
   let sg : 𝓢(ℝ, ℂ) := hcompact.toSchwartzMap hsmooth
   refine ⟨sg, ?_, ?_⟩
   · change HasCompactSupport (sg : ℝ → ℂ)
-    simpa [sg] using hcompact
+    simpa only [sg, HasCompactSupport.toSchwartzMap_toFun] using hcompact
   · apply Lp.ext_iff.mpr
     have hsg := sg.coeFn_toLp 2 (volume : Measure ℝ)
     simpa only [SchwartzMap.toLpCLM_apply] using
-      hsg.trans (by simpa [sg] using hfg.symm)
+      hsg.trans (by simpa only [sg, HasCompactSupport.toSchwartzMap_toFun] using hfg.symm)
 
 #print axioms f08_037_compactSchwartz_denseInOriginalL2
 
