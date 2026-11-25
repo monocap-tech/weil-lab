@@ -1,6 +1,9 @@
 name: NF459 original 244D native physical Christoffel collar
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf459-native-original-christoffel.yml'
+      - 'scripts/verify_nf459_original_native_244D_christoffel.py'
   workflow_dispatch:
 jobs:
   original-native-244D:
