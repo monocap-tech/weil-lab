@@ -60,7 +60,9 @@ theorem neutralIV094WeilFinite_real_le
   rw [← hc] at hd
   simp only [Complex.sub_re, Complex.mul_re, Complex.ofReal_re,
     Complex.ofReal_im, zero_mul, sub_zero] at hd
-  exact sub_nonneg.mp (hd.trans_ge (mul_nonneg (by positivity) hr))
+  apply sub_nonneg.mp
+  rw [hd]
+  exact mul_nonneg (by positivity) hr
 
 /-- The original finite Green diagonal is a lower approximation, not
 merely an approximation with a symmetric error bar. -/
