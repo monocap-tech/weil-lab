@@ -4,6 +4,7 @@ namespace WeilDefect
 noncomputable section
 
 open MeasureTheory Filter
+open scoped Topology
 
 /-!
 F08-038: actual native complex L² strong-continuity transfer from any dense
