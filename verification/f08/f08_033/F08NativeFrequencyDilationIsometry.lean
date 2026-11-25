@@ -29,7 +29,7 @@ theorem f08_033_sqrtJacobian_cancel (lam : ℝ) (hlam : lam ≠ 0) :
   have hpos : 0 < abs lam := abs_pos.mpr hlam
   calc
     _ = Real.sqrt (abs lam) * Real.sqrt ((abs lam)⁻¹) := by
-      rw [Real.sqrt_eq_rpow]
+      simp only [Real.sqrt_eq_rpow]
     _ = Real.sqrt (abs lam) * (Real.sqrt (abs lam))⁻¹ := by
       rw [Real.sqrt_inv]
     _ = 1 := mul_inv_cancel₀ (Real.sqrt_ne_zero'.mpr hpos)
@@ -53,7 +53,7 @@ theorem f08_033_nativeFrequencyDilation_isometry
           ‖k‖ := by
       rw [Lp.norm_def]
       rw [f08_033_jacobianFactor lam]
-      rw [ENNReal.smul_def, ENNReal.toReal_mul, ENNReal.toReal_rpow]
+      rw [smul_eq_mul, ENNReal.toReal_mul, ENNReal.toReal_rpow]
       rw [hhalf, ENNReal.toReal_ofReal (by positivity)]
       ring
     _ = ‖k‖ := by
