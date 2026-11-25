@@ -243,7 +243,12 @@ theorem neutralIV103Mixed_native (a : ℝ) (ha : 0 ≤ a)
     apply hm.congr
     filter_upwards [] with ξ
     unfold F neutralIV103Spectrum
-    change _ * _ * _ = _
+    change conj ((𝓕 (u.toLp 2 volume) : RealComplexL2) ξ) *
+      (rightLimitCompactWeilSymbolMathlib a ξ : ℂ) *
+        (𝓕 (v.toLp 2 volume) : RealComplexL2) ξ =
+      (rightLimitCompactWeilSymbolMathlib a ξ : ℂ) *
+        (conj ((𝓕 (u.toLp 2 volume) : RealComplexL2) ξ) *
+          (𝓕 (v.toLp 2 volume) : RealComplexL2) ξ)
     ring
   have hA : Integrable (fun ξ : ℝ =>
     (compactWindowArchimedeanSymbol (2 * Real.pi * ξ) : ℂ) * F ξ) := by
