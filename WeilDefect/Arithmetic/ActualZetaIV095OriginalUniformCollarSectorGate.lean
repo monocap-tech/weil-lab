@@ -1,5 +1,7 @@
 import WeilDefect.Arithmetic.ActualZetaIV094OriginalDiagonalSignedTailGate
-import WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalNonzeroPrimeFreeSchwartzBump
+import WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalSchwartzPolarization
+import Mathlib.Analysis.Calculus.BumpFunction.FiniteDimension
+import Mathlib.MeasureTheory.Measure.OpenPos
 import Mathlib.Algebra.Order.BigOperators.Ring.Finset
 import Mathlib.Order.Filter.Finite
 import Mathlib.Analysis.Complex.ExponentialBounds
@@ -8,7 +10,7 @@ import Mathlib.Tactic
 namespace WeilDefect
 noncomputable section
 open MeasureTheory Filter
-open scoped SchwartzMap ComplexConjugate Topology
+open scoped SchwartzMap ComplexConjugate Topology ContDiff
 
 def neutralIV095FiniteDiagonal (M N : ℕ) (s : 𝓢(ℝ,ℂ)) : ℝ :=
   (neutralIV086PhysicalWeilFinite M N
@@ -221,6 +223,36 @@ theorem neutralIV095OriginalCollarRay_uniform_finite_margin
   intro N hN z
   simpa [neutralIV009PhysicalSchwartzSum] using hN₀ N hN (fun _ : Fin 1 => z)
 
+/- The local bump construction is copied from IV015's elementary
+Mathlib proof, without importing its unrelated cross-support gates. -/
+private theorem neutralIV095LocalComplexSchwartzBump
+    (c r : ℝ) (hr : 0 < r) :
+    ∃ t : 𝓢(ℝ, ℂ),
+      t c = 1 ∧
+      (∀ x : ℝ, x ∉ Set.Icc (c-r) (c+r) → t x = 0) := by
+  have hc : c ∈ Set.Ioo (c-r) (c+r) := by
+    constructor <;> linarith
+  obtain ⟨f, hts, hcompact, hsmooth, _, hfc⟩ :=
+    exists_contDiff_tsupport_subset (n := (⊤ : ℕ∞))
+      (isOpen_Ioo.mem_nhds hc)
+  let q : ℝ → ℂ := Complex.ofRealCLM ∘ f
+  have hqcompact : HasCompactSupport q := hcompact.comp_left rfl
+  have hqdiff : ContDiff ℝ ∞ q := Complex.ofRealCLM.contDiff.comp hsmooth
+  let t : 𝓢(ℝ, ℂ) := hqcompact.toSchwartzMap hqdiff
+  refine ⟨t, ?_, ?_⟩
+  · change Complex.ofRealCLM (f c) = (1 : ℂ)
+    simp [hfc]
+  · intro x hx
+    change q x = 0
+    by_contra hn
+    have hxmem : x ∈ Function.support q := by
+      simpa only [Function.mem_support] using hn
+    have hxTS : x ∈ tsupport q := subset_tsupport q hxmem
+    have hqts : tsupport q ⊆ Set.Ioo (c-r) (c+r) := by
+      exact (tsupport_comp_subset rfl _).trans hts
+    have hxI := hqts hxTS
+    exact hx ⟨le_of_lt hxI.1, le_of_lt hxI.2⟩
+
 /-- A concrete nonzero original collar ray exists, with the authentic
 arithmetic cutoff M=10. The Gamma cutoff exists but is not numerical. -/
 theorem neutralIV095ExistsOriginalCollarRay :
@@ -229,7 +261,7 @@ theorem neutralIV095ExistsOriginalCollarRay :
       ∃ N₀ : ℕ, ∀ N ≥ N₀, ∀ z : ℂ,
         (1/5:ℝ) * ‖(z • s).toLp 2 volume‖^2 ≤
           neutralIV095FiniteDiagonal 10 N (z • s) := by
-  obtain ⟨s, hc, hlocal⟩ := neutralIV015ExistsComplexSchwartzBump
+  obtain ⟨s, hc, hlocal⟩ := neutralIV095LocalComplexSchwartzBump
     (1099/1000:ℝ) (1/2000:ℝ) (by norm_num)
   have hs : neutralNF735InOriginalCollars s := by
     intro x hx
