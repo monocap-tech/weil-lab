@@ -63,7 +63,7 @@ theorem canonical_block_laws (P : H →L[ℂ] X) (M : K →L[ℂ] X) :
 theorem orthonormal_coordinates {ι : Type*} [Fintype ι]
     (e : OrthonormalBasis ι ℂ K) (x : K) :
     ∃ a : ι → ℂ, x = ∑ i, a i • e i ∧ ∀ i, ‖a i‖ ≤ ‖x‖ := by
-  refine ⟨fun i => ⟪e i, x⟫_ℂ, (e.sum_repr' x).symm, ?_⟩
+  refine ⟨fun i => inner ℂ (e i) x, (e.sum_repr' x).symm, ?_⟩
   intro i
   simpa using (norm_inner_le_norm (𝕜 := ℂ) (e i) x)
 
