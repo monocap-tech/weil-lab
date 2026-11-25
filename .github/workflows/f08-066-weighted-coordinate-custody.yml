@@ -1,0 +1,109 @@
+name: F08-066 independent F08-063 weighted coordinate custody (3 named axioms)
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_066/**'
+      - '.github/workflows/f08-066-weighted-coordinate-custody.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  independent-original-source-custody:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      F08_RUN: '45579504322'
+      F08_ARTIFACT: '15006916503'
+      F08_ARTIFACT_SHA: 'cb06029380ab6908ccc618ce7290fd3ae6868bc03dcb396858e735e52b46b4a5'
+      F08_HEAD: 'ff13379a6850453e707bde8c82693a39e416a71a'
+    steps:
+      - name: Checkout independent F08-066 auditor
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout exact verified producer
+        uses: actions/checkout@v4
+        with:
+          ref: ff13379a6850453e707bde8c82693a39e416a71a
+          path: producer
+      - name: Checkout exact frozen original research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Independently pin source blobs, Lean version and adversarial verifier controls
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C producer rev-parse HEAD)" = ff13379a6850453e707bde8c82693a39e416a71a
+          test "$(git -C producer hash-object verification/f08/f08_001/F08LogWeightDilation.lean)" = 5dce3a647223afbf75ef09f72d90c8afb331ee81
+          test "$(git -C producer hash-object verification/f08/f08_025/F08NativeLogDilationFactor.lean)" = d208814f79f04a9926c2059d427419e73d6abb4b
+          test "$(git -C producer hash-object verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean)" = eecfe2a849fa79aa13810ede85e9ba625eba7777
+          test "$(git -C producer hash-object verification/f08/f08_029/F08NativeL2PushforwardNorm.lean)" = 4da65f9b9df7cae6ea30a4a7f25d3e6c1606c294
+          test "$(git -C producer hash-object verification/f08/f08_030/F08NativeFrequencyDilation.lean)" = 5c260b69f464f5793e095f9b5448c90f7984617f
+          test "$(git -C producer hash-object verification/f08/f08_057/F08LogDilationFixedVectorCorrection.lean)" = d1c2d9241f58541e23b1975aec610c63eb84b92f
+          test "$(git -C producer hash-object verification/f08/f08_063/F08OriginalWeightedCoordinateIdentity.lean)" = 34caef0d68578ac7c3fc15b5f839e148ad0e0a00
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralLogFormGraph.lean)" = 6a25651c2c54d7ff9e4d20d4b410b56b7d5047a3
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralLogHilbertCarrier.lean)" = 679d58b8f0cfa6b4f7d28c48ce844a41cdce2844
+          python3 -m py_compile candidate/verification/f08/f08_066/audit_063.py
+          python3 candidate/verification/f08/f08_066/audit_063.py --selftest
+      - name: Authenticate real successful producer run and immutable artifact metadata
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p f08-066-receipt
+          python3 - <<'PY'
+          import json,os,urllib.request
+          root=os.environ['GITHUB_API_URL']+'/repos/'+os.environ['GITHUB_REPOSITORY']
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json',
+                   'X-GitHub-Api-Version':'2022-11-28'}
+          def get(path):
+              with urllib.request.urlopen(urllib.request.Request(root+path,headers=headers),timeout=30) as response:
+                  return json.load(response)
+          run_id=int(os.environ['F08_RUN'])
+          artifact_id=int(os.environ['F08_ARTIFACT'])
+          run=get('/actions/runs/'+str(run_id))
+          assert run['status']=='completed' and run['conclusion']=='success'
+          assert run['head_sha']==os.environ['F08_HEAD']
+          assert run['head_repository']['full_name']=='monocap-tech/weil-lab'
+          assert run['name']=="F08-063 original weighted coordinate identity kernel"
+          jobs=get('/actions/runs/'+str(run_id)+'/jobs')
+          assert any(j['conclusion']=='success' and
+              any(s['name']=="Compile original weighted coordinate identity and strict named axioms"
+                  and s['conclusion']=='success' for s in j['steps'])
+              for j in jobs['jobs']), 'direct original Lean kernel step absent or failed'
+          artifact=get('/actions/artifacts/'+str(artifact_id))
+          assert artifact['workflow_run']['id']==run_id
+          assert artifact['workflow_run']['head_sha']==os.environ['F08_HEAD']
+          assert artifact['name']=="f08-063-original-weighted-coordinate-identity-compiler-evidence"
+          assert artifact['digest']=='sha256:'+os.environ['F08_ARTIFACT_SHA']
+          assert artifact['size_in_bytes']>0 and not artifact['expired']
+          info={'producer_commit':os.environ['F08_HEAD'], 'producer_run':run_id,
+                'artifact_id':artifact_id, 'sha256':os.environ['F08_ARTIFACT_SHA'],
+                'producer_success':True, 'direct_compiler_and_axioms_success':True}
+          with open('f08-066-receipt/producer-metadata.json','w') as f:
+              json.dump(info,f,sort_keys=True,indent=2)
+          print('F08-066 authenticated actual original direct F08-063 producer and immutable artifact')
+          PY
+      - name: Download and independently audit actual entire original compiler archive
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$F08_ARTIFACT/zip" -o f08-066-receipt/original-producer.zip
+          echo "$F08_ARTIFACT_SHA  f08-066-receipt/original-producer.zip" | sha256sum -c -
+          python3 candidate/verification/f08/f08_066/audit_063.py --archive f08-066-receipt/original-producer.zip --producer-metadata f08-066-receipt/producer-metadata.json --out f08-066-receipt/independent-weighted-coordinate.json
+      - name: Archive independent source-only custody receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-066-independent-original-weighted-coordinate-custody
+          path: |
+            f08-066-receipt/producer-metadata.json
+            f08-066-receipt/independent-weighted-coordinate.json
+          if-no-files-found: ignore
