@@ -1,6 +1,9 @@
 name: NF504 original full J8 support-saturated physical quotient 4096bit source native
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf504-original-J8-saturated-exterior-native.yml'
+      - 'scripts/verify_nf504_original_J8_support_saturated_exterior_native.py'
   push:
     branches:
       - research/nf504-original-J8-saturated-quotient-native
