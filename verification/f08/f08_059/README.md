@@ -1,0 +1,3 @@
+# F08-059 — Original logarithmic corrected dilation convergence
+
+Source-only candidates: pointwise squared error bound, actual integrable native-representative error and quantitative integral bound, and unconditional inward-scale convergence for every original RealComplexL2 vector. Combines accepted F08-025, F08-052, F08-055, F08-057. All 19 source blobs pinned. Real scalar correction acts on complex native representatives, not yet identified with physical Fourier scaling. Native and independent custody required. No weighted physical carrier identity, fixed-support form-core density, signed Weil positivity or RH claim. Research #932; master #898.

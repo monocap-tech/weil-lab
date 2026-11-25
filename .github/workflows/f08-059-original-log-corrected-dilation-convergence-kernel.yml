@@ -1,0 +1,145 @@
+name: F08-059 original logarithmic corrected native dilation convergence kernel
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_059/**'
+      - '.github/workflows/f08-059-original-log-corrected-dilation-convergence-kernel.yml'
+permissions:
+  contents: read
+jobs:
+  genuine-original-L2-strong-continuity:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout frozen original IV023 research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Pin every original dependency and terminal source
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C research hash-object WeilDefect/Arithmetic/LogarithmicForm.lean)" = ae932d4f3f7e4d6d06dbd778a5708927172238dc
+          mkdir -p research/WeilDefect/Generated/F08
+          test "$(git -C candidate hash-object verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean)" = eecfe2a849fa79aa13810ede85e9ba625eba7777
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean
+          cp candidate/verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean research/WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean
+          test "$(git -C candidate hash-object verification/f08/f08_029/F08NativeL2PushforwardNorm.lean)" = 4da65f9b9df7cae6ea30a4a7f25d3e6c1606c294
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_029/F08NativeL2PushforwardNorm.lean
+          cp candidate/verification/f08/f08_029/F08NativeL2PushforwardNorm.lean research/WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean
+          test "$(git -C candidate hash-object verification/f08/f08_030/F08NativeFrequencyDilation.lean)" = 5c260b69f464f5793e095f9b5448c90f7984617f
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_030/F08NativeFrequencyDilation.lean
+          cp candidate/verification/f08/f08_030/F08NativeFrequencyDilation.lean research/WeilDefect/Generated/F08/NativeFrequencyDilation.lean
+          test "$(git -C candidate hash-object verification/f08/f08_033/F08NativeFrequencyDilationIsometry.lean)" = 8b4055c065ab7987a01bf55143908d8cd77f0f23
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_033/F08NativeFrequencyDilationIsometry.lean
+          cp candidate/verification/f08/f08_033/F08NativeFrequencyDilationIsometry.lean research/WeilDefect/Generated/F08/NativeFrequencyDilationIsometry.lean
+          test "$(git -C candidate hash-object verification/f08/f08_035/F08NativeDilationLinearIsometry.lean)" = 7038c5d23cecdef6cc3f6bca1d12548246e65bd7
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_035/F08NativeDilationLinearIsometry.lean
+          cp candidate/verification/f08/f08_035/F08NativeDilationLinearIsometry.lean research/WeilDefect/Generated/F08/NativeDilationLinearIsometry.lean
+          test "$(git -C candidate hash-object verification/f08/f08_037/F08CompactSchwartzNativeL2Dense.lean)" = f6d8bc01053ff811a2a9ebc6b83837f714e8d90f
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_037/F08CompactSchwartzNativeL2Dense.lean
+          cp candidate/verification/f08/f08_037/F08CompactSchwartzNativeL2Dense.lean research/WeilDefect/Generated/F08/CompactSchwartzNativeL2Dense.lean
+          test "$(git -C candidate hash-object verification/f08/f08_038/F08NativeL2ContinuityDenseTransfer.lean)" = 354922e7ed1727292f9ef41cf9b4f7d20f59a753
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_038/F08NativeL2ContinuityDenseTransfer.lean
+          cp candidate/verification/f08/f08_038/F08NativeL2ContinuityDenseTransfer.lean research/WeilDefect/Generated/F08/NativeL2ContinuityDenseTransfer.lean
+          test "$(git -C candidate hash-object verification/f08/f08_040/F08OriginalSchwartzDilationPointwise.lean)" = f728a7fc3c5528c7311b7ed8dc27b2f60e445f81
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_040/F08OriginalSchwartzDilationPointwise.lean
+          cp candidate/verification/f08/f08_040/F08OriginalSchwartzDilationPointwise.lean research/WeilDefect/Generated/F08/OriginalSchwartzDilationPointwise.lean
+          test "$(git -C candidate hash-object verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean)" = f3ecfbf236898ca62baac18111595a06b2a9874f
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean
+          cp candidate/verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean research/WeilDefect/Generated/F08/CompactSchwartzSupportRadiusAndBound.lean
+          test "$(git -C candidate hash-object verification/f08/f08_045/F08CompactSchwartzCommonScaledSupport.lean)" = 6fd895d4ae3cfa550fa0ed08f194ce299ea051b6
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_045/F08CompactSchwartzCommonScaledSupport.lean
+          cp candidate/verification/f08/f08_045/F08CompactSchwartzCommonScaledSupport.lean research/WeilDefect/Generated/F08/CompactSchwartzCommonScaledSupport.lean
+          test "$(git -C candidate hash-object verification/f08/f08_046/F08OriginalSchwartzNormalizedDifferenceBounds.lean)" = 9212867e3c7594461d153777ad1c4db7c3693150
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_046/F08OriginalSchwartzNormalizedDifferenceBounds.lean
+          cp candidate/verification/f08/f08_046/F08OriginalSchwartzNormalizedDifferenceBounds.lean research/WeilDefect/Generated/F08/OriginalSchwartzNormalizedDifferenceBounds.lean
+          test "$(git -C candidate hash-object verification/f08/f08_048/F08OriginalSchwartzIntegrableSquareEnvelope.lean)" = 08b60de243f59503f33be0970600861d62f92e0d
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_048/F08OriginalSchwartzIntegrableSquareEnvelope.lean
+          cp candidate/verification/f08/f08_048/F08OriginalSchwartzIntegrableSquareEnvelope.lean research/WeilDefect/Generated/F08/OriginalSchwartzIntegrableSquareEnvelope.lean
+          test "$(git -C candidate hash-object verification/f08/f08_051/F08OriginalCompactSchwartzFilteredDCT.lean)" = e6d0da5a8e350e9f49bf4f10228f820492c5e83b
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_051/F08OriginalCompactSchwartzFilteredDCT.lean
+          cp candidate/verification/f08/f08_051/F08OriginalCompactSchwartzFilteredDCT.lean research/WeilDefect/Generated/F08/OriginalCompactSchwartzFilteredDCT.lean
+          test "$(git -C candidate hash-object verification/f08/f08_052/F08OriginalNativeL2SquareIntegral.lean)" = 16a7053b3a1ea6f0e0f91a89de6e40a91987cd92
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_052/F08OriginalNativeL2SquareIntegral.lean
+          cp candidate/verification/f08/f08_052/F08OriginalNativeL2SquareIntegral.lean research/WeilDefect/Generated/F08/OriginalNativeL2SquareIntegral.lean
+          test "$(git -C candidate hash-object verification/f08/f08_055/F08OriginalNativeL2StrongContinuity.lean)" = 90ecd5258d1fa2fc843349e6fa4278ae20956062
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_055/F08OriginalNativeL2StrongContinuity.lean
+          cp candidate/verification/f08/f08_055/F08OriginalNativeL2StrongContinuity.lean research/WeilDefect/Generated/F08/OriginalNativeL2StrongContinuity.lean
+          test "$(git -C candidate hash-object verification/f08/f08_001/F08LogWeightDilation.lean)" = 5dce3a647223afbf75ef09f72d90c8afb331ee81
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_001/F08LogWeightDilation.lean
+          cp candidate/verification/f08/f08_001/F08LogWeightDilation.lean research/WeilDefect/Generated/F08/LogWeightDilation.lean
+          test "$(git -C candidate hash-object verification/f08/f08_025/F08NativeLogDilationFactor.lean)" = d208814f79f04a9926c2059d427419e73d6abb4b
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_025/F08NativeLogDilationFactor.lean
+          cp candidate/verification/f08/f08_025/F08NativeLogDilationFactor.lean research/WeilDefect/Generated/F08/NativeLogDilationFactor.lean
+          test "$(git -C candidate hash-object verification/f08/f08_057/F08LogDilationFixedVectorCorrection.lean)" = d1c2d9241f58541e23b1975aec610c63eb84b92f
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_057/F08LogDilationFixedVectorCorrection.lean
+          cp candidate/verification/f08/f08_057/F08LogDilationFixedVectorCorrection.lean research/WeilDefect/Generated/F08/LogDilationFixedVectorCorrection.lean
+          test "$(git -C candidate hash-object verification/f08/f08_059/F08OriginalLogCorrectedDilationConvergence.lean)" = 5febf418b614e49a1e040a41b889b6b51fbc1a18
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_059/F08OriginalLogCorrectedDilationConvergence.lean
+          cp candidate/verification/f08/f08_059/F08OriginalLogCorrectedDilationConvergence.lean research/WeilDefect/Generated/F08/OriginalLogCorrectedDilationConvergence.lean
+      - name: Install frozen original Lean 4.34.0 and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Compile original corrected error and convergence with strict named axiom audit
+        working-directory: research
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build WeilDefect.Generated.F08.OriginalLogCorrectedDilationConvergence 2>&1 | tee f08-059-build.log
+          printf '%s\n' 'import WeilDefect.Generated.F08.OriginalLogCorrectedDilationConvergence' '#print axioms WeilDefect.f08_059_correctedError_sq_le' '#print axioms WeilDefect.f08_059_correctedError_integral_bound' '#print axioms WeilDefect.f08_059_correctedError_integral_tendsto' > /tmp/f08-059-axioms.lean
+          lake env lean /tmp/f08-059-axioms.lean 2>&1 | tee f08-059-axioms.log
+          python3 - <<'PY'
+          import pathlib,re
+          s=pathlib.Path('f08-059-axioms.log').read_text()
+          pat=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]|'WeilDefect\.(\w+)' does not depend on any axioms"
+          ms=list(re.finditer(pat,s,re.S))
+          assert len(ms)==3,('exact three reports required',s)
+          assert not re.sub(pat,'',s,flags=re.S).strip()
+          assert {m[1] or m[3] for m in ms}=={'f08_059_correctedError_sq_le','f08_059_correctedError_integral_bound','f08_059_correctedError_integral_tendsto'}
+          for m in ms:
+              assert {a.strip() for a in (m[2] or '').split(',') if a.strip()} <= {'propext','Classical.choice','Quot.sound'}
+          print('F08-059 corrected error and convergence: 3/3 standard-only axioms PASS')
+          PY
+      - name: Archive all original sources and native compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-059-original-log-corrected-dilation-convergence-compiler-evidence
+          path: |
+            research/f08-059-build.log
+            research/f08-059-axioms.log
+            research/WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean
+            research/WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean
+            research/WeilDefect/Generated/F08/NativeFrequencyDilation.lean
+            research/WeilDefect/Generated/F08/NativeFrequencyDilationIsometry.lean
+            research/WeilDefect/Generated/F08/NativeDilationLinearIsometry.lean
+            research/WeilDefect/Generated/F08/CompactSchwartzNativeL2Dense.lean
+            research/WeilDefect/Generated/F08/NativeL2ContinuityDenseTransfer.lean
+            research/WeilDefect/Generated/F08/OriginalSchwartzDilationPointwise.lean
+            research/WeilDefect/Generated/F08/CompactSchwartzSupportRadiusAndBound.lean
+            research/WeilDefect/Generated/F08/CompactSchwartzCommonScaledSupport.lean
+            research/WeilDefect/Generated/F08/OriginalSchwartzNormalizedDifferenceBounds.lean
+            research/WeilDefect/Generated/F08/OriginalSchwartzIntegrableSquareEnvelope.lean
+            research/WeilDefect/Generated/F08/OriginalCompactSchwartzFilteredDCT.lean
+            research/WeilDefect/Generated/F08/OriginalNativeL2SquareIntegral.lean
+            research/WeilDefect/Generated/F08/OriginalNativeL2StrongContinuity.lean
+            research/WeilDefect/Generated/F08/LogWeightDilation.lean
+            research/WeilDefect/Generated/F08/NativeLogDilationFactor.lean
+            research/WeilDefect/Generated/F08/LogDilationFixedVectorCorrection.lean
+            research/WeilDefect/Generated/F08/OriginalLogCorrectedDilationConvergence.lean
+          if-no-files-found: ignore
