@@ -8,7 +8,7 @@ in this abstract operator gate. -/
 namespace WeilDefect.MasterRecon.V06A
 
 open Filter Set
-open scoped Topology InnerProduct
+open scoped Topology InnerProduct NNReal
 
 variable {H K : Type*}
 variable [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
@@ -24,7 +24,8 @@ theorem translatedBlock_analytic (D E : K →L[ℂ] K) :
   have hs : AnalyticAt ℂ (fun w : ℂ => (-w) • D) z :=
     (analyticAt_id.neg.smul analyticAt_const)
   have hx : AnalyticAt ℂ (fun w : ℂ => NormedSpace.exp ((-w) • D)) z :=
-    (NormedSpace.exp_analytic (𝕂 := ℂ) ((-z) • D)).comp hs
+    AnalyticAt.comp (f := fun w : ℂ => (-w) • D)
+      (NormedSpace.exp_analytic (𝕂 := ℂ) ((-z) • D)) hs
   exact (hx.mul analyticAt_const).mul hx
 
 noncomputable def translatedForm (A : H →L[ℂ] K)
@@ -39,8 +40,11 @@ theorem translatedForm_analytic (A : H →L[ℂ] K) (D E : K →L[ℂ] K) :
     (ContinuousLinearMap.compL ℂ H K K).flip A
   let R : (H →L[ℂ] K) →L[ℂ] (H →L[ℂ] H) :=
     ContinuousLinearMap.compL ℂ H K H A.adjoint
-  have h := (R.analyticAt (L (translatedBlock D E z))).comp
-    ((L.analyticAt (translatedBlock D E z)).comp hb)
+  have hl : AnalyticAt ℂ (fun w : ℂ => L (translatedBlock D E w)) z :=
+    AnalyticAt.comp (f := translatedBlock D E) (L.analyticAt _) hb
+  have h : AnalyticAt ℂ (fun w : ℂ => R (L (translatedBlock D E w))) z :=
+    AnalyticAt.comp (f := fun w : ℂ => L (translatedBlock D E w))
+      (R.analyticAt _) hl
   exact h
 
 theorem translatedForm_zero (A : H →L[ℂ] K) (D E : K →L[ℂ] K) :
