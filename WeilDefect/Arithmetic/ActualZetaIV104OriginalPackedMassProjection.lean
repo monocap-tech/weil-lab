@@ -14,15 +14,17 @@ theorem neutralIV104Carrier_orthogonal (k : ℕ) (hk : 0 < k)
     inner ℂ ((neutralIV100Carrier k hk i).toLp 2 volume)
       ((neutralIV100Carrier k hk j).toLp 2 volume) = 0 := by
   rw [MeasureTheory.L2.inner_def]
-  rw [← integral_zero (α := ℝ) (μ := volume) (E := ℂ)]
-  apply integral_congr_ae
-  filter_upwards [(neutralIV100Carrier k hk i).coeFn_toLp 2 volume,
-    (neutralIV100Carrier k hk j).coeFn_toLp 2 volume] with x hi hj
-  rw [hi, hj]
-  rcases neutralIV100Carrier_disjoint k hk i (Finset.mem_univ i)
-    j (Finset.mem_univ j) hij x with h | h
-  · simp [h]
-  · simp [h]
+  calc
+    _ = ∫ x : ℝ, (0 : ℂ) := by
+      apply integral_congr_ae
+      filter_upwards [(neutralIV100Carrier k hk i).coeFn_toLp 2 volume,
+        (neutralIV100Carrier k hk j).coeFn_toLp 2 volume] with x hi hj
+      rw [hi, hj]
+      rcases neutralIV100Carrier_disjoint k hk i (Finset.mem_univ i)
+        j (Finset.mem_univ j) hij x with h | h
+      · simp [h]
+      · simp [h]
+    _ = 0 := by simp
 
 def neutralIV104Mass (k : ℕ) (hk : 0 < k) (i : Fin k) : ℝ :=
   ‖(neutralIV100Carrier k hk i).toLp 2 volume‖^2
@@ -56,8 +58,7 @@ theorem neutralIV104Packed_pair (k : ℕ) (hk : 0 < k)
   rw [neutralIV104Packed_toLp]
   simp only [inner_sum, inner_smul_right]
   rw [Finset.sum_eq_single i]
-  · rw [inner_self_eq_norm_sq_to_K]
-    rfl
+  · rw [inner_self_eq_norm_sq_to_K] <;> rfl
   · intro j hj hji
     rw [neutralIV104Carrier_orthogonal k hk i j (Ne.symm hji), mul_zero]
   · simp
@@ -130,7 +131,7 @@ theorem neutralIV104Window_nonneg_of_complement (k : ℕ) (hk : 0 < k) (K : ℝ)
     (neutralIV104Residual_supported k hk s hs)
   change 0 ≤ neutralIV101Q (11/10:ℝ)
     (neutralIV104Project k hk s + neutralIV104Residual k hk s) at h
-  rwa [neutralIV104Decomposition] at h
+  simpa only [neutralIV104Decomposition] using h
 
 #print axioms neutralIV104Carrier_orthogonal
 #print axioms neutralIV104Packed_toLp
