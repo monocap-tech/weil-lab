@@ -53,7 +53,7 @@ theorem f08_033_nativeFrequencyDilation_isometry
           ‖k‖ := by
       rw [Lp.norm_def]
       rw [f08_033_jacobianFactor lam]
-      rw [smul_eq_mul, ENNReal.toReal_mul, ENNReal.toReal_rpow]
+      rw [smul_eq_mul, ENNReal.toReal_mul, ← ENNReal.toReal_rpow]
       rw [hhalf, ENNReal.toReal_ofReal (by positivity)]
       ring
     _ = ‖k‖ := by
