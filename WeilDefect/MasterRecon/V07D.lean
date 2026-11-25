@@ -6,7 +6,7 @@ Continuous evaluation commutes with the convergent operator exponential
 series. The two scalar eigenchannels recover the original hyperbolic mix. -/
 namespace WeilDefect.MasterRecon.V07D
 
-open scoped ENNReal InnerProduct
+open scoped ENNReal InnerProduct Nat
 open V07C
 
 section Intertwine
@@ -28,8 +28,8 @@ theorem power_intertwine (L : H →L[ℂ] K) (D : H →L[ℂ] H)
 theorem exp_intertwine (L : H →L[ℂ] K) (D : H →L[ℂ] H)
     (B : K →L[ℂ] K) (h : ∀ x, L (D x) = B (L x)) (x : H) :
     L (NormedSpace.exp D x) = NormedSpace.exp B (L x) := by
-  let F : (H →L[ℂ] H) →L[ℂ] K := L.comp ((ContinuousLinearMap.apply ℂ H).flip x)
-  let G : (K →L[ℂ] K) →L[ℂ] K := (ContinuousLinearMap.apply ℂ K).flip (L x)
+  let F : (H →L[ℂ] H) →L[ℂ] K := L.comp (ContinuousLinearMap.apply ℂ H x)
+  let G : (K →L[ℂ] K) →L[ℂ] K := ContinuousLinearMap.apply ℂ K (L x)
   change F (NormedSpace.exp D) = G (NormedSpace.exp B)
   simp only [NormedSpace.exp_eq_tsum ℂ]
   rw [F.map_tsum (NormedSpace.expSeries_summable' (𝕂 := ℂ) D),
@@ -73,8 +73,8 @@ theorem local_exp_sum (d : ℝ) (z : ℂ) (x : Pair) :
   have h : ∀ y : Pair, sumChannel ((z • displacementBlock d) y) =
       ((z * (d : ℂ)) • (1 : ℂ →L[ℂ] ℂ)) (sumChannel y) := by
     intro y
-    change z * (d : ℂ) * (WithLp.ofLp y).2 +
-      z * (d : ℂ) * (WithLp.ofLp y).1 =
+    change z * ((d : ℂ) * (WithLp.ofLp y).2) +
+      z * ((d : ℂ) * (WithLp.ofLp y).1) =
         (z * (d : ℂ)) * ((WithLp.ofLp y).1 + (WithLp.ofLp y).2)
     ring
   rw [exp_intertwine sumChannel _ _ h, scalar_exp_apply]
@@ -85,8 +85,8 @@ theorem local_exp_diff (d : ℝ) (z : ℂ) (x : Pair) :
   have h : ∀ y : Pair, diffChannel ((z • displacementBlock d) y) =
       (-(z * (d : ℂ)) • (1 : ℂ →L[ℂ] ℂ)) (diffChannel y) := by
     intro y
-    change z * (d : ℂ) * (WithLp.ofLp y).2 -
-      z * (d : ℂ) * (WithLp.ofLp y).1 =
+    change z * ((d : ℂ) * (WithLp.ofLp y).2) -
+      z * ((d : ℂ) * (WithLp.ofLp y).1) =
         (-(z * (d : ℂ))) * ((WithLp.ofLp y).1 - (WithLp.ofLp y).2)
     ring
   rw [exp_intertwine diffChannel _ _ h, scalar_exp_apply]
