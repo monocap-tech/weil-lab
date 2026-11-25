@@ -17,13 +17,13 @@ theorem shifted_energy_lower
     (T : H →L[ℂ] H) (hT : T.IsPositive) (η : ℝ≥0) (x : H) :
     ‖x‖ ^ 2 * (η : ℝ) ≤
       (inner ℂ (T x + ((η : ℝ) : ℂ) • x) x).re := by
-  have h := hT.re_inner_nonneg_left x
+  have h : 0 ≤ (inner ℂ (T x) x).re := hT.re_inner_nonneg_left x
   have hs : (inner ℂ (((η : ℝ) : ℂ) • x) x).re =
       (η : ℝ) * ‖x‖ ^ 2 := by
     rw [inner_smul_left, inner_self_eq_norm_sq_to_K]
     simp [Complex.mul_re, pow_two]
-  rw [inner_add_left, Complex.add_re, hs]
-  linarith
+  rw [inner_add_left, Complex.add_re, hs, mul_comm (‖x‖ ^ 2) (η : ℝ)]
+  exact le_add_of_nonneg_left h
 
 /-- Existence of the inverse via the Hilbert coercivity theorem. -/
 theorem positive_shift_isUnit
@@ -46,13 +46,15 @@ theorem scaled_inverse_contraction
     ‖((η : ℝ) : ℂ) • R x‖ ≤ ‖x‖ := by
   have h := shifted_energy_lower T hT η (R x)
   rw [hR x] at h
-  have hcs := re_inner_le_norm (𝕜 := ℂ) x (R x)
+  have hcs : (inner ℂ x (R x)).re ≤ ‖x‖ * ‖R x‖ :=
+    re_inner_le_norm (𝕜 := ℂ) x (R x)
   rw [norm_smul, show ‖((η : ℝ) : ℂ)‖ = (η : ℝ) by simp [Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg (show 0 ≤ (η : ℝ) from η.coe_nonneg)]]
   by_cases hz : ‖R x‖ = 0
   · simp [hz]
   · have hp : 0 < ‖R x‖ := lt_of_le_of_ne (norm_nonneg _) (Ne.symm hz)
-    apply (mul_le_mul_right₀ hp).mp
-    nlinarith
+    by_contra! hn
+    have hstrict := mul_lt_mul_of_pos_right hn hp
+    nlinarith only [h, hcs, hstrict]
 
 /-- The exact coefficient range closure, not an assertion of closed range. -/
 theorem gram_range_closure
