@@ -43,7 +43,7 @@ def api(path):
 def validate_run(run,run_id,head):
     assert run['id']==run_id and run['status']=='completed' and run['conclusion']=='success'
     assert run['name']==PRODUCER and run['path'].split('@')[0]==WORKFLOW
-    assert run['head_sha']==head and run['head_branch']=='main' and run['event']=='workflow_dispatch'
+    assert run['head_sha']==head and run['head_branch']=='main' and run['event'] in ('workflow_dispatch','push')
     assert run['head_repository']['full_name']==REPO
 def pin_rows(rows,artifacts,run_id,head):
     assert len(artifacts)==len(rows), 'unexpected artifact count'

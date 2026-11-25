@@ -1,5 +1,9 @@
 name: F41 completion producer rows079-241
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'verification/f41/completion_079_241/launch.json'
   workflow_dispatch:
 permissions:
   contents: read

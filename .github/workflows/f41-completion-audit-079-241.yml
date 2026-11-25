@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   pin:
-    if: github.repository == 'monocap-tech/weil-lab' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'workflow_dispatch' && github.event.workflow_run.head_repository.full_name == 'monocap-tech/weil-lab' && github.event.workflow_run.head_branch == 'main'
+    if: github.repository == 'monocap-tech/weil-lab' && github.event.workflow_run.conclusion == 'success' && (github.event.workflow_run.event == 'workflow_dispatch' || github.event.workflow_run.event == 'push') && github.event.workflow_run.head_repository.full_name == 'monocap-tech/weil-lab' && github.event.workflow_run.head_branch == 'main'
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.pin.outputs.matrix }}
