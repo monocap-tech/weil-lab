@@ -119,7 +119,7 @@ jobs:
           assert len(names)==len(set(names))==24
           assert set(re.findall(r"(?m)^#print axioms (\w+)$",s))==set(names)
           assert set(re.findall(r"(?m)^theorem (\w+)",s))==set(names)
-          assert all(s.count("#print axioms "+n)==1 for n in names)
+          assert all(s.splitlines().count("#print axioms "+n)==1 for n in names)
           assert not re.search(r"\b(?:sorry|admit|sorryAx)\b",s)
           print("IV098 strict preflight: twenty-four exact original-source bridge declarations")
           PY
