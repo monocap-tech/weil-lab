@@ -1,0 +1,72 @@
+name: F08-037 original native complex L2 compact Schwartz density Lean kernel
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_037/**'
+      - '.github/workflows/f08-037-compact-Schwartz-native-L2-density-kernel.yml'
+permissions:
+  contents: read
+jobs:
+  original-native-compact-Schwartz-density:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout frozen original IV023 research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Pin canonical IV023 domain and actual candidate Lean source
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C candidate hash-object verification/f08/f08_037/F08CompactSchwartzNativeL2Dense.lean)" = f6d8bc01053ff811a2a9ebc6b83837f714e8d90f
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_037/F08CompactSchwartzNativeL2Dense.lean
+          mkdir -p research/WeilDefect/Generated/F08
+          cp candidate/verification/f08/f08_037/F08CompactSchwartzNativeL2Dense.lean research/WeilDefect/Generated/F08/CompactSchwartzNativeL2Dense.lean
+      - name: Install actual original frozen Lean and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Genuine native compact Schwartz dense image build and one strict axiom query
+        working-directory: research
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build WeilDefect.Generated.F08.CompactSchwartzNativeL2Dense 2>&1 | tee f08-037-build.log
+          printf '%s\n' 'import WeilDefect.Generated.F08.CompactSchwartzNativeL2Dense' '#print axioms WeilDefect.f08_037_compactSchwartz_denseInOriginalL2' > /tmp/f08-037-axioms.lean
+          lake env lean /tmp/f08-037-axioms.lean 2>&1 | tee f08-037-axioms.log
+          python3 - <<'PY'
+          import pathlib,re
+          s=pathlib.Path('f08-037-axioms.log').read_text()
+          pat=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]"
+          found=list(re.finditer(pat,s,re.S))
+          assert len(found)==1,('not exactly one theorem',s)
+          assert not re.sub(pat,'',s,flags=re.S).strip(),('unexpected axiom report',s)
+          assert found[0].group(1)=='f08_037_compactSchwartz_denseInOriginalL2',s
+          axioms={x.strip() for x in found[0].group(2).split(',') if x.strip()}
+          assert axioms <= {'propext','Classical.choice','Quot.sound'},('nonstandard axiom',axioms)
+          print('F08-037 original compact Schwartz dense image: one named standard-only axiom report PASS')
+          PY
+      - name: Archive true original compiler source and complete strict axiom evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-037-compact-Schwartz-native-L2-density-compiler-evidence
+          path: |
+            research/f08-037-build.log
+            research/f08-037-axioms.log
+            research/WeilDefect/Generated/F08/CompactSchwartzNativeL2Dense.lean
+          if-no-files-found: ignore
