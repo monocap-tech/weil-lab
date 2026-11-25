@@ -1,0 +1,3 @@
+# F08-047 — Independent F08-046 original source custody
+
+Producer run 45554603218, head 3d339b83c6dbfd839f1213cb012126a30118bca0, completed successfully with 8,988 jobs and two named standard-only axiom reports. Artifact 14996016174, SHA256 7c8ad7b1e4a3af3a3230ddef8f5a5d6c5b238d232f917c3ae1e4120892c64434. The independent workflow checks all five ZIP entries, all three source blobs, producer metadata and strict axiom reports, including four adversarial controls. This is a pending audit, not acceptance. F08-045 must clear its own custody before F08-046 is merged. No DCT, weighted form-core, positivity or RH claim.
