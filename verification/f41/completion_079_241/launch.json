@@ -1,0 +1,9 @@
+{
+  "schema": "F41-completion-launch-v1",
+  "first_row": 79,
+  "last_row": 241,
+  "batch_width": 8,
+  "max_parallel_compilers": 2,
+  "trigger": "reviewed merge to main",
+  "proof_claim": false
+}

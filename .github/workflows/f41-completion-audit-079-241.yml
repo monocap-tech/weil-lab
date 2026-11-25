@@ -1,0 +1,161 @@
+name: F41 completion independent custody rows079-241
+on:
+  workflow_run:
+    workflows: ['F41 completion producer rows079-241']
+    types: [completed]
+    branches: [main]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: f41-completion-audit-${{ github.event.workflow_run.id }}
+  cancel-in-progress: false
+jobs:
+  pin:
+    if: github.repository == 'monocap-tech/weil-lab' && github.event.workflow_run.conclusion == 'success' && (github.event.workflow_run.event == 'workflow_dispatch' || github.event.workflow_run.event == 'push') && github.event.workflow_run.head_repository.full_name == 'monocap-tech/weil-lab' && github.event.workflow_run.head_branch == 'main'
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.pin.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          persist-credentials: false
+      - id: pin
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PRODUCER_RUN: ${{ github.event.workflow_run.id }}
+          PRODUCER_HEAD: ${{ github.event.workflow_run.head_sha }}
+        run: python3 verification/f41/completion_079_241/pipeline.py pin
+      - uses: actions/upload-artifact@v4
+        with:
+          name: f41-completion-external-pins
+          path: f41-completion-pins.json
+          if-no-files-found: error
+          overwrite: true
+  independent-audit:
+    needs: pin
+    runs-on: ubuntu-latest
+    name: Independent rows ${{ matrix.batch }}
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix: ${{ fromJSON(needs.pin.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          persist-credentials: false
+      - name: Independently verify row ${{ matrix.rows[0].rr }}
+        if: ${{ matrix.rows[0].active }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ROW_PIN: ${{ toJSON(matrix.rows[0]) }}
+        run: python3 verification/f41/completion_079_241/pipeline.py audit-one
+      - name: Publish row ${{ matrix.rows[0].rr }} independent receipt
+        if: ${{ matrix.rows[0].active }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.rows[0].receipt }}
+          path: custody/${{ matrix.rows[0].rr }}/
+          if-no-files-found: error
+          overwrite: true
+      - name: Independently verify row ${{ matrix.rows[1].rr }}
+        if: ${{ matrix.rows[1].active }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ROW_PIN: ${{ toJSON(matrix.rows[1]) }}
+        run: python3 verification/f41/completion_079_241/pipeline.py audit-one
+      - name: Publish row ${{ matrix.rows[1].rr }} independent receipt
+        if: ${{ matrix.rows[1].active }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.rows[1].receipt }}
+          path: custody/${{ matrix.rows[1].rr }}/
+          if-no-files-found: error
+          overwrite: true
+      - name: Independently verify row ${{ matrix.rows[2].rr }}
+        if: ${{ matrix.rows[2].active }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ROW_PIN: ${{ toJSON(matrix.rows[2]) }}
+        run: python3 verification/f41/completion_079_241/pipeline.py audit-one
+      - name: Publish row ${{ matrix.rows[2].rr }} independent receipt
+        if: ${{ matrix.rows[2].active }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.rows[2].receipt }}
+          path: custody/${{ matrix.rows[2].rr }}/
+          if-no-files-found: error
+          overwrite: true
+      - name: Independently verify row ${{ matrix.rows[3].rr }}
+        if: ${{ matrix.rows[3].active }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ROW_PIN: ${{ toJSON(matrix.rows[3]) }}
+        run: python3 verification/f41/completion_079_241/pipeline.py audit-one
+      - name: Publish row ${{ matrix.rows[3].rr }} independent receipt
+        if: ${{ matrix.rows[3].active }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.rows[3].receipt }}
+          path: custody/${{ matrix.rows[3].rr }}/
+          if-no-files-found: error
+          overwrite: true
+      - name: Independently verify row ${{ matrix.rows[4].rr }}
+        if: ${{ matrix.rows[4].active }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ROW_PIN: ${{ toJSON(matrix.rows[4]) }}
+        run: python3 verification/f41/completion_079_241/pipeline.py audit-one
+      - name: Publish row ${{ matrix.rows[4].rr }} independent receipt
+        if: ${{ matrix.rows[4].active }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.rows[4].receipt }}
+          path: custody/${{ matrix.rows[4].rr }}/
+          if-no-files-found: error
+          overwrite: true
+      - name: Independently verify row ${{ matrix.rows[5].rr }}
+        if: ${{ matrix.rows[5].active }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ROW_PIN: ${{ toJSON(matrix.rows[5]) }}
+        run: python3 verification/f41/completion_079_241/pipeline.py audit-one
+      - name: Publish row ${{ matrix.rows[5].rr }} independent receipt
+        if: ${{ matrix.rows[5].active }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.rows[5].receipt }}
+          path: custody/${{ matrix.rows[5].rr }}/
+          if-no-files-found: error
+          overwrite: true
+      - name: Independently verify row ${{ matrix.rows[6].rr }}
+        if: ${{ matrix.rows[6].active }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ROW_PIN: ${{ toJSON(matrix.rows[6]) }}
+        run: python3 verification/f41/completion_079_241/pipeline.py audit-one
+      - name: Publish row ${{ matrix.rows[6].rr }} independent receipt
+        if: ${{ matrix.rows[6].active }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.rows[6].receipt }}
+          path: custody/${{ matrix.rows[6].rr }}/
+          if-no-files-found: error
+          overwrite: true
+      - name: Independently verify row ${{ matrix.rows[7].rr }}
+        if: ${{ matrix.rows[7].active }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ROW_PIN: ${{ toJSON(matrix.rows[7]) }}
+        run: python3 verification/f41/completion_079_241/pipeline.py audit-one
+      - name: Publish row ${{ matrix.rows[7].rr }} independent receipt
+        if: ${{ matrix.rows[7].active }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.rows[7].receipt }}
+          path: custody/${{ matrix.rows[7].rr }}/
+          if-no-files-found: error
+          overwrite: true

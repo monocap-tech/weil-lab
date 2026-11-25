@@ -1,0 +1,507 @@
+name: F41 completion producer rows079-241
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'verification/f41/completion_079_241/launch.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: f41-completion-producer
+  cancel-in-progress: false
+jobs:
+  plan:
+    if: github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: plan
+        run: python3 verification/f41/completion_079_241/pipeline.py matrix
+  compile:
+    needs: plan
+    runs-on: ubuntu-latest
+    name: Original rows ${{ matrix.batch }}
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    timeout-minutes: 350
+    env:
+      BATCH_ROWS: ${{ toJSON(matrix.rows) }}
+    defaults:
+      run:
+        working-directory: research
+        shell: bash
+    steps:
+      - name: Checkout exact completion producer commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: candidate
+          persist-credentials: false
+      - name: Checkout historically successful NF707 compiler source
+        uses: actions/checkout@v4
+        with:
+          ref: 3d3fa66956bef3a63f90ed9b5325141afaf43cb5
+          path: research
+          persist-credentials: false
+      - name: Checkout immutable original mathematical research source
+        uses: actions/checkout@v4
+        with:
+          ref: a431f903254000bb5ad8edbc276ccc8599da98f5
+          path: frozen
+          persist-credentials: false
+      - name: Reverify seven exact mathematical source files and three unchanged git refs
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = 3d3fa66956bef3a63f90ed9b5325141afaf43cb5
+          test "$(git -C ../frozen rev-parse HEAD)" = a431f903254000bb5ad8edbc276ccc8599da98f5
+          test "$(git -C ../candidate rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.34.0
+          for f in ActualZetaOriginalPhysicalSolveResidual ActualZetaOriginalPhysicalExecutableEntryChecks ActualZetaOriginalPhysicalTriangularEntryCustody ActualZetaOriginalPhysicalShardedEntryCustody ActualZetaOriginalPhysicalEnclosurePropagation ActualZetaOriginalPhysicalIntegerCenters ActualZetaOriginalPhysicalGramSchurAlgebra; do
+            cmp "WeilDefect/Arithmetic/$f.lean" "../frozen/WeilDefect/Arithmetic/$f.lean"
+          done
+          while read -r g; do
+            python -m py_compile "../candidate/$g"
+            python "../candidate/$g" selftest
+          done < <(jq -r '.[] | select(.active) | .generator' <<< "$BATCH_ROWS")
+          python ../candidate/verification/f41/f41_001/f41_original_physical_entry_source_contract.py source --source-root ../frozen --out f41-common-original-source.json
+      - name: Restore original exact accepted bank source (NF690/NF691)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p WeilDefect/Generated/NF690
+          fetch() {
+            local id="$1" name="$2" digest="$3" dest="$4"
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" -o "$name.zip"
+            echo "$digest  $name.zip" | sha256sum -c -
+            unzip -q "$name.zip" -d "$dest"
+          }
+          fetch 14551493244 compact 37be910efa7d204c9db35f62bf9d5f818ece77c7026d94d9c84e4ddba0df41a5 WeilDefect/Generated
+          fetch 14558233793 payload 2327fbf952d4894c9f28f81cad9e94d226c93131d9ef2fafa14c35f482211b70 WeilDefect/Generated/NF690
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('WeilDefect/Generated'); sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          m=json.loads((root/'NF690/manifest.json').read_text());d=root/'NF690'
+          assert (m['keys'],m['rows'],m['chunks'],m['chunk_width'])==(7835,37994,490,16)
+          assert [r['index'] for r in m['slots']]==list(range(7835))
+          assert len({tuple(r['key']) for r in m['slots']})==7835
+          assert sum(r['rows'] for r in m['slots'])==37994
+          assert m['metadata_sha256']==sha(root/'NF679/Metadata.lean')
+          assert m['compact_manifest_sha256']==sha(root/'NF687/manifest.json')
+          for name in ('NF682','NF687','NF690'):
+              p=root/name
+              for f in json.loads((p/'manifest.json').read_text())['files']:
+                  assert sha(p/f['file'])==f['sha256']
+                  if 'bytes' in f:assert (p/f['file']).stat().st_size==f['bytes']
+          assert {f'Chunk{i:03d}.lean' for i in range(490)}|{'Bank.lean','Coverage.lean'} <= {f['file'] for f in m['files']}
+          out=root/'NF691';out.mkdir(exist_ok=True)
+          (out/'OriginalLookup.lean').write_text("""import WeilDefect.Generated.NF690.Coverage
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalBlockLocalLookup
+
+          namespace WeilDefect
+
+          def nf691OriginalLookup : NF622Moments :=
+            neutralNF691Lookup nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalLookup_eq :
+              neutralNF624Lookup nf690OriginalBank (neutralNF624Index nf690OriginalBank) =
+                nf691OriginalLookup :=
+            neutralNF691Lookup_eq nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalCoverage :
+              neutralNF624CoverageCheck nf690OriginalBank (neutralNF624Index nf690OriginalBank)=true :=
+            nf690OriginalCoverage
+
+          #print axioms nf691OriginalLookup_eq
+          #print axioms nf691OriginalCoverage
+
+          end WeilDefect
+          """)
+          print('F41 completion authentic NF691 source bank and 490 chunks restored')
+          PY
+      - name: Initialize pinned Lean 4.34.0 and Lake/Mathlib before manifest checks
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Bind unchanged bank sources and environment
+        run: python scripts/nf697_compiled_bank_binding.py
+      - name: Download historically audited compiled-bank objects
+        uses: actions/download-artifact@v4
+        with:
+          name: nf697-audited-compiled-bank
+          path: research/compiled-bank
+          run-id: 44598398608
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify original compiled-bank producer binding and restore
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          a=json.loads(Path('compiled-bank/nf697-bank-binding.json').read_text())
+          b=json.loads(Path('nf697-bank-binding.json').read_text())
+          for x in (a,b):
+              dig=x.pop('fingerprint')
+              assert hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()==dig
+          assert a['schema']==b['schema'] and a['environment']==b['environment']
+          assert all(b['files'].get(k)==v for k,v in a['files'].items())
+          assert set(b['files'])-set(a['files'])=={'WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularCacheAssembly.lean'}
+          assert all('ActualZetaOriginalPhysicalTriangularCacheAssembly' not in Path(p).read_text() for p in a['files'] if p.endswith('.lean'))
+          PY
+          (cd compiled-bank && sha256sum -c nf697-project-build.sha256)
+          tar -xzf compiled-bank/nf697-project-build.tar.gz
+          lake build WeilDefect.Generated.NF691.OriginalLookup 2>&1 | tee f41-common-bank-build.log
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install original numerical generator dependency
+        run: pip install python-flint==0.8.0
+      - name: Restore the original NF631 H/V and NF702 full input source archives
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p receipts/nf702 receipts/nf631
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14582437652/zip" -o receipts/nf702.zip
+          echo '258637da71e96468ed7c6ac5b0a4480ce06cdee9989aef8e71a4cd09059789e0  receipts/nf702.zip' | sha256sum -c -
+          unzip -q receipts/nf702.zip -d receipts/nf702
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/14459025571/zip" -o receipts/nf631.zip
+          echo 'e91a83cae117e98608aefa6849dac178e4ddb58dd1dffbfe37304ad248af9ed9  receipts/nf631.zip' | sha256sum -c -
+          python - <<'PY'
+          import shutil
+          from pathlib import Path
+          found=[p.parent for p in Path('receipts/nf702').rglob('manifest.json') if p.parent.name=='NF702Inputs']
+          assert len(found)==1
+          shutil.copytree(found[0],Path('WeilDefect/Generated/NF702Inputs'))
+          PY
+          while read -r k g; do
+            PYTHONPATH=scripts python "../candidate/$g" emit --archive receipts/nf631.zip --input-dir receipts/nf702 --output "WeilDefect/Generated/F41$k"
+          done < <(jq -r '.[] | select(.active) | [.k,.generator] | @tsv' <<< "$BATCH_ROWS")
+      - name: Restore authenticated original NF707 compiled full-payment input
+        uses: actions/download-artifact@v4
+        with:
+          name: nf707-compiled-original-input
+          path: research/compiled-input
+          run-id: 44633937710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Validate exact imported NF702 source, compiled-input and bank binding
+        run: |
+          set -euo pipefail
+          (cd compiled-input && sha256sum -c nf707-input-build.sha256)
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+          import os
+          rows=[x for x in json.loads(os.environ['BATCH_ROWS']) if x['active']]
+          assert 1<=len(rows)<=8
+          b=json.loads(Path('compiled-input/nf707-input-binding.json').read_text())
+          bank=json.loads(Path('nf697-bank-binding.json').read_text())
+          assert b['schema']=='NF707-compiled-input-binding-v1'
+          assert b['bank_source_environment']==bank
+          keys=('nf702_input_manifest_sha256','source_original_commit','research_replay_commit','original_nf631_entries_archive_sha256','original_nf631_entries_gzip_sha256','nf702_original_input_archive_sha256','nf702_original_payment_payload_sha256','original_bank','original_payment')
+          m=None
+          for x in rows:
+              m2=json.loads(Path(f"WeilDefect/Generated/F41{x['k']}/manifest.json").read_text())
+              assert m2['row']==x['row']
+              assert b['input_manifest_sha256']==m2['nf702_input_manifest_sha256']
+              if m is None:m=m2
+              assert all(m2[key]==m[key] for key in keys)
+          assert len(b['input_sources'])==62
+          assert all(sha(p)==dig for p,dig in b['input_sources'].items())
+          assert b['compiled_tar_sha256']==sha('compiled-input/nf707-input-build.tar.gz')
+          assert m['original_nf631_entries_archive_sha256']=='e91a83cae117e98608aefa6849dac178e4ddb58dd1dffbfe37304ad248af9ed9'
+          PY
+          tar -xzf compiled-input/nf707-input-build.tar.gz
+          lake build WeilDefect.Generated.NF702Inputs.Data 2>&1 | tee f41-common-input-build.log
+      - name: Preserve identical common-source and dependency receipts under all row identifiers
+        run: |
+          set -euo pipefail
+          while read -r k; do
+            for suffix in original-source.json bank-build.log input-build.log; do
+              cp "f41-common-$suffix" "f41-$k-$suffix"
+            done
+          done < <(jq -r '.[] | select(.active) | .k' <<< "$BATCH_ROWS")
+      - name: Compile and axiom-audit row ${{ matrix.rows[0].rr }}
+        if: ${{ matrix.rows[0].active }}
+        timeout-minutes: 185
+        env:
+          RR: ${{ matrix.rows[0].rr }}
+          K: ${{ matrix.rows[0].k }}
+          GENERATOR: ${{ matrix.rows[0].generator }}
+        run: |
+          set -euo pipefail
+          lake build "WeilDefect.Generated.F41$K.Row$RR" 2>&1 | tee "f41-$K-local-row.log"
+          lake build "WeilDefect.Generated.F41$K.Attach$RR" 2>&1 | tee "f41-$K-full-attach.log"
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          k=os.environ['K']; rr=os.environ['RR']
+          d=Path(f'WeilDefect/Generated/F41{k}')
+          m=json.loads((d/'manifest.json').read_text())
+          names=m['axiom_names']
+          assert m['row']==int(rr) and len(names)==len(set(names))==9
+          Path(f'/tmp/f41_{k}_audit.lean').write_text(f'import WeilDefect.Generated.F41{k}.Attach{rr}\n'+''.join(f'#print axioms WeilDefect.{n}\n' for n in names))
+          PY
+          lake env lean "/tmp/f41_${K}_audit.lean" 2>&1 | tee "f41-$K-axioms.log"
+          python "../candidate/$GENERATOR" audit --output "WeilDefect/Generated/F41$K" --axioms-log "f41-$K-axioms.log"
+      - name: Publish row ${{ matrix.rows[0].rr }} original kernel archive
+        if: ${{ matrix.rows[0].active }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.rows[0].artifact }}
+          path: |
+            research/f41-${{ matrix.rows[0].k }}-*.log
+            research/f41-${{ matrix.rows[0].k }}-original-source.json
+            research/WeilDefect/Generated/F41${{ matrix.rows[0].k }}/
+          if-no-files-found: error
+          overwrite: true
+      - name: Compile and axiom-audit row ${{ matrix.rows[1].rr }}
+        if: ${{ matrix.rows[1].active }}
+        timeout-minutes: 185
+        env:
+          RR: ${{ matrix.rows[1].rr }}
+          K: ${{ matrix.rows[1].k }}
+          GENERATOR: ${{ matrix.rows[1].generator }}
+        run: |
+          set -euo pipefail
+          lake build "WeilDefect.Generated.F41$K.Row$RR" 2>&1 | tee "f41-$K-local-row.log"
+          lake build "WeilDefect.Generated.F41$K.Attach$RR" 2>&1 | tee "f41-$K-full-attach.log"
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          k=os.environ['K']; rr=os.environ['RR']
+          d=Path(f'WeilDefect/Generated/F41{k}')
+          m=json.loads((d/'manifest.json').read_text())
+          names=m['axiom_names']
+          assert m['row']==int(rr) and len(names)==len(set(names))==9
+          Path(f'/tmp/f41_{k}_audit.lean').write_text(f'import WeilDefect.Generated.F41{k}.Attach{rr}\n'+''.join(f'#print axioms WeilDefect.{n}\n' for n in names))
+          PY
+          lake env lean "/tmp/f41_${K}_audit.lean" 2>&1 | tee "f41-$K-axioms.log"
+          python "../candidate/$GENERATOR" audit --output "WeilDefect/Generated/F41$K" --axioms-log "f41-$K-axioms.log"
+      - name: Publish row ${{ matrix.rows[1].rr }} original kernel archive
+        if: ${{ matrix.rows[1].active }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.rows[1].artifact }}
+          path: |
+            research/f41-${{ matrix.rows[1].k }}-*.log
+            research/f41-${{ matrix.rows[1].k }}-original-source.json
+            research/WeilDefect/Generated/F41${{ matrix.rows[1].k }}/
+          if-no-files-found: error
+          overwrite: true
+      - name: Compile and axiom-audit row ${{ matrix.rows[2].rr }}
+        if: ${{ matrix.rows[2].active }}
+        timeout-minutes: 185
+        env:
+          RR: ${{ matrix.rows[2].rr }}
+          K: ${{ matrix.rows[2].k }}
+          GENERATOR: ${{ matrix.rows[2].generator }}
+        run: |
+          set -euo pipefail
+          lake build "WeilDefect.Generated.F41$K.Row$RR" 2>&1 | tee "f41-$K-local-row.log"
+          lake build "WeilDefect.Generated.F41$K.Attach$RR" 2>&1 | tee "f41-$K-full-attach.log"
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          k=os.environ['K']; rr=os.environ['RR']
+          d=Path(f'WeilDefect/Generated/F41{k}')
+          m=json.loads((d/'manifest.json').read_text())
+          names=m['axiom_names']
+          assert m['row']==int(rr) and len(names)==len(set(names))==9
+          Path(f'/tmp/f41_{k}_audit.lean').write_text(f'import WeilDefect.Generated.F41{k}.Attach{rr}\n'+''.join(f'#print axioms WeilDefect.{n}\n' for n in names))
+          PY
+          lake env lean "/tmp/f41_${K}_audit.lean" 2>&1 | tee "f41-$K-axioms.log"
+          python "../candidate/$GENERATOR" audit --output "WeilDefect/Generated/F41$K" --axioms-log "f41-$K-axioms.log"
+      - name: Publish row ${{ matrix.rows[2].rr }} original kernel archive
+        if: ${{ matrix.rows[2].active }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.rows[2].artifact }}
+          path: |
+            research/f41-${{ matrix.rows[2].k }}-*.log
+            research/f41-${{ matrix.rows[2].k }}-original-source.json
+            research/WeilDefect/Generated/F41${{ matrix.rows[2].k }}/
+          if-no-files-found: error
+          overwrite: true
+      - name: Compile and axiom-audit row ${{ matrix.rows[3].rr }}
+        if: ${{ matrix.rows[3].active }}
+        timeout-minutes: 185
+        env:
+          RR: ${{ matrix.rows[3].rr }}
+          K: ${{ matrix.rows[3].k }}
+          GENERATOR: ${{ matrix.rows[3].generator }}
+        run: |
+          set -euo pipefail
+          lake build "WeilDefect.Generated.F41$K.Row$RR" 2>&1 | tee "f41-$K-local-row.log"
+          lake build "WeilDefect.Generated.F41$K.Attach$RR" 2>&1 | tee "f41-$K-full-attach.log"
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          k=os.environ['K']; rr=os.environ['RR']
+          d=Path(f'WeilDefect/Generated/F41{k}')
+          m=json.loads((d/'manifest.json').read_text())
+          names=m['axiom_names']
+          assert m['row']==int(rr) and len(names)==len(set(names))==9
+          Path(f'/tmp/f41_{k}_audit.lean').write_text(f'import WeilDefect.Generated.F41{k}.Attach{rr}\n'+''.join(f'#print axioms WeilDefect.{n}\n' for n in names))
+          PY
+          lake env lean "/tmp/f41_${K}_audit.lean" 2>&1 | tee "f41-$K-axioms.log"
+          python "../candidate/$GENERATOR" audit --output "WeilDefect/Generated/F41$K" --axioms-log "f41-$K-axioms.log"
+      - name: Publish row ${{ matrix.rows[3].rr }} original kernel archive
+        if: ${{ matrix.rows[3].active }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.rows[3].artifact }}
+          path: |
+            research/f41-${{ matrix.rows[3].k }}-*.log
+            research/f41-${{ matrix.rows[3].k }}-original-source.json
+            research/WeilDefect/Generated/F41${{ matrix.rows[3].k }}/
+          if-no-files-found: error
+          overwrite: true
+      - name: Compile and axiom-audit row ${{ matrix.rows[4].rr }}
+        if: ${{ matrix.rows[4].active }}
+        timeout-minutes: 185
+        env:
+          RR: ${{ matrix.rows[4].rr }}
+          K: ${{ matrix.rows[4].k }}
+          GENERATOR: ${{ matrix.rows[4].generator }}
+        run: |
+          set -euo pipefail
+          lake build "WeilDefect.Generated.F41$K.Row$RR" 2>&1 | tee "f41-$K-local-row.log"
+          lake build "WeilDefect.Generated.F41$K.Attach$RR" 2>&1 | tee "f41-$K-full-attach.log"
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          k=os.environ['K']; rr=os.environ['RR']
+          d=Path(f'WeilDefect/Generated/F41{k}')
+          m=json.loads((d/'manifest.json').read_text())
+          names=m['axiom_names']
+          assert m['row']==int(rr) and len(names)==len(set(names))==9
+          Path(f'/tmp/f41_{k}_audit.lean').write_text(f'import WeilDefect.Generated.F41{k}.Attach{rr}\n'+''.join(f'#print axioms WeilDefect.{n}\n' for n in names))
+          PY
+          lake env lean "/tmp/f41_${K}_audit.lean" 2>&1 | tee "f41-$K-axioms.log"
+          python "../candidate/$GENERATOR" audit --output "WeilDefect/Generated/F41$K" --axioms-log "f41-$K-axioms.log"
+      - name: Publish row ${{ matrix.rows[4].rr }} original kernel archive
+        if: ${{ matrix.rows[4].active }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.rows[4].artifact }}
+          path: |
+            research/f41-${{ matrix.rows[4].k }}-*.log
+            research/f41-${{ matrix.rows[4].k }}-original-source.json
+            research/WeilDefect/Generated/F41${{ matrix.rows[4].k }}/
+          if-no-files-found: error
+          overwrite: true
+      - name: Compile and axiom-audit row ${{ matrix.rows[5].rr }}
+        if: ${{ matrix.rows[5].active }}
+        timeout-minutes: 185
+        env:
+          RR: ${{ matrix.rows[5].rr }}
+          K: ${{ matrix.rows[5].k }}
+          GENERATOR: ${{ matrix.rows[5].generator }}
+        run: |
+          set -euo pipefail
+          lake build "WeilDefect.Generated.F41$K.Row$RR" 2>&1 | tee "f41-$K-local-row.log"
+          lake build "WeilDefect.Generated.F41$K.Attach$RR" 2>&1 | tee "f41-$K-full-attach.log"
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          k=os.environ['K']; rr=os.environ['RR']
+          d=Path(f'WeilDefect/Generated/F41{k}')
+          m=json.loads((d/'manifest.json').read_text())
+          names=m['axiom_names']
+          assert m['row']==int(rr) and len(names)==len(set(names))==9
+          Path(f'/tmp/f41_{k}_audit.lean').write_text(f'import WeilDefect.Generated.F41{k}.Attach{rr}\n'+''.join(f'#print axioms WeilDefect.{n}\n' for n in names))
+          PY
+          lake env lean "/tmp/f41_${K}_audit.lean" 2>&1 | tee "f41-$K-axioms.log"
+          python "../candidate/$GENERATOR" audit --output "WeilDefect/Generated/F41$K" --axioms-log "f41-$K-axioms.log"
+      - name: Publish row ${{ matrix.rows[5].rr }} original kernel archive
+        if: ${{ matrix.rows[5].active }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.rows[5].artifact }}
+          path: |
+            research/f41-${{ matrix.rows[5].k }}-*.log
+            research/f41-${{ matrix.rows[5].k }}-original-source.json
+            research/WeilDefect/Generated/F41${{ matrix.rows[5].k }}/
+          if-no-files-found: error
+          overwrite: true
+      - name: Compile and axiom-audit row ${{ matrix.rows[6].rr }}
+        if: ${{ matrix.rows[6].active }}
+        timeout-minutes: 185
+        env:
+          RR: ${{ matrix.rows[6].rr }}
+          K: ${{ matrix.rows[6].k }}
+          GENERATOR: ${{ matrix.rows[6].generator }}
+        run: |
+          set -euo pipefail
+          lake build "WeilDefect.Generated.F41$K.Row$RR" 2>&1 | tee "f41-$K-local-row.log"
+          lake build "WeilDefect.Generated.F41$K.Attach$RR" 2>&1 | tee "f41-$K-full-attach.log"
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          k=os.environ['K']; rr=os.environ['RR']
+          d=Path(f'WeilDefect/Generated/F41{k}')
+          m=json.loads((d/'manifest.json').read_text())
+          names=m['axiom_names']
+          assert m['row']==int(rr) and len(names)==len(set(names))==9
+          Path(f'/tmp/f41_{k}_audit.lean').write_text(f'import WeilDefect.Generated.F41{k}.Attach{rr}\n'+''.join(f'#print axioms WeilDefect.{n}\n' for n in names))
+          PY
+          lake env lean "/tmp/f41_${K}_audit.lean" 2>&1 | tee "f41-$K-axioms.log"
+          python "../candidate/$GENERATOR" audit --output "WeilDefect/Generated/F41$K" --axioms-log "f41-$K-axioms.log"
+      - name: Publish row ${{ matrix.rows[6].rr }} original kernel archive
+        if: ${{ matrix.rows[6].active }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.rows[6].artifact }}
+          path: |
+            research/f41-${{ matrix.rows[6].k }}-*.log
+            research/f41-${{ matrix.rows[6].k }}-original-source.json
+            research/WeilDefect/Generated/F41${{ matrix.rows[6].k }}/
+          if-no-files-found: error
+          overwrite: true
+      - name: Compile and axiom-audit row ${{ matrix.rows[7].rr }}
+        if: ${{ matrix.rows[7].active }}
+        timeout-minutes: 185
+        env:
+          RR: ${{ matrix.rows[7].rr }}
+          K: ${{ matrix.rows[7].k }}
+          GENERATOR: ${{ matrix.rows[7].generator }}
+        run: |
+          set -euo pipefail
+          lake build "WeilDefect.Generated.F41$K.Row$RR" 2>&1 | tee "f41-$K-local-row.log"
+          lake build "WeilDefect.Generated.F41$K.Attach$RR" 2>&1 | tee "f41-$K-full-attach.log"
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          k=os.environ['K']; rr=os.environ['RR']
+          d=Path(f'WeilDefect/Generated/F41{k}')
+          m=json.loads((d/'manifest.json').read_text())
+          names=m['axiom_names']
+          assert m['row']==int(rr) and len(names)==len(set(names))==9
+          Path(f'/tmp/f41_{k}_audit.lean').write_text(f'import WeilDefect.Generated.F41{k}.Attach{rr}\n'+''.join(f'#print axioms WeilDefect.{n}\n' for n in names))
+          PY
+          lake env lean "/tmp/f41_${K}_audit.lean" 2>&1 | tee "f41-$K-axioms.log"
+          python "../candidate/$GENERATOR" audit --output "WeilDefect/Generated/F41$K" --axioms-log "f41-$K-axioms.log"
+      - name: Publish row ${{ matrix.rows[7].rr }} original kernel archive
+        if: ${{ matrix.rows[7].active }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.rows[7].artifact }}
+          path: |
+            research/f41-${{ matrix.rows[7].k }}-*.log
+            research/f41-${{ matrix.rows[7].k }}-original-source.json
+            research/WeilDefect/Generated/F41${{ matrix.rows[7].k }}/
+          if-no-files-found: error
+          overwrite: true
