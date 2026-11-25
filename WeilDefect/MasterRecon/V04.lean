@@ -63,9 +63,49 @@ theorem gram_range_closure
     ContinuousLinearMap.ker_adjoint_comp_self] at h
   exact h.symm
 
+
+/-- Explicit two-sided inverse, in exactly the application convention of V02/V03. -/
+theorem positive_shift_inverse
+    (T : H →L[ℂ] H) (hT : T.IsPositive)
+    (η : ℝ≥0) (hη : 0 < η) :
+    ∃ R : H →L[ℂ] H,
+      (∀ x, R (T x + ((η : ℝ) : ℂ) • x) = x) ∧
+      (∀ x, T (R x) + ((η : ℝ) : ℂ) • R x = x) ∧
+      (∀ x, ‖((η : ℝ) : ℂ) • R x‖ ≤ ‖x‖) := by
+  obtain ⟨u, hu⟩ := positive_shift_isUnit T hT η hη
+  let R : H →L[ℂ] H := ↑(u⁻¹)
+  have hl : ∀ x, R (T x + ((η : ℝ) : ℂ) • x) = x := by
+    intro x
+    have h := congrArg (fun f : H →L[ℂ] H => f x) u.inv_mul
+    change R ((↑u : H →L[ℂ] H) x) = x at h
+    rw [hu] at h
+    simpa using h
+  have hr : ∀ x, T (R x) + ((η : ℝ) : ℂ) • R x = x := by
+    intro x
+    have h := congrArg (fun f : H →L[ℂ] H => f x) u.mul_inv
+    change (↑u : H →L[ℂ] H) (R x) = x at h
+    rw [hu] at h
+    simpa using h
+  exact ⟨R, hl, hr, scaled_inverse_contraction T R hT η hr⟩
+
+/-- The range approximation premise in V03 for the actual kernel projection. -/
+theorem gram_range_approximation
+    (S : H →L[ℂ] K) [S.ker.HasOrthogonalProjection]
+    (x : H) (ε : ℝ) (hε : 0 < ε) :
+    ∃ y : H, ‖x - S.ker.starProjection x - (S† ∘L S) y‖ < ε := by
+  have h : x - S.ker.starProjection x ∈ S.kerᗮ :=
+    Submodule.sub_starProjection_mem_orthogonal x
+  rw [← gram_range_closure S] at h
+  change x - S.ker.starProjection x ∈ closure (Set.range (S† ∘L S)) at h
+  obtain ⟨z, ⟨y, rfl⟩, hz⟩ := Metric.mem_closure_iff.mp h ε hε
+  exact ⟨y, by simpa [dist_eq_norm, norm_sub_rev] using hz⟩
+
 end WeilDefect.MasterRecon.V04
 
 #print axioms WeilDefect.MasterRecon.V04.shifted_energy_lower
 #print axioms WeilDefect.MasterRecon.V04.positive_shift_isUnit
 #print axioms WeilDefect.MasterRecon.V04.scaled_inverse_contraction
 #print axioms WeilDefect.MasterRecon.V04.gram_range_closure
+
+#print axioms WeilDefect.MasterRecon.V04.positive_shift_inverse
+#print axioms WeilDefect.MasterRecon.V04.gram_range_approximation
