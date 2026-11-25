@@ -77,7 +77,10 @@ theorem f08_063_correctedNative_memLp
   apply (hk.const_mul (1 + Real.log 2)).mono'
   · exact hm.norm.pow 2
   · filter_upwards [] with xi
-    rw [Real.norm_eq_abs, abs_of_nonneg (sq_nonneg _), norm_smul, mul_pow,
+    rw [Real.norm_eq_abs, abs_of_nonneg (sq_nonneg _)]
+    change ‖f08_025_logDilationFactor lam xi • k xi‖ ^ 2 ≤
+      (1 + Real.log 2) * ‖k xi‖ ^ 2
+    rw [norm_smul, mul_pow,
       Real.norm_eq_abs, sq_abs]
     exact mul_le_mul_of_nonneg_right (f08_025_logDilationFactor_sq_le lam xi hlo hhi)
       (sq_nonneg _)
