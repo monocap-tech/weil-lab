@@ -84,7 +84,7 @@ def verify(archive, metadata):
         predecessor29 = unique_file(z, "WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean")
         predecessor30 = unique_file(z, "WeilDefect/Generated/F08/NativeFrequencyDilation.lean")
     assert git_blob(src) == SOURCE_BLOB, "wrong original Git source blob"
-    # Validate both actual staged predecessor source blobs, not merely names.
+    # Validate all three original staged predecessor source blobs, not merely names.
     assert git_blob(predecessor27) == "eecfe2a849fa79aa13810ede85e9ba625eba7777"
     assert git_blob(predecessor29) == "4da65f9b9df7cae6ea30a4a7f25d3e6c1606c294"
     assert git_blob(predecessor30) == "5c260b69f464f5793e095f9b5448c90f7984617f"
@@ -95,7 +95,7 @@ def verify(archive, metadata):
     assert not re.search(rb"\b(sorry|admit|unsafe)\b", src)
     for name in NAMES:
         assert name.encode() in src, ("missing literal declaration", name)
-    assert "Built WeilDefect.Generated.F08.NativeFrequencyDilation" in build
+    assert "Built WeilDefect.Generated.F08.NativeFrequencyDilationIsometry" in build
     assert not re.search(r"(^|\n)[^\n]*error:", build, re.I)
     found = read_axioms(axioms)
     return {
