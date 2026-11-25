@@ -36,7 +36,7 @@ theorem f08_037_compactSchwartz_denseInOriginalL2 :
   have hbase :
       Dense {f : RealComplexL2 |
         ∃ g : ℝ → ℂ,
-          f =ᵐ[volume] g ∧ HasCompactSupport g ∧ ContDiff ℝ ∞ g} := by
+          f =ᵐ[volume] g ∧ HasCompactSupport g ∧ ContDiff ℝ ⊤ g} := by
     exact MeasureTheory.Lp.dense_hasCompactSupport_contDiff
       (E := ℝ) (F := ℂ) (μ := (volume : Measure ℝ)) (p := 2) (by simp)
   apply hbase.mono
