@@ -1,0 +1,49 @@
+name: F08-075 independent Schwartz carrier custody
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'verification/f08/f08_075_custody/**'
+      - '.github/workflows/f08-075-schwartz-carrier-custody.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  independent-custody:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 5da3d10040919836dbf6b8cd248cc67185121e5a
+          path: producer
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ca9e73b47ded1cb945d980f6f461d0a5669dbe2f
+          path: predecessor
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+          persist-credentials: false
+      - name: Independent verifier preflight
+        run: |
+          python3 -m py_compile candidate/verification/f08/f08_075_custody/audit.py
+          python3 candidate/verification/f08/f08_075_custody/audit.py --selftest
+      - name: Authenticate exact original Schwartz carrier archive
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 candidate/verification/f08/f08_075_custody/audit.py producer predecessor research receipt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: f08-075-independent-schwartz-carrier-custody
+          path: receipt/receipt.json
+          if-no-files-found: error

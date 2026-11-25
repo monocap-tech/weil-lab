@@ -1,0 +1,278 @@
+{
+  "producer": {
+    "head": "5da3d10040919836dbf6b8cd248cc67185121e5a",
+    "run": 45718385478,
+    "artifact": 15071618076,
+    "digest": "4207e369b64dc0991071427b64c63b4464f3538c2aa74a4e9a755c7e36ffff79",
+    "name": "f08-075-original-schwartz-carrier-compiler-evidence",
+    "workflow": "F08-075 exact original Schwartz carrier approximation kernel",
+    "step": "Compile exact Schwartz carrier approximation and strict named axioms"
+  },
+  "research_commit": "614ba879f7389fdb620c474adaee273b00eac71c",
+  "predecessor_commit": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+  "research": [
+    {
+      "source": "WeilDefect/Morphology/NeutralCanonicalFormDomain.lean",
+      "blob": "2bf19165fce3a0cfa6e4d782d68caab268aaf82b"
+    },
+    {
+      "source": "WeilDefect/Arithmetic/LogarithmicForm.lean",
+      "blob": "ae932d4f3f7e4d6d06dbd778a5708927172238dc"
+    },
+    {
+      "source": "WeilDefect/Arithmetic/ActualZetaCorrelationFourierAgreement.lean",
+      "blob": "60453bd214c43feedb0fa64d74a15bd452e48998"
+    },
+    {
+      "source": "WeilDefect/Morphology/NeutralLogFormGraph.lean",
+      "blob": "6a25651c2c54d7ff9e4d20d4b410b56b7d5047a3"
+    },
+    {
+      "source": "WeilDefect/Morphology/NeutralLogHilbertCarrier.lean",
+      "blob": "679d58b8f0cfa6b4f7d28c48ce844a41cdce2844"
+    },
+    {
+      "source": "WeilDefect/Arithmetic/ActualZetaCorrelationTransform.lean",
+      "blob": "d5aa1095b2fe64933ad8db64732d232631d3d3b7"
+    }
+  ],
+  "pins": [
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean",
+      "blob": "eecfe2a849fa79aa13810ede85e9ba625eba7777",
+      "archive": "WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_029/F08NativeL2PushforwardNorm.lean",
+      "blob": "4da65f9b9df7cae6ea30a4a7f25d3e6c1606c294",
+      "archive": "WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_030/F08NativeFrequencyDilation.lean",
+      "blob": "5c260b69f464f5793e095f9b5448c90f7984617f",
+      "archive": "WeilDefect/Generated/F08/NativeFrequencyDilation.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_033/F08NativeFrequencyDilationIsometry.lean",
+      "blob": "8b4055c065ab7987a01bf55143908d8cd77f0f23",
+      "archive": "WeilDefect/Generated/F08/NativeFrequencyDilationIsometry.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_035/F08NativeDilationLinearIsometry.lean",
+      "blob": "7038c5d23cecdef6cc3f6bca1d12548246e65bd7",
+      "archive": "WeilDefect/Generated/F08/NativeDilationLinearIsometry.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_037/F08CompactSchwartzNativeL2Dense.lean",
+      "blob": "f6d8bc01053ff811a2a9ebc6b83837f714e8d90f",
+      "archive": "WeilDefect/Generated/F08/CompactSchwartzNativeL2Dense.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_038/F08NativeL2ContinuityDenseTransfer.lean",
+      "blob": "354922e7ed1727292f9ef41cf9b4f7d20f59a753",
+      "archive": "WeilDefect/Generated/F08/NativeL2ContinuityDenseTransfer.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_040/F08OriginalSchwartzDilationPointwise.lean",
+      "blob": "f728a7fc3c5528c7311b7ed8dc27b2f60e445f81",
+      "archive": "WeilDefect/Generated/F08/OriginalSchwartzDilationPointwise.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean",
+      "blob": "f3ecfbf236898ca62baac18111595a06b2a9874f",
+      "archive": "WeilDefect/Generated/F08/CompactSchwartzSupportRadiusAndBound.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_045/F08CompactSchwartzCommonScaledSupport.lean",
+      "blob": "6fd895d4ae3cfa550fa0ed08f194ce299ea051b6",
+      "archive": "WeilDefect/Generated/F08/CompactSchwartzCommonScaledSupport.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_046/F08OriginalSchwartzNormalizedDifferenceBounds.lean",
+      "blob": "9212867e3c7594461d153777ad1c4db7c3693150",
+      "archive": "WeilDefect/Generated/F08/OriginalSchwartzNormalizedDifferenceBounds.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_048/F08OriginalSchwartzIntegrableSquareEnvelope.lean",
+      "blob": "08b60de243f59503f33be0970600861d62f92e0d",
+      "archive": "WeilDefect/Generated/F08/OriginalSchwartzIntegrableSquareEnvelope.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_051/F08OriginalCompactSchwartzFilteredDCT.lean",
+      "blob": "e6d0da5a8e350e9f49bf4f10228f820492c5e83b",
+      "archive": "WeilDefect/Generated/F08/OriginalCompactSchwartzFilteredDCT.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_052/F08OriginalNativeL2SquareIntegral.lean",
+      "blob": "16a7053b3a1ea6f0e0f91a89de6e40a91987cd92",
+      "archive": "WeilDefect/Generated/F08/OriginalNativeL2SquareIntegral.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_055/F08OriginalNativeL2StrongContinuity.lean",
+      "blob": "90ecd5258d1fa2fc843349e6fa4278ae20956062",
+      "archive": "WeilDefect/Generated/F08/OriginalNativeL2StrongContinuity.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_001/F08LogWeightDilation.lean",
+      "blob": "5dce3a647223afbf75ef09f72d90c8afb331ee81",
+      "archive": "WeilDefect/Generated/F08/LogWeightDilation.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_025/F08NativeLogDilationFactor.lean",
+      "blob": "d208814f79f04a9926c2059d427419e73d6abb4b",
+      "archive": "WeilDefect/Generated/F08/NativeLogDilationFactor.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_057/F08LogDilationFixedVectorCorrection.lean",
+      "blob": "d1c2d9241f58541e23b1975aec610c63eb84b92f",
+      "archive": "WeilDefect/Generated/F08/LogDilationFixedVectorCorrection.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_059/F08OriginalLogCorrectedDilationConvergence.lean",
+      "blob": "5febf418b614e49a1e040a41b889b6b51fbc1a18",
+      "archive": "WeilDefect/Generated/F08/OriginalLogCorrectedDilationConvergence.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_060/F08OriginalPhysicalDilationScaling.lean",
+      "blob": "fc488dea4d0fde809ece29e0fc863c6a35b2455b",
+      "archive": "WeilDefect/Generated/F08/OriginalPhysicalDilationScaling.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_062/F08OriginalNativePhysicalFourierIdentity.lean",
+      "blob": "11c535117029f3ecb9d72af56d1671e94e9ba130",
+      "archive": "WeilDefect/Generated/F08/OriginalNativePhysicalFourierIdentity.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_063/F08OriginalWeightedCoordinateIdentity.lean",
+      "blob": "34caef0d68578ac7c3fc15b5f839e148ad0e0a00",
+      "archive": "WeilDefect/Generated/F08/OriginalWeightedCoordinateIdentity.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_064/F08OriginalFormDomainEnergyReceiver.lean",
+      "blob": "9423bc10b0db9d07078299bdedbe60b585fede7d",
+      "archive": "WeilDefect/Generated/F08/OriginalFormDomainEnergyReceiver.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_067/F08TerminalOriginalWeightedDilation.lean",
+      "blob": "985e467f8a284c7c5be5bf794062155c24e70bea",
+      "archive": "WeilDefect/Generated/F08/TerminalOriginalWeightedDilation.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_005/F08WeightedMollifierMultiplier.lean",
+      "blob": "2a8199ff817f59d1437fa173518a588cbbd467b9",
+      "archive": "WeilDefect/Generated/F08/OriginalWeightedMollifierMultiplier.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_007/F08OriginalWindowMollifierFourier.lean",
+      "blob": "606d324ca9fcfd53d059efe1b57d1b0e30349476",
+      "archive": "WeilDefect/Generated/F08/OriginalWindowMollifierFourier.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_009/F08OriginalWindowConvolutionSupport.lean",
+      "blob": "6badab7f17605d3131ee414282683d390c6f1964",
+      "archive": "WeilDefect/Generated/F08/OriginalWindowConvolutionSupport.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_011/F08OriginalNormalizedMollifier.lean",
+      "blob": "b1f53459762df682f6d1d358aae9c82b5396c5a7",
+      "archive": "WeilDefect/Generated/F08/OriginalNormalizedMollifier.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_013/F08OriginalMollifierFourierLimit.lean",
+      "blob": "7b91eda87ce5a0d7691fdc643865e72fb153287c",
+      "archive": "WeilDefect/Generated/F08/OriginalMollifierFourierLimit.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_015/F08ActualMollifierWeightedDCT.lean",
+      "blob": "f1969dede41f0d799788411420c0cb2a63c5e53a",
+      "archive": "WeilDefect/Generated/F08/ActualMollifierWeightedDCT.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_017/F08ExplicitShrinkingPhysicalMollifier.lean",
+      "blob": "b767da47b302734c9b1de0bd0fde38b727c84b20",
+      "archive": "WeilDefect/Generated/F08/ExplicitShrinkingPhysicalMollifier.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_019/F08OriginalSmoothedWindow.lean",
+      "blob": "efe3260cbd8798ad7192142c1e656f31a6729d13",
+      "archive": "WeilDefect/Generated/F08/OriginalSmoothedWindow.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_021/F08OriginalSmoothedWindowNativeFourier.lean",
+      "blob": "f7f769dd120810645a6bed9fa3ef379c94986a77",
+      "archive": "WeilDefect/Generated/F08/OriginalSmoothedWindowNativeFourier.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_023/F08OriginalWindowNativeWeightedSmoothing.lean",
+      "blob": "b0712d54ff2c5a3c3c5496f5c007559abf946bf3",
+      "archive": "WeilDefect/Generated/F08/OriginalWindowNativeWeightedSmoothing.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_068/F08OriginalSupportedSmoothingReceiver.lean",
+      "blob": "c30f57a1d581c9a8be44ecd9dfccd5ea2e9f6e43",
+      "archive": "WeilDefect/Generated/F08/OriginalSupportedSmoothingReceiver.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_069/F08OriginalFixedWindowAssemblyReceiver.lean",
+      "blob": "b8f15156f6fa2b45b934517e5277527aab074406",
+      "archive": "WeilDefect/Generated/F08/OriginalFixedWindowAssemblyReceiver.lean"
+    },
+    {
+      "checkout": "predecessor",
+      "source": "verification/f08/f08_073/F08TerminalOriginalFixedSupportSmoothDensity.lean",
+      "blob": "f1fb72ae584aa9de2e71ac5ee17fb46c4c7e9f36",
+      "archive": "WeilDefect/Generated/F08/TerminalOriginalFixedSupportSmoothDensity.lean"
+    },
+    {
+      "checkout": "producer",
+      "source": "verification/f08/f08_075/F08OriginalSchwartzCarrierApprox.lean",
+      "blob": "0d13864a380c2975ef3c6dfc985e1bebffe44365",
+      "archive": "WeilDefect/Generated/F08/OriginalSchwartzCarrierApprox.lean"
+    }
+  ],
+  "predecessors": [
+    {
+      "run": 45710835491,
+      "head": "624fe0f0b3bc50805ffc9f6388dabcf344057da0",
+      "artifact": 15067551808,
+      "digest": "c795d208a3882e1c46dbf8ead5b15de90f34b52df8b2e689425d94b0fb1566d4",
+      "step": "Authenticate exact original producer and terminal density archive"
+    }
+  ]
+}
