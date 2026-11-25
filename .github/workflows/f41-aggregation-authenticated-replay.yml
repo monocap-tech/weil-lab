@@ -1,0 +1,40 @@
+name: F41 aggregation authenticated source replay
+on:
+  workflow_run:
+    workflows: ['F41 completion independent custody rows079-241']
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      audit_run:
+        description: Successful independent custody run ID
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: f41-aggregation-source-replay
+  cancel-in-progress: false
+jobs:
+  source-replay:
+    if: github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/main' && (github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Restore all authenticated original row source modules
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AUDIT_RUN: ${{ github.event.workflow_run.id || inputs.audit_run }}
+        run: |
+          set -euo pipefail
+          [[ "$AUDIT_RUN" =~ ^[0-9]+$ ]]
+          python3 verification/f41/aggregation_242/replay_sources.py replay --audit-run "$AUDIT_RUN" --output complete-replay
+      - uses: actions/upload-artifact@v4
+        with:
+          name: f41-aggregate-complete-authenticated-replay-sources
+          path: complete-replay/
+          if-no-files-found: error
