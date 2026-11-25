@@ -1,0 +1,70 @@
+{
+  "infinite_main_theorem_checked": false,
+  "max_column_ratio_to_k_plus_1": "61250805121/2000000000000",
+  "schema": "UOI046-finite-slice-sanity-v1",
+  "small_low_band_convolution_coefficient_without_Cpsi": "0.000951791452064421441436340146992172318348407511280",
+  "source_stage10_sha256": "54a572c37347d935d0fc0fc66a014dd60232cac42ce355098daa73790d81c7ba",
+  "stage10_squared_column_upper_bounds": [
+    {
+      "k": 1,
+      "ratio_approx": 0.0306254025605,
+      "ratio_to_k_plus_1": "61250805121/2000000000000",
+      "sum_of_squared_upper_edges": "61250805121/1000000000000"
+    },
+    {
+      "k": 2,
+      "ratio_approx": 0.022969076707333332,
+      "ratio_to_k_plus_1": "34453615061/1500000000000",
+      "sum_of_squared_upper_edges": "34453615061/500000000000"
+    },
+    {
+      "k": 3,
+      "ratio_approx": 0.01746608202275,
+      "ratio_to_k_plus_1": "69864328091/4000000000000",
+      "sum_of_squared_upper_edges": "69864328091/1000000000000"
+    },
+    {
+      "k": 4,
+      "ratio_approx": 0.0209285696382,
+      "ratio_to_k_plus_1": "104642848191/5000000000000",
+      "sum_of_squared_upper_edges": "104642848191/1000000000000"
+    },
+    {
+      "k": 5,
+      "ratio_approx": 0.015176047730166667,
+      "ratio_to_k_plus_1": "91056286381/6000000000000",
+      "sum_of_squared_upper_edges": "91056286381/1000000000000"
+    },
+    {
+      "k": 6,
+      "ratio_approx": 0.014128114642857143,
+      "ratio_to_k_plus_1": "39558721/2800000000",
+      "sum_of_squared_upper_edges": "39558721/400000000"
+    },
+    {
+      "k": 7,
+      "ratio_approx": 0.01299196201875,
+      "ratio_to_k_plus_1": "2078713923/160000000000",
+      "sum_of_squared_upper_edges": "2078713923/20000000000"
+    },
+    {
+      "k": 8,
+      "ratio_approx": 0.012078804296666667,
+      "ratio_to_k_plus_1": "3623641289/300000000000",
+      "sum_of_squared_upper_edges": "10870923867/100000000000"
+    },
+    {
+      "k": 9,
+      "ratio_approx": 0.0113078903467,
+      "ratio_to_k_plus_1": "113078903467/10000000000000",
+      "sum_of_squared_upper_edges": "113078903467/1000000000000"
+    }
+  ],
+  "status": "finite exact-arithmetic checks only, NOT Lean and NOT infinite proof",
+  "unverified_analytic_inputs": [
+    "original signed Gamma localization",
+    "Brun\u2013Titchmarsh short intervals",
+    "Chebyshev bound",
+    "functional-analytic completion"
+  ]
+}

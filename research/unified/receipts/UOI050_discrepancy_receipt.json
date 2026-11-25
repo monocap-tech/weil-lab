@@ -1,0 +1,63 @@
+{
+  "Lean_kernel_verified": false,
+  "PNT_error_theorem_verified": false,
+  "annihilator": "h=(D^3-D/4)q",
+  "collar_scale_checks": [
+    {
+      "k": 0,
+      "width": "1/1000",
+      "width_times_8powerk": "1/1000"
+    },
+    {
+      "k": 1,
+      "width": "1/8000",
+      "width_times_8powerk": "1/1000"
+    },
+    {
+      "k": 2,
+      "width": "1/64000",
+      "width_times_8powerk": "1/1000"
+    },
+    {
+      "k": 3,
+      "width": "1/512000",
+      "width_times_8powerk": "1/1000"
+    },
+    {
+      "k": 5,
+      "width": "1/32768000",
+      "width_times_8powerk": "1/1000"
+    },
+    {
+      "k": 10,
+      "width": "1/1073741824000",
+      "width_times_8powerk": "1/1000"
+    },
+    {
+      "k": 15,
+      "width": "1/35184372088832000",
+      "width_times_8powerk": "1/1000"
+    },
+    {
+      "k": 30,
+      "width": "1/1237940039285380274899124224000",
+      "width_times_8powerk": "1/1000"
+    },
+    {
+      "k": 60,
+      "width": "1/1532495540865888858358347027150309183618739122183602176000",
+      "width_times_8powerk": "1/1000"
+    }
+  ],
+  "exact_zero_exponential_moments": [
+    "0",
+    "1/2",
+    "-1/2"
+  ],
+  "full_prime_operator_compact": false,
+  "physical_derivative_identity": "F_y_prime(u)=-u^(-3/2)*(h_prime(y-log(u))+h(y-log(u))/2)",
+  "polynomial_precursor": "q=x^5*(1-x)^5 for 0<x<1, extended by zero",
+  "schema": "uoi050-exact-elementary-identity-v1",
+  "scope": "sympy exact derivative and moment identities, rational collar scaling; classical PNT used as external theorem, not verified",
+  "source_to_native_verified": false
+}

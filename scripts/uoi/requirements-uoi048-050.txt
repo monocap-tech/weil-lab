@@ -1,0 +1,2 @@
+# UOI050 symbolic checker only; UOI048 and UOI049 use the Python standard library.
+sympy==1.14.0

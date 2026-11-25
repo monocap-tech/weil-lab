@@ -1,0 +1,18 @@
+CF020 local verification — exploratory quadrature only
+  max absolute subtraction residual: 5.960464477539063e-08
+PASS: exact kernel cancellation and q(s) <= 1/(2s)
+Carleman logarithmic-profile ratio toward pi/2:
+  depth= 4   coupling=0.7898923982   cap=1.5707963268
+  depth= 8   coupling=1.1219710078   cap=1.5707963268
+  depth=16   coupling=1.3418887939   cap=1.5707963268
+  depth=32   coupling=1.4563006416   cap=1.5707963268
+  depth=64   coupling=1.5135484772   cap=1.5707963268
+  shells 0,1 q-coupling=0.664596208 bound=1.570796327; full mixed=-0.650347534
+  shells 0,2 q-coupling=0.232924900 bound=0.500000000; full mixed=-0.222811720
+  shells 0,4 q-coupling=0.089283177 bound=0.250000000; full mixed=-0.084212347
+  shells 2,5 q-coupling=0.140655480 bound=0.353553391; full mixed=-0.138881902
+PASS: prime-silent full-kernel identity and dyadic geometry bounds
+Largest sampled q-coupling / analytic bound: 0.4796992
+PASS: complex phase-sensitive dyadic off-diagonal envelope
+  |sum of offdiagonal terms|=3.17516630 conservative L2 envelope=56.47331872
+No global positivity, kernel acceptance, or RH conclusion.

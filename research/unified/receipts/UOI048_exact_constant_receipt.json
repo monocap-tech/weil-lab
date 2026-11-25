@@ -1,0 +1,43 @@
+{
+  "HS_norm_squared_upper": "1/29257031250",
+  "column_coefficient": "1/30",
+  "exp_coefficient_upper": "3187200/1560757",
+  "index_checks": [
+    {
+      "L2_mixed_upper": "1/240000",
+      "M": 1,
+      "relative_kappa_upper": 3.791325447376403e-06
+    },
+    {
+      "L2_mixed_upper": "1/1920000",
+      "M": 2,
+      "relative_kappa_upper": 4.7391568092205036e-07
+    },
+    {
+      "L2_mixed_upper": "1/15360000",
+      "M": 3,
+      "relative_kappa_upper": 5.9239460115256296e-08
+    },
+    {
+      "L2_mixed_upper": "1/983040000",
+      "M": 5,
+      "relative_kappa_upper": 9.256165643008796e-10
+    },
+    {
+      "L2_mixed_upper": "1/32212254720000",
+      "M": 10,
+      "relative_kappa_upper": 2.824757581484618e-14
+    },
+    {
+      "L2_mixed_upper": "1/1055531162664960000",
+      "M": 15,
+      "relative_kappa_upper": 8.620476017714288e-19
+    }
+  ],
+  "normalized_kappa_upper_coefficient": "1/32970",
+  "row_coefficient": "12/365",
+  "schema": "uoi048-elementary-constants-v1",
+  "status": "exact rational constants only; no gamma digamma identity, analytic spectral, Lean or source-to-native proof",
+  "verified_Lean_kernel": false,
+  "verified_original_native_form": false
+}
