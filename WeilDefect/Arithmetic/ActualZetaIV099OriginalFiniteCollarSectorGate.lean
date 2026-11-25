@@ -149,7 +149,8 @@ theorem neutralIV099Sector_mass_zero_iff (t : Finset ι) (p : ι → 𝓢(ℝ,�
   · intro h i hi
     have hle : ‖c i‖^2 * ‖(p i).toLp 2 volume‖^2 ≤
         ∑ j ∈ t, ‖c j‖^2 * ‖(p j).toLp 2 volume‖^2 :=
-      Finset.single_le_sum (fun j hj => mul_nonneg (sq_nonneg _) (sq_nonneg _)) hi
+      Finset.single_le_sum (fun j hj =>
+        mul_nonneg (sq_nonneg ‖c j‖) (sq_nonneg ‖(p j).toLp 2 volume‖)) hi
     rw [h] at hle
     have hz : ‖c i‖^2 * ‖(p i).toLp 2 volume‖^2 = 0 :=
       le_antisymm hle (mul_nonneg (sq_nonneg _) (sq_nonneg _))
