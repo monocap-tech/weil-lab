@@ -1,0 +1,300 @@
+import WeilDefect.Arithmetic.ActualZetaIV094OriginalDiagonalSignedTailGate
+import WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalSchwartzPolarization
+import Mathlib.Analysis.Calculus.BumpFunction.FiniteDimension
+import Mathlib.MeasureTheory.Measure.OpenPos
+import Mathlib.Algebra.Order.BigOperators.Ring.Finset
+import Mathlib.Order.Filter.Finite
+import Mathlib.Analysis.Complex.ExponentialBounds
+import Mathlib.Tactic
+
+namespace WeilDefect
+noncomputable section
+open MeasureTheory Filter
+open scoped SchwartzMap ComplexConjugate Topology ContDiff
+
+def neutralIV095FiniteDiagonal (M N : ℕ) (s : 𝓢(ℝ,ℂ)) : ℝ :=
+  (neutralIV086PhysicalWeilFinite M N
+    (neutralWindowCorrelation (11/10:ℝ) (s.toLp 2 volume) (s.toLp 2 volume))).re
+
+def neutralIV095DiagonalTail (M N : ℕ) (s : 𝓢(ℝ,ℂ)) : ℝ :=
+  neutralNF598SmoothWeil s - neutralIV095FiniteDiagonal M N s
+
+def neutralIV095TailProfile (N : ℕ) (s : 𝓢(ℝ,ℂ)) (r : ℝ) : ℝ :=
+  (1 / (2 * Real.pi)) *
+    (Zeta23.EF.gammaBracket r - neutralIV071GammaFinite N r) *
+    ‖neutralWindowEvaluation (11/10:ℝ) (r : ℂ) (s.toLp 2 volume)‖^2
+
+/-- The literal diagonal remainder is exactly an integrable nonnegative
+weighted square, with the original paper normalization. -/
+theorem neutralIV095DiagonalTail_data (M N : ℕ) (s : 𝓢(ℝ,ℂ))
+    (hs : neutralNF735InOriginalCollars s)
+    (hM : Real.exp (2*(11/10:ℝ)) < (M : ℝ)) :
+    Integrable (neutralIV095TailProfile N s) ∧
+      neutralIV095DiagonalTail M N s = ∫ r : ℝ, neutralIV095TailProfile N s r := by
+  let k := neutralWindowCorrelation (11/10:ℝ) (s.toLp 2 volume) (s.toLp 2 volume)
+  have hw := neutralIV009OriginalCollars_supported_window s hs
+  have hk : ContDiff ℝ 2 k :=
+    neutralWindowCorrelation_contDiff_of_ae_smoothSecond _ _ _ (fun x => s x)
+      (s.smooth 2) (neutralIV008SchwartzWindow_hasCompactSupport _ s hw)
+      (neutralIV006Schwartz_window_ae _ s hw)
+  have hL : 0 ≤ 2*(11/10:ℝ) := by norm_num
+  have hsup : ∀ u, k u ≠ 0 → |u| ≤ 2*(11/10:ℝ) :=
+    neutralIV087WindowCorrelation_support_abs _ _ _
+  have hi := neutralIV090GammaProduct_integrable_compactC2 k hk hL hsup
+  have hf := neutralIV078Finite_spectral_integrable N k
+    (neutralIV082Fourier_integrable_compactC2 k hk hL hsup)
+  have he : Integrable (neutralIV090GammaErrorIntegrand N k) := by
+    apply (hi.sub hf).congr
+    filter_upwards [] with r
+    simp only [neutralIV090GammaErrorIntegrand, Complex.ofReal_sub, Pi.sub_apply]
+    ring
+  have hp (r : ℝ) : (1 / (2 * Real.pi)) *
+      (neutralIV090GammaErrorIntegrand N k r).re = neutralIV095TailProfile N s r := by
+    unfold neutralIV090GammaErrorIntegrand neutralIV095TailProfile
+    dsimp only [k]
+    rw [neutralIV094WindowDiagonal_paperFT]
+    simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im, zero_mul, sub_zero]
+    ring
+  have hI : Integrable (neutralIV095TailProfile N s) := by
+    apply (he.re.const_mul (1 / (2 * Real.pi))).congr
+    filter_upwards [] with r
+    exact hp r
+  refine ⟨hI, ?_⟩
+  have hd := congrArg Complex.re (neutralIV090WeilError_eq_integral M N k hk hL hsup hM)
+  have hc : ((1 / (2 * Real.pi) : ℝ) : ℂ) = (1 / (2 * Real.pi) : ℂ) := by
+    push_cast <;> rfl
+  rw [← hc] at hd
+  simp only [Complex.sub_re, Complex.mul_re, Complex.ofReal_re,
+    Complex.ofReal_im, zero_mul, sub_zero] at hd
+  have hr := integral_re he
+  change (∫ r : ℝ, (neutralIV090GammaErrorIntegrand N k r).re) =
+    (∫ r : ℝ, neutralIV090GammaErrorIntegrand N k r).re at hr
+  change (Zeta23.EF.literatureRHS k).re - (neutralIV086PhysicalWeilFinite M N k).re = _
+  rw [hd, ← hr, ← integral_const_mul]
+  exact integral_congr_ae (Filter.Eventually.of_forall hp)
+
+/-- Finite Cauchy--Schwarz applied to the actual window evaluations,
+with the nonnegative omitted Gamma weight retained. -/
+theorem neutralIV095TailProfile_sum_le {n : ℕ} (N : ℕ)
+    (s : Fin n → 𝓢(ℝ,ℂ)) (u : Fin n → ℂ) (r : ℝ) :
+    neutralIV095TailProfile N (neutralIV009PhysicalSchwartzSum s u) r ≤
+      (∑ i : Fin n, ‖u i‖^2) * ∑ i : Fin n, neutralIV095TailProfile N (s i) r := by
+  let F (i : Fin n) := neutralWindowEvaluation (11/10:ℝ) (r : ℂ) ((s i).toLp 2 volume)
+  let w : ℝ := (1 / (2 * Real.pi)) *
+    (Zeta23.EF.gammaBracket r - neutralIV071GammaFinite N r)
+  have hw : 0 ≤ w := mul_nonneg (by positivity) (neutralIV089GammaRemainder_bound N r).1
+  have h₁ : ‖∑ i : Fin n, u i * F i‖ ≤ ∑ i : Fin n, ‖u i‖ * ‖F i‖ := by
+    simpa only [norm_mul] using norm_sum_le (Finset.univ : Finset (Fin n)) (fun i => u i * F i)
+  have h₂ := (pow_le_pow_left₀ (norm_nonneg _) h₁ 2).trans
+    (Finset.sum_mul_sq_le_sq_mul_sq (Finset.univ : Finset (Fin n)) (fun i => ‖u i‖) (fun i => ‖F i‖))
+  unfold neutralIV095TailProfile
+  rw [neutralIV009WindowEvaluation_finiteLinear]
+  change w * ‖∑ i : Fin n, u i * F i‖^2 ≤
+    (∑ i : Fin n, ‖u i‖^2) * ∑ i : Fin n, w * ‖F i‖^2
+  rw [← Finset.mul_sum]
+  calc
+    _ ≤ w * ((∑ i : Fin n, ‖u i‖^2) * ∑ i : Fin n, ‖F i‖^2) :=
+      mul_le_mul_of_nonneg_left h₂ hw
+    _ = _ := by ring
+
+/-- A uniform error on actual physical sums is bounded by the trace of
+the original diagonal tails times the squared coefficient norm. -/
+theorem neutralIV095DiagonalTail_sum_le {n : ℕ} (M N : ℕ)
+    (s : Fin n → 𝓢(ℝ,ℂ)) (u : Fin n → ℂ)
+    (hs : ∀ i, neutralNF735InOriginalCollars (s i))
+    (hM : Real.exp (2*(11/10:ℝ)) < (M : ℝ)) :
+    neutralIV095DiagonalTail M N (neutralIV009PhysicalSchwartzSum s u) ≤
+      (∑ i : Fin n, ‖u i‖^2) * ∑ i : Fin n, neutralIV095DiagonalTail M N (s i) := by
+  have hS : neutralNF735InOriginalCollars (neutralIV009PhysicalSchwartzSum s u) :=
+    neutralNF738OriginalCollars_finset_linear Finset.univ s u (fun i _ => hs i)
+  obtain ⟨hI, hE⟩ := neutralIV095DiagonalTail_data M N _ hS hM
+  have hentry (i : Fin n) := neutralIV095DiagonalTail_data M N (s i) (hs i) hM
+  let A : ℝ := ∑ i : Fin n, ‖u i‖^2
+  have hsum : Integrable (fun r : ℝ => ∑ i : Fin n, neutralIV095TailProfile N (s i) r) :=
+    integrable_finsetSum Finset.univ (fun i _ => (hentry i).1)
+  rw [hE]
+  calc
+    _ ≤ ∫ r : ℝ, A * ∑ i : Fin n, neutralIV095TailProfile N (s i) r :=
+      integral_mono hI (hsum.const_mul A) (neutralIV095TailProfile_sum_le N s u)
+    _ = A * ∑ i : Fin n, neutralIV095DiagonalTail M N (s i) := by
+      rw [integral_const_mul, integral_finsetSum Finset.univ (fun i _ => (hentry i).1)]
+      congr 1
+      apply Finset.sum_congr rfl
+      intro i _
+      exact (hentry i).2.symm
+
+/-- All diagonal tail traces tend to zero for the same fixed arithmetic
+cutoff, by genuine physical convergence, not an assumed matrix limit. -/
+theorem neutralIV095DiagonalTailTrace_eventual {n : ℕ} (M : ℕ)
+    (s : Fin n → 𝓢(ℝ,ℂ)) (hs : ∀ i, neutralNF735InOriginalCollars (s i))
+    (hM : Real.exp (2*(11/10:ℝ)) < (M : ℝ)) (ε : ℝ) (hε : 0 < ε) :
+    ∀ᶠ N : ℕ in atTop, (∑ i : Fin n, neutralIV095DiagonalTail M N (s i)) ≤ ε := by
+  let δ : ℝ := ε / ((n : ℝ)+1)
+  have hδ : 0 < δ := by dsimp [δ]; positivity
+  have hEach (i : Fin n) : ∀ᶠ N : ℕ in atTop, neutralIV095DiagonalTail M N (s i) < δ := by
+    let k := neutralWindowCorrelation (11/10:ℝ) ((s i).toLp 2 volume) ((s i).toLp 2 volume)
+    have hk := neutralIV087OriginalMixedCorrelation_contDiff (11/10:ℝ) s
+      (fun j => neutralIV009OriginalCollars_supported_window (s j) (hs j)) i i
+    have ht := neutralIV086PhysicalWeilFinite_tendsto_original M k hk
+      (show 0 ≤ 2*(11/10:ℝ) by norm_num)
+      (neutralIV087WindowCorrelation_support_abs (11/10:ℝ) _ _) hM
+    have htr : Tendsto (fun N : ℕ => neutralIV095FiniteDiagonal M N (s i)) atTop
+        (𝓝 (neutralNF598SmoothWeil (s i))) :=
+      Complex.continuous_re.continuousAt.tendsto.comp ht
+    have hd := (tendsto_const_nhds.sub htr :
+      Tendsto (fun N : ℕ => neutralNF598SmoothWeil (s i) -
+        neutralIV095FiniteDiagonal M N (s i)) atTop
+        (𝓝 (neutralNF598SmoothWeil (s i) - neutralNF598SmoothWeil (s i))))
+    rw [sub_self] at hd
+    exact hd.eventually (Iio_mem_nhds hδ)
+  filter_upwards [Filter.eventually_all.mpr hEach] with N hN
+  calc
+    _ ≤ ∑ _i : Fin n, δ := Finset.sum_le_sum (fun i _ => (hN i).le)
+    _ = (n : ℝ) * δ := by simp
+    _ ≤ ε := by
+      dsimp [δ]
+      have hden : 0 < (n : ℝ)+1 := by positivity
+      rw [← mul_div_assoc]
+      apply (div_le_iff₀ hden).mpr
+      nlinarith only [hε]
+
+/-- A single cutoff works on the ENTIRE source-native finite collar
+span when its actual physical mass controls the coefficient norm.
+The mass comparison is explicit; dependent generators are not assumed
+to have a positive coefficient-space lower bound. -/
+theorem neutralIV095OriginalCollarSpan_uniform_finite_margin {n : ℕ}
+    (M : ℕ) (s : Fin n → 𝓢(ℝ,ℂ))
+    (hs : ∀ i, neutralNF735InOriginalCollars (s i))
+    (hM : Real.exp (2*(11/10:ℝ)) < (M : ℝ))
+    (C : ℝ) (hC : 0 < C)
+    (hmass : ∀ u : Fin n → ℂ, (∑ i : Fin n, ‖u i‖^2) ≤
+      C * ‖(neutralIV009PhysicalSchwartzSum s u).toLp 2 volume‖^2) :
+    ∃ N₀ : ℕ, ∀ N ≥ N₀, ∀ u : Fin n → ℂ,
+      (1/5:ℝ) * ‖(neutralIV009PhysicalSchwartzSum s u).toLp 2 volume‖^2 ≤
+        neutralIV095FiniteDiagonal M N (neutralIV009PhysicalSchwartzSum s u) := by
+  let ε : ℝ := 1 / (5*C)
+  have hε : 0 < ε := by dsimp [ε]; positivity
+  obtain ⟨N₀, hN₀⟩ := eventually_atTop.mp (neutralIV095DiagonalTailTrace_eventual M s hs hM ε hε)
+  refine ⟨N₀, ?_⟩
+  intro N hN u
+  let S := neutralIV009PhysicalSchwartzSum s u
+  have hS : neutralNF735InOriginalCollars S :=
+    neutralNF738OriginalCollars_finset_linear Finset.univ s u (fun i _ => hs i)
+  have hfull := neutralNF600SmoothCollarLower S hS
+  have hsum := neutralIV095DiagonalTail_sum_le M N s u hs hM
+  have hA : 0 ≤ ∑ i : Fin n, ‖u i‖^2 := Finset.sum_nonneg (fun i _ => sq_nonneg _)
+  have herr : neutralIV095DiagonalTail M N S ≤ (1/5:ℝ)*‖S.toLp 2 volume‖^2 := by
+    calc
+      _ ≤ (∑ i : Fin n, ‖u i‖^2) * ∑ i : Fin n, neutralIV095DiagonalTail M N (s i) := hsum
+      _ ≤ (∑ i : Fin n, ‖u i‖^2) * ε := mul_le_mul_of_nonneg_left (hN₀ N hN) hA
+      _ ≤ (C * ‖S.toLp 2 volume‖^2) * ε := mul_le_mul_of_nonneg_right (hmass u) hε.le
+      _ = _ := by dsimp [ε]; field_simp [ne_of_gt hC] <;> ring
+  change neutralNF598SmoothWeil S - neutralIV095FiniteDiagonal M N S ≤ _ at herr
+  change (1/5:ℝ) * ‖S.toLp 2 volume‖^2 ≤ neutralIV095FiniteDiagonal M N S
+  linarith
+
+/-- On a genuine nonzero rank-one physical sector the coefficient mass
+comparison is discharged exactly, rather than assumed. -/
+theorem neutralIV095OriginalCollarRay_uniform_finite_margin
+    (M : ℕ) (s : 𝓢(ℝ,ℂ)) (hs : neutralNF735InOriginalCollars s)
+    (hne : s.toLp 2 volume ≠ 0)
+    (hM : Real.exp (2*(11/10:ℝ)) < (M : ℝ)) :
+    ∃ N₀ : ℕ, ∀ N ≥ N₀, ∀ z : ℂ,
+      (1/5:ℝ) * ‖(z • s).toLp 2 volume‖^2 ≤
+        neutralIV095FiniteDiagonal M N (z • s) := by
+  have hp : 0 < ‖s.toLp 2 volume‖ := norm_pos_iff.mpr hne
+  let C : ℝ := 1 / ‖s.toLp 2 volume‖^2
+  have hC : 0 < C := by dsimp [C]; positivity
+  have hmass (u : Fin 1 → ℂ) :
+      (∑ i : Fin 1, ‖u i‖^2) ≤
+        C * ‖(neutralIV009PhysicalSchwartzSum (fun _ : Fin 1 => s) u).toLp 2 volume‖^2 := by
+    have hLp : (neutralIV009PhysicalSchwartzSum (fun _ : Fin 1 => s) u).toLp 2 volume =
+        u 0 • s.toLp 2 volume := by
+      change (SchwartzMap.toLpCLM ℂ ℂ 2 volume)
+        (neutralIV009PhysicalSchwartzSum (fun _ : Fin 1 => s) u) = _
+      simp [neutralIV009PhysicalSchwartzSum]
+    rw [hLp, norm_smul, mul_pow, Fin.sum_univ_one]
+    apply le_of_eq
+    dsimp [C]
+    field_simp [ne_of_gt hp] <;> ring
+  obtain ⟨N₀, hN₀⟩ := neutralIV095OriginalCollarSpan_uniform_finite_margin
+    M (fun _ : Fin 1 => s) (fun _ => hs) hM C hC hmass
+  refine ⟨N₀, ?_⟩
+  intro N hN z
+  simpa [neutralIV009PhysicalSchwartzSum] using hN₀ N hN (fun _ : Fin 1 => z)
+
+/- The local bump construction is copied from IV015's elementary
+Mathlib proof, without importing its unrelated cross-support gates. -/
+private theorem neutralIV095LocalComplexSchwartzBump
+    (c r : ℝ) (hr : 0 < r) :
+    ∃ t : 𝓢(ℝ, ℂ),
+      t c = 1 ∧
+      (∀ x : ℝ, x ∉ Set.Icc (c-r) (c+r) → t x = 0) := by
+  have hc : c ∈ Set.Ioo (c-r) (c+r) := by
+    constructor <;> linarith
+  obtain ⟨f, hts, hcompact, hsmooth, _, hfc⟩ :=
+    exists_contDiff_tsupport_subset (n := (⊤ : ℕ∞))
+      (isOpen_Ioo.mem_nhds hc)
+  let q : ℝ → ℂ := Complex.ofRealCLM ∘ f
+  have hqcompact : HasCompactSupport q := hcompact.comp_left rfl
+  have hqdiff : ContDiff ℝ ∞ q := Complex.ofRealCLM.contDiff.comp hsmooth
+  let t : 𝓢(ℝ, ℂ) := hqcompact.toSchwartzMap hqdiff
+  refine ⟨t, ?_, ?_⟩
+  · change Complex.ofRealCLM (f c) = (1 : ℂ)
+    simp [hfc]
+  · intro x hx
+    change q x = 0
+    by_contra hn
+    have hxmem : x ∈ Function.support q := by
+      simpa only [Function.mem_support] using hn
+    have hxTS : x ∈ tsupport q := subset_tsupport q hxmem
+    have hqts : tsupport q ⊆ Set.Ioo (c-r) (c+r) := by
+      exact (tsupport_comp_subset rfl _).trans hts
+    have hxI := hqts hxTS
+    exact hx ⟨le_of_lt hxI.1, le_of_lt hxI.2⟩
+
+/-- A concrete nonzero original collar ray exists, with the authentic
+arithmetic cutoff M=10. The Gamma cutoff exists but is not numerical. -/
+theorem neutralIV095ExistsOriginalCollarRay :
+    ∃ s : 𝓢(ℝ,ℂ), s (1099/1000:ℝ) = 1 ∧
+      neutralNF735InOriginalCollars s ∧ s.toLp 2 volume ≠ 0 ∧
+      ∃ N₀ : ℕ, ∀ N ≥ N₀, ∀ z : ℂ,
+        (1/5:ℝ) * ‖(z • s).toLp 2 volume‖^2 ≤
+          neutralIV095FiniteDiagonal 10 N (z • s) := by
+  obtain ⟨s, hc, hlocal⟩ := neutralIV095LocalComplexSchwartzBump
+    (1099/1000:ℝ) (1/2000:ℝ) (by norm_num)
+  have hs : neutralNF735InOriginalCollars s := by
+    intro x hx
+    apply hlocal x
+    intro hi
+    apply hx
+    unfold neutralNF543OriginalCollars
+    right
+    constructor <;> linarith [hi.1, hi.2]
+  have hne : s.toLp 2 volume ≠ 0 := by
+    intro hz
+    have hae := Lp.eq_zero_iff_ae_eq_zero.mp hz
+    have hzero : (fun x : ℝ => s x) = fun _ => (0 : ℂ) :=
+      Measure.eq_of_ae_eq ((s.coeFn_toLp 2 volume).symm.trans hae)
+        s.continuous continuous_const
+    exact one_ne_zero (hc.symm.trans (congrFun hzero (1099/1000:ℝ)))
+  have hM : Real.exp (2*(11/10:ℝ)) < (10:ℝ) := by
+    calc
+      _ < Real.exp (Real.log (10:ℝ)) := by
+        apply Real.exp_lt_exp.mpr
+        rw [Real.log_ten_eq]
+        linarith [Real.log_two_gt_d9, Real.log_five_gt_d9]
+      _ = _ := Real.exp_log (by norm_num)
+  exact ⟨s, hc, hs, hne, neutralIV095OriginalCollarRay_uniform_finite_margin 10 s hs hne
+    (by exact_mod_cast hM)⟩
+
+#print axioms neutralIV095DiagonalTail_data
+#print axioms neutralIV095TailProfile_sum_le
+#print axioms neutralIV095DiagonalTail_sum_le
+#print axioms neutralIV095DiagonalTailTrace_eventual
+#print axioms neutralIV095OriginalCollarSpan_uniform_finite_margin
+#print axioms neutralIV095OriginalCollarRay_uniform_finite_margin
+#print axioms neutralIV095ExistsOriginalCollarRay
+
+end
+end WeilDefect
