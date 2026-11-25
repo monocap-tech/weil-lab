@@ -1,0 +1,91 @@
+name: F08-064 original form domain energy receiver kernel
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_064/**'
+      - '.github/workflows/f08-064-original-form-domain-energy-receiver-kernel.yml'
+permissions:
+  contents: read
+jobs:
+  genuine-original-L2-continuity-dense-transfer:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout frozen original IV023 research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Pin original research, actual predecessors and candidate theorem
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralLogFormGraph.lean)" = 6a25651c2c54d7ff9e4d20d4b410b56b7d5047a3
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralLogHilbertCarrier.lean)" = 679d58b8f0cfa6b4f7d28c48ce844a41cdce2844
+          mkdir -p research/WeilDefect/Generated/F08
+          test "$(git -C candidate hash-object verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean)" = eecfe2a849fa79aa13810ede85e9ba625eba7777
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean
+          cp candidate/verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean research/WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean
+          test "$(git -C candidate hash-object verification/f08/f08_029/F08NativeL2PushforwardNorm.lean)" = 4da65f9b9df7cae6ea30a4a7f25d3e6c1606c294
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_029/F08NativeL2PushforwardNorm.lean
+          cp candidate/verification/f08/f08_029/F08NativeL2PushforwardNorm.lean research/WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean
+          test "$(git -C candidate hash-object verification/f08/f08_030/F08NativeFrequencyDilation.lean)" = 5c260b69f464f5793e095f9b5448c90f7984617f
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_030/F08NativeFrequencyDilation.lean
+          cp candidate/verification/f08/f08_030/F08NativeFrequencyDilation.lean research/WeilDefect/Generated/F08/NativeFrequencyDilation.lean
+          test "$(git -C candidate hash-object verification/f08/f08_052/F08OriginalNativeL2SquareIntegral.lean)" = 16a7053b3a1ea6f0e0f91a89de6e40a91987cd92
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_052/F08OriginalNativeL2SquareIntegral.lean
+          cp candidate/verification/f08/f08_052/F08OriginalNativeL2SquareIntegral.lean research/WeilDefect/Generated/F08/OriginalNativeL2SquareIntegral.lean
+          test "$(git -C candidate hash-object verification/f08/f08_064/F08OriginalFormDomainEnergyReceiver.lean)" = 9423bc10b0db9d07078299bdedbe60b585fede7d
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_064/F08OriginalFormDomainEnergyReceiver.lean
+          cp candidate/verification/f08/f08_064/F08OriginalFormDomainEnergyReceiver.lean research/WeilDefect/Generated/F08/OriginalFormDomainEnergyReceiver.lean
+      - name: Install original frozen Lean and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Compile original form domain energy receiver and strict named axioms
+        working-directory: research
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build WeilDefect.Generated.F08.OriginalFormDomainEnergyReceiver 2>&1 | tee f08-064-build.log
+          printf '%s\n' 'import WeilDefect.Generated.F08.OriginalFormDomainEnergyReceiver' '#print axioms WeilDefect.f08_064_weightedFourier_sq' '#print axioms WeilDefect.f08_064_originalDomain_mem_of_weighted_memLp' '#print axioms WeilDefect.f08_064_originalWeightedDifference_norm_sq' > /tmp/f08-064-axioms.lean
+          lake env lean /tmp/f08-064-axioms.lean 2>&1 | tee f08-064-axioms.log
+          python3 - <<'PY'
+          import re,pathlib
+          s=pathlib.Path('f08-064-axioms.log').read_text()
+          p=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]"
+          ms=list(re.finditer(p,s,re.S))
+          assert len(ms)==3,('three declarations required',s)
+          assert not re.sub(p,'',s,flags=re.S).strip(),('unrecognized compiler output',s)
+          assert {m[1] for m in ms}=={'f08_064_weightedFourier_sq','f08_064_originalDomain_mem_of_weighted_memLp','f08_064_originalWeightedDifference_norm_sq'}
+          for m in ms:
+              a={x.strip() for x in m[2].split(',') if x.strip()}
+              assert a <= {'propext','Classical.choice','Quot.sound'},('nonstandard axioms',a)
+          print('F08-064 form domain energy receiver: 3/3 standard-only axioms PASS')
+          PY
+      - name: Archive complete exact original source and actual Lean compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-064-original-form-domain-energy-receiver-compiler-evidence
+          path: |
+            research/f08-064-build.log
+            research/f08-064-axioms.log
+            research/WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean
+            research/WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean
+            research/WeilDefect/Generated/F08/NativeFrequencyDilation.lean
+            research/WeilDefect/Generated/F08/OriginalNativeL2SquareIntegral.lean
+            research/WeilDefect/Generated/F08/OriginalFormDomainEnergyReceiver.lean
+          if-no-files-found: ignore
