@@ -1,0 +1,34 @@
+name: F41 aggregation source-only preflight
+on:
+  pull_request:
+    paths:
+      - 'verification/f41/aggregation_242/**'
+      - '.github/workflows/f41-aggregation-*.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 verification/f41/aggregation_242/check_source.py
+      - run: python3 verification/f41/aggregation_242/replay_sources.py selftest
+      - run: python3 verification/f41/aggregation_242/replay_objects.py selftest
+      - run: python3 verification/f41/aggregation_242/final_archive_audit.py selftest
+  historical-replay:
+    needs: source-only
+    if: github.event.pull_request.head.repo.full_name == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Authenticate and materialize original historical rows 0–78
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 verification/f41/aggregation_242/replay_sources.py replay --historical-only --output historical-replay
+      - uses: actions/upload-artifact@v4
+        with:
+          name: f41-aggregate-historical-replay-sources
+          path: historical-replay/
+          if-no-files-found: error
