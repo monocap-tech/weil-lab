@@ -1,6 +1,9 @@
 name: NF453 original J7 J8 principal exact replay
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf453-original-j7-j8-principal-signed.yml'
+      - 'scripts/local_replay/verify_nf453_original_j7_j8_principal_energy_signed_island.py'
   workflow_dispatch:
 jobs:
   exact-original:

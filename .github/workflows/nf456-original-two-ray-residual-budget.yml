@@ -1,6 +1,9 @@
 name: NF456 original J242 two-ray residual budget
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf456-original-two-ray-residual-budget.yml'
+      - 'scripts/local_replay/verify_nf456_original_two_ray_residual_budget.py'
   workflow_dispatch:
 jobs:
   original-source-exact:

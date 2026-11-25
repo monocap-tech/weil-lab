@@ -1,6 +1,9 @@
 name: NF466 J7 correlated moment algebra
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf466-j7-correlated-moment-algebra.yml'
+      - 'scripts/local_replay/verify_nf466_j7_correlated_moment_identity.py'
   workflow_dispatch:
 jobs:
   algebra:

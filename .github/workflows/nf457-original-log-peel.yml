@@ -1,6 +1,9 @@
 name: NF457 source-original endpoint log peel
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf457-original-log-peel.yml'
+      - 'scripts/local_replay/verify_nf457_endpoint_log_peel.py'
   workflow_dispatch:
 jobs:
   original-endpoint-exact:

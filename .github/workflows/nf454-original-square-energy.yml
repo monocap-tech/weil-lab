@@ -1,6 +1,9 @@
 name: NF454 original two-cell energy gate exact replay
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf454-original-square-energy.yml'
+      - 'scripts/local_replay/verify_nf454_gate.py'
   workflow_dispatch:
 jobs:
   exact-reduction:
