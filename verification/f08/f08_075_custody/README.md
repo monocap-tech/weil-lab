@@ -1,0 +1,3 @@
+# F08-075-CUSTODY
+
+Independent archive verification for F08-075 native run 45718385478, with 38 generated source blobs across two immutable producer checkouts, six research pins, 40 ZIP members, 9071 jobs, one strict named report, four adversarial controls and predecessor F08-074 hosted receipt metadata. No new native compilation or mathematical promotion. Preserve F08-076 numbering for the four staged mathematical declarations.
