@@ -104,9 +104,9 @@ theorem f08_059_correctedError_integral_bound
       rw [integral_const_mul, integral_const_mul, ← f08_052_originalL2_norm_sq_eq_integral d]
     _ = _ := rfl
 
+set_option maxHeartbeats 2000000 in
 /-- Unconditional convergence of the exact corrected native dilation error
 on every original L² vector, as inward scales approach one. -/
-set_option maxHeartbeats 2000000 in
 theorem f08_059_correctedError_integral_tendsto (k : RealComplexL2) :
     Tendsto (fun lam : f08_059_inwardScale =>
       ∫ xi : ℝ, ‖f08_059_correctedError lam k xi‖ ^ 2 ∂volume)

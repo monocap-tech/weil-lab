@@ -83,7 +83,7 @@ jobs:
           test "$(git -C candidate hash-object verification/f08/f08_057/F08LogDilationFixedVectorCorrection.lean)" = d1c2d9241f58541e23b1975aec610c63eb84b92f
           ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_057/F08LogDilationFixedVectorCorrection.lean
           cp candidate/verification/f08/f08_057/F08LogDilationFixedVectorCorrection.lean research/WeilDefect/Generated/F08/LogDilationFixedVectorCorrection.lean
-          test "$(git -C candidate hash-object verification/f08/f08_059/F08OriginalLogCorrectedDilationConvergence.lean)" = 56d49acbc030b94046ba621865a67c50e323dca8
+          test "$(git -C candidate hash-object verification/f08/f08_059/F08OriginalLogCorrectedDilationConvergence.lean)" = 5febf418b614e49a1e040a41b889b6b51fbc1a18
           ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_059/F08OriginalLogCorrectedDilationConvergence.lean
           cp candidate/verification/f08/f08_059/F08OriginalLogCorrectedDilationConvergence.lean research/WeilDefect/Generated/F08/OriginalLogCorrectedDilationConvergence.lean
       - name: Install frozen original Lean 4.34.0 and Mathlib
