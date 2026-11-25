@@ -1,0 +1,78 @@
+name: F08-045 original near-identity compact-Schwartz common scaled support Lean kernel
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_045/**'
+      - '.github/workflows/f08-045-original-Schwartz-common-scaled-support-kernel.yml'
+permissions:
+  contents: read
+jobs:
+  genuine-original-common-scaled-support:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - name: Checkout original source candidate and pinned predecessors
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout frozen original IV023 research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Pin original domain F08-042 predecessor and exact source candidate
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C candidate hash-object verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean)" = f3ecfbf236898ca62baac18111595a06b2a9874f
+          test "$(git -C candidate hash-object verification/f08/f08_045/F08CompactSchwartzCommonScaledSupport.lean)" = 6fd895d4ae3cfa550fa0ed08f194ce299ea051b6
+          for file in candidate/verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean candidate/verification/f08/f08_045/F08CompactSchwartzCommonScaledSupport.lean; do
+            ! grep -Eq '\b(sorry|admit|unsafe)\b' "$file"
+          done
+          mkdir -p research/WeilDefect/Generated/F08
+          cp candidate/verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean research/WeilDefect/Generated/F08/CompactSchwartzSupportRadiusAndBound.lean
+          cp candidate/verification/f08/f08_045/F08CompactSchwartzCommonScaledSupport.lean research/WeilDefect/Generated/F08/CompactSchwartzCommonScaledSupport.lean
+      - name: Install original frozen Lean 4.34.0 and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Compile original common scaled-support theorem and strict named axiom audit
+        working-directory: research
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build WeilDefect.Generated.F08.CompactSchwartzCommonScaledSupport 2>&1 | tee f08-045-build.log
+          printf '%s\n' 'import WeilDefect.Generated.F08.CompactSchwartzCommonScaledSupport' '#print axioms WeilDefect.f08_045_compactSchwartz_commonScaledSupport' > /tmp/f08-045-axioms.lean
+          lake env lean /tmp/f08-045-axioms.lean 2>&1 | tee f08-045-axioms.log
+          python3 - <<'PY'
+          import re,pathlib
+          s=pathlib.Path('f08-045-axioms.log').read_text()
+          pat=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]|'WeilDefect\.(\w+)' does not depend on any axioms"
+          ms=list(re.finditer(pat,s,re.S))
+          assert len(ms)==1,('one exact original named axiom report required',s)
+          assert not re.sub(pat,'',s,flags=re.S).strip(),('unexpected axiom log content',s)
+          m=ms[0]
+          assert (m[1] or m[3])=='f08_045_compactSchwartz_commonScaledSupport'
+          axs={z.strip() for z in (m[2] or '').split(',') if z.strip()}
+          assert axs <= {'propext','Classical.choice','Quot.sound'},axs
+          print('F08-045 native compact-Schwartz common scaled support: one standard-only axiom PASS')
+          PY
+      - name: Archive whole original source compiler and axiom evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-045-original-Schwartz-common-scaled-support-evidence
+          path: |
+            research/f08-045-build.log
+            research/f08-045-axioms.log
+            research/WeilDefect/Generated/F08/CompactSchwartzSupportRadiusAndBound.lean
+            research/WeilDefect/Generated/F08/CompactSchwartzCommonScaledSupport.lean
+          if-no-files-found: ignore
