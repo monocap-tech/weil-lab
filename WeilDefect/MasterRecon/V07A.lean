@@ -10,8 +10,8 @@ namespace WeilDefect.MasterRecon.V07A
 
 open MeasureTheory
 
-noncomputable def mellin (f : ℝ → ℂ) (λ : ℂ) : ℂ :=
-  ∫ x : ℝ, Complex.exp (λ * (x : ℂ)) * f x
+noncomputable def mellin (f : ℝ → ℂ) (w : ℂ) : ℂ :=
+  ∫ x : ℝ, Complex.exp (w * (x : ℂ)) * f x
 
 def translate (a : ℝ) (f : ℝ → ℂ) : ℝ → ℂ :=
   fun x => f (x - a)
@@ -19,24 +19,24 @@ def translate (a : ℝ) (f : ℝ → ℂ) : ℝ → ℂ :=
 /-- The sign of the phase is fixed by τ_a f(x) = f(x-a).
 The Bochner identity itself does not require an integrability assumption;
 the actual carrier's integrability is a separate attachment. -/
-theorem mellin_translate (f : ℝ → ℂ) (λ : ℂ) (a : ℝ) :
-    mellin (translate a f) λ = Complex.exp (λ * (a : ℂ)) * mellin f λ := by
+theorem mellin_translate (f : ℝ → ℂ) (w : ℂ) (a : ℝ) :
+    mellin (translate a f) w = Complex.exp (w * (a : ℂ)) * mellin f w := by
   unfold mellin translate
   calc
-    (∫ x : ℝ, Complex.exp (λ * (x : ℂ)) * f (x - a)) =
-        ∫ x : ℝ, (fun y : ℝ => Complex.exp (λ * (a : ℂ)) *
-          (Complex.exp (λ * (y : ℂ)) * f y)) (x - a) := by
+    (∫ x : ℝ, Complex.exp (w * (x : ℂ)) * f (x - a)) =
+        ∫ x : ℝ, (fun y : ℝ => Complex.exp (w * (a : ℂ)) *
+          (Complex.exp (w * (y : ℂ)) * f y)) (x - a) := by
       apply integral_congr_ae
       filter_upwards with x
-      have h : λ * (x : ℂ) = λ * (a : ℂ) + λ * ((x - a : ℝ) : ℂ) := by
+      have h : w * (x : ℂ) = w * (a : ℂ) + w * ((x - a : ℝ) : ℂ) := by
         push_cast
         ring
       rw [h, Complex.exp_add, mul_assoc]
-    _ = ∫ y : ℝ, Complex.exp (λ * (a : ℂ)) *
-          (Complex.exp (λ * (y : ℂ)) * f y) :=
+    _ = ∫ y : ℝ, Complex.exp (w * (a : ℂ)) *
+          (Complex.exp (w * (y : ℂ)) * f y) :=
       integral_sub_right_eq_self _ a
-    _ = Complex.exp (λ * (a : ℂ)) *
-          ∫ y : ℝ, Complex.exp (λ * (y : ℂ)) * f y :=
+    _ = Complex.exp (w * (a : ℂ)) *
+          ∫ y : ℝ, Complex.exp (w * (y : ℂ)) * f y :=
       integral_const_mul _ _
 
 noncomputable def pairPlus (u v : ℂ) : ℂ :=
@@ -59,12 +59,12 @@ theorem reflected_pair_mix (u v q z : ℂ) :
   constructor <;> unfold pairPlus pairMinus evenMix oddMix <;> ring
 
 /-- One common square-root multiplicity weight for the reflected pair. -/
-noncomputable def weightedMellin (f : ℝ → ℂ) (m : ℕ) (λ : ℂ) : ℂ :=
-  (Real.sqrt (m : ℝ) : ℂ) * mellin f λ
+noncomputable def weightedMellin (f : ℝ → ℂ) (m : ℕ) (w : ℂ) : ℂ :=
+  (Real.sqrt (m : ℝ) : ℂ) * mellin f w
 
-theorem weighted_mellin_translate (f : ℝ → ℂ) (m : ℕ) (λ : ℂ) (a : ℝ) :
-    weightedMellin (translate a f) m λ =
-      Complex.exp (λ * (a : ℂ)) * weightedMellin f m λ := by
+theorem weighted_mellin_translate (f : ℝ → ℂ) (m : ℕ) (w : ℂ) (a : ℝ) :
+    weightedMellin (translate a f) m w =
+      Complex.exp (w * (a : ℂ)) * weightedMellin f m w := by
   unfold weightedMellin
   rw [mellin_translate]
   ring
@@ -87,17 +87,17 @@ theorem reflected_exponential_split (δ γ a : ℝ) :
     ring
 
 theorem reflected_mellin_translation (f : ℝ → ℂ) (m : ℕ) (δ γ a : ℝ) :
-    let λp : ℂ := (δ : ℂ) + (γ : ℂ) * Complex.I
-    let λm : ℂ := -(δ : ℂ) + (γ : ℂ) * Complex.I
+    let wp : ℂ := (δ : ℂ) + (γ : ℂ) * Complex.I
+    let wm : ℂ := -(δ : ℂ) + (γ : ℂ) * Complex.I
     let q := Complex.exp ((γ : ℂ) * Complex.I * (a : ℂ))
     let z := (δ : ℂ) * (a : ℂ)
-    let u := weightedMellin f m λp
-    let v := weightedMellin f m λm
-    pairPlus (weightedMellin (translate a f) m λp)
-        (weightedMellin (translate a f) m λm) =
+    let u := weightedMellin f m wp
+    let v := weightedMellin f m wm
+    pairPlus (weightedMellin (translate a f) m wp)
+        (weightedMellin (translate a f) m wm) =
         q * (evenMix z * pairPlus u v + oddMix z * pairMinus u v) ∧
-    pairMinus (weightedMellin (translate a f) m λp)
-        (weightedMellin (translate a f) m λm) =
+    pairMinus (weightedMellin (translate a f) m wp)
+        (weightedMellin (translate a f) m wm) =
         q * (oddMix z * pairPlus u v + evenMix z * pairMinus u v) := by
   dsimp only
   simp only [weighted_mellin_translate, (reflected_exponential_split δ γ a).1,
