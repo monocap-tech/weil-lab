@@ -1,9 +1,5 @@
-# IV100 — Affine carrier packing (inactive staging)
+# IV100 — Inactive affine packing source complete
 
-Base: IV099 candidate 5c2dbff19447bee07921a66d617b8f6b8b1f870a; IV099 native receipts are pending. No active workflow and no PR in this staging gate.
+Base repaired IV099 504113a377fd2e30c1bf0bd0e155eac8e0753b30; source-level repair of sole compiler diagnostic inherited exactly. IV099 must achieve dual native PASS before activating the retained workflow template at .github/workflows/iv100-original-affine-collar-packing.yml on research/iv100-original-affine-collar-packing, then open a draft PR against research/iv099-original-finite-collar-sector-gate. Reconcile any later upstream repairs first.
 
-11 source candidates: affine compact support, chain rule, exact Lebesgue Jacobian, mass and derivative energy scaling, uniform scaled energy budget, positive mass, and exact rational cell geometry. Given a>0, the same IV097 plateau has m(a,b)=m0/a, e(a,b)=a e0, hence e/m <= 16000000 a^2. For k>0, index i<k, use a=k and shift b=1099/1000 - k*(1099/1000-3/4000) - (2i+1)*(3/4000). Nonzero support lies strictly inside the ith cell of the original right plateau interval. Pairwise strict cells disjoint, with zero function and derivative at boundaries. Candidate geometry proves containment and nonoverlap. 
-
-Next source obligations: instantiate Fin k family, original collar closure, function and derivative disjointness, apply IV099 receiver for arbitrary coefficients, choose cutoff N>=8945*k to guarantee 1/5 margin and prove nondegeneracy. C=16000000*k^2. This is a proposed arbitrary finite rank within a previously positive restricted collar, not a global complement or RH proof. No uniform fixed cutoff as k grows. Native checks not yet run. No adoption or merge.
-
-Central ledger #935.
+20 candidate declarations. Arbitrary k>0, Fin k index set, exact affine mass and energy scaling, rational disjoint cell geometry, function and derivative disjointness, original collar support, strictly positive component mass, coefficient nondegeneracy and original signed finite diagonal margin 2/5 - 16000000*k^2/(N+1)^2. Sufficient N>=8945*k gives 1/5. All premises discharged by explicit carrier construction except positive rank and stated cutoff. No fixed-cutoff claim or global positivity. Static checks only, no native IV100 receipts. No adoption or merge. Central ledger #935.

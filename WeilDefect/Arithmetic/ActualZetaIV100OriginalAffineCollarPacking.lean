@@ -150,6 +150,105 @@ theorem neutralIV100Pack_containment (k i : ℕ) (hk : 0 < k) (hi : i < k)
       (show (6/4000:ℝ) ≤ x-(1099/1000-3/4000) by linarith [le_of_not_gt hnot]) hkp.le
     linarith
 
+
+/-- Each cell is a concrete affine pullback of the original plateau. -/
+def neutralIV100Carrier (k : ℕ) (hk : 0 < k) (i : Fin k) : 𝓢(ℝ,ℂ) :=
+  neutralIV100Affine (k:ℝ) (neutralIV100PackShift k i.val) (by exact_mod_cast hk)
+
+theorem neutralIV100Carrier_collars (k : ℕ) (hk : 0 < k) (i : Fin k) :
+    neutralNF735InOriginalCollars (neutralIV100Carrier k hk i) := by
+  intro x hx
+  have hz : (3/4000:ℝ) ≤ |(k:ℝ)*x+neutralIV100PackShift k i.val-1099/1000| := by
+    by_contra h
+    obtain ⟨hl,hu⟩ := neutralIV100Pack_containment k i.val hk i.isLt x (lt_of_not_ge h)
+    apply hx
+    unfold neutralNF543OriginalCollars
+    right
+    constructor <;> linarith
+  change (neutralIV097Plateau ((k:ℝ)*x+neutralIV100PackShift k i.val) : ℂ) = 0
+  simp [neutralIV097Plateau_zero _ hz]
+
+theorem neutralIV100Carrier_disjoint (k : ℕ) (hk : 0 < k) :
+    neutralIV099Disjoint (Finset.univ : Finset (Fin k))
+      (fun i => (neutralIV100Carrier k hk i : ℝ → ℂ)) := by
+  intro i hi j hj hij x
+  have hne : i.val ≠ j.val := fun h => hij (Fin.ext h)
+  rcases neutralIV100Pack_nonoverlap k i.val j.val x hne with h | h
+  · left
+    change (neutralIV097Plateau ((k:ℝ)*x+neutralIV100PackShift k i.val) : ℂ) = 0
+    simp [neutralIV097Plateau_zero _ h]
+  · right
+    change (neutralIV097Plateau ((k:ℝ)*x+neutralIV100PackShift k j.val) : ℂ) = 0
+    simp [neutralIV097Plateau_zero _ h]
+
+theorem neutralIV100Carrier_derivative_disjoint (k : ℕ) (hk : 0 < k) :
+    neutralIV099Disjoint (Finset.univ : Finset (Fin k))
+      (fun i => deriv (neutralIV100Carrier k hk i : ℝ → ℂ)) := by
+  intro i hi j hj hij x
+  have hne : i.val ≠ j.val := fun h => hij (Fin.ext h)
+  rcases neutralIV100Pack_nonoverlap k i.val j.val x hne with h | h
+  · left
+    unfold neutralIV100Carrier
+    rw [neutralIV100Affine_derivative]
+    simp [neutralIV097PlateauDerivative_zero _ h]
+  · right
+    unfold neutralIV100Carrier
+    rw [neutralIV100Affine_derivative]
+    simp [neutralIV097PlateauDerivative_zero _ h]
+
+theorem neutralIV100Carrier_energy_ratio (k : ℕ) (hk : 0 < k) (i : Fin k) :
+    neutralIV096DerivativeEnergy (neutralIV100Carrier k hk i) ≤
+      (16000000*(k:ℝ)^2) * ‖(neutralIV100Carrier k hk i).toLp 2 volume‖^2 :=
+  neutralIV100Affine_energy_ratio (k:ℝ) (neutralIV100PackShift k i.val) (by exact_mod_cast hk)
+
+theorem neutralIV100Carrier_mass_pos (k : ℕ) (hk : 0 < k) (i : Fin k) :
+    0 < ‖(neutralIV100Carrier k hk i).toLp 2 volume‖^2 :=
+  neutralIV100Affine_mass_pos (k:ℝ) (neutralIV100PackShift k i.val) (by exact_mod_cast hk)
+
+def neutralIV100Packed (k : ℕ) (hk : 0 < k) (c : Fin k → ℂ) : 𝓢(ℝ,ℂ) :=
+  neutralIV099Sector Finset.univ (neutralIV100Carrier k hk) c
+
+theorem neutralIV100Packed_mass_zero_iff (k : ℕ) (hk : 0 < k) (c : Fin k → ℂ) :
+    ‖(neutralIV100Packed k hk c).toLp 2 volume‖^2 = 0 ↔ ∀ i, c i = 0 := by
+  unfold neutralIV100Packed
+  rw [neutralIV099Sector_mass_zero_iff Finset.univ (neutralIV100Carrier k hk) c
+    (neutralIV100Carrier_disjoint k hk)
+    (fun i hi => neutralIV100Carrier_mass_pos k hk i)]
+  simp
+
+theorem neutralIV100Packed_margin (k : ℕ) (hk : 0 < k) (c : Fin k → ℂ) (N : ℕ) :
+    ((2/5:ℝ) - (16000000*(k:ℝ)^2) / ((N:ℝ)+1)^2) *
+      ‖(neutralIV100Packed k hk c).toLp 2 volume‖^2 ≤
+      neutralIV095FiniteDiagonal 10 N (neutralIV100Packed k hk c) := by
+  exact neutralIV099Sector_margin Finset.univ (neutralIV100Carrier k hk) c
+    (16000000*(k:ℝ)^2) 10 N
+    (fun i hi => neutralIV100Carrier_collars k hk i)
+    (neutralIV100Carrier_disjoint k hk) (neutralIV100Carrier_derivative_disjoint k hk)
+    (fun i hi => neutralIV100Carrier_energy_ratio k hk i)
+    (by exact_mod_cast neutralIV098ArithmeticCutoff)
+
+theorem neutralIV100Cutoff_budget (k N : ℕ) (hN : 8945*k ≤ N) :
+    (16000000:ℝ)*(k:ℝ)^2 ≤ ((N:ℝ)+1)^2 / 5 := by
+  have hkn : (8945:ℝ)*(k:ℝ) ≤ (N:ℝ) := by exact_mod_cast hN
+  have hkp : (0:ℝ) ≤ (k:ℝ) := by positivity
+  have hsq : ((8945:ℝ)*(k:ℝ))^2 ≤ ((N:ℝ)+1)^2 :=
+    pow_le_pow_left₀ (by positivity) (by linarith) 2
+  have hc : (16000000:ℝ)*(k:ℝ)^2 ≤ ((8945:ℝ)*(k:ℝ))^2/5 := by
+    nlinarith only [sq_nonneg (k:ℝ)]
+  linarith
+
+theorem neutralIV100Packed_cutoff (k : ℕ) (hk : 0 < k) (c : Fin k → ℂ)
+    (N : ℕ) (hN : 8945*k ≤ N) :
+    (1/5:ℝ) * ‖(neutralIV100Packed k hk c).toLp 2 volume‖^2 ≤
+      neutralIV095FiniteDiagonal 10 N (neutralIV100Packed k hk c) := by
+  exact neutralIV099Sector_cutoff Finset.univ (neutralIV100Carrier k hk) c
+    (16000000*(k:ℝ)^2) 10 N
+    (fun i hi => neutralIV100Carrier_collars k hk i)
+    (neutralIV100Carrier_disjoint k hk) (neutralIV100Carrier_derivative_disjoint k hk)
+    (fun i hi => neutralIV100Carrier_energy_ratio k hk i)
+    (by exact_mod_cast neutralIV098ArithmeticCutoff)
+    (neutralIV100Cutoff_budget k N hN)
+
 #print axioms neutralIV100Affine_compact
 #print axioms neutralIV100Affine_hasDerivAt
 #print axioms neutralIV100Affine_derivative
@@ -161,6 +260,15 @@ theorem neutralIV100Pack_containment (k i : ℕ) (hk : 0 < k) (hi : i < k)
 #print axioms neutralIV100Pack_window
 #print axioms neutralIV100Pack_nonoverlap
 #print axioms neutralIV100Pack_containment
+#print axioms neutralIV100Carrier_collars
+#print axioms neutralIV100Carrier_disjoint
+#print axioms neutralIV100Carrier_derivative_disjoint
+#print axioms neutralIV100Carrier_energy_ratio
+#print axioms neutralIV100Carrier_mass_pos
+#print axioms neutralIV100Packed_mass_zero_iff
+#print axioms neutralIV100Packed_margin
+#print axioms neutralIV100Cutoff_budget
+#print axioms neutralIV100Packed_cutoff
 
 end
 end WeilDefect
