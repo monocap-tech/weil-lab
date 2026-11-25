@@ -1,0 +1,525 @@
+import WeilDefect.Generated.NF702Inputs.Attach000
+import WeilDefect.Generated.NF702Inputs.Attach001
+import WeilDefect.Generated.NF702Inputs.Attach002
+import WeilDefect.Generated.NF702Inputs.Attach003
+import WeilDefect.Generated.NF702Inputs.Attach004
+import WeilDefect.Generated.NF702Inputs.Attach005
+import WeilDefect.Generated.NF702Inputs.Attach006
+import WeilDefect.Generated.NF702Inputs.Attach007
+import WeilDefect.Generated.NF707.Attach008
+import WeilDefect.Generated.NF707.Attach009
+import WeilDefect.Generated.NF707.Attach010
+import WeilDefect.Generated.NF707.Attach011
+import WeilDefect.Generated.NF707.Attach012
+import WeilDefect.Generated.NF707.Attach013
+import WeilDefect.Generated.NF707.Attach014
+import WeilDefect.Generated.NF707.Attach015
+import WeilDefect.Generated.NF707.Attach016
+import WeilDefect.Generated.NF707.Attach017
+import WeilDefect.Generated.NF707.Attach018
+import WeilDefect.Generated.NF707.Attach019
+import WeilDefect.Generated.NF707.Attach020
+import WeilDefect.Generated.NF707.Attach021
+import WeilDefect.Generated.NF707.Attach022
+import WeilDefect.Generated.NF707.Attach023
+import WeilDefect.Generated.NF707.Attach024
+import WeilDefect.Generated.NF707.Attach025
+import WeilDefect.Generated.NF707.Attach026
+import WeilDefect.Generated.NF707.Attach027
+import WeilDefect.Generated.NF707.Attach028
+import WeilDefect.Generated.NF707.Attach029
+import WeilDefect.Generated.NF707.Attach030
+import WeilDefect.Generated.NF707.Attach031
+import WeilDefect.Generated.NF707.Attach032
+import WeilDefect.Generated.NF707.Attach033
+import WeilDefect.Generated.NF707.Attach034
+import WeilDefect.Generated.NF707.Attach035
+import WeilDefect.Generated.NF707.Attach036
+import WeilDefect.Generated.NF707.Attach037
+import WeilDefect.Generated.NF707.Attach038
+import WeilDefect.Generated.NF707.Attach039
+import WeilDefect.Generated.NF707.Attach040
+import WeilDefect.Generated.NF707.Attach041
+import WeilDefect.Generated.NF707.Attach042
+import WeilDefect.Generated.NF707.Attach043
+import WeilDefect.Generated.NF707.Attach044
+import WeilDefect.Generated.NF707.Attach045
+import WeilDefect.Generated.NF707.Attach046
+import WeilDefect.Generated.NF707.Attach047
+import WeilDefect.Generated.F41003.Attach048
+import WeilDefect.Generated.F41005.Attach049
+import WeilDefect.Generated.F41007.Attach050
+import WeilDefect.Generated.F41009.Attach051
+import WeilDefect.Generated.F41011.Attach052
+import WeilDefect.Generated.F41013.Attach053
+import WeilDefect.Generated.F41015.Attach054
+import WeilDefect.Generated.F41017.Attach055
+import WeilDefect.Generated.F41019.Attach056
+import WeilDefect.Generated.F41021.Attach057
+import WeilDefect.Generated.F41023.Attach058
+import WeilDefect.Generated.F41025.Attach059
+import WeilDefect.Generated.F41027.Attach060
+import WeilDefect.Generated.F41029.Attach061
+import WeilDefect.Generated.F41031.Attach062
+import WeilDefect.Generated.F41033.Attach063
+import WeilDefect.Generated.F41035.Attach064
+import WeilDefect.Generated.F41037.Attach065
+import WeilDefect.Generated.F41039.Attach066
+import WeilDefect.Generated.F41041.Attach067
+import WeilDefect.Generated.F41043.Attach068
+import WeilDefect.Generated.F41045.Attach069
+import WeilDefect.Generated.F41047.Attach070
+import WeilDefect.Generated.F41049.Attach071
+import WeilDefect.Generated.F41051.Attach072
+import WeilDefect.Generated.F41053.Attach073
+import WeilDefect.Generated.F41055.Attach074
+import WeilDefect.Generated.F41057.Attach075
+import WeilDefect.Generated.F41059.Attach076
+import WeilDefect.Generated.F41061.Attach077
+import WeilDefect.Generated.F41063.Attach078
+import WeilDefect.Generated.F41065.Attach079
+import WeilDefect.Generated.F41067.Attach080
+import WeilDefect.Generated.F41069.Attach081
+import WeilDefect.Generated.F41071.Attach082
+import WeilDefect.Generated.F41073.Attach083
+import WeilDefect.Generated.F41075.Attach084
+import WeilDefect.Generated.F41077.Attach085
+import WeilDefect.Generated.F41079.Attach086
+import WeilDefect.Generated.F41081.Attach087
+import WeilDefect.Generated.F41083.Attach088
+import WeilDefect.Generated.F41085.Attach089
+import WeilDefect.Generated.F41087.Attach090
+import WeilDefect.Generated.F41089.Attach091
+import WeilDefect.Generated.F41091.Attach092
+import WeilDefect.Generated.F41093.Attach093
+import WeilDefect.Generated.F41095.Attach094
+import WeilDefect.Generated.F41097.Attach095
+import WeilDefect.Generated.F41099.Attach096
+import WeilDefect.Generated.F41101.Attach097
+import WeilDefect.Generated.F41103.Attach098
+import WeilDefect.Generated.F41105.Attach099
+import WeilDefect.Generated.F41107.Attach100
+import WeilDefect.Generated.F41109.Attach101
+import WeilDefect.Generated.F41111.Attach102
+import WeilDefect.Generated.F41113.Attach103
+import WeilDefect.Generated.F41115.Attach104
+import WeilDefect.Generated.F41117.Attach105
+import WeilDefect.Generated.F41119.Attach106
+import WeilDefect.Generated.F41121.Attach107
+import WeilDefect.Generated.F41123.Attach108
+import WeilDefect.Generated.F41125.Attach109
+import WeilDefect.Generated.F41127.Attach110
+import WeilDefect.Generated.F41129.Attach111
+import WeilDefect.Generated.F41131.Attach112
+import WeilDefect.Generated.F41133.Attach113
+import WeilDefect.Generated.F41135.Attach114
+import WeilDefect.Generated.F41137.Attach115
+import WeilDefect.Generated.F41139.Attach116
+import WeilDefect.Generated.F41141.Attach117
+import WeilDefect.Generated.F41143.Attach118
+import WeilDefect.Generated.F41145.Attach119
+import WeilDefect.Generated.F41147.Attach120
+import WeilDefect.Generated.F41149.Attach121
+import WeilDefect.Generated.F41151.Attach122
+import WeilDefect.Generated.F41153.Attach123
+import WeilDefect.Generated.F41155.Attach124
+import WeilDefect.Generated.F41157.Attach125
+import WeilDefect.Generated.F41159.Attach126
+import WeilDefect.Generated.F41161.Attach127
+import WeilDefect.Generated.F41163.Attach128
+import WeilDefect.Generated.F41165.Attach129
+import WeilDefect.Generated.F41167.Attach130
+import WeilDefect.Generated.F41169.Attach131
+import WeilDefect.Generated.F41171.Attach132
+import WeilDefect.Generated.F41173.Attach133
+import WeilDefect.Generated.F41175.Attach134
+import WeilDefect.Generated.F41177.Attach135
+import WeilDefect.Generated.F41179.Attach136
+import WeilDefect.Generated.F41181.Attach137
+import WeilDefect.Generated.F41183.Attach138
+import WeilDefect.Generated.F41185.Attach139
+import WeilDefect.Generated.F41187.Attach140
+import WeilDefect.Generated.F41189.Attach141
+import WeilDefect.Generated.F41191.Attach142
+import WeilDefect.Generated.F41193.Attach143
+import WeilDefect.Generated.F41195.Attach144
+import WeilDefect.Generated.F41197.Attach145
+import WeilDefect.Generated.F41199.Attach146
+import WeilDefect.Generated.F41201.Attach147
+import WeilDefect.Generated.F41203.Attach148
+import WeilDefect.Generated.F41205.Attach149
+import WeilDefect.Generated.F41207.Attach150
+import WeilDefect.Generated.F41209.Attach151
+import WeilDefect.Generated.F41211.Attach152
+import WeilDefect.Generated.F41213.Attach153
+import WeilDefect.Generated.F41215.Attach154
+import WeilDefect.Generated.F41217.Attach155
+import WeilDefect.Generated.F41219.Attach156
+import WeilDefect.Generated.F41221.Attach157
+import WeilDefect.Generated.F41223.Attach158
+import WeilDefect.Generated.F41225.Attach159
+import WeilDefect.Generated.F41227.Attach160
+import WeilDefect.Generated.F41229.Attach161
+import WeilDefect.Generated.F41231.Attach162
+import WeilDefect.Generated.F41233.Attach163
+import WeilDefect.Generated.F41235.Attach164
+import WeilDefect.Generated.F41237.Attach165
+import WeilDefect.Generated.F41239.Attach166
+import WeilDefect.Generated.F41241.Attach167
+import WeilDefect.Generated.F41243.Attach168
+import WeilDefect.Generated.F41245.Attach169
+import WeilDefect.Generated.F41247.Attach170
+import WeilDefect.Generated.F41249.Attach171
+import WeilDefect.Generated.F41251.Attach172
+import WeilDefect.Generated.F41253.Attach173
+import WeilDefect.Generated.F41255.Attach174
+import WeilDefect.Generated.F41257.Attach175
+import WeilDefect.Generated.F41259.Attach176
+import WeilDefect.Generated.F41261.Attach177
+import WeilDefect.Generated.F41263.Attach178
+import WeilDefect.Generated.F41265.Attach179
+import WeilDefect.Generated.F41267.Attach180
+import WeilDefect.Generated.F41269.Attach181
+import WeilDefect.Generated.F41271.Attach182
+import WeilDefect.Generated.F41273.Attach183
+import WeilDefect.Generated.F41275.Attach184
+import WeilDefect.Generated.F41277.Attach185
+import WeilDefect.Generated.F41279.Attach186
+import WeilDefect.Generated.F41281.Attach187
+import WeilDefect.Generated.F41283.Attach188
+import WeilDefect.Generated.F41285.Attach189
+import WeilDefect.Generated.F41287.Attach190
+import WeilDefect.Generated.F41289.Attach191
+import WeilDefect.Generated.F41291.Attach192
+import WeilDefect.Generated.F41293.Attach193
+import WeilDefect.Generated.F41295.Attach194
+import WeilDefect.Generated.F41297.Attach195
+import WeilDefect.Generated.F41299.Attach196
+import WeilDefect.Generated.F41301.Attach197
+import WeilDefect.Generated.F41303.Attach198
+import WeilDefect.Generated.F41305.Attach199
+import WeilDefect.Generated.F41307.Attach200
+import WeilDefect.Generated.F41309.Attach201
+import WeilDefect.Generated.F41311.Attach202
+import WeilDefect.Generated.F41313.Attach203
+import WeilDefect.Generated.F41315.Attach204
+import WeilDefect.Generated.F41317.Attach205
+import WeilDefect.Generated.F41319.Attach206
+import WeilDefect.Generated.F41321.Attach207
+import WeilDefect.Generated.F41323.Attach208
+import WeilDefect.Generated.F41325.Attach209
+import WeilDefect.Generated.F41327.Attach210
+import WeilDefect.Generated.F41329.Attach211
+import WeilDefect.Generated.F41331.Attach212
+import WeilDefect.Generated.F41333.Attach213
+import WeilDefect.Generated.F41335.Attach214
+import WeilDefect.Generated.F41337.Attach215
+import WeilDefect.Generated.F41339.Attach216
+import WeilDefect.Generated.F41341.Attach217
+import WeilDefect.Generated.F41343.Attach218
+import WeilDefect.Generated.F41345.Attach219
+import WeilDefect.Generated.F41347.Attach220
+import WeilDefect.Generated.F41349.Attach221
+import WeilDefect.Generated.F41351.Attach222
+import WeilDefect.Generated.F41353.Attach223
+import WeilDefect.Generated.F41355.Attach224
+import WeilDefect.Generated.F41357.Attach225
+import WeilDefect.Generated.F41359.Attach226
+import WeilDefect.Generated.F41361.Attach227
+import WeilDefect.Generated.F41363.Attach228
+import WeilDefect.Generated.F41365.Attach229
+import WeilDefect.Generated.F41367.Attach230
+import WeilDefect.Generated.F41369.Attach231
+import WeilDefect.Generated.F41371.Attach232
+import WeilDefect.Generated.F41373.Attach233
+import WeilDefect.Generated.F41375.Attach234
+import WeilDefect.Generated.F41377.Attach235
+import WeilDefect.Generated.F41379.Attach236
+import WeilDefect.Generated.F41381.Attach237
+import WeilDefect.Generated.F41383.Attach238
+import WeilDefect.Generated.F41385.Attach239
+import WeilDefect.Generated.F41387.Attach240
+import WeilDefect.Generated.F41389.Attach241
+import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalShardedEntryCustody
+import Mathlib.Tactic
+
+namespace WeilDefect
+
+set_option maxHeartbeats 0 in
+set_option maxRecDepth 4096 in
+/-- All 242 original row certificates on the unchanged literal bank and payment.
+This source is a candidate until the full import closure and this theorem compile. -/
+theorem f41OriginalAllRows :
+    ∀ i : Fin 242,
+      neutralNF674OriginalRowCheck
+        (neutralNF624Lookup nf690OriginalBank (neutralNF624Index nf690OriginalBank))
+        nf702OriginalInputs.payment i = true := by
+  intro i
+  fin_cases i
+  · exact nf702Attach000ActualPayment
+  · exact nf702Attach001ActualPayment
+  · exact nf702Attach002ActualPayment
+  · exact nf702Attach003ActualPayment
+  · exact nf702Attach004ActualPayment
+  · exact nf702Attach005ActualPayment
+  · exact nf702Attach006ActualPayment
+  · exact nf702Attach007ActualPayment
+  · exact nf707Attach008ActualPayment
+  · exact nf707Attach009ActualPayment
+  · exact nf707Attach010ActualPayment
+  · exact nf707Attach011ActualPayment
+  · exact nf707Attach012ActualPayment
+  · exact nf707Attach013ActualPayment
+  · exact nf707Attach014ActualPayment
+  · exact nf707Attach015ActualPayment
+  · exact nf707Attach016ActualPayment
+  · exact nf707Attach017ActualPayment
+  · exact nf707Attach018ActualPayment
+  · exact nf707Attach019ActualPayment
+  · exact nf707Attach020ActualPayment
+  · exact nf707Attach021ActualPayment
+  · exact nf707Attach022ActualPayment
+  · exact nf707Attach023ActualPayment
+  · exact nf707Attach024ActualPayment
+  · exact nf707Attach025ActualPayment
+  · exact nf707Attach026ActualPayment
+  · exact nf707Attach027ActualPayment
+  · exact nf707Attach028ActualPayment
+  · exact nf707Attach029ActualPayment
+  · exact nf707Attach030ActualPayment
+  · exact nf707Attach031ActualPayment
+  · exact nf707Attach032ActualPayment
+  · exact nf707Attach033ActualPayment
+  · exact nf707Attach034ActualPayment
+  · exact nf707Attach035ActualPayment
+  · exact nf707Attach036ActualPayment
+  · exact nf707Attach037ActualPayment
+  · exact nf707Attach038ActualPayment
+  · exact nf707Attach039ActualPayment
+  · exact nf707Attach040ActualPayment
+  · exact nf707Attach041ActualPayment
+  · exact nf707Attach042ActualPayment
+  · exact nf707Attach043ActualPayment
+  · exact nf707Attach044ActualPayment
+  · exact nf707Attach045ActualPayment
+  · exact nf707Attach046ActualPayment
+  · exact nf707Attach047ActualPayment
+  · exact f41003Attach048ActualPayment
+  · exact f41005Attach049ActualPayment
+  · exact f41007Attach050ActualPayment
+  · exact f41009Attach051ActualPayment
+  · exact f41011Attach052ActualPayment
+  · exact f41013Attach053ActualPayment
+  · exact f41015Attach054ActualPayment
+  · exact f41017Attach055ActualPayment
+  · exact f41019Attach056ActualPayment
+  · exact f41021Attach057ActualPayment
+  · exact f41023Attach058ActualPayment
+  · exact f41025Attach059ActualPayment
+  · exact f41027Attach060ActualPayment
+  · exact f41029Attach061ActualPayment
+  · exact f41031Attach062ActualPayment
+  · exact f41033Attach063ActualPayment
+  · exact f41035Attach064ActualPayment
+  · exact f41037Attach065ActualPayment
+  · exact f41039Attach066ActualPayment
+  · exact f41041Attach067ActualPayment
+  · exact f41043Attach068ActualPayment
+  · exact f41045Attach069ActualPayment
+  · exact f41047Attach070ActualPayment
+  · exact f41049Attach071ActualPayment
+  · exact f41051Attach072ActualPayment
+  · exact f41053Attach073ActualPayment
+  · exact f41055Attach074ActualPayment
+  · exact f41057Attach075ActualPayment
+  · exact f41059Attach076ActualPayment
+  · exact f41061Attach077ActualPayment
+  · exact f41063Attach078ActualPayment
+  · exact f41065Attach079ActualPayment
+  · exact f41067Attach080ActualPayment
+  · exact f41069Attach081ActualPayment
+  · exact f41071Attach082ActualPayment
+  · exact f41073Attach083ActualPayment
+  · exact f41075Attach084ActualPayment
+  · exact f41077Attach085ActualPayment
+  · exact f41079Attach086ActualPayment
+  · exact f41081Attach087ActualPayment
+  · exact f41083Attach088ActualPayment
+  · exact f41085Attach089ActualPayment
+  · exact f41087Attach090ActualPayment
+  · exact f41089Attach091ActualPayment
+  · exact f41091Attach092ActualPayment
+  · exact f41093Attach093ActualPayment
+  · exact f41095Attach094ActualPayment
+  · exact f41097Attach095ActualPayment
+  · exact f41099Attach096ActualPayment
+  · exact f41101Attach097ActualPayment
+  · exact f41103Attach098ActualPayment
+  · exact f41105Attach099ActualPayment
+  · exact f41107Attach100ActualPayment
+  · exact f41109Attach101ActualPayment
+  · exact f41111Attach102ActualPayment
+  · exact f41113Attach103ActualPayment
+  · exact f41115Attach104ActualPayment
+  · exact f41117Attach105ActualPayment
+  · exact f41119Attach106ActualPayment
+  · exact f41121Attach107ActualPayment
+  · exact f41123Attach108ActualPayment
+  · exact f41125Attach109ActualPayment
+  · exact f41127Attach110ActualPayment
+  · exact f41129Attach111ActualPayment
+  · exact f41131Attach112ActualPayment
+  · exact f41133Attach113ActualPayment
+  · exact f41135Attach114ActualPayment
+  · exact f41137Attach115ActualPayment
+  · exact f41139Attach116ActualPayment
+  · exact f41141Attach117ActualPayment
+  · exact f41143Attach118ActualPayment
+  · exact f41145Attach119ActualPayment
+  · exact f41147Attach120ActualPayment
+  · exact f41149Attach121ActualPayment
+  · exact f41151Attach122ActualPayment
+  · exact f41153Attach123ActualPayment
+  · exact f41155Attach124ActualPayment
+  · exact f41157Attach125ActualPayment
+  · exact f41159Attach126ActualPayment
+  · exact f41161Attach127ActualPayment
+  · exact f41163Attach128ActualPayment
+  · exact f41165Attach129ActualPayment
+  · exact f41167Attach130ActualPayment
+  · exact f41169Attach131ActualPayment
+  · exact f41171Attach132ActualPayment
+  · exact f41173Attach133ActualPayment
+  · exact f41175Attach134ActualPayment
+  · exact f41177Attach135ActualPayment
+  · exact f41179Attach136ActualPayment
+  · exact f41181Attach137ActualPayment
+  · exact f41183Attach138ActualPayment
+  · exact f41185Attach139ActualPayment
+  · exact f41187Attach140ActualPayment
+  · exact f41189Attach141ActualPayment
+  · exact f41191Attach142ActualPayment
+  · exact f41193Attach143ActualPayment
+  · exact f41195Attach144ActualPayment
+  · exact f41197Attach145ActualPayment
+  · exact f41199Attach146ActualPayment
+  · exact f41201Attach147ActualPayment
+  · exact f41203Attach148ActualPayment
+  · exact f41205Attach149ActualPayment
+  · exact f41207Attach150ActualPayment
+  · exact f41209Attach151ActualPayment
+  · exact f41211Attach152ActualPayment
+  · exact f41213Attach153ActualPayment
+  · exact f41215Attach154ActualPayment
+  · exact f41217Attach155ActualPayment
+  · exact f41219Attach156ActualPayment
+  · exact f41221Attach157ActualPayment
+  · exact f41223Attach158ActualPayment
+  · exact f41225Attach159ActualPayment
+  · exact f41227Attach160ActualPayment
+  · exact f41229Attach161ActualPayment
+  · exact f41231Attach162ActualPayment
+  · exact f41233Attach163ActualPayment
+  · exact f41235Attach164ActualPayment
+  · exact f41237Attach165ActualPayment
+  · exact f41239Attach166ActualPayment
+  · exact f41241Attach167ActualPayment
+  · exact f41243Attach168ActualPayment
+  · exact f41245Attach169ActualPayment
+  · exact f41247Attach170ActualPayment
+  · exact f41249Attach171ActualPayment
+  · exact f41251Attach172ActualPayment
+  · exact f41253Attach173ActualPayment
+  · exact f41255Attach174ActualPayment
+  · exact f41257Attach175ActualPayment
+  · exact f41259Attach176ActualPayment
+  · exact f41261Attach177ActualPayment
+  · exact f41263Attach178ActualPayment
+  · exact f41265Attach179ActualPayment
+  · exact f41267Attach180ActualPayment
+  · exact f41269Attach181ActualPayment
+  · exact f41271Attach182ActualPayment
+  · exact f41273Attach183ActualPayment
+  · exact f41275Attach184ActualPayment
+  · exact f41277Attach185ActualPayment
+  · exact f41279Attach186ActualPayment
+  · exact f41281Attach187ActualPayment
+  · exact f41283Attach188ActualPayment
+  · exact f41285Attach189ActualPayment
+  · exact f41287Attach190ActualPayment
+  · exact f41289Attach191ActualPayment
+  · exact f41291Attach192ActualPayment
+  · exact f41293Attach193ActualPayment
+  · exact f41295Attach194ActualPayment
+  · exact f41297Attach195ActualPayment
+  · exact f41299Attach196ActualPayment
+  · exact f41301Attach197ActualPayment
+  · exact f41303Attach198ActualPayment
+  · exact f41305Attach199ActualPayment
+  · exact f41307Attach200ActualPayment
+  · exact f41309Attach201ActualPayment
+  · exact f41311Attach202ActualPayment
+  · exact f41313Attach203ActualPayment
+  · exact f41315Attach204ActualPayment
+  · exact f41317Attach205ActualPayment
+  · exact f41319Attach206ActualPayment
+  · exact f41321Attach207ActualPayment
+  · exact f41323Attach208ActualPayment
+  · exact f41325Attach209ActualPayment
+  · exact f41327Attach210ActualPayment
+  · exact f41329Attach211ActualPayment
+  · exact f41331Attach212ActualPayment
+  · exact f41333Attach213ActualPayment
+  · exact f41335Attach214ActualPayment
+  · exact f41337Attach215ActualPayment
+  · exact f41339Attach216ActualPayment
+  · exact f41341Attach217ActualPayment
+  · exact f41343Attach218ActualPayment
+  · exact f41345Attach219ActualPayment
+  · exact f41347Attach220ActualPayment
+  · exact f41349Attach221ActualPayment
+  · exact f41351Attach222ActualPayment
+  · exact f41353Attach223ActualPayment
+  · exact f41355Attach224ActualPayment
+  · exact f41357Attach225ActualPayment
+  · exact f41359Attach226ActualPayment
+  · exact f41361Attach227ActualPayment
+  · exact f41363Attach228ActualPayment
+  · exact f41365Attach229ActualPayment
+  · exact f41367Attach230ActualPayment
+  · exact f41369Attach231ActualPayment
+  · exact f41371Attach232ActualPayment
+  · exact f41373Attach233ActualPayment
+  · exact f41375Attach234ActualPayment
+  · exact f41377Attach235ActualPayment
+  · exact f41379Attach236ActualPayment
+  · exact f41381Attach237ActualPayment
+  · exact f41383Attach238ActualPayment
+  · exact f41385Attach239ActualPayment
+  · exact f41387Attach240ActualPayment
+  · exact f41389Attach241ActualPayment
+
+/-- Exactly the original NF673 Boolean receipt, not analytic moment soundness. -/
+theorem f41OriginalEntryCheck :
+    neutralNF673EntryCheck
+      (neutralNF624Lookup nf690OriginalBank (neutralNF624Index nf690OriginalBank))
+      nf702OriginalInputs.payment = true :=
+  neutralNF674Rows_imply_original_entry _ _ f41OriginalAllRows
+
+/-- Original analytic interval attachment retains the independent moment-soundness premise. -/
+theorem f41OriginalEnclosures_of_moment_soundness
+    (hM : neutralNF624AllMomentsSound
+      (neutralNF624Lookup nf690OriginalBank (neutralNF624Index nf690OriginalBank))) :
+    (∀ i j,
+      |neutralNF606PhysicalH i j - nf702OriginalInputs.payment.HR i j| ≤
+        (nf702OriginalInputs.payment.eH : ℝ)) ∧
+    (∀ i j,
+      |neutralNF606PhysicalV i j - nf702OriginalInputs.payment.VR i j| ≤
+        (nf702OriginalInputs.payment.eV : ℝ)) :=
+  neutralNF674Rows_sound _ _ hM f41OriginalAllRows
+
+#print axioms f41OriginalAllRows
+#print axioms f41OriginalEntryCheck
+#print axioms f41OriginalEnclosures_of_moment_soundness
+
+end WeilDefect

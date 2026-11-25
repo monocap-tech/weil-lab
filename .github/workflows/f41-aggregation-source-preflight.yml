@@ -1,0 +1,14 @@
+name: F41 aggregation source-only preflight
+on:
+  pull_request:
+    paths:
+      - 'verification/f41/aggregation_242/**'
+      - '.github/workflows/f41-aggregation-source-preflight.yml'
+permissions:
+  contents: read
+jobs:
+  source-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 verification/f41/aggregation_242/check_source.py
