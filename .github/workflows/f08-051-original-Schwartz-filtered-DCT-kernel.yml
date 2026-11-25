@@ -16,6 +16,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: candidate
+      - name: Checkout accepted pointwise source predecessor
+        uses: actions/checkout@v4
+        with:
+          ref: 987e1d9cfa89f296d69739d6202761985db36aaf
+          path: accepted
       - name: Checkout original frozen IV023 research
         uses: actions/checkout@v4
         with:
