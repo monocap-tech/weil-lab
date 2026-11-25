@@ -2,6 +2,7 @@ import WeilDefect.Arithmetic.ActualZetaIV094OriginalDiagonalSignedTailGate
 import WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalNonzeroPrimeFreeSchwartzBump
 import Mathlib.Algebra.Order.BigOperators.Ring.Finset
 import Mathlib.Order.Filter.Finite
+import Mathlib.Analysis.Complex.ExponentialBounds
 import Mathlib.Tactic
 
 namespace WeilDefect
@@ -190,11 +191,78 @@ theorem neutralIV095OriginalCollarSpan_uniform_finite_margin {n : ℕ}
   change (1/5:ℝ) * ‖S.toLp 2 volume‖^2 ≤ neutralIV095FiniteDiagonal M N S
   linarith
 
+/-- On a genuine nonzero rank-one physical sector the coefficient mass
+comparison is discharged exactly, rather than assumed. -/
+theorem neutralIV095OriginalCollarRay_uniform_finite_margin
+    (M : ℕ) (s : 𝓢(ℝ,ℂ)) (hs : neutralNF735InOriginalCollars s)
+    (hne : s.toLp 2 volume ≠ 0)
+    (hM : Real.exp (2*(11/10:ℝ)) < (M : ℝ)) :
+    ∃ N₀ : ℕ, ∀ N ≥ N₀, ∀ z : ℂ,
+      (1/5:ℝ) * ‖(z • s).toLp 2 volume‖^2 ≤
+        neutralIV095FiniteDiagonal M N (z • s) := by
+  have hp : 0 < ‖s.toLp 2 volume‖ := norm_pos_iff.mpr hne
+  let C : ℝ := 1 / ‖s.toLp 2 volume‖^2
+  have hC : 0 < C := by dsimp [C]; positivity
+  have hmass (u : Fin 1 → ℂ) :
+      (∑ i : Fin 1, ‖u i‖^2) ≤
+        C * ‖(neutralIV009PhysicalSchwartzSum (fun _ : Fin 1 => s) u).toLp 2 volume‖^2 := by
+    have hLp : (neutralIV009PhysicalSchwartzSum (fun _ : Fin 1 => s) u).toLp 2 volume =
+        u 0 • s.toLp 2 volume := by
+      change (SchwartzMap.toLpCLM ℂ ℂ 2 volume)
+        (neutralIV009PhysicalSchwartzSum (fun _ : Fin 1 => s) u) = _
+      simp [neutralIV009PhysicalSchwartzSum]
+    rw [hLp, norm_smul, mul_pow, Fin.sum_univ_one]
+    apply le_of_eq
+    dsimp [C]
+    field_simp [ne_of_gt hp] <;> ring
+  obtain ⟨N₀, hN₀⟩ := neutralIV095OriginalCollarSpan_uniform_finite_margin
+    M (fun _ : Fin 1 => s) (fun _ => hs) hM C hC hmass
+  refine ⟨N₀, ?_⟩
+  intro N hN z
+  simpa [neutralIV009PhysicalSchwartzSum] using hN₀ N hN (fun _ : Fin 1 => z)
+
+/-- A concrete nonzero original collar ray exists, with the authentic
+arithmetic cutoff M=10. The Gamma cutoff exists but is not numerical. -/
+theorem neutralIV095ExistsOriginalCollarRay :
+    ∃ s : 𝓢(ℝ,ℂ), s (1099/1000:ℝ) = 1 ∧
+      neutralNF735InOriginalCollars s ∧ s.toLp 2 volume ≠ 0 ∧
+      ∃ N₀ : ℕ, ∀ N ≥ N₀, ∀ z : ℂ,
+        (1/5:ℝ) * ‖(z • s).toLp 2 volume‖^2 ≤
+          neutralIV095FiniteDiagonal 10 N (z • s) := by
+  obtain ⟨s, hc, hlocal⟩ := neutralIV015ExistsComplexSchwartzBump
+    (1099/1000:ℝ) (1/2000:ℝ) (by norm_num)
+  have hs : neutralNF735InOriginalCollars s := by
+    intro x hx
+    apply hlocal x
+    intro hi
+    apply hx
+    unfold neutralNF543OriginalCollars
+    right
+    constructor <;> linarith [hi.1, hi.2]
+  have hne : s.toLp 2 volume ≠ 0 := by
+    intro hz
+    have hae := Lp.eq_zero_iff_ae_eq_zero.mp hz
+    have hzero : (fun x : ℝ => s x) = fun _ => (0 : ℂ) :=
+      Measure.eq_of_ae_eq ((s.coeFn_toLp 2 volume).symm.trans hae)
+        s.continuous continuous_const
+    exact one_ne_zero (hc.symm.trans (congrFun hzero (1099/1000:ℝ)))
+  have hM : Real.exp (2*(11/10:ℝ)) < (10:ℝ) := by
+    calc
+      _ < Real.exp (Real.log (10:ℝ)) := by
+        apply Real.exp_lt_exp.mpr
+        rw [Real.log_ten_eq]
+        linarith [Real.log_two_gt_d9, Real.log_five_gt_d9]
+      _ = _ := Real.exp_log (by norm_num)
+  exact ⟨s, hc, hs, hne, neutralIV095OriginalCollarRay_uniform_finite_margin 10 s hs hne
+    (by exact_mod_cast hM)⟩
+
 #print axioms neutralIV095DiagonalTail_data
 #print axioms neutralIV095TailProfile_sum_le
 #print axioms neutralIV095DiagonalTail_sum_le
 #print axioms neutralIV095DiagonalTailTrace_eventual
 #print axioms neutralIV095OriginalCollarSpan_uniform_finite_margin
+#print axioms neutralIV095OriginalCollarRay_uniform_finite_margin
+#print axioms neutralIV095ExistsOriginalCollarRay
 
 end
 end WeilDefect
