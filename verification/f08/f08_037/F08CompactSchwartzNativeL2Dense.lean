@@ -49,7 +49,7 @@ theorem f08_037_compactSchwartz_denseInOriginalL2 :
   · apply Lp.ext_iff.mpr
     have hsg := sg.coeFn_toLp 2 (volume : Measure ℝ)
     simpa only [SchwartzMap.toLpCLM_apply] using
-      hfg.trans (by simpa [sg] using hsg.symm)
+      hsg.trans (by simpa [sg] using hfg.symm)
 
 #print axioms f08_037_compactSchwartz_denseInOriginalL2
 
