@@ -12,8 +12,8 @@ namespace WeilDefect.MasterRecon.V06D
 open MeasureTheory Set Filter
 open scoped ENNReal Topology
 
-abbrev PhysicalL2 := Lp ℂ 2 (volume : Measure ℝ)
-abbrev TailL2 (d : ℝ) := Lp ℂ 2 ((volume : Measure ℝ).restrict (Ioi d))
+noncomputable abbrev PhysicalL2 := Lp ℂ 2 (volume : Measure ℝ)
+noncomputable abbrev TailL2 (d : ℝ) := Lp ℂ 2 ((volume : Measure ℝ).restrict (Ioi d))
 
 noncomputable def realTailRestriction (d : ℝ) : PhysicalL2 →L[ℝ] TailL2 d :=
   Lp.LpToLpOfMeasureLeSMul (c := 1) (by simp)
@@ -54,13 +54,15 @@ def TailZero (f : ℝ → ℂ) (d : ℝ) : Prop :=
 theorem tailRestriction_zero_iff (d : ℝ) (f : PhysicalL2) :
     tailRestriction d f = 0 ↔ TailZero f d := by
   rw [Lp.eq_zero_iff_ae_eq_zero]
-  unfold TailZero
-  rw [← ae_restrict_iff' measurableSet_Ioi]
+  have hiff : (∀ᵐ x ∂(volume : Measure ℝ).restrict (Ioi d), f x = 0) ↔
+      TailZero f d :=
+    ae_restrict_iff' (μ := (volume : Measure ℝ)) (s := Ioi d)
+      (p := fun x : ℝ => f x = 0) measurableSet_Ioi
   constructor
   · intro h
-    exact (tailRestriction_ae d f).symm.trans h
+    exact hiff.mp ((tailRestriction_ae d f).symm.trans h)
   · intro h
-    exact (tailRestriction_ae d f).trans h
+    exact (tailRestriction_ae d f).trans (hiff.mpr h)
 
 /-- Lebesgue almost-everywhere statements survive translation. -/
 theorem ae_translate {p : ℝ → Prop}
