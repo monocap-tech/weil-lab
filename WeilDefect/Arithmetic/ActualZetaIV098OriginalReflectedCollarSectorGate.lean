@@ -70,7 +70,12 @@ theorem neutralIV098Derivative_reflection_disjoint (x : ℝ) :
 theorem neutralIV098ReflectedPlateau_hasDerivAt (x : ℝ) :
     HasDerivAt (fun y : ℝ => neutralIV097Plateau (-y))
       (-neutralIV097PlateauDerivative (-x)) x := by
-  simpa using (neutralIV097Plateau_hasDerivAt (-x)).comp x (hasDerivAt_id x).neg
+  have hneg : HasDerivAt (fun y : ℝ => -y) (-1:ℝ) x := (hasDerivAt_id x).neg
+  have h := (neutralIV097Plateau_hasDerivAt (-x)).comp x hneg
+  change HasDerivAt (fun y : ℝ => neutralIV097Plateau (-y))
+    (neutralIV097PlateauDerivative (-x) * (-1)) x at h
+  rw [mul_neg_one] at h
+  exact h
 
 #print axioms neutralIV098Disjoint_norm_sq
 #print axioms neutralIV098Disjoint_integral_sq
@@ -86,8 +91,8 @@ theorem neutralIV098ReflectedPlateau_hasDerivAt (x : ℝ) :
 theorem neutralIV098Rho_pointwise_energy (a b : ℝ)
     (ha : 0 ≤ a) (hA : a ≤ 4000) (hb : 0 ≤ b) (hB : b ≤ 4000) :
     (a-b)^2 ≤ 4000*(a+b) := by
-  nlinarith [mul_nonneg a (sub_nonneg.mpr hA),
-    mul_nonneg b (sub_nonneg.mpr hB), mul_nonneg a b]
+  nlinarith [mul_nonneg ha (sub_nonneg.mpr hA),
+    mul_nonneg hb (sub_nonneg.mpr hB), mul_nonneg ha hb]
 
 theorem neutralIV098Schwartz_energy_upper :
     neutralIV096DerivativeEnergy neutralIV097Schwartz ≤ 8000 := by
@@ -112,6 +117,7 @@ theorem neutralIV098Schwartz_energy_upper :
     _ ≤ ∫ x : ℝ, 4000 * (A x + B x) := by
       apply integral_mono hd ((hA.add hB).const_mul _)
       intro x
+      change ‖deriv (neutralIV097Schwartz : ℝ → ℂ) x‖^2 ≤ 4000 * (A x + B x)
       rw [neutralIV097Schwartz_derivative, Complex.norm_real, Real.norm_eq_abs, sq_abs]
       have hD : neutralIV097PlateauDerivative x = A x - B x := by
         unfold neutralIV097PlateauDerivative A B
@@ -161,7 +167,10 @@ theorem neutralIV098Left_collars : neutralNF735InOriginalCollars neutralIV098Lef
 theorem neutralIV098Left_derivative (x : ℝ) :
     deriv (neutralIV098Left : ℝ → ℂ) x =
       -(neutralIV097PlateauDerivative (-x) : ℂ) := by
-  simpa using (neutralIV098ReflectedPlateau_hasDerivAt x).ofReal_comp.deriv
+  change deriv (fun y : ℝ => (neutralIV097Plateau (-y) : ℂ)) x =
+    -(neutralIV097PlateauDerivative (-x) : ℂ)
+  simpa only [Complex.ofReal_neg] using
+    (neutralIV098ReflectedPlateau_hasDerivAt x).ofReal_comp.deriv
 
 theorem neutralIV098Mass_integral (s : 𝓢(ℝ,ℂ)) :
     (∫ x : ℝ, ‖s x‖^2) = ‖s.toLp 2 volume‖^2 := by
@@ -253,7 +262,7 @@ theorem neutralIV098Pair_energy (u v : ℂ) :
         change ‖deriv (neutralIV098Left : ℝ → ℂ) x‖^2 =
           ‖deriv (neutralIV097Schwartz : ℝ → ℂ) (-x)‖^2
         rw [neutralIV098Left_derivative, neutralIV097Schwartz_derivative, norm_neg]
-      _ = _ := neutralIV098Reflection_integral _
+      _ = _ := neutralIV098Reflection_integral (fun x : ℝ => ‖p x‖^2)
   unfold neutralIV096DerivativeEnergy
   simp_rw [neutralIV098Pair_derivative]
   change (∫ x : ℝ, ‖u * p x + v * q x‖^2) =
