@@ -1,0 +1,89 @@
+name: F08-038 original native L2 strong continuity dense-transfer kernel
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_038/**'
+      - '.github/workflows/f08-038-native-L2-strong-continuity-dense-transfer-kernel.yml'
+permissions:
+  contents: read
+jobs:
+  genuine-original-L2-continuity-dense-transfer:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout frozen original IV023 research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Pin original research, actual predecessors and candidate theorem
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C candidate hash-object verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean)" = eecfe2a849fa79aa13810ede85e9ba625eba7777
+          test "$(git -C candidate hash-object verification/f08/f08_029/F08NativeL2PushforwardNorm.lean)" = 4da65f9b9df7cae6ea30a4a7f25d3e6c1606c294
+          test "$(git -C candidate hash-object verification/f08/f08_030/F08NativeFrequencyDilation.lean)" = 5c260b69f464f5793e095f9b5448c90f7984617f
+          test "$(git -C candidate hash-object verification/f08/f08_033/F08NativeFrequencyDilationIsometry.lean)" = 8b4055c065ab7987a01bf55143908d8cd77f0f23
+          test "$(git -C candidate hash-object verification/f08/f08_035/F08NativeDilationLinearIsometry.lean)" = 7038c5d23cecdef6cc3f6bca1d12548246e65bd7
+          test "$(git -C candidate hash-object verification/f08/f08_038/F08NativeL2ContinuityDenseTransfer.lean)" = 354922e7ed1727292f9ef41cf9b4f7d20f59a753
+          for x in f08_027/F08NativeFrequencyScalingMeasure.lean f08_029/F08NativeL2PushforwardNorm.lean f08_030/F08NativeFrequencyDilation.lean f08_033/F08NativeFrequencyDilationIsometry.lean f08_035/F08NativeDilationLinearIsometry.lean f08_038/F08NativeL2ContinuityDenseTransfer.lean; do
+            ! grep -Eq '\b(sorry|admit|unsafe)\b' "candidate/verification/f08/$x"
+          done
+          mkdir -p research/WeilDefect/Generated/F08
+          cp candidate/verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean research/WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean
+          cp candidate/verification/f08/f08_029/F08NativeL2PushforwardNorm.lean research/WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean
+          cp candidate/verification/f08/f08_030/F08NativeFrequencyDilation.lean research/WeilDefect/Generated/F08/NativeFrequencyDilation.lean
+          cp candidate/verification/f08/f08_033/F08NativeFrequencyDilationIsometry.lean research/WeilDefect/Generated/F08/NativeFrequencyDilationIsometry.lean
+          cp candidate/verification/f08/f08_035/F08NativeDilationLinearIsometry.lean research/WeilDefect/Generated/F08/NativeDilationLinearIsometry.lean
+          cp candidate/verification/f08/f08_038/F08NativeL2ContinuityDenseTransfer.lean research/WeilDefect/Generated/F08/NativeL2ContinuityDenseTransfer.lean
+      - name: Install original frozen Lean and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Build genuine source-native dense continuity implication and inspect axiom report
+        working-directory: research
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build WeilDefect.Generated.F08.NativeL2ContinuityDenseTransfer 2>&1 | tee f08-038-build.log
+          printf '%s\n' 'import WeilDefect.Generated.F08.NativeL2ContinuityDenseTransfer' '#print axioms WeilDefect.f08_038_nativeL2_tendsto_of_dense_core' > /tmp/f08-038-axioms.lean
+          lake env lean /tmp/f08-038-axioms.lean 2>&1 | tee f08-038-axioms.log
+          python3 - <<'PY'
+          import re,pathlib
+          s=pathlib.Path('f08-038-axioms.log').read_text()
+          p=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]"
+          ms=list(re.finditer(p,s,re.S))
+          assert len(ms)==1,('one declaration required',s)
+          assert not re.sub(p,'',s,flags=re.S).strip(),('unrecognized compiler output',s)
+          assert ms[0][1]=='f08_038_nativeL2_tendsto_of_dense_core',ms[0][1]
+          a={x.strip() for x in ms[0][2].split(',') if x.strip()}
+          assert a <= {'propext','Classical.choice','Quot.sound'},('nonstandard axioms',a)
+          print('F08-038 genuine original L2 dense continuity transfer: 1/1 standard-only axiom PASS')
+          PY
+      - name: Archive complete exact original source and actual Lean compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-038-original-L2-dense-transfer-compiler-evidence
+          path: |
+            research/f08-038-build.log
+            research/f08-038-axioms.log
+            research/WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean
+            research/WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean
+            research/WeilDefect/Generated/F08/NativeFrequencyDilation.lean
+            research/WeilDefect/Generated/F08/NativeFrequencyDilationIsometry.lean
+            research/WeilDefect/Generated/F08/NativeDilationLinearIsometry.lean
+            research/WeilDefect/Generated/F08/NativeL2ContinuityDenseTransfer.lean
+          if-no-files-found: ignore
