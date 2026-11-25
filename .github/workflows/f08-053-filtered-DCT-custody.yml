@@ -1,0 +1,108 @@
+name: F08-053 independently verify original filtered-DCT archive and 1 named axioms
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_053/**'
+      - '.github/workflows/f08-053-filtered-DCT-custody.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  independent-original-source-custody:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      F08_RUN: '45558756263'
+      F08_ARTIFACT: '14997077754'
+      F08_ARTIFACT_SHA: '3d85ff017e7172aa6c2a8bc143189c67a3c782805a75b035f04fcc6306c1368f'
+      F08_HEAD: 'a5f446460603740488e692ba7f5eeffeea637c73'
+    steps:
+      - name: Checkout independent F08-053 auditor
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout accepted pointwise source predecessor
+        uses: actions/checkout@v4
+        with:
+          ref: 987e1d9cfa89f296d69739d6202761985db36aaf
+          path: accepted
+      - name: Checkout exact frozen original research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Independently pin source blobs, Lean version and adversarial verifier controls
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C candidate hash-object verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean)" = f3ecfbf236898ca62baac18111595a06b2a9874f
+          test "$(git -C candidate hash-object verification/f08/f08_045/F08CompactSchwartzCommonScaledSupport.lean)" = 6fd895d4ae3cfa550fa0ed08f194ce299ea051b6
+          test "$(git -C candidate hash-object verification/f08/f08_046/F08OriginalSchwartzNormalizedDifferenceBounds.lean)" = 9212867e3c7594461d153777ad1c4db7c3693150
+          test "$(git -C candidate hash-object verification/f08/f08_048/F08OriginalSchwartzIntegrableSquareEnvelope.lean)" = 08b60de243f59503f33be0970600861d62f92e0d
+          test "$(git -C candidate hash-object verification/f08/f08_051/F08OriginalCompactSchwartzFilteredDCT.lean)" = e6d0da5a8e350e9f49bf4f10228f820492c5e83b
+          test "$(git -C accepted rev-parse HEAD)" = 987e1d9cfa89f296d69739d6202761985db36aaf
+          test "$(git -C accepted hash-object verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean)" = eecfe2a849fa79aa13810ede85e9ba625eba7777
+          test "$(git -C accepted hash-object verification/f08/f08_029/F08NativeL2PushforwardNorm.lean)" = 4da65f9b9df7cae6ea30a4a7f25d3e6c1606c294
+          test "$(git -C accepted hash-object verification/f08/f08_030/F08NativeFrequencyDilation.lean)" = 5c260b69f464f5793e095f9b5448c90f7984617f
+          test "$(git -C accepted hash-object verification/f08/f08_040/F08OriginalSchwartzDilationPointwise.lean)" = f728a7fc3c5528c7311b7ed8dc27b2f60e445f81
+          python3 -m py_compile candidate/verification/f08/f08_053/f08_053_independent_filtered_DCT_audit.py
+          python3 candidate/verification/f08/f08_053/f08_053_independent_filtered_DCT_audit.py --selftest
+      - name: Authenticate real successful producer run and immutable artifact metadata
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p f08-053-receipt
+          python3 - <<'PY'
+          import json,os,urllib.request
+          root=os.environ['GITHUB_API_URL']+'/repos/'+os.environ['GITHUB_REPOSITORY']
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json',
+                   'X-GitHub-Api-Version':'2022-11-28'}
+          def get(path):
+              with urllib.request.urlopen(urllib.request.Request(root+path,headers=headers),timeout=30) as response:
+                  return json.load(response)
+          run_id=int(os.environ['F08_RUN'])
+          artifact_id=int(os.environ['F08_ARTIFACT'])
+          run=get('/actions/runs/'+str(run_id))
+          assert run['status']=='completed' and run['conclusion']=='success'
+          assert run['head_sha']==os.environ['F08_HEAD']
+          assert run['head_repository']['full_name']=='monocap-tech/weil-lab'
+          assert run['name']=='F08-051 original compact-Schwartz filtered squared difference DCT kernel'
+          jobs=get('/actions/runs/'+str(run_id)+'/jobs')
+          assert any(j['conclusion']=='success' and
+              any(s['name']=='Compile original filtered squared difference DCT and strict named axiom'
+                  and s['conclusion']=='success' for s in j['steps'])
+              for j in jobs['jobs']), 'direct original Lean kernel step absent or failed'
+          artifact=get('/actions/artifacts/'+str(artifact_id))
+          assert artifact['workflow_run']['id']==run_id
+          assert artifact['workflow_run']['head_sha']==os.environ['F08_HEAD']
+          assert artifact['name']=='f08-051-original-Schwartz-filtered-DCT-compiler-evidence'
+          assert artifact['digest']=='sha256:'+os.environ['F08_ARTIFACT_SHA']
+          assert artifact['size_in_bytes']>0 and not artifact['expired']
+          info={'producer_commit':os.environ['F08_HEAD'], 'producer_run':run_id,
+                'artifact_id':artifact_id, 'sha256':os.environ['F08_ARTIFACT_SHA'],
+                'producer_success':True, 'direct_compiler_and_axioms_success':True}
+          with open('f08-053-receipt/producer-metadata.json','w') as f:
+              json.dump(info,f,sort_keys=True,indent=2)
+          print('F08-053 authenticated actual original direct F08-051 producer and immutable artifact')
+          PY
+      - name: Download and independently audit actual entire original compiler archive
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$F08_ARTIFACT/zip" -o f08-053-receipt/original-producer.zip
+          echo "$F08_ARTIFACT_SHA  f08-053-receipt/original-producer.zip" | sha256sum -c -
+          python3 candidate/verification/f08/f08_053/f08_053_independent_filtered_DCT_audit.py --archive f08-053-receipt/original-producer.zip --producer-metadata f08-053-receipt/producer-metadata.json --out f08-053-receipt/independent-filtered-DCT.json
+      - name: Archive independent source-only custody receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-053-independent-original-filtered-DCT-custody
+          path: |
+            f08-053-receipt/producer-metadata.json
+            f08-053-receipt/independent-filtered-DCT.json
+          if-no-files-found: ignore
