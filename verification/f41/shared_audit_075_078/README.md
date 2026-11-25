@@ -1,0 +1,3 @@
+# Four-row independent archive custody (source only)
+
+Prepared for F41-058/060/062/064; producer run 45519854673 at 1a75e9234911d4a728a98b2f46f88c8afbdcd524. The template is intentionally outside .github/workflows and has invalid artifact/digest placeholders. Do not activate until overall producer success, each exact artifact identity, and external SHA256 pins are verified. Recheck run and head on activation. Each job independently verifies its own ZIP and source bindings, nine named axiom lines and four negative controls; separate receipts. No new Lean in audit. The predecessor-frontier fields of individual receipts are conditional until the entire contiguous prefix is accepted. No hosted tests yet. No global analytic H/V, F42 or RH promotion.
