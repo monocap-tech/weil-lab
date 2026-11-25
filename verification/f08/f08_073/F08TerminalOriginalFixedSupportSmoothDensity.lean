@@ -40,7 +40,7 @@ theorem f08_073_original_fixedSupport_smooth_approx
       (neutralLogWeightedL2 d) (fun n => (f08_017_shrinkingBump n).rOut)
       (f08_068_weightedSmoothing_tendsto d)
       f08_017_shrinkingBump_radius_tendsto_zero
-      (a - b) (sub_pos.mpr hb) (ε / 2) he
+      (a - b) (ε / 2) (sub_pos.mpr hb) he
   let φ := f08_017_shrinkingBump n
   have hc : b + φ.rOut < a := by
     change (f08_017_shrinkingBump n).rOut < a - b at hn
