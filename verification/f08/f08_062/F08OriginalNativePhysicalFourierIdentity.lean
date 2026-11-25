@@ -37,7 +37,9 @@ theorem f08_062_originalPhysicalDilation_fourier
       (f08_060_originalPhysicalDilation_supported a lam hlam f hf)
   have hd : (d : ℝ → ℂ) =ᵐ[volume] z • (fun x : ℝ => f (s * x)) := by
     have H := f08_030_nativeFrequencyDilation_ae s (ne_of_gt hs) f
-    simpa only [d, f08_060_originalPhysicalDilation, z, abs_of_pos hs, Pi.smul_apply] using H
+    filter_upwards [H] with x hx
+    change f08_030_nativeFrequencyDilation s (ne_of_gt hs) f x = z • f (s * x)
+    simpa only [z, abs_of_pos hs] using hx
   have hsc : Real.sqrt s * lam = Real.sqrt lam := by
     dsimp [s]
     rw [Real.sqrt_inv]
@@ -49,8 +51,15 @@ theorem f08_062_originalPhysicalDilation_fourier
   have hordinary (xi : ℝ) :
       𝓕 (d : ℝ → ℂ) xi =
         (Complex.ofReal (Real.sqrt lam)) • 𝓕 (f : ℝ → ℂ) (lam * xi) := by
-    rw [Real.fourier_congr_ae hd xi, fourier_smul]
-    change z • 𝓕 (fun x : ℝ => f (s * x)) xi = _
+    rw [Real.fourier_congr_ae hd xi]
+    have hmul : 𝓕 (z • (fun x : ℝ => f (s * x))) xi =
+        z • 𝓕 (fun x : ℝ => f (s * x)) xi := by
+      rw [Real.fourier_real_eq_integral_exp_smul, Real.fourier_real_eq_integral_exp_smul, ← integral_smul]
+      apply integral_congr_ae
+      filter_upwards [] with x
+      simp only [Pi.smul_apply, smul_eq_mul]
+      ring
+    rw [hmul]
     rw [f08_060_originalFourier_comp_mul s hs f xi]
     have hsi : s⁻¹ = lam := by simp [s]
     rw [hsi]

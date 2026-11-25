@@ -44,7 +44,7 @@ jobs:
           cp candidate/verification/f08/f08_035/F08NativeDilationLinearIsometry.lean research/WeilDefect/Generated/F08/NativeDilationLinearIsometry.lean
           cp candidate/verification/f08/f08_060/F08OriginalPhysicalDilationScaling.lean research/WeilDefect/Generated/F08/OriginalPhysicalDilationScaling.lean
           test "$(git -C research hash-object WeilDefect/Arithmetic/ActualZetaCorrelationFourierAgreement.lean)" = 60453bd214c43feedb0fa64d74a15bd452e48998
-          test "$(git -C candidate hash-object verification/f08/f08_062/F08OriginalNativePhysicalFourierIdentity.lean)" = 35ae9188922499efbf339dd455e7c6f4a2a89a0e
+          test "$(git -C candidate hash-object verification/f08/f08_062/F08OriginalNativePhysicalFourierIdentity.lean)" = 11c535117029f3ecb9d72af56d1671e94e9ba130
           ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_062/F08OriginalNativePhysicalFourierIdentity.lean
           cp candidate/verification/f08/f08_062/F08OriginalNativePhysicalFourierIdentity.lean research/WeilDefect/Generated/F08/OriginalNativePhysicalFourierIdentity.lean
       - name: Install original frozen Lean and Mathlib
