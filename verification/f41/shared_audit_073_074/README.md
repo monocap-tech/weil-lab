@@ -1,0 +1,3 @@
+# Independent shared producer custody: rows 73–74
+
+F41-054 and F41-056 run separate audit jobs against successful shared producer 45415416844 at 72932baa40a7a9f7a0929879fda3b634995b78cf. Both outer digests were independently computed from downloaded ZIP bytes; both ZIP CRCs, generated source hashes, and nine named standard-only axiom lines per row were checked locally. Each hosted job separately authenticates its own artifact, runs its own negative controls and preserves its own receipt. The accepted frontier remains 73/242 until both jobs pass and both producer and audit PRs merge. Row 74 receipt's preceding-frontier field is conditional on acceptance of row 73. No analytic H/V, F42 or RH promotion.
