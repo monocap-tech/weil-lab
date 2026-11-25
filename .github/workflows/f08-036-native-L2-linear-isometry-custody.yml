@@ -1,0 +1,94 @@
+name: F08-036 independently verify original native complex L2 linear isometry archive/source/5 axioms
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_036/**'
+      - '.github/workflows/f08-036-native-L2-linear-isometry-custody.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  independent-original-source-custody:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      F08_RUN: '45535097713'
+      F08_ARTIFACT: '14986788427'
+      F08_ARTIFACT_SHA: '866bfe1650f8afe85d1b5011983004d44e5233c8ef7f0c3e853a900e86ba6d96'
+      F08_HEAD: '999911a67652f60448b9b0d2d1bcb61d46abf21a'
+    steps:
+      - name: Checkout independent F08-036 auditor
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout exact frozen original research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Independently pin source blobs, Lean version and adversarial verifier controls
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C candidate hash-object verification/f08/f08_035/F08NativeDilationLinearIsometry.lean)" = 7038c5d23cecdef6cc3f6bca1d12548246e65bd7
+          python3 -m py_compile candidate/verification/f08/f08_036/f08_036_independent_native_linear_isometry_audit.py
+          python3 candidate/verification/f08/f08_036/f08_036_independent_native_linear_isometry_audit.py --selftest
+      - name: Authenticate real successful producer run and immutable artifact metadata
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p f08-036-receipt
+          python3 - <<'PY'
+          import json,os,urllib.request
+          root=os.environ['GITHUB_API_URL']+'/repos/'+os.environ['GITHUB_REPOSITORY']
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json',
+                   'X-GitHub-Api-Version':'2022-11-28'}
+          def get(path):
+              with urllib.request.urlopen(urllib.request.Request(root+path,headers=headers),timeout=30) as response:
+                  return json.load(response)
+          run_id=int(os.environ['F08_RUN'])
+          artifact_id=int(os.environ['F08_ARTIFACT'])
+          run=get('/actions/runs/'+str(run_id))
+          assert run['status']=='completed' and run['conclusion']=='success'
+          assert run['head_sha']==os.environ['F08_HEAD']
+          assert run['head_repository']['full_name']=='monocap-tech/weil-lab'
+          assert run['name']=='F08-035 original complex L2 linear isometry and dense-approximation estimate Lean kernel'
+          jobs=get('/actions/runs/'+str(run_id)+'/jobs')
+          assert any(j['conclusion']=='success' and
+              any(s['name']=='Genuine native complex L2 linear isometry and approximation build with five named axioms'
+                  and s['conclusion']=='success' for s in j['steps'])
+              for j in jobs['jobs']), 'direct original Lean kernel step absent or failed'
+          artifact=get('/actions/artifacts/'+str(artifact_id))
+          assert artifact['workflow_run']['id']==run_id
+          assert artifact['workflow_run']['head_sha']==os.environ['F08_HEAD']
+          assert artifact['name']=='f08-035-native-linear-isometry-compiler-evidence'
+          assert artifact['digest']=='sha256:'+os.environ['F08_ARTIFACT_SHA']
+          assert artifact['size_in_bytes']>0 and not artifact['expired']
+          info={'producer_commit':os.environ['F08_HEAD'], 'producer_run':run_id,
+                'artifact_id':artifact_id, 'sha256':os.environ['F08_ARTIFACT_SHA'],
+                'producer_success':True, 'direct_compiler_and_axioms_success':True}
+          with open('f08-036-receipt/producer-metadata.json','w') as f:
+              json.dump(info,f,sort_keys=True,indent=2)
+          print('F08-036 authenticated original direct F08-035 producer and immutable artifact')
+          PY
+      - name: Download and independently audit actual entire original compiler archive
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$F08_ARTIFACT/zip" -o f08-036-receipt/original-producer.zip
+          echo "$F08_ARTIFACT_SHA  f08-036-receipt/original-producer.zip" | sha256sum -c -
+          python3 candidate/verification/f08/f08_036/f08_036_independent_native_linear_isometry_audit.py --archive f08-036-receipt/original-producer.zip --producer-metadata f08-036-receipt/producer-metadata.json --out f08-036-receipt/independent-native-linear-isometry.json
+      - name: Archive independent source-only custody receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-036-independent-original-native-L2-linear-isometry
+          path: |
+            f08-036-receipt/producer-metadata.json
+            f08-036-receipt/independent-native-linear-isometry.json
+          if-no-files-found: ignore
