@@ -1,0 +1,3 @@
+# F08-074 — Independent terminal density custody
+
+Verify F08-073 producer run 45651274866 and immutable ZIP, 37 exact generated source blobs, six original research pins, 39 archive entries, 9068 build jobs, one strict named axiom report, four negative controls, and three predecessor custody receipts' hosted metadata. No new native compiler run or mathematical promotion; signed Weil continuity/transfer remains outstanding.
