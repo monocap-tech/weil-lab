@@ -6,7 +6,7 @@ namespace WeilDefect
 noncomputable section
 
 open MeasureTheory
-open scoped ENNReal
+open scoped ENNReal SchwartzMap
 
 /-!
 F08-037: an explicit compactly supported Schwartz dense class in the
