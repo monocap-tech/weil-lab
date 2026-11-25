@@ -1,0 +1,2298 @@
+{
+  "schema": "weil-lineage-reconciliation/v2",
+  "repository": "monocap-tech/weil-lab",
+  "date": "2026-11-25",
+  "scope": [
+    {
+      "root_pr": 167,
+      "size": 36
+    },
+    {
+      "root_pr": 790,
+      "size": 35
+    },
+    {
+      "root_pr": 975,
+      "size": 33
+    },
+    {
+      "root_pr": 793,
+      "size": 17
+    }
+  ],
+  "rules": {
+    "closure": "Live head SHA must match this manifest and a live child head must contain it (ahead or identical).",
+    "retention": "Divergent heads and terminal tips stay open; all source branches remain.",
+    "mathematics": "Administrative closure does not discharge mathematical obligations."
+  },
+  "summary": {
+    "total": 121,
+    "candidates": 104,
+    "divergent": 8,
+    "tips": 9
+  },
+  "pull_requests": [
+    {
+      "number": 167,
+      "title": "PS01: scoped physical difference-energy formulation and signed P0/P1 replay",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/167",
+      "head_ref": "research/rpb108-ps01-physical-difference-form",
+      "head_sha": "17370f1518e1cf079bdf2b901fbb985e4e30c74b",
+      "base_ref": "research/rpb108-route-consolidation",
+      "base_sha": "4561d7cc538fdb82f73dceb3db755800009b818b",
+      "children": [
+        {
+          "parent": 167,
+          "child": 168,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 168,
+      "title": "PS02: original supported edge strip proves two-sided parity non-order",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/168",
+      "head_ref": "research/rpb108-ps02-edge-reflection",
+      "head_sha": "085277b5781a08366f76cbc76f7635bf4332d33e",
+      "base_ref": "research/rpb108-ps01-physical-difference-form",
+      "base_sha": "17370f1518e1cf079bdf2b901fbb985e4e30c74b",
+      "children": [
+        {
+          "parent": 168,
+          "child": 169,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 169,
+      "title": "PS03: entire original signed two-edge carrier is uniformly positive",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/169",
+      "head_ref": "research/rpb108-ps03-edge-coercivity",
+      "head_sha": "3fd8b740a398a63e0b7b95fb1566f1d6ca1f1316",
+      "base_ref": "research/rpb108-ps02-edge-reflection",
+      "base_sha": "085277b5781a08366f76cbc76f7635bf4332d33e",
+      "children": [
+        {
+          "parent": 169,
+          "child": 170,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 170,
+      "title": "PS04: original edge/interior coupling bounded but noncompact in physical L2",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/170",
+      "head_ref": "research/rpb108-ps04-edge-schur-coupling",
+      "head_sha": "3e06292da2a2bf53d54c6750c7c912d76ed665ab",
+      "base_ref": "research/rpb108-ps03-edge-coercivity",
+      "base_sha": "3fd8b740a398a63e0b7b95fb1566f1d6ca1f1316",
+      "children": [
+        {
+          "parent": 170,
+          "child": 171,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 171,
+      "title": "PS05: original edge inverse regularizes noncompact seam into compact energy-dual Schur",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/171",
+      "head_ref": "research/rpb108-ps05-energy-dual-compactness",
+      "head_sha": "b266e793853003bd37203ee9e989cdc8ee013842",
+      "base_ref": "research/rpb108-ps04-edge-schur-coupling",
+      "base_sha": "3e06292da2a2bf53d54c6750c7c912d76ed665ab",
+      "children": [
+        {
+          "parent": 171,
+          "child": 172,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 172,
+      "title": "PS06: original Weil spectral form-domain stable additive edge/interior partition",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/172",
+      "head_ref": "research/rpb108-ps06-form-domain-partition",
+      "head_sha": "0f9b8e13446044b810913fda437ebdee2afba14b",
+      "base_ref": "research/rpb108-ps05-energy-dual-compactness",
+      "base_sha": "b266e793853003bd37203ee9e989cdc8ee013842",
+      "children": [
+        {
+          "parent": 172,
+          "child": 173,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 173,
+      "title": "PS07: original signed quadratic IMS isolates noncompact log2 translation and compact graph remainder",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/173",
+      "head_ref": "research/rpb108-ps07-ims-localization",
+      "head_sha": "4fc4ed0024de44f9d1b3c40094b8c8a0dc42d09a",
+      "base_ref": "research/rpb108-ps06-form-domain-partition",
+      "base_sha": "0f9b8e13446044b810913fda437ebdee2afba14b",
+      "children": [
+        {
+          "parent": 173,
+          "child": 174,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 174,
+      "title": "PS08: quantitative true signed graph-Galerkin residual exposes astronomic rank method limit",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/174",
+      "head_ref": "research/rpb108-ps08-quantitative-galerkin",
+      "head_sha": "a9101f8a88350b2d4d249fd8754affc32d049e5f",
+      "base_ref": "research/rpb108-ps07-ims-localization",
+      "base_sha": "4fc4ed0024de44f9d1b3c40094b8c8a0dc42d09a",
+      "children": [
+        {
+          "parent": 174,
+          "child": 175,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 175,
+      "title": "PS09: original log3-log9 IMS triad has exact 3-channel fibers and sharper essential norm",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/175",
+      "head_ref": "research/rpb108-ps09-prime3-triad",
+      "head_sha": "d044144ff0a4d29d93487c893beccd0f35e6d90d",
+      "base_ref": "research/rpb108-ps08-quantitative-galerkin",
+      "base_sha": "a9101f8a88350b2d4d249fd8754affc32d049e5f",
+      "children": [
+        {
+          "parent": 175,
+          "child": 176,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 176,
+      "title": "PS10: entire original seven-prime IMS defect has exact 13-channel/5-mode fiber and sharp norm",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/176",
+      "head_ref": "research/rpb108-ps10-full-prime-channel-graph",
+      "head_sha": "f79f59b67f55c0cbbdd5274508b98c4c8bd8f65d",
+      "base_ref": "research/rpb108-ps09-prime3-triad",
+      "base_sha": "d044144ff0a4d29d93487c893beccd0f35e6d90d",
+      "children": [
+        {
+          "parent": 176,
+          "child": 177,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 177,
+      "title": "PS11: original energy inverse converges geometrically; exact five-channel inverse Gram retains leakage",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/177",
+      "head_ref": "research/rpb108-ps11-energy-inverse-channel-response",
+      "head_sha": "81eaed152cfc13b5ad9e9751a65558f9b62498d7",
+      "base_ref": "research/rpb108-ps10-full-prime-channel-graph",
+      "base_sha": "f79f59b67f55c0cbbdd5274508b98c4c8bd8f65d",
+      "children": [
+        {
+          "parent": 177,
+          "child": 178,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 178,
+      "title": "PS12: thin-edge original arch IMS Hilbert-Schmidt bound gives complete signed graph localization frame",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/178",
+      "head_ref": "research/rpb108-ps12-arch-ims-hs-frame",
+      "head_sha": "cb3cf6df03ac9ab61d12b83f41dbbed087e9c487",
+      "base_ref": "research/rpb108-ps11-energy-inverse-channel-response",
+      "base_sha": "81eaed152cfc13b5ad9e9751a65558f9b62498d7",
+      "children": [
+        {
+          "parent": 178,
+          "child": 179,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 179,
+      "title": "PS13: original Weil local-form positivity and finite index cap",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/179",
+      "head_ref": "research/rpb108-ps13-interior-morse-local-coercivity",
+      "head_sha": "e375b093f911b94d2404e5ecbab2e6465ac4ab3c",
+      "base_ref": "research/rpb108-ps12-arch-ims-hs-frame",
+      "base_sha": "cb3cf6df03ac9ab61d12b83f41dbbed087e9c487",
+      "children": [
+        {
+          "parent": 179,
+          "child": 180,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 180,
+      "title": "PS14: original unshifted signed Weil form strictly positive on full 13-channel source carrier",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/180",
+      "head_ref": "research/rpb108-ps14-13channel-original-Q",
+      "head_sha": "8b87a5d019e0c41af99e194722cc7e3d73457f08",
+      "base_ref": "research/rpb108-ps13-interior-morse-local-coercivity",
+      "base_sha": "e375b093f911b94d2404e5ecbab2e6465ac4ab3c",
+      "children": [
+        {
+          "parent": 180,
+          "child": 181,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 181,
+      "title": "PS15: full original sharp source-domain split and exact signed complementary Schur",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/181",
+      "head_ref": "research/rpb108-ps15-sharp-source-schur",
+      "head_sha": "236245be632fcc88781d965d5370f70a6f38c307",
+      "base_ref": "research/rpb108-ps14-13channel-original-Q",
+      "base_sha": "8b87a5d019e0c41af99e194722cc7e3d73457f08",
+      "children": [
+        {
+          "parent": 181,
+          "child": 182,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 182,
+      "title": "PS16: original signed complementary Schur high-energy positivity and exact low-mode gap ceilings",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/182",
+      "head_ref": "research/rpb108-ps16-schur-gap-calibration",
+      "head_sha": "f56eba3ba1d60d9366046879ad745e6759714220",
+      "base_ref": "research/rpb108-ps15-sharp-source-schur",
+      "base_sha": "236245be632fcc88781d965d5370f70a6f38c307",
+      "children": [
+        {
+          "parent": 182,
+          "child": 183,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 183,
+      "title": "PS17: true original signed complementary low/high Feshbach with quantitative high-response bounds",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/183",
+      "head_ref": "research/rpb108-ps17-low-high-feshbach",
+      "head_sha": "b216b80330870bd739d800f4bb62e81f394bf536",
+      "base_ref": "research/rpb108-ps16-schur-gap-calibration",
+      "base_sha": "f56eba3ba1d60d9366046879ad745e6759714220",
+      "children": [
+        {
+          "parent": 183,
+          "child": 184,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 184,
+      "title": "PS18: exponential spectral rank barrier and true positive prime-quiet complementary Schur window",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/184",
+      "head_ref": "research/rpb108-ps18-spectral-rank-obstruction",
+      "head_sha": "ae035dd44639664d2ea4c94f20089c3d57a9b600",
+      "base_ref": "research/rpb108-ps17-low-high-feshbach",
+      "base_sha": "b216b80330870bd739d800f4bb62e81f394bf536",
+      "children": [
+        {
+          "parent": 184,
+          "child": 185,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 185,
+      "title": "PS19: genuine coupled log2 source-eliminated complementary Schur coercivity on four physical windows",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/185",
+      "head_ref": "research/rpb108-ps19-coupled-prime-quiet-fourblock",
+      "head_sha": "697253386e876b44fd58f227c50c3ec5322df0c1",
+      "base_ref": "research/rpb108-ps18-spectral-rank-obstruction",
+      "base_sha": "ae035dd44639664d2ea4c94f20089c3d57a9b600",
+      "children": [
+        {
+          "parent": 185,
+          "child": 186,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 186,
+      "title": "PS20: source-aware six-window signed positivity and nested Schur on whole remainder",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/186",
+      "head_ref": "research/rpb108-ps20-sixwindow-nested-schur",
+      "head_sha": "56fad8f9a09ef33b84ca744cb886902180070af5",
+      "base_ref": "research/rpb108-ps19-coupled-prime-quiet-fourblock",
+      "base_sha": "697253386e876b44fd58f227c50c3ec5322df0c1",
+      "children": [
+        {
+          "parent": 186,
+          "child": 187,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 187,
+      "title": "PS21: nested original signed Schur positivity on residual pair and coupled eight-window carrier",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/187",
+      "head_ref": "research/rpb108-ps21-eight-window",
+      "head_sha": "9f56e19cbca6dbf0bb2b08fade150ceab1d45b71",
+      "base_ref": "research/rpb108-ps20-sixwindow-nested-schur",
+      "base_sha": "56fad8f9a09ef33b84ca744cb886902180070af5",
+      "children": [
+        {
+          "parent": 187,
+          "child": 188,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 188,
+      "title": "PS22: sharpen eight-window signed pivot and certify complete original residual high-energy sector",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/188",
+      "head_ref": "research/rpb108-ps22-eightwindow-residual",
+      "head_sha": "5032bfbadae13f3fe6f4f69c3fa83d0f6dc36b51",
+      "base_ref": "research/rpb108-ps21-eight-window",
+      "base_sha": "9f56e19cbca6dbf0bb2b08fade150ceab1d45b71",
+      "children": [
+        {
+          "parent": 188,
+          "child": 189,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 189,
+      "title": "PS23: absorb genuine noncompact Carleman seams into true ten-window signed Schur positivity",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/189",
+      "head_ref": "research/rpb108-ps23-carleman-seam-collars",
+      "head_sha": "516b33a8473d3cfc3cc6620c947ed8571c0ba437",
+      "base_ref": "research/rpb108-ps22-eightwindow-residual",
+      "base_sha": "5032bfbadae13f3fe6f4f69c3fa83d0f6dc36b51",
+      "children": [
+        {
+          "parent": 189,
+          "child": 190,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 190,
+      "title": "PS24: second-generation original noncompact Carleman seam absorption and 12-window positivity",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/190",
+      "head_ref": "research/rpb108-ps24-second-generation-seam",
+      "head_sha": "b8a7074dcfc42a42d9e3b4b82df7f2dbf6d9d83e",
+      "base_ref": "research/rpb108-ps23-carleman-seam-collars",
+      "base_sha": "516b33a8473d3cfc3cc6620c947ed8571c0ba437",
+      "children": [
+        {
+          "parent": 190,
+          "child": 191,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 191,
+      "title": "PS25: nonshrinking finite-scale twelve-window signed Schur via exact rational Z-majorant",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/191",
+      "head_ref": "research/rpb108-ps25-finite-scale-matrix",
+      "head_sha": "722763123bf218f7af0cbbea29b76560a8928e26",
+      "base_ref": "research/rpb108-ps24-second-generation-seam",
+      "base_sha": "b8a7074dcfc42a42d9e3b4b82df7f2dbf6d9d83e",
+      "children": [
+        {
+          "parent": 191,
+          "child": 192,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 192,
+      "title": "PS26: even-pole retention required for global signed Schur matrices",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/192",
+      "head_ref": "research/rpb108-ps26-even-pole-global-obstruction",
+      "head_sha": "dd89f7f3f2a7f347318fc3f51ea2c84c41cdbb54",
+      "base_ref": "research/rpb108-ps25-finite-scale-matrix",
+      "base_sha": "722763123bf218f7af0cbbea29b76560a8928e26",
+      "children": [
+        {
+          "parent": 192,
+          "child": 194,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 194,
+      "title": "PS27: original source-first even-pole Woodbury and effective parity carrier",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/194",
+      "head_ref": "research/rpb108-ps27-pole-preserving-woodbury",
+      "head_sha": "2ce131f73c9154d1c322308847f55c800505eba6",
+      "base_ref": "research/rpb108-ps26-even-pole-global-obstruction",
+      "base_sha": "dd89f7f3f2a7f347318fc3f51ea2c84c41cdbb54",
+      "children": [
+        {
+          "parent": 194,
+          "child": 195,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 195,
+      "title": "PS28: original positive even source resolvent and effective pole domination",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/195",
+      "head_ref": "research/rpb108-ps28-positive-resolvent-effective-pole",
+      "head_sha": "dfc20fde68a867c7ae3ddee230abb7aa2b39bc2e",
+      "base_ref": "research/rpb108-ps27-pole-preserving-woodbury",
+      "base_sha": "2ce131f73c9154d1c322308847f55c800505eba6",
+      "children": [
+        {
+          "parent": 195,
+          "child": 196,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 196,
+      "title": "PS29: original even Schur ground-mode simplicity and exact pole-angle threshold",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/196",
+      "head_ref": "research/rpb108-ps29-even-spectral-ground-mode",
+      "head_sha": "1306f9319da91e658589d09170180b2f829e5389",
+      "base_ref": "research/rpb108-ps28-positive-resolvent-effective-pole",
+      "base_sha": "dfc20fde68a867c7ae3ddee230abb7aa2b39bc2e",
+      "children": [
+        {
+          "parent": 196,
+          "child": 199,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 199,
+      "title": "PS30: original even Schur ground-state jump form and spectral-gap obstruction",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/199",
+      "head_ref": "research/rpb108-ps30-ground-state-gap",
+      "head_sha": "31fb86698aeadb87a85c125d506b57cb8b23cdc9",
+      "base_ref": "research/rpb108-ps29-even-spectral-ground-mode",
+      "base_sha": "1306f9319da91e658589d09170180b2f829e5389",
+      "children": [
+        {
+          "parent": 199,
+          "child": 200,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 200,
+      "title": "PS31: original even reflected digamma layers and finite graph spectral-gap gate",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/200",
+      "head_ref": "research/rpb108-ps31-even-multiscale-gap-criterion",
+      "head_sha": "e8f5b8fc4c1a8d1e11ca3e6d520338865a02fff8",
+      "base_ref": "research/rpb108-ps30-ground-state-gap",
+      "base_sha": "31fb86698aeadb87a85c125d506b57cb8b23cdc9",
+      "children": [
+        {
+          "parent": 200,
+          "child": 201,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 201,
+      "title": "PS32: original even ground Fourier mass and effective-pole overlap certificate",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/201",
+      "head_ref": "research/rpb108-ps32-original-ground-fourier-mass",
+      "head_sha": "5f053376a62c5ea170988f9bece83bb4ad882e30",
+      "base_ref": "research/rpb108-ps31-even-multiscale-gap-criterion",
+      "base_sha": "e8f5b8fc4c1a8d1e11ca3e6d520338865a02fff8",
+      "children": [
+        {
+          "parent": 201,
+          "child": 202,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 202,
+      "title": "PS33: optimized true original even ground/effective-pole Fourier overlap",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/202",
+      "head_ref": "research/rpb108-ps33-optimized-original-ground-pole-overlap",
+      "head_sha": "78a15d87c6864d702b1459fcafc89e4ad7334d7f",
+      "base_ref": "research/rpb108-ps32-original-ground-fourier-mass",
+      "base_sha": "5f053376a62c5ea170988f9bece83bb4ad882e30",
+      "children": [
+        {
+          "parent": 202,
+          "child": 203,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 203,
+      "title": "PS34: original prime-quiet even Schur >1/5 and true ground mass outside a physical interval",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/203",
+      "head_ref": "research/rpb108-ps34-prime-quiet-ground-mass",
+      "head_sha": "71a0186093ba4f5adc3a62378a48b4d88a04c197",
+      "base_ref": "research/rpb108-ps33-optimized-original-ground-pole-overlap",
+      "base_sha": "78a15d87c6864d702b1459fcafc89e4ad7334d7f",
+      "children": [
+        {
+          "parent": 203,
+          "child": 204,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 204,
+      "title": "PS35: actual original even ground positive mass in sixteen physical cells",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/204",
+      "head_ref": "research/rpb108-ps35-original-ground-positive-cell-mass",
+      "head_sha": "aa5b7b2927fe7abe2c208146490cc293e9baebd2",
+      "base_ref": "research/rpb108-ps34-prime-quiet-ground-mass",
+      "base_sha": "71a0186093ba4f5adc3a62378a48b4d88a04c197",
+      "children": [
+        {
+          "parent": 204,
+          "child": 205,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 205,
+      "title": "PS36: mandatory original even spectral-index/remainder/pole and full odd operator gates",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/205",
+      "head_ref": "research/rpb108-ps36-typed-spectral-acceptance",
+      "head_sha": "b50042dce4712039e76d4291eed9b2fcd6d5280a",
+      "base_ref": "research/rpb108-ps35-original-ground-positive-cell-mass",
+      "base_sha": "aa5b7b2927fe7abe2c208146490cc293e9baebd2",
+      "children": [],
+      "disposition": "retain_terminal_tip"
+    },
+    {
+      "number": 790,
+      "title": "CP001 — Cross-projection invariants and falsifiable arithmetic–spectral compatibility interface",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/790",
+      "head_ref": "research/cp001-cross-projection-compatibility",
+      "head_sha": "0162c2de8faaf495b57246ab5387ee704d5c3913",
+      "base_ref": "main",
+      "base_sha": "a117b3cf39d52643a2f33826fcbf8725cb5f86cf",
+      "children": [
+        {
+          "parent": 790,
+          "child": 796,
+          "status": "diverged",
+          "behind": 1,
+          "error": false
+        }
+      ],
+      "disposition": "retain_divergent_head"
+    },
+    {
+      "number": 793,
+      "title": "PI001 — Potential Interface: original mixed Weil correlation → Masullo norm-one trace-test domain",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/793",
+      "head_ref": "research/pi001-potential-interface-masullo-norm-pullback",
+      "head_sha": "f939c51ca81f8dd762238eafebd00b812cbe88b1",
+      "base_ref": "main",
+      "base_sha": "a117b3cf39d52643a2f33826fcbf8725cb5f86cf",
+      "children": [
+        {
+          "parent": 793,
+          "child": 798,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 796,
+      "title": "CP002 — Exact original n=9 prime-compression graph and conditional zero-side tail gate",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/796",
+      "head_ref": "research/cp002-exact-prime-compression-and-zero-tail",
+      "head_sha": "20757619b801050df42933a90846605df1a0a34d",
+      "base_ref": "research/cp001-cross-projection-compatibility",
+      "base_sha": "0162c2de8faaf495b57246ab5387ee704d5c3913",
+      "children": [
+        {
+          "parent": 796,
+          "child": 799,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 798,
+      "title": "PI002 — Q Tamagawa norm/Mellin dictionary and genuine n=9 prime-active mixed trace test",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/798",
+      "head_ref": "research/pi002-idele-norm-mellin-haar-dictionary",
+      "head_sha": "342ab3493fcc701e2208bb327791f276d15be9b5",
+      "base_ref": "research/pi001-potential-interface-masullo-norm-pullback",
+      "base_sha": "f939c51ca81f8dd762238eafebd00b812cbe88b1",
+      "children": [
+        {
+          "parent": 798,
+          "child": 801,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 799,
+      "title": "CP003 — Exact frozen n9 prime burden and unconditional zero-count tail certificate interface",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/799",
+      "head_ref": "research/cp003-source-prime-and-explicit-zero-tail",
+      "head_sha": "b2fac12fefb1d24cb74d6c62f46968360308f6fa",
+      "base_ref": "research/cp002-exact-prime-compression-and-zero-tail",
+      "base_sha": "20757619b801050df42933a90846605df1a0a34d",
+      "children": [
+        {
+          "parent": 799,
+          "child": 803,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 801,
+      "title": "PI003 — Exact Masullo p=3 geometric local shell = genuine IV011 n=9 signed prime coefficient",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/801",
+      "head_ref": "research/pi003-exact-local-p3-prime9-trace-dictionary",
+      "head_sha": "896fd002441cc9a8a42ceb705f9354d04ca2bd14",
+      "base_ref": "research/pi002-idele-norm-mellin-haar-dictionary",
+      "base_sha": "342ab3493fcc701e2208bb327791f276d15be9b5",
+      "children": [
+        {
+          "parent": 801,
+          "child": 804,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 803,
+      "title": "CP004 — Finite verified-height cosine-moment dictionary and source-separated spectral falsifier",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/803",
+      "head_ref": "research/cp004-verified-height-and-comparison-gate",
+      "head_sha": "533a76b9801eafda0501f0667b596a429098f07f",
+      "base_ref": "research/cp003-source-prime-and-explicit-zero-tail",
+      "base_sha": "b2fac12fefb1d24cb74d6c62f46968360308f6fa",
+      "children": [
+        {
+          "parent": 803,
+          "child": 807,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 804,
+      "title": "PI004 — Exact real-place trace kernel ↔ signed digamma/Gamma distribution on mixed Weil tests",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/804",
+      "head_ref": "research/pi004-archimedean-gamma-local-trace-dictionary",
+      "head_sha": "20835ac8d1eed9012c9dad71622f66ae063dcbe8",
+      "base_ref": "research/pi003-exact-local-p3-prime9-trace-dictionary",
+      "base_sha": "896fd002441cc9a8a42ceb705f9354d04ca2bd14",
+      "children": [
+        {
+          "parent": 804,
+          "child": 809,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 807,
+      "title": "CP005 — Formal finite-zero evidence adapter and rigorous million-height spectral error budget",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/807",
+      "head_ref": "research/cp005-certified-zero-roster-adapter",
+      "head_sha": "2b7c3bf905780068ee26601dcc08ca1253af6ae5",
+      "base_ref": "research/cp004-verified-height-and-comparison-gate",
+      "base_sha": "533a76b9801eafda0501f0667b596a429098f07f",
+      "children": [
+        {
+          "parent": 807,
+          "child": 810,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 809,
+      "title": "PI005 — Literal Zeta23 Fourier/Gamma source pins and Masullo a=1/2 zero-strip correction",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/809",
+      "head_ref": "research/pi005-literal-gamma-symbol-and-zero-strip-audit",
+      "head_sha": "86dd9a9a83cbd03a9f4080b34fad09109dfabd3b",
+      "base_ref": "research/pi004-archimedean-gamma-local-trace-dictionary",
+      "base_sha": "20835ac8d1eed9012c9dad71622f66ae063dcbe8",
+      "children": [
+        {
+          "parent": 809,
+          "child": 812,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 810,
+      "title": "CP006 — Source-locked Zeta zero-count theorem and adaptive dyadic spectral error certification",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/810",
+      "head_ref": "research/cp006-source-pinned-adaptive-zero-bands",
+      "head_sha": "0d4250271b00b01bf0068d0f270ee9d812a45b03",
+      "base_ref": "research/cp005-certified-zero-roster-adapter",
+      "base_sha": "2b7c3bf905780068ee26601dcc08ca1253af6ae5",
+      "children": [
+        {
+          "parent": 810,
+          "child": 815,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 812,
+      "title": "PI006 — Exact Gamma contact extension, mixed-test information loss, and Lean digamma gap",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/812",
+      "head_ref": "research/pi006-contact-extension-identifiability-gate",
+      "head_sha": "0a462ac307c5d37ab3513ccc65983fa2f89b6458",
+      "base_ref": "research/pi005-literal-gamma-symbol-and-zero-strip-audit",
+      "base_sha": "86dd9a9a83cbd03a9f4080b34fad09109dfabd3b",
+      "children": [
+        {
+          "parent": 812,
+          "child": 816,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 815,
+      "title": "CP007 — Actual certified-zero store precision obstruction and source-pinned full-roster audit",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/815",
+      "head_ref": "research/cp007-pinned-zero-precision-obstruction",
+      "head_sha": "2c06a413e5f9d1e4ecaad7ecc1bcf46eb42da7c7",
+      "base_ref": "research/cp006-source-pinned-adaptive-zero-bands",
+      "base_sha": "0d4250271b00b01bf0068d0f270ee9d812a45b03",
+      "children": [
+        {
+          "parent": 815,
+          "child": 817,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 816,
+      "title": "PI007 — Digamma partial-fraction finite Gamma kernel, explicit tail and no-sorry Lean pilot",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/816",
+      "head_ref": "research/pi007-digamma-series-finite-kernel-and-tail",
+      "head_sha": "64939b1b382e92d9a8b7e140de08b21a5bad1a24",
+      "base_ref": "research/pi006-contact-extension-identifiability-gate",
+      "base_sha": "0a462ac307c5d37ab3513ccc65983fa2f89b6458",
+      "children": [
+        {
+          "parent": 816,
+          "child": 818,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 817,
+      "title": "CP008 — Real original first-52 Euler zero refinement candidates and source-exact Zeta Lean proof gate",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/817",
+      "head_ref": "research/cp008-euler-first52-source-refinement-pilot",
+      "head_sha": "d40f19d6e451496045a1e3d31d51038085f97929",
+      "base_ref": "research/cp007-pinned-zero-precision-obstruction",
+      "base_sha": "2c06a413e5f9d1e4ecaad7ecc1bcf46eb42da7c7",
+      "children": [
+        {
+          "parent": 817,
+          "child": 819,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 818,
+      "title": "PI008 — Explicit digamma frequency-tail certificate and source-compatible finite Lean symbol",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/818",
+      "head_ref": "research/pi008-digamma-uniform-majorant-and-lean-gate",
+      "head_sha": "4dec1583fb0f23797d211daf2121b9b91048e4d3",
+      "base_ref": "research/pi007-digamma-series-finite-kernel-and-tail",
+      "base_sha": "64939b1b382e92d9a8b7e140de08b21a5bad1a24",
+      "children": [
+        {
+          "parent": 818,
+          "child": 820,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 819,
+      "title": "CP009 — Exact safe 1.74795m RS-zero precision schedule and genuine Riemann–Siegel analytic-error gap",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/819",
+      "head_ref": "research/cp009-dyadic-zero-precision-and-source-receipts",
+      "head_sha": "0113d4755ff5ba636b711e854674ceb0f12a5a35",
+      "base_ref": "research/cp008-euler-first52-source-refinement-pilot",
+      "base_sha": "d40f19d6e451496045a1e3d31d51038085f97929",
+      "children": [
+        {
+          "parent": 819,
+          "child": 822,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 820,
+      "title": "PI009 — Direct PI007/PI008 Lean compiler custody and exact Fourier-atom obligation",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/820",
+      "head_ref": "research/pi009-direct-lean-custody-and-fourier-atom-gate",
+      "head_sha": "62ec61bc68967c76437800f794fb4c17227ef61e",
+      "base_ref": "research/pi008-digamma-uniform-majorant-and-lean-gate",
+      "base_sha": "4dec1583fb0f23797d211daf2121b9b91048e4d3",
+      "children": [
+        {
+          "parent": 820,
+          "child": 821,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 821,
+      "title": "PI010 — Pin Mathlib half-line Fourier integrals and compiler-audit source-correct Lean pilots",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/821",
+      "head_ref": "research/pi010-mathlib-complex-halfline-fourier-atom",
+      "head_sha": "81fcf57be91be8dfd6eba71dd44c0c94008c6ffa",
+      "base_ref": "research/pi009-direct-lean-custody-and-fourier-atom-gate",
+      "base_sha": "62ec61bc68967c76437800f794fb4c17227ef61e",
+      "children": [
+        {
+          "parent": 821,
+          "child": 823,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 822,
+      "title": "CP010 — Original first RS zero cross-method Lean sign pilot and one-exception spectral precision gate",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/822",
+      "head_ref": "research/cp010-first-rs-cross-method-sign-pilot",
+      "head_sha": "51c8bf0e0dafe9ebab619b9cb23f28ba359f0f0b",
+      "base_ref": "research/cp009-dyadic-zero-precision-and-source-receipts",
+      "base_sha": "0113d4755ff5ba636b711e854674ceb0f12a5a35",
+      "children": [
+        {
+          "parent": 822,
+          "child": 825,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 823,
+      "title": "PI011 — Assemble the true whole-line Fourier exponential from pinned Mathlib half-line integrals",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/823",
+      "head_ref": "research/pi011-whole-line-fourier-atom-source-gate",
+      "head_sha": "ea04652c1cc73988460e1d4ddebe3a4d96f0e205",
+      "base_ref": "research/pi010-mathlib-complex-halfline-fourier-atom",
+      "base_sha": "81fcf57be91be8dfd6eba71dd44c0c94008c6ffa",
+      "children": [
+        {
+          "parent": 823,
+          "child": 824,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 824,
+      "title": "PI012 — Exact rational Fourier closure and source-composed Lean whole-line atom gate",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/824",
+      "head_ref": "research/pi012-fourier-atom-rational-closure-and-failclosed-custody",
+      "head_sha": "f4e539cc6c2d1ddce28116fb3d57f91527f8390a",
+      "base_ref": "research/pi011-whole-line-fourier-atom-source-gate",
+      "base_sha": "ea04652c1cc73988460e1d4ddebe3a4d96f0e205",
+      "children": [
+        {
+          "parent": 824,
+          "child": 828,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 825,
+      "title": "CP011 — Canonical source-zero identity via Turing count, no-uniqueness-axiom Lean bridge and first RS source gate",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/825",
+      "head_ref": "research/cp011-canonical-roster-exhaustion-bridge",
+      "head_sha": "d97d7ef6322d805f073c9f5c74c1f6847f49cca9",
+      "base_ref": "research/cp010-first-rs-cross-method-sign-pilot",
+      "base_sha": "51c8bf0e0dafe9ebab619b9cb23f28ba359f0f0b",
+      "children": [
+        {
+          "parent": 825,
+          "child": 827,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 827,
+      "title": "CP012 — Original BatchSpec indexed-row opacity countermodel and minimal kernel source-slot binding contract",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/827",
+      "head_ref": "research/cp012-batchspec-row-provenance-no-go",
+      "head_sha": "277fb8ede0172c3197c5520ceca6db6261fc3395",
+      "base_ref": "research/cp011-canonical-roster-exhaustion-bridge",
+      "base_sha": "d97d7ef6322d805f073c9f5c74c1f6847f49cca9",
+      "children": [
+        {
+          "parent": 827,
+          "child": 829,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 828,
+      "title": "PI013 — Literal PI008 Gamma atom cast and finite source-positive Fourier sum",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/828",
+      "head_ref": "research/pi013-finite-gamma-atom-cast-and-source-fourier-sum",
+      "head_sha": "e9addbb40372d03c53605d4e3979cafce7aa5da0",
+      "base_ref": "research/pi012-fourier-atom-rational-closure-and-failclosed-custody",
+      "base_sha": "f4e539cc6c2d1ddce28116fb3d57f91527f8390a",
+      "children": [
+        {
+          "parent": 828,
+          "child": 830,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 829,
+      "title": "CP013 — Reconstruct all 1,747,950 original RS zero batches and 52/RS 149.5 seam from pinned source",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/829",
+      "head_ref": "research/cp013-rs-only-seam-count-bridge",
+      "head_sha": "d57e0359c8c2a95aad80b40d42d208936d70822e",
+      "base_ref": "research/cp012-batchspec-row-provenance-no-go",
+      "base_sha": "277fb8ede0172c3197c5520ceca6db6261fc3395",
+      "children": [
+        {
+          "parent": 829,
+          "child": 831,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 830,
+      "title": "PI014 — Literal finite kernel × positive Fourier character and upstream Zeta23 import gate",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/830",
+      "head_ref": "research/pi014-literal-kernel-character-and-zeta23-dependency-gate",
+      "head_sha": "3a9ab7326e8f8ef3847b9d15455fcd6c7c5f6a1a",
+      "base_ref": "research/pi013-finite-gamma-atom-cast-and-source-fourier-sum",
+      "base_sha": "e9addbb40372d03c53605d4e3979cafce7aa5da0",
+      "children": [
+        {
+          "parent": 830,
+          "child": 832,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 831,
+      "title": "CP014 — Original Euler seam N(149.5) lower theorem, finite source-cut equality and local Hardy-Z rank bridge",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/831",
+      "head_ref": "research/cp014-seam-exact-count-kernel-bridge",
+      "head_sha": "a47525068e381ff18d16eb4061423441fe97de0c",
+      "base_ref": "research/cp013-rs-only-seam-count-bridge",
+      "base_sha": "d57e0359c8c2a95aad80b40d42d208936d70822e",
+      "children": [
+        {
+          "parent": 831,
+          "child": 836,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 832,
+      "title": "PI015 — Exact Zeta23 v4.33/v4.34 source custody and finite Gamma symbol bridge",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/832",
+      "head_ref": "research/pi015-dual-toolchain-zeta23-source-and-finite-symbol",
+      "head_sha": "645ab78e2644782f285f61163fe68e6994f5bb06",
+      "base_ref": "research/pi014-literal-kernel-character-and-zeta23-dependency-gate",
+      "base_sha": "3a9ab7326e8f8ef3847b9d15455fcd6c7c5f6a1a",
+      "children": [
+        {
+          "parent": 832,
+          "child": 833,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 833,
+      "title": "PI016 — Compile unchanged upstream Zeta23.Defs beside literal PI007 and finite Gamma in one Lean graph",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/833",
+      "head_ref": "research/pi016-source-exact-co-resident-zeta23-fourier",
+      "head_sha": "a8dbdf8de1684fed8afa3456096d5bbf3f4bc7bc",
+      "base_ref": "research/pi015-dual-toolchain-zeta23-source-and-finite-symbol",
+      "base_sha": "645ab78e2644782f285f61163fe68e6994f5bb06",
+      "children": [
+        {
+          "parent": 833,
+          "child": 835,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 835,
+      "title": "PI017 — PR-runnable exact Zeta23 source compatibility core and finite contact inversion interface",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/835",
+      "head_ref": "research/pi017-source-exact-core-pr-gate-and-contact-interface",
+      "head_sha": "0482c567eaf281d29e689ed5aa570cffe2daa8a8",
+      "base_ref": "research/pi016-source-exact-co-resident-zeta23-fourier",
+      "base_sha": "a8dbdf8de1684fed8afa3456096d5bbf3f4bc7bc",
+      "children": [],
+      "disposition": "retain_terminal_tip"
+    },
+    {
+      "number": 836,
+      "title": "CP015 — Original Euler/RS witness saturation: unconditional N(149.5)=52 and no zero on the seam (Lean source candidate)",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/836",
+      "head_ref": "research/cp015-unconditional-source-seam-witnesses",
+      "head_sha": "9ef7d25830d3c5191502fe1dbab7ef05c31589fa",
+      "base_ref": "research/cp014-seam-exact-count-kernel-bridge",
+      "base_sha": "a47525068e381ff18d16eb4061423441fe97de0c",
+      "children": [
+        {
+          "parent": 836,
+          "child": 837,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 837,
+      "title": "CP016 — First RS source zero has canonical rank 53; strict 149.5 repair and conditional refined-root attachment",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/837",
+      "head_ref": "research/cp016-first-rs-canonical-rank-and-cut-repair",
+      "head_sha": "ccab8d26e3984ba9514fe7e94e9717cda22d0bd6",
+      "base_ref": "research/cp015-unconditional-source-seam-witnesses",
+      "base_sha": "9ef7d25830d3c5191502fe1dbab7ef05c31589fa",
+      "children": [
+        {
+          "parent": 837,
+          "child": 838,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 838,
+      "title": "CP017 — Exact Hardy-Z derivative anchor/curvature-4 budget yields 0.18588 rank-53 compatibility margin",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/838",
+      "head_ref": "research/cp017-first-rs-curvature-budget",
+      "head_sha": "03f3feecd5ee093da51ccd8c5e0af5dddf446299",
+      "base_ref": "research/cp016-first-rs-canonical-rank-and-cut-repair",
+      "base_sha": "ccab8d26e3984ba9514fe7e94e9717cda22d0bd6",
+      "children": [
+        {
+          "parent": 838,
+          "child": 839,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 839,
+      "title": "CP018 — Original Hardy-Z complex derivative jets and exact eight-cell curvature certificate",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/839",
+      "head_ref": "research/cp018-original-hardy-jet-and-8-cell-curvature",
+      "head_sha": "e23793b5ad5ef99852c4bc84622a9b305dd81ec6",
+      "base_ref": "research/cp017-first-rs-curvature-budget",
+      "base_sha": "03f3feecd5ee093da51ccd8c5e0af5dddf446299",
+      "children": [
+        {
+          "parent": 839,
+          "child": 840,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 840,
+      "title": "CP019 — Original Hardy-Z first derivative, second phase jet and Cauchy-certified EM derivative budget",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/840",
+      "head_ref": "research/cp019-original-hardy-firstjet-cauchy-bridge",
+      "head_sha": "ff3592af5f4961d079ae4f6bafd6242ae718debb",
+      "base_ref": "research/cp018-original-hardy-jet-and-8-cell-curvature",
+      "base_sha": "e23793b5ad5ef99852c4bc84622a9b305dd81ec6",
+      "children": [
+        {
+          "parent": 840,
+          "child": 842,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 842,
+      "title": "CP020 — Fully quantified original Borwein complex-circle cap and exact zeta–EM derivative transport",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/842",
+      "head_ref": "research/cp020-borwein-circle-kernel-transport",
+      "head_sha": "b8946540c8defdd0dca899f0e85a203a306f38e4",
+      "base_ref": "research/cp019-original-hardy-firstjet-cauchy-bridge",
+      "base_sha": "ff3592af5f4961d079ae4f6bafd6242ae718debb",
+      "children": [
+        {
+          "parent": 842,
+          "child": 843,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 843,
+      "title": "CP021 — Isolate original Zeta4.35 Borwein and ζ-EM derivative-germ leaves from 15 uncompiled dependencies",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/843",
+      "head_ref": "research/cp021-independent-leaf-kernel-recovery",
+      "head_sha": "bd9eb61b98d37465c2d27ac2f738f5f248805cd5",
+      "base_ref": "research/cp020-borwein-circle-kernel-transport",
+      "base_sha": "b8946540c8defdd0dca899f0e85a203a306f38e4",
+      "children": [
+        {
+          "parent": 843,
+          "child": 844,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 844,
+      "title": "CP022 — Fix original circle-proof nonnegativity type error; 7-source pin and isolated germ-first Lean diagnostics",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/844",
+      "head_ref": "research/cp022-upstream-leaf-proof-repair",
+      "head_sha": "7a0366469818ee683727ad7346b70951fb1896b7",
+      "base_ref": "research/cp021-independent-leaf-kernel-recovery",
+      "base_sha": "bd9eb61b98d37465c2d27ac2f738f5f248805cd5",
+      "children": [
+        {
+          "parent": 844,
+          "child": 845,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 845,
+      "title": "CP023 — Exact phase-aware ζ–EM derivative error buffers and fail-closed source contracts",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/845",
+      "head_ref": "research/cp023-source-contract-and-germ-proof-hygiene",
+      "head_sha": "3a501db889c0991127e8fa4c9855f22cfcdf68fe",
+      "base_ref": "research/cp022-upstream-leaf-proof-repair",
+      "base_sha": "7a0366469818ee683727ad7346b70951fb1896b7",
+      "children": [
+        {
+          "parent": 845,
+          "child": 846,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 846,
+      "title": "CP024 — Source Stirling–Cauchy uniform theta derivative bounds and improved Hardy-Z error buffers",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/846",
+      "head_ref": "research/cp024-stirling-cauchy-phase-envelopes",
+      "head_sha": "fec0fc7662aa59b5f77d7d21c8628bca053cf3ac",
+      "base_ref": "research/cp023-source-contract-and-germ-proof-hygiene",
+      "base_sha": "3a501db889c0991127e8fa4c9855f22cfcdf68fe",
+      "children": [
+        {
+          "parent": 846,
+          "child": 847,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 847,
+      "title": "CP025 — Original M6/N256 integer-directed Hardy-Z derivative anchor and narrow zero sign bracket",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/847",
+      "head_ref": "research/cp025-original-EM-directed-interval-anchor-and-root53-sign",
+      "head_sha": "6c309c664b80982409122a2008dba8e35709396b",
+      "base_ref": "research/cp024-stirling-cauchy-phase-envelopes",
+      "base_sha": "fec0fc7662aa59b5f77d7d21c8628bca053cf3ac",
+      "children": [
+        {
+          "parent": 847,
+          "child": 848,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 848,
+      "title": "CP026 — Original Hardy-Z narrow-root Lean source bridge with 4 unpaid premises; 26/26 exact CP025 replay",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/848",
+      "head_ref": "research/cp026-original-bracket-lean-attachment-without-axioms",
+      "head_sha": "d7a434f52469c61414189e9c5466778711211b52",
+      "base_ref": "research/cp025-original-EM-directed-interval-anchor-and-root53-sign",
+      "base_sha": "6c309c664b80982409122a2008dba8e35709396b",
+      "children": [
+        {
+          "parent": 848,
+          "child": 849,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 849,
+      "title": "CP027 — Two-point original Borwein bound 328/27; narrow ζ zero bridge now has just two finite-sign premises",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/849",
+      "head_ref": "research/cp027-two-point-original-borwein-source-custody",
+      "head_sha": "d81938922e30a7adb844ce644b643620e00c6f18",
+      "base_ref": "research/cp026-original-bracket-lean-attachment-without-axioms",
+      "base_sha": "d7a434f52469c61414189e9c5466778711211b52",
+      "children": [
+        {
+          "parent": 849,
+          "child": 850,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 850,
+      "title": "CP028 — Coarse original finite A6,256 boxes and 1e−10 phase-error transfer; uploaded point interval norm replay",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/850",
+      "head_ref": "research/cp028-coarse-finite-box-kernel-interface",
+      "head_sha": "24f1900efe097566d9ec08532863fdd112976c0c",
+      "base_ref": "research/cp027-two-point-original-borwein-source-custody",
+      "base_sha": "d81938922e30a7adb844ce644b643620e00c6f18",
+      "children": [
+        {
+          "parent": 850,
+          "child": 851,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 851,
+      "title": "CP029 — isolated original v4.35 CP027 Borwein compiler receipt gate (NOT YET LEAN)",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/851",
+      "head_ref": "research/cp029-isolated-pointwise-first-compiler",
+      "head_sha": "a18a82978038a71fe818f49714e94d77e09997e2",
+      "base_ref": "research/cp028-coarse-finite-box-kernel-interface",
+      "base_sha": "24f1900efe097566d9ec08532863fdd112976c0c",
+      "children": [
+        {
+          "parent": 851,
+          "child": 852,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 852,
+      "title": "CP030 — Six scalar original finite A6,256 interval certificates: conditional Lean interface and outward-cell generator",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/852",
+      "head_ref": "research/cp030-six-scalar-original-finite-cells",
+      "head_sha": "653c0912fd555617d698d4774f08ec4ba59cd390",
+      "base_ref": "research/cp029-isolated-pointwise-first-compiler",
+      "base_sha": "a18a82978038a71fe818f49714e94d77e09997e2",
+      "children": [
+        {
+          "parent": 852,
+          "child": 853,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 853,
+      "title": "CP031 — independent rational six-scalar endpoint cells and exact conditional Hardy-Z error margins (NOT LEAN)",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/853",
+      "head_ref": "research/cp031-independent-six-scalar-replay",
+      "head_sha": "1f8373d549cede381118febf6f1c20f9f7906354",
+      "base_ref": "research/cp030-six-scalar-original-finite-cells",
+      "base_sha": "653c0912fd555617d698d4774f08ec4ba59cd390",
+      "children": [
+        {
+          "parent": 853,
+          "child": 854,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 854,
+      "title": "CP032 — Original Euler–Maclaurin 526 outward term cells; upstream Lean source split candidates (NOT LEAN)",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/854",
+      "head_ref": "research/cp032-original-termwise-source-cells",
+      "head_sha": "6173602d54cc19fa802995f7dc77f73522116d27",
+      "base_ref": "research/cp031-independent-six-scalar-replay",
+      "base_sha": "1f8373d549cede381118febf6f1c20f9f7906354",
+      "children": [
+        {
+          "parent": 854,
+          "child": 855,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 855,
+      "title": "CP033 — genuine original Zeta4.35 one-leaf compiler for finite source split + n=1 exact term cell",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/855",
+      "head_ref": "research/cp033-original-source-split-one-term-kernel",
+      "head_sha": "2e2052e9c695d13bda8ed97c220980ae4d38ff58",
+      "base_ref": "research/cp032-original-termwise-source-cells",
+      "base_sha": "6173602d54cc19fa802995f7dc77f73522116d27",
+      "children": [
+        {
+          "parent": 855,
+          "child": 856,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 856,
+      "title": "CP034 — repair first genuine Zeta4.35 factorial parser failure and strict multiline axiom audit",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/856",
+      "head_ref": "research/cp034-original-syntax-and-strict-axiom-repair",
+      "head_sha": "c6eb36832beed0974000371296360b92e76e36ad",
+      "base_ref": "research/cp033-original-source-split-one-term-kernel",
+      "base_sha": "2e2052e9c695d13bda8ed97c220980ae4d38ff58",
+      "children": [
+        {
+          "parent": 856,
+          "child": 905,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 905,
+      "title": "DRAFT CP-C1(A): nine-probe phase-complete Hermitian matrix compatibility gate (exact algebra, NOT LEAN)",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/905",
+      "head_ref": "research/cpc1a-nine-probe-phase-audit-20261122",
+      "head_sha": "2c548454f9784b1ca58f5205c8268646b3824d1d",
+      "base_ref": "research/cp034-original-syntax-and-strict-axiom-repair",
+      "base_sha": "c6eb36832beed0974000371296360b92e76e36ad",
+      "children": [],
+      "disposition": "retain_terminal_tip"
+    },
+    {
+      "number": 975,
+      "title": "IV072 (draft): positive-frequency whole-line Fourier resolvent Lean pilot",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/975",
+      "head_ref": "research/iv072-original-fourier-halfline-pilot",
+      "head_sha": "1de455d18d7bdc81b7f979715826cc6a4cc4164c",
+      "base_ref": "research/iv068-original-source-kernel-gate",
+      "base_sha": "165981950e193a8b6ea219f7b31e379db495befa",
+      "children": [
+        {
+          "parent": 975,
+          "child": 984,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 984,
+      "title": "IV073 (draft): literal Zeta23.paperFT rational-resolvent Lean gate",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/984",
+      "head_ref": "research/iv073-original-paperft-rational-gate",
+      "head_sha": "954af7a122ae063ed2fee2469acaaf609423e1b7",
+      "base_ref": "research/iv072-original-fourier-halfline-pilot",
+      "base_sha": "1de455d18d7bdc81b7f979715826cc6a4cc4164c",
+      "children": [
+        {
+          "parent": 984,
+          "child": 988,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 988,
+      "title": "IV074 (draft): native L¹ exponential kernel and original paper inversion",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/988",
+      "head_ref": "research/iv074-original-exponential-inversion-gate",
+      "head_sha": "fff93007332a00c52285fb284a4a9bc0ebf2df57",
+      "base_ref": "research/iv073-original-paperft-rational-gate",
+      "base_sha": "954af7a122ae063ed2fee2469acaaf609423e1b7",
+      "children": [
+        {
+          "parent": 988,
+          "child": 991,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 991,
+      "title": "IV075 (draft): general-L¹ original resolvent Fubini Lean gate",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/991",
+      "head_ref": "research/iv075-original-l1-fubini-gate",
+      "head_sha": "e494254901909ab1f78a87e5eb5938135bb3c4e5",
+      "base_ref": "research/iv074-original-exponential-inversion-gate",
+      "base_sha": "fff93007332a00c52285fb284a4a9bc0ebf2df57",
+      "children": [
+        {
+          "parent": 991,
+          "child": 993,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 993,
+      "title": "IV076 (draft): original positive-frequency L¹ finite-resolvent pairing",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/993",
+      "head_ref": "research/iv076-original-l1-positive-frequency-gate",
+      "head_sha": "6901dc0b31ca35fe2066e06e7ff713effecfbf3f",
+      "base_ref": "research/iv075-original-l1-fubini-gate",
+      "base_sha": "e494254901909ab1f78a87e5eb5938135bb3c4e5",
+      "children": [
+        {
+          "parent": 993,
+          "child": 995,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 995,
+      "title": "IV077 (draft): original NF599 single Gamma gain mixed physical pairing",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/995",
+      "head_ref": "research/iv077-original-nf599-finite-gamma-pairing-gate",
+      "head_sha": "7dfab607520dc0c55038dd9eea4c4f5014fc5ee7",
+      "base_ref": "research/iv076-original-l1-positive-frequency-gate",
+      "base_sha": "6901dc0b31ca35fe2066e06e7ff713effecfbf3f",
+      "children": [
+        {
+          "parent": 995,
+          "child": 1001,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        },
+        {
+          "parent": 995,
+          "child": 1000,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        },
+        {
+          "parent": 995,
+          "child": 997,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 997,
+      "title": "IV078 (draft): original NF599 finite Gamma truncation physical pairing",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/997",
+      "head_ref": "research/iv078-original-finite-gamma-truncation-gate",
+      "head_sha": "81912e4141ebba7b8dc9167f42e39923c832332a",
+      "base_ref": "research/iv077-original-nf599-finite-gamma-pairing-gate",
+      "base_sha": "7dfab607520dc0c55038dd9eea4c4f5014fc5ee7",
+      "children": [
+        {
+          "parent": 997,
+          "child": 998,
+          "status": "diverged",
+          "behind": 1,
+          "error": false
+        }
+      ],
+      "disposition": "retain_divergent_head"
+    },
+    {
+      "number": 998,
+      "title": "IV079 (draft): exact original Gamma finite-to-infinite dominated limit",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/998",
+      "head_ref": "research/iv079-original-gamma-dominated-limit-gate",
+      "head_sha": "8a900a8c2e64c12d28ecf9331d52675d7a6d4f60",
+      "base_ref": "research/iv078-original-finite-gamma-truncation-gate",
+      "base_sha": "81912e4141ebba7b8dc9167f42e39923c832332a",
+      "children": [],
+      "disposition": "retain_terminal_tip"
+    },
+    {
+      "number": 1000,
+      "title": "IV080 (draft): genuine NF599 Gamma linear growth envelope, exact source series",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1000",
+      "head_ref": "research/iv080-original-nf599-linear-gamma-envelope-gate",
+      "head_sha": "46507e36fabc079dbe37c1fbe7fc8969235b51b1",
+      "base_ref": "research/iv077-original-nf599-finite-gamma-pairing-gate",
+      "base_sha": "7dfab607520dc0c55038dd9eea4c4f5014fc5ee7",
+      "children": [
+        {
+          "parent": 1000,
+          "child": 1011,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        },
+        {
+          "parent": 1000,
+          "child": 1009,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 1001,
+      "title": "IV081 (draft): genuine original Gamma weighted L¹ from compact C² Fourier decay",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1001",
+      "head_ref": "research/iv081-original-compact-c2-gamma-weighted-integrability-gate",
+      "head_sha": "c5d48a91555428a77df5e6e99e1074a310ef70df",
+      "base_ref": "research/iv077-original-nf599-finite-gamma-pairing-gate",
+      "base_sha": "7dfab607520dc0c55038dd9eea4c4f5014fc5ee7",
+      "children": [
+        {
+          "parent": 1001,
+          "child": 1002,
+          "status": "diverged",
+          "behind": 2,
+          "error": false
+        }
+      ],
+      "disposition": "retain_divergent_head"
+    },
+    {
+      "number": 1002,
+      "title": "IV082 (draft): source compact C² Fourier L¹ and unconditional Gamma-weighted integrability",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1002",
+      "head_ref": "research/iv082-original-compact-c2-fourier-l1-gate",
+      "head_sha": "ab0cf7b4b86106fa150c660849f64061561b3cbf",
+      "base_ref": "research/iv081-original-compact-c2-gamma-weighted-integrability-gate",
+      "base_sha": "c11e9dbda561657c0b201a70d04dda88ba694330",
+      "children": [
+        {
+          "parent": 1002,
+          "child": 1004,
+          "status": "diverged",
+          "behind": 3,
+          "error": false
+        }
+      ],
+      "disposition": "retain_divergent_head"
+    },
+    {
+      "number": 1004,
+      "title": "IV083 (draft): original compact-C² finite→infinite Gamma pairing, no auxiliary Fourier L¹",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1004",
+      "head_ref": "research/iv083-compact-c2-original-gamma-finite-to-infinite-gate",
+      "head_sha": "1b8d647aa04c36950763763388e6abe11b4a6c34",
+      "base_ref": "research/iv082-original-compact-c2-fourier-l1-gate",
+      "base_sha": "344c41814ea91fb5a8f9f22e9eee3f6572f4dc1d",
+      "children": [
+        {
+          "parent": 1004,
+          "child": 1012,
+          "status": "diverged",
+          "behind": 1,
+          "error": false
+        }
+      ],
+      "disposition": "retain_divergent_head"
+    },
+    {
+      "number": 1009,
+      "title": "IV084 (draft): literal original paperFT pole evaluations as physical exponential integrals",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1009",
+      "head_ref": "research/iv084-original-paperft-pole-physical-gate",
+      "head_sha": "5ec89ce4a7f08084a246aa0df2dd7d4408873c0d",
+      "base_ref": "research/iv080-original-nf599-linear-gamma-envelope-gate",
+      "base_sha": "46507e36fabc079dbe37c1fbe7fc8969235b51b1",
+      "children": [],
+      "disposition": "retain_terminal_tip"
+    },
+    {
+      "number": 1011,
+      "title": "IV085 (draft): exact original signed von Mangoldt finite attachment",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1011",
+      "head_ref": "research/iv085-original-signed-prime-finite-gate",
+      "head_sha": "be6b13d759358c79bc56ea7e38bf4908cd072ca7",
+      "base_ref": "research/iv080-original-nf599-linear-gamma-envelope-gate",
+      "base_sha": "46507e36fabc079dbe37c1fbe7fc8969235b51b1",
+      "children": [],
+      "disposition": "retain_terminal_tip"
+    },
+    {
+      "number": 1012,
+      "title": "IV086 (draft): complete literal original signed physical Weil RHS limit",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1012",
+      "head_ref": "research/iv086-original-complete-physical-weil-limit-gate",
+      "head_sha": "e89e746330dc0d8dd7675cfce1bf1159481f76a7",
+      "base_ref": "research/iv083-compact-c2-original-gamma-finite-to-infinite-gate",
+      "base_sha": "fde6982b7f15437c382cc96e482a4a54cbdbb55b",
+      "children": [
+        {
+          "parent": 1012,
+          "child": 1019,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 1019,
+      "title": "IV087 (draft): original mixed Schwartz and full-divisor physical limits",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1019",
+      "head_ref": "research/iv087-original-mixed-physical-limit-gate",
+      "head_sha": "94d8721163617fd36e2b43fe89f3821b96dd9fe7",
+      "base_ref": "research/iv086-original-complete-physical-weil-limit-gate",
+      "base_sha": "e89e746330dc0d8dd7675cfce1bf1159481f76a7",
+      "children": [
+        {
+          "parent": 1019,
+          "child": 1023,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        },
+        {
+          "parent": 1019,
+          "child": 1021,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 1021,
+      "title": "IV088 (draft): complete original finite mixed quadratic physical limit",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1021",
+      "head_ref": "research/iv088-original-finite-quadratic-physical-limit-gate",
+      "head_sha": "efc2424c8a50735345513080ff6d4707d04b7d86",
+      "base_ref": "research/iv087-original-mixed-physical-limit-gate",
+      "base_sha": "94d8721163617fd36e2b43fe89f3821b96dd9fe7",
+      "children": [],
+      "disposition": "retain_terminal_tip"
+    },
+    {
+      "number": 1023,
+      "title": "IV089 (draft): explicit original Gamma quadratic-frequency remainder",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1023",
+      "head_ref": "research/iv089-original-gamma-quadratic-tail-gate",
+      "head_sha": "0ca75645442b82a25ac37470d1188e715f28eeb9",
+      "base_ref": "research/iv087-original-mixed-physical-limit-gate",
+      "base_sha": "94d8721163617fd36e2b43fe89f3821b96dd9fe7",
+      "children": [
+        {
+          "parent": 1023,
+          "child": 1026,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 1026,
+      "title": "IV090 (draft): effective integrated original signed Weil truncation error",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1026",
+      "head_ref": "research/iv090-original-integrated-gamma-error-gate",
+      "head_sha": "ce7fe7b961f8438def0866be057c3b3b33dff5c3",
+      "base_ref": "research/iv089-original-gamma-quadratic-tail-gate",
+      "base_sha": "0ca75645442b82a25ac37470d1188e715f28eeb9",
+      "children": [
+        {
+          "parent": 1026,
+          "child": 1029,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 1029,
+      "title": "IV091 (draft): exact Green-carrier Fourier moment and original zero-form error",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1029",
+      "head_ref": "research/iv091-original-green-moment-normalization-gate",
+      "head_sha": "f2e8ec89ae4bf8687a652b299b730d6d1baa43f7",
+      "base_ref": "research/iv090-original-integrated-gamma-error-gate",
+      "base_sha": "ce7fe7b961f8438def0866be057c3b3b33dff5c3",
+      "children": [
+        {
+          "parent": 1029,
+          "child": 1033,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 1033,
+      "title": "IV092 (draft): original Green zero-form physical gradient error",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1033",
+      "head_ref": "research/iv092-original-green-gradient-error-gate",
+      "head_sha": "f5862087e83928bb777440293f38dacfbc8fd0c8",
+      "base_ref": "research/iv091-original-green-moment-normalization-gate",
+      "base_sha": "f2e8ec89ae4bf8687a652b299b730d6d1baa43f7",
+      "children": [
+        {
+          "parent": 1033,
+          "child": 1034,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 1034,
+      "title": "IV093 (draft): original restricted physical coercivity and negative-witness transfer",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1034",
+      "head_ref": "research/iv093-original-restricted-coercivity-transfer-gate",
+      "head_sha": "d17117059f7374eee6be7f18e9ea2f97d6967e89",
+      "base_ref": "research/iv092-original-green-gradient-error-gate",
+      "base_sha": "f5862087e83928bb777440293f38dacfbc8fd0c8",
+      "children": [
+        {
+          "parent": 1034,
+          "child": 1035,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 1035,
+      "title": "IV094 (draft): original diagonal signed Gamma tail and collar finite margin",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1035",
+      "head_ref": "research/iv094-original-diagonal-signed-tail-gate",
+      "head_sha": "f9c1748ed3ca3c747d35f3243b4974cb99418aa8",
+      "base_ref": "research/iv093-original-restricted-coercivity-transfer-gate",
+      "base_sha": "d17117059f7374eee6be7f18e9ea2f97d6967e89",
+      "children": [
+        {
+          "parent": 1035,
+          "child": 1037,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 1037,
+      "title": "IV095 (draft): uniform original collar finite margin and concrete nonzero ray",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1037",
+      "head_ref": "research/iv095-original-uniform-collar-sector-gate",
+      "head_sha": "479574f5e8e136f98b0088a03f4acfd103439f89",
+      "base_ref": "research/iv094-original-diagonal-signed-tail-gate",
+      "base_sha": "f9c1748ed3ca3c747d35f3243b4974cb99418aa8",
+      "children": [
+        {
+          "parent": 1037,
+          "child": 1039,
+          "status": "diverged",
+          "behind": 1,
+          "error": false
+        }
+      ],
+      "disposition": "retain_divergent_head"
+    },
+    {
+      "number": 1039,
+      "title": "IV096 (draft): effective original Schwartz derivative tail and cutoff 20000 receiver",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1039",
+      "head_ref": "research/iv096-original-effective-collar-cutoff-gate",
+      "head_sha": "401a48c008643b20a1f6c409602651da74030c50",
+      "base_ref": "research/iv095-original-uniform-collar-sector-gate",
+      "base_sha": "4712f131e7323b0336fbef949bd4ccc618f08b66",
+      "children": [
+        {
+          "parent": 1039,
+          "child": 1040,
+          "status": "diverged",
+          "behind": 3,
+          "error": false
+        }
+      ],
+      "disposition": "retain_divergent_head"
+    },
+    {
+      "number": 1040,
+      "title": "IV097 (draft): explicit smooth collar plateau pays numerical cutoff premises",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1040",
+      "head_ref": "research/iv097-original-smooth-plateau-gate",
+      "head_sha": "bac3713058e76d7b979685556c9b8f27b68e181d",
+      "base_ref": "research/iv096-original-effective-collar-cutoff-gate",
+      "base_sha": "ee88d6476f7088ea943810178c5e9b8e65f29e45",
+      "children": [
+        {
+          "parent": 1040,
+          "child": 1048,
+          "status": "diverged",
+          "behind": 2,
+          "error": false
+        }
+      ],
+      "disposition": "retain_divergent_head"
+    },
+    {
+      "number": 1048,
+      "title": "IV098: original reflected collar sector — restricted rank-two coercivity gate",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1048",
+      "head_ref": "research/iv098-original-reflected-collar-sector-gate",
+      "head_sha": "774a0a75bc93ee33313a60fc702555304fd8ace9",
+      "base_ref": "research/iv097-original-smooth-plateau-gate",
+      "base_sha": "bac3713058e76d7b979685556c9b8f27b68e181d",
+      "children": [
+        {
+          "parent": 1048,
+          "child": 1061,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 1061,
+      "title": "IV099: original finite collar sector — arbitrary finite-family receiver",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1061",
+      "head_ref": "research/iv099-original-finite-collar-sector-gate",
+      "head_sha": "504113a377fd2e30c1bf0bd0e155eac8e0753b30",
+      "base_ref": "research/iv098-original-reflected-collar-sector-gate",
+      "base_sha": "774a0a75bc93ee33313a60fc702555304fd8ace9",
+      "children": [
+        {
+          "parent": 1061,
+          "child": 1068,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 1068,
+      "title": "IV100: original affine collar packing — arbitrary-rank construction",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1068",
+      "head_ref": "research/iv100-original-affine-collar-packing",
+      "head_sha": "a968feab2094ef848313fe8fa402e9ec011d6ca1",
+      "base_ref": "research/iv099-original-finite-collar-sector-gate",
+      "base_sha": "504113a377fd2e30c1bf0bd0e155eac8e0753b30",
+      "children": [
+        {
+          "parent": 1068,
+          "child": 1077,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 1077,
+      "title": "IV101: original packed complement receiver — full signed mixed loss",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1077",
+      "head_ref": "research/iv101-original-packed-complement-receiver",
+      "head_sha": "24b048342fc8ef66f3a2c5664b9d7d7a3709cfbd",
+      "base_ref": "research/iv100-original-affine-collar-packing",
+      "base_sha": "a968feab2094ef848313fe8fa402e9ec011d6ca1",
+      "children": [
+        {
+          "parent": 1077,
+          "child": 1080,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 1080,
+      "title": "IV102: original Schwartz metric transport — physical complement and native operator",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1080",
+      "head_ref": "research/iv102-original-schwartz-metric-transport",
+      "head_sha": "8acc6a18a81e91798de0dc7b17d19d1414969d8b",
+      "base_ref": "research/iv101-original-packed-complement-receiver",
+      "base_sha": "24b048342fc8ef66f3a2c5664b9d7d7a3709cfbd",
+      "children": [
+        {
+          "parent": 1080,
+          "child": 1092,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        },
+        {
+          "parent": 1080,
+          "child": 1090,
+          "status": "ahead",
+          "behind": 0,
+          "error": false
+        }
+      ],
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 1090,
+      "title": "IV103: unrestricted original Schwartz spectral attachment",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1090",
+      "head_ref": "research/iv103-original-schwartz-spectral-attachment",
+      "head_sha": "90ea6df946f8ab6d68c326b2ac2fc0970f9c717f",
+      "base_ref": "research/iv102-original-schwartz-metric-transport",
+      "base_sha": "8acc6a18a81e91798de0dc7b17d19d1414969d8b",
+      "children": [],
+      "disposition": "retain_terminal_tip"
+    },
+    {
+      "number": 1092,
+      "title": "IV104: original packed physical mass projection",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/1092",
+      "head_ref": "research/iv104-original-packed-mass-projection",
+      "head_sha": "b114aabdfcf4b3aad9c6898762d4084e1d2be79c",
+      "base_ref": "research/iv102-original-schwartz-metric-transport",
+      "base_sha": "8acc6a18a81e91798de0dc7b17d19d1414969d8b",
+      "children": [],
+      "disposition": "retain_terminal_tip"
+    }
+  ]
+}
