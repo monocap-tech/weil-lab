@@ -34,7 +34,9 @@ theorem mellin_translate (f : ℝ → ℂ) (w : ℂ) (a : ℝ) :
       rw [h, Complex.exp_add, mul_assoc]
     _ = ∫ y : ℝ, Complex.exp (w * (a : ℂ)) *
           (Complex.exp (w * (y : ℂ)) * f y) :=
-      integral_sub_right_eq_self _ a
+      integral_sub_right_eq_self (μ := (volume : Measure ℝ))
+        (fun y : ℝ => Complex.exp (w * (a : ℂ)) *
+          (Complex.exp (w * (y : ℂ)) * f y)) a
     _ = Complex.exp (w * (a : ℂ)) *
           ∫ y : ℝ, Complex.exp (w * (y : ℂ)) * f y :=
       integral_const_mul _ _
