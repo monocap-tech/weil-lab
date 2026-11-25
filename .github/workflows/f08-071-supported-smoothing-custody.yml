@@ -1,0 +1,120 @@
+name: F08-071 independent F08-068 supported smoothing custody (3 named axioms)
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_071/**'
+      - '.github/workflows/f08-071-supported-smoothing-custody.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  independent-original-source-custody:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      F08_RUN: '45619047774'
+      F08_ARTIFACT: '15024761732'
+      F08_ARTIFACT_SHA: 'f388255329c74d5af7c86f6df9df3aa7d1a9c6703eda4fecf3c6eb64fe5624dc'
+      F08_HEAD: 'de2838bb5d970cfe2b4dacfbee43a6b26bfd1c2f'
+    steps:
+      - name: Checkout independent F08-071 auditor
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout exact verified producer
+        uses: actions/checkout@v4
+        with:
+          ref: de2838bb5d970cfe2b4dacfbee43a6b26bfd1c2f
+          path: producer
+      - name: Checkout exact frozen original research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Independently pin source blobs, Lean version and adversarial verifier controls
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C producer rev-parse HEAD)" = de2838bb5d970cfe2b4dacfbee43a6b26bfd1c2f
+          test "$(git -C producer hash-object verification/f08/f08_005/F08WeightedMollifierMultiplier.lean)" = 2a8199ff817f59d1437fa173518a588cbbd467b9
+          test "$(git -C producer hash-object verification/f08/f08_007/F08OriginalWindowMollifierFourier.lean)" = 606d324ca9fcfd53d059efe1b57d1b0e30349476
+          test "$(git -C producer hash-object verification/f08/f08_009/F08OriginalWindowConvolutionSupport.lean)" = 6badab7f17605d3131ee414282683d390c6f1964
+          test "$(git -C producer hash-object verification/f08/f08_011/F08OriginalNormalizedMollifier.lean)" = b1f53459762df682f6d1d358aae9c82b5396c5a7
+          test "$(git -C producer hash-object verification/f08/f08_013/F08OriginalMollifierFourierLimit.lean)" = 7b91eda87ce5a0d7691fdc643865e72fb153287c
+          test "$(git -C producer hash-object verification/f08/f08_015/F08ActualMollifierWeightedDCT.lean)" = f1969dede41f0d799788411420c0cb2a63c5e53a
+          test "$(git -C producer hash-object verification/f08/f08_017/F08ExplicitShrinkingPhysicalMollifier.lean)" = b767da47b302734c9b1de0bd0fde38b727c84b20
+          test "$(git -C producer hash-object verification/f08/f08_019/F08OriginalSmoothedWindow.lean)" = efe3260cbd8798ad7192142c1e656f31a6729d13
+          test "$(git -C producer hash-object verification/f08/f08_021/F08OriginalSmoothedWindowNativeFourier.lean)" = f7f769dd120810645a6bed9fa3ef379c94986a77
+          test "$(git -C producer hash-object verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean)" = eecfe2a849fa79aa13810ede85e9ba625eba7777
+          test "$(git -C producer hash-object verification/f08/f08_029/F08NativeL2PushforwardNorm.lean)" = 4da65f9b9df7cae6ea30a4a7f25d3e6c1606c294
+          test "$(git -C producer hash-object verification/f08/f08_030/F08NativeFrequencyDilation.lean)" = 5c260b69f464f5793e095f9b5448c90f7984617f
+          test "$(git -C producer hash-object verification/f08/f08_052/F08OriginalNativeL2SquareIntegral.lean)" = 16a7053b3a1ea6f0e0f91a89de6e40a91987cd92
+          test "$(git -C producer hash-object verification/f08/f08_064/F08OriginalFormDomainEnergyReceiver.lean)" = 9423bc10b0db9d07078299bdedbe60b585fede7d
+          test "$(git -C producer hash-object verification/f08/f08_023/F08OriginalWindowNativeWeightedSmoothing.lean)" = b0712d54ff2c5a3c3c5496f5c007559abf946bf3
+          test "$(git -C producer hash-object verification/f08/f08_068/F08OriginalSupportedSmoothingReceiver.lean)" = c30f57a1d581c9a8be44ecd9dfccd5ea2e9f6e43
+          test "$(git -C research hash-object WeilDefect/Arithmetic/ActualZetaCorrelationFourierAgreement.lean)" = 60453bd214c43feedb0fa64d74a15bd452e48998
+          test "$(git -C research hash-object WeilDefect/Arithmetic/ActualZetaCorrelationTransform.lean)" = d5aa1095b2fe64933ad8db64732d232631d3d3b7
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralLogFormGraph.lean)" = 6a25651c2c54d7ff9e4d20d4b410b56b7d5047a3
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralLogHilbertCarrier.lean)" = 679d58b8f0cfa6b4f7d28c48ce844a41cdce2844
+          python3 -m py_compile candidate/verification/f08/f08_071/audit_068.py
+          python3 candidate/verification/f08/f08_071/audit_068.py --selftest
+      - name: Authenticate real successful producer run and immutable artifact metadata
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p f08-071-receipt
+          python3 - <<'PY'
+          import json,os,urllib.request
+          root=os.environ['GITHUB_API_URL']+'/repos/'+os.environ['GITHUB_REPOSITORY']
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json',
+                   'X-GitHub-Api-Version':'2022-11-28'}
+          def get(path):
+              with urllib.request.urlopen(urllib.request.Request(root+path,headers=headers),timeout=30) as response:
+                  return json.load(response)
+          run_id=int(os.environ['F08_RUN'])
+          artifact_id=int(os.environ['F08_ARTIFACT'])
+          run=get('/actions/runs/'+str(run_id))
+          assert run['status']=='completed' and run['conclusion']=='success'
+          assert run['head_sha']==os.environ['F08_HEAD']
+          assert run['head_repository']['full_name']=='monocap-tech/weil-lab'
+          assert run['name']=="F08-068 original supported smoothing receiver kernel"
+          jobs=get('/actions/runs/'+str(run_id)+'/jobs')
+          assert any(j['conclusion']=='success' and
+              any(s['name']=="Compile original supported smoothing receiver and strict named axioms"
+                  and s['conclusion']=='success' for s in j['steps'])
+              for j in jobs['jobs']), 'direct original Lean kernel step absent or failed'
+          artifact=get('/actions/artifacts/'+str(artifact_id))
+          assert artifact['workflow_run']['id']==run_id
+          assert artifact['workflow_run']['head_sha']==os.environ['F08_HEAD']
+          assert artifact['name']=="f08-068-original-supported-smoothing-receiver-compiler-evidence"
+          assert artifact['digest']=='sha256:'+os.environ['F08_ARTIFACT_SHA']
+          assert artifact['size_in_bytes']>0 and not artifact['expired']
+          info={'producer_commit':os.environ['F08_HEAD'], 'producer_run':run_id,
+                'artifact_id':artifact_id, 'sha256':os.environ['F08_ARTIFACT_SHA'],
+                'producer_success':True, 'direct_compiler_and_axioms_success':True}
+          with open('f08-071-receipt/producer-metadata.json','w') as f:
+              json.dump(info,f,sort_keys=True,indent=2)
+          print('F08-071 authenticated actual original direct F08-068 producer and immutable artifact')
+          PY
+      - name: Download and independently audit actual entire original compiler archive
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$F08_ARTIFACT/zip" -o f08-071-receipt/original-producer.zip
+          echo "$F08_ARTIFACT_SHA  f08-071-receipt/original-producer.zip" | sha256sum -c -
+          python3 candidate/verification/f08/f08_071/audit_068.py --archive f08-071-receipt/original-producer.zip --producer-metadata f08-071-receipt/producer-metadata.json --out f08-071-receipt/independent-supported-smoothing.json
+      - name: Archive independent source-only custody receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-071-independent-original-supported-smoothing-custody
+          path: |
+            f08-071-receipt/producer-metadata.json
+            f08-071-receipt/independent-supported-smoothing.json
+          if-no-files-found: ignore
