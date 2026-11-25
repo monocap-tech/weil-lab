@@ -1,0 +1,3 @@
+# F08-051 — Original compact-Schwartz filtered dominated convergence
+
+Source-only candidate for the genuine nonzero real scale subtype of F08-040, proving Tendsto of the integral of the exact normalized squared representative difference to zero. Uses F08-048 integrable envelope, eventual scale interval, continuous measurable integrand, pointwise F08-040 limit, pinned Mathlib v4.34.0 filtered Lebesgue DCT. Separate exact accepted pointwise predecessor checkout 987e1d9cfa89f296d69739d6202761985db36aaf and frozen IV023 original domain. Native compiler and independent custody required. Native Lp equivalence-class norm conversion and dense-to-all transfer are separate, as are weighted physical form core, signed Weil positivity and RH. Research #932; master #898.
