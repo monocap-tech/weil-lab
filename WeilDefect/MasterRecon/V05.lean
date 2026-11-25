@@ -78,8 +78,7 @@ theorem picard_operator_isUnit
     ‖u‖ ^ 2 * ((1 : ℝ≥0) : ℝ) ≤
         (⟪(1 + M† ∘L R ∘L M) u, u⟫_ℂ).re := by
       rw [he]
-      norm_num
-      linarith
+      simpa using le_add_of_nonneg_right hr
     _ ≤ ‖⟪(1 + M† ∘L R ∘L M) u, u⟫_ℂ‖ := Complex.re_le_norm _
 
 /-- Assemble the two certified algebraic identities with typed block maps.
@@ -102,11 +101,12 @@ theorem picard_compression_apply
     C u = ell (η • B (i u)) := by
   have htw : ∀ x, A (T (M x)) + M (M† (T (M x))) = M x := by
     intro x
-    rw [hA]
-    have h := hT (M x)
-    rw [hSS] at h
-    rw [← h]
-    abel
+    calc
+      A (T (M x)) + M (M† (T (M x))) =
+          S (S† (T (M x))) + η • T (M x) := by
+        rw [hA, hSS]
+        abel
+      _ = M x := hT (M x)
   have hw := V02.picard_woodbury_apply A R T M M† C hR htw hC u
   have hcoef := V02.coefficient_resolvent_apply S S† T B η
     (fun x => hT (S x)) hB (i u)
@@ -116,8 +116,46 @@ theorem picard_compression_apply
       rw [map_sub, hei, hell, hi]
     _ = ell (η • B (i u)) := congrArg ell hcoef
 
+
+section FiniteCompression
+
+variable {ι : Type*} [Fintype ι]
+
+/-- Pointwise convergence on a finite selected domain implies norm
+convergence. The coordinate expansion is explicitly in the physical metric. -/
+theorem finite_selected_norm_limit
+    (D : ℕ → K →L[ℂ] K) (e : ι → K)
+    (hexp : ∀ x : K, ∃ a : ι → ℂ,
+      x = ∑ i, a i • e i ∧ ∀ i, ‖a i‖ ≤ ‖x‖)
+    (hpoint : ∀ x, Tendsto (fun n => D n x) atTop (𝓝 0)) :
+    Tendsto (fun n => ‖D n‖) atTop (𝓝 0) := by
+  classical
+  have hcol : ∀ i : ι, Tendsto (fun n => ‖D n (e i)‖) atTop (𝓝 0) := by
+    intro i
+    simpa using (hpoint (e i)).norm
+  have hs : ∀ s : Finset ι,
+      Tendsto (fun n => ∑ i ∈ s, ‖D n (e i)‖) atTop (𝓝 0) := by
+    intro s
+    induction s using Finset.induction_on with
+    | empty => simp
+    | @insert i s hi ih =>
+      simp only [Finset.sum_insert hi]
+      simpa using (hcol i).add ih
+  apply Metric.tendsto_nhds.mpr
+  intro ε hε
+  have hev := (Metric.tendsto_nhds.mp (hs Finset.univ)) ε hε
+  filter_upwards [hev] with n hn
+  rw [Real.dist_eq, sub_zero, abs_of_nonneg (norm_nonneg _)]
+  rw [Real.dist_eq, sub_zero,
+    abs_of_nonneg (Finset.sum_nonneg fun _ _ => norm_nonneg _)] at hn
+  exact lt_of_le_of_lt (V03.finite_coordinate_opNorm_bound (D n) e hexp) hn
+
+end FiniteCompression
+
 end WeilDefect.MasterRecon.V05
 
 #print axioms WeilDefect.MasterRecon.V05.gram_scaled_resolvent_sequence
 #print axioms WeilDefect.MasterRecon.V05.picard_operator_isUnit
 #print axioms WeilDefect.MasterRecon.V05.picard_compression_apply
+
+#print axioms WeilDefect.MasterRecon.V05.finite_selected_norm_limit
