@@ -1,0 +1,95 @@
+name: F08-049 independently verify original common scaled support archive/source/1 axiom
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_049/**'
+      - '.github/workflows/f08-049-Schwartz-common-scaled-support-custody.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  independent-original-source-custody:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      F08_RUN: '45554381996'
+      F08_ARTIFACT: '14996016983'
+      F08_ARTIFACT_SHA: 'bb10dda05dbb3dfaed89763b48edcb527c63ec31d774bfd78d1b94114c5b30a1'
+      F08_HEAD: 'b891bddfb67cb0271eaf24168875eeee50457a11'
+    steps:
+      - name: Checkout independent F08-049 auditor
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout exact frozen original research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Independently pin source blobs, Lean version and adversarial verifier controls
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C candidate hash-object verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean)" = f3ecfbf236898ca62baac18111595a06b2a9874f
+          test "$(git -C candidate hash-object verification/f08/f08_045/F08CompactSchwartzCommonScaledSupport.lean)" = 6fd895d4ae3cfa550fa0ed08f194ce299ea051b6
+          python3 -m py_compile candidate/verification/f08/f08_049/f08_049_independent_Schwartz_common_scaled_support_audit.py
+          python3 candidate/verification/f08/f08_049/f08_049_independent_Schwartz_common_scaled_support_audit.py --selftest
+      - name: Authenticate real successful producer run and immutable artifact metadata
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p f08-049-receipt
+          python3 - <<'PY'
+          import json,os,urllib.request
+          root=os.environ['GITHUB_API_URL']+'/repos/'+os.environ['GITHUB_REPOSITORY']
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json',
+                   'X-GitHub-Api-Version':'2022-11-28'}
+          def get(path):
+              with urllib.request.urlopen(urllib.request.Request(root+path,headers=headers),timeout=30) as response:
+                  return json.load(response)
+          run_id=int(os.environ['F08_RUN'])
+          artifact_id=int(os.environ['F08_ARTIFACT'])
+          run=get('/actions/runs/'+str(run_id))
+          assert run['status']=='completed' and run['conclusion']=='success'
+          assert run['head_sha']==os.environ['F08_HEAD']
+          assert run['head_repository']['full_name']=='monocap-tech/weil-lab'
+          assert run['name']=='F08-045 original near-identity compact-Schwartz common scaled support Lean kernel'
+          jobs=get('/actions/runs/'+str(run_id)+'/jobs')
+          assert any(j['conclusion']=='success' and
+              any(s['name']=='Compile original common scaled-support theorem and strict named axiom audit'
+                  and s['conclusion']=='success' for s in j['steps'])
+              for j in jobs['jobs']), 'direct original Lean kernel step absent or failed'
+          artifact=get('/actions/artifacts/'+str(artifact_id))
+          assert artifact['workflow_run']['id']==run_id
+          assert artifact['workflow_run']['head_sha']==os.environ['F08_HEAD']
+          assert artifact['name']=='f08-045-original-Schwartz-common-scaled-support-evidence'
+          assert artifact['digest']=='sha256:'+os.environ['F08_ARTIFACT_SHA']
+          assert artifact['size_in_bytes']>0 and not artifact['expired']
+          info={'producer_commit':os.environ['F08_HEAD'], 'producer_run':run_id,
+                'artifact_id':artifact_id, 'sha256':os.environ['F08_ARTIFACT_SHA'],
+                'producer_success':True, 'direct_compiler_and_axioms_success':True}
+          with open('f08-049-receipt/producer-metadata.json','w') as f:
+              json.dump(info,f,sort_keys=True,indent=2)
+          print('F08-049 authenticated actual original direct F08-045 producer and immutable artifact')
+          PY
+      - name: Download and independently audit actual entire original compiler archive
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$F08_ARTIFACT/zip" -o f08-049-receipt/original-producer.zip
+          echo "$F08_ARTIFACT_SHA  f08-049-receipt/original-producer.zip" | sha256sum -c -
+          python3 candidate/verification/f08/f08_049/f08_049_independent_Schwartz_common_scaled_support_audit.py --archive f08-049-receipt/original-producer.zip --producer-metadata f08-049-receipt/producer-metadata.json --out f08-049-receipt/independent-Schwartz-common-scaled-support.json
+      - name: Archive independent source-only custody receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-049-independent-original-Schwartz-common-scaled-support-custody
+          path: |
+            f08-049-receipt/producer-metadata.json
+            f08-049-receipt/independent-Schwartz-common-scaled-support.json
+          if-no-files-found: ignore
