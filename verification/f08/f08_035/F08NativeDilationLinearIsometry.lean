@@ -52,7 +52,9 @@ theorem f08_035_nativeFrequencyDilation_add
     (f08_030_nativeFrequencyDilation lam hlam (k + l) : ℝ → ℂ) ξ =
         (Complex.ofReal (Real.sqrt (abs lam))) • (k + l) (lam * ξ) := hleft
     _ = (Complex.ofReal (Real.sqrt (abs lam))) •
-          (k (lam * ξ) + l (lam * ξ)) := by rw [hscaled]
+          (k (lam * ξ) + l (lam * ξ)) := by
+      rw [hscaled]
+      simp only [Pi.add_apply]
     _ = (Complex.ofReal (Real.sqrt (abs lam))) • k (lam * ξ) +
           (Complex.ofReal (Real.sqrt (abs lam))) • l (lam * ξ) := smul_add _ _ _
     _ = (f08_030_nativeFrequencyDilation lam hlam k : ℝ → ℂ) ξ +
@@ -78,6 +80,7 @@ theorem f08_035_nativeFrequencyDilation_smul
         (Complex.ofReal (Real.sqrt (abs lam))) • (c • k) (lam * ξ) := hleft
     _ = (Complex.ofReal (Real.sqrt (abs lam))) • (c • k (lam * ξ)) := by
       rw [hscaled]
+      simp only [Pi.smul_apply]
     _ = c • ((Complex.ofReal (Real.sqrt (abs lam))) • k (lam * ξ)) :=
       smul_comm _ _ _
     _ = c • (f08_030_nativeFrequencyDilation lam hlam k : ℝ → ℂ) ξ := by rw [hk]
@@ -109,7 +112,7 @@ theorem f08_035_nativeFrequencyDilation_approximation_bound
       abel
     _ ≤ (‖U k - U g‖ + ‖U g - g‖) + ‖g - k‖ := by
       exact (norm_add_le _ _).trans
-        (add_le_add_right (norm_add_le _ _) _)
+        (add_le_add_left (norm_add_le _ _) _)
     _ = 2 * ‖k - g‖ + ‖U g - g‖ := by
       rw [← U.map_sub, U.norm_map, norm_sub_rev]
       ring
