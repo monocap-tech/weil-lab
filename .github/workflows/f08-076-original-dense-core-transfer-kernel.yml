@@ -160,7 +160,7 @@ jobs:
           ! grep -Eq '\b(sorry|admit|unsafe)\b' previous/verification/f08/f08_075/F08OriginalSchwartzCarrierApprox.lean
           cp previous/verification/f08/f08_075/F08OriginalSchwartzCarrierApprox.lean research/WeilDefect/Generated/F08/OriginalSchwartzCarrierApprox.lean
           test "$(git -C previous rev-parse HEAD)" = 5da3d10040919836dbf6b8cd248cc67185121e5a
-          test "$(git -C candidate hash-object verification/f08/f08_076/F08OriginalDenseCoreTransfer.lean)" = dfef3e7908d192655882202166f4c5494f1e3ac5
+          test "$(git -C candidate hash-object verification/f08/f08_076/F08OriginalDenseCoreTransfer.lean)" = 92a7e959e502d64cb3cb28a8addb8e6de57d3cf7
           ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_076/F08OriginalDenseCoreTransfer.lean
           cp candidate/verification/f08/f08_076/F08OriginalDenseCoreTransfer.lean research/WeilDefect/Generated/F08/OriginalDenseCoreTransfer.lean
       - name: Install original frozen Lean and Mathlib
