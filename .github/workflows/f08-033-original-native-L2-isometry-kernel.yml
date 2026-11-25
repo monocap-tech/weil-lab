@@ -1,0 +1,84 @@
+name: F08-033 original same-volume native complex L2 isometry Lean kernel
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_033/**'
+      - '.github/workflows/f08-033-original-native-L2-isometry-kernel.yml'
+permissions:
+  contents: read
+jobs:
+  genuine-original-native-L2-isometry:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout immutable IV023 original research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Pin original source, exact predecessors and staged native Lean source
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C candidate hash-object verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean)" = eecfe2a849fa79aa13810ede85e9ba625eba7777
+          test "$(git -C candidate hash-object verification/f08/f08_029/F08NativeL2PushforwardNorm.lean)" = 4da65f9b9df7cae6ea30a4a7f25d3e6c1606c294
+          test "$(git -C candidate hash-object verification/f08/f08_030/F08NativeFrequencyDilation.lean)" = 5c260b69f464f5793e095f9b5448c90f7984617f
+          for x in f08_027/F08NativeFrequencyScalingMeasure.lean f08_029/F08NativeL2PushforwardNorm.lean f08_030/F08NativeFrequencyDilation.lean f08_033/F08NativeFrequencyDilationIsometry.lean; do
+            ! grep -Eq '\b(sorry|admit|unsafe)\b' "candidate/verification/f08/$x"
+          done
+          mkdir -p research/WeilDefect/Generated/F08
+          cp candidate/verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean research/WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean
+          cp candidate/verification/f08/f08_029/F08NativeL2PushforwardNorm.lean research/WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean
+          cp candidate/verification/f08/f08_030/F08NativeFrequencyDilation.lean research/WeilDefect/Generated/F08/NativeFrequencyDilation.lean
+          cp candidate/verification/f08/f08_033/F08NativeFrequencyDilationIsometry.lean research/WeilDefect/Generated/F08/NativeFrequencyDilationIsometry.lean
+      - name: Install original frozen Lean and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Genuine original same-volume L2 isometry build and three strict named axioms
+        working-directory: research
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build WeilDefect.Generated.F08.NativeFrequencyDilationIsometry 2>&1 | tee f08-033-build.log
+          printf '%s\n' 'import WeilDefect.Generated.F08.NativeFrequencyDilationIsometry' '#print axioms WeilDefect.f08_033_jacobianFactor' '#print axioms WeilDefect.f08_033_sqrtJacobian_cancel' '#print axioms WeilDefect.f08_033_nativeFrequencyDilation_isometry' > /tmp/f08-030-axioms.lean
+          lake env lean /tmp/f08-030-axioms.lean 2>&1 | tee f08-033-axioms.log
+          python3 - <<'PY'
+          import re,pathlib
+          names={'f08_033_jacobianFactor','f08_033_sqrtJacobian_cancel','f08_033_nativeFrequencyDilation_isometry'}
+          s=pathlib.Path('f08-033-axioms.log').read_text()
+          pat=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]"
+          found={}
+          for m in re.finditer(pat,s,re.S):
+              assert m[1] not in found
+              found[m[1]]={a.strip() for a in m[2].split(',') if a.strip()}
+          assert not re.sub(pat,'',s,flags=re.S).strip(),('unexpected output',s)
+          assert set(found)==names,found
+          assert all(a <= {'propext','Classical.choice','Quot.sound'} for a in found.values()),found
+          print('F08-033 original complex L2 same-volume isometry: 3/3 standard-only axioms')
+          PY
+      - name: Archive exact original source and full Lean compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-033-native-L2-isometry-compiler-evidence
+          path: |
+            research/f08-033-build.log
+            research/f08-033-axioms.log
+            research/WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean
+            research/WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean
+            research/WeilDefect/Generated/F08/NativeFrequencyDilation.lean
+            research/WeilDefect/Generated/F08/NativeFrequencyDilationIsometry.lean
+          if-no-files-found: ignore
