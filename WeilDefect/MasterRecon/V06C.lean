@@ -41,7 +41,7 @@ theorem negative_radius_identity (f : ℂ → F) (r : ℝ) (hr : 0 < r)
         abs_of_neg ha]
       exact hae
   have he := hf.eqOn_zero_of_preconnected_of_mem_closure
-    isPreconnected_ball (Metric.mem_ball_self hr) hc
+    Metric.isPreconnected_ball (Metric.mem_ball_self hr) hc
   intro z hz'
   exact he hz'
 
