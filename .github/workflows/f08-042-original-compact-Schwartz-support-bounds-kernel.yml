@@ -1,0 +1,75 @@
+name: F08-042 original compact-Schwartz radius and uniform bound Lean kernel
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_042/**'
+      - '.github/workflows/f08-042-original-compact-Schwartz-support-bounds-kernel.yml'
+permissions:
+  contents: read
+jobs:
+  original-compact-Schwartz-support-bounds:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - name: Checkout source candidate
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout frozen original IV023 research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Pin original research, domain and exact compact-Schwartz source
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C candidate hash-object verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean)" = f3ecfbf236898ca62baac18111595a06b2a9874f
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean
+          mkdir -p research/WeilDefect/Generated/F08
+          cp candidate/verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean research/WeilDefect/Generated/F08/CompactSchwartzSupportRadiusAndBound.lean
+      - name: Install exact original pinned Lean 4.34.0 and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Actual native compact Schwartz support radius and uniform seminorm build with two axioms
+        working-directory: research
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build WeilDefect.Generated.F08.CompactSchwartzSupportRadiusAndBound 2>&1 | tee f08-042-build.log
+          printf '%s\n' 'import WeilDefect.Generated.F08.CompactSchwartzSupportRadiusAndBound' '#print axioms WeilDefect.f08_042_compactSchwartz_supportRadius' '#print axioms WeilDefect.f08_042_originalSchwartz_globalBound' > /tmp/f08-042-axioms.lean
+          lake env lean /tmp/f08-042-axioms.lean 2>&1 | tee f08-042-axioms.log
+          python3 - <<'PY'
+          import pathlib,re
+          s=pathlib.Path('f08-042-axioms.log').read_text()
+          pattern=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]|'WeilDefect\.(\w+)' does not depend on any axioms"
+          m=list(re.finditer(pattern,s,re.S))
+          assert len(m)==2,('expected exactly two native named theorem reports',s)
+          assert not re.sub(pattern,'',s,flags=re.S).strip(),('extra unexpected native Lean output',s)
+          expected={'f08_042_compactSchwartz_supportRadius','f08_042_originalSchwartz_globalBound'}
+          actual={z[1] or z[3] for z in m}
+          assert actual==expected,('missing or wrong named theorem',actual)
+          for z in m:
+              axioms={x.strip() for x in (z[2] or '').split(',') if x.strip()}
+              assert axioms <= {'propext','Classical.choice','Quot.sound'},('nonstandard axiom',z[1] or z[3],axioms)
+          print('F08-042 original compact-Schwartz support bounds 2/2 named standard-only axioms PASS')
+          PY
+      - name: Archive entire exact original source/build/axiom evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-042-original-compact-Schwartz-support-bounds-compiler-evidence
+          path: |
+            research/f08-042-build.log
+            research/f08-042-axioms.log
+            research/WeilDefect/Generated/F08/CompactSchwartzSupportRadiusAndBound.lean
+          if-no-files-found: ignore
