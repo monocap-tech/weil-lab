@@ -188,10 +188,12 @@ theorem neutralIV100Carrier_derivative_disjoint (k : ℕ) (hk : 0 < k) :
   have hne : i.val ≠ j.val := fun h => hij (Fin.ext h)
   rcases neutralIV100Pack_nonoverlap k i.val j.val x hne with h | h
   · left
+    change deriv (neutralIV100Carrier k hk i : ℝ → ℂ) x = 0
     unfold neutralIV100Carrier
     rw [neutralIV100Affine_derivative]
     simp [neutralIV097PlateauDerivative_zero _ h]
   · right
+    change deriv (neutralIV100Carrier k hk j : ℝ → ℂ) x = 0
     unfold neutralIV100Carrier
     rw [neutralIV100Affine_derivative]
     simp [neutralIV097PlateauDerivative_zero _ h]
