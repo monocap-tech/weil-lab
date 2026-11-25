@@ -1,5 +1,6 @@
 import WeilDefect.Morphology.NeutralCanonicalFormDomain
-import Mathlib.Analysis.Distribution.SchwartzSpace.CompactSupport
+import Mathlib.Analysis.Normed.Lp.SmoothApprox
+import Mathlib.Analysis.Distribution.SchwartzSpace.Basic
 
 namespace WeilDefect
 noncomputable section
@@ -12,10 +13,10 @@ F08-037: an explicit compactly supported Schwartz dense class in the
 actual original complex Lebesgue L² space RealComplexL2.
 
 Use the actual Mathlib Schwartz-to-Lp continuous linear map, not a
-surrogate space or L² formal sum. Two independently proved Mathlib
-theorems provide the exact density composition:
-  SchwartzMap.dense_hasCompactSupport
-  SchwartzMap.denseRange_toLpCLM
+surrogate space or L² formal sum. The frozen Mathlib v4.34.0 route is:
+  MeasureTheory.Lp.dense_hasCompactSupport_contDiff
+  HasCompactSupport.toSchwartzMap
+Both lemmas belong to the actual pinned Mathlib, not newer main.
 
 This is the candidate core for F08 native L² dilation strong continuity.
 Frequency compact support is NOT physical support after Fourier
@@ -29,15 +30,26 @@ theorem f08_037_compactSchwartz_denseInOriginalL2 :
     Dense
       ((SchwartzMap.toLpCLM ℝ ℂ 2 (volume : Measure ℝ)) ''
         {g : 𝓢(ℝ, ℂ) | HasCompactSupport (g : ℝ → ℂ)}) := by
-  have hLp :
-      DenseRange (SchwartzMap.toLpCLM ℝ ℂ 2 (volume : Measure ℝ)) := by
-    exact SchwartzMap.denseRange_toLpCLM (E := ℝ) (F := ℂ)
-      (p := 2) (μ := (volume : Measure ℝ)) (by simp)
-  have hcompact :
-      Dense {g : 𝓢(ℝ, ℂ) | HasCompactSupport (g : ℝ → ℂ)} :=
-    SchwartzMap.dense_hasCompactSupport
-  exact hLp.dense_image
-    (SchwartzMap.toLpCLM ℝ ℂ 2 (volume : Measure ℝ)).continuous hcompact
+  -- Frozen Mathlib v4.34.0 already proves density of genuinely smooth,
+  -- compactly supported Lp representatives. Convert them to actual Schwartz
+  -- elements without changing the target L² equivalence class.
+  have hbase :
+      Dense {f : RealComplexL2 |
+        ∃ g : ℝ → ℂ,
+          f =ᵐ[volume] g ∧ HasCompactSupport g ∧ ContDiff ℝ ∞ g} := by
+    exact MeasureTheory.Lp.dense_hasCompactSupport_contDiff
+      (E := ℝ) (F := ℂ) (μ := (volume : Measure ℝ)) (p := 2) (by simp)
+  apply hbase.mono
+  intro f hf
+  obtain ⟨g, hfg, hcompact, hsmooth⟩ := hf
+  let sg : 𝓢(ℝ, ℂ) := hcompact.toSchwartzMap hsmooth
+  refine ⟨sg, ?_, ?_⟩
+  · change HasCompactSupport (sg : ℝ → ℂ)
+    simpa [sg] using hcompact
+  · apply Lp.ext_iff.mpr
+    have hsg := sg.coeFn_toLp 2 (volume : Measure ℝ)
+    simpa only [SchwartzMap.toLpCLM_apply] using
+      hfg.trans (by simpa [sg] using hsg.symm)
 
 #print axioms f08_037_compactSchwartz_denseInOriginalL2
 
