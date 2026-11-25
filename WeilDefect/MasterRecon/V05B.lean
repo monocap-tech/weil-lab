@@ -101,6 +101,66 @@ theorem canonical_gram_compression_limit [FiniteDimensional ℂ K]
       ((extraction (H := H) (K := K))† u))))
   simpa using hd
 
+
+/-- Actual Picard inverse sequence on the canonical Hilbert sum.
+Both inverses are specified by their two-sided equations. The limiting
+gap is the kernel projection of the actual joint synthesis. -/
+theorem canonical_picard_norm_limit [FiniteDimensional ℂ K]
+    (P : H →L[ℂ] X) (M : K →L[ℂ] X) (η : ℕ → ℝ≥0)
+    (hη : ∀ n, 0 < η n)
+    (hη0 : Tendsto (fun n => (η n : ℝ)) atTop (𝓝 0)) :
+    ∃ R : ℕ → X →L[ℂ] X, ∃ C : ℕ → K →L[ℂ] K,
+      (∀ n z, R n (P (P† z) + ((η n : ℝ) : ℂ) • z) = z) ∧
+      (∀ n z, P (P† (R n z)) + ((η n : ℝ) : ℂ) • R n z = z) ∧
+      (∀ n u, C n (u + M† (R n (M u))) = u) ∧
+      (∀ n u, C n u + M† (R n (M (C n u))) = u) ∧
+      Tendsto (fun n => ‖C n -
+        extraction ∘L (synthesis P M).ker.starProjection ∘L
+          (extraction (H := H) (K := K))†‖) atTop (𝓝 0) := by
+  let S := synthesis P M
+  let ell : WithLp 2 (H × K) →L[ℂ] K := extraction
+  obtain ⟨hSS, hi, he, hei⟩ := canonical_block_laws P M
+  obtain ⟨B, hBl, hBr, hlim⟩ := canonical_gram_compression_limit P M η hη hη0
+  have hRex := fun n => V04.positive_shift_inverse (P ∘L P†)
+    (ContinuousLinearMap.isPositive_self_comp_adjoint P) (η n) (hη n)
+  choose R hR using hRex
+  have hTex := fun n => V04.positive_shift_inverse (S ∘L S†)
+    (ContinuousLinearMap.isPositive_self_comp_adjoint S) (η n) (hη n)
+  choose T hT using hTex
+  have hU : ∀ n, IsUnit (1 + M† ∘L R n ∘L M) :=
+    fun n => V05.picard_operator_isUnit P M (R n) (η n) (hR n).2.1
+  choose U hUeq using hU
+  let C : ℕ → K →L[ℂ] K := fun n => ↑((U n)⁻¹)
+  have hCl : ∀ n u, C n (u + M† (R n (M u))) = u := by
+    intro n u
+    have hh := congrArg (fun f : K →L[ℂ] K => f u) (U n).inv_mul
+    change C n ((↑(U n) : K →L[ℂ] K) u) = u at hh
+    rw [hUeq n] at hh
+    simpa using hh
+  have hCr : ∀ n u, C n u + M† (R n (M (C n u))) = u := by
+    intro n u
+    have hh := congrArg (fun f : K →L[ℂ] K => f u) (U n).mul_inv
+    change (↑(U n) : K →L[ℂ] K) (C n u) = u at hh
+    rw [hUeq n] at hh
+    simpa using hh
+  have hEq : ∀ n, C n = ell ∘L (((η n : ℝ) : ℂ) • B n) ∘L ell† := by
+    intro n
+    ext u
+    exact V05.picard_compression_apply P M S ell† ell
+      (P ∘L P† + ((η n : ℝ) : ℂ) • 1) (R n) (T n) (C n) (B n)
+      ((η n : ℝ) : ℂ) (fun _ => rfl) (hR n).1 hSS (hT n).2.1
+      (hBl n) (hCl n) hi he hei u
+  refine ⟨R, C, fun n => (hR n).1, fun n => (hR n).2.1, hCl, hCr, ?_⟩
+  have hfun : (fun n => ‖C n - ell ∘L S.ker.starProjection ∘L ell†‖) =
+      (fun n => ‖ell ∘L (((η n : ℝ) : ℂ) • B n) ∘L ell† -
+        ell ∘L S.ker.starProjection ∘L ell†‖) := by
+    funext n
+    rw [hEq n]
+  change Tendsto (fun n => ‖C n - ell ∘L S.ker.starProjection ∘L ell†‖)
+    atTop (𝓝 0)
+  rw [hfun]
+  exact hlim
+
 end WeilDefect.MasterRecon.V05B
 
 #print axioms WeilDefect.MasterRecon.V05B.synthesis_apply
@@ -110,3 +170,5 @@ end WeilDefect.MasterRecon.V05B
 #print axioms WeilDefect.MasterRecon.V05B.orthonormal_coordinates
 #print axioms WeilDefect.MasterRecon.V05B.finite_dimensional_selected_norm_limit
 #print axioms WeilDefect.MasterRecon.V05B.canonical_gram_compression_limit
+
+#print axioms WeilDefect.MasterRecon.V05B.canonical_picard_norm_limit
