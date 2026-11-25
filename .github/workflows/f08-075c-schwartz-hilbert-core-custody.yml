@@ -1,0 +1,49 @@
+name: F08-075C independent original Schwartz Hilbert core custody
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'verification/f08/f08_075c/**'
+      - '.github/workflows/f08-075c-schwartz-hilbert-core-custody.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  terminal-custody:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 325496557c42b15c50729d3a1c4fa9c562ab8d1f
+          path: producer
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ca9e73b47ded1cb945d980f6f461d0a5669dbe2f
+          path: upstream
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+          persist-credentials: false
+      - name: Independent verifier preflight
+        run: |
+          python3 -m py_compile candidate/verification/f08/f08_075c/audit.py
+          python3 candidate/verification/f08/f08_075c/audit.py --selftest
+      - name: Authenticate exact original producer and terminal density archive
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 candidate/verification/f08/f08_075c/audit.py producer upstream research f08-075c-receipt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: f08-075c-independent-schwartz-hilbert-core-custody
+          path: f08-075c-receipt/receipt.json
+          if-no-files-found: error
