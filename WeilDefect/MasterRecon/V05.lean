@@ -61,25 +61,25 @@ theorem picard_operator_isUnit
   have hp := ContinuousLinearMap.isPositive_self_comp_adjoint P
   have h := V04.shifted_energy_lower (P ∘L P†) hp η (R (M u))
   rw [hR (M u)] at h
-  have hn : 0 ≤ (⟪M u, R (M u)⟫_ℂ).re :=
+  have hn : 0 ≤ (inner ℂ (M u) (R (M u))).re :=
     le_trans (by positivity) h
-  have hr : 0 ≤ (⟪M† (R (M u)), u⟫_ℂ).re := by
+  have hr : 0 ≤ (inner ℂ (M† (R (M u))) u).re := by
     rw [M.adjoint_inner_left]
     have hs := congrArg Complex.re (inner_conj_symm (M u) (R (M u)))
-    simpa using (show 0 ≤ (⟪R (M u), M u⟫_ℂ).re from by
-      have heq : (⟪R (M u), M u⟫_ℂ).re = (⟪M u, R (M u)⟫_ℂ).re := by simpa using hs
+    simpa using (show 0 ≤ (inner ℂ (R (M u)) (M u)).re from by
+      have heq : (inner ℂ (R (M u)) (M u)).re = (inner ℂ (M u) (R (M u))).re := by simpa using hs
       rw [heq]
       exact hn)
-  have he : (⟪(1 + M† ∘L R ∘L M) u, u⟫_ℂ).re =
-      ‖u‖ ^ 2 + (⟪M† (R (M u)), u⟫_ℂ).re := by
-    change (⟪u + M† (R (M u)), u⟫_ℂ).re = _
+  have he : (inner ℂ ((1 + M† ∘L R ∘L M) u) u).re =
+      ‖u‖ ^ 2 + (inner ℂ (M† (R (M u))) u).re := by
+    change (inner ℂ (u + M† (R (M u))) u).re = _
     rw [inner_add_left, Complex.add_re, inner_self_eq_norm_sq]
   calc
     ‖u‖ ^ 2 * ((1 : ℝ≥0) : ℝ) ≤
-        (⟪(1 + M† ∘L R ∘L M) u, u⟫_ℂ).re := by
+        (inner ℂ ((1 + M† ∘L R ∘L M) u) u).re := by
       rw [he]
       simpa using le_add_of_nonneg_right hr
-    _ ≤ ‖⟪(1 + M† ∘L R ∘L M) u, u⟫_ℂ‖ := Complex.re_le_norm _
+    _ ≤ ‖inner ℂ ((1 + M† ∘L R ∘L M) u) u‖ := Complex.re_le_norm _
 
 /-- Assemble the two certified algebraic identities with typed block maps.
 All inverse equations and block relations are explicit. -/
