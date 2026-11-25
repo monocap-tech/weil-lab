@@ -16,9 +16,9 @@ variable [NormedAddCommGroup K] [InnerProductSpace ℂ K] [CompleteSpace K]
 theorem shifted_energy_lower
     (T : H →L[ℂ] H) (hT : T.IsPositive) (η : ℝ≥0) (x : H) :
     ‖x‖ ^ 2 * (η : ℝ) ≤
-      (⟪T x + ((η : ℝ) : ℂ) • x, x⟫_ℂ).re := by
+      (inner ℂ (T x + ((η : ℝ) : ℂ) • x) x).re := by
   have h := hT.re_inner_nonneg_left x
-  have hs : (⟪((η : ℝ) : ℂ) • x, x⟫_ℂ).re =
+  have hs : (inner ℂ (((η : ℝ) : ℂ) • x) x).re =
       (η : ℝ) * ‖x‖ ^ 2 := by
     rw [inner_smul_left, inner_self_eq_norm_sq_to_K]
     simp [Complex.mul_re, pow_two]
