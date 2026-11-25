@@ -1,6 +1,9 @@
 name: NF471 original J7 complete mean exact receipt audit
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf471-original-j7-complete-mean-receipt.yml'
+      - 'scripts/local_replay/verify_nf471_original_J7_complete_mean_custody.py'
   workflow_dispatch:
 jobs:
   exact-receipt:

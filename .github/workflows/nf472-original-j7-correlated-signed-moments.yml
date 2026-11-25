@@ -1,6 +1,10 @@
 name: NF472 original physical J7 signed mixed and quadratic source moments
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf472-original-j7-correlated-signed-moments.yml'
+      - 'scripts/local_replay/nf472_original_J7_correlated_signed_moments_native.py'
+      - 'scripts/local_replay/verify_nf472_original_J7_signed_moments_exact.py'
   workflow_dispatch:
 jobs:
   central:
