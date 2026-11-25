@@ -26,7 +26,7 @@ theorem synthesis_apply (P : H →L[ℂ] X) (M : K →L[ℂ] X)
     synthesis P M w = P w.fst + M w.snd := rfl
 
 theorem synthesis_adjoint_apply (P : H →L[ℂ] X) (M : K →L[ℂ] X) (z : X) :
-    (synthesis P M)† z = WithLp.toLp 2 (P† z, M† z) := by
+    (synthesis P M).adjoint z = WithLp.toLp 2 ((P.adjoint) z, (M.adjoint) z) := by
   apply ext_inner_right ℂ
   intro w
   rw [ContinuousLinearMap.adjoint_inner_left, synthesis_apply,
@@ -35,17 +35,17 @@ theorem synthesis_adjoint_apply (P : H →L[ℂ] X) (M : K →L[ℂ] X) (z : X) 
   rw [P.adjoint_inner_left, M.adjoint_inner_left]
 
 theorem extraction_adjoint_apply (u : K) :
-    (extraction (H := H) (K := K))† u = WithLp.toLp 2 ((0 : H), u) := by
+    (extraction (H := H) (K := K)).adjoint u = WithLp.toLp 2 ((0 : H), u) := by
   apply ext_inner_right ℂ
   intro w
   rw [ContinuousLinearMap.adjoint_inner_left, WithLp.prod_inner_apply]
   simp [extraction]
 
 theorem canonical_block_laws (P : H →L[ℂ] X) (M : K →L[ℂ] X) :
-    (∀ z, synthesis P M ((synthesis P M)† z) = P (P† z) + M (M† z)) ∧
-    (∀ u, synthesis P M ((extraction (H := H) (K := K))† u) = M u) ∧
-    (∀ z, extraction ((synthesis P M)† z) = M† z) ∧
-    (∀ u, extraction ((extraction (H := H) (K := K))† u) = u) := by
+    (∀ z, synthesis P M ((synthesis P M).adjoint z) = P ((P.adjoint) z) + M ((M.adjoint) z)) ∧
+    (∀ u, synthesis P M ((extraction (H := H) (K := K)).adjoint u) = M u) ∧
+    (∀ z, extraction ((synthesis P M).adjoint z) = (M.adjoint) z) ∧
+    (∀ u, extraction ((extraction (H := H) (K := K)).adjoint u) = u) := by
   refine ⟨?_, ?_, ?_, ?_⟩
   · intro z
     rw [synthesis_adjoint_apply, synthesis_apply]
@@ -81,24 +81,24 @@ theorem canonical_gram_compression_limit [FiniteDimensional ℂ K]
     (hη : ∀ n, 0 < η n)
     (hη0 : Tendsto (fun n => (η n : ℝ)) atTop (𝓝 0)) :
     ∃ R : ℕ → WithLp 2 (H × K) →L[ℂ] WithLp 2 (H × K),
-      (∀ n x, R n (((synthesis P M)† ∘L synthesis P M) x +
+      (∀ n x, R n (((synthesis P M).adjoint ∘L synthesis P M) x +
         ((η n : ℝ) : ℂ) • x) = x) ∧
-      (∀ n x, ((synthesis P M)† ∘L synthesis P M) (R n x) +
+      (∀ n x, ((synthesis P M).adjoint ∘L synthesis P M) (R n x) +
         ((η n : ℝ) : ℂ) • R n x = x) ∧
       Tendsto (fun n => ‖extraction ∘L (((η n : ℝ) : ℂ) • R n) ∘L
-          (extraction (H := H) (K := K))† -
+          (extraction (H := H) (K := K)).adjoint -
         extraction ∘L (synthesis P M).ker.starProjection ∘L
-          (extraction (H := H) (K := K))†‖) atTop (𝓝 0) := by
+          (extraction (H := H) (K := K)).adjoint‖) atTop (𝓝 0) := by
   obtain ⟨R, hl, hr, ht⟩ := V05.gram_scaled_resolvent_sequence
     (synthesis P M) η hη hη0
   refine ⟨R, hl, hr, ?_⟩
   apply finite_dimensional_selected_norm_limit
   intro u
-  have hc := extraction.continuous.continuousAt.tendsto.comp
-    (ht ((extraction (H := H) (K := K))† u))
+  have hc := (extraction (H := H) (K := K)).continuous.continuousAt.tendsto.comp
+    (ht ((extraction (H := H) (K := K)).adjoint u))
   have hd := hc.sub (tendsto_const_nhds (x :=
     extraction ((synthesis P M).ker.starProjection
-      ((extraction (H := H) (K := K))† u))))
+      ((extraction (H := H) (K := K)).adjoint u))))
   simpa using hd
 
 
@@ -110,53 +110,53 @@ theorem canonical_picard_norm_limit [FiniteDimensional ℂ K]
     (hη : ∀ n, 0 < η n)
     (hη0 : Tendsto (fun n => (η n : ℝ)) atTop (𝓝 0)) :
     ∃ R : ℕ → X →L[ℂ] X, ∃ C : ℕ → K →L[ℂ] K,
-      (∀ n z, R n (P (P† z) + ((η n : ℝ) : ℂ) • z) = z) ∧
-      (∀ n z, P (P† (R n z)) + ((η n : ℝ) : ℂ) • R n z = z) ∧
-      (∀ n u, C n (u + M† (R n (M u))) = u) ∧
-      (∀ n u, C n u + M† (R n (M (C n u))) = u) ∧
+      (∀ n z, R n (P ((P.adjoint) z) + ((η n : ℝ) : ℂ) • z) = z) ∧
+      (∀ n z, P ((P.adjoint) (R n z)) + ((η n : ℝ) : ℂ) • R n z = z) ∧
+      (∀ n u, C n (u + (M.adjoint) (R n (M u))) = u) ∧
+      (∀ n u, C n u + (M.adjoint) (R n (M (C n u))) = u) ∧
       Tendsto (fun n => ‖C n -
         extraction ∘L (synthesis P M).ker.starProjection ∘L
-          (extraction (H := H) (K := K))†‖) atTop (𝓝 0) := by
+          (extraction (H := H) (K := K)).adjoint‖) atTop (𝓝 0) := by
   let S := synthesis P M
   let ell : WithLp 2 (H × K) →L[ℂ] K := extraction
   obtain ⟨hSS, hi, he, hei⟩ := canonical_block_laws P M
   obtain ⟨B, hBl, hBr, hlim⟩ := canonical_gram_compression_limit P M η hη hη0
-  have hRex := fun n => V04.positive_shift_inverse (P ∘L P†)
+  have hRex := fun n => V04.positive_shift_inverse (P ∘L (P.adjoint))
     (ContinuousLinearMap.isPositive_self_comp_adjoint P) (η n) (hη n)
   choose R hR using hRex
-  have hTex := fun n => V04.positive_shift_inverse (S ∘L S†)
+  have hTex := fun n => V04.positive_shift_inverse (S ∘L (S.adjoint))
     (ContinuousLinearMap.isPositive_self_comp_adjoint S) (η n) (hη n)
   choose T hT using hTex
-  have hU : ∀ n, IsUnit (1 + M† ∘L R n ∘L M) :=
+  have hU : ∀ n, IsUnit (1 + (M.adjoint) ∘L R n ∘L M) :=
     fun n => V05.picard_operator_isUnit P M (R n) (η n) (hR n).2.1
   choose U hUeq using hU
   let C : ℕ → K →L[ℂ] K := fun n => ↑((U n)⁻¹)
-  have hCl : ∀ n u, C n (u + M† (R n (M u))) = u := by
+  have hCl : ∀ n u, C n (u + (M.adjoint) (R n (M u))) = u := by
     intro n u
     have hh := congrArg (fun f : K →L[ℂ] K => f u) (U n).inv_mul
     change C n ((↑(U n) : K →L[ℂ] K) u) = u at hh
     rw [hUeq n] at hh
     simpa using hh
-  have hCr : ∀ n u, C n u + M† (R n (M (C n u))) = u := by
+  have hCr : ∀ n u, C n u + (M.adjoint) (R n (M (C n u))) = u := by
     intro n u
     have hh := congrArg (fun f : K →L[ℂ] K => f u) (U n).mul_inv
     change (↑(U n) : K →L[ℂ] K) (C n u) = u at hh
     rw [hUeq n] at hh
     simpa using hh
-  have hEq : ∀ n, C n = ell ∘L (((η n : ℝ) : ℂ) • B n) ∘L ell† := by
+  have hEq : ∀ n, C n = ell ∘L (((η n : ℝ) : ℂ) • B n) ∘L (ell.adjoint) := by
     intro n
     ext u
-    exact V05.picard_compression_apply P M S ell† ell
-      (P ∘L P† + ((η n : ℝ) : ℂ) • 1) (R n) (T n) (C n) (B n)
+    exact V05.picard_compression_apply P M S (ell.adjoint) ell
+      (P ∘L (P.adjoint) + ((η n : ℝ) : ℂ) • 1) (R n) (T n) (C n) (B n)
       ((η n : ℝ) : ℂ) (fun _ => rfl) (hR n).1 hSS (hT n).2.1
       (hBl n) (hCl n) hi he hei u
   refine ⟨R, C, fun n => (hR n).1, fun n => (hR n).2.1, hCl, hCr, ?_⟩
-  have hfun : (fun n => ‖C n - ell ∘L S.ker.starProjection ∘L ell†‖) =
-      (fun n => ‖ell ∘L (((η n : ℝ) : ℂ) • B n) ∘L ell† -
-        ell ∘L S.ker.starProjection ∘L ell†‖) := by
+  have hfun : (fun n => ‖C n - ell ∘L S.ker.starProjection ∘L (ell.adjoint)‖) =
+      (fun n => ‖ell ∘L (((η n : ℝ) : ℂ) • B n) ∘L (ell.adjoint) -
+        ell ∘L S.ker.starProjection ∘L (ell.adjoint)‖) := by
     funext n
     rw [hEq n]
-  change Tendsto (fun n => ‖C n - ell ∘L S.ker.starProjection ∘L ell†‖)
+  change Tendsto (fun n => ‖C n - ell ∘L S.ker.starProjection ∘L (ell.adjoint)‖)
     atTop (𝓝 0)
   rw [hfun]
   exact hlim
