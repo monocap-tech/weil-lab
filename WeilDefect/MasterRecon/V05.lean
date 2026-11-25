@@ -65,11 +65,11 @@ theorem picard_operator_isUnit
     le_trans (by positivity) h
   have hr : 0 ≤ (inner ℂ ((M.adjoint) (R (M u))) u).re := by
     rw [M.adjoint_inner_left]
-    have hs := congrArg Complex.re (inner_conj_symm (𝕜 := ℂ) (M u) (R (M u)))
-    simpa using (show 0 ≤ (inner ℂ (R (M u)) (M u)).re from by
-      have heq : (inner ℂ (R (M u)) (M u)).re = (inner ℂ (M u) (R (M u))).re := by simpa using hs
-      rw [heq]
-      exact hn)
+    have heq : (inner ℂ (R (M u)) (M u)).re =
+        (inner ℂ (M u) (R (M u))).re :=
+      inner_re_symm (𝕜 := ℂ) (R (M u)) (M u)
+    rw [heq]
+    exact hn
   have he : (inner ℂ ((1 + (M.adjoint) ∘L R ∘L M) u) u).re =
       ‖u‖ ^ 2 + (inner ℂ ((M.adjoint) (R (M u))) u).re := by
     change (inner ℂ (u + (M.adjoint) (R (M u))) u).re = _
@@ -80,7 +80,8 @@ theorem picard_operator_isUnit
     ‖u‖ ^ 2 * ((1 : ℝ≥0) : ℝ) ≤
         (inner ℂ ((1 + (M.adjoint) ∘L R ∘L M) u) u).re := by
       rw [he]
-      simpa using le_add_of_nonneg_right hr
+      simpa only [NNReal.coe_one, mul_one] using
+        (le_add_of_nonneg_right (a := ‖u‖ ^ 2) hr)
     _ ≤ ‖inner ℂ ((1 + (M.adjoint) ∘L R ∘L M) u) u‖ := Complex.re_le_norm _
 
 /-- Assemble the two certified algebraic identities with typed block maps.
