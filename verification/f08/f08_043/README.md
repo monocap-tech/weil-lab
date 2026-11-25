@@ -1,0 +1,13 @@
+# F08-043 — Independent native original Schwartz representative pointwise-limit custody
+
+This is a separate **original source and whole-ZIP audit** of F08-040, **not a second proof** and not yet accepted until its hosted workflow completes SUCCESS.
+
+Original producer: [F08-040 PR #1049](https://github.com/monocap-tech/weil-lab/pull/1049), source SHA `264225db1337a0bc558e894720e77b15ca3856ff`, [frozen IV023 Lean 4.34.0 run 45550322021](https://github.com/monocap-tech/weil-lab/actions/runs/45550322021) SUCCESS, 8,989/8,989 targets, one exact named `f08_040_originalSchwartzDilation_pointwise_tendsto` standard-only `#print axioms` output `[propext, Classical.choice, Quot.sound]`. The original result is pointwise convergence `Complex.ofReal (Real.sqrt (abs λ)) • g(λ ξ) → g ξ` as λ→1, for each genuine Schwartz `g`, not continuity in native `L²`.
+
+Source Git blob `f728a7fc3c5528c7311b7ed8dc27b2f60e445f81`; true original complete ZIP artifact **14993299774**, SHA-256 `2107e635be5e599865f985e875c4b3cd5ea42f9546e7f623a6dce13283858c0c`, six members: original compiler log and strict axiom file, plus original generated Lean source for F08-027 `eecfe2a849fa79aa13810ede85e9ba625eba7777`, F08-029 `4da65f9b9df7cae6ea30a4a7f25d3e6c1606c294`, F08-030 `5c260b69f464f5793e095f9b5448c90f7984617f`, F08-040 `f728a7fc3c5528c7311b7ed8dc27b2f60e445f81`. Entire original ZIP downloaded and independently corroborated locally (full digest, CRC, six unique paths, exact standard named axiom report).
+
+Independent hosted F08-043 audit re-authenticates frozen original IV023 research commit `614ba879f7389fdb620c474adaee273b00eac71c`, canonical original domain blob `2bf19165fce3a0cfa6e4d782d68caab268aaf82b`, exact Lean 4.34.0, direct original successful F08-040 run/step/head, immutable artifact metadata and complete original ZIP, exact source hash and predecessor hashes, exactly one named standard-only axiom report, plus rejects four deliberate adulterated evidence cases.
+
+After a real independent hosted PASS, **one** declaration may be accepted and merged along with custody: supporting F08 total will rise by one from the then-current inventory (currently 85, excluding the separately pending original F08-037 density audit).
+
+**Boundaries:** Pointwise convergence of the normalized Schwartz representative does **not** prove `‖Uλg-g‖₂→0`. The common-support uniform integrable square bound, original volume-measure dominated convergence, source-native Lp identification, unconditional all-`k` strong continuity, weighted physically supported log form core, complete signed Weil mixed pairing, unrestricted positivity, F42 and RH remain open. Parent source ledger #932 and master #898.
