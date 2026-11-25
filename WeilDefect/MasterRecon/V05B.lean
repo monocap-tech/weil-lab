@@ -33,6 +33,7 @@ theorem synthesis_adjoint_apply (P : H →L[ℂ] X) (M : K →L[ℂ] X) (z : X) 
     inner_add_right, WithLp.prod_inner_apply]
   simp only [WithLp.ofLp_toLp]
   rw [P.adjoint_inner_left, M.adjoint_inner_left]
+  simp only [WithLp.ofLp_fst, WithLp.ofLp_snd]
 
 theorem extraction_adjoint_apply (u : K) :
     (extraction (H := H) (K := K)).adjoint u = WithLp.toLp 2 ((0 : H), u) := by
