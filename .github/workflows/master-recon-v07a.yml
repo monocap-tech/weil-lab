@@ -1,0 +1,58 @@
+name: MASTER-RECON V07A
+
+on:
+  push:
+    branches: [master-recon-001-neutral-shell]
+    paths:
+      - "WeilDefect/MasterRecon/V07A.lean"
+      - ".github/workflows/master-recon-v07a.yml"
+  pull_request:
+    paths:
+      - "WeilDefect/MasterRecon/V07A.lean"
+      - ".github/workflows/master-recon-v07a.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  abstract-core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Elan
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned dependencies
+        run: lake update
+      - name: Fetch mathlib cache
+        run: lake exe cache get
+      - name: Compile V07A and inspect axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.MasterRecon.V06D
+          lake env lean WeilDefect/MasterRecon/V07A.lean 2>&1 | tee v07a-lean.log
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          s = Path("v07a-lean.log").read_text()
+          names = ["mellin_translate", "reflected_pair_mix", "weighted_mellin_translate", "reflected_exponential_split", "reflected_mellin_translation"]
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for name in names:
+              m = re.search(r"'WeilDefect\.MasterRecon\.V07A\."+name+r"' depends on axioms: \[([^\]]*)\]", s)
+              if m is None:
+                  if f"'WeilDefect.MasterRecon.V07A.{name}' does not depend on any axioms" in s:
+                      continue
+                  raise SystemExit("Missing axiom audit: " + name)
+              axioms = {x.strip() for x in m.group(1).split(",") if x.strip()}
+              if not axioms <= allowed:
+                  raise SystemExit(f"Unexpected axioms for {name}: {axioms - allowed}")
+          print("V07A strict axiom audit PASS")
+          PY
+      - name: Upload compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: master-recon-v07a-lean
+          path: v07a-lean.log
