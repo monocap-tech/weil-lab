@@ -1,6 +1,9 @@
 name: NF500 independent replay of accepted original 4096bit 242 mixed source moment native artifact
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf500-independent-242-native-source-artifact-replay.yml'
+      - 'scripts/local_replay/verify_nf500_original_J242_all_smooth_log_moments_source_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

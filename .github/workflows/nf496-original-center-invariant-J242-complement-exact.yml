@@ -1,6 +1,9 @@
 name: NF496 original J242 center-invariant complement quantitative no-go source exact
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf496-original-center-invariant-J242-complement-exact.yml'
+      - 'scripts/local_replay/verify_nf496_original_center_invariant_J242_complement_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

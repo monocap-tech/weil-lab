@@ -1,6 +1,10 @@
 name: NF499 actual original smooth Cc-infinity log-collar trial physical source L2 rank-one gate
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf499-original-smooth-log-collar-source-exact.yml'
+      - 'scripts/local_replay/verify_nf499_original_smooth_log_collar_quantitative_capture_exact.py'
+      - 'scripts/local_replay/verify_nf499_original_smooth_log_collar_selected_pole_moment_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

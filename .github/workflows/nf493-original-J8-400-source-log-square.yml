@@ -1,6 +1,10 @@
 name: NF493 actual 400 original full U(B-d) source log jets and first genuine log-square moment
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf493-original-J8-400-source-log-square.yml'
+      - 'scripts/local_replay/nf493_original_J8_400_true_source_log_jets_native.py'
+      - 'scripts/local_replay/verify_nf493_original_J8_400_source_log_square_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

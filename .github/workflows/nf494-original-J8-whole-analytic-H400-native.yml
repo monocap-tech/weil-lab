@@ -1,6 +1,10 @@
 name: NF494 original full J8 joint-compact analytic H400 source native
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf494-original-J8-whole-analytic-H400-native.yml'
+      - 'scripts/local_replay/nf494_original_J8_whole_analytic_H400_native.py'
+      - 'scripts/local_replay/verify_nf494_original_J8_complete_true_square_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

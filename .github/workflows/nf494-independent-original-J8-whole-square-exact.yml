@@ -1,6 +1,9 @@
 name: NF494 independent full ORIGINAL J8 physical square from ACCEPTED 4096bit H400 source
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf494-independent-original-J8-whole-square-exact.yml'
+      - 'scripts/local_replay/verify_nf494_original_J8_complete_true_square_exact.py'
   workflow_dispatch:
 permissions:
   contents: read
