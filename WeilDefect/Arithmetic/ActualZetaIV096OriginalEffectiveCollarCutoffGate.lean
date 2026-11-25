@@ -31,7 +31,7 @@ theorem neutralIV096Derivative_fourier_sq (s : 𝓢(ℝ,ℂ)) (r : ℝ) :
       r^2 * ‖(𝓕 (s : ℝ → ℂ)) (-r / (2 * Real.pi))‖^2 := by
   have hi : Integrable (deriv (s : ℝ → ℂ)) :=
     (SchwartzMap.derivCLM ℂ ℂ s).integrable
-  rw [fourier_deriv s.integrable s.differentiable hi]
+  rw [Real.fourier_deriv s.integrable s.differentiable hi]
   simp only [smul_eq_mul, norm_mul, Complex.norm_I, mul_one, Complex.norm_real,
     Real.norm_eq_abs]
   have he : (2 * Real.pi)^2 * (-r / (2 * Real.pi))^2 = r^2 := by
@@ -61,11 +61,20 @@ theorem neutralIV096AngularDerivative_data (s : 𝓢(ℝ,ℂ)) :
   · apply ((hF.comp_mul_left' hn).const_mul (1 / (2 * Real.pi))).congr
     filter_upwards [] with r
     rw [harg, hcoe]
-  · simp_rw [← hcoe, ← harg]
-    rw [integral_const_mul, Measure.integral_comp_mul_left]
-    have habs : |(-(1 / (2 * Real.pi)) : ℝ)⁻¹| = 2 * Real.pi := by
-      rw [inv_neg, abs_neg, one_div, inv_inv, abs_of_pos (by positivity)]
-    rw [habs, smul_eq_mul]
+  · let G : ℝ → ℝ := fun ξ => ‖F ξ‖^2
+    have hscale : (∫ r : ℝ, G ((-(1 / (2 * Real.pi))) * r)) =
+        (2 * Real.pi) * ∫ ξ : ℝ, G ξ := by
+      rw [Measure.integral_comp_mul_left]
+      have habs : |(-(1 / (2 * Real.pi)) : ℝ)⁻¹| = 2 * Real.pi := by
+        rw [inv_neg, abs_neg, one_div, inv_inv, abs_of_pos (by positivity)]
+      rw [habs, smul_eq_mul]
+    have hprofile : (fun r : ℝ => (1 / (2 * Real.pi)) *
+        ‖(𝓕 (deriv (s : ℝ → ℂ))) (-r / (2 * Real.pi))‖^2) =
+        fun r : ℝ => (1 / (2 * Real.pi)) * G ((-(1 / (2 * Real.pi))) * r) := by
+      funext r
+      rw [harg]
+      simp only [G, hcoe]
+    rw [hprofile, integral_const_mul, hscale]
     change (1 / (2 * Real.pi)) * ((2 * Real.pi) * ∫ ξ : ℝ, ‖F ξ‖^2) =
       neutralIV096DerivativeEnergy s
     rw [show (∫ ξ : ℝ, ‖F ξ‖^2) = neutralIV096DerivativeEnergy s from
@@ -88,7 +97,7 @@ theorem neutralIV096CollarTail_derivative_bound
         ‖(𝓕 (deriv (s : ℝ → ℂ))) (-r / (2 * Real.pi))‖^2) := by
       apply integral_mono hi (hd.const_mul A)
       intro r
-      unfold neutralIV095TailProfile
+      dsimp only [neutralIV095TailProfile]
       rw [neutralIV096WindowEval_fourier s hs r, neutralIV096Derivative_fourier_sq]
       have hb := (neutralIV089GammaRemainder_bound N r).2
       have h := mul_le_mul_of_nonneg_right
