@@ -1,6 +1,9 @@
 name: NF483 exact original source J8 full principal and terminal Gram witness
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf483-original-j8-terminal-principal-gram-exact.yml'
+      - 'scripts/local_replay/verify_nf483_original_terminal_J8_exact_principal_and_gram.py'
   workflow_dispatch:
 permissions:
   contents: read

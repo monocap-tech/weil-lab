@@ -1,6 +1,10 @@
 name: NF489 first real original J8 joint compact source-native point
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf489-original-J8-first-physical-joint-compact-point.yml'
+      - 'scripts/local_replay/nf489_original_J8_first_joint_compact_point_native.py'
+      - 'scripts/local_replay/verify_nf489_original_J8_first_joint_compact_point_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

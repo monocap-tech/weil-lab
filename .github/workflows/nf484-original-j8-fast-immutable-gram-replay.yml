@@ -1,6 +1,10 @@
 name: NF484 fast original immutable 18k source image Gram + independent replay
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf484-original-j8-fast-immutable-gram-replay.yml'
+      - 'scripts/local_replay/nf484_original_J8_18k_renormalized_source_gram_native.py'
+      - 'scripts/local_replay/verify_nf484_original_J8_18k_source_gram_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

@@ -1,6 +1,9 @@
 name: NF486 original J8 last microscopic collar exact signed upper
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf486-original-J8-last-collar-exact-source-upper.yml'
+      - 'scripts/local_replay/verify_nf486_original_J8_last_collar_signed_upper_exact.py'
   workflow_dispatch:
 permissions:
   contents: read
