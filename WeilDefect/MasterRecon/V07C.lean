@@ -55,7 +55,7 @@ theorem displacementBlock_symmetric (d : ℝ) (x y : Pair) :
   simp
 
 variable {ι : Type*}
-abbrev Coeff (ι : Type*) := lp (fun _ : ι => Pair) 2
+noncomputable abbrev Coeff (ι : Type*) := lp (fun _ : ι => Pair) 2
 
 noncomputable def displacement (d : ι → ℝ) (hd : ∀ i, |d i| ≤ 1 / 2) :
     Coeff ι →L[ℂ] Coeff ι :=
@@ -99,8 +99,7 @@ theorem phaseBlock_cancel (q : ℂ) (hq : ‖q‖ = 1)
     (E : Pair →L[ℂ] Pair) (x y : Pair) :
     inner ℂ (E (phaseBlock q x)) (phaseBlock q y) = inner ℂ (E x) y := by
   rw [phaseBlock_apply, phaseBlock_apply, E.map_smul, inner_smul_left, inner_smul_right]
-  have h : star q * q = 1 := by
-    change (starRingEnd ℂ) q * q = 1
+  have h : (starRingEnd ℂ) q * q = 1 := by
     rw [Complex.conj_mul', hq]
     norm_num
   rw [← mul_assoc, h, one_mul]
