@@ -58,7 +58,10 @@ def main():
         assert git(producer,"hash-object",x["source"])==x["blob"]
     preds=[metadata(x) for x in M["predecessors"]]
     m=metadata(p,True)
-    raw=request("/actions/artifacts/"+str(p["artifact"])+"/zip")
+    # curl does not forward Authorization to the cross-origin signed storage URL.
+    # Retain the exact ZIP size and digest checks below.
+    url=os.environ["GITHUB_API_URL"]+"/repos/"+os.environ["GITHUB_REPOSITORY"]+"/actions/artifacts/"+str(p["artifact"])+"/zip"
+    raw=subprocess.check_output(["curl","--fail","--silent","--show-error","--location","--retry","3","--max-time","120","--proto","=https","--proto-redir","=https","-H","Authorization: Bearer "+os.environ["GH_TOKEN"],url])
     assert len(raw)==m["size"] and hashlib.sha256(raw).hexdigest()==p["digest"]
     zpath=out/"producer.zip"
     zpath.write_bytes(raw)
