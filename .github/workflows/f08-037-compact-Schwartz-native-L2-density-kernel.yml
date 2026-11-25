@@ -27,7 +27,7 @@ jobs:
           test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
           test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
           test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
-          test "$(git -C candidate hash-object verification/f08/f08_037/F08CompactSchwartzNativeL2Dense.lean)" = d298cb09417626c18493ec8db9f6fbe4ef168387
+          test "$(git -C candidate hash-object verification/f08/f08_037/F08CompactSchwartzNativeL2Dense.lean)" = e4a5138303598893747e8224903b26c3df75b973
           ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_037/F08CompactSchwartzNativeL2Dense.lean
           mkdir -p research/WeilDefect/Generated/F08
           cp candidate/verification/f08/f08_037/F08CompactSchwartzNativeL2Dense.lean research/WeilDefect/Generated/F08/CompactSchwartzNativeL2Dense.lean
