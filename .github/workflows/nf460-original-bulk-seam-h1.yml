@@ -1,6 +1,9 @@
 name: NF460 original bulk seam and H1 obstruction
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf460-original-bulk-seam-h1.yml'
+      - 'scripts/local_replay/verify_nf460_original_bulk_jumps_h1.py'
   workflow_dispatch:
 jobs:
   original-source-exact:

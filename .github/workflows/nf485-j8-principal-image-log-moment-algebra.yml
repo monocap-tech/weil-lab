@@ -1,6 +1,9 @@
 name: NF485 exact rational original J8 principal image logarithmic moment algebra
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf485-j8-principal-image-log-moment-algebra.yml'
+      - 'scripts/local_replay/verify_nf485_J8_principal_image_log_moment_algebra_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

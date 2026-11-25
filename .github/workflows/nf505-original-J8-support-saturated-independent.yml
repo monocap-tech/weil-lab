@@ -1,6 +1,10 @@
 name: NF505 independently audit genuine original J8 physical support-saturated 242D exterior Schur
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf505-original-J8-support-saturated-independent.yml'
+      - 'scripts/local_replay/verify_nf505_original_J8_saturated_exterior_source_exact.py'
+      - 'scripts/verify_nf504_original_J8_support_saturated_exterior_native.py'
   workflow_dispatch:
 permissions:
   contents: read

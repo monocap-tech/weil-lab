@@ -1,6 +1,9 @@
 name: NF498 original actual J8 endpoint log-carrier rank-one Schur trial and source-domain gate
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf498-original-endpoint-log-carrier-rankone-domain-exact.yml'
+      - 'scripts/local_replay/verify_nf498_original_terminal_log_carrier_rankone_and_domain_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

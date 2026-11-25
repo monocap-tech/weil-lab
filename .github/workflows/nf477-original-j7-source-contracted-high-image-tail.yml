@@ -1,6 +1,9 @@
 name: NF477 true original J7 source-contracted high-image tail certificate
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf477-original-j7-source-contracted-high-image-tail.yml'
+      - 'scripts/local_replay/nf477_original_J7_contracted_resolvent_high_image_tail_native.py'
   workflow_dispatch:
 jobs:
   original-high-image-resolvent:

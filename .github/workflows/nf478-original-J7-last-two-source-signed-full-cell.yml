@@ -1,6 +1,12 @@
 name: NF478 true original J7 final two physical signed panels and complete D7
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf478-original-J7-last-two-source-signed-full-cell.yml'
+      - 'scripts/local_replay/nf478_original_J7_right_boundary_compact_native.py'
+      - 'scripts/local_replay/nf478_original_J7_right_rational_signed_native.py'
+      - 'scripts/local_replay/nf478_original_J7_terminal_irrational_signed_native.py'
+      - 'scripts/local_replay/verify_nf478_original_full_J7_signed_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

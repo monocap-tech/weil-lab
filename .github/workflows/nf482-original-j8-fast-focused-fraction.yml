@@ -1,6 +1,9 @@
 name: NF482 exact original J8 irrational entry focused source audit
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf482-original-j8-fast-focused-fraction.yml'
+      - 'scripts/local_replay/verify_nf482_original_J8_first_irrational_signed_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

@@ -1,6 +1,9 @@
 name: NF482 independent exact original full source J8 signed first 11 artifacts
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf482-original-j8-first-independent-11-source-block-Fraction.yml'
+      - 'scripts/local_replay/verify_nf482_J8_first_11_original_native_chunks_exact_fraction.py'
   workflow_dispatch:
 permissions:
   contents: read

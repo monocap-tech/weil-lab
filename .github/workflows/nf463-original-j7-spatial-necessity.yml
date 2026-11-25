@@ -1,6 +1,30 @@
 name: NF463 original J7 genuine island and spatial necessity
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf463-original-j7-spatial-necessity.yml'
+      - 'scripts/local_replay/verify_nf463_original_j7_island_and_spatial_necessity.py'
+      - 'scripts/local_replay/verify_nf462_original_j7_required_signed_deficit.py'
+      - 'scripts/local_replay/verify_nf453_original_j7_j8_principal_energy_signed_island.py'
+      - 'scripts/local_replay/verify_nf454_gate.py'
+      - 'notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json'
+      - 'notes/data/provisional/NF406_original_prime_support_partition_exact.json'
+      - 'notes/data/provisional/NF411_original_source_boundary_jet.json'
+      - 'notes/data/provisional/NF417_original_cell7_full_z_pointwise_native.json'
+      - 'notes/data/provisional/NF418_original_hotspot_cellwide_lipschitz_envelopes_exact.json'
+      - 'notes/data/provisional/NF453_original_J7_J8_principal_and_island_custody.json'
+      - 'notes/data/provisional/NF462_original_forced_J7_signed_deficit_custody.json'
+      - 'notes/data/provisional/NF403_original_joint_complement_power_exact.json'
+      - 'notes/data/provisional/NF404_original_selected_pole_shear_exact.json'
+      - 'notes/data/provisional/NF456_original_J242_two_ray_residual_custody.json'
+      - 'notes/data/provisional/NF461_original_cell8_inner_bulk_energy_custody.json'
+      - 'notes/data/provisional/NF442_original_true_cell1_signed_source_custody_index.json'
+      - 'notes/data/provisional/NF443_original_true_cell2_complete_signed_custody_index.json'
+      - 'notes/data/provisional/NF437_original_true_cell3_signed_decision_custody_index.json'
+      - 'notes/data/provisional/NF439_original_true_cell4_complete_signed_custody_index.json'
+      - 'notes/data/provisional/NF440_original_true_cell5_three_panel_full_signed_custody_index.json'
+      - 'notes/data/provisional/NF432_original_true_cell6_signed_decision_custody_index.json'
+      - 'notes/data/provisional/NF410_original_signed_taylor_moments.json'
   workflow_dispatch:
 jobs:
   original-j7-exact-source:

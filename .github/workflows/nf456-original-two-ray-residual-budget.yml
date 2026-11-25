@@ -1,6 +1,23 @@
 name: NF456 original J242 two-ray residual budget
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf456-original-two-ray-residual-budget.yml'
+      - 'scripts/local_replay/verify_nf456_original_two_ray_residual_budget.py'
+      - 'scripts/local_replay/verify_nf455_projection_energy_floor.py'
+      - 'scripts/local_replay/verify_nf454_gate.py'
+      - 'notes/data/provisional/NF403_original_joint_complement_power_exact.json'
+      - 'notes/data/provisional/NF389_original_joint_lower_exact_parent.json'
+      - 'notes/data/provisional/NF389_original_two_ray_sharper_upper_exact.json'
+      - 'notes/data/provisional/NF404_original_selected_pole_shear_exact.json'
+      - 'notes/data/provisional/NF442_original_true_cell1_signed_source_custody_index.json'
+      - 'notes/data/provisional/NF443_original_true_cell2_complete_signed_custody_index.json'
+      - 'notes/data/provisional/NF437_original_true_cell3_signed_decision_custody_index.json'
+      - 'notes/data/provisional/NF439_original_true_cell4_complete_signed_custody_index.json'
+      - 'notes/data/provisional/NF440_original_true_cell5_three_panel_full_signed_custody_index.json'
+      - 'notes/data/provisional/NF432_original_true_cell6_signed_decision_custody_index.json'
+      - 'notes/data/provisional/NF410_original_signed_taylor_moments.json'
+      - 'notes/data/provisional/NF453_original_J7_J8_principal_and_island_custody.json'
   workflow_dispatch:
 jobs:
   original-source-exact:

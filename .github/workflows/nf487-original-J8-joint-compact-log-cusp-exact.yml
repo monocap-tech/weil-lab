@@ -1,6 +1,9 @@
 name: NF487 original J8 full joint compact endpoint log cusp exact source audit
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf487-original-J8-joint-compact-log-cusp-exact.yml'
+      - 'scripts/local_replay/verify_nf487_original_J8_joint_compact_log_cusp_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

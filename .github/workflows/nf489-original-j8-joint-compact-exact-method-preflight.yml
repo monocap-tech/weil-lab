@@ -1,6 +1,9 @@
 name: NF489 original J8 exact joint compact physical source method preflight
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf489-original-j8-joint-compact-exact-method-preflight.yml'
+      - 'scripts/local_replay/verify_nf489_original_J8_joint_compact_point_method_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

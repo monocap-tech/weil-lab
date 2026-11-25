@@ -1,6 +1,9 @@
 name: NF471 original J7 complete joint arch macroscopic source mean
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf471-original-j7-joint-arch-macroscopic-mean.yml'
+      - 'scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py'
   workflow_dispatch:
 jobs:
   central:

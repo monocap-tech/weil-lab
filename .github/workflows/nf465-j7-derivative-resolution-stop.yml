@@ -1,6 +1,9 @@
 name: NF465 J7 derivative-only resolution stop
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf465-j7-derivative-resolution-stop.yml'
+      - 'scripts/local_replay/verify_nf465_j7_lipschitz_resolution_stop.py'
   workflow_dispatch:
 jobs:
   exact-rational-method-gate:

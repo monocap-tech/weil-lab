@@ -1,6 +1,9 @@
 name: NF489 independent accepted NF482 original J8 physical endpoint from 11 full source blocks
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf489-original-j8-legacy-NF482-boundary-exact.yml'
+      - 'scripts/local_replay/verify_nf489_original_J8_legacy_nf482_boundary_source_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

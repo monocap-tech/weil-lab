@@ -1,6 +1,9 @@
 name: NF494 original J8 whole analytic H400 fixed-window source exact method preflight
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf494-original-J8-analytic-H400-exact-method.yml'
+      - 'scripts/local_replay/verify_nf494_original_J8_analytic_H400_method_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

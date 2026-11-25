@@ -1,6 +1,9 @@
 name: NF479 exact original J8 forced sign and NF404 logical transfer audit
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf479-original-j8-positive-NF404-transfer-exact.yml'
+      - 'scripts/local_replay/verify_nf479_original_J8_forced_positive_and_NF404_transfer_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

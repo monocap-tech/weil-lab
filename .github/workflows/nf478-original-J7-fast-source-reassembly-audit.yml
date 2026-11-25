@@ -1,6 +1,11 @@
 name: NF478 original J7 source artifact reassembly and exact full D7 audit
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf478-original-J7-fast-source-reassembly-audit.yml'
+      - 'scripts/local_replay/nf478_original_J7_right_rational_signed_native.py'
+      - 'scripts/local_replay/nf478_original_J7_terminal_irrational_signed_native.py'
+      - 'scripts/local_replay/verify_nf478_original_full_J7_signed_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

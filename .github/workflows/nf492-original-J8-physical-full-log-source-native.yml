@@ -1,6 +1,10 @@
 name: NF492 source-original 4096bit U(B-d) and full analytic log carrier x=549/500
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf492-original-J8-physical-full-log-source-native.yml'
+      - 'scripts/local_replay/nf492_original_J8_full_log_source_native_jets.py'
+      - 'scripts/local_replay/verify_nf492_original_J8_complete_log_source_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

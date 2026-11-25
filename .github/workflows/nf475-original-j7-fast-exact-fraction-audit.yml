@@ -1,6 +1,10 @@
 name: NF475 independent original source signed Fraction custody audit
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf475-original-j7-fast-exact-fraction-audit.yml'
+      - 'scripts/local_replay/verify_nf475_24000_image_tail_gate_exact.py'
+      - 'scripts/local_replay/verify_nf475_original_J7_near_B_panel_and_partial_union_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

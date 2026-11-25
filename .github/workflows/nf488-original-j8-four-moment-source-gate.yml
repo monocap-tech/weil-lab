@@ -1,6 +1,9 @@
 name: NF488 exact original J8 physical cusp four-moment source gate
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf488-original-j8-four-moment-source-gate.yml'
+      - 'scripts/local_replay/verify_nf488_original_J8_terminal_four_moment_source_gate_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

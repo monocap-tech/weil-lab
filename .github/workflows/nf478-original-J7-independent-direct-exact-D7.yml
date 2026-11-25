@@ -1,6 +1,9 @@
 name: NF478 independent original seven-panel J7 raw signed exact audit
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf478-original-J7-independent-direct-exact-D7.yml'
+      - 'scripts/local_replay/verify_nf478_original_full_J7_signed_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

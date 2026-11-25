@@ -1,6 +1,9 @@
 name: NF464 original J7 rearrangement macroscopic necessity
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf464-original-j7-macroscopic-necessity.yml'
+      - 'scripts/local_replay/verify_nf464_original_j7_rearrangement_macro_gate.py'
   workflow_dispatch:
 jobs:
   source-exact-original-j7:

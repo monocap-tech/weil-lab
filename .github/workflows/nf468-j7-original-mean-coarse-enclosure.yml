@@ -1,6 +1,9 @@
 name: NF468 J7 original mean coarse enclosure
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf468-j7-original-mean-coarse-enclosure.yml'
+      - 'scripts/local_replay/verify_nf468_j7_original_mean_coarse_enclosure.py'
   workflow_dispatch:
 jobs:
   exact-rational:

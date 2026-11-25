@@ -1,6 +1,10 @@
 name: NF475 original J7 right [27/25,109/100] 24000-image signed moments
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf475-original-j7-near-b-24000-image-signed.yml'
+      - 'scripts/local_replay/nf475_original_J7_left_boundary_compact_joint_native.py'
+      - 'scripts/local_replay/nf475_original_J7_near_B_macro_signed_native.py'
   workflow_dispatch:
 jobs:
   central:

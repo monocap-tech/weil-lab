@@ -1,6 +1,9 @@
 name: NF472 J7 signed-moment exact rational custody witness
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf472-original-j7-signed-moments-receipt.yml'
+      - 'scripts/local_replay/verify_nf472_original_J7_signed_moments_exact.py'
   workflow_dispatch:
 jobs:
   exact-original-signed-witness:

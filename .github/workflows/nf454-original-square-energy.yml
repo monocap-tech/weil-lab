@@ -1,6 +1,18 @@
 name: NF454 original two-cell energy gate exact replay
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf454-original-square-energy.yml'
+      - 'scripts/local_replay/verify_nf454_gate.py'
+      - 'notes/data/provisional/NF442_original_true_cell1_signed_source_custody_index.json'
+      - 'notes/data/provisional/NF443_original_true_cell2_complete_signed_custody_index.json'
+      - 'notes/data/provisional/NF437_original_true_cell3_signed_decision_custody_index.json'
+      - 'notes/data/provisional/NF439_original_true_cell4_complete_signed_custody_index.json'
+      - 'notes/data/provisional/NF440_original_true_cell5_three_panel_full_signed_custody_index.json'
+      - 'notes/data/provisional/NF432_original_true_cell6_signed_decision_custody_index.json'
+      - 'notes/data/provisional/NF410_original_signed_taylor_moments.json'
+      - 'notes/data/provisional/NF404_original_selected_pole_shear_exact.json'
+      - 'notes/data/provisional/NF453_original_J7_J8_principal_and_island_custody.json'
   workflow_dispatch:
 jobs:
   exact-reduction:

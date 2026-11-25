@@ -1,0 +1,3 @@
+# NF698 controlled continuation baseline
+
+Preserves the exact accepted NF698 batch00 head 7388cef1fd3005b11d5cc4fbfc4b1ae4c7145d30. Transplants 64 trigger-only revisions from 59525d83736d77e34efe97cc61294bbe1049225b after verifying each original workflow blob against the prior baseline. Use this branch as the base of future small, per-gate PRs; do not open an aggregate historical PR against main or an older ancestor. Existing PRs and their evidence are preserved unchanged. This is an infrastructure baseline, not a new mathematical acceptance. Required checks and indirect dependency coverage must be reviewed per gate.

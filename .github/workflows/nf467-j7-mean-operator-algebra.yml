@@ -1,6 +1,9 @@
 name: NF467 J7 mean operator algebra
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf467-j7-mean-operator-algebra.yml'
+      - 'scripts/local_replay/verify_nf467_j7_mean_operator_identity.py'
   workflow_dispatch:
 jobs:
   exact-algebra:

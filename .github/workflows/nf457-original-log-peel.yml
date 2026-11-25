@@ -1,6 +1,17 @@
 name: NF457 source-original endpoint log peel
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf457-original-log-peel.yml'
+      - 'scripts/local_replay/verify_nf457_endpoint_log_peel.py'
+      - 'scripts/local_replay/verify_nf453_original_j7_j8_principal_energy_signed_island.py'
+      - 'notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json'
+      - 'notes/data/provisional/NF406_original_prime_support_partition_exact.json'
+      - 'notes/data/provisional/NF411_original_source_boundary_jet.json'
+      - 'notes/data/provisional/NF450_original_B_complete_Laplace_native_sign_custody_index.json'
+      - 'notes/data/provisional/NF451_original_J8_terminal_collar_custody_index.json'
+      - 'notes/data/provisional/NF404_original_selected_pole_shear_exact.json'
+      - 'notes/data/provisional/NF403_original_joint_complement_power_exact.json'
   workflow_dispatch:
 jobs:
   original-endpoint-exact:
