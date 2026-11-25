@@ -1,0 +1,49 @@
+name: F41 independent final aggregation custody
+on:
+  workflow_run:
+    workflows: ['F41 aggregation authenticated source replay']
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      producer_run:
+        description: Successful aggregate producer run ID
+        required: true
+        type: string
+      producer_head:
+        description: Exact aggregate producer commit SHA
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: f41-final-aggregate-custody
+  cancel-in-progress: false
+jobs:
+  independent:
+    if: github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/main' && (github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_repository.full_name == 'monocap-tech/weil-lab'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || inputs.producer_head }}
+          persist-credentials: false
+      - run: python3 verification/f41/aggregation_242/final_archive_audit.py selftest
+      - name: Independently authenticate complete source and object evidence
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_ID: ${{ github.event.workflow_run.id || inputs.producer_run }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha || inputs.producer_head }}
+        run: |
+          set -euo pipefail
+          [[ "$RUN_ID" =~ ^[0-9]+$ ]]
+          [[ "$HEAD_SHA" =~ ^[0-9a-f]{40}$ ]]
+          test "$(git rev-parse HEAD)" = "$HEAD_SHA"
+          python3 verification/f41/aggregation_242/final_archive_audit.py audit --run "$RUN_ID" --head "$HEAD_SHA" --output final-custody.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: f41-original-242-row-independent-final-custody
+          path: final-custody.json
+          if-no-files-found: error

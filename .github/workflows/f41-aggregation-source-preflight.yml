@@ -15,6 +15,7 @@ jobs:
       - run: python3 verification/f41/aggregation_242/check_source.py
       - run: python3 verification/f41/aggregation_242/replay_sources.py selftest
       - run: python3 verification/f41/aggregation_242/replay_objects.py selftest
+      - run: python3 verification/f41/aggregation_242/final_archive_audit.py selftest
   historical-replay:
     needs: source-only
     if: github.event.pull_request.head.repo.full_name == 'monocap-tech/weil-lab'
