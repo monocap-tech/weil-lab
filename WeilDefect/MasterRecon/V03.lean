@@ -70,7 +70,8 @@ theorem strong_limit_of_range_approx
   have hev := (Metric.tendsto_nhds.mp ht) (ε / 2) (by positivity)
   filter_upwards [hev] with n hn
   have hn' : η n * (2 * ‖y‖) < ε / 2 := by
-    simpa [Real.dist_eq, sub_zero, abs_of_nonneg (mul_nonneg (hη n) (by positivity))] using hn
+    rw [Real.dist_eq, sub_zero, abs_of_nonneg (mul_nonneg (hη n) (by positivity))] at hn
+    exact hn
   rw [dist_eq_norm]
   have hb := strong_error_bound T Q (B n) (η n) (hη n)
     (hB n) (hfix n) (hres n) x y
@@ -103,7 +104,7 @@ theorem finite_coordinate_opNorm_bound
       rw [norm_smul]
       exact mul_le_mul_of_nonneg_right (hb i) (norm_nonneg _)
     _ = (∑ i, ‖L (e i)‖) * ‖x‖ := by
-      rw [Finset.mul_sum]
+      rw [Finset.sum_mul]
       exact Finset.sum_congr rfl (fun i _ => mul_comm _ _)
 
 end FiniteCompression
