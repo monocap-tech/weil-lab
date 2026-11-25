@@ -1,0 +1,3 @@
+# F08-075 — Exact original Schwartz Hilbert core receiver
+
+Candidate native gate, no acceptance before compiler and independent custody. F08-073 producer ca9e73b47ded1cb945d980f6f461d0a5669dbe2f, F08-074 custody 45710835491 PASS. Convert the actual interior smooth compact representative to Schwartz, recover the physical class in the original complete weighted Hilbert carrier, and prove uniqueness of its coordinates from physical equality. This identifies the topology-side handoff to the certified IV102 lift without importing IV103 (two failed native runs). No literal source equality, form-extension uniqueness, positivity or RH asserted.
