@@ -115,11 +115,16 @@ theorem neutralIV098Schwartz_energy_upper :
       rw [neutralIV097Schwartz_derivative, Complex.norm_real, Real.norm_eq_abs, sq_abs]
       have hD : neutralIV097PlateauDerivative x = A x - B x := by
         unfold neutralIV097PlateauDerivative A B
-        congr 1 <;> congr 1 <;> ring
+        rw [show x - 1099/1000 + 1/2000 =
+          x + (-(1099/1000:ℝ) + 1/2000) by ring,
+          show x - 1099/1000 - 1/2000 =
+          x + (-(1099/1000:ℝ) - 1/2000) by ring]
       rw [hD]
-      exact neutralIV098Rho_pointwise_energy _ _
-        (neutralIV097Rho_bounds _).1 (neutralIV097Rho_bounds _).2
-        (neutralIV097Rho_bounds _).1 (neutralIV097Rho_bounds _).2
+      have ha : 0 ≤ A x ∧ A x ≤ 4000 :=
+        neutralIV097Rho_bounds (x + (-(1099/1000:ℝ)+1/2000))
+      have hb : 0 ≤ B x ∧ B x ≤ 4000 :=
+        neutralIV097Rho_bounds (x + (-(1099/1000:ℝ)-1/2000))
+      exact neutralIV098Rho_pointwise_energy (A x) (B x) ha.1 ha.2 hb.1 hb.2
     _ = 8000 := by
       rw [integral_const_mul, integral_add hA hB, hA1, hB1]
       norm_num
@@ -286,8 +291,10 @@ theorem neutralIV098Pair_margin (N : ℕ) (u v : ℂ) :
   have hd : 0 < ((N:ℝ)+1)^2 := by positivity
   have hb : neutralIV096DerivativeEnergy s / ((N:ℝ)+1)^2 ≤
       (16000000 / ((N:ℝ)+1)^2) * ‖s.toLp 2 volume‖^2 := by
-    rw [div_mul_eq_mul_div]
-    exact div_le_div_of_nonneg_right he hd.le
+    calc
+      _ ≤ (16000000 * ‖s.toLp 2 volume‖^2) / ((N:ℝ)+1)^2 :=
+        div_le_div_of_nonneg_right he hd.le
+      _ = _ := by ring
   change neutralNF598SmoothWeil s - neutralIV095FiniteDiagonal 10 N s ≤ _ at ht
   change ((2/5:ℝ) - 16000000 / ((N:ℝ)+1)^2) * ‖s.toLp 2 volume‖^2 ≤
     neutralIV095FiniteDiagonal 10 N s
