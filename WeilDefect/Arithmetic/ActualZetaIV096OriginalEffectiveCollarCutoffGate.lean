@@ -21,8 +21,9 @@ theorem neutralIV096WindowEval_fourier (s : 𝓢(ℝ,ℂ))
   rw [neutralNF573WindowEvaluation_eq_raw_of_ae _ _ _
       (neutralNF573OriginalCollar_window_ae s hs),
     neutralRawTransform_fourier]
-  congr 2
-  field_simp [Real.pi_ne_zero] <;> ring
+  have harg : -2 * Real.pi * (-r / (2 * Real.pi)) = r := by
+    field_simp [Real.pi_ne_zero] <;> ring
+  rw [harg]
 
 /-- Angular Fourier derivative identity in squared norms. -/
 theorem neutralIV096Derivative_fourier_sq (s : 𝓢(ℝ,ℂ)) (r : ℝ) :
