@@ -21,8 +21,8 @@ theorem block_mem (B : ∀ i, K i →L[ℂ] K i) (c : ℝ) (hc : 0 ≤ c)
       ‖B i (x i)‖ ≤ ‖B i‖ * ‖x i‖ := (B i).le_opNorm _
       _ ≤ c * ‖x i‖ := mul_le_mul_of_nonneg_right (hB i) (norm_nonneg _)
       _ = ‖(((c : ℂ) • x) : lp K 2) i‖ := by
-        simp [lp.coeFn_smul, Pi.smul_apply, norm_smul, Complex.norm_real,
-          Real.norm_of_nonneg hc]
+        change c * ‖x i‖ = ‖(c : ℂ) • x i‖
+        rw [norm_smul, Complex.norm_real, Real.norm_of_nonneg hc]
   exact (lp.memℓp ((c : ℂ) • x)).mono' h
 
 /-- The bounded block diagonal operator on the entire Hilbert sum. -/
@@ -50,8 +50,8 @@ noncomputable def blockLift (B : ∀ i, K i →L[ℂ] K i) (c : ℝ) (hc : 0 ≤
           ‖B i (x i)‖ ≤ ‖B i‖ * ‖x i‖ := (B i).le_opNorm _
           _ ≤ c * ‖x i‖ := mul_le_mul_of_nonneg_right (hB i) (norm_nonneg _)
           _ = _ := by
-            simp [lp.coeFn_smul, Pi.smul_apply, norm_smul, Complex.norm_real,
-              Real.norm_of_nonneg hc]
+            change c * ‖x i‖ = ‖(c : ℂ) • x i‖
+            rw [norm_smul, Complex.norm_real, Real.norm_of_nonneg hc]
       _ = c * ‖x‖ := by rw [norm_smul, Complex.norm_real, Real.norm_of_nonneg hc])
 
 theorem blockLift_apply (B : ∀ i, K i →L[ℂ] K i) (c : ℝ) (hc : 0 ≤ c)
@@ -72,8 +72,8 @@ theorem blockLift_norm_le (B : ∀ i, K i →L[ℂ] K i) (c : ℝ) (hc : 0 ≤ c
         ‖B i (x i)‖ ≤ ‖B i‖ * ‖x i‖ := (B i).le_opNorm _
         _ ≤ c * ‖x i‖ := mul_le_mul_of_nonneg_right (hB i) (norm_nonneg _)
         _ = _ := by
-          simp [lp.coeFn_smul, Pi.smul_apply, norm_smul, Complex.norm_real,
-            Real.norm_of_nonneg hc]
+          change c * ‖x i‖ = ‖(c : ℂ) • x i‖
+          rw [norm_smul, Complex.norm_real, Real.norm_of_nonneg hc]
     _ = c * ‖x‖ := by rw [norm_smul, Complex.norm_real, Real.norm_of_nonneg hc]
 
 /-- Blockwise phase cancellation gives the exact infinite-sum identity.
