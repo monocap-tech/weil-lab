@@ -93,7 +93,8 @@ theorem neutralIV102Mixed_native_of_Green (a : ℝ) (ha : 0 < a)
   unfold neutralIV101Mixed neutralIV102Lift
   rw [huc, hvc, ← neutralActualZetaGreenZeroForm_native_operator a ha p q, ← hef,
     hp, hq]
-  exact neutralActualZetaGreenCorrelation_zeroForm a p q
+  simpa only [neutralWindowCorrelation_rawTransform] using
+    neutralActualZetaGreenCorrelation_zeroForm a p q
 
 /-- Actual Garding transfer, conditional ONLY on the literal diagonal
 attachment for this vector. This does not assert that attachment. -/
