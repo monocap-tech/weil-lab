@@ -1,6 +1,10 @@
 name: NF476 original J7 [log8-B,1] irrational n8 seam signed moments
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf476-original-j7-irrational-left-seam-signed.yml'
+      - 'scripts/local_replay/nf476_original_J7_irrational_left_seam_signed_native.py'
+      - 'scripts/local_replay/verify_nf476_original_irrational_left_seam_signed_exact.py'
   workflow_dispatch:
 jobs:
   central:

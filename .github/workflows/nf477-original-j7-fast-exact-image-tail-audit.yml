@@ -1,6 +1,9 @@
 name: NF477 exact original high-image source-resolvent witness
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf477-original-j7-fast-exact-image-tail-audit.yml'
+      - 'scripts/local_replay/verify_nf477_original_j7_high_image_tail_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

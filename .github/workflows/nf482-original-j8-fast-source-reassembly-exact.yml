@@ -1,6 +1,10 @@
 name: NF482 original J8 first physical source fast exact reassembly
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf482-original-j8-fast-source-reassembly-exact.yml'
+      - 'scripts/local_replay/nf482_original_J8_irrational_n9_entry_signed_native.py'
+      - 'scripts/local_replay/verify_nf482_original_J8_first_irrational_signed_exact.py'
   workflow_dispatch:
 permissions:
   contents: read

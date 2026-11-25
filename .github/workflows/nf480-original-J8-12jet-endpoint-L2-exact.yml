@@ -1,6 +1,9 @@
 name: NF480 exact original source J8 endpoint-regularized 12-jet infinite-image L2
 on:
   pull_request:
+    paths:
+      - '.github/workflows/nf480-original-J8-12jet-endpoint-L2-exact.yml'
+      - 'scripts/local_replay/verify_nf480_original_J8_endpoint_12jet_L2_exact.py'
   workflow_dispatch:
 permissions:
   contents: read
