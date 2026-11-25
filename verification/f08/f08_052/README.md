@@ -1,0 +1,3 @@
+# F08-052 — Original native L² squared norm integral identity
+
+Source-only candidate: identify every original complex Lebesgue L² squared norm with the integral of the squared representative norm via native inner product and real-part integral; then identify the original F08-030 dilation difference on Schwartz-to-Lp images by exact a.e. substitution and the original pushforward measure absolute continuity. No DCT premise is required. Native frozen IV023 build and separate independent custody mandatory. No strong continuity, weighted physical form core, signed Weil positivity or RH assertion. Research #932; master #898.
