@@ -1,0 +1,94 @@
+name: F08-039 independently verify original conditional native L2 dense-continuity archive/source/1 axiom
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_039/**'
+      - '.github/workflows/f08-039-native-L2-dense-continuity-custody.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  independent-original-source-custody:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      F08_RUN: '45546805418'
+      F08_ARTIFACT: '14992491957'
+      F08_ARTIFACT_SHA: '9c3fda6d537d23c5c1e12fdf750ae5e34e39588f0927e0b64b1bacbd9883b2f2'
+      F08_HEAD: 'a5342035b61dfb86a308404ecbb4e39c26f92187'
+    steps:
+      - name: Checkout independent F08-039 auditor
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout exact frozen original research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Independently pin source blobs, Lean version and adversarial verifier controls
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C candidate hash-object verification/f08/f08_038/F08NativeL2ContinuityDenseTransfer.lean)" = 354922e7ed1727292f9ef41cf9b4f7d20f59a753
+          python3 -m py_compile candidate/verification/f08/f08_039/f08_039_independent_native_dense_continuity_audit.py
+          python3 candidate/verification/f08/f08_039/f08_039_independent_native_dense_continuity_audit.py --selftest
+      - name: Authenticate real successful producer run and immutable artifact metadata
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p f08-039-receipt
+          python3 - <<'PY'
+          import json,os,urllib.request
+          root=os.environ['GITHUB_API_URL']+'/repos/'+os.environ['GITHUB_REPOSITORY']
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json',
+                   'X-GitHub-Api-Version':'2022-11-28'}
+          def get(path):
+              with urllib.request.urlopen(urllib.request.Request(root+path,headers=headers),timeout=30) as response:
+                  return json.load(response)
+          run_id=int(os.environ['F08_RUN'])
+          artifact_id=int(os.environ['F08_ARTIFACT'])
+          run=get('/actions/runs/'+str(run_id))
+          assert run['status']=='completed' and run['conclusion']=='success'
+          assert run['head_sha']==os.environ['F08_HEAD']
+          assert run['head_repository']['full_name']=='monocap-tech/weil-lab'
+          assert run['name']=='F08-038 original native L2 strong continuity dense-transfer kernel'
+          jobs=get('/actions/runs/'+str(run_id)+'/jobs')
+          assert any(j['conclusion']=='success' and
+              any(s['name']=='Build genuine source-native dense continuity implication and inspect axiom report'
+                  and s['conclusion']=='success' for s in j['steps'])
+              for j in jobs['jobs']), 'direct original Lean kernel step absent or failed'
+          artifact=get('/actions/artifacts/'+str(artifact_id))
+          assert artifact['workflow_run']['id']==run_id
+          assert artifact['workflow_run']['head_sha']==os.environ['F08_HEAD']
+          assert artifact['name']=='f08-038-original-L2-dense-transfer-compiler-evidence'
+          assert artifact['digest']=='sha256:'+os.environ['F08_ARTIFACT_SHA']
+          assert artifact['size_in_bytes']>0 and not artifact['expired']
+          info={'producer_commit':os.environ['F08_HEAD'], 'producer_run':run_id,
+                'artifact_id':artifact_id, 'sha256':os.environ['F08_ARTIFACT_SHA'],
+                'producer_success':True, 'direct_compiler_and_axioms_success':True}
+          with open('f08-039-receipt/producer-metadata.json','w') as f:
+              json.dump(info,f,sort_keys=True,indent=2)
+          print('F08-039 authenticated original direct F08-035 producer and immutable artifact')
+          PY
+      - name: Download and independently audit actual entire original compiler archive
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$F08_ARTIFACT/zip" -o f08-039-receipt/original-producer.zip
+          echo "$F08_ARTIFACT_SHA  f08-039-receipt/original-producer.zip" | sha256sum -c -
+          python3 candidate/verification/f08/f08_039/f08_039_independent_native_dense_continuity_audit.py --archive f08-039-receipt/original-producer.zip --producer-metadata f08-039-receipt/producer-metadata.json --out f08-039-receipt/independent-native-dense-continuity.json
+      - name: Archive independent source-only custody receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-039-independent-native-L2-dense-continuity-custody
+          path: |
+            f08-039-receipt/producer-metadata.json
+            f08-039-receipt/independent-native-dense-continuity.json
+          if-no-files-found: ignore
