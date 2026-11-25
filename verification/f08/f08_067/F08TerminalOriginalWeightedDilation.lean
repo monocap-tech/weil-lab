@@ -27,7 +27,7 @@ theorem f08_067_physicalDilation_mem {a : ℝ}
       (neutralLogWeightedL2 f))
   exact f08_064_originalDomain_mem_of_weighted_memLp (lam.1 * a) g
     (f08_060_originalPhysicalDilation_supported a lam.1 (f08_067_scale_pos lam)
-      f.val f.property.1) (hm.congr hae.symm)
+      f.val f.property.1) ((memLp_congr_ae hae).mpr hm)
 
 def f08_067_physicalDilation {a : ℝ}
     (f : neutralCanonicalLogFormDomain a) (lam : f08_059_inwardScale) :

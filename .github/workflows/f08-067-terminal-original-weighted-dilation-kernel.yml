@@ -101,7 +101,7 @@ jobs:
           test "$(git -C candidate hash-object verification/f08/f08_064/F08OriginalFormDomainEnergyReceiver.lean)" = 9423bc10b0db9d07078299bdedbe60b585fede7d
           ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_064/F08OriginalFormDomainEnergyReceiver.lean
           cp candidate/verification/f08/f08_064/F08OriginalFormDomainEnergyReceiver.lean research/WeilDefect/Generated/F08/OriginalFormDomainEnergyReceiver.lean
-          test "$(git -C candidate hash-object verification/f08/f08_067/F08TerminalOriginalWeightedDilation.lean)" = 792129061d05e2ea8c07f4f19c63e7ba2163ed67
+          test "$(git -C candidate hash-object verification/f08/f08_067/F08TerminalOriginalWeightedDilation.lean)" = 985e467f8a284c7c5be5bf794062155c24e70bea
           ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_067/F08TerminalOriginalWeightedDilation.lean
           cp candidate/verification/f08/f08_067/F08TerminalOriginalWeightedDilation.lean research/WeilDefect/Generated/F08/TerminalOriginalWeightedDilation.lean
       - name: Install original frozen Lean and Mathlib
