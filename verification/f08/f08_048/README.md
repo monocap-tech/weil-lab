@@ -1,0 +1,3 @@
+# F08-048 — Original compact-Schwartz integrable squared difference envelope
+
+Source-only candidate. From F08-045 common support and F08-046 uniform square bound construct the real indicator of [-2R,2R] with constant ((sqrt(3/2)+1)M)^2. Its Lebesgue integrability follows from finite interval measure and the pinned Mathlib integrable indicator theorem. The source establishes global nonnegativity and domination for every scale in [1/2,3/2]. No filtered DCT or native Lp convergence yet. Exact frozen IV023 and source hashes, direct named axiom audit, separate independent custody required before acceptance. F08-045/046 custody must precede acceptance. Research #932; master #898.
