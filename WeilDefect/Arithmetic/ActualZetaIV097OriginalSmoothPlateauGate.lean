@@ -56,6 +56,7 @@ theorem neutralIV097Rho_zero (x : ℝ) (hx : (1/4000:ℝ) ≤ |x|) :
     neutralIV097Rho x = 0 := by
   have hz : neutralIV097Bump x = 0 := by
     apply neutralIV097Bump.zero_of_le_dist
+    change (1/4000:ℝ) ≤ dist x 0
     simpa only [Real.dist_eq, sub_zero] using hx
   simp [neutralIV097Rho, ContDiffBump.normed, hz]
 
@@ -193,8 +194,10 @@ theorem neutralIV097Schwartz_mass_lower :
   have hinner := inner_self_eq_norm_sq_to_K (𝕜 := ℂ) f
   rw [MeasureTheory.L2.inner_def] at hinner
   simp only [inner_self_eq_norm_sq_to_K] at hinner
+  change (∫ x : ℝ, (‖f x‖ : ℂ)^2) = (‖f‖ : ℂ)^2 at hinner
+  simp only [← Complex.ofReal_pow] at hinner
   rw [integral_complex_ofReal] at hinner
-  have hm : (∫ x : ℝ, ‖f x‖^2) = ‖f‖^2 := by exact_mod_cast hinner
+  have hm : (∫ x : ℝ, ‖f x‖^2) = ‖f‖^2 := Complex.ofReal_injective hinner
   have hs : (∫ x : ℝ, ‖s x‖^2) = ‖f‖^2 := by
     rw [← hm]
     apply integral_congr_ae
@@ -252,7 +255,6 @@ theorem neutralIV097Schwartz_energy_upper :
       integral_mono hg hJ hpoint
     _ = _ := by
       rw [integral_indicator measurableSet_Icc]
-      dsimp [J]
       rw [integral_Icc_eq_integral_Ioc, ← intervalIntegral.integral_of_le
         (by norm_num : (1099/1000-3/4000:ℝ) ≤ 1099/1000+3/4000),
         intervalIntegral.integral_const]
