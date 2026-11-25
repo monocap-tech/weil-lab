@@ -188,9 +188,9 @@ theorem neutralIV010OldPlusNew_realBlock
     neutralIV010Diagonal_im_zero b t ht
   rw [neutralIV010OldPlusNew_exactBlock a b hab s u hs t ht v]
   rw [hherm]
-  simp only [Complex.add_re, Complex.mul_re, Complex.conj_re, Complex.conj_im]
-  dsimp [neutralIV010Diagonal] at hdiag
-  rw [hdiag]
+  simp only [Complex.add_re, Complex.mul_re, Complex.mul_im,
+    Complex.conj_re, Complex.conj_im, hdiag]
+  dsimp only [S]
   ring
 
 /-- Sharp COMPLEX two-source Schur/Cauchy support criterion.
@@ -209,9 +209,8 @@ theorem neutralIV010HermitianTwoBlock_nonnegative
     2 * (B.re * (1*v.re + 0*v.im) +
       (-B.im) * (1*v.im - 0*v.re)) +
       D * (v.re^2 + v.im^2) at h
-  simpa only [one_pow, zero_pow, one_mul, zero_mul,
-    add_zero, zero_add, sub_zero, mul_one, neg_mul,
-    Complex.mul_re] using h
+  rw [Complex.mul_re]
+  nlinarith only [h]
 
 /-- Actual original arithmetic support-EXTENSION sufficiency gate.
 
