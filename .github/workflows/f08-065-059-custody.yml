@@ -1,0 +1,120 @@
+name: F08-065 independent F08-059 custody (3 named axioms)
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_065/**'
+      - '.github/workflows/f08-065-059-custody.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  independent-original-source-custody:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      F08_RUN: '45575718069'
+      F08_ARTIFACT: '15005102477'
+      F08_ARTIFACT_SHA: '809c61e4cc5109d0d2e0005857692fa735764db1998ca1e7fd33a615747af95d'
+      F08_HEAD: 'a70d8b4b93162f427515abb8bab32bb5bd779b60'
+    steps:
+      - name: Checkout independent F08-065 auditor
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout exact verified producer
+        uses: actions/checkout@v4
+        with:
+          ref: a70d8b4b93162f427515abb8bab32bb5bd779b60
+          path: producer
+      - name: Checkout exact frozen original research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Independently pin source blobs, Lean version and adversarial verifier controls
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C producer rev-parse HEAD)" = a70d8b4b93162f427515abb8bab32bb5bd779b60
+          test "$(git -C producer hash-object verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean)" = eecfe2a849fa79aa13810ede85e9ba625eba7777
+          test "$(git -C producer hash-object verification/f08/f08_029/F08NativeL2PushforwardNorm.lean)" = 4da65f9b9df7cae6ea30a4a7f25d3e6c1606c294
+          test "$(git -C producer hash-object verification/f08/f08_030/F08NativeFrequencyDilation.lean)" = 5c260b69f464f5793e095f9b5448c90f7984617f
+          test "$(git -C producer hash-object verification/f08/f08_033/F08NativeFrequencyDilationIsometry.lean)" = 8b4055c065ab7987a01bf55143908d8cd77f0f23
+          test "$(git -C producer hash-object verification/f08/f08_035/F08NativeDilationLinearIsometry.lean)" = 7038c5d23cecdef6cc3f6bca1d12548246e65bd7
+          test "$(git -C producer hash-object verification/f08/f08_037/F08CompactSchwartzNativeL2Dense.lean)" = f6d8bc01053ff811a2a9ebc6b83837f714e8d90f
+          test "$(git -C producer hash-object verification/f08/f08_038/F08NativeL2ContinuityDenseTransfer.lean)" = 354922e7ed1727292f9ef41cf9b4f7d20f59a753
+          test "$(git -C producer hash-object verification/f08/f08_040/F08OriginalSchwartzDilationPointwise.lean)" = f728a7fc3c5528c7311b7ed8dc27b2f60e445f81
+          test "$(git -C producer hash-object verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean)" = f3ecfbf236898ca62baac18111595a06b2a9874f
+          test "$(git -C producer hash-object verification/f08/f08_045/F08CompactSchwartzCommonScaledSupport.lean)" = 6fd895d4ae3cfa550fa0ed08f194ce299ea051b6
+          test "$(git -C producer hash-object verification/f08/f08_046/F08OriginalSchwartzNormalizedDifferenceBounds.lean)" = 9212867e3c7594461d153777ad1c4db7c3693150
+          test "$(git -C producer hash-object verification/f08/f08_048/F08OriginalSchwartzIntegrableSquareEnvelope.lean)" = 08b60de243f59503f33be0970600861d62f92e0d
+          test "$(git -C producer hash-object verification/f08/f08_051/F08OriginalCompactSchwartzFilteredDCT.lean)" = e6d0da5a8e350e9f49bf4f10228f820492c5e83b
+          test "$(git -C producer hash-object verification/f08/f08_052/F08OriginalNativeL2SquareIntegral.lean)" = 16a7053b3a1ea6f0e0f91a89de6e40a91987cd92
+          test "$(git -C producer hash-object verification/f08/f08_055/F08OriginalNativeL2StrongContinuity.lean)" = 90ecd5258d1fa2fc843349e6fa4278ae20956062
+          test "$(git -C producer hash-object verification/f08/f08_001/F08LogWeightDilation.lean)" = 5dce3a647223afbf75ef09f72d90c8afb331ee81
+          test "$(git -C producer hash-object verification/f08/f08_025/F08NativeLogDilationFactor.lean)" = d208814f79f04a9926c2059d427419e73d6abb4b
+          test "$(git -C producer hash-object verification/f08/f08_057/F08LogDilationFixedVectorCorrection.lean)" = d1c2d9241f58541e23b1975aec610c63eb84b92f
+          test "$(git -C producer hash-object verification/f08/f08_059/F08OriginalLogCorrectedDilationConvergence.lean)" = 5febf418b614e49a1e040a41b889b6b51fbc1a18
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(git -C research hash-object WeilDefect/Arithmetic/LogarithmicForm.lean)" = ae932d4f3f7e4d6d06dbd778a5708927172238dc
+          python3 -m py_compile candidate/verification/f08/f08_065/audit_059.py
+          python3 candidate/verification/f08/f08_065/audit_059.py --selftest
+      - name: Authenticate real successful producer run and immutable artifact metadata
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p f08-065-059-receipt
+          python3 - <<'PY'
+          import json,os,urllib.request
+          root=os.environ['GITHUB_API_URL']+'/repos/'+os.environ['GITHUB_REPOSITORY']
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json',
+                   'X-GitHub-Api-Version':'2022-11-28'}
+          def get(path):
+              with urllib.request.urlopen(urllib.request.Request(root+path,headers=headers),timeout=30) as response:
+                  return json.load(response)
+          run_id=int(os.environ['F08_RUN'])
+          artifact_id=int(os.environ['F08_ARTIFACT'])
+          run=get('/actions/runs/'+str(run_id))
+          assert run['status']=='completed' and run['conclusion']=='success'
+          assert run['head_sha']==os.environ['F08_HEAD']
+          assert run['head_repository']['full_name']=='monocap-tech/weil-lab'
+          assert run['name']=="F08-059 original logarithmic corrected native dilation convergence kernel"
+          jobs=get('/actions/runs/'+str(run_id)+'/jobs')
+          assert any(j['conclusion']=='success' and
+              any(s['name']=="Compile original corrected error and convergence with strict named axiom audit"
+                  and s['conclusion']=='success' for s in j['steps'])
+              for j in jobs['jobs']), 'direct original Lean kernel step absent or failed'
+          artifact=get('/actions/artifacts/'+str(artifact_id))
+          assert artifact['workflow_run']['id']==run_id
+          assert artifact['workflow_run']['head_sha']==os.environ['F08_HEAD']
+          assert artifact['name']=="f08-059-original-log-corrected-dilation-convergence-compiler-evidence"
+          assert artifact['digest']=='sha256:'+os.environ['F08_ARTIFACT_SHA']
+          assert artifact['size_in_bytes']>0 and not artifact['expired']
+          info={'producer_commit':os.environ['F08_HEAD'], 'producer_run':run_id,
+                'artifact_id':artifact_id, 'sha256':os.environ['F08_ARTIFACT_SHA'],
+                'producer_success':True, 'direct_compiler_and_axioms_success':True}
+          with open('f08-065-059-receipt/producer-metadata.json','w') as f:
+              json.dump(info,f,sort_keys=True,indent=2)
+          print('F08-065 authenticated actual original direct F08-059 producer and immutable artifact')
+          PY
+      - name: Download and independently audit actual entire original compiler archive
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$F08_ARTIFACT/zip" -o f08-065-059-receipt/original-producer.zip
+          echo "$F08_ARTIFACT_SHA  f08-065-059-receipt/original-producer.zip" | sha256sum -c -
+          python3 candidate/verification/f08/f08_065/audit_059.py --archive f08-065-059-receipt/original-producer.zip --producer-metadata f08-065-059-receipt/producer-metadata.json --out f08-065-059-receipt/independent-059-producer.json
+      - name: Archive independent source-only custody receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-065-059-independent-original-059-producer-custody
+          path: |
+            f08-065-059-receipt/producer-metadata.json
+            f08-065-059-receipt/independent-059-producer.json
+          if-no-files-found: ignore
