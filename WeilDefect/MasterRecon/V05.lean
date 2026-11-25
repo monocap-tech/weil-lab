@@ -23,11 +23,11 @@ theorem gram_scaled_resolvent_sequence
     (hη : ∀ n, 0 < η n)
     (hη0 : Tendsto (fun n => (η n : ℝ)) atTop (𝓝 0)) :
     ∃ R : ℕ → L →L[ℂ] L,
-      (∀ n x, R n ((S† ∘L S) x + ((η n : ℝ) : ℂ) • x) = x) ∧
-      (∀ n x, (S† ∘L S) (R n x) + ((η n : ℝ) : ℂ) • R n x = x) ∧
+      (∀ n x, R n (((S.adjoint) ∘L S) x + ((η n : ℝ) : ℂ) • x) = x) ∧
+      (∀ n x, ((S.adjoint) ∘L S) (R n x) + ((η n : ℝ) : ℂ) • R n x = x) ∧
       (∀ x, Tendsto (fun n => ((η n : ℝ) : ℂ) • R n x)
         atTop (𝓝 (S.ker.starProjection x))) := by
-  let B : L →L[ℂ] L := S† ∘L S
+  let B : L →L[ℂ] L := (S.adjoint) ∘L S
   have hp : B.IsPositive := ContinuousLinearMap.isPositive_adjoint_comp_self S
   have hex := fun n => V04.positive_shift_inverse B hp (η n) (hη n)
   choose R hR using hex
@@ -37,7 +37,7 @@ theorem gram_scaled_resolvent_sequence
   have hfix : ∀ n x, C n (S.ker.starProjection x) = S.ker.starProjection x := by
     intro n x
     have hm : S.ker.starProjection x ∈ B.ker := by
-      change S.ker.starProjection x ∈ (S† ∘L S).ker
+      change S.ker.starProjection x ∈ ((S.adjoint) ∘L S).ker
       rw [ContinuousLinearMap.ker_adjoint_comp_self]
       exact Submodule.starProjection_apply_mem S.ker x
     exact (hl n).1 _ hm
@@ -54,32 +54,34 @@ positive inverse equation, without assuming positivity of its inverse. -/
 theorem picard_operator_isUnit
     (P : H →L[ℂ] X) (M : K →L[ℂ] X)
     (R : X →L[ℂ] X) (η : ℝ≥0)
-    (hR : ∀ z, (P ∘L P†) (R z) + ((η : ℝ) : ℂ) • R z = z) :
-    IsUnit (1 + M† ∘L R ∘L M) := by
+    (hR : ∀ z, (P ∘L (P.adjoint)) (R z) + ((η : ℝ) : ℂ) • R z = z) :
+    IsUnit (1 + (M.adjoint) ∘L R ∘L M) := by
   apply ContinuousLinearMap.isUnit_of_forall_le_norm_inner_map _ (c := 1) (by norm_num)
   intro u
   have hp := ContinuousLinearMap.isPositive_self_comp_adjoint P
-  have h := V04.shifted_energy_lower (P ∘L P†) hp η (R (M u))
+  have h := V04.shifted_energy_lower (P ∘L (P.adjoint)) hp η (R (M u))
   rw [hR (M u)] at h
   have hn : 0 ≤ (inner ℂ (M u) (R (M u))).re :=
     le_trans (by positivity) h
-  have hr : 0 ≤ (inner ℂ (M† (R (M u))) u).re := by
+  have hr : 0 ≤ (inner ℂ ((M.adjoint) (R (M u))) u).re := by
     rw [M.adjoint_inner_left]
-    have hs := congrArg Complex.re (inner_conj_symm (M u) (R (M u)))
+    have hs := congrArg Complex.re (inner_conj_symm (𝕜 := ℂ) (M u) (R (M u)))
     simpa using (show 0 ≤ (inner ℂ (R (M u)) (M u)).re from by
       have heq : (inner ℂ (R (M u)) (M u)).re = (inner ℂ (M u) (R (M u))).re := by simpa using hs
       rw [heq]
       exact hn)
-  have he : (inner ℂ ((1 + M† ∘L R ∘L M) u) u).re =
-      ‖u‖ ^ 2 + (inner ℂ (M† (R (M u))) u).re := by
-    change (inner ℂ (u + M† (R (M u))) u).re = _
-    rw [inner_add_left, Complex.add_re, inner_self_eq_norm_sq]
+  have he : (inner ℂ ((1 + (M.adjoint) ∘L R ∘L M) u) u).re =
+      ‖u‖ ^ 2 + (inner ℂ ((M.adjoint) (R (M u))) u).re := by
+    change (inner ℂ (u + (M.adjoint) (R (M u))) u).re = _
+    rw [inner_add_left, Complex.add_re]
+    have hh : (inner ℂ u u).re = ‖u‖ ^ 2 := inner_self_eq_norm_sq (𝕜 := ℂ) u
+    rw [hh]
   calc
     ‖u‖ ^ 2 * ((1 : ℝ≥0) : ℝ) ≤
-        (inner ℂ ((1 + M† ∘L R ∘L M) u) u).re := by
+        (inner ℂ ((1 + (M.adjoint) ∘L R ∘L M) u) u).re := by
       rw [he]
       simpa using le_add_of_nonneg_right hr
-    _ ≤ ‖inner ℂ ((1 + M† ∘L R ∘L M) u) u‖ := Complex.re_le_norm _
+    _ ≤ ‖inner ℂ ((1 + (M.adjoint) ∘L R ∘L M) u) u‖ := Complex.re_le_norm _
 
 /-- Assemble the two certified algebraic identities with typed block maps.
 All inverse equations and block relations are explicit. -/
@@ -88,31 +90,31 @@ theorem picard_compression_apply
     (i : K →L[ℂ] L) (ell : L →L[ℂ] K)
     (A R T : X →L[ℂ] X) (C : K →L[ℂ] K) (B : L →L[ℂ] L)
     (η : ℂ)
-    (hA : ∀ z, A z = P (P† z) + η • z)
+    (hA : ∀ z, A z = P ((P.adjoint) z) + η • z)
     (hR : ∀ z, R (A z) = z)
-    (hSS : ∀ z, S (S† z) = P (P† z) + M (M† z))
-    (hT : ∀ z, S (S† (T z)) + η • T z = z)
-    (hB : ∀ z, B (S† (S z) + η • z) = z)
-    (hC : ∀ u, C (u + M† (R (M u))) = u)
+    (hSS : ∀ z, S ((S.adjoint) z) = P ((P.adjoint) z) + M ((M.adjoint) z))
+    (hT : ∀ z, S ((S.adjoint) (T z)) + η • T z = z)
+    (hB : ∀ z, B ((S.adjoint) (S z) + η • z) = z)
+    (hC : ∀ u, C (u + (M.adjoint) (R (M u))) = u)
     (hi : ∀ u, S (i u) = M u)
-    (hell : ∀ z, ell (S† z) = M† z)
+    (hell : ∀ z, ell ((S.adjoint) z) = (M.adjoint) z)
     (hei : ∀ u, ell (i u) = u)
     (u : K) :
     C u = ell (η • B (i u)) := by
-  have htw : ∀ x, A (T (M x)) + M (M† (T (M x))) = M x := by
+  have htw : ∀ x, A (T (M x)) + M ((M.adjoint) (T (M x))) = M x := by
     intro x
     calc
-      A (T (M x)) + M (M† (T (M x))) =
-          S (S† (T (M x))) + η • T (M x) := by
+      A (T (M x)) + M ((M.adjoint) (T (M x))) =
+          S ((S.adjoint) (T (M x))) + η • T (M x) := by
         rw [hA, hSS]
         abel
       _ = M x := hT (M x)
-  have hw := V02.picard_woodbury_apply A R T M M† C hR htw hC u
-  have hcoef := V02.coefficient_resolvent_apply S S† T B η
+  have hw := V02.picard_woodbury_apply A R T M (M.adjoint) C hR htw hC u
+  have hcoef := V02.coefficient_resolvent_apply S (S.adjoint) T B η
     (fun x => hT (S x)) hB (i u)
   calc
-    C u = u - M† (T (M u)) := hw
-    _ = ell (i u - S† (T (S (i u)))) := by
+    C u = u - (M.adjoint) (T (M u)) := hw
+    _ = ell (i u - (S.adjoint) (T (S (i u)))) := by
       rw [map_sub, hei, hell, hi]
     _ = ell (η • B (i u)) := congrArg ell hcoef
 
