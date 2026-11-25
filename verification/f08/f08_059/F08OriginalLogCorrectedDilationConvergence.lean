@@ -29,7 +29,7 @@ theorem f08_059_correctedError_sq_le
   have hsq : ‖m • (u - k) + (m - 1) • k‖ ^ 2 ≤
       2 * ‖m • (u - k)‖ ^ 2 + 2 * ‖(m - 1) • k‖ ^ 2 := by
     have hprod := mul_nonneg (sub_nonneg.mpr htri)
-      (add_nonneg (add_nonneg (norm_nonneg _) (norm_nonneg _))
+      (add_nonneg (add_nonneg (norm_nonneg (m • (u - k))) (norm_nonneg ((m - 1) • k)))
         (norm_nonneg (m • (u - k) + (m - 1) • k)))
     nlinarith [sq_nonneg (‖m • (u - k)‖ - ‖(m - 1) • k‖)]
   have hmul := mul_le_mul_of_nonneg_right hm (sq_nonneg ‖u - k‖)
@@ -106,6 +106,7 @@ theorem f08_059_correctedError_integral_bound
 
 /-- Unconditional convergence of the exact corrected native dilation error
 on every original L² vector, as inward scales approach one. -/
+set_option maxHeartbeats 2000000 in
 theorem f08_059_correctedError_integral_tendsto (k : RealComplexL2) :
     Tendsto (fun lam : f08_059_inwardScale =>
       ∫ xi : ℝ, ‖f08_059_correctedError lam k xi‖ ^ 2 ∂volume)
@@ -119,7 +120,11 @@ theorem f08_059_correctedError_integral_tendsto (k : RealComplexL2) :
     tendsto_subtype_rng.mpr hv
   have hu : Tendsto (fun lam : f08_059_inwardScale =>
       f08_030_nativeFrequencyDilation lam.1 (f08_059_nonzeroScale lam).2 k) l (𝓝 k) := by
-    exact (f08_055_originalNativeL2_dilation_tendsto k).comp hlift
+    have H := (f08_055_originalNativeL2_dilation_tendsto k).comp hlift
+    change Tendsto (fun lam : f08_059_inwardScale =>
+      f08_030_nativeFrequencyDilation (f08_059_nonzeroScale lam).1
+        (f08_059_nonzeroScale lam).2 k) l (𝓝 k) at H
+    exact H
   have hd : Tendsto (fun lam : f08_059_inwardScale =>
       ‖f08_030_nativeFrequencyDilation lam.1 (f08_059_nonzeroScale lam).2 k - k‖ ^ 2)
       l (𝓝 (0 : ℝ)) := by
