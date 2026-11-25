@@ -1,0 +1,3 @@
+# F08-073 — Terminal original fixed-support smooth density
+
+One terminal source-only theorem: every original canonical vector at positive radius, arbitrary positive error, admits an actual same-domain native vector represented a.e. by a C-infinity compact function whose topological support is strictly inside the original open window, with weighted-coordinate error below tolerance. Uses native-PASS 067/068/069; exact sources staged while separate custody pending. No merge before all three producers and custody accepted and own native/custody PASS. No complete signed Weil transfer, positivity or RH claim. Research #932; master #898.
