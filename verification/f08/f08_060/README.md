@@ -1,0 +1,3 @@
+# F08-060 — Original physical dilation support and ordinary Fourier scaling
+
+Two source-only candidates independent of pending F08-059: exact a.e. support transport for original inward native physical dilation U_(1/λ), and actual ordinary -2π Fourier change of variables for the native representative under positive scale s. Uses original pushforward Jacobian and Bochner integral map, not a surrogate Fourier transform. Native L1/L2 Fourier identity for normalized physical dilation, weighted carrier identity and form-core density remain to be assembled. Native compiler and independent custody mandatory. Research #932; master #898.
