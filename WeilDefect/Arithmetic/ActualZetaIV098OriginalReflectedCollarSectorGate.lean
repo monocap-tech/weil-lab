@@ -5,7 +5,7 @@ import Mathlib.Tactic
 namespace WeilDefect
 noncomputable section
 open MeasureTheory
-open scoped SchwartzMap
+open scoped SchwartzMap ContDiff
 
 theorem neutralIV098Disjoint_norm_sq (a b u v : ℂ)
     (h : a = 0 ∨ b = 0) :
@@ -328,8 +328,8 @@ theorem neutralIV098Pair_mass_zero_iff (u v : ℂ) :
     have hsum : ‖u‖^2 + ‖v‖^2 = 0 := (mul_eq_zero.mp h).resolve_right hm.ne'
     have hu2 : ‖u‖^2 = 0 := le_antisymm (by linarith [sq_nonneg ‖v‖]) (sq_nonneg _)
     have hv2 : ‖v‖^2 = 0 := le_antisymm (by linarith [sq_nonneg ‖u‖]) (sq_nonneg _)
-    have hu : ‖u‖ = 0 := by simpa using (pow_eq_zero hu2)
-    have hv : ‖v‖ = 0 := by simpa using (pow_eq_zero hv2)
+    have hu : ‖u‖ = 0 := by exact mul_self_eq_zero.mp (by simpa only [pow_two] using hu2)
+    have hv : ‖v‖ = 0 := by exact mul_self_eq_zero.mp (by simpa only [pow_two] using hv2)
     exact ⟨norm_eq_zero.mp hu, norm_eq_zero.mp hv⟩
   · rintro ⟨rfl, rfl⟩
     simp
