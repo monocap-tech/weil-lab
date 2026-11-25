@@ -1,0 +1,3 @@
+# F08-055 — Original unconditional native L² dilation strong continuity
+
+Source-only candidate. F08-051 filtered DCT plus F08-052 exact native norm identity gives strong convergence on the genuine compact-Schwartz image; the original F08-037 density and F08-038 implication then give unconditional strong continuity at scale one on every original RealComplexL2 vector. Exact compiler-PASS F08-051/052 heads are staged independently; their independent custody and acceptance, native F08-055 build and separate custody are required before acceptance. No weighted physical form-core, signed Weil-form transfer, positivity, F42 or RH assertion. Research #932; master #898.
