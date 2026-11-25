@@ -38,8 +38,9 @@ theorem neutralIV091GreenOrdinaryMoment_integrable
     Integrable (neutralIV091OrdinaryMoment
       (neutralActualZetaGreenCorrelationInverse a v w)) := by
   have h : Integrable (neutralIV091GreenSpectralMoment a v w) := by
-    simpa only [neutralIV091GreenSpectralMoment, Real.norm_eq_abs, sq_abs]
-      using neutralActualZetaGreenCorrelationSpectrum_secondMoment a ha v w
+    change Integrable (fun ξ : ℝ => ξ^2 * ‖neutralActualZetaGreenCorrelationSpectrum a v w ξ‖)
+    simpa only [Real.norm_eq_abs, sq_abs] using
+      neutralActualZetaGreenCorrelationSpectrum_secondMoment a ha v w
   exact h.congr (neutralIV091GreenMoment_ae a ha v w).symm
 
 /-- The paper transform uses angular frequency r, with
