@@ -1,0 +1,59 @@
+name: MASTER-RECON V05
+
+on:
+  push:
+    branches: [master-recon-001-neutral-shell]
+    paths:
+      - "WeilDefect/MasterRecon/V05.lean"
+      - "WeilDefect/MasterRecon/V04.lean"
+      - ".github/workflows/master-recon-v05.yml"
+  pull_request:
+    paths:
+      - "WeilDefect/MasterRecon/V05.lean"
+      - ".github/workflows/master-recon-v05.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  abstract-core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Elan
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned dependencies
+        run: lake update
+      - name: Fetch mathlib cache
+        run: lake exe cache get
+      - name: Compile V05 and inspect axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.MasterRecon.V02 WeilDefect.MasterRecon.V03 WeilDefect.MasterRecon.V04
+          lake env lean WeilDefect/MasterRecon/V05.lean 2>&1 | tee v05-lean.log
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          s = Path("v05-lean.log").read_text()
+          names = ["gram_scaled_resolvent_sequence", "picard_operator_isUnit", "picard_compression_apply", "finite_selected_norm_limit"]
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for name in names:
+              m = re.search(r"'WeilDefect\.MasterRecon\.V05\."+name+r"' depends on axioms: \[([^\]]*)\]", s)
+              if m is None:
+                  if f"'WeilDefect.MasterRecon.V05.{name}' does not depend on any axioms" in s:
+                      continue
+                  raise SystemExit("Missing axiom audit: " + name)
+              axioms = {x.strip() for x in m.group(1).split(",") if x.strip()}
+              if not axioms <= allowed:
+                  raise SystemExit(f"Unexpected axioms for {name}: {axioms - allowed}")
+          print("V05 strict axiom audit PASS")
+          PY
+      - name: Upload compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: master-recon-v05-lean
+          path: v05-lean.log
