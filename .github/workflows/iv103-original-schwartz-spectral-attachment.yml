@@ -1,0 +1,212 @@
+name: IV103 original Schwartz spectral attachment — kernel gate
+
+on:
+  push:
+    branches:
+      - staging/iv103-original-schwartz-spectral-attachment
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaIV103OriginalSchwartzSpectralAttachment.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV102OriginalSchwartzMetricTransport.lean"
+      - "WeilDefect/Arithmetic/ActualZetaArchimedeanTransport.lean"
+      - "WeilDefect/Arithmetic/ActualZetaCorrelationPoles.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV101OriginalPackedComplementReceiver.lean"
+      - "WeilDefect/Arithmetic/ActualZetaLogCarrierSchwartzCompact.lean"
+      - "WeilDefect/Arithmetic/ActualZetaNativeFormOperator.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV100OriginalAffineCollarPacking.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV099OriginalFiniteCollarSectorGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV098OriginalReflectedCollarSectorGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV097OriginalSmoothPlateauGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV096OriginalEffectiveCollarCutoffGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV095OriginalUniformCollarSectorGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV094OriginalDiagonalSignedTailGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalNonzeroPrimeFreeSchwartzBump.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV093OriginalRestrictedCoercivityTransferGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollarCoercivity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV092OriginalGreenGradientErrorGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV091OriginalGreenMomentNormalizationGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaGreenCanonical.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV090OriginalIntegratedGammaErrorGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaLiteralFormula.lean"
+      - "WeilDefect/Arithmetic/ActualZetaCorrelationInverseAttachment.lean"
+      - "WeilDefect/Arithmetic/ActualZetaCorrelationFourierAgreement.lean"
+      - "WeilDefect/Arithmetic/ActualZetaCorrelationRegularity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV089OriginalGammaQuadraticTailGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV086OriginalPhysicalWeilLimitGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalMixedHermitian.lean"
+      - "WeilDefect/Arithmetic/ActualZetaSmoothCorrelationRegularity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV071GammaFinitePrelude.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV080GammaLinearEnvelopeGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV078FiniteGammaTruncationGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV079GammaDominatedLimitGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV081GammaWeightedCompactC2Gate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV082CompactC2FourierL1Gate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV083CompactC2OriginalGammaLimitGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV084OriginalPolePhysicalGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV085OriginalPrimeFiniteGate.lean"
+      - ".github/workflows/iv103-original-schwartz-spectral-attachment.yml"
+  pull_request:
+    paths:
+      - "WeilDefect/Arithmetic/ActualZetaIV103OriginalSchwartzSpectralAttachment.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV102OriginalSchwartzMetricTransport.lean"
+      - "WeilDefect/Arithmetic/ActualZetaArchimedeanTransport.lean"
+      - "WeilDefect/Arithmetic/ActualZetaCorrelationPoles.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV101OriginalPackedComplementReceiver.lean"
+      - "WeilDefect/Arithmetic/ActualZetaLogCarrierSchwartzCompact.lean"
+      - "WeilDefect/Arithmetic/ActualZetaNativeFormOperator.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV100OriginalAffineCollarPacking.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV099OriginalFiniteCollarSectorGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV098OriginalReflectedCollarSectorGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV097OriginalSmoothPlateauGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV096OriginalEffectiveCollarCutoffGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV095OriginalUniformCollarSectorGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV094OriginalDiagonalSignedTailGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalNonzeroPrimeFreeSchwartzBump.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV093OriginalRestrictedCoercivityTransferGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaOriginalCollarCoercivity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV092OriginalGreenGradientErrorGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV091OriginalGreenMomentNormalizationGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaGreenCanonical.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV090OriginalIntegratedGammaErrorGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaLiteralFormula.lean"
+      - "WeilDefect/Arithmetic/ActualZetaCorrelationInverseAttachment.lean"
+      - "WeilDefect/Arithmetic/ActualZetaCorrelationFourierAgreement.lean"
+      - "WeilDefect/Arithmetic/ActualZetaCorrelationRegularity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV089OriginalGammaQuadraticTailGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV086OriginalPhysicalWeilLimitGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalMixedHermitian.lean"
+      - "WeilDefect/Arithmetic/ActualZetaSmoothCorrelationRegularity.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV071GammaFinitePrelude.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV080GammaLinearEnvelopeGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV078FiniteGammaTruncationGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV079GammaDominatedLimitGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV081GammaWeightedCompactC2Gate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV082CompactC2FourierL1Gate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV083CompactC2OriginalGammaLimitGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV084OriginalPolePhysicalGate.lean"
+      - "WeilDefect/Arithmetic/ActualZetaIV085OriginalPrimeFiniteGate.lean"
+      - ".github/workflows/iv103-original-schwartz-spectral-attachment.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: iv103-original-schwartz-spectral-attachment-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  original-schwartz-spectral-attachment-lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict IV103 original-source preflight
+        run: |
+          set -euo pipefail
+          grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path("WeilDefect/Arithmetic/ActualZetaIV103OriginalSchwartzSpectralAttachment.lean").read_text()
+          names=[
+              "neutralIV103Evaluation_fourier",
+              "neutralIV103Raw_spectrum_ae",
+              "neutralIV103Arch_spectral",
+              "neutralIV103Pole_operator",
+              "neutralIV103Correlation_data",
+              "neutralIV103Spectrum_integrable",
+              "neutralIV103Correlation_inverse",
+              "neutralIV103PrimeSummand_spectral",
+              "neutralIV103Prime_finite",
+              "neutralIV103Prime_spectral",
+              "neutralIV103Mixed_native",
+          ]
+          assert len(names)==len(set(names))==11
+          assert set(re.findall(r"(?m)^#print axioms (\w+)$",s))==set(names)
+          assert set(re.findall(r"(?m)^theorem (\w+)",s))==set(names)
+          assert all(s.splitlines().count("#print axioms "+n)==1 for n in names)
+          assert not re.search(r"\b(?:sorry|admit|sorryAx)\b",s)
+          print("IV103 strict preflight: eleven exact original-source bridge declarations")
+          PY
+      - name: Install pinned Lean and Mathlib
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake --version
+          lake exe cache get
+      - name: Native fresh Lean source build
+        run: |
+          set -euo pipefail
+          mkdir -p iv103/out
+          touch iv103/out/fresh.stamp
+          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV103OriginalSchwartzSpectralAttachment.olean
+          lake build WeilDefect.Arithmetic.ActualZetaIV103OriginalSchwartzSpectralAttachment 2>&1 | tee iv103/out/build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV103OriginalSchwartzSpectralAttachment.olean
+          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV103OriginalSchwartzSpectralAttachment.olean -nt iv103/out/fresh.stamp
+      - name: Exact strict named axiom audit
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV103OriginalSchwartzSpectralAttachment.lean 2>&1 | tee iv103/out/axioms.log
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re
+          t=Path("iv103/out/axioms.log").read_text()
+          names=[
+              "neutralIV103Evaluation_fourier",
+              "neutralIV103Raw_spectrum_ae",
+              "neutralIV103Arch_spectral",
+              "neutralIV103Pole_operator",
+              "neutralIV103Correlation_data",
+              "neutralIV103Spectrum_integrable",
+              "neutralIV103Correlation_inverse",
+              "neutralIV103PrimeSummand_spectral",
+              "neutralIV103Prime_finite",
+              "neutralIV103Prime_spectral",
+              "neutralIV103Mixed_native",
+          ]
+          allowed={"propext","Classical.choice","Quot.sound"}
+          found={}
+          for name in names:
+              full="WeilDefect."+name
+              pat=re.compile(r"^'"+re.escape(full)+r"' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)\s*$",re.M)
+              hits=list(pat.finditer(t))
+              assert len(hits)==1, (full,len(hits),t[-1200:])
+              axioms=({a.strip() for a in hits[0].group(1).split(",") if a.strip()}
+                      if hits[0].group(1) is not None else set())
+              assert axioms<=allowed,(full,axioms-allowed)
+              found[full]=sorted(axioms)
+          assert not re.search(r'(?m)^\s*(?:error:|.*: error:)',t)
+          Path("iv103/out/receipts.json").write_text(json.dumps(found,sort_keys=True,indent=2)+"\n")
+          print("IV103 eleven strict source/axiom receipts PASS")
+          PY
+          git rev-parse HEAD > iv103/out/commit.txt
+          sha256sum WeilDefect/Arithmetic/ActualZetaIV103OriginalSchwartzSpectralAttachment.lean \
+            WeilDefect/Arithmetic/ActualZetaIV102OriginalSchwartzMetricTransport.lean \
+            WeilDefect/Arithmetic/ActualZetaArchimedeanTransport.lean \
+            WeilDefect/Arithmetic/ActualZetaCorrelationPoles.lean \
+            WeilDefect/Arithmetic/ActualZetaIV101OriginalPackedComplementReceiver.lean \
+            WeilDefect/Arithmetic/ActualZetaLogCarrierSchwartzCompact.lean \
+            WeilDefect/Arithmetic/ActualZetaNativeFormOperator.lean \
+            WeilDefect/Arithmetic/ActualZetaIV100OriginalAffineCollarPacking.lean \
+            WeilDefect/Arithmetic/ActualZetaPhaseIVOriginalSchwartzPolarization.lean \
+            WeilDefect/Arithmetic/ActualZetaIV099OriginalFiniteCollarSectorGate.lean \
+            WeilDefect/Arithmetic/ActualZetaIV098OriginalReflectedCollarSectorGate.lean \
+            WeilDefect/Arithmetic/ActualZetaIV097OriginalSmoothPlateauGate.lean \
+            WeilDefect/Arithmetic/ActualZetaIV096OriginalEffectiveCollarCutoffGate.lean \
+            WeilDefect/Arithmetic/ActualZetaIV095OriginalUniformCollarSectorGate.lean \
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV103OriginalSchwartzSpectralAttachment.olean > iv103/out/sha256.txt
+          sha256sum -c iv103/out/sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv103-original-schwartz-spectral-attachment-native-lean-receipts
+          path: |
+            iv103/out/
+            .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV103OriginalSchwartzSpectralAttachment.olean
+          if-no-files-found: ignore
+          include-hidden-files: true
