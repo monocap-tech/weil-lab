@@ -32,7 +32,7 @@ jobs:
           test "$(git -C candidate hash-object verification/f08/f08_030/F08NativeFrequencyDilation.lean)" = 5c260b69f464f5793e095f9b5448c90f7984617f
           test "$(git -C candidate hash-object verification/f08/f08_033/F08NativeFrequencyDilationIsometry.lean)" = 8b4055c065ab7987a01bf55143908d8cd77f0f23
           test "$(git -C candidate hash-object verification/f08/f08_035/F08NativeDilationLinearIsometry.lean)" = 7038c5d23cecdef6cc3f6bca1d12548246e65bd7
-          test "$(git -C candidate hash-object verification/f08/f08_038/F08NativeL2ContinuityDenseTransfer.lean)" = 662ca1df1d8632723d6a141044f6c5de63043679
+          test "$(git -C candidate hash-object verification/f08/f08_038/F08NativeL2ContinuityDenseTransfer.lean)" = 354922e7ed1727292f9ef41cf9b4f7d20f59a753
           for x in f08_027/F08NativeFrequencyScalingMeasure.lean f08_029/F08NativeL2PushforwardNorm.lean f08_030/F08NativeFrequencyDilation.lean f08_033/F08NativeFrequencyDilationIsometry.lean f08_035/F08NativeDilationLinearIsometry.lean f08_038/F08NativeL2ContinuityDenseTransfer.lean; do
             ! grep -Eq '\b(sorry|admit|unsafe)\b' "candidate/verification/f08/$x"
           done
