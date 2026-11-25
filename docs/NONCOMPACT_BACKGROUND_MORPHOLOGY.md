@@ -859,7 +859,8 @@ If a fixed selected negative ray is already present, the arithmetic stop remains
 
 from P3.0.
 
-If a fixed selected neutral mode is present, the support stop remains
+If a fixed selected neutral mode is present, the historical support stop from
+P3.1 was
 
 ```math
 \boxed{
@@ -867,7 +868,7 @@ If a fixed selected neutral mode is present, the support stop remains
 }
 ```
 
-from P3.1.
+and is now discharged negatively by WD-T40 under the WD-T38 carrier hypotheses.
 
 If selected mass itself moves through infinitely many sectors and no fixed selected ray survives, then the system has not entered either fixed-packet morphology. That is a coefficient-custody/noncompactness species rather than an additional fixed-packet RH interface.
 
