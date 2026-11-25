@@ -37,9 +37,11 @@ theorem f08_051_originalCompactSchwartz_squareIntegral_tendsto
     intro lam
     have he : Continuous (fun ξ : ℝ => g (lam.1 * ξ)) :=
       g.continuous.comp (continuous_const.mul continuous_id)
+    have hc : Continuous (fun _ : ℝ => Complex.ofReal (Real.sqrt (abs lam.1))) :=
+      continuous_const
     have hs : Continuous (fun ξ : ℝ =>
         (Complex.ofReal (Real.sqrt (abs lam.1))) • g (lam.1 * ξ) - g ξ) :=
-      (continuous_const.smul he).sub g.continuous
+      (hc.smul he).sub g.continuous
     exact (hs.norm.pow 2).aestronglyMeasurable
   have hb : ∀ᶠ lam in 𝓝 oneScale, ∀ᵐ ξ ∂volume, ‖F lam ξ‖ ≤ B ξ := by
     filter_upwards [hnear] with lam hlam
@@ -55,7 +57,9 @@ theorem f08_051_originalCompactSchwartz_squareIntegral_tendsto
     apply Filter.Eventually.of_forall
     intro ξ
     have h := f08_040_originalSchwartzDilation_pointwise_tendsto g ξ
-    have hd := h.sub (tendsto_const_nhds (b := g ξ))
+    have hc : Tendsto (fun _ : f08_040_nonzeroScale => g ξ)
+        (𝓝 oneScale) (𝓝 (g ξ)) := tendsto_const_nhds
+    have hd := h.sub hc
     simpa [F, oneScale] using (hd.norm.pow 2)
   have H := MeasureTheory.tendsto_integral_filter_of_dominated_convergence
     (F := F) (f := fun _ : ℝ => (0 : ℝ)) B hm hb hB hp
