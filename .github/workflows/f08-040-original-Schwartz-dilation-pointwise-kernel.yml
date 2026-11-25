@@ -1,0 +1,84 @@
+name: F08-040 original normalized Schwartz representative pointwise limit kernel
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_040/**'
+      - '.github/workflows/f08-040-original-Schwartz-dilation-pointwise-kernel.yml'
+permissions:
+  contents: read
+jobs:
+  native-original-Schwartz-pointwise:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout frozen original IV023 research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Pin original domain and exact F08-030 predecessor plus pointwise candidate
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C candidate hash-object verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean)" = eecfe2a849fa79aa13810ede85e9ba625eba7777
+          test "$(git -C candidate hash-object verification/f08/f08_029/F08NativeL2PushforwardNorm.lean)" = 4da65f9b9df7cae6ea30a4a7f25d3e6c1606c294
+          test "$(git -C candidate hash-object verification/f08/f08_030/F08NativeFrequencyDilation.lean)" = 5c260b69f464f5793e095f9b5448c90f7984617f
+          test "$(git -C candidate hash-object verification/f08/f08_040/F08OriginalSchwartzDilationPointwise.lean)" = f728a7fc3c5528c7311b7ed8dc27b2f60e445f81
+          for x in f08_027/F08NativeFrequencyScalingMeasure.lean f08_029/F08NativeL2PushforwardNorm.lean f08_030/F08NativeFrequencyDilation.lean f08_040/F08OriginalSchwartzDilationPointwise.lean; do
+            ! grep -Eq '\b(sorry|admit|unsafe)\b' "candidate/verification/f08/$x"
+          done
+          mkdir -p research/WeilDefect/Generated/F08
+          cp candidate/verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean research/WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean
+          cp candidate/verification/f08/f08_029/F08NativeL2PushforwardNorm.lean research/WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean
+          cp candidate/verification/f08/f08_030/F08NativeFrequencyDilation.lean research/WeilDefect/Generated/F08/NativeFrequencyDilation.lean
+          cp candidate/verification/f08/f08_040/F08OriginalSchwartzDilationPointwise.lean research/WeilDefect/Generated/F08/OriginalSchwartzDilationPointwise.lean
+      - name: Install original frozen Lean 4.34.0 and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Build original Schwartz representative pointwise theorem and exact single axiom report
+        working-directory: research
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build WeilDefect.Generated.F08.OriginalSchwartzDilationPointwise 2>&1 | tee f08-040-build.log
+          printf '%s\n' 'import WeilDefect.Generated.F08.OriginalSchwartzDilationPointwise' '#print axioms WeilDefect.f08_040_originalSchwartzDilation_pointwise_tendsto' > /tmp/f08-040-axioms.lean
+          lake env lean /tmp/f08-040-axioms.lean 2>&1 | tee f08-040-axioms.log
+          python3 - <<'PY'
+          import pathlib,re
+          s=pathlib.Path('f08-040-axioms.log').read_text()
+          pattern=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]|'WeilDefect\.(\w+)' does not depend on any axioms"
+          matches=list(re.finditer(pattern,s,re.S))
+          assert len(matches)==1,('expected exactly one source theorem',s)
+          assert not re.sub(pattern,'',s,flags=re.S).strip(),('extra original Lean output',s)
+          m=matches[0]
+          assert (m[1] or m[3])=='f08_040_originalSchwartzDilation_pointwise_tendsto'
+          axs={x.strip() for x in (m[2] or '').split(',') if x.strip()}
+          assert axs <= {'propext','Classical.choice','Quot.sound'},('nonstandard axiom',axs)
+          print('F08-040 original normalized Schwartz pointwise limit 1/1 standard-only axiom PASS')
+          PY
+      - name: Archive entire real original source/compiler/axiom artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-040-original-Schwartz-pointwise-compiler-evidence
+          path: |
+            research/f08-040-build.log
+            research/f08-040-axioms.log
+            research/WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean
+            research/WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean
+            research/WeilDefect/Generated/F08/NativeFrequencyDilation.lean
+            research/WeilDefect/Generated/F08/OriginalSchwartzDilationPointwise.lean
+          if-no-files-found: ignore
