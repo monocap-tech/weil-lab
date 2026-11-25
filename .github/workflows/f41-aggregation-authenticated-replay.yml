@@ -38,3 +38,392 @@ jobs:
           name: f41-aggregate-complete-authenticated-replay-sources
           path: complete-replay/
           if-no-files-found: error
+  compile-shard:
+    needs: source-replay
+    runs-on: ubuntu-latest
+    name: Replay rows ${{ matrix.first }}–${{ matrix.last }}
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - first: 0
+            last: 15
+          - first: 16
+            last: 31
+          - first: 32
+            last: 47
+          - first: 48
+            last: 63
+          - first: 64
+            last: 79
+          - first: 80
+            last: 95
+          - first: 96
+            last: 111
+          - first: 112
+            last: 127
+          - first: 128
+            last: 143
+          - first: 144
+            last: 159
+          - first: 160
+            last: 175
+          - first: 176
+            last: 191
+          - first: 192
+            last: 207
+          - first: 208
+            last: 223
+          - first: 224
+            last: 239
+          - first: 240
+            last: 241
+    timeout-minutes: 350
+    env:
+      FIRST: ${{ matrix.first }}
+      LAST: ${{ matrix.last }}
+    defaults:
+      run:
+        working-directory: research
+        shell: bash
+    steps:
+      - name: Checkout exact aggregation candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: candidate
+          persist-credentials: false
+      - name: Checkout historically successful NF707 compiler source
+        uses: actions/checkout@v4
+        with:
+          ref: 3d3fa66956bef3a63f90ed9b5325141afaf43cb5
+          path: research
+          persist-credentials: false
+      - name: Checkout immutable original mathematical research source
+        uses: actions/checkout@v4
+        with:
+          ref: a431f903254000bb5ad8edbc276ccc8599da98f5
+          path: frozen
+          persist-credentials: false
+      - name: Reverify seven exact mathematical source files and three unchanged git refs
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = 3d3fa66956bef3a63f90ed9b5325141afaf43cb5
+          test "$(git -C ../frozen rev-parse HEAD)" = a431f903254000bb5ad8edbc276ccc8599da98f5
+          test "$(git -C ../candidate rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.34.0
+          for f in ActualZetaOriginalPhysicalSolveResidual ActualZetaOriginalPhysicalExecutableEntryChecks ActualZetaOriginalPhysicalTriangularEntryCustody ActualZetaOriginalPhysicalShardedEntryCustody ActualZetaOriginalPhysicalEnclosurePropagation ActualZetaOriginalPhysicalIntegerCenters ActualZetaOriginalPhysicalGramSchurAlgebra; do
+            cmp "WeilDefect/Arithmetic/$f.lean" "../frozen/WeilDefect/Arithmetic/$f.lean"
+          done
+          python ../candidate/verification/f41/f41_001/f41_original_physical_entry_source_contract.py source --source-root ../frozen --out f41-common-original-source.json
+      - name: Restore original exact accepted bank source (NF690/NF691)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p WeilDefect/Generated/NF690
+          fetch() {
+            local id="$1" name="$2" digest="$3" dest="$4"
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" -o "$name.zip"
+            echo "$digest  $name.zip" | sha256sum -c -
+            unzip -q "$name.zip" -d "$dest"
+          }
+          fetch 14551493244 compact 37be910efa7d204c9db35f62bf9d5f818ece77c7026d94d9c84e4ddba0df41a5 WeilDefect/Generated
+          fetch 14558233793 payload 2327fbf952d4894c9f28f81cad9e94d226c93131d9ef2fafa14c35f482211b70 WeilDefect/Generated/NF690
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('WeilDefect/Generated'); sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          m=json.loads((root/'NF690/manifest.json').read_text());d=root/'NF690'
+          assert (m['keys'],m['rows'],m['chunks'],m['chunk_width'])==(7835,37994,490,16)
+          assert [r['index'] for r in m['slots']]==list(range(7835))
+          assert len({tuple(r['key']) for r in m['slots']})==7835
+          assert sum(r['rows'] for r in m['slots'])==37994
+          assert m['metadata_sha256']==sha(root/'NF679/Metadata.lean')
+          assert m['compact_manifest_sha256']==sha(root/'NF687/manifest.json')
+          for name in ('NF682','NF687','NF690'):
+              p=root/name
+              for f in json.loads((p/'manifest.json').read_text())['files']:
+                  assert sha(p/f['file'])==f['sha256']
+                  if 'bytes' in f:assert (p/f['file']).stat().st_size==f['bytes']
+          assert {f'Chunk{i:03d}.lean' for i in range(490)}|{'Bank.lean','Coverage.lean'} <= {f['file'] for f in m['files']}
+          out=root/'NF691';out.mkdir(exist_ok=True)
+          (out/'OriginalLookup.lean').write_text("""import WeilDefect.Generated.NF690.Coverage
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalBlockLocalLookup
+
+          namespace WeilDefect
+
+          def nf691OriginalLookup : NF622Moments :=
+            neutralNF691Lookup nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalLookup_eq :
+              neutralNF624Lookup nf690OriginalBank (neutralNF624Index nf690OriginalBank) =
+                nf691OriginalLookup :=
+            neutralNF691Lookup_eq nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalCoverage :
+              neutralNF624CoverageCheck nf690OriginalBank (neutralNF624Index nf690OriginalBank)=true :=
+            nf690OriginalCoverage
+
+          #print axioms nf691OriginalLookup_eq
+          #print axioms nf691OriginalCoverage
+
+          end WeilDefect
+          """)
+          print('F41 completion authentic NF691 source bank and 490 chunks restored')
+          PY
+      - name: Initialize pinned Lean 4.34.0 and Lake/Mathlib before manifest checks
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Bind unchanged bank sources and environment
+        run: python scripts/nf697_compiled_bank_binding.py
+      - name: Download historically audited compiled-bank objects
+        uses: actions/download-artifact@v4
+        with:
+          name: nf697-audited-compiled-bank
+          path: research/compiled-bank
+          run-id: 44598398608
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify original compiled-bank producer binding and restore
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          a=json.loads(Path('compiled-bank/nf697-bank-binding.json').read_text())
+          b=json.loads(Path('nf697-bank-binding.json').read_text())
+          for x in (a,b):
+              dig=x.pop('fingerprint')
+              assert hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()==dig
+          assert a['schema']==b['schema'] and a['environment']==b['environment']
+          assert all(b['files'].get(k)==v for k,v in a['files'].items())
+          assert set(b['files'])-set(a['files'])=={'WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularCacheAssembly.lean'}
+          assert all('ActualZetaOriginalPhysicalTriangularCacheAssembly' not in Path(p).read_text() for p in a['files'] if p.endswith('.lean'))
+          PY
+          (cd compiled-bank && sha256sum -c nf697-project-build.sha256)
+          tar -xzf compiled-bank/nf697-project-build.tar.gz
+          lake build WeilDefect.Generated.NF691.OriginalLookup 2>&1 | tee f41-common-bank-build.log
+      - uses: actions/download-artifact@v4
+        with:
+          name: f41-aggregate-complete-authenticated-replay-sources
+          path: replay
+      - name: Restore authenticated original NF707 compiled full-payment input
+        uses: actions/download-artifact@v4
+        with:
+          name: nf707-compiled-original-input
+          path: research/compiled-input
+          run-id: 44633937710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify authenticated replay sources and restore exact compiled input
+        run: |
+          set -euo pipefail
+          python3 ../candidate/verification/f41/aggregation_242/replay_objects.py install-sources
+          (cd compiled-input && sha256sum -c nf707-input-build.sha256)
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+          b=json.loads(Path('compiled-input/nf707-input-binding.json').read_text())
+          bank=json.loads(Path('nf697-bank-binding.json').read_text())
+          replay=json.loads(Path('../replay/replay-manifest.json').read_text())
+          assert b['schema']=='NF707-compiled-input-binding-v1'
+          assert b['bank_source_environment']==bank
+          assert b['input_manifest_sha256']==replay['common_bindings']['nf702_input_manifest_sha256']
+          assert b['input_manifest_sha256']==sha('WeilDefect/Generated/NF702Inputs/manifest.json')
+          assert len(b['input_sources'])==62
+          assert all(sha(p)==dig for p,dig in b['input_sources'].items())
+          assert b['compiled_tar_sha256']==sha('compiled-input/nf707-input-build.tar.gz')
+          PY
+          tar -xzf compiled-input/nf707-input-build.tar.gz
+          lake build WeilDefect.Generated.NF702Inputs.Data WeilDefect.Arithmetic.ActualZetaOriginalPhysicalLiteralRowProjection WeilDefect.Arithmetic.ActualZetaOriginalPhysicalShardedEntryCustody 2>&1 | tee f41-common-input-build.log
+          python3 ../candidate/verification/f41/aggregation_242/replay_objects.py baseline
+      - name: Recompile exact row attachments and audit terminal declarations
+        run: python3 ../candidate/verification/f41/aggregation_242/replay_objects.py compile-shard
+      - uses: actions/upload-artifact@v4
+        with:
+          name: f41-aggregate-objects-${{ matrix.first }}-${{ matrix.last }}
+          path: research/shard-evidence/
+          if-no-files-found: error
+          overwrite: true
+  final-aggregate:
+    needs: [source-replay, compile-shard]
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    defaults:
+      run:
+        working-directory: research
+        shell: bash
+    steps:
+      - name: Checkout exact aggregation candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: candidate
+          persist-credentials: false
+      - name: Checkout historically successful NF707 compiler source
+        uses: actions/checkout@v4
+        with:
+          ref: 3d3fa66956bef3a63f90ed9b5325141afaf43cb5
+          path: research
+          persist-credentials: false
+      - name: Checkout immutable original mathematical research source
+        uses: actions/checkout@v4
+        with:
+          ref: a431f903254000bb5ad8edbc276ccc8599da98f5
+          path: frozen
+          persist-credentials: false
+      - name: Reverify seven exact mathematical source files and three unchanged git refs
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = 3d3fa66956bef3a63f90ed9b5325141afaf43cb5
+          test "$(git -C ../frozen rev-parse HEAD)" = a431f903254000bb5ad8edbc276ccc8599da98f5
+          test "$(git -C ../candidate rev-parse HEAD)" = "${{ github.sha }}"
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.34.0
+          for f in ActualZetaOriginalPhysicalSolveResidual ActualZetaOriginalPhysicalExecutableEntryChecks ActualZetaOriginalPhysicalTriangularEntryCustody ActualZetaOriginalPhysicalShardedEntryCustody ActualZetaOriginalPhysicalEnclosurePropagation ActualZetaOriginalPhysicalIntegerCenters ActualZetaOriginalPhysicalGramSchurAlgebra; do
+            cmp "WeilDefect/Arithmetic/$f.lean" "../frozen/WeilDefect/Arithmetic/$f.lean"
+          done
+          python ../candidate/verification/f41/f41_001/f41_original_physical_entry_source_contract.py source --source-root ../frozen --out f41-common-original-source.json
+      - name: Restore original exact accepted bank source (NF690/NF691)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p WeilDefect/Generated/NF690
+          fetch() {
+            local id="$1" name="$2" digest="$3" dest="$4"
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" -o "$name.zip"
+            echo "$digest  $name.zip" | sha256sum -c -
+            unzip -q "$name.zip" -d "$dest"
+          }
+          fetch 14551493244 compact 37be910efa7d204c9db35f62bf9d5f818ece77c7026d94d9c84e4ddba0df41a5 WeilDefect/Generated
+          fetch 14558233793 payload 2327fbf952d4894c9f28f81cad9e94d226c93131d9ef2fafa14c35f482211b70 WeilDefect/Generated/NF690
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('WeilDefect/Generated'); sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          m=json.loads((root/'NF690/manifest.json').read_text());d=root/'NF690'
+          assert (m['keys'],m['rows'],m['chunks'],m['chunk_width'])==(7835,37994,490,16)
+          assert [r['index'] for r in m['slots']]==list(range(7835))
+          assert len({tuple(r['key']) for r in m['slots']})==7835
+          assert sum(r['rows'] for r in m['slots'])==37994
+          assert m['metadata_sha256']==sha(root/'NF679/Metadata.lean')
+          assert m['compact_manifest_sha256']==sha(root/'NF687/manifest.json')
+          for name in ('NF682','NF687','NF690'):
+              p=root/name
+              for f in json.loads((p/'manifest.json').read_text())['files']:
+                  assert sha(p/f['file'])==f['sha256']
+                  if 'bytes' in f:assert (p/f['file']).stat().st_size==f['bytes']
+          assert {f'Chunk{i:03d}.lean' for i in range(490)}|{'Bank.lean','Coverage.lean'} <= {f['file'] for f in m['files']}
+          out=root/'NF691';out.mkdir(exist_ok=True)
+          (out/'OriginalLookup.lean').write_text("""import WeilDefect.Generated.NF690.Coverage
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalBlockLocalLookup
+
+          namespace WeilDefect
+
+          def nf691OriginalLookup : NF622Moments :=
+            neutralNF691Lookup nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalLookup_eq :
+              neutralNF624Lookup nf690OriginalBank (neutralNF624Index nf690OriginalBank) =
+                nf691OriginalLookup :=
+            neutralNF691Lookup_eq nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalCoverage :
+              neutralNF624CoverageCheck nf690OriginalBank (neutralNF624Index nf690OriginalBank)=true :=
+            nf690OriginalCoverage
+
+          #print axioms nf691OriginalLookup_eq
+          #print axioms nf691OriginalCoverage
+
+          end WeilDefect
+          """)
+          print('F41 completion authentic NF691 source bank and 490 chunks restored')
+          PY
+      - name: Initialize pinned Lean 4.34.0 and Lake/Mathlib before manifest checks
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Bind unchanged bank sources and environment
+        run: python scripts/nf697_compiled_bank_binding.py
+      - name: Download historically audited compiled-bank objects
+        uses: actions/download-artifact@v4
+        with:
+          name: nf697-audited-compiled-bank
+          path: research/compiled-bank
+          run-id: 44598398608
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify original compiled-bank producer binding and restore
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          a=json.loads(Path('compiled-bank/nf697-bank-binding.json').read_text())
+          b=json.loads(Path('nf697-bank-binding.json').read_text())
+          for x in (a,b):
+              dig=x.pop('fingerprint')
+              assert hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()==dig
+          assert a['schema']==b['schema'] and a['environment']==b['environment']
+          assert all(b['files'].get(k)==v for k,v in a['files'].items())
+          assert set(b['files'])-set(a['files'])=={'WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularCacheAssembly.lean'}
+          assert all('ActualZetaOriginalPhysicalTriangularCacheAssembly' not in Path(p).read_text() for p in a['files'] if p.endswith('.lean'))
+          PY
+          (cd compiled-bank && sha256sum -c nf697-project-build.sha256)
+          tar -xzf compiled-bank/nf697-project-build.tar.gz
+          lake build WeilDefect.Generated.NF691.OriginalLookup 2>&1 | tee f41-common-bank-build.log
+      - uses: actions/download-artifact@v4
+        with:
+          name: f41-aggregate-complete-authenticated-replay-sources
+          path: replay
+      - name: Restore authenticated original NF707 compiled full-payment input
+        uses: actions/download-artifact@v4
+        with:
+          name: nf707-compiled-original-input
+          path: research/compiled-input
+          run-id: 44633937710
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify authenticated replay sources and restore exact compiled input
+        run: |
+          set -euo pipefail
+          python3 ../candidate/verification/f41/aggregation_242/replay_objects.py install-sources
+          (cd compiled-input && sha256sum -c nf707-input-build.sha256)
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+          b=json.loads(Path('compiled-input/nf707-input-binding.json').read_text())
+          bank=json.loads(Path('nf697-bank-binding.json').read_text())
+          replay=json.loads(Path('../replay/replay-manifest.json').read_text())
+          assert b['schema']=='NF707-compiled-input-binding-v1'
+          assert b['bank_source_environment']==bank
+          assert b['input_manifest_sha256']==replay['common_bindings']['nf702_input_manifest_sha256']
+          assert b['input_manifest_sha256']==sha('WeilDefect/Generated/NF702Inputs/manifest.json')
+          assert len(b['input_sources'])==62
+          assert all(sha(p)==dig for p,dig in b['input_sources'].items())
+          assert b['compiled_tar_sha256']==sha('compiled-input/nf707-input-build.tar.gz')
+          PY
+          tar -xzf compiled-input/nf707-input-build.tar.gz
+          lake build WeilDefect.Generated.NF702Inputs.Data WeilDefect.Arithmetic.ActualZetaOriginalPhysicalLiteralRowProjection WeilDefect.Arithmetic.ActualZetaOriginalPhysicalShardedEntryCustody 2>&1 | tee f41-common-input-build.log
+          python3 ../candidate/verification/f41/aggregation_242/replay_objects.py baseline
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: f41-aggregate-objects-*
+          path: shards
+          merge-multiple: false
+      - name: Reconcile compiled-object provenance and compile aggregate
+        run: python3 ../candidate/verification/f41/aggregation_242/replay_objects.py aggregate
+      - uses: actions/upload-artifact@v4
+        with:
+          name: f41-aggregate-original-242-row-kernel-evidence
+          path: research/aggregate-evidence/
+          if-no-files-found: error
