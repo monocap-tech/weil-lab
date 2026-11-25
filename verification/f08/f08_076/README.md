@@ -1,0 +1,3 @@
+# F08-076 — Conditional original dense-core extension
+
+F08-075 native PASS 45711520556 and independent custody PASS 45714085212. Six candidate theorems: exact Schwartz carrier density, quantitative mixed difference bound, joint native continuity, uniqueness among separately continuous extensions of the literal original source, conditional positivity equivalence, and conditional negative witness transfer. The literal arithmetic attachment is an explicit hypothesis, not a theorem or axiom. IV103 remains separate. No positivity assertion, adoption or RH. Native compilation and independent custody pending.
