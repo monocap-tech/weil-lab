@@ -1,0 +1,9 @@
+# F08-034 — independently authenticate original native complex L² isometry
+
+**Producer: genuine original IV023 Lean 4.34.0 kernel PASS. Custody: independent hosted original-archive workflow required before acceptance.**
+
+F08-033 [PR #1028](https://github.com/monocap-tech/weil-lab/pull/1028) original producer commit `b2b4d6ad05b8962f5c066e6b43a7fe94931d973d`; original Lean [run 45526559097](https://github.com/monocap-tech/weil-lab/actions/runs/45526559097) successfully completed 8,989/8,989 native targets, including a genuine `RealComplexL2` proof of `‖f08_030_nativeFrequencyDilation λ hλ k‖ = ‖k‖` for every `λ ≠ 0`. All three exact named axiom reports are standard only: `[propext, Classical.choice, Quot.sound]`. Original producer artifact `14984160033`, full ZIP SHA256 `abde06769d179b9334dacb7aeb932ccccaa52bd81bfd81b6e471e29f676b1886`.
+
+This **independent and fail-closed** source custodian authenticates actual GitHub producer run/head and direct strict compiler step, then independently downloads original complete ZIP. It verifies full ZIP SHA256, CRC/unique paths, terminal genuine Lean compiler success, source blob `8b4055c065ab7987a01bf55143908d8cd77f0f23`, three original staged predecessors (F08-027/029/030) with their exact Git blob hashes, all three standard-only named `#print axioms`, and four deliberate mutated evidence refusals. The frozen IV023 original canonical source blob `2bf19165fce3a0cfa6e4d782d68caab268aaf82b` and version `leanprover/lean4:v4.34.0` are pinned.
+
+This proves norm preservation **for each fixed nonzero λ** only; the function `Uλ` is not yet packaged as a complex linear isometry, and strong `L²` continuity as `λ→1` is not yet formalized. Original Fourier physical scaling, supported logarithmic form-core density, arbitrary compact-smooth original signed Weil pairing identity, extension, F42/global positivity, RH remain OPEN. Parent #932, ledger #898.
