@@ -1,0 +1,112 @@
+name: F08-051 original compact-Schwartz filtered squared difference DCT kernel
+on:
+  pull_request:
+    paths:
+      - 'verification/f08/f08_051/**'
+      - '.github/workflows/f08-051-original-Schwartz-filtered-DCT-kernel.yml'
+permissions:
+  contents: read
+jobs:
+  original-native-Schwartz-filtered-DCT:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - name: Checkout actual original source candidate
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - name: Checkout accepted pointwise source predecessor
+        uses: actions/checkout@v4
+        with:
+          ref: 987e1d9cfa89f296d69739d6202761985db36aaf
+          path: accepted
+      - name: Checkout original frozen IV023 research
+        uses: actions/checkout@v4
+        with:
+          ref: 614ba879f7389fdb620c474adaee273b00eac71c
+          path: research
+      - name: Pin original domain and F08-042/045/046 source blobs
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 614ba879f7389fdb620c474adaee273b00eac71c
+          test "$(git -C research hash-object WeilDefect/Morphology/NeutralCanonicalFormDomain.lean)" = 2bf19165fce3a0cfa6e4d782d68caab268aaf82b
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C candidate hash-object verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean)" = f3ecfbf236898ca62baac18111595a06b2a9874f
+          test "$(git -C candidate hash-object verification/f08/f08_045/F08CompactSchwartzCommonScaledSupport.lean)" = 6fd895d4ae3cfa550fa0ed08f194ce299ea051b6
+          test "$(git -C candidate hash-object verification/f08/f08_046/F08OriginalSchwartzNormalizedDifferenceBounds.lean)" = 9212867e3c7594461d153777ad1c4db7c3693150
+          test "$(git -C candidate hash-object verification/f08/f08_048/F08OriginalSchwartzIntegrableSquareEnvelope.lean)" = 08b60de243f59503f33be0970600861d62f92e0d
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_048/F08OriginalSchwartzIntegrableSquareEnvelope.lean
+          for f in candidate/verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean candidate/verification/f08/f08_045/F08CompactSchwartzCommonScaledSupport.lean candidate/verification/f08/f08_046/F08OriginalSchwartzNormalizedDifferenceBounds.lean; do
+            ! grep -Eq '\b(sorry|admit|unsafe)\b' "$f"
+          done
+          mkdir -p research/WeilDefect/Generated/F08
+          cp candidate/verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean research/WeilDefect/Generated/F08/CompactSchwartzSupportRadiusAndBound.lean
+          cp candidate/verification/f08/f08_045/F08CompactSchwartzCommonScaledSupport.lean research/WeilDefect/Generated/F08/CompactSchwartzCommonScaledSupport.lean
+          cp candidate/verification/f08/f08_046/F08OriginalSchwartzNormalizedDifferenceBounds.lean research/WeilDefect/Generated/F08/OriginalSchwartzNormalizedDifferenceBounds.lean
+          cp candidate/verification/f08/f08_048/F08OriginalSchwartzIntegrableSquareEnvelope.lean research/WeilDefect/Generated/F08/OriginalSchwartzIntegrableSquareEnvelope.lean
+          test "$(git -C accepted rev-parse HEAD)" = 987e1d9cfa89f296d69739d6202761985db36aaf
+          test "$(git -C accepted hash-object verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean)" = eecfe2a849fa79aa13810ede85e9ba625eba7777
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' accepted/verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean
+          cp accepted/verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean research/WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean
+          test "$(git -C accepted hash-object verification/f08/f08_029/F08NativeL2PushforwardNorm.lean)" = 4da65f9b9df7cae6ea30a4a7f25d3e6c1606c294
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' accepted/verification/f08/f08_029/F08NativeL2PushforwardNorm.lean
+          cp accepted/verification/f08/f08_029/F08NativeL2PushforwardNorm.lean research/WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean
+          test "$(git -C accepted hash-object verification/f08/f08_030/F08NativeFrequencyDilation.lean)" = 5c260b69f464f5793e095f9b5448c90f7984617f
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' accepted/verification/f08/f08_030/F08NativeFrequencyDilation.lean
+          cp accepted/verification/f08/f08_030/F08NativeFrequencyDilation.lean research/WeilDefect/Generated/F08/NativeFrequencyDilation.lean
+          test "$(git -C accepted hash-object verification/f08/f08_040/F08OriginalSchwartzDilationPointwise.lean)" = f728a7fc3c5528c7311b7ed8dc27b2f60e445f81
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' accepted/verification/f08/f08_040/F08OriginalSchwartzDilationPointwise.lean
+          cp accepted/verification/f08/f08_040/F08OriginalSchwartzDilationPointwise.lean research/WeilDefect/Generated/F08/OriginalSchwartzDilationPointwise.lean
+          test "$(git -C candidate hash-object verification/f08/f08_051/F08OriginalCompactSchwartzFilteredDCT.lean)" = e6d0da5a8e350e9f49bf4f10228f820492c5e83b
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_051/F08OriginalCompactSchwartzFilteredDCT.lean
+          cp candidate/verification/f08/f08_051/F08OriginalCompactSchwartzFilteredDCT.lean research/WeilDefect/Generated/F08/OriginalCompactSchwartzFilteredDCT.lean
+      - name: Install frozen original Lean 4.34.0 Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Compile original filtered squared difference DCT and strict named axiom
+        working-directory: research
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake build WeilDefect.Generated.F08.OriginalCompactSchwartzFilteredDCT 2>&1 | tee f08-051-build.log
+          printf '%s\n' 'import WeilDefect.Generated.F08.OriginalCompactSchwartzFilteredDCT' '#print axioms WeilDefect.f08_051_originalCompactSchwartz_squareIntegral_tendsto' > /tmp/f08-051-axioms.lean
+          lake env lean /tmp/f08-051-axioms.lean 2>&1 | tee f08-051-axioms.log
+          python3 - <<'PY'
+          import pathlib,re
+          s=pathlib.Path('f08-051-axioms.log').read_text()
+          pat=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]|'WeilDefect\.(\w+)' does not depend on any axioms"
+          ms=list(re.finditer(pat,s,re.S))
+          assert len(ms)==1,('expected exactly one original named declaration',s)
+          assert not re.sub(pat,'',s,flags=re.S).strip(),('unexpected axiom log',s)
+          assert {m[1] or m[3] for m in ms}=={
+            'f08_051_originalCompactSchwartz_squareIntegral_tendsto'}
+          for m in ms:
+              axs={a.strip() for a in (m[2] or '').split(',') if a.strip()}
+              assert axs <= {'propext','Classical.choice','Quot.sound'},axs
+          print('F08-051 source-native filtered DCT: 1/1 standard-only axioms PASS')
+          PY
+      - name: Archive full true original source/build and named axiom evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f08-051-original-Schwartz-filtered-DCT-compiler-evidence
+          path: |
+            research/f08-051-build.log
+            research/f08-051-axioms.log
+            research/WeilDefect/Generated/F08/CompactSchwartzSupportRadiusAndBound.lean
+            research/WeilDefect/Generated/F08/CompactSchwartzCommonScaledSupport.lean
+            research/WeilDefect/Generated/F08/OriginalSchwartzNormalizedDifferenceBounds.lean
+            research/WeilDefect/Generated/F08/OriginalSchwartzIntegrableSquareEnvelope.lean
+            research/WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean
+            research/WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean
+            research/WeilDefect/Generated/F08/NativeFrequencyDilation.lean
+            research/WeilDefect/Generated/F08/OriginalSchwartzDilationPointwise.lean
+            research/WeilDefect/Generated/F08/OriginalCompactSchwartzFilteredDCT.lean
+          if-no-files-found: ignore
