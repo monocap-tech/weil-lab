@@ -1,0 +1,5 @@
+# IV133 checkpoint — IV126 native acceptance and IV127 literal transport repair
+
+Run 45758594987 at c1b0fabcf27b6e9d3c73276cf308257f47e29d27 built and reaudited IV124, IV125, IV126 and IV130 (28 named declarations). Artifact 15089756416, 456784 bytes, published by the partial custody step with four source/compiled pairs and SHA-256 manifest. Runner reports checksum verification; archive not independently downloaded in this checkpoint. Integrated run failed at IV127 lines 52 and 63. Physical mass transport now explicitly uses a.e. equality of Schwartz and L2 representatives before the L2 norm identity; Fourier transport explicitly changes to the function Fourier transform before applying its integral formula. The original theorem statements are unchanged.
+
+The next integrated gate covers 57 declarations across nine modules, including IV132 finite-head equivalence and trial response. It preserves partial compiled custody while failing closed on incomplete audits. No new mathematical claim; native acceptance pending. Numerical matrix signs remain unresolved.

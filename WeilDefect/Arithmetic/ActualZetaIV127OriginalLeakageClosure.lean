@@ -49,10 +49,13 @@ theorem neutralIV127Window_mass (a : ℝ) (ha : 0 ≤ a) (v : 𝓢(ℝ,ℂ))
     ← integral_Icc_eq_integral_Ioc]
   rw [setIntegral_eq_integral_of_forall_compl_eq_zero
     (fun x hx => by rw [hv x hx]; simp)]
-  rw [← neutralPhysicalL2_norm_sq]
-  apply integral_congr_ae
-  filter_upwards [v.coeFn_toLp 2 volume] with x hx
-  rw [hx]
+  calc
+    (∫ x : ℝ, ‖v x‖^2) =
+        ∫ x : ℝ, ‖(v.toLp 2 volume : RealComplexL2) x‖^2 := by
+      apply integral_congr_ae
+      filter_upwards [v.coeFn_toLp 2 volume] with x hx
+      rw [hx]
+    _ = _ := (neutralPhysicalL2_norm_sq (v.toLp 2 volume)).symm
 
 /-- Literal native Fourier normalization, with no phase or support premise
 beyond the original supported Schwartz test. -/
@@ -60,7 +63,8 @@ theorem neutralIV127Fourier_window (a : ℝ) (ha : 0 ≤ a) (v : 𝓢(ℝ,ℂ))
     (hv : ∀ x : ℝ, x ∉ Set.Icc (-a) a → v x = 0) (ξ : ℝ) :
     (𝓕 v : 𝓢(ℝ,ℂ)) ξ =
       ∫ x in (-a)..a, neutralIV126Phase ((-2*Real.pi*ξ)*x)*v x := by
-  rw [← SchwartzMap.fourier_coe, Real.fourier_eq']
+  change (𝓕 (v : ℝ → ℂ)) ξ = _
+  rw [Real.fourier_eq']
   simp only [smul_eq_mul]
   rw [intervalIntegral.integral_of_le (by linarith : -a ≤ a),
     ← integral_Icc_eq_integral_Ioc]
