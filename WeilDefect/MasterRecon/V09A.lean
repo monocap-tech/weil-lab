@@ -16,7 +16,7 @@ theorem divisor_one_le_at_zero (F : ℂ → ℂ)
   have ha : AnalyticOnNhd ℂ F (closedBall c r) := fun x _ => hF x
   have ht : analyticOrderAt F z ≠ ⊤ := by
     intro h
-    have he := (analyticOrderAt_eq_top_iff_eq_zero z hF).mp h
+    have he := (AnalyticOnNhd.analyticOrderAt_eq_top_iff_eq_zero z hF).mp h
     exact hc (by rw [he]; rfl)
   obtain ⟨n, hn⟩ := ENat.ne_top_iff_exists.mp ht
   have hn0 : n ≠ 0 := by
@@ -41,7 +41,8 @@ theorem distinct_zeros_le_divisor_sum (F : ℂ → ℂ)
     divisor_one_le_at_zero F hF c z hc r (hs z hz).1 (hs z hz).2
   have hsub : S ⊆ hD.toFinset := by
     intro z hz
-    apply Set.Finite.mem_toFinset.mpr
+    rw [Set.Finite.mem_toFinset]
+    change D z ≠ 0
     exact ne_of_gt (lt_of_lt_of_le (by norm_num) (hle z hz))
   change (S.card : ℤ) ≤ ∑ᶠ u, D u
   rw [finsum_eq_sum_of_support_subset D (s := hD.toFinset) (by simp)]
@@ -90,7 +91,6 @@ theorem exponential_type_linear_count (F : ℂ → ℂ)
   have hj := distinct_zeros_jensen F hF c hc r M hr hM hb S hs
   have hc' : 0 < ‖F c‖ := norm_pos_iff.mpr hc
   rw [Real.log_div (Real.exp_pos _).ne' hc'.ne'] at hj
-  dsimp [M] at hj
   rw [Real.log_exp] at hj
   convert hj using 1 <;> ring
 
