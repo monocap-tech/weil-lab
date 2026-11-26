@@ -45,10 +45,15 @@ theorem neutralIV106E7Inventory :
   · intro hn
     have hmem : n = 2 ∨ n = 3 ∨ n = 4 ∨ n = 5 ∨ n = 7 ∨ n = 8 ∨ n = 9 := by
       simpa only [Finset.mem_insert, Finset.mem_singleton] using hn
-    rcases hmem with h|h|h|h|h|h|h <;> subst n <;> constructor
-    all_goals first | decide | (have hle := Real.log_le_log (by norm_num : (0:ℝ) < _) (by norm_num : (_:ℝ) ≤ 9); linarith)
+    have hp : IsPrimePow n := by
+      rcases hmem with h|h|h|h|h|h|h <;> subst n <;> decide
+    have hn9 : n ≤ 9 := by
+      rcases hmem with h|h|h|h|h|h|h <;> omega
+    have hle := Real.log_le_log (show (0:ℝ) < n by exact_mod_cast hp.pos)
+      (show (n:ℝ) ≤ 9 by exact_mod_cast hn9)
+    exact ⟨hp, by linarith⟩
 
- /-- Exact source von Mangoldt values, not approximations to the log. -/
+/-- Exact source von Mangoldt values, not approximations to the log. -/
 theorem neutralIV106E7Mangoldt :
     ArithmeticFunction.vonMangoldt 2 = Real.log 2 ∧
     ArithmeticFunction.vonMangoldt 3 = Real.log 3 ∧
