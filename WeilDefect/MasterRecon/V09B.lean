@@ -22,7 +22,7 @@ theorem kernel_norm_bound (t : ℝ) (ht : 0 ≤ t) (x : ℝ) (hx : |x| ≤ t)
 
 theorem mellin_integrand_bound (t : ℝ) (ht : 0 ≤ t) (f : ℝ → ℂ)
     (hs : ∀ᵐ x ∂volume, x ∉ Icc (-t) t → f x = 0) (z : ℂ) :
-    ∀ᵐ x ∂volume, ‖Complex.exp (z * (x : ℂ)) * f x‖ ≤
+    ∀ᵐ x : ℝ ∂volume, ‖Complex.exp (z * (x : ℂ)) * f x‖ ≤
       Real.exp (‖z‖ * t) * ‖f x‖ := by
   filter_upwards [hs] with x hx
   by_cases hm : x ∈ Icc (-t) t
@@ -45,7 +45,7 @@ theorem mellin_integrand_integrable (t : ℝ) (ht : 0 ≤ t) (f : ℝ → ℂ)
 
 theorem mellin_derivative_bound (t : ℝ) (ht : 0 ≤ t) (f : ℝ → ℂ)
     (hs : ∀ᵐ x ∂volume, x ∉ Icc (-t) t → f x = 0) (z : ℂ) :
-    ∀ᵐ x ∂volume, ∀ w ∈ ball z 1,
+    ∀ᵐ x : ℝ ∂volume, ∀ w ∈ ball z 1,
       ‖Complex.exp (w * (x : ℂ)) * (x : ℂ) * f x‖ ≤
         (Real.exp ((‖z‖ + 1) * t) * t) * ‖f x‖ := by
   filter_upwards [hs] with x hx
@@ -79,7 +79,7 @@ theorem mellin_hasDerivAt (t : ℝ) (ht : 0 ≤ t) (f : ℝ → ℂ)
     have h : Continuous (fun x : ℝ => Complex.exp (z * (x : ℂ)) * (x : ℂ)) := by fun_prop
     exact h.aestronglyMeasurable.mul hf.aestronglyMeasurable
   have hb : Integrable b := hf.norm.const_mul _
-  have hdiff : ∀ᵐ x ∂volume, ∀ w ∈ ball z 1,
+  have hdiff : ∀ᵐ x : ℝ ∂volume, ∀ w ∈ ball z 1,
       HasDerivAt (F · x) (D w x) w := by
     filter_upwards with x
     intro w _
