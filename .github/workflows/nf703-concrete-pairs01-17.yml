@@ -1,0 +1,323 @@
+name: NF703 concrete remaining phase pairs
+on:
+  push:
+    branches:
+      - research/nf703-concrete-pairs01-17
+    paths:
+      - ".github/workflows/nf703-concrete-pairs01-17.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  batch:
+    name: NF703 pair ${{ matrix.pair }}
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        pair: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+    env:
+      PAIR: ${{ matrix.pair }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore exact original full numeric payload and accepted compact coverage source
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p WeilDefect/Generated/NF690
+          fetch() {
+            local id="$1" name="$2" digest="$3" dest="$4"
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" -o "$name.zip"
+            echo "$digest  $name.zip" | sha256sum -c -
+            unzip -q "$name.zip" -d "$dest"
+          }
+          fetch 14551493244 compact 37be910efa7d204c9db35f62bf9d5f818ece77c7026d94d9c84e4ddba0df41a5 WeilDefect/Generated
+          fetch 14558233793 payload 2327fbf952d4894c9f28f81cad9e94d226c93131d9ef2fafa14c35f482211b70 WeilDefect/Generated/NF690
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('WeilDefect/Generated')
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          d=root/'NF690'
+          m=json.loads((d/'manifest.json').read_text())
+          assert (m['keys'],m['rows'],m['chunks'],m['chunk_width'])==(7835,37994,490,16)
+          assert [r['index'] for r in m['slots']]==list(range(7835))
+          assert len({tuple(r['key']) for r in m['slots']})==7835
+          assert sum(r['rows'] for r in m['slots'])==37994
+          assert m['metadata_sha256']==sha(root/'NF679/Metadata.lean')
+          assert m['compact_manifest_sha256']==sha(root/'NF687/manifest.json')
+          for name in ('NF682','NF687','NF690'):
+              p=root/name
+              for f in json.loads((p/'manifest.json').read_text())['files']:
+                  assert sha(p/f['file'])==f['sha256']
+                  if 'bytes' in f: assert (p/f['file']).stat().st_size==f['bytes']
+          assert {f'Chunk{i:03d}.lean' for i in range(490)}|{'Bank.lean','Coverage.lean'} <= {f['file'] for f in m['files']}
+          out=root/'NF691'
+          out.mkdir(exist_ok=True)
+          (out/'OriginalLookup.lean').write_text("""import WeilDefect.Generated.NF690.Coverage
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalBlockLocalLookup
+
+          namespace WeilDefect
+
+          def nf691OriginalLookup : NF622Moments :=
+            neutralNF691Lookup nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalLookup_eq :
+              neutralNF624Lookup nf690OriginalBank (neutralNF624Index nf690OriginalBank) =
+                nf691OriginalLookup :=
+            neutralNF691Lookup_eq nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalCoverage :
+              neutralNF624CoverageCheck nf690OriginalBank (neutralNF624Index nf690OriginalBank)=true :=
+            nf690OriginalCoverage
+
+          #print axioms nf691OriginalLookup_eq
+          #print axioms nf691OriginalCoverage
+
+          end WeilDefect
+          """)
+          print('NF691 authenticated all 490 original chunks and exact coverage sources')
+          PY
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Bind independently restored exact bank source and Lean environment
+        run: python scripts/nf697_compiled_bank_binding.py
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf697-audited-compiled-bank
+          path: compiled-bank
+          run-id: 44598398608
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify producer binding and audit before restoring compiled objects
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          a=json.loads(Path('compiled-bank/nf697-bank-binding.json').read_text())
+          b=json.loads(Path('nf697-bank-binding.json').read_text())
+          for x in (a,b):
+              f=x.pop('fingerprint')
+              assert hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()==f
+          assert a['schema']==b['schema'] and a['environment']==b['environment']
+          assert all(b['files'].get(k)==v for k,v in a['files'].items())
+          extra=set(b['files'])-set(a['files'])
+          assert extra=={'WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularCacheAssembly.lean'},extra
+          # Existing source closure must not reference the newly added module.
+          assert all('ActualZetaOriginalPhysicalTriangularCacheAssembly' not in Path(p).read_text()
+                     for p in a['files'] if p.endswith('.lean'))
+          print('NF705 all producer sources unchanged; exactly one new independent theorem module')
+          PY
+          (cd compiled-bank && sha256sum -c nf697-project-build.sha256)
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('compiled-bank/nf691-complete-audit.json')
+          m=json.loads(p.read_text())
+          assert (m['keys'],m['rows'],m['chunks'])==(7835,37994,490)
+          assert len(m['theorems'])==14
+          assert {'nf691OriginalCoverage','nf691OriginalLookup_eq'}<=set(m['theorems'])
+          assert all(set(a)<={'propext','Classical.choice','Quot.sound'} for a in m['theorems'].values())
+          PY
+          tar -xzf compiled-bank/nf697-project-build.tar.gz
+          test ! -e .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularCacheAssembly.olean
+      - name: Measure restored bank Lake build and audit imported exact bank
+        timeout-minutes: 120
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o nf697-reuse-time.txt -f 'elapsed=%e user=%U rss_kb=%M exit=%x' lake build WeilDefect.Generated.NF691.OriginalLookup 2>&1 | tee nf697-reuse.log
+          cat >/tmp/nf697BankAudit.lean <<'EOF'
+          import WeilDefect.Generated.NF691.OriginalLookup
+          #print axioms WeilDefect.nf691OriginalCoverage
+          #print axioms WeilDefect.nf691OriginalLookup_eq
+          EOF
+          lake env lean /tmp/nf697BankAudit.lean 2>&1 | tee nf697-bank-axioms.log
+      - name: Authenticate NF703 accepted analytical source and prior slot inventory
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p nf703-input
+          fetch() {
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$2/zip" -o "nf703-input/$1.zip"
+            echo "$3  nf703-input/$1.zip" | sha256sum -c -
+          }
+          fetch source 14580099864 fba35eada4a0614260109add6e3762b90447bf047541817c7529348121f33ab3
+          fetch audit 14600336183 630efe588bd8cc8481013243c04e9d7e164e6553e364a530f44b1d158f6f8828
+          fetch unified 15084125240 5ecdd6e9cccf16359cdc1bdcffbe415256b3b03b5a3066009fa0a44fcffc2513
+      - name: Reconcile original literal payload and regenerate frozen selected pair
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json,re,zipfile,os
+          pair=int(os.environ['PAIR']); pair_label=f'Pair{pair:02d}'
+          plans={"1":[112,330,14,141,"bb973ea80f417ee06e9aa46a0c1ae4bd304396a796b4877e3428cc5f5c9ce71b"],"2":[71,327,9,90,"f6ee26a50341cd7a36f3c4fffd7ae585010c46e829eb094d153bb6c32ce50a08"],"3":[80,324,10,101,"8142a59a43494d2d73977e23031032e6b29ba85a71653a2290d32075829f398c"],"4":[79,320,10,100,"934efcc6e135a7b166e05b000000a536b08ebdc239d69a8554ad31b3559a9f71"],"5":[75,317,10,96,"4499f787be5c88336b7994989d2485f4b65615d5870adc57a88ca30a8aa69528"],"6":[78,312,10,99,"0fff0ef1f6b38c58ce2f3c48dd022fdacc9e884b251225641990d26c86498e91"],"7":[80,306,10,101,"8046f18af06f725bd36ce7ef6952b856b48047fa5da265942a4602a9edc93a8d"],"8":[76,303,10,97,"30effe3680585b148dd3742d874c819a008a5b55f7fef42c2e2597cf03cfd82e"],"9":[75,300,10,96,"bc6e74a780a2aa14229dc57ea187a1e357af0bf846c89b94a57b12beca7c442f"],"10":[78,296,10,99,"fab65e64f736679f1f751aaec1f29864c4a280db00236f39a2ea2a6897077e35"],"11":[103,295,13,130,"b469f6649ddc7242d3fc62cdfb0d05cf5b16c37f33f15f9ec3359d9d310f096e"],"12":[80,291,10,101,"1115464f02fb4e641aec1baf2068087a6ba43f36d1c4de64b88c0df02e6b6606"],"13":[79,288,10,100,"075cc6d5ee549bc9fecaaa3a507994126f0401787d6637d9873834ab6ad6e061"],"14":[71,283,9,90,"f39f8a1640110f31446b816106fd5a6e79561a7483fc79e369eba4c85ddb90ae"],"15":[73,277,10,94,"65d4bb78fdaf4a6cda3fac3f49fd291dc207b4c40dc957ded6e85bb769515458"],"16":[77,273,10,98,"cf7b95b3b302570096565ea1007acbae0c7c5bb9584f5a99385f0871571f35d0"],"17":[81,270,11,104,"103b02e560f710de1d2b7766c91af75002d020abc950b70fe65f52efd0d0c432"]}
+          tables,rows,batch_count,file_count,digest=plans[str(pair)]
+          from pathlib import Path
+          from fractions import Fraction as F
+          root=Path('WeilDefect/Generated')
+          sha=lambda b:hashlib.sha256(b).hexdigest()
+          def put(p,b):
+              p.parent.mkdir(parents=True,exist_ok=True)
+              if p.exists(): assert p.read_bytes()==b,p
+              else: p.write_bytes(b)
+          def load(p): return json.loads(p.read_text())
+          b=load(root/'NF690/manifest.json')
+          bm=sha((root/'NF690/manifest.json').read_bytes())
+          slots={tuple(map(F,r['key'])):r for r in b['slots']}
+          assert len(slots)==7835
+          with zipfile.ZipFile('nf703-input/unified.zip') as u:
+              um=json.loads(u.read('unified-receiver-manifest.json'))
+          prior=set(um['slots'])|set(um['prior_slots']); assert len(prior)==1876
+          records=[]; seen=set(); chunks={}
+          with zipfile.ZipFile('nf703-input/source.zip') as z,zipfile.ZipFile('nf703-input/audit.zip') as q:
+              m=json.loads(z.read('NF703/manifest.json')); a=json.loads(q.read('nf703-complete-audit.json'))
+              assert a['manifest_sha256']==sha(z.read('NF703/manifest.json'))
+              assert m['input_sha256']==b['input_sha256']
+              assert len(m['groups'])==len(a['tables'])==1442 and m['rows']==a['new_rows']==5443
+              ar={x['group']:x for x in a['tables']}
+              assert len(ar)==1442
+              for stage in ('NF632','NF703'):
+                  p=stage+'/manifest.json'; put(root/p,z.read(p))
+                  for f in json.loads(z.read(p))['files']:
+                      name=stage+'/'+f['file']; data=z.read(name)
+                      assert sha(data)==f['sha256']; put(root/name,data)
+              for e in m['groups']:
+                  k=e['group']; q=ar[k]; v='nf703'+k
+                  assert all(q[x]==y for x,y in e.items()) and q['theorem']==v+'Moment'
+                  assert set(q['axioms'])<={'propext','Classical.choice','Quot.sound'}
+                  raw=z.read('NF703/'+k+'.lean'); assert sha(raw)==q['sha256']
+                  t=slots[tuple(map(F,e['key']))]; i=t['index']; c=t['chunk']; o=t['offset']
+                  assert i not in seen and i not in prior and t['rows']==e['rows']; seen.add(i)
+                  if c not in chunks: chunks[c]=re.findall(r'#\[\n    (.*?)\n  \]',(root/'NF690'/(c+'.lean')).read_text(),re.S)
+                  h=re.search(r'def '+v+r'Table : NF624KeyTable := ⟨⟨\(([^:]+):ℚ\),\(([^:]+):ℚ\)⟩, #\[\n    (.*?)\n  \]⟩',raw.decode(),re.S)
+                  assert h and tuple(map(F,h.group(1,2)))==tuple(map(F,e['key'])) and h[3]==chunks[c][o]
+                  if e['family']//2==pair: records.append(dict(t,receipt=k,family=e['family']))
+          assert len(seen)==1442 and len(records)==tables and sum(r['rows'] for r in records)==rows
+          records.sort(key=lambda x:(x['family'],x['index']))
+          files={}; base='WeilDefect.Generated.NF703Attachment.'; out=root/'NF703Attachment'
+          opt='namespace WeilDefect\n\nset_option maxRecDepth 100000\nset_option maxHeartbeats 0\n\n'
+          prop='neutralNF690TableSound (neutralNF624BankRead nf690OriginalBank i)'
+          def emit(n,imports,body):
+              assert n+'.lean' not in files
+              files[n+'.lean']=(''.join('import '+x+'\n' for x in imports)+'\n'+opt+body+'\nend WeilDefect\n').encode()
+          for r in records:
+              i=r['index'];k=r['receipt'];c=r['chunk'];o=r['offset'];v='nf703'+k;name=f'Slot{i:05d}';z='nf703Attachment'+name
+              body=f'''def {z}Rows : Array NF617MomentRow :=
+            (nf690{c}[{o}]?).getD #[]
+
+          theorem {z}Key : (nf687Read {i}).1 = {v}Table.key := by
+            decide +kernel
+
+          theorem {z}Length : (nf687Read {i}).2 = {v}Table.rows.size := by
+            decide +kernel
+
+          theorem {z}RowsEq : {z}Rows = {v}Table.rows := by
+            rfl
+
+          theorem {z}Sound (payload : ℕ → Array NF617MomentRow)
+              (hp : payload {i} = {z}Rows) :
+              neutralNF690TableSound (neutralNF690Table nf687Read payload {i}) := by
+            have ht := neutralNF690Table_eq nf687Read payload {i} {v}Table
+              {z}Key (hp.trans {z}RowsEq) {z}Length
+            rw [ht]
+            exact {v}Moment
+          '''
+              emit(name,['WeilDefect.Generated.NF687.Compact','WeilDefect.Generated.NF690.'+c,'WeilDefect.Generated.NF703.'+k],body)
+          leaves=[]; batches=[]
+          for j,start in enumerate(range(0,len(records),8)):
+              batch=records[start:start+8];file=f'{pair_label}Batch{j:02d}';d='nf703Attachment'+file+'Slots';t='nf703Attachment'+file+'Sound';body='';names=[];imports=['WeilDefect.Generated.NF690.Bank']
+              for r in batch:
+                  i=r['index'];name=f'Slot{i:05d}';z='nf703Attachment'+name;imports.append(base+name)
+                  names.extend(z+s for s in ('Key','Length','RowsEq','Sound','PayloadEq','Concrete'))
+                  body+=f'''theorem {z}PayloadEq : nf690Payload {i} = {z}Rows := by
+            rfl
+
+          theorem {z}Concrete :
+              neutralNF690TableSound (neutralNF624BankRead nf690OriginalBank {i}) := by
+            rw [show nf690OriginalBank = neutralNF690Bank nf687Read nf687Size nf690Payload from rfl]
+            rw [neutralNF690Bank_read nf687Read nf687Size nf690Payload {i} (by decide +kernel)]
+            exact {z}Sound nf690Payload {z}PayloadEq
+
+          '''
+              body+=f'def {d} : List ℕ := ['+', '.join(str(r['index']) for r in batch)+f']\n\ntheorem {t} (i : ℕ) (hi : i ∈ {d}) :\n    {prop} := by\n  simp only [{d}, List.mem_cons, List.not_mem_nil, or_false] at hi\n'
+              body+='  subst i\n' if len(batch)==1 else '  rcases hi with '+' | '.join(['rfl']*len(batch))+'\n'
+              body+=''.join(('  exact ' if len(batch)==1 else '  · exact ')+f"nf703AttachmentSlot{r['index']:05d}Concrete\n" for r in batch)
+              emit(file,imports,body);leaves.append((file,d,t))
+              audit='Audit'+file; files[audit+'.lean']=('import '+base+file+'\n'+''.join('#print axioms WeilDefect.'+n+'\n' for n in names+[t])).encode()
+              batches.append({'target':file,'audit':audit,'slots':[r['index'] for r in batch],'rows':sum(r['rows'] for r in batch),'theorems':names+[t]})
+          def chain(xs):return xs[0][1] if len(xs)==1 else '('+xs[0][1]+' ++ '+chain(xs[1:])+')'
+          def elim(xs,h,indent):
+              if len(xs)==1:return indent+f'exact {xs[0][2]} i {h}\n'
+              return indent+f'rcases List.mem_append.mp {h} with hleft | hright\n'+indent+f'· exact {xs[0][2]} i hleft\n'+indent+'· '+elim(xs[1:],'hright',indent+'  ').lstrip()
+          d='nf703Attachment'+pair_label+'Slots'; t='nf703Attachment'+pair_label+'Sound'
+          body=f'def {d} : List ℕ := '+chain(leaves)+f'\n\ntheorem {t} (i : ℕ) (hi : i ∈ {d}) :\n    {prop} := by\n  change i ∈ {chain(leaves)} at hi\n'+elim(leaves,'hi','  ')
+          emit(pair_label,[base+x[0] for x in leaves],body)
+          hashes={n:sha(v) for n,v in files.items()}
+          assert len(batches)==batch_count and len(hashes)==file_count and sha(''.join(f'{n}:{hashes[n]}\n' for n in sorted(hashes)).encode())==digest
+          for n,v in files.items(): put(out/n,v)
+          manifest={'pair':pair,'records':records,'tables':tables,'rows':rows,'batches':batches,'receiver':t,'source_sha256':hashes,'bank_manifest_sha256':bm}
+          Path('nf703-pair-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+          Path('nf703-pair-targets.txt').write_text('\n'.join(x['target'] for x in batches)+'\n')
+          print('NF703 frozen pair source PASS',pair,file_count,tables,rows)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf703-concrete-pair-${{ matrix.pair }}-source
+          path: |
+            WeilDefect/Generated/NF703Attachment/
+            nf703-pair-manifest.json
+          if-no-files-found: error
+      - name: Compile and audit bounded NF703 batches
+        timeout-minutes: 240
+        run: |
+          set -euo pipefail
+          while read -r t; do
+            lake build "WeilDefect.Generated.NF703Attachment.$t" 2>&1 | tee -a nf703-pair-build.log
+            lake env lean "WeilDefect/Generated/NF703Attachment/Audit$t.lean" 2>&1 | tee -a nf703-pair-axioms.log
+          done < nf703-pair-targets.txt
+      - name: Compile phase receiver and reconcile exact axiom inventory
+        timeout-minutes: 30
+        run: |
+          set -euo pipefail
+          printf -v pair_label 'Pair%02d' "$PAIR"
+          lake build "WeilDefect.Generated.NF703Attachment.$pair_label" 2>&1 | tee -a nf703-pair-build.log
+          printf 'import WeilDefect.Generated.NF703Attachment.%s\n#print axioms WeilDefect.nf703Attachment%sSound\n' "$pair_label" "$pair_label" >/tmp/nf703PairAudit.lean
+          lake env lean /tmp/nf703PairAudit.lean 2>&1 | tee -a nf703-pair-axioms.log
+          python - <<'PY'
+          import json,re,hashlib
+          from pathlib import Path
+          p=Path('nf703-pair-manifest.json');m=json.loads(p.read_text())
+          expected={n for b in m['batches'] for n in b['theorems']}|{m['receiver']}
+          assert len(expected)==6*m['tables']+len(m['batches'])+1
+          found={}
+          s=Path('nf703-pair-axioms.log').read_text()
+          for n,x in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",s):
+              if n in expected:
+                  assert n not in found
+                  found[n]=[v.strip() for v in x.split(',') if v.strip()]
+          for n in re.findall(r"'WeilDefect\.(\w+)' does not depend on any axioms",s):
+              if n in expected:
+                  assert n not in found
+                  found[n]=[]
+          assert set(found)==expected and all(set(v)<={'propext','Classical.choice','Quot.sound'} for v in found.values())
+          Path('nf703-pair-audit.json').write_text(json.dumps({'manifest_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'records':m['records'],'theorems':found},indent=2)+'\n')
+          print('NF703 pair native PASS',m['pair'],m['tables'],m['rows'],len(found))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf703-concrete-pair-${{ matrix.pair }}-evidence
+          path: |
+            nf703-pair-*.json
+            nf703-pair-*.log
+          if-no-files-found: warn
