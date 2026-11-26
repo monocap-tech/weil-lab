@@ -7,8 +7,15 @@ theorem neutralIV157Mirror_max (H : ℤ → ℕ) (N i j : ℤ)
     (h : ∀ k, H (N-k) = H k) :
     max (H ((N-i)+j)) (H ((N-i)+j+1)) =
       max (H (i+(-j-1))) (H (i+(-j-1)+1)) := by
-  rw [show N-i+j = N-(i+(-j-1)+1) by ring,
-      show N-i+j+1 = N-(i+(-j-1)) by ring, h, h]
+  have h₁ : H (N-i+j) = H (i+(-j-1)+1) := by
+    calc
+      _ = H (N-(i+(-j-1)+1)) := by congr 1 <;> ring
+      _ = _ := h _
+  have h₂ : H (N-i+j+1) = H (i+(-j-1)) := by
+    calc
+      _ = H (N-(i+(-j-1))) := by congr 1 <;> ring
+      _ = _ := h _
+  rw [h₁,h₂]
   exact max_comm _ _
 
 /-- The two literal shifts for each prime are exchanged by reflection. -/

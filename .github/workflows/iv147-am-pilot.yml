@@ -1,4 +1,4 @@
-name: IV158 physical repair and reflection probes
+name: IV159 physical and reflection repair with bounded certificate shards
 on:
   push:
     branches: ['staging/iv147-am-kernel-pilot']
@@ -11,15 +11,15 @@ concurrency:
 jobs:
   pilot:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v4
       - name: Authenticate literal bank and source preflight
         run: |
           set -euo pipefail
-          mkdir -p iv158/out
+          mkdir -p iv159/out
           grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
-          python research/iv146_am_exp_audit.py custody/iv146-am/am_cells.json iv158/out/shift-receipt.json | tee iv158/out/exact-audit.log
+          python research/iv146_am_exp_audit.py custody/iv146-am/am_cells.json iv159/out/shift-receipt.json | tee iv159/out/exact-audit.log
           python - <<'PY'
           import json,re
           from pathlib import Path
@@ -35,7 +35,7 @@ jobs:
           assert [x for c in chunks for x in c]==d['h']
           b=s.split('def neutralIV146Shifts : List (Int × Nat) := [',1)[1].split(']',1)[0]
           assert [list(map(int,x)) for x in re.findall(r'\((-?\d+),\s*(\d+)\)',b)]==d['shifts']
-          for stem in ['ActualZetaIV146AMCellData','ActualZetaIV147AMPilot','ActualZetaIV147AMRealCaps','ActualZetaIV150AMConcreteCaps','ActualZetaIV151AMActualCaps','ActualZetaIV151AMScalingProbe','ActualZetaIV152AMPhysicalEnvelope','ActualZetaIV152AMIntegralReceiver','ActualZetaIV153AMPointwiseSum','ActualZetaIV153AMSignedIntegral','ActualZetaIV154AMSupport','ActualZetaIV154AMIntegrability','ActualZetaIV155AMSchurReceiver','ActualZetaIV156AMGeneric','ActualZetaIV156AMPhysicalForm','ActualZetaIV157AMReflection','ActualZetaIV157AMSymmetryPilot','ActualZetaIV158AMSymmetry','ActualZetaIV158AMRowProbe','ActualZetaIV157AMOriginalDictionary']:
+          for stem in ['ActualZetaIV146AMCellData','ActualZetaIV147AMPilot','ActualZetaIV147AMRealCaps','ActualZetaIV150AMConcreteCaps','ActualZetaIV151AMActualCaps','ActualZetaIV151AMScalingProbe','ActualZetaIV152AMPhysicalEnvelope','ActualZetaIV152AMIntegralReceiver','ActualZetaIV153AMPointwiseSum','ActualZetaIV153AMSignedIntegral','ActualZetaIV154AMSupport','ActualZetaIV154AMIntegrability','ActualZetaIV155AMSchurReceiver','ActualZetaIV156AMGeneric','ActualZetaIV156AMPhysicalForm','ActualZetaIV157AMReflection','ActualZetaIV157AMSymmetryPilot','ActualZetaIV158AMSymmetry','ActualZetaIV158AMRowProbe','ActualZetaIV157AMOriginalDictionary','ActualZetaIV159AMRowReceiver']:
               t=(a/(stem+'.lean')).read_text()
               assert not re.search(r'\b(?:sorry|admit|sorryAx|native_decide|axiom)\b',t),stem
           print('Literal arrays and pilot source preflight PASS')
@@ -52,7 +52,7 @@ jobs:
         id: data
         run: |
           set -euo pipefail
-          timeout 600 lake build WeilDefect.Arithmetic.ActualZetaIV146AMCellData 2>&1 | tee iv158/out/data.log
+          timeout 600 lake build WeilDefect.Arithmetic.ActualZetaIV146AMCellData 2>&1 | tee iv159/out/data.log
       - name: Build certified analytic dependencies
         run: |
           set -euo pipefail
@@ -60,34 +60,51 @@ jobs:
       - name: Generic complex and ratio receivers
         run: |
           set -euo pipefail
-          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV156AMGeneric.lean 2>&1 | tee iv158/out/generic.log
+          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV156AMGeneric.lean 2>&1 | tee iv159/out/generic.log
       - name: Original finite Schwartz form
         if: ${{ !cancelled() }}
         run: |
           set -euo pipefail
           lake build WeilDefect.Arithmetic.ActualZetaIV156AMGeneric
-          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV156AMPhysicalForm.lean 2>&1 | tee iv158/out/physical.log
+          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV156AMPhysicalForm.lean 2>&1 | tee iv159/out/physical.log
       - name: Reflection reduction
         if: ${{ !cancelled() }}
         run: |
           set -euo pipefail
-          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV157AMReflection.lean 2>&1 | tee iv158/out/reflection.log
+          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV157AMReflection.lean 2>&1 | tee iv159/out/reflection.log
       - name: Literal symmetry pilot
         if: ${{ !cancelled() }}
         run: |
           set -euo pipefail
-          /usr/bin/time -v timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV157AMSymmetryPilot.lean 2>&1 | tee iv158/out/sympilot.log
+          /usr/bin/time -v timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV157AMSymmetryPilot.lean 2>&1 | tee iv159/out/sympilot.log
       - name: Zero-extended symmetry receiver
         if: ${{ !cancelled() }}
         run: |
           set -euo pipefail
           lake build WeilDefect.Arithmetic.ActualZetaIV157AMSymmetryPilot
-          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV158AMSymmetry.lean 2>&1 | tee iv158/out/symmetry.log
+          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV158AMSymmetry.lean 2>&1 | tee iv159/out/symmetry.log
       - name: Bounded row process scaling
         if: ${{ !cancelled() }}
         run: |
           set -euo pipefail
-          /usr/bin/time -v timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV158AMRowProbe.lean 2>&1 | tee iv158/out/probe.log
+          /usr/bin/time -v timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV158AMRowProbe.lean 2>&1 | tee iv159/out/probe.log
+      - name: Half-row receiver
+        if: ${{ !cancelled() }}
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.ActualZetaIV158AMSymmetry
+          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV159AMRowReceiver.lean 2>&1 | tee iv159/out/receiver.log
+      - name: Complete half-window literal symmetry shards
+        if: ${{ !cancelled() }}
+        run: |
+          set -euo pipefail
+          python research/iv159_am_shards.py --kind sym --stop 128 --out iv159/out/sym-shards
+      - name: First 256 exact integer rows in bounded processes
+        if: ${{ !cancelled() }}
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.ActualZetaIV159AMRowReceiver
+          python research/iv159_am_shards.py --kind row --stop 32 --out iv159/out/row-shards
       - name: Strict named axiom receipt
         if: ${{ !cancelled() }}
         run: |
@@ -97,8 +114,8 @@ jobs:
           from pathlib import Path
           allowed={'propext','Classical.choice','Quot.sound'}
           failures=[]
-          for name, stage, expected in [('generic','156',['Ratio_cap','Real_form','Complex_form']),('physical','156',['Nodup','Prime_pos','Physical_row','Endpoint','Schwartz_cross','Physical_form']),('reflection','157',['Mirror_max','Mirror_pair','Mirror_list','Mirror_row','Half_bank']),('sympilot','157',['SymPilot']),('symmetry','158',['Outside','Extend','Sym_at','Symmetry']),('probe','158',['ProbeA','ProbeB'])]:
-              p=Path('iv158/out/'+name+'.log')
+          for name, stage, expected in [('generic','156',['Ratio_cap','Real_form','Complex_form']),('physical','156',['Nodup','Prime_pos','Physical_row','Endpoint','Schwartz_cross','Physical_form']),('reflection','157',['Mirror_max','Mirror_pair','Mirror_list','Mirror_row','Half_bank']),('sympilot','157',['SymPilot']),('symmetry','158',['Outside','Extend','Sym_at','Symmetry']),('probe','158',['ProbeA','ProbeB']),('receiver','159',['Row_at','HalfRows'])]:
+              p=Path('iv159/out/'+name+'.log')
               s=p.read_text() if p.exists() else ''
               for suffix in expected:
                   n='WeilDefect.neutralIV'+stage+suffix
@@ -107,11 +124,11 @@ jobs:
                   ok=len(m)+len(no)==1 and (not m or set(x.strip() for x in m[0].split(',') if x.strip())<=allowed)
                   print(n,'PASS' if ok else 'FAIL')
                   if not ok: failures.append(n)
-          Path('iv158/out/audit.json').write_text(json.dumps({'expected':21,'failures':failures}))
+          Path('iv159/out/audit.json').write_text(json.dumps({'expected':23,'failures':failures}))
           assert not failures,failures
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: iv158-am-receipts
-          path: iv158/out/
+          name: iv159-am-receipts
+          path: iv159/out/

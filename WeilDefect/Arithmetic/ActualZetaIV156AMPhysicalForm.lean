@@ -16,12 +16,38 @@ theorem neutralIV156Prime_pos (n : ℕ) (hn : n ∈ neutralIV156P) :
   have hset : neutralIV156P = ({2,3,4,5,7,8,9,11,13,16,17,19,23,25,27,29,31,32,37,41,43,47,49,53} : Finset ℕ) :=
     neutralIV152Prime_bank
   rw [hset] at hn
-  have hpp : IsPrimePow n := by
-    simp only [Finset.mem_insert, Finset.mem_singleton] at hn
-    rcases hn with rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl <;> decide
-  unfold neutralIV151Weight
-  exact div_pos (ArithmeticFunction.vonMangoldt_pos_iff.mpr hpp)
-    (Real.sqrt_pos.2 (by exact_mod_cast hpp.pos))
+  have hpos (p k : ℕ) (hp : p.Prime) (hk : k ≠ 0) :
+      0 < neutralIV151Weight (p^k) := by
+    unfold neutralIV151Weight
+    rw [neutralIV151PrimePower p k hp hk]
+    exact div_pos (Real.log_pos (by exact_mod_cast hp.one_lt))
+      (Real.sqrt_pos.2 (by exact_mod_cast (pow_pos hp.pos k)))
+  simp only [Finset.mem_insert, Finset.mem_singleton] at hn
+  rcases hn with rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl
+  · simpa only [show (2:ℕ)^1 = 2 by decide] using hpos 2 1 (by decide) (by decide)
+  · simpa only [show (3:ℕ)^1 = 3 by decide] using hpos 3 1 (by decide) (by decide)
+  · simpa only [show (2:ℕ)^2 = 4 by decide] using hpos 2 2 (by decide) (by decide)
+  · simpa only [show (5:ℕ)^1 = 5 by decide] using hpos 5 1 (by decide) (by decide)
+  · simpa only [show (7:ℕ)^1 = 7 by decide] using hpos 7 1 (by decide) (by decide)
+  · simpa only [show (2:ℕ)^3 = 8 by decide] using hpos 2 3 (by decide) (by decide)
+  · simpa only [show (3:ℕ)^2 = 9 by decide] using hpos 3 2 (by decide) (by decide)
+  · simpa only [show (11:ℕ)^1 = 11 by decide] using hpos 11 1 (by decide) (by decide)
+  · simpa only [show (13:ℕ)^1 = 13 by decide] using hpos 13 1 (by decide) (by decide)
+  · simpa only [show (2:ℕ)^4 = 16 by decide] using hpos 2 4 (by decide) (by decide)
+  · simpa only [show (17:ℕ)^1 = 17 by decide] using hpos 17 1 (by decide) (by decide)
+  · simpa only [show (19:ℕ)^1 = 19 by decide] using hpos 19 1 (by decide) (by decide)
+  · simpa only [show (23:ℕ)^1 = 23 by decide] using hpos 23 1 (by decide) (by decide)
+  · simpa only [show (5:ℕ)^2 = 25 by decide] using hpos 5 2 (by decide) (by decide)
+  · simpa only [show (3:ℕ)^3 = 27 by decide] using hpos 3 3 (by decide) (by decide)
+  · simpa only [show (29:ℕ)^1 = 29 by decide] using hpos 29 1 (by decide) (by decide)
+  · simpa only [show (31:ℕ)^1 = 31 by decide] using hpos 31 1 (by decide) (by decide)
+  · simpa only [show (2:ℕ)^5 = 32 by decide] using hpos 2 5 (by decide) (by decide)
+  · simpa only [show (37:ℕ)^1 = 37 by decide] using hpos 37 1 (by decide) (by decide)
+  · simpa only [show (41:ℕ)^1 = 41 by decide] using hpos 41 1 (by decide) (by decide)
+  · simpa only [show (43:ℕ)^1 = 43 by decide] using hpos 43 1 (by decide) (by decide)
+  · simpa only [show (47:ℕ)^1 = 47 by decide] using hpos 47 1 (by decide) (by decide)
+  · simpa only [show (7:ℕ)^2 = 49 by decide] using hpos 7 2 (by decide) (by decide)
+  · simpa only [show (53:ℕ)^1 = 53 by decide] using hpos 53 1 (by decide) (by decide)
 
 /-- The explicit prime set, without multiplicities, is the signed row
 sum used by the pointwise certificate. -/
@@ -38,7 +64,8 @@ theorem neutralIV156Physical_row (x : ℝ)
   have hh := neutralIV153Pointwise x i he (hbank i hi)
   unfold neutralIV156P
   rw [List.sum_toFinset _ neutralIV156Nodup, List.map_map]
-  simpa only [Function.comp_def, neutralIV153PairTerm, sub_eq_add_neg] using hh
+  unfold neutralIV153PairTerm at hh
+  simpa only [Function.comp_def, sub_eq_add_neg] using hh
 
 /-- A continuous function vanishing outside a closed window also
 vanishes at its right endpoint by closure of the open right ray. -/
@@ -56,7 +83,7 @@ theorem neutralIV156Endpoint (f : ℝ → ℂ) (hf : Continuous f)
   have h2 : (2:ℝ) ∈ f ⁻¹' ({0} : Set ℂ) := by
     apply closure_minimal hsub hclosed
     rw [closure_Ioi]
-    exact le_rfl
+    exact (show (2:ℝ) ≤ 2 from le_rfl)
   intro x hx
   by_cases he : x = 2
   · subst x
