@@ -207,7 +207,10 @@ jobs:
               (he : f*(11/10:ℚ) = (m:ℚ)+(j:ℚ)/4) :
               Complex.exp ((NF616Frequency.mk 0 f).value * ((11/10:ℝ):ℂ)) =
                 Complex.exp ((j:ℂ)*((Real.pi:ℂ)/2)*Complex.I) := by
-            have he' : (f:ℂ)*(11/10:ℂ) = (m:ℂ)+(j:ℂ)/4 := by exact_mod_cast he
+            have he' : (f:ℂ)*(11/10:ℂ) = (m:ℂ)+(j:ℂ)/4 := by
+            have hcast := congrArg (fun x : ℚ => (x : ℂ)) he
+            push_cast at hcast
+            exact hcast
             have h : (NF616Frequency.mk 0 f).value * ((11/10:ℝ):ℂ) =
                 (j:ℂ)*((Real.pi:ℂ)/2)*Complex.I + (m:ℂ)*(2*(Real.pi:ℂ)*Complex.I) := by
               unfold NF616Frequency.value neutralNF615Lambda
