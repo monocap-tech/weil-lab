@@ -97,7 +97,7 @@ theorem inverseWeight_bound (u : ℝ) :
     ‖inverseWeight u‖ ≤ (Real.sqrt (Real.log 2))⁻¹ := by
   have h : 0 < Real.sqrt (logWeight u) := Real.sqrt_pos.2 (logWeight_pos u)
   rw [inverseWeight, Complex.norm_real, Real.norm_eq_abs, abs_of_pos (inv_pos.mpr h)]
-  exact inv_le_inv₀ (Real.sqrt_pos.2 (Real.log_pos (by norm_num : (1 : ℝ) < 2)))
+  exact inv_anti₀ (Real.sqrt_pos.2 (Real.log_pos (by norm_num : (1 : ℝ) < 2)))
     (Real.sqrt_le_sqrt (logWeight_lower u))
 
 noncomputable def unweight : FullL2 →L[ℂ] FullL2 :=
