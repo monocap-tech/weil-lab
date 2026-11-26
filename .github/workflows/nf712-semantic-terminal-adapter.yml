@@ -1,0 +1,250 @@
+name: NF712 semantic terminal adapter
+on:
+  push:
+    branches:
+      - research/nf712-semantic-terminal-adapter
+    paths:
+      - ".github/workflows/nf712-semantic-terminal-adapter.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nf712-semantic-terminal-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - name: Authenticate parent sources and materialize frozen adapter
+        run: |
+          set -euo pipefail
+          test "$(git hash-object WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTerminalTriangularClosure.lean)" = 85b823cac590bd9181349ba3925dcdfd41b55c00
+          test "$(git hash-object WeilDefect/Arithmetic/ActualZetaOriginalPhysicalShapedBank.lean)" = ca7406a4190ee15fcd6786e126fc490ef71ede79
+          cat > WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTerminalSemanticClosure.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalTerminalTriangularClosure
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalShapedBank
+          
+          namespace WeilDefect
+          
+          /-!
+          Semantic factoring of NF712. This module retains every non-moment gate of
+          NF712 and does not infer the reference Boolean bank checker from table truth.
+          The generic semantic entry point may consume either the NF624 or NF690 route.
+          No source-bound numerical gate is discharged here.
+          -/
+          
+          noncomputable section
+          
+          /-- NF712 physical closure with the common mathematical moment interface. -/
+          theorem neutralNF712OriginalPhysical_of_moments
+              (bank : Array NF624KeyTable)
+              (s : NF626ScaledInputs) (c : NF626CenterCache)
+              (hm : neutralNF624AllMomentsSound
+                (neutralNF624Lookup bank (neutralNF624Index bank)))
+              (hentry : ∀ i, neutralNF674OriginalRowCheck
+                (neutralNF624Lookup bank (neutralNF624Index bank))
+                s.payment i = true)
+              (hH : ∀ i j, s.H i j = s.H j i)
+              (hA : ∀ i j, c.A i j = c.A j i)
+              (hw : s.wCheck = true)
+              (hHD : ∀ i j, c.HDGate s i j = true)
+              (hLower : ∀ i j, j.val ≤ i.val → c.AGate s i j = true)
+              (hVec : ∀ i, c.vectorGate s i = true)
+              (hparams : neutralNF629Parameters s = true)
+              (hpay : ∀ i, c.fastPayGate s i = true) :
+              ∃! a : Fin 242 → ℝ,
+                neutralNF606Apply neutralNF606PhysicalH a = neutralNF612RHS ∧
+                neutralNF587SourceInFrozenBox a neutralNF604OriginalCritical := by
+            have he := neutralNF629EntryRows_sound
+              (neutralNF624Lookup bank (neutralNF624Index bank))
+              s.payment hm (fun i => neutralNF712EntryRow_of_original _ _ i (hentry i))
+            have hc : c.check s = true :=
+              neutralNF704Cache_of_triangular s c hH hA hw hHD hLower hVec
+            have hvalid : c.Valid s := c.check_sound s hc
+            have hp : c.fastPayCheck s = true :=
+              neutralNF629Payments_of_rows c s hparams hpay
+            exact s.payment.check_sound (c.payment_of_fast s hvalid hp) he.1 he.2
+          
+          /-- Concrete semantic table receipts suffice; retain the original coverage gate. -/
+          theorem neutralNF712OriginalPhysical_of_tables
+              (bank : Array NF624KeyTable)
+              (s : NF626ScaledInputs) (c : NF626CenterCache)
+              (hbank : ∀ i < bank.size,
+                neutralNF690TableSound (neutralNF624BankRead bank i))
+              (hcov : neutralNF624CoverageCheck bank (neutralNF624Index bank) = true)
+              (hentry : ∀ i, neutralNF674OriginalRowCheck
+                (neutralNF624Lookup bank (neutralNF624Index bank))
+                s.payment i = true)
+              (hH : ∀ i j, s.H i j = s.H j i)
+              (hA : ∀ i j, c.A i j = c.A j i)
+              (hw : s.wCheck = true)
+              (hHD : ∀ i j, c.HDGate s i j = true)
+              (hLower : ∀ i j, j.val ≤ i.val → c.AGate s i j = true)
+              (hVec : ∀ i, c.vectorGate s i = true)
+              (hparams : neutralNF629Parameters s = true)
+              (hpay : ∀ i, c.fastPayGate s i = true) :
+              ∃! a : Fin 242 → ℝ,
+                neutralNF606Apply neutralNF606PhysicalH a = neutralNF612RHS ∧
+                neutralNF587SourceInFrozenBox a neutralNF604OriginalCritical := by
+            exact neutralNF712OriginalPhysical_of_moments bank s c
+              (neutralNF690AllMoments_of_tables bank (neutralNF624Index bank)
+                hbank (neutralNF624Index_coverage bank hcov))
+              hentry hH hA hw hHD hLower hVec hparams hpay
+          
+          open MeasureTheory Filter
+          open scoped SchwartzMap ComplexConjugate
+          
+          /-- The original strict corrected carrier, factored through moment soundness. -/
+          theorem neutralNF712OriginalStrict_of_moments
+              (bank : Array NF624KeyTable)
+              (s : NF626ScaledInputs) (c : NF626CenterCache)
+              (hm : neutralNF624AllMomentsSound
+                (neutralNF624Lookup bank (neutralNF624Index bank)))
+              (hentry : ∀ i, neutralNF674OriginalRowCheck
+                (neutralNF624Lookup bank (neutralNF624Index bank))
+                s.payment i = true)
+              (hH : ∀ i j, s.H i j = s.H j i)
+              (hA : ∀ i j, c.A i j = c.A j i)
+              (hw : s.wCheck = true)
+              (hHD : ∀ i j, c.HDGate s i j = true)
+              (hLower : ∀ i j, j.val ≤ i.val → c.AGate s i j = true)
+              (hVec : ∀ i, c.vectorGate s i = true)
+              (hparams : neutralNF629Parameters s = true)
+              (hpay : ∀ i, c.fastPayGate s i = true) :
+              ∃ (a : Fin 242 → ℝ)
+                (hLp : MemLp (neutralNF575OriginalEndpoint
+                  (neutralNF587Source a neutralNF604OriginalCritical)) 2 volume)
+                (K : NeutralActualZetaSourceDomain (11/10:ℝ))
+                (f : ℕ → 𝓢(ℝ,ℂ)),
+                neutralNF606Apply neutralNF606PhysicalH a = neutralNF612RHS ∧
+                neutralNF587SourceInFrozenBox a neutralNF604OriginalCritical ∧
+                neutralNF598GraphPhysical (11/10) K =
+                  hLp.toLp (neutralNF575OriginalEndpoint
+                    (neutralNF587Source a neutralNF604OriginalCritical)) ∧
+                0 < (2/5:ℝ)*‖neutralNF598GraphPhysical (11/10) K‖^2 ∧
+                (2/5:ℝ)*‖neutralNF598GraphPhysical (11/10) K‖^2 <
+                  neutralNF598GraphWeil (11/10) K ∧
+                (∀ n x, conj (f n x) = f n x) ∧
+                (∀ n x, f n (-x) = -f n x) ∧
+                (∀ n x, x ∉ neutralNF543OriginalCollars → f n x = 0) ∧
+                (∀ n, neutralNF546OriginalSelectedMoments ((f n).toLp 2 volume) =
+                  neutralNF546OriginalSelectedMoments
+                    (neutralNF598GraphPhysical (11/10) K)) ∧
+                (∀ᶠ n in atTop, (2/5:ℝ)*‖(f n).toLp 2 volume‖^2 <
+                  neutralNF598SmoothWeil (f n)) := by
+            obtain ⟨a, ⟨ha,hbox⟩, _⟩ :=
+              neutralNF712OriginalPhysical_of_moments
+                bank s c hm hentry hH hA hw hHD hLower hVec hparams hpay
+            obtain ⟨hLp,K,f,hK,hpos,hstrict,hreal,hodd,hsupp,hmom,hevent⟩ :=
+              neutralNF610OriginalCorrectedMargin a neutralNF604OriginalCritical hbox
+            exact ⟨a,hLp,K,f,ha,hbox,hK,hpos,hstrict,hreal,hodd,hsupp,hmom,hevent⟩
+          
+          /-- NF690 semantic tables and certified coverage feed the same strict carrier. -/
+          theorem neutralNF712OriginalStrict_of_tables
+              (bank : Array NF624KeyTable)
+              (s : NF626ScaledInputs) (c : NF626CenterCache)
+              (hbank : ∀ i < bank.size,
+                neutralNF690TableSound (neutralNF624BankRead bank i))
+              (hcov : neutralNF624CoverageCheck bank (neutralNF624Index bank) = true)
+              (hentry : ∀ i, neutralNF674OriginalRowCheck
+                (neutralNF624Lookup bank (neutralNF624Index bank))
+                s.payment i = true)
+              (hH : ∀ i j, s.H i j = s.H j i)
+              (hA : ∀ i j, c.A i j = c.A j i)
+              (hw : s.wCheck = true)
+              (hHD : ∀ i j, c.HDGate s i j = true)
+              (hLower : ∀ i j, j.val ≤ i.val → c.AGate s i j = true)
+              (hVec : ∀ i, c.vectorGate s i = true)
+              (hparams : neutralNF629Parameters s = true)
+              (hpay : ∀ i, c.fastPayGate s i = true) :
+              ∃ (a : Fin 242 → ℝ)
+                (hLp : MemLp (neutralNF575OriginalEndpoint
+                  (neutralNF587Source a neutralNF604OriginalCritical)) 2 volume)
+                (K : NeutralActualZetaSourceDomain (11/10:ℝ))
+                (f : ℕ → 𝓢(ℝ,ℂ)),
+                neutralNF606Apply neutralNF606PhysicalH a = neutralNF612RHS ∧
+                neutralNF587SourceInFrozenBox a neutralNF604OriginalCritical ∧
+                neutralNF598GraphPhysical (11/10) K =
+                  hLp.toLp (neutralNF575OriginalEndpoint
+                    (neutralNF587Source a neutralNF604OriginalCritical)) ∧
+                0 < (2/5:ℝ)*‖neutralNF598GraphPhysical (11/10) K‖^2 ∧
+                (2/5:ℝ)*‖neutralNF598GraphPhysical (11/10) K‖^2 <
+                  neutralNF598GraphWeil (11/10) K ∧
+                (∀ n x, conj (f n x) = f n x) ∧
+                (∀ n x, f n (-x) = -f n x) ∧
+                (∀ n x, x ∉ neutralNF543OriginalCollars → f n x = 0) ∧
+                (∀ n, neutralNF546OriginalSelectedMoments ((f n).toLp 2 volume) =
+                  neutralNF546OriginalSelectedMoments
+                    (neutralNF598GraphPhysical (11/10) K)) ∧
+                (∀ᶠ n in atTop, (2/5:ℝ)*‖(f n).toLp 2 volume‖^2 <
+                  neutralNF598SmoothWeil (f n)) := by
+            exact neutralNF712OriginalStrict_of_moments bank s c
+              (neutralNF690AllMoments_of_tables bank (neutralNF624Index bank)
+                hbank (neutralNF624Index_coverage bank hcov))
+              hentry hH hA hw hHD hLower hVec hparams hpay
+          
+          end
+          
+          #print axioms neutralNF712OriginalPhysical_of_moments
+          #print axioms neutralNF712OriginalPhysical_of_tables
+          #print axioms neutralNF712OriginalStrict_of_moments
+          #print axioms neutralNF712OriginalStrict_of_tables
+          
+          end WeilDefect
+          EOF
+          echo "50069efd30b8bf74c215bfacafa7b8196095f27256297bcb6501859c834e1bbe  WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTerminalSemanticClosure.lean" | sha256sum -c -
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake update
+          lake exe cache get
+      - name: Kernel-check semantic terminal adapter
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalTerminalSemanticClosure 2>&1 | tee nf712-semantic-build.log
+      - name: Strict audit of four semantic bridge declarations
+        run: |
+          set -euo pipefail
+          cat > nf712SemanticAudit.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalTerminalSemanticClosure
+          #print axioms WeilDefect.neutralNF712OriginalPhysical_of_moments
+          #print axioms WeilDefect.neutralNF712OriginalPhysical_of_tables
+          #print axioms WeilDefect.neutralNF712OriginalStrict_of_moments
+          #print axioms WeilDefect.neutralNF712OriginalStrict_of_tables
+          EOF
+          lake env lean nf712SemanticAudit.lean 2>&1 | tee nf712-semantic-axioms.log
+          python - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          names=set(["neutralNF712OriginalPhysical_of_moments","neutralNF712OriginalPhysical_of_tables","neutralNF712OriginalStrict_of_moments","neutralNF712OriginalStrict_of_tables"])
+          found={}
+          log=Path('nf712-semantic-axioms.log').read_text()
+          for n,x in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[v.strip() for v in x.split(',') if v.strip()]
+          for n in re.findall(r"'WeilDefect\.(\w+)' does not depend on any axioms",log):
+              if n in names:
+                  assert n not in found
+                  found[n]=[]
+          assert set(found)==names and len(found)==4
+          assert all(set(v)<={'propext','Classical.choice','Quot.sound'} for v in found.values())
+          source=Path('WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTerminalSemanticClosure.lean')
+          Path('nf712-semantic-audit.json').write_text(json.dumps({'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'theorems':found,'scope':'Generic conditional semantic adapter; no concrete numerical gates discharged'},indent=2)+'\n')
+          print('NF712 semantic terminal adapter LEAN PASS',len(found))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf712-semantic-terminal-audit
+          path: |
+            nf712-semantic-build.log
+            nf712-semantic-axioms.log
+            nf712-semantic-audit.json
+            WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTerminalSemanticClosure.lean
+          if-no-files-found: ignore
