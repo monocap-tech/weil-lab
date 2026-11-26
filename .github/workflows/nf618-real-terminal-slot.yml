@@ -224,41 +224,51 @@ jobs:
           mkdir -p WeilDefect/Generated/NF618RealTerminal
           cat > WeilDefect/Generated/NF618RealTerminal/Slot.lean <<'EOF'
           import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalSemanticEndpointCache
-          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalFastMomentTable
-          import WeilDefect.Generated.NF632.Pi
+          import WeilDefect.Generated.NF703.Real0001
+          import WeilDefect.Generated.NF703.Real0003
           import WeilDefect.Generated.NF690.Bank
-          
+
           namespace WeilDefect
           set_option maxRecDepth 100000
           set_option maxHeartbeats 0
-          
+
           def nf618RealTerminalTable : NF624KeyTable :=
             ⟨⟨1,0⟩, (nf690Chunk489[10]?).getD #[]⟩
-          
+
           def nf618RealTerminalCache : NF617MomentCache :=
-            ⟨neutralNF615LambdaRect nf632Pi 1 0 neutralNF616Q,
-              neutralNF621RealEndpoint 1 neutralNF616Q neutralNF616ExpN,
-              neutralNF621RealEndpoint (-1) neutralNF616Q neutralNF616ExpN⟩
-          
+            ⟨NF591Rect.one,
+              nf703Real0003Value.mulQ nf703Real0003Value neutralNF616Q,
+              nf703Real0001Value.mulQ nf703Real0001Value neutralNF616Q⟩
+
+          theorem nf618RealTerminalHalfPos :
+              nf703Real0003Value.Contains (Complex.exp ((1/2:ℚ)*(11/10:ℂ))) := by
+            rw [← nf703Real0003OriginalEq, neutralNF621RealEndpoint_eq]
+            exact neutralNF615RealEndpoint_sound (1/2) (by norm_num)
+              neutralNF616Q neutralNF616ExpN (by decide +kernel) (by decide +kernel)
+              neutralNF616ExpFee
+
+          theorem nf618RealTerminalHalfNeg :
+              nf703Real0001Value.Contains (Complex.exp ((-1/2:ℚ)*(11/10:ℂ))) := by
+            rw [← nf703Real0001OriginalEq, neutralNF621RealEndpoint_eq]
+            exact neutralNF615RealEndpoint_sound (-1/2) (by norm_num)
+              neutralNF616Q neutralNF616ExpN (by decide +kernel) (by decide +kernel)
+              neutralNF616ExpFee
+
           theorem nf618RealTerminalCacheSound :
               nf618RealTerminalCache.SemanticSound nf618RealTerminalTable.key := by
-            have hp := neutralNF615RealEndpoint_sound (1:ℚ) (by norm_num)
-              neutralNF616Q neutralNF616ExpN (by decide +kernel) (by decide +kernel)
-              neutralNF616ExpFee
-            have hn := neutralNF615RealEndpoint_sound (-1:ℚ) (by norm_num)
-              neutralNF616Q neutralNF616ExpN (by decide +kernel) (by decide +kernel)
-              neutralNF616ExpFee
-            refine ⟨neutralNF615LambdaRect_sound nf632Pi nf632PiSound 1 0 neutralNF616Q
-              (by decide +kernel), ?_, ?_⟩
-            · change (neutralNF621RealEndpoint 1 neutralNF616Q neutralNF616ExpN).Contains _
-              rw [neutralNF621RealEndpoint_eq]
-              convert hp using 1 <;>
-                norm_num [nf618RealTerminalTable, NF616Frequency.value, neutralNF615Lambda]
-            · change (neutralNF621RealEndpoint (-1) neutralNF616Q neutralNF616ExpN).Contains _
-              rw [neutralNF621RealEndpoint_eq]
-              convert hn using 1 <;>
-                norm_num [nf618RealTerminalTable, NF616Frequency.value, neutralNF615Lambda]
-          
+            have hp := NF591Rect.contains_mulQ nf618RealTerminalHalfPos nf618RealTerminalHalfPos
+              neutralNF616Q (by decide +kernel)
+            have hn := NF591Rect.contains_mulQ nf618RealTerminalHalfNeg nf618RealTerminalHalfNeg
+              neutralNF616Q (by decide +kernel)
+            rw [← Complex.exp_add] at hp hn
+            refine ⟨?_, ?_, ?_⟩
+            · norm_num [nf618RealTerminalCache, nf618RealTerminalTable, NF616Frequency.value,
+                neutralNF615Lambda, NF591Rect.one, NF591Rect.Contains, NF591Ball.Contains]
+            · convert hp using 1 <;>
+                norm_num [nf618RealTerminalCache, nf618RealTerminalTable, NF616Frequency.value, neutralNF615Lambda] <;> ring
+            · convert hn using 1 <;>
+                norm_num [nf618RealTerminalCache, nf618RealTerminalTable, NF616Frequency.value, neutralNF615Lambda] <;> ring
+
           theorem nf618RealTerminalRowsCheck :
               (List.range nf618RealTerminalTable.rows.size).all
                 (neutralNF617MomentRowCheck nf618RealTerminalCache nf618RealTerminalTable.key.lower
@@ -287,6 +297,8 @@ jobs:
           lake build WeilDefect.Generated.NF618RealTerminal.Slot 2>&1 | tee nf618-real-slot-build.log
           cat > nf618RealSlotAudit.lean <<'EOF'
           import WeilDefect.Generated.NF618RealTerminal.Slot
+          #print axioms WeilDefect.nf618RealTerminalHalfPos
+          #print axioms WeilDefect.nf618RealTerminalHalfNeg
           #print axioms WeilDefect.nf618RealTerminalCacheSound
           #print axioms WeilDefect.nf618RealTerminalRowsCheck
           #print axioms WeilDefect.nf618RealTerminalSound
@@ -296,7 +308,7 @@ jobs:
           python - <<'PY'
           import hashlib,json,re
           from pathlib import Path
-          expected=set(["nf618RealTerminalCacheSound","nf618RealTerminalRowsCheck","nf618RealTerminalSound","nf618RealTerminalConcrete"]);found={}
+          expected=set(["nf618RealTerminalHalfPos","nf618RealTerminalHalfNeg","nf618RealTerminalCacheSound","nf618RealTerminalRowsCheck","nf618RealTerminalSound","nf618RealTerminalConcrete"]);found={}
           log=Path('nf618-real-slot-axioms.log').read_text()
           for n,x in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",log):
               if n in expected:
