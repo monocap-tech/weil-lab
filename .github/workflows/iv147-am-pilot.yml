@@ -1,4 +1,4 @@
-name: IV149 AM independently elaborated chunks
+name: IV150 AM pilot recovery and concrete exp attachments
 on:
   push:
     branches: ['staging/iv147-am-kernel-pilot']
@@ -17,9 +17,9 @@ jobs:
       - name: Authenticate literal bank and source preflight
         run: |
           set -euo pipefail
-          mkdir -p iv149/out
+          mkdir -p iv150/out
           grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
-          python research/iv146_am_exp_audit.py custody/iv146-am/am_cells.json iv149/out/shift-receipt.json | tee iv149/out/exact-audit.log
+          python research/iv146_am_exp_audit.py custody/iv146-am/am_cells.json iv150/out/shift-receipt.json | tee iv150/out/exact-audit.log
           python - <<'PY'
           import json,re
           from pathlib import Path
@@ -35,7 +35,7 @@ jobs:
           assert [x for c in chunks for x in c]==d['h']
           b=s.split('def neutralIV146Shifts : List (Int × Nat) := [',1)[1].split(']',1)[0]
           assert [list(map(int,x)) for x in re.findall(r'\((-?\d+),\s*(\d+)\)',b)]==d['shifts']
-          for stem in ['ActualZetaIV146AMCellData','ActualZetaIV147AMPilot','ActualZetaIV147AMRealCaps']:
+          for stem in ['ActualZetaIV146AMCellData','ActualZetaIV147AMPilot','ActualZetaIV147AMRealCaps','ActualZetaIV150AMConcreteCaps']:
               t=(a/(stem+'.lean')).read_text()
               assert not re.search(r'\b(?:sorry|admit|sorryAx|native_decide|axiom)\b',t),stem
           print('Literal arrays and pilot source preflight PASS')
@@ -52,16 +52,22 @@ jobs:
         id: data
         run: |
           set -euo pipefail
-          timeout 600 lake build WeilDefect.Arithmetic.ActualZetaIV146AMCellData 2>&1 | tee iv149/out/data.log
+          timeout 600 lake build WeilDefect.Arithmetic.ActualZetaIV146AMCellData 2>&1 | tee iv150/out/data.log
       - name: Single block and worst row kernel pilot
         run: |
           set -euo pipefail
-          /usr/bin/time -v timeout 900 lake env lean WeilDefect/Arithmetic/ActualZetaIV147AMPilot.lean 2>&1 | tee iv149/out/pilot.log
+          /usr/bin/time -v timeout 900 lake env lean WeilDefect/Arithmetic/ActualZetaIV147AMPilot.lean 2>&1 | tee iv150/out/pilot.log
       - name: Generic real caps
         if: ${{ !cancelled() }}
         run: |
           set -euo pipefail
-          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV147AMRealCaps.lean 2>&1 | tee iv149/out/real.log
+          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV147AMRealCaps.lean 2>&1 | tee iv150/out/real.log
+      - name: Concrete prime cap candidates
+        if: ${{ !cancelled() }}
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.ActualZetaIV147AMRealCaps
+          /usr/bin/time -v timeout 900 lake env lean WeilDefect/Arithmetic/ActualZetaIV150AMConcreteCaps.lean 2>&1 | tee iv150/out/concrete.log
       - name: Strict named axiom receipt
         if: ${{ !cancelled() }}
         run: |
@@ -70,10 +76,10 @@ jobs:
           import re
           from pathlib import Path
           allowed={'propext','Classical.choice','Quot.sound'}
-          for name, expected in [('real',['Log_endpoints','Signed_floor','Weight_cap']),('pilot',['Data_size','Shifts_size','Pilot_row','Pilot_block'])]:
-              s=Path('iv149/out/'+name+'.log').read_text()
+          for name, expected in [('real',['Log_endpoints','Signed_floor','Weight_cap']),('pilot',['Data_size','Shifts_size','Pilot_row','Pilot_block']),('concrete',["Exp_interval","Exp_lt","Lt_exp","Prime_2","Prime_3","Prime_4","Prime_5","Prime_7","Prime_8","Prime_9","Prime_11","Prime_13","Prime_16","Prime_17","Prime_19","Prime_23","Prime_25","Prime_27","Prime_29","Prime_31","Prime_32","Prime_37","Prime_41","Prime_43","Prime_47","Prime_49","Prime_53"])]:
+              s=Path('iv150/out/'+name+'.log').read_text()
               for suffix in expected:
-                  n='WeilDefect.neutralIV147'+suffix
+                  n='WeilDefect.neutralIV'+('150' if name=='concrete' else '147')+suffix
                   m=re.findall(r"'"+re.escape(n)+r"' depends on axioms: \[([^\]]*)\]",s)
                   no=re.findall(r"'"+re.escape(n)+r"' does not depend on any axioms",s)
                   assert len(m)+len(no)==1,n
@@ -83,5 +89,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: iv149-am-pilot-receipts
-          path: iv149/out/
+          name: iv150-am-pilot-receipts
+          path: iv150/out/
