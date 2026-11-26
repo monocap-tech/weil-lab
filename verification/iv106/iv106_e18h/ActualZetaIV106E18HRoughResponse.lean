@@ -193,6 +193,51 @@ theorem neutralIV106E18HConstrained (a : ℝ) (S : Submodule ℂ RealComplexL2)
     exact hv
   exact closure_minimal hs hc hh
 
+/-- The actual IV105C row on a rough representative in a locally dense
+physical subspace. The only remaining approximation premise is the local
+core density and its stated geometry; no rough strong action is assumed. -/
+theorem neutralIV106E18HResponse_rough (k : ℕ) (hk : 0 < k) (i : Fin k)
+    {δ : ℝ} (hδ : 0 < δ)
+    (S : Submodule ℂ RealComplexL2) (D : Submodule ℂ S)
+    (hd : Dense (D : Set S))
+    (hD : ∀ q ∈ D, ∃ s : 𝓢(ℝ,ℂ),
+      (q : RealComplexL2) = s.toLp 2 volume ∧
+      (∀ x ∉ Set.Icc (-(11/10:ℝ)) (11/10), s x = 0) ∧
+      neutralIV101MassComplement k hk s ∧
+      (∀ x y, neutralIV100Carrier k hk i x ≠ 0 → s y ≠ 0 → δ ≤ |x-y|) ∧
+      (∀ n ∈ rightLimitPrimePowerFinset (11/10:ℝ), ∀ x : ℝ, s x ≠ 0 →
+        neutralIV100Carrier k hk i (x-Real.log n) = 0 ∧
+        neutralIV100Carrier k hk i (x+Real.log n) = 0))
+    (v : S) (hv : neutralIV106E18HMoments (11/10:ℝ) (v : RealComplexL2) = 0)
+    (f : ℝ → ℂ) (hf : Integrable f)
+    (hrep : ((v : RealComplexL2) : ℝ → ℂ) =ᵐ[volume] f)
+    (hwin : ∀ x ∉ Set.Icc (-(11/10:ℝ)) (11/10), f x = 0)
+    (hsep : ∀ x y, neutralIV100Carrier k hk i x ≠ 0 → f y ≠ 0 → δ ≤ |x-y|) :
+    inner ℂ (neutralIV105CResponse k hk i) (v : RealComplexL2) =
+    ∫ x, conj (neutralIV100Carrier k hk i x) * (∫ y, f y *
+      ((-(Real.exp (-|x-y|/2)/(1-Real.exp (-2*|x-y|))) : ℝ) : ℂ)) := by
+  let u := neutralIV100Carrier k hk i
+  have he : inner ℂ (neutralIV105CResponse k hk i) (v : RealComplexL2) =
+      inner ℂ (neutralIV106E18HColumn (11/10:ℝ) u hδ) (v : RealComplexL2) := by
+    apply neutralIV106E18HConstrained (11/10:ℝ) S D hd _ _ _ v hv
+    intro q hq hm
+    obtain ⟨s,hs,hswin,hsorth,hssep,hshift⟩ := hD q hq
+    rw [hs] at hm ⊢
+    obtain ⟨hm,hp⟩ := (neutralIV106E18HMoments_zero _ _).mp hm
+    exact neutralIV106E18HResponse_core k hk i s hswin hsorth hδ hssep hshift hm hp
+  rw [he, neutralIV106E18HColumn_pair,
+    neutralIV106E18HUncut u f hsep, neutralIV106E18HFubini u f hf hδ]
+  calc
+    _ = ∫ y in Set.Icc (-(11/10:ℝ)) (11/10), conj (neutralIV106E18EGap u δ y) * f y := by
+      apply integral_congr_ae
+      filter_upwards [ae_restrict_of_ae hrep] with y hy
+      rw [hy]
+    _ = _ := by
+      apply setIntegral_eq_integral_of_forall_compl_eq_zero
+      intro y hy
+      simp [hwin y hy]
+
+#print axioms neutralIV106E18HResponse_rough
 #print axioms neutralIV106E18HKernel_symm
 #print axioms neutralIV106E18HColumn_memLp
 #print axioms neutralIV106E18HColumn_pair
