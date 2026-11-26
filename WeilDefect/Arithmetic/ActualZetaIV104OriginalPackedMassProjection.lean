@@ -60,6 +60,13 @@ theorem neutralIV104Packed_pair (k : ℕ) (hk : 0 < k)
   rw [Finset.sum_eq_single i]
   · rw [inner_self_eq_norm_sq_to_K]
     simp only [neutralIV104Mass, Complex.ofReal_pow]
+    <;> first
+      | rfl
+      | congr 1
+        <;> first | rfl | norm_cast | push_cast <;> rfl
+      | change c i * ((‖(neutralIV100Carrier k hk i).toLp 2 volume‖ : ℝ) : ℂ)^2 =
+          c i * ((‖(neutralIV100Carrier k hk i).toLp 2 volume‖ : ℝ) : ℂ)^2
+        rfl
   · intro j hj hji
     rw [neutralIV104Carrier_orthogonal k hk i j (Ne.symm hji), mul_zero]
   · simp
