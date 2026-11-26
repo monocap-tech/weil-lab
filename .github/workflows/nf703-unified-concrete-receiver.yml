@@ -77,11 +77,38 @@ jobs:
           PY
       - name: Install pinned Lean and Mathlib cache
         run: |
-          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          set -euo pipefail
+          # Pin installer asset independently of the repository's Lean toolchain.
+          archive="$RUNNER_TEMP/nf703-elan.tar.gz"
+          digest=0e8250aa2be86c7af929ade68db617af9edc8b9ccf6eaf5ece228250d0d032e2
+          fetch_verified() {
+            rm -f "$archive"
+            curl -fsSL --retry 2 --retry-all-errors --connect-timeout 20 --max-time 180 "$@" -o "$archive" &&
+              printf '%s  %s\n' "$digest" "$archive" | sha256sum -c -
+          }
+          if ! fetch_verified https://github.com/leanprover/elan/releases/download/v4.4.0/elan-x86_64-unknown-linux-gnu.tar.gz; then
+            fetch_verified -H 'Accept: application/octet-stream' "https://api.github.com/repos/leanprover/elan/releases/assets/763468108?run=$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+          fi
+          mkdir -p "$RUNNER_TEMP/nf703-elan"
+          tar -xzf "$archive" -C "$RUNNER_TEMP/nf703-elan"
+          "$RUNNER_TEMP/nf703-elan/elan-init" -y --no-modify-path --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
           export PATH="$HOME/.elan/bin:$PATH"
-          lake update
-          lake exe cache get
+          elan --version
+          cat lean-toolchain
+          retry() {
+            local n
+            for n in 1 2 3; do
+              if "$@"; then return 0; fi
+              if [ "$n" -lt 3 ]; then sleep "$((15*n))"; fi
+            done
+            return 1
+          }
+          retry elan toolchain install "$(cat lean-toolchain)"
+          lean --version
+          lake --version
+          retry lake update
+          retry lake exe cache get
       - name: Bind independently restored exact bank source and Lean environment
         run: python scripts/nf697_compiled_bank_binding.py
       - uses: actions/download-artifact@v4
