@@ -57,7 +57,9 @@ theorem lineWindow_finite (T : ℝ) (hT : 0 ≤ T) :
 
 noncomputable def shiftedSamples (T : ℝ) (hT : 0 ≤ T) : Finset ℂ :=
   (lineWindow_finite T hT).toFinset.map
-    ⟨fun ρ => ρ - (1 / 2 : ℂ), fun _ _ h => sub_right_cancel h⟩
+    ⟨fun ρ => ρ - (1 / 2 : ℂ), fun x y h => by
+      change x - (1 / 2 : ℂ) = y - (1 / 2 : ℂ) at h
+      linear_combination h⟩
 
 theorem shiftedSamples_card (T : ℝ) (hT : 0 ≤ T) :
     (shiftedSamples T hT).card = lineCount T (2 * T) := by
