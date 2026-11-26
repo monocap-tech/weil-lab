@@ -1,0 +1,5 @@
+# IV168 — Consume native symmetry and prefix in physical receiver
+
+IV163 run 45890018606: importable full symmetry bank completed success, importable first 256 rows running, original dictionary failed, final audit pending. No artifact yet available. Source and object hashes not independently inspected. No new runner activated.
+
+Stage five candidate declarations in a separate bridge module, to be built only when generated SymBank and RowPrefix0032 modules are present. The bridge removes symmetry and first 32 row blocks from the physical Schur receiver's premises, proves the two 256-row end intervals (0..255 and 16128..16383), and leaves exactly blocks 32..1023 as an explicit premise. This isolates the physical certificate from the currently failing original dictionary. The bridge is not compiled and the reflected end interval is not yet an independently accepted declaration. Once the prefix assembly is accepted, the bridge can be activated alongside a dictionary repair or sector gate; no claim of terminal norm or RH.
