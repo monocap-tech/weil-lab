@@ -4,7 +4,7 @@ import Mathlib.Analysis.Distribution.SchwartzSpace.Deriv
 namespace WeilDefect
 noncomputable section
 open MeasureTheory
-open scoped SchwartzMap LineDeriv
+open scoped SchwartzMap LineDeriv ContDiff
 
 /-- Adjacent interval means force the primitive to vanish at every endpoint. -/
 theorem neutralIV106D3Endpoint (v : 𝓢(ℝ, ℂ)) (p : ℕ → ℝ) (N : ℕ)
@@ -16,8 +16,8 @@ theorem neutralIV106D3Endpoint (v : 𝓢(ℝ, ℂ)) (p : ℕ → ℝ) (N : ℕ)
   | succ j ih =>
     intro hj
     have he := intervalIntegral.integral_add_adjacent_intervals
-      (v.continuous.intervalIntegrable (p 0) (p j))
-      (v.continuous.intervalIntegrable (p j) (p (j+1)))
+      (v.continuous.intervalIntegrable (μ := volume) (p 0) (p j))
+      (v.continuous.intervalIntegrable (μ := volume) (p j) (p (j+1)))
     rw [ih (Nat.le_trans (Nat.le_succ j) hj), hc j (Nat.lt_of_succ_le hj), zero_add] at he
     exact he.symm
 
@@ -46,7 +46,7 @@ theorem neutralIV106D3Primitive_outside (v : 𝓢(ℝ, ℂ)) (l r : ℝ)
           exact hv t (fun h => (not_le_of_gt ht.1) h.2)
         _ = 0 := intervalIntegral.integral_zero
     have he := intervalIntegral.integral_add_adjacent_intervals
-      (v.continuous.intervalIntegrable l r) (v.continuous.intervalIntegrable r x)
+      (v.continuous.intervalIntegrable (μ := volume) l r) (v.continuous.intervalIntegrable (μ := volume) r x)
     rw [hm, hz, add_zero] at he
     exact he.symm
 
