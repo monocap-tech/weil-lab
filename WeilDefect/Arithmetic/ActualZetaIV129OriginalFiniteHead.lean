@@ -29,7 +29,10 @@ def neutralIV129Complement (k : ℕ) (hk : 0 < k) :
     · intro c
       change inner ℂ ((neutralIV100Packed k hk c).toLp 2 volume)
         ((SchwartzMap.toLpCLM ℂ ℂ 2 volume) (u+v)) = 0
-      rw [map_add, inner_add_right, hu.2 c, hv.2 c, add_zero]
+      rw [map_add, inner_add_right]
+      change inner ℂ ((neutralIV100Packed k hk c).toLp 2 volume) (u.toLp 2 volume) +
+        inner ℂ ((neutralIV100Packed k hk c).toLp 2 volume) (v.toLp 2 volume) = 0
+      rw [hu.2 c, hv.2 c, add_zero]
   smul_mem' := by
     intro c v hv
     constructor
@@ -39,7 +42,10 @@ def neutralIV129Complement (k : ℕ) (hk : 0 < k) :
     · intro d
       change inner ℂ ((neutralIV100Packed k hk d).toLp 2 volume)
         ((SchwartzMap.toLpCLM ℂ ℂ 2 volume) (c • v)) = 0
-      rw [map_smul, inner_smul_right, hv.2 d, mul_zero]
+      rw [map_smul, inner_smul_right]
+      change c * inner ℂ ((neutralIV100Packed k hk d).toLp 2 volume)
+        (v.toLp 2 volume) = 0
+      rw [hv.2 d, mul_zero]
 
 /-- Finite coordinate map of literal physical cell means. -/
 def neutralIV129CellMap (a : ℝ) (N : ℕ) :

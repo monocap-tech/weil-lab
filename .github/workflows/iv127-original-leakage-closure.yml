@@ -1,8 +1,8 @@
-name: IV132 integrated finite-head receiver — native gate
+name: IV134 integrated constraint rows — native gate
 on:
   push:
     branches:
-      - staging/iv132-original-head-residual-payment
+      - staging/iv133-original-projected-row
     paths:
       - '.github/workflows/iv127-original-leakage-closure.yml'
       - 'WeilDefect/Arithmetic/ActualZetaIV12*.lean'
@@ -19,19 +19,19 @@ jobs:
         run: |
           set -euo pipefail
           grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
-          mkdir -p iv132/out
+          mkdir -p iv134/out
           python3 - <<'PY'
           import json,re
           from pathlib import Path
-          m={"WeilDefect/Arithmetic/ActualZetaIV124OriginalPhysicalTailBudget.lean":["neutralIV124PhysicalBudget_nonneg","neutralIV124RowBudget_physical","neutralIV124Schur_garding","neutralIV124Schur_tail_of_log_lower","neutralIV124Weighted_lower"],"WeilDefect/Arithmetic/ActualZetaIV125OriginalFourierLeakage.lean":["neutralIV125Cell_cancel","neutralIV125Cell_bound","neutralIV125LowBand_of_pointwise","neutralIV125LogLower_of_leakage","neutralIV125Schur_of_leakage"],"WeilDefect/Arithmetic/ActualZetaIV126OriginalCellPartition.lean":["neutralIV126Phase_norm","neutralIV126Phase_sub","neutralIV126Node_step","neutralIV126Equal_end","neutralIV126Cell_payment","neutralIV126Partition_payment","neutralIV126Window_payment","neutralIV126Fourier_ae_bound","neutralIV126LowBand_ae"],"WeilDefect/Arithmetic/ActualZetaIV127OriginalLeakageClosure.lean":["neutralIV127Interval_mass","neutralIV127Window_mass","neutralIV127Fourier_window","neutralIV127Fourier_sq","neutralIV127LowBand","neutralIV127Schur_cellNull"],"WeilDefect/Arithmetic/ActualZetaIV128OriginalTailCutoffs.lean":["neutralIV128Leakage_formula","neutralIV128HalfLeakage_exists","neutralIV128Margin_exists","neutralIV128Schur_coercive_tail_exists"],"WeilDefect/Arithmetic/ActualZetaIV129OriginalFiniteHead.lean":["neutralIV129CellMap_zero_iff","neutralIV129Head_dim_le","neutralIV129Section_exists","neutralIV129Head_tail","neutralIV129Coercive_split"],"WeilDefect/Arithmetic/ActualZetaIV130OriginalCorrectedMixed.lean":["neutralIV130Mixed_hermitian","neutralIV130Mixed_add_right","neutralIV130Mixed_sub_left","neutralIV130Response_add","neutralIV130Response_supported","neutralIV130Mixed_diagonal","neutralIV130Mixed_row","neutralIV130Mixed_physical_bound","neutralIV130Schur_add"],"WeilDefect/Arithmetic/ActualZetaIV131OriginalVariationalSchur.lean":["neutralIV131Scalar_payment","neutralIV131Loss_le","neutralIV131Loss_bdd","neutralIV131Penalty_le","neutralIV131Fibre_iff","neutralIV131Tail_coercive_exists"],"WeilDefect/Arithmetic/ActualZetaIV132OriginalHeadResidualPayment.lean":["neutralIV132Tail_supported","neutralIV132Head_iff","neutralIV132Window_of_head","neutralIV132Mixed_add_right","neutralIV132Mixed_hermitian","neutralIV132Mixed_add_left","neutralIV132Loss_shift","neutralIV132Penalty_trial_le"]}
-          assert sum(map(len,m.values()))==57
+          m={"WeilDefect/Arithmetic/ActualZetaIV124OriginalPhysicalTailBudget.lean":["neutralIV124PhysicalBudget_nonneg","neutralIV124RowBudget_physical","neutralIV124Schur_garding","neutralIV124Schur_tail_of_log_lower","neutralIV124Weighted_lower"],"WeilDefect/Arithmetic/ActualZetaIV125OriginalFourierLeakage.lean":["neutralIV125Cell_cancel","neutralIV125Cell_bound","neutralIV125LowBand_of_pointwise","neutralIV125LogLower_of_leakage","neutralIV125Schur_of_leakage"],"WeilDefect/Arithmetic/ActualZetaIV126OriginalCellPartition.lean":["neutralIV126Phase_norm","neutralIV126Phase_sub","neutralIV126Node_step","neutralIV126Equal_end","neutralIV126Cell_payment","neutralIV126Partition_payment","neutralIV126Window_payment","neutralIV126Fourier_ae_bound","neutralIV126LowBand_ae"],"WeilDefect/Arithmetic/ActualZetaIV127OriginalLeakageClosure.lean":["neutralIV127Interval_mass","neutralIV127Window_mass","neutralIV127Fourier_window","neutralIV127Fourier_sq","neutralIV127LowBand","neutralIV127Schur_cellNull"],"WeilDefect/Arithmetic/ActualZetaIV128OriginalTailCutoffs.lean":["neutralIV128Leakage_formula","neutralIV128HalfLeakage_exists","neutralIV128Margin_exists","neutralIV128Schur_coercive_tail_exists"],"WeilDefect/Arithmetic/ActualZetaIV129OriginalFiniteHead.lean":["neutralIV129CellMap_zero_iff","neutralIV129Head_dim_le","neutralIV129Section_exists","neutralIV129Head_tail","neutralIV129Coercive_split"],"WeilDefect/Arithmetic/ActualZetaIV130OriginalCorrectedMixed.lean":["neutralIV130Mixed_hermitian","neutralIV130Mixed_add_right","neutralIV130Mixed_sub_left","neutralIV130Response_add","neutralIV130Response_supported","neutralIV130Mixed_diagonal","neutralIV130Mixed_row","neutralIV130Mixed_physical_bound","neutralIV130Schur_add"],"WeilDefect/Arithmetic/ActualZetaIV131OriginalVariationalSchur.lean":["neutralIV131Scalar_payment","neutralIV131Loss_le","neutralIV131Loss_bdd","neutralIV131Penalty_le","neutralIV131Fibre_iff","neutralIV131Tail_coercive_exists"],"WeilDefect/Arithmetic/ActualZetaIV132OriginalHeadResidualPayment.lean":["neutralIV132Tail_supported","neutralIV132Head_iff","neutralIV132Window_of_head","neutralIV132Mixed_add_right","neutralIV132Mixed_hermitian","neutralIV132Mixed_add_left","neutralIV132Loss_shift","neutralIV132Penalty_trial_le"],"WeilDefect/Arithmetic/ActualZetaIV133OriginalProjectedRow.lean":["neutralIV133Spectral_physical","neutralIV133PhysicalRow_pair","neutralIV133CorrectedRow_pair","neutralIV133Projected_bound","neutralIV133Penalty_projected_le","neutralIV133Penalty_trial_projected_le"],"WeilDefect/Arithmetic/ActualZetaIV134OriginalConstraintRows.lean":["neutralIV134Cell_memLp","neutralIV134CellRow_pair","neutralIV134CellRow_annihilates","neutralIV134Packed_annihilates","neutralIV134Synthesis_annihilates","neutralIV134ResidualGram_energy","neutralIV134Trial_payment"]}
+          assert sum(map(len,m.values()))==70
           for p,names in m.items():
               s=Path(p).read_text()
               assert not re.search(r'\b(?:sorry|admit|sorryAx)\b',s),p
               assert re.findall(r'(?m)^theorem (\w+)',s)==names,p
               assert re.findall(r'(?m)^#print axioms (\w+)$',s)==names,p
-          Path('iv132/out/expected.json').write_text(json.dumps(m))
-          print('IV132: 57 exact source candidates')
+          Path('iv134/out/expected.json').write_text(json.dumps(m))
+          print('IV134: 70 exact source candidates')
           PY
       - name: Install pinned Lean and Mathlib
         run: |
@@ -44,7 +44,7 @@ jobs:
       - name: Native integrated build
         run: |
           set -euo pipefail
-          lake build WeilDefect.Arithmetic.ActualZetaIV132OriginalHeadResidualPayment 2>&1 | tee iv132/out/build.log
+          lake build WeilDefect.Arithmetic.ActualZetaIV134OriginalConstraintRows 2>&1 | tee iv134/out/build.log
       - name: Preserve independently successful module receipts and compiled objects
         if: always()
         run: |
@@ -52,7 +52,7 @@ jobs:
           python3 - <<'PY'
           import json,re,subprocess,shutil,hashlib
           from pathlib import Path
-          out=Path('iv132/out')
+          out=Path('iv134/out')
           m=json.loads((out/'expected.json').read_text())
           commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
           (out/'commit.txt').write_text(commit+'\n')
@@ -92,11 +92,11 @@ jobs:
           (out/'sha256.txt').write_text('\n'.join(hashes)+'\n')
           if hashes: subprocess.run(['sha256sum','-c','sha256.txt'],cwd=out,check=True)
           print(json.dumps(status,sort_keys=True))
-          assert len(receipts)==57,('incomplete integrated audit',len(receipts))
-          print('IV132 57 strict named receipts PASS')
+          assert len(receipts)==70,('incomplete integrated audit',len(receipts))
+          print('IV134 70 strict named receipts PASS')
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: iv132-integrated-native-receipts
-          path: iv132/out/
+          name: iv134-integrated-native-receipts
+          path: iv134/out/
