@@ -57,7 +57,7 @@ theorem neutralIV105Schur_lower (k : ℕ) (hk : 0 < k)
         neutralIV101Q (11/10:ℝ) (neutralIV100Packed k hk d)) ≤
       neutralIV101Q (11/10:ℝ) (neutralIV100Packed k hk c + v) := by
   rw [neutralIV105Schur_identity k hk c d v hv hresponse]
-  exact add_le_add_right (neutralIV101Packed_full_margin k hk (fun i => c i + d i)) _
+  exact add_le_add_left (neutralIV101Packed_full_margin k hk (fun i => c i + d i)) _
 
 /-- Fixed-window receiver. Every residual needs an actual signed response
 and a nonnegative Schur remainder. Neither is asserted by this theorem. -/
