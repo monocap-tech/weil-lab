@@ -1,0 +1,349 @@
+name: NF701 unified concrete receiver
+on:
+  push:
+    branches:
+      - research/nf701-unified-concrete-receiver
+    paths:
+      - ".github/workflows/nf701-unified-concrete-receiver.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  batch:
+    name: NF701 all-phase receiver
+    runs-on: ubuntu-latest
+    timeout-minutes: 250
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore exact original full numeric payload and accepted compact coverage source
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p WeilDefect/Generated/NF690
+          fetch() {
+            local id="$1" name="$2" digest="$3" dest="$4"
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" -o "$name.zip"
+            echo "$digest  $name.zip" | sha256sum -c -
+            unzip -q "$name.zip" -d "$dest"
+          }
+          fetch 14551493244 compact 37be910efa7d204c9db35f62bf9d5f818ece77c7026d94d9c84e4ddba0df41a5 WeilDefect/Generated
+          fetch 14558233793 payload 2327fbf952d4894c9f28f81cad9e94d226c93131d9ef2fafa14c35f482211b70 WeilDefect/Generated/NF690
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('WeilDefect/Generated')
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          d=root/'NF690'
+          m=json.loads((d/'manifest.json').read_text())
+          assert (m['keys'],m['rows'],m['chunks'],m['chunk_width'])==(7835,37994,490,16)
+          assert [r['index'] for r in m['slots']]==list(range(7835))
+          assert len({tuple(r['key']) for r in m['slots']})==7835
+          assert sum(r['rows'] for r in m['slots'])==37994
+          assert m['metadata_sha256']==sha(root/'NF679/Metadata.lean')
+          assert m['compact_manifest_sha256']==sha(root/'NF687/manifest.json')
+          for name in ('NF682','NF687','NF690'):
+              p=root/name
+              for f in json.loads((p/'manifest.json').read_text())['files']:
+                  assert sha(p/f['file'])==f['sha256']
+                  if 'bytes' in f: assert (p/f['file']).stat().st_size==f['bytes']
+          assert {f'Chunk{i:03d}.lean' for i in range(490)}|{'Bank.lean','Coverage.lean'} <= {f['file'] for f in m['files']}
+          out=root/'NF691'
+          out.mkdir(exist_ok=True)
+          (out/'OriginalLookup.lean').write_text("""import WeilDefect.Generated.NF690.Coverage
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalBlockLocalLookup
+
+          namespace WeilDefect
+
+          def nf691OriginalLookup : NF622Moments :=
+            neutralNF691Lookup nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalLookup_eq :
+              neutralNF624Lookup nf690OriginalBank (neutralNF624Index nf690OriginalBank) =
+                nf691OriginalLookup :=
+            neutralNF691Lookup_eq nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalCoverage :
+              neutralNF624CoverageCheck nf690OriginalBank (neutralNF624Index nf690OriginalBank)=true :=
+            nf690OriginalCoverage
+
+          #print axioms nf691OriginalLookup_eq
+          #print axioms nf691OriginalCoverage
+
+          end WeilDefect
+          """)
+          print('NF691 authenticated all 490 original chunks and exact coverage sources')
+          PY
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          set -euo pipefail
+          # Pin installer asset independently of the repository's Lean toolchain.
+          archive="$RUNNER_TEMP/nf703-elan.tar.gz"
+          digest=0e8250aa2be86c7af929ade68db617af9edc8b9ccf6eaf5ece228250d0d032e2
+          fetch_verified() {
+            rm -f "$archive"
+            curl -fsSL --retry 2 --retry-all-errors --connect-timeout 20 --max-time 180 "$@" -o "$archive" &&
+              printf '%s  %s\n' "$digest" "$archive" | sha256sum -c -
+          }
+          if ! fetch_verified https://github.com/leanprover/elan/releases/download/v4.4.0/elan-x86_64-unknown-linux-gnu.tar.gz; then
+            fetch_verified -H 'Accept: application/octet-stream' "https://api.github.com/repos/leanprover/elan/releases/assets/763468108?run=$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+          fi
+          mkdir -p "$RUNNER_TEMP/nf703-elan"
+          tar -xzf "$archive" -C "$RUNNER_TEMP/nf703-elan"
+          "$RUNNER_TEMP/nf703-elan/elan-init" -y --no-modify-path --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          elan --version
+          cat lean-toolchain
+          retry() {
+            local n
+            for n in 1 2 3; do
+              if "$@"; then return 0; fi
+              if [ "$n" -lt 3 ]; then sleep "$((15*n))"; fi
+            done
+            return 1
+          }
+          retry elan toolchain install "$(cat lean-toolchain)"
+          lean --version
+          lake --version
+          retry lake update
+          retry lake exe cache get
+      - name: Bind independently restored exact bank source and Lean environment
+        run: python scripts/nf697_compiled_bank_binding.py
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf697-audited-compiled-bank
+          path: compiled-bank
+          run-id: 44598398608
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify producer binding and audit before restoring compiled objects
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          a=json.loads(Path('compiled-bank/nf697-bank-binding.json').read_text())
+          b=json.loads(Path('nf697-bank-binding.json').read_text())
+          for x in (a,b):
+              f=x.pop('fingerprint')
+              assert hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()==f
+          assert a['schema']==b['schema'] and a['environment']==b['environment']
+          assert all(b['files'].get(k)==v for k,v in a['files'].items())
+          extra=set(b['files'])-set(a['files'])
+          assert extra=={'WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularCacheAssembly.lean'},extra
+          # Existing source closure must not reference the newly added module.
+          assert all('ActualZetaOriginalPhysicalTriangularCacheAssembly' not in Path(p).read_text()
+                     for p in a['files'] if p.endswith('.lean'))
+          print('NF705 all producer sources unchanged; exactly one new independent theorem module')
+          PY
+          (cd compiled-bank && sha256sum -c nf697-project-build.sha256)
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('compiled-bank/nf691-complete-audit.json')
+          m=json.loads(p.read_text())
+          assert (m['keys'],m['rows'],m['chunks'])==(7835,37994,490)
+          assert len(m['theorems'])==14
+          assert {'nf691OriginalCoverage','nf691OriginalLookup_eq'}<=set(m['theorems'])
+          assert all(set(a)<={'propext','Classical.choice','Quot.sound'} for a in m['theorems'].values())
+          PY
+          tar -xzf compiled-bank/nf697-project-build.tar.gz
+          test ! -e .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularCacheAssembly.olean
+      - name: Measure restored bank Lake build and audit imported exact bank
+        timeout-minutes: 120
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o nf697-reuse-time.txt -f 'elapsed=%e user=%U rss_kb=%M exit=%x' lake build WeilDefect.Generated.NF691.OriginalLookup 2>&1 | tee nf697-reuse.log
+          cat >/tmp/nf697BankAudit.lean <<'EOF'
+          import WeilDefect.Generated.NF691.OriginalLookup
+          #print axioms WeilDefect.nf691OriginalCoverage
+          #print axioms WeilDefect.nf691OriginalLookup_eq
+          EOF
+          lake env lean /tmp/nf697BankAudit.lean 2>&1 | tee nf697-bank-axioms.log
+      - name: Authenticate accepted NF701 sources and evidence
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p nf701-input
+          fetch() {
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$2/zip" -o "nf701-input/$1.zip"
+            echo "$3  nf701-input/$1.zip" | sha256sum -c -
+          }
+          fetch source 14579566002 bb7655fc43eb94e4083bc27727bba86f95557873c6863bdd3195cea03c295687
+          fetch audit 14586746997 bc7fb45daef3bda44b7469761960c17059a1da3a0ea3be4235429e38b154e6b0
+          fetch prior 15084125240 5ecdd6e9cccf16359cdc1bdcffbe415256b3b03b5a3066009fa0a44fcffc2513
+          fetch nf703 15135606298 229863b6305a52a5c6bd10cf75e83f922898119cf9e7fbcaecd57b6e0e25e576
+      - name: Reconcile all 548 source-bound slots and generate finite receiver
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json,re,zipfile
+          from pathlib import Path
+          root=Path('WeilDefect/Generated')
+          sha=lambda b:hashlib.sha256(b).hexdigest()
+          def put(p,b):
+              p.parent.mkdir(parents=True,exist_ok=True)
+              if p.exists(): assert p.read_bytes()==b,p
+              else: p.write_bytes(b)
+          bankraw=(root/'NF690/manifest.json').read_bytes()
+          bank=json.loads(bankraw); original={r['index']:r for r in bank['slots']}
+          assert len(original)==7835
+          with zipfile.ZipFile('nf701-input/prior.zip') as z:
+              u=json.loads(z.read('unified-receiver-manifest.json'))
+          with zipfile.ZipFile('nf701-input/nf703.zip') as z:
+              v=json.loads(z.read('nf703-unified-manifest.json'))
+          assert v['bank_manifest_sha256']==sha(bankraw)
+          with zipfile.ZipFile('nf701-input/source.zip') as z,zipfile.ZipFile('nf701-input/audit.zip') as q:
+              raw=z.read('NF701/manifest.json');m=json.loads(raw)
+              a=json.loads(q.read('nf701-complete-audit.json'))
+              assert a['manifest_sha256']==sha(raw)
+              assert m['bank_manifest_sha256']==sha(bankraw)
+              assert (m['tables'],m['rows'])==(548,2608)
+              records=m['records']; byindex={r['index']:r for r in records}
+              assert len(records)==len(byindex)==548
+              assert byindex=={r['index']:r for r in a['records']}
+              assert sum(r['rows'] for r in records)==2608
+              names={'nf701'+r['module']+s for r in records for s in ('Key','Length','RowsEq','Sound','PayloadEq','Concrete')}
+              assert len(names)==3288 and set(a['theorems'])==names
+              assert all(set(x)<={'propext','Classical.choice','Quot.sound'} for x in a['theorems'].values())
+              older=set()
+              for stage in ('NF692','NF696'):
+                  b=z.read(stage+'/manifest.json')
+                  assert m[stage.lower()+'_manifest_sha256']==sha(b)
+                  ids={r['index'] for r in json.loads(b)['records']}
+                  assert ids.isdisjoint(older);older.update(ids)
+              assert len(older)==398
+              ids=set(byindex)
+              assert ids.isdisjoint(older|set(u['slots'])|set(v['slots']))
+              assert ids|older==set(u['prior_slots'])
+              assert len(ids|older|set(u['slots'])|set(v['slots']))==3318
+              assert sum(original[i]['rows'] for i in ids|older|set(u['slots'])|set(v['slots']))==14978
+              for stage in ('NF632','NF693','NF687','NF701'):
+                  p=stage+'/manifest.json'; b=z.read(p); put(root/p,b)
+                  for f in json.loads(b)['files']:
+                      n=stage+'/'+f['file']; data=z.read(n)
+                      assert sha(data)==f['sha256'];put(root/n,data)
+              for r in records:
+                  t=original[r['index']]
+                  assert (r['rows'],r['chunk'],r['offset'])==(t['rows'],t['chunk'],t['offset'])
+                  n='NF690/'+t['chunk']+'.lean'
+                  assert z.read(n)==(root/n).read_bytes()
+          out=root/'NF701Unified';out.mkdir(exist_ok=True)
+          mod='WeilDefect.Generated.NF701Unified.'
+          prop='neutralNF690TableSound (neutralNF624BankRead nf690OriginalBank i)'
+          hashes={};audit=[];leaves=[];seen=set()
+          bymodule={r['module']:r for r in records}
+          def emit(file,imports,body):
+              data=(''.join('import '+x+'\n' for x in imports)+'\nnamespace WeilDefect\n\nset_option maxRecDepth 100000\nset_option maxHeartbeats 0\n\n'+body+'\nend WeilDefect\n').encode()
+              put(out/(file+'.lean'),data);hashes[file+'.lean']=sha(data)
+          for p in sorted((root/'NF701').glob('Concrete*.lean')):
+              mods=re.findall(r'^import WeilDefect\.Generated\.NF701\.(Slot\d+)$',p.read_text(),re.M)
+              assert mods and len(mods)==len(set(mods)) and set(mods)<=bymodule.keys()
+              assert seen.isdisjoint(mods);seen.update(mods)
+              for j in range(0,len(mods),8):
+                  batch=mods[j:j+8];file=f'Leaf{len(leaves):03d}';d='nf701Unified'+file+'Slots';t='nf701Unified'+file+'Sound'
+                  slots=[bymodule[x]['index'] for x in batch]
+                  body=f'def {d} : List ℕ := ['+', '.join(map(str,slots))+f']\n\ntheorem {t} (i : ℕ) (hi : i ∈ {d}) :\n    {prop} := by\n  simp only [{d}, List.mem_cons, List.not_mem_nil, or_false] at hi\n'
+                  if len(batch)==1:
+                      body+='  subst i\n  exact nf701'+batch[0]+'Concrete\n'
+                  else:
+                      body+='  rcases hi with '+' | '.join(['rfl']*len(batch))+'\n'
+                      body+=''.join('  · exact nf701'+x+'Concrete\n' for x in batch)
+                  emit(file,['WeilDefect.Generated.NF701.'+p.stem],body)
+                  leaves.append((file,d,t));audit.append(t)
+          assert seen==set(bymodule)
+          def chain(xs):
+              return xs[0][1] if len(xs)==1 else '('+xs[0][1]+' ++ '+chain(xs[1:])+')'
+          def elim(xs,h,indent):
+              if len(xs)==1:return indent+f'exact {xs[0][2]} i {h}\n'
+              return indent+f'rcases List.mem_append.mp {h} with hleft | hright\n'+indent+f'· exact {xs[0][2]} i hleft\n'+indent+'· '+elim(xs[1:],'hright',indent+'  ').lstrip()
+          def combine(file,d,t,xs):
+              body=f'def {d} : List ℕ := '+chain(xs)+f'\n\ntheorem {t} (i : ℕ) (hi : i ∈ {d}) :\n    {prop} := by\n  change i ∈ '+chain(xs)+' at hi\n'+elim(xs,'hi','  ')
+              emit(file,[mod+x[0] for x in xs],body);audit.append(t)
+              return file,d,t
+          stages=[]
+          for j in range(0,len(leaves),12):
+              f=f'Stage{len(stages):02d}'
+              stages.append(combine(f,'nf701Unified'+f+'Slots','nf701Unified'+f+'Sound',leaves[j:j+12]))
+          combine('Receiver','nf701UnifiedSlots','nf701UnifiedSound',stages)
+          put(out/'Audit.lean',('import '+mod+'Receiver\n'+''.join('#print axioms WeilDefect.'+n+'\n' for n in audit)).encode())
+          hashes['Audit.lean']=sha((out/'Audit.lean').read_bytes())
+          manifest={'schema':'NF701-unified-concrete-receiver-v1','bank_manifest_sha256':sha(bankraw),'slots':sorted(ids),'rows':2608,'original_attachment_theorems':sorted(names),'receiver_theorems':audit,'source_sha256':hashes,'stage_targets':[x[0] for x in stages]}
+          Path('nf701-unified-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+          Path('nf701-unified-targets.txt').write_text('\n'.join(manifest['stage_targets'])+'\n')
+          print('NF701 unified source PASS',len(ids),2608,len(names),len(audit))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf701-unified-receiver-source
+          path: |
+            nf701-unified-manifest.json
+            WeilDefect/Generated/NF701Unified/
+          if-no-files-found: error
+      - name: Build bounded NF701 receiver stages
+        timeout-minutes: 175
+        run: |
+          set -euo pipefail
+          while read -r t; do
+            lake build "WeilDefect.Generated.NF701Unified.$t" 2>&1 | tee -a nf701-unified-build.log
+            echo "$t" >> nf701-unified-completed.txt
+          done < nf701-unified-targets.txt
+      - name: Compile and strictly audit complete finite receiver
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Generated.NF701Unified.Receiver 2>&1 | tee -a nf701-unified-build.log
+          lake env lean WeilDefect/Generated/NF701Unified/Audit.lean 2>&1 | tee nf701-unified-axioms.log
+          python - <<'PY'
+          import hashlib,json,re
+          from pathlib import Path
+          p=Path('nf701-unified-manifest.json');m=json.loads(p.read_text())
+          assert Path('nf701-unified-completed.txt').read_text().splitlines()==m['stage_targets']
+          expected=set(m['receiver_theorems']);found={}
+          s=Path('nf701-unified-axioms.log').read_text()
+          for n,x in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",s):
+              if n in expected:
+                  assert n not in found
+                  found[n]=[v.strip() for v in x.split(',') if v.strip()]
+          for n in re.findall(r"'WeilDefect\.(\w+)' does not depend on any axioms",s):
+              if n in expected:
+                  assert n not in found
+                  found[n]=[]
+          assert set(found)==expected and all(set(v)<={'propext','Classical.choice','Quot.sound'} for v in found.values())
+          assert 'nf701UnifiedSound' in found
+          Path('nf701-unified-audit.json').write_text(json.dumps({'manifest_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'theorems':found,'slots':548,'rows':2608},indent=2)+'\n')
+          print('NF701 unified concrete receiver LEAN PASS',548,2608,len(found))
+          PY
+      - name: Publish source-bound compiled checkpoint
+        run: |
+          set -euo pipefail
+          mkdir -p nf701-checkpoint
+          cp nf697-bank-binding.json nf701-unified-manifest.json nf701-unified-audit.json nf701-checkpoint/
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          r=Path('WeilDefect/Generated')
+          stages=['NF632','NF693','NF701','NF701Unified']
+          m={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for st in stages for p in sorted((r/st).glob('*.lean'))}
+          Path('nf701-checkpoint/source-binding.json').write_text(json.dumps(m,sort_keys=True,indent=2)+'\n')
+          PY
+          find .lake/build -type f \( -path '*/WeilDefect/Generated/NF632/*' -o -path '*/WeilDefect/Generated/NF693/*' -o -path '*/WeilDefect/Generated/NF701/*' -o -path '*/WeilDefect/Generated/NF701Unified/*' \) -print0 > /tmp/nf701-build-files
+          test -s /tmp/nf701-build-files
+          test -f .lake/build/lib/lean/WeilDefect/Generated/NF701Unified/Receiver.olean
+          tar --null -T /tmp/nf701-build-files -czf nf701-checkpoint/nf701-compiled.tar.gz
+          (cd nf701-checkpoint && sha256sum nf701-compiled.tar.gz source-binding.json nf697-bank-binding.json nf701-unified-manifest.json nf701-unified-audit.json > SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf701-unified-compiled-checkpoint
+          path: nf701-checkpoint/
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf701-unified-receiver-evidence
+          path: |
+            nf701-unified-*.json
+            nf701-unified-*.log
+            nf701-unified-completed.txt
+          if-no-files-found: warn
