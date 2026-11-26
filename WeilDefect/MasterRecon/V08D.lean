@@ -81,8 +81,12 @@ theorem moment_partial_sum_compact (f : ℕ → H →L[ℂ] ℂ) (v : ℕ → L)
   classical
   induction s using Finset.induction_on with
   | empty =>
-    simpa only [Finset.sum_empty] using
-      (isCompactOperator_zero : IsCompactOperator (0 : H →L[ℂ] L))
+    rw [Finset.sum_empty]
+    have he : (↑(0 : H →L[ℂ] L) : H → L) = 0 := by
+      funext x
+      simp
+    rw [he]
+    exact isCompactOperator_zero
   | insert j s hj ih =>
     rw [Finset.sum_insert hj]
     exact (moment_rank_one_compact (f j) (v j)).add ih
