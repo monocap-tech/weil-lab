@@ -1,4 +1,4 @@
-name: IV151 literal von Mangoldt and eight-row scaling probe
+name: IV152 physical translation envelope and integral receiver
 on:
   push:
     branches: ['staging/iv147-am-kernel-pilot']
@@ -17,9 +17,9 @@ jobs:
       - name: Authenticate literal bank and source preflight
         run: |
           set -euo pipefail
-          mkdir -p iv151/out
+          mkdir -p iv152/out
           grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
-          python research/iv146_am_exp_audit.py custody/iv146-am/am_cells.json iv151/out/shift-receipt.json | tee iv151/out/exact-audit.log
+          python research/iv146_am_exp_audit.py custody/iv146-am/am_cells.json iv152/out/shift-receipt.json | tee iv152/out/exact-audit.log
           python - <<'PY'
           import json,re
           from pathlib import Path
@@ -35,7 +35,7 @@ jobs:
           assert [x for c in chunks for x in c]==d['h']
           b=s.split('def neutralIV146Shifts : List (Int × Nat) := [',1)[1].split(']',1)[0]
           assert [list(map(int,x)) for x in re.findall(r'\((-?\d+),\s*(\d+)\)',b)]==d['shifts']
-          for stem in ['ActualZetaIV146AMCellData','ActualZetaIV147AMPilot','ActualZetaIV147AMRealCaps','ActualZetaIV150AMConcreteCaps','ActualZetaIV151AMActualCaps','ActualZetaIV151AMScalingProbe']:
+          for stem in ['ActualZetaIV146AMCellData','ActualZetaIV147AMPilot','ActualZetaIV147AMRealCaps','ActualZetaIV150AMConcreteCaps','ActualZetaIV151AMActualCaps','ActualZetaIV151AMScalingProbe','ActualZetaIV152AMPhysicalEnvelope','ActualZetaIV152AMIntegralReceiver']:
               t=(a/(stem+'.lean')).read_text()
               assert not re.search(r'\b(?:sorry|admit|sorryAx|native_decide|axiom)\b',t),stem
           print('Literal arrays and pilot source preflight PASS')
@@ -52,18 +52,17 @@ jobs:
         id: data
         run: |
           set -euo pipefail
-          timeout 600 lake build WeilDefect.Arithmetic.ActualZetaIV146AMCellData 2>&1 | tee iv151/out/data.log
-      - name: Eight-row scaling probe
-        id: probe
+          timeout 600 lake build WeilDefect.Arithmetic.ActualZetaIV146AMCellData 2>&1 | tee iv152/out/data.log
+      - name: Physical envelope and original arithmetic bank
         run: |
           set -euo pipefail
-          /usr/bin/time -v timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV151AMScalingProbe.lean 2>&1 | tee iv151/out/probe.log
-      - name: Actual von Mangoldt cap build
+          lake build WeilDefect.Arithmetic.ActualZetaIV151AMActualCaps
+          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV152AMPhysicalEnvelope.lean 2>&1 | tee iv152/out/envelope.log
+      - name: Generic integral receiver
         if: ${{ !cancelled() }}
         run: |
           set -euo pipefail
-          lake build WeilDefect.Arithmetic.ActualZetaIV150AMConcreteCaps
-          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV151AMActualCaps.lean 2>&1 | tee iv151/out/actual.log
+          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV152AMIntegralReceiver.lean 2>&1 | tee iv152/out/integral.log
       - name: Strict named axiom receipt
         if: ${{ !cancelled() }}
         run: |
@@ -72,10 +71,10 @@ jobs:
           import re
           from pathlib import Path
           allowed={'propext','Classical.choice','Quot.sound'}
-          for name, expected in [('actual',["Weight_nonneg","PrimePower","Actual_2","Actual_3","Actual_4","Actual_5","Actual_7","Actual_8","Actual_9","Actual_11","Actual_13","Actual_16","Actual_17","Actual_19","Actual_23","Actual_25","Actual_27","Actual_29","Actual_31","Actual_32","Actual_37","Actual_41","Actual_43","Actual_47","Actual_49","Actual_53"]),('probe',['EightRows'])]:
-              s=Path('iv151/out/'+name+'.log').read_text()
+          for name, expected in [('integral',['Integral_majorant']),('envelope',["Floor_add","CellEnvelope","Shift_bank","Prime_bank","Actual_caps","Pair_envelope","Physical_nonneg"])]:
+              s=Path('iv152/out/'+name+'.log').read_text()
               for suffix in expected:
-                  n='WeilDefect.neutralIV151'+suffix
+                  n='WeilDefect.neutralIV152'+suffix
                   m=re.findall(r"'"+re.escape(n)+r"' depends on axioms: \[([^\]]*)\]",s)
                   no=re.findall(r"'"+re.escape(n)+r"' does not depend on any axioms",s)
                   assert len(m)+len(no)==1,n
@@ -85,5 +84,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: iv151-am-receipts
-          path: iv151/out/
+          name: iv152-am-receipts
+          path: iv152/out/
