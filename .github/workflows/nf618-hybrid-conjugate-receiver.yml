@@ -148,7 +148,7 @@ jobs:
           lake --version
           retry lake update
           retry lake exe cache get
-      - name: Compile generic conjugate receiver
+      - name: Compile repaired generic conjugate receiver
         run: |
           set -euo pipefail
           lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalHybridEndpoint 2>&1 | tee nf618-hybrid-build.log

@@ -23,10 +23,23 @@ def nf618HybridPhase (f : ℚ) : ℂ :=
 theorem nf618HybridPhase_neg (f : ℚ) :
     nf618HybridPhase (-f) = starRingEnd ℂ (nf618HybridPhase f) := by
   unfold nf618HybridPhase
-  have h : Complex.I * ((2*Real.pi*((-f):ℝ):ℝ):ℂ) * (11/10) =
-      starRingEnd ℂ (Complex.I * ((2*Real.pi*(f:ℝ):ℝ):ℂ) * (11/10)) := by
-    apply Complex.ext <;> simp [Complex.mul_re, Complex.mul_im]
-  rw [h]
+  let x : ℝ := 2*Real.pi*(f:ℝ)
+  have ha : (Complex.I * ((2*Real.pi*((-f:ℚ):ℝ):ℝ):ℂ) * (11/10)) =
+      -((x:ℂ) * ((11/10:ℝ):ℂ) * Complex.I) := by
+    dsimp [x]
+    push_cast
+    ring
+  have hb : (Complex.I * ((2*Real.pi*(f:ℝ):ℝ):ℂ) * (11/10)) =
+      (x:ℂ) * ((11/10:ℝ):ℂ) * Complex.I := by
+    dsimp [x]
+    push_cast
+    ring
+  rw [ha, hb]
+  have hconj : (starRingEnd ℂ) ((x:ℂ) * ((11/10:ℝ):ℂ) * Complex.I) =
+      -((x:ℂ) * ((11/10:ℝ):ℂ) * Complex.I) := by
+    simp only [map_mul, Complex.conj_ofReal, Complex.conj_I]
+    ring
+  rw [← hconj]
   first | exact Complex.exp_conj _ | exact (Complex.exp_conj _).symm
         | simp [Complex.exp_conj]
 
