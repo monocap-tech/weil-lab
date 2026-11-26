@@ -1,0 +1,75 @@
+name: IV106-D3 compact Schwartz primitive
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'verification/iv106/iv106_d3/ActualZetaIV106D3CompactPrimitive.lean'
+      - '.github/workflows/iv106-d3-compact-primitive.yml'
+permissions:
+  contents: read
+jobs:
+  physical-action:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          path: research
+          persist-credentials: false
+      - name: Immutable source preflight
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          test "$(git -C research rev-parse HEAD^{tree})" = f038d8ff25d8f18fbe56a641ab6abded0b6ec8e9
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C candidate hash-object verification/iv106/iv106_d3/ActualZetaIV106D3CompactPrimitive.lean)" = 614fcad99ee5c7bfc936c13f7494e047db03d4b9
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/iv106/iv106_d3/ActualZetaIV106D3CompactPrimitive.lean
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106D3CompactPrimitive.lean
+          cp candidate/verification/iv106/iv106_d3/ActualZetaIV106D3CompactPrimitive.lean research/WeilDefect/Arithmetic/ActualZetaIV106D3CompactPrimitive.lean
+      - name: Install pinned Lean and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake exe cache get
+      - name: Native fresh source and strict named axiom audit
+        working-directory: research
+        run: |
+          set -euo pipefail
+          mkdir -p iv106-d3/out
+          touch iv106-d3/out/fresh.stamp
+          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106D3CompactPrimitive.olean
+          lake build WeilDefect.Arithmetic.ActualZetaIV106D3CompactPrimitive 2>&1 | tee iv106-d3/out/build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106D3CompactPrimitive.olean
+          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106D3CompactPrimitive.olean -nt iv106-d3/out/fresh.stamp
+          printf '%s\n' 'import WeilDefect.Arithmetic.ActualZetaIV106D3CompactPrimitive' '#print axioms WeilDefect.neutralIV106D3Endpoint' '#print axioms WeilDefect.neutralIV106D3Primitive_outside' '#print axioms WeilDefect.neutralIV106D3Schwartz_primitive' '#print axioms WeilDefect.neutralIV106D3TwoSided' > /tmp/iv106-d3-axioms.lean
+          lake env lean /tmp/iv106-d3-axioms.lean 2>&1 | tee iv106-d3/out/axioms.log
+          python3 - <<'PY'
+          import re,pathlib
+          s=pathlib.Path('iv106-d3/out/axioms.log').read_text()
+          p=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]"
+          ms=list(re.finditer(p,s,re.S))
+          assert len(ms)==4 and not re.sub(p,'',s,flags=re.S).strip()
+          assert {m[1] for m in ms}==set(["neutralIV106D3Endpoint","neutralIV106D3Primitive_outside","neutralIV106D3Schwartz_primitive","neutralIV106D3TwoSided"])
+          assert all({x.strip() for x in m[2].split(',') if x.strip()} <= {'propext','Classical.choice','Quot.sound'} for m in ms)
+          print('IV106-D3 strict named axioms PASS 4/4')
+          PY
+          sha256sum WeilDefect/Arithmetic/ActualZetaIV106D3CompactPrimitive.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106D3CompactPrimitive.olean > iv106-d3/out/sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv106-d3-physical-action-evidence
+          path: |
+            research/iv106-d3/out/
+            research/WeilDefect/Arithmetic/ActualZetaIV106D3CompactPrimitive.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106D3CompactPrimitive.olean
+          include-hidden-files: true
+          if-no-files-found: error
