@@ -54,7 +54,9 @@ theorem neutralIV109SpectralRow_memLp (a : ℝ) (u : 𝓢(ℝ,ℂ)) :
           mul_le_mul_of_nonneg_left (neutralIV109Weight_sq_le ξ) (sq_nonneg _)
         _ = _ := by ring
     simp only [neutralIV109SpectralRow, norm_mul, Complex.norm_real,
-      Real.norm_eq_abs, abs_of_nonneg (sq_nonneg _), mul_pow]
+      Real.norm_eq_abs, mul_pow, abs_mul,
+      abs_of_nonneg (sq_nonneg (|rightLimitCompactWeilSymbolMathlib a ξ|)),
+      abs_of_nonneg (sq_nonneg ‖(𝓕 (u.toLp 2 volume) : RealComplexL2) ξ‖)]
     calc
       _ ≤ (C*H*(Real.exp 1+1+ξ^2))*‖(𝓕 (u.toLp 2 volume) : RealComplexL2) ξ‖^2 :=
         mul_le_mul_of_nonneg_right h2 (sq_nonneg _)
@@ -99,7 +101,7 @@ theorem neutralIV109Mixed_physical_bound (a : ℝ) (ha : 0 ≤ a)
     neutralActualZetaLogWeilFormOperator_mixed, neutralLogPoleOperator_mixed,
     neutralIV102Lift_physical, neutralIV102Lift_physical,
     ← neutralIV109SpectralRow_pair]
-  have h0 := norm_inner_le_norm (neutralIV109SpectralRowL2 a u)
+  have h0 := norm_inner_le_norm (𝕜 := ℂ) (neutralIV109SpectralRowL2 a u)
     (𝓕 (v.toLp 2 volume) : RealComplexL2)
   rw [Lp.norm_fourier_eq] at h0
   have h1 : ‖sourceWindowMoment a (1/2) (v.toLp 2 volume)‖ ≤
