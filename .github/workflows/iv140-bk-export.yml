@@ -1,0 +1,55 @@
+name: IV140 BK binary recovery and lossless text export
+on:
+  push:
+    branches:
+      - staging/iv139-original-compact-attachment
+    paths:
+      - '.github/workflows/iv140-bk-export.yml'
+      - 'research/iv140_export_bk.py'
+permissions:
+  contents: write
+concurrency:
+  group: iv140-bk-export
+  cancel-in-progress: false
+jobs:
+  custody:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/checkout@v4
+        with:
+          repository: monocap-tech/canonical-return
+          ref: ea81fd040e51bf0ffbe8fdab3b5c6282cf293a0f
+          path: bk-source
+          fetch-depth: 1
+          persist-credentials: false
+          sparse-checkout: |
+            custody/T1D-archives/parts/CR-INT-T1D-BK-reproducibility.zip
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconstruct and losslessly export
+        run: |
+          set -euo pipefail
+          python -m pip install numpy==2.2.6
+          test "$(git -C bk-source rev-parse HEAD)" = ea81fd040e51bf0ffbe8fdab3b5c6282cf293a0f
+          python research/iv140_export_bk.py bk-source custody/iv140-bk
+          (cd custody/iv140-bk && sha256sum -c SHA256SUMS)
+      - name: Publish exact text custody to the same isolated branch
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- custody/iv140-bk
+          git diff --cached --quiet && exit 1
+          git commit -m 'IV140: preserve verified BK text custody [skip ci]'
+          git push origin HEAD:refs/heads/staging/iv139-original-compact-attachment
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv140-bk-text-custody
+          path: custody/iv140-bk/
+          if-no-files-found: warn
