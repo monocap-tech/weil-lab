@@ -26,6 +26,7 @@ theorem neutralIV106D1Energy_receiver
     (hbound : ∀ᵐ x ∂volume, A*f x - B*r x ≤ g x) :
     (A-B*J)*M ≤ ∫ x, g x := by
   have hi := integral_mono_ae ((hf.const_mul A).sub (hr.const_mul B)) hg hbound
+  change (∫ x : ℝ, A * f x - B * r x) ≤ (∫ x : ℝ, g x) at hi
   rw [integral_sub (hf.const_mul A) (hr.const_mul B),
     integral_const_mul, integral_const_mul, hm] at hi
   have hmul := mul_le_mul_of_nonneg_left hj hB
