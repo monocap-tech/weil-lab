@@ -1,0 +1,34 @@
+{
+  "scope": "local ZIP CRC, exact coverage, source/log/compiled object SHA256 and named axiom receipt verification; not fresh Lean compilation or import",
+  "artifact_id": 15154901590,
+  "run_id": 45893990410,
+  "sha256": "d52b91aeef91d992b4c820daf85d031607704490f110104509156450a706e7a5",
+  "archive_bytes": 403833,
+  "zip_entries": 248,
+  "block_interval": [
+    32,
+    128
+  ],
+  "row_interval": [
+    256,
+    1024
+  ],
+  "modules": 61,
+  "hashes_verified": 244,
+  "named_receipts": 109,
+  "axiom_free_leaf_receipts": 96,
+  "missing_or_duplicate_names": 0,
+  "prohibited_source_tokens": 0,
+  "leaf_seconds": 1001.2112488329992,
+  "total_seconds": 1089.721646804999,
+  "median_leaf_seconds": 20.82329355050001,
+  "median_leaf_rss_gib": 7.866792678833008,
+  "max_leaf_rss_gib": 7.966075897216797,
+  "olean_bytes": 870080,
+  "sector_object_sha256": "ecc27e99dcf268f160b9fee72928c59d1be5cd67e8bb995ee79e074e7e4f55f1",
+  "next_run": {
+    "id": 45905155636,
+    "job": 140200045627,
+    "status": "queued"
+  }
+}

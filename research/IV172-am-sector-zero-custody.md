@@ -1,0 +1,1 @@
+IV172 independently authenticated IV169 Sector 0 archive in local container: exact contiguous coverage, 61 modules, 109 named receipts, 244 source/log/object hashes, 248 CRC-clean entries. See JSON audit. IV171 run 45905155636 queued; no new runner, no mathematical source change. This is evidence custody, not new kernel compilation. No final arithmetic bound or RH claim.
