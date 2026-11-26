@@ -1,0 +1,75 @@
+{
+  "gate": "IV106-E18C",
+  "classification": "conditional exact rational determinant lower bound; no native attachment",
+  "cell_indices": "1..k",
+  "max_consecutive_k": 34,
+  "cases": [
+    {
+      "k": 1,
+      "sign_after_row_reversal": 1,
+      "lower_bound_power_of_ten": -19,
+      "numerator_digits": 4,
+      "denominator_digits": 22
+    },
+    {
+      "k": 2,
+      "sign_after_row_reversal": 1,
+      "lower_bound_power_of_ten": -44,
+      "numerator_digits": 8,
+      "denominator_digits": 51
+    },
+    {
+      "k": 3,
+      "sign_after_row_reversal": 1,
+      "lower_bound_power_of_ten": -77,
+      "numerator_digits": 14,
+      "denominator_digits": 90
+    },
+    {
+      "k": 4,
+      "sign_after_row_reversal": 1,
+      "lower_bound_power_of_ten": -116,
+      "numerator_digits": 22,
+      "denominator_digits": 137
+    },
+    {
+      "k": 8,
+      "sign_after_row_reversal": 1,
+      "lower_bound_power_of_ten": -346,
+      "numerator_digits": 63,
+      "denominator_digits": 409
+    },
+    {
+      "k": 16,
+      "sign_after_row_reversal": 1,
+      "lower_bound_power_of_ten": -1135,
+      "numerator_digits": 216,
+      "denominator_digits": 1351
+    },
+    {
+      "k": 32,
+      "sign_after_row_reversal": 1,
+      "lower_bound_power_of_ten": -3982,
+      "numerator_digits": 880,
+      "denominator_digits": 4862
+    },
+    {
+      "k": 34,
+      "sign_after_row_reversal": 1,
+      "lower_bound_power_of_ten": -4454,
+      "numerator_digits": 954,
+      "denominator_digits": 5407
+    }
+  ],
+  "premises": [
+    "off-support Fourier kernel transport",
+    "normalized plateau mass and identical translated packed profiles",
+    "E18A physical carrier attachment",
+    "Cauchy-Binet and Vandermonde expansion of finite truncations and determinant continuity"
+  ],
+  "not_claimed": [
+    "native-certified response rank",
+    "explicit corrected trials",
+    "positive Schur matrix"
+  ]
+}
