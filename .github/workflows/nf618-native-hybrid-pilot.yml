@@ -225,6 +225,8 @@ jobs:
           PY
       - name: Regenerate and authenticate all 53 pilot modules
         run: python scripts/nf618_native_hybrid_pilot.py
+      - name: Normalize false-sign conditionals with explicit rational equality
+        run: python scripts/nf618_repair_bool_branch.py WeilDefect/Generated/NF618HybridPilot 2 351e973cd013979bf17f9d8d7285ad2e30a1431a484d530e0e88b3bd3891550f
       - uses: actions/upload-artifact@v4
         with:
           name: nf618-native-hybrid-pilot-source
