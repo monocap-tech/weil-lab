@@ -32,7 +32,9 @@ theorem f08_076_core_dense (a : ℝ) (ha : 0 < a) :
   obtain ⟨q, s, hs, hw, hp, he⟩ :=
     f08_075_original_schwartzCarrier_approx ha k ε hε
   refine ⟨q, ?_, ?_⟩
-  · simpa only [dist_eq_norm, norm_sub_rev] using he
+  · change dist q k < ε
+    rw [dist_eq_norm]
+    exact he
   · exact ⟨s, hs, hw, hp⟩
 
 /-- Exact lift identification for any physically faithful lift, in particular
