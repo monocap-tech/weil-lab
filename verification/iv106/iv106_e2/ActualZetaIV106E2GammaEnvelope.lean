@@ -46,8 +46,7 @@ theorem neutralIV106E2Quarter (y : ℝ) :
     have h := neutralIV106E2Inv_re (z+(n:ℂ)+1) hpos
     have he : (1/(w+(n:ℂ)+1)).re = 1/(z+(n:ℂ)+1).re := by
       simp [w,z,one_div,Complex.inv_re,Complex.normSq_apply]
-      field_simp
-      <;> ring
+      <;> field_simp <;> ring
     simp only [Complex.sub_re]
     rw [he]
     linarith
@@ -55,12 +54,14 @@ theorem neutralIV106E2Quarter (y : ℝ) :
   rw [ht.tsum_eq, hs.tsum_eq] at hsum
   have hi := neutralIV106E2Inv_re z (by rw [hz]; norm_num)
   have hwrec : (1/w).re = 4 := by norm_num [w]
-  rw [hz] at hi
-  norm_num at hi
+  have hi' : (1/z).re ≤ 4 := by
+    calc
+      _ ≤ 1/z.re := hi
+      _ = 4 := by rw [hz]; norm_num
   simp only [Complex.add_re, Complex.ofReal_re] at hsum
   rw [hwrec] at hsum
   change (Complex.digamma w).re ≤ (Complex.digamma z).re
-  linarith
+  linarith only [hsum, hi']
 
 /-- Sharp vertical Stirling estimate, with the explicit real reciprocal correction. -/
 theorem neutralIV106E2High (ξ : ℝ) (hξ : ξ ≠ 0)
@@ -85,8 +86,16 @@ theorem neutralIV106E2High (ξ : ℝ) (hξ : ξ ≠ 0)
     rw [div_eq_mul_inv, Complex.mul_re, Complex.inv_re, Complex.inv_im,
       Complex.normSq_apply, hre, him]
     norm_num
-    apply (div_le_div_iff₀ (by positivity) (by positivity)).mpr
-    nlinarith
+    have hden : 0 < (1/16:ℝ)+(Real.pi*ξ)^2 := by positivity
+    have haux : (1/8:ℝ)/(1/16+(Real.pi*ξ)^2) ≤ (1/8)/((Real.pi*ξ)^2) := by
+      apply (div_le_div_iff₀ hden hy).mpr
+      linarith
+    calc
+      _ = (1/8:ℝ)/(1/16+(Real.pi*ξ)^2) := by
+        rw [pow_two]
+        ring
+      _ ≤ (1/8:ℝ)/((Real.pi*ξ)^2) := haux
+      _ = _ := by ring
   rw [him] at hd
   have hsym : ((1:ℂ)/4)+Complex.I*(((2*Real.pi*ξ:ℝ):ℂ)/2) = z := by
     dsimp [z]; push_cast; ring
@@ -116,8 +125,9 @@ theorem neutralIV106E2Global (ξ : ℝ) (hξ : ξ ≠ 0) :
   have hs : (Real.pi*ξ)^2 < 1/4 := by nlinarith [sq_abs (Real.pi*ξ),abs_nonneg (Real.pi*ξ)]
   have hb : (25/2:ℝ) ≤ 25/(8*Real.pi^2*ξ^2) := by
     apply (le_div_iff₀ (by positivity)).mpr
-    rw [show Real.pi^2*ξ^2 = (Real.pi*ξ)^2 by ring]
-    nlinarith
+    calc
+      _ = 100*(Real.pi*ξ)^2 := by ring
+      _ ≤ 25 := by linarith
   have ha := neutralIV106E2Quarter (Real.pi*ξ)
   rw [neutralActualZetaDigamma_quarter_re] at ha
   have h2 := Real.log_le_sub_one_of_pos (by norm_num : 0 < (2:ℝ))

@@ -31,7 +31,7 @@ jobs:
           test "$(git -C research hash-object WeilDefect/Arithmetic/ActualZetaNativeLogBounds.lean)" = f8728d020bff9d0427ae6e4969da355f37182224
           test "$(git -C research hash-object WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_DigammaSeries_hasSum_digamma_series.lean)" = c4d8e801c201a0dbdba34bb1f0b8033ef25aba3c
           test "$(git -C research hash-object WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_StirlingVert_digamma_stirling.lean)" = 87eb18a6d6a4011aa938862636c57cdbc3a1bbee
-          test "$(git -C candidate hash-object verification/iv106/iv106_e2/ActualZetaIV106E2GammaEnvelope.lean)" = 6de2fac49ed3631ccbad02273121e79a8ac0cef6
+          test "$(git -C candidate hash-object verification/iv106/iv106_e2/ActualZetaIV106E2GammaEnvelope.lean)" = 6bf91d7024ab6893500ed12ccc0de2fc769f5e41
           ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/iv106/iv106_e2/ActualZetaIV106E2GammaEnvelope.lean
           test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E2GammaEnvelope.lean
           cp candidate/verification/iv106/iv106_e2/ActualZetaIV106E2GammaEnvelope.lean research/WeilDefect/Arithmetic/ActualZetaIV106E2GammaEnvelope.lean
