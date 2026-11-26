@@ -102,6 +102,7 @@ theorem neutralIV134ResidualGram_energy {n : ℕ}
     intro i hi
     rw [inner_smul_left, inner_sum]
     congr 1
+    change (∑ j : Fin n, inner ℂ (r i) (r j) * c j) = _
     apply Finset.sum_congr rfl
     intro j hj
     rw [inner_smul_right]
