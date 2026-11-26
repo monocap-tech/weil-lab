@@ -1,0 +1,13 @@
+{
+  "modules": 650,
+  "named_theorems": 1163,
+  "row_blocks": 1024,
+  "rows": 8192,
+  "internal_import_edges": 649,
+  "duplicate_names": 0,
+  "missing_blocks": 0,
+  "prohibited_tokens": [],
+  "repeat_generation_identical": true,
+  "generator_git_blob": "2c5ef66079d949481b3226324fff1bf679d1626d",
+  "scope": "source generation only, prefix assembly reconstructed from existing generator, no Lean compilation"
+}

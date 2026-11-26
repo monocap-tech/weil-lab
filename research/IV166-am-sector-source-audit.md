@@ -1,0 +1,7 @@
+# IV166 — Full sector source topology checked
+
+IV163 run 45890018606: original arithmetic dictionary step failed; importable symmetry bank running; row prefix and strict audit pending. No artifact available, job log not yet available. No conjectural dictionary repair or new runner activated.
+
+IV165 sector generator was reconstructed byte-for-byte in the local container and verified by Git blob SHA 2c5ef66079d949481b3226324fff1bf679d1626d. Executed all eight sectors and final RowBank assembly, using archived IV159 prefix leaf sources and locally reconstructed IV160 prefix assembly. Checked all generated Lean source files for unique theorem names, exact leaf block coverage 0..1023, internal imports, prohibited proof constructs, and byte-identical repeated generation. Result: 650 modules, 1163 named theorems, 1024 blocks (8192 rows), 649 internal import edges, zero missing or duplicate blocks or names, zero prohibited tokens. This is a deterministic source-topology audit, not elaboration or kernel compilation; the prefix assembly was reconstructed from its generator structure rather than compiled. The full proof bank remains outstanding.
+
+Local IV159 archive verification repeated: ZIP SHA256 de507ff87332c018843a81c13fa500821162dba32a7e75eee02080d683f5e351, 173 CRC-checked members, 23 named analytic audit receipts, all 128 symmetry and 32 row blocks clean and complete. Symmetry median/max RSS 7.22654/7.22858 GiB; row 7.94326/7.99578 GiB. No fresh local Lean installation available. No global positivity or RH claim.
