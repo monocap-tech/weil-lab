@@ -40,7 +40,7 @@ theorem physicalL1Value_bound (μ : Measure ℝ) [IsFiniteMeasure μ]
       1 / 2 := by norm_num
   rw [he] at h
   have hm : μ Set.univ ^ (1 / 2 : ℝ) ≠ ∞ :=
-    ENNReal.rpow_ne_top_of_nonneg (by norm_num) (ne_of_lt (measure_univ_lt_top))
+    ENNReal.rpow_ne_top_of_nonneg (by norm_num) (measure_ne_top μ Set.univ)
   have hn := ENNReal.toReal_mono
     (ENNReal.mul_ne_top (Lp.eLpNorm_ne_top f) hm) h
   rw [ENNReal.toReal_mul] at hn
