@@ -21,7 +21,7 @@ theorem kernel_norm_bound (t : ℝ) (ht : 0 ≤ t) (x : ℝ) (hx : |x| ≤ t)
   exact mul_le_mul_of_nonneg_left hx (norm_nonneg _)
 
 theorem mellin_integrand_bound (t : ℝ) (ht : 0 ≤ t) (f : ℝ → ℂ)
-    (hs : ∀ᵐ x ∂volume, x ∉ Icc (-t) t → f x = 0) (z : ℂ) :
+    (hs : ∀ᵐ x : ℝ ∂volume, x ∉ Icc (-t) t → f x = 0) (z : ℂ) :
     ∀ᵐ x : ℝ ∂volume, ‖Complex.exp (z * (x : ℂ)) * f x‖ ≤
       Real.exp (‖z‖ * t) * ‖f x‖ := by
   filter_upwards [hs] with x hx
@@ -37,14 +37,14 @@ theorem mellin_integrand_measurable (f : ℝ → ℂ) (hf : Integrable f) (z : �
   exact h.aestronglyMeasurable.mul hf.aestronglyMeasurable
 
 theorem mellin_integrand_integrable (t : ℝ) (ht : 0 ≤ t) (f : ℝ → ℂ)
-    (hf : Integrable f) (hs : ∀ᵐ x ∂volume, x ∉ Icc (-t) t → f x = 0)
+    (hf : Integrable f) (hs : ∀ᵐ x : ℝ ∂volume, x ∉ Icc (-t) t → f x = 0)
     (z : ℂ) :
     Integrable (fun x : ℝ => Complex.exp (z * (x : ℂ)) * f x) := by
   exact (hf.norm.const_mul (Real.exp (‖z‖ * t))).mono'
     (mellin_integrand_measurable f hf z) (mellin_integrand_bound t ht f hs z)
 
 theorem mellin_derivative_bound (t : ℝ) (ht : 0 ≤ t) (f : ℝ → ℂ)
-    (hs : ∀ᵐ x ∂volume, x ∉ Icc (-t) t → f x = 0) (z : ℂ) :
+    (hs : ∀ᵐ x : ℝ ∂volume, x ∉ Icc (-t) t → f x = 0) (z : ℂ) :
     ∀ᵐ x : ℝ ∂volume, ∀ w ∈ ball z 1,
       ‖Complex.exp (w * (x : ℂ)) * (x : ℂ) * f x‖ ≤
         (Real.exp ((‖z‖ + 1) * t) * t) * ‖f x‖ := by
@@ -66,7 +66,7 @@ theorem mellin_derivative_bound (t : ℝ) (ht : 0 ≤ t) (f : ℝ → ℂ)
   · simp [hx hm]
 
 theorem mellin_hasDerivAt (t : ℝ) (ht : 0 ≤ t) (f : ℝ → ℂ)
-    (hf : Integrable f) (hs : ∀ᵐ x ∂volume, x ∉ Icc (-t) t → f x = 0)
+    (hf : Integrable f) (hs : ∀ᵐ x : ℝ ∂volume, x ∉ Icc (-t) t → f x = 0)
     (z : ℂ) :
     HasDerivAt (V07A.mellin f)
       (∫ x : ℝ, Complex.exp (z * (x : ℂ)) * (x : ℂ) * f x) z := by
@@ -93,14 +93,14 @@ theorem mellin_hasDerivAt (t : ℝ) (ht : 0 ≤ t) (f : ℝ → ℂ)
     (mellin_derivative_bound t ht f hs z) hb hdiff).2
 
 theorem mellin_entire (t : ℝ) (ht : 0 ≤ t) (f : ℝ → ℂ)
-    (hf : Integrable f) (hs : ∀ᵐ x ∂volume, x ∉ Icc (-t) t → f x = 0)
+    (hf : Integrable f) (hs : ∀ᵐ x : ℝ ∂volume, x ∉ Icc (-t) t → f x = 0)
     (z : ℂ) : AnalyticAt ℂ (V07A.mellin f) z := by
   have h : Differentiable ℂ (V07A.mellin f) :=
     fun w => (mellin_hasDerivAt t ht f hf hs w).differentiableAt
   exact h.analyticAt z
 
 theorem mellin_exponential_type (t : ℝ) (ht : 0 ≤ t) (f : ℝ → ℂ)
-    (hf : Integrable f) (hs : ∀ᵐ x ∂volume, x ∉ Icc (-t) t → f x = 0)
+    (hf : Integrable f) (hs : ∀ᵐ x : ℝ ∂volume, x ∉ Icc (-t) t → f x = 0)
     (z : ℂ) :
     ‖V07A.mellin f z‖ ≤ Real.exp ((∫ x : ℝ, ‖f x‖) + t * ‖z‖) := by
   let A := ∫ x : ℝ, ‖f x‖
