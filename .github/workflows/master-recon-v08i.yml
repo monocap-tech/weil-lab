@@ -1,0 +1,58 @@
+name: MASTER-RECON V08I
+
+on:
+  push:
+    branches: [master-recon-001-neutral-shell]
+    paths:
+      - "WeilDefect/MasterRecon/V08I.lean"
+      - ".github/workflows/master-recon-v08i.yml"
+  pull_request:
+    paths:
+      - "WeilDefect/MasterRecon/V08I.lean"
+      - ".github/workflows/master-recon-v08i.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  abstract-core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Elan
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned dependencies
+        run: lake update
+      - name: Fetch mathlib cache
+        run: lake exe cache get
+      - name: Compile V08I and inspect axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.MasterRecon.V08H
+          lake env lean WeilDefect/MasterRecon/V08I.lean 2>&1 | tee v08i-lean.log
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          s = Path("v08i-lean.log").read_text()
+          names = ["multiplier_mem","mulValue_ae","mulValue_bound","multiplier_ae","logWeight_lower","logWeight_pos","logWeight_continuous","inverseWeight_measurable","inverseWeight_bound","outsideMask_measurable","outsideMask_bound","logCarrier_closed","logCarrier_complete","physicalInclusion_support","physicalInclusion_fourier_ae","logCarrier_energy_ae","logCarrier_energy","logCarrier_energy_integrable"]
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for name in names:
+              m = re.search(r"'WeilDefect\.MasterRecon\.V08I\."+name+r"' depends on axioms: \[([^\]]*)\]", s)
+              if m is None:
+                  if f"'WeilDefect.MasterRecon.V08I.{name}' does not depend on any axioms" in s:
+                      continue
+                  raise SystemExit("Missing axiom audit: " + name)
+              axioms = {x.strip() for x in m.group(1).split(",") if x.strip()}
+              if not axioms <= allowed:
+                  raise SystemExit(f"Unexpected axioms for {name}: {axioms - allowed}")
+          print("V08I strict axiom audit PASS")
+          PY
+      - name: Upload compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: master-recon-v08i-lean
+          path: v08i-lean.log
