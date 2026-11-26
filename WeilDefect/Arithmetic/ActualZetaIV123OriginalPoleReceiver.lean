@@ -44,8 +44,8 @@ theorem neutralIV123Pole_diagonal (a : ℝ) (f : NeutralLogHilbertCarrier a) :
         (neutralIV123OddMoment a (neutralLogPhysical f.val)).im ^ 2) := by
   rw [neutralIV123Pole_mixed]
   simp only [Complex.sub_re, Complex.mul_re, Complex.mul_im,
-    Complex.conj_re, Complex.conj_im, Complex.ofNat_re, Complex.ofNat_im]
-  ring
+    Complex.conj_re, Complex.conj_im]
+  norm_num <;> ring
 
 theorem neutralIV123Original_mixed (a : ℝ) (ha : 0 ≤ a)
     (u v : 𝓢(ℝ,ℂ))
