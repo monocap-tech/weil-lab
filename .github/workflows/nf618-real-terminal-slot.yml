@@ -224,6 +224,7 @@ jobs:
           mkdir -p WeilDefect/Generated/NF618RealTerminal
           cat > WeilDefect/Generated/NF618RealTerminal/Slot.lean <<'EOF'
           import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalSemanticEndpointCache
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalFastMomentTable
           import WeilDefect.Generated.NF632.Pi
           import WeilDefect.Generated.NF690.Bank
           
