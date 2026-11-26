@@ -1,0 +1,2145 @@
+{
+  "source_repo": "monocap-tech/canonical-return",
+  "source_commit": "ea81fd040e51bf0ffbe8fdab3b5c6282cf293a0f",
+  "archives": {
+    "CR-INT-T1D-AM-reproducibility.zip": {
+      "bytes": 17706,
+      "sha256": "52529ba3c21926ada5bbb1a97cb8175660b94a510c4e57b4d248f042c417aa2d",
+      "provenance": "RECONSTRUCTED_DIGEST_AGREES_BOTH",
+      "parts": [
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-AM-reproducibility.zip/part-0000.bin",
+          "bytes": 17706,
+          "git_blob": "937c7e8711be36d45125ec329f2012ed86c13a75"
+        }
+      ]
+    },
+    "CR-INT-T1D-AP-reproducibility.zip": {
+      "bytes": 8584,
+      "sha256": "4da87232b78c256a630cdc21e80f8332519d9c9d71af593687f2e13dfc9a536c",
+      "provenance": "RECONSTRUCTED_DIGEST_AGREES_BOTH",
+      "parts": [
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-AP-reproducibility.zip/part-0000.bin",
+          "bytes": 8584,
+          "git_blob": "7ae8f206bb274e121977bec130e57f0608b00b39"
+        }
+      ]
+    },
+    "CR-INT-T1D-AQ-reproducibility.zip": {
+      "bytes": 114738,
+      "sha256": "919b3b5922c74445259e511f8a91e5f65dbbcebbd2dc30c01fdfaee3d33b4c76",
+      "provenance": "RECONSTRUCTED_DIGEST_AGREES_BOTH",
+      "parts": [
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-AQ-reproducibility.zip/part-0000.bin",
+          "bytes": 114738,
+          "git_blob": "c9fe0317fe09bb25b92736310772e9026a6a492f"
+        }
+      ]
+    },
+    "CR-INT-T1D-AS-reproducibility.zip": {
+      "bytes": 223091,
+      "sha256": "fb0ced8a42e2c0ee286f6b2f39df0125a41f78e2ed4a91945aaef17bab06fb0b",
+      "provenance": "RECONSTRUCTED_DIGEST_AGREES_BOTH",
+      "parts": [
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-AS-reproducibility.zip/part-0000.bin",
+          "bytes": 223091,
+          "git_blob": "a0bd62b4e484cf43fe78afdfc2cc7ef88a067b37"
+        }
+      ]
+    },
+    "CR-INT-T1D-AW-reproducibility.zip": {
+      "bytes": 248937,
+      "sha256": "bb40cf5b9eea5237c8d5d315fae49647e9b04b273550b33056cb068f20309b3b",
+      "provenance": "RECONSTRUCTED_DIGEST_AGREES_BOTH",
+      "parts": [
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-AW-reproducibility.zip/part-0000.bin",
+          "bytes": 248937,
+          "git_blob": "e07096f41308fedfae6d9fc5f485e48d59c66065"
+        }
+      ]
+    },
+    "CR-INT-T1D-AZ-reproducibility.zip": {
+      "bytes": 294843,
+      "sha256": "8febf674b2242365d87798cbe42f2dec99af0258ef399dfc361512a7c1beeb62",
+      "provenance": "RECONSTRUCTED_DIGEST_AGREES_BOTH",
+      "parts": [
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-AZ-reproducibility.zip/part-0000.bin",
+          "bytes": 294843,
+          "git_blob": "b2e78fb91c7b165cc5ea2ff5620e8aebfec4637d"
+        }
+      ]
+    },
+    "CR-INT-T1D-BD-reproducibility.zip": {
+      "bytes": 299529,
+      "sha256": "0fdff945137c129a2b6ef3d57881c56a6d87ba2ceaab45165d33c8dadb16b1e3",
+      "provenance": "RECONSTRUCTED_DIGEST_AGREES_BOTH",
+      "parts": [
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-reproducibility.zip/part-0000.bin",
+          "bytes": 299529,
+          "git_blob": "9338ddf46e24310e257190b6ea0ffa09fe9c8805"
+        }
+      ]
+    },
+    "CR-INT-T1D-BI-reproducibility.zip": {
+      "bytes": 41807,
+      "sha256": "56917699df9020ceac051300aaf0dc503792f9bc02cd3df49d7fe1dc2573d2a7",
+      "provenance": "RECONSTRUCTED_DIGEST_AGREES_BOTH",
+      "parts": [
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-reproducibility.zip/part-0000.bin",
+          "bytes": 41807,
+          "git_blob": "607c09bcf342690c305ebb2e5902d167d380e403"
+        }
+      ]
+    },
+    "CR-INT-T1D-BJ-reproducibility.zip": {
+      "bytes": 216032,
+      "sha256": "ae6cf92586765e7141d4d5fa38f39ad6cdb3031519bd7b1519efe8fa1439aa06",
+      "provenance": "RECONSTRUCTED_DIGEST_AGREES_BOTH",
+      "parts": [
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BJ-reproducibility.zip/part-0000.bin",
+          "bytes": 216032,
+          "git_blob": "1bf491bfaa07c6cc6d13174361b192f85cb130bd"
+        }
+      ]
+    },
+    "CR-INT-T1D-BI-even-projected-checkpoint.zip": {
+      "bytes": 111791850,
+      "sha256": "649b2ff7d909fa85bb3319489a25d236fb9285fb9c08f42e0f8240ff0e0291e9",
+      "provenance": "ORIGINAL_PIN_MATCH_BOTH",
+      "parts": [
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0000.bin",
+          "bytes": 780000,
+          "git_blob": "aa73f7a2e2f4041b0185f46d812d130100f68da3"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0001.bin",
+          "bytes": 780000,
+          "git_blob": "1695505a4a4dde186d0d0173f42d248337e6be92"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0002.bin",
+          "bytes": 780000,
+          "git_blob": "291750c2c7fa2cd93dcf13afafbb18b75d737501"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0003.bin",
+          "bytes": 780000,
+          "git_blob": "9c754c15d2557916834dbf466efe8f144884a9fa"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0004.bin",
+          "bytes": 780000,
+          "git_blob": "7230b888101673956fa9da0d9f2202d6ec22f4f5"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0005.bin",
+          "bytes": 780000,
+          "git_blob": "2940a45d413c0576cf27bd13e1a3c8fc5a7c066e"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0006.bin",
+          "bytes": 780000,
+          "git_blob": "2680dd41f81546e701563fb8c1c589a2e6a95ee2"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0007.bin",
+          "bytes": 780000,
+          "git_blob": "7079d4944e01e870237608a8edd4a68f314f63dd"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0008.bin",
+          "bytes": 780000,
+          "git_blob": "cd004705fa11e27b5b0151583834e4bdd124dd69"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0009.bin",
+          "bytes": 780000,
+          "git_blob": "10cd2f8aa9bff9883c3bf3670fb2c59723d528cf"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0010.bin",
+          "bytes": 780000,
+          "git_blob": "39142f629a2c4d78a0a864707dc81190a4d604ca"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0011.bin",
+          "bytes": 780000,
+          "git_blob": "715f79e2c4e905731e7560ab28dbd13060e50879"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0012.bin",
+          "bytes": 780000,
+          "git_blob": "66792e318571aa73abc51ed6f5ebbbff491bd7b6"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0013.bin",
+          "bytes": 780000,
+          "git_blob": "7595092cbc45db82fb7bc79a59a16e08751aba37"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0014.bin",
+          "bytes": 780000,
+          "git_blob": "ff4d55fa8b0ffa36582d1c220fc2d64e1dfb5771"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0015.bin",
+          "bytes": 780000,
+          "git_blob": "32edc60125a4c3ffeac134e0ef69ecd02fc809e5"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0016.bin",
+          "bytes": 780000,
+          "git_blob": "1c528a56855d1eb44607af48d0e8745b3d1ed38b"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0017.bin",
+          "bytes": 780000,
+          "git_blob": "37e4ad94ad0ea96fe44520d7f2b48fa9d75667a6"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0018.bin",
+          "bytes": 780000,
+          "git_blob": "3f0d30bf1139a47e3dc9866bc515fcdf000c2595"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0019.bin",
+          "bytes": 780000,
+          "git_blob": "9708e589f8c85345bd8f91f20783141dad33d631"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0020.bin",
+          "bytes": 780000,
+          "git_blob": "f127d663088e26b617441583388d273351804003"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0021.bin",
+          "bytes": 780000,
+          "git_blob": "760e7ea216aa366a34f58a4fa9f0237151d470fc"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0022.bin",
+          "bytes": 780000,
+          "git_blob": "b8f92733711733d3d4b8fd82f813c9ff03a07f60"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0023.bin",
+          "bytes": 780000,
+          "git_blob": "bb82b50c0a6b1163e1b0790a67b4796fbc041f06"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0024.bin",
+          "bytes": 780000,
+          "git_blob": "7178066b0c4ac12f84675143bb1f37be7483c339"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0025.bin",
+          "bytes": 780000,
+          "git_blob": "dfb7323111a1f450f8c364fbec143b34cb2d680a"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0026.bin",
+          "bytes": 780000,
+          "git_blob": "b3e545a6d77a281ce03a83a769416ed8b9b0de32"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0027.bin",
+          "bytes": 780000,
+          "git_blob": "c8756ee1a4ffb2cafa3723e4ff8e8c55fe4bb444"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0028.bin",
+          "bytes": 780000,
+          "git_blob": "7fd1cae7d21f66f051c6db828f51e8e4da83207e"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0029.bin",
+          "bytes": 780000,
+          "git_blob": "67f974314bb1ca90e6483e0962d3d47f4beead3b"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0030.bin",
+          "bytes": 780000,
+          "git_blob": "ddc9b077cd0c6ccbf1bd43d771dc6faa76b5769b"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0031.bin",
+          "bytes": 780000,
+          "git_blob": "2d08897d6e9e931a33ec24ddf1dd87fd8499ea38"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0032.bin",
+          "bytes": 780000,
+          "git_blob": "8e7347e2eef47ea71614de49295e676e71c8bdb2"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0033.bin",
+          "bytes": 780000,
+          "git_blob": "e0562282edd7b8e56029d681d1a86f06509d2093"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0034.bin",
+          "bytes": 780000,
+          "git_blob": "64335eaaec5c13fd31b09c6b5f5dbc09c0ea3799"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0035.bin",
+          "bytes": 780000,
+          "git_blob": "b122d7c1f8e5aec5abc10d91639217ac14868683"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0036.bin",
+          "bytes": 780000,
+          "git_blob": "ec1788a62f3f45c518c70ccd2267611c283e5ec3"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0037.bin",
+          "bytes": 780000,
+          "git_blob": "89e8dfef05087d0c6b4755edc7e307fbed062353"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0038.bin",
+          "bytes": 780000,
+          "git_blob": "f8a5f55d4fa26755a858a9250dd683d60f6d652b"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0039.bin",
+          "bytes": 780000,
+          "git_blob": "8fdcdd9965ef18ca4df7512ec315a47032a6a6b0"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0040.bin",
+          "bytes": 780000,
+          "git_blob": "64f00e2cfcb9c0bc5d38f60d2fc7f461696ee3f0"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0041.bin",
+          "bytes": 780000,
+          "git_blob": "d4eb64221017563c4fa9714a5bc1cf5fcbefaa6f"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0042.bin",
+          "bytes": 780000,
+          "git_blob": "df71f9e710286c7e6673e47d02ba060ead5358ee"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0043.bin",
+          "bytes": 780000,
+          "git_blob": "d208b247e0ef2b0d65e9a7ab04de63663aff1e79"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0044.bin",
+          "bytes": 780000,
+          "git_blob": "ea3322bbb3a9e5a1193e3b64dc6f180ea582f6e2"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0045.bin",
+          "bytes": 780000,
+          "git_blob": "e4d5a14fd9980d8e323b767775139cee07864bec"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0046.bin",
+          "bytes": 780000,
+          "git_blob": "206259c472202a2640f5adf0ea40c7ade31faebd"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0047.bin",
+          "bytes": 780000,
+          "git_blob": "287eaaf83bdd1a942860ad3aa2f76e707781d678"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0048.bin",
+          "bytes": 780000,
+          "git_blob": "bd0199435bdc38a2a512b1ed524cd122799eb3f5"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0049.bin",
+          "bytes": 780000,
+          "git_blob": "792517d86cf235e460ee60ebdaadfd431cc9c758"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0050.bin",
+          "bytes": 780000,
+          "git_blob": "a68a86b8e21656bc03eb9a960fad441c99606a84"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0051.bin",
+          "bytes": 780000,
+          "git_blob": "7ce42d4a0ad502c3e293997c69c7062b7de3e527"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0052.bin",
+          "bytes": 780000,
+          "git_blob": "18bee6f6a0b51f2ca055126561145f75f6e7a642"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0053.bin",
+          "bytes": 780000,
+          "git_blob": "ab49a2451bb489cd6a575f34d22ee8265d92112a"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0054.bin",
+          "bytes": 780000,
+          "git_blob": "dc638e94c5bfa2f8e98a6df90e7dc8c06696e98a"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0055.bin",
+          "bytes": 780000,
+          "git_blob": "206eb879143daa269ece338eaecdc786c1ac20e9"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0056.bin",
+          "bytes": 780000,
+          "git_blob": "3297a9f90ffb102bde705896eba069e6613089ff"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0057.bin",
+          "bytes": 780000,
+          "git_blob": "5ce8a20183777d35ff9dd5244972625845a4ca17"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0058.bin",
+          "bytes": 780000,
+          "git_blob": "8a5166dea26167ed4bbfca512d497dea7dc2db6a"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0059.bin",
+          "bytes": 780000,
+          "git_blob": "174da284e6f06f80cfb66ab8ed168042209b72a5"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0060.bin",
+          "bytes": 780000,
+          "git_blob": "3e6ea5b3081543c9dfe416c4340a61c4b0b282c8"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0061.bin",
+          "bytes": 780000,
+          "git_blob": "851a434900277daa1491f4a93282af3d80fd3cc1"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0062.bin",
+          "bytes": 780000,
+          "git_blob": "945708de84d4c6f795a2292997d543a328aafde5"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0063.bin",
+          "bytes": 780000,
+          "git_blob": "d99abdf0fd62ad7c7b03098f51b43d3b0174341c"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0064.bin",
+          "bytes": 780000,
+          "git_blob": "3105768ce0be6c2af20d54cfb1b487c8ba8f3a32"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0065.bin",
+          "bytes": 780000,
+          "git_blob": "77de7a58ba6c39243c59c68958f4ef8279894df5"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0066.bin",
+          "bytes": 780000,
+          "git_blob": "7eeea8b2d6864341729cb4420aec6fdae80b6014"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0067.bin",
+          "bytes": 780000,
+          "git_blob": "3e3aa8261ba4506a14c0321275a78c1f733eb11a"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0068.bin",
+          "bytes": 780000,
+          "git_blob": "d0da7e5f794038827cab81edcdf4398219c3a02e"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0069.bin",
+          "bytes": 780000,
+          "git_blob": "62f07e2ded7d7ea1c8673202dae0f038814d3e87"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0070.bin",
+          "bytes": 780000,
+          "git_blob": "61f0308c9a69d19ab1bb96c2c1ded8f20b5250b1"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0071.bin",
+          "bytes": 780000,
+          "git_blob": "454523ca54f9fd86e88fcce75a31bd77a0403776"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0072.bin",
+          "bytes": 780000,
+          "git_blob": "0614232ac14fa9546344c3c38b9b220a56264f79"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0073.bin",
+          "bytes": 780000,
+          "git_blob": "f52af9e14c34bbdfe012d7573ec743848fadef7d"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0074.bin",
+          "bytes": 780000,
+          "git_blob": "732884621d831f0f08e48ab6db95fdfffe93b58b"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0075.bin",
+          "bytes": 780000,
+          "git_blob": "0e9bc32dfa4db314ab01f1408612623731789c6d"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0076.bin",
+          "bytes": 780000,
+          "git_blob": "03bc39ed6db9145ba0a4b19bab311d5b9df970f2"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0077.bin",
+          "bytes": 780000,
+          "git_blob": "ae4f71fb8eebd9c85307cfe589a992f2d2922322"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0078.bin",
+          "bytes": 780000,
+          "git_blob": "ea7a21c40205a3ec4c0810a3a54d1c35459b4cd4"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0079.bin",
+          "bytes": 780000,
+          "git_blob": "aa270acc1a246a40c7d4cc80cad98739de4e044f"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0080.bin",
+          "bytes": 780000,
+          "git_blob": "f1024651b8540f6970132f95398f3b5d4bec7ca2"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0081.bin",
+          "bytes": 780000,
+          "git_blob": "a19bf37a9b4c0774fb3cf78b47937572d34e795a"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0082.bin",
+          "bytes": 780000,
+          "git_blob": "dfb7d3711e38ac563f4f21c75e49eadd2731ce26"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0083.bin",
+          "bytes": 780000,
+          "git_blob": "e28a8dd4127dc8a7184d315c9f9c8f3164dec95f"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0084.bin",
+          "bytes": 780000,
+          "git_blob": "18133e27e81515454fb08798969c8c898a9d33c1"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0085.bin",
+          "bytes": 780000,
+          "git_blob": "14b46c540abec2be9d22de07c986b0120d0ca2e3"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0086.bin",
+          "bytes": 780000,
+          "git_blob": "f3bbe64d764bbd6c0784b220baec5bfa42b3f671"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0087.bin",
+          "bytes": 780000,
+          "git_blob": "7b0a0709b51c7581c9fc6f0bfec3039c7eb120f8"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0088.bin",
+          "bytes": 780000,
+          "git_blob": "6e011dff27c89393915850876946bbf72265a3c5"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0089.bin",
+          "bytes": 780000,
+          "git_blob": "bd1550e7e56516a340a85069575195e7cad1e73f"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0090.bin",
+          "bytes": 780000,
+          "git_blob": "5b7b13712a84649b36d6ba3c79d868de86e8cd2a"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0091.bin",
+          "bytes": 780000,
+          "git_blob": "0893b73e451d1d02bc9124e364770f2524e364b1"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0092.bin",
+          "bytes": 780000,
+          "git_blob": "973d999291f0692f6202c37ff3a81f5fd5eaacc7"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0093.bin",
+          "bytes": 780000,
+          "git_blob": "aa664c4315b7cfe7255e16e055e372c01407f6ba"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0094.bin",
+          "bytes": 780000,
+          "git_blob": "85a07fe1651033e4771a344ccadffa97467e82b4"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0095.bin",
+          "bytes": 780000,
+          "git_blob": "d5cb6733aa3e56926e50170e2632f3e2038c3be3"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0096.bin",
+          "bytes": 780000,
+          "git_blob": "7667c8a7a04b443aa59f2e8e1a150cb7e98121b9"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0097.bin",
+          "bytes": 780000,
+          "git_blob": "4fff18edba0452b972f6de7e3ae3f6df14291582"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0098.bin",
+          "bytes": 780000,
+          "git_blob": "694a195700711e35d7bb570bd1cdabd398d493df"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0099.bin",
+          "bytes": 780000,
+          "git_blob": "8db0ae964acc79fd33fb4e7c634ebe0569b7f4e6"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0100.bin",
+          "bytes": 780000,
+          "git_blob": "a98836018b8d90e380f47744760f1b85ce7bb279"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0101.bin",
+          "bytes": 780000,
+          "git_blob": "3ccc392aedac4674cdbd6a71daf77c43dc32e708"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0102.bin",
+          "bytes": 780000,
+          "git_blob": "172c7ec278d38db31521c3f27f2f118605136e27"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0103.bin",
+          "bytes": 780000,
+          "git_blob": "feea0e8011a8026d76a6a9ad0ad638cc8da5cb05"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0104.bin",
+          "bytes": 780000,
+          "git_blob": "2732655b26134678f47ecafd925e9115502a65f2"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0105.bin",
+          "bytes": 780000,
+          "git_blob": "72d2e5c8b5c7cab24b9706749f7b8410bfd29470"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0106.bin",
+          "bytes": 780000,
+          "git_blob": "e8d38b4e8064f5066a7b3b7f86b34f5f938f442f"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0107.bin",
+          "bytes": 780000,
+          "git_blob": "64066b8d86cad572dee5c16b30170323aac33042"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0108.bin",
+          "bytes": 780000,
+          "git_blob": "4d1aca3942aad3631658f4743028cb31c04c0cf5"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0109.bin",
+          "bytes": 780000,
+          "git_blob": "be8ff16b52f9502e6c9c8b388494e045a744a88e"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0110.bin",
+          "bytes": 780000,
+          "git_blob": "e03f309665bcd0d218a7be9a57be92678a41f0a2"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0111.bin",
+          "bytes": 780000,
+          "git_blob": "31c412cfb16e4edf0f89304973f45a9a5d342d01"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0112.bin",
+          "bytes": 780000,
+          "git_blob": "ad531331349503c5ec3c9c7eee7fd3ec29f35056"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0113.bin",
+          "bytes": 780000,
+          "git_blob": "6b8941a7ca9b467e3379d01f55cbd33d167db6a5"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0114.bin",
+          "bytes": 780000,
+          "git_blob": "929564ea07d891d03edf884e8559daa214913cda"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0115.bin",
+          "bytes": 780000,
+          "git_blob": "6c054d2bdc75c5b6d8cf6dbb835d35dac8547587"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0116.bin",
+          "bytes": 780000,
+          "git_blob": "4114c6de5b2f4fba654967ef39a37ee4cc7da79c"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0117.bin",
+          "bytes": 780000,
+          "git_blob": "df114bd9fca2ea088b05328869f4c3102e6a8732"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0118.bin",
+          "bytes": 780000,
+          "git_blob": "dfb94902d9ec262adaba7c59475303f4f955b5e1"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0119.bin",
+          "bytes": 780000,
+          "git_blob": "be619838e5e5eb4d737ba3f0256fe824898f5447"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0120.bin",
+          "bytes": 780000,
+          "git_blob": "afbc1496beda2c7bd4651246ad82da29130c3a25"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0121.bin",
+          "bytes": 780000,
+          "git_blob": "11a4277163d2095d4b7a12607230146448cfdc2d"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0122.bin",
+          "bytes": 780000,
+          "git_blob": "67dbe9aefcb00b35066092b34719a10ba86f6a68"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0123.bin",
+          "bytes": 780000,
+          "git_blob": "1bd3c652f3807c1a61d92a2b30d47ff91268e22e"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0124.bin",
+          "bytes": 780000,
+          "git_blob": "4a58558612f1046583a7c6c4235dda7dfdce9d2f"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0125.bin",
+          "bytes": 780000,
+          "git_blob": "8a2c7a86babc5361d6676e15a042e306e1d73e74"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0126.bin",
+          "bytes": 780000,
+          "git_blob": "9473981160e698274ab02fdfe65ea78561d6b115"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0127.bin",
+          "bytes": 780000,
+          "git_blob": "b79aa5461184dcba317447d305ea8e305de4c428"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0128.bin",
+          "bytes": 780000,
+          "git_blob": "df183366cfbc568ef932f8a4c030e83330af71ae"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0129.bin",
+          "bytes": 780000,
+          "git_blob": "f09b08d25a76b16e113cd63753c2498de333c96e"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0130.bin",
+          "bytes": 780000,
+          "git_blob": "8ba6d29d1bc69538a219dc0af95ff0407486cc52"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0131.bin",
+          "bytes": 780000,
+          "git_blob": "dc6047b82ff71aad5a7436671f3f711bd809f11b"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0132.bin",
+          "bytes": 780000,
+          "git_blob": "ec8eb255a78ce87d30aa93325f8370f301f61177"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0133.bin",
+          "bytes": 780000,
+          "git_blob": "609d3779a15ca956f0f13a0e75efab5e92e97e80"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0134.bin",
+          "bytes": 780000,
+          "git_blob": "c04b65da3e8737c344a680930bd5ab536cb25d90"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0135.bin",
+          "bytes": 780000,
+          "git_blob": "a29da13be109001aec2f1b6460905295884f018a"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0136.bin",
+          "bytes": 780000,
+          "git_blob": "68150249f963a75c64dc277c4071311dbe97e3f8"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0137.bin",
+          "bytes": 780000,
+          "git_blob": "b762f78b0b3c2f75287b9dd93536b9e61bf5bb22"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0138.bin",
+          "bytes": 780000,
+          "git_blob": "2745fcb44f18031210913357fece4e0b7ec9d309"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0139.bin",
+          "bytes": 780000,
+          "git_blob": "131777d4c14aec792b4349cd34240472566a5a70"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0140.bin",
+          "bytes": 780000,
+          "git_blob": "9336195b9c758e25fa28a1c9e3c79dfa777dba83"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0141.bin",
+          "bytes": 780000,
+          "git_blob": "e7af6955b746785a45614833c11421bb0fa1e94d"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0142.bin",
+          "bytes": 780000,
+          "git_blob": "9d150f3345729defc4490c9c63e0b4cadab1e2b1"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-even-projected-checkpoint.zip/part-0143.bin",
+          "bytes": 251850,
+          "git_blob": "4485c1e51acbc7d09e108344356b7efbf779383e"
+        }
+      ]
+    },
+    "CR-INT-T1D-BI-odd-projected-checkpoint.zip": {
+      "bytes": 115503553,
+      "sha256": "184ea2bf757fd6f85958ac5e8df296c207cf73115e65bb91d6de9686852a8d7c",
+      "provenance": "ORIGINAL_PIN_MATCH_BOTH",
+      "parts": [
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0000.bin",
+          "bytes": 780000,
+          "git_blob": "931382251a11e95f49540977693528c64fd5fb82"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0001.bin",
+          "bytes": 780000,
+          "git_blob": "269f2705357e22561c87f0714acc0a3cae2a2958"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0002.bin",
+          "bytes": 780000,
+          "git_blob": "e991d3c5b91ede8f0bfa0aa228d5d0e6f037351c"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0003.bin",
+          "bytes": 780000,
+          "git_blob": "8557d10db767929a315f9fe23666583132e0bf55"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0004.bin",
+          "bytes": 780000,
+          "git_blob": "8fb2d023362450419382c7d7377917dc337bb0d7"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0005.bin",
+          "bytes": 780000,
+          "git_blob": "52f4e397ebd560f6c4a4d3b0573c95e12e181201"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0006.bin",
+          "bytes": 780000,
+          "git_blob": "3e2f9dda06e144549016bac9e429326190f5c684"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0007.bin",
+          "bytes": 780000,
+          "git_blob": "71c786d129daac684ccd29431437f765f40d1aaf"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0008.bin",
+          "bytes": 780000,
+          "git_blob": "f7a7c0723d9ab930d92af067d1fab112eefa8642"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0009.bin",
+          "bytes": 780000,
+          "git_blob": "12cfede2fc3fe8ae311f9494875b6d70b6957972"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0010.bin",
+          "bytes": 780000,
+          "git_blob": "5fcf892bd2dca794bd4cde1b3c38b958eef77534"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0011.bin",
+          "bytes": 780000,
+          "git_blob": "7dd9389f74049386c4b71accd50415e738204271"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0012.bin",
+          "bytes": 780000,
+          "git_blob": "9bb1757199dc30ca33f56afff2859ccbb68f0208"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0013.bin",
+          "bytes": 780000,
+          "git_blob": "e15223498ff0dea296e6a46bdff54dad3fc6a271"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0014.bin",
+          "bytes": 780000,
+          "git_blob": "95be925d18dabaa2df3ba1ea14506a141e52bc62"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0015.bin",
+          "bytes": 780000,
+          "git_blob": "cad20e8a834d2192b2be1df9d8063c76030a542a"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0016.bin",
+          "bytes": 780000,
+          "git_blob": "2e8dc83532aa38d1a97201112d8756196daa9acd"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0017.bin",
+          "bytes": 780000,
+          "git_blob": "1424cf4da484944532a6fe378f3279cc2193617e"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0018.bin",
+          "bytes": 780000,
+          "git_blob": "ce3d84eedac1168f8835389e0d99cce8e9272751"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0019.bin",
+          "bytes": 780000,
+          "git_blob": "dd39eff59c5004406b3f9243c7ad66cd60cb1bc0"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0020.bin",
+          "bytes": 780000,
+          "git_blob": "152ea5023ead7eb8220d09c6a38710b0a318c4c4"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0021.bin",
+          "bytes": 780000,
+          "git_blob": "36301e435dd43b59e2edd9639e8fa0ac1c67e7c3"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0022.bin",
+          "bytes": 780000,
+          "git_blob": "d53bff33e21283e2148eebb35e2c36fbe66b5a03"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0023.bin",
+          "bytes": 780000,
+          "git_blob": "d793f703b7d14672b3a226d3281fea6403da4541"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0024.bin",
+          "bytes": 780000,
+          "git_blob": "99a9ff7901f580db581bd4943acc893ea7961c1c"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0025.bin",
+          "bytes": 780000,
+          "git_blob": "cba96b165199bcea4e0bfd39f942b37eb7dab372"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0026.bin",
+          "bytes": 780000,
+          "git_blob": "635233079789eff69e41ca9b69e58268fae25cd9"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0027.bin",
+          "bytes": 780000,
+          "git_blob": "54ea64c5db40f2d389d123a3b781bf47a712b29b"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0028.bin",
+          "bytes": 780000,
+          "git_blob": "8e034698e40e3b2b234f2a6e6c0580bd4bf862e2"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0029.bin",
+          "bytes": 780000,
+          "git_blob": "f7d94120a134b85353bad3a9dec17271b2869f2d"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0030.bin",
+          "bytes": 780000,
+          "git_blob": "4c0de39a982f05894532912cd460d2d6f64b8023"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0031.bin",
+          "bytes": 780000,
+          "git_blob": "706860ea6b227be04e3a156ee4204bdddaa9dfc9"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0032.bin",
+          "bytes": 780000,
+          "git_blob": "0b9b79934c32e0fe9a2b891908d06673184c37ac"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0033.bin",
+          "bytes": 780000,
+          "git_blob": "74067ce81e49901ffdc901abd3b50d4a5ba3dc8b"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0034.bin",
+          "bytes": 780000,
+          "git_blob": "5487db5b36875427622357c7689f25b9926e3717"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0035.bin",
+          "bytes": 780000,
+          "git_blob": "335633b1c773c453bf260773c8a83391e0de0be5"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0036.bin",
+          "bytes": 780000,
+          "git_blob": "f9ffeeefe17ffb6aadc8f9cb4144ae6c7f894bcf"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0037.bin",
+          "bytes": 780000,
+          "git_blob": "72ad78f0e2d12af5560700f2af864ed71e1dade9"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0038.bin",
+          "bytes": 780000,
+          "git_blob": "b0caf0c49a95dd977355a799ac3066673f6aa911"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0039.bin",
+          "bytes": 780000,
+          "git_blob": "6404348875eabd9cc893224c5d3d09a7bb6be26f"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0040.bin",
+          "bytes": 780000,
+          "git_blob": "1d4f899f990e339fd0fa4a782dd6709bd4ff166b"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0041.bin",
+          "bytes": 780000,
+          "git_blob": "7ee1940fcf5e031642bdf4700f843053004d4cb1"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0042.bin",
+          "bytes": 780000,
+          "git_blob": "d4e01c0299be4889cf7fbae0f4db373b6af4827f"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0043.bin",
+          "bytes": 780000,
+          "git_blob": "a1995bf246e6e2b28f7544218f3acdc5ea91e8e8"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0044.bin",
+          "bytes": 780000,
+          "git_blob": "a66bebde7a68d56c05043fb2ef5f7750566b7d20"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0045.bin",
+          "bytes": 780000,
+          "git_blob": "bbb048f964706e17e2f39dfe3787b8afdbd4ff53"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0046.bin",
+          "bytes": 780000,
+          "git_blob": "4b15a00dc6be1573bf87ca2cf0d1f9266afd691a"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0047.bin",
+          "bytes": 780000,
+          "git_blob": "f6cddc5cbdb83a7be85ea63fcf98508ba6746a24"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0048.bin",
+          "bytes": 780000,
+          "git_blob": "fec82446f8fb9b5023d3f1ba9f632d3f4d1511cd"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0049.bin",
+          "bytes": 780000,
+          "git_blob": "ef1b3da0155411a54ce77789df0707047d38b66f"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0050.bin",
+          "bytes": 780000,
+          "git_blob": "e8b30c90cb83abd13cb1e443619a4e875d7463b2"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0051.bin",
+          "bytes": 780000,
+          "git_blob": "9897e431802ab0e3ffc42ec3d8b9531feaa54f88"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0052.bin",
+          "bytes": 780000,
+          "git_blob": "1b316769c2a7f7a0b62fd890fe5cf72f0202a75e"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0053.bin",
+          "bytes": 780000,
+          "git_blob": "7e4710778c28f0bb7355045a5cc2c153bdcf7f51"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0054.bin",
+          "bytes": 780000,
+          "git_blob": "b55e203e053a2082cf7622f9c7195ba02ba108ef"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0055.bin",
+          "bytes": 780000,
+          "git_blob": "b90f96253aeb722eb0acfd92e45adb28dd77b935"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0056.bin",
+          "bytes": 780000,
+          "git_blob": "b4548cbc3a79feb7631bae401773dd259fecfc40"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0057.bin",
+          "bytes": 780000,
+          "git_blob": "6fb08d39a58720fb7bcde2b4d3991b83574540f9"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0058.bin",
+          "bytes": 780000,
+          "git_blob": "7b35223bc481973d4c4ed1d60b68acef16aba84e"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0059.bin",
+          "bytes": 780000,
+          "git_blob": "f882ec88c2fa4a2e3d5d72bf8b1e506450aa3e1b"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0060.bin",
+          "bytes": 780000,
+          "git_blob": "d1506bec0780901b83e18f18ce6373ffc8a8b2dd"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0061.bin",
+          "bytes": 780000,
+          "git_blob": "157f691739cb1c2ba440d76ce8df2759999d8582"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0062.bin",
+          "bytes": 780000,
+          "git_blob": "b4a03dca871f7dc4886c5ee1a5a090c2ad880396"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0063.bin",
+          "bytes": 780000,
+          "git_blob": "32be7cbef10ceccc31110e7fdc887830fb8c7fc7"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0064.bin",
+          "bytes": 780000,
+          "git_blob": "c1bedbe83d69bda91470c77eb6a7210262465315"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0065.bin",
+          "bytes": 780000,
+          "git_blob": "623cbf38a88610f0817ffdc26461e72e4f4859ed"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0066.bin",
+          "bytes": 780000,
+          "git_blob": "3a661714545c64810b465559d6e845ac8501ac0e"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0067.bin",
+          "bytes": 780000,
+          "git_blob": "dbf8ea0f7fe23f3dc8bf5075cfccc218e88c81cb"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0068.bin",
+          "bytes": 780000,
+          "git_blob": "6f289be112b906bf624ec3b412bfd484c5a73a45"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0069.bin",
+          "bytes": 780000,
+          "git_blob": "5615779f022c733a3dc8ccc3784251bd633271f5"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0070.bin",
+          "bytes": 780000,
+          "git_blob": "3efeccbad88380762ef14df09ee8331ab8c28004"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0071.bin",
+          "bytes": 780000,
+          "git_blob": "4bc9cfeb07cf4e74a41a88f34c8373d0cc4d7e69"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0072.bin",
+          "bytes": 780000,
+          "git_blob": "c46cb561f3401dbd7960f69b1a2c075b58fc2199"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0073.bin",
+          "bytes": 780000,
+          "git_blob": "68fbad6434a9d9ad4b34935156c50694ee17b3d7"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0074.bin",
+          "bytes": 780000,
+          "git_blob": "2a2d4821f5ee3b670f30d6630b9497ba0d9e117a"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0075.bin",
+          "bytes": 780000,
+          "git_blob": "821cf5f5de566a75780f5dfb8edfbb3099ffdd65"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0076.bin",
+          "bytes": 780000,
+          "git_blob": "6454a6d6c045ddf4f026db9a4901ce0d1dc651f4"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0077.bin",
+          "bytes": 780000,
+          "git_blob": "c44ecfe0e7f8744f399632aa7189541c806d09b2"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0078.bin",
+          "bytes": 780000,
+          "git_blob": "bcb45c169d6786f7a2fe204edffe9f783c02277a"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0079.bin",
+          "bytes": 780000,
+          "git_blob": "7d6c8111a5983dd3693050615e74fca99ed6fb39"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0080.bin",
+          "bytes": 780000,
+          "git_blob": "b244ab3f8e518abbcd8577dd7e6bc49e5008c37f"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0081.bin",
+          "bytes": 780000,
+          "git_blob": "7a6fa66b82ff28c16b4d9b6453b57afa719db698"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0082.bin",
+          "bytes": 780000,
+          "git_blob": "2137d829df2eaed3b9579c043e35d48abb3b02af"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0083.bin",
+          "bytes": 780000,
+          "git_blob": "60c874cc04d8ffa93ed6ad85cdd8ae1af2b045e7"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0084.bin",
+          "bytes": 780000,
+          "git_blob": "8309d83de928313996fdce2c9e3e1631048c0954"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0085.bin",
+          "bytes": 780000,
+          "git_blob": "d34b0b5c9dfeb7e724d04997ef7686731cb1586c"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0086.bin",
+          "bytes": 780000,
+          "git_blob": "d88fbdcf9380f5042e360ecaacadc6bffc742150"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0087.bin",
+          "bytes": 780000,
+          "git_blob": "04a5df296708583426a434425e0e312feb4aeaf5"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0088.bin",
+          "bytes": 780000,
+          "git_blob": "5dfb7a93fe64c2d702fc1629e162271bf51bfb56"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0089.bin",
+          "bytes": 780000,
+          "git_blob": "4926f371895b0f20330668d1e32e581c8360394c"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0090.bin",
+          "bytes": 780000,
+          "git_blob": "522edbd28967b41e94ad53f63e231e709ad0479b"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0091.bin",
+          "bytes": 780000,
+          "git_blob": "7db00e8cdc67ef4a4014a9e77335cfe2287be262"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0092.bin",
+          "bytes": 780000,
+          "git_blob": "3a66e30159a9df81bb6a7a58ede74e4a3b8d07ce"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0093.bin",
+          "bytes": 780000,
+          "git_blob": "294c1a2dd8157ed233a4ea43297ddb45bb83bc00"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0094.bin",
+          "bytes": 780000,
+          "git_blob": "2042aaa583bdc72e251999cc4c489dafd9347f18"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0095.bin",
+          "bytes": 780000,
+          "git_blob": "88e9bd57c4a81cef11a071e94f14ac7598f055fe"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0096.bin",
+          "bytes": 780000,
+          "git_blob": "b8fcdddd67fa9307437e6c04d57161e13020c15f"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0097.bin",
+          "bytes": 780000,
+          "git_blob": "258852ed623d66337e7a060d29a6c558bdcd7feb"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0098.bin",
+          "bytes": 780000,
+          "git_blob": "f0111371c3cb2909a7dc758a4b67ec349d277df5"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0099.bin",
+          "bytes": 780000,
+          "git_blob": "9133b55b1ffeb1a93bcdf3c82650f07589b34bc7"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0100.bin",
+          "bytes": 780000,
+          "git_blob": "f6ea5d649dbb3a965361b5150422b6ad43020430"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0101.bin",
+          "bytes": 780000,
+          "git_blob": "556051e5e93ecb12790d459d10d886c8564fda1d"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0102.bin",
+          "bytes": 780000,
+          "git_blob": "f2d68577bc0e872c1ef09529a14774343d724bf0"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0103.bin",
+          "bytes": 780000,
+          "git_blob": "ae08ea5fe41cdc665324ddf1649fa04290b848d9"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0104.bin",
+          "bytes": 780000,
+          "git_blob": "cab8ead56ab044b041c0eade2bcf0f7f0d543964"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0105.bin",
+          "bytes": 780000,
+          "git_blob": "fb25378d90845f7ac6235b21afe3b692e69ee974"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0106.bin",
+          "bytes": 780000,
+          "git_blob": "9a0f4bb8281da1bbdee9412112b807a9d96e42a7"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0107.bin",
+          "bytes": 780000,
+          "git_blob": "11671ba6f212a46065afe5001484527fc8a89875"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0108.bin",
+          "bytes": 780000,
+          "git_blob": "60afe252f5e58fda3b2a2175029e2699a459ae3c"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0109.bin",
+          "bytes": 780000,
+          "git_blob": "a90ae4f9b3e408e683cceb3b9a8f37e8d2a4eb77"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0110.bin",
+          "bytes": 780000,
+          "git_blob": "51cacfd9857c9d847b0847daf883132ccbd799f2"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0111.bin",
+          "bytes": 780000,
+          "git_blob": "0a2cd40aebe734351c55a9b50c1b917d0b720b8f"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0112.bin",
+          "bytes": 780000,
+          "git_blob": "ce76712d5a88674ff607c9e3e4fe478250be3e8d"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0113.bin",
+          "bytes": 780000,
+          "git_blob": "9f857273333eaa76e288162a615b5962faf31f8e"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0114.bin",
+          "bytes": 780000,
+          "git_blob": "e82d8907d1ae03f95e19ce8702334162a69f5591"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0115.bin",
+          "bytes": 780000,
+          "git_blob": "c47dc3a5b22cf972328efd94914a0f472666d957"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0116.bin",
+          "bytes": 780000,
+          "git_blob": "68ec3a61824f2a95079248623ca912f5b60a564b"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0117.bin",
+          "bytes": 780000,
+          "git_blob": "4665e1b2b1b02d6e2da7fe474301552b92eed7ce"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0118.bin",
+          "bytes": 780000,
+          "git_blob": "c02173d77a10aa8c85340706e6a2e5c7995e18a4"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0119.bin",
+          "bytes": 780000,
+          "git_blob": "0cbe133759a1af5196004882061831fc3c4ff4a9"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0120.bin",
+          "bytes": 780000,
+          "git_blob": "bbd0154aed8ee3f42b962a81ca6665b80020935f"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0121.bin",
+          "bytes": 780000,
+          "git_blob": "62495849fa9da41a38a58f831f717ae8a85ebf3d"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0122.bin",
+          "bytes": 780000,
+          "git_blob": "b3acb3b1b341d3441110b908757b58bc049b8ade"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0123.bin",
+          "bytes": 780000,
+          "git_blob": "c538deb17a15b0b23ba2e28b1b2412d34adccef9"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0124.bin",
+          "bytes": 780000,
+          "git_blob": "0bd0d251a24b6250afff492d2d07f34dcaa93810"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0125.bin",
+          "bytes": 780000,
+          "git_blob": "00212615ab09652a4ec9ccc44c1147bb7f02a6bc"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0126.bin",
+          "bytes": 780000,
+          "git_blob": "b5e70a62f085709ece3047543478ee33b095b470"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0127.bin",
+          "bytes": 780000,
+          "git_blob": "54f40963d74356f09631653c6e2566e6e11a78a4"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0128.bin",
+          "bytes": 780000,
+          "git_blob": "95c7ee4ecf7b27368d551925c7bd0de407b5726f"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0129.bin",
+          "bytes": 780000,
+          "git_blob": "e25a360b4263171104aaa2ad590f53935f7e7204"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0130.bin",
+          "bytes": 780000,
+          "git_blob": "1648b94ea998cf3c50b7a5c6d1a881626c052333"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0131.bin",
+          "bytes": 780000,
+          "git_blob": "e017afdab6ca5ae610624b448ba09d03b1670570"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0132.bin",
+          "bytes": 780000,
+          "git_blob": "18779bf2dee5d58314ec2b433ff5c7f5a2d078b4"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0133.bin",
+          "bytes": 780000,
+          "git_blob": "d5614b9d3db0d6b391ef2cd16647e0a9f5dbc379"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0134.bin",
+          "bytes": 780000,
+          "git_blob": "f9138862918a26a4542097e9dbb1c762debe4b2a"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0135.bin",
+          "bytes": 780000,
+          "git_blob": "4558a426d36e88ad0df75f8a630314069ce4a6ee"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0136.bin",
+          "bytes": 780000,
+          "git_blob": "ca31d26ede9e2ecedc32b9da5b6044cde2252dc5"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0137.bin",
+          "bytes": 780000,
+          "git_blob": "56bbebf857dd2a3aa6d84036153639385c2e6bfb"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0138.bin",
+          "bytes": 780000,
+          "git_blob": "291e0ddaae285de36973e7a1682713d2347a3acf"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0139.bin",
+          "bytes": 780000,
+          "git_blob": "a0f104885eb1fad0301ec93900c7309eb06a0ee9"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0140.bin",
+          "bytes": 780000,
+          "git_blob": "e636a3bf94cdbd5c28e5957dae9305870ff07684"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0141.bin",
+          "bytes": 780000,
+          "git_blob": "5a2d40845bd80e02c1216dc70e4b9513b8e4ea47"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0142.bin",
+          "bytes": 780000,
+          "git_blob": "f4e3b6ae1df392a877df17d940bcc1c019e519ae"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0143.bin",
+          "bytes": 780000,
+          "git_blob": "0d9d4e27fa4de105a5fecf880b1313cfe482f4f3"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0144.bin",
+          "bytes": 780000,
+          "git_blob": "6c441768898d7f4d82eafe62f69d1c367e663da4"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0145.bin",
+          "bytes": 780000,
+          "git_blob": "4296dfb96bbda6fae7dd340266a361975f3957b1"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0146.bin",
+          "bytes": 780000,
+          "git_blob": "048c70204815dd90b3fb8c6927016a33e7ff5988"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0147.bin",
+          "bytes": 780000,
+          "git_blob": "e621bad61362a08ecb2d2faa9d1f371f00ceedf6"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BI-odd-projected-checkpoint.zip/part-0148.bin",
+          "bytes": 63553,
+          "git_blob": "8a9ab1f12e833afc69e6248bb3bfb007cd7b5698"
+        }
+      ]
+    },
+    "CR-INT-T1D-BD-projected-checkpoint.zip": {
+      "bytes": 84405596,
+      "sha256": "8dcd5f1931200fe3fb20a475aa04fa3651dfe5b6d7efbdf4fb6950e46cd328f9",
+      "provenance": "RECONSTRUCTED_DIGEST_AGREES_BOTH",
+      "parts": [
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0000.bin",
+          "bytes": 780000,
+          "git_blob": "2a012f7baa2448beea9bf275788c33e557d646b4"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0001.bin",
+          "bytes": 780000,
+          "git_blob": "ea29a6e1344796a5a5863768bc40ec7f2807db38"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0002.bin",
+          "bytes": 780000,
+          "git_blob": "458f3a0a5025864642df4f15db4d99b9845418fb"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0003.bin",
+          "bytes": 780000,
+          "git_blob": "260d8ed91cb8836af70f7d17b6f54c386f7cdafb"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0004.bin",
+          "bytes": 780000,
+          "git_blob": "c82c6f506d3ce2e476f9e18a2c58ff3d33f454c9"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0005.bin",
+          "bytes": 780000,
+          "git_blob": "b2830221ff2c895038bd8021d25294f4d6280570"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0006.bin",
+          "bytes": 780000,
+          "git_blob": "cc3e1d9b5ecaabe016285acb3edd93396951f199"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0007.bin",
+          "bytes": 780000,
+          "git_blob": "59e203fd7181f2a5e7e0d356a90b19b890a58865"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0008.bin",
+          "bytes": 780000,
+          "git_blob": "06f5d94f12a5a0aaab371953dc380db00e6b05bc"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0009.bin",
+          "bytes": 780000,
+          "git_blob": "574e4869de64bb8b9555dcc964024726fae67471"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0010.bin",
+          "bytes": 780000,
+          "git_blob": "678d5639e0ff86522df4c96a7cdde83a621ac4fe"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0011.bin",
+          "bytes": 780000,
+          "git_blob": "ab93258bae1487f012f3281e44cb6247d8442c76"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0012.bin",
+          "bytes": 780000,
+          "git_blob": "97abed8b28c5937bbfe6d463daeabda61a0dfecc"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0013.bin",
+          "bytes": 780000,
+          "git_blob": "fe227dfea9289440beb836442ee9f0d0b78d6a26"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0014.bin",
+          "bytes": 780000,
+          "git_blob": "2d3a12e6579b1c59d5520777b0dc66973bcc107c"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0015.bin",
+          "bytes": 780000,
+          "git_blob": "3e9806a9fb1c9befdf620fcb069db4f266610313"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0016.bin",
+          "bytes": 780000,
+          "git_blob": "01354231b1da2120b968714f3bd61b0f1567b994"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0017.bin",
+          "bytes": 780000,
+          "git_blob": "dfb681a3d0b458a37df0035b6f1fc8265fdd1eab"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0018.bin",
+          "bytes": 780000,
+          "git_blob": "eab48da6865e49fb8b67e5ba44fa6fd24cdbfb06"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0019.bin",
+          "bytes": 780000,
+          "git_blob": "e08ca1f4bb640e515ab31c28153d2a5021f7d5bd"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0020.bin",
+          "bytes": 780000,
+          "git_blob": "ccfa8a6bdcc6073d0658179f0fb41a52bf4fe8ce"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0021.bin",
+          "bytes": 780000,
+          "git_blob": "225bf441a273d5fb84ef48baab2c6a0882c28209"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0022.bin",
+          "bytes": 780000,
+          "git_blob": "36092b0bd0be029a44b1409dfadbd2ed6e0891b9"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0023.bin",
+          "bytes": 780000,
+          "git_blob": "3bb03b04353248577e1bb6053cb0b84268daed47"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0024.bin",
+          "bytes": 780000,
+          "git_blob": "610238c7c2df5026513e627b27dddf9fc96c66da"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0025.bin",
+          "bytes": 780000,
+          "git_blob": "13c5984fb2a4ce1d99734dfe497ab51259aa9800"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0026.bin",
+          "bytes": 780000,
+          "git_blob": "be7b9e880427821273f5b8e5bff60c78f0181d17"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0027.bin",
+          "bytes": 780000,
+          "git_blob": "11e5475eda240ebb8e86ad7bed0ee693c6ade7fe"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0028.bin",
+          "bytes": 780000,
+          "git_blob": "c05aca8ca95f3bc7a3766924e14340603ab89dc4"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0029.bin",
+          "bytes": 780000,
+          "git_blob": "86d07f6a1700ec11f1a8bfed4c53c2ba7c9a54cc"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0030.bin",
+          "bytes": 780000,
+          "git_blob": "b5880a0ffbe669db902b2924e5ed7d3f3a7638ad"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0031.bin",
+          "bytes": 780000,
+          "git_blob": "1b08d04f79468e2ad1413b93056ca1243322806f"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0032.bin",
+          "bytes": 780000,
+          "git_blob": "4769bde6145f96a1cec9777da561b9caa53249e3"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0033.bin",
+          "bytes": 780000,
+          "git_blob": "afac28cd473bdcbd262b5da154608f2d7b1ded05"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0034.bin",
+          "bytes": 780000,
+          "git_blob": "0592265ea82d86f008a0b062bfae22acb76fa706"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0035.bin",
+          "bytes": 780000,
+          "git_blob": "12b7dbaf92a0f478988a10a570a271ea407cb24a"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0036.bin",
+          "bytes": 780000,
+          "git_blob": "d0b6d8da01159f9e0960866a741af8b51d2a501c"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0037.bin",
+          "bytes": 780000,
+          "git_blob": "4d4f3073642ba28c533c768aa2ab3c7128a0bacc"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0038.bin",
+          "bytes": 780000,
+          "git_blob": "f44505aa86d2f4dfe3fd91fa522344e295ef4836"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0039.bin",
+          "bytes": 780000,
+          "git_blob": "d85fd250c905b9b53d31e79733727636dd01c865"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0040.bin",
+          "bytes": 780000,
+          "git_blob": "088456bd657c27bb4869201749701d5bb4ce78ed"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0041.bin",
+          "bytes": 780000,
+          "git_blob": "4c6e7e81edcb2a3373d98a070a13c543bc9b75bf"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0042.bin",
+          "bytes": 780000,
+          "git_blob": "654e78bb379edbf71882e121fe100375ac8b3059"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0043.bin",
+          "bytes": 780000,
+          "git_blob": "68343929aa9a57a8dec520be3dd67e16d87930f5"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0044.bin",
+          "bytes": 780000,
+          "git_blob": "bb87a1a883487879cee8fd959b755914bb83dcc3"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0045.bin",
+          "bytes": 780000,
+          "git_blob": "5472c1b1b2e0b51e0b175e82af6a31953fe6ba6a"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0046.bin",
+          "bytes": 780000,
+          "git_blob": "124b13f518c1e5da048f8841410fa47427a5a7f1"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0047.bin",
+          "bytes": 780000,
+          "git_blob": "ea7517d9263a8cbc976dbedb100882f0fdc62675"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0048.bin",
+          "bytes": 780000,
+          "git_blob": "b2664cd9be545103f2189c67665b4278dce8f61f"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0049.bin",
+          "bytes": 780000,
+          "git_blob": "7f50b907b9b4bd5f5398e6ca81aedc53226c1526"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0050.bin",
+          "bytes": 780000,
+          "git_blob": "2de6b2529fb795b568ffad0e2ee8db9b48db8e81"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0051.bin",
+          "bytes": 780000,
+          "git_blob": "74ec3ca19b030f916cce1586a177324b9733151d"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0052.bin",
+          "bytes": 780000,
+          "git_blob": "48ba0536942ff8ae90ace367eab6da0b19a0c272"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0053.bin",
+          "bytes": 780000,
+          "git_blob": "6ec73d5ba4ffbce39b5c7678962bdf72e833ed58"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0054.bin",
+          "bytes": 780000,
+          "git_blob": "49eec282f2f5a1a4a47c56f7f2dcd94675423c7c"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0055.bin",
+          "bytes": 780000,
+          "git_blob": "cb31ee668308cc189044895606b831cfe0fc3a82"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0056.bin",
+          "bytes": 780000,
+          "git_blob": "813f417f8b9dbf16b56281159f5af0af5fcb18e3"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0057.bin",
+          "bytes": 780000,
+          "git_blob": "bda46ede6896f8a62a32af63fcac4f3aa4815f7d"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0058.bin",
+          "bytes": 780000,
+          "git_blob": "7587088db15380047b11857e1fed42b15d811ed6"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0059.bin",
+          "bytes": 780000,
+          "git_blob": "3b9ad336208ba3a90f5636e533ce9ac7314f2b9d"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0060.bin",
+          "bytes": 780000,
+          "git_blob": "f67e2e291c6e2efab7420b654b8827981e8cb22e"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0061.bin",
+          "bytes": 780000,
+          "git_blob": "a85363dd4dbbd20b9d65b01fc29829df8bea686a"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0062.bin",
+          "bytes": 780000,
+          "git_blob": "d7dcf99574006e01fea1c25739ebbb91ba2de05f"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0063.bin",
+          "bytes": 780000,
+          "git_blob": "0ef6903277f36c20b94e86d4e6dcbd7bc664fc4d"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0064.bin",
+          "bytes": 780000,
+          "git_blob": "e6d546456290d8f320ff1458f535a488a2346464"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0065.bin",
+          "bytes": 780000,
+          "git_blob": "aa56b3db8dca47b175d3407be72e657a1e4aba4f"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0066.bin",
+          "bytes": 780000,
+          "git_blob": "45bfcb2892b436a619f54139ea8902413b043cf2"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0067.bin",
+          "bytes": 780000,
+          "git_blob": "9cd5b9ce873e1ee7c180c0e40186acfe828654f9"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0068.bin",
+          "bytes": 780000,
+          "git_blob": "dc31d3ecfbb2bb89d758485451a066fb9f77f2a2"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0069.bin",
+          "bytes": 780000,
+          "git_blob": "6ee59b1758c3835fcebc0264c7fa6934a01e8b31"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0070.bin",
+          "bytes": 780000,
+          "git_blob": "9d1e569521e34a4da2f5099a8ad6cdd9dd2509b5"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0071.bin",
+          "bytes": 780000,
+          "git_blob": "d30f67c46263995f9a1d43cead96eb819bda7d0c"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0072.bin",
+          "bytes": 780000,
+          "git_blob": "bfea7decf2cbf7c1eb9d9e84bc955bea34b132bc"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0073.bin",
+          "bytes": 780000,
+          "git_blob": "6c6b7345261f7f1bb250de8a3dcf0ab8a1d8d792"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0074.bin",
+          "bytes": 780000,
+          "git_blob": "73a76e39375de7b8962026bf34e8ccefd6c9c32c"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0075.bin",
+          "bytes": 780000,
+          "git_blob": "bbd45d5e88f97882456c788e50d7ff511e73c153"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0076.bin",
+          "bytes": 780000,
+          "git_blob": "4021a00ac672d45fdc5452ad2ec2b6aa90b3807e"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0077.bin",
+          "bytes": 780000,
+          "git_blob": "771d8805bf4a5ee1d8eec330536cf76eafc1be02"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0078.bin",
+          "bytes": 780000,
+          "git_blob": "53c7019395bc0a482a23231d52fa4792f73ee436"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0079.bin",
+          "bytes": 780000,
+          "git_blob": "6c3d484e1bc1b8635885dc47be17518667512826"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0080.bin",
+          "bytes": 780000,
+          "git_blob": "79790ba13c2d6f75e18bbf38e663a173a2a66f53"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0081.bin",
+          "bytes": 780000,
+          "git_blob": "9da432a681cf0cf134b8c2702bedc53550b9ca25"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0082.bin",
+          "bytes": 780000,
+          "git_blob": "92690ce455cdc63378c1207f24b7f7aab47702bf"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0083.bin",
+          "bytes": 780000,
+          "git_blob": "38a61aeedd58895b74241f3d844a066f23227886"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0084.bin",
+          "bytes": 780000,
+          "git_blob": "63045c8ff67dfeddfc224729a45f7f79558c9747"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0085.bin",
+          "bytes": 780000,
+          "git_blob": "888b2aaa26c2ef11c84b3b6095e64e169712f08c"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0086.bin",
+          "bytes": 780000,
+          "git_blob": "2e95f393b252eb4cbb1733e37302d9d05696849e"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0087.bin",
+          "bytes": 780000,
+          "git_blob": "63e67433b9c89e0be01cd7af3c4901286c256361"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0088.bin",
+          "bytes": 780000,
+          "git_blob": "d09f68bf100894e4a5299563b9ecb79c7bed9d96"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0089.bin",
+          "bytes": 780000,
+          "git_blob": "e17a507d362c1e3e09236b489c18fbd91810ccc9"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0090.bin",
+          "bytes": 780000,
+          "git_blob": "4047f8f45615cf99064146d893f06f29c50fbafa"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0091.bin",
+          "bytes": 780000,
+          "git_blob": "d611124dbaac87c7ed139af449b64858f6ef6820"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0092.bin",
+          "bytes": 780000,
+          "git_blob": "f62efeb9b3c02bf9b8de271ff3e867fb25b6708a"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0093.bin",
+          "bytes": 780000,
+          "git_blob": "3dfb4ce9a85d3990169da8a890a6a6dea91f0642"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0094.bin",
+          "bytes": 780000,
+          "git_blob": "de7ce5c83e2c210cd8ae526eef29c5f3a80163a6"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0095.bin",
+          "bytes": 780000,
+          "git_blob": "4322f1e1477939002e308fbb9636a4174ee47f4c"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0096.bin",
+          "bytes": 780000,
+          "git_blob": "0d48a7d85dc054f53ea30367afde0d39af05422d"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0097.bin",
+          "bytes": 780000,
+          "git_blob": "ddcef391d600ab273546055281ca91f943f53aba"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0098.bin",
+          "bytes": 780000,
+          "git_blob": "9fd0ba8079b3432893c77a3ba1e8ba503e8718af"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0099.bin",
+          "bytes": 780000,
+          "git_blob": "24ba84f53a989857dc7be4eebd4c76e969798012"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0100.bin",
+          "bytes": 780000,
+          "git_blob": "2d8da01999633c50053147fb2b7c4b4461346141"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0101.bin",
+          "bytes": 780000,
+          "git_blob": "80927e2118434c7712ac9de23a2a44828c90671e"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0102.bin",
+          "bytes": 780000,
+          "git_blob": "1a81bcb8892b12f3e2414ea4e3139fbf3a284b5a"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0103.bin",
+          "bytes": 780000,
+          "git_blob": "2715b904a5a166015b060464ae7d4a29ed055fb2"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0104.bin",
+          "bytes": 780000,
+          "git_blob": "b2c2cb805886c5e6d8968a903d1cce91949bb5ea"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0105.bin",
+          "bytes": 780000,
+          "git_blob": "9e3626420103c2b57832dbc2fb4ef065b76478ef"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0106.bin",
+          "bytes": 780000,
+          "git_blob": "9683b9ce8bf4deea6ac6b419fd387a4c1eb1f1e3"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0107.bin",
+          "bytes": 780000,
+          "git_blob": "d46468c488ecc0871736909fede63a7395411e01"
+        },
+        {
+          "path": "custody/T1D-archives/parts/CR-INT-T1D-BD-projected-checkpoint.zip/part-0108.bin",
+          "bytes": 165596,
+          "git_blob": "adf3dc51199154c5d341646cd3e57176ad7dd710"
+        }
+      ]
+    }
+  }
+}
