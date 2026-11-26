@@ -19,7 +19,9 @@ theorem neutralIV105DPacked_neg (k : ℕ) (hk : 0 < k) (c : Fin k → ℂ) :
 
 theorem neutralIV105DQ_zero (a : ℝ) : neutralIV101Q a 0 = 0 := by
   have h := neutralIV101Q_add a 0 0 (by simp) (by simp)
-  simp only [zero_add, ← neutralIV101Q] at h
+  simp only [zero_add] at h
+  change neutralIV101Q a 0 = neutralIV101Q a 0 + 2 * neutralIV101Q a 0 +
+    neutralIV101Q a 0 at h
   linarith
 
 /-- Exact completion with a solved packed response; no assumed inverse norm.
