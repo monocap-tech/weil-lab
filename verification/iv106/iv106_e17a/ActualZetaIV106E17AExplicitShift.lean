@@ -68,6 +68,7 @@ theorem neutralIV106E17APrime_bound :
       div_nonneg (mul_nonneg (by norm_num) (Real.log_nonneg (by norm_num))) (Real.sqrt_nonneg _)),
     abs_of_nonneg (show 0 ≤ 2*Real.log (3:ℝ)/Real.sqrt 9 from
       div_nonneg (mul_nonneg (by norm_num) (Real.log_nonneg (by norm_num))) (Real.sqrt_nonneg _))]
+  <;> simp only [mul_div_assoc]
   <;> linarith only [h2,h4,h8,h3,h9,h5,h7]
 
 theorem neutralIV106E17ASymbol_shift (ξ : ℝ) :
