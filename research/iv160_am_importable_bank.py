@@ -29,27 +29,29 @@ for kind,N,pred,dep in [
             s+=f'theorem {n} : {pred} {j} = true := by decide\n#print axioms {n}\n'
         (root/(stem+'.lean')).write_text(s+'end WeilDefect\n')
     if a.assemble:
-        missing=[b for b in range(0,N,2) if not (root/f'{kind}{b:04}.lean').is_file()]
+        assert stop%8==0
+        missing=[b for b in range(0,stop,2) if not (root/f'{kind}{b:04}.lean').is_file()]
         assert not missing,missing
         # Use an eight-block local dispatch (four imported proof modules)
         # and a small top-level dispatch tree, not a single 1024-way fin_cases.
-        for b in range(0,N,8):
+        for b in range(0,stop,8):
             s=''.join(f'import {module}.{kind}{j:04}\n' for j in range(b,b+8,2))
             s+='namespace WeilDefect\nset_option maxRecDepth 100000\nset_option maxHeartbeats 0\n'
             s+=f'theorem neutralIV160{kind}Group_{b:04} (i : ℕ) (hl : {b} ≤ i) (hu : i < {b+8}) : {pred} i = true := by\n'
             s+='  interval_cases i\n'
             s+=''.join(f'  · exact neutralIV159{kind}_{j:04}\n' for j in range(b,b+8))
             (root/f'{kind}Group{b:04}.lean').write_text(s+'end WeilDefect\n')
-        s=''.join(f'import {module}.{kind}Group{b:04}\n' for b in range(0,N,8))
+        s=''.join(f'import {module}.{kind}Group{b:04}\n' for b in range(0,stop,8))
         s+='namespace WeilDefect\nset_option maxRecDepth 100000\nset_option maxHeartbeats 0\n'
-        s+=f'theorem neutralIV160{kind}Bank (i : ℕ) (hi : i < {N}) : {pred} i = true := by\n'
-        s+=f'  have hb : i/8 < {N//8} := by omega\n  interval_cases h : i/8\n'
+        bank=f'{kind}Bank' if stop==N else f'{kind}Prefix{stop:04}'
+        s+=f'theorem neutralIV160{bank} (i : ℕ) (hi : i < {stop}) : {pred} i = true := by\n'
+        s+=f'  have hb : i/8 < {stop//8} := by omega\n  generalize hq : i/8 = q at hb\n  interval_cases q\n'
         # interval_cases on an expression with named equation may require
         # elaboration repair; no claim of compilation.
-        s+=''.join(f'  · exact neutralIV160{kind}Group_{b:04} i (by omega) (by omega)\n' for b in range(0,N,8))
-        s+=f'#print axioms neutralIV160{kind}Bank\nend WeilDefect\n'
-        (root/f'{kind}Bank.lean').write_text(s)
-if a.assemble and a.kind=='both':
+        s+=''.join(f'  · exact neutralIV160{kind}Group_{b:04} i (by omega) (by omega)\n' for b in range(0,stop,8))
+        s+=f'#print axioms neutralIV160{bank}\nend WeilDefect\n'
+        (root/f'{bank}.lean').write_text(s)
+if a.assemble and a.kind=='both' and a.stop is None:
     (root/'Terminal.lean').write_text(f'''import {module}.SymBank
 import {module}.RowBank
 import WeilDefect.Arithmetic.ActualZetaIV160AMTerminalReceiver

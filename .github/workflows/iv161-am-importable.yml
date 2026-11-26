@@ -1,0 +1,87 @@
+name: IV161 original dictionary and importable certificate pilot
+on:
+  push:
+    branches: ['staging/iv147-am-kernel-pilot']
+    paths: ['.github/workflows/iv161-am-importable.yml']
+permissions:
+  contents: read
+concurrency:
+  group: iv147-am-pilot
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Authenticate source and generate proof modules
+        run: |
+          set -euo pipefail
+          mkdir -p iv161/out
+          grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
+          python research/iv146_am_exp_audit.py custody/iv146-am/am_cells.json iv161/out/exact-audit.json
+          python research/iv160_am_importable_bank.py --kind sym --assemble
+          python research/iv160_am_importable_bank.py --kind row --stop 32 --assemble
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          a=Path('WeilDefect/Arithmetic')
+          for p in [a/'ActualZetaIV144BKOriginalArithmetic.lean',a/'ActualZetaIV157AMOriginalDictionary.lean',a/'ActualZetaIV160AMTerminalReceiver.lean',*list((a/'IV160Bank').glob('*.lean'))]:
+              assert not re.search(r'\b(?:sorry|admit|sorryAx|native_decide|axiom)\b',p.read_text()),p
+          print('Source preflight PASS')
+          PY
+      - name: Install pinned Lean and Mathlib
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lake exe cache get
+      - name: Original arithmetic dictionary
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.ActualZetaIV138OriginalRadiusCompression WeilDefect.Arithmetic.ActualZetaIV156AMPhysicalForm
+          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV144BKOriginalArithmetic.lean 2>&1 | tee iv161/out/iv144.log
+          lake build WeilDefect.Arithmetic.ActualZetaIV144BKOriginalArithmetic
+          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV157AMOriginalDictionary.lean 2>&1 | tee iv161/out/iv157.log
+          lake build WeilDefect.Arithmetic.ActualZetaIV157AMOriginalDictionary WeilDefect.Arithmetic.ActualZetaIV157AMReflection WeilDefect.Arithmetic.ActualZetaIV159AMRowReceiver
+          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV160AMTerminalReceiver.lean 2>&1 | tee iv161/out/iv160.log
+      - name: Importable full symmetry bank
+        if: ${{ !cancelled() }}
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.ActualZetaIV157AMSymmetryPilot
+          python research/iv161_am_build_bank.py --kind sym --stop 128 --out iv161/out/sym
+      - name: Importable first 256 row bank
+        if: ${{ !cancelled() }}
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.ActualZetaIV159AMRowReceiver
+          python research/iv161_am_build_bank.py --kind row --stop 32 --out iv161/out/row
+      - name: Strict dictionary and terminal receiver audit
+        if: ${{ !cancelled() }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import re,json
+          from pathlib import Path
+          allowed={'propext','Classical.choice','Quot.sound'}
+          failures=[]
+          for file,ns in [('iv144',['IV144Exp_four_bounds','IV144Prime_range','IV160Census','IV144Prime_bank','IV144Prime_count','IV144Circle_symbol','IV144Prime_literal','IV144Prime_spectral']),('iv157',['IV157Dictionary','IV157Mixed_identity','IV157Original_prime_bound']),('iv160',['IV160Full_rows','IV160Original_bound'])]:
+              p=Path('iv161/out/'+file+'.log')
+              s=p.read_text() if p.exists() else ''
+              for suffix in ns:
+                  n='WeilDefect.neutral'+suffix
+                  m=re.findall(r"'"+re.escape(n)+r"' depends on axioms: \[([^\]]*)\]",s)
+                  no=re.findall(r"'"+re.escape(n)+r"' does not depend on any axioms",s)
+                  ok=len(m)+len(no)==1 and (not m or set(x.strip() for x in m[0].split(',') if x.strip())<=allowed)
+                  print(n,'PASS' if ok else 'FAIL')
+                  if not ok: failures.append(n)
+          Path('iv161/out/audit.json').write_text(json.dumps({'expected':13,'failures':failures}))
+          assert not failures,failures
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv161-am-importable-receipts
+          path: iv161/out/
