@@ -1,0 +1,64 @@
+name: MASTER-RECON V10A-A2
+on:
+  push:
+    branches: [master-recon-001-neutral-shell]
+    paths:
+      - "WeilDefect/MasterRecon/V10A*.lean"
+      - ".github/workflows/master-recon-v10a.yml"
+  pull_request:
+    paths:
+      - "WeilDefect/MasterRecon/V10A*.lean"
+      - ".github/workflows/master-recon-v10a.yml"
+permissions:
+  contents: read
+jobs:
+  normalized-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Elan
+        run: |
+          curl --retry 3 --retry-delay 2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve dependencies
+        run: lake update
+      - name: Fetch mathlib cache
+        run: lake exe cache get
+      - name: Compile and audit V10A and V10A2
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.MasterRecon.V09D WeilDefect.MasterRecon.V09E
+          lake env lean WeilDefect/MasterRecon/V10A.lean 2>&1 | tee v10a-lean.log
+          lake build WeilDefect.MasterRecon.V10A
+          lake env lean WeilDefect/MasterRecon/V10A2.lean 2>&1 | tee v10a2-lean.log
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          banks = {
+              "V10A": ["reflect_re","reflect_im","reflect_involution","reflect_fixed_iff","displacement_nonnegative","displacement_bound","right_exponent","left_exponent","orbit_coverage","orbit_representative_unique","critical_coverage","normalizedPair_fixed","normalizedPair_nonfixed","normalized_fixed_zero"],
+              "V10A2": ["pair_energy_sum","pair_energy_difference","weighted_energy","normalized_fixed_energy","normalized_nonfixed_energy","normalized_positive_kernel","normalized_positive_coercivity"]
+          }
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for mod, names in banks.items():
+              s = Path(mod.lower()+"-lean.log").read_text()
+              for name in names:
+                  full = "WeilDefect.MasterRecon."+mod+"."+name
+                  m = re.search(re.escape("'"+full+"' depends on axioms: [")+r"([^\]]*)\]", s)
+                  if m is None:
+                      if "'"+full+"' does not depend on any axioms" in s:
+                          continue
+                      raise SystemExit("Missing axiom audit: "+full)
+                  axioms = {x.strip() for x in m.group(1).split(",") if x.strip()}
+                  if not axioms <= allowed:
+                      raise SystemExit("Unexpected axioms for "+full+": "+str(axioms-allowed))
+              print(mod+" strict axiom audit PASS")
+          PY
+      - name: Upload compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: master-recon-v10a-a2-lean
+          path: |
+            v10a-lean.log
+            v10a2-lean.log
