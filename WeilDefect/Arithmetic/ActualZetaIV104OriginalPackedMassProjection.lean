@@ -58,7 +58,8 @@ theorem neutralIV104Packed_pair (k : ℕ) (hk : 0 < k)
   rw [neutralIV104Packed_toLp]
   simp only [inner_sum, inner_smul_right]
   rw [Finset.sum_eq_single i]
-  · rw [inner_self_eq_norm_sq_to_K] <;> rfl
+  · rw [inner_self_eq_norm_sq_to_K]
+    simp only [neutralIV104Mass, Complex.ofReal_pow]
   · intro j hj hji
     rw [neutralIV104Carrier_orthogonal k hk i j (Ne.symm hji), mul_zero]
   · simp
@@ -86,7 +87,7 @@ theorem neutralIV104Residual_toLp (k : ℕ) (hk : 0 < k) (s : 𝓢(ℝ,ℂ)) :
 theorem neutralIV104Residual_orthogonal (k : ℕ) (hk : 0 < k)
     (s : 𝓢(ℝ,ℂ)) : neutralIV101MassComplement k hk (neutralIV104Residual k hk s) := by
   intro c
-  rw [neutralIV104Packed_toLp, inner_sum]
+  rw [neutralIV104Packed_toLp, sum_inner]
   apply Finset.sum_eq_zero
   intro i hi
   rw [inner_smul_left, neutralIV104Residual_toLp, inner_sub_right,
