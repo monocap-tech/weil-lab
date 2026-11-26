@@ -12,7 +12,7 @@ open scoped ENNReal Topology BigOperators
 
 abbrev Band (R : ℝ) := Set.Icc (-R) R
 local instance bandCompact (R : ℝ) : CompactSpace (Band R) :=
-  isCompact_Icc.compactSpace
+  compactSpace_Icc (-R) R
 
 noncomputable abbrev PhysicalL1 (μ : Measure ℝ) := Lp ℂ 1 μ
 
@@ -20,7 +20,7 @@ theorem moment_integrable (μ : Measure ℝ) (t : ℝ)
     (ht : ∀ᵐ x ∂μ, |x| ≤ t) (j : ℕ) (f : PhysicalL1 μ) :
     Integrable (fun x : ℝ => (x : ℂ) ^ j * f x) μ := by
   have hf : Integrable (fun x => f x) μ :=
-    memLp_one_iff_integrable.mp f.memLp
+    memLp_one_iff_integrable.mp (Lp.memLp f)
   have hm : Continuous (fun x : ℝ => (x : ℂ) ^ j) := by fun_prop
   apply hf.bdd_mul hm.aestronglyMeasurable (c := t ^ j)
   filter_upwards [ht] with x hx
@@ -31,7 +31,7 @@ theorem moment_integral_bound (μ : Measure ℝ) (t : ℝ)
     (ht : ∀ᵐ x ∂μ, |x| ≤ t) (j : ℕ) (f : PhysicalL1 μ) :
     ‖∫ x, (x : ℂ) ^ j * f x ∂μ‖ ≤ t ^ j * ‖f‖ := by
   have hf : Integrable (fun x => f x) μ :=
-    memLp_one_iff_integrable.mp f.memLp
+    memLp_one_iff_integrable.mp (Lp.memLp f)
   rw [L1.norm_eq_integral_norm, ← integral_const_mul]
   apply norm_integral_le_of_norm_le (hf.norm.const_mul _)
   filter_upwards [ht] with x hx
@@ -131,7 +131,7 @@ theorem boundedFourier_integral (μ : Measure ℝ) (t R : ℝ)
     fun j => (moment_integrable μ t ht j f).const_mul (q j)
   have hq : ∀ j, ‖q j‖ ≤ R ^ j / (j.factorial : ℝ) := fun j =>
     ((frequencyMonomial R j).norm_coe_le_norm u).trans (frequencyMonomial_norm R hR j)
-  have hf : Integrable (fun x => f x) μ := memLp_one_iff_integrable.mp f.memLp
+  have hf : Integrable (fun x => f x) μ := memLp_one_iff_integrable.mp (Lp.memLp f)
   have hnorm : ∀ j, (∫ x, ‖g j x‖ ∂μ) ≤
       ‖f‖ * ((R * t) ^ j / (j.factorial : ℝ)) := by
     intro j
