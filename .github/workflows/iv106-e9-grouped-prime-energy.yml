@@ -1,0 +1,141 @@
+name: IV106-E9 grouped-prime-energy
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'verification/iv106/iv106_e9/ActualZetaIV106E9GroupedPrimeEnergy.lean'
+      - '.github/workflows/iv106-e9-grouped-prime-energy.yml'
+permissions:
+  contents: read
+jobs:
+  physical-action:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          path: research
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: c948f00e850c15cf151d2c0bb82475a78c9fa292
+          path: predecessor_e3
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: d5a525ed8c3d47078f99ee3f94dce456562be74d
+          path: predecessor_e4
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: e5a84b835c0b3610c0fe9f77f88b892f6fa2432a
+          path: predecessor_e5
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 5a3fd99680a1e0f2056e3fdc44efc2d3822f1962
+          path: predecessor_e6
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 71c0c25b29c0691f20dcd2ee3f4b023f330f2da9
+          path: predecessor_e7
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 36b21fa1cf3097e49e4074cfb9313712df63ace8
+          path: predecessor_e8
+          persist-credentials: false
+      - name: Immutable source preflight
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          test "$(git -C research rev-parse HEAD^{tree})" = f038d8ff25d8f18fbe56a641ab6abded0b6ec8e9
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C predecessor_e3 rev-parse HEAD)" = c948f00e850c15cf151d2c0bb82475a78c9fa292
+          test "$(git -C predecessor_e3 hash-object verification/iv106/iv106_e3/ActualZetaIV106E3WeightedChains.lean)" = 9dfc0e96baf730f3c88c3869e88a39d427918f28
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E3WeightedChains.lean
+          cp predecessor_e3/verification/iv106/iv106_e3/ActualZetaIV106E3WeightedChains.lean research/WeilDefect/Arithmetic/ActualZetaIV106E3WeightedChains.lean
+          test "$(git -C predecessor_e4 rev-parse HEAD)" = d5a525ed8c3d47078f99ee3f94dce456562be74d
+          test "$(git -C predecessor_e4 hash-object verification/iv106/iv106_e4/ActualZetaIV106E4PrimeCoefficients.lean)" = 819c4bf61052e9d3957d051423cb859c5cd51b39
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E4PrimeCoefficients.lean
+          cp predecessor_e4/verification/iv106/iv106_e4/ActualZetaIV106E4PrimeCoefficients.lean research/WeilDefect/Arithmetic/ActualZetaIV106E4PrimeCoefficients.lean
+          test "$(git -C predecessor_e5 rev-parse HEAD)" = e5a84b835c0b3610c0fe9f77f88b892f6fa2432a
+          test "$(git -C predecessor_e5 hash-object verification/iv106/iv106_e5/ActualZetaIV106E5TranslationFibers.lean)" = fe7467e85a2b49d7012c868d938a4c44f71f8244
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E5TranslationFibers.lean
+          cp predecessor_e5/verification/iv106/iv106_e5/ActualZetaIV106E5TranslationFibers.lean research/WeilDefect/Arithmetic/ActualZetaIV106E5TranslationFibers.lean
+          test "$(git -C predecessor_e6 rev-parse HEAD)" = 5a3fd99680a1e0f2056e3fdc44efc2d3822f1962
+          test "$(git -C predecessor_e6 hash-object verification/iv106/iv106_e6/ActualZetaIV106E6PairedLagMatrices.lean)" = 338c4a5ae35d8314f30d21e36b30fa8778836465
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E6PairedLagMatrices.lean
+          cp predecessor_e6/verification/iv106/iv106_e6/ActualZetaIV106E6PairedLagMatrices.lean research/WeilDefect/Arithmetic/ActualZetaIV106E6PairedLagMatrices.lean
+          test "$(git -C predecessor_e7 rev-parse HEAD)" = 71c0c25b29c0691f20dcd2ee3f4b023f330f2da9
+          test "$(git -C predecessor_e7 hash-object verification/iv106/iv106_e7/ActualZetaIV106E7PrimeCutoff.lean)" = dd1fefe2a531cea862fb00c50cda0948c14a0f44
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E7PrimeCutoff.lean
+          cp predecessor_e7/verification/iv106/iv106_e7/ActualZetaIV106E7PrimeCutoff.lean research/WeilDefect/Arithmetic/ActualZetaIV106E7PrimeCutoff.lean
+          test "$(git -C predecessor_e8 rev-parse HEAD)" = 36b21fa1cf3097e49e4074cfb9313712df63ace8
+          test "$(git -C predecessor_e8 hash-object verification/iv106/iv106_e8/ActualZetaIV106E8OriginalCorrelation.lean)" = 456b25b928aa9981bb5bd9da1d166b00623c47c2
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E8OriginalCorrelation.lean
+          cp predecessor_e8/verification/iv106/iv106_e8/ActualZetaIV106E8OriginalCorrelation.lean research/WeilDefect/Arithmetic/ActualZetaIV106E8OriginalCorrelation.lean
+          test "$(git -C candidate hash-object verification/iv106/iv106_e9/ActualZetaIV106E9GroupedPrimeEnergy.lean)" = 7d43337dd15bb720da38ce276e7d2416292c6b81
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/iv106/iv106_e9/ActualZetaIV106E9GroupedPrimeEnergy.lean
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E9GroupedPrimeEnergy.lean
+          cp candidate/verification/iv106/iv106_e9/ActualZetaIV106E9GroupedPrimeEnergy.lean research/WeilDefect/Arithmetic/ActualZetaIV106E9GroupedPrimeEnergy.lean
+      - name: Install pinned Lean and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake exe cache get
+      - name: Native fresh source and strict named axiom audit
+        working-directory: research
+        run: |
+          set -euo pipefail
+          mkdir -p iv106-e9/out
+          touch iv106-e9/out/fresh.stamp
+          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E9GroupedPrimeEnergy.olean
+          lake build WeilDefect.Arithmetic.ActualZetaIV106E9GroupedPrimeEnergy 2>&1 | tee iv106-e9/out/build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E9GroupedPrimeEnergy.olean
+          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E9GroupedPrimeEnergy.olean -nt iv106-e9/out/fresh.stamp
+          printf '%s\n' 'import WeilDefect.Arithmetic.ActualZetaIV106E9GroupedPrimeEnergy' '#print axioms WeilDefect.neutralIV106E9Physical2' '#print axioms WeilDefect.neutralIV106E9Physical3' '#print axioms WeilDefect.neutralIV106E9Physical4' '#print axioms WeilDefect.neutralIV106E9Group2' '#print axioms WeilDefect.neutralIV106E9Group3' '#print axioms WeilDefect.neutralIV106E9Group5' '#print axioms WeilDefect.neutralIV106E9Group7' '#print axioms WeilDefect.neutralIV106E9Original_prime' > /tmp/iv106-e9-axioms.lean
+          lake env lean /tmp/iv106-e9-axioms.lean 2>&1 | tee iv106-e9/out/axioms.log
+          python3 - <<'PY'
+          import re,pathlib
+          s=pathlib.Path('iv106-e9/out/axioms.log').read_text()
+          p=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]"
+          ms=list(re.finditer(p,s,re.S))
+          assert len(ms)==8 and not re.sub(p,'',s,flags=re.S).strip()
+          assert {m[1] for m in ms}==set(["neutralIV106E9Physical2","neutralIV106E9Physical3","neutralIV106E9Physical4","neutralIV106E9Group2","neutralIV106E9Group3","neutralIV106E9Group5","neutralIV106E9Group7","neutralIV106E9Original_prime"])
+          assert all({x.strip() for x in m[2].split(',') if x.strip()} <= {'propext','Classical.choice','Quot.sound'} for m in ms)
+          print('IV106-E9 strict named axioms PASS 8/8')
+          PY
+          sha256sum WeilDefect/Arithmetic/ActualZetaIV106E8OriginalCorrelation.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E8OriginalCorrelation.olean WeilDefect/Arithmetic/ActualZetaIV106E7PrimeCutoff.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E7PrimeCutoff.olean WeilDefect/Arithmetic/ActualZetaIV106E6PairedLagMatrices.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E6PairedLagMatrices.olean WeilDefect/Arithmetic/ActualZetaIV106E5TranslationFibers.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E5TranslationFibers.olean WeilDefect/Arithmetic/ActualZetaIV106E4PrimeCoefficients.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E4PrimeCoefficients.olean WeilDefect/Arithmetic/ActualZetaIV106E3WeightedChains.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E3WeightedChains.olean WeilDefect/Arithmetic/ActualZetaIV106E9GroupedPrimeEnergy.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E9GroupedPrimeEnergy.olean > iv106-e9/out/sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv106-e9-physical-action-evidence
+          path: |
+            research/iv106-e9/out/
+            research/WeilDefect/Arithmetic/ActualZetaIV106E8OriginalCorrelation.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E8OriginalCorrelation.olean
+            research/WeilDefect/Arithmetic/ActualZetaIV106E7PrimeCutoff.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E7PrimeCutoff.olean
+            research/WeilDefect/Arithmetic/ActualZetaIV106E6PairedLagMatrices.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E6PairedLagMatrices.olean
+            research/WeilDefect/Arithmetic/ActualZetaIV106E5TranslationFibers.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E5TranslationFibers.olean
+            research/WeilDefect/Arithmetic/ActualZetaIV106E4PrimeCoefficients.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E4PrimeCoefficients.olean
+            research/WeilDefect/Arithmetic/ActualZetaIV106E3WeightedChains.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E3WeightedChains.olean
+            research/WeilDefect/Arithmetic/ActualZetaIV106E9GroupedPrimeEnergy.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E9GroupedPrimeEnergy.olean
+          include-hidden-files: true
+          if-no-files-found: error
