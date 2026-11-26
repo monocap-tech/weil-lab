@@ -1,4 +1,4 @@
-name: IV150 AM pilot recovery and concrete exp attachments
+name: IV151 literal von Mangoldt and eight-row scaling probe
 on:
   push:
     branches: ['staging/iv147-am-kernel-pilot']
@@ -17,9 +17,9 @@ jobs:
       - name: Authenticate literal bank and source preflight
         run: |
           set -euo pipefail
-          mkdir -p iv150/out
+          mkdir -p iv151/out
           grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
-          python research/iv146_am_exp_audit.py custody/iv146-am/am_cells.json iv150/out/shift-receipt.json | tee iv150/out/exact-audit.log
+          python research/iv146_am_exp_audit.py custody/iv146-am/am_cells.json iv151/out/shift-receipt.json | tee iv151/out/exact-audit.log
           python - <<'PY'
           import json,re
           from pathlib import Path
@@ -35,7 +35,7 @@ jobs:
           assert [x for c in chunks for x in c]==d['h']
           b=s.split('def neutralIV146Shifts : List (Int × Nat) := [',1)[1].split(']',1)[0]
           assert [list(map(int,x)) for x in re.findall(r'\((-?\d+),\s*(\d+)\)',b)]==d['shifts']
-          for stem in ['ActualZetaIV146AMCellData','ActualZetaIV147AMPilot','ActualZetaIV147AMRealCaps','ActualZetaIV150AMConcreteCaps']:
+          for stem in ['ActualZetaIV146AMCellData','ActualZetaIV147AMPilot','ActualZetaIV147AMRealCaps','ActualZetaIV150AMConcreteCaps','ActualZetaIV151AMActualCaps','ActualZetaIV151AMScalingProbe']:
               t=(a/(stem+'.lean')).read_text()
               assert not re.search(r'\b(?:sorry|admit|sorryAx|native_decide|axiom)\b',t),stem
           print('Literal arrays and pilot source preflight PASS')
@@ -52,22 +52,18 @@ jobs:
         id: data
         run: |
           set -euo pipefail
-          timeout 600 lake build WeilDefect.Arithmetic.ActualZetaIV146AMCellData 2>&1 | tee iv150/out/data.log
-      - name: Single block and worst row kernel pilot
+          timeout 600 lake build WeilDefect.Arithmetic.ActualZetaIV146AMCellData 2>&1 | tee iv151/out/data.log
+      - name: Eight-row scaling probe
+        id: probe
         run: |
           set -euo pipefail
-          /usr/bin/time -v timeout 900 lake env lean WeilDefect/Arithmetic/ActualZetaIV147AMPilot.lean 2>&1 | tee iv150/out/pilot.log
-      - name: Generic real caps
+          /usr/bin/time -v timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV151AMScalingProbe.lean 2>&1 | tee iv151/out/probe.log
+      - name: Actual von Mangoldt cap build
         if: ${{ !cancelled() }}
         run: |
           set -euo pipefail
-          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV147AMRealCaps.lean 2>&1 | tee iv150/out/real.log
-      - name: Concrete prime cap candidates
-        if: ${{ !cancelled() }}
-        run: |
-          set -euo pipefail
-          lake build WeilDefect.Arithmetic.ActualZetaIV147AMRealCaps
-          /usr/bin/time -v timeout 900 lake env lean WeilDefect/Arithmetic/ActualZetaIV150AMConcreteCaps.lean 2>&1 | tee iv150/out/concrete.log
+          lake build WeilDefect.Arithmetic.ActualZetaIV150AMConcreteCaps
+          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV151AMActualCaps.lean 2>&1 | tee iv151/out/actual.log
       - name: Strict named axiom receipt
         if: ${{ !cancelled() }}
         run: |
@@ -76,10 +72,10 @@ jobs:
           import re
           from pathlib import Path
           allowed={'propext','Classical.choice','Quot.sound'}
-          for name, expected in [('real',['Log_endpoints','Signed_floor','Weight_cap']),('pilot',['Data_size','Shifts_size','Pilot_row','Pilot_block']),('concrete',["Exp_interval","Exp_lt","Lt_exp","Prime_2","Prime_3","Prime_4","Prime_5","Prime_7","Prime_8","Prime_9","Prime_11","Prime_13","Prime_16","Prime_17","Prime_19","Prime_23","Prime_25","Prime_27","Prime_29","Prime_31","Prime_32","Prime_37","Prime_41","Prime_43","Prime_47","Prime_49","Prime_53"])]:
-              s=Path('iv150/out/'+name+'.log').read_text()
+          for name, expected in [('actual',["Weight_nonneg","PrimePower","Actual_2","Actual_3","Actual_4","Actual_5","Actual_7","Actual_8","Actual_9","Actual_11","Actual_13","Actual_16","Actual_17","Actual_19","Actual_23","Actual_25","Actual_27","Actual_29","Actual_31","Actual_32","Actual_37","Actual_41","Actual_43","Actual_47","Actual_49","Actual_53"]),('probe',['EightRows'])]:
+              s=Path('iv151/out/'+name+'.log').read_text()
               for suffix in expected:
-                  n='WeilDefect.neutralIV'+('150' if name=='concrete' else '147')+suffix
+                  n='WeilDefect.neutralIV151'+suffix
                   m=re.findall(r"'"+re.escape(n)+r"' depends on axioms: \[([^\]]*)\]",s)
                   no=re.findall(r"'"+re.escape(n)+r"' does not depend on any axioms",s)
                   assert len(m)+len(no)==1,n
@@ -89,5 +85,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: iv150-am-pilot-receipts
-          path: iv150/out/
+          name: iv151-am-receipts
+          path: iv151/out/
