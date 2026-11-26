@@ -27,7 +27,7 @@ theorem neutralIV106E17AGamma_shift (ξ : ℝ) :
     rw [hsym]
     linarith only [hl,h2,hp,hp4,hanchor,hg]
   · have hξ1 : 1 ≤ |ξ| := (lt_of_not_ge hξ).le
-    have hn : ξ ≠ 0 := by intro h; simp [h] at hξ1
+    have hn : ξ ≠ 0 := by intro h; norm_num [h] at hξ1
     have hl := Real.log_le_log (show 0 < Real.exp 1 + |ξ| by positivity)
       (show Real.exp 1 + |ξ| ≤ (2*Real.exp 1)*|ξ| by
         nlinarith [mul_nonneg (sub_nonneg.mpr he) (sub_nonneg.mpr hξ1)])
@@ -54,14 +54,20 @@ theorem neutralIV106E17APrime_bound :
   rw [neutralIV106E7Inventory]
   simp [Finset.sum_insert, compactWindowPrimeCoefficient,
     hm2,hm3,hm4,hm5,hm7,hm8,hm9] 
-  <;> try (simp only [abs_of_nonneg (show 0 ≤ Real.log (2:ℝ) by positivity),
-    abs_of_nonneg (show 0 ≤ Real.log (3:ℝ) by positivity),
-    abs_of_nonneg (show 0 ≤ Real.log (5:ℝ) by positivity),
-    abs_of_nonneg (show 0 ≤ Real.log (7:ℝ) by positivity)])
-  <;> try (rw [abs_of_nonneg (by positivity), abs_of_nonneg (by positivity),
-      abs_of_nonneg (by positivity), abs_of_nonneg (by positivity),
-      abs_of_nonneg (by positivity), abs_of_nonneg (by positivity),
-      abs_of_nonneg (by positivity)])
+  <;> simp only [abs_of_nonneg (show 0 ≤ 2*Real.log (2:ℝ)/Real.sqrt 2 from
+      div_nonneg (mul_nonneg (by norm_num) (Real.log_nonneg (by norm_num))) (Real.sqrt_nonneg _)),
+    abs_of_nonneg (show 0 ≤ 2*Real.log (3:ℝ)/Real.sqrt 3 from
+      div_nonneg (mul_nonneg (by norm_num) (Real.log_nonneg (by norm_num))) (Real.sqrt_nonneg _)),
+    abs_of_nonneg (show 0 ≤ 2*Real.log (2:ℝ)/Real.sqrt 4 from
+      div_nonneg (mul_nonneg (by norm_num) (Real.log_nonneg (by norm_num))) (Real.sqrt_nonneg _)),
+    abs_of_nonneg (show 0 ≤ 2*Real.log (5:ℝ)/Real.sqrt 5 from
+      div_nonneg (mul_nonneg (by norm_num) (Real.log_nonneg (by norm_num))) (Real.sqrt_nonneg _)),
+    abs_of_nonneg (show 0 ≤ 2*Real.log (7:ℝ)/Real.sqrt 7 from
+      div_nonneg (mul_nonneg (by norm_num) (Real.log_nonneg (by norm_num))) (Real.sqrt_nonneg _)),
+    abs_of_nonneg (show 0 ≤ 2*Real.log (2:ℝ)/Real.sqrt 8 from
+      div_nonneg (mul_nonneg (by norm_num) (Real.log_nonneg (by norm_num))) (Real.sqrt_nonneg _)),
+    abs_of_nonneg (show 0 ≤ 2*Real.log (3:ℝ)/Real.sqrt 9 from
+      div_nonneg (mul_nonneg (by norm_num) (Real.log_nonneg (by norm_num))) (Real.sqrt_nonneg _))]
   <;> linarith only [h2,h4,h8,h3,h9,h5,h7]
 
 theorem neutralIV106E17ASymbol_shift (ξ : ℝ) :
