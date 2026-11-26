@@ -1,0 +1,75 @@
+name: IV106-E8 original-correlation
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'verification/iv106/iv106_e8/ActualZetaIV106E8OriginalCorrelation.lean'
+      - '.github/workflows/iv106-e8-original-correlation.yml'
+permissions:
+  contents: read
+jobs:
+  physical-action:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          path: research
+          persist-credentials: false
+      - name: Immutable source preflight
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          test "$(git -C research rev-parse HEAD^{tree})" = f038d8ff25d8f18fbe56a641ab6abded0b6ec8e9
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C candidate hash-object verification/iv106/iv106_e8/ActualZetaIV106E8OriginalCorrelation.lean)" = 3139be29ad8615b495a15100285fcdadc9543b91
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/iv106/iv106_e8/ActualZetaIV106E8OriginalCorrelation.lean
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E8OriginalCorrelation.lean
+          cp candidate/verification/iv106/iv106_e8/ActualZetaIV106E8OriginalCorrelation.lean research/WeilDefect/Arithmetic/ActualZetaIV106E8OriginalCorrelation.lean
+      - name: Install pinned Lean and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake exe cache get
+      - name: Native fresh source and strict named axiom audit
+        working-directory: research
+        run: |
+          set -euo pipefail
+          mkdir -p iv106-e8/out
+          touch iv106-e8/out/fresh.stamp
+          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E8OriginalCorrelation.olean
+          lake build WeilDefect.Arithmetic.ActualZetaIV106E8OriginalCorrelation 2>&1 | tee iv106-e8/out/build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E8OriginalCorrelation.olean
+          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E8OriginalCorrelation.olean -nt iv106-e8/out/fresh.stamp
+          printf '%s\n' 'import WeilDefect.Arithmetic.ActualZetaIV106E8OriginalCorrelation' '#print axioms WeilDefect.neutralIV106E8Representative' '#print axioms WeilDefect.neutralIV106E8Positive' '#print axioms WeilDefect.neutralIV106E8Negative' '#print axioms WeilDefect.neutralIV106E8Integrable' '#print axioms WeilDefect.neutralIV106E8Real' '#print axioms WeilDefect.neutralIV106E8Summand' > /tmp/iv106-e8-axioms.lean
+          lake env lean /tmp/iv106-e8-axioms.lean 2>&1 | tee iv106-e8/out/axioms.log
+          python3 - <<'PY'
+          import re,pathlib
+          s=pathlib.Path('iv106-e8/out/axioms.log').read_text()
+          p=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]"
+          ms=list(re.finditer(p,s,re.S))
+          assert len(ms)==6 and not re.sub(p,'',s,flags=re.S).strip()
+          assert {m[1] for m in ms}==set(["neutralIV106E8Representative","neutralIV106E8Positive","neutralIV106E8Negative","neutralIV106E8Integrable","neutralIV106E8Real","neutralIV106E8Summand"])
+          assert all({x.strip() for x in m[2].split(',') if x.strip()} <= {'propext','Classical.choice','Quot.sound'} for m in ms)
+          print('IV106-E8 strict named axioms PASS 6/6')
+          PY
+          sha256sum WeilDefect/Arithmetic/ActualZetaIV106E8OriginalCorrelation.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E8OriginalCorrelation.olean > iv106-e8/out/sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv106-e8-physical-action-evidence
+          path: |
+            research/iv106-e8/out/
+            research/WeilDefect/Arithmetic/ActualZetaIV106E8OriginalCorrelation.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E8OriginalCorrelation.olean
+          include-hidden-files: true
+          if-no-files-found: error
