@@ -23,7 +23,13 @@ theorem neutralIV125Cell_bound (f p : ℝ → ℂ) (μ : Measure ℝ) (c : ℂ) 
     ‖∫ x, p x * f x ∂μ‖ ≤ d * ∫ x, ‖f x‖ ∂μ := by
   rw [← neutralIV125Cell_cancel f p μ c hf hp hm]
   have hi : Integrable (fun x => (p x - c) * f x) μ := by
-    simpa only [sub_mul, Pi.sub_apply] using hp.sub (hf.const_mul c)
+    have hfun : (fun x : ℝ => (p x - c) * f x) =
+        ((fun x : ℝ => p x * f x) - (fun x : ℝ => c * f x)) := by
+      funext x
+      change (p x - c) * f x = p x * f x - c * f x
+      ring
+    rw [hfun]
+    exact hp.sub (hf.const_mul c)
   refine (norm_integral_le_integral_norm (μ := μ) _).trans ?_
   rw [← integral_const_mul]
   apply integral_mono_ae hi.norm (hf.norm.const_mul d)
