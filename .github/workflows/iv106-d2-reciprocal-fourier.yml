@@ -1,0 +1,76 @@
+name: IV106-D2 reciprocal Fourier energy
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'verification/iv106/iv106_d2/ActualZetaIV106D2ReciprocalFourier.lean'
+      - '.github/workflows/iv106-d2-reciprocal-fourier.yml'
+permissions:
+  contents: read
+jobs:
+  physical-action:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          path: research
+          persist-credentials: false
+      - name: Immutable source preflight
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          test "$(git -C research rev-parse HEAD^{tree})" = f038d8ff25d8f18fbe56a641ab6abded0b6ec8e9
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C research hash-object WeilDefect/Arithmetic/ActualZetaCanonicalNativeEnergy.lean)" = bda93aa61bc6580197649833f30394aae943d910
+          test "$(git -C candidate hash-object verification/iv106/iv106_d2/ActualZetaIV106D2ReciprocalFourier.lean)" = 86f310ea80a70f5fcb1181d662f15c93e1e93569
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/iv106/iv106_d2/ActualZetaIV106D2ReciprocalFourier.lean
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106D2ReciprocalFourier.lean
+          cp candidate/verification/iv106/iv106_d2/ActualZetaIV106D2ReciprocalFourier.lean research/WeilDefect/Arithmetic/ActualZetaIV106D2ReciprocalFourier.lean
+      - name: Install pinned Lean and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake exe cache get
+      - name: Native fresh source and strict named axiom audit
+        working-directory: research
+        run: |
+          set -euo pipefail
+          mkdir -p iv106-d2/out
+          touch iv106-d2/out/fresh.stamp
+          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106D2ReciprocalFourier.olean
+          lake build WeilDefect.Arithmetic.ActualZetaIV106D2ReciprocalFourier 2>&1 | tee iv106-d2/out/build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106D2ReciprocalFourier.olean
+          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106D2ReciprocalFourier.olean -nt iv106-d2/out/fresh.stamp
+          printf '%s\n' 'import WeilDefect.Arithmetic.ActualZetaIV106D2ReciprocalFourier' '#print axioms WeilDefect.neutralIV106D2Fourier_deriv' '#print axioms WeilDefect.neutralIV106D2Reciprocal_point' '#print axioms WeilDefect.neutralIV106D2Reciprocal_ae' '#print axioms WeilDefect.neutralIV106D2Reciprocal_energy' '#print axioms WeilDefect.neutralIV106D2Reciprocal_bound' > /tmp/iv106-d2-axioms.lean
+          lake env lean /tmp/iv106-d2-axioms.lean 2>&1 | tee iv106-d2/out/axioms.log
+          python3 - <<'PY'
+          import re,pathlib
+          s=pathlib.Path('iv106-d2/out/axioms.log').read_text()
+          p=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]"
+          ms=list(re.finditer(p,s,re.S))
+          assert len(ms)==5 and not re.sub(p,'',s,flags=re.S).strip()
+          assert {m[1] for m in ms}==set(["neutralIV106D2Fourier_deriv","neutralIV106D2Reciprocal_point","neutralIV106D2Reciprocal_ae","neutralIV106D2Reciprocal_energy","neutralIV106D2Reciprocal_bound"])
+          assert all({x.strip() for x in m[2].split(',') if x.strip()} <= {'propext','Classical.choice','Quot.sound'} for m in ms)
+          print('IV106-D2 strict named axioms PASS 5/5')
+          PY
+          sha256sum WeilDefect/Arithmetic/ActualZetaIV106D2ReciprocalFourier.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106D2ReciprocalFourier.olean > iv106-d2/out/sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv106-d2-physical-action-evidence
+          path: |
+            research/iv106-d2/out/
+            research/WeilDefect/Arithmetic/ActualZetaIV106D2ReciprocalFourier.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106D2ReciprocalFourier.olean
+          include-hidden-files: true
+          if-no-files-found: error
