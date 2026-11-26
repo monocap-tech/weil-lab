@@ -57,9 +57,14 @@ theorem cell_weight (n y : ℝ) (hy : n ≤ y) (hy' : y ≤ n + 1) :
       _ ≤ |n-y| + |y| := abs_add_le _ _
       _ ≤ |y| + 1 := by linarith
   unfold weight
-  rw [← Real.log_pow (2 + |y|) 2]
-  apply Real.log_le_log (by positivity)
-  nlinarith [sq_nonneg |y|, abs_nonneg y]
+  have hpos : 0 < 2 + |y| := by positivity
+  calc
+    Real.log (|n| + 3) ≤ Real.log ((2 + |y|) * (2 + |y|)) := by
+      apply Real.log_le_log (by positivity)
+      nlinarith [sq_nonneg |y|, abs_nonneg y]
+    _ = 2 * Real.log (2 + |y|) := by
+      rw [Real.log_mul hpos.ne' hpos.ne']
+      ring
 
 end WeilDefect.MasterRecon.V10B3a
 
