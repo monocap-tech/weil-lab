@@ -1,4 +1,4 @@
-name: IV163 original dictionary and importable certificate pilot
+name: IV169 original dictionary repair and sector zero
 on:
   push:
     branches: ['staging/iv147-am-kernel-pilot']
@@ -11,17 +11,16 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 70
     steps:
       - uses: actions/checkout@v4
       - name: Authenticate source and generate proof modules
         run: |
           set -euo pipefail
-          mkdir -p iv161/out
+          mkdir -p iv169/out
           grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
-          python research/iv146_am_exp_audit.py custody/iv146-am/am_cells.json iv161/out/exact-audit.json
-          python research/iv160_am_importable_bank.py --kind sym --assemble
-          python research/iv160_am_importable_bank.py --kind row --stop 32 --assemble
+          python research/iv146_am_exp_audit.py custody/iv146-am/am_cells.json iv169/out/exact-audit.json
+          python research/iv165_am_sector_sources.py --sector 0
           python - <<'PY'
           import re,json
           from pathlib import Path
@@ -52,23 +51,28 @@ jobs:
         run: |
           set -euo pipefail
           lake build WeilDefect.Arithmetic.ActualZetaIV103OriginalSchwartzSpectralAttachment WeilDefect.Arithmetic.ActualZetaIV156AMPhysicalForm
-          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV162AMOriginalPrimeCore.lean 2>&1 | tee iv161/out/iv162.log
+          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV162AMOriginalPrimeCore.lean 2>&1 | tee iv169/out/iv162.log
           lake build WeilDefect.Arithmetic.ActualZetaIV162AMOriginalPrimeCore
-          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV157AMOriginalDictionary.lean 2>&1 | tee iv161/out/iv157.log
+          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV157AMOriginalDictionary.lean 2>&1 | tee iv169/out/iv157.log
           lake build WeilDefect.Arithmetic.ActualZetaIV157AMOriginalDictionary WeilDefect.Arithmetic.ActualZetaIV157AMReflection WeilDefect.Arithmetic.ActualZetaIV159AMRowReceiver
-          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV160AMTerminalReceiver.lean 2>&1 | tee iv161/out/iv160.log
-      - name: Importable full symmetry bank
-        if: ${{ !cancelled() }}
-        run: |
-          set -euo pipefail
-          lake build WeilDefect.Arithmetic.ActualZetaIV157AMSymmetryPilot
-          python research/iv161_am_build_bank.py --kind sym --stop 128 --out iv161/out/sym
-      - name: Importable first 256 row bank
+          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV160AMTerminalReceiver.lean 2>&1 | tee iv169/out/iv160.log
+      - name: Verify new integer sector zero
         if: ${{ !cancelled() }}
         run: |
           set -euo pipefail
           lake build WeilDefect.Arithmetic.ActualZetaIV159AMRowReceiver
-          python research/iv161_am_build_bank.py --kind row --stop 32 --out iv161/out/row
+          python research/iv165_am_build_sector.py --sector 0 --out iv169/out/sector0
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('iv169/out/sector0/manifest.json').read_text())
+          assert m['plan']['block_interval']==[32,128]
+          assert m['plan']['row_interval']==[256,1024]
+          assert len(m['records'])==61
+          assert all(r['pass'] for r in m['records'])
+          assert sum(len(r['names']) for r in m['records'])==109
+          print('Sector 0 complete: 768 new rows, 109 strict named receipts')
+          PY
       - name: Strict dictionary and terminal receiver audit
         if: ${{ !cancelled() }}
         run: |
@@ -79,7 +83,7 @@ jobs:
           allowed={'propext','Classical.choice','Quot.sound'}
           failures=[]
           for file,ns in [('iv162',['IV162Exp_four_bounds','IV162Prime_range','IV162Census','IV162Prime_bank','IV162Prime_count','IV162Prime_literal']),('iv157',['IV157Dictionary','IV157Mixed_identity','IV157Original_prime_bound']),('iv160',['IV160Full_rows','IV160Original_bound'])]:
-              p=Path('iv161/out/'+file+'.log')
+              p=Path('iv169/out/'+file+'.log')
               s=p.read_text() if p.exists() else ''
               for suffix in ns:
                   n='WeilDefect.neutral'+suffix
@@ -88,11 +92,11 @@ jobs:
                   ok=len(m)+len(no)==1 and (not m or set(x.strip() for x in m[0].split(',') if x.strip())<=allowed)
                   print(n,'PASS' if ok else 'FAIL')
                   if not ok: failures.append(n)
-          Path('iv161/out/audit.json').write_text(json.dumps({'expected':11,'failures':failures}))
+          Path('iv169/out/audit.json').write_text(json.dumps({'expected':11,'failures':failures}))
           assert not failures,failures
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: iv161-am-importable-receipts
-          path: iv161/out/
+          name: iv169-am-dictionary-sector-receipts
+          path: iv169/out/

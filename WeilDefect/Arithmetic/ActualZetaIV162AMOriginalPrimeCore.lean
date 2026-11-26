@@ -1,4 +1,5 @@
 import WeilDefect.Arithmetic.ActualZetaIV103OriginalSchwartzSpectralAttachment
+import WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalCrossSupportArithmeticCutoff
 import Mathlib.Analysis.Complex.ExponentialBounds
 import Mathlib.Tactic
 import Mathlib.Data.Nat.Factorization.PrimePow
@@ -35,20 +36,22 @@ theorem neutralIV162Prime_range :
   · rintro ⟨hp,hlog⟩
     have hn : (0:ℝ) < (n:ℝ) := by exact_mod_cast hp.pos
     have h : (n:ℝ) ≤ Real.exp 4 :=
-      (Real.log_le_iff_le_exp hn).mp (by simpa using hlog)
+      (Real.log_le_iff_le_exp hn).mp (by norm_num at hlog ⊢; exact hlog)
     exact ⟨by exact_mod_cast h.trans_lt hu,hp⟩
   · rintro ⟨hn,hp⟩
     have hn' : (0:ℝ) < (n:ℝ) := by exact_mod_cast hp.pos
     have h : (n:ℝ) ≤ 54 := by exact_mod_cast (show n ≤ 54 by omega)
     exact ⟨hp,by
       have hh := (Real.log_le_iff_le_exp hn').mpr (h.trans hl.le)
-      simpa using hh⟩
+      norm_num at hh ⊢
+      exact hh⟩
 
 def neutralIV162PrimeBank : Finset ℕ :=
   {2,3,4,5,7,8,9,11,13,16,17,19,23,25,27,29,31,32,37,41,43,47,49,53}
 
 /-- Explicit prime-power witnesses and distinct prime-divisor exclusions.
 Avoid reducing the opaque minFac decision procedure. -/
+set_option maxHeartbeats 4000000 in
 theorem neutralIV162Census (n : ℕ) (hn : n < 55) :
     IsPrimePow n ↔ n ∈ neutralIV162PrimeBank := by
   interval_cases n
