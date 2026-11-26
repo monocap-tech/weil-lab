@@ -44,7 +44,7 @@ theorem neutralIV106E9Physical2 (v : ℝ → ℂ) (hv : Continuous v)
   have hm : (∫ t in (0:ℝ)..s, M t) = neutralIV106E9Mass v := by
     have h := neutralIV106E5Mass v hv l b s 2 hlb (by simpa using hb) hout
     norm_num [M,z,Fin.sum_univ_succ,Finset.sum_range_succ,neutralIV106E9Mass] at h ⊢
-    exact h
+    simpa only [add_assoc] using h
   have hP : (∫ t in (0:ℝ)..s, F t) = 2*(c1*neutralIV106E9Lag v (s)) := by
     dsimp [F]
     rw [intervalIntegral.integral_const_mul]
@@ -94,7 +94,7 @@ theorem neutralIV106E9Physical3 (v : ℝ → ℂ) (hv : Continuous v)
   have hm : (∫ t in (0:ℝ)..s, M t) = neutralIV106E9Mass v := by
     have h := neutralIV106E5Mass v hv l b s 3 hlb (by simpa using hb) hout
     norm_num [M,z,Fin.sum_univ_succ,Finset.sum_range_succ,neutralIV106E9Mass] at h ⊢
-    exact h
+    simpa only [add_assoc] using h
   have hP : (∫ t in (0:ℝ)..s, F t) = 2*(c1*neutralIV106E9Lag v (s)+c2*neutralIV106E9Lag v (2*s)) := by
     dsimp [F]
     rw [intervalIntegral.integral_const_mul]
@@ -156,14 +156,15 @@ theorem neutralIV106E9Physical4 (v : ℝ → ℂ) (hv : Continuous v)
   have hm : (∫ t in (0:ℝ)..s, M t) = neutralIV106E9Mass v := by
     have h := neutralIV106E5Mass v hv l b s 4 hlb (by simpa using hb) hout
     norm_num [M,z,Fin.sum_univ_succ,Finset.sum_range_succ,neutralIV106E9Mass] at h ⊢
-    exact h
+    simpa only [add_assoc] using h
   have hP : (∫ t in (0:ℝ)..s, F t) = 2*(c1*neutralIV106E9Lag v (s)+c2*neutralIV106E9Lag v (2*s)+c3*neutralIV106E9Lag v (3*s)) := by
     dsimp [F]
     rw [intervalIntegral.integral_const_mul]
     have hC1 : Continuous (fun t => c1*f1 t) := continuous_const.mul hf1
     have hC2 : Continuous (fun t => c2*f2 t) := continuous_const.mul hf2
     have hC3 : Continuous (fun t => c3*f3 t) := continuous_const.mul hf3
-    rw [intervalIntegral.integral_add ((hC1.add hC2).intervalIntegrable (μ := volume) 0 s)
+    rw [intervalIntegral.integral_add (show IntervalIntegrable (fun t => c1*f1 t+c2*f2 t) volume 0 s from
+      ((hC1.add hC2).intervalIntegrable (μ := volume) 0 s))
       (hC3.intervalIntegrable (μ := volume) 0 s)]
     rw [intervalIntegral.integral_add (hC1.intervalIntegrable (μ := volume) 0 s)
       (hC2.intervalIntegrable (μ := volume) 0 s)]
@@ -289,7 +290,9 @@ theorem neutralIV106E9Original_prime (v : 𝓢(ℝ,ℂ))
   simp only [Complex.add_re]
   simp_rw [neutralIV106E8Summand (11/10) v hv]
   change _ ≤ _
-  simp only [hm2,hm3,hm4,hm5,hm7,hm8,hm9,hl4,hl8,hl9]
+  simp only [hm2,hm3,hm4,hm5,hm7,hm8,hm9]
+  norm_num only [Nat.cast_ofNat]
+  simp only [hl4,hl8,hl9]
   simp only [neutralIV106E9Lag] at h2 h3 h5 h7
   linarith only [h2,h3,h5,h7]
 
