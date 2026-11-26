@@ -1,0 +1,97 @@
+name: IV167 AM bounded sector exhaustion
+on:
+  push:
+    branches: ['staging/iv147-am-kernel-pilot']
+    paths: ['research/iv167_am_sector_selection.json']
+permissions:
+  contents: read
+concurrency:
+  group: iv147-am-pilot
+  cancel-in-progress: false
+jobs:
+  sector:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - name: Authenticate literal bank and select disjoint sector
+        id: select
+        run: |
+          set -euo pipefail
+          mkdir -p iv167/out
+          grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
+          python research/iv146_am_exp_audit.py custody/iv146-am/am_cells.json iv167/out/exact-audit.json
+          python - <<'PY'
+          import json,re,os
+          from pathlib import Path
+          a=Path('WeilDefect/Arithmetic')
+          d=json.loads(Path('custody/iv146-am/am_cells.json').read_text())
+          s=(a/'ActualZetaIV146AMCellData.lean').read_text()
+          pairs=re.findall(r'def neutralIV149Chunk(\d{3}) : Array Nat := #\[([^\]]*)\]',s)
+          assert [int(i) for i,_ in pairs]==list(range(128))
+          chunks=[list(map(int,re.findall(r'\d+',x))) for _,x in pairs]
+          h=s.split('def neutralIV146HChunks : Array (Array Nat) := #[',1)[1].split(']',1)[0]
+          assert list(map(int,re.findall(r'neutralIV149Chunk(\d{3})',h)))==list(range(128))
+          assert len(chunks)==128 and all(len(c)==128 for c in chunks)
+          assert [x for c in chunks for x in c]==d['h']
+          b=s.split('def neutralIV146Shifts : List (Int × Nat) := [',1)[1].split(']',1)[0]
+          assert [list(map(int,x)) for x in re.findall(r'\((-?\d+),\s*(\d+)\)',b)]==d['shifts']
+          select=json.loads(Path('research/iv167_am_sector_selection.json').read_text())
+          assert set(select)=={'sector'}
+          k=select['sector']
+          assert type(k) is int and 0<=k<8
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f: f.write(f'sector={k}\n')
+          print('Literal source authentication PASS; sector',k)
+          PY
+          python research/iv165_am_sector_sources.py --sector "${{ steps.select.outputs.sector }}"
+          cp WeilDefect/Arithmetic/IV160Bank/RowSector*.json iv167/out/
+          cp research/iv167_am_sector_selection.json iv167/out/selection.json
+      - name: Install pinned Lean and Mathlib
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version | tee iv167/out/lean-version.log
+          lake exe cache get
+      - name: Build certified row receiver
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.ActualZetaIV159AMRowReceiver 2>&1 | tee iv167/out/receiver.log
+      - name: Verify and preserve selected sector
+        run: |
+          set -euo pipefail
+          python research/iv165_am_build_sector.py --sector "${{ steps.select.outputs.sector }}" --out iv167/out/bank
+      - name: Validate complete selected sector manifest
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          p=Path('iv167/out/bank')
+          m=json.loads((p/'manifest.json').read_text())
+          k=json.loads(Path('iv167/out/selection.json').read_text())['sector']
+          lo,hi=(32,128) if k==0 else (128*k,128*(k+1))
+          assert m['plan']['block_interval']==[lo,hi]
+          assert m['plan']['row_interval']==[8*lo,8*hi]
+          names=[f'Row{b:04}' for b in range(lo,hi,2)]+[f'RowGroup{b:04}' for b in range(lo,hi,8)]+[f'RowSector{k:02}']
+          assert [r['module'] for r in m['records']]==names
+          assert m['plan']['modules']==names
+          def digest(q): return hashlib.sha256(q.read_bytes()).hexdigest()
+          for r in m['records']:
+              n=r['module']
+              assert r['pass'] is True
+              assert digest(p/(n+'.lean'))==r['source_sha256']
+              assert digest(p/(n+'.log'))==r['log_sha256']
+              assert n+'.olean' in r['objects']
+              for q,h in r['objects'].items():
+                  assert Path(q).name==q and digest(p/q)==h
+          receipt={'sector':k,'blocks':hi-lo,'rows':8*(hi-lo),'modules':len(names),'named_receipts':sum(len(r['names']) for r in m['records']),'pass':True}
+          (Path('iv167/out')/'sector-receipt.json').write_text(json.dumps(receipt,indent=2))
+          print(receipt)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv167-am-sector-receipts
+          path: iv167/out/

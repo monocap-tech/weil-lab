@@ -1,0 +1,7 @@
+# IV167 — Executable disjoint sector gate staged
+
+IV163 run 45890018606 remains active, dictionary step failed and full symmetry import step in progress; row prefix and final audit pending. No new artifact available. No diagnosis or speculative dictionary repair. Local IV159 archive rechecked in this turn: SHA256 de507ff87332c018843a81c13fa500821162dba32a7e75eee02080d683f5e351, 173 entries CRC clean; 128 symmetry and 32 row block source/receipt pairs complete and axiom-free in logs.
+
+New single-sector workflow stages an explicit selection file and authenticates original chunk values and shifts. It generates only one disjoint sector, builds the certified receiver, compiles its modules serially, and validates manifest completeness and every recorded source, log and object digest. Sector 0 intended first: 96 blocks / 768 rows, 48 leaf modules + 12 local group modules + 1 sector module = 61 modules / 109 named declarations. Subsequent sectors: 128 blocks / 1024 rows, 64 leaf + 16 groups + 1 sector = 81 modules / 145 named declarations each. These are source-derived counts, not accepted native receipts.
+
+No runner activated: selection and workflow committed only to the sector staging branch. To activate after pilot acceptance, fast-forward the active AM branch with this commit and change selection for successive sectors; only one AM runner at a time. The gate does not import logs as proofs; final combined bank still requires a compatible imported proof chain. No unconditional original prime bound or RH claim.
