@@ -1,0 +1,57 @@
+{
+  "gate": "IV106-E18A",
+  "classification": "exact rational partial-constraint trial pilot; no native or full-kernel certificate",
+  "frozen_research": "018f7e59f4129ce521cd3ae86d1afd59d3b64b5f",
+  "constraint_source": "25d13ea5fb5fce899121fd61ab5ae54a5b954002",
+  "cell_count": 665,
+  "cell_width": "11/3325",
+  "first_cell": 1,
+  "last_cell": 663,
+  "bank_size": 663,
+  "support_union": [
+    "-7293/6650",
+    "7293/6650"
+  ],
+  "packed_collar": [
+    "4393/4000",
+    "4399/4000"
+  ],
+  "polynomial_ascending": [
+    "0",
+    "0",
+    "60",
+    "-600",
+    "18573449879/8844500",
+    "-14858759637/4422250",
+    "1592009879/631750",
+    "-1592009516/2211125",
+    "-1089/8844500",
+    "121/4422250"
+  ],
+  "physical_mass_gram": {
+    "structure": "diagonal",
+    "diagonal": "12994320639248774641/98293908912022687500000"
+  },
+  "weak_derivative_gram": {
+    "structure": "diagonal",
+    "diagonal": "27926390440838204641/16514364829462500"
+  },
+  "derivative_mass_ratio": "20112446763539470791424995000/1572312797349101731561",
+  "verified_algebra": [
+    "boundary jets of b through order 4",
+    "cell mean zero",
+    "C1 zero extension",
+    "exponential-moment IBP factors at +/-1/2 vanish",
+    "cell interiors disjoint",
+    "packed carrier support separation",
+    "positive exact diagonal mass and derivative Gram"
+  ],
+  "unresolved": [
+    "native H1-to-log carrier lift for these piecewise polynomials",
+    "actual IV105CResponse row contractions and exact nullspace correction",
+    "receiving-sector Riesz representatives and trial approximation",
+    "trial Weil and projected residual Gram enclosures",
+    "Schur positivity"
+  ],
+  "note": "Both pole moments are individually zero, stronger than required; this pilot is not claimed dense in the full constraint kernel."
+}
