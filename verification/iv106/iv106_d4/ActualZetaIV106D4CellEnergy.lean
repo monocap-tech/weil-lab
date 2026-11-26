@@ -40,7 +40,11 @@ theorem neutralIV106D4IntervalCS (v : ℝ → ℂ) (hv : Continuous v)
         ring
   rw [he] at hz
   have hmul : H*m^2 ≤ H*(H*E) := by nlinarith only [hz]
-  have hm : m^2 ≤ H*E := (mul_le_mul_left₀ hH).mp hmul
+  have hm : m^2 ≤ H*E := by
+    by_contra hbad
+    have hlt : H*(H*E) < H*m^2 :=
+      mul_lt_mul_of_pos_left (lt_of_not_ge hbad) hH
+    exact (not_lt_of_ge hmul) hlt
   have hn : ‖∫ t in l..r, v t‖ ≤ m :=
     intervalIntegral.norm_integral_le_integral_norm h.le
   exact (pow_le_pow_left₀ (norm_nonneg _) hn 2).trans hm
