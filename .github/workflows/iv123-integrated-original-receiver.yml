@@ -1,0 +1,87 @@
+name: IV123 integrated original receiver — native gate
+on:
+  push:
+    branches:
+      - staging/iv123-integrated-original-pole-receiver
+    paths:
+      - 'WeilDefect/Arithmetic/ActualZetaIV*.lean'
+      - '.github/workflows/iv123-integrated-original-receiver.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict pinned source preflight
+        run: |
+          set -euo pipefail
+          grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
+          mkdir -p iv123/out
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          m={"WeilDefect/Arithmetic/ActualZetaIV105OriginalPackedSchurResponse.lean":["neutralIV105Packed_add","neutralIV105Packed_zero","neutralIV105Schur_identity","neutralIV105Schur_lower","neutralIV105Window_nonneg_of_response"],"WeilDefect/Arithmetic/ActualZetaIV106OriginalPackedGramResponse.lean":["neutralIV106Gram_energy","neutralIV106Gram_kernel","neutralIV106Gram_injective","neutralIV106Gram_isUnit","neutralIV106Gram_surjective","neutralIV106Response_exists","neutralIV106Response_solves","neutralIV106Response_unique"],"WeilDefect/Arithmetic/ActualZetaIV107OriginalPackedResponseExtension.lean":["neutralIV107Mixed_eq_tsum","neutralIV107Mixed_sum_left","neutralIV107Mixed_sum_right","neutralIV107Response_mixed","neutralIV107Window_nonneg_of_schur"],"WeilDefect/Arithmetic/ActualZetaIV108OriginalDirectionalResponseBudget.lean":["neutralIV108Young","neutralIV108Row_payment","neutralIV108Response_energy","neutralIV108Response_le_rowBudget","neutralIV108Schur_nonneg_of_rowBudget"],"WeilDefect/Arithmetic/ActualZetaIV123OriginalPoleReceiver.lean":["neutralIV123Pole_algebra","neutralIV123Pole_mixed","neutralIV123Pole_null_right","neutralIV123Pole_diagonal","neutralIV123Original_mixed"]}
+          assert sum(map(len,m.values()))==28
+          for p,names in m.items():
+              s=Path(p).read_text()
+              assert not re.search(r'\b(?:sorry|admit|sorryAx)\b',s),p
+              assert re.findall(r'(?m)^theorem (\w+)',s)==names,p
+              assert re.findall(r'(?m)^#print axioms (\w+)$',s)==names,p
+          Path('iv123/out/expected.json').write_text(json.dumps(m))
+          print('IV123 preflight: 28 exact source candidates')
+          PY
+      - name: Install pinned Lean and Mathlib
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake exe cache get
+      - name: Native integrated build
+        run: |
+          set -euo pipefail
+          touch iv123/out/fresh.stamp
+          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV123OriginalPoleReceiver.olean
+          lake build WeilDefect.Arithmetic.ActualZetaIV123OriginalPoleReceiver 2>&1 | tee iv123/out/build.log
+          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV123OriginalPoleReceiver.olean -nt iv123/out/fresh.stamp
+      - name: Strict named axiom receipts
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV105OriginalPackedSchurResponse.lean 2>&1 | tee iv123/out/IV105.log
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV106OriginalPackedGramResponse.lean 2>&1 | tee iv123/out/IV106.log
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV107OriginalPackedResponseExtension.lean 2>&1 | tee iv123/out/IV107.log
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV108OriginalDirectionalResponseBudget.lean 2>&1 | tee iv123/out/IV108.log
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV123OriginalPoleReceiver.lean 2>&1 | tee iv123/out/IV123.log
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          m=json.loads(Path('iv123/out/expected.json').read_text())
+          allowed={'propext','Classical.choice','Quot.sound'}
+          receipts={}
+          for p,names in m.items():
+              iv=re.search(r'IV\d+',p).group()
+              t=Path('iv123/out/'+iv+'.log').read_text()
+              for n in names:
+                  full='WeilDefect.'+n
+                  hits=list(re.finditer(r"^'"+re.escape(full)+r"' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)\s*$",t,re.M))
+                  assert len(hits)==1,(full,len(hits))
+                  ax={a.strip() for a in (hits[0].group(1) or '').split(',') if a.strip()}
+                  assert ax<=allowed,(full,ax-allowed)
+                  receipts[full]=sorted(ax)
+              assert not re.search(r'(?m)^\s*(?:error:|.*: error:)',t),p
+          assert len(receipts)==28
+          Path('iv123/out/receipts.json').write_text(json.dumps(receipts,indent=2,sort_keys=True)+'\n')
+          print('IV123 28 strict named source/axiom receipts PASS')
+          PY
+          git rev-parse HEAD > iv123/out/commit.txt
+          sha256sum WeilDefect/Arithmetic/ActualZetaIV10{3,4,5,6,7,8,9}*.lean WeilDefect/Arithmetic/ActualZetaIV123OriginalPoleReceiver.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV123OriginalPoleReceiver.olean > iv123/out/sha256.txt
+          sha256sum -c iv123/out/sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv123-integrated-native-receipts
+          path: iv123/out/
