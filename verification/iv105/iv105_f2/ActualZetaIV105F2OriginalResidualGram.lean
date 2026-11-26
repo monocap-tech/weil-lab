@@ -46,9 +46,10 @@ theorem neutralIV105F2Dual_norm_sq (k : ℕ) (hk : 0 < k) (δ : Fin k → ℂ) :
   have h : inner ℂ z z =
       ∑ i : Fin k, conj (δ i / (neutralIV104Mass k hk i : ℂ)) * δ i :=
     neutralIV105F2Dual_pair k hk _ δ
-  rw [inner_self_eq_norm_sq_to_K] at h
-  have hr := congrArg Complex.re h
-  simpa only [← Complex.ofReal_pow, Complex.ofReal_re] using hr
+  change ‖z‖^2 = _
+  calc
+    ‖z‖^2 = (inner ℂ z z).re := norm_sq_eq_re_inner (𝕜 := ℂ) z
+    _ = _ := congrArg Complex.re h
 
 theorem neutralIV105F2Residual_eq (k : ℕ) (hk : 0 < k)
     (v : 𝓢(ℝ,ℂ)) (t : Fin k → ℂ) :
@@ -85,7 +86,9 @@ theorem neutralIV105F2Trial_upper (k : ℕ) (hk : 0 < k)
     rw [neutralIV105F2Error_energy]
     dsimp [η]
     rw [mul_comm]
-    exact re_inner_le_norm _ _
+    exact re_inner_le_norm (𝕜 := ℂ)
+      ((neutralIV100Packed k hk (neutralIV105E2Solve k hk v-t)).toLp 2 volume)
+      (neutralIV105F2Dual k hk (neutralIV105F2Residual k hk v t))
   have h := neutralIV105FTrial_upper k hk v t η hv hr
   dsimp [η] at h
   rw [neutralIV105F2Dual_norm_sq] at h
