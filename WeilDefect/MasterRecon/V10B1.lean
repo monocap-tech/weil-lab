@@ -103,11 +103,11 @@ theorem unit_eval_complex (h h' : ℝ → ℂ)
   have hn : ∀ x, ‖h x‖ ^ 2 = r x ^ 2 + s x ^ 2 := by
     intro x
     rw [Complex.sq_norm, Complex.normSq_apply]
-    rfl
+    simp only [r, s, pow_two]
   have hn' : ∀ x, ‖h' x‖ ^ 2 = r' x ^ 2 + s' x ^ 2 := by
     intro x
     rw [Complex.sq_norm, Complex.normSq_apply]
-    rfl
+    simp only [r', s', pow_two]
   simp only [hn, hn']
   rw [intervalIntegral.integral_add (ir.add is) (ir'.add is'),
       intervalIntegral.integral_add ir is, intervalIntegral.integral_add ir' is']
