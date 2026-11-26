@@ -1,0 +1,3 @@
+# IV156 — Conditional physical Schwartz form
+
+IV155 run 45883597241: 20/20 strict receipts and overall PASS; artifact 15148259046. IV156 submits nine candidates: extracting signed weight ratios from the positive finite row sum, automatic density integrability, absolute complex finite sum comparison, nodup and strict coefficient positivity, finite-set physical row, endpoint closure, Schwartz cross integrability, and literal finite arithmetic form conditional on the single full row bank. The original rightLimitPrimePowerFinset and original correlation dictionary (IV144) are not yet attached. No native PASS claimed for new source, no full bank activation, no global positivity or RH claim.
