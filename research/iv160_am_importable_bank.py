@@ -40,6 +40,7 @@ for kind,N,pred,dep in [
             s+=f'theorem neutralIV160{kind}Group_{b:04} (i : ℕ) (hl : {b} ≤ i) (hu : i < {b+8}) : {pred} i = true := by\n'
             s+='  interval_cases i\n'
             s+=''.join(f'  · exact neutralIV159{kind}_{j:04}\n' for j in range(b,b+8))
+            s+=f'#print axioms neutralIV160{kind}Group_{b:04}\n'
             (root/f'{kind}Group{b:04}.lean').write_text(s+'end WeilDefect\n')
         s=''.join(f'import {module}.{kind}Group{b:04}\n' for b in range(0,stop,8))
         s+='namespace WeilDefect\nset_option maxRecDepth 100000\nset_option maxHeartbeats 0\n'

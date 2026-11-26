@@ -1,4 +1,4 @@
-name: IV161 original dictionary and importable certificate pilot
+name: IV162 minimal original dictionary and importable certificate pilot
 on:
   push:
     branches: ['staging/iv147-am-kernel-pilot']
@@ -26,7 +26,7 @@ jobs:
           import re
           from pathlib import Path
           a=Path('WeilDefect/Arithmetic')
-          for p in [a/'ActualZetaIV144BKOriginalArithmetic.lean',a/'ActualZetaIV157AMOriginalDictionary.lean',a/'ActualZetaIV160AMTerminalReceiver.lean',*list((a/'IV160Bank').glob('*.lean'))]:
+          for p in [a/'ActualZetaIV162AMOriginalPrimeCore.lean',a/'ActualZetaIV157AMOriginalDictionary.lean',a/'ActualZetaIV160AMTerminalReceiver.lean',*list((a/'IV160Bank').glob('*.lean'))]:
               assert not re.search(r'\b(?:sorry|admit|sorryAx|native_decide|axiom)\b',p.read_text()),p
           print('Source preflight PASS')
           PY
@@ -40,9 +40,9 @@ jobs:
       - name: Original arithmetic dictionary
         run: |
           set -euo pipefail
-          lake build WeilDefect.Arithmetic.ActualZetaIV138OriginalRadiusCompression WeilDefect.Arithmetic.ActualZetaIV156AMPhysicalForm
-          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV144BKOriginalArithmetic.lean 2>&1 | tee iv161/out/iv144.log
-          lake build WeilDefect.Arithmetic.ActualZetaIV144BKOriginalArithmetic
+          lake build WeilDefect.Arithmetic.ActualZetaIV103OriginalSchwartzSpectralAttachment WeilDefect.Arithmetic.ActualZetaIV156AMPhysicalForm
+          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV162AMOriginalPrimeCore.lean 2>&1 | tee iv161/out/iv162.log
+          lake build WeilDefect.Arithmetic.ActualZetaIV162AMOriginalPrimeCore
           timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV157AMOriginalDictionary.lean 2>&1 | tee iv161/out/iv157.log
           lake build WeilDefect.Arithmetic.ActualZetaIV157AMOriginalDictionary WeilDefect.Arithmetic.ActualZetaIV157AMReflection WeilDefect.Arithmetic.ActualZetaIV159AMRowReceiver
           timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV160AMTerminalReceiver.lean 2>&1 | tee iv161/out/iv160.log
@@ -67,7 +67,7 @@ jobs:
           from pathlib import Path
           allowed={'propext','Classical.choice','Quot.sound'}
           failures=[]
-          for file,ns in [('iv144',['IV144Exp_four_bounds','IV144Prime_range','IV160Census','IV144Prime_bank','IV144Prime_count','IV144Circle_symbol','IV144Prime_literal','IV144Prime_spectral']),('iv157',['IV157Dictionary','IV157Mixed_identity','IV157Original_prime_bound']),('iv160',['IV160Full_rows','IV160Original_bound'])]:
+          for file,ns in [('iv162',['IV162Exp_four_bounds','IV162Prime_range','IV162Census','IV162Prime_bank','IV162Prime_count','IV162Prime_literal']),('iv157',['IV157Dictionary','IV157Mixed_identity','IV157Original_prime_bound']),('iv160',['IV160Full_rows','IV160Original_bound'])]:
               p=Path('iv161/out/'+file+'.log')
               s=p.read_text() if p.exists() else ''
               for suffix in ns:
@@ -77,7 +77,7 @@ jobs:
                   ok=len(m)+len(no)==1 and (not m or set(x.strip() for x in m[0].split(',') if x.strip())<=allowed)
                   print(n,'PASS' if ok else 'FAIL')
                   if not ok: failures.append(n)
-          Path('iv161/out/audit.json').write_text(json.dumps({'expected':13,'failures':failures}))
+          Path('iv161/out/audit.json').write_text(json.dumps({'expected':11,'failures':failures}))
           assert not failures,failures
           PY
       - uses: actions/upload-artifact@v4

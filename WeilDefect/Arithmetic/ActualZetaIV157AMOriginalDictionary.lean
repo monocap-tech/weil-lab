@@ -1,5 +1,5 @@
 import WeilDefect.Arithmetic.ActualZetaIV156AMPhysicalForm
-import WeilDefect.Arithmetic.ActualZetaIV144BKOriginalArithmetic
+import WeilDefect.Arithmetic.ActualZetaIV162AMOriginalPrimeCore
 
 namespace WeilDefect
 noncomputable section
@@ -8,18 +8,18 @@ open scoped SchwartzMap ComplexConjugate BigOperators
 
 theorem neutralIV157Dictionary :
     neutralIV156P = rightLimitPrimePowerFinset 2 := by
-  rw [neutralIV144Prime_bank]
+  rw [neutralIV162Prime_bank]
   exact neutralIV152Prime_bank
 
 /-- Compare the literal finite arithmetic form to the existing original
 mixed source, retaining the original sign and normalization. -/
 theorem neutralIV157Mixed_identity (f : 𝓢(ℝ,ℂ)) :
-    neutralIV144PrimeMixed f f =
+    neutralIV162PrimeMixed f f =
       ∑ n ∈ neutralIV156P, (neutralIV151Weight n:ℂ) *
         ((∫ x : ℝ, f x * star (f (x+Real.log (n:ℝ)))) +
          (∫ x : ℝ, f x * star (f (x-Real.log (n:ℝ))))) := by
-  have hp : neutralIV156P = neutralIV144PrimeBank := neutralIV152Prime_bank
-  unfold neutralIV144PrimeMixed
+  have hp : neutralIV156P = neutralIV162PrimeBank := neutralIV152Prime_bank
+  unfold neutralIV162PrimeMixed
   rw [hp]
   apply Finset.sum_congr rfl
   intro n hn
@@ -37,7 +37,7 @@ theorem neutralIV157Original_prime_bound (f : 𝓢(ℝ,ℂ))
         7979648 * 1000000000 * neutralIV146Value (i:ℤ)) :
     ‖∑' n : ℕ, neutralIV085PrimeSummand (neutralIV103Correlation 2 f f) n‖ ≤
       (7979648/1000000:ℝ)*∫ x : ℝ, ‖f x‖^2 := by
-  rw [neutralIV144Prime_literal f f hs hs, neutralIV157Mixed_identity]
+  rw [neutralIV162Prime_literal f f hs hs, neutralIV157Mixed_identity]
   exact neutralIV156Physical_form f hs hbank
 
 #print axioms neutralIV157Dictionary
