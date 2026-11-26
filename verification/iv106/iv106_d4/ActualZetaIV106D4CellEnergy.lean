@@ -40,7 +40,7 @@ theorem neutralIV106D4IntervalCS (v : ℝ → ℂ) (hv : Continuous v)
         ring
   rw [he] at hz
   have hmul : H*m^2 ≤ H*(H*E) := by nlinarith only [hz]
-  have hm : m^2 ≤ H*E := (mul_le_mul_left hH).mp hmul
+  have hm : m^2 ≤ H*E := (mul_le_mul_left₀ hH).mp hmul
   have hn : ‖∫ t in l..r, v t‖ ≤ m :=
     intervalIntegral.norm_integral_le_integral_norm h.le
   exact (pow_le_pow_left₀ (norm_nonneg _) hn 2).trans hm
@@ -52,7 +52,16 @@ theorem neutralIV106D4Envelope (l r : ℝ) (hlr : l < r) :
   have hd (x : ℝ) : HasDerivAt F ((x-l)*(r-x)/(r-l)) x := by
     have hx := (hasDerivAt_id x).sub_const l
     have h := ((hx.pow 2).div_const 2).sub ((hx.pow 3).div_const (3*(r-l)))
-    convert h using 1 <;> field_simp [sub_ne_zero.mpr (ne_of_gt hlr)] <;> ring
+    have he : (↑(2 : ℕ) * (x-l) ^ (2-1 : ℕ) * 1 / 2 -
+        ↑(3 : ℕ) * (x-l) ^ (3-1 : ℕ) * 1 / (3*(r-l))) =
+        (x-l)*(r-x)/(r-l) := by
+      norm_num
+      field_simp [sub_ne_zero.mpr (ne_of_gt hlr)]
+      <;> ring
+    change HasDerivAt F (↑(2 : ℕ) * (x-l) ^ (2-1 : ℕ) * 1 / 2 -
+      ↑(3 : ℕ) * (x-l) ^ (3-1 : ℕ) * 1 / (3*(r-l))) x at h
+    rw [he] at h
+    exact h
   have hc : Continuous (fun x : ℝ => (x-l)*(r-x)/(r-l)) :=
     (((continuous_id.sub continuous_const).mul
       (continuous_const.sub continuous_id)).div_const _)
