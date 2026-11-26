@@ -20,11 +20,15 @@ theorem neutralIV106E4Log_upper :
     rw [← Real.log_mul (by norm_num) (by norm_num)]
     norm_num
   have e5 : Real.log 5 = 2*Real.log 2 + Real.log (5/4) := by
-    rw [← Real.log_pow, ← Real.log_mul (by norm_num) (by norm_num)]
-    norm_num
+    calc
+      Real.log 5 = Real.log ((2:ℝ)^2*(5/4)) := by norm_num
+      _ = Real.log ((2:ℝ)^2) + Real.log (5/4) := Real.log_mul (by norm_num) (by norm_num)
+      _ = _ := by rw [Real.log_pow]; norm_num
   have e7 : Real.log 7 = 2*Real.log 2 + Real.log (7/4) := by
-    rw [← Real.log_pow, ← Real.log_mul (by norm_num) (by norm_num)]
-    norm_num
+    calc
+      Real.log 7 = Real.log ((2:ℝ)^2*(7/4)) := by norm_num
+      _ = Real.log ((2:ℝ)^2) + Real.log (7/4) := Real.log_mul (by norm_num) (by norm_num)
+      _ = _ := by rw [Real.log_pow]; norm_num
   rw [e3,e5,e7]
   exact ⟨by linarith only [h2], by linarith only [h2,h3],
     by linarith only [h2,h5], by linarith only [h2,h7]⟩
