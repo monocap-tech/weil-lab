@@ -74,7 +74,10 @@ theorem f08_077_original_extension_unique (a : ℝ) (ha : 0 < a)
   have hfirst : ∀ x, ∀ y ∈ f08_076_core a, E x y = inner ℂ x (A y) := by
     intro x y hy
     let S : Set (NeutralLogHilbertCarrier a) := {z | E z y = inner ℂ z (A y)}
-    have hc : IsClosed S := isClosed_eq (hleft y) (continuous_id.inner continuous_const)
+    have hi : Continuous (fun z : NeutralLogHilbertCarrier a => inner ℂ z (A y)) :=
+      (continuous_id : Continuous (fun z : NeutralLogHilbertCarrier a => z)).inner
+        (continuous_const : Continuous (fun _ : NeutralLogHilbertCarrier a => A y))
+    have hc : IsClosed S := isClosed_eq (hleft y) hi
     have hs : f08_076_core a ⊆ S := fun z hz => hcore z hz y hy
     have hh := closure_minimal hs hc
     rw [hd.closure_eq] at hh

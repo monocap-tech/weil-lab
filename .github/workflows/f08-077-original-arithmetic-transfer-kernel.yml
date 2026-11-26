@@ -173,7 +173,7 @@ jobs:
           test "$(git -C dense hash-object verification/f08/f08_076/F08OriginalDenseCoreTransfer.lean)" = 08ae8410ef5f53b7b3c05fbb05b8b100750d122f
           ! grep -Eq '\b(sorry|admit|unsafe)\b' dense/verification/f08/f08_076/F08OriginalDenseCoreTransfer.lean
           cp dense/verification/f08/f08_076/F08OriginalDenseCoreTransfer.lean research/WeilDefect/Generated/F08/OriginalDenseCoreTransfer.lean
-          test "$(git -C candidate hash-object verification/f08/f08_077/F08OriginalArithmeticTransfer.lean)" = b82d23d3323a3dd644ce913b744969b12c04fe2a
+          test "$(git -C candidate hash-object verification/f08/f08_077/F08OriginalArithmeticTransfer.lean)" = f711996d79a664eaa95e77e6af866bd807af8f55
           ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/f08/f08_077/F08OriginalArithmeticTransfer.lean
           cp candidate/verification/f08/f08_077/F08OriginalArithmeticTransfer.lean research/WeilDefect/Generated/F08/OriginalArithmeticTransfer.lean
           test "$(find research/WeilDefect/Generated/F08 -maxdepth 1 -name '*.lean' | wc -l)" -eq 40
