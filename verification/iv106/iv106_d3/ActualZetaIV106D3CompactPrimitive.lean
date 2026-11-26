@@ -68,11 +68,14 @@ theorem neutralIV106D3Schwartz_primitive (v : 𝓢(ℝ, ℂ)) (l r : ℝ)
     neutralIV106D3Primitive_outside v l r hlr hv hm x hx
   have hc : HasCompactSupport F := by
     change IsCompact (closure (Function.support F))
-    apply isCompact_Icc.of_isClosed_subset isClosed_closure
-    apply closure_minimal _ isClosed_Icc
-    intro x hx
-    by_contra h
-    exact hx (ho x h)
+    have hsub : Function.support F ⊆ Set.Icc l r := by
+      intro x hx
+      by_contra h
+      exact hx (ho x h)
+    have hcl : closure (Function.support F) ⊆ Set.Icc l r :=
+      closure_minimal hsub isClosed_Icc
+    exact (isCompact_Icc : IsCompact (Set.Icc l r)).of_isClosed_subset
+      isClosed_closure hcl
   let V := hc.toSchwartzMap hs
   refine ⟨V, fun x => rfl, ?_, ho⟩
   apply SchwartzMap.ext
