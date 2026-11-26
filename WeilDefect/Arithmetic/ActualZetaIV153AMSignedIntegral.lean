@@ -11,11 +11,13 @@ def neutralIV153Density (H f : ℝ → ℝ) (s x : ℝ) : ℝ :=
 
 theorem neutralIV153Young (a b p q : ℝ) (hp : 0 < p) (hq : 0 < q) :
     2*a*b ≤ a^2*q/p+b^2*p/q := by
-  apply (mul_le_mul_right₀ (mul_pos hp hq)).mp
-  calc
-    (2*a*b)*(p*q) ≤ a^2*q^2+b^2*p^2 := by nlinarith [sq_nonneg (a*q-b*p)]
-    _ = (a^2*q/p+b^2*p/q)*(p*q) := by
-      field_simp [ne_of_gt hp, ne_of_gt hq] <;> ring
+  have hclear : (2*a*b)*(p*q) ≤ (a^2*q/p+b^2*p/q)*(p*q) := by
+    calc
+      (2*a*b)*(p*q) ≤ a^2*q^2+b^2*p^2 := by nlinarith [sq_nonneg (a*q-b*p)]
+      _ = (a^2*q/p+b^2*p/q)*(p*q) := by
+        field_simp [ne_of_gt hp, ne_of_gt hq] <;> ring
+  by_contra! hn
+  exact (not_lt_of_ge hclear) (mul_lt_mul_of_pos_right hn (mul_pos hp hq))
 
 /-- Handles both positive and zero weights, including window endpoints. -/
 theorem neutralIV153ZeroSafeYoung (H f : ℝ → ℝ) (s x : ℝ)
@@ -60,8 +62,12 @@ theorem neutralIV153Signed_integral (H f : ℝ → ℝ) (s : ℝ)
     (∫ x : ℝ, f x*f (x+s)) + (∫ x : ℝ, f x*f (x-s)) ≤
       (∫ x : ℝ, neutralIV153Density H f s x) +
       (∫ x : ℝ, neutralIV153Density H f (-s) x) := by
-  have hmono := integral_mono (hc.const_mul 2) (hp.add hmt)
-    (fun x => by simpa only [mul_assoc] using neutralIV153ZeroSafeYoung H f s x hH hf)
+  have hpt : (fun x : ℝ => 2*(f x*f (x+s))) ≤
+      (fun x : ℝ => neutralIV153Density H f s x + neutralIV153Density H f (-s) (x+s)) := by
+    intro x
+    change 2*(f x*f (x+s)) ≤ neutralIV153Density H f s x + neutralIV153Density H f (-s) (x+s)
+    simpa only [mul_assoc] using neutralIV153ZeroSafeYoung H f s x hH hf
+  have hmono := integral_mono (hc.const_mul 2) (hp.add hmt) hpt
   change (∫ x : ℝ, 2*(f x*f (x+s))) ≤
     ∫ x : ℝ, neutralIV153Density H f s x + neutralIV153Density H f (-s) (x+s) at hmono
   rw [integral_const_mul, integral_add hp hmt, neutralIV153Reverse_integral] at hmono
