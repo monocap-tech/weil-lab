@@ -23,7 +23,7 @@ theorem neutralIV125Cell_bound (f p : ℝ → ℂ) (μ : Measure ℝ) (c : ℂ) 
     ‖∫ x, p x * f x ∂μ‖ ≤ d * ∫ x, ‖f x‖ ∂μ := by
   rw [← neutralIV125Cell_cancel f p μ c hf hp hm]
   have hi : Integrable (fun x => (p x - c) * f x) μ := by
-    simpa only [sub_mul] using hp.sub (hf.const_mul c)
+    simpa only [sub_mul, Pi.sub_apply] using hp.sub (hf.const_mul c)
   refine (norm_integral_le_integral_norm (μ := μ) _).trans ?_
   rw [← integral_const_mul]
   apply integral_mono_ae hi.norm (hf.norm.const_mul d)
@@ -48,7 +48,7 @@ theorem neutralIV125LowBand_of_pointwise (v : 𝓢(ℝ,ℂ)) (T C : ℝ)
   have hc : (∫ ξ in Set.Ioc (-T) T, C * ξ^2) = C * (2*T^3/3) := by
     rw [← intervalIntegral.integral_of_le (by linarith : -T ≤ T),
       intervalIntegral.integral_const_mul, integral_pow]
-    norm_num <;> ring
+    norm_num <;> ring_nf <;> simp
   rw [← hc]
   exact setIntegral_mono_on hf.integrableOn (hp.const_mul C) measurableSet_Ioc hpoint
 
@@ -79,7 +79,6 @@ theorem neutralIV125LogLower_of_leakage (a : ℝ) (v : 𝓢(ℝ,ℂ))
   have hL : 0 ≤ L := by
     apply Real.log_nonneg
     have he := Real.add_one_le_exp (1:ℝ)
-    dsimp [L]
     linarith
   have hband : 0 ≤ ∫ ξ in I, w ξ * F ξ := by
     apply integral_nonneg
@@ -95,7 +94,7 @@ theorem neutralIV125LogLower_of_leakage (a : ℝ) (v : 𝓢(ℝ,ℂ))
       exact hx ⟨hab.1, hab.2.le⟩
     apply mul_le_mul_of_nonneg_right _ (sq_nonneg _)
     dsimp [L, w, logarithmicFourierWeight]
-    exact Real.log_le_log (by positivity) (add_le_add_left hξ _)
+    exact Real.log_le_log (by positivity) (add_le_add_right hξ _)
   rw [integral_const_mul] at hout
   change (∫ ξ in I, F ξ) ≤ eps * ‖v.toLp 2 volume‖^2 at hLeak
   have htail : (1-eps)*‖v.toLp 2 volume‖^2 ≤ ∫ ξ in Iᶜ, F ξ := by

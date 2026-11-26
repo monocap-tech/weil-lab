@@ -140,7 +140,7 @@ theorem neutralIV126LowBand_ae (v : 𝓢(ℝ,ℂ)) (T C : ℝ) (hT : 0 ≤ T)
   have hc : (∫ ξ in Set.Ioc (-T) T, C*ξ^2) = C*(2*T^3/3) := by
     rw [← intervalIntegral.integral_of_le (by linarith : -T ≤ T),
       intervalIntegral.integral_const_mul, integral_pow]
-    norm_num <;> ring
+    norm_num <;> ring_nf <;> simp
   rw [← hc]
   apply setIntegral_mono_on_ae hf.integrableOn (hp.const_mul C) measurableSet_Ioc
   filter_upwards [hpoint] with ξ hξ _

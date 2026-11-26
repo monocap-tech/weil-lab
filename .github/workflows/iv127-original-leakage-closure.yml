@@ -1,8 +1,8 @@
-name: IV127 original cell-null leakage — native gate
+name: IV129 integrated finite-head repair — native gate
 on:
   push:
     branches:
-      - staging/iv127-original-leakage-closure
+      - staging/iv129-original-finite-head
     paths:
       - '.github/workflows/iv127-original-leakage-closure.yml'
       - 'WeilDefect/Arithmetic/ActualZetaIV12*.lean'
@@ -18,19 +18,19 @@ jobs:
         run: |
           set -euo pipefail
           grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
-          mkdir -p iv127/out
+          mkdir -p iv129/out
           python3 - <<'PY'
           import json,re
           from pathlib import Path
-          m={"WeilDefect/Arithmetic/ActualZetaIV124OriginalPhysicalTailBudget.lean":["neutralIV124PhysicalBudget_nonneg","neutralIV124RowBudget_physical","neutralIV124Schur_garding","neutralIV124Schur_tail_of_log_lower","neutralIV124Weighted_lower"],"WeilDefect/Arithmetic/ActualZetaIV125OriginalFourierLeakage.lean":["neutralIV125Cell_cancel","neutralIV125Cell_bound","neutralIV125LowBand_of_pointwise","neutralIV125LogLower_of_leakage","neutralIV125Schur_of_leakage"],"WeilDefect/Arithmetic/ActualZetaIV126OriginalCellPartition.lean":["neutralIV126Phase_norm","neutralIV126Phase_sub","neutralIV126Node_step","neutralIV126Equal_end","neutralIV126Cell_payment","neutralIV126Partition_payment","neutralIV126Window_payment","neutralIV126Fourier_ae_bound","neutralIV126LowBand_ae"],"WeilDefect/Arithmetic/ActualZetaIV127OriginalLeakageClosure.lean":["neutralIV127Interval_mass","neutralIV127Window_mass","neutralIV127Fourier_window","neutralIV127Fourier_sq","neutralIV127LowBand","neutralIV127Schur_cellNull"]}
-          assert sum(map(len,m.values()))==25
+          m={"WeilDefect/Arithmetic/ActualZetaIV124OriginalPhysicalTailBudget.lean":["neutralIV124PhysicalBudget_nonneg","neutralIV124RowBudget_physical","neutralIV124Schur_garding","neutralIV124Schur_tail_of_log_lower","neutralIV124Weighted_lower"],"WeilDefect/Arithmetic/ActualZetaIV125OriginalFourierLeakage.lean":["neutralIV125Cell_cancel","neutralIV125Cell_bound","neutralIV125LowBand_of_pointwise","neutralIV125LogLower_of_leakage","neutralIV125Schur_of_leakage"],"WeilDefect/Arithmetic/ActualZetaIV126OriginalCellPartition.lean":["neutralIV126Phase_norm","neutralIV126Phase_sub","neutralIV126Node_step","neutralIV126Equal_end","neutralIV126Cell_payment","neutralIV126Partition_payment","neutralIV126Window_payment","neutralIV126Fourier_ae_bound","neutralIV126LowBand_ae"],"WeilDefect/Arithmetic/ActualZetaIV127OriginalLeakageClosure.lean":["neutralIV127Interval_mass","neutralIV127Window_mass","neutralIV127Fourier_window","neutralIV127Fourier_sq","neutralIV127LowBand","neutralIV127Schur_cellNull"],"WeilDefect/Arithmetic/ActualZetaIV128OriginalTailCutoffs.lean":["neutralIV128Leakage_formula","neutralIV128HalfLeakage_exists","neutralIV128Margin_exists","neutralIV128Schur_coercive_tail_exists"],"WeilDefect/Arithmetic/ActualZetaIV129OriginalFiniteHead.lean":["neutralIV129CellMap_zero_iff","neutralIV129Head_dim_le","neutralIV129Section_exists","neutralIV129Head_tail","neutralIV129Coercive_split"]}
+          assert sum(map(len,m.values()))==34
           for p,names in m.items():
               s=Path(p).read_text()
               assert not re.search(r'\b(?:sorry|admit|sorryAx)\b',s),p
               assert re.findall(r'(?m)^theorem (\w+)',s)==names,p
               assert re.findall(r'(?m)^#print axioms (\w+)$',s)==names,p
-          Path('iv127/out/expected.json').write_text(json.dumps(m))
-          print('IV127: 25 exact source candidates')
+          Path('iv129/out/expected.json').write_text(json.dumps(m))
+          print('IV129: 34 exact source candidates')
           PY
       - name: Install pinned Lean and Mathlib
         run: |
@@ -43,22 +43,24 @@ jobs:
       - name: Native integrated build
         run: |
           set -euo pipefail
-          lake build WeilDefect.Arithmetic.ActualZetaIV127OriginalLeakageClosure 2>&1 | tee iv127/out/build.log
+          lake build WeilDefect.Arithmetic.ActualZetaIV129OriginalFiniteHead 2>&1 | tee iv129/out/build.log
       - name: Strict named axiom receipts and compiled custody
         run: |
           set -euo pipefail
-          lake env lean WeilDefect/Arithmetic/ActualZetaIV124OriginalPhysicalTailBudget.lean 2>&1 | tee iv127/out/IV124.log
-          lake env lean WeilDefect/Arithmetic/ActualZetaIV125OriginalFourierLeakage.lean 2>&1 | tee iv127/out/IV125.log
-          lake env lean WeilDefect/Arithmetic/ActualZetaIV126OriginalCellPartition.lean 2>&1 | tee iv127/out/IV126.log
-          lake env lean WeilDefect/Arithmetic/ActualZetaIV127OriginalLeakageClosure.lean 2>&1 | tee iv127/out/IV127.log
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV124OriginalPhysicalTailBudget.lean 2>&1 | tee iv129/out/IV124.log
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV125OriginalFourierLeakage.lean 2>&1 | tee iv129/out/IV125.log
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV126OriginalCellPartition.lean 2>&1 | tee iv129/out/IV126.log
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV127OriginalLeakageClosure.lean 2>&1 | tee iv129/out/IV127.log
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV128OriginalTailCutoffs.lean 2>&1 | tee iv129/out/IV128.log
+          lake env lean WeilDefect/Arithmetic/ActualZetaIV129OriginalFiniteHead.lean 2>&1 | tee iv129/out/IV129.log
           python3 - <<'PY'
           import json,re
           from pathlib import Path
-          m=json.loads(Path('iv127/out/expected.json').read_text())
+          m=json.loads(Path('iv129/out/expected.json').read_text())
           receipts={}
           for p,names in m.items():
               iv=re.search(r'IV\d+',p).group()
-              t=Path('iv127/out/'+iv+'.log').read_text()
+              t=Path('iv129/out/'+iv+'.log').read_text()
               for n in names:
                   full='WeilDefect.'+n
                   hits=list(re.finditer(r"^'"+re.escape(full)+r"' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)\s*$",t,re.M))
@@ -66,23 +68,27 @@ jobs:
                   ax={x.strip() for x in (hits[0].group(1) or '').split(',') if x.strip()}
                   assert ax<={'propext','Classical.choice','Quot.sound'},(full,ax)
                   receipts[full]=sorted(ax)
-          assert len(receipts)==25
-          Path('iv127/out/receipts.json').write_text(json.dumps(receipts,indent=2,sort_keys=True)+'\n')
+          assert len(receipts)==34
+          Path('iv129/out/receipts.json').write_text(json.dumps(receipts,indent=2,sort_keys=True)+'\n')
           PY
-          git rev-parse HEAD > iv127/out/commit.txt
-          mkdir -p iv127/out/compiled iv127/out/source
-          cp .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV124OriginalPhysicalTailBudget.olean iv127/out/compiled/
-          cp WeilDefect/Arithmetic/ActualZetaIV124OriginalPhysicalTailBudget.lean iv127/out/source/
-          cp .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV125OriginalFourierLeakage.olean iv127/out/compiled/
-          cp WeilDefect/Arithmetic/ActualZetaIV125OriginalFourierLeakage.lean iv127/out/source/
-          cp .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV126OriginalCellPartition.olean iv127/out/compiled/
-          cp WeilDefect/Arithmetic/ActualZetaIV126OriginalCellPartition.lean iv127/out/source/
-          cp .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV127OriginalLeakageClosure.olean iv127/out/compiled/
-          cp WeilDefect/Arithmetic/ActualZetaIV127OriginalLeakageClosure.lean iv127/out/source/
-          (cd iv127/out && sha256sum compiled/* source/* > sha256.txt && sha256sum -c sha256.txt)
-          echo 'IV127 25 strict named receipts PASS'
+          git rev-parse HEAD > iv129/out/commit.txt
+          mkdir -p iv129/out/compiled iv129/out/source
+          cp .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV124OriginalPhysicalTailBudget.olean iv129/out/compiled/
+          cp WeilDefect/Arithmetic/ActualZetaIV124OriginalPhysicalTailBudget.lean iv129/out/source/
+          cp .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV125OriginalFourierLeakage.olean iv129/out/compiled/
+          cp WeilDefect/Arithmetic/ActualZetaIV125OriginalFourierLeakage.lean iv129/out/source/
+          cp .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV126OriginalCellPartition.olean iv129/out/compiled/
+          cp WeilDefect/Arithmetic/ActualZetaIV126OriginalCellPartition.lean iv129/out/source/
+          cp .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV127OriginalLeakageClosure.olean iv129/out/compiled/
+          cp WeilDefect/Arithmetic/ActualZetaIV127OriginalLeakageClosure.lean iv129/out/source/
+          cp .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV128OriginalTailCutoffs.olean iv129/out/compiled/
+          cp WeilDefect/Arithmetic/ActualZetaIV128OriginalTailCutoffs.lean iv129/out/source/
+          cp .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV129OriginalFiniteHead.olean iv129/out/compiled/
+          cp WeilDefect/Arithmetic/ActualZetaIV129OriginalFiniteHead.lean iv129/out/source/
+          (cd iv129/out && sha256sum compiled/* source/* > sha256.txt && sha256sum -c sha256.txt)
+          echo 'IV129 34 strict named receipts PASS'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: iv127-integrated-native-receipts
-          path: iv127/out/
+          name: iv129-integrated-native-receipts
+          path: iv129/out/
