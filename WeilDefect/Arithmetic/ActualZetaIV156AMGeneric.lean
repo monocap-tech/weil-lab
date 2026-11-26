@@ -18,8 +18,7 @@ theorem neutralIV156Ratio_cap {ι : Type*} (P : Finset ι)
     (Finset.single_le_sum (f := fun k => a k*(H (x+s k)+H (x+(-s k))))
       (fun k hk => mul_nonneg (ha k hk) (add_nonneg (hH _) (hH _))) hn).trans hr
   constructor
-  · apply (le_div_iff₀ han).mp at hterm
-    have hh : H (x+s n)*a n ≤ C*H x := by
+  · have hh : H (x+s n)*a n ≤ C*H x := by
       calc
         _ ≤ a n*(H (x+s n)+H (x+(-s n))) := by
           rw [mul_comm (H (x+s n))]

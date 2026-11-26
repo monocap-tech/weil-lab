@@ -1,0 +1,5 @@
+# IV158 — Repair and reflection pilot
+
+IV156 run 45884727247 failed on the erroneously retained apply (le_div_iff₀ han).mp at hterm. Complex_form clean, Ratio_cap and Real_form contaminated by failed declaration; six physical declarations not reached. Artifact 15148779519. The actual committed source is repaired by removing that line, retaining the explicit multiplication inequality and final division conversion.
+
+IV158 incorporates staged IV157 on the active lineage. Four new symmetry receiver candidates extend finite half-window equality to all signed indices and assemble the symmetry blocks, using the actual chunked lookup. Two eight-row declarations (64..79) are staged in one process to measure peak memory and elapsed time. Independent reflection, symmetry and row probe steps run even if physical form fails. 21 named receipts expected. Original dictionary source remains staged, not activated here because its IV144 dependency and physical form are still open. No full bank activation, no unconditional norm or RH claim. External symmetry and complete row audit remain unchanged.
