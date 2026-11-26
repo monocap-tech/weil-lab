@@ -107,8 +107,9 @@ theorem neutralIV106D6Reciprocal_integrable (V v : 𝓢(ℝ,ℂ))
   have hm := (memLp_two_iff_integrable_sq_norm
     (Lp.aestronglyMeasurable (𝓕 (V.toLp 2 volume) : RealComplexL2))).mp
     (Lp.memLp (𝓕 (V.toLp 2 volume) : RealComplexL2))
-  exact (hm.const_mul ((2*Real.pi)^2)).congr
-    (neutralIV106D2Reciprocal_ae V v hd).symm
+  apply (hm.const_mul ((2*Real.pi)^2)).congr
+  filter_upwards [neutralIV106D2Reciprocal_ae V v hd] with ξ hξ
+  exact hξ.symm
 
 /-- Attach the certified Fourier moment to the actual C3C constrained core. -/
 theorem neutralIV106D6Actual_reciprocal (k : ℕ) (hk : 0 < k)
