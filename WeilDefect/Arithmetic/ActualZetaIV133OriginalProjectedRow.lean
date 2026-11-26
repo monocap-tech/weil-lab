@@ -109,6 +109,7 @@ theorem neutralIV133Penalty_trial_projected_le (k : ℕ) (hk : 0 < k)
     have hw : z.val = y.val+w.val := by
       change z.val = y.val+(z.val-y.val)
       abel
+    change neutralIV131Loss k hk h z.val ≤ _
     rw [hw, neutralIV132Loss_shift k hk h y.val w.val hh (hz y) (hz w)]
     have hr := neutralIV133Projected_bound k hk (h+y.val) w.val d hs (hz w) (hd w)
     have hb := (neg_le_abs (neutralIV130Mixed k hk (h+y.val) w.val).re).trans

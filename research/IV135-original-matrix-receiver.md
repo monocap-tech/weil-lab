@@ -1,0 +1,7 @@
+# IV135 — Sufficient terminal matrix receiver
+
+Run 45763936994 at 0bb03892efc014cae6f7b9063ad297c9b549484a built and reaudited IV124–131 (49 declarations); artifact 15091049915 (958553 bytes) preserves eight source/compiled pairs with runner-verified hashes. IV132 failed on star/conjugation notation, missing explicit support argument in Loss_shift, and a beta-redex in the trial supremum goal. Repair explicitly changes to conjugation, passes all three support premises and exposes the loss expression. Apply same beta-redex repair preventively to IV133.
+
+Six new candidate theorems construct the literal corrected signed Gram T of supported trial-lifted head w_i and residual Gram G of r_i = r_k(w_i)-F(D_i,P_i). Finite synthesis is proved at the pairing level on the actual tail, so no full physical row linearity premise is needed. If T-G/eta has nonnegative quadratic form then every w(c)+z has nonnegative Schur energy, by actual residual pairing, Cauchy-Schwarz and certified scalar payment. With explicit coverage of X modulo Z this implies original radius-1.1 window positivity. The lifted head w=h+y makes T=G_H-A in the minimizing trial convention; no need to formally identify the exact inverse penalty to use this sufficient route. Coverage by a concrete basis, cutoff size, structured weighted comparison and numerical matrix sign remain open; this is not a global RH receiver.
+
+Integrated gate extended to 76 named declarations across 12 modules; partial custody remains fail-closed. No numerical evaluation or native acceptance of new candidates.

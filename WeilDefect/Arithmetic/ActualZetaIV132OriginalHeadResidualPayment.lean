@@ -4,7 +4,7 @@ import Mathlib.Tactic
 namespace WeilDefect
 noncomputable section
 open MeasureTheory
-open scoped SchwartzMap
+open scoped SchwartzMap ComplexConjugate
 
 theorem neutralIV132Tail_supported (k : ℕ) (hk : 0 < k) (N : ℕ)
     (z : neutralIV131Tail k hk N) :
@@ -90,7 +90,10 @@ theorem neutralIV132Mixed_hermitian (k : ℕ) (hk : 0 < k) (u v : 𝓢(ℝ,ℂ))
     (hv : ∀ x : ℝ, x ∉ Set.Icc (-(11/10:ℝ)) (11/10:ℝ) → v x = 0) :
     star (neutralIV130Mixed k hk u v) = neutralIV130Mixed k hk v u := by
   unfold neutralIV130Mixed
-  rw [star_sub, neutralIV130Mixed_hermitian _ u v hu hv,
+  change conj (neutralIV101Mixed (11/10:ℝ) u v -
+    neutralIV101Mixed (11/10:ℝ) (neutralIV130ResponseVector k hk u)
+      (neutralIV130ResponseVector k hk v)) = _
+  rw [map_sub, neutralIV130Mixed_hermitian _ u v hu hv,
     neutralIV130Mixed_hermitian _ _ _
       (neutralIV130Response_supported k hk u) (neutralIV130Response_supported k hk v)]
 
@@ -117,9 +120,10 @@ theorem neutralIV132Loss_shift (k : ℕ) (hk : 0 < k) (h y z : 𝓢(ℝ,ℂ))
     neutralIV131Loss k hk h (y+z) =
       neutralIV131Loss k hk h y + neutralIV131Loss k hk (h+y) z := by
   unfold neutralIV131Loss
-  rw [neutralIV132Mixed_add_right k hk h y z hy hz,
-    neutralIV132Mixed_add_left k hk h y z hh hy,
-    neutralIV130Schur_add k hk y z hy hz]
+  have h1 := neutralIV132Mixed_add_right k hk h y z hy hz
+  have h2 := neutralIV132Mixed_add_left k hk h y z hh hy hz
+  have h3 := neutralIV130Schur_add k hk y z hy hz
+  rw [h1,h2,h3]
   simp only [Complex.add_re]
   ring
 
@@ -146,6 +150,7 @@ theorem neutralIV132Penalty_trial_le (k : ℕ) (hk : 0 < k)
     have hw : z.val = y.val+w.val := by
       change z.val = y.val+(z.val-y.val)
       abel
+    change neutralIV131Loss k hk h z.val ≤ _
     rw [hw, neutralIV132Loss_shift k hk h y.val w.val hh (hz y) (hz w)]
     have hp := neutralIV131Loss_le k hk (h+y.val) w.val hs (hz w) eta he (hc w)
     linarith only [hp]
