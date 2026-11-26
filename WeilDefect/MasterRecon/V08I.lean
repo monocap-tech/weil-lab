@@ -8,7 +8,7 @@ namespace WeilDefect.MasterRecon.V08I
 open MeasureTheory Set Filter
 open scoped ENNReal Topology FourierTransform
 
-abbrev FullL2 := V08H.FullL2
+noncomputable abbrev FullL2 := V08H.FullL2
 
 theorem multiplier_mem (m : ℝ → ℂ) (hm : Measurable m) (B : ℝ)
     (hb : ∀ u, ‖m u‖ ≤ B) (f : FullL2) :
@@ -16,6 +16,7 @@ theorem multiplier_mem (m : ℝ → ℂ) (hm : Measurable m) (B : ℝ)
   apply (Lp.memLp f).of_le_mul
     (hm.aestronglyMeasurable.mul (Lp.aestronglyMeasurable f))
   filter_upwards with u
+  change ‖m u * f u‖ ≤ B * ‖f u‖
   rw [norm_mul]
   exact mul_le_mul_of_nonneg_right (hb u) (norm_nonneg _)
 
@@ -96,7 +97,7 @@ theorem inverseWeight_bound (u : ℝ) :
     ‖inverseWeight u‖ ≤ (Real.sqrt (Real.log 2))⁻¹ := by
   have h : 0 < Real.sqrt (logWeight u) := Real.sqrt_pos.2 (logWeight_pos u)
   rw [inverseWeight, Complex.norm_real, Real.norm_eq_abs, abs_of_pos (inv_pos.mpr h)]
-  exact inv_le_inv₀ (Real.sqrt_pos.2 (Real.log_pos (by norm_num)))
+  exact inv_le_inv₀ (Real.sqrt_pos.2 (Real.log_pos (by norm_num : (1 : ℝ) < 2)))
     (Real.sqrt_le_sqrt (logWeight_lower u))
 
 noncomputable def unweight : FullL2 →L[ℂ] FullL2 :=
@@ -139,7 +140,7 @@ theorem physicalInclusion_support (t : ℝ) (g : logCarrier t) :
   change (supportConstraint t (g : FullL2) : ℝ → ℂ) =ᵐ[volume]
     fun x => outsideMask t x * physicalMap (g : FullL2) x at h
   rw [hzero] at h
-  filter_upwards [h, (Lp.coeFn_zero : ((0 : FullL2) : ℝ → ℂ) =ᵐ[volume] 0)] with x hx h0
+  filter_upwards [h, (Lp.coeFn_zero ℂ 2 (volume : Measure ℝ))] with x hx h0
   intro hxout
   change physicalMap (g : FullL2) x = 0
   change (0 : FullL2) x = outsideMask t x * physicalMap (g : FullL2) x at hx
