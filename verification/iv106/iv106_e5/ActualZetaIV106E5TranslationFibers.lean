@@ -49,7 +49,7 @@ theorem neutralIV106E5Mass (v : ℝ → ℂ) (hv : Continuous v)
     (hout : ∀ x ∉ Set.Icc l b, v x = 0) :
     (∫ t in (0:ℝ)..s, ∑ j ∈ Finset.range m,
       ‖v (t+(l+(j:ℝ)*s))‖^2) = ∫ x : ℝ, ‖v x‖^2 := by
-  rw [neutralIV106E5Fold _ (hv.norm.pow 2) l s m]
+  rw [neutralIV106E5Fold (fun x : ℝ => ‖v x‖^2) (by fun_prop) l s m]
   apply neutralIV106E5Padded_integral _ l b _ hlb hb
   intro x hx
   simp [hout x hx]
