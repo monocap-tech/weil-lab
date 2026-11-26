@@ -16,6 +16,8 @@ jobs:
     timeout-minutes: 300
     steps:
       - uses: actions/checkout@v4
+      - name: Record session setup start
+        run: date +%s > nf618-session-start.txt
       - name: Authenticate complete deployment index and selected plan before setup
         run: |
           set -euo pipefail
@@ -238,6 +240,7 @@ jobs:
           curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/15154802905/zip" -o nf618-input/common-checkpoint.zip
           python scripts/nf618_restore_common_checkpoint.py nf618-input/common-checkpoint.zip
           /usr/bin/time -o nf618-native-session05-06-reuse-time.log -f 'elapsed=%e user=%U rss=%M' lake build WeilDefect.Generated.NF618HybridPilot.Amplitude 2>&1 | tee nf618-native-session05-06-reuse.log
+          date +%s > nf618-session-setup-end.txt
       - uses: actions/upload-artifact@v4
         with:
           name: nf618-native-batch05-source
@@ -250,8 +253,8 @@ jobs:
         run: |
           set -euo pipefail
           cp nf618-session/Batch05/source/manifest.json WeilDefect/Generated/NF618HybridPilot/manifest.json
-          lake build WeilDefect.Generated.NF618HybridPilot.Audit0084 2>&1 | tee nf618-native-batch05-build.log
-          lake env lean WeilDefect/Generated/NF618HybridPilot/Audit0084.lean 2>&1 | tee nf618-native-batch05-axioms.log
+          /usr/bin/time -o nf618-native-batch05-kernel-time.log -f 'elapsed=%e user=%U sys=%S rss_kb=%M exit=%x' lake build WeilDefect.Generated.NF618HybridPilot.Audit0084 2>&1 | tee nf618-native-batch05-build.log
+          /usr/bin/time -o nf618-native-batch05-audit-time.log -f 'elapsed=%e user=%U sys=%S rss_kb=%M exit=%x' lake env lean WeilDefect/Generated/NF618HybridPilot/Audit0084.lean 2>&1 | tee nf618-native-batch05-axioms.log
           python - <<'PY'
           import json,hashlib,re
           from pathlib import Path
@@ -310,8 +313,8 @@ jobs:
         run: |
           set -euo pipefail
           cp nf618-session/Batch06/source/manifest.json WeilDefect/Generated/NF618HybridPilot/manifest.json
-          lake build WeilDefect.Generated.NF618HybridPilot.Audit0050 2>&1 | tee nf618-native-batch06-build.log
-          lake env lean WeilDefect/Generated/NF618HybridPilot/Audit0050.lean 2>&1 | tee nf618-native-batch06-axioms.log
+          /usr/bin/time -o nf618-native-batch06-kernel-time.log -f 'elapsed=%e user=%U sys=%S rss_kb=%M exit=%x' lake build WeilDefect.Generated.NF618HybridPilot.Audit0050 2>&1 | tee nf618-native-batch06-build.log
+          /usr/bin/time -o nf618-native-batch06-audit-time.log -f 'elapsed=%e user=%U sys=%S rss_kb=%M exit=%x' lake env lean WeilDefect/Generated/NF618HybridPilot/Audit0050.lean 2>&1 | tee nf618-native-batch06-axioms.log
           python - <<'PY'
           import json,hashlib,re
           from pathlib import Path
@@ -357,6 +360,20 @@ jobs:
             nf618-session/Batch06/source/manifest.json
             nf618-native-batch06-*.log
             nf618-native-batch06-*.json
+          if-no-files-found: warn
+      - name: Preserve independent session timing records
+        if: always()
+        run: date +%s > nf618-session-end.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        continue-on-error: true
+        with:
+          name: nf618-session05-06-timing
+          path: |
+            nf618-session-*.txt
+            nf618-native-session05-06-reuse*.log
+            nf618-native-batch05-*-time.log
+            nf618-native-batch06-*-time.log
           if-no-files-found: warn
       - name: Require both independent native certifications
         if: always()
