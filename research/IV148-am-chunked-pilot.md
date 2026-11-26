@@ -1,0 +1,5 @@
+# IV148 — Chunked literal data repair
+
+IV147 run 45866147182 failed in the literal data build before the row or real-cap pilot: max recursion depth at the monolithic 16384-element array; subsequent noncomputability messages were downstream. Authentication, exact rational audit and pinned Mathlib installation passed. Artifact 15141026880 preserved. Ten inherited NF workflow definitions per push also emitted failed runs with no jobs; these are not the AM pilot. No conclusions about row kernel reduction can be drawn from IV147.
+
+Replace only representation, not data: 128 arrays of 128 values; direct quotient/remainder lookup with zero defaults. The flat public view remains as concatenation. The pilot now checks chunk count and sizes rather than reducing the flattened array. Source reconstruction confirmed all 16384 weights in order; signed translations and exact row formula unchanged. The real-cap step is independent of row-pilot failure. No full bank activated. No native PASS until receipts. IV141 remains separate; global positivity and RH remain unresolved.
