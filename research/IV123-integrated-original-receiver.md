@@ -1,6 +1,6 @@
 # IV123 — Integrated original arithmetic receiver
 
-Status: staged source candidates; no claim of a new Lean receipt until native build and named axiom audit. IV104 and IV109 passed both native workflows at the source commits below.
+Status: integrated IV105–109 and IV123 native Lean PASS at commit `08a5bfe4cbacec7674e52fd057804476f208186e`. This certifies the 28 named declarations selected by the integrated workflow, with only standard Lean axioms. IV110–122 remain mathematical specifications without executable Lean modules; no global positivity or RH result follows.
 
 ## Custody
 - IV105–108 base: c9c1706677bb1f73ff6dbaa90dfed4e58346f821.
@@ -24,3 +24,13 @@ The native pole term is conj(l_-) l_+ + conj(l_+) l_-. Define c=(l_++l_-)/2 and 
 Canonical Return BK (research/cr-int-t1d-co-odd-expansion, research/CR-INT-T1D-BK.md) uses radius 2, double pole-null carrier, 121 even /119 odd exceptional coordinates and relative coercivity 17/10000 and 53/10000, conditional on its inherited comparisons. Restore one moment coordinate per parity, giving candidate 122/120 finite receivers. For normalized moment coordinate, add +2 or -2 to the last diagonal entry of the Gamma-minus-prime Schur matrix. Tail unchanged since pole moments vanish there. Actual parity identity, smooth-core attachment, certified comparison operators, complete matrix signs and unrestricted support remain open. Do not substitute T1D matrices into radius 1.1 or treat a finite index bound as positivity.
 
 No claim of Phase IV adoption, global positivity, or RH.
+
+## Integrated native receipt and compiled-byte custody (2026-11-25 Pacific)
+
+- Workflow run: https://github.com/monocap-tech/weil-lab/actions/runs/45748575818 at source commit `08a5bfe4cbacec7674e52fd057804476f208186e`.
+- Fresh native target `ActualZetaIV123OriginalPoleReceiver` built successfully; the workflow archived five compiled `.olean` files for IV105, IV106, IV107, IV108 and IV123.
+- Exactly 28 named source/axiom receipts passed. Their union of axioms is `{propext, Classical.choice, Quot.sound}`; no `sorryAx` occurs in these receipts.
+- Artifact `15085227312`, SHA-256 `4d3b9a7deb4190626c28bb534cedd6a00f7b9036ba621629e79ac4b6f421583e`, 430971 bytes. Independent download verified the complete ZIP SHA-256, ZIP CRC, each of the five archived `.olean` SHA-256 entries, the 28 receipt records and the recorded commit. The exact archive is also retained as `iv123-integrated-compiled-custody.zip` in the project's file collection.
+- Earlier native failure at IV105's `add_le_add_right` orientation was repaired by `add_le_add_left`; IV123's nonexistent complex numeral simplifiers were replaced by `norm_num <;> ring`. The successful run includes both repairs.
+
+This receipt certifies the integrated named declarations and artifact bytes only. IV110–119 finite-codimension and response/Schur gates and IV120–122 radius-2 source/matrix attachment are still pending Lean implementations and original-form sign certification. The numerical Canonical Return certificates are not thereby literal Lean objects.
