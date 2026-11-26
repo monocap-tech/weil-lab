@@ -1,4 +1,4 @@
-name: IV162 minimal original dictionary and importable certificate pilot
+name: IV163 original dictionary and importable certificate pilot
 on:
   push:
     branches: ['staging/iv147-am-kernel-pilot']
@@ -23,9 +23,20 @@ jobs:
           python research/iv160_am_importable_bank.py --kind sym --assemble
           python research/iv160_am_importable_bank.py --kind row --stop 32 --assemble
           python - <<'PY'
-          import re
+          import re,json
           from pathlib import Path
           a=Path('WeilDefect/Arithmetic')
+          d=json.loads(Path('custody/iv146-am/am_cells.json').read_text())
+          s=(a/'ActualZetaIV146AMCellData.lean').read_text()
+          pairs=re.findall(r'def neutralIV149Chunk(\d{3}) : Array Nat := #\[([^\]]*)\]',s)
+          assert [int(i) for i,_ in pairs]==list(range(128))
+          chunks=[list(map(int,re.findall(r'\d+',x))) for _,x in pairs]
+          h=s.split('def neutralIV146HChunks : Array (Array Nat) := #[',1)[1].split(']',1)[0]
+          assert list(map(int,re.findall(r'neutralIV149Chunk(\d{3})',h)))==list(range(128))
+          assert len(chunks)==128 and all(len(c)==128 for c in chunks)
+          assert [x for c in chunks for x in c]==d['h']
+          b=s.split('def neutralIV146Shifts : List (Int × Nat) := [',1)[1].split(']',1)[0]
+          assert [list(map(int,x)) for x in re.findall(r'\((-?\d+),\s*(\d+)\)',b)]==d['shifts']
           for p in [a/'ActualZetaIV162AMOriginalPrimeCore.lean',a/'ActualZetaIV157AMOriginalDictionary.lean',a/'ActualZetaIV160AMTerminalReceiver.lean',*list((a/'IV160Bank').glob('*.lean'))]:
               assert not re.search(r'\b(?:sorry|admit|sorryAx|native_decide|axiom)\b',p.read_text()),p
           print('Source preflight PASS')
