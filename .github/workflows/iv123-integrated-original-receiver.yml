@@ -80,6 +80,13 @@ jobs:
           git rev-parse HEAD > iv123/out/commit.txt
           sha256sum WeilDefect/Arithmetic/ActualZetaIV10{3,4,5,6,7,8,9}*.lean WeilDefect/Arithmetic/ActualZetaIV123OriginalPoleReceiver.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV123OriginalPoleReceiver.olean > iv123/out/sha256.txt
           sha256sum -c iv123/out/sha256.txt
+          mkdir -p iv123/out/compiled
+          for name in ActualZetaIV105OriginalPackedSchurResponse ActualZetaIV106OriginalPackedGramResponse ActualZetaIV107OriginalPackedResponseExtension ActualZetaIV108OriginalDirectionalResponseBudget ActualZetaIV123OriginalPoleReceiver; do
+            file=".lake/build/lib/lean/WeilDefect/Arithmetic/${name}.olean"
+            test -s "$file"
+            cp "$file" "iv123/out/compiled/${name}.olean"
+          done
+          (cd iv123/out && sha256sum compiled/*.olean > compiled-sha256.txt && sha256sum -c compiled-sha256.txt)
       - uses: actions/upload-artifact@v4
         if: always()
         with:
