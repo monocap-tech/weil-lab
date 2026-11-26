@@ -55,6 +55,7 @@ theorem unit_eval_majorant (g D B : ℝ → ℝ)
     (continuous_const.intervalIntegrable a (a+1) :
       IntervalIntegrable (fun _ : ℝ => g p) volume a (a+1))
     ((hg.add continuous_const).intervalIntegrable a (a+1)) hpoint
+  change (∫ _x in a..a+1, g p) ≤ ∫ x in a..a+1, (g x + M) at hmono
   rw [intervalIntegral.integral_add (hg.intervalIntegrable a (a+1))
     (continuous_const.intervalIntegrable a (a+1))] at hmono
   simpa [intervalIntegral.integral_const, sub_add_cancel_left, M] using hmono
@@ -91,10 +92,14 @@ theorem unit_eval_complex (h h' : ℝ → ℂ)
   have cs' : Continuous s' := Complex.continuous_im.comp hc'
   have er := unit_eval_real r r' cr cr' hr a p hp
   have es := unit_eval_real s s' cs cs' hi a p hp
-  have ir := (cr.pow 2).intervalIntegrable a (a+1)
-  have is := (cs.pow 2).intervalIntegrable a (a+1)
-  have ir' := (cr'.pow 2).intervalIntegrable a (a+1)
-  have is' := (cs'.pow 2).intervalIntegrable a (a+1)
+  have ir : IntervalIntegrable (fun x => r x ^ 2) volume a (a+1) :=
+    (cr.pow 2).intervalIntegrable a (a+1)
+  have is : IntervalIntegrable (fun x => s x ^ 2) volume a (a+1) :=
+    (cs.pow 2).intervalIntegrable a (a+1)
+  have ir' : IntervalIntegrable (fun x => r' x ^ 2) volume a (a+1) :=
+    (cr'.pow 2).intervalIntegrable a (a+1)
+  have is' : IntervalIntegrable (fun x => s' x ^ 2) volume a (a+1) :=
+    (cs'.pow 2).intervalIntegrable a (a+1)
   have hn : ∀ x, ‖h x‖ ^ 2 = r x ^ 2 + s x ^ 2 := by
     intro x
     simp [r, s, Complex.sq_norm, Complex.normSq_apply, pow_two]
