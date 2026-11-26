@@ -1,4 +1,4 @@
-name: IV148 AM chunked kernel pilot
+name: IV149 AM independently elaborated chunks
 on:
   push:
     branches: ['staging/iv147-am-kernel-pilot']
@@ -17,17 +17,20 @@ jobs:
       - name: Authenticate literal bank and source preflight
         run: |
           set -euo pipefail
-          mkdir -p iv148/out
+          mkdir -p iv149/out
           grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
-          python research/iv146_am_exp_audit.py custody/iv146-am/am_cells.json iv148/out/shift-receipt.json | tee iv148/out/exact-audit.log
+          python research/iv146_am_exp_audit.py custody/iv146-am/am_cells.json iv149/out/shift-receipt.json | tee iv149/out/exact-audit.log
           python - <<'PY'
           import json,re
           from pathlib import Path
           a=Path('WeilDefect/Arithmetic')
           d=json.loads(Path('custody/iv146-am/am_cells.json').read_text())
           s=(a/'ActualZetaIV146AMCellData.lean').read_text()
-          h=s.split('def neutralIV146HChunks : Array (Array Nat) := #[',1)[1].split('def neutralIV146H :',1)[0]
-          chunks=[list(map(int,re.findall(r'\d+',x))) for x in re.findall(r'#\[([^\]]*)\]',h)]
+          pairs=re.findall(r'def neutralIV149Chunk(\d{3}) : Array Nat := #\[([^\]]*)\]',s)
+          assert [int(i) for i,_ in pairs]==list(range(128))
+          chunks=[list(map(int,re.findall(r'\d+',x))) for _,x in pairs]
+          h=s.split('def neutralIV146HChunks : Array (Array Nat) := #[',1)[1].split(']',1)[0]
+          assert list(map(int,re.findall(r'neutralIV149Chunk(\d{3})',h)))==list(range(128))
           assert len(chunks)==128 and all(len(c)==128 for c in chunks)
           assert [x for c in chunks for x in c]==d['h']
           b=s.split('def neutralIV146Shifts : List (Int × Nat) := [',1)[1].split(']',1)[0]
@@ -49,16 +52,16 @@ jobs:
         id: data
         run: |
           set -euo pipefail
-          timeout 600 lake build WeilDefect.Arithmetic.ActualZetaIV146AMCellData 2>&1 | tee iv148/out/data.log
+          timeout 600 lake build WeilDefect.Arithmetic.ActualZetaIV146AMCellData 2>&1 | tee iv149/out/data.log
       - name: Single block and worst row kernel pilot
         run: |
           set -euo pipefail
-          /usr/bin/time -v timeout 900 lake env lean WeilDefect/Arithmetic/ActualZetaIV147AMPilot.lean 2>&1 | tee iv148/out/pilot.log
+          /usr/bin/time -v timeout 900 lake env lean WeilDefect/Arithmetic/ActualZetaIV147AMPilot.lean 2>&1 | tee iv149/out/pilot.log
       - name: Generic real caps
         if: ${{ !cancelled() }}
         run: |
           set -euo pipefail
-          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV147AMRealCaps.lean 2>&1 | tee iv148/out/real.log
+          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV147AMRealCaps.lean 2>&1 | tee iv149/out/real.log
       - name: Strict named axiom receipt
         if: ${{ !cancelled() }}
         run: |
@@ -67,8 +70,8 @@ jobs:
           import re
           from pathlib import Path
           allowed={'propext','Classical.choice','Quot.sound'}
-          for name, expected in [('pilot',['Data_size','Shifts_size','Pilot_row','Pilot_block']),('real',['Log_endpoints','Signed_floor','Weight_cap'])]:
-              s=Path('iv148/out/'+name+'.log').read_text()
+          for name, expected in [('real',['Log_endpoints','Signed_floor','Weight_cap']),('pilot',['Data_size','Shifts_size','Pilot_row','Pilot_block'])]:
+              s=Path('iv149/out/'+name+'.log').read_text()
               for suffix in expected:
                   n='WeilDefect.neutralIV147'+suffix
                   m=re.findall(r"'"+re.escape(n)+r"' depends on axioms: \[([^\]]*)\]",s)
@@ -80,5 +83,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: iv148-am-pilot-receipts
-          path: iv148/out/
+          name: iv149-am-pilot-receipts
+          path: iv149/out/

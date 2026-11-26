@@ -1,0 +1,5 @@
+# IV149 — Separate constant elaboration and real-cap acceptance
+
+IV148 run 45866826414: numerical replay and source preflight PASS. Nested literal still exceeded recursion depth at neutralIV146HChunks, and optional indexing syntax at line 1350 failed. Kernel row pilot not reached. Generic real cap module compiled successfully, with all three named axioms exactly propext, Classical.choice, Quot.sound; terminal combined audit failed because the pilot log did not exist. Artifact 15140772834 preserved. This is native acceptance of the generic real-cap transfer, not concrete transcendental inequalities or the row bank.
+
+IV149 changes the literal representation to 128 separate named constants, each containing 128 weights; outer array contains only constant references. Explicit getElem? calls replace optional-index syntax. All values in authenticated JSON order checked in source, unchanged row formula and shifts. Independent real-cap receipt is audited first. Same bounded pilot; no full-bank activation. No claim of new native acceptance until run receipts. IV141 and global positivity remain open.
