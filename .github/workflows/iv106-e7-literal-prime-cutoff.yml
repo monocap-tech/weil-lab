@@ -1,0 +1,97 @@
+name: IV106-E7 literal-prime-cutoff
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'verification/iv106/iv106_e7/ActualZetaIV106E7PrimeCutoff.lean'
+      - '.github/workflows/iv106-e7-literal-prime-cutoff.yml'
+permissions:
+  contents: read
+jobs:
+  physical-action:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          path: research
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: c948f00e850c15cf151d2c0bb82475a78c9fa292
+          path: predecessor_e3
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: d5a525ed8c3d47078f99ee3f94dce456562be74d
+          path: predecessor_e4
+          persist-credentials: false
+      - name: Immutable source preflight
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          test "$(git -C research rev-parse HEAD^{tree})" = f038d8ff25d8f18fbe56a641ab6abded0b6ec8e9
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C predecessor_e3 rev-parse HEAD)" = c948f00e850c15cf151d2c0bb82475a78c9fa292
+          test "$(git -C predecessor_e3 hash-object verification/iv106/iv106_e3/ActualZetaIV106E3WeightedChains.lean)" = 9dfc0e96baf730f3c88c3869e88a39d427918f28
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E3WeightedChains.lean
+          cp predecessor_e3/verification/iv106/iv106_e3/ActualZetaIV106E3WeightedChains.lean research/WeilDefect/Arithmetic/ActualZetaIV106E3WeightedChains.lean
+          test "$(git -C predecessor_e4 rev-parse HEAD)" = d5a525ed8c3d47078f99ee3f94dce456562be74d
+          test "$(git -C predecessor_e4 hash-object verification/iv106/iv106_e4/ActualZetaIV106E4PrimeCoefficients.lean)" = 819c4bf61052e9d3957d051423cb859c5cd51b39
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E4PrimeCoefficients.lean
+          cp predecessor_e4/verification/iv106/iv106_e4/ActualZetaIV106E4PrimeCoefficients.lean research/WeilDefect/Arithmetic/ActualZetaIV106E4PrimeCoefficients.lean
+          test "$(git -C candidate hash-object verification/iv106/iv106_e7/ActualZetaIV106E7PrimeCutoff.lean)" = dd1fefe2a531cea862fb00c50cda0948c14a0f44
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/iv106/iv106_e7/ActualZetaIV106E7PrimeCutoff.lean
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E7PrimeCutoff.lean
+          cp candidate/verification/iv106/iv106_e7/ActualZetaIV106E7PrimeCutoff.lean research/WeilDefect/Arithmetic/ActualZetaIV106E7PrimeCutoff.lean
+      - name: Install pinned Lean and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake exe cache get
+      - name: Native fresh source and strict named axiom audit
+        working-directory: research
+        run: |
+          set -euo pipefail
+          mkdir -p iv106-e7/out
+          touch iv106-e7/out/fresh.stamp
+          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E7PrimeCutoff.olean
+          lake build WeilDefect.Arithmetic.ActualZetaIV106E7PrimeCutoff 2>&1 | tee iv106-e7/out/build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E7PrimeCutoff.olean
+          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E7PrimeCutoff.olean -nt iv106-e7/out/fresh.stamp
+          printf '%s\n' 'import WeilDefect.Arithmetic.ActualZetaIV106E7PrimeCutoff' '#print axioms WeilDefect.neutralIV106E7Cutoff_log' '#print axioms WeilDefect.neutralIV106E7Inventory' '#print axioms WeilDefect.neutralIV106E7Mangoldt' '#print axioms WeilDefect.neutralIV106E7Lags' '#print axioms WeilDefect.neutralIV106E7Cover' '#print axioms WeilDefect.neutralIV106E7Original_sum' > /tmp/iv106-e7-axioms.lean
+          lake env lean /tmp/iv106-e7-axioms.lean 2>&1 | tee iv106-e7/out/axioms.log
+          python3 - <<'PY'
+          import re,pathlib
+          s=pathlib.Path('iv106-e7/out/axioms.log').read_text()
+          p=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]"
+          ms=list(re.finditer(p,s,re.S))
+          assert len(ms)==6 and not re.sub(p,'',s,flags=re.S).strip()
+          assert {m[1] for m in ms}==set(["neutralIV106E7Cutoff_log","neutralIV106E7Inventory","neutralIV106E7Mangoldt","neutralIV106E7Lags","neutralIV106E7Cover","neutralIV106E7Original_sum"])
+          assert all({x.strip() for x in m[2].split(',') if x.strip()} <= {'propext','Classical.choice','Quot.sound'} for m in ms)
+          print('IV106-E7 strict named axioms PASS 6/6')
+          PY
+          sha256sum WeilDefect/Arithmetic/ActualZetaIV106E4PrimeCoefficients.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E4PrimeCoefficients.olean WeilDefect/Arithmetic/ActualZetaIV106E3WeightedChains.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E3WeightedChains.olean WeilDefect/Arithmetic/ActualZetaIV106E7PrimeCutoff.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E7PrimeCutoff.olean > iv106-e7/out/sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv106-e7-physical-action-evidence
+          path: |
+            research/iv106-e7/out/
+            research/WeilDefect/Arithmetic/ActualZetaIV106E4PrimeCoefficients.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E4PrimeCoefficients.olean
+            research/WeilDefect/Arithmetic/ActualZetaIV106E3WeightedChains.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E3WeightedChains.olean
+            research/WeilDefect/Arithmetic/ActualZetaIV106E7PrimeCutoff.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E7PrimeCutoff.olean
+          include-hidden-files: true
+          if-no-files-found: error
