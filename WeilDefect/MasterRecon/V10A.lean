@@ -9,11 +9,11 @@ namespace WeilDefect.MasterRecon.V10A
 
 open scoped ENNReal ComplexConjugate
 
-def Index := {ρ : ℂ // V09D.stripZero ρ ∧ (1 : ℝ) / 2 ≤ ρ.re}
+abbrev Index := {ρ : ℂ // V09D.stripZero ρ ∧ (1 : ℝ) / 2 ≤ ρ.re}
 
 def reflect (ρ : ℂ) : ℂ := 1 - conj ρ
 
-def displacement (i : Index) : ℝ := (i : ℂ).re - 1 / 2
+noncomputable def displacement (i : Index) : ℝ := (i : ℂ).re - 1 / 2
 
 def ordinate (i : Index) : ℝ := (i : ℂ).im
 
