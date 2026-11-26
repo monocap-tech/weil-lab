@@ -307,11 +307,20 @@ jobs:
                   emit(file,[target],body); leaves.append((file,d,t)); audit.append(t)
               file=f'Pair{p:02d}'; d='nf698Unified'+file+'Slots'; t='nf698Unified'+file+'Sound'
               def combine(file,d,t,leaves):
-                  body=f'def {d} : List ℕ := '+ ' ++ '.join(x[1] for x in leaves)+'\n\n'
+                  # Make the append tree explicit and eliminate exactly one binary
+                  # membership disjunction at a time. Do not destruct List.Mem.
+                  def chain(xs):
+                      return xs[0][1] if len(xs)==1 else '('+xs[0][1]+' ++ '+chain(xs[1:])+')'
+                  body=f'def {d} : List ℕ := '+chain(leaves)+'\n\n'
                   body+=f'theorem {t} (i : ℕ) (hi : i ∈ {d}) :\n    {prop} := by\n'
-                  body+=f'  simp only [{d}, List.mem_append] at hi\n'
-                  body+='  rcases hi with '+cases(['h']*len(leaves))+'\n'
-                  body+=''.join(f'  · exact {x[2]} i h\n' for x in leaves)
+                  body+=f'  change i ∈ {chain(leaves)} at hi\n'
+                  def eliminate(xs,h,indent):
+                      if len(xs)==1:
+                          return indent+f'exact {xs[0][2]} i {h}\n'
+                      return (indent+f'rcases List.mem_append.mp {h} with hleft | hright\n'
+                              +indent+f'· exact {xs[0][2]} i hleft\n'
+                              +indent+'· '+eliminate(xs[1:],'hright',indent+'  ').lstrip())
+                  body+=eliminate(leaves,'hi','  ')
                   emit(file,[mod+x[0] for x in leaves],body)
               combine(file,d,t,leaves); phases.append((file,d,t)); audit.append(t)
           combine('Receiver','nf698UnifiedSlots','nf698UnifiedSound',phases)
