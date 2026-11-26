@@ -16,6 +16,8 @@ jobs:
     timeout-minutes: 150
     steps:
       - uses: actions/checkout@v4
+      - name: Authenticate complete deployment index and selected plan before setup
+        run: python scripts/nf618_early_plan_preflight.py notes/provisional/NF618DeploymentIndex.json notes/provisional/NF618Batch03Plan.json
       - name: Restore exact original full numeric payload and accepted compact coverage source
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -231,7 +233,7 @@ jobs:
         run: python scripts/nf618_repair_reflexivity.py WeilDefect/Generated/NF618HybridPilot 2 d78cb3223040de49981435e2686b087b76284a7e6976f5ddaf42207d5c950015
       - name: Restore source-bound common compiled checkpoint
         env:
-          GH_${{ secrets.GITHUB_TOKEN }}: TOKEN
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
           curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/15154802905/zip" -o nf618-input/common-checkpoint.zip
