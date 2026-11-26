@@ -55,8 +55,8 @@ theorem l2_fourier_integral_ae (f : FullL2)
       rw [hφ, Complex.real_smul]
     _ = ∫ x, (𝓕 φ) x * f x := l2_fourier_pairing f φ
     _ = ∫ u, φ u * 𝓕 (f : ℝ → ℂ) u := by
-      exact (classical_fourier_pairing (f : ℝ → ℂ) (φ : ℝ → ℂ)
-        hf φ.integrable).symm
+      exact classical_fourier_pairing (f : ℝ → ℂ) (φ : ℝ → ℂ)
+        hf φ.integrable
     _ = ∫ u, g u • 𝓕 (f : ℝ → ℂ) u := by
       apply integral_congr_ae
       filter_upwards with u
@@ -90,7 +90,7 @@ theorem angularFourier_plancherel (f : FullL2)
     _ = ∫ u, ‖angularFourier (f : ℝ → ℂ) (2 * Real.pi * u)‖ ^ 2 := by
       simp_rw [angularFourier_scaled]
     _ = _ := by
-      rw [integral_comp_mul_left (fun u => ‖angularFourier (f : ℝ → ℂ) u‖ ^ 2)]
+      rw [Measure.integral_comp_mul_left (fun u => ‖angularFourier (f : ℝ → ℂ) u‖ ^ 2)]
       rw [abs_of_nonneg (inv_nonneg.mpr (by positivity : 0 ≤ 2 * Real.pi)), smul_eq_mul]
 
 end WeilDefect.MasterRecon.V08H
