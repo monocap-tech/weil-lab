@@ -91,7 +91,7 @@ theorem compact_of_squared_cutoff_error
         calc
           _ ≤ ‖x‖ ^ 2 / ((n : ℝ) + 1) := hsq
           _ ≤ ‖x‖ ^ 2 * (e / 2) ^ 2 := by
-            simpa only [div_eq_mul_inv, one_div] using hmul
+            simpa only [div_eq_mul_inv, one_div, one_mul] using hmul
           _ = _ := by ring
       exact (sq_le_sq₀ (norm_nonneg _) (by positivity)).mp hsq'
     rw [dist_eq_norm]
