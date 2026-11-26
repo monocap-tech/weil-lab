@@ -1,0 +1,5 @@
+# IV153 — Full signed pointwise aggregation and zero-safe integral
+
+Parent IV152 152dff4efb6593950a7305157f58dd9b091e71c3. IV152 run 45881476180 was queued at first check. IV153 is staged on a separate branch with no workflow edits; do not activate until IV152 acceptance or repair.
+
+Five pointwise candidates identify the exact integer fold with a list sum, transport casts and the 10^9 denominator, aggregate every actual signed pair, and derive the continuum pointwise bound conditional on the integer row inequality at its floor index. This is not yet the full row-bank proof. Five independent integral candidates implement zero-safe weighted Young and translation invariance, yielding the signed cross-integral bound for real f with explicit zero-set and integrability premises. The zero branch uses f=0 wherever H=0, rather than dividing under an unproved global positivity assumption. Actual physical support, measurability, integrability, complex norm comparison, sum-integral assembly, IV144 radius-two dictionary and complete native row bank remain open. No new native receipt or RH claim.
