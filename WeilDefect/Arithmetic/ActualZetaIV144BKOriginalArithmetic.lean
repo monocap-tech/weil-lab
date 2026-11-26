@@ -1,6 +1,7 @@
 import WeilDefect.Arithmetic.ActualZetaIV138OriginalRadiusCompression
 import Mathlib.Analysis.Complex.ExponentialBounds
 import Mathlib.Tactic
+import Mathlib.Data.Nat.Factorization.PrimePow
 
 namespace WeilDefect
 noncomputable section
@@ -46,11 +47,278 @@ theorem neutralIV144Prime_range :
 def neutralIV144PrimeBank : Finset ℕ :=
   {2,3,4,5,7,8,9,11,13,16,17,19,23,25,27,29,31,32,37,41,43,47,49,53}
 
+/-- Explicit prime-power witnesses and distinct prime-divisor exclusions.
+Avoid reducing the opaque minFac decision procedure. -/
+theorem neutralIV160Census (n : ℕ) (hn : n < 55) :
+    IsPrimePow n ↔ n ∈ neutralIV144PrimeBank := by
+  interval_cases n
+  · simp [neutralIV144PrimeBank, not_isPrimePow_zero]
+  · simp [neutralIV144PrimeBank, not_isPrimePow_one]
+  · have hp : IsPrimePow (2:ℕ) := (isPrimePow_nat_iff _).2 ⟨2,1,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (3:ℕ) := (isPrimePow_nat_iff _).2 ⟨3,1,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (4:ℕ) := (isPrimePow_nat_iff _).2 ⟨2,2,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (5:ℕ) := (isPrimePow_nat_iff _).2 ⟨5,1,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (6:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 3 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (7:ℕ) := (isPrimePow_nat_iff _).2 ⟨7,1,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (8:ℕ) := (isPrimePow_nat_iff _).2 ⟨2,3,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (9:ℕ) := (isPrimePow_nat_iff _).2 ⟨3,2,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (10:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 5 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (11:ℕ) := (isPrimePow_nat_iff _).2 ⟨11,1,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (12:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 3 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (13:ℕ) := (isPrimePow_nat_iff _).2 ⟨13,1,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (14:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 7 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (15:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 3 ⟨by decide, by decide⟩
+      have hb := hu 5 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (16:ℕ) := (isPrimePow_nat_iff _).2 ⟨2,4,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (17:ℕ) := (isPrimePow_nat_iff _).2 ⟨17,1,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (18:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 3 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (19:ℕ) := (isPrimePow_nat_iff _).2 ⟨19,1,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (20:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 5 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (21:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 3 ⟨by decide, by decide⟩
+      have hb := hu 7 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (22:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 11 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (23:ℕ) := (isPrimePow_nat_iff _).2 ⟨23,1,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (24:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 3 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (25:ℕ) := (isPrimePow_nat_iff _).2 ⟨5,2,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (26:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 13 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (27:ℕ) := (isPrimePow_nat_iff _).2 ⟨3,3,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (28:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 7 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (29:ℕ) := (isPrimePow_nat_iff _).2 ⟨29,1,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (30:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 3 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (31:ℕ) := (isPrimePow_nat_iff _).2 ⟨31,1,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (32:ℕ) := (isPrimePow_nat_iff _).2 ⟨2,5,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (33:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 3 ⟨by decide, by decide⟩
+      have hb := hu 11 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (34:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 17 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (35:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 5 ⟨by decide, by decide⟩
+      have hb := hu 7 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (36:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 3 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (37:ℕ) := (isPrimePow_nat_iff _).2 ⟨37,1,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (38:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 19 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (39:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 3 ⟨by decide, by decide⟩
+      have hb := hu 13 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (40:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 5 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (41:ℕ) := (isPrimePow_nat_iff _).2 ⟨41,1,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (42:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 3 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (43:ℕ) := (isPrimePow_nat_iff _).2 ⟨43,1,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (44:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 11 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (45:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 3 ⟨by decide, by decide⟩
+      have hb := hu 5 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (46:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 23 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (47:ℕ) := (isPrimePow_nat_iff _).2 ⟨47,1,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (48:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 3 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (49:ℕ) := (isPrimePow_nat_iff _).2 ⟨7,2,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (50:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 5 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (51:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 3 ⟨by decide, by decide⟩
+      have hb := hu 17 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (52:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 13 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : IsPrimePow (53:ℕ) := (isPrimePow_nat_iff _).2 ⟨53,1,by decide,by decide,by decide⟩
+    simp [neutralIV144PrimeBank, hp]
+  · have hp : ¬ IsPrimePow (54:ℕ) := by
+      intro h
+      obtain ⟨q, hq, hu⟩ := isPrimePow_iff_unique_prime_dvd.mp h
+      have ha := hu 2 ⟨by decide, by decide⟩
+      have hb := hu 3 ⟨by decide, by decide⟩
+      omega
+    simp [neutralIV144PrimeBank, hp]
+
 theorem neutralIV144Prime_bank :
     rightLimitPrimePowerFinset 2 = neutralIV144PrimeBank := by
   rw [neutralIV144Prime_range]
-  unfold neutralIV144PrimeBank
-  decide
+  ext n
+  rw [Finset.mem_filter, Finset.mem_range]
+  constructor
+  · rintro ⟨hn,hp⟩
+    exact (neutralIV160Census n hn).1 hp
+  · intro hn
+    have hb : n < 55 := by
+      simp only [neutralIV144PrimeBank, Finset.mem_insert, Finset.mem_singleton] at hn
+      rcases hn with rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl | rfl <;> decide
+    exact ⟨hb,(neutralIV160Census n hb).2 hn⟩
 
 theorem neutralIV144Prime_count :
     (rightLimitPrimePowerFinset 2).card = 24 := by
@@ -103,6 +371,7 @@ theorem neutralIV144Prime_spectral (u v : 𝓢(ℝ,ℂ))
 
 #print axioms neutralIV144Exp_four_bounds
 #print axioms neutralIV144Prime_range
+#print axioms neutralIV160Census
 #print axioms neutralIV144Prime_bank
 #print axioms neutralIV144Prime_count
 #print axioms neutralIV144Circle_symbol
