@@ -227,6 +227,8 @@ jobs:
         run: python scripts/nf618_native_hybrid_batch01.py
       - name: Normalize false-sign conditionals with explicit rational equality
         run: python scripts/nf618_repair_bool_branch.py WeilDefect/Generated/NF618HybridPilot 49 332472bb244c4aead0be1ee3316a92a0190b2f4da45a4693cf4cce0e7d52966f
+      - name: Close exact reflexive phase and endpoint equalities
+        run: python scripts/nf618_repair_reflexivity.py WeilDefect/Generated/NF618HybridPilot 3 0abe173361a36d8e5bcc2fc45f3d76eb15a4d06c9a702dd1ef4085fd890807f2
       - uses: actions/upload-artifact@v4
         with:
           name: nf618-native-batch01-source
