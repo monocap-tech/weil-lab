@@ -77,7 +77,7 @@ theorem moment_rank_one_norm (f : H →L[ℂ] ℂ) (v : L) :
 
 theorem moment_partial_sum_compact (f : ℕ → H →L[ℂ] ℂ) (v : ℕ → L)
     (s : Finset ℕ) :
-    IsCompactOperator (∑ j ∈ s, (f j).smulRight (v j)) := by
+    IsCompactOperator (↑(∑ j ∈ s, (f j).smulRight (v j) : H →L[ℂ] L) : H → L) := by
   classical
   induction s using Finset.induction_on with
   | empty =>
@@ -101,7 +101,7 @@ theorem factorial_moment_series_compact
     (hB : 0 ≤ B) (hr : 0 ≤ r)
     (hbound : ∀ j, ‖f j‖ * ‖v j‖ ≤ B * (r ^ j / (j.factorial : ℝ))) :
     Summable (fun j => (f j).smulRight (v j)) ∧
-      IsCompactOperator (∑' j, (f j).smulRight (v j)) := by
+      IsCompactOperator (↑(∑' j, (f j).smulRight (v j) : H →L[ℂ] L) : H → L) := by
   have hs : Summable (fun j : ℕ => r ^ j / (j.factorial : ℝ)) := by
     have h := NormedSpace.norm_expSeries_div_summable r
     convert h using 1
