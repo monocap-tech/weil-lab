@@ -17,8 +17,8 @@ theorem half_power_product (a b : ℝ≥0∞) :
     ← ENNReal.rpow_mul]
   have h : (2 : ℝ) * (1/2 : ℝ) = 1 := by norm_num
   rw [h, ENNReal.rpow_one, ← mul_assoc,
-    ← ENNReal.rpow_add_of_nonneg (by norm_num : (0 : ℝ) ≤ 1/2)
-      (by norm_num : (0 : ℝ) ≤ 1/2)]
+    ← ENNReal.rpow_add_of_nonneg (1/2 : ℝ) (1/2 : ℝ)
+      (by norm_num) (by norm_num)]
   norm_num
 
 theorem half_power_square (a b : ℝ≥0∞) :
