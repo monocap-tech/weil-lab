@@ -1,0 +1,398 @@
+name: NF618 exact fourth root pilot
+on:
+  push:
+    branches:
+      - research/nf618-exact-fourth-root-pilot
+    paths:
+      - ".github/workflows/nf618-exact-fourth-root-pilot.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  batch:
+    name: NF618 pure frequency pilot
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore exact original full numeric payload and accepted compact coverage source
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p WeilDefect/Generated/NF690
+          fetch() {
+            local id="$1" name="$2" digest="$3" dest="$4"
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" -o "$name.zip"
+            echo "$digest  $name.zip" | sha256sum -c -
+            unzip -q "$name.zip" -d "$dest"
+          }
+          fetch 14551493244 compact 37be910efa7d204c9db35f62bf9d5f818ece77c7026d94d9c84e4ddba0df41a5 WeilDefect/Generated
+          fetch 14558233793 payload 2327fbf952d4894c9f28f81cad9e94d226c93131d9ef2fafa14c35f482211b70 WeilDefect/Generated/NF690
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('WeilDefect/Generated')
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          d=root/'NF690'
+          m=json.loads((d/'manifest.json').read_text())
+          assert (m['keys'],m['rows'],m['chunks'],m['chunk_width'])==(7835,37994,490,16)
+          assert [r['index'] for r in m['slots']]==list(range(7835))
+          assert len({tuple(r['key']) for r in m['slots']})==7835
+          assert sum(r['rows'] for r in m['slots'])==37994
+          assert m['metadata_sha256']==sha(root/'NF679/Metadata.lean')
+          assert m['compact_manifest_sha256']==sha(root/'NF687/manifest.json')
+          for name in ('NF682','NF687','NF690'):
+              p=root/name
+              for f in json.loads((p/'manifest.json').read_text())['files']:
+                  assert sha(p/f['file'])==f['sha256']
+                  if 'bytes' in f: assert (p/f['file']).stat().st_size==f['bytes']
+          assert {f'Chunk{i:03d}.lean' for i in range(490)}|{'Bank.lean','Coverage.lean'} <= {f['file'] for f in m['files']}
+          out=root/'NF691'
+          out.mkdir(exist_ok=True)
+          (out/'OriginalLookup.lean').write_text("""import WeilDefect.Generated.NF690.Coverage
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalBlockLocalLookup
+
+          namespace WeilDefect
+
+          def nf691OriginalLookup : NF622Moments :=
+            neutralNF691Lookup nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalLookup_eq :
+              neutralNF624Lookup nf690OriginalBank (neutralNF624Index nf690OriginalBank) =
+                nf691OriginalLookup :=
+            neutralNF691Lookup_eq nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalCoverage :
+              neutralNF624CoverageCheck nf690OriginalBank (neutralNF624Index nf690OriginalBank)=true :=
+            nf690OriginalCoverage
+
+          #print axioms nf691OriginalLookup_eq
+          #print axioms nf691OriginalCoverage
+
+          end WeilDefect
+          """)
+          print('NF691 authenticated all 490 original chunks and exact coverage sources')
+          PY
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          set -euo pipefail
+          # Pin installer asset independently of the repository's Lean toolchain.
+          archive="$RUNNER_TEMP/nf703-elan.tar.gz"
+          digest=0e8250aa2be86c7af929ade68db617af9edc8b9ccf6eaf5ece228250d0d032e2
+          fetch_verified() {
+            rm -f "$archive"
+            curl -fsSL --retry 2 --retry-all-errors --connect-timeout 20 --max-time 180 "$@" -o "$archive" &&
+              printf '%s  %s\n' "$digest" "$archive" | sha256sum -c -
+          }
+          if ! fetch_verified https://github.com/leanprover/elan/releases/download/v4.4.0/elan-x86_64-unknown-linux-gnu.tar.gz; then
+            fetch_verified -H 'Accept: application/octet-stream' "https://api.github.com/repos/leanprover/elan/releases/assets/763468108?run=$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+          fi
+          mkdir -p "$RUNNER_TEMP/nf703-elan"
+          tar -xzf "$archive" -C "$RUNNER_TEMP/nf703-elan"
+          "$RUNNER_TEMP/nf703-elan/elan-init" -y --no-modify-path --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          elan --version
+          cat lean-toolchain
+          retry() {
+            local n
+            for n in 1 2 3; do
+              if "$@"; then return 0; fi
+              if [ "$n" -lt 3 ]; then sleep "$((15*n))"; fi
+            done
+            return 1
+          }
+          retry elan toolchain install "$(cat lean-toolchain)"
+          lean --version
+          lake --version
+          retry lake update
+          retry lake exe cache get
+      - name: Bind independently restored exact bank source and Lean environment
+        run: python scripts/nf697_compiled_bank_binding.py
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf697-audited-compiled-bank
+          path: compiled-bank
+          run-id: 44598398608
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify producer binding and audit before restoring compiled objects
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          a=json.loads(Path('compiled-bank/nf697-bank-binding.json').read_text())
+          b=json.loads(Path('nf697-bank-binding.json').read_text())
+          for x in (a,b):
+              f=x.pop('fingerprint')
+              assert hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()==f
+          assert a['schema']==b['schema'] and a['environment']==b['environment']
+          assert all(b['files'].get(k)==v for k,v in a['files'].items())
+          extra=set(b['files'])-set(a['files'])
+          assert extra=={'WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularCacheAssembly.lean'},extra
+          # Existing source closure must not reference the newly added module.
+          assert all('ActualZetaOriginalPhysicalTriangularCacheAssembly' not in Path(p).read_text()
+                     for p in a['files'] if p.endswith('.lean'))
+          print('NF705 all producer sources unchanged; exactly one new independent theorem module')
+          PY
+          (cd compiled-bank && sha256sum -c nf697-project-build.sha256)
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('compiled-bank/nf691-complete-audit.json')
+          m=json.loads(p.read_text())
+          assert (m['keys'],m['rows'],m['chunks'])==(7835,37994,490)
+          assert len(m['theorems'])==14
+          assert {'nf691OriginalCoverage','nf691OriginalLookup_eq'}<=set(m['theorems'])
+          assert all(set(a)<={'propext','Classical.choice','Quot.sound'} for a in m['theorems'].values())
+          PY
+          tar -xzf compiled-bank/nf697-project-build.tar.gz
+          test ! -e .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularCacheAssembly.olean
+      - name: Measure restored bank Lake build and audit imported exact bank
+        timeout-minutes: 120
+        run: |
+          set -euo pipefail
+          /usr/bin/time -o nf697-reuse-time.txt -f 'elapsed=%e user=%U rss_kb=%M exit=%x' lake build WeilDefect.Generated.NF691.OriginalLookup 2>&1 | tee nf697-reuse.log
+          cat >/tmp/nf697BankAudit.lean <<'EOF'
+          import WeilDefect.Generated.NF691.OriginalLookup
+          #print axioms WeilDefect.nf691OriginalCoverage
+          #print axioms WeilDefect.nf691OriginalLookup_eq
+          EOF
+          lake env lean /tmp/nf697BankAudit.lean 2>&1 | tee nf697-bank-axioms.log
+      - name: Restore certified semantic adapter and pi source
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p nf618-input
+          fetch() {
+            curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/$2/zip" -o "nf618-input/$1.zip"
+            echo "$3  nf618-input/$1.zip" | sha256sum -c -
+          }
+          fetch semantic 15136694468 e324a64d4a1a8f6c537e3d8040a335333973a2df63dc5b1f39f3bb49b246811f
+          fetch phase 14580099864 fba35eada4a0614260109add6e3762b90447bf047541817c7529348121f33ab3
+          fetch prior 15084125240 5ecdd6e9cccf16359cdc1bdcffbe415256b3b03b5a3066009fa0a44fcffc2513
+          python - <<'PY'
+          import json,zipfile,hashlib
+          from pathlib import Path
+          sha=lambda b:hashlib.sha256(b).hexdigest()
+          p='WeilDefect/Arithmetic/ActualZetaOriginalPhysicalSemanticEndpointCache.lean'
+          with zipfile.ZipFile('nf618-input/semantic.zip') as z:
+              a=json.loads(z.read('nf618-semantic-audit.json'))
+              assert len(a['theorems'])==3 and all(set(v)<={'propext','Classical.choice','Quot.sound'} for v in a['theorems'].values())
+              b=z.read(p)
+              assert sha(b)==a['source_sha256']=='c28806932277661273bc6f48a34a4119fae242a9dbd88e296c7dfd83477e3d3f'
+              Path(p).write_bytes(b)
+          with zipfile.ZipFile('nf618-input/phase.zip') as z:
+              root=Path('WeilDefect/Generated/NF632');root.mkdir(parents=True,exist_ok=True)
+              b=z.read('NF632/manifest.json')
+              assert sha(b)=='b4d290d158af245635d17b58f1c8e9f8bfa5076f773c1a35aa7e789bf850b086'
+              (root/'manifest.json').write_bytes(b)
+              for f in json.loads(b)['files']:
+                  raw=z.read('NF632/'+f['file'])
+                  assert sha(raw)==f['sha256']
+                  (root/f['file']).write_bytes(raw)
+          PY
+          cat > WeilDefect/Arithmetic/ActualZetaOriginalPhysicalExactFourthRoot.lean <<'EOF'
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalSemanticEndpointCache
+          
+          namespace WeilDefect
+          noncomputable section
+          
+          /-- For a pure imaginary frequency the endpoint phase can be
+          computed by an exact integral number of turns plus a quarter-turn. -/
+          theorem nf618PurePhase_of_turns (f : ℚ) (m j : ℤ)
+              (he : f*(11/10:ℚ) = (m:ℚ)+(j:ℚ)/4) :
+              Complex.exp ((NF616Frequency.mk 0 f).value * ((11/10:ℝ):ℂ)) =
+                Complex.exp ((j:ℂ)*((Real.pi:ℂ)/2)*Complex.I) := by
+            have he' : (f:ℂ)*(11/10:ℂ) = (m:ℂ)+(j:ℂ)/4 := by exact_mod_cast he
+            have h : (NF616Frequency.mk 0 f).value * ((11/10:ℝ):ℂ) =
+                (j:ℂ)*((Real.pi:ℂ)/2)*Complex.I + (m:ℂ)*(2*(Real.pi:ℂ)*Complex.I) := by
+              unfold NF616Frequency.value neutralNF615Lambda
+              dsimp only
+              push_cast
+              linear_combination (2*(Real.pi:ℂ)*Complex.I)*he'
+            rw [h,Complex.exp_add,Complex.exp_int_mul_two_pi_mul_I,mul_one]
+          
+          def nf618FourthRootRect (j : ℤ) : NF591Rect :=
+            if j=0 then ⟨⟨1,0⟩,⟨0,0⟩⟩
+            else if j=1 then ⟨⟨0,0⟩,⟨1,0⟩⟩
+            else if j = -1 then ⟨⟨0,0⟩,⟨-1,0⟩⟩
+            else ⟨⟨-1,0⟩,⟨0,0⟩⟩
+          
+          theorem nf618FourthRootRect_sound (j : ℤ)
+              (hj : j = -2 ∨ j = -1 ∨ j = 0 ∨ j = 1 ∨ j = 2) :
+              (nf618FourthRootRect j).Contains
+                (Complex.exp ((j:ℂ)*((Real.pi:ℂ)/2)*Complex.I)) := by
+            rcases hj with rfl | rfl | rfl | rfl | rfl
+            · rw [show ((-2:ℤ):ℂ)*((Real.pi:ℂ)/2)*Complex.I =
+                -((Real.pi:ℂ)*Complex.I) by push_cast; ring, Complex.exp_neg_pi_mul_I]
+              norm_num [nf618FourthRootRect,NF591Rect.Contains,NF591Ball.Contains]
+            · rw [show ((-1:ℤ):ℂ)*((Real.pi:ℂ)/2)*Complex.I =
+                -(Real.pi:ℂ)/2*Complex.I by push_cast; ring, Complex.exp_neg_pi_div_two_mul_I]
+              norm_num [nf618FourthRootRect,NF591Rect.Contains,NF591Ball.Contains]
+            · norm_num [nf618FourthRootRect,NF591Rect.Contains,NF591Ball.Contains]
+            · rw [show ((1:ℤ):ℂ)*((Real.pi:ℂ)/2)*Complex.I =
+                (Real.pi:ℂ)/2*Complex.I by push_cast; ring, Complex.exp_pi_div_two_mul_I]
+              norm_num [nf618FourthRootRect,NF591Rect.Contains,NF591Ball.Contains]
+            · rw [show ((2:ℤ):ℂ)*((Real.pi:ℂ)/2)*Complex.I =
+                (Real.pi:ℂ)*Complex.I by push_cast; ring, Complex.exp_pi_mul_I]
+              norm_num [nf618FourthRootRect,NF591Rect.Contains,NF591Ball.Contains]
+          
+          def nf618PureFourthRootCache (p : NF591Ball) (f : ℚ) (Q : ℕ) (j : ℤ) :
+              NF617MomentCache :=
+            ⟨neutralNF615LambdaRect p 0 f Q,
+              (NF591Rect.realQ 1 Q).mulQ (nf618FourthRootRect j) Q,
+              (NF591Rect.realQ 1 Q).mulQ (nf618FourthRootRect (-j)) Q⟩
+          
+          theorem nf618PureFourthRootCache_sound (p : NF591Ball) (hp : p.Contains Real.pi)
+              (f : ℚ) (Q : ℕ) (hQ : 0 < Q) (m j : ℤ)
+              (he : f*(11/10:ℚ) = (m:ℚ)+(j:ℚ)/4)
+              (hj : j = -2 ∨ j = -1 ∨ j = 0 ∨ j = 1 ∨ j = 2) :
+              (nf618PureFourthRootCache p f Q j).SemanticSound ⟨0,f⟩ := by
+            have hp' := nf618PurePhase_of_turns f m j he
+            have hn' := nf618PurePhase_of_turns (-f) (-m) (-j) (by push_cast; linarith)
+            have hneg : (NF616Frequency.mk 0 (-f)).value = -(NF616Frequency.mk 0 f).value := by
+              simpa [NF616Frequency.value] using neutralNF615Lambda_neg (0:ℚ) f
+            rw [hneg,neg_mul,← mul_neg] at hn'
+            have hj' : -j = -2 ∨ -j = -1 ∨ -j = 0 ∨ -j = 1 ∨ -j = 2 := by
+              rcases hj with rfl | rfl | rfl | rfl | rfl <;> norm_num
+            have hpos := nf618FourthRootRect_sound j hj
+            have hneg' := nf618FourthRootRect_sound (-j) hj'
+            rw [← hp'] at hpos
+            rw [← hn'] at hneg'
+            have hone := NF591Rect.contains_realQ 1 Q hQ
+            refine ⟨neutralNF615LambdaRect_sound p hp 0 f Q hQ,?_,?_⟩
+            · simpa [nf618PureFourthRootCache] using NF591Rect.contains_mulQ hone hpos Q hQ
+            · simpa [nf618PureFourthRootCache] using NF591Rect.contains_mulQ hone hneg' Q hQ
+          
+          end
+          end WeilDefect
+          EOF
+      - name: Reconcile nine original payload slots and stage concrete proofs
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,zipfile,hashlib,re
+          from pathlib import Path
+          from fractions import Fraction as F
+          root=Path('WeilDefect/Generated')
+          sha=lambda b:hashlib.sha256(b).hexdigest()
+          b=json.loads((root/'NF690/manifest.json').read_text())
+          slots={r['index']:r for r in b['slots']}
+          bykey={tuple(map(F,r['key'])):r['index'] for r in b['slots']}
+          with zipfile.ZipFile('nf618-input/prior.zip') as z:
+              u=json.loads(z.read('unified-receiver-manifest.json'))
+          with zipfile.ZipFile('nf618-input/phase.zip') as z:
+              g=json.loads(z.read('NF703/manifest.json'))
+          covered=set(u['slots'])|set(u['prior_slots'])|{bykey[tuple(map(F,r['key']))] for r in g['groups']}
+          assert len(covered)==3318
+          records=[[4289,"115",16,"Chunk268",1,"4d48c2411f428ec146c98e2c3eba3a49f20f78e3925451e9df17da1905247345"],[1569,"20",7,"Chunk098",1,"84d3db3f7997ed8d7830f718b66ec1c417f54ab2f252dd39336772f67855c5a3"],[7388,"720",5,"Chunk461",12,"2d3e2aaa5e5608eac73bc30525ea5ccbb3e8608f4aec9f7e410ea2270943b7d5"],[1081,"25/2",7,"Chunk067",9,"13723d977dd310047dab027c8684071df7b4610a33c73519cad0442c081a1a5e"],[1711,"45/2",16,"Chunk106",15,"1200dccad3791afc65ce6b6f4c29cef4fa12c763a0dac7cd3e9d0db07b78d695"],[2375,"75/2",6,"Chunk148",7,"1e18d01f8d57a5070c44291e28580e93995e52e19f7b999dac0372b30029851e"],[3866,"185/2",5,"Chunk241",10,"fcb86d6b5bb20d58600ec1a1b4205af856f26201a23f8d4eedfba7407dec49f8"],[4239,"225/2",6,"Chunk264",15,"ca53c57a1624d4a74b387a780d4181918d75b61d29afc9a5518ec7df2397a898"],[6315,"655/2",4,"Chunk394",11,"e3fef07744809cdd0e2d4b70e5e06062beaa52be97724e1cf18f320454506087"]]
+          assert len(records)==9 and sum(r[2] for r in records)==72
+          out=root/'NF618FourthRoot';out.mkdir(exist_ok=True)
+          names=['nf618PurePhase_of_turns','nf618FourthRootRect_sound','nf618PureFourthRootCache_sound']
+          targets=[]
+          for i,f,n,c,o,digest in records:
+              assert i not in covered
+              t=slots[i]
+              assert tuple(map(F,t['key']))==(F(0),F(f)) and (t['rows'],t['chunk'],t['offset'])==(n,c,o)
+              raw=re.findall(r'#\[\n    (.*?)\n  \]',(root/'NF690'/(c+'.lean')).read_text(),re.S)[o]
+              assert sha(raw.encode())==digest
+              x=F(f)*F(11,10);m=(x+F(1,2)).__floor__();j=4*(x-m)
+              assert j.denominator==1 and -2<=j<=2
+              z=f'nf618FourthRootSlot{i:05d}';file=f'Slot{i:05d}'
+              src=f'''import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalExactFourthRoot
+          import WeilDefect.Generated.NF632.Pi
+          import WeilDefect.Generated.NF690.Bank
+
+          namespace WeilDefect
+
+          set_option maxRecDepth 100000
+          set_option maxHeartbeats 0
+
+          def {z}Table : NF624KeyTable :=
+            ⟨⟨0, ({f}:ℚ)⟩, (nf690{c}[{o}]?).getD #[]⟩
+
+          def {z}Cache : NF617MomentCache :=
+            nf618PureFourthRootCache nf632Pi ({f}:ℚ) neutralNF616Q ({j}:ℤ)
+
+          theorem {z}CacheSound :
+              {z}Cache.SemanticSound {z}Table.key := by
+            apply nf618PureFourthRootCache_sound nf632Pi nf632PiSound
+              ({f}:ℚ) neutralNF616Q (by decide +kernel) ({m}:ℤ) ({j}:ℤ)
+            · norm_num
+            · norm_num
+
+          theorem {z}RowsCheck :
+              (List.range {z}Table.rows.size).all
+                (neutralNF617MomentRowCheck {z}Cache {z}Table.key.lower
+                  neutralNF616Q {z}Table.rows) = true := by
+            decide +kernel
+
+          theorem {z}Sound : neutralNF690TableSound {z}Table := by
+            apply neutralNF690TableSound_of_semantic_cache {z}Cache {z}Table
+              {z}CacheSound (by decide +kernel) neutralNF616Q (by decide +kernel)
+            intro n hn
+            exact List.all_eq_true.mp {z}RowsCheck n (List.mem_range.mpr hn)
+
+          theorem {z}Concrete :
+              neutralNF690TableSound (neutralNF624BankRead nf690OriginalBank {i}) := by
+            rw [show nf690OriginalBank = neutralNF690Bank nf687Read nf687Size nf690Payload from rfl]
+            rw [neutralNF690Bank_read nf687Read nf687Size nf690Payload {i} (by decide +kernel)]
+            rw [neutralNF690Table_eq nf687Read nf690Payload {i} {z}Table
+              (by decide +kernel) (by rfl) (by decide +kernel)]
+            exact {z}Sound
+
+          end WeilDefect
+          '''
+              (out/(file+'.lean')).write_text(src)
+              targets.append(file)
+              names.extend(z+s for s in ('CacheSound','RowsCheck','Sound','Concrete'))
+          targets.sort()
+          audit=''.join('import WeilDefect.Generated.NF618FourthRoot.'+t+'\n' for t in targets)
+          audit+=''.join('#print axioms WeilDefect.'+n+'\n' for n in names)
+          (out/'Audit.lean').write_text(audit)
+          Path('nf618-fourth-root-manifest.json').write_text(json.dumps({'records':records,'tables':9,'rows':72,'targets':targets,'theorems':names,'source_sha256':{str(p):sha(p.read_bytes()) for p in sorted(out.glob('*.lean'))}},indent=2)+'\n')
+          Path('nf618-fourth-root-targets.txt').write_text('\n'.join(targets)+'\n')
+          print('NF618 exact fourth-root pilot source PASS',len(records),72,len(names))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf618-fourth-root-pilot-source
+          path: |
+            WeilDefect/Arithmetic/ActualZetaOriginalPhysicalExactFourthRoot.lean
+            WeilDefect/Generated/NF618FourthRoot/
+            nf618-fourth-root-manifest.json
+          if-no-files-found: error
+      - name: Compile exact phase identities and nine concrete original tables
+        timeout-minutes: 100
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Arithmetic.ActualZetaOriginalPhysicalExactFourthRoot 2>&1 | tee nf618-fourth-root-build.log
+          while read -r t; do
+            lake build "WeilDefect.Generated.NF618FourthRoot.$t" 2>&1 | tee -a nf618-fourth-root-build.log
+          done < nf618-fourth-root-targets.txt
+          lake env lean WeilDefect/Generated/NF618FourthRoot/Audit.lean 2>&1 | tee nf618-fourth-root-axioms.log
+          python - <<'PY'
+          import json,hashlib,re
+          from pathlib import Path
+          p=Path('nf618-fourth-root-manifest.json');m=json.loads(p.read_text())
+          expected=set(m['theorems']);found={}
+          for n,x in re.findall(r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]",Path('nf618-fourth-root-axioms.log').read_text()):
+              if n in expected:
+                  assert n not in found
+                  found[n]=[v.strip() for v in x.split(',') if v.strip()]
+          assert len(expected)==39 and set(found)==expected and all(set(v)<={'propext','Classical.choice','Quot.sound'} for v in found.values())
+          Path('nf618-fourth-root-audit.json').write_text(json.dumps({'manifest_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'theorems':found,'tables':9,'rows':72},indent=2)+'\n')
+          print('NF618 exact fourth-root concrete LEAN PASS',9,72,len(found))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf618-fourth-root-pilot-evidence
+          path: |
+            nf618-fourth-root-*.json
+            nf618-fourth-root-*.log
+          if-no-files-found: warn
