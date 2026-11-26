@@ -31,7 +31,10 @@ theorem supply_arbitrary_center (P : ℂ → Prop) (hP : SuperlinearSupply P)
   · intro z hz
     refine ⟨?_, (hS z hz).1⟩
     rw [mem_closedBall, dist_eq_norm]
-    exact (norm_sub_le z c).trans (add_le_add_right (hS z hz).2 _)
+    calc
+      ‖z - c‖ ≤ ‖z‖ + ‖c‖ := norm_sub_le z c
+      _ ≤ T + ‖c‖ := by linarith [(hS z hz).2]
+      _ = r := rfl
   · have ha : a ≤ |a| * T := calc
       a ≤ |a| := le_abs_self _
       _ = |a| * 1 := by ring
