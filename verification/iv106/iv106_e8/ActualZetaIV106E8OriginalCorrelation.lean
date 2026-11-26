@@ -65,8 +65,8 @@ theorem neutralIV106E8Real (a : ℝ) (v : 𝓢(ℝ,ℂ))
     (neutralIV103Correlation a v v t).re =
       ∫ x : ℝ, (star (v x)*v (x+t)).re := by
   rw [neutralIV106E8Positive a v hv]
-  simpa only [Complex.star_def] using
-    (integral_re (neutralIV106E8Integrable a v hv t)).symm
+  simpa only [Complex.star_def, Complex.reCLM_apply] using
+    (Complex.reCLM.integral_comp_comm (neutralIV106E8Integrable a v hv t)).symm
 
 /-- The literal IV085 summand carries precisely twice the positive-lag energy. -/
 theorem neutralIV106E8Summand (a : ℝ) (v : 𝓢(ℝ,ℂ))
@@ -78,7 +78,12 @@ theorem neutralIV106E8Summand (a : ℝ) (v : 𝓢(ℝ,ℂ))
   rw [neutralIV106E8Negative a v hv]
   simp only [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im,
     Complex.add_re, Complex.conj_re, zero_mul, sub_zero]
-  rw [neutralIV106E8Real a v hv]
+  let I : ℝ := ∫ x : ℝ, (star (v x)*v (x+Real.log n)).re
+  have hi : (neutralIV103Correlation a v v (Real.log n)).re = I :=
+    neutralIV106E8Real a v hv _
+  rw [hi]
+  change (ArithmeticFunction.vonMangoldt n / Real.sqrt n)*(I+I) =
+    2*(ArithmeticFunction.vonMangoldt n / Real.sqrt n)*I
   ring
 
 #print axioms neutralIV106E8Representative
