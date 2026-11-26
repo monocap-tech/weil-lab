@@ -1,0 +1,7 @@
+# IV136 — Exact finite-head coverage receiver
+
+Run 45766639863 at 1361ecaa913cc6234cd6f2cd35056c465b8b4fa8 built and independently audited IV124–133 (63 declarations, ten modules), artifact 15093072066 (1156562 bytes) with runner checksums. IV134 produced six clean individual receipts but failed at converting a complex inner self to a real squared norm. Repair proves the complex Gram identity first and then uses inner_self_eq_norm_sq. No theorem statement changed.
+
+IV136 adds three candidates: coverage from spanning actual cell coordinates; coverage via any exact section and basis of the actual constraint image, stable under arbitrary tail lifts; existence of a finite covering family with at most N elements. This removes the abstract coverage premise via a noncomputable basis, and also gives a testable spanning criterion for a supplied numerical family. No actual numerical basis, effective small N, matrix enclosure or terminal sign is established. The sufficient IV135 receiver still requires the true matrix sign. Fixed radius 11/10 only.
+
+Integrated gate expanded to 79 named declarations across thirteen modules, partial custody fail-closed. No native acceptance of IV134–136 yet. Published previous artifact not independently downloaded in this checkpoint.

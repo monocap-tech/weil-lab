@@ -93,18 +93,22 @@ theorem neutralIV134ResidualGram_energy {n : ℕ}
     (∑ i : Fin n, conj (c i) *
       (neutralIV134ResidualGram r).mulVec c i).re =
       ‖∑ i : Fin n, c i • r i‖^2 := by
-  rw [← inner_self_eq_norm_sq_to_K (𝕜 := ℂ)]
-  simp only [Complex.ofReal_re]
-  congr 1
-  rw [sum_inner]
-  apply Finset.sum_congr rfl
-  intro i hi
-  rw [inner_smul_left, inner_sum]
-  congr 1
-  apply Finset.sum_congr rfl
-  intro j hj
-  rw [inner_smul_right]
-  rfl
+  let v : RealComplexL2 := ∑ i : Fin n, c i • r i
+  have he : (∑ i : Fin n, conj (c i) *
+      (neutralIV134ResidualGram r).mulVec c i) = inner ℂ v v := by
+    unfold v
+    rw [sum_inner]
+    apply Finset.sum_congr rfl
+    intro i hi
+    rw [inner_smul_left, inner_sum]
+    congr 1
+    apply Finset.sum_congr rfl
+    intro j hj
+    rw [inner_smul_right]
+    change inner ℂ (r i) (r j) * c j = c j * inner ℂ (r i) (r j)
+    ring
+  rw [he]
+  exact inner_self_eq_norm_sq (𝕜 := ℂ) v
 
 /-- The concrete annihilator payment for a trial in the literal cell-null tail. -/
 theorem neutralIV134Trial_payment (k : ℕ) (hk : 0 < k) (N : ℕ)
