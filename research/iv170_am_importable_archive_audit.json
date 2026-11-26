@@ -1,0 +1,23 @@
+{
+  "artifact": 15152936393,
+  "sha256": "b818d81ecb66c93a59355f6c607380ba03de34efd0ec2b98e69db3552ae42059",
+  "zip_entries": 311,
+  "modules": 102,
+  "matched_hashes": 306,
+  "named_receipts": 182,
+  "sym": {
+    "modules": 81,
+    "receipts": 145,
+    "seconds": 703.29,
+    "object_bytes": 1117296,
+    "bank_object_sha256": "6ee6a127d2dce7f1fd03c96d7b9cf0498f63befa97e2803a0ed5f86f5dbde520"
+  },
+  "row": {
+    "modules": 21,
+    "receipts": 37,
+    "seconds": 349.31,
+    "object_bytes": 312752,
+    "bank_object_sha256": "91c6fdcecd5bb8f790ba80c25cf115cbbb3e4857b8f3766d8cbd2fc2731999a1"
+  },
+  "scope": "local archive CRC, digest, source/log receipt and exact block coverage; no fresh Lean import"
+}
