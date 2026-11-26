@@ -4,6 +4,7 @@ and the exact C-order integer arrays against independent NPZ decoding.
 No object arrays, pickle, eigensolver, or floating-point conversion.
 """
 import base64, hashlib, io, json, math, pathlib, sys, zipfile
+from fractions import Fraction
 import numpy as np
 
 ROOT=pathlib.Path("custody/iv140-bk")
@@ -31,6 +32,7 @@ def main():
     archive=raw(idx["archive"])
     require(len(archive)==2992441 and sha(archive)==ARCHIVE,"ZIP pin")
     bank={}
+    betas={}
     with zipfile.ZipFile(io.BytesIO(archive)) as z:
         require(z.testzip() is None,"ZIP CRC")
         for item in idx["members"]:
@@ -64,6 +66,8 @@ def main():
                     v.extend(vals)
                 require(v==[int(x) for x in a.ravel(order="C")],"integer replay "+label)
                 bank[label]=v
+            with np.load(io.BytesIO(z.read(p+"/exceptional.npz")),allow_pickle=False) as ex:
+                betas[p]=Fraction(str(ex["beta"].item()))
             require(bank[p+"Scale"]==[2**23] and bank[p+"WeightScale"]==[10**8],"scale")
             require(bank[p+"Parity"]==bank[p+"DictParity"]==[parity],"parity")
             modes=bank[p+"Mode"]
@@ -85,6 +89,9 @@ def main():
         lines.append("def "+name+" : Array Int := decodeAll #["+ ",\n".join(json.dumps(c) for c in chunks)+"]")
         lines.append('#eval IO.println ("BKDATA '+name+' " ++ toString '+name+'.size ++ " " ++ toString (checksum '+name+'))')
         expected.append(f"BKDATA {name} {len(v)} {rolling(v)}")
+    for p,b in betas.items():
+        lines.append(f"def {p}BetaNum : Int := {b.numerator}")
+        lines.append(f"def {p}BetaDen : Int := {b.denominator}")
     lines.append("end WeilDefect.BKData")
     LEAN.write_text("\n".join(lines)+"\n")
     (OUT/"data-expected.txt").write_text("\n".join(expected)+"\n")

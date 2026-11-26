@@ -20,7 +20,16 @@ theorem neutralIV139PoleFree_eq (v : 𝓢(ℝ,ℂ))
     neutralIV101Q 2 v = neutralIV139PoleFree v := by
   unfold neutralIV101Q neutralIV139PoleFree
   rw [neutralIV123Original_mixed 2 (by norm_num) v v hv hv]
-  simp [neutralIV123EvenMoment, neutralIV123OddMoment, hp, hm]
+  have he : neutralIV123EvenMoment 2 (v.toLp 2 volume) = 0 := by
+    unfold neutralIV123EvenMoment
+    rw [hp,hm]
+    norm_num
+  have ho : neutralIV123OddMoment 2 (v.toLp 2 volume) = 0 := by
+    unfold neutralIV123OddMoment
+    rw [hp,hm]
+    norm_num
+  rw [he,ho]
+  simp
 
 /-- Exact rows for a supplied compact physical bank, both original pole
 moments, and the signed packed cross constraints. No cell rows. -/
