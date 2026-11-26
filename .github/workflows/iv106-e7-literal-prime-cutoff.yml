@@ -45,7 +45,7 @@ jobs:
           test "$(git -C predecessor_e4 hash-object verification/iv106/iv106_e4/ActualZetaIV106E4PrimeCoefficients.lean)" = 819c4bf61052e9d3957d051423cb859c5cd51b39
           test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E4PrimeCoefficients.lean
           cp predecessor_e4/verification/iv106/iv106_e4/ActualZetaIV106E4PrimeCoefficients.lean research/WeilDefect/Arithmetic/ActualZetaIV106E4PrimeCoefficients.lean
-          test "$(git -C candidate hash-object verification/iv106/iv106_e7/ActualZetaIV106E7PrimeCutoff.lean)" = ed612aef52032263f041e53c3290a9b0dd7bce40
+          test "$(git -C candidate hash-object verification/iv106/iv106_e7/ActualZetaIV106E7PrimeCutoff.lean)" = dd1fefe2a531cea862fb00c50cda0948c14a0f44
           ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/iv106/iv106_e7/ActualZetaIV106E7PrimeCutoff.lean
           test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E7PrimeCutoff.lean
           cp candidate/verification/iv106/iv106_e7/ActualZetaIV106E7PrimeCutoff.lean research/WeilDefect/Arithmetic/ActualZetaIV106E7PrimeCutoff.lean

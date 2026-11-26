@@ -46,7 +46,14 @@ theorem neutralIV106E7Inventory :
     have hmem : n = 2 ∨ n = 3 ∨ n = 4 ∨ n = 5 ∨ n = 7 ∨ n = 8 ∨ n = 9 := by
       simpa only [Finset.mem_insert, Finset.mem_singleton] using hn
     have hp : IsPrimePow n := by
-      rcases hmem with h|h|h|h|h|h|h <;> subst n <;> decide
+      rcases hmem with h|h|h|h|h|h|h <;> subst n
+      · exact (by decide : Nat.Prime 2).isPrimePow
+      · exact (by decide : Nat.Prime 3).isPrimePow
+      · exact (isPrimePow_nat_iff 4).2 ⟨2,2,by decide,by decide,by decide⟩
+      · exact (by decide : Nat.Prime 5).isPrimePow
+      · exact (by decide : Nat.Prime 7).isPrimePow
+      · exact (isPrimePow_nat_iff 8).2 ⟨2,3,by decide,by decide,by decide⟩
+      · exact (isPrimePow_nat_iff 9).2 ⟨3,2,by decide,by decide,by decide⟩
     have hn9 : n ≤ 9 := by
       rcases hmem with h|h|h|h|h|h|h <;> omega
     have hle := Real.log_le_log (show (0:ℝ) < n by exact_mod_cast hp.pos)
@@ -67,12 +74,15 @@ theorem neutralIV106E7Mangoldt :
   · exact ArithmeticFunction.vonMangoldt_apply_prime (by decide : Nat.Prime 3)
   · rw [show (4:ℕ)=2^2 by decide, ArithmeticFunction.vonMangoldt_apply_pow (by decide),
       ArithmeticFunction.vonMangoldt_apply_prime (by decide : Nat.Prime 2)]
+    norm_num
   · exact ArithmeticFunction.vonMangoldt_apply_prime (by decide : Nat.Prime 5)
   · exact ArithmeticFunction.vonMangoldt_apply_prime (by decide : Nat.Prime 7)
   · rw [show (8:ℕ)=2^3 by decide, ArithmeticFunction.vonMangoldt_apply_pow (by decide),
       ArithmeticFunction.vonMangoldt_apply_prime (by decide : Nat.Prime 2)]
+    norm_num
   · rw [show (9:ℕ)=3^2 by decide, ArithmeticFunction.vonMangoldt_apply_pow (by decide),
       ArithmeticFunction.vonMangoldt_apply_prime (by decide : Nat.Prime 3)]
+    norm_num
 
 /-- Literal lag identities for the repeated primes. -/
 theorem neutralIV106E7Lags :
