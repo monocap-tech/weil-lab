@@ -1,0 +1,5 @@
+# IV130 — Actual corrected mixed form for the second Schur elimination
+
+Parent 43944ce3ccdba5af7f91379b58b06b4e9988297b. Independent source module imports only the already accepted IV123 lineage, not unverified IV124–129. Define R u from the uniquely solved signed packed Gram; B_k(u,v)=B_a(u,v)-B_a(Ru,Rv). The exact row identity B_k(u,v)=B_a(u-Ru,v) follows from IV107's response equality and first-slot subtraction. Thus the IV109 physical row bound applies with C_a(u-Ru), and the diagonal is precisely the existing SchurEnergy. Response additivity is proved by uniqueness of the solved Gram rows and original second-slot additivity, yielding exact corrected polarization S_k(u+v)=S_k(u)+2 Re B_k(u,v)+S_k(v).
+
+Nine candidate Lean declarations; no claim of kernel acceptance. The IV129 replacement run 45753829426 is active and no new dedicated runner is activated. The next exact reduction requires sesquilinearity in the remaining scalar slots and energy completion/Riesz response on the actual tail, or a rigorous variational finite-head sufficient receiver. No terminal sign, global positivity, or RH asserted.
