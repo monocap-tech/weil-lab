@@ -1,0 +1,58 @@
+name: MASTER-RECON V08J
+
+on:
+  push:
+    branches: [master-recon-001-neutral-shell]
+    paths:
+      - "WeilDefect/MasterRecon/V08J.lean"
+      - ".github/workflows/master-recon-v08j.yml"
+  pull_request:
+    paths:
+      - "WeilDefect/MasterRecon/V08J.lean"
+      - ".github/workflows/master-recon-v08j.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  abstract-core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Elan
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned dependencies
+        run: lake update
+      - name: Fetch mathlib cache
+        run: lake exe cache get
+      - name: Compile V08J and inspect axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.MasterRecon.V08I
+          lake env lean WeilDefect/MasterRecon/V08J.lean 2>&1 | tee v08j-lean.log
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          s = Path("v08j-lean.log").read_text()
+          names = ["weightRoot_measurable","inverseWeight_weightRoot","physicalInclusion_injective","weightedSpectrum_mem","weightedSpectrum_ae","unweight_weightedSpectrum","physicalMap_weightedSpectrum","weightedSpectrum_supported","physicalInclusion_lift","physicalInclusion_range_iff"]
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for name in names:
+              m = re.search(r"'WeilDefect\.MasterRecon\.V08J\."+name+r"' depends on axioms: \[([^\]]*)\]", s)
+              if m is None:
+                  if f"'WeilDefect.MasterRecon.V08J.{name}' does not depend on any axioms" in s:
+                      continue
+                  raise SystemExit("Missing axiom audit: " + name)
+              axioms = {x.strip() for x in m.group(1).split(",") if x.strip()}
+              if not axioms <= allowed:
+                  raise SystemExit(f"Unexpected axioms for {name}: {axioms - allowed}")
+          print("V08J strict axiom audit PASS")
+          PY
+      - name: Upload compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: master-recon-v08j-lean
+          path: v08j-lean.log

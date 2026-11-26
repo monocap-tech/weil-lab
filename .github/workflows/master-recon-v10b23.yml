@@ -1,0 +1,64 @@
+name: MASTER-RECON V10B2-B3a
+on:
+  push:
+    branches: [master-recon-001-neutral-shell]
+    paths:
+      - "WeilDefect/MasterRecon/V10B[23]*.lean"
+      - ".github/workflows/master-recon-v10b23.yml"
+  pull_request:
+    paths:
+      - "WeilDefect/MasterRecon/V10B[23]*.lean"
+      - ".github/workflows/master-recon-v10b23.yml"
+permissions:
+  contents: read
+jobs:
+  rectangle-weight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Elan
+        run: |
+          curl --retry 3 --retry-delay 2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve dependencies
+        run: lake update
+      - name: Fetch mathlib cache
+        run: lake exe cache get
+      - name: Compile and audit V10B2 and V10B3a
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.MasterRecon.V10B1
+          lake env lean WeilDefect/MasterRecon/V10B2.lean 2>&1 | tee v10b2-lean.log
+          lake build WeilDefect.MasterRecon.V10B2
+          lake env lean WeilDefect/MasterRecon/V10B3a.lean 2>&1 | tee v10b3a-lean.log
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          banks = {
+              "V10B2": ["rectangle_eval_of_slices","rectangle_eval","rectangle_energy_nonnegative","finite_weighted_cell","finite_weighted_rectangles"],
+              "V10B3a": ["weight_lower","weight_pos","weight_cycles","weight_subadditive","weight_product","cell_weight"]
+          }
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for mod, names in banks.items():
+              s = Path(mod.lower()+"-lean.log").read_text()
+              for name in names:
+                  full = "WeilDefect.MasterRecon."+mod+"."+name
+                  m = re.search(re.escape("'"+full+"' depends on axioms: [")+r"([^\]]*)\]", s)
+                  if m is None:
+                      if "'"+full+"' does not depend on any axioms" in s:
+                          continue
+                      raise SystemExit("Missing axiom audit: "+full)
+                  axioms = {x.strip() for x in m.group(1).split(",") if x.strip()}
+                  if not axioms <= allowed:
+                      raise SystemExit("Unexpected axioms for "+full+": "+str(axioms-allowed))
+              print(mod+" strict axiom audit PASS")
+          PY
+      - name: Upload compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: master-recon-v10b23-lean
+          path: |
+            v10b2-lean.log
+            v10b3a-lean.log

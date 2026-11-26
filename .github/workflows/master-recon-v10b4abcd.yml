@@ -1,0 +1,67 @@
+name: MASTER-RECON V10B4a-d
+on:
+  push:
+    branches: [master-recon-001-neutral-shell]
+    paths:
+      - "WeilDefect/MasterRecon/V10B4[abcd].lean"
+      - ".github/workflows/master-recon-v10b4abcd.yml"
+  pull_request:
+    paths:
+      - "WeilDefect/MasterRecon/V10B4[abcd].lean"
+      - ".github/workflows/master-recon-v10b4abcd.yml"
+permissions:
+  contents: read
+jobs:
+  supported-multipliers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Elan
+        run: |
+          curl --retry 3 --retry-delay 2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve dependencies
+        run: lake update
+      - name: Fetch mathlib cache
+        run: lake exe cache get
+      - name: Compile and audit V10B4a through V10B4d
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.MasterRecon.V08H
+          lake env lean WeilDefect/MasterRecon/V10B4a.lean 2>&1 | tee v10b4a-lean.log
+          lake build WeilDefect.MasterRecon.V10B4a
+          lake env lean WeilDefect/MasterRecon/V10B4b.lean 2>&1 | tee v10b4b-lean.log
+          lake build WeilDefect.MasterRecon.V10B4b
+          lake env lean WeilDefect/MasterRecon/V10B4c.lean 2>&1 | tee v10b4c-lean.log
+          lake build WeilDefect.MasterRecon.V10B4c
+          lake env lean WeilDefect/MasterRecon/V10B4d.lean 2>&1 | tee v10b4d-lean.log
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          banks = {"V10B4a":["phase_norm","phase_add","phase_integrable","fourier_modulated","integrable_reflected","integral_reflected","fourier_reflected","fourier_product_of_inverse","fourier_product"],"V10B4b":["fourier_norm_le","fourier_deriv_twice","derivative_factor_norm","fourier_second_moment_bound","fourier_quadratic_decay","uniform_fourier_quadratic_decay"],"V10B4c":["majorant_nonnegative","majorant_continuous","majorant_bound","majorant_integrable","weighted_kernel_integrable","weighted_kernel_mass_bound"],"V10B4d":["multiplier_on_support","multiplier_smooth","multiplier_support","partialY_smooth","partialY_deriv","uniform_integral_norm","multiplier_uniform_L1","multiplier_uniform_second_L1"]}
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for mod, names in banks.items():
+              s = Path(mod.lower()+"-lean.log").read_text()
+              for name in names:
+                  full = "WeilDefect.MasterRecon."+mod+"."+name
+                  m = re.search(re.escape("'"+full+"' depends on axioms: [")+r"([^\]]*)\]", s)
+                  if m is None:
+                      if "'"+full+"' does not depend on any axioms" in s:
+                          continue
+                      raise SystemExit("Missing axiom audit: "+full)
+                  axioms = {x.strip() for x in m.group(1).split(",") if x.strip()}
+                  if not axioms <= allowed:
+                      raise SystemExit("Unexpected axioms for "+full+": "+str(axioms-allowed))
+              print(mod+" strict axiom audit PASS")
+          PY
+      - name: Upload compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: master-recon-v10b4abcd-lean
+          path: |
+            v10b4a-lean.log
+            v10b4b-lean.log
+            v10b4c-lean.log
+            v10b4d-lean.log
