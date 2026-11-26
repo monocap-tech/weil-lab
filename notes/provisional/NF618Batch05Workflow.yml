@@ -16,6 +16,8 @@ jobs:
     timeout-minutes: 150
     steps:
       - uses: actions/checkout@v4
+      - name: Authenticate complete deployment index and selected plan before setup
+        run: python scripts/nf618_early_plan_preflight.py notes/provisional/NF618DeploymentIndex.json notes/provisional/NF618Batch05Plan.json
       - name: Restore exact original full numeric payload and accepted compact coverage source
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -223,8 +225,6 @@ jobs:
               assert hashlib.sha256(b).hexdigest()==a['source_sha256']=='4c37c0b40eacc78583aa0c74222446166f764d86c0fc53c4ff482c938730dc55'
               Path(p).write_bytes(b)
           PY
-      - name: Authenticate exact deployment plan Git blob
-        run: test "$(git hash-object notes/provisional/NF618Batch05Plan.json)" = 73933e924e3d712ff89f00d44b86fc55941b1bac
       - name: Regenerate and authenticate all 230 batch05 modules
         run: python scripts/nf618_native_multi.py notes/provisional/NF618Batch05Plan.json
       - name: Normalize false-sign conditionals with explicit rational equality
@@ -233,7 +233,7 @@ jobs:
         run: python scripts/nf618_repair_reflexivity.py WeilDefect/Generated/NF618HybridPilot 0 089b78356728a7e87b15cdd09c1bde3bf5db8d1cef5e8a76068b31dddffa606b
       - name: Restore source-bound common compiled checkpoint
         env:
-          GH_${{ secrets.GITHUB_TOKEN }}: TOKEN
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
           curl -fsSL --retry 3 -H "Authorization: Bearer $GH_TOKEN" "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/artifacts/15154802905/zip" -o nf618-input/common-checkpoint.zip
