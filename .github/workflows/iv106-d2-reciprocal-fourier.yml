@@ -28,7 +28,7 @@ jobs:
           test "$(git -C research rev-parse HEAD^{tree})" = f038d8ff25d8f18fbe56a641ab6abded0b6ec8e9
           test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
           test "$(git -C research hash-object WeilDefect/Arithmetic/ActualZetaCanonicalNativeEnergy.lean)" = bda93aa61bc6580197649833f30394aae943d910
-          test "$(git -C candidate hash-object verification/iv106/iv106_d2/ActualZetaIV106D2ReciprocalFourier.lean)" = a567970e01dc6fffa35872241f45628fca2595c9
+          test "$(git -C candidate hash-object verification/iv106/iv106_d2/ActualZetaIV106D2ReciprocalFourier.lean)" = 86f310ea80a70f5fcb1181d662f15c93e1e93569
           ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/iv106/iv106_d2/ActualZetaIV106D2ReciprocalFourier.lean
           test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106D2ReciprocalFourier.lean
           cp candidate/verification/iv106/iv106_d2/ActualZetaIV106D2ReciprocalFourier.lean research/WeilDefect/Arithmetic/ActualZetaIV106D2ReciprocalFourier.lean

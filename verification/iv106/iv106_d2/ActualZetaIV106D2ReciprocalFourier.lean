@@ -16,8 +16,8 @@ theorem neutralIV106D2Fourier_deriv (V : 𝓢(ℝ,ℂ)) (ξ : ℝ) :
     (SchwartzMap.fourier_lineDerivOp_eq V (1 : ℝ))
   have ht : (fun x : ℝ => inner ℝ x (1 : ℝ)).HasTemperateGrowth :=
     ((innerSL ℝ).flip (1 : ℝ)).hasTemperateGrowth
-  simpa [SchwartzMap.smul_apply, SchwartzMap.smulLeftCLM_apply_apply ht,
-    RCLike.inner_apply, smul_eq_mul] using h
+  rw [SchwartzMap.smul_apply, SchwartzMap.smulLeftCLM_apply_apply ht] at h
+  simpa [RCLike.inner_apply, RCLike.real_smul_eq_coe_smul, smul_eq_mul] using h
 
 /-- Pointwise reciprocal identity away from the null frequency. -/
 theorem neutralIV106D2Reciprocal_point (V v : 𝓢(ℝ,ℂ))
