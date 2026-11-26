@@ -21,6 +21,7 @@ theorem critical_coordinate_zero (f : ℝ → ℂ) (m : ℕ) (hm : 0 < m)
   let w : ℂ := V07A.mellin f ((γ : ℂ) * Complex.I)
   have hq : q ≠ 0 := by
     have hp : 0 < Real.sqrt (m : ℝ) := Real.sqrt_pos.2 (by exact_mod_cast hm)
+    change (Real.sqrt (m : ℝ) : ℂ) ≠ 0
     exact_mod_cast hp.ne'
   have hd : (Real.sqrt 2 : ℂ) ≠ 0 := by
     exact_mod_cast (Real.sqrt_pos.2 (by norm_num : (0 : ℝ) < 2)).ne'
