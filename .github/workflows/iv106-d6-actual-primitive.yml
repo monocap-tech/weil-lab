@@ -1,0 +1,378 @@
+name: IV106-D6 actual constrained primitive
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'verification/iv106/iv106_d6/ActualZetaIV106D6ActualPrimitive.lean'
+      - '.github/workflows/iv106-d6-actual-primitive.yml'
+permissions:
+  contents: read
+jobs:
+  physical-action:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          path: research
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 509e75bb8ac736bca7591336e12aa8a2ab7816d6
+          path: predecessor
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 97d6a291c716a0f66ffa08f3ea898d9cbdb00bf8
+          path: predecessor_b
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: d228695bb70881d0cb2a9c38bd69373adc0d8200
+          path: projection
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 1822dcf8d26437366bb84afa93ee5977696ba00c
+          path: predecessor_c
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 89a5c82d6b4c7f17af1cf152e0c7425af56cbe30
+          path: predecessor_d
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ff95dd67a30e44fd68f26a066c2e0b71c7e3efe6
+          path: predecessor_e1
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 0148ab4d13d7eff73914cf611cc20ef745e92eec
+          path: predecessor_e2
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: fce1532dab371354d23c85f3bb75e69693b40529
+          path: predecessor_f1
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ba294d3f0d8e1c0dd2fd38df960b973d20a633e0
+          path: predecessor_f2
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: a2d92973189a5e50461a9a0e47cac968566d69ae
+          path: predecessor_c1
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: b92e953846dd73919bd59e5d9264d1436bc08886
+          path: predecessor_c2
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: a0cdd6c6b1e7ba5c9c5b15d2bf76335dc471604d
+          path: predecessor_c3a
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 5da3d10040919836dbf6b8cd248cc67185121e5a
+          path: previous
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ca9e73b47ded1cb945d980f6f461d0a5669dbe2f
+          path: producer
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 329c6c6c44c1e3b5c6d896f9f0b0f52780eb5a37
+          path: dense
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: b78fc2288cad43766f7375faabd471ce5d178357
+          path: predecessor_c3b
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: c613964eb4c2f1dd44196b3deb609ea07e3ca9ae
+          path: predecessor_c3c
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 6ad9786c84ac9b5aba188c23a51cf030f446fc82
+          path: predecessor_d2
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: a4acb6457b18aa23330da93188ad4465306cbb71
+          path: predecessor_d3
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 5c5ae2b1763bfe18f07e61026b55f06c311633ba
+          path: predecessor_d4
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 6da329d470b5dbac5ca90a7baffbb35b7add0dcc
+          path: predecessor_d5
+          persist-credentials: false
+      - name: Immutable source preflight
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          test "$(git -C research rev-parse HEAD^{tree})" = f038d8ff25d8f18fbe56a641ab6abded0b6ec8e9
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C research hash-object WeilDefect/Arithmetic/ActualZetaIV103OriginalSchwartzSpectralAttachment.lean)" = 51a58fff565bb27453ab19fe276d49621b951563
+          test "$(git -C research hash-object WeilDefect/Arithmetic/ActualZetaCanonicalNativeEnergy.lean)" = bda93aa61bc6580197649833f30394aae943d910
+          test "$(git -C research hash-object WeilDefect/Arithmetic/ActualZetaLogCarrierSchwartzCompact.lean)" = bd794a56aa9a4b203ad52002d98f6737a27017b7
+          test "$(git -C predecessor rev-parse HEAD)" = 509e75bb8ac736bca7591336e12aa8a2ab7816d6
+          test "$(git -C predecessor hash-object verification/iv105/iv105_a/ActualZetaIV105AOriginalPhysicalActionSpectrum.lean)" = 7209b6f0d02dfb7e0890f45c56405f966d25847a
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV105AOriginalPhysicalActionSpectrum.lean
+          cp predecessor/verification/iv105/iv105_a/ActualZetaIV105AOriginalPhysicalActionSpectrum.lean research/WeilDefect/Arithmetic/ActualZetaIV105AOriginalPhysicalActionSpectrum.lean
+          test "$(git -C predecessor_b rev-parse HEAD)" = 97d6a291c716a0f66ffa08f3ea898d9cbdb00bf8
+          test "$(git -C predecessor_b hash-object verification/iv105/iv105_b/ActualZetaIV105BOriginalPhysicalAction.lean)" = bccbbccb7882c4baa67ea0ffbf2d3fc6d9d4536d
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV105BOriginalPhysicalAction.lean
+          cp predecessor_b/verification/iv105/iv105_b/ActualZetaIV105BOriginalPhysicalAction.lean research/WeilDefect/Arithmetic/ActualZetaIV105BOriginalPhysicalAction.lean
+          test "$(git -C projection rev-parse HEAD)" = d228695bb70881d0cb2a9c38bd69373adc0d8200
+          test "$(git -C projection hash-object WeilDefect/Arithmetic/ActualZetaIV104OriginalPackedMassProjection.lean)" = 304117f92766ff73ae38da62d5f1e7595ae0492b
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV104OriginalPackedMassProjection.lean
+          cp projection/WeilDefect/Arithmetic/ActualZetaIV104OriginalPackedMassProjection.lean research/WeilDefect/Arithmetic/ActualZetaIV104OriginalPackedMassProjection.lean
+          test "$(git -C predecessor_c rev-parse HEAD)" = 1822dcf8d26437366bb84afa93ee5977696ba00c
+          test "$(git -C predecessor_c hash-object verification/iv105/iv105_c/ActualZetaIV105COriginalProjectedPhysicalResponse.lean)" = 49b108e6228684cec3c59d5564a60b7adf74df3f
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV105COriginalProjectedPhysicalResponse.lean
+          cp predecessor_c/verification/iv105/iv105_c/ActualZetaIV105COriginalProjectedPhysicalResponse.lean research/WeilDefect/Arithmetic/ActualZetaIV105COriginalProjectedPhysicalResponse.lean
+          test "$(git -C predecessor_d rev-parse HEAD)" = 89a5c82d6b4c7f17af1cf152e0c7425af56cbe30
+          test "$(git -C predecessor_d hash-object verification/iv105/iv105_d/ActualZetaIV105DOriginalSchurReceiver.lean)" = b6f518f62afb824f060432ea9394bea47ef522e9
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV105DOriginalSchurReceiver.lean
+          cp predecessor_d/verification/iv105/iv105_d/ActualZetaIV105DOriginalSchurReceiver.lean research/WeilDefect/Arithmetic/ActualZetaIV105DOriginalSchurReceiver.lean
+          test "$(git -C predecessor_e1 rev-parse HEAD)" = ff95dd67a30e44fd68f26a066c2e0b71c7e3efe6
+          test "$(git -C predecessor_e1 hash-object verification/iv105/iv105_e1/ActualZetaIV105E1OriginalGramSolve.lean)" = 156834a7e1e0b547dbb89f53aa9031327e8f685d
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV105E1OriginalGramSolve.lean
+          cp predecessor_e1/verification/iv105/iv105_e1/ActualZetaIV105E1OriginalGramSolve.lean research/WeilDefect/Arithmetic/ActualZetaIV105E1OriginalGramSolve.lean
+          test "$(git -C predecessor_e2 rev-parse HEAD)" = 0148ab4d13d7eff73914cf611cc20ef745e92eec
+          test "$(git -C predecessor_e2 hash-object verification/iv105/iv105_e2/ActualZetaIV105E2OriginalSolveAttachment.lean)" = 2f4ca53ab54a7aafac390e1a9b237a46477e18a2
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV105E2OriginalSolveAttachment.lean
+          cp predecessor_e2/verification/iv105/iv105_e2/ActualZetaIV105E2OriginalSolveAttachment.lean research/WeilDefect/Arithmetic/ActualZetaIV105E2OriginalSolveAttachment.lean
+          test "$(git -C predecessor_f1 rev-parse HEAD)" = fce1532dab371354d23c85f3bb75e69693b40529
+          test "$(git -C predecessor_f1 hash-object verification/iv105/iv105_f1/ActualZetaIV105F1OriginalTrialReceiver.lean)" = 7ce54d03359b582b114e928154787ced1f8c910f
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV105F1OriginalTrialReceiver.lean
+          cp predecessor_f1/verification/iv105/iv105_f1/ActualZetaIV105F1OriginalTrialReceiver.lean research/WeilDefect/Arithmetic/ActualZetaIV105F1OriginalTrialReceiver.lean
+          test "$(git -C predecessor_f2 rev-parse HEAD)" = ba294d3f0d8e1c0dd2fd38df960b973d20a633e0
+          test "$(git -C predecessor_f2 hash-object verification/iv105/iv105_f2/ActualZetaIV105F2OriginalResidualGram.lean)" = d1add04a64edd3786dc2fd51bdab4e053ac8074e
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV105F2OriginalResidualGram.lean
+          cp predecessor_f2/verification/iv105/iv105_f2/ActualZetaIV105F2OriginalResidualGram.lean research/WeilDefect/Arithmetic/ActualZetaIV105F2OriginalResidualGram.lean
+          test "$(git -C predecessor_c1 rev-parse HEAD)" = a2d92973189a5e50461a9a0e47cac968566d69ae
+          test "$(git -C predecessor_c1 hash-object verification/iv106/iv106_c1/ActualZetaIV106C1OriginalResponseNull.lean)" = 7d6abd702257715c9ddbebfd01b7f16f5a7aa1a0
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106C1OriginalResponseNull.lean
+          cp predecessor_c1/verification/iv106/iv106_c1/ActualZetaIV106C1OriginalResponseNull.lean research/WeilDefect/Arithmetic/ActualZetaIV106C1OriginalResponseNull.lean
+          test "$(git -C predecessor_c2 rev-parse HEAD)" = b92e953846dd73919bd59e5d9264d1436bc08886
+          test "$(git -C predecessor_c2 hash-object verification/iv106/iv106_c2/ActualZetaIV106C2OriginalFormMargin.lean)" = 4e8e383af48d643564548fac93dcf0483beb3c0d
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106C2OriginalFormMargin.lean
+          cp predecessor_c2/verification/iv106/iv106_c2/ActualZetaIV106C2OriginalFormMargin.lean research/WeilDefect/Arithmetic/ActualZetaIV106C2OriginalFormMargin.lean
+          test "$(git -C dense rev-parse HEAD)" = 329c6c6c44c1e3b5c6d896f9f0b0f52780eb5a37
+          test ! -e research/WeilDefect/Generated/F08
+          mkdir -p research/WeilDefect/Generated/F08
+          test "$(git -C producer hash-object verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean)" = eecfe2a849fa79aa13810ede85e9ba625eba7777
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean
+          cp producer/verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean research/WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean
+          test "$(git -C producer hash-object verification/f08/f08_029/F08NativeL2PushforwardNorm.lean)" = 4da65f9b9df7cae6ea30a4a7f25d3e6c1606c294
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_029/F08NativeL2PushforwardNorm.lean
+          cp producer/verification/f08/f08_029/F08NativeL2PushforwardNorm.lean research/WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean
+          test "$(git -C producer hash-object verification/f08/f08_030/F08NativeFrequencyDilation.lean)" = 5c260b69f464f5793e095f9b5448c90f7984617f
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_030/F08NativeFrequencyDilation.lean
+          cp producer/verification/f08/f08_030/F08NativeFrequencyDilation.lean research/WeilDefect/Generated/F08/NativeFrequencyDilation.lean
+          test "$(git -C producer hash-object verification/f08/f08_033/F08NativeFrequencyDilationIsometry.lean)" = 8b4055c065ab7987a01bf55143908d8cd77f0f23
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_033/F08NativeFrequencyDilationIsometry.lean
+          cp producer/verification/f08/f08_033/F08NativeFrequencyDilationIsometry.lean research/WeilDefect/Generated/F08/NativeFrequencyDilationIsometry.lean
+          test "$(git -C producer hash-object verification/f08/f08_035/F08NativeDilationLinearIsometry.lean)" = 7038c5d23cecdef6cc3f6bca1d12548246e65bd7
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_035/F08NativeDilationLinearIsometry.lean
+          cp producer/verification/f08/f08_035/F08NativeDilationLinearIsometry.lean research/WeilDefect/Generated/F08/NativeDilationLinearIsometry.lean
+          test "$(git -C producer hash-object verification/f08/f08_037/F08CompactSchwartzNativeL2Dense.lean)" = f6d8bc01053ff811a2a9ebc6b83837f714e8d90f
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_037/F08CompactSchwartzNativeL2Dense.lean
+          cp producer/verification/f08/f08_037/F08CompactSchwartzNativeL2Dense.lean research/WeilDefect/Generated/F08/CompactSchwartzNativeL2Dense.lean
+          test "$(git -C producer hash-object verification/f08/f08_038/F08NativeL2ContinuityDenseTransfer.lean)" = 354922e7ed1727292f9ef41cf9b4f7d20f59a753
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_038/F08NativeL2ContinuityDenseTransfer.lean
+          cp producer/verification/f08/f08_038/F08NativeL2ContinuityDenseTransfer.lean research/WeilDefect/Generated/F08/NativeL2ContinuityDenseTransfer.lean
+          test "$(git -C producer hash-object verification/f08/f08_040/F08OriginalSchwartzDilationPointwise.lean)" = f728a7fc3c5528c7311b7ed8dc27b2f60e445f81
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_040/F08OriginalSchwartzDilationPointwise.lean
+          cp producer/verification/f08/f08_040/F08OriginalSchwartzDilationPointwise.lean research/WeilDefect/Generated/F08/OriginalSchwartzDilationPointwise.lean
+          test "$(git -C producer hash-object verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean)" = f3ecfbf236898ca62baac18111595a06b2a9874f
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean
+          cp producer/verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean research/WeilDefect/Generated/F08/CompactSchwartzSupportRadiusAndBound.lean
+          test "$(git -C producer hash-object verification/f08/f08_045/F08CompactSchwartzCommonScaledSupport.lean)" = 6fd895d4ae3cfa550fa0ed08f194ce299ea051b6
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_045/F08CompactSchwartzCommonScaledSupport.lean
+          cp producer/verification/f08/f08_045/F08CompactSchwartzCommonScaledSupport.lean research/WeilDefect/Generated/F08/CompactSchwartzCommonScaledSupport.lean
+          test "$(git -C producer hash-object verification/f08/f08_046/F08OriginalSchwartzNormalizedDifferenceBounds.lean)" = 9212867e3c7594461d153777ad1c4db7c3693150
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_046/F08OriginalSchwartzNormalizedDifferenceBounds.lean
+          cp producer/verification/f08/f08_046/F08OriginalSchwartzNormalizedDifferenceBounds.lean research/WeilDefect/Generated/F08/OriginalSchwartzNormalizedDifferenceBounds.lean
+          test "$(git -C producer hash-object verification/f08/f08_048/F08OriginalSchwartzIntegrableSquareEnvelope.lean)" = 08b60de243f59503f33be0970600861d62f92e0d
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_048/F08OriginalSchwartzIntegrableSquareEnvelope.lean
+          cp producer/verification/f08/f08_048/F08OriginalSchwartzIntegrableSquareEnvelope.lean research/WeilDefect/Generated/F08/OriginalSchwartzIntegrableSquareEnvelope.lean
+          test "$(git -C producer hash-object verification/f08/f08_051/F08OriginalCompactSchwartzFilteredDCT.lean)" = e6d0da5a8e350e9f49bf4f10228f820492c5e83b
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_051/F08OriginalCompactSchwartzFilteredDCT.lean
+          cp producer/verification/f08/f08_051/F08OriginalCompactSchwartzFilteredDCT.lean research/WeilDefect/Generated/F08/OriginalCompactSchwartzFilteredDCT.lean
+          test "$(git -C producer hash-object verification/f08/f08_052/F08OriginalNativeL2SquareIntegral.lean)" = 16a7053b3a1ea6f0e0f91a89de6e40a91987cd92
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_052/F08OriginalNativeL2SquareIntegral.lean
+          cp producer/verification/f08/f08_052/F08OriginalNativeL2SquareIntegral.lean research/WeilDefect/Generated/F08/OriginalNativeL2SquareIntegral.lean
+          test "$(git -C producer hash-object verification/f08/f08_055/F08OriginalNativeL2StrongContinuity.lean)" = 90ecd5258d1fa2fc843349e6fa4278ae20956062
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_055/F08OriginalNativeL2StrongContinuity.lean
+          cp producer/verification/f08/f08_055/F08OriginalNativeL2StrongContinuity.lean research/WeilDefect/Generated/F08/OriginalNativeL2StrongContinuity.lean
+          test "$(git -C producer hash-object verification/f08/f08_001/F08LogWeightDilation.lean)" = 5dce3a647223afbf75ef09f72d90c8afb331ee81
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_001/F08LogWeightDilation.lean
+          cp producer/verification/f08/f08_001/F08LogWeightDilation.lean research/WeilDefect/Generated/F08/LogWeightDilation.lean
+          test "$(git -C producer hash-object verification/f08/f08_025/F08NativeLogDilationFactor.lean)" = d208814f79f04a9926c2059d427419e73d6abb4b
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_025/F08NativeLogDilationFactor.lean
+          cp producer/verification/f08/f08_025/F08NativeLogDilationFactor.lean research/WeilDefect/Generated/F08/NativeLogDilationFactor.lean
+          test "$(git -C producer hash-object verification/f08/f08_057/F08LogDilationFixedVectorCorrection.lean)" = d1c2d9241f58541e23b1975aec610c63eb84b92f
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_057/F08LogDilationFixedVectorCorrection.lean
+          cp producer/verification/f08/f08_057/F08LogDilationFixedVectorCorrection.lean research/WeilDefect/Generated/F08/LogDilationFixedVectorCorrection.lean
+          test "$(git -C producer hash-object verification/f08/f08_059/F08OriginalLogCorrectedDilationConvergence.lean)" = 5febf418b614e49a1e040a41b889b6b51fbc1a18
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_059/F08OriginalLogCorrectedDilationConvergence.lean
+          cp producer/verification/f08/f08_059/F08OriginalLogCorrectedDilationConvergence.lean research/WeilDefect/Generated/F08/OriginalLogCorrectedDilationConvergence.lean
+          test "$(git -C producer hash-object verification/f08/f08_060/F08OriginalPhysicalDilationScaling.lean)" = fc488dea4d0fde809ece29e0fc863c6a35b2455b
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_060/F08OriginalPhysicalDilationScaling.lean
+          cp producer/verification/f08/f08_060/F08OriginalPhysicalDilationScaling.lean research/WeilDefect/Generated/F08/OriginalPhysicalDilationScaling.lean
+          test "$(git -C producer hash-object verification/f08/f08_062/F08OriginalNativePhysicalFourierIdentity.lean)" = 11c535117029f3ecb9d72af56d1671e94e9ba130
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_062/F08OriginalNativePhysicalFourierIdentity.lean
+          cp producer/verification/f08/f08_062/F08OriginalNativePhysicalFourierIdentity.lean research/WeilDefect/Generated/F08/OriginalNativePhysicalFourierIdentity.lean
+          test "$(git -C producer hash-object verification/f08/f08_063/F08OriginalWeightedCoordinateIdentity.lean)" = 34caef0d68578ac7c3fc15b5f839e148ad0e0a00
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_063/F08OriginalWeightedCoordinateIdentity.lean
+          cp producer/verification/f08/f08_063/F08OriginalWeightedCoordinateIdentity.lean research/WeilDefect/Generated/F08/OriginalWeightedCoordinateIdentity.lean
+          test "$(git -C producer hash-object verification/f08/f08_064/F08OriginalFormDomainEnergyReceiver.lean)" = 9423bc10b0db9d07078299bdedbe60b585fede7d
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_064/F08OriginalFormDomainEnergyReceiver.lean
+          cp producer/verification/f08/f08_064/F08OriginalFormDomainEnergyReceiver.lean research/WeilDefect/Generated/F08/OriginalFormDomainEnergyReceiver.lean
+          test "$(git -C producer hash-object verification/f08/f08_067/F08TerminalOriginalWeightedDilation.lean)" = 985e467f8a284c7c5be5bf794062155c24e70bea
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_067/F08TerminalOriginalWeightedDilation.lean
+          cp producer/verification/f08/f08_067/F08TerminalOriginalWeightedDilation.lean research/WeilDefect/Generated/F08/TerminalOriginalWeightedDilation.lean
+          test "$(git -C producer hash-object verification/f08/f08_005/F08WeightedMollifierMultiplier.lean)" = 2a8199ff817f59d1437fa173518a588cbbd467b9
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_005/F08WeightedMollifierMultiplier.lean
+          cp producer/verification/f08/f08_005/F08WeightedMollifierMultiplier.lean research/WeilDefect/Generated/F08/OriginalWeightedMollifierMultiplier.lean
+          test "$(git -C producer hash-object verification/f08/f08_007/F08OriginalWindowMollifierFourier.lean)" = 606d324ca9fcfd53d059efe1b57d1b0e30349476
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_007/F08OriginalWindowMollifierFourier.lean
+          cp producer/verification/f08/f08_007/F08OriginalWindowMollifierFourier.lean research/WeilDefect/Generated/F08/OriginalWindowMollifierFourier.lean
+          test "$(git -C producer hash-object verification/f08/f08_009/F08OriginalWindowConvolutionSupport.lean)" = 6badab7f17605d3131ee414282683d390c6f1964
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_009/F08OriginalWindowConvolutionSupport.lean
+          cp producer/verification/f08/f08_009/F08OriginalWindowConvolutionSupport.lean research/WeilDefect/Generated/F08/OriginalWindowConvolutionSupport.lean
+          test "$(git -C producer hash-object verification/f08/f08_011/F08OriginalNormalizedMollifier.lean)" = b1f53459762df682f6d1d358aae9c82b5396c5a7
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_011/F08OriginalNormalizedMollifier.lean
+          cp producer/verification/f08/f08_011/F08OriginalNormalizedMollifier.lean research/WeilDefect/Generated/F08/OriginalNormalizedMollifier.lean
+          test "$(git -C producer hash-object verification/f08/f08_013/F08OriginalMollifierFourierLimit.lean)" = 7b91eda87ce5a0d7691fdc643865e72fb153287c
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_013/F08OriginalMollifierFourierLimit.lean
+          cp producer/verification/f08/f08_013/F08OriginalMollifierFourierLimit.lean research/WeilDefect/Generated/F08/OriginalMollifierFourierLimit.lean
+          test "$(git -C producer hash-object verification/f08/f08_015/F08ActualMollifierWeightedDCT.lean)" = f1969dede41f0d799788411420c0cb2a63c5e53a
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_015/F08ActualMollifierWeightedDCT.lean
+          cp producer/verification/f08/f08_015/F08ActualMollifierWeightedDCT.lean research/WeilDefect/Generated/F08/ActualMollifierWeightedDCT.lean
+          test "$(git -C producer hash-object verification/f08/f08_017/F08ExplicitShrinkingPhysicalMollifier.lean)" = b767da47b302734c9b1de0bd0fde38b727c84b20
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_017/F08ExplicitShrinkingPhysicalMollifier.lean
+          cp producer/verification/f08/f08_017/F08ExplicitShrinkingPhysicalMollifier.lean research/WeilDefect/Generated/F08/ExplicitShrinkingPhysicalMollifier.lean
+          test "$(git -C producer hash-object verification/f08/f08_019/F08OriginalSmoothedWindow.lean)" = efe3260cbd8798ad7192142c1e656f31a6729d13
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_019/F08OriginalSmoothedWindow.lean
+          cp producer/verification/f08/f08_019/F08OriginalSmoothedWindow.lean research/WeilDefect/Generated/F08/OriginalSmoothedWindow.lean
+          test "$(git -C producer hash-object verification/f08/f08_021/F08OriginalSmoothedWindowNativeFourier.lean)" = f7f769dd120810645a6bed9fa3ef379c94986a77
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_021/F08OriginalSmoothedWindowNativeFourier.lean
+          cp producer/verification/f08/f08_021/F08OriginalSmoothedWindowNativeFourier.lean research/WeilDefect/Generated/F08/OriginalSmoothedWindowNativeFourier.lean
+          test "$(git -C producer hash-object verification/f08/f08_023/F08OriginalWindowNativeWeightedSmoothing.lean)" = b0712d54ff2c5a3c3c5496f5c007559abf946bf3
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_023/F08OriginalWindowNativeWeightedSmoothing.lean
+          cp producer/verification/f08/f08_023/F08OriginalWindowNativeWeightedSmoothing.lean research/WeilDefect/Generated/F08/OriginalWindowNativeWeightedSmoothing.lean
+          test "$(git -C producer hash-object verification/f08/f08_068/F08OriginalSupportedSmoothingReceiver.lean)" = c30f57a1d581c9a8be44ecd9dfccd5ea2e9f6e43
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_068/F08OriginalSupportedSmoothingReceiver.lean
+          cp producer/verification/f08/f08_068/F08OriginalSupportedSmoothingReceiver.lean research/WeilDefect/Generated/F08/OriginalSupportedSmoothingReceiver.lean
+          test "$(git -C producer hash-object verification/f08/f08_069/F08OriginalFixedWindowAssemblyReceiver.lean)" = b8f15156f6fa2b45b934517e5277527aab074406
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_069/F08OriginalFixedWindowAssemblyReceiver.lean
+          cp producer/verification/f08/f08_069/F08OriginalFixedWindowAssemblyReceiver.lean research/WeilDefect/Generated/F08/OriginalFixedWindowAssemblyReceiver.lean
+          test "$(git -C producer hash-object verification/f08/f08_073/F08TerminalOriginalFixedSupportSmoothDensity.lean)" = f1fb72ae584aa9de2e71ac5ee17fb46c4c7e9f36
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' producer/verification/f08/f08_073/F08TerminalOriginalFixedSupportSmoothDensity.lean
+          cp producer/verification/f08/f08_073/F08TerminalOriginalFixedSupportSmoothDensity.lean research/WeilDefect/Generated/F08/TerminalOriginalFixedSupportSmoothDensity.lean
+          test "$(git -C producer rev-parse HEAD)" = ca9e73b47ded1cb945d980f6f461d0a5669dbe2f
+          test "$(git -C previous hash-object verification/f08/f08_075/F08OriginalSchwartzCarrierApprox.lean)" = 0d13864a380c2975ef3c6dfc985e1bebffe44365
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' previous/verification/f08/f08_075/F08OriginalSchwartzCarrierApprox.lean
+          cp previous/verification/f08/f08_075/F08OriginalSchwartzCarrierApprox.lean research/WeilDefect/Generated/F08/OriginalSchwartzCarrierApprox.lean
+          test "$(git -C previous rev-parse HEAD)" = 5da3d10040919836dbf6b8cd248cc67185121e5a
+          test "$(git -C dense hash-object verification/f08/f08_076/F08OriginalDenseCoreTransfer.lean)" = 08ae8410ef5f53b7b3c05fbb05b8b100750d122f
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' dense/verification/f08/f08_076/F08OriginalDenseCoreTransfer.lean
+          cp dense/verification/f08/f08_076/F08OriginalDenseCoreTransfer.lean research/WeilDefect/Generated/F08/OriginalDenseCoreTransfer.lean
+          test "$(find research/WeilDefect/Generated/F08 -maxdepth 1 -name '*.lean' | wc -l)" -eq 39
+          test "$(git -C predecessor_c3a rev-parse HEAD)" = a0cdd6c6b1e7ba5c9c5b15d2bf76335dc471604d
+          test "$(git -C predecessor_c3a hash-object verification/iv106/iv106_c3a/ActualZetaIV106C3ConstraintDensity.lean)" = 6e0454f5ad28e88d934a9c86259bdf468d19994d
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106C3ConstraintDensity.lean
+          cp predecessor_c3a/verification/iv106/iv106_c3a/ActualZetaIV106C3ConstraintDensity.lean research/WeilDefect/Arithmetic/ActualZetaIV106C3ConstraintDensity.lean
+          test "$(git -C predecessor_c3b rev-parse HEAD)" = b78fc2288cad43766f7375faabd471ce5d178357
+          test "$(git -C predecessor_c3b hash-object verification/iv106/iv106_c3b/ActualZetaIV106C3ActualCore.lean)" = 484fe9045e85138219b4709f05f3de3705bd2451
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106C3ActualCore.lean
+          cp predecessor_c3b/verification/iv106/iv106_c3b/ActualZetaIV106C3ActualCore.lean research/WeilDefect/Arithmetic/ActualZetaIV106C3ActualCore.lean
+          test "$(git -C predecessor_c3c rev-parse HEAD)" = c613964eb4c2f1dd44196b3deb609ea07e3ca9ae
+          test "$(git -C predecessor_c3c hash-object verification/iv106/iv106_c3c/ActualZetaIV106C3ActualConstraints.lean)" = 25d13ea5fb5fce899121fd61ab5ae54a5b954002
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106C3ActualConstraints.lean
+          cp predecessor_c3c/verification/iv106/iv106_c3c/ActualZetaIV106C3ActualConstraints.lean research/WeilDefect/Arithmetic/ActualZetaIV106C3ActualConstraints.lean
+          test "$(git -C predecessor_d2 rev-parse HEAD)" = 6ad9786c84ac9b5aba188c23a51cf030f446fc82
+          test "$(git -C predecessor_d2 hash-object verification/iv106/iv106_d2/ActualZetaIV106D2ReciprocalFourier.lean)" = 86f310ea80a70f5fcb1181d662f15c93e1e93569
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106D2ReciprocalFourier.lean
+          cp predecessor_d2/verification/iv106/iv106_d2/ActualZetaIV106D2ReciprocalFourier.lean research/WeilDefect/Arithmetic/ActualZetaIV106D2ReciprocalFourier.lean
+          test "$(git -C predecessor_d3 rev-parse HEAD)" = a4acb6457b18aa23330da93188ad4465306cbb71
+          test "$(git -C predecessor_d3 hash-object verification/iv106/iv106_d3/ActualZetaIV106D3CompactPrimitive.lean)" = c04150add40ce368b031578101a33afbc95637d1
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106D3CompactPrimitive.lean
+          cp predecessor_d3/verification/iv106/iv106_d3/ActualZetaIV106D3CompactPrimitive.lean research/WeilDefect/Arithmetic/ActualZetaIV106D3CompactPrimitive.lean
+          test "$(git -C predecessor_d4 rev-parse HEAD)" = 5c5ae2b1763bfe18f07e61026b55f06c311633ba
+          test "$(git -C predecessor_d4 hash-object verification/iv106/iv106_d4/ActualZetaIV106D4CellEnergy.lean)" = 72fa49efb8090c2cec660da35ffc34a638d3370a
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106D4CellEnergy.lean
+          cp predecessor_d4/verification/iv106/iv106_d4/ActualZetaIV106D4CellEnergy.lean research/WeilDefect/Arithmetic/ActualZetaIV106D4CellEnergy.lean
+          test "$(git -C predecessor_d5 rev-parse HEAD)" = 6da329d470b5dbac5ca90a7baffbb35b7add0dcc
+          test "$(git -C predecessor_d5 hash-object verification/iv106/iv106_d5/ActualZetaIV106D5PartitionEnergy.lean)" = a9bdf14c3c7698e0593f0eff6d9ff1e4a1cd9165
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106D5PartitionEnergy.lean
+          cp predecessor_d5/verification/iv106/iv106_d5/ActualZetaIV106D5PartitionEnergy.lean research/WeilDefect/Arithmetic/ActualZetaIV106D5PartitionEnergy.lean
+          test "$(git -C candidate hash-object verification/iv106/iv106_d6/ActualZetaIV106D6ActualPrimitive.lean)" = bc6c04eac4840b5b6e3533a87e77a359c367657c
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/iv106/iv106_d6/ActualZetaIV106D6ActualPrimitive.lean
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106D6ActualPrimitive.lean
+          cp candidate/verification/iv106/iv106_d6/ActualZetaIV106D6ActualPrimitive.lean research/WeilDefect/Arithmetic/ActualZetaIV106D6ActualPrimitive.lean
+      - name: Install pinned Lean and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake exe cache get
+      - name: Native fresh source and strict named axiom audit
+        working-directory: research
+        run: |
+          set -euo pipefail
+          mkdir -p iv106-d6/out
+          touch iv106-d6/out/fresh.stamp
+          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106D6ActualPrimitive.olean
+          lake build WeilDefect.Arithmetic.ActualZetaIV106D6ActualPrimitive 2>&1 | tee iv106-d6/out/build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106D6ActualPrimitive.olean
+          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106D6ActualPrimitive.olean -nt iv106-d6/out/fresh.stamp
+          printf '%s\n' 'import WeilDefect.Arithmetic.ActualZetaIV106D6ActualPrimitive' '#print axioms WeilDefect.neutralIV106D6Endpoint_zero' '#print axioms WeilDefect.neutralIV106D6Endpoint_last' '#print axioms WeilDefect.neutralIV106D6Endpoint_width' '#print axioms WeilDefect.neutralIV106D6Actual_means' '#print axioms WeilDefect.neutralIV106D6Window_mass' '#print axioms WeilDefect.neutralIV106D6Actual_primitive' '#print axioms WeilDefect.neutralIV106D6Reciprocal_integrable' '#print axioms WeilDefect.neutralIV106D6Actual_reciprocal' > /tmp/iv106-d6-axioms.lean
+          lake env lean /tmp/iv106-d6-axioms.lean 2>&1 | tee iv106-d6/out/axioms.log
+          python3 - <<'PY'
+          import re,pathlib
+          s=pathlib.Path('iv106-d6/out/axioms.log').read_text()
+          p=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]"
+          ms=list(re.finditer(p,s,re.S))
+          assert len(ms)==8 and not re.sub(p,'',s,flags=re.S).strip()
+          assert {m[1] for m in ms}==set(["neutralIV106D6Endpoint_zero","neutralIV106D6Endpoint_last","neutralIV106D6Endpoint_width","neutralIV106D6Actual_means","neutralIV106D6Window_mass","neutralIV106D6Actual_primitive","neutralIV106D6Reciprocal_integrable","neutralIV106D6Actual_reciprocal"])
+          assert all({x.strip() for x in m[2].split(',') if x.strip()} <= {'propext','Classical.choice','Quot.sound'} for m in ms)
+          print('IV106-D6 strict named axioms PASS 8/8')
+          PY
+          sha256sum WeilDefect/Arithmetic/ActualZetaIV106D6ActualPrimitive.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106D6ActualPrimitive.olean > iv106-d6/out/sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv106-d6-physical-action-evidence
+          path: |
+            research/iv106-d6/out/
+            research/WeilDefect/Arithmetic/ActualZetaIV106D6ActualPrimitive.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106D6ActualPrimitive.olean
+          include-hidden-files: true
+          if-no-files-found: error
