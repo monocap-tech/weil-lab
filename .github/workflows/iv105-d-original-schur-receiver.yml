@@ -1,0 +1,114 @@
+name: IV105-D exact original Schur receiver
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'verification/iv105/iv105_d/ActualZetaIV105DOriginalSchurReceiver.lean'
+      - '.github/workflows/iv105-d-original-schur-receiver.yml'
+permissions:
+  contents: read
+jobs:
+  physical-action:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          path: research
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 509e75bb8ac736bca7591336e12aa8a2ab7816d6
+          path: predecessor
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 97d6a291c716a0f66ffa08f3ea898d9cbdb00bf8
+          path: predecessor_b
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: d228695bb70881d0cb2a9c38bd69373adc0d8200
+          path: projection
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 1822dcf8d26437366bb84afa93ee5977696ba00c
+          path: predecessor_c
+          persist-credentials: false
+      - name: Immutable source preflight
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          test "$(git -C research rev-parse HEAD^{tree})" = f038d8ff25d8f18fbe56a641ab6abded0b6ec8e9
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C research hash-object WeilDefect/Arithmetic/ActualZetaIV103OriginalSchwartzSpectralAttachment.lean)" = 51a58fff565bb27453ab19fe276d49621b951563
+          test "$(git -C research hash-object WeilDefect/Arithmetic/ActualZetaCanonicalNativeEnergy.lean)" = bda93aa61bc6580197649833f30394aae943d910
+          test "$(git -C research hash-object WeilDefect/Arithmetic/ActualZetaLogCarrierSchwartzCompact.lean)" = bd794a56aa9a4b203ad52002d98f6737a27017b7
+          test "$(git -C predecessor rev-parse HEAD)" = 509e75bb8ac736bca7591336e12aa8a2ab7816d6
+          test "$(git -C predecessor hash-object verification/iv105/iv105_a/ActualZetaIV105AOriginalPhysicalActionSpectrum.lean)" = 7209b6f0d02dfb7e0890f45c56405f966d25847a
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV105AOriginalPhysicalActionSpectrum.lean
+          cp predecessor/verification/iv105/iv105_a/ActualZetaIV105AOriginalPhysicalActionSpectrum.lean research/WeilDefect/Arithmetic/ActualZetaIV105AOriginalPhysicalActionSpectrum.lean
+          test "$(git -C predecessor_b rev-parse HEAD)" = 97d6a291c716a0f66ffa08f3ea898d9cbdb00bf8
+          test "$(git -C predecessor_b hash-object verification/iv105/iv105_b/ActualZetaIV105BOriginalPhysicalAction.lean)" = bccbbccb7882c4baa67ea0ffbf2d3fc6d9d4536d
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV105BOriginalPhysicalAction.lean
+          cp predecessor_b/verification/iv105/iv105_b/ActualZetaIV105BOriginalPhysicalAction.lean research/WeilDefect/Arithmetic/ActualZetaIV105BOriginalPhysicalAction.lean
+          test "$(git -C projection rev-parse HEAD)" = d228695bb70881d0cb2a9c38bd69373adc0d8200
+          test "$(git -C projection hash-object WeilDefect/Arithmetic/ActualZetaIV104OriginalPackedMassProjection.lean)" = 304117f92766ff73ae38da62d5f1e7595ae0492b
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV104OriginalPackedMassProjection.lean
+          cp projection/WeilDefect/Arithmetic/ActualZetaIV104OriginalPackedMassProjection.lean research/WeilDefect/Arithmetic/ActualZetaIV104OriginalPackedMassProjection.lean
+          test "$(git -C predecessor_c rev-parse HEAD)" = 1822dcf8d26437366bb84afa93ee5977696ba00c
+          test "$(git -C predecessor_c hash-object verification/iv105/iv105_c/ActualZetaIV105COriginalProjectedPhysicalResponse.lean)" = 49b108e6228684cec3c59d5564a60b7adf74df3f
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV105COriginalProjectedPhysicalResponse.lean
+          cp predecessor_c/verification/iv105/iv105_c/ActualZetaIV105COriginalProjectedPhysicalResponse.lean research/WeilDefect/Arithmetic/ActualZetaIV105COriginalProjectedPhysicalResponse.lean
+          test "$(git -C candidate hash-object verification/iv105/iv105_d/ActualZetaIV105DOriginalSchurReceiver.lean)" = b6f518f62afb824f060432ea9394bea47ef522e9
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/iv105/iv105_d/ActualZetaIV105DOriginalSchurReceiver.lean
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV105DOriginalSchurReceiver.lean
+          cp candidate/verification/iv105/iv105_d/ActualZetaIV105DOriginalSchurReceiver.lean research/WeilDefect/Arithmetic/ActualZetaIV105DOriginalSchurReceiver.lean
+      - name: Install pinned Lean and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake exe cache get
+      - name: Native fresh source and strict named axiom audit
+        working-directory: research
+        run: |
+          set -euo pipefail
+          mkdir -p iv105-d/out
+          touch iv105-d/out/fresh.stamp
+          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV105DOriginalSchurReceiver.olean
+          lake build WeilDefect.Arithmetic.ActualZetaIV105DOriginalSchurReceiver 2>&1 | tee iv105-d/out/build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV105DOriginalSchurReceiver.olean
+          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV105DOriginalSchurReceiver.olean -nt iv105-d/out/fresh.stamp
+          printf '%s\n' 'import WeilDefect.Arithmetic.ActualZetaIV105DOriginalSchurReceiver' '#print axioms WeilDefect.neutralIV105DPacked_add' '#print axioms WeilDefect.neutralIV105DPacked_neg' '#print axioms WeilDefect.neutralIV105DQ_zero' '#print axioms WeilDefect.neutralIV105DComplete_square' '#print axioms WeilDefect.neutralIV105DWindow_nonneg_iff' > /tmp/iv105-d-axioms.lean
+          lake env lean /tmp/iv105-d-axioms.lean 2>&1 | tee iv105-d/out/axioms.log
+          python3 - <<'PY'
+          import re,pathlib
+          s=pathlib.Path('iv105-d/out/axioms.log').read_text()
+          p=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]"
+          ms=list(re.finditer(p,s,re.S))
+          assert len(ms)==5 and not re.sub(p,'',s,flags=re.S).strip()
+          assert {m[1] for m in ms}==set(["neutralIV105DPacked_add","neutralIV105DPacked_neg","neutralIV105DQ_zero","neutralIV105DComplete_square","neutralIV105DWindow_nonneg_iff"])
+          assert all({x.strip() for x in m[2].split(',') if x.strip()} <= {'propext','Classical.choice','Quot.sound'} for m in ms)
+          print('IV105-D strict named axioms PASS 5/5')
+          PY
+          sha256sum WeilDefect/Arithmetic/ActualZetaIV105DOriginalSchurReceiver.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV105DOriginalSchurReceiver.olean > iv105-d/out/sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv105-d-physical-action-evidence
+          path: |
+            research/iv105-d/out/
+            research/WeilDefect/Arithmetic/ActualZetaIV105DOriginalSchurReceiver.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV105DOriginalSchurReceiver.olean
+          include-hidden-files: true
+          if-no-files-found: error
