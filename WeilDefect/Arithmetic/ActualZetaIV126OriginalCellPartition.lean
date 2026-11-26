@@ -44,7 +44,7 @@ theorem neutralIV126Cell_payment (f : ℝ → ℂ) (hf : Continuous f)
     (l d q : ℝ) (hd : 0 ≤ d)
     (hm : (∫ x in Set.Ioc l (l+d), f x) = 0) :
     ‖∫ x in l..(l+d), neutralIV126Phase (q*x)*f x‖ ≤
-      (|q|*d) * ∫ x in l..(l+d), ‖f x‖ := by
+      (|q| * d) * ∫ x in l..(l+d), ‖f x‖ := by
   have hl : l ≤ l+d := by linarith
   have hp : Continuous (fun x : ℝ => neutralIV126Phase (q*x)*f x) := by
     unfold neutralIV126Phase
@@ -55,19 +55,19 @@ theorem neutralIV126Cell_payment (f : ℝ → ℂ) (hf : Continuous f)
       (volume.restrict (Set.Ioc l (l+d))) :=
     (hp.intervalIntegrable l (l+d)).1
   have hb : ∀ᵐ x ∂volume.restrict (Set.Ioc l (l+d)),
-      ‖neutralIV126Phase (q*x)-neutralIV126Phase (q*l)‖ ≤ |q|*d := by
+      ‖neutralIV126Phase (q*x)-neutralIV126Phase (q*l)‖ ≤ |q| * d := by
     filter_upwards [ae_restrict_mem measurableSet_Ioc] with x hx
     have hxl : 0 ≤ x-l := by linarith [hx.1]
     have hxd : x-l ≤ d := by linarith [hx.2]
     calc
       _ ≤ |q*x-q*l| := neutralIV126Phase_sub _ _
-      _ = |q|*|x-l| := by rw [← mul_sub, abs_mul]
-      _ ≤ |q|*d := by
+      _ = |q| * |x-l| := by rw [← mul_sub, abs_mul]
+      _ ≤ |q| * d := by
         rw [abs_of_nonneg hxl]
         exact mul_le_mul_of_nonneg_left hxd (abs_nonneg _)
   simp only [intervalIntegral.integral_of_le hl]
   exact neutralIV125Cell_bound f (fun x => neutralIV126Phase (q*x))
-    _ (neutralIV126Phase (q*l)) (|q|*d) hi hj hm hb
+    _ (neutralIV126Phase (q*l)) (|q| * d) hi hj hm hb
 
 /-- Adjacent equal physical cells recombine exactly; no disjointness
 or finite-sum integral identity is left as a premise. -/
@@ -76,7 +76,7 @@ theorem neutralIV126Partition_payment (f : ℝ → ℂ) (hf : Continuous f)
     (hm : ∀ j < N, (∫ x in Set.Ioc (neutralIV126Node l d j)
       (neutralIV126Node l d (j+1)), f x) = 0) :
     ‖∫ x in l..(neutralIV126Node l d N), neutralIV126Phase (q*x)*f x‖ ≤
-      (|q|*d) * ∫ x in l..(neutralIV126Node l d N), ‖f x‖ := by
+      (|q| * d) * ∫ x in l..(neutralIV126Node l d N), ‖f x‖ := by
   let b := neutralIV126Node l d
   have hb0 : b 0 = l := by simp [b, neutralIV126Node]
   have hp : Continuous (fun x : ℝ => neutralIV126Phase (q*x)*f x) := by
@@ -109,7 +109,7 @@ theorem neutralIV126Window_payment (v : 𝓢(ℝ,ℂ)) (a q : ℝ)
       (neutralIV126Node (-a) (2*a/(N:ℝ)) j)
       (neutralIV126Node (-a) (2*a/(N:ℝ)) (j+1)), v x) = 0) :
     ‖∫ x in (-a)..a, neutralIV126Phase (q*x)*v x‖ ≤
-      (|q|*(2*a/(N:ℝ))) * ∫ x in (-a)..a, ‖v x‖ := by
+      (|q| * (2*a/(N:ℝ))) * ∫ x in (-a)..a, ‖v x‖ := by
   have h := neutralIV126Partition_payment (fun x => v x) v.continuous
     (-a) (2*a/(N:ℝ)) q N (by positivity) hm
   rw [neutralIV126Equal_end a N hN] at h

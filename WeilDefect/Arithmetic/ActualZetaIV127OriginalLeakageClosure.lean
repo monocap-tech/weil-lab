@@ -93,11 +93,11 @@ theorem neutralIV127Fourier_sq (a : ℝ) (ha : 0 < a) (N : ℕ) (hN : 0 < N)
   have hs := pow_le_pow_left₀ (norm_nonneg _) h 2
   have hc := neutralIV127Interval_mass (fun x => ‖v x‖) v.continuous.norm a ha
   rw [neutralIV127Window_mass a ha.le v hv] at hc
-  have hp := mul_le_mul_of_nonneg_left hc (sq_nonneg (|-2*Real.pi*ξ|*(2*a/(N:ℝ))))
+  have hp := mul_le_mul_of_nonneg_left hc (sq_nonneg (|-2*Real.pi*ξ| * (2*a/(N:ℝ))))
   calc
-    _ ≤ ((|-2*Real.pi*ξ|*(2*a/(N:ℝ))) *
+    _ ≤ ((|-2*Real.pi*ξ| * (2*a/(N:ℝ))) *
         (∫ x in (-a)..a, ‖v x‖))^2 := hs
-    _ = (|-2*Real.pi*ξ|*(2*a/(N:ℝ)))^2 *
+    _ = (|-2*Real.pi*ξ| * (2*a/(N:ℝ)))^2 *
         (∫ x in (-a)..a, ‖v x‖)^2 := by ring
     _ ≤ _ := by
       convert hp using 1
