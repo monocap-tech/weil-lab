@@ -102,10 +102,12 @@ theorem unit_eval_complex (h h' : ℝ → ℂ)
     (cs'.pow 2).intervalIntegrable a (a+1)
   have hn : ∀ x, ‖h x‖ ^ 2 = r x ^ 2 + s x ^ 2 := by
     intro x
-    simp [r, s, Complex.sq_norm, Complex.normSq_apply, pow_two]
+    rw [Complex.sq_norm, Complex.normSq_apply]
+    rfl
   have hn' : ∀ x, ‖h' x‖ ^ 2 = r' x ^ 2 + s' x ^ 2 := by
     intro x
-    simp [r', s', Complex.sq_norm, Complex.normSq_apply, pow_two]
+    rw [Complex.sq_norm, Complex.normSq_apply]
+    rfl
   simp only [hn, hn']
   rw [intervalIntegral.integral_add (ir.add is) (ir'.add is'),
       intervalIntegral.integral_add ir is, intervalIntegral.integral_add ir' is']
