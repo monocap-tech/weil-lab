@@ -1,0 +1,5 @@
+# IV133 — Literal physical residual row and annihilator-aware payment
+
+Parent 7be01d5334d7a67fd1a4e33484de3de41c7a87f4. Six new Lean proof candidates use the actual Mathlib L2 Fourier linear isometry (Lp.fourierTransformₗᵢ), inverse-transform IV109's signed spectral row, and add the two pole columns with the original moment coefficients. The candidate pairing is literal B_a(u,v), not an auxiliary positive symbol. Corrected row r_k(u)=r_a(u-R_k u). For any d annihilating all physical tail tests, B_k(u,z)=<r_k(u)-d,z> and the squared residual norm / eta bounds the variational penalty. Trial y in the original tail gives P_Z(h)<=L(h,y)+||r_k(h+y)-d||²/eta.
+
+The row d is an explicit premise, not an assumed exact projection; actual constraint representers and finite synthesis, full residual Gram/weighted comparison, and numerical enclosures must still be attached. This is a sufficient upper comparison, not an exact quadratic representation of P_Z or a terminal sign. Native acceptance pending. No duplicate dedicated gate; parent integrated 57-declaration gate is triggered separately.
