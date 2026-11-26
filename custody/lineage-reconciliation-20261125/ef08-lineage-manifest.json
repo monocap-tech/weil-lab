@@ -1,0 +1,89 @@
+{
+  "schema": "weil-lineage-reconciliation/v3",
+  "date": "2026-11-25",
+  "repository": "monocap-tech/weil-lab",
+  "root_pr": 153,
+  "rules": {
+    "closure": "Head SHA checked live and contained by live child head; no source branch deletion.",
+    "meaning": "Administrative closure does not discharge mathematical obligations."
+  },
+  "pull_requests": [
+    {
+      "number": 153,
+      "title": "EF08: sharpen original supported even positive energy with fully signed finite bands",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/153",
+      "head_ref": "research/rpb108-even-form-ef08-positive-upper",
+      "head_sha": "c787aeb9185772480a6bd3df0b919f0b210e29a4",
+      "base_ref": "research/rpb108-route-consolidation",
+      "base_sha": "42f6cf787616b7a437c29dacd1c62af2cdae0a50",
+      "contained_by_child": 157,
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 157,
+      "title": "EF09: refine true physical original even cap lower on unchanged cosine",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/157",
+      "head_ref": "research/rpb108-even-form-ef09-cap-lower",
+      "head_sha": "8de8e7a6915713bc792eae34a8d6b2ab6c35a5a7",
+      "base_ref": "research/rpb108-even-form-ef08-positive-upper",
+      "base_sha": "c787aeb9185772480a6bd3df0b919f0b210e29a4",
+      "contained_by_child": 158,
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 158,
+      "title": "EF10: exact integrated Fourier-cone original even cap discriminator",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/158",
+      "head_ref": "research/rpb108-even-form-ef10-integrated-cone",
+      "head_sha": "cdfedd5447c4c8ae59fd8ac908bf6ea5ea6d6e8d",
+      "base_ref": "research/rpb108-even-form-ef09-cap-lower",
+      "base_sha": "8de8e7a6915713bc792eae34a8d6b2ab6c35a5a7",
+      "contained_by_child": 160,
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 160,
+      "title": "EF11: direct original fully signed even physical Rayleigh interval",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/160",
+      "head_ref": "research/rpb108-even-form-ef11-direct-signed",
+      "head_sha": "ec5765a55b63b779363b9528ef9474d024bd358c",
+      "base_ref": "research/rpb108-even-form-ef10-integrated-cone",
+      "base_sha": "cdfedd5447c4c8ae59fd8ac908bf6ea5ea6d6e8d",
+      "contained_by_child": 162,
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 162,
+      "title": "EF12: original signed even finite-Schur reduction with exact residual sign gate",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/162",
+      "head_ref": "research/rpb108-even-form-ef12-true-schur",
+      "head_sha": "d842bdd9d3d87ccbe7cf747888f72c1d576c61c4",
+      "base_ref": "research/rpb108-even-form-ef11-direct-signed",
+      "base_sha": "ec5765a55b63b779363b9528ef9474d024bd358c",
+      "contained_by_child": 163,
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 163,
+      "title": "EF13: explicit original SI10 even 890-column carrier and cofinite positivity",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/163",
+      "head_ref": "research/rpb108-even-form-ef13-si10-carrier",
+      "head_sha": "e5a1f44667b5791041695cff08fa775bb820f9eb",
+      "base_ref": "research/rpb108-even-form-ef12-true-schur",
+      "base_sha": "d842bdd9d3d87ccbe7cf747888f72c1d576c61c4",
+      "contained_by_child": 166,
+      "disposition": "contained_closure_candidate"
+    },
+    {
+      "number": 166,
+      "title": "EF14: exact original signed even one-vector second-order quadrature",
+      "url": "https://github.com/monocap-tech/weil-lab/pull/166",
+      "head_ref": "research/rpb108-even-form-ef14-signed-midpoint",
+      "head_sha": "6631777c71727145626bb3bc81a45ec06e168b1e",
+      "base_ref": "research/rpb108-even-form-ef13-si10-carrier",
+      "base_sha": "e5a1f44667b5791041695cff08fa775bb820f9eb",
+      "contained_by_child": null,
+      "disposition": "retain_terminal_tip"
+    }
+  ]
+}
