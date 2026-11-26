@@ -1,0 +1,5 @@
+# IV127 — Original physical leakage closure (native candidate)
+
+IV124–127 now form a source-level chain: physical directional budget; band-to-log comparison; equal-cell phase cancellation; physical mass and literal Fourier normalization. For positive a and N, delta=2a/N, zero cell means give squared Fourier bound 8 pi² a delta² ||v||² xi² and integrated leakage eps=16 pi² a delta² T³/3. The fixed 11/10 Schur remainder receives eta whenever eta <= (1-eps)log(e+T)-M_k. This is a conditional scalar margin test, not whole-window positivity. Effective N,T existence, finite head construction and Schur matrix evaluation remain subsequent gates. The Poincare improvement remains unimplemented.
+
+IV123 parallel custody run 45748575818 completed successfully; its custody record is 5a85c08f8830ee08ebb8d8993a99688b0971e70c. IV127 descends from IV126, preserving its exact source. This candidate has six named audit declarations and no explicit placeholders. All IV124–127 require native verification (25 declarations). No Phase IV adoption or RH claim.
