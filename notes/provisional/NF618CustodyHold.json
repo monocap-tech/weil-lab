@@ -37,13 +37,24 @@
       "tables": 111,
       "rows": 584,
       "scope": "single-batch admission; cumulative ledger remains missing"
+    },
+    "batch21_23_artifact_replay": {
+      "source_evidence_checkpoint": "PASS",
+      "scope": "Batch21–23 admission replay against frozen bank; independently checked against recorded report"
     }
   },
   "outstanding": {
     "batch24_ledger": {
       "expected_sha256": "40e54496bec49119e252079345147a97ec25db8bb54a640647dc9c9d2b8fd24d",
       "status": "Exact original ledger still missing; reconstruction digest mismatch; no reconstructed ledger admitted",
-      "candidate_sha256": "7910b438110d0ecb1a2ab8caf14646d0ac62440c4893dc80bbcce077bf51ddcf"
+      "candidate_sha256": "7910b438110d0ecb1a2ab8caf14646d0ac62440c4893dc80bbcce077bf51ddcf",
+      "reconstruction": {
+        "path": "notes/provisional/NF618CertifiedSlotLedgerBatch24.unadmitted.json",
+        "sha256": "7910b438110d0ecb1a2ab8caf14646d0ac62440c4893dc80bbcce077bf51ddcf",
+        "bytes": 917631,
+        "calibration": "Batch16 to Batch20 byte-identical; Batch20 to Batch24 original digest mismatch",
+        "admitted": false
+      }
     },
     "evidence": "Batch24 source/evidence/checkpoint independently replayed; complete multi-batch evidence and dependency custody not yet independently replayed"
   },
@@ -51,5 +62,7 @@
     "tables": 6097,
     "rows": 29336
   },
-  "release_rule": "HOLD until exact Batch24 ledger bytes (or hash-identical independent reproduction) are in repository, source/evidence/checkpoint dependencies are independently replayed, and release conditions are reviewed. No new native batches 25–39."
+  "release_rule": "HOLD until exact Batch24 ledger bytes (or hash-identical independent reproduction) are in repository, source/evidence/checkpoint dependencies are independently replayed, and release conditions are reviewed. No new native batches 25–39.",
+  "investigation_state": "RECOVERY",
+  "permitted_activity": "Active custody recovery and independent replay of recorded batches; no new native certification batches 25–39"
 }

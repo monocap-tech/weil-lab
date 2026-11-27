@@ -1,0 +1,19 @@
+{
+  "schema": "NF618-batch24-reconstruction-unadmitted-v1",
+  "state": "RECOVERY",
+  "parent16_sha256": "f4530e243b8e812023935a3faf015980d079490c6bbc126e22e8e5c9ed807351",
+  "parent20_sha256": "6a396e811890b8d1df7d9fc23855a34cf0ec465a3092b795b2647ca9b949adfd",
+  "calibration": "Batch16 + batches17–20 -> exact Batch20 bytes PASS",
+  "batches21_23_admission": "Independent source/evidence/checkpoint verifier PASS; all output fields match stored admission report",
+  "batch24_admission": "Independent replay PASS in preceding custody session",
+  "candidate": {
+    "path": "notes/provisional/NF618CertifiedSlotLedgerBatch24.unadmitted.json",
+    "bytes": 917631,
+    "sha256": "7910b438110d0ecb1a2ab8caf14646d0ac62440c4893dc80bbcce077bf51ddcf",
+    "certified_tables": 6097,
+    "certified_rows": 29336
+  },
+  "expected_original_sha256": "40e54496bec49119e252079345147a97ec25db8bb54a640647dc9c9d2b8fd24d",
+  "admitted": false,
+  "next": "Recover original bytes, or identify exact serialization/state difference and rerun verifier. Hold native batches25–39."
+}
