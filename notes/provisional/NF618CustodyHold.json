@@ -28,6 +28,15 @@
       "chunks": 101,
       "remote_blob_identities": "101/101 repository directory entries match locally calculated Git blob IDs and byte sizes",
       "reconstruction": "PASS: recovery script rebuilt original 52,877,673-byte ZIP; SHA-256 and ZIP CRC replayed"
+    },
+    "batch24_artifact_replay": {
+      "report_path": "notes/provisional/NF618Batch24IndependentReplay.json",
+      "source_evidence_checkpoint": "PASS",
+      "producer_run": 45926442425,
+      "producer_conclusion": "success",
+      "tables": 111,
+      "rows": 584,
+      "scope": "single-batch admission; cumulative ledger remains missing"
     }
   },
   "outstanding": {
@@ -36,7 +45,7 @@
       "status": "Exact original ledger still missing; reconstruction digest mismatch; no reconstructed ledger admitted",
       "candidate_sha256": "7910b438110d0ecb1a2ab8caf14646d0ac62440c4893dc80bbcce077bf51ddcf"
     },
-    "evidence": "Batch24 evidence ZIP SHA-256 independently checked; source/checkpoint and complete dependency custody not yet replayed"
+    "evidence": "Batch24 source/evidence/checkpoint independently replayed; complete multi-batch evidence and dependency custody not yet independently replayed"
   },
   "reported_certified": {
     "tables": 6097,
