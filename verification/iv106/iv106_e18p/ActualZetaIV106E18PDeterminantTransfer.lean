@@ -201,7 +201,7 @@ theorem neutralIV106E18PInfinite (k : ℕ) (W X Y : ℕ → ℝ)
       atTop (𝓝 ((Nat.factorial k:ℝ)*(neutralIV106E18POrient k*A.det))) :=
     tendsto_const_nhds.mul (tendsto_const_nhds.mul hd)
   have hle : C ≤ (Nat.factorial k:ℝ)*(neutralIV106E18POrient k*A.det) :=
-    le_of_tendsto hlim (eventually_atTop.mpr ⟨k+1,fun N hN =>
+    ge_of_tendsto hlim (eventually_atTop.mpr ⟨k+1,fun N hN =>
       neutralIV106E18PFixed_lower k N W X Y hw hx hy hN⟩)
   exact pos_of_mul_pos_right (hC.trans_le hle) (by positivity)
 
