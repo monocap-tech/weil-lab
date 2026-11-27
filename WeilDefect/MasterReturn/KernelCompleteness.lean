@@ -30,7 +30,6 @@ theorem finiteDimensional_of_compact_fixed
     (show IsCompactOperator K.toLinearMap from hK).restrict hm hS
   have hid : K.toLinearMap.restrict hm = LinearMap.id := by
     ext x
-    apply Subtype.ext
     exact hfix x.val x.property
   rw [hid] at hk
   obtain ⟨C, hC, hsub⟩ := hk.image_closedBall_subset_compact 1
@@ -67,7 +66,7 @@ theorem independent_of_vandermonde_observations
     (hobs : ∀ j i, L j (v i) = c j * z j ^ (i : ℕ)) :
     LinearIndependent ℂ v := by
   classical
-  rw [Fintype.linearIndependent_iff']
+  rw [Fintype.linearIndependent_iff]
   intro a ha
   have hrows : ∀ j, (∑ i : Fin n, z j ^ (i : ℕ) * a i) = 0 := by
     intro j
