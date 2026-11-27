@@ -106,6 +106,7 @@ theorem neutralIV106E18SLog_bound (f df : RealComplexL2)
       ‖(𝓕 df : RealComplexL2) ξ‖^2 := by
       apply integral_mono_ae hlog ((hf.const_mul _).add hd)
       filter_upwards [hw] with ξ hξ
+      simp only [Pi.add_apply]
       rw [hξ]
       have he := mul_le_mul_of_nonneg_right
         (neutralLogarithmicFourierWeight_le_quadraticMoment ξ)
