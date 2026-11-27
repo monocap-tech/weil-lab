@@ -41,7 +41,12 @@ theorem cutoff_orthogonal (t R : ℝ) (ht : 0 ≤ t) (hR : 0 ≤ R)
     Lp.coeFn_sub (V08K.spectralCutoff t R ht hR g) (U (approximation t R ht hR n g)),
     V08K.spectralCutoff_ae t R ht hR g,
     approximation_fourier_support t R ht hR n g] with u h1 h2 h3 h4
-  rw [h1,h2,h3]
+  change inner ℂ (((U (physicalInclusion t g)-V08K.spectralCutoff t R ht hR g : FullL2) : ℝ → ℂ) u)
+    (((V08K.spectralCutoff t R ht hR g-U (approximation t R ht hR n g) : FullL2) : ℝ → ℂ) u) = 0
+  rw [h1,h2]
+  change inner ℂ (U (physicalInclusion t g) u-V08K.spectralCutoff t R ht hR g u)
+    (V08K.spectralCutoff t R ht hR g u-U (approximation t R ht hR n g) u) = 0
+  rw [h3]
   by_cases hu : u ∈ Icc (-R) R
   · rw [Set.indicator_of_mem hu,sub_self,inner_zero_left]
   · rw [Set.indicator_of_notMem hu,h4 hu,sub_self,inner_zero_right]
@@ -65,7 +70,7 @@ theorem low_band_bound (t R : ℝ) (ht : 0 ≤ t) (hR : 0 ≤ R) (n : ℕ)
   calc
     _ ≤ ‖out R hR‖*‖v‖ := (out R hR).le_opNorm v
     _ ≤ ‖out R hR‖*(remainderBound t R n*‖input t g‖) :=
-      mul_le_mul_of_nonneg_left hb (norm_nonneg _)
+      mul_le_mul_of_nonneg_left hb (norm_nonneg (out R hR))
     _ ≤ _ := by
       have h := mul_le_mul_of_nonneg_left ((input t).le_opNorm g)
         (show 0 ≤ ‖out R hR‖*remainderBound t R n by unfold remainderBound; positivity)
