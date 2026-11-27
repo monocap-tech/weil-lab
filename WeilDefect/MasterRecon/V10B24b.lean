@@ -36,7 +36,7 @@ theorem restricted_split (L : ℝ) (p : ℝ → ℂ) (x r : ℝ)
         (p x-zeroExtend L p (x+r)))-
       (h r:ℂ)*(zeroExtend L p (x-r)+zeroExtend L p (x+r)) := by
   unfold physicalTerm h
-  have hx' : zeroExtend L p x = p x := indicator_of_mem ⟨hx.1.le,hx.2.le⟩ _
+  have hx' : zeroExtend L p x = p x := indicator_of_mem (show x ∈ Icc 0 L from ⟨hx.1.le,hx.2.le⟩) p
   rw [hx']
   push_cast
   field_simp [show (r:ℂ) ≠ 0 by exact_mod_cast hr.ne']
@@ -71,11 +71,13 @@ theorem log_den_deriv (r : ℝ) (hr : 0 < r) :
     ((hasDerivAt_const r (-2:ℝ)).mul (hasDerivAt_id r))
   have hd : HasDerivAt den (2*Real.exp (-2*r)) r := by
     unfold den
-    convert (hasDerivAt_const r (1:ℝ)).sub he using 1 <;> ring
+    change HasDerivAt (fun s : ℝ => 1-Real.exp (-2*s)) _ r
+    have hh := (hasDerivAt_const r (1:ℝ)).sub he
+    change HasDerivAt (fun s : ℝ => 1-Real.exp (-2*s)) _ r at hh
+    convert hh using 1 <;> ring
   have hh := (Real.hasDerivAt_log (den_pos r hr).ne').comp r hd
-  convert hh using 1
-  unfold b
-  ring
+  change HasDerivAt (fun s => Real.log (den s)) _ r at hh
+  convert hh using 1 <;> unfold b <;> ring
 
 theorem b_integral (a c : ℝ) (ha : 0 < a) (hac : a ≤ c) :
     (∫ r in a..c, b r) = Real.log (den c)-Real.log (den a) := by
