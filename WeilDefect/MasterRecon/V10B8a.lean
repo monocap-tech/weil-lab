@@ -154,9 +154,10 @@ theorem mellin_congr_ae (f g : ℝ → ℂ) (h : f =ᵐ[volume] g) (z : ℂ) :
 theorem autocorr_support {f : ℝ → ℂ} {t : ℝ}
     (hf : tsupport f ⊆ Icc (-t) t) :
     tsupport (weilTest f f) ⊆ Icc (-(2*t)) (2*t) := by
+  have he : 2*t/2 = t := by ring
   apply tsupport_weilTest_subset
-  · simpa only [mul_div_cancel_left₀ _ (by norm_num : (2:ℝ) ≠ 0)] using hf
-  · simpa only [mul_div_cancel_left₀ _ (by norm_num : (2:ℝ) ≠ 0)] using hf
+  · simpa only [he] using hf
+  · simpa only [he] using hf
 
 end
 end WeilDefect.MasterRecon.V10B8a
