@@ -1,0 +1,64 @@
+name: RETURN108-N carrier translation
+on:
+  push:
+    branches: [research/return108m-kernel-repair]
+    paths:
+      - ".github/workflows/return108n-carrier.yml"
+permissions:
+  contents: read
+jobs:
+  translation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Source preflight
+        run: |
+          git rev-parse HEAD
+          test "$(git hash-object WeilDefect/MasterReturn/CarrierTranslation.lean)" = 19f9587f886e71dc54e0a16d869b8140d0cfbf4a
+          test "$(git hash-object WeilDefect/MasterRecon/V09B.lean)" = a3ff3f377235e6e297c2753982a5f5cd951b3fde
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.34.0
+      - name: Install Elan
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned dependencies
+        run: lake update
+      - name: Fetch mathlib cache
+        run: lake exe cache get
+      - name: Build carrier dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.MasterRecon.V09B 2>&1 | tee return108n-deps.log
+      - name: Compile and strict named axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/MasterReturn/CarrierTranslation.lean 2>&1 | tee return108n-lean.log
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          s = Path("return108n-lean.log").read_text()
+          names = ["shift_preserving","shiftPhysical_ae","shiftPhysical_support","shiftPhysical_mellin","shiftPhysical_fourier_norm_ae","shiftPhysical_log_integrable","shiftCarrier_physical","shiftCarrier_mellin","shiftCarrier_norm"]
+          allowed = {"propext","Classical.choice","Quot.sound"}
+          for name in names:
+              q = "WeilDefect.MasterReturn.CarrierTranslation." + name
+              m = re.search(r"'" + re.escape(q) + r"' depends on axioms: \[([^\]]*)\]", s)
+              if m is None:
+                  if f"'{q}' does not depend on any axioms" not in s:
+                      raise SystemExit("Missing axiom audit: " + q)
+              else:
+                  axioms = {x.strip() for x in m.group(1).split(",") if x.strip()}
+                  if not axioms <= allowed:
+                      raise SystemExit(f"Unexpected axioms for {q}: {axioms - allowed}")
+              print("PASS", q)
+          print("RETURN108-N strict axiom audit PASS 9/9")
+          PY
+      - name: Preserve compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: return108n-lean
+          path: |
+            return108n-deps.log
+            return108n-lean.log
