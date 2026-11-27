@@ -1,12 +1,13 @@
-name: MASTER-RECON V10B4a-B6f staged integration
+name: MASTER-RECON V10B4a-B7e staged integration
 on:
   push:
-    branches: [master-recon-v10b6-staging]
+    branches: [master-recon-v10b7-staging]
     paths:
       - ".github/workflows/master-recon-v10b5-integration.yml"
       - "WeilDefect/MasterRecon/V10B4*.lean"
       - "WeilDefect/MasterRecon/V10B5*.lean"
       - "WeilDefect/MasterRecon/V10B6*.lean"
+      - "WeilDefect/MasterRecon/V10B7*.lean"
   workflow_dispatch:
 permissions:
   contents: read
@@ -27,19 +28,19 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p recon-v10b6-evidence
+          mkdir -p recon-v10b7-evidence
           audit() {
             local mod="$1"
             file="WeilDefect/MasterRecon/${mod}.lean"
-            lake build "WeilDefect.MasterRecon.${mod}" 2>&1 | tee "recon-v10b6-evidence/${mod}-build.log" || return 1
-            lake env lean "$file" 2>&1 | tee "recon-v10b6-evidence/${mod}-lean.log" || return 1
+            lake build "WeilDefect.MasterRecon.${mod}" 2>&1 | tee "recon-v10b7-evidence/${mod}-build.log" || return 1
+            lake env lean "$file" 2>&1 | tee "recon-v10b7-evidence/${mod}-lean.log" || return 1
             python3 - "$mod" <<'PY' || return 1
           import re
           import sys
           from pathlib import Path
           mod = sys.argv[1]
           src = Path(f"WeilDefect/MasterRecon/{mod}.lean").read_text()
-          log = Path(f"recon-v10b6-evidence/{mod}-lean.log").read_text()
+          log = Path(f"recon-v10b7-evidence/{mod}-lean.log").read_text()
           expected = re.findall(r"^#print axioms (\S+)", src, re.M)
           declared = re.findall(r"^theorem (\w+)", src, re.M)
           assert expected and len(expected) == len(set(expected))
@@ -52,15 +53,38 @@ jobs:
               else:
                   assert {v.strip() for v in m.group(1).split(",") if v.strip()} <= allowed, name
           print(f"{mod}: strict axiom audit PASS ({len(expected)} declarations)")
-          Path(f"recon-v10b6-evidence/{mod}-audit.txt").write_text(f"{mod}: PASS {len(expected)}\n")
+          Path(f"recon-v10b7-evidence/{mod}-audit.txt").write_text(f"{mod}: PASS {len(expected)}\n")
           PY
           }
           failed=0
           order_ok=1
+          conj_ok=1
           rect_ok=1
           chain_ok=1
+          euler_ok=1
+          count_ok=1
+          reflect_ok=1
+          audit V10B7c || { euler_ok=0; failed=1; }
+          audit V10B6g || { conj_ok=0; failed=1; }
           audit V10B6e || { order_ok=0; failed=1; }
           audit V10B5b || { rect_ok=0; failed=1; }
+          if (( conj_ok && order_ok )); then
+            audit V10B6h || { reflect_ok=0; failed=1; }
+          else
+            reflect_ok=0
+          fi
+          if (( conj_ok )); then
+            for mod in V10B7a V10B7b; do
+              if ! audit "$mod"; then count_ok=0; failed=1; break; fi
+            done
+          else
+            count_ok=0
+          fi
+          if (( count_ok && reflect_ok && euler_ok )); then
+            audit V10B7d || { count_ok=0; failed=1; }
+          else
+            count_ok=0
+          fi
           for mod in V10B4a V10B4b V10B4c V10B4d V10B4e V10B4f V10B5a; do
             if ! audit "$mod"; then chain_ok=0; failed=1; break; fi
           done
@@ -71,11 +95,21 @@ jobs:
           else
             chain_ok=0
           fi
-          if (( chain_ok && order_ok )); then audit V10B6f || failed=1; fi
+          if (( chain_ok && order_ok )); then
+            audit V10B6f || { chain_ok=0; failed=1; }
+          else
+            chain_ok=0
+          fi
+          if (( chain_ok && reflect_ok )); then
+            audit V10B6i || { chain_ok=0; failed=1; }
+          else
+            chain_ok=0
+          fi
+          if (( chain_ok && count_ok )); then audit V10B7e || failed=1; fi
           exit "$failed"
       - name: Upload compiler and audit evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: master-recon-v10b6-integration
-          path: recon-v10b6-evidence/
+          name: master-recon-v10b7-integration
+          path: recon-v10b7-evidence/
