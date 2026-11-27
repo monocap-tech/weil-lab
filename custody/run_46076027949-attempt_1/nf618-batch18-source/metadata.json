@@ -1,0 +1,20 @@
+{
+  "id": 15164927651,
+  "node_id": "MDg6QXJ0aWZhY3QxNTE2NDkyNzY1MQ==",
+  "name": "nf618-native-batch18-source",
+  "size_in_bytes": 1440916,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15164927651",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15164927651/zip",
+  "expired": false,
+  "digest": "sha256:0885b710e831658d0c39cf820f700c3ae03570ecd9215e4288510c58791e77ec",
+  "created_at": "2026-11-27T01:36:57Z",
+  "updated_at": "2026-11-27T01:36:57Z",
+  "expires_at": "2027-02-25T01:24:52Z",
+  "workflow_run": {
+    "id": 45922429745,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "research/nf618-native-session17-18",
+    "head_sha": "22ccc51db572575eee88d45ce207d6edb910f187"
+  }
+}

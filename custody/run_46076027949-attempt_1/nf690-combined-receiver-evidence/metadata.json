@@ -1,0 +1,20 @@
+{
+  "id": 15153250890,
+  "node_id": "MDg6QXJ0aWZhY3QxNTE1MzI1MDg5MA==",
+  "name": "nf690-combined-receiver-evidence",
+  "size_in_bytes": 436678,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15153250890",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15153250890/zip",
+  "expired": false,
+  "digest": "sha256:17f2e9d64486f2b366d8f127cbd7d8b261d80cce806b8ea85e8c0f2137873dc1",
+  "created_at": "2026-11-26T20:51:41Z",
+  "updated_at": "2026-11-26T20:51:41Z",
+  "expires_at": "2027-02-24T19:02:44Z",
+  "workflow_run": {
+    "id": 45880626067,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "research/nf690-combined-certified-receiver",
+    "head_sha": "6b4842fd0805815d12a65568821f0f14b4081d8b"
+  }
+}

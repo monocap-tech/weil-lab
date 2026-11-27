@@ -1,0 +1,20 @@
+{
+  "id": 15147893235,
+  "node_id": "MDg6QXJ0aWZhY3QxNTE0Nzg5MzIzNQ==",
+  "name": "nf618-mixed-fourth-root-expansion-evidence",
+  "size_in_bytes": 43121,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15147893235",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15147893235/zip",
+  "expired": false,
+  "digest": "sha256:1df9f097b642c7c5bc74e91e0189e391c36afd92b02f3f6ad3bb86591bb278ee",
+  "created_at": "2026-11-26T19:25:26Z",
+  "updated_at": "2026-11-26T19:25:26Z",
+  "expires_at": "2027-02-24T19:09:27Z",
+  "workflow_run": {
+    "id": 45881496699,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "research/nf618-mixed-fourth-root",
+    "head_sha": "421c55ddbcded2339890c8847c1ee32733ee1618"
+  }
+}

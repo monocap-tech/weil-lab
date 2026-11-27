@@ -1,0 +1,20 @@
+{
+  "id": 15147925501,
+  "node_id": "MDg6QXJ0aWZhY3QxNTE0NzkyNTUwMQ==",
+  "name": "nf690-combined-receiver-source",
+  "size_in_bytes": 29657,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15147925501",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15147925501/zip",
+  "expired": false,
+  "digest": "sha256:c04f565a6694d90eb1523385f15f8789febafd994d2d31de6d9bd0fb2abad6be",
+  "created_at": "2026-11-26T19:11:49Z",
+  "updated_at": "2026-11-26T19:11:49Z",
+  "expires_at": "2027-02-24T19:02:44Z",
+  "workflow_run": {
+    "id": 45880626067,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "research/nf690-combined-certified-receiver",
+    "head_sha": "6b4842fd0805815d12a65568821f0f14b4081d8b"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "archives_target": 56,
+  "archives_byte_pass": 56,
+  "batch_replay_target": 25,
+  "batch_source_evidence_replay_pass": 25,
+  "checkpoint_target_deferred": 21,
+  "special_groups_replay_deferred": [
+    "combined",
+    "mixed",
+    "real"
+  ],
+  "mathematical_head": "Batch24R1",
+  "new_admissions": 0,
+  "hold": "unchanged"
+}

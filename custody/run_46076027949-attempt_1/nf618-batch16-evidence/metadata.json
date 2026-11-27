@@ -1,0 +1,20 @@
+{
+  "id": 15164630946,
+  "node_id": "MDg6QXJ0aWZhY3QxNTE2NDYzMDk0Ng==",
+  "name": "nf618-native-batch16-evidence",
+  "size_in_bytes": 35074,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15164630946",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15164630946/zip",
+  "expired": false,
+  "digest": "sha256:f44fc33d8404837e8ea38d0c50a65fb4cfd67a13ea36717148f5bc8133a8d6e7",
+  "created_at": "2026-11-27T01:13:16Z",
+  "updated_at": "2026-11-27T01:13:16Z",
+  "expires_at": "2027-02-25T00:54:38Z",
+  "workflow_run": {
+    "id": 45919496411,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "research/nf618-native-session15-16",
+    "head_sha": "57342990dbad81c59ef677302ab04cca1425e063"
+  }
+}
