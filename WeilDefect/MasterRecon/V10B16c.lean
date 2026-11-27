@@ -46,6 +46,8 @@ theorem cutoff_orthogonal (t R : ℝ) (ht : 0 ≤ t) (hR : 0 ≤ R)
   rw [h1,h2]
   change inner ℂ (U (physicalInclusion t g) u-V08K.spectralCutoff t R ht hR g u)
     (V08K.spectralCutoff t R ht hR g u-U (approximation t R ht hR n g) u) = 0
+  change V08K.spectralCutoff t R ht hR g u = (Icc (-R) R).indicator (fun u => U (physicalInclusion t g) u) u at h3
+  change u ∉ Icc (-R) R → U (approximation t R ht hR n g) u = 0 at h4
   rw [h3]
   by_cases hu : u ∈ Icc (-R) R
   · rw [Set.indicator_of_mem hu,sub_self,inner_zero_left]
