@@ -206,7 +206,8 @@ theorem angular_rectangle_budget (t : ℝ) (ht : 0 ≤ t) :
         V10B3a.weight y * ‖angularMoment t g 2 s y‖^2) ≤ B
     rw [integral_add i₀ i₁, integral_add i₁ i₂]
     dsimp [B]
-    nlinarith only [b₀,b₁,b₂]
+    have hh := add_le_add (add_le_add b₀ b₁) (add_le_add b₁ b₂)
+    exact hh.trans (le_of_eq (by ring))
   have h := V10B5b.rectangle_budget H X Y Z (-(1/2):ℝ) B J hh hx hi hj houter hb
   exact h.trans (le_of_eq (by dsimp [B]; ring))
 
