@@ -57,7 +57,8 @@ theorem orthogonal_error {H : Type*} [NormedAddCommGroup H] [InnerProductSpace �
     (a b : H) (A B : ℝ) (hA : 0 ≤ A) (hB : 0 ≤ B)
     (ha : ‖a‖ ≤ A) (hb : ‖b‖ ≤ B) (ho : inner ℂ a b = 0) :
     ‖a+b‖ ≤ Real.sqrt (A^2+B^2) := by
-  have h := norm_add_sq_eq_norm_sq_add_norm_sq_of_inner_eq_zero a b ho
+  have h := norm_add_sq_eq_norm_sq_add_norm_sq_of_inner_eq_zero (𝕜 := ℂ) a b ho
+  simp only [← pow_two] at h
   apply (sq_le_sq₀ (norm_nonneg _) (Real.sqrt_nonneg _)).mp
   rw [h,Real.sq_sqrt (by positivity)]
   exact add_le_add ((sq_le_sq₀ (norm_nonneg _) hA).mpr ha)
