@@ -199,13 +199,39 @@ theorem neutralIV106E18NSeries (u : 𝓢(ℝ,ℂ)) (f : ℝ → ℂ)
   rw [← heq]
   exact hs.hasSum
 
+/-- The positive polynomial seed has positive exponential integral at every rate. -/
+theorem neutralIV106E18NSeed_pos (q : ℝ) :
+    0 < ∫ t in (0:ℝ)..1, Real.exp (q*t)*neutralIV106E18K1B t := by
+  let g : ℝ → ℝ := fun t => Real.exp (q*t)*neutralIV106E18K1B t
+  have hg : Continuous g := by dsimp [g,neutralIV106E18K1B]; fun_prop
+  rw [intervalIntegral.integral_of_le (by norm_num : (0:ℝ) ≤ 1)]
+  change 0 < ∫ t in Set.Ioc (0:ℝ) 1, g t
+  have hi : IntegrableOn g (Set.Ioc (0:ℝ) 1) volume :=
+    (intervalIntegrable_iff_integrableOn_Ioc_of_le (by norm_num : (0:ℝ) ≤ 1)).mp
+      (hg.intervalIntegrable (μ := volume) 0 1)
+  have hn : 0 ≤ᵐ[volume.restrict (Set.Ioc (0:ℝ) 1)] g := by
+    filter_upwards [ae_restrict_mem measurableSet_Ioc] with x hx
+    change 0 ≤ g x
+    dsimp [g,neutralIV106E18K1B]
+    exact mul_nonneg (Real.exp_pos _).le
+      (mul_nonneg (pow_nonneg hx.1.le _) (pow_nonneg (sub_nonneg.mpr hx.2) _))
+  apply (setIntegral_pos_iff_support_of_nonneg_ae hn hi).mpr
+  have hsub : Set.Ioo (0:ℝ) 1 ⊆ Function.support g ∩ Set.Ioc (0:ℝ) 1 := by
+    intro x hx
+    refine ⟨?_,⟨hx.1,hx.2.le⟩⟩
+    change g x ≠ 0
+    dsimp [g,neutralIV106E18K1B]
+    exact (mul_pos (Real.exp_pos _)
+      (mul_pos (pow_pos hx.1 _) (pow_pos (sub_pos.mpr hx.2) _))).ne'
+  have hp : 0 < volume (Set.Ioo (0:ℝ) 1) := by rw [Real.volume_Ioo]; norm_num
+  exact hp.trans_le (measure_mono hsub)
+
 /-- The unit-cell exponential transform has a strictly positive negative
 coefficient above the pole rate, with no numerical quadrature. -/
-theorem neutralIV106E18NPolynomial_sign (h s : ℝ) (hh : 0 < h) (hs : 1/2 < s)
-    (hb : 0 < ∫ t in (0:ℝ)..1, Real.exp ((s*h)*t)*neutralIV106E18K1B t) :
+theorem neutralIV106E18NPolynomial_sign (h s : ℝ) (hh : 0 < h) (hs : 1/2 < s) :
     0 < -(∫ t in (0:ℝ)..1, Real.exp ((s*h)*t)*neutralIV106E18K1Poly h t) := by
   rw [neutralIV106E18K1Transform,← neg_mul]
-  apply mul_pos _ hb
+  apply mul_pos _ (neutralIV106E18NSeed_pos (s*h))
   have hq : h/2 < s*h := by nlinarith only [mul_pos (sub_pos.mpr hs) hh]
   have hq0 : 0 < s*h := by positivity
   have hd : 0 < (s*h)^2-h^2/4 := by nlinarith only [mul_pos (sub_pos.mpr hq) (show 0 < s*h+h/2 by positivity)]
@@ -217,6 +243,7 @@ theorem neutralIV106E18NPolynomial_sign (h s : ℝ) (hh : 0 < h) (hs : 1/2 < s)
 #print axioms neutralIV106E18NWeight_lower
 #print axioms neutralIV106E18NTerm_bound
 #print axioms neutralIV106E18NSeries
+#print axioms neutralIV106E18NSeed_pos
 #print axioms neutralIV106E18NPolynomial_sign
 end
 end WeilDefect
