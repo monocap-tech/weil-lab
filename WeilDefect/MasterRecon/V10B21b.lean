@@ -69,10 +69,11 @@ theorem majorant_integral (a b B K r : ℝ) (hab : a ≤ b) (hr : 0 ≤ r) :
   let F := (Icc a b).indicator (fun _ : ℝ => K^2*r^2)
   let G := (Icc (a-r) a).indicator (fun _ : ℝ => B^2)
   let H := (Icc (b-r) b).indicator (fun _ : ℝ => B^2)
-  change (∫ x, (F+G+H) x) = _
-  rw [integral_add ((interval_indicator_integrable a b _).add
-      (interval_indicator_integrable (a-r) a _)) (interval_indicator_integrable (b-r) b _),
-    integral_add (interval_indicator_integrable a b _) (interval_indicator_integrable (a-r) a _)]
+  have hF : Integrable F := interval_indicator_integrable a b _
+  have hG : Integrable G := interval_indicator_integrable (a-r) a _
+  have hH : Integrable H := interval_indicator_integrable (b-r) b _
+  change (∫ x, F x+G x+H x) = _
+  rw [integral_add (hF.add hG) hH,integral_add hF hG]
   dsimp only [F,G,H]
   simp only [integral_indicator_const _ measurableSet_Icc,Measure.real,Real.volume_Icc,
     ENNReal.toReal_ofReal (sub_nonneg.mpr hab),smul_eq_mul]
