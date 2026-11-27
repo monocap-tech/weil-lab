@@ -45,8 +45,8 @@ theorem skew_nonneg (j : ℕ) (a b : ℝ) (ha : 0 ≤ a) :
         apply Real.exp_le_exp.mpr
         exact add_le_add_right (mul_le_mul_of_nonneg_left (by linarith) ha) b
       · linarith
-  rw [intervalIntegral.integral_add (hc.intervalIntegrable volume 0 1)
-    (hcr.intervalIntegrable volume 0 1),hr] at h
+  rw [intervalIntegral.integral_add (hc.intervalIntegrable 0 1)
+    (hcr.intervalIntegrable 0 1),hr] at h
   change 0 ≤ ∫ x in (0:ℝ)..1, f x
   linarith
 
@@ -71,7 +71,7 @@ theorem moment_step (j : ℕ) (a b : ℝ) (ha : 0 ≤ a) :
   have hvc : Continuous v' := by dsimp [v',w]; fun_prop
   have hp := intervalIntegral.integral_mul_deriv_eq_deriv_mul
     (a := (0:ℝ)) (b := 1) (fun x _ => hu x) (fun x _ => hv x)
-    (huc.intervalIntegrable volume 0 1) (hvc.intervalIntegrable volume 0 1)
+    (huc.intervalIntegrable 0 1) (hvc.intervalIntegrable 0 1)
   have hzero : v 0=0 ∧ v 1=0 := by simp [v,w,pow_succ]
   have hL : (fun x => u x*v' x) =
       fun x => (4*(j:ℝ)+6)*(e a b x*w x^(j+1))-((j:ℝ)+1)*(e a b x*w x^j) := by
@@ -87,8 +87,8 @@ theorem moment_step (j : ℕ) (a b : ℝ) (ha : 0 ≤ a) :
   have h2 : Continuous (fun x => ((j:ℝ)+1)*(e a b x*w x^j)) := by
     unfold e w; fun_prop
   rw [hL,hR,hzero.1,hzero.2,mul_zero,mul_zero,sub_self,zero_sub,
-    intervalIntegral.integral_sub (h1.intervalIntegrable volume 0 1)
-      (h2.intervalIntegrable volume 0 1),
+    intervalIntegral.integral_sub (h1.intervalIntegrable 0 1)
+      (h2.intervalIntegrable 0 1),
     intervalIntegral.integral_const_mul,intervalIntegral.integral_const_mul,
     intervalIntegral.integral_const_mul] at hp
   change (4*(j:ℝ)+6)*moment (j+1) a b-((j:ℝ)+1)*moment j a b =
