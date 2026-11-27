@@ -138,7 +138,10 @@ jobs:
         working-directory: research
         run: |
           set -euo pipefail
-          curl -sSf https://raw.githubusercontent.com/elan/master/elan-init.sh | sh -s -- -y
+          # Fetch the installer from the canonical elan repository, not a bare
+          # organization-relative path. Preserve the exact pinned toolchain.
+          curl --fail --silent --show-error --location --retry 3 https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/iv106-elan-init.sh
+          sh /tmp/iv106-elan-init.sh -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
           export PATH="$HOME/.elan/bin:$PATH"
           lean --version
