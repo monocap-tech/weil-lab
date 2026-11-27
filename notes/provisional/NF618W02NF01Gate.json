@@ -1,0 +1,431 @@
+{
+  "schema": "W02-NF-01-gate-v1",
+  "operation": "W02-NF-01",
+  "authority": "Owner next after initialization; bounded evidence/demand review only",
+  "parent": "afdc8f90715e2da8c703bac1fcf5f9e3aa6e78aa",
+  "branch": "research/nf618-admission-b24",
+  "governing": {
+    "entrypoint": "canonical-return@e96ebfce615154a5207aafd7b5b6f8e4f99e646e",
+    "assignment": "canonical-return@27213dfdc2ec6ba78ee25045c4ceec6529da3060",
+    "dependency_ledger": "canonical-return@0857533a68e9cbd6271210afb0fa0c11c61b9b38",
+    "protocol": "canonical-return@505ecf029b849b6d1ca3514252500e3fd43a48c8"
+  },
+  "status": {
+    "execution": "PARTIAL_STOP",
+    "mathematical": "Batch24R1 admitted functional accounting only; no new math",
+    "custody": "partial; producer archive transfer blocked",
+    "adoption": "HOLD"
+  },
+  "accounting": {
+    "slots": 7835,
+    "certified_tables": 6097,
+    "certified_rows": 29336,
+    "residual_tables": 1738,
+    "residual_rows": 8658,
+    "group_census": "PASS",
+    "changed_slots_from_Batch20": 448,
+    "exact_changed_slots_and_immutable_fields": "PASS",
+    "plans_21_24": "4/4 PASS",
+    "scope": "JS semantic comparison of remotely read ledger, parent, admission and plan objects; not a new native certification or Python regeneration"
+  },
+  "dependencies": {
+    "ledger_blob": "5931d3ef251562f71c8871a9ad20707781071428",
+    "parent_ledger_blob": "d8c51a20bc10c8e7559d6447a00e150056243105",
+    "admission_blob": "2b9020fbaf937adae10396886feae0991c3cd7c0",
+    "index_blob": "7104217aa045d5e9f7008745fb83c5c5452f23af",
+    "verifier_blob": "d27ba77ad9d08b657ad092f4fee1b1c082e1504f",
+    "plan_blobs": [
+      "67593afb015a76b0ac22b307318cb73e494e11d1",
+      "c04cf0acd7d8a29d0b57dcea122fcd9c7301dd8c",
+      "6164128ec9bc40bfe92021369a49cdc1655566d6",
+      "e2811464222cc410841c5d803c1765a67f9849ac"
+    ],
+    "frozen_bank_sha256": "5c93d86fd9461aff82834cc264c522544f3b2205fc56171886de18623ca31b82",
+    "base_fingerprint": "79bc8e3e31a4a05fe501986d3d3da4ce8f7e2259a76207b6ac003ccf97289a21",
+    "producer_heads": {
+      "45926375286": "4027f91bbcfadc592de1d36f28ee093d326b4043",
+      "45926442425": "1987fef500afe71272d3798d724145e6b473cf5d"
+    },
+    "common_checkpoint": {
+      "run": 45896999532,
+      "artifact": 15154802905,
+      "sha256": "d479b8bb33d30b357ef8880245dc0401a87b0d8d82465419bcf242934942630f",
+      "status": "metadata only; dependency applicability and bytes not replayed"
+    }
+  },
+  "producer_evidence": [
+    {
+      "group": "combined",
+      "run": 45880626067,
+      "artifact_id": 15153250890,
+      "sha256": "17f2e9d64486f2b366d8f127cbd7d8b261d80cce806b8ea85e8c0f2137873dc1",
+      "manifest_sha256": "ec545555dda5ebf943aebd7fcb60bfc2eaa16ffb6e30a3aadc3db488cad3a7ec",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "mixed",
+      "run": 45881496699,
+      "artifact_id": 15147893235,
+      "sha256": "1df9f097b642c7c5bc74e91e0189e391c36afd92b02f3f6ad3bb86591bb278ee",
+      "manifest_sha256": "aacaa1c8cc8c5f0015292e99303290549ce344b8807b2011c7978ab8542d2155",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "real",
+      "run": 45889937085,
+      "artifact_id": 15150804222,
+      "sha256": "dde302fe9ebd76b9c5884559a8d07682f183de44cbc359f5fe804abd35410427",
+      "manifest_sha256": "a384bc21a144f81d67b7cfe0c672f2f811804a863b2a7422f38af0ae226e63e4",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch00",
+      "run": 45895555348,
+      "artifact_id": 15153079811,
+      "sha256": "6d87f6bbcfe9df948b614ffe10d9dfb0622e65eb243aba2c29286753fda77675",
+      "manifest_sha256": "f733c0b9e1c12df0a11f98408a42680fa6bd60cfb7ae5c3c58913eaf5b2801fb",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch01",
+      "run": 45896916657,
+      "artifact_id": 15154074329,
+      "sha256": "93ed95e2c1cf078838a7cc23c521885d849d9797ce7497528cb74346274a9226",
+      "manifest_sha256": "b77be33506c0183f1149322d98085e1a19fd0353e14e7ec8ada81d969ea1fe95",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch02",
+      "run": 45896999532,
+      "artifact_id": 15154459054,
+      "sha256": "d26ba44a2e7c694f2d7f4758f909576e0ad1545548edc4a5cad08652f46fc409",
+      "manifest_sha256": "8bb2d8019daeb265e234412e27c84cd4ec01b37f3c76482c85dc07a8dc4f597b",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch04",
+      "run": 45905565331,
+      "artifact_id": 15158163679,
+      "sha256": "7426b7c178da6c23d16a55ead5c88799a5aa9423fcc6d5694d04f6876edbc95f",
+      "manifest_sha256": "786bd66507189720978afc54a1c128996a2c697d44a986fc6e10204fc1c7a4a4",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch03",
+      "run": 45905554876,
+      "artifact_id": 15157419624,
+      "sha256": "98b33cd819c5f4c9b09ad85aa9ed71ecee8307fb539940bedfc050203450cd75",
+      "manifest_sha256": "3ae36f806c67a444f5a65d36bad982150d1649d0bb615d604cf2c05b32dcd078",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch05",
+      "run": 45907002013,
+      "artifact_id": 15158314382,
+      "sha256": "2cb8c59f1fe6c36594ea00723f9848563a58e7f0a7556beb3fa78f2d015760bd",
+      "manifest_sha256": "f30f64eb2f4707d8582864533123184a8f04988327d2f086295419d179ce7d5e",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch06",
+      "run": 45907002013,
+      "artifact_id": 15159701174,
+      "sha256": "f4181d97d15eaa1ff3281382856607318ade622286007962ddf2cd9422176c40",
+      "manifest_sha256": "5dcb067be1148be2c8778627ea4f37058b71e967a20d35e5778caf80346eb963",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch07",
+      "run": 45907279369,
+      "artifact_id": 15159625471,
+      "sha256": "ac3b2ddede2da4b59d3e3d6b207ce6c7cff067da8d4bfecb426eea4d8cface31",
+      "manifest_sha256": "155afd1fa41bba743570a2a5b25b732d03665aa812fedb12529219315ba783e8",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch08",
+      "run": 45907279369,
+      "artifact_id": 15159138306,
+      "sha256": "5aed9831e11e33cfb8b2778bee39249038ab962dc291479b69871b33880bee6f",
+      "manifest_sha256": "c5e826d93b9c19700f7aebf376cfae3d993543f952cc44b96f97cdc4dbac4c89",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch09",
+      "run": 45915268656,
+      "artifact_id": 15161964370,
+      "sha256": "63d23e0d3e6cf070e810910c9d80795d5021d9e3b4eafc6faa1ca8e1489ddb7b",
+      "manifest_sha256": "c34eecea66c24a22d30fdefc352cda067c881b2e26db84f8af43b0f1bb982b6f",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch11",
+      "run": 45915373829,
+      "artifact_id": 15161854670,
+      "sha256": "f39a7fc304e2a4d1b968a2fcd5eaf20e2c47dc220e8b3a400766798da6d48894",
+      "manifest_sha256": "ea8f85ee6102bc8627bf05dba9daed3911b5eaf4452d42dae76eb8914d212b8e",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch10",
+      "run": 45915268656,
+      "artifact_id": 15162648423,
+      "sha256": "540555df5ed6db0afb380c090e1fdf3582ac45ab04b835887d7e089379efd612",
+      "manifest_sha256": "8ef1f09c025f40ed1e8036462fa61350ce80677050df035c056a4610d171ba99",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch12",
+      "run": 45915373829,
+      "artifact_id": 15163215691,
+      "sha256": "fc35d4b94b381a324d46922638a6962ef1703997c780b1174b92cc0e208902b0",
+      "manifest_sha256": "75fa24059b39477f1a9a00717237c8ab05dee445c3fa6e8de48227cfd6a742b5",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch13",
+      "run": 45919422143,
+      "artifact_id": 15163553274,
+      "sha256": "3b1c03abb645f63c6c1490680b98fb5447938cb170c5bc168200ee1264e9175e",
+      "manifest_sha256": "218216ee4546e12ad71806694062cce7410e3ea7395b1875dcfd60356712077b",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch14",
+      "run": 45919422143,
+      "artifact_id": 15164039733,
+      "sha256": "93f159722b30cda30c8be3a2fd3a6efb32cc246ae053417110eb30e332aac1f4",
+      "manifest_sha256": "d7488b71c2a7a43717328141539773318767d215e9888bd1994b1a83e923ed65",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch15",
+      "run": 45919496411,
+      "artifact_id": 15163498378,
+      "sha256": "09d1f9bee0b4e86dcc09bfd67dab925a10786fa9857009cd1636719e8df68149",
+      "manifest_sha256": "bc0b92767d24075badaffa2737931c41c94da93134a6f33115468751c4d35049",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch16",
+      "run": 45919496411,
+      "artifact_id": 15164630946,
+      "sha256": "f44fc33d8404837e8ea38d0c50a65fb4cfd67a13ea36717148f5bc8133a8d6e7",
+      "manifest_sha256": "89e6aff927cfccabc894397eba2e37d3ceb4f43e8f804efdf3bfca77d4d951b1",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch17",
+      "run": 45922429745,
+      "artifact_id": 15165357136,
+      "sha256": "edbeca4646c5ea89a9393a0c9c1d5ca84e05686af175a38a963ef01aec78fbe4",
+      "manifest_sha256": "18ad70ea71e18232722aa8ad7f4ccd18f159207abb2977067b45b411fa7cb47e",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch18",
+      "run": 45922429745,
+      "artifact_id": 15165584216,
+      "sha256": "96fd4e52bff7d57eeb519616f9650f85209deb1b37cb5f7ce360bb508fcb4d36",
+      "manifest_sha256": "c24ccbb257a5bc0a3f092793139a7bb4d2e4fde7a3409d0ac167a2d2227f1bc3",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch19",
+      "run": 45922502052,
+      "artifact_id": 15164868397,
+      "sha256": "9a2fb780664e939e9d713411dac5a60a241d336e106c0715ceb270947b108b5d",
+      "manifest_sha256": "f53f9db4d07da19a4a7c281b1cf67d435cabaae5e4e48b655464ffe273dbba45",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch20",
+      "run": 45922502052,
+      "artifact_id": 15165653168,
+      "sha256": "1070f4df7ad9432c1c78fde717834547e4477d7d9bbf3956a48c54552916b0ce",
+      "manifest_sha256": "f910b27dd47b871b978cf34adc2e5c417476ec620f88d1f002381f2c24f4a6c4",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch21",
+      "run": 45926375286,
+      "artifact_id": 15167770773,
+      "sha256": "c9523d31ce6d09043374b67cc309016f90bf1c9da7aa3264e72a333937b9036c",
+      "manifest_sha256": "79d5a7c7cbae5986a72e4c4a48ef85509b7599b0bc873aebbc200efadf6a5468",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch22",
+      "run": 45926375286,
+      "artifact_id": 15167473600,
+      "sha256": "32cef6a118c92505006f0cde017f45a3f6f58cf9333ab7d140ff9e73047df739",
+      "manifest_sha256": "e457f8d57422c81c653fddc6fe202706d991596b010e1170ce2de220f6708d60",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch23",
+      "run": 45926442425,
+      "artifact_id": 15166584648,
+      "sha256": "6cf17056e6bfe3727125c5a8a2835d6ee7ad5cd19c01b4d2d915055a3f969d9d",
+      "manifest_sha256": "72805e57616ee9777b8dd1ea81e300b5b36b3a15ffdcfc96bb557b823066cf08",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "not downloaded in W02"
+    },
+    {
+      "group": "batch24",
+      "run": 45926442425,
+      "artifact_id": 15167052822,
+      "sha256": "18bc48a722598212a9fe1090bc728efa5e15baf06985c1499efe637f7b1c88ce",
+      "manifest_sha256": "e5e7d09240942d8b0c6f987b95ad74a40fb17acc25f05c96f5d6f2e805161588",
+      "metadata": "matching digest; unexpired",
+      "raw_bytes": "local hash/CRC checked; not remotely preserved"
+    }
+  ],
+  "archive_digest_registry": {
+    "nf690-payload": "2327fbf952d4894c9f28f81cad9e94d226c93131d9ef2fafa14c35f482211b70",
+    "nf690-combined-receiver-source": "c04f565a6694d90eb1523385f15f8789febafd994d2d31de6d9bd0fb2abad6be",
+    "nf690-combined-receiver-evidence": "17f2e9d64486f2b366d8f127cbd7d8b261d80cce806b8ea85e8c0f2137873dc1",
+    "nf618-mixed-fourth-root-expansion-source": "15eac471bc8f2f7563651aad43a2dd2d6c05bb3910251760194c72c81582baec",
+    "nf618-mixed-fourth-root-expansion-evidence": "1df9f097b642c7c5bc74e91e0189e391c36afd92b02f3f6ad3bb86591bb278ee",
+    "nf618-real-terminal-slot-evidence": "dde302fe9ebd76b9c5884559a8d07682f183de44cbc359f5fe804abd35410427",
+    "nf618-repaired-pilot-source": "fc2e5bbedb2ec7acf7ddb4cc331f4e9b57a5528ea844bf46de18d6b08b7bbaac",
+    "nf618-repaired-pilot-evidence": "6d87f6bbcfe9df948b614ffe10d9dfb0622e65eb243aba2c29286753fda77675",
+    "nf618-batch01-source": "84014b7a451c54a6c4d529a09c439df8d8618f3e21dceda4e74bc3dfb59fef3b",
+    "nf618-batch01-evidence": "93ed95e2c1cf078838a7cc23c521885d849d9797ce7497528cb74346274a9226",
+    "nf618-batch02-source": "6b27144e8b723d476f992a888ea0bb7fef48a302d4b7ad9003fce737734f8532",
+    "nf618-batch02-evidence": "d26ba44a2e7c694f2d7f4758f909576e0ad1545548edc4a5cad08652f46fc409",
+    "NF618ReflexiveDeploymentBank": "5c93d86fd9461aff82834cc264c522544f3b2205fc56171886de18623ca31b82",
+    "nf618-batch04-source": "224f5041c37eb0daa96cf65cf95a802cf0262640bfe0d8fa59e6ce25b569b94d",
+    "nf618-batch04-evidence": "7426b7c178da6c23d16a55ead5c88799a5aa9423fcc6d5694d04f6876edbc95f",
+    "nf618-batch03-source.zip": "bd822d4fdb8bfd52d651cc560dd71d1de205c14329dd71faf3f2cc7123e7298c",
+    "nf618-batch03-evidence.zip": "98b33cd819c5f4c9b09ad85aa9ed71ecee8307fb539940bedfc050203450cd75",
+    "nf618-batch03-checkpoint.zip": "ab04a847f103d0620121ba98a96ede2c344b384c5fdbd7861aafdca943b7dc03",
+    "nf618-batch05-source": "9ce54431cc5a7bf8d241758699d1a893c9a09e975c0e3aac81b25932b1cded85",
+    "nf618-batch05-evidence": "2cb8c59f1fe6c36594ea00723f9848563a58e7f0a7556beb3fa78f2d015760bd",
+    "nf618-batch05-checkpoint": "8c6e495c2f27298fe91f930a83144e543d7fe638493d2581b3b1189e547b4b93",
+    "nf618-batch06-source": "1ccb9e89eb2f5d1fd4713a13342ca15a3719db07e794d8cc2ce65b6b314f80bf",
+    "nf618-batch06-evidence": "f4181d97d15eaa1ff3281382856607318ade622286007962ddf2cd9422176c40",
+    "nf618-batch06-checkpoint": "d342e643f4249bab9cd46aa5e4f293471f6c08f2130f5b63d99a534844de7de8",
+    "nf618-batch07-source": "2296464b40d5d6877abca23c73ff58bfdefc8893dcaef5b18f51dc52a9bbf0f9",
+    "nf618-batch07-evidence": "ac3b2ddede2da4b59d3e3d6b207ce6c7cff067da8d4bfecb426eea4d8cface31",
+    "nf618-batch07-checkpoint": "787a2bf889a0c3e5113e49e86261f2a1157fd67f89e5522ba18247c46eee28b1",
+    "nf618-batch08-source": "70a30fc4300277a241117f3e39c98d1c1af84b84eca724b7ea7958707f511064",
+    "nf618-batch08-evidence": "5aed9831e11e33cfb8b2778bee39249038ab962dc291479b69871b33880bee6f",
+    "nf618-batch08-checkpoint": "2bb89eaa62de072515fc19eb3a6ac6a35c5d15c4d09fc1d3be04eb2504f065bd",
+    "nf618-batch09-source": "00622f1ea35f68a7e0e84092da629007e3a458707bc36931ebaf796fafcae148",
+    "nf618-batch09-evidence": "63d23e0d3e6cf070e810910c9d80795d5021d9e3b4eafc6faa1ca8e1489ddb7b",
+    "nf618-batch09-checkpoint": "10651de24a7fd3513745ba84df98331a967c2e8c4153e5766462e34277e2d31b",
+    "nf618-batch11-source": "b8cedd23f4a6ee1e4f837d902495073bf7f2fa4eab41765c06944acba755a5e9",
+    "nf618-batch11-evidence": "f39a7fc304e2a4d1b968a2fcd5eaf20e2c47dc220e8b3a400766798da6d48894",
+    "nf618-batch11-checkpoint": "1c89e4d11753faaedd07a61a6f4384b8825012c37ece4170a707c85758f39f44",
+    "nf618-batch10-source": "11c154b37842817e52b0eea312287ab187f2e0f50189b44b0927eb85a70fde0e",
+    "nf618-batch10-evidence": "540555df5ed6db0afb380c090e1fdf3582ac45ab04b835887d7e089379efd612",
+    "nf618-batch10-checkpoint": "ed967ffc54314ff90734ea0bd0c03802f065c80fb0d0f6d47ec8ea2bfe92993d",
+    "nf618-batch12-source": "6dddb42d5ab07272ff07276b20bb63c15c79155723e461d925ed806b30afa8d8",
+    "nf618-batch12-evidence": "fc35d4b94b381a324d46922638a6962ef1703997c780b1174b92cc0e208902b0",
+    "nf618-batch12-checkpoint": "ff29729461d451895084c0d3779f205e1cc4298830bb6961e8786b5d4165c7f8",
+    "nf618-batch13-source": "bca0d18594a4e1e86e9e2a4af8748351ceb0e8df0d802faced2f71d542213968",
+    "nf618-batch13-evidence": "3b1c03abb645f63c6c1490680b98fb5447938cb170c5bc168200ee1264e9175e",
+    "nf618-batch13-checkpoint": "651e635b22dcb3b9fc2f337b159fb8e9386a17f1acc96020b8ff22810c72c85e",
+    "nf618-batch14-source": "bb6d5cf15bb0058431ff212473fa872dbe7f6c1b1e0ec70a96e8361e32a9f39c",
+    "nf618-batch14-evidence": "93f159722b30cda30c8be3a2fd3a6efb32cc246ae053417110eb30e332aac1f4",
+    "nf618-batch14-checkpoint": "245fb4a8f1ed94557a9d64e811cc2d535b4fe10f729292d0325ceda29e01152e",
+    "nf618-batch15-source": "18c904e7e60e91e66b8c6bc112e93804586ab943b1f1e800f28abb4c949f282f",
+    "nf618-batch15-evidence": "09d1f9bee0b4e86dcc09bfd67dab925a10786fa9857009cd1636719e8df68149",
+    "nf618-batch15-checkpoint": "8b77202897bf586694e81bbe4e665581e5251f59a00ae139fb6dcf99ceb6ec1c",
+    "nf618-batch16-source": "45b6ac3626f745d975670d08bf5b636adcd0e8cc823e1740283d43113584cb05",
+    "nf618-batch16-evidence": "f44fc33d8404837e8ea38d0c50a65fb4cfd67a13ea36717148f5bc8133a8d6e7",
+    "nf618-batch16-checkpoint": "032465dde0b13d1138546db693d79350d0ed781fe657475c8b9e8ca55aae3111",
+    "nf618-batch17-source": "830f52ea49ac9548ffd8ff8c67fac293799b7d0bb8a501539ccecc4e1301adcf",
+    "nf618-batch17-evidence": "edbeca4646c5ea89a9393a0c9c1d5ca84e05686af175a38a963ef01aec78fbe4",
+    "nf618-batch17-checkpoint": "4d8fed7c4e4619dd02fbf300850651be573806bbfea9097b9140b50c11dbe96f",
+    "nf618-batch18-source": "0885b710e831658d0c39cf820f700c3ae03570ecd9215e4288510c58791e77ec",
+    "nf618-batch18-evidence": "96fd4e52bff7d57eeb519616f9650f85209deb1b37cb5f7ce360bb508fcb4d36",
+    "nf618-batch18-checkpoint": "f20dfaac2d0875285f7f3317b6bcbe80c36c4eba1b1466f9ffdaa021208dff46",
+    "nf618-batch19-source": "74ee3ad69c1b0fca9446f9e457c04ee2a61c846906ea32e7b50581b5b8ffcec3",
+    "nf618-batch19-evidence": "9a2fb780664e939e9d713411dac5a60a241d336e106c0715ceb270947b108b5d",
+    "nf618-batch19-checkpoint": "1d5dd2e2c386eceef04a3ce28076ac0f25effe306358c86d188c3b68d87cee4c",
+    "nf618-batch20-source": "b0058eaf9655a609fe12d8cfef57f53f513d0cc7dcfc096418d2178d9b2fa873",
+    "nf618-batch20-evidence": "1070f4df7ad9432c1c78fde717834547e4477d7d9bbf3956a48c54552916b0ce",
+    "nf618-batch20-checkpoint": "c7b88f87a1e2a971799d1e6904901bec2c4a2aa9bb7c1643f900da00da1fafaf",
+    "nf618-batch21-source": "c9138ef1b10f3c92845e10fc054d30a03250cf37e590352256b89c884149cef9",
+    "nf618-batch21-evidence": "c9523d31ce6d09043374b67cc309016f90bf1c9da7aa3264e72a333937b9036c",
+    "nf618-batch21-checkpoint": "62ea023932bfb71c6feb4c977bb9178e9a98292c4132ab9308dfeb99cc8411dd",
+    "nf618-batch22-source": "1c3ec3df48a6e17f9336c38fa3c3ea96d9ecef45313b4ba5ed811fc6bbc37e6b",
+    "nf618-batch22-evidence": "32cef6a118c92505006f0cde017f45a3f6f58cf9333ab7d140ff9e73047df739",
+    "nf618-batch22-checkpoint": "e0cff7156d98ac78e1881c83f65e5f316c1ecd002f7758a67dc6c5741917c309",
+    "nf618-batch23-source": "3b59b3cbbfaa3424ab5f6a47d9ee08689ffd3af8bce48666441a99c3fd93db18",
+    "nf618-batch23-evidence": "6cf17056e6bfe3727125c5a8a2835d6ee7ad5cd19c01b4d2d915055a3f969d9d",
+    "nf618-batch23-checkpoint": "fdcc942f575c87961133db84803c191daf52eaced6d3e766df1e447c8721c672",
+    "nf618-batch24-source": "72b366246a55f5e2bc4defca1441623075dc651d7b6c20d718ae97b0c27fdba3",
+    "nf618-batch24-evidence": "18bc48a722598212a9fe1090bc728efa5e15baf06985c1499efe637f7b1c88ce",
+    "nf618-batch24-checkpoint": "d28f260caa0588665b359e7797f0aa8be559327e8d07954f7dcfef844932b23a"
+  },
+  "batch24_local_evidence": {
+    "artifact_id": 15167052822,
+    "bytes": 37974,
+    "sha256": "18bc48a722598212a9fe1090bc728efa5e15baf06985c1499efe637f7b1c88ce",
+    "crc": "PASS",
+    "embedded_manifest_sha256": "e5e7d09240942d8b0c6f987b95ad74a40fb17acc25f05c96f5d6f2e805161588",
+    "source_fingerprint": "003f7d45ea172b960754c848248bfb4b89eb710d42b7cd5bfeef9d605b7757b9",
+    "tables": 111,
+    "rows": 584,
+    "unique_slots": 111,
+    "audit_targets": 590,
+    "exact_target_set": "PASS",
+    "allowed_axiom_subset": "PASS",
+    "source_checkpoint_replay": "not performed in W02"
+  },
+  "demand_map": {
+    "scope": "R03 plus four default-branch connector code searches across both repositories; search index coverage not established; not exhaustive pinned downstream source audit",
+    "queries": [
+      "nf618PilotSlot00746Sound",
+      "nf618PilotSlot",
+      "NF618Reflexive",
+      "NF618CertifiedSlotLedger"
+    ],
+    "returned_matches": 0,
+    "verified_slot_to_consumer_edges": [],
+    "unknown_consumer_slot_rule": "All ledger slot indices 0..7834: consumer unknown; includes 6097 certified and 1738 residual. No slot proven unnecessary.",
+    "required_next_input": "Exact downstream import/request, theorem name and immutable consumer pin; validate scope before any certification release."
+  },
+  "blockers": [
+    "Binary download into local runtime succeeded but git ls-remote could not resolve github.com; available connector write calls accept text/base64 strings, not downloaded file references. No scalable byte-preserving return path demonstrated.",
+    "Complete producer source/checkpoint archive custody and independent replay not established; earlier producer commit pins and dependency closure not exhaustively checked.",
+    "Demand map incomplete; no verified downstream consumer edges; no absence inference from search."
+  ],
+  "stop": {
+    "native_batches_25_39": "HOLD",
+    "universal_dispatch": "HOLD",
+    "original_ledger_search": "TERMINATED",
+    "new_workflows": "NONE authorized",
+    "further_recovery": "STOP and escalate for authenticated file-to-Git transfer or explicit isolated custody-only route"
+  },
+  "delivery": "Existing admission branch, append-only text gate report; [skip ci] to suppress historical push-triggered workflows. No new branch or PR. Text report does not establish archive custody."
+}
