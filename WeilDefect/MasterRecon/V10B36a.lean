@@ -62,7 +62,7 @@ theorem B_boundary (j m : ℕ) :
     ring
   have hc : Continuous g := by dsimp [g,y,w]; fun_prop
   have h := intervalIntegral.integral_eq_sub_of_hasDerivAt
-    (a := (0:ℝ)) (b := 1) (fun x _ => hd x) (hc.intervalIntegrable volume 0 1)
+    (a := (0:ℝ)) (b := 1) (fun x _ => hd x) (hc.intervalIntegrable 0 1)
   have h0 : f 0=0 := by simp [f,w,pow_succ]
   have h1 : f 1=0 := by simp [f,w,pow_succ]
   have hc1 : Continuous (fun x : ℝ => (2*(2*(m:ℝ)+1))*(y x^(2*m)*w x^(j+1))) := by
@@ -71,7 +71,7 @@ theorem B_boundary (j m : ℕ) :
     unfold y w; fun_prop
   dsimp only [g] at h
   rw [h0,h1,sub_self,intervalIntegral.integral_sub
-    (hc1.intervalIntegrable volume 0 1) (hc2.intervalIntegrable volume 0 1),
+    (hc1.intervalIntegrable 0 1) (hc2.intervalIntegrable 0 1),
     intervalIntegral.integral_const_mul,intervalIntegral.integral_const_mul] at h
   change (2*(2*(m:ℝ)+1))*B (j+1) m-((j:ℝ)+1)*B j (m+1)=0 at h
   exact sub_eq_zero.mp h
