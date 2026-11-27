@@ -87,7 +87,7 @@ theorem top_derivative (j : ℕ) :
   congr 1
   rw [Polynomial.coeff_iterate_derivative,zero_add,Nat.descFactorial_self,
       Polynomial.coeff_shiftedLegendre,Nat.choose_self]
-  simp [nsmul_eq_mul]
+  simp [nsmul_eq_mul] <;> ring
 
 theorem legendre_diagonal (j : ℕ) :
     (∫ x in (0:ℝ)..1, legendre j x*legendre j x) = 1/(2*(j:ℝ)+1) := by
@@ -125,7 +125,7 @@ theorem legendre_diagonal (j : ℕ) :
       calc
         _ = (((j+j).choose j:ℝ)*(j.factorial:ℝ)*(j.factorial:ℝ))/
             (((j:ℝ)+(j:ℝ)+1)*((j+j).factorial:ℝ)) := by ring
-        _ = _ := by rw [hc']; field_simp [hp.ne',hj.ne']
+        _ = _ := by rw [hc']; field_simp [hp.ne',hj.ne'] <;> ring
 
 end WeilDefect.MasterRecon.V10B47b
 
