@@ -71,7 +71,8 @@ theorem neutralIV106E18NFinite (u : 𝓢(ℝ,ℂ)) (f : ℝ → ℂ)
       simp only [neutralLaplaceKernel,Complex.norm_real,Real.norm_eq_abs,
         abs_of_pos (Real.exp_pos _)]
       rw [← Real.exp_zero]
-      exact Real.exp_le_exp.mpr (mul_nonpos_of_nonpos_of_nonneg (by positivity) (abs_nonneg _))
+      exact Real.exp_le_exp.mpr (mul_nonpos_of_nonpos_of_nonneg
+        (neg_nonpos.mpr (by positivity : 0 ≤ 2*(n:ℝ)+1/2)) (abs_nonneg _))
   simp_rw [hpoint]
   rw [integral_finsetSum (Finset.range N)]
   · simp only [integral_mul_const,neutralIV106E18NTerm,neutralIV106E18NWeight,Finset.sum_neg_distrib]
