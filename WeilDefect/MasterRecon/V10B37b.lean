@@ -16,12 +16,12 @@ theorem choose_bound (n k : ℕ) : (n.choose k:ℝ) ≤ (2:ℝ)^n := by
     rw [Nat.sum_range_choose] at h
     exact_mod_cast h
   · rw [Nat.choose_eq_zero_of_lt (by omega)]
-    positivity
+    norm_num
 
 theorem legendre_half_bound (j : ℕ) (z : ℝ) (hz : 0 ≤ z) (hz' : z ≤ 1/2) :
     |legendre j z| ≤ (4:ℝ)^j := by
   unfold legendre shiftedLegendre
-  simp only [map_sum,map_mul,map_pow,aeval_C,aeval_X,Int.cast_mul,Int.cast_pow,
+  simp only [map_sum,map_mul,map_pow,aeval_C,aeval_X,algebraMap_int_eq,Int.castRingHom_apply,Int.cast_mul,Int.cast_pow,
     Int.cast_neg,Int.cast_one,Int.cast_natCast,abs_mul,abs_pow,abs_neg,abs_one,one_pow,one_mul]
   calc
     _ ≤ ∑ k ∈ Finset.range (j+1),
@@ -33,7 +33,8 @@ theorem legendre_half_bound (j : ℕ) (z : ℝ) (hz : 0 ≤ z) (hz' : z ≤ 1/2)
       apply Finset.sum_le_sum
       intro k _
       simp only [abs_mul,abs_pow,abs_neg,abs_one,one_pow,one_mul,
-        abs_of_nonneg (Nat.cast_nonneg _),abs_of_nonneg hz]
+        abs_of_nonneg (show (0:ℝ) ≤ (j.choose k:ℝ) by positivity),
+        abs_of_nonneg (show (0:ℝ) ≤ ((j+k).choose j:ℝ) by positivity),abs_of_nonneg hz]
       have h₁ := choose_bound (j+k) j
       have h₂ : (2*z)^k ≤ 1 := by
         simpa using pow_le_pow_left₀ (show 0 ≤ 2*z by positivity)
