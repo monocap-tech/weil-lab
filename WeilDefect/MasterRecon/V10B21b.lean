@@ -66,9 +66,14 @@ theorem interval_indicator_integrable (a b c : ℝ) :
 theorem majorant_integral (a b B K r : ℝ) (hab : a ≤ b) (hr : 0 ≤ r) :
     (∫ x, majorant a b B K r x) = (b-a)*K^2*r^2+2*r*B^2 := by
   unfold majorant
+  let F := (Icc a b).indicator (fun _ : ℝ => K^2*r^2)
+  let G := (Icc (a-r) a).indicator (fun _ : ℝ => B^2)
+  let H := (Icc (b-r) b).indicator (fun _ : ℝ => B^2)
+  change (∫ x, (F+G+H) x) = _
   rw [integral_add ((interval_indicator_integrable a b _).add
       (interval_indicator_integrable (a-r) a _)) (interval_indicator_integrable (b-r) b _),
     integral_add (interval_indicator_integrable a b _) (interval_indicator_integrable (a-r) a _)]
+  dsimp only [F,G,H]
   simp only [integral_indicator_const _ measurableSet_Icc,Measure.real,Real.volume_Icc,
     ENNReal.toReal_ofReal (sub_nonneg.mpr hab),smul_eq_mul]
   rw [show a-(a-r)=r by ring,show b-(b-r)=r by ring,ENNReal.toReal_ofReal hr]
@@ -90,8 +95,10 @@ theorem translation_sq (a b B K r : ℝ) (hab : a ≤ b) (hr : 0 ≤ r)
     filter_upwards [Lp.coeFn_sub (V10B8d.shift r f) f,V10B8d.shift_ae r f,hf,
       V06D.ae_translate hf r] with x h1 h2 h3 h4
     change ‖d x‖^2 ≤ _
-    dsimp [d]
-    rw [h1,h2,h3,h4]
+    change ‖((V10B8d.shift r f-f : FullL2) : ℝ → ℂ) x‖^2 ≤ _
+    rw [h1]
+    change ‖V10B8d.shift r f x-f x‖^2 ≤ _
+    rw [h2,h3,h4]
     exact pointwise_translation a b B K r hr hB hK p hb hl x
   rw [V08G.l2_norm_sq_integral]
   exact (integral_mono_ae hi hm hh).trans_eq (majorant_integral a b B K r hab hr)
