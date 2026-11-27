@@ -22,7 +22,7 @@ theorem coercive_norm (G : H →L[ℂ] H) (c : ℝ) (hc : 0 < c)
     calc
       _ = c*‖x‖^2 := by ring
       _ ≤ _ := (h x).trans h₁
-  exact (mul_le_mul_iff_right₀ hp).mp h₂
+  exact (mul_le_mul_iff_left₀ hp).mp h₂
 
 theorem coercive_bijective (G : H →L[ℂ] H) (c : ℝ) (hc : 0 < c)
     (h : ∀ x, c*‖x‖^2 ≤ energy G x) : Function.Bijective G := by
@@ -32,7 +32,7 @@ theorem coercive_bijective (G : H →L[ℂ] H) (c : ℝ) (hc : 0 < c)
     intro x y
     rw [dist_eq_norm,dist_eq_norm,← map_sub]
     change ‖x-y‖ ≤ c⁻¹*‖G (x-y)‖
-    exact (inv_mul_le_iff₀ hc).mpr (by simpa only [mul_comm] using coercive_norm G c hc h (x-y))
+    exact (le_inv_mul_iff₀ hc).mpr (by simpa only [mul_comm] using coercive_norm G c hc h (x-y))
   have hclosed : IsClosed (G.range : Set H) := ha.isClosed_range G.uniformContinuous
   letI : CompleteSpace G.range := hclosed.completeSpace_coe
   have htop : G.range = ⊤ := by
@@ -117,7 +117,10 @@ theorem schur_completion (G : H →L[ℂ] H)
   have h₁ := response_pairing S G c hc htail x y
   have he : (inner ℂ (G (y:H)) (response S G c hc htail x:H)).re =
       (inner ℂ (G (x:H)) (y:H)).re := by
-    rw [hG (y:H) (response S G c hc htail x:H),inner_re_symm (𝕜 := ℂ) (y:H),h₁]
+    rw [hG (y:H) (response S G c hc htail x:H)]
+    have hsym : (inner ℂ (y:H) (G (response S G c hc htail x:H))).re =
+        (inner ℂ (G (response S G c hc htail x:H)) (y:H)).re := inner_re_symm (𝕜 := ℂ) _ _
+    rw [hsym,h₁]
   linarith
 
 theorem positivity_iff_schur (G : H →L[ℂ] H)
