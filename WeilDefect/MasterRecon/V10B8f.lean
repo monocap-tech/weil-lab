@@ -40,7 +40,7 @@ theorem residual_continuous : Continuous residual :=
 
 def VerticalStirling : Prop :=
   ∀ v : ℝ, 1/2 ≤ |v| →
-    |(Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re - Real.log (|v|) | ≤ 5/v^2
+    |(Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re - Real.log (|v|)| ≤ 5/v^2
 
 theorem gammaSymbol_reparam (u : ℝ) :
     gammaSymbol u =
@@ -54,7 +54,7 @@ theorem weight_reparam (u : ℝ) :
     V08I.logWeight u = Real.log (2+2*|-Real.pi*u|) := by
   unfold V08I.logWeight
   congr 1
-  rw [abs_mul,abs_mul,abs_neg,abs_of_pos Real.pi_pos,abs_of_nonneg (by positivity : 0 ≤ 2*Real.pi)]
+  simp only [abs_mul,abs_neg,abs_of_pos Real.pi_pos,abs_of_nonneg (by norm_num : (0:ℝ) ≤ 2)]
   ring
 
 theorem log_comparison (v : ℝ) (hv : 1/2 ≤ |v|) :
@@ -85,7 +85,7 @@ theorem tail_residual (hs : VerticalStirling) (u : ℝ)
   calc
     _ = |((Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re - Real.log (|v|)) +
         (-Real.log Real.pi + (Real.log (|v|) - Real.log (2+2*|v|)))| := by congr 1; ring
-    _ ≤ |(Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re - Real.log (|v|) | +
+    _ ≤ |(Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re - Real.log (|v|)| +
         |-Real.log Real.pi + (Real.log (|v|) - Real.log (2+2*|v|))| := abs_add_le _ _
     _ ≤ _ := by
       have h := abs_add_le (-Real.log Real.pi) (Real.log (|v|) - Real.log (2+2*|v|))
