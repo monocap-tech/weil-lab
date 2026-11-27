@@ -26,13 +26,13 @@ set_option maxRecDepth 10000 in
 set_option maxHeartbeats 0 in
 theorem tFormula_check (k : Fin 64) :
     (t k:ℚ) = (scale:ℚ)*tFormula k := by
-  fin_cases k <;> decide
+  fin_cases k <;> norm_num [t, tBank, scale, tFormula, Finset.sum_range_succ, Nat.factorial, Nat.choose]
 
 set_option maxRecDepth 10000 in
 set_option maxHeartbeats 0 in
 theorem aFormula_check (j : Fin 64) :
     (a j:ℚ) = (scale:ℚ)*aFormula j ((64-(j:ℕ)+1)/2) := by
-  fin_cases j <;> decide
+  fin_cases j <;> norm_num [a, aBank, scale, aFormula, aTerm, Finset.sum_range_succ, Nat.factorial]
 
 theorem tFormula_real (k : Fin 64) :
     (t k:ℝ)/(scale:ℝ) = (tFormula k:ℝ) := by
