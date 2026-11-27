@@ -1,4 +1,4 @@
-name: RETURN108-Z literal translation transport
+name: RETURN108-Z1 literal translation transport (explicit target reduction)
 on:
   push:
     branches: [research/return108s-kernel-core]
@@ -58,13 +58,13 @@ jobs:
               else:
                   assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
               print("PASS", q)
-          print("RETURN108-Z strict axiom audit PASS 6/6")
+          print("RETURN108-Z1 strict axiom audit PASS 6/6")
           PY
       - name: Preserve integration evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: return108z-integration
+          name: return108z1-integration
           path: |
             return108w-closure.json
             return108w-closure.log
