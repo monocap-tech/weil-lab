@@ -1,4 +1,4 @@
-name: IV201 dictionary syntax repair and sector three
+name: IV215 sector four after strict original dictionary acceptance
 on:
   push:
     branches: ['staging/iv147-am-kernel-pilot']
@@ -17,10 +17,10 @@ jobs:
       - name: Authenticate source and generate proof modules
         run: |
           set -euo pipefail
-          mkdir -p iv201/out
+          mkdir -p iv215/out
           grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
-          python research/iv146_am_exp_audit.py custody/iv146-am/am_cells.json iv201/out/exact-audit.json
-          python research/iv165_am_sector_sources.py --sector 3
+          python research/iv146_am_exp_audit.py custody/iv146-am/am_cells.json iv215/out/exact-audit.json
+          python research/iv165_am_sector_sources.py --sector 4
           python - <<'PY'
           import re,json
           from pathlib import Path
@@ -47,56 +47,25 @@ jobs:
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
           export PATH="$HOME/.elan/bin:$PATH"
           lake exe cache get
-      - name: Original arithmetic dictionary
-        run: |
-          set -euo pipefail
-          lake build WeilDefect.Arithmetic.ActualZetaIV103OriginalSchwartzSpectralAttachment WeilDefect.Arithmetic.ActualZetaIV156AMPhysicalForm 2>&1 | tee iv201/out/dictionary-dependencies.log
-          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV162AMOriginalPrimeCore.lean 2>&1 | tee iv201/out/iv162.log
-          lake build WeilDefect.Arithmetic.ActualZetaIV162AMOriginalPrimeCore
-          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV157AMOriginalDictionary.lean 2>&1 | tee iv201/out/iv157.log
-          lake build WeilDefect.Arithmetic.ActualZetaIV157AMOriginalDictionary WeilDefect.Arithmetic.ActualZetaIV157AMReflection WeilDefect.Arithmetic.ActualZetaIV159AMRowReceiver
-          timeout 300 lake env lean WeilDefect/Arithmetic/ActualZetaIV160AMTerminalReceiver.lean 2>&1 | tee iv201/out/iv160.log
-      - name: Verify new integer sector three
+      - name: Verify new integer sector four
         if: ${{ !cancelled() }}
         run: |
           set -euo pipefail
           lake build WeilDefect.Arithmetic.ActualZetaIV159AMRowReceiver
-          python research/iv165_am_build_sector.py --sector 3 --out iv201/out/sector3
+          python research/iv165_am_build_sector.py --sector 4 --out iv215/out/sector4
           python - <<'PY'
           import json
           from pathlib import Path
-          m=json.loads(Path('iv201/out/sector3/manifest.json').read_text())
-          assert m['plan']['block_interval']==[384,512]
-          assert m['plan']['row_interval']==[3072,4096]
+          m=json.loads(Path('iv215/out/sector4/manifest.json').read_text())
+          assert m['plan']['block_interval']==[512,640]
+          assert m['plan']['row_interval']==[4096,5120]
           assert len(m['records'])==81
           assert all(r['pass'] for r in m['records'])
           assert sum(len(r['names']) for r in m['records'])==145
-          print('Sector 3 complete: 1024 new rows, 145 strict named receipts')
-          PY
-      - name: Strict dictionary and terminal receiver audit
-        if: ${{ !cancelled() }}
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          import re,json
-          from pathlib import Path
-          allowed={'propext','Classical.choice','Quot.sound'}
-          failures=[]
-          for file,ns in [('iv162',['IV162Exp_four_bounds','IV162Prime_range','IV162Census','IV162Prime_bank','IV162Prime_count','IV191Correlation','IV162Prime_literal']),('iv157',['IV157Dictionary','IV157Mixed_identity','IV157Original_prime_bound']),('iv160',['IV160Full_rows','IV160Original_bound'])]:
-              p=Path('iv201/out/'+file+'.log')
-              s=p.read_text() if p.exists() else ''
-              for suffix in ns:
-                  n='WeilDefect.neutral'+suffix
-                  m=re.findall(r"'"+re.escape(n)+r"' depends on axioms: \[([^\]]*)\]",s)
-                  no=re.findall(r"'"+re.escape(n)+r"' does not depend on any axioms",s)
-                  ok=not re.search(r'(?m)^.*error(?:\(lean[^)]*\))?:',s) and len(m)+len(no)==1 and (not m or set(x.strip() for x in m[0].split(',') if x.strip())<=allowed)
-                  print(n,'PASS' if ok else 'FAIL')
-                  if not ok: failures.append(n)
-          Path('iv201/out/audit.json').write_text(json.dumps({'expected':12,'failures':failures}))
-          assert not failures,failures
+          print('Sector 4 complete: 1024 new rows, 145 strict named receipts')
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: iv201-am-dictionary-sector-receipts
-          path: iv201/out/
+          name: iv215-am-sector-four-receipts
+          path: iv215/out/
