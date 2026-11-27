@@ -1,0 +1,39 @@
+{
+  "same_prefix_receipt": true,
+  "retained": 256,
+  "prefix_old_gt_195": true,
+  "prefix_new_lt_437e_minus20": true,
+  "prefix_reduction_gt_1e19": true,
+  "all_256_positive_diagonal": true,
+  "far_trace_lt_43600": true,
+  "far_trace_sum_check": true,
+  "prefix_trace_sum_check": true,
+  "finite_trial_certified": false,
+  "proposal_failures": [
+    {
+      "shift_denominator": "10",
+      "proposal_failure_index": 241
+    },
+    {
+      "shift_denominator": "100",
+      "proposal_failure_index": 246
+    },
+    {
+      "shift_denominator": "1000",
+      "proposal_failure_index": 248
+    },
+    {
+      "shift_denominator": "100000",
+      "proposal_failure_index": 251
+    },
+    {
+      "shift_denominator": "10000000",
+      "proposal_failure_index": 253
+    }
+  ],
+  "near_tail": [
+    1536,
+    3071
+  ],
+  "scope": "even only; no actual Schur positivity"
+}
