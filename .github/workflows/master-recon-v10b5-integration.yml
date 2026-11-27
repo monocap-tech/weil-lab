@@ -1,13 +1,15 @@
-name: MASTER-RECON V10B4a-B7e staged integration
+name: MASTER-RECON V10B4a-B9c staged integration
 on:
   push:
-    branches: [master-recon-v10b7-staging]
+    branches: [master-recon-v10b8-staging]
     paths:
       - ".github/workflows/master-recon-v10b5-integration.yml"
       - "WeilDefect/MasterRecon/V10B4*.lean"
       - "WeilDefect/MasterRecon/V10B5*.lean"
       - "WeilDefect/MasterRecon/V10B6*.lean"
       - "WeilDefect/MasterRecon/V10B7*.lean"
+      - "WeilDefect/MasterRecon/V10B8*.lean"
+      - "WeilDefect/MasterRecon/V10B9*.lean"
   workflow_dispatch:
 permissions:
   contents: read
@@ -28,19 +30,19 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p recon-v10b7-evidence
+          mkdir -p recon-v10b8-evidence
           audit() {
             local mod="$1"
             file="WeilDefect/MasterRecon/${mod}.lean"
-            lake build "WeilDefect.MasterRecon.${mod}" 2>&1 | tee "recon-v10b7-evidence/${mod}-build.log" || return 1
-            lake env lean "$file" 2>&1 | tee "recon-v10b7-evidence/${mod}-lean.log" || return 1
+            lake build "WeilDefect.MasterRecon.${mod}" 2>&1 | tee "recon-v10b8-evidence/${mod}-build.log" || return 1
+            lake env lean "$file" 2>&1 | tee "recon-v10b8-evidence/${mod}-lean.log" || return 1
             python3 - "$mod" <<'PY' || return 1
           import re
           import sys
           from pathlib import Path
           mod = sys.argv[1]
           src = Path(f"WeilDefect/MasterRecon/{mod}.lean").read_text()
-          log = Path(f"recon-v10b7-evidence/{mod}-lean.log").read_text()
+          log = Path(f"recon-v10b8-evidence/{mod}-lean.log").read_text()
           expected = re.findall(r"^#print axioms (\S+)", src, re.M)
           declared = re.findall(r"^theorem (\w+)", src, re.M)
           assert expected and len(expected) == len(set(expected))
@@ -53,7 +55,7 @@ jobs:
               else:
                   assert {v.strip() for v in m.group(1).split(",") if v.strip()} <= allowed, name
           print(f"{mod}: strict axiom audit PASS ({len(expected)} declarations)")
-          Path(f"recon-v10b7-evidence/{mod}-audit.txt").write_text(f"{mod}: PASS {len(expected)}\n")
+          Path(f"recon-v10b8-evidence/{mod}-audit.txt").write_text(f"{mod}: PASS {len(expected)}\n")
           PY
           }
           failed=0
@@ -64,6 +66,16 @@ jobs:
           euler_ok=1
           count_ok=1
           reflect_ok=1
+          density_ok=1
+          arch_ok=1
+          audit V10B9a || { density_ok=0; failed=1; }
+          if (( density_ok )); then audit V10B9b || { density_ok=0; failed=1; }; fi
+          audit V10B8a || { arch_ok=0; failed=1; }
+          if (( arch_ok )); then
+            for mod in V10B8c V10B8d V10B8e V10B8f; do
+              if ! audit "$mod"; then arch_ok=0; failed=1; break; fi
+            done
+          fi
           audit V10B7c || { euler_ok=0; failed=1; }
           audit V10B6g || { conj_ok=0; failed=1; }
           audit V10B6e || { order_ok=0; failed=1; }
@@ -105,11 +117,21 @@ jobs:
           else
             chain_ok=0
           fi
-          if (( chain_ok && count_ok )); then audit V10B7e || failed=1; fi
+          if (( chain_ok && count_ok )); then
+            audit V10B7e || { chain_ok=0; failed=1; }
+          else
+            chain_ok=0
+          fi
+          if (( chain_ok && arch_ok )); then
+            for mod in V10B8b V10B8g V10B8h; do
+              if ! audit "$mod"; then arch_ok=0; failed=1; break; fi
+            done
+            if (( arch_ok && density_ok )); then audit V10B9c || failed=1; fi
+          fi
           exit "$failed"
       - name: Upload compiler and audit evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: master-recon-v10b7-integration
-          path: recon-v10b7-evidence/
+          name: master-recon-v10b8-integration
+          path: recon-v10b8-evidence/
