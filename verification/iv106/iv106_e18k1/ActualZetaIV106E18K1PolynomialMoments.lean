@@ -25,17 +25,17 @@ theorem neutralIV106E18K1Jets (t : ℝ) :
     HasDerivAt neutralIV106E18K1B2 (neutralIV106E18K1B3 t) t := by
   have ht : HasDerivAt (fun x : ℝ => x) 1 t := hasDerivAt_id t
   have hu : HasDerivAt (fun x : ℝ => 1-x) (-1) t := by
-    simpa using (hasDerivAt_const t (1:ℝ)).sub ht
+    convert (hasDerivAt_const t (1:ℝ)).sub ht using 1 <;> first | rfl | (funext x; rfl) | norm_num
   refine ⟨?_, ?_, ?_⟩
   · unfold neutralIV106E18K1B neutralIV106E18K1B1
-    convert (ht.pow 5).mul (hu.pow 5) using 1 <;> ring
+    convert (ht.pow 5).mul (hu.pow 5) using 1 <;> first | rfl | (funext x; simp only [Pi.pow_apply, Pi.mul_apply, Pi.add_apply, Pi.sub_apply, id_eq]; ring) | (simp only [Pi.pow_apply, Pi.mul_apply, Pi.add_apply, Pi.sub_apply, id_eq]; ring)
   · unfold neutralIV106E18K1B1 neutralIV106E18K1B2
     convert (((ht.pow 4).mul (hu.pow 5)).const_mul 5).sub
-      (((ht.pow 5).mul (hu.pow 4)).const_mul 5) using 1 <;> ring
+      (((ht.pow 5).mul (hu.pow 4)).const_mul 5) using 1 <;> first | rfl | (funext x; simp only [Pi.pow_apply, Pi.mul_apply, Pi.add_apply, Pi.sub_apply, id_eq]; ring) | (simp only [Pi.pow_apply, Pi.mul_apply, Pi.add_apply, Pi.sub_apply, id_eq]; ring)
   · unfold neutralIV106E18K1B2 neutralIV106E18K1B3
     convert ((((ht.pow 3).mul (hu.pow 5)).const_mul 20).sub
       (((ht.pow 4).mul (hu.pow 4)).const_mul 50)).add
-      (((ht.pow 5).mul (hu.pow 3)).const_mul 20) using 1 <;> ring
+      (((ht.pow 5).mul (hu.pow 3)).const_mul 20) using 1 <;> first | rfl | (funext x; simp only [Pi.pow_apply, Pi.mul_apply, Pi.add_apply, Pi.sub_apply, id_eq]; ring) | (simp only [Pi.pow_apply, Pi.mul_apply, Pi.add_apply, Pi.sub_apply, id_eq]; ring)
 
 theorem neutralIV106E18K1Endpoints :
     neutralIV106E18K1B 0 = 0 ∧ neutralIV106E18K1B 1 = 0 ∧
@@ -57,7 +57,7 @@ theorem neutralIV106E18K1Primitive_deriv (h q t : ℝ) :
   have he := ((hasDerivAt_id t).const_mul q).exp
   unfold neutralIV106E18K1Primitive neutralIV106E18K1Poly
   convert he.mul ((hb2.sub (hb1.const_mul q)).add
-    (hb.const_mul (q^2-h^2/4))) using 1 <;> ring
+    (hb.const_mul (q^2-h^2/4))) using 1 <;> first | rfl | (funext x; simp only [Pi.pow_apply, Pi.mul_apply, Pi.add_apply, Pi.sub_apply, id_eq]; ring) | (simp only [Pi.pow_apply, Pi.mul_apply, Pi.add_apply, Pi.sub_apply, id_eq]; ring)
 
 theorem neutralIV106E18K1Transform (h q : ℝ) :
     (∫ t in (0:ℝ)..1, Real.exp (q*t)*neutralIV106E18K1Poly h t) =
@@ -81,9 +81,10 @@ theorem neutralIV106E18K1Transform (h q : ℝ) :
       neutralIV106E18K1Primitive h q 0 = 0 := by
     norm_num [neutralIV106E18K1Primitive,neutralIV106E18K1B,
       neutralIV106E18K1B1,neutralIV106E18K1B2]
+  have hCg : IntervalIntegrable (fun t => C*g t) volume 0 1 :=
+    (continuous_const.mul hg).intervalIntegrable _ _
   rw [hz,intervalIntegral.integral_add
-    (hf.intervalIntegrable (μ := volume) 0 1)
-    ((continuous_const.mul hg).intervalIntegrable (μ := volume) 0 1),
+    (hf.intervalIntegrable (μ := volume) 0 1) hCg,
     intervalIntegral.integral_const_mul] at he
   change (∫ t in (0:ℝ)..1, f t) =
     (-q^3+h^2*q/4)*(∫ t in (0:ℝ)..1, g t)
