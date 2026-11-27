@@ -113,7 +113,8 @@ theorem legendre_diagonal (j : ℕ) :
       rw [h]; ring)
   rw [he,intervalIntegral.integral_const_mul,hpair]
   calc
-    _ = ((j+j).choose j:ℝ)*beta j j := by rw [← mul_assoc,← mul_assoc,hsign,one_mul]
+    _ = ((-1:ℝ)^j*(-1:ℝ)^j)*(((j+j).choose j:ℝ)*beta j j) := by ring
+    _ = ((j+j).choose j:ℝ)*beta j j := by rw [hsign,one_mul]
     _ = _ := by
       have hc := Nat.add_choose_mul_factorial_mul_factorial j j
       have hc' : ((j+j).choose j:ℝ)*(j.factorial:ℝ)*(j.factorial:ℝ) =
