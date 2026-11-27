@@ -1,0 +1,28 @@
+{
+  "status": "STAGED_UNCOMPILED",
+  "parent": "a5e60fa079c5a4c224e21328970d58845c647bbf",
+  "prior_source": "ab88f4da6b18573455e234f4390545ec12e0e9e8",
+  "research": "018f7e59f4129ce521cd3ae86d1afd59d3b64b5f",
+  "toolchain": "leanprover/lean4:v4.34.0",
+  "audit": [
+    "neutralIV106W02PCellMeans",
+    "neutralIV106W02PCellPrimitive",
+    "neutralIV106W02PCellReciprocal",
+    "neutralIV106W02PCellGamma",
+    "neutralIV106W02PPrimitiveEndpoints",
+    "neutralIV106W02PExpBound",
+    "neutralIV106W02PColumnNorm",
+    "neutralIV106W02PSchwartzMoment",
+    "neutralIV106W02PPrimitiveMoment",
+    "neutralIV106W02PPrimitiveMomentBound",
+    "neutralIV106W02PPoleLoss",
+    "neutralIV106W02PEnergyDecomposition",
+    "neutralIV106W02PCoreMass",
+    "neutralIV106W02PGammaShift",
+    "neutralIV106W02PCoreLog17",
+    "neutralIV106W02PClosedLog17"
+  ],
+  "remaining_pole_geometry_premise": null,
+  "compiler_closure": "not assembled",
+  "local_check": "exact Fraction script executed"
+}

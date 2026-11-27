@@ -1,0 +1,8 @@
+exp_upper = 741/400 (1.8525)
+moment_column_norm_sq = 44/5 (8.8)
+primitive_moment_sq_factor = 1331/331668750 (4.01304011909e-06)
+pole_loss = 1331/165834375 (8.02608023819e-06)
+mass_margin = 1327460357/1326675000 (1.00059197392)
+inverse_bound_D12 = 111234057102/6637301785 (16.7589271522)
+inverse_bound_D20_3 = 75856057102/6637301785 (11.4287491452)
+PASS: exact primitive-pole budget and factor-17 receiver
