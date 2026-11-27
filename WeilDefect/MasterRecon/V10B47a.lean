@@ -61,13 +61,15 @@ theorem beta_closed (n m : ℕ) :
     have h := beta_step n m
     rw [ih (n+1)] at h
     have hn : (0:ℝ)<(n:ℝ)+1 := by positivity
-    apply (eq_div_iff (by exact_mod_cast Nat.factorial_ne_zero (n+(m+1)+1))).mpr
-    have hf : (0:ℝ)<((n+1+m+1).factorial:ℝ) := by exact_mod_cast Nat.factorial_pos _
-    rw [show n+(m+1)+1=n+1+m+1 by omega]
-    rw [Nat.factorial_succ n,Nat.cast_mul,Nat.cast_add] at h
-    rw [Nat.factorial_succ m,Nat.cast_mul,Nat.cast_add]
-    field_simp [hf.ne'] at h
-    nlinarith only [h,hn]
+    apply mul_left_cancel₀ hn.ne'
+    calc
+      _ = ((m:ℝ)+1)*(( (n+1).factorial:ℝ)*(m.factorial:ℝ)/
+          ((n+1+m+1).factorial:ℝ)) := h
+      _ = _ := by
+        rw [show n+1+m+1=n+(m+1)+1 by omega,
+          Nat.factorial_succ n,Nat.factorial_succ m]
+        push_cast
+        ring
 
 end WeilDefect.MasterRecon.V10B47a
 
