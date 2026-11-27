@@ -1,0 +1,16 @@
+{
+  "status": "local numerical diagnostic; finite-band quadrature and carrier admission not natively certified",
+  "target_cell": 0,
+  "interior_cells": 665,
+  "exterior_cells": 128,
+  "frequency_cutoff": "854525/22",
+  "grid": 16384,
+  "alias_radius": 128,
+  "raw_squared": 0.000830806677483,
+  "no_exterior_squared": 0.0000496834872448,
+  "with_exterior_squared": 0.0000117701812328,
+  "jump_trial": "236454669017/500000000000",
+  "jump_raw": "11618760731/5000000000",
+  "tail_squared_upper": "20317889743898149359575333/2163016406250000000000000000000",
+  "local_coefficient_json_sha256": "37b6434006b5ef0d56e990e4993517cb22a83d38541f477f2995274ebee968ae"
+}
