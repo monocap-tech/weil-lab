@@ -1,0 +1,9 @@
+{
+  "iv106_e19q/joint.py": "a17002d1987640b3f0efab0c5591ece79c2b15efc9a21c6600ea051ea3e566f1",
+  "iv106_e19q/joint_certificate.json": "d61da378760ca11e21c7e828b46a717d810116d35dfc03d5ec325f1f6ddbb8c9",
+  "iv106_e19q/joint_matrix.npz": "24e37cd533c5efbc554c926695fc89f64d39d60aee90cb6643c5aa3a69da23e7",
+  "iv106_e19p/certify_bank.py": "814bb90590a546c67bce52659e612657a3e880754957c3aff2d8553391cc1f2a",
+  "iv106_e19p/row_bank.npz": "e55b8992e769d09ee83fdd66a9d6a3cbaf592933f7d85d3ca0d8dd9a2e4d886e",
+  "iv106_e19p/row_bank_receipt.json": "e1f9bf1a11194227e726a9172705a637ff13ebb15afb11fedb5821c8853f8fd1",
+  "iv106_e19p/bank_certificate.json": "4c4940d86081e9a9d4e412fded7c57fcf5c85aa32824bbb933ab668835d683c4"
+}
