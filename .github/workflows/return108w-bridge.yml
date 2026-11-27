@@ -1,0 +1,68 @@
+name: RETURN108-W literal carrier integration
+on:
+  push:
+    branches: [research/return108s-kernel-core]
+    paths:
+      - ".github/workflows/return108w-bridge.yml"
+permissions:
+  contents: read
+jobs:
+  bridge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Authenticated minimal closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp research/return108w/assemble_closure.py "$RUNNER_TEMP/return108w-assemble.py"
+          git fetch --no-tags --depth=1 origin f2e8ec89ae4bf8687a652b299b730d6d1baa43f7 d3067677cad7a0a583ef14b5466018dfad5f0afe
+          git checkout --detach f2e8ec89ae4bf8687a652b299b730d6d1baa43f7
+          python3 "$RUNNER_TEMP/return108w-assemble.py" 2>&1 | tee return108w-closure.log
+          cat return108w-closure.json
+      - name: Install Elan
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned dependencies
+        run: lake update
+      - name: Fetch mathlib cache
+        run: lake exe cache get
+      - name: Build literal bridge dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.MasterReturn.LogWeightComparison WeilDefect.MasterRecon.V08J WeilDefect.Morphology.NeutralLogHilbertCarrier 2>&1 | tee return108w-deps.log
+      - name: Compile and strict named axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/MasterReturn/LogCarrierBridge.lean 2>&1 | tee return108w-lean.log
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          s = Path("return108w-lean.log").read_text()
+          names = ["recon_le_scaled_iv","iv_le_scaled_recon","iv_energy_to_recon","recon_energy_to_iv","toRecon_physical","toIV_physical","iv_physical_injective","carrierEquiv","carrierEquiv_physical"]
+          allowed = {"propext","Classical.choice","Quot.sound"}
+          for name in names:
+              q = "WeilDefect.MasterReturn.LogCarrierBridge." + name
+              m = re.search(r"'" + re.escape(q) + r"' depends on axioms: \[([^\]]*)\]", s)
+              if m is None:
+                  assert f"'{q}' does not depend on any axioms" in s, q
+              else:
+                  assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
+              print("PASS", q)
+          print("RETURN108-W strict axiom audit PASS 9/9")
+          PY
+      - name: Preserve integration evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: return108w-integration
+          path: |
+            return108w-closure.json
+            return108w-closure.log
+            return108w-deps.log
+            return108w-lean.log
