@@ -1,0 +1,15 @@
+{
+  "scale": "1000000000",
+  "r": 24576,
+  "prefix_terms": 64,
+  "log_power_of_two": 15,
+  "log2_lower": "693147177",
+  "normalized_log_lower": "110013092",
+  "prefix_gain_lower": "8382419477",
+  "half_tail_log_lower": "5253610373",
+  "gamma_lower": "8036029850",
+  "margin_lower": "56381850",
+  "mode_cutoff": 32768,
+  "complement_dimension_upper": 32769,
+  "eta": "1/20"
+}
