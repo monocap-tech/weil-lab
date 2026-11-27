@@ -79,7 +79,13 @@ theorem conjugate_order (f : ℂ → ℂ) (z : ℂ)
     natCast_le_analyticOrderAt_iff_iteratedDeriv_eq_zero hf]
   change (∀ i < n, iteratedDeriv i (conjugateFunction f) z = 0) ↔
     ∀ i < n, iteratedDeriv i f (conj z) = 0
-  simp only [conjugate_iteratedDeriv,conjugateFunction,Function.comp_apply,map_eq_zero]
+  constructor <;> intro h i hi
+  · have hh := h i hi
+    rw [conjugate_iteratedDeriv] at hh
+    exact (map_eq_zero _).mp hh
+  · rw [conjugate_iteratedDeriv]
+    change conj (iteratedDeriv i f (conj z)) = 0
+    rw [h i hi,map_zero]
 
 theorem zeta_conjugate_order (z : ℂ) (hz : z ≠ 1) :
     analyticOrderAt riemannZeta (conj z) = analyticOrderAt riemannZeta z := by
