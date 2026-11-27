@@ -1,0 +1,50 @@
+{
+  "base_cell_count": 2840,
+  "base_minimum_weight": "58804145",
+  "base_reciprocal_exact": {
+    "n": "20000000",
+    "d": "11760829"
+  },
+  "internal_variation_upper": {
+    "n": "3803434369",
+    "d": "1000000000"
+  },
+  "seam_upper": {
+    "n": "623739217",
+    "d": "250000000"
+  },
+  "jump_budget_upper": {
+    "n": "6298391237",
+    "d": "1000000000"
+  },
+  "rounded_reciprocal_cap": {
+    "n": "171",
+    "d": "100"
+  },
+  "rounded_jump_cap": {
+    "n": "63",
+    "d": "10"
+  },
+  "iv239_band128_coefficient": {
+    "n": "15950242753998675277085766",
+    "d": "12070601072560968206298828125"
+  },
+  "chain_coefficient_upper": 15,
+  "mode_coefficient_upper": 68,
+  "derivative_tail_at_R4_K128": {
+    "n": "399",
+    "d": "64000"
+  },
+  "jump_tail_squared_at_R4_K128": {
+    "n": "1029",
+    "d": "64000"
+  },
+  "sqrt6_tail_upper": {
+    "n": "417823",
+    "d": "1280000"
+  },
+  "absorbed_distance_coefficient": {
+    "n": "2",
+    "d": "3"
+  }
+}
