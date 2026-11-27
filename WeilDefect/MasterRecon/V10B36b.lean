@@ -43,6 +43,7 @@ theorem weighted_taylor (n : ℕ) (hn : 0<n) (w : ℝ → ℝ) (hc : Continuous 
       apply intervalIntegral.integral_mono_on (by norm_num)
         (hd.abs.intervalIntegrable 0 1) (hr.intervalIntegrable 0 1)
       intro x hx
+      change |Real.exp ((2*x-1)/8)*w x-taylor n ((2*x-1)/8)*w x| ≤ reserve n*w x
       rw [← sub_mul,abs_mul,abs_of_nonneg (hw x hx)]
       exact mul_le_mul_of_nonneg_right (centered_taylor n hn x hx) (hw x hx)
     _ = _ := intervalIntegral.integral_const_mul _ _
