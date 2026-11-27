@@ -1,0 +1,96 @@
+name: MASTER-RECON V10B48 focused optimized coverage
+on:
+  push:
+    branches: [master-recon-v10b20-staging]
+    paths:
+      - ".github/workflows/master-recon-v10b48-coverage.yml"
+  workflow_dispatch:
+concurrency:
+  group: master-recon-v10b24-attachment
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Elan
+        run: |
+          curl --retry 3 --retry-delay 2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve dependencies
+        run: lake update
+      - name: Fetch mathlib cache
+        run: lake exe cache get
+      - name: Compile and audit staged chain
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p recon-v10b48-evidence
+          git rev-parse HEAD | tee recon-v10b48-evidence/head.txt
+          sha256sum WeilDefect/MasterRecon/V10B{33a,33b,34a,39b,39c,40a,43a,45a,46a,46b,46c,47a,47b,47c}.lean verification/master_recon/v10b45_optimized_{coordinates.json,coverage.py} lean-toolchain lakefile.toml | tee recon-v10b48-evidence/source.sha256
+          audit() {
+            local mod="$1"
+            file="WeilDefect/MasterRecon/${mod}.lean"
+            lake build "WeilDefect.MasterRecon.${mod}" 2>&1 | tee "recon-v10b48-evidence/${mod}-build.log" || return 1
+            lake env lean "$file" 2>&1 | tee "recon-v10b48-evidence/${mod}-lean.log" || return 1
+            python3 - "$mod" <<'PY' || return 1
+          import re
+          import sys
+          from pathlib import Path
+          mod = sys.argv[1]
+          src = Path(f"WeilDefect/MasterRecon/{mod}.lean").read_text()
+          log = Path(f"recon-v10b48-evidence/{mod}-lean.log").read_text()
+          expected = re.findall(r"^#print axioms (\S+)", src, re.M)
+          declared = re.findall(r"^theorem (\w+)", src, re.M)
+          assert expected and len(expected) == len(set(expected))
+          assert set(expected) == {f"WeilDefect.MasterRecon.{mod}.{name}" for name in declared}
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for name in expected:
+              m = re.search(re.escape("'" + name + "' depends on axioms: [") + r"([^\]]*)\]", log)
+              if m is None:
+                  assert "'" + name + "' does not depend on any axioms" in log, name
+              else:
+                  assert {v.strip() for v in m.group(1).split(",") if v.strip()} <= allowed, name
+          print(f"{mod}: strict axiom audit PASS ({len(expected)} declarations)")
+          Path(f"recon-v10b48-evidence/{mod}-audit.txt").write_text(f"{mod}: PASS {len(expected)}\n")
+          PY
+          }
+          failed=0
+          declare -A pass
+          gate() {
+            local mod="$1"; shift
+            local dep
+            for dep in "$@"; do
+              if [[ "${pass[$dep]:-0}" != 1 ]]; then
+                echo "$mod: BLOCKED by $dep" | tee "recon-v10b48-evidence/$mod-blocked.txt"
+                pass[$mod]=0
+                failed=1
+                return 0
+              fi
+            done
+            if audit "$mod"; then pass[$mod]=1; else pass[$mod]=0; failed=1; fi
+          }
+          gate V10B33a
+          gate V10B33b
+          gate V10B34a V10B33a
+          gate V10B45a
+          gate V10B46a V10B34a
+          gate V10B46b V10B45a V10B33b
+          gate V10B46c V10B46a V10B46b
+          gate V10B47a V10B34a
+          gate V10B47b V10B47a
+          gate V10B39b
+          gate V10B39c V10B39b
+          gate V10B40a V10B39b V10B39c
+          gate V10B43a V10B40a
+          gate V10B47c V10B47b V10B46c V10B43a
+          python3 verification/master_recon/v10b45_optimized_coverage.py | tee recon-v10b48-evidence/optimized-coverage.txt
+          exit "$failed"
+      - name: Upload compiler and audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: master-recon-v10b48-coverage
+          path: recon-v10b48-evidence/
