@@ -43,12 +43,16 @@ theorem neutralIV106E18VWitness (A B : ℝ) (f d : RealComplexL2)
   obtain ⟨s,_,hf,hd⟩ := neutralIV106E18VSequence A B f d h
   have hn : Tendsto (fun n => (neutralIV106E18SNormalized (s n)).toLp 2 volume)
       atTop (𝓝 (neutralIV106E18VScale • d)) := by
-    have hh := tendsto_const_nhds.smul hd (c := neutralIV106E18VScale)
-    change Tendsto (fun n => neutralIV106E18VScale •
-      (SchwartzMap.toLpCLM ℂ ℂ 2 volume (SchwartzMap.derivCLM ℂ ℂ (s n))))
-      atTop (𝓝 (neutralIV106E18VScale • d)) at hh
-    simpa only [neutralIV106E18SNormalized, ← map_smul,
-      neutralIV106E18VScale] using hh
+    have hh : Tendsto (fun n => neutralIV106E18VScale •
+        (SchwartzMap.derivCLM ℂ ℂ (s n)).toLp 2 volume)
+        atTop (𝓝 (neutralIV106E18VScale • d)) :=
+      tendsto_const_nhds.smul hd
+    have he (n : ℕ) : (neutralIV106E18SNormalized (s n)).toLp 2 volume =
+        neutralIV106E18VScale • (SchwartzMap.derivCLM ℂ ℂ (s n)).toLp 2 volume := by
+      change SchwartzMap.toLpCLM ℂ ℂ 2 volume
+        (neutralIV106E18VScale • SchwartzMap.derivCLM ℂ ℂ (s n)) = _
+      exact map_smul _ _ _
+    simpa only [he] using hh
   exact neutralIV106E18SFourier_limit s f _ hf hn
 
 /-- Use the original NF541 carrier admission theorem, not a new carrier. -/
@@ -79,11 +83,10 @@ theorem neutralIV106E18VEnergy (A B : ℝ) (f d : RealComplexL2)
       (Real.exp 1+1)*‖f‖^2 + ‖neutralIV106E18VScale‖^2*‖d‖^2 := by
   have he := neutralIV106E18SLog_bound f (neutralIV106E18VScale • d)
     (neutralIV106E18VWitness A B f d h)
-  rw [neutralIV106E18VL2sq,neutralIV106E18VL2sq] at he
+  simp only [neutralIV106E18VL2sq] at he
   change _ ≤ (Real.exp 1+1)*‖(Lp.fourierTransformₗᵢ ℝ ℂ) f‖^2 +
     ‖(Lp.fourierTransformₗᵢ ℝ ℂ) (neutralIV106E18VScale • d)‖^2 at he
-  rw [(Lp.fourierTransformₗᵢ ℝ ℂ).norm_map,
-    (Lp.fourierTransformₗᵢ ℝ ℂ).norm_map,norm_smul,mul_pow] at he
+  simp only [(Lp.fourierTransformₗᵢ ℝ ℂ).norm_map,norm_smul,mul_pow] at he
   exact he
 
 /-- Errors themselves are graph pairs, by subtraction in the same
