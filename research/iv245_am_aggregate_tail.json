@@ -1,0 +1,17 @@
+{
+  "scale": "1000000000000000",
+  "retained_explicit_boundary_terms": 4,
+  "epsilon_upper": {
+    "n": "1",
+    "d": "232630513987207"
+  },
+  "operator_error_upper": {
+    "n": "4",
+    "d": "232630513987206"
+  },
+  "coarse_error_upper": "1/10000000000000",
+  "witness_norm_squared_upper": "13647270320000000",
+  "witness_Q64_lower": "509558195524",
+  "witness_loss_upper": "235",
+  "aggregate_witness_lower": "509558195289"
+}
