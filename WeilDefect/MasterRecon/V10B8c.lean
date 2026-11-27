@@ -94,18 +94,16 @@ theorem pole_autocorr (t : ℝ) (ht : 0 ≤ t) (g : logCarrier t)
     inner ℂ (poleOperator t ht g) g =
       V10B8a.paperFT (V10B8a.weilTest f f) (I/2) +
       V10B8a.paperFT (V10B8a.weilTest f f) (-I/2) := by
-  rw [pole_pairing,eval_eq,eval_eq]
-  simp only [eval_eq]
-  rw [V10B8a.mellin_congr_ae _ f hae,V10B8a.mellin_congr_ae _ f hae]
-  rw [V10B8a.paperFT_weilTest hf hf hfc hfc,
-      V10B8a.paperFT_weilTest hf hf hfc hfc]
-  simp only [V10B8a.paperFT_mellin,map_div₀,map_neg,Complex.conj_I,
-    Complex.conj_ofNat]
   have hp : I*(I/2) = ((-1/2:ℝ):ℂ) := by
-    rw [mul_div_assoc,Complex.I_mul_I]; norm_num
+    rw [mul_div_assoc,Complex.I_mul_I]
+    norm_num
   have hm : I*(-I/2) = ((1/2:ℝ):ℂ) := by
-    rw [mul_div_assoc,mul_neg,Complex.I_mul_I]; norm_num
-  rw [hp,hm,neg_neg,hp,hm]
+    rw [mul_div_assoc,mul_neg,Complex.I_mul_I]
+    norm_num
+  have hcp : conj (I/2:ℂ) = -I/2 := by simp
+  have hcm : conj (-I/2:ℂ) = I/2 := by simp
+  simp only [pole_pairing,eval_eq,V10B8a.mellin_congr_ae _ f hae,
+    V10B8a.paperFT_weilTest hf hf hfc hfc,V10B8a.paperFT_mellin,hcp,hcm,hp,hm]
   ring
 
 end WeilDefect.MasterRecon.V10B8c
