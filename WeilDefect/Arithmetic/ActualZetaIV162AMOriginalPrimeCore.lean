@@ -1,5 +1,4 @@
 import WeilDefect.Arithmetic.ActualZetaIV103OriginalSchwartzSpectralAttachment
-import WeilDefect.Arithmetic.ActualZetaPhaseIVOriginalCrossSupportArithmeticCutoff
 import Mathlib.Analysis.Complex.ExponentialBounds
 import Mathlib.Tactic
 import Mathlib.Data.Nat.Factorization.PrimePow
@@ -36,14 +35,14 @@ theorem neutralIV162Prime_range :
   · rintro ⟨hp,hlog⟩
     have hn : (0:ℝ) < (n:ℝ) := by exact_mod_cast hp.pos
     have h : (n:ℝ) ≤ Real.exp 4 :=
-      (Real.log_le_iff_le_exp hn).mp (by norm_num at hlog ⊢; exact hlog)
+      (Real.log_le_iff_le_exp hn).mp (by simpa only [show (2:ℝ)*2=4 by norm_num] using hlog)
     exact ⟨by exact_mod_cast h.trans_lt hu,hp⟩
   · rintro ⟨hn,hp⟩
     have hn' : (0:ℝ) < (n:ℝ) := by exact_mod_cast hp.pos
     have h : (n:ℝ) ≤ 54 := by exact_mod_cast (show n ≤ 54 by omega)
     exact ⟨hp,by
       have hh := (Real.log_le_iff_le_exp hn').mpr (h.trans hl.le)
-      norm_num at hh ⊢
+      rw [show (2:ℝ)*2=4 by norm_num]
       exact hh⟩
 
 def neutralIV162PrimeBank : Finset ℕ :=
@@ -337,6 +336,26 @@ def neutralIV162PrimeMixed (u v : 𝓢(ℝ,ℂ)) : ℂ :=
       ((∫ x : ℝ, v x * conj (u (x-Real.log n))) +
        (∫ x : ℝ, v x * conj (u (x+Real.log n))))
 
+/-- Same-window specialization of the original mixed correlation
+identity, proved directly from the IV006 representative dictionary.
+No cross-support Schur extension is needed for this equality. -/
+theorem neutralIV191Correlation (a : ℝ) (u v : 𝓢(ℝ,ℂ))
+    (hu : ∀ x : ℝ, x ∉ Set.Icc (-a) a → u x = 0)
+    (hv : ∀ x : ℝ, x ∉ Set.Icc (-a) a → v x = 0)
+    (τ : ℝ) :
+    neutralWindowCorrelation a (u.toLp 2 volume) (v.toLp 2 volume) τ =
+      ∫ x : ℝ, v x * conj (u (x - τ)) := by
+  have huae := neutralIV006Schwartz_window_ae a u hu
+  have hvae := neutralIV006Schwartz_window_ae a v hv
+  have hshift :=
+    (measurePreserving_sub_right volume τ).quasiMeasurePreserving.ae_eq_comp huae
+  unfold neutralWindowCorrelation
+  apply integral_congr_ae
+  filter_upwards [hvae, hshift] with x hvx hux
+  change neutralWindowRepresentative a (u.toLp 2 volume) (x - τ) =
+    u (x - τ) at hux
+  rw [hvx, hux]
+
 theorem neutralIV162Prime_literal (u v : 𝓢(ℝ,ℂ))
     (hu : ∀ x : ℝ, x ∉ Set.Icc (-(2:ℝ)) 2 → u x = 0)
     (hv : ∀ x : ℝ, x ∉ Set.Icc (-(2:ℝ)) 2 → v x = 0) :
@@ -347,8 +366,8 @@ theorem neutralIV162Prime_literal (u v : 𝓢(ℝ,ℂ))
   apply Finset.sum_congr rfl
   intro n hn
   unfold neutralIV085PrimeSummand neutralIV103Correlation
-  rw [neutralIV011MixedCorrelation_eq_schwartzIntegral 2 2 le_rfl u v hu hv,
-    neutralIV011MixedCorrelation_eq_schwartzIntegral 2 2 le_rfl u v hu hv]
+  rw [neutralIV191Correlation 2 u v hu hv (Real.log n),
+    neutralIV191Correlation 2 u v hu hv (-Real.log n)]
   simp only [sub_neg_eq_add]
 
 #print axioms neutralIV162Exp_four_bounds
@@ -356,6 +375,7 @@ theorem neutralIV162Prime_literal (u v : 𝓢(ℝ,ℂ))
 #print axioms neutralIV162Census
 #print axioms neutralIV162Prime_bank
 #print axioms neutralIV162Prime_count
+#print axioms neutralIV191Correlation
 #print axioms neutralIV162Prime_literal
 end
 end WeilDefect
