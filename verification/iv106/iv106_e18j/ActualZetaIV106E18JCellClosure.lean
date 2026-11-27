@@ -194,6 +194,63 @@ theorem neutralIV106E18JResponse (k : ℕ) (hk : 0 < k) (i : Fin k)
     exact hgap x (by_contra fun h => hx (neutralIV106E18JCarrier_zero k hk i x h))
       y (by_contra fun h => hy (hfout y h))
 
+/-- The literal E18A clipped polynomial is square integrable, independently
+of any logarithmic or strong-action admission theorem. -/
+theorem neutralIV106E18JTrial_memLp (l h : ℝ) (hh : 0 < h) :
+    MemLp (neutralIV106E18ITrial l h) 2 volume := by
+  have hc := neutralIV106E18ITrial_continuous l h
+  have hs := neutralIV106E18ITrial_compact l h hh
+  apply (memLp_two_iff_integrable_sq_norm hc.aestronglyMeasurable).mpr
+  apply (hc.norm.pow 2).integrable_of_hasCompactSupport
+  apply HasCompactSupport.intro (K := Set.Icc l (l+h)) isCompact_Icc
+  intro x hx
+  simp [neutralIV106E18ITrial_outside l h hh x hx]
+
+theorem neutralIV106E18JTrial_ball (l h : ℝ) (hh : 0 < h) (x : ℝ)
+    (hx : x ∉ closedBall (l+h/2) (h/2)) :
+    neutralIV106E18ITrial l h x = 0 := by
+  apply neutralIV106E18ITrial_outside l h hh x
+  intro hx'
+  apply hx
+  rw [mem_closedBall,Real.dist_eq,abs_le]
+  constructor <;> linarith [hx'.1,hx'.2]
+
+/-- The actual polynomial is in the buffered physical closure. -/
+theorem neutralIV106E18JTrial_closure (l h ε : ℝ) (hh : 0 < h) (hε : 0 < ε) :
+    (neutralIV106E18JTrial_memLp l h hh).toLp _ ∈
+      neutralIV106E18JSpace (l+h/2) (h/2+ε) :=
+  neutralIV106E18JClosure_mem _ (neutralIV106E18ITrial_continuous l h)
+    (l+h/2) (h/2) (h/2+ε) (by positivity) (by linarith)
+    (neutralIV106E18JTrial_ball l h hh) (neutralIV106E18JTrial_memLp l h hh)
+
+/-- Actual E18A polynomial response receiver, conditional on the remaining
+literal geometry and two exponential moment identities. -/
+theorem neutralIV106E18JTrial_response (k : ℕ) (hk : 0 < k) (i : Fin k)
+    (l h ε : ℝ) (hh : 0 < h) (hε : 0 < ε)
+    (hwin : closedBall (l+h/2) (h/2+ε) ⊆ Set.Icc (-(11/10:ℝ)) (11/10))
+    {δ : ℝ} (hδ : 0 < δ)
+    (hgap : ∀ x ∈ Set.Icc (4393/4000:ℝ) (4399/4000),
+      ∀ y ∈ closedBall (l+h/2) (h/2+ε), δ ≤ |x-y|)
+    (hshift : ∀ n ∈ rightLimitPrimePowerFinset (11/10:ℝ),
+      ∀ x ∈ closedBall (l+h/2) (h/2+ε),
+      x-Real.log n ∉ Set.Icc (4393/4000:ℝ) (4399/4000) ∧
+      x+Real.log n ∉ Set.Icc (4393/4000:ℝ) (4399/4000))
+    (hm : neutralIV106E18HMoments (11/10:ℝ)
+      ((neutralIV106E18JTrial_memLp l h hh).toLp _) = 0) :
+    inner ℂ (neutralIV105CResponse k hk i)
+      ((neutralIV106E18JTrial_memLp l h hh).toLp _) =
+    ∫ x, conj (neutralIV100Carrier k hk i x) *
+      (∫ y, neutralIV106E18ITrial l h y *
+        ((-(Real.exp (-|x-y|/2)/(1-Real.exp (-2*|x-y|))) : ℝ) : ℂ)) :=
+  neutralIV106E18JResponse k hk i _ (neutralIV106E18ITrial_continuous l h)
+    (l+h/2) (h/2) (h/2+ε) (by positivity) (by linarith)
+    (neutralIV106E18JTrial_ball l h hh) (neutralIV106E18JTrial_memLp l h hh)
+    hwin hδ hgap hshift hm
+
+#print axioms neutralIV106E18JTrial_memLp
+#print axioms neutralIV106E18JTrial_ball
+#print axioms neutralIV106E18JTrial_closure
+#print axioms neutralIV106E18JTrial_response
 #print axioms neutralIV106E18JLocal_dense
 #print axioms neutralIV106E18JIndicator_memLp
 #print axioms neutralIV106E18JClosure_mem
