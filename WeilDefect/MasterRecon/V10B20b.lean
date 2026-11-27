@@ -43,8 +43,11 @@ theorem log_moment (k m : ℕ) :
       _ = _ := by rw [← Real.exp_add]; congr 2; ring
   rw [he]
   have h := Real.integral_rpow_mul_exp_neg_mul_Ioi
-    (s := (m:ℝ)+1) (by positivity) (show 0 < (k:ℝ)+1 by positivity)
-  simpa [Real.Gamma_nat_eq_factorial,Real.rpow_natCast] using h
+    (a := (m:ℝ)+1) (by positivity) (show 0 < (k:ℝ)+1 by positivity)
+  rw [Real.Gamma_nat_eq_factorial] at h
+  have hm : (m:ℝ)+1 = ((m+1:ℕ):ℝ) := by push_cast; rfl
+  rw [show (m:ℝ)+1-1 = (m:ℝ) by ring,Real.rpow_natCast,hm,Real.rpow_natCast,div_pow,one_pow] at h
+  simpa only [div_eq_mul_inv,one_div,mul_comm] using h
 
 theorem log_moment_integrable (k m : ℕ) :
     IntegrableOn (fun x : ℝ => x^k*(-Real.log x)^m) (Ioo 0 1) :=
