@@ -145,6 +145,9 @@ theorem floor_split (s : ℂ) (hs : 1 < s.re) :
   rw [← integral_const_mul,← integral_add hJ hX]
   have heq := integral_sub (hJ.add hX) hP
   change (∫ x in Ioi (1:ℝ), ((x:ℂ)^(-(s+1))*remainder x+(x:ℂ)^(-s))-1/2*(x:ℂ)^(-(s+1))) = _ at heq
+  change (∫ x in Ioi (1:ℝ), (⌊x⌋₊:ℂ)*(x:ℂ)^(-(s+1))) =
+    (∫ x in Ioi (1:ℝ), ((fun x : ℝ => (x:ℂ)^(-(s+1))*remainder x) + fun x => (x:ℂ)^(-s)) x) -
+    (∫ x in Ioi (1:ℝ), 1/2*(x:ℂ)^(-(s+1)))
   rw [← heq]
   apply setIntegral_congr_fun measurableSet_Ioi
   intro x hx
@@ -211,7 +214,7 @@ theorem poleRemoved_eq (s : ℂ) (hs : 0 < s.re) :
     rw [euler_on_convergence z hz] at h
     unfold poleRemovedEuler
     field_simp at h ⊢
-    linear_combination -h
+    linear_combination h
   exact (poleRemovedEuler_analytic.eqOn_of_preconnected_of_eventuallyEq
     (fun z _ => (differentiable_riemannZeta₁.analyticAt z)) hconv.isPreconnected
     (by norm_num [halfPlane] : (2:ℂ) ∈ halfPlane) he) hs
