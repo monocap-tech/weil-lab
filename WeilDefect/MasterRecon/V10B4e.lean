@@ -67,7 +67,7 @@ theorem multiplier_uniform_kernel_decay (t : ℝ) (ht : 0 ≤ t) (j : ℕ) :
   exact V10B4b.fourier_quadratic_decay p (hA' s hs).1
     (multiplier_first_integrable t ht j s) (hB' s hs).1
     (hp.differentiable (by simp))
-    ((hp.of_le (by norm_num : (2 : ℕ∞ω) ≤ ∞)).differentiable_deriv_two)
+    ((hp.of_le (show (2 : ℕ∞ω) ≤ (⊤ : ℕ∞ω) from le_top)).differentiable_deriv_two)
     A B (hA' s hs).2 (hB' s hs).2 u
 
 theorem kernel_integrable_of_decay (K : ℝ → ℂ) (hK : Measurable K)
