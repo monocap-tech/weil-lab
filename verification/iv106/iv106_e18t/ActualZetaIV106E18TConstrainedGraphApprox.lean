@@ -44,10 +44,9 @@ theorem neutralIV106E18TMass_correct
       rw [intervalIntegral.integral_sub (q.continuous.intervalIntegrable A B)
         (hdf.intervalIntegrable A B), hm, sub_zero]
     rw [← he]
-    simpa only [abs_of_nonneg (sub_nonneg.mpr hAB.le)] using
-      (intervalIntegral.norm_integral_le_of_norm_le_const
-        (a := A) (b := B) (C := η) (f := fun x => q x-df x)
-        (fun x _ => hclose x))
+    have hb : ‖∫ x in A..B, q x-df x‖ ≤ η*|B-A| :=
+      intervalIntegral.norm_integral_le_of_norm_le_const (fun x _ => hclose x)
+    simpa only [abs_of_nonneg (sub_nonneg.mpr hAB.le)] using hb
   refine ⟨g, ?_, ?_, ?_⟩
   · intro x hx
     change q x-m*ρ x = 0
