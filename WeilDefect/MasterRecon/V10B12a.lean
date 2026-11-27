@@ -36,7 +36,7 @@ theorem tail_of_rank_approx (G K F : H →L[ℂ] H)
   have hneg := neg_abs_le (inner ℂ (K x) x).re
   unfold energy
   rw [hG,ContinuousLinearMap.add_apply,ContinuousLinearMap.one_apply,
-    inner_add_left,Complex.add_re,inner_self_eq_norm_sq_to_K,Complex.ofReal_re]
+    inner_add_left,Complex.add_re,inner_self_eq_norm_sq]
   linarith
 
 theorem tail_of_compressed_approx (G K : H →L[ℂ] H) (S : Submodule ℂ H)
