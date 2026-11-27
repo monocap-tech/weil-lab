@@ -56,9 +56,7 @@ theorem compact_tail_quadratic (K : H →L[ℂ] H) (hK : IsCompactOperator K)
   have hxrep : x = (‖x‖:ℂ) • u := by
     dsimp [u,a]
     rw [smul_smul]
-    have he : (‖x‖:ℂ)*((‖x‖⁻¹:ℝ):ℂ) = 1 := by
-      exact_mod_cast mul_inv_cancel₀ hp.ne'
-    rw [he,one_smul]
+    rw [mul_inv_cancel₀ hp.ne',one_smul]
   calc
     |(inner ℂ (K x) x).re| = ‖x‖^2 * |(inner ℂ (K u) u).re| := by
       conv_lhs => rw [hxrep,K.map_smul,inner_smul_left,inner_smul_right]
@@ -78,7 +76,9 @@ theorem finite_exceptional_sector (G K : H →L[ℂ] H) (hK : IsCompactOperator 
   have h := htail x hx
   have hl := (abs_le.mp h).1
   rw [hG,ContinuousLinearMap.add_apply,ContinuousLinearMap.one_apply,
-    inner_add_left,Complex.add_re,inner_self_eq_norm_sq]
+    inner_add_left,Complex.add_re]
+  have hxnorm : (inner ℂ x x).re = ‖x‖^2 := inner_self_eq_norm_sq (𝕜 := ℂ) x
+  rw [hxnorm]
   linarith
 
 theorem finite_negative_subspace_injective (G : H →L[ℂ] H) (S W : Submodule ℂ H)
