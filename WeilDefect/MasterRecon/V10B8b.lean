@@ -1,7 +1,7 @@
 import WeilDefect.MasterRecon.V10B8a
 import WeilDefect.MasterRecon.V10B7e
 import Mathlib.NumberTheory.ArithmeticFunction.VonMangoldt
-import Mathlib.Analysis.SpecialFunctions.Gamma.Deriv
+import Mathlib.Analysis.SpecialFunctions.Gamma.Digamma
 
 /-! V10B8b: literal literature explicit formula interface, not an
 assertion of its truth. Definitions follow Zeta23/ExplicitFormula.lean
