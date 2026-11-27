@@ -38,7 +38,7 @@ theorem polynomial_pairing (p : ℤ[X]) (j : ℕ) :
     dsimp [u,Function.iterate_zero_apply]
     calc
       _ = aeval x p*((j.factorial:ℝ)*legendre j x) := by ring
-      _ = aeval x p*((-1:ℝ)^j*v j x) := by rw [rodrigues_eval]; rfl
+      _ = aeval x p*((-1:ℝ)^j*v j x) := by rw [rodrigues_eval]
       _ = _ := by ring
   have hzero : (fun x => u j x*v 0 x) =
       fun x => aeval x ((Polynomial.derivative^[j]) p)*w x^j := by
@@ -86,7 +86,7 @@ theorem top_derivative (j : ℕ) :
   congr 1
   rw [Polynomial.coeff_iterate_derivative,zero_add,Nat.descFactorial_self,
       Polynomial.coeff_shiftedLegendre,Nat.choose_self]
-  simp [nsmul_eq_mul]
+  simp [nsmul_eq_mul] <;> ring
 
 theorem legendre_diagonal (j : ℕ) :
     (∫ x in (0:ℝ)..1, legendre j x*legendre j x) = 1/(2*(j:ℝ)+1) := by
