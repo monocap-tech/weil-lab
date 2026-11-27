@@ -48,9 +48,9 @@ theorem neutralIV162Prime_range :
 def neutralIV162PrimeBank : Finset ℕ :=
   {2,3,4,5,7,8,9,11,13,16,17,19,23,25,27,29,31,32,37,41,43,47,49,53}
 
+set_option maxHeartbeats 4000000 in
 /-- Explicit prime-power witnesses and distinct prime-divisor exclusions.
 Avoid reducing the opaque minFac decision procedure. -/
-set_option maxHeartbeats 4000000 in
 theorem neutralIV162Census (n : ℕ) (hn : n < 55) :
     IsPrimePow n ↔ n ∈ neutralIV162PrimeBank := by
   interval_cases n
