@@ -50,10 +50,10 @@ theorem B_boundary (j m : ℕ) :
       ((j:ℝ)+1)*(y x^(2*(m+1))*w x^j)
   have hy (x : ℝ) : HasDerivAt y 2 x := by
     convert ((hasDerivAt_id x).const_mul 2).sub_const 1 using 1
-    all_goals norm_num [y]
+    all_goals first | rfl | norm_num [y]
   have hw (x : ℝ) : HasDerivAt w (-y x) x := by
     have h := (hasDerivAt_id x).mul ((hasDerivAt_const x (1:ℝ)).sub (hasDerivAt_id x))
-    convert h using 1 <;> simp [w,y] <;> ring
+    convert h using 1 <;> first | rfl | (simp [w,y,Pi.mul_apply] <;> ring)
   have hd (x : ℝ) : HasDerivAt f (g x) x := by
     have h := ((hy x).pow (2*m+1)).mul ((hw x).pow (j+1))
     convert h using 1
