@@ -1,0 +1,64 @@
+{
+  "schema": "NF618-custody-hold-v1",
+  "scope": "Custody only; no new mathematical or native certification claims",
+  "state": "HOLD",
+  "allow_native_batches_25_39": false,
+  "allow_dependent_universal_dispatch": false,
+  "verified": {
+    "deployment_index_blob": "7104217aa045d5e9f7008745fb83c5c5452f23af",
+    "exact_plans": 22,
+    "total_plans": 40,
+    "admission_verifier": {
+      "path": "scripts/local_replay/NF618AdmitNativeBatch.py",
+      "sha256": "204a258fcde06f07181005690aebd981cc52d0474824781bcb7269b80216a44f",
+      "blob": "d27ba77ad9d08b657ad092f4fee1b1c082e1504f",
+      "bytes": 6444
+    },
+    "parent_ledger": {
+      "path": "notes/provisional/NF618CertifiedSlotLedgerBatch20.json",
+      "sha256": "6a396e811890b8d1df7d9fc23855a34cf0ec465a3092b795b2647ca9b949adfd",
+      "blob": "d8c51a20bc10c8e7559d6447a00e150056243105",
+      "bytes": 912944
+    },
+    "admission_report_sha256": "c962aa9e3f895cce259e3320a95ec80e8a4660d3df803d487fcae339eaa23c1e"
+  },
+  "outstanding": {
+    "frozen_bank": {
+      "name": "NF618ReflexiveDeploymentBank.zip",
+      "listed_size_bytes": 52877673,
+      "expected_sha256": "5c93d86fd9461aff82834cc264c522544f3b2205fc56171886de18623ca31b82",
+      "status": "Library metadata located; raw-byte access blocked; no hash replay"
+    },
+    "batch24_ledger": {
+      "expected_sha256": "40e54496bec49119e252079345147a97ec25db8bb54a640647dc9c9d2b8fd24d",
+      "status": "Reconstructed 448 unique slot assignments and totals but digest mismatch; no reconstructed ledger admitted",
+      "candidate_sha256": "7910b438110d0ecb1a2ab8caf14646d0ac62440c4893dc80bbcce077bf51ddcf"
+    },
+    "plans": [
+      0,
+      1,
+      2,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39
+    ],
+    "evidence": "Producer artifact bytes and complete dependency custody not independently replayed in this recovery"
+  },
+  "reported_certified": {
+    "tables": 6097,
+    "rows": 29336
+  },
+  "release_rule": "Recover original bytes or independently reproduce with exact expected hashes; verify remote readback and replay evidence before resuming. No new workflows launched."
+}
