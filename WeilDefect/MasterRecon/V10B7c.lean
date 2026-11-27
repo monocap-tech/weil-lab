@@ -153,9 +153,10 @@ theorem floor_split (s : ℂ) (hs : 1 < s.re) :
   intro x hx
   have hx0 : (x:ℂ) ≠ 0 := by exact_mod_cast (by linarith [show 1 < x from hx] : x ≠ 0)
   have he : (x:ℂ)^(-s) = (x:ℂ)^(-(s+1))*(x:ℂ) := by
-    rw [← Complex.cpow_one (x:ℂ),← Complex.cpow_add _ _ hx0]
-    congr 1
-    ring
+    calc
+      _ = (x:ℂ)^(-(s+1)+1) := by congr 1 <;> ring
+      _ = _ := by rw [Complex.cpow_add _ _ hx0,Complex.cpow_one]
+  dsimp only
   rw [he]
   unfold remainder
   push_cast
