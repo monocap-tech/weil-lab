@@ -1,0 +1,116 @@
+{
+  "status": "18/18 local byte hashes matched immutable remote Git tree; independent local replay on separate copy reproduced 5 outputs byte-for-byte. Analytic and native Lean dependencies remain open.",
+  "remote_verified_commit": "d351854d66774bd72596b855c5117d50b2a85785",
+  "python": "3.13.5",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "original_zip": {
+    "sha256": "8fdfe3275b99f0bd058a99abdfd00e9615a8dc976ca3b7a02763fcf53ee6b49d",
+    "crc": "PASS",
+    "constituents": "8/8 byte-identical and committed; duplicate ZIP wrapper not stored"
+  },
+  "files": [
+    {
+      "path": "iv106_e19n/row_pilot.json",
+      "git_blob": "5ed4e8bc1993eb738b366adb6ac746b4d2a2bd36",
+      "sha256": "37b6434006b5ef0d56e990e4993517cb22a83d38541f477f2995274ebee968ae"
+    },
+    {
+      "path": "iv106_e19n/row_pilot.npz",
+      "git_blob": "a9a06f1f8893327f02a9db846307eb92f3994338",
+      "sha256": "377d391b447a19d07d9f38e97f33e72a5014972b0eb7e275cf5efc6f71df771d"
+    },
+    {
+      "path": "iv106_e19n/row_pilot_original.py",
+      "git_blob": "83b9e3f4624ee1c9dcdb4b0f973f5fcdc3d41c2f",
+      "sha256": "5c47f3e9c95180ccc0e38a3e60294ee16e517fbe86f761ca21672ee090459c19"
+    },
+    {
+      "path": "iv106_e19o/certificate.json",
+      "git_blob": "f278ca638046779a9879e1efbee99fef067f3903",
+      "sha256": "836b1076246ce7590e8cd327914296f2a4eaefb1b8489a13bc0a521f2ac1a34f"
+    },
+    {
+      "path": "iv106_e19o/certify_row.py",
+      "git_blob": "8c8808307f24bbea0bd52b8c6f61fb951f521cea",
+      "sha256": "26ecfb78b0854bfbba60e1de34cc3cc28c5aac328e10a33ac5c1970fe8033a02"
+    },
+    {
+      "path": "iv106_e19p/bank_certificate.json",
+      "git_blob": "095853546e4b41c4267a4673267d7f7160178ffd",
+      "sha256": "4c4940d86081e9a9d4e412fded7c57fcf5c85aa32824bbb933ab668835d683c4"
+    },
+    {
+      "path": "iv106_e19p/certify_bank.py",
+      "git_blob": "dee83fd8ebe1b0496c35656de424907d01e0f4d6",
+      "sha256": "814bb90590a546c67bce52659e612657a3e880754957c3aff2d8553391cc1f2a"
+    },
+    {
+      "path": "iv106_e19p/row_bank.npz",
+      "git_blob": "829f9bd348f51d6884e0d27cacdbad991b902a5b",
+      "sha256": "e55b8992e769d09ee83fdd66a9d6a3cbaf592933f7d85d3ca0d8dd9a2e4d886e"
+    },
+    {
+      "path": "iv106_e19p/row_bank_receipt.json",
+      "git_blob": "665dbd115fb35f289cc193f79e3451de5dbd767e",
+      "sha256": "e1f9bf1a11194227e726a9172705a637ff13ebb15afb11fedb5821c8853f8fd1"
+    },
+    {
+      "path": "iv106_e19p/scale_rows.py",
+      "git_blob": "ab451b55cea4908e00475ec206f34dee5519f806",
+      "sha256": "e3a8a78081b66d32f8b7976059f8ddf4ae4e4ef25a8fd410f868e23509de1e40"
+    },
+    {
+      "path": "iv106_e19q/joint.py",
+      "git_blob": "3c1fa0430129d962b866715ca7c13dcc0b66727e",
+      "sha256": "a17002d1987640b3f0efab0c5591ece79c2b15efc9a21c6600ea051ea3e566f1"
+    },
+    {
+      "path": "iv106_e19q/joint_certificate.json",
+      "git_blob": "91d099590ed63d7fbc1fdc32f1bed248cccf259f",
+      "sha256": "d61da378760ca11e21c7e828b46a717d810116d35dfc03d5ec325f1f6ddbb8c9"
+    },
+    {
+      "path": "iv106_e19q/joint_initial.py",
+      "git_blob": "dd71b228ecbc772cd621177125a1019f9457f1c2",
+      "sha256": "7ebbbd58de7c7040b4ac35dc875b29020c300b1fa5b2f5b37636d5efbaaa7a06"
+    },
+    {
+      "path": "iv106_e19q/joint_matrix.npz",
+      "git_blob": "cdcb932d2044c6680ff7075c7c9dff5e883ff18c",
+      "sha256": "24e37cd533c5efbc554c926695fc89f64d39d60aee90cb6643c5aa3a69da23e7"
+    },
+    {
+      "path": "iv106_e19q/run.log",
+      "git_blob": "24a3adb4a595f2bd3fbe33f7883d2c7b550af8a1",
+      "sha256": "b7178e727d08fe61da9640f1d3a32fc0164f579fa539d1359b51e7ad83ab73f4"
+    },
+    {
+      "path": "iv106_e19q/sha256.json",
+      "git_blob": "3ec99680c00e976a963438c4d227e1a547d1d73f",
+      "sha256": "1a796b39b16d8dc32425eb27f39771d3a3fa89c37403edbcb153f6b051bc0e0c"
+    },
+    {
+      "path": "iv106_e19r/remaining_certificate.json",
+      "git_blob": "a39cc35decd56980a5c29119e8fd5a7fd508c74f",
+      "sha256": "59fe6feb3dc0e39d7c21c719bea36f0d124a7b9c2941da391077a62fd5f46a72"
+    },
+    {
+      "path": "iv106_e19r/remaining_reserves.py",
+      "git_blob": "ce022d34270bb0c3d3bf283a8c7cd835ca2e2b8a",
+      "sha256": "027c41ea8af8576f7662e77e534c9d51c2d1925453834d58f70a8dfbe7336b82"
+    }
+  ],
+  "replayed_outputs": [
+    "iv106_e19o/certificate.json",
+    "iv106_e19p/bank_certificate.json",
+    "iv106_e19q/joint_certificate.json",
+    "iv106_e19q/joint_matrix.npz",
+    "iv106_e19r/remaining_certificate.json"
+  ],
+  "notes": [
+    "The actual local E19N candidate generator is retained as row_pilot_original.py, preserving the historical repository variant at row_pilot.py; original generator hardcodes a local output path and is not executed in the frozen-input replay.",
+    "joint_initial.py is exploratory, not the accepted verifier.",
+    "The numerical replay does not verify analytic or Lean prerequisites. No new certificate of terminal positivity."
+  ]
+}
