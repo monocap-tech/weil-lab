@@ -62,15 +62,14 @@ theorem moment_step (j : ℕ) (a b : ℝ) (ha : 0 ≤ a) :
   have hu (x : ℝ) : HasDerivAt u (a*u x) x := by
     have h := (Real.hasDerivAt_exp (a*x+b)).comp x
       (((hasDerivAt_id x).const_mul a).add_const b)
-    convert h using 1 <;> simp [u,e,Function.comp_def] <;> ring
+    convert h using 1 <;> first | rfl | (simp [u,e,Function.comp_def] <;> ring)
   have hw (x : ℝ) : HasDerivAt w (1-2*x) x := by
     have h := (hasDerivAt_id x).mul ((hasDerivAt_const x (1:ℝ)).sub (hasDerivAt_id x))
-    convert h using 1 <;> simp [w,Pi.mul_apply] <;> ring
+    convert h using 1 <;> first | rfl | (simp [w,Pi.mul_apply] <;> ring)
   have hv (x : ℝ) : HasDerivAt v (v' x) x := by
     have h := (((hasDerivAt_id x).const_mul 2).sub_const 1).mul ((hw x).pow (j+1))
     convert h using 1
-    simp [v',w,pow_succ]
-    ring
+    all_goals first | rfl | (simp [v,v',w,pow_succ,Pi.mul_apply,Pi.pow_apply] <;> ring)
   have huc : Continuous (fun x => a*u x) := by dsimp [u,e]; fun_prop
   have hvc : Continuous v' := by dsimp [v',w]; fun_prop
   have hp := intervalIntegral.integral_mul_deriv_eq_deriv_mul
