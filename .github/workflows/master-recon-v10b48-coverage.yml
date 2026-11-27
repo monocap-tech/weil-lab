@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B64 original retained space attachment
+name: MASTER-RECON V10B65 original retained definition isolation
 on:
   push:
     branches: [master-recon-v10b20-staging]
@@ -30,7 +30,7 @@ jobs:
           set -euo pipefail
           mkdir -p recon-v10b48-evidence
           git rev-parse HEAD | tee recon-v10b48-evidence/head.txt
-          sha256sum WeilDefect/MasterRecon/V10B{33a,33b,34a,39b,39c,40a,43a,45a,46a,46b,46c,47a,47b,47c,50a,52a,52b,17a,17b,61a,64a}.lean lean-toolchain lakefile.toml lake-manifest.json | tee recon-v10b48-evidence/source.sha256
+          sha256sum WeilDefect/MasterRecon/V10B{33a,33b,34a,39b,39c,40a,43a,45a,46a,46b,46c,47a,47b,47c,50a,52a,52b,17a,17b,17Defs,61a,64a}.lean lean-toolchain lakefile.toml lake-manifest.json | tee recon-v10b48-evidence/source.sha256
           cat lake-manifest.json | tee recon-v10b48-evidence/lake-manifest.json
           lake env lean --version | tee recon-v10b48-evidence/lean-version.txt
           audit() {

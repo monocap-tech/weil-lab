@@ -1,0 +1,23 @@
+{
+  "predecessor": "7ef20774070764886a8635f138f17a7949ed7513",
+  "original": {
+    "V10B17a": "cb8ff398c647da04823dd0aab6f99e091d1e0e1a",
+    "V10B17b": "e6858568dfa9b9ed5b7ea9fb9641f5827b6e939b",
+    "V10B64a": "e32071053b8e370f68f11b1b3b06deaffecfdd8a"
+  },
+  "moved": [
+    {
+      "qualified": "WeilDefect.MasterRecon.V10B17a.poleDifference",
+      "body": "noncomputable def poleDifference (t : ℝ) (ht : 0 ≤ t) : logCarrier t →L[ℂ] ℂ :=\n  V10B8c.eval t (1/2) ht - V10B8c.eval t (-1/2) ht\n"
+    },
+    {
+      "qualified": "WeilDefect.MasterRecon.V10B17b.bank and retained",
+      "body": "noncomputable def bank : Fin 15 ⊕ Unit → logCarrier (1/4) :=\n  Sum.elim (fun j => (moment (1/4) (by norm_num) j.val).adjoint 1)\n    (fun _ => (poleDifference (1/4) (by norm_num)).adjoint 1)\n\nnoncomputable def retained : Submodule ℂ (logCarrier (1/4)) :=\n  Submodule.span ℂ (Set.range bank)\n"
+    }
+  ],
+  "checks": {
+    "original_analytic_remainders_byte_exact": true,
+    "attachment_unchanged_except_import": true
+  },
+  "newModule": "WeilDefect.MasterRecon.V10B17Defs"
+}

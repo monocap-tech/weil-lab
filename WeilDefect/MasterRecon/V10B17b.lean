@@ -1,4 +1,5 @@
 import WeilDefect.MasterRecon.V10B17a
+import WeilDefect.MasterRecon.V10B17Defs
 import WeilDefect.MasterRecon.V10B16c
 import WeilDefect.MasterRecon.V10B8h
 
@@ -13,12 +14,6 @@ open V08I (logCarrier FullL2 physicalInclusion)
 open V10B13a (moment out input remainderBound)
 open V10B17a (poleDifference)
 
-noncomputable def bank : Fin 15 ⊕ Unit → logCarrier (1/4) :=
-  Sum.elim (fun j => (moment (1/4) (by norm_num) j.val).adjoint 1)
-    (fun _ => (poleDifference (1/4) (by norm_num)).adjoint 1)
-
-noncomputable def retained : Submodule ℂ (logCarrier (1/4)) :=
-  Submodule.span ℂ (Set.range bank)
 
 theorem retained_finite : FiniteDimensional ℂ retained :=
   FiniteDimensional.span_of_finite ℂ (Set.finite_range bank)

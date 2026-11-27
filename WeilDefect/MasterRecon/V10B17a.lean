@@ -1,5 +1,6 @@
 import WeilDefect.MasterRecon.V10B16b
 import WeilDefect.MasterRecon.V10B8c
+import WeilDefect.MasterRecon.V10B17Defs
 import Mathlib.Analysis.Complex.ExponentialBounds
 
 /-! Prime-free small support: sharpen the one-sided Stirling estimate
@@ -72,8 +73,6 @@ theorem small_symbol_split (hV : V10B8f.VerticalStirling)
       exact hu (abs_le.mp (le_of_not_gt hn))
     exact high_at_three hV u h
 
-noncomputable def poleDifference (t : ℝ) (ht : 0 ≤ t) : logCarrier t →L[ℂ] ℂ :=
-  V10B8c.eval t (1/2) ht - V10B8c.eval t (-1/2) ht
 
 theorem pole_nonneg_of_difference_zero (t : ℝ) (ht : 0 ≤ t) (g : logCarrier t)
     (hg : poleDifference t ht g = 0) :
