@@ -1,0 +1,124 @@
+name: NF618 W02 seven-theorem native gate
+on:
+  push:
+    branches: [formalization/nf618-w02-native-gate]
+    paths: ['.github/workflows/nf618-w02-native-gate.yml']
+permissions:
+  contents: read
+concurrency:
+  group: nf618-w02-native-gate
+  cancel-in-progress: false
+jobs:
+  native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Authenticate runner and fetch immutable research source
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p evidence
+          {
+            printf 'workflow_head=%s\nrun_id=%s\nrun_attempt=%s\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT"
+            git rev-parse HEAD HEAD^{tree}
+            test "$(git hash-object scripts/local_replay/NF618W02NativeGate.sh)" = 0a6de48df97c3ca4f594c1c6e7419fa7dc7405ad
+            bash -n scripts/local_replay/NF618W02NativeGate.sh
+            git fetch --no-tags --depth=1 origin 5801507d416e4a699c002920b2441f5aa0c19aef
+            test "$(git rev-parse FETCH_HEAD)" = 5801507d416e4a699c002920b2441f5aa0c19aef
+            uname -a
+            python3 --version
+          } 2>&1 | tee evidence/preflight.log
+          cp scripts/local_replay/NF618W02NativeGate.sh evidence/
+          cp .github/workflows/nf618-w02-native-gate.yml evidence/
+      - name: Install pinned Elan
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            archive="$RUNNER_TEMP/elan.tar.gz"
+            digest=0e8250aa2be86c7af929ade68db617af9edc8b9ccf6eaf5ece228250d0d032e2
+            fetch_verified() {
+              rm -f "$archive"
+              curl -fsSL --retry 2 --retry-all-errors --connect-timeout 20 --max-time 180 "$@" -o "$archive" &&
+                printf '%s  %s\n' "$digest" "$archive" | sha256sum -c -
+            }
+            if ! fetch_verified https://github.com/leanprover/elan/releases/download/v4.4.0/elan-x86_64-unknown-linux-gnu.tar.gz; then
+              fetch_verified -H 'Accept: application/octet-stream' "https://api.github.com/repos/leanprover/elan/releases/assets/763468108?run=$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+            fi
+            mkdir -p "$RUNNER_TEMP/elan"
+            tar -xzf "$archive" -C "$RUNNER_TEMP/elan"
+            "$RUNNER_TEMP/elan/elan-init" -y --no-modify-path --default-toolchain none
+            echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+            "$HOME/.elan/bin/elan" --version
+          } 2>&1 | tee evidence/elan-install.log
+      - name: Compile and audit exactly seven candidate declarations
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash scripts/local_replay/NF618W02NativeGate.sh "$PWD/evidence/native" 2>&1 | tee evidence/native-console.log
+          test -s evidence/native/audit.json
+      - name: Export evidence on success or failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf618-w02-native-evidence
+          path: evidence/
+          if-no-files-found: error
+          include-hidden-files: true
+  custody:
+    needs: native
+    if: always() && needs.native.result != 'skipped' && needs.native.result != 'cancelled'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: formalization/nf618-w02-native-gate
+          fetch-depth: 1
+      - name: Preserve exact native evidence archive and verify remote readback
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_HEAD: ${{ github.sha }}
+          NATIVE_RESULT: ${{ needs.native.result }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          branch=formalization/nf618-w02-native-gate
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test -z "$(git status --porcelain)"
+          git fetch --no-tags origin "$branch"
+          test "$(git rev-parse HEAD)" = "$(git rev-parse FETCH_HEAD)"
+          d="custody/nf618-w02-native"
+          mkdir -p "$d"
+          stem="$d/run_$GITHUB_RUN_ID-attempt_$GITHUB_RUN_ATTEMPT"
+          meta="$stem.json"
+          archive="$stem.zip"
+          test ! -e "$meta" && test ! -e "$archive"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" | jq -e '[.artifacts[] | select(.name == "nf618-w02-native-evidence" and .expired == false)] | if length == 1 then .[0] else error("expected exactly one artifact") end' > "$meta"
+          id=$(jq -er .id "$meta")
+          size=$(jq -er .size_in_bytes "$meta")
+          digest=$(jq -er '.digest | select(startswith("sha256:")) | sub("^sha256:";"")' "$meta")
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" > "$archive"
+          test "$(wc -c < "$archive")" -eq "$size"
+          printf '%s  %s\n' "$digest" "$archive" | sha256sum -c -
+          python3 - "$archive" <<'PY'
+          import sys, zipfile
+          with zipfile.ZipFile(sys.argv[1]) as z:
+              assert z.namelist() and z.testzip() is None
+          PY
+          printf 'native_result=%s\nrun_id=%s\nworkflow_head=%s\nartifact_id=%s\nsha256=%s\nmathematical_head=Batch24R1\nnew_moment_admissions=0\n' "$NATIVE_RESULT" "$GITHUB_RUN_ID" "$GITHUB_SHA" "$id" "$digest" > "$stem.status.txt"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$archive" "$meta" "$stem.status.txt"
+          git commit -m 'NF618 W02 native evidence custody [skip ci]'
+          git push origin "HEAD:refs/heads/$branch"
+          git fetch --no-tags origin "$branch"
+          test "$(git rev-parse HEAD)" = "$(git rev-parse FETCH_HEAD)"
+          test "$(git show "FETCH_HEAD:$archive" | sha256sum | cut -d' ' -f1)" = "$digest"
