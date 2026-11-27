@@ -1,0 +1,33 @@
+{
+  "artifact_id": 15163168939,
+  "run_id": 45915116300,
+  "archive_bytes": 569548,
+  "sha256": "f706f72fb86ea1a8b3f8f1cb7ee56995a37288d208b375f282220ddf3157f061",
+  "zip_entries": 329,
+  "modules": 81,
+  "hashes_verified": 324,
+  "named_receipts": 145,
+  "axiom_free_leaf_receipts": 128,
+  "internal_import_edges": 80,
+  "block_interval": [
+    256,
+    384
+  ],
+  "row_interval": [
+    2048,
+    3072
+  ],
+  "total_seconds": 1249.492538698001,
+  "median_leaf_seconds": 17.678265549999992,
+  "median_leaf_rss_gib": 7.654502868652344,
+  "max_leaf_rss_gib": 7.774009704589844,
+  "olean_bytes": 1200704,
+  "sector_object_sha256": "b6ec758a65553579cdaf8f0eeb5f95253756abb60f3ae956b7cfc8e41d1d2cc3",
+  "exact_audit_sha256": "57109c0a6475c0890dcae3c9dd5f3e2b68deb1aeb38c947f9376d58fc4d2c52f",
+  "exact_audit_byte_identical_to": [
+    "iv163-importable-receipts.zip",
+    "iv169-sector-zero-receipts.zip",
+    "iv171-sector-one-receipts.zip"
+  ],
+  "scope": "ZIP CRC, SHA256, manifest/source/log/object hashes, exact leaf coverage, source import edges and recorded axiom outputs; no new Lean kernel compilation or import"
+}
