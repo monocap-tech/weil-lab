@@ -1,0 +1,5 @@
+low Gamma shift bound: 17404891309/2625000000
+high Gamma shift bound: 2713792547/500000000
+inverse scalar reserve: 4288318/375225
+exact fractional reduction versus 21: 3591407/7879725
+PASS: exact scalar inequalities and convex decomposition
