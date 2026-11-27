@@ -26,7 +26,7 @@ theorem retained_moment_zero (t : ℝ) (ht : 0 ≤ t) (n : ℕ)
   have hm : (moment t ht j).adjoint 1 ∈ retained t ht n :=
     Submodule.subset_span ⟨⟨j,hj⟩,rfl⟩
   have ho := hg _ hm
-  rw [ContinuousLinearMap.adjoint_inner_left,Complex.inner_apply] at ho
+  rw [ContinuousLinearMap.adjoint_inner_left,RCLike.inner_apply'] at ho
   simpa using ho
 
 noncomputable def errorBound (t R : ℝ) (hR : 0 ≤ R) (n : ℕ) : ℝ :=
