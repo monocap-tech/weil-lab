@@ -1,0 +1,92 @@
+name: IV106-E18F joint separated pairing
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'verification/iv106/iv106_e18d/ActualZetaIV106E18DDirectPairing.lean'
+      - 'verification/iv106/iv106_e18e/ActualZetaIV106E18ESeparatedPairing.lean'
+      - '.github/workflows/iv106-e18f-separated-pairing.yml'
+permissions:
+  contents: read
+jobs:
+  separated-pairing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          path: research
+          persist-credentials: false
+      - name: Immutable joint source preflight
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          test "$(git -C research rev-parse HEAD^{tree})" = f038d8ff25d8f18fbe56a641ab6abded0b6ec8e9
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C candidate hash-object verification/iv106/iv106_e18d/ActualZetaIV106E18DDirectPairing.lean)" = 90bf0900ff4322f740088cf99f9afcd3b743cc56
+          test "$(git -C candidate hash-object verification/iv106/iv106_e18e/ActualZetaIV106E18ESeparatedPairing.lean)" = fd1830fe6e0717d452ed84be54432376e015fcdf
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/iv106/iv106_e18d/ActualZetaIV106E18DDirectPairing.lean candidate/verification/iv106/iv106_e18e/ActualZetaIV106E18ESeparatedPairing.lean
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E18DDirectPairing.lean
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E18ESeparatedPairing.lean
+          cp candidate/verification/iv106/iv106_e18d/ActualZetaIV106E18DDirectPairing.lean research/WeilDefect/Arithmetic/ActualZetaIV106E18DDirectPairing.lean
+          cp candidate/verification/iv106/iv106_e18e/ActualZetaIV106E18ESeparatedPairing.lean research/WeilDefect/Arithmetic/ActualZetaIV106E18ESeparatedPairing.lean
+          cmp candidate/verification/iv106/iv106_e18d/ActualZetaIV106E18DDirectPairing.lean research/WeilDefect/Arithmetic/ActualZetaIV106E18DDirectPairing.lean
+          cmp candidate/verification/iv106/iv106_e18e/ActualZetaIV106E18ESeparatedPairing.lean research/WeilDefect/Arithmetic/ActualZetaIV106E18ESeparatedPairing.lean
+      - name: Install pinned Lean and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake exe cache get
+      - name: Native fresh joint source build
+        working-directory: research
+        run: |
+          set -euo pipefail
+          mkdir -p iv106-e18f/out
+          touch iv106-e18f/out/fresh.stamp
+          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E18DDirectPairing.olean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E18ESeparatedPairing.olean
+          lake build WeilDefect.Arithmetic.ActualZetaIV106E18ESeparatedPairing 2>&1 | tee iv106-e18f/out/build.log
+          for m in WeilDefect/Arithmetic/ActualZetaIV106E18DDirectPairing WeilDefect/Arithmetic/ActualZetaIV106E18ESeparatedPairing; do
+            test -s ".lake/build/lib/lean/$m.olean"
+            test ".lake/build/lib/lean/$m.olean" -nt iv106-e18f/out/fresh.stamp
+          done
+      - name: Strict named axiom audit and manifest
+        working-directory: research
+        run: |
+          set -euo pipefail
+          printf '%s\n' 'import WeilDefect.Arithmetic.ActualZetaIV106E18ESeparatedPairing' '#print axioms WeilDefect.neutralIV106E18DPartial_tendsto' '#print axioms WeilDefect.neutralIV106E18DPartial_bound' '#print axioms WeilDefect.neutralIV106E18DFinite_pair' '#print axioms WeilDefect.neutralIV106E18DDirect_limit' '#print axioms WeilDefect.neutralIV106E18DLimit_receiver' '#print axioms WeilDefect.neutralIV106E18EFlip' '#print axioms WeilDefect.neutralIV106E18EFreq_integrable' '#print axioms WeilDefect.neutralIV106E18EContact' '#print axioms WeilDefect.neutralIV106E18EKernel_integrable' '#print axioms WeilDefect.neutralIV106E18EFinite_bound' '#print axioms WeilDefect.neutralIV106E18EGap_continuous' '#print axioms WeilDefect.neutralIV106E18EGap_bound' '#print axioms WeilDefect.neutralIV106E18EPoint_error' '#print axioms WeilDefect.neutralIV106E18EPhysical_limit' '#print axioms WeilDefect.neutralIV106E18ELiteral' > /tmp/iv106-e18f-axioms.lean
+          lake env lean /tmp/iv106-e18f-axioms.lean 2>&1 | tee iv106-e18f/out/axioms.log
+          python3 - <<'PY'
+          import re,pathlib
+          s=pathlib.Path('iv106-e18f/out/axioms.log').read_text()
+          p=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]"
+          ms=list(re.finditer(p,s,re.S))
+          assert len(ms)==15 and not re.sub(p,'',s,flags=re.S).strip()
+          assert {m[1] for m in ms}==set(["neutralIV106E18DPartial_tendsto","neutralIV106E18DPartial_bound","neutralIV106E18DFinite_pair","neutralIV106E18DDirect_limit","neutralIV106E18DLimit_receiver","neutralIV106E18EFlip","neutralIV106E18EFreq_integrable","neutralIV106E18EContact","neutralIV106E18EKernel_integrable","neutralIV106E18EFinite_bound","neutralIV106E18EGap_continuous","neutralIV106E18EGap_bound","neutralIV106E18EPoint_error","neutralIV106E18EPhysical_limit","neutralIV106E18ELiteral"])
+          assert all({x.strip() for x in m[2].split(',') if x.strip()} <= {'propext','Classical.choice','Quot.sound'} for m in ms)
+          print('IV106-E18F strict named axioms PASS 15/15')
+          PY
+          sha256sum WeilDefect/Arithmetic/ActualZetaIV106E18DDirectPairing.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E18DDirectPairing.olean WeilDefect/Arithmetic/ActualZetaIV106E18ESeparatedPairing.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E18ESeparatedPairing.olean > iv106-e18f/out/sha256.txt
+          git rev-parse HEAD > iv106-e18f/out/research-head.txt
+          git rev-parse HEAD^{tree} > iv106-e18f/out/research-tree.txt
+          lean --version > iv106-e18f/out/lean-version.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv106-e18f-separated-pairing-evidence
+          path: |
+            research/iv106-e18f/out/
+            research/WeilDefect/Arithmetic/ActualZetaIV106E18DDirectPairing.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E18DDirectPairing.olean
+            research/WeilDefect/Arithmetic/ActualZetaIV106E18ESeparatedPairing.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E18ESeparatedPairing.olean
+          include-hidden-files: true
+          if-no-files-found: error
