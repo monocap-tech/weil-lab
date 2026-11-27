@@ -3,7 +3,7 @@ on:
   push:
     branches: [research/return108s-repair]
     paths:
-      - ".github/workflows/return108s-mellin.yml"
+      - ".github/workflows/return108s-core.yml"
 permissions:
   contents: read
 jobs:
