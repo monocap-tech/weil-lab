@@ -51,9 +51,9 @@ theorem weighted_finite_identity (j n : ℕ) :
     have h₂ : Continuous (fun x : ℝ => ((2*x-1)/8)^(2*n+1)/((2*n+1).factorial:ℝ)*w x^j) := by
       unfold w
       fun_prop
-    rw [h,intervalIntegral.integral_add ((h₀.add h₁).intervalIntegrable volume 0 1)
-      (h₂.intervalIntegrable volume 0 1),intervalIntegral.integral_add
-      (h₀.intervalIntegrable volume 0 1) (h₁.intervalIntegrable volume 0 1),
+    rw [h,intervalIntegral.integral_add ((h₀.add h₁).intervalIntegrable 0 1)
+      (h₂.intervalIntegrable 0 1),intervalIntegral.integral_add
+      (h₀.intervalIntegrable 0 1) (h₁.intervalIntegrable 0 1),
       ih,term_integral,term_integral,odd_vanish,mul_zero,add_zero]
     change momentSum j n+1/((8:ℝ)^(2*n)*((2*n).factorial:ℝ))*B j n =
       momentSum j (n+1)
