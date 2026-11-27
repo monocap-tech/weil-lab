@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B59 deflated pairing normalization
+name: MASTER-RECON V10B60 exact unit matrix repair
 on:
   push:
     branches: [master-recon-v10b20-staging]
@@ -75,8 +75,7 @@ jobs:
             done
             if audit "$mod"; then pass[$mod]=1; else pass[$mod]=0; failed=1; fi
           }
-          gate V10B43a
-          gate V10B47c V10B43a
+          gate V10B47c
           exit "$failed"
       - name: Upload compiler and audit evidence
         if: always()

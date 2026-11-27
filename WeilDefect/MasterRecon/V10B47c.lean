@@ -60,9 +60,9 @@ theorem low_row (i : ℕ) (hi : i<15) (col : Fin 16) :
   rw [trial_pair_sum _ (legendre_cont i)]
   simp only [orth_all]
   rw [Finset.sum_eq_single i]
-  · simp only [if_pos rfl]
+  · simp only [if_pos rfl, ite_true]
     have hd : (2*(i:ℝ)+1)≠0 := by positivity
-    field_simp [hd]
+    field_simp [hd] <;> ring
   · intro j _ hj
     simp [Ne.symm hj]
   · exact fun h => False.elim (h (Finset.mem_range.mpr (by omega)))
@@ -121,10 +121,20 @@ theorem paired_blocks (g : ℕ → ℝ) (hz : ∀ k, g (16+2*k)=0) (n : ℕ) :
   induction n with
   | zero => simp
   | succ n ih =>
-    rw [show 16+2*(n+1)=(16+2*n)+1+1 by omega,
-      Finset.sum_range_succ,Finset.sum_range_succ,hz,add_zero,ih,Finset.sum_range_succ]
-    rw [show 16+2*n+1=17+2*n by omega]
-    ring
+    calc
+      (∑ j ∈ Finset.range (16+2*(n+1)), g j) =
+          (∑ j ∈ Finset.range (16+2*n), g j) +
+            g (16+2*n) + g (16+2*n+1) := by
+        rw [show 16+2*(n+1)=(16+2*n)+1+1 by omega,
+          Finset.sum_range_succ g (16+2*n+1),
+          Finset.sum_range_succ g (16+2*n)]
+      _ = (∑ j ∈ Finset.range 16, g j) +
+          (∑ k ∈ Finset.range n, g (17+2*k)) + g (17+2*n) := by
+        rw [hz n, add_zero, ih, show 16+2*n+1=17+2*n by omega]
+      _ = (∑ j ∈ Finset.range 16, g j) +
+          ∑ k ∈ Finset.range (n+1), g (17+2*k) := by
+        rw [Finset.sum_range_succ (fun k => g (17+2*k)) n]
+        exact add_assoc _ _ _
 
 theorem high_row (col : Fin 16) :
     31*(∫ x in (0:ℝ)..1, load x*trial col x) =
