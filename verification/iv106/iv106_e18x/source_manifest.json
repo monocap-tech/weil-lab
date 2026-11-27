@@ -36,22 +36,22 @@
       "sha": "fd1830fe6e0717d452ed84be54432376e015fcdf"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18g/ActualZetaIV106E18GHermitianAttachment.lean",
       "sha": "67ac5863486d7cd88d7117568c0423c2c248c9df"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18h/ActualZetaIV106E18HRoughResponse.lean",
-      "sha": "b2f0dd28f6e93fd94b8c80d9535b8a7ac4ea71c4"
+      "sha": "2556f5817dee5d3620025e147bece9c7d79bdcf6"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18i/ActualZetaIV106E18ILocalSmoothing.lean",
       "sha": "16cebfa56dd2c1d2b31650c96f9cb68571877364"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18j/ActualZetaIV106E18JCellClosure.lean",
       "sha": "042230be6fabd8891c5f4f52936040817b19c569"
     },
@@ -61,12 +61,12 @@
       "sha": "727aa637875c23388fa15d27c9527bdef1f6d636"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18k2/ActualZetaIV106E18K2PhysicalMoments.lean",
       "sha": "ce04e7fdf990118e9226e140f68ee0d7d49d111a"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18l/ActualZetaIV106E18LBufferedGeometry.lean",
       "sha": "5d8cded70f71ceb2f9fdbbd356a644e1b2258d00"
     },
@@ -76,12 +76,12 @@
       "sha": "2d2fd452befea68115d3b7e85f0c93d92d0dc586"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18n/ActualZetaIV106E18NExponentialSeries.lean",
-      "sha": "0276dca20f2a4275ec90f68d7ed8e32d98705ec9"
+      "sha": "bcb088467fa4387aaf975e47e0d7f3328056624b"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18o/ActualZetaIV106E18OLiteralMatrix.lean",
       "sha": "c594eb58d2b954b9df34766f4a7c29c8a52d5977"
     },
@@ -91,72 +91,72 @@
       "sha": "519f3a03cea4846388a7e1273e4505beec8ecfbb"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18q/ActualZetaIV106E18QLiteralRank.lean",
       "sha": "5f7c5b2a263479fb9aedf21d059199181b3ef250"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18r/ActualZetaIV106E18RDeterminantReserve.lean",
       "sha": "8fed4599d0208ac0c32cefe5224bf6efb78b0129"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18r/ActualZetaIV106E18RExactSmoothResponse.lean",
       "sha": "80cbf531439948c52cbd841fb3fd8aab402a0a80"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18s/ActualZetaIV106E18SControlledPrimitive.lean",
       "sha": "911907180e941ebb92ffadaea0732dd3ddeddfaf"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18s/ActualZetaIV106E18SFourierGraph.lean",
-      "sha": "0e364498c0884c42371f51f89b98ade70d30ecf8"
+      "sha": "183b3787fb79772217247c10fce348153f99b86b"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18s/ActualZetaIV106E18STrialDerivative.lean",
       "sha": "ba918cd13e14d15ffcdd7a9c7ec23c69257b5617"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18t/ActualZetaIV106E18TConstrainedGraphApprox.lean",
       "sha": "78232983ad165432b326b0d31ce61f34bb8674f4"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18u/ActualZetaIV106E18UGraphObservation.lean",
       "sha": "f28c831d90678e969428a08ff550228d65d5551a"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18u/ActualZetaIV106E18UTrialClosure.lean",
       "sha": "f7a0af4c7edabc2b09eac3c7c722c542601d83de"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18v/ActualZetaIV106E18VBump.lean",
       "sha": "134bc45e4e1e20fcda05cc7cfd3d2caff9c1fafe"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18v/ActualZetaIV106E18VLiteralMatch.lean",
       "sha": "d3ec3f6a0dfbbb74f1a399a7e302421f3a6b2504"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18v/ActualZetaIV106E18VLogGraph.lean",
       "sha": "490743f0b8c9dc160bae405d03ad972a5d8f8d22"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18w/ActualZetaIV106E18WNativePerturbation.lean",
       "sha": "eaf182f35b02307c7f0221a270840ef747c4ff29"
     },
     {
-      "ref": "fcee1f35c111ab2a58f083ab082ebd52b4c986d0",
+      "ref": "254115ad8a9b3a7ee8721ac37181027de7ae00c4",
       "path": "verification/iv106/iv106_e18w/ActualZetaIV106E18WReceivingGram.lean",
       "sha": "00195c88b4b94add9cecb33686c49208daae6696"
     },
