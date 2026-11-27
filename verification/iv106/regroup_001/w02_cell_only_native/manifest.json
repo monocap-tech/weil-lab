@@ -1,0 +1,39 @@
+{
+  "status": "STAGED_UNCOMPILED",
+  "research": "018f7e59f4129ce521cd3ae86d1afd59d3b64b5f",
+  "toolchain": "leanprover/lean4:v4.34.0",
+  "direct_source_pins": [
+    {
+      "ref": "31b09602d5753735a2fe9a46fb640bc27f3f275e",
+      "path": "verification/iv106/iv106_d6/ActualZetaIV106D6ActualPrimitive.lean",
+      "sha": "bc6c04eac4840b5b6e3533a87e77a359c367657c"
+    },
+    {
+      "ref": "3db252bef308aee24a687735305ba63f81b52a34",
+      "path": "verification/iv106/iv106_e10/ActualZetaIV106E10IntegratedCoercivity.lean",
+      "sha": "1b86105df1c7ce949ce7c2ab3f33eabd8fcdb3cb"
+    },
+    {
+      "ref": "0c93c44d5965d9890ea2745c4bdd0ccf6abaf1c1",
+      "path": "verification/iv106/iv106_e17a/ActualZetaIV106E17AExplicitShift.lean",
+      "sha": "ca8e33baee614db82dd70e448def9572c2e27919"
+    }
+  ],
+  "derived_from": "a21c3c79d2b8786356737526552acc9713e7b605",
+  "audit": [
+    "neutralIV106W02CellMeans",
+    "neutralIV106W02CellPrimitive",
+    "neutralIV106W02CellReciprocal",
+    "neutralIV106W02CellGamma",
+    "neutralIV106W02CellAnnihilation",
+    "neutralIV106W02MomentBound",
+    "neutralIV106W02PoleLoss",
+    "neutralIV106W02EnergyDecomposition",
+    "neutralIV106W02CoreMass",
+    "neutralIV106W02GammaShift",
+    "neutralIV106W02CoreLog17",
+    "neutralIV106W02ClosedLog17"
+  ],
+  "remaining_geometric_premise": "neutralIV106W02PoleApprox",
+  "dependency_closure": "Not assembled; direct imports authenticated, upstream native status not assumed."
+}
