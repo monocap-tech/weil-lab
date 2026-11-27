@@ -47,14 +47,13 @@ theorem convolution_monomial (j k : ℕ) (z : ℝ) (hz : 0 < z) :
   have hk : 0 < ((k:ℂ)+1).re := by simp; positivity
   have h := Complex.betaIntegral_scaled ((j:ℂ)+1) ((k:ℂ)+1) hz
   rw [Complex.betaIntegral_eq_Gamma_mul_div _ _ hj hk] at h
-  have hj' : (j:ℂ)+1 = ((j+1:ℕ):ℂ) := by push_cast; rfl
-  have hk' : (k:ℂ)+1 = ((k+1:ℕ):ℂ) := by push_cast; rfl
   have hjk : (j:ℂ)+1+((k:ℂ)+1) = ((j+k+1:ℕ):ℂ)+1 := by push_cast; ring
   rw [show (j:ℂ)+1-1=(j:ℂ) by ring,show (k:ℂ)+1-1=(k:ℂ) by ring,
     show (j:ℂ)+1+((k:ℂ)+1)-1=((j+k+1:ℕ):ℂ) by push_cast; ring,
-    Complex.cpow_natCast,Complex.Gamma_nat_eq_factorial,
-    Complex.Gamma_nat_eq_factorial,hjk,Complex.Gamma_nat_eq_factorial] at h
-  simpa only [Complex.cpow_natCast,mul_div_assoc,mul_assoc] using h
+    hjk] at h
+  simp only [Complex.cpow_natCast,Complex.Gamma_nat_eq_factorial] at h
+  rw [h]
+  ring
 
 theorem reflected_power_integral (z : ℝ) (hz : 0 < z) (j : ℕ) :
     (∫ s in 0..z, (z-s)^j) = z^(j+1)/((j:ℝ)+1) := by
