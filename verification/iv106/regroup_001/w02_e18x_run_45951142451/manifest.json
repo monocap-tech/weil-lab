@@ -1,0 +1,23 @@
+{
+  "run": 45951142451,
+  "attempt": 1,
+  "artifact": 15177287939,
+  "head": "5debcd53bb06521a5b54feef344375f3c99a1444",
+  "conclusion": "failure",
+  "archive": "iv106-e18x-w02-45951142451.zip",
+  "bytes": 494323,
+  "sha256": "bc6751bafe733a2ab1d23e9f729562ef48599f3d5776ed6f051c0a3af655dbea",
+  "git_blob": "0e46fb87d4d950b9d03a762ba40af6481f0efbbc",
+  "zip_crc": "PASS",
+  "members": 21,
+  "compiled_target_modules": [
+    "E18SControlledPrimitive",
+    "E18SFourierGraph",
+    "E18STrialDerivative"
+  ],
+  "failures": [
+    "E18LBufferedGeometry:39,41,43,45,47 rewrite; 206 function expected",
+    "E18TConstrainedGraphApprox:55 rewrite"
+  ],
+  "strict_consolidated_audit": "not reached"
+}
