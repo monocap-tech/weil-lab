@@ -49,8 +49,8 @@ theorem log_moment (k m : ℕ) :
   rw [Real.Gamma_nat_eq_factorial] at h
   have hm : (m:ℝ)+1 = ((m+1:ℕ):ℝ) := by push_cast; rfl
   have hpow : (m:ℝ)+1-1 = (m:ℝ) := by ring
-  simp only [hpow,hm,Real.rpow_natCast,div_pow,one_pow] at h
-  simpa only [div_eq_mul_inv,one_div,mul_comm] using h
+  rw [hpow,Real.rpow_natCast,hm,Real.rpow_natCast,div_pow,one_pow] at h
+  simpa only [div_eq_mul_inv,one_div,mul_comm,neg_mul,mul_one] using h
 
 theorem log_moment_integrable (k m : ℕ) :
     IntegrableOn (fun x : ℝ => x^k*(-Real.log x)^m) (Ioo 0 1) :=
