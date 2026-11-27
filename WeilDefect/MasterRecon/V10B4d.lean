@@ -2,6 +2,7 @@ import WeilDefect.MasterRecon.V10B4c
 import Mathlib.Analysis.Calculus.BumpFunction.FiniteDimension
 import Mathlib.Analysis.Calculus.Deriv.Support
 import Mathlib.Analysis.Calculus.ContDiff.Deriv
+import Mathlib.Analysis.SpecialFunctions.ExpDeriv
 
 /-! V10B4d: actual compactly supported exponential-moment multipliers.
 Uniform L¹ estimates follow from compact parameter/physical rectangles,
@@ -34,7 +35,13 @@ theorem multiplier_smooth (t : ℝ) (ht : 0 ≤ t) (j : ℕ) :
   unfold multiplier
   have hc : ContDiff ℝ ∞ (fun x : ℝ => (cutoff t ht x : ℂ)) :=
     Complex.ofRealCLM.contDiff.comp (cutoff t ht).contDiff
-  exact ((hc.comp contDiff_snd).mul (by fun_prop)).mul (by fun_prop)
+  have hx : ContDiff ℝ ∞ (fun z : ℝ × ℝ => (z.2 : ℂ)) :=
+    Complex.ofRealCLM.contDiff.comp contDiff_snd
+  have hprod : ContDiff ℝ ∞ (fun z : ℝ × ℝ => z.1*z.2) :=
+    contDiff_fst.mul contDiff_snd
+  have he : ContDiff ℝ ∞ (fun z : ℝ × ℝ => Complex.exp ((z.1*z.2 : ℝ) : ℂ)) :=
+    Complex.contDiff_exp.comp (Complex.ofRealCLM.contDiff.comp hprod)
+  exact ((hc.comp contDiff_snd).mul (hx.pow j)).mul he
 
 theorem multiplier_support (t : ℝ) (ht : 0 ≤ t) (j : ℕ) (s : ℝ) :
     tsupport (fun x => multiplier t ht j (s,x)) ⊆
@@ -96,7 +103,9 @@ theorem uniform_integral_norm (P : ℝ × ℝ → ℂ) (hP : Continuous P)
     by_cases hx : x ∈ D
     · have hh := hB (show ‖P (s,x)‖ ∈ (fun z => ‖P z‖) '' (S ×ˢ D) from
         ⟨(s,x), ⟨hs,hx⟩, rfl⟩)
-      simpa [g, hx] using hh.trans (le_max_left B 0)
+      change ‖P (s,x)‖ ≤ g x
+      rw [show g x = C from Set.indicator_of_mem hx _]
+      exact hh.trans (le_max_left B 0)
     · simp [g, hx, hzero s x hs hx]
   have hi : Integrable (fun x => P (s,x)) :=
     hg.mono' (hP.comp (continuous_const.prodMk continuous_id)).aestronglyMeasurable
