@@ -13,7 +13,7 @@ noncomputable def beta (n m : ℕ) : ℝ :=
 theorem beta_zero (n : ℕ) : beta n 0=1/((n:ℝ)+1) := by
   unfold beta
   simp only [pow_zero,mul_one]
-  rw [intervalIntegral.integral_pow] <;> simp
+  rw [integral_pow] <;> simp
 
 theorem beta_step (n m : ℕ) :
     ((n:ℝ)+1)*beta n (m+1)=((m:ℝ)+1)*beta (n+1) m := by
