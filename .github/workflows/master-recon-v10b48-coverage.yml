@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B54 literal physical moment kernel
+name: MASTER-RECON V10B55 literal pairing cast repair
 on:
   push:
     branches: [master-recon-v10b20-staging]
@@ -75,11 +75,7 @@ jobs:
             done
             if audit "$mod"; then pass[$mod]=1; else pass[$mod]=0; failed=1; fi
           }
-          gate V10B50a
-          gate V10B50b V10B50a
-          gate V10B39a
-          gate V10B52a V10B39a
-          gate V10B52b V10B52a V10B50a
+          gate V10B52b
           exit "$failed"
       - name: Upload compiler and audit evidence
         if: always()

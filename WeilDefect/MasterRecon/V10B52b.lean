@@ -26,7 +26,7 @@ theorem monomial_integrable (t : ℝ) (ht : 0 ≤ t) (g : logCarrier t) (j : ℕ
 
 theorem polynomial_integrable (t : ℝ) (ht : 0 ≤ t) (g : logCarrier t)
     (p : ℝ[X]) :
-    Integrable (fun x : ℝ => (p.eval x:ℂ)*physicalInclusion t g x)
+    Integrable (fun x : ℝ => (Complex.ofReal (p.eval x))*physicalInclusion t g x)
       (supportMeasure t) := by
   induction p using Polynomial.induction_on' with
   | add p q hp hq =>
@@ -37,14 +37,14 @@ theorem polynomial_integrable (t : ℝ) (ht : 0 ≤ t) (g : logCarrier t)
 
 noncomputable def pairing (t : ℝ) (ht : 0 ≤ t) (g : logCarrier t) :
     ℝ[X] →ₗ[ℝ] ℂ where
-  toFun p := ∫ x, (p.eval x:ℂ)*physicalInclusion t g x ∂supportMeasure t
+  toFun p := ∫ x, (Complex.ofReal (p.eval x))*physicalInclusion t g x ∂supportMeasure t
   map_add' p q := by
     simp only [Polynomial.eval_add,Complex.ofReal_add,add_mul]
     exact integral_add (polynomial_integrable t ht g p)
       (polynomial_integrable t ht g q)
   map_smul' a p := by
-    change (∫ x, ((a • p).eval x:ℂ)*physicalInclusion t g x ∂supportMeasure t) =
-      a • (∫ x, (p.eval x:ℂ)*physicalInclusion t g x ∂supportMeasure t)
+    change (∫ x, (Complex.ofReal ((a • p).eval x))*physicalInclusion t g x ∂supportMeasure t) =
+      a • (∫ x, (Complex.ofReal (p.eval x))*physicalInclusion t g x ∂supportMeasure t)
     rw [Algebra.smul_def,Polynomial.algebraMap_apply,Algebra.algebraMap_self_apply]
     simp only [Polynomial.eval_mul,Polynomial.eval_C,Complex.ofReal_mul,mul_assoc]
     rw [← integral_smul]
@@ -55,7 +55,7 @@ noncomputable def pairing (t : ℝ) (ht : 0 ≤ t) (g : logCarrier t) :
 theorem pairing_monomial (t : ℝ) (ht : 0 ≤ t) (g : logCarrier t) (j : ℕ) :
     pairing t ht g ((X:ℝ[X])^j) = V10B13a.moment t ht j g := by
   rw [moment_literal]
-  change (∫ x, (((X:ℝ[X])^j).eval x:ℂ)*physicalInclusion t g x
+  change (∫ x, (Complex.ofReal (((X:ℝ[X])^j).eval x))*physicalInclusion t g x
     ∂supportMeasure t) = _
   simp only [Polynomial.eval_pow,Polynomial.eval_X,Complex.ofReal_pow]
 
@@ -63,7 +63,7 @@ theorem pairing_legendre (g : logCarrier (1/4)) (j : ℕ) :
     pairing (1/4) (by norm_num) g (physicalRow j) =
       ∫ x, (V10B33a.legendre j (2*x+1/2):ℂ)*physicalInclusion (1/4) g x
         ∂supportMeasure (1/4) := by
-  change (∫ x, ((physicalRow j).eval x:ℂ)*physicalInclusion (1/4) g x
+  change (∫ x, (Complex.ofReal ((physicalRow j).eval x))*physicalInclusion (1/4) g x
     ∂supportMeasure (1/4)) = _
   simp only [physicalRow_eval]
 
