@@ -1,0 +1,66 @@
+name: RETURN108-P Mellin kernel banks
+on:
+  push:
+    branches: [research/return108m-kernel-repair]
+    paths:
+      - ".github/workflows/return108p-mellin.yml"
+permissions:
+  contents: read
+jobs:
+  mellin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Immutable source preflight
+        run: |
+          git rev-parse HEAD
+          test "$(git hash-object WeilDefect/MasterReturn/KernelCompleteness.lean)" = 0fb7619245462b9f778d794596187f4e0d1e1443
+          test "$(git hash-object WeilDefect/MasterReturn/CarrierTranslation.lean)" = 19f9587f886e71dc54e0a16d869b8140d0cfbf4a
+          test "$(git hash-object WeilDefect/MasterReturn/MellinKernelBank.lean)" = 68dca5fdf81597acac1fa9bb85f404fda6ef596a
+          test "$(git hash-object WeilDefect/MasterRecon/V10B6d.lean)" = f07239c16e3e340d91921a27634162ff29b3ade6
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.34.0
+      - name: Install Elan
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned dependencies
+        run: lake update
+      - name: Fetch mathlib cache
+        run: lake exe cache get
+      - name: Build certified suppliers and arithmetic dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.MasterReturn.KernelCompleteness WeilDefect.MasterReturn.CarrierTranslation WeilDefect.MasterRecon.V10B6d 2>&1 | tee return108p-deps.log
+      - name: Compile and strict named axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/MasterReturn/MellinKernelBank.lean 2>&1 | tee return108p-lean.log
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          s = Path("return108p-lean.log").read_text()
+          names = ["observation_eq","nonzero_mellin_neighborhood","finite_meshes","weighted_shift","normalizedPair_shift_zero","shift_mem_fullKernel","actual_kernel_banks","actual_fullKernel_zero"]
+          allowed = {"propext","Classical.choice","Quot.sound"}
+          for name in names:
+              q = "WeilDefect.MasterReturn.MellinKernelBank." + name
+              m = re.search(r"'" + re.escape(q) + r"' depends on axioms: \[([^\]]*)\]", s)
+              if m is None:
+                  if f"'{q}' does not depend on any axioms" not in s:
+                      raise SystemExit("Missing axiom audit: " + q)
+              else:
+                  axioms = {x.strip() for x in m.group(1).split(",") if x.strip()}
+                  if not axioms <= allowed:
+                      raise SystemExit(f"Unexpected axioms for {q}: {axioms - allowed}")
+              print("PASS", q)
+          print("RETURN108-P strict axiom audit PASS 8/8")
+          PY
+      - name: Preserve compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: return108p-lean
+          path: |
+            return108p-deps.log
+            return108p-lean.log
