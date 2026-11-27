@@ -29,7 +29,7 @@ set_option maxRecDepth 10000 in
 set_option maxHeartbeats 0 in
 theorem fullCoeff_check (k : Fin 64) :
     (t k:ℚ) = (scale:ℚ)*fullCoeff k := by
-  fin_cases k <;> decide
+  fin_cases k <;> norm_num [t, tBank, scale, fullCoeff, Finset.sum_range_succ, Nat.factorial, Nat.choose]
 
 theorem fullCoeff_high_zero (k : ℕ) (hk : 64 ≤ k) :
     fullCoeff k = 0 := by
