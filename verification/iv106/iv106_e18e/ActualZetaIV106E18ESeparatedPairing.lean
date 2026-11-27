@@ -28,9 +28,11 @@ theorem neutralIV106E18EFreq_integrable (f : ℝ → ℂ) (hf : Integrable f)
     Integrable (fun ξ => (𝓕⁻ u) ξ * 𝓕 f ξ) := by
   have hc : Continuous (𝓕 f) :=
     VectorFourier.fourierIntegral_continuous Real.continuous_fourierChar continuous_inner hf
-  apply ((𝓕⁻ u).integrable.norm.mul_const (∫ x, ‖f x‖)).mono'
+  have hi : Integrable ((𝓕⁻ u : 𝓢(ℝ,ℂ)) : ℝ → ℂ) volume := (𝓕⁻ u).integrable
+  apply (hi.norm.mul_const (∫ x, ‖f x‖)).mono'
     ((𝓕⁻ u).continuous.aestronglyMeasurable.mul hc.aestronglyMeasurable)
   filter_upwards [] with ξ
+  change ‖(𝓕⁻ u) ξ * 𝓕 f ξ‖ ≤ ‖(𝓕⁻ u) ξ‖ * (∫ x, ‖f x‖)
   rw [norm_mul]
   apply mul_le_mul_of_nonneg_left _ (norm_nonneg _)
   rw [Real.fourier_real_eq]
@@ -78,6 +80,7 @@ theorem neutralIV106E18EKernel_integrable (f k : ℝ → ℂ)
     (hf.aestronglyMeasurable.mul
       (hk.comp (continuous_const.sub continuous_id)).aestronglyMeasurable)
   filter_upwards [] with y
+  change ‖f y * k (x-y)‖ ≤ ‖f y‖ * C
   rw [norm_mul]
   exact mul_le_mul_of_nonneg_left (hb _) (norm_nonneg _)
 
@@ -183,6 +186,7 @@ theorem neutralIV106E18EPhysical_limit (f : ℝ → ℂ) (hf : Integrable f)
       (u.continuous.aestronglyMeasurable.mul
         (neutralIV106E18EGap_continuous f hf hδ).aestronglyMeasurable)
     filter_upwards [] with x
+    change ‖u x * neutralIV106E18EGap f δ x‖ ≤ ‖u x‖ * C
     rw [norm_mul]
     exact mul_le_mul_of_nonneg_left
       (neutralIV106E18EGap_bound f hf hδ x) (norm_nonneg _)
@@ -193,6 +197,8 @@ theorem neutralIV106E18EPhysical_limit (f : ℝ → ℂ) (hf : Integrable f)
     apply (hq.norm.const_mul (SchwartzMap.seminorm ℝ 0 0 u)).mono'
       (u.continuous.aestronglyMeasurable.mul hq.aestronglyMeasurable)
     filter_upwards [] with x
+    change ‖u x * neutralIV106E18DConvolution f N x‖ ≤
+      (SchwartzMap.seminorm ℝ 0 0 u) * ‖neutralIV106E18DConvolution f N x‖
     rw [norm_mul]
     exact mul_le_mul_of_nonneg_right (SchwartzMap.norm_le_seminorm ℝ u x) (norm_nonneg _)
   have herr (N : ℕ) :
