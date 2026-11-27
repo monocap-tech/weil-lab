@@ -148,7 +148,7 @@ theorem symbol_integral (u : ℝ) (hp : V10B20a.PartialFraction (argument u)) :
       intro r hr
       exact symbol_kernel r u hr
     _ = _ := by
-      rw [← integral_complex_ofReal,integral_const_mul,
+      rw [integral_complex_ofReal,integral_const_mul,
         integral_comp_mul_left_Ioi (fun s => (kernel (argument u) s).re) 0 (by norm_num : (0:ℝ)<2)]
       simp only [mul_zero,smul_eq_mul]
       rw [integral_re (kernel_integrable _ hz),digamma_integral _ hz hp]
