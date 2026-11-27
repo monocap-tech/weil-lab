@@ -30,7 +30,7 @@ theorem neutralIV106E18NFinite (u : 𝓢(ℝ,ℂ)) (f : ℝ → ℂ)
     (horder : ∀ x y, u x ≠ 0 → f y ≠ 0 → y ≤ x) (N : ℕ) :
     -(∫ x, u x * neutralIV106E18DConvolution f N x) =
       ∑ n ∈ Finset.range N, neutralIV106E18NTerm u f n := by
-  have hfi := hf.integrable_of_hasCompactSupport hfc
+  have hfi : Integrable f volume := hf.integrable_of_hasCompactSupport hfc
   have hpoint (x : ℝ) :
       u x * neutralIV106E18DConvolution f N x =
       ∑ n ∈ Finset.range N,
@@ -90,7 +90,7 @@ theorem neutralIV106E18NWeight_upper (f : ℝ → ℂ) (hf : Continuous f)
     _ ≤ ∫ x, ‖f x*(Real.exp (s*x):ℂ)‖ := norm_integral_le_integral_norm _
     _ ≤ ∫ x, Real.exp (s*a)*‖f x‖ := by
       apply integral_mono_ae (neutralIV106E18NWeighted_integrable f hf hc s).norm
-        (hf.integrable_of_hasCompactSupport hc).norm.const_mul _
+        ((hf.integrable_of_hasCompactSupport hc : Integrable f volume).norm.const_mul (Real.exp (s*a)))
       filter_upwards [] with x
       by_cases hx : f x = 0
       · simp [hx]
@@ -110,7 +110,7 @@ theorem neutralIV106E18NWeight_lower (u : ℝ → ℂ) (hu : Continuous u)
     _ ≤ ∫ x, ‖u x*(Real.exp (s*x):ℂ)‖ := norm_integral_le_integral_norm _
     _ ≤ ∫ x, Real.exp (s*b)*‖u x‖ := by
       apply integral_mono_ae (neutralIV106E18NWeighted_integrable u hu hc s).norm
-        (hu.integrable_of_hasCompactSupport hc).norm.const_mul _
+        ((hu.integrable_of_hasCompactSupport hc : Integrable u volume).norm.const_mul (Real.exp (s*b)))
       filter_upwards [] with x
       by_cases hx : u x = 0
       · simp [hx]
