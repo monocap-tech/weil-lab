@@ -90,8 +90,47 @@ theorem deflated_pair (p : ℕ → ℝ → ℝ) (d : ℕ → ℝ)
   · rw [if_neg hj,if_neg hj,sub_zero]
     exact odd_pair (p j) f ((-1:ℝ)^j) (hp j) hf (hr j)
 
+/-- The actual normalized deflated load, when its leading coefficient is
+nonzero, has exactly the same first sixteen pairings as the degree-15
+Legendre polynomial. No truncation error or infinite expansion is used. -/
+theorem normalized_pairings (p : ℕ → ℝ → ℝ)
+    (hp : ∀ j, Continuous (p j))
+    (ho : ∀ i j, (∫ t in (0:ℝ)..1, p i t*p j t)=
+      if i=j then (2*(j:ℝ)+1)⁻¹ else 0)
+    (hr : ∀ j x, p j (1-x)=(-1:ℝ)^j*p j x)
+    (f : ℝ → ℝ) (hf : Continuous f)
+    (hA : (31:ℝ)*(∫ t in (0:ℝ)..1, f t*p 15 t) ≠ 0)
+    (j : ℕ) (hj : j<16) :
+    (∫ t in (0:ℝ)..1,
+      (deflate p (fun i => 2*(i:ℝ)+1) 14 f t /
+        ((31:ℝ)*(∫ x in (0:ℝ)..1, f x*p 15 x)))*p j t) =
+      if j=15 then 1/31 else 0 := by
+  let A : ℝ := 31*(∫ t in (0:ℝ)..1, f t*p 15 t)
+  have he : (fun t : ℝ => (deflate p (fun i => 2*(i:ℝ)+1) 14 f t/A)*p j t) =
+      fun t => (deflate p (fun i => 2*(i:ℝ)+1) 14 f t*p j t)/A := by
+    funext t
+    ring
+  change (∫ t in (0:ℝ)..1,
+    (deflate p (fun i => 2*(i:ℝ)+1) 14 f t/A)*p j t) = _
+  rw [he,intervalIntegral.integral_div,
+    deflated_pair p (fun i => 2*(i:ℝ)+1) hp (fun i => by positivity)
+      ho hr 14 j f hf]
+  by_cases hl : j<14
+  · simp [hl,show j≠15 by omega]
+  · have hj' : j=14 ∨ j=15 := by omega
+    rcases hj' with rfl | rfl
+    · norm_num
+    · norm_num
+      dsimp [A]
+      have hi : (∫ t in (0:ℝ)..1, f t*p 15 t) ≠ 0 := by
+        intro h
+        apply hA
+        rw [h,mul_zero]
+      field_simp [hi]
+
 end WeilDefect.MasterRecon.V10B43a
 
 #print axioms WeilDefect.MasterRecon.V10B43a.projection_pair
 #print axioms WeilDefect.MasterRecon.V10B43a.odd_pair
 #print axioms WeilDefect.MasterRecon.V10B43a.deflated_pair
+#print axioms WeilDefect.MasterRecon.V10B43a.normalized_pairings
