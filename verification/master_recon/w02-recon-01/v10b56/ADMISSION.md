@@ -1,0 +1,9 @@
+# V10B56 scoped admission
+Run 45979005334 job 140437848625 source 840855bf465aec6cc16f5cb8127ef40924d15e2c; successful full module build and strict named audit. V10B52b blob 9cb8d3dd494b779efd7aa3c6d124492dce6ea950; independently matched declaration and print sets to complete native output:
+2026-11-27T10:08:48.4848147Z 'WeilDefect.MasterRecon.V10B52b.monomial_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T10:08:48.4848733Z 'WeilDefect.MasterRecon.V10B52b.polynomial_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T10:08:48.4849324Z 'WeilDefect.MasterRecon.V10B52b.pairing_monomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T10:08:48.4849870Z 'WeilDefect.MasterRecon.V10B52b.pairing_legendre' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T10:08:48.4850429Z 'WeilDefect.MasterRecon.V10B52b.original_moment_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T10:08:48.7253025Z V10B52b: strict axiom audit PASS (5 declarations)
+Five new declarations, including original_moment_kernel: equivalence of the original fifteen monomial constraints and literal affine Legendre pairings on logCarrier(1/4). Does not yet attach the deflated pole row, prove actual retained-space equality for all sixteen constraints, or establish physical A/R identity. Original V10B19 physical generation and Taylor-budget holds unchanged. No W dependency or arithmetic adoption. Full decoded job transcript retained, including source digests, dependency manifest, toolchain and named output. Original Actions ZIP 15188855992 (7858 bytes, SHA256 0705c14d62e07a554e52738da061c401454bab7e1b1d1146d61c7e850d7c650c) is not claimed permanently custodied. W02 incremental named count +31; no full ledger deduplication.
