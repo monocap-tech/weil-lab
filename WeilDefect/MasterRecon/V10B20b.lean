@@ -109,7 +109,7 @@ theorem mixed_series_integral (k : ℕ) :
     nlinarith only [h2,h3]
   rw [← show (∑' j : ℕ, ∫ x in Ioo (0:ℝ) 1, mixedTerm k j x) =
       ∑' j : ℕ, 1/(((j:ℝ)+1)*((k:ℝ)+(j:ℝ)+2)^2) by simp_rw [mixed_term_integral]]
-  rw [← integral_tsum_of_summable_integral_norm hi hs]
+  rw [integral_tsum_of_summable_integral_norm hi hs]
   apply setIntegral_congr_fun measurableSet_Ioo
   intro x hx
   have hh := Real.hasSum_pow_div_log_of_abs_lt_one (by rwa [abs_of_pos hx.1] : |x| < 1)
