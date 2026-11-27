@@ -41,7 +41,8 @@ theorem neutralIV106E18WLift_error (a : ℝ)
   have hsq : ‖neutralIV102Lift a s hs-p‖^2 ≤
       (neutralIV106E18WConstant*ε)^2 := by
     rw [mul_pow,neutralIV106E18WConstant,Real.sq_sqrt (by positivity)]
-    exact h.trans_le he
+    rw [h]
+    exact he
   have hnon := mul_nonneg neutralIV106E18WConstant_nonneg hε
   nlinarith [norm_nonneg (neutralIV102Lift a s hs-p)]
 
