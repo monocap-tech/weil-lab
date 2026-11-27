@@ -71,6 +71,7 @@ theorem load_cont : Continuous load := by
   unfold load deflate project
   have hf : Continuous f := by unfold f; fun_prop
   have ho : Continuous (oddPart f) := oddPart_continuous f hf
+  have hL : ∀ j, Continuous (legendre j) := legendre_cont
   have hp : Continuous (fun x => ∑ j ∈ Finset.range 14,
       (2*(j:ℝ)+1)*(∫ t in (0:ℝ)..1, oddPart f t*legendre j t)*legendre j x) := by
     fun_prop
@@ -89,7 +90,7 @@ theorem load_pair (j : ℕ) :
     (fun i => 2*(i:ℝ)+1) legendre_cont (fun i => by positivity)
     orth_all legendre_reflect 14 j f hf]
   change 31*((if j<14 then 0 else ((1-(-1:ℝ)^j)/2)*I j)/(31*I 15)) = _
-  split_ifs <;> ring
+  split_ifs <;> field_simp [(I_pos 15).ne'] <;> ring
 
 theorem load_pair_low (j : ℕ) (hj : j<16) :
     31*(∫ x in (0:ℝ)..1, load x*legendre j x) =
@@ -166,9 +167,10 @@ theorem unitMatrix_surjective : Function.Surjective unitMatrix.mulVec := by
   intro i j
   unfold unitMatrix base
   by_cases hi : i.val=15
-  · rw [if_pos hi,if_pos hi,high_row,hi]
+  · simp only [hi,if_true,high_row]
     push_cast
-  · rw [if_neg hi,if_neg hi,add_zero,low_row _ (by omega)]
+  · simp only [hi,if_false,add_zero]
+    rw [low_row _ (by omega)]
     push_cast
 
 end WeilDefect.MasterRecon.V10B47c
