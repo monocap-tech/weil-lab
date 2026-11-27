@@ -30,7 +30,9 @@ theorem polynomial_integrable (t : ℝ) (ht : 0 ≤ t) (g : logCarrier t)
       (supportMeasure t) := by
   induction p using Polynomial.induction_on' with
   | add p q hp hq =>
-    simpa only [Polynomial.eval_add,Complex.ofReal_add,add_mul] using hp.add hq
+    apply (hp.add hq).congr
+    filter_upwards with x
+    simp only [Pi.add_apply, Polynomial.eval_add, Complex.ofReal_add, add_mul]
   | monomial n a =>
     have h := (monomial_integrable t ht g n).const_mul (a:ℂ)
     simpa only [Polynomial.eval_monomial,Complex.ofReal_mul,Complex.ofReal_pow,mul_assoc] using h

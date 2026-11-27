@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B55 literal pairing cast repair
+name: MASTER-RECON V10B56 pointwise integrability repair
 on:
   push:
     branches: [master-recon-v10b20-staging]
