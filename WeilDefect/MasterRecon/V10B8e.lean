@@ -26,12 +26,12 @@ noncomputable def spectralPhysical (t : ℝ) : logCarrier t →L[ℂ] FullL2 :=
 theorem spectralPhysical_norm (t : ℝ) (g : logCarrier t) :
     ‖spectralPhysical t g‖ = ‖physicalInclusion t g‖ := by
   change ‖(𝓕 (physicalInclusion t g) : FullL2)‖ = _
-  exact Lp.norm_fourier_eq _
+  exact (Lp.fourierTransformₗᵢ ℝ ℂ).norm_map (physicalInclusion t g)
 
 theorem spectralPhysical_compact (t : ℝ) (ht : 0 ≤ t) :
     IsCompactOperator (spectralPhysical t) :=
   (V08K.physicalInclusion_compact t ht).clm_comp
-    (Lp.fourierTransformₗᵢ ℝ ℂ).toContinuousLinearMap
+    (Lp.fourierTransformₗᵢ ℝ ℂ).toContinuousLinearEquiv.toContinuousLinearMap
 
 noncomputable def realMultiplier (d : ℝ → ℝ) (hd : Measurable d)
     (C : ℝ) (hC : ∀ u, |d u| ≤ C) : FullL2 →L[ℂ] FullL2 :=
