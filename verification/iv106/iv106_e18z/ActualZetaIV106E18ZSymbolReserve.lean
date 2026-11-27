@@ -58,8 +58,9 @@ theorem neutralIV106E18ZQuarter_mono (y t : ℝ) (h : |y| ≤ |t|) :
     linarith
   have hsum := Summable.tsum_le_tsum hc hs.summable ht.summable
   rw [hs.tsum_eq,ht.tsum_eq] at hsum
-  have hrec := neutralIV106E18ZReciprocal (1/4) y t (by norm_num) h
-  change (1/w).re ≤ (1/z).re at hrec
+  have hrec : (1/w).re ≤ (1/z).re := by
+    simpa [w,z,Complex.ofReal_div] using
+      neutralIV106E18ZReciprocal (1/4) y t (by norm_num) h
   simp only [Complex.add_re,Complex.ofReal_re] at hsum
   change (Complex.digamma z).re ≤ (Complex.digamma w).re
   linarith only [hsum,hrec]
