@@ -17,8 +17,7 @@ noncomputable def reserve (j : Fin 16) : ℝ := (highMass j:ℝ)/256
 theorem base_norm (i j : Fin 16) :
     ‖base i j‖ = ((v j i.val).natAbs:ℝ) := by
   unfold base
-  rw [Complex.norm_intCast,Int.norm_eq_abs,← Int.cast_abs,Int.abs_eq_natAbs]
-  norm_cast
+  rw [Complex.norm_intCast,Int.norm_eq_abs,← Int.cast_abs,Int.abs_eq_natAbs] <;> norm_cast
 
 theorem base_margin (i : Fin 16) :
     (denom:ℝ)+(∑ j ∈ Finset.univ.erase i, ‖base i j‖) < ‖base i i‖ := by
