@@ -22,7 +22,7 @@ theorem weight_growth (u : ℝ) :
   have hπ : 2*Real.pi ≤ 8 := by linarith [Real.pi_lt_d2]
   have hyr : y ≤ 8*r := by
     dsimp [y,r]
-    rw [abs_mul,abs_of_pos (by positivity : 0 < 2*Real.pi),Real.norm_eq_abs]
+    rw [abs_mul,abs_of_pos (by positivity : 0 < 2*Real.pi)]
     nlinarith [mul_nonneg (sub_nonneg.mpr hπ) (abs_nonneg u)]
   have hs : Real.sqrt y ≤ 3*Real.sqrt r := by
     calc
@@ -51,6 +51,7 @@ theorem weighted_of_decay (F : ℝ → ℂ) (hm : AEStronglyMeasurable F volume)
   have hn : ‖F u‖ ≤ C/r := (le_div_iff₀ hr).mpr (by simpa [r,mul_comm] using hu)
   have hsq : ‖F u‖^2 ≤ (C/r)^2 := by
     exact pow_le_pow_left₀ (norm_nonneg _) hn 2
+  change ‖logWeight u * ‖F u‖^2‖ ≤ 6*C^2*r^(-(3/2):ℝ)
   rw [Real.norm_eq_abs,abs_of_nonneg
     (mul_nonneg (V08I.logWeight_pos u).le (sq_nonneg _))]
   change logWeight u * ‖F u‖^2 ≤ 6*C^2*r^(-(3/2):ℝ)
@@ -88,7 +89,9 @@ theorem trialL2_support (col : Fin 16) :
     ∀ᵐ x ∂volume, x ∉ Icc (-(1/4):ℝ) (1/4) → trialL2 col x=0 := by
   filter_upwards [trialL2_ae col] with x hx
   intro hout
-  rw [hx,supportedTrial,indicator_of_notMem hout]
+  have hout' : x ∉ Icc (-1/4:ℝ) (1/4) := by
+    simpa only [neg_div] using hout
+  rw [hx,supportedTrial,indicator_of_notMem hout']
 
 noncomputable def trialTransform (col : Fin 16) (u : ℝ) : ℂ :=
   ∫ x in (-1/4:ℝ)..(1/4), (trial col (2*x+1/2):ℂ)*phase (-(2*Real.pi)*u) x
@@ -128,7 +131,7 @@ theorem trial_weighted (col : Fin 16) :
   have hB : 0 ≤ B := intervalIntegral.integral_nonneg (by norm_num) (fun _ _ => norm_nonneg _)
   have hD : 0 ≤ D := by
     dsimp [D]
-    have h := intervalIntegral.integral_nonneg (by norm_num : (-1/4:ℝ) ≤ 1/4)
+    have h := intervalIntegral.integral_nonneg (μ := volume) (by norm_num : (-1/4:ℝ) ≤ 1/4)
       (f := fun x => ‖(trialPoly col).derivative.eval x‖) (fun _ _ => norm_nonneg _)
     exact add_nonneg (add_nonneg (norm_nonneg _) (norm_nonneg _)) h
   apply weighted_of_decay _ (Lp.aestronglyMeasurable _) (B+D) (add_nonneg hB hD)

@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B67 direct weighted trial carrier
+name: MASTER-RECON V10B67R1 weighted carrier elaboration repair
 on:
   push:
     branches: [master-recon-v10b20-staging]
