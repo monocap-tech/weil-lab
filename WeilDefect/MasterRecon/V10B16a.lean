@@ -27,6 +27,7 @@ theorem signed_split (a w : ℝ → ℝ) (f : ℝ → ℂ) (S : Set ℝ)
     · rw [Set.indicator_of_notMem hu,mul_zero,sub_zero]
       have hh := mul_le_mul_of_nonneg_right (hhi u hu) (sq_nonneg ‖f u‖)
       nlinarith only [hh])
+  change (∫ u, c*(w u*‖f u‖^2)-D*S.indicator (fun u => ‖f u‖^2) u) ≤ _ at h
   rw [integral_sub (hw.const_mul c) (hI.const_mul D),
     integral_const_mul,integral_const_mul,integral_indicator hS] at h
   exact h
