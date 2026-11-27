@@ -97,6 +97,7 @@ noncomputable def carrierEquiv (a : ℝ) :
   invFun := toIV a
   left_inv g := by
     apply iv_physical_injective a
+    change neutralLogPhysical (toIV a (toRecon a g)).val = neutralLogPhysical g.val
     rw [toIV_physical, toRecon_physical]
   right_inv g := by
     apply V08J.physicalInclusion_injective a
