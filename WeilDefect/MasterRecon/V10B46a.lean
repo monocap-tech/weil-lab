@@ -94,8 +94,10 @@ theorem high_pair_ratio (j : ℕ) (hj : 17≤j) :
     apply h.trans
     apply mul_le_mul_of_nonneg_right _ (I_pos 15).le
     rw [pow_add]
-    norm_num only [show (1/16:ℝ)^2=1/256 by norm_num]
-    exact (mul_le_mul_of_nonneg_left (small_power k) (by norm_num)).trans_eq (by ring)
+    rw [show (1/16:ℝ)^2=1/256 by norm_num]
+    calc
+      _ ≤ (1/256:ℝ)*1 := mul_le_mul_of_nonneg_left (small_power k) (by norm_num)
+      _ = _ := by ring
 
 end WeilDefect.MasterRecon.V10B46a
 
