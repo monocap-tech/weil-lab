@@ -1,0 +1,76 @@
+name: IV106-E18P determinant transfer
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'verification/iv106/iv106_e18p/ActualZetaIV106E18PDeterminantTransfer.lean'
+      - '.github/workflows/iv106-e18p-determinant-transfer.yml'
+permissions:
+  contents: read
+jobs:
+  determinant-transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          path: research
+          persist-credentials: false
+      - name: Immutable source preflight
+        run: |
+          set -euo pipefail
+          test "$(git -C research rev-parse HEAD)" = 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          test "$(git -C research rev-parse HEAD^{tree})" = f038d8ff25d8f18fbe56a641ab6abded0b6ec8e9
+          test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
+          test "$(git -C candidate hash-object verification/iv106/iv106_e18p/ActualZetaIV106E18PDeterminantTransfer.lean)" = e46350a05461a25adc9237a574082b94070af5d2
+          ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/iv106/iv106_e18p/ActualZetaIV106E18PDeterminantTransfer.lean
+          test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E18PDeterminantTransfer.lean
+          cp candidate/verification/iv106/iv106_e18p/ActualZetaIV106E18PDeterminantTransfer.lean research/WeilDefect/Arithmetic/ActualZetaIV106E18PDeterminantTransfer.lean
+          cmp candidate/verification/iv106/iv106_e18p/ActualZetaIV106E18PDeterminantTransfer.lean research/WeilDefect/Arithmetic/ActualZetaIV106E18PDeterminantTransfer.lean
+      - name: Install pinned Lean and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake exe cache get
+      - name: Native fresh source and strict named axiom audit
+        working-directory: research
+        run: |
+          set -euo pipefail
+          mkdir -p iv106-e18p/out
+          touch iv106-e18p/out/fresh.stamp
+          rm -f .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E18PDeterminantTransfer.olean
+          lake build WeilDefect.Arithmetic.ActualZetaIV106E18PDeterminantTransfer 2>&1 | tee iv106-e18p/out/build.log
+          test -s .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E18PDeterminantTransfer.olean
+          test .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E18PDeterminantTransfer.olean -nt iv106-e18p/out/fresh.stamp
+          printf '%s\n' 'import WeilDefect.Arithmetic.ActualZetaIV106E18PDeterminantTransfer' '#print axioms WeilDefect.neutralIV106E18PExpansion' '#print axioms WeilDefect.neutralIV106E18PTuple' '#print axioms WeilDefect.neutralIV106E18POrient_ne' '#print axioms WeilDefect.neutralIV106E18PPair' '#print axioms WeilDefect.neutralIV106E18PMinor_nonneg' '#print axioms WeilDefect.neutralIV106E18PMinor_pos' '#print axioms WeilDefect.neutralIV106E18PPartial_formula' '#print axioms WeilDefect.neutralIV106E18PFixed_lower' '#print axioms WeilDefect.neutralIV106E18PInfinite' '#print axioms WeilDefect.neutralIV106E18PRank' > /tmp/iv106-e18p-axioms.lean
+          lake env lean /tmp/iv106-e18p-axioms.lean 2>&1 | tee iv106-e18p/out/axioms.log
+          python3 - <<'PY'
+          import re,pathlib
+          s=pathlib.Path('iv106-e18p/out/axioms.log').read_text()
+          p=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]"
+          ms=list(re.finditer(p,s,re.S))
+          assert len(ms)==10 and not re.sub(p,'',s,flags=re.S).strip()
+          assert {m[1] for m in ms}==set(["neutralIV106E18PExpansion","neutralIV106E18PTuple","neutralIV106E18POrient_ne","neutralIV106E18PPair","neutralIV106E18PMinor_nonneg","neutralIV106E18PMinor_pos","neutralIV106E18PPartial_formula","neutralIV106E18PFixed_lower","neutralIV106E18PInfinite","neutralIV106E18PRank"])
+          assert all({x.strip() for x in m[2].split(',') if x.strip()} <= {'propext','Classical.choice','Quot.sound'} for m in ms)
+          print('IV106-E18P strict named axioms PASS 10/10')
+          PY
+          sha256sum WeilDefect/Arithmetic/ActualZetaIV106E18PDeterminantTransfer.lean .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E18PDeterminantTransfer.olean > iv106-e18p/out/sha256.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv106-e18p-determinant-transfer-evidence
+          path: |
+            research/iv106-e18p/out/
+            research/WeilDefect/Arithmetic/ActualZetaIV106E18PDeterminantTransfer.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E18PDeterminantTransfer.olean
+          include-hidden-files: true
+          if-no-files-found: error
