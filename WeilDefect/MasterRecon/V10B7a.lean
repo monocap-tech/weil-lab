@@ -231,7 +231,8 @@ theorem right_count_jensen (hg : HalfPlaneGrowth) (hl : CenterLower) :
   have hlog := Real.log_le_log (show 0 < M/‖riemannZeta (center t)‖ by positivity) hratio
   have hlogt : Real.log 3 ≤ Real.log (|t|+3) := Real.log_le_log (by norm_num) (by linarith [abs_nonneg t])
   have hlog6 : Real.log (|t|+6) ≤ 2*Real.log (|t|+3) := by
-    rw [← Real.log_pow]
+    rw [← show Real.log ((|t|+3)^2) = 2*Real.log (|t|+3) by
+      rw [Real.log_pow]; norm_num]
     apply Real.log_le_log (by positivity)
     nlinarith [sq_nonneg |t|,abs_nonneg t]
   have hconstant : Real.log (3*K) ≤
@@ -276,6 +277,7 @@ theorem all_real_local_count (hg : HalfPlaneGrowth) (hl : CenterLower)
       _ ≤ _ := mul_le_mul_of_nonneg_right hA1 (hlog3.le.trans hlogt)
   · have ha := abs_le.mp (le_of_lt (lt_of_not_ge ht))
     have hsmall : (V09D.count t (t+1) : ℝ) ≤ B := by
+      dsimp [B]
       exact_mod_cast count_mono_window (a := t) (b := t+1) (c := -4) (d := 5)
         ha.1 (by linarith [ha.2])
     calc
