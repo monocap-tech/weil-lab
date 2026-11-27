@@ -25,7 +25,7 @@ theorem convolution_pointwise (K F G : ℝ → ℂ)
       rw [integral_const_mul, ← ofReal_norm, norm_mul,
         Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg hc]
     _ ≤ ∫⁻ u, ‖(c : ℂ) * (K u * F (y-u))‖ₑ :=
-      eNorm_integral_le_lintegral_eNorm _
+      enorm_integral_le_lintegral_enorm _
     _ = _ := by
       apply lintegral_congr
       intro u
@@ -67,7 +67,7 @@ theorem multiplier_uniform_kernel_decay (t : ℝ) (ht : 0 ≤ t) (j : ℕ) :
   exact V10B4b.fourier_quadratic_decay p (hA' s hs).1
     (multiplier_first_integrable t ht j s) (hB' s hs).1
     (hp.differentiable (by simp))
-    ((hp.of_le (show (2 : ℕ∞ω) ≤ ∞ by simp)).differentiable_deriv_two)
+    ((hp.of_le (show (2 : ℕ∞ω) ≤ (⊤ : ℕ∞ω) by simp)).differentiable_deriv_two)
     A B (hA' s hs).2 (hB' s hs).2 u
 
 theorem kernel_integrable_of_decay (K : ℝ → ℂ) (hK : Measurable K)
@@ -121,7 +121,7 @@ theorem uniform_multiplier_energy (t : ℝ) (ht : 0 ≤ t) (j : ℕ) :
   have hmass := weighted_kernel_mass_of_decay (𝓕 p) hk C hC (hbound s hs)
   refine (fourier_product_energy p f hp
     (multiplier_slice_smooth t ht j s).continuous hki hf).trans ?_
-  exact mul_le_mul_right' (ENNReal.rpow_le_rpow hmass (by norm_num)) _
+  exact mul_le_mul_of_nonneg_right (ENNReal.rpow_le_rpow hmass (by norm_num)) (zero_le _)
 
 end WeilDefect.MasterRecon.V10B4e
 
