@@ -31,7 +31,10 @@ theorem fourier_deriv_twice (p : ℝ → ℂ)
 theorem derivative_factor_norm (u : ℝ) :
     ‖2 * (Real.pi : ℂ) * Complex.I * (u : ℂ)‖ ^ 2 =
       (2 * Real.pi) ^ 2 * u ^ 2 := by
-  simp only [norm_mul, norm_ofNat, Complex.norm_real, Real.norm_eq_abs,
+  have htwo : ‖(2 : ℂ)‖ = (2 : ℝ) := by
+    rw [show (2 : ℂ) = ((2 : ℝ) : ℂ) by norm_num, Complex.norm_real, Real.norm_eq_abs]
+    norm_num
+  simp only [norm_mul, htwo, Complex.norm_real, Real.norm_eq_abs,
     Complex.norm_I, mul_one, abs_of_nonneg Real.pi_pos.le, mul_pow, sq_abs]
 
 theorem fourier_second_moment_bound (p : ℝ → ℂ)
