@@ -4,7 +4,7 @@ import WeilDefect.MasterRecon.V10B20b
 partial sums and the native Basel theorem. -/
 namespace WeilDefect.MasterRecon.V10B20c
 
-open Filter
+open Filter MeasureTheory
 open scoped BigOperators Topology
 open V10B20b (H H₂)
 
