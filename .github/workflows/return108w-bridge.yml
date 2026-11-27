@@ -1,4 +1,4 @@
-name: RETURN109-C actual full graph global energy
+name: RETURN109-C1 actual full graph global energy (finite-fiber repair)
 on:
   push:
     branches: [research/return108s-kernel-core]
@@ -58,13 +58,13 @@ jobs:
               else:
                   assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
               print("PASS", q)
-          print("RETURN109-C strict axiom audit PASS 10/10")
+          print("RETURN109-C1 strict axiom audit PASS 10/10")
           PY
       - name: Preserve integration evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: return109c-integration
+          name: return109c1-integration
           path: |
             return108w-closure.json
             return108w-closure.log
