@@ -1,0 +1,35 @@
+{
+  "artifact_id": 15165795851,
+  "run_id": 45922181287,
+  "sha256": "065c298e11ee6c1761546dee49b0a79d34f4ce9fcfc004f2394c6db46ff13a5a",
+  "archive_bytes": 549054,
+  "zip_entries": 326,
+  "modules": 81,
+  "hashes_verified": 324,
+  "named_receipts": 145,
+  "axiom_free_leaf_receipts": 128,
+  "internal_import_edges": 80,
+  "block_interval": [
+    512,
+    640
+  ],
+  "row_interval": [
+    4096,
+    5120
+  ],
+  "total_seconds": 874.1839256200003,
+  "median_leaf_seconds": 12.070291298999962,
+  "median_leaf_rss_gib": 7.497007369995117,
+  "max_leaf_rss_gib": 7.556819915771484,
+  "olean_bytes": 1200704,
+  "sector_object_sha256": "d8c174dcaa88f71b98b819a7468b2a74b62d24d9cad51c104bd4033d1deed2c4",
+  "exact_audit_sha256": "57109c0a6475c0890dcae3c9dd5f3e2b68deb1aeb38c947f9376d58fc4d2c52f",
+  "exact_audit_byte_identical_to": [
+    "iv163-importable-receipts.zip",
+    "iv169-sector-zero-receipts.zip",
+    "iv171-sector-one-receipts.zip",
+    "iv191-sector-two-receipts.zip",
+    "iv201-sector-three-receipts.zip"
+  ],
+  "scope": "ZIP CRC, SHA256, manifest hashes, source coverage and import edges, recorded axiom outputs; no fresh kernel import or compilation"
+}
