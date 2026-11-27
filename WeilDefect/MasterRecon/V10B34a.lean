@@ -47,7 +47,7 @@ theorem exp_projection_scaled (j : ℕ) (a b : ℝ) :
     funext x
     calc
       _ = Real.exp (a*x+b)*((j.factorial:ℝ)*legendre j x) := by ring
-      _ = Real.exp (a*x+b)*((-1:ℝ)^j*v j x) := by rw [rodrigues_eval]; rfl
+      _ = Real.exp (a*x+b)*((-1:ℝ)^j*v j x) := by rw [rodrigues_eval]
       _ = _ := by ring
   have h0 : (fun x : ℝ => Real.exp (a*x+b)*v 0 x) =
       fun x => Real.exp (a*x+b)*x^j*(1-x)^j := by
