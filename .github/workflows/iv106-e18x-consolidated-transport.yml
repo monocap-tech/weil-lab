@@ -48,7 +48,7 @@ jobs:
           persist-credentials: false
       - uses: actions/checkout@v4
         with:
-          ref: dd8cff4c3ce36e661bc89f74c345533b9dbef758
+          ref: 48e25c76e8aa6da70a42e05dfea77c34fe6b87d1
           path: pinned5
           persist-credentials: false
       - uses: actions/checkout@v4
