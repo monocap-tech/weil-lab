@@ -56,6 +56,7 @@ theorem TQ_eval (x : ℝ) :
   simp only [map_sum,map_mul,map_pow,map_add,aeval_C,aeval_X]
   apply Finset.sum_congr rfl
   intro r _
+  simp only [map_div₀, map_pow, map_mul, map_natCast, map_ofNat, map_neg]
   change ((2:ℝ)^r/((8:ℝ)^r*(r.factorial:ℝ)))*(x+(-1/2:ℝ))^r = _
   rw [show (2*x-1)/8=(2/8:ℝ)*(x+(-1/2)) by ring,mul_pow,div_pow]
   ring

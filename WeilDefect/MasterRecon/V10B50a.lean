@@ -38,7 +38,9 @@ theorem eval_literal (t a : ℝ) (ht : 0 ≤ t) (g : logCarrier t) :
     (restrictPhysical t (physicalInclusion t g) x) = _
   rw [show V10B8c.vector t a ht x = V10B8c.expVector a x from hx,hy,
     RCLike.inner_apply']
-  simp [V10B8c.expVector]
+  have hre : (starRingEnd ℂ) (Real.exp (a*x) : ℂ) = (Real.exp (a*x) : ℂ) := by
+    exact Complex.conj_ofReal _
+  rw [V10B8c.expVector, hre]
 
 theorem pole_literal (t : ℝ) (ht : 0 ≤ t) (g : logCarrier t) :
     (V10B8c.eval t (1/2) ht-V10B8c.eval t (-1/2) ht) g =

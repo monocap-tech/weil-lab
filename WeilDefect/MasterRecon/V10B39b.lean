@@ -61,7 +61,8 @@ theorem project_sub (p : ℕ → ℝ → ℝ) (d : ℕ → ℝ)
     ring
   have hi := intervalIntegral.integral_sub (μ := volume) ((hf.mul (hp j)).intervalIntegrable 0 1)
     ((hg.mul (hp j)).intervalIntegrable 0 1)
-  change (∫ t in (0:ℝ)..1, f t*p j t-g t*p j t) = _ at hi
+  change (∫ t in (0:ℝ)..1, f t*p j t-g t*p j t) =
+    (∫ t in (0:ℝ)..1, f t*p j t) - (∫ t in (0:ℝ)..1, g t*p j t) at hi
   rw [he,hi]
   ring
 
