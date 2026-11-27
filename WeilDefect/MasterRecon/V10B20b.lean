@@ -48,7 +48,8 @@ theorem log_moment (k m : ℕ) :
     (a := (m:ℝ)+1) (by positivity) (show 0 < (k:ℝ)+1 by positivity)
   rw [Real.Gamma_nat_eq_factorial] at h
   have hm : (m:ℝ)+1 = ((m+1:ℕ):ℝ) := by push_cast; rfl
-  rw [show (m:ℝ)+1-1 = (m:ℝ) by ring,Real.rpow_natCast,hm,Real.rpow_natCast,div_pow,one_pow] at h
+  have hpow : (m:ℝ)+1-1 = (m:ℝ) := by ring
+  simp only [hpow,hm,Real.rpow_natCast,div_pow,one_pow] at h
   simpa only [div_eq_mul_inv,one_div,mul_comm] using h
 
 theorem log_moment_integrable (k m : ℕ) :
@@ -59,7 +60,7 @@ theorem log_left (k : ℕ) :
     (∫ x in Ioo (0:ℝ) 1, x^k*Real.log x) = -1/((k:ℝ)+1)^2 := by
   have h := log_moment k 1
   simp only [pow_one,Nat.factorial_one,Nat.cast_one,Nat.reduceAdd,mul_neg,integral_neg] at h
-  exact neg_eq_iff_eq_neg.mp h
+  simpa only [neg_div] using neg_eq_iff_eq_neg.mp h
 
 theorem log_left_sq (k : ℕ) :
     (∫ x in Ioo (0:ℝ) 1, x^k*Real.log x^2) = 2/((k:ℝ)+1)^3 := by
@@ -101,8 +102,8 @@ theorem mixed_series_integral (k : ℕ) :
     change ‖mixedTerm k j x‖ = mixedTerm k j x
     rw [Real.norm_eq_abs,abs_of_nonneg]
     unfold mixedTerm
-    have hl := Real.log_nonpos hx.1.le hx.2.le
-    positivity
+    have hl : 0 ≤ -Real.log x := neg_nonneg.mpr (Real.log_nonpos hx.1.le hx.2.le)
+    exact div_nonneg (mul_nonneg (pow_nonneg hx.1.le _) hl) (by positivity)
   have hs : Summable (fun j : ℕ => ∫ x in Ioo (0:ℝ) 1, ‖mixedTerm k j x‖) := by
     simp_rw [hn]
     have h : Summable (fun j : ℕ => (1:ℝ)/((j:ℝ)+1)^2) := by
@@ -127,6 +128,7 @@ theorem mixed_series_integral (k : ℕ) :
     rw [show k+j+1 = k+(j+1) by omega,pow_add]
     ring
   rw [show (fun j : ℕ => x^k*(-Real.log x)*(x^(j+1)/((j:ℝ)+1))) = (fun j => mixedTerm k j x) from funext (fun j => he j)] at h
+  change x^k*Real.log x*Real.log (1-x) = ∑' j : ℕ, mixedTerm k j x
   rw [h.tsum_eq]
   ring
 
