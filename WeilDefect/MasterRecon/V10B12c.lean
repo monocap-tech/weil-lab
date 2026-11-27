@@ -37,8 +37,7 @@ theorem synth_basis (S : Submodule ℂ H) (b : Module.Basis ι ℂ S) (x : S) :
     synth (fun i => (b i:H)) (fun i => b.repr x i) = (x:H) := by
   unfold synth
   change (∑ i, b.repr x i • S.subtype (b i)) = S.subtype x
-  rw [← map_sum]
-  simp only [← map_smul,b.sum_repr]
+  simpa only [map_sum,map_smul] using congrArg (fun y : S => S.subtype y) (b.sum_repr x)
 
 variable (S : Submodule ℂ H) [S.HasOrthogonalProjection]
 
@@ -94,7 +93,7 @@ theorem lowerMatrix_exact (G : H →L[ℂ] H) (c : ℝ) (b : Module.Basis ι ℂ
   unfold lowerMatrix
   rw [matrixForm_sub_scaled,matrixForm_gram,matrixForm_gram,synth_corrected,synth_residual,
     ContinuousLinearMap.one_apply,inner_self_eq_norm_sq_to_K,Complex.sub_re]
-  simp only [energy,← Complex.ofReal_inv,← Complex.ofReal_mul,Complex.ofReal_re]
+  simp only [energy,← Complex.ofReal_inv,Complex.mul_re,Complex.ofReal_re,Complex.ofReal_im,Complex.ofReal_pow,mul_zero,sub_zero]
   ring
 
 theorem matrix_certificate (G : H →L[ℂ] H)
