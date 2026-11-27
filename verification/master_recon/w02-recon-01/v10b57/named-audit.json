@@ -1,0 +1,38 @@
+{
+  "run": 45981353937,
+  "job": 140445760068,
+  "source": "8ccffbef60ebb861176ed4793a41d1cc390511ba",
+  "accepted": [
+    {
+      "module": "V10B39c",
+      "blob": "b54d02f3b071d534ebcd4ef414c9480de8f9f0cd",
+      "names": [
+        "WeilDefect.MasterRecon.V10B39c.finite_projection_error",
+        "WeilDefect.MasterRecon.V10B39c.reflected_error",
+        "WeilDefect.MasterRecon.V10B39c.normalized_transfer"
+      ],
+      "output": [
+        "2026-11-27T10:23:13.0654827Z 'WeilDefect.MasterRecon.V10B39c.finite_projection_error' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T10:23:13.0658930Z 'WeilDefect.MasterRecon.V10B39c.reflected_error' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T10:23:13.0660021Z 'WeilDefect.MasterRecon.V10B39c.normalized_transfer' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "pass": "2026-11-27T10:23:13.1843139Z V10B39c: strict axiom audit PASS (3 declarations)"
+    },
+    {
+      "module": "V10B46c",
+      "blob": "ffe5f65c92fa4e448848684007c3b53fa17de1fd",
+      "names": [
+        "WeilDefect.MasterRecon.V10B46c.highCorrection_bound",
+        "WeilDefect.MasterRecon.V10B46c.row_identity_surjective",
+        "WeilDefect.MasterRecon.V10B46c.optimized_section"
+      ],
+      "output": [
+        "2026-11-27T10:23:38.0906515Z 'WeilDefect.MasterRecon.V10B46c.highCorrection_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T10:23:38.0907632Z 'WeilDefect.MasterRecon.V10B46c.row_identity_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T10:23:38.0908501Z 'WeilDefect.MasterRecon.V10B46c.optimized_section' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "pass": "2026-11-27T10:23:38.2173424Z V10B46c: strict axiom audit PASS (3 declarations)"
+    }
+  ],
+  "overall": "failure"
+}
