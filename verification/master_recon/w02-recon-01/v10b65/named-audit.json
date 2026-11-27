@@ -1,0 +1,24 @@
+{
+  "run": 46070287574,
+  "job": 140745324275,
+  "source": "395295a28dc4371235d6bd354657845b96976071",
+  "blob": "bbf37ac798ffb2d959d994fdfc3678e8b28a74d2",
+  "names": [
+    "WeilDefect.MasterRecon.V10B64a.bank_identity",
+    "WeilDefect.MasterRecon.V10B64a.retained_original_iff",
+    "WeilDefect.MasterRecon.V10B64a.retained_literal_iff"
+  ],
+  "output": [
+    "2026-11-27T21:31:04.9247233Z 'WeilDefect.MasterRecon.V10B64a.bank_identity' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T21:31:04.9248438Z 'WeilDefect.MasterRecon.V10B64a.retained_original_iff' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T21:31:04.9249597Z 'WeilDefect.MasterRecon.V10B64a.retained_literal_iff' depends on axioms: [propext, Classical.choice, Quot.sound]"
+  ],
+  "overall": "success",
+  "artifacts": [
+    {
+      "id": 15232393084,
+      "size": 9885,
+      "digest": "sha256:6f63113b69cea7d2c571968df332bb78fafdbf551ace7f79d0ccfa5af86e1cf3"
+    }
+  ]
+}
