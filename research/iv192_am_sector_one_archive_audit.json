@@ -1,0 +1,35 @@
+{
+  "scope": "Local ZIP CRC, digest, named receipt, exact block source and internal import verification; no fresh Lean compilation or reimport",
+  "artifact_id": 15158888019,
+  "run_id": 45905155636,
+  "sha256": "86649abdc0acd7de5c06fae8b80c7c7f99102911e65a0a6e2016f97c1df07126",
+  "archive_bytes": 570122,
+  "zip_entries": 328,
+  "block_interval": [
+    128,
+    256
+  ],
+  "row_interval": [
+    1024,
+    2048
+  ],
+  "modules": 81,
+  "hashes_verified": 324,
+  "named_receipts": 145,
+  "axiom_free_leaf_receipts": 128,
+  "internal_import_edges": 80,
+  "missing_internal_imports": 0,
+  "duplicate_names": 0,
+  "prohibited_source_tokens": 0,
+  "total_seconds": 1326.9294285350022,
+  "median_leaf_seconds": 18.966896957999893,
+  "median_leaf_rss_gib": 7.768089294433594,
+  "max_leaf_rss_gib": 7.8267974853515625,
+  "olean_bytes": 1200704,
+  "sector_object_sha256": "fc5ed28a35950c76a08bbccf979da3b44e315233700e2ad26df7f0e9925fe87e",
+  "exact_audit_sha256": "57109c0a6475c0890dcae3c9dd5f3e2b68deb1aeb38c947f9376d58fc4d2c52f",
+  "exact_audit_byte_identical_to": [
+    15152936393,
+    15154901590
+  ]
+}
