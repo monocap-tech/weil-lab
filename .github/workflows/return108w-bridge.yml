@@ -1,4 +1,4 @@
-name: RETURN109-B full divisor orbit indexing and energy
+name: RETURN109-B1 full divisor orbit energy (explicit coordinate reduction)
 on:
   push:
     branches: [research/return108s-kernel-core]
@@ -58,13 +58,13 @@ jobs:
               else:
                   assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
               print("PASS", q)
-          print("RETURN109-B strict axiom audit PASS 7/7")
+          print("RETURN109-B1 strict axiom audit PASS 7/7")
           PY
       - name: Preserve integration evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: return109b-integration
+          name: return109b1-integration
           path: |
             return108w-closure.json
             return108w-closure.log
