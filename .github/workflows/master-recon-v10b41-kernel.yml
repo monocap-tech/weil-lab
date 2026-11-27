@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 concurrency:
   group: master-recon-v10b41-kernel
-  cancel-in-progress: false
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
@@ -20,7 +20,7 @@ jobs:
         run: |
           mkdir -p recon-v10b41-evidence
           git rev-parse HEAD | tee recon-v10b41-evidence/head.txt
-          sha256sum WeilDefect/MasterRecon/V10B41{a,b,c,d}.lean lean-toolchain lakefile.lean | tee recon-v10b41-evidence/source.sha256
+          sha256sum WeilDefect/MasterRecon/V10B41{a,b,c,d}.lean lean-toolchain lakefile.toml | tee recon-v10b41-evidence/source.sha256
       - name: Install Elan
         run: |
           curl --retry 3 --retry-delay 2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
