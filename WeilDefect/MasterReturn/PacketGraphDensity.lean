@@ -6,6 +6,7 @@ full graph density simultaneously. No full-domain lift is assumed. -/
 namespace WeilDefect.MasterReturn.GraphDensity
 
 open Set
+open scoped NNReal
 variable {G X : Type*}
     [NormedAddCommGroup G] [NormedSpace ℂ G] [CompleteSpace G]
     [NormedAddCommGroup X] [NormedSpace ℂ X]
