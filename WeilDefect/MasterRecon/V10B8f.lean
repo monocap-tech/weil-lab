@@ -22,8 +22,9 @@ theorem digamma_analytic {z : ℂ} (hz : 0 < z.re) :
   have h : DifferentiableOn ℂ Complex.Gamma {w : ℂ | 0 < w.re} :=
     fun w hw => (Complex.differentiableAt_Gamma w (gamma_ne_neg_nat hw)).differentiableWithinAt
   have ha := h.analyticOnNhd ho z hz
-  simpa only [Complex.digamma_def,logDeriv_apply] using
-    ha.deriv.div ha (Complex.Gamma_ne_zero (gamma_ne_neg_nat hz))
+  rw [Complex.digamma_def]
+  change AnalyticAt ℂ (fun w => deriv Complex.Gamma w / Complex.Gamma w) z
+  exact ha.deriv.div ha (Complex.Gamma_ne_zero (gamma_ne_neg_nat hz))
 
 theorem gammaSymbol_continuous : Continuous gammaSymbol := by
   apply continuous_iff_continuousAt.mpr
@@ -39,7 +40,7 @@ theorem residual_continuous : Continuous residual :=
 
 def VerticalStirling : Prop :=
   ∀ v : ℝ, 1/2 ≤ |v| →
-    |(Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re - Real.log |v|| ≤ 5/v^2
+    |(Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re - Real.log (|v|) | ≤ 5/v^2
 
 theorem gammaSymbol_reparam (u : ℝ) :
     gammaSymbol u =
@@ -53,13 +54,13 @@ theorem weight_reparam (u : ℝ) :
     V08I.logWeight u = Real.log (2+2*|-Real.pi*u|) := by
   unfold V08I.logWeight
   congr 1
-  rw [abs_mul,abs_neg,abs_of_pos Real.pi_pos,abs_mul,abs_of_nonneg (by positivity : 0 ≤ 2*Real.pi)]
+  rw [abs_mul,abs_mul,abs_neg,abs_of_pos Real.pi_pos,abs_of_nonneg (by positivity : 0 ≤ 2*Real.pi)]
   ring
 
 theorem log_comparison (v : ℝ) (hv : 1/2 ≤ |v|) :
-    |Real.log |v| - Real.log (2+2*|v|)| ≤ Real.log 6 := by
+    |Real.log (|v|) - Real.log (2+2*|v|)| ≤ Real.log 6 := by
   have hp : 0 < |v| := by linarith
-  have h1 : Real.log |v| ≤ Real.log (2+2*|v|) :=
+  have h1 : Real.log (|v|) ≤ Real.log (2+2*|v|) :=
     Real.log_le_log hp (by linarith)
   have h2 : Real.log (2+2*|v|) ≤ Real.log (6*|v|) :=
     Real.log_le_log (by positivity) (by linarith)
@@ -82,12 +83,12 @@ theorem tail_residual (hs : VerticalStirling) (u : ℝ)
   change |(Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re - Real.log Real.pi -
     Real.log (2+2*|v|)| ≤ _
   calc
-    _ = |((Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re - Real.log |v|) +
-        (-Real.log Real.pi + (Real.log |v| - Real.log (2+2*|v|)))| := by congr 1; ring
-    _ ≤ |(Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re - Real.log |v|| +
-        |-Real.log Real.pi + (Real.log |v| - Real.log (2+2*|v|))| := abs_add_le _ _
+    _ = |((Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re - Real.log (|v|)) +
+        (-Real.log Real.pi + (Real.log (|v|) - Real.log (2+2*|v|)))| := by congr 1; ring
+    _ ≤ |(Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re - Real.log (|v|) | +
+        |-Real.log Real.pi + (Real.log (|v|) - Real.log (2+2*|v|))| := abs_add_le _ _
     _ ≤ _ := by
-      have h := abs_add_le (-Real.log Real.pi) (Real.log |v| - Real.log (2+2*|v|))
+      have h := abs_add_le (-Real.log Real.pi) (Real.log (|v|) - Real.log (2+2*|v|))
       rw [abs_neg] at h
       linarith
 
