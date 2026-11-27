@@ -64,6 +64,7 @@ theorem reflected_power_integral (z : ℝ) (hz : 0 < z) (j : ℕ) :
   have hden : (j:ℂ)+1 ≠ 0 := by exact_mod_cast (show (j:ℝ)+1 ≠ 0 by positivity)
   have hr : (z:ℂ)^(j+1)*(j.factorial:ℂ)/(((j:ℂ)+1)*(j.factorial:ℂ)) =
       (z:ℂ)^(j+1)/((j:ℂ)+1) := by field_simp [hf,hden]
+  simp only [mul_one] at h
   rw [hr] at h
   have he : (fun s : ℝ => ((z:ℂ)-(s:ℂ))^j) =
       fun s => (( (z-s)^j : ℝ):ℂ) := by
