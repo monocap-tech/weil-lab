@@ -61,7 +61,7 @@ theorem arch_integral (t : ℝ) (hd : Measurable residual)
   rw [ContinuousLinearMap.add_apply,ContinuousLinearMap.one_apply,inner_add_left,
     inner_self_eq_norm_sq_to_K,correction_integral,
     V08I.logCarrier_energy]
-  change ((∫ u, logWeight u * ‖F u‖^2):ℝ):ℂ + _ = _
+  change (((∫ u, logWeight u * ‖F u‖^2):ℝ):ℂ) + _ = _
   rw [← integral_ofReal,← integral_add]
   · apply integral_congr_ae
     filter_upwards with u
@@ -103,8 +103,7 @@ theorem arch_literal (t : ℝ) (hd : Measurable residual)
     · simp only [Complex.mul_re,Complex.conj_re,Complex.conj_im,Complex.ofReal_re,
         Complex.sq_norm,Complex.normSq_apply]
       ring
-    · simp [Complex.mul_im]
-      ring
+    · simp [Complex.mul_im] <;> ring
   rw [h,mul_comm]
 
 end WeilDefect.MasterRecon.V10B8g
