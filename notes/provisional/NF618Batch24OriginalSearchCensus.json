@@ -1,0 +1,67 @@
+{
+  "schema": "NF618-batch24-original-search-v1",
+  "scope": "Read-only recovery search and byte discrepancy analysis; no native batch25-39 dispatch",
+  "original": {
+    "filename": "NF618CertifiedSlotLedgerBatch24.json",
+    "expected_sha256": "40e54496bec49119e252079345147a97ec25db8bb54a640647dc9c9d2b8fd24d",
+    "found": false
+  },
+  "searched": {
+    "library": {
+      "exact_and_alternate_title": [
+        "NF618CertifiedSlotLedgerBatch24.json",
+        "CertifiedSlotLedgerBatch24",
+        "Batch24",
+        "NF618CertifiedSlotLedger"
+      ],
+      "result": "No original Batch24 ledger; exact Batch20 and Batch16 ledgers present",
+      "global_size_census": "All files between 910000 and 930000 bytes: only Batch20 ledger copies and unrelated images/documents; original size itself was not recorded",
+      "time_bounded_zip_inventory": "Nine ZIPs created 2026-11-27 01:45–03:55 UTC; no NF618 ledger/bank wrapper except separately recovered bank created earlier",
+      "content_hash_search": "No original hash text match"
+    },
+    "github": {
+      "repository": "monocap-tech/weil-lab",
+      "nf618_branch_count": 25,
+      "exact_path_history": "No commits for notes/provisional/NF618CertifiedSlotLedgerBatch24.json across 25 NF618 refs",
+      "branch_directory_inventory": "No original ledger in these refs; admission branch contains only explicitly unadmitted reconstruction",
+      "global_code_search": "No exact filename or original SHA-256 result",
+      "producer_runs": [
+        {
+          "run": 45926375286,
+          "artifact_count": 7,
+          "ledger_artifact": false
+        },
+        {
+          "run": 45926442425,
+          "artifact_count": 8,
+          "ledger_artifact": false
+        }
+      ],
+      "timing_archives": "No ledger members in either timing ZIP",
+      "job_logs": "Both producer job log contents searched for ledger/admission/filename; no matching lines"
+    },
+    "chatgpt": {
+      "personal_context": "No original file reference, attachment link, or creation code returned",
+      "pages": "No matching NF618 Page",
+      "conversation_browser": "403 Forbidden: calls to chatgpt.com not allowed in this browser; no originating attachment inspected"
+    },
+    "google_drive": {
+      "status": "Connector not connected; contents not searchable"
+    }
+  },
+  "discrepancy": {
+    "historical_calibration": "Batch16 + admission batches17–20 reproduces Batch20 byte-for-byte, 912944 bytes",
+    "candidate": "Batch20 + admission batches21–24 yields 917631 bytes and SHA-256 7910b438110d0ecb1a2ab8caf14646d0ac62440c4893dc80bbcce077bf51ddcf; 448 unique assignments; certified totals 6097/29336",
+    "original_expected": "40e54496bec49119e252079345147a97ec25db8bb54a640647dc9c9d2b8fd24d",
+    "tested_additional_variants": "576 independent permutations of group ordering and archive insertion ordering; zero hash matches",
+    "conclusion": "Exact differing bytes cannot be identified from a digest alone; original may differ in metadata, slot state, serialization, or receipt may be wrong. None of these hypotheses has been established.",
+    "admitted": false
+  },
+  "state": "CUSTODY HOLD; exact original unavailable through currently connected stores; request original bytes or originating conversation attachment; no mathematical progression",
+  "remaining_recovery_routes": [
+    "Original attachment from originating ChatGPT conversation if supplied",
+    "Additional connected storage or export containing the exact file",
+    "Independent reconstruction that actually matches original SHA-256"
+  ],
+  "source_commit": "4dce12e07bf6aba1a09cb7944376830939f24197"
+}
