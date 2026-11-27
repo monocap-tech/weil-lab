@@ -1,0 +1,63 @@
+{
+  "run": 45952210315,
+  "job": 140350449839,
+  "source": "786a8683898476ece391460e9b2767fcdc64b07a",
+  "accepted": [
+    {
+      "module": "V10B46b",
+      "blob": "03b88d44ae239869cbb319a37493366388831d9d",
+      "names": [
+        "WeilDefect.MasterRecon.V10B46b.base_norm",
+        "WeilDefect.MasterRecon.V10B46b.base_margin",
+        "WeilDefect.MasterRecon.V10B46b.reserve_nonneg",
+        "WeilDefect.MasterRecon.V10B46b.total_reserve",
+        "WeilDefect.MasterRecon.V10B46b.optimized_surjective",
+        "WeilDefect.MasterRecon.V10B46b.higher_mode_error"
+      ],
+      "output": [
+        "2026-11-27T06:32:03.9190101Z 'WeilDefect.MasterRecon.V10B46b.base_norm' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T06:32:03.9190876Z 'WeilDefect.MasterRecon.V10B46b.base_margin' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T06:32:03.9192064Z 'WeilDefect.MasterRecon.V10B46b.reserve_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T06:32:03.9192912Z 'WeilDefect.MasterRecon.V10B46b.total_reserve' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T06:32:03.9193741Z 'WeilDefect.MasterRecon.V10B46b.optimized_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T06:32:03.9194536Z 'WeilDefect.MasterRecon.V10B46b.higher_mode_error' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "pass": "2026-11-27T06:32:04.0458744Z V10B46b: strict axiom audit PASS (6 declarations)"
+    },
+    {
+      "module": "V10B39b",
+      "blob": "bbbc4016c27a25ab1949d9a740f4b66a3ffd4402",
+      "names": [
+        "WeilDefect.MasterRecon.V10B39b.finite_pair",
+        "WeilDefect.MasterRecon.V10B39b.project_reproduces",
+        "WeilDefect.MasterRecon.V10B39b.project_sub",
+        "WeilDefect.MasterRecon.V10B39b.project_bound"
+      ],
+      "output": [
+        "2026-11-27T06:32:09.5007414Z 'WeilDefect.MasterRecon.V10B39b.finite_pair' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T06:32:09.5008368Z 'WeilDefect.MasterRecon.V10B39b.project_reproduces' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T06:32:09.5009233Z 'WeilDefect.MasterRecon.V10B39b.project_sub' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T06:32:09.5010025Z 'WeilDefect.MasterRecon.V10B39b.project_bound' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "pass": "2026-11-27T06:32:09.6125751Z V10B39b: strict axiom audit PASS (4 declarations)"
+    },
+    {
+      "module": "V10B50a",
+      "blob": "00e659470e5ca6e10f5f3c5218747d7e41befe39",
+      "names": [
+        "WeilDefect.MasterRecon.V10B50a.moment_literal",
+        "WeilDefect.MasterRecon.V10B50a.eval_literal",
+        "WeilDefect.MasterRecon.V10B50a.pole_literal",
+        "WeilDefect.MasterRecon.V10B50a.adjoint_span_iff"
+      ],
+      "output": [
+        "2026-11-27T06:34:33.1419141Z 'WeilDefect.MasterRecon.V10B50a.moment_literal' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T06:34:33.1420365Z 'WeilDefect.MasterRecon.V10B50a.eval_literal' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T06:34:33.1421311Z 'WeilDefect.MasterRecon.V10B50a.pole_literal' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T06:34:33.1422300Z 'WeilDefect.MasterRecon.V10B50a.adjoint_span_iff' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "pass": "2026-11-27T06:34:33.3565486Z V10B50a: strict axiom audit PASS (4 declarations)"
+    }
+  ],
+  "overall": "cancelled"
+}
