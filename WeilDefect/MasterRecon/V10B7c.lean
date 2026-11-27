@@ -146,7 +146,7 @@ theorem floor_split (s : ℂ) (hs : 1 < s.re) :
   have heq := integral_sub (hJ.add hX) hP
   change (∫ x in Ioi (1:ℝ), ((x:ℂ)^(-(s+1))*remainder x+(x:ℂ)^(-s))-1/2*(x:ℂ)^(-(s+1))) = _ at heq
   change (∫ x in Ioi (1:ℝ), (⌊x⌋₊:ℂ)*(x:ℂ)^(-(s+1))) =
-    (∫ x in Ioi (1:ℝ), ((fun x : ℝ => (x:ℂ)^(-(s+1))*remainder x) + fun x => (x:ℂ)^(-s)) x) -
+    (∫ x in Ioi (1:ℝ), ((fun x : ℝ => (x:ℂ)^(-(s+1))*remainder x) + fun x : ℝ => (x:ℂ)^(-s)) x) -
     (∫ x in Ioi (1:ℝ), 1/2*(x:ℂ)^(-(s+1)))
   rw [← heq]
   apply setIntegral_congr_fun measurableSet_Ioi
