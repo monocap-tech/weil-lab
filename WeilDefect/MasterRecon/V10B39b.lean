@@ -59,7 +59,7 @@ theorem project_sub (p : ℕ → ℝ → ℝ) (d : ℕ → ℝ)
   have he : (fun t => (f t-g t)*p j t) = fun t => f t*p j t-g t*p j t := by
     funext t
     ring
-  have hi := intervalIntegral.integral_sub ((hf.mul (hp j)).intervalIntegrable 0 1)
+  have hi := intervalIntegral.integral_sub (μ := volume) ((hf.mul (hp j)).intervalIntegrable 0 1)
     ((hg.mul (hp j)).intervalIntegrable 0 1)
   change (∫ t in (0:ℝ)..1, f t*p j t-g t*p j t) = _ at hi
   rw [he,hi]
