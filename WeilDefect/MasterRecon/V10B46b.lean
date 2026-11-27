@@ -17,7 +17,7 @@ noncomputable def reserve (j : Fin 16) : ℝ := (highMass j:ℝ)/256
 theorem base_norm (i j : Fin 16) :
     ‖base i j‖ = ((v j i.val).natAbs:ℝ) := by
   unfold base
-  rw [Complex.norm_intCast,Int.norm_eq_abs,← Int.cast_abs,Int.abs_eq_natAbs] <;> norm_cast
+  rw [Complex.norm_intCast,← Int.cast_abs,Int.abs_eq_natAbs] <;> norm_cast
 
 theorem base_margin (i : Fin 16) :
     (denom:ℝ)+(∑ j ∈ Finset.univ.erase i, ‖base i j‖) < ‖base i i‖ := by
@@ -58,9 +58,11 @@ theorem higher_mode_error (col : Fin 16) (r : ℕ → ℝ)
     _ ≤ ∑ k ∈ Finset.range 72, ((v col (17+2*k)).natAbs:ℝ)*(1/256) := by
       apply Finset.sum_le_sum
       intro k hk
-      rw [abs_mul,← Int.cast_abs,Int.abs_eq_natAbs]
-      push_cast
-      exact mul_le_mul_of_nonneg_left (hr k (Finset.mem_range.mp hk)) (by positivity)
+      rw [abs_mul]
+      have hh : |(v col (17+2*k):ℝ)| = ((v col (17+2*k)).natAbs:ℝ) := by
+        rw [← Int.cast_abs,Int.abs_eq_natAbs] <;> norm_cast
+      rw [hh]
+      exact mul_le_mul_of_nonneg_left (hr k (Finset.mem_range.mp hk)) (Nat.cast_nonneg _)
     _ = reserve col := by
       unfold reserve highMass
       push_cast
