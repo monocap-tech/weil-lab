@@ -36,7 +36,8 @@ theorem restricted_split (L : ℝ) (p : ℝ → ℂ) (x r : ℝ)
         (p x-zeroExtend L p (x+r)))-
       (h r:ℂ)*(zeroExtend L p (x-r)+zeroExtend L p (x+r)) := by
   unfold physicalTerm h
-  rw [zeroExtend,indicator_of_mem (show x ∈ Icc 0 L from ⟨hx.1.le,hx.2.le⟩)]
+  have hx' : zeroExtend L p x = p x := indicator_of_mem ⟨hx.1.le,hx.2.le⟩ _
+  rw [hx']
   push_cast
   field_simp [show (r:ℂ) ≠ 0 by exact_mod_cast hr.ne']
   <;> ring
@@ -62,7 +63,7 @@ theorem far_action (L : ℝ) (p : ℝ → ℂ) (x r : ℝ)
   rw [outside_shift_left L p x r hx (by linarith [hx.2]),
     outside_shift_right L p x r hx (by linarith [hx.1])]
   simp only [add_zero,mul_zero,sub_zero]
-  exact congrArg ((b r:ℂ)*·) (indicator_of_mem ⟨hx.1.le,hx.2.le⟩ _)
+  rw [zeroExtend,indicator_of_mem (show x ∈ Icc 0 L from ⟨hx.1.le,hx.2.le⟩)]
 
 theorem log_den_deriv (r : ℝ) (hr : 0 < r) :
     HasDerivAt (fun s => Real.log (den s)) (b r) r := by
