@@ -1,5 +1,6 @@
 import Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus
 import Mathlib.Analysis.Calculus.Deriv.Pow
+import Mathlib.Analysis.Calculus.Deriv.Mul
 
 /-! V10B36a: universal centered beta identities obtained by polynomial
 reflection and the fundamental theorem of calculus. No spherical series
@@ -49,7 +50,7 @@ theorem B_boundary (j m : ℕ) :
       ((j:ℝ)+1)*(y x^(2*(m+1))*w x^j)
   have hy (x : ℝ) : HasDerivAt y 2 x := by
     convert ((hasDerivAt_id x).const_mul 2).sub_const 1 using 1
-    norm_num [y]
+    all_goals norm_num [y]
   have hw (x : ℝ) : HasDerivAt w (-y x) x := by
     have h := (hasDerivAt_id x).mul ((hasDerivAt_const x (1:ℝ)).sub (hasDerivAt_id x))
     convert h using 1 <;> simp [w,y] <;> ring
@@ -81,7 +82,7 @@ theorem B_m_step (j m : ℕ) :
   have h := B_split j m
   have h' := B_boundary j m
   have h'' := congrArg (fun x : ℝ => (2*(m:ℝ)+1)*x) h
-  dsimp at h''
+  try dsimp at h''
   linear_combination h'' - 2*h'
 
 theorem B_j_step (j : ℕ) :
@@ -90,7 +91,7 @@ theorem B_j_step (j : ℕ) :
   have h' := B_boundary j 0
   norm_num at h'
   have h'' := congrArg (fun x : ℝ => ((j:ℝ)+1)*x) h
-  dsimp at h''
+  try dsimp at h''
   linear_combination h'' + h'
 
 theorem B_zero : B 0 0 = 1 := by simp [B]
