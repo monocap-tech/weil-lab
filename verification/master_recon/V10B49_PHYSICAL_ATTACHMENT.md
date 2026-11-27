@@ -14,3 +14,8 @@ Scaled coordinate map: rows 0..14 are 2 D (2i+1) l_i; final row is D/I_15 times 
 
 The above is mathematical attachment specification, not a compiled theorem. Remaining: native literal moment/pole integral equalities for all carrier elements, affine substitution and finite projection identities, trial carrier existence, invertible coordinate transformation, orthogonal-complement equivalence for V10B17b.retained, native optimized matrix surjectivity. Original V10B19 archive unavailable; energy and residual attachment separate. No adoption.
 Runs 45927665008 and 45928064611 in progress, 45928684686 pending at initial check; no workflow modified or added in V10B49.
+
+## Native reconciliation at end of V10B49
+
+Run 45928064611 completed failure overall. New strict audits: V10B45a 5, V10B34b 2, V10B36a 6, V10B37a 4, total 17. Conservative certified inventory 581/813. The repository Python replay reproduced the historical derived SHA256 and both tight dominance budgets; coarse high row margin 2.960027988079781.
+V10B38a only failed on redundant tactic and multiplication association; repaired commit eb4fc0f072ae0428db27e9c9c6d09a1f624e9843. V10B39b only failed on unresolved measure in project_sub; repaired commit 7911d214a1c9b324afc90514113ed2d71242b3c7. Repairs uncompiled; focused run 45928684686 is active on earlier source and was not interrupted. Arithmetic run 45927665008 also active at latest check. No additional theorem candidates.
