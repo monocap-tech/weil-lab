@@ -85,8 +85,8 @@ theorem cell_energy_bound (F : ℝ → ℝ) (hF : Continuous F)
   change (∫ y in a..a+1, Real.log (|a|+3) * F y) ≤
     ∫ y in a..a+1, 2 * (V10B3a.weight y * F y) at hm
   rw [intervalIntegral.integral_const_mul, intervalIntegral.integral_const_mul] at hm
-  rw [intervalIntegral.integral_of_le ha] at hm
-  exact hm
+  rw [intervalIntegral.integral_of_le ha, intervalIntegral.integral_of_le ha] at hm
+  simpa only [heightCell,intervalIntegral.integral_of_le ha] using hm
 
 theorem finite_row_budget (J : Finset ℤ) (F : ℝ → ℝ)
     (hF : Continuous F) (h0 : ∀ y, 0 ≤ F y)
