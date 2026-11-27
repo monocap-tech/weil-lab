@@ -1,0 +1,77 @@
+{
+  "status": "floating-point diagnostic only",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "rows": [
+    {
+      "coefficient_sha256": "ed8e9250a81b1ec46f32035c4621499c86017831ce5aa00a4df586d19600d611",
+      "n": 665,
+      "collar_per_side": 64,
+      "interior": "step",
+      "cutoff": 38842.045454545456,
+      "finite_band_squared": 0.0005663324994561184,
+      "midpoint_physical_bound": 0.0016998202510113253,
+      "crosscheck_abs": 2.7430314963883262e-17
+    },
+    {
+      "coefficient_sha256": "fe7f9bf76bd1cbb393c62ba6fe4294c2f0e2618e674bb0746dc748b7ec416a09",
+      "n": 665,
+      "collar_per_side": 64,
+      "interior": "hat",
+      "cutoff": 38842.045454545456,
+      "finite_band_squared": 0.0024034038468705153,
+      "midpoint_physical_bound": 0.0016998202510113253,
+      "crosscheck_abs": 4.150325916274511e-16
+    },
+    {
+      "coefficient_sha256": "76946aa296f5590174e5e5c7fc274763c790c9618ddfa9579d9df9ecab131b0b",
+      "n": 1330,
+      "collar_per_side": 128,
+      "interior": "hat",
+      "cutoff": 77684.09090909091,
+      "finite_band_squared": 0.0014047355980128552,
+      "midpoint_physical_bound": 0.0008499101255056627,
+      "crosscheck_abs": 1.700029006457271e-16
+    },
+    {
+      "coefficient_sha256": "68c36d8790c888d975c87635cc62c4c68eeee065ee52c4e7fa44e26fda61f924",
+      "n": 1330,
+      "collar_per_side": 256,
+      "interior": "hat",
+      "cutoff": 77684.09090909091,
+      "finite_band_squared": 0.0011176714770538196,
+      "midpoint_physical_bound": 0.0008499101255056627,
+      "crosscheck_abs": 1.5851035761738075e-16
+    },
+    {
+      "coefficient_sha256": "5468d991d9087c61d6da0b976a19e1ed2122e099bbe4801fa007a068279e50c1",
+      "n": 1330,
+      "collar_per_side": 128,
+      "interior": "step",
+      "cutoff": 77684.09090909091,
+      "finite_band_squared": 0.0004610513745969705,
+      "midpoint_physical_bound": 0.0008499101255056627,
+      "crosscheck_abs": 2.3787395664331967e-16
+    },
+    {
+      "coefficient_sha256": "88bdfa91a0b5ea335ac0cb6e56a5d8eea9affdce2e0fc32e7134bd08e06e58c0",
+      "n": 1330,
+      "collar_per_side": 256,
+      "interior": "step",
+      "cutoff": 77684.09090909091,
+      "finite_band_squared": 0.0001739850094004714,
+      "midpoint_physical_bound": 0.0008499101255056627,
+      "crosscheck_abs": 2.254327367140485e-16
+    },
+    {
+      "coefficient_sha256": "a7f5560c1d706525c920bf5d590504db95922e052409e34a006e65a453423227",
+      "n": 2660,
+      "collar_per_side": 256,
+      "interior": "step",
+      "cutoff": 155368.18181818182,
+      "finite_band_squared": 0.00041728843351327224,
+      "midpoint_physical_bound": 0.00042495506275283133,
+      "crosscheck_abs": 9.749688036075899e-16
+    }
+  ]
+}
