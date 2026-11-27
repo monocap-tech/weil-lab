@@ -1,4 +1,4 @@
-name: RETURN108-Y actual aperture-natural carrier inclusions
+name: RETURN108-Y1 aperture naturality (kernel reduction repair)
 on:
   push:
     branches: [research/return108s-kernel-core]
