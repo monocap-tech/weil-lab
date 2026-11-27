@@ -1,0 +1,11 @@
+{
+  "verify_sha256": "e96e7e7c3558093eb37b0b65105de7661fd2dba30526be76cb3581e49ec7fa07",
+  "lift_sha256": "bcbed394fa9b4abe3d2c01651b96a31d0705278082508926684fbacf9f71f08b",
+  "proposal_sha256": "6c0823d86a909a215dcf5d89dde1a17b99c47db147173bb0c5d92e8f15a271d0",
+  "witness_sha256": "550fd6f6e01268b96233bf1890a0ad0fae84cfb94415d023517f148b29dead9a",
+  "gain_lower": "57005/100000",
+  "corrected_trial_lower": "4264/10000",
+  "inverse_penalty_upper": "825/10000",
+  "strict_schur_witness_lower": "3439/10000",
+  "scope": "exact threshold comparison of numerical interval bounds; one retained even rational direction only"
+}

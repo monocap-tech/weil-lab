@@ -1,0 +1,58 @@
+{
+  "parent": "227f281a460948d9234df90e61969fe0eeab2abc",
+  "archive": {
+    "bytes": 11332,
+    "sha256": "75eb811264a9c38062bbc6f15867f2b7931fadc16de8fb5244cc5344729ad2c4",
+    "git_blob": "524300b2ab49782dab7c93cb3a997bda4b10406f",
+    "parts": [
+      {
+        "path": "iv262_execution.part00",
+        "bytes": 3000,
+        "git_blob": "fd4f929a60a82e19019bd6037ef8f725f3cf4d74",
+        "sha256": "0ae4d61cfb3f644c701e8572b54f555a32970426c10e90553ac0db8d852abaf5"
+      },
+      {
+        "path": "iv262_execution.part01",
+        "bytes": 3000,
+        "git_blob": "51699a2f3d3b7793300ae93cad81c7760579caa5",
+        "sha256": "b078ade1725e5a093cde8a7985706803d02d2b2189403740effd73a3b6957f86"
+      },
+      {
+        "path": "iv262_execution.part02",
+        "bytes": 3000,
+        "git_blob": "2bc8534b5379b28fbe885d0106665a91a27f8709",
+        "sha256": "7b9a7c861f840f2336f13d7ad7ebd4c461fbd8a90ef8d0beb87767d781bee568"
+      },
+      {
+        "path": "iv262_execution.part03",
+        "bytes": 1500,
+        "git_blob": "0a9ef30dc01e75ba7d7b18c329a9066be749b420",
+        "sha256": "c4abdba4b99bfe59914baf49f8ff1abfa2926d2e2b96ef01f0a0c4dbcf2b959d"
+      },
+      {
+        "path": "iv262_execution.part04",
+        "bytes": 832,
+        "git_blob": "00b9f4af57066f3e8dc847a648feb587e26118ec",
+        "sha256": "762039ef3f454316abce4b237dd8a4c862de1f3ce8181e37e8312f9b6663f1b8"
+      }
+    ]
+  },
+  "internal_manifest": "iv262_manifest.json",
+  "dependencies": {
+    "iv254_intermediate_py": "d2671f69193ef70515546a91fbb95cb6166cd2b7",
+    "iv256_even_receipt": "d129e96bd82e57260c1280d8f0ea76d3d1e5600b",
+    "iv256_factor_sha256": "aff3ad547832c8985e975577e70fbc114346b53c60c469bdabaa71751826a254",
+    "iv260_joint_checkpoint_sha256": "a5912611d98db8ea0c50a000e4497d5960257a567d55bfdabc9512a743a811a0",
+    "iv261_mixed_py_git_blob": "bd2b437dc47bca1d266fdaa643d76a04d815f685",
+    "iv261_witness_audit_git_blob": "b727a123ba2ea21826e0a3d77df214e7ee444053",
+    "iv261_signed_channels_sha256": "690b55721ac715651c42b5762a838c60d92870488dd0a987a2cc4751c3ff1573",
+    "iv261_mixed_checkpoint_sha256": "3406a5aca9f4f23af962484b3f5123f0b0e06e12e0c451a32ea33f3b7bfc6393",
+    "iv261_inverse_matrices_sha256": "17a47731f466e099e58804466f18f164f1511e27200d025343e62f1aaa16711d"
+  },
+  "regenerable_checkpoint": {
+    "path": "iv262_proposal.npz",
+    "bytes": 13761800,
+    "sha256": "6c0823d86a909a215dcf5d89dde1a17b99c47db147173bb0c5d92e8f15a271d0"
+  },
+  "transfer_rejections": "Initial whole binary and two shorter segment attempts failed local-expected Git blob identity. No failed byte sequence attached to the branch. All final segments matched at creation."
+}
