@@ -24,23 +24,33 @@ def denominatorReserve : ℚ := dError/dLower*loadNorm
 
 set_option maxRecDepth 10000 in
 set_option maxHeartbeats 0 in
-theorem positive_denominator : 0<dLower ∧ dLower≤D-dError := by decide
+theorem positive_denominator : 0<dLower ∧ dLower≤D-dError := by
+  norm_num [projectionReserve, denominatorReserve, comparison, loadNorm, frozen, c, dLower, D,
+    dError, lowNorm, eps, aFormula, aTerm, a, aBank, scale, Finset.sum_range_succ, Nat.factorial]
 
 set_option maxRecDepth 10000 in
 set_option maxHeartbeats 0 in
-theorem projection_reserve : projectionReserve < 1/(10:ℚ)^100 := by decide
+theorem projection_reserve : projectionReserve < 1/(10:ℚ)^100 := by
+  norm_num [projectionReserve, denominatorReserve, comparison, loadNorm, frozen, c, dLower, D,
+    dError, lowNorm, eps, aFormula, aTerm, a, aBank, scale, Finset.sum_range_succ, Nat.factorial]
 
 set_option maxRecDepth 10000 in
 set_option maxHeartbeats 0 in
-theorem denominator_reserve : denominatorReserve < 1/(10:ℚ)^97 := by decide
+theorem denominator_reserve : denominatorReserve < 1/(10:ℚ)^97 := by
+  norm_num [projectionReserve, denominatorReserve, comparison, loadNorm, frozen, c, dLower, D,
+    dError, lowNorm, eps, aFormula, aTerm, a, aBank, scale, Finset.sum_range_succ, Nat.factorial]
 
 set_option maxRecDepth 10000 in
 set_option maxHeartbeats 0 in
-theorem budget16 : projectionReserve+denominatorReserve+comparison 16 < 1/(10:ℚ)^30 := by decide
+theorem budget16 : projectionReserve+denominatorReserve+comparison 16 < 1/(10:ℚ)^30 := by
+  norm_num [projectionReserve, denominatorReserve, comparison, loadNorm, frozen, c, dLower, D,
+    dError, lowNorm, eps, aFormula, aTerm, a, aBank, scale, Finset.sum_range_succ, Nat.factorial]
 
 set_option maxRecDepth 10000 in
 set_option maxHeartbeats 0 in
-theorem budget17 : projectionReserve+denominatorReserve+comparison 17 < 1/(10:ℚ)^30 := by decide
+theorem budget17 : projectionReserve+denominatorReserve+comparison 17 < 1/(10:ℚ)^30 := by
+  norm_num [projectionReserve, denominatorReserve, comparison, loadNorm, frozen, c, dLower, D,
+    dError, lowNorm, eps, aFormula, aTerm, a, aBank, scale, Finset.sum_range_succ, Nat.factorial]
 
 end WeilDefect.MasterRecon.V10B41d
 
