@@ -1,0 +1,5 @@
+'WeilDefect.nf618HybridConj_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WeilDefect.nf618HybridPhase_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WeilDefect.nf618HybridEndpoint_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WeilDefect.nf618HybridCache_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'WeilDefect.nf618HybridTable_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
