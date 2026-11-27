@@ -14,7 +14,7 @@ open V10B8d (shift)
 open V10B21c (actionTerm numerator denominator)
 
 noncomputable def U : FullL2 →L[ℂ] FullL2 :=
-  (Lp.fourierTransformₗᵢ ℝ ℂ).toContinuousLinearMap
+  (Lp.fourierTransformₗᵢ ℝ ℂ).toContinuousLinearEquiv.toContinuousLinearMap
 
 noncomputable def phase (r u : ℝ) : ℂ :=
   Complex.exp (((2*Real.pi*r*u:ℝ):ℂ)*I)
