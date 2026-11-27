@@ -93,8 +93,8 @@ theorem lowerMatrix_exact (G : H →L[ℂ] H) (c : ℝ) (b : Module.Basis ι ℂ
   unfold lowerMatrix
   rw [matrixForm_sub_scaled,matrixForm_gram,matrixForm_gram,synth_corrected,synth_residual,
     ContinuousLinearMap.one_apply,inner_self_eq_norm_sq_to_K,Complex.sub_re]
-  simp only [energy,← Complex.ofReal_inv,← Complex.ofReal_pow,Complex.mul_re,Complex.ofReal_re,Complex.ofReal_im,mul_zero,sub_zero]
-  ring
+  simp only [energy,← Complex.ofReal_inv,Complex.mul_re,Complex.ofReal_re,Complex.ofReal_im,mul_zero,sub_zero]
+  rw [← Complex.ofReal_pow,Complex.ofReal_re]
 
 theorem matrix_certificate (G : H →L[ℂ] H)
     (hG : ∀ x y, inner ℂ (G x) y = inner ℂ x (G y))
