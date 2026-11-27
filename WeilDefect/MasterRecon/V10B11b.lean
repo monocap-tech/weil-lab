@@ -98,10 +98,9 @@ theorem response_pairing (G : H →L[ℂ] H) (c : ℝ) (hc : 0 < c)
 theorem energy_add (G : H →L[ℂ] H)
     (hG : ∀ x y, inner ℂ (G x) y = inner ℂ x (G y)) (x y : H) :
     energy G (x+y) = energy G x + energy G y + 2*(inner ℂ (G x) y).re := by
-  have h := inner_conj_symm (𝕜 := ℂ) (G x) y
-  rw [hG] at h
-  have he := congrArg Complex.re h
-  rw [Complex.conj_re,← hG y x] at he
+  have he : (inner ℂ (G y) x).re = (inner ℂ (G x) y).re := by
+    rw [hG y x]
+    exact inner_re_symm (𝕜 := ℂ) y (G x)
   unfold energy
   rw [map_add,inner_add_left,inner_add_right,inner_add_right]
   simp only [Complex.add_re]
@@ -116,11 +115,9 @@ theorem schur_completion (G : H →L[ℂ] H)
       energy G ((y:H)+(response S G c hc htail x:H)) := by
   rw [energy_add G hG,energy_add G hG]
   have h₁ := response_pairing S G c hc htail x y
-  have h₂ := inner_conj_symm (𝕜 := ℂ) (G (response S G c hc htail x:H)) (y:H)
-  rw [hG] at h₂
-  have he := congrArg Complex.re h₂
-  rw [Complex.conj_re,← hG] at he
-  rw [h₁] at he
+  have he : (inner ℂ (G (y:H)) (response S G c hc htail x:H)).re =
+      (inner ℂ (G (x:H)) (y:H)).re := by
+    rw [hG (y:H) (response S G c hc htail x:H),inner_re_symm (𝕜 := ℂ) (y:H),h₁]
   linarith
 
 theorem positivity_iff_schur (G : H →L[ℂ] H)
