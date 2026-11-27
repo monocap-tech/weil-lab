@@ -67,7 +67,11 @@ theorem band_error (t R : ℝ) (ht : 0 ≤ t) (hR : 0 ≤ R) (n : ℕ)
     simp only [ContinuousLinearMap.sum_apply,ContinuousMap.sum_apply,
       ContinuousLinearMap.smulRight_apply,ContinuousMap.smul_apply,smul_eq_mul]
     simp only [moment,ContinuousLinearMap.comp_apply,V08E.moment_apply]
-    conv_rhs => enter [1,x]; rw [V08D.kernelPolynomial_separated,Finset.sum_mul]
+    have hfun : (fun x : ℝ => V08D.kernelPolynomial n (u:ℝ) x*f x) =
+        fun x => ∑ j ∈ Finset.range n, ((-Complex.I*((u:ℝ):ℂ))^j/(j.factorial:ℂ)) * (x:ℂ)^j*f x := by
+      funext x
+      rw [V08D.kernelPolynomial_separated,Finset.sum_mul]
+    rw [hfun]
     rw [integral_finset_sum]
     · apply Finset.sum_congr rfl
       intro j hj
