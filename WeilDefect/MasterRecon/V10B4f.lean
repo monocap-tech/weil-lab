@@ -139,7 +139,7 @@ theorem carrier_multiplier_energy (t : ℝ) (ht : 0 ≤ t) (j : ℕ) :
     funext (mellin_moment_fourier t ht _ (V08I.physicalInclusion_support t g) j s)
   rw [he]
   exact (hall s hs (f : ℝ → ℂ) hf).trans
-    (mul_le_mul_left' (carrier_fourier_energy t g) D)
+    (mul_le_mul_of_nonneg_left (carrier_fourier_energy t g) hD)
 
 end WeilDefect.MasterRecon.V10B4f
 
