@@ -1,4 +1,4 @@
-name: RETURN108-X quantitative continuous carrier equivalence
+name: RETURN108-X1 quantitative continuous carrier equivalence (beta reduction repair)
 on:
   push:
     branches: [research/return108s-kernel-core]
