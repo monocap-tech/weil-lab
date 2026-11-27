@@ -35,7 +35,7 @@ theorem pole_zero (g : logCarrier (1/4)) (hg : g ∈ retainedᗮ) :
     Submodule.subset_span ⟨Sum.inr (),rfl⟩
   have h := hg _ hm
   rw [ContinuousLinearMap.adjoint_inner_left] at h
-  change conj (1:ℂ)*poleDifference (1/4) (by norm_num) g = 0 at h
+  rw [RCLike.inner_apply'] at h
   simpa using h
 
 theorem prime_free : V10B8d.physicalPrime (1/4) = 0 := by
