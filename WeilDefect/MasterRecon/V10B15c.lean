@@ -31,7 +31,9 @@ theorem compressed_split (P : H →L[ℂ] E) (B : E →L[ℂ] E)
       energy (1+pullback P B) x+‖y‖^2 := by
   rw [compressed_energy,compressed_energy,map_add,hP,add_zero]
   have ho : inner ℂ x y = 0 := hy x hx
-  rw [norm_add_sq_eq_norm_sq_add_norm_sq_of_inner_eq_zero x y ho]
+  have hp := norm_add_sq_eq_norm_sq_add_norm_sq_of_inner_eq_zero (𝕜 := ℂ) x y ho
+  simp only [← pow_two] at hp
+  rw [hp]
   ring
 
 theorem direct_certificate (G : H →L[ℂ] H) (P : H →L[ℂ] E)
@@ -43,8 +45,9 @@ theorem direct_certificate (G : H →L[ℂ] H) (P : H →L[ℂ] E)
   intro g
   obtain ⟨x,hx,y,hy,rfl⟩ := S.exists_add_mem_mem_orthogonal g
   have h := V10B14b.approximate_energy G (1+pullback P B) δ herr (x+y)
-  rw [compressed_split P B S x y hx hy (hP y hy),
-    norm_add_sq_eq_norm_sq_add_norm_sq_of_inner_eq_zero x y (hy x hx)] at h
+  have hp := norm_add_sq_eq_norm_sq_add_norm_sq_of_inner_eq_zero (𝕜 := ℂ) x y (hy x hx)
+  simp only [← pow_two] at hp
+  rw [compressed_split P B S x y hx hy (hP y hy),hp] at h
   have hh := mul_nonneg (sub_nonneg.mpr hδ) (sq_nonneg ‖y‖)
   nlinarith only [h,hS x hx,hh]
 
