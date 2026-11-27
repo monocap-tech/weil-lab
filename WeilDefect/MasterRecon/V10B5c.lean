@@ -8,7 +8,7 @@ separate. This source is staged, not yet natively verified. -/
 namespace WeilDefect.MasterRecon.V10B5c
 
 open Set MeasureTheory
-open scoped ENNReal
+open scoped ENNReal Interval BigOperators
 
 theorem real_energy_of_lintegral (F : ℝ → ℝ) (hF : Continuous F)
     (h0 : ∀ u, 0 ≤ F u) (B : ℝ) (hB : 0 ≤ B)
@@ -78,7 +78,7 @@ theorem angular_slice_energy (t : ℝ) (ht : 0 ≤ t) (j : ℕ) :
       (∫ y, V10B3a.weight y * ‖angularMoment t g j s y‖^2) ≤ C * ‖g‖^2 := by
   obtain ⟨D, hD, hD'⟩ := V10B4f.carrier_multiplier_energy t ht j
   let c : ℝ := -(2*Real.pi)
-  have hc : c ≠ 0 := by dsimp [c]; positivity
+  have hc : c ≠ 0 := neg_ne_zero.mpr (by positivity)
   have hcp : |c| = 2*Real.pi := by
     dsimp [c]
     rw [abs_neg, abs_of_pos (by positivity : 0 < 2*Real.pi)]
@@ -144,6 +144,72 @@ theorem angular_slice_energy (t : ℝ) (ht : 0 ≤ t) (j : ℕ) :
         (mul_nonneg (by positivity) comparisonConstant_nonneg)
     _ = _ := by ring
 
+
+/-- The four rectangle fields are the first three literal Mellin
+moments, with the two vertical derivatives carrying a factor I. -/
+theorem angular_rectangle_budget (t : ℝ) (ht : 0 ≤ t) :
+    ∃ C : ℝ, 0 ≤ C ∧ ∀ (g : V08I.logCarrier t) (J : Finset ℤ),
+      (∀ n ∈ J, IntervalIntegrable (fun s =>
+        V10B2.rowEnergy (angularMoment t g 0)
+          (fun x y => Complex.I * angularMoment t g 1 x y) (n : ℝ) s +
+        V10B2.rowEnergy (angularMoment t g 1)
+          (fun x y => Complex.I * angularMoment t g 2 x y) (n : ℝ) s)
+        volume (-(1/2):ℝ) (-(1/2)+1)) →
+      (∑ n ∈ J, Real.log (|(n : ℝ)|+3) *
+        V10B2.rectangleEnergy (angularMoment t g 0) (angularMoment t g 1)
+          (fun x y => Complex.I * angularMoment t g 1 x y)
+          (fun x y => Complex.I * angularMoment t g 2 x y)
+          (-(1/2):ℝ) (n : ℝ)) ≤ C * ‖g‖^2 := by
+  obtain ⟨C₀,h₀,h₀'⟩ := angular_slice_energy t ht 0
+  obtain ⟨C₁,h₁,h₁'⟩ := angular_slice_energy t ht 1
+  obtain ⟨C₂,h₂,h₂'⟩ := angular_slice_energy t ht 2
+  refine ⟨2*(C₀+2*C₁+C₂), by positivity, ?_⟩
+  intro g J houter
+  let H := angularMoment t g 0
+  let X := angularMoment t g 1
+  let Y := fun s y => Complex.I * X s y
+  let Z := fun s y => Complex.I * angularMoment t g 2 s y
+  let B := (C₀+2*C₁+C₂)*‖g‖^2
+  have hslice (j : ℕ) (s : ℝ) : Continuous (angularMoment t g j s) :=
+    (angularMoment_continuous t ht g j).comp (continuous_const.prodMk continuous_id)
+  have hnormY (s y : ℝ) : ‖Y s y‖ = ‖X s y‖ := by
+    simp [Y, norm_mul, Complex.norm_I]
+  have hnormZ (s y : ℝ) : ‖Z s y‖ = ‖angularMoment t g 2 s y‖ := by
+    simp [Z, norm_mul, Complex.norm_I]
+  have hstrip (s : ℝ) (hs : s ∈ Icc (-(1/2):ℝ) (-(1/2)+1)) :
+      s ∈ Icc (-(1/2):ℝ) (1/2) := by
+    convert hs using 1 <;> norm_num
+  have hh (s : ℝ) : Continuous (fun y => ‖H s y‖^2 + ‖Y s y‖^2) := by
+    simp only [hnormY]
+    exact ((hslice 0 s).norm.pow 2).add ((hslice 1 s).norm.pow 2)
+  have hx (s : ℝ) : Continuous (fun y => ‖X s y‖^2 + ‖Z s y‖^2) := by
+    simp only [hnormZ]
+    exact ((hslice 1 s).norm.pow 2).add ((hslice 2 s).norm.pow 2)
+  have hi (s : ℝ) (hs : s ∈ Icc (-(1/2):ℝ) (-(1/2)+1)) :
+      Integrable (fun y => V10B3a.weight y * (‖H s y‖^2 + ‖Y s y‖^2)) := by
+    simp only [hnormY, mul_add]
+    exact (h₀' s (hstrip s hs) g).1.add (h₁' s (hstrip s hs) g).1
+  have hj (s : ℝ) (hs : s ∈ Icc (-(1/2):ℝ) (-(1/2)+1)) :
+      Integrable (fun y => V10B3a.weight y * (‖X s y‖^2 + ‖Z s y‖^2)) := by
+    simp only [hnormZ, mul_add]
+    exact (h₁' s (hstrip s hs) g).1.add (h₂' s (hstrip s hs) g).1
+  have hb (s : ℝ) (hs : s ∈ Icc (-(1/2):ℝ) (-(1/2)+1)) :
+      (∫ y, V10B3a.weight y * (‖H s y‖^2 + ‖Y s y‖^2)) +
+      (∫ y, V10B3a.weight y * (‖X s y‖^2 + ‖Z s y‖^2)) ≤ B := by
+    obtain ⟨i₀,b₀⟩ := h₀' s (hstrip s hs) g
+    obtain ⟨i₁,b₁⟩ := h₁' s (hstrip s hs) g
+    obtain ⟨i₂,b₂⟩ := h₂' s (hstrip s hs) g
+    simp only [hnormY, hnormZ, mul_add]
+    change (∫ y, V10B3a.weight y * ‖angularMoment t g 0 s y‖^2 +
+        V10B3a.weight y * ‖angularMoment t g 1 s y‖^2) +
+      (∫ y, V10B3a.weight y * ‖angularMoment t g 1 s y‖^2 +
+        V10B3a.weight y * ‖angularMoment t g 2 s y‖^2) ≤ B
+    rw [integral_add i₀ i₁, integral_add i₁ i₂]
+    dsimp [B]
+    linarith only [b₀,b₁,b₂]
+  have h := V10B5b.rectangle_budget H X Y Z (-(1/2):ℝ) B J hh hx hi hj houter hb
+  exact h.trans (le_of_eq (by dsimp [B]; ring))
+
 end WeilDefect.MasterRecon.V10B5c
 
 #print axioms WeilDefect.MasterRecon.V10B5c.real_energy_of_lintegral
@@ -152,3 +218,5 @@ end WeilDefect.MasterRecon.V10B5c
 #print axioms WeilDefect.MasterRecon.V10B5c.weight_continuous
 #print axioms WeilDefect.MasterRecon.V10B5c.angularMoment_continuous
 #print axioms WeilDefect.MasterRecon.V10B5c.angular_slice_energy
+
+#print axioms WeilDefect.MasterRecon.V10B5c.angular_rectangle_budget
