@@ -1,0 +1,84 @@
+{
+  "scale": "10^2600",
+  "N": 1200,
+  "M": 2000,
+  "phaseResidues": 1276,
+  "octantRepresentatives": 161,
+  "realHalfExponentUnits": [
+    -2,
+    -1,
+    0,
+    1,
+    2
+  ],
+  "endpointPairs": 1538,
+  "phaseTaylorSeeds": 1,
+  "realTaylorSeeds": 1,
+  "phasePowerMultiplications": 159,
+  "phaseMaxRadiusExponent": -2594,
+  "endpointMaxRadiusExponent": -2593,
+  "independentTaylorComparisons": [
+    {
+      "p": 0,
+      "sharedRadiusExponent": null,
+      "directRadiusExponent": -2596
+    },
+    {
+      "p": 1,
+      "sharedRadiusExponent": -2596,
+      "directRadiusExponent": -2596
+    },
+    {
+      "p": 159,
+      "sharedRadiusExponent": -2594,
+      "directRadiusExponent": -2595
+    },
+    {
+      "p": 160,
+      "sharedRadiusExponent": -2594,
+      "directRadiusExponent": -2595
+    },
+    {
+      "p": 161,
+      "sharedRadiusExponent": -2594,
+      "directRadiusExponent": -2595
+    },
+    {
+      "p": 319,
+      "sharedRadiusExponent": -2596,
+      "directRadiusExponent": -2595
+    },
+    {
+      "p": 320,
+      "sharedRadiusExponent": null,
+      "directRadiusExponent": -2595
+    },
+    {
+      "p": 639,
+      "sharedRadiusExponent": -2596,
+      "directRadiusExponent": -2595
+    },
+    {
+      "p": 640,
+      "sharedRadiusExponent": null,
+      "directRadiusExponent": -2595
+    },
+    {
+      "p": 641,
+      "sharedRadiusExponent": -2596,
+      "directRadiusExponent": -2595
+    },
+    {
+      "p": 959,
+      "sharedRadiusExponent": -2596,
+      "directRadiusExponent": -2595
+    },
+    {
+      "p": 1279,
+      "sharedRadiusExponent": -2596,
+      "directRadiusExponent": -2596
+    }
+  ],
+  "primitiveDegreesChecked": 27,
+  "scope": "external fixed-point outward enclosure; comparisons share pi; no moment rows or original frame evaluated"
+}
