@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B27 focused attachment audit
+name: MASTER-RECON V10B30 focused attachment audit
 on:
   push:
     branches: [master-recon-v10b20-staging]
@@ -71,6 +71,7 @@ jobs:
             if audit "$mod"; then pass[$mod]=1; else pass[$mod]=0; failed=1; fi
           }
           # Start independent analytic roots and current compiler blockers.
+          gate V10B30a
           gate V10B24a
           gate V10B24b V10B24a
           gate V10B25a V10B24b
@@ -100,6 +101,13 @@ jobs:
           gate V10B23a V10B20a V10B22b V10B8f
           gate V10B23b V10B23a V10B22c
           gate V10B23c V10B23b
+          gate V10B28a V10B27b
+          gate V10B28b V10B28a
+          gate V10B28c V10B28b V10B22c
+          gate V10B28d V10B28c V10B23c
+          gate V10B29a V10B28d
+          gate V10B29b V10B29a
+          gate V10B29c V10B29b
           gate V10B18a V10B12c
           gate V10B15a V10B8f
           gate V10B16b V10B15a V10B16a
