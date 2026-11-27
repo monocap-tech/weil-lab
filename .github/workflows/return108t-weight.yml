@@ -1,0 +1,56 @@
+name: RETURN108-T scalar log metric
+on:
+  push:
+    branches: [research/return108s-kernel-core]
+    paths:
+      - ".github/workflows/return108t-weight.yml"
+permissions:
+  contents: read
+jobs:
+  weight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Immutable source preflight
+        run: |
+          git rev-parse HEAD
+          test "$(git hash-object WeilDefect/MasterReturn/LogWeightComparison.lean)" = ded335b61dc283c23ade7357430bc30e275d80ef
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.34.0
+      - name: Install Elan
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned dependencies
+        run: lake update
+      - name: Fetch mathlib cache
+        run: lake exe cache get
+      - name: Compile and strict named axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/MasterReturn/LogWeightComparison.lean 2>&1 | tee return108t-lean.log
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          s = Path("return108t-lean.log").read_text()
+          names = ["ivWeight_lower","reconWeight_lower","recon_le_iv_add","iv_le_recon_add","bounded_weight_difference"]
+          allowed = {"propext","Classical.choice","Quot.sound"}
+          for name in names:
+              q = "WeilDefect.MasterReturn.LogWeightComparison." + name
+              m = re.search(r"'" + re.escape(q) + r"' depends on axioms: \[([^\]]*)\]", s)
+              if m is None:
+                  if f"'{q}' does not depend on any axioms" not in s:
+                      raise SystemExit("Missing audit: " + q)
+              else:
+                  axioms = {x.strip() for x in m.group(1).split(",") if x.strip()}
+                  if not axioms <= allowed:
+                      raise SystemExit(f"Unexpected axioms for {q}: {axioms - allowed}")
+              print("PASS", q)
+          print("RETURN108-T strict axiom audit PASS 5/5")
+          PY
+      - name: Preserve compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: return108t-lean
+          path: return108t-lean.log
