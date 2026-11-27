@@ -13,7 +13,9 @@ theorem den_deriv_zero : HasDerivAt den 2 0 := by
   have he := (Real.hasDerivAt_exp (-2*(0:ℝ))).comp 0
     ((hasDerivAt_const 0 (-2:ℝ)).mul (hasDerivAt_id (0:ℝ)))
   unfold den
-  convert (hasDerivAt_const 0 (1:ℝ)).sub he using 1 <;> norm_num
+  have hh := (hasDerivAt_const 0 (1:ℝ)).sub he
+  change HasDerivAt (fun r : ℝ => 1-Real.exp (-2*r)) _ 0 at hh
+  convert hh using 1 <;> norm_num
 
 theorem den_ratio_limit :
     Tendsto (fun r : ℝ => den r/r) (𝓝[≠] 0) (𝓝 2) := by
@@ -28,7 +30,7 @@ theorem den_at_infinity : Tendsto den atTop (𝓝 1) := by
     filter_upwards [eventually_ge_atTop (a/2)] with r hr
     linarith
   have he := Real.tendsto_exp_neg_atTop_nhds_zero.comp h
-  have hh := tendsto_const_nhds.sub he
+  have hh := (tendsto_const_nhds (x := (1:ℝ)) (f := atTop)).sub he
   simpa [den,Function.comp_def,sub_zero] using hh
 
 theorem log_ratio_limit :
@@ -36,7 +38,7 @@ theorem log_ratio_limit :
   (Real.continuousAt_log (by norm_num : (2:ℝ) ≠ 0)).tendsto.comp den_ratio_limit
 
 theorem log_den_limit : Tendsto (fun r : ℝ => Real.log (den r)) atTop (𝓝 0) := by
-  simpa only [Real.log_one] using
+  simpa only [Real.log_one,Function.comp_def] using
     (Real.continuousAt_log (by norm_num : (1:ℝ) ≠ 0)).tendsto.comp den_at_infinity
 
 theorem constant_limit (L : ℝ) (hL : 0 < L) {α : Type*} {l : Filter α}
@@ -47,11 +49,11 @@ theorem constant_limit (L : ℝ) (hL : 0 < L) {α : Type*} {l : Filter α}
   have h := ((log_den_limit.comp hT).sub (log_ratio_limit.comp ha)).sub
     (tendsto_const_nhds (x := Real.log L))
   rw [Real.log_mul (by norm_num : (2:ℝ) ≠ 0) hL.ne']
-  simpa only [zero_sub,neg_add_rev,Function.comp_def,sub_eq_add_neg,add_comm] using h
+  simpa only [zero_sub,neg_add_rev,Function.comp_def,sub_eq_add_neg,add_comm,zero_add,add_zero] using h
 
 theorem cutoff_limit (L : ℝ) (hL : 0 < L) {α : Type*} {l : Filter α}
     (a T : α → ℝ) (ha : Tendsto a l (𝓝[≠] 0)) (hT : Tendsto T l atTop)
-    (hcut : ∀ᵐ x in l, 0 < a x ∧ a x ≤ L ∧ L ≤ T x) :
+    (hcut : ∀ᶠ x in l, 0 < a x ∧ a x ≤ L ∧ L ≤ T x) :
     Tendsto (fun x => (∫ r in a x..L, b r-1/r)+(∫ r in L..T x, b r))
       l (𝓝 (-Real.log (2*L))) := by
   apply (constant_limit L hL a T ha hT).congr'
@@ -60,7 +62,7 @@ theorem cutoff_limit (L : ℝ) (hL : 0 < L) {α : Type*} {l : Filter α}
 
 theorem pilot_cutoff_limit {α : Type*} {l : Filter α} (a T : α → ℝ)
     (ha : Tendsto a l (𝓝[≠] 0)) (hT : Tendsto T l atTop)
-    (hcut : ∀ᵐ x in l, 0 < a x ∧ a x ≤ 1/2 ∧ 1/2 ≤ T x) :
+    (hcut : ∀ᶠ x in l, 0 < a x ∧ a x ≤ 1/2 ∧ 1/2 ≤ T x) :
     Tendsto (fun x => (∫ r in a x..(1/2:ℝ), b r-1/r)+
       (∫ r in (1/2:ℝ)..T x, b r)) l (𝓝 0) := by
   have h := cutoff_limit (1/2:ℝ) (by norm_num) a T ha hT hcut
