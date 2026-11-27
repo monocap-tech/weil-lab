@@ -16,7 +16,7 @@ theorem action_error (G F : H →L[ℂ] H) (δ : ℝ) (hδ : ‖G-F‖ ≤ δ)
     rw [ContinuousLinearMap.sub_apply]
     abel
   rw [he]
-  exact (norm_add_le _ _).trans (add_le_add_left
+  exact (norm_add_le _ _).trans (add_le_add_right
     (((G-F).le_opNorm v).trans (mul_le_mul_of_nonneg_right hδ (norm_nonneg _))) _)
 
 theorem residual_pairing (G : H →L[ℂ] H) (S : Submodule ℂ H)
