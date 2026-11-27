@@ -84,7 +84,10 @@ theorem physical_matrix_certificate (G : H →L[ℂ] H)
   intro a
   have h := hM a
   rw [V10B12c.matrixForm_gram,V10B12c.matrixForm_gram,
-    ContinuousLinearMap.one_apply,inner_self_eq_norm_sq_to_K,Complex.ofReal_re] at h
+    ContinuousLinearMap.one_apply] at h
+  have hn : (inner ℂ (synth r a) (synth r a)).re = ‖synth r a‖^2 :=
+    inner_self_eq_norm_sq (𝕜 := ℂ) _
+  rw [hn] at h
   unfold energy
   calc
     _ = (d^2/c)*‖synth r a‖^2 := by ring
