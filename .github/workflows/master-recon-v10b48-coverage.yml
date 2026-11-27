@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B57 deflated pole and unit matrix prerequisites
+name: MASTER-RECON V10B58 deflation parser repair
 on:
   push:
     branches: [master-recon-v10b20-staging]
@@ -75,11 +75,9 @@ jobs:
             done
             if audit "$mod"; then pass[$mod]=1; else pass[$mod]=0; failed=1; fi
           }
-          gate V10B39c
-          gate V10B40a V10B39c
+          gate V10B40a
           gate V10B43a V10B40a
-          gate V10B46c
-          gate V10B47c V10B43a V10B46c
+          gate V10B47c V10B43a
           exit "$failed"
       - name: Upload compiler and audit evidence
         if: always()

@@ -53,7 +53,7 @@ theorem deflation_error (p : ℕ → ℝ → ℝ) (d b : ℕ → ℝ)
     _ = _ := by ring
 
 theorem denominator_transport (u v A D : ℝ) (hA : 0<A) (hD : 0<D) :
-    |u/A-v/D| ≤ |u-v|/A + |v/D|*|A-D|/A := by
+    |u/A-v/D| ≤ |u-v|/A + |v/D| *|A-D|/A := by
   have he : u/A-v/D = (u-v)/A + (v/D)*(D-A)/A := by
     field_simp [hA.ne',hD.ne'] <;> ring
   rw [he]
@@ -65,7 +65,7 @@ theorem coefficient_compare (p : ℕ → ℝ → ℝ) (b : ℕ → ℝ)
     (s : Finset ℕ) (a c : ℕ → ℝ) (x : ℝ)
     (hb : ∀ j ∈ s, |p j x| ≤ b j) :
     |(∑ j ∈ s, a j*p j x)-(∑ j ∈ s, c j*p j x)| ≤
-      ∑ j ∈ s, |a j-c j|*b j := by
+      ∑ j ∈ s, |a j-c j| *b j := by
   rw [← Finset.sum_sub_distrib]
   calc
     _ ≤ ∑ j ∈ s, |a j*p j x-c j*p j x| := by
