@@ -72,8 +72,9 @@ theorem selfAdjoint_diagonal_real
     (t : ℝ) (S : logCarrier t →L[ℂ] logCarrier t) (hS : S.adjoint = S)
     (g : logCarrier t) : (inner ℂ (S g) g).im = 0 := by
   have h : inner ℂ (S g) g = inner ℂ g (S g) := by
-    rw [← hS] at ⊢
-    rw [ContinuousLinearMap.adjoint_inner_left,ContinuousLinearMap.adjoint_inner_right]
+    calc
+      inner ℂ (S g) g = inner ℂ (S.adjoint g) g := by rw [hS]
+      _ = inner ℂ g (S g) := ContinuousLinearMap.adjoint_inner_left S g g
   have hc := inner_conj_symm (𝕜 := ℂ) (S g) g
   rw [← h] at hc
   have hi := congrArg Complex.im hc
