@@ -1,4 +1,4 @@
-name: RETURN109-A actual divisor source dictionary
+name: RETURN109-B full divisor orbit indexing and energy
 on:
   push:
     branches: [research/return108s-kernel-core]
@@ -38,38 +38,39 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          lake build WeilDefect.MasterReturn.LogCarrierTranslation WeilDefect.Arithmetic.ActualZetaMultiplicitySymmetry WeilDefect.MasterRecon.V10A 2>&1 | tee return108w-deps.log
+          lake build WeilDefect.MasterReturn.LogCarrierDivisor 2>&1 | tee return108w-deps.log
       - name: Compile and strict named axiom audit
         shell: bash
         run: |
           set -euo pipefail
-          lake env lean WeilDefect/MasterReturn/LogCarrierDivisor.lean 2>&1 | tee return109a-lean.log
+          lake env lean WeilDefect/MasterReturn/LogCarrierOrbit.lean 2>&1 | tee return109b-lean.log
           python3 - <<'PY'
           import re
           from pathlib import Path
-          s = Path("return109a-lean.log").read_text()
-          names = ["point_multiplicity","strip_reflect_closed","reflected_multiplicity","window_mellin","window_right","window_left","nonfixed_positive","nonfixed_negative","fixed_pair"]
+          s = Path("return109b-lean.log").read_text()
+          names = ["copyRight","copyLeft","orbitCopyToDivisor_injective","orbitCopyToDivisor_surjective","orbitCopyEquiv","nonfixed_orbit_energy","fixed_orbit_energy"]
           allowed = {"propext","Classical.choice","Quot.sound"}
           for name in names:
-              q = "WeilDefect.MasterReturn.LogCarrierDivisor." + name
+              q = "WeilDefect.MasterReturn.LogCarrierOrbit." + name
               m = re.search(r"'" + re.escape(q) + r"' depends on axioms: \[([^\]]*)\]", s)
               if m is None:
                   assert f"'{q}' does not depend on any axioms" in s, q
               else:
                   assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
               print("PASS", q)
-          print("RETURN109-A strict axiom audit PASS 9/9")
+          print("RETURN109-B strict axiom audit PASS 7/7")
           PY
       - name: Preserve integration evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: return109a-integration
+          name: return109b-integration
           path: |
             return108w-closure.json
             return108w-closure.log
             return108w-deps.log
-            return109a-lean.log
+            return109b-lean.log
+            WeilDefect/MasterReturn/LogCarrierOrbit.lean
             WeilDefect/MasterReturn/LogCarrierDivisor.lean
             WeilDefect/MasterReturn/LogCarrierTranslation.lean
             WeilDefect/MasterReturn/LogCarrierNatural.lean
