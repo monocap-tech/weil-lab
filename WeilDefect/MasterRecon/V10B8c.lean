@@ -17,14 +17,14 @@ noncomputable def expVector (a x : ℝ) : ℂ := (Real.exp (a*x):ℂ)
 theorem expVector_mem (t a : ℝ) (ht : 0 ≤ t) :
     MemLp (expVector a) 2 (V08K.supportMeasure t) := by
   have hc : Continuous (expVector a) := by unfold expVector; fun_prop
-  apply MemLp.of_bound hc.aestronglyMeasurable (Real.exp (|a|*t))
+  apply MemLp.of_bound hc.aestronglyMeasurable (Real.exp (|a| *t))
   filter_upwards [V08K.supportMeasure_bound t] with x hx
   unfold expVector
   rw [Complex.norm_real,Real.norm_eq_abs,abs_of_pos (Real.exp_pos _)]
   apply Real.exp_le_exp.mpr
   calc
     a*x ≤ |a*x| := le_abs_self _
-    _ = |a|*|x| := abs_mul _ _
+    _ = |a| *|x| := abs_mul _ _
     _ ≤ _ := mul_le_mul_of_nonneg_left hx (abs_nonneg _)
 
 noncomputable def vector (t a : ℝ) (ht : 0 ≤ t) :
@@ -46,7 +46,7 @@ theorem evalRestricted_eq (t a : ℝ) (ht : 0 ≤ t) (f : FullL2)
         V08K.restrictPhysical_ae t f] with x hx hy
       change inner ℂ (vector t a ht x) (V08K.restrictPhysical t f x) = _
       rw [show vector t a ht x = expVector a x from hx,hy]
-      change conj (expVector a x)*f x = _
+      rw [Complex.inner_apply]
       simp [expVector,← Complex.ofReal_mul,← Complex.ofReal_exp]
     _ = _ := by
       change (∫ x in Icc (-t) t, Complex.exp ((a:ℂ)*(x:ℂ))*f x) = _
@@ -71,7 +71,10 @@ noncomputable def poleOperator (t : ℝ) (ht : 0 ≤ t) : logCarrier t →L[ℂ]
 theorem pole_selfAdjoint (t : ℝ) (ht : 0 ≤ t) :
     (poleOperator t ht).adjoint = poleOperator t ht := by
   unfold poleOperator
-  simp [ContinuousLinearMap.adjoint_comp,add_comm]
+  rw [ContinuousLinearMap.adjoint_add,ContinuousLinearMap.adjoint_comp,
+    ContinuousLinearMap.adjoint_comp,ContinuousLinearMap.adjoint_adjoint,
+    ContinuousLinearMap.adjoint_adjoint]
+  exact add_comm _ _
 
 theorem pole_pairing (t : ℝ) (ht : 0 ≤ t) (g h : logCarrier t) :
     inner ℂ (poleOperator t ht g) h =
@@ -80,7 +83,7 @@ theorem pole_pairing (t : ℝ) (ht : 0 ≤ t) (g h : logCarrier t) :
   unfold poleOperator
   rw [ContinuousLinearMap.add_apply,inner_add_left]
   simp only [ContinuousLinearMap.comp_apply,ContinuousLinearMap.adjoint_inner_left]
-  rfl
+  simp only [Complex.inner_apply]
 
 theorem pole_compact (t : ℝ) (ht : 0 ≤ t) : IsCompactOperator (poleOperator t ht) := by
   have he (a : ℝ) : IsCompactOperator (eval t a ht) :=
@@ -95,13 +98,13 @@ theorem pole_autocorr (t : ℝ) (ht : 0 ≤ t) (g : logCarrier t)
       V10B8a.paperFT (V10B8a.weilTest f f) (I/2) +
       V10B8a.paperFT (V10B8a.weilTest f f) (-I/2) := by
   have hp : I*(I/2) = ((-1/2:ℝ):ℂ) := by
-    rw [mul_div_assoc,Complex.I_mul_I]
+    rw [← mul_div_assoc,Complex.I_mul_I]
     norm_num
   have hm : I*(-I/2) = ((1/2:ℝ):ℂ) := by
-    rw [mul_div_assoc,mul_neg,Complex.I_mul_I]
+    rw [← mul_div_assoc,mul_neg,Complex.I_mul_I]
     norm_num
-  have hcp : conj (I/2:ℂ) = -I/2 := by simp
-  have hcm : conj (-I/2:ℂ) = I/2 := by simp
+  have hcp : conj (I/2:ℂ) = -I/2 := by simp [map_ofNat]
+  have hcm : conj (-I/2:ℂ) = I/2 := by simp [map_ofNat]
   simp only [pole_pairing,eval_eq,V10B8a.mellin_congr_ae _ f hae,
     V10B8a.paperFT_weilTest hf hf hfc hfc,V10B8a.paperFT_mellin,hcp,hcm,hp,hm]
   ring
