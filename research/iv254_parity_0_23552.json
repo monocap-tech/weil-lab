@@ -1,0 +1,15 @@
+{
+  "parity": 0,
+  "first_mode": 512,
+  "last_mode": 23550,
+  "dimension": 11520,
+  "scale": "70368744177664",
+  "shift_scaled": "8796093022208",
+  "factor_row_square_max": "834344586264405",
+  "max_residual_row_scaled": "74486201617",
+  "max_residual_entry_scaled": "28623244",
+  "entry_error_budget_scaled": "48318382080",
+  "margin_lower_scaled": "8673288438511",
+  "certified_margin_gt": "1/10",
+  "classification": "finite block only; all mixed infinite-tail coupling outstanding"
+}
