@@ -23,8 +23,7 @@ theorem odd_vanish (j m : ℕ) :
     have hw : w (1-x) = w x := by unfold w; ring
     dsimp [f]
     rw [hy,hw,neg_pow,pow_succ,pow_mul]
-    norm_num
-    ring
+    norm_num <;> ring
   rw [he,intervalIntegral.integral_neg] at hr
   change (∫ x in (0:ℝ)..1, f x) = 0
   linarith
@@ -50,7 +49,7 @@ theorem B_boundary (j m : ℕ) :
       ((j:ℝ)+1)*(y x^(2*(m+1))*w x^j)
   have hy (x : ℝ) : HasDerivAt y 2 x := by
     convert ((hasDerivAt_id x).const_mul 2).sub_const 1 using 1
-    norm_num
+    norm_num [y]
   have hw (x : ℝ) : HasDerivAt w (-y x) x := by
     have h := (hasDerivAt_id x).mul ((hasDerivAt_const x (1:ℝ)).sub (hasDerivAt_id x))
     convert h using 1 <;> simp [w,y] <;> ring
@@ -83,7 +82,7 @@ theorem B_m_step (j m : ℕ) :
   have h' := B_boundary j m
   have h'' := congrArg (fun x : ℝ => (2*(m:ℝ)+1)*x) h
   dsimp at h''
-  linear_combination -h'' + 2*h'
+  linear_combination h'' - 2*h'
 
 theorem B_j_step (j : ℕ) :
     (4*(j:ℝ)+6)*B (j+1) 0 = ((j:ℝ)+1)*B j 0 := by
@@ -92,7 +91,7 @@ theorem B_j_step (j : ℕ) :
   norm_num at h'
   have h'' := congrArg (fun x : ℝ => ((j:ℝ)+1)*x) h
   dsimp at h''
-  linear_combination h'' - h'
+  linear_combination h'' + h'
 
 theorem B_zero : B 0 0 = 1 := by simp [B]
 
