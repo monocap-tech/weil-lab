@@ -26,7 +26,8 @@
       "bytes": 52877673,
       "manifest_path": "notes/provisional/NF618ReflexiveDeploymentBank.manifest.json",
       "chunks": 101,
-      "remote_blob_identities": "pending post-commit readback"
+      "remote_blob_identities": "101/101 repository directory entries match locally calculated Git blob IDs and byte sizes",
+      "reconstruction": "PASS: recovery script rebuilt original 52,877,673-byte ZIP; SHA-256 and ZIP CRC replayed"
     }
   },
   "outstanding": {
@@ -41,5 +42,5 @@
     "tables": 6097,
     "rows": 29336
   },
-  "release_rule": "Recover original bytes or independently reproduce with exact expected hashes; verify remote readback and replay evidence before resuming. No new workflows launched."
+  "release_rule": "HOLD until exact Batch24 ledger bytes (or hash-identical independent reproduction) are in repository, source/evidence/checkpoint dependencies are independently replayed, and release conditions are reviewed. No new native batches 25–39."
 }
