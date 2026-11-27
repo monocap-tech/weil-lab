@@ -34,14 +34,14 @@ theorem weighted_taylor (n : ℕ) (hn : 0<n) (w : ℝ → ℝ) (hc : Continuous 
   have h2 : Continuous (fun x : ℝ => taylor n ((2*x-1)/8)*w x) := ht.mul hc
   have hd := h1.sub h2
   have hr : Continuous (fun x => reserve n*w x) := continuous_const.mul hc
-  rw [← intervalIntegral.integral_sub (h1.intervalIntegrable volume 0 1)
-    (h2.intervalIntegrable volume 0 1)]
+  rw [← intervalIntegral.integral_sub (h1.intervalIntegrable 0 1)
+    (h2.intervalIntegrable 0 1)]
   calc
     _ ≤ ∫ x in (0:ℝ)..1, |Real.exp ((2*x-1)/8)*w x-taylor n ((2*x-1)/8)*w x| :=
       intervalIntegral.abs_integral_le_integral_abs (by norm_num)
     _ ≤ ∫ x in (0:ℝ)..1, reserve n*w x := by
       apply intervalIntegral.integral_mono_on (by norm_num)
-        (hd.abs.intervalIntegrable volume 0 1) (hr.intervalIntegrable volume 0 1)
+        (hd.abs.intervalIntegrable 0 1) (hr.intervalIntegrable 0 1)
       intro x hx
       rw [← sub_mul,abs_mul,abs_of_nonneg (hw x hx)]
       exact mul_le_mul_of_nonneg_right (centered_taylor n hn x hx) (hw x hx)
