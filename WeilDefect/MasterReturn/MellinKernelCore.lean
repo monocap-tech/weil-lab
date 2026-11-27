@@ -173,6 +173,7 @@ theorem normalizedPair_shift_zero (a b s : ℝ) (hab : a+|s| ≤ b)
     rw [V10A.normalizedPair_fixed h i hi]
     change (V07A.weightedMellin h (multiplicity i)
       ((ordinate i:ℂ)*Complex.I), (0:ℂ)) = (0,0)
+    change V07A.weightedMellin f (multiplicity i) ((ordinate i:ℂ)*Complex.I) = 0 at hz
     rw [hs, hz, mul_zero]
   · rw [V10A.normalizedPair_nonfixed f i hi] at hzero
     rw [V10A.normalizedPair_nonfixed h i hi]

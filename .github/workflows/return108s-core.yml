@@ -16,7 +16,7 @@ jobs:
           git rev-parse HEAD
           test "$(git hash-object WeilDefect/MasterReturn/KernelCompleteness.lean)" = 0fb7619245462b9f778d794596187f4e0d1e1443
           test "$(git hash-object WeilDefect/MasterReturn/CarrierTranslation.lean)" = 19f9587f886e71dc54e0a16d869b8140d0cfbf4a
-          test "$(git hash-object WeilDefect/MasterReturn/MellinKernelCore.lean)" = 3364524401994aefe212313bf02ca92cfdb62359
+          test "$(git hash-object WeilDefect/MasterReturn/MellinKernelCore.lean)" = f3a3b8cf4b26ff8feb5ccf3fbfd11fad3fefadab
           test "$(git hash-object WeilDefect/MasterRecon/V10A2.lean)" = 2dbad9ec81aa2153bacf7039debd51abf69b0102
           test "$(cat lean-toolchain)" = leanprover/lean4:v4.34.0
       - name: Install Elan
