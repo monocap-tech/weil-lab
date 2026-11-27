@@ -1,0 +1,66 @@
+name: RETURN108-O graph density
+on:
+  push:
+    branches: [research/return108m-kernel-repair]
+    paths:
+      - ".github/workflows/return108o-graph.yml"
+permissions:
+  contents: read
+jobs:
+  graph:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Immutable source preflight
+        run: |
+          git rev-parse HEAD
+          test "$(git hash-object WeilDefect/MasterReturn/GraphDensity.lean)" = 7ac84f8fa2ccb3dc746651d2cb420bb576ac8b1f
+          test "$(git hash-object WeilDefect/MasterReturn/PacketGraphDensity.lean)" = 40f87862ac3c4fad14f620d8da1eb5dff57f4b51
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.34.0
+      - name: Install Elan
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned dependencies
+        run: lake update
+      - name: Fetch mathlib cache
+        run: lake exe cache get
+      - name: Compile and strict named axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.MasterReturn.GraphDensity 2>&1 | tee return108o-build.log
+          lake env lean WeilDefect/MasterReturn/GraphDensity.lean 2>&1 | tee return108o-base.log
+          lake env lean WeilDefect/MasterReturn/PacketGraphDensity.lean 2>&1 | tee return108o-packet.log
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          allowed = {"propext","Classical.choice","Quot.sound"}
+          groups = {
+              "return108o-base.log": ["dense_image_of_dense_packets","closed_graph_eq_univ_of_dense_physical","closed_graph_eq_univ_of_packet_transport"],
+              "return108o-packet.log": ["graph_top_and_surjective_of_closed_packet_bound","packet_bound_extends_to_closure"]
+          }
+          for file,names in groups.items():
+              s = Path(file).read_text()
+              for name in names:
+                  q = "WeilDefect.MasterReturn.GraphDensity." + name
+                  m = re.search(r"'" + re.escape(q) + r"' depends on axioms: \[([^\]]*)\]", s)
+                  if m is None:
+                      if f"'{q}' does not depend on any axioms" not in s:
+                          raise SystemExit("Missing axiom audit: " + q)
+                  else:
+                      axioms = {x.strip() for x in m.group(1).split(",") if x.strip()}
+                      if not axioms <= allowed:
+                          raise SystemExit(f"Unexpected axioms for {q}: {axioms - allowed}")
+                  print("PASS", q)
+          print("RETURN108-O strict axiom audit PASS 5/5")
+          PY
+      - name: Preserve compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: return108o-lean
+          path: |
+            return108o-build.log
+            return108o-base.log
+            return108o-packet.log
