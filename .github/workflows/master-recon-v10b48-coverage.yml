@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B66 direct polynomial Fourier decay
+name: MASTER-RECON V10B66R1 real phase derivative repair
 on:
   push:
     branches: [master-recon-v10b20-staging]

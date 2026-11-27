@@ -22,9 +22,9 @@ theorem phase_norm (a x : ℝ) : ‖phase a x‖ = 1 := by
 
 theorem phase_deriv (a x : ℝ) :
     HasDerivAt (phase a) (phase a x*((a:ℂ)*Complex.I)) x := by
-  have h : HasDerivAt (fun y : ℝ => Complex.ofReal (a*y)) (a:ℂ) x := by
-    simpa only [mul_one] using ((hasDerivAt_id x).const_mul a).ofReal_comp
-  exact (h.mul_const Complex.I).cexp
+  have hr : HasDerivAt (fun y : ℝ => a*y) a x := by
+    simpa only [id_eq,mul_one] using (hasDerivAt_id x).const_mul a
+  exact (hr.ofReal_comp.mul_const Complex.I).cexp
 
 theorem fourier_parts (p p' : ℝ → ℂ) (hp : Continuous p)
     (hp' : Continuous p') (hd : ∀ x, HasDerivAt p (p' x) x) (a : ℝ) :
