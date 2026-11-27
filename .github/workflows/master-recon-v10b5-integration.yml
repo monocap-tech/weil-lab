@@ -1,7 +1,7 @@
-name: MASTER-RECON V10B4a-B16c staged integration
+name: MASTER-RECON V10B4a-B18a staged integration
 on:
   push:
-    branches: [master-recon-v10b14-staging]
+    branches: [master-recon-v10b17-staging]
     paths:
       - ".github/workflows/master-recon-v10b5-integration.yml"
       - "WeilDefect/MasterRecon/V10B4*.lean"
@@ -10,7 +10,7 @@ on:
       - "WeilDefect/MasterRecon/V10B7*.lean"
       - "WeilDefect/MasterRecon/V10B8*.lean"
       - "WeilDefect/MasterRecon/V10B9*.lean"
-      - "WeilDefect/MasterRecon/V10B1[0-6]*.lean"
+      - "WeilDefect/MasterRecon/V10B1[0-8]*.lean"
   workflow_dispatch:
 permissions:
   contents: read
@@ -31,19 +31,19 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p recon-v10b14-evidence
+          mkdir -p recon-v10b17-evidence
           audit() {
             local mod="$1"
             file="WeilDefect/MasterRecon/${mod}.lean"
-            lake build "WeilDefect.MasterRecon.${mod}" 2>&1 | tee "recon-v10b14-evidence/${mod}-build.log" || return 1
-            lake env lean "$file" 2>&1 | tee "recon-v10b14-evidence/${mod}-lean.log" || return 1
+            lake build "WeilDefect.MasterRecon.${mod}" 2>&1 | tee "recon-v10b17-evidence/${mod}-build.log" || return 1
+            lake env lean "$file" 2>&1 | tee "recon-v10b17-evidence/${mod}-lean.log" || return 1
             python3 - "$mod" <<'PY' || return 1
           import re
           import sys
           from pathlib import Path
           mod = sys.argv[1]
           src = Path(f"WeilDefect/MasterRecon/{mod}.lean").read_text()
-          log = Path(f"recon-v10b14-evidence/{mod}-lean.log").read_text()
+          log = Path(f"recon-v10b17-evidence/{mod}-lean.log").read_text()
           expected = re.findall(r"^#print axioms (\S+)", src, re.M)
           declared = re.findall(r"^theorem (\w+)", src, re.M)
           assert expected and len(expected) == len(set(expected))
@@ -56,7 +56,7 @@ jobs:
               else:
                   assert {v.strip() for v in m.group(1).split(",") if v.strip()} <= allowed, name
           print(f"{mod}: strict axiom audit PASS ({len(expected)} declarations)")
-          Path(f"recon-v10b14-evidence/{mod}-audit.txt").write_text(f"{mod}: PASS {len(expected)}\n")
+          Path(f"recon-v10b17-evidence/{mod}-audit.txt").write_text(f"{mod}: PASS {len(expected)}\n")
           PY
           }
           failed=0
@@ -182,11 +182,19 @@ jobs:
               if (( moment_ok && trial_ok )); then audit V10B14d || failed=1; fi
             fi
           fi
-          python3 verification/master_recon/v10b16_dimension_feasibility.py | tee recon-v10b14-evidence/dimension-diagnostic.csv
+          if (( trial_ok )); then audit V10B18a || failed=1; fi
+          if (( arch_ok && moment_ok && trial_ok )); then
+            if audit V10B17a; then
+              if audit V10B17b; then audit V10B17c || failed=1; else failed=1; fi
+            else
+              failed=1
+            fi
+          fi
+          python3 verification/master_recon/v10b16_dimension_feasibility.py | tee recon-v10b17-evidence/dimension-diagnostic.csv
           exit "$failed"
       - name: Upload compiler and audit evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: master-recon-v10b14-integration
-          path: recon-v10b14-evidence/
+          name: master-recon-v10b17-integration
+          path: recon-v10b17-evidence/
