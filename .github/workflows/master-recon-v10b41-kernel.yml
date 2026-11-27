@@ -1,0 +1,77 @@
+name: MASTER-RECON V10B41 independent kernel arithmetic
+on:
+  push:
+    branches: [master-recon-v10b20-staging]
+    paths:
+      - ".github/workflows/master-recon-v10b41-kernel.yml"
+  workflow_dispatch:
+concurrency:
+  group: master-recon-v10b41-kernel
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Source custody
+        run: |
+          mkdir -p recon-v10b41-evidence
+          git rev-parse HEAD | tee recon-v10b41-evidence/head.txt
+          sha256sum WeilDefect/MasterRecon/V10B41{a,b,c,d}.lean lean-toolchain lakefile.lean | tee recon-v10b41-evidence/source.sha256
+      - name: Install Elan
+        run: |
+          curl --retry 3 --retry-delay 2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve dependencies
+        run: lake update
+      - name: Fetch mathlib cache
+        run: lake exe cache get
+      - name: Independent rational replay
+        run: |
+          set -o pipefail
+          python3 verification/master_recon/v10b40_finite_projection_replay.py | tee recon-v10b41-evidence/finite-replay.txt
+          python3 verification/master_recon/v10b40_low_deflation.py | tee recon-v10b41-evidence/low-deflation.txt
+      - name: Compile and strictly audit kernel modules
+        shell: bash
+        run: |
+          set -euo pipefail
+          audit() {
+            local mod="$1"
+            local src="WeilDefect/MasterRecon/$mod.lean"
+            lake build "WeilDefect.MasterRecon.$mod" 2>&1 | tee "recon-v10b41-evidence/$mod-build.log" || return 1
+            lake env lean "$src" 2>&1 | tee "recon-v10b41-evidence/$mod-lean.log" || return 1
+            python3 - "$mod" <<'PY' || return 1
+          import re, sys
+          from pathlib import Path
+          mod=sys.argv[1]
+          src=Path(f"WeilDefect/MasterRecon/{mod}.lean").read_text()
+          log=Path(f"recon-v10b41-evidence/{mod}-lean.log").read_text()
+          expected=re.findall(r"^#print axioms (\S+)",src,re.M)
+          declared=re.findall(r"^theorem (\w+)",src,re.M)
+          assert expected and len(expected)==len(set(expected))
+          assert set(expected)=={f"WeilDefect.MasterRecon.{mod}.{n}" for n in declared}
+          for name in expected:
+              m=re.search(re.escape("'"+name+"' depends on axioms: [")+r"([^\]]*)\]",log)
+              if m is None:
+                  assert "'"+name+"' does not depend on any axioms" in log,name
+              else:
+                  assert {a.strip() for a in m.group(1).split(",") if a.strip()} <= {"propext","Classical.choice","Quot.sound"},name
+          print(f"{mod}: strict axiom audit PASS ({len(expected)} declarations)")
+          Path(f"recon-v10b41-evidence/{mod}-audit.txt").write_text(f"{mod}: PASS {len(expected)}\n")
+          PY
+          }
+          if ! audit V10B41a; then exit 1; fi
+          if ! audit V10B41b; then exit 1; fi
+          failed=0
+          audit V10B41c || failed=1
+          audit V10B41d || failed=1
+          exit "$failed"
+      - name: Upload source and verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: master-recon-v10b41-kernel
+          path: recon-v10b41-evidence/
