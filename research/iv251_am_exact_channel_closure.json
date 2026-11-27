@@ -1,0 +1,14 @@
+{
+  "scale": "1000000000",
+  "gamma_lower": "8012313334",
+  "prefix_gain_lower": "8382418824",
+  "half_tail_log_lower": "5229894510",
+  "margin_lower": "32665333",
+  "buffer_start": 32000,
+  "cutoff": 32768,
+  "buffer_dimension": 768,
+  "buffer_eta": "3/100",
+  "preconditioned_lower": "1/1000",
+  "preconditioned_upper": "1",
+  "K_norm_upper": "32"
+}
