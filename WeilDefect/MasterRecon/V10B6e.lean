@@ -36,7 +36,7 @@ theorem one_sub_strip {z : ℂ} (hz : z ∈ strip) : 1-z ∈ strip := by
 
 theorem conj_strip {z : ℂ} (hz : z ∈ strip) : conj z ∈ strip := by
   change 0 < (conj z).re ∧ (conj z).re < 1
-  simpa only [Complex.conj_re] using hz
+  simpa only [Complex.conj_re, strip, mem_setOf_eq] using hz
 
 noncomputable def functionalFactor (z : ℂ) : ℂ :=
   2 * (2 * (Real.pi : ℂ)) ^ (-z) * Complex.Gamma z * Complex.cos (Real.pi*z/2)
@@ -70,7 +70,9 @@ theorem one_sub_order_ge {z : ℂ} (hz : z ∈ strip) :
   have he : (riemannZeta ∘ a) =ᶠ[𝓝 z] (fun w => functionalFactor w * riemannZeta w) := by
     filter_upwards [strip_open.mem_nhds hz] with w hw
     exact riemannZeta_one_sub (strip_ne_neg_nat hw) (strip_ne_one hw)
-  have hmul := analyticOrderAt_fun_mul (factor_analytic hz) (zeta_analytic hz)
+  have hmul : analyticOrderAt (fun w => functionalFactor w * riemannZeta w) z =
+      analyticOrderAt functionalFactor z + analyticOrderAt riemannZeta z :=
+    analyticOrderAt_mul (factor_analytic hz) (zeta_analytic hz)
   have h := (analyticOrderAt_congr he).trans hmul
   rw [hcomp] at h
   change analyticOrderAt riemannZeta (1-z) =
