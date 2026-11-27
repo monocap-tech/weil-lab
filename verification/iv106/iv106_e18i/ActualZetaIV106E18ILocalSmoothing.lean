@@ -91,7 +91,7 @@ theorem neutralIV106E18ISmooth_local (f : ℝ → ℂ) (hf : Continuous f)
     rw [hzero] at hdist ⊢
     simp only [w, sub_zero, norm_smul, Real.norm_eq_abs,
       abs_of_nonneg φ.nonneg]
-    exact (mul_le_of_le_one_left (norm_nonneg _) φ.le_one).trans_lt hdist
+    exact (mul_le_of_le_one_left (norm_nonneg _) φ.le_one).trans_lt (by simpa only [sub_zero] using hdist)
 
 /-- The window indicator provides one fixed L2 majorant for all uniform
 approximants; no Fourier regularity appears in this bound. -/
