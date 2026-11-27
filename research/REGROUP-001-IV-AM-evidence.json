@@ -1,0 +1,206 @@
+{
+  "regroup": "REGROUP-001",
+  "investigation": "IV-AM original radius-two arithmetic prime bound",
+  "snapshot": "2026-11-27T04:03Z (2026-11-26 Pacific)",
+  "last_conversation_head": "IV237",
+  "active_source_head": "12da3689018ed2c6e7e3965f1386cb44f0f0f8a0",
+  "custody_parent": "37ed34029dca9dc592cd602a762a7d08117b5c03",
+  "final_separate_sector_head": "68e949b8bb281e5a1307c64b9fc7355ffc0a428b",
+  "dictionary_head": "c05a12d153f5bd3a60b26d8387f8eb654cef1cff",
+  "local_archive_audit": {
+    "modules": 730,
+    "unique_bank_names": 1306,
+    "manifest_hashes": 2818,
+    "row_blocks": 1024,
+    "sym_blocks": 128,
+    "exact_audit_sha256": "57109c0a6475c0890dcae3c9dd5f3e2b68deb1aeb38c947f9376d58fc4d2c52f",
+    "dictionary_audit": {
+      "expected": 12,
+      "failures": []
+    },
+    "dictionary_log_sha256": {
+      "iv162.log": "a5ccdf8fc9113c843064a5d2c504b624920574dfb860115ad372a35b61ba50d9",
+      "iv157.log": "45e1691b6d3b6000ab5a7f237c804f6d58c3049a6147f5c1c9e3685e62080d30",
+      "iv160.log": "5d7cff97dc3506474222b2e529d94a06b7e48fc7cc152ec271f8f6a513c303b8"
+    },
+    "scope": "local ZIP CRC/digest and manifest/receipt reconciliation; not fresh Lean replay; no original shard recount"
+  },
+  "archives": [
+    {
+      "stage": "IV159 analytic/shard",
+      "run_id": 45886954891,
+      "artifact_id": 15151440397,
+      "file": "iv159-am-receipts.zip",
+      "bytes": 80802,
+      "sha256": "de507ff87332c018843a81c13fa500821162dba32a7e75eee02080d683f5e351",
+      "expires_at": "2027-02-24T19:53:14Z",
+      "hashes": null,
+      "receipts": 183,
+      "expired": false,
+      "local_verified": true,
+      "permanent_git_archive": false
+    },
+    {
+      "stage": "IV163 symmetry/prefix",
+      "run_id": 45890018606,
+      "artifact_id": 15152936393,
+      "file": "iv163-importable-receipts.zip",
+      "bytes": 630080,
+      "sha256": "b818d81ecb66c93a59355f6c607380ba03de34efd0ec2b98e69db3552ae42059",
+      "expires_at": "2027-02-24T20:17:57Z",
+      "hashes": 306,
+      "receipts": 182,
+      "expired": false,
+      "local_verified": true,
+      "permanent_git_archive": false
+    },
+    {
+      "stage": "IV169 sector 0",
+      "run_id": 45893990410,
+      "artifact_id": 15154901590,
+      "file": "iv169-sector-zero-receipts.zip",
+      "bytes": 403833,
+      "sha256": "d52b91aeef91d992b4c820daf85d031607704490f110104509156450a706e7a5",
+      "expires_at": "2027-02-24T20:51:00Z",
+      "hashes": 244,
+      "receipts": 109,
+      "expired": false,
+      "local_verified": true,
+      "permanent_git_archive": false
+    },
+    {
+      "stage": "IV171 sector 1",
+      "run_id": 45905155636,
+      "artifact_id": 15158888019,
+      "file": "iv171-sector-one-receipts.zip",
+      "bytes": 570122,
+      "sha256": "86649abdc0acd7de5c06fae8b80c7c7f99102911e65a0a6e2016f97c1df07126",
+      "expires_at": "2027-02-24T22:29:58Z",
+      "hashes": 324,
+      "receipts": 145,
+      "expired": false,
+      "local_verified": true,
+      "permanent_git_archive": false
+    },
+    {
+      "stage": "IV191 sector 2",
+      "run_id": 45915116300,
+      "artifact_id": 15163168939,
+      "file": "iv191-sector-two-receipts.zip",
+      "bytes": 569548,
+      "sha256": "f706f72fb86ea1a8b3f8f1cb7ee56995a37288d208b375f282220ddf3157f061",
+      "expires_at": "2027-02-25T00:09:55Z",
+      "hashes": 324,
+      "receipts": 145,
+      "expired": false,
+      "local_verified": true,
+      "permanent_git_archive": false
+    },
+    {
+      "stage": "IV201 sector 3 + dictionary",
+      "run_id": 45919346558,
+      "artifact_id": 15165475218,
+      "file": "iv201-sector-three-receipts.zip",
+      "bytes": 569743,
+      "sha256": "214c93321db7b94e02f69b96d1cc32e660d3834333bf9e1a8b2b8010098bc697",
+      "expires_at": "2027-02-25T00:53:08Z",
+      "hashes": 324,
+      "receipts": 145,
+      "expired": false,
+      "local_verified": true,
+      "permanent_git_archive": false
+    },
+    {
+      "stage": "IV215 sector 4",
+      "run_id": 45922181287,
+      "artifact_id": 15165795851,
+      "file": "iv215-sector-four-receipts.zip",
+      "bytes": 549054,
+      "sha256": "065c298e11ee6c1761546dee49b0a79d34f4ce9fcfc004f2394c6db46ff13a5a",
+      "expires_at": "2027-02-25T01:22:15Z",
+      "hashes": 324,
+      "receipts": 145,
+      "expired": false,
+      "local_verified": true,
+      "permanent_git_archive": false
+    },
+    {
+      "stage": "IV219 sector 5",
+      "run_id": 45924078430,
+      "artifact_id": 15166377400,
+      "file": "iv219-sector-five-receipts.zip",
+      "bytes": 548943,
+      "sha256": "9af9cf46b2c70de9388b31e93e820905b5e4a43a918700ddf8a796e9ae727914",
+      "expires_at": "2027-02-25T01:42:13Z",
+      "hashes": 324,
+      "receipts": 145,
+      "expired": false,
+      "local_verified": true,
+      "permanent_git_archive": false
+    },
+    {
+      "stage": "IV222 sector 6",
+      "run_id": 45926339383,
+      "artifact_id": 15167178136,
+      "file": "iv222-sector-six-receipts.zip",
+      "bytes": 549352,
+      "sha256": "9ca7b6e78947770608283fecfe906518916e763bf152d05af2a76fae824c1c20",
+      "expires_at": "2027-02-25T02:06:06Z",
+      "hashes": 324,
+      "receipts": 145,
+      "expired": false,
+      "local_verified": true,
+      "permanent_git_archive": false
+    },
+    {
+      "stage": "IV230 sector 7",
+      "run_id": 45928491091,
+      "artifact_id": 15168028090,
+      "file": "iv230-sector-seven-receipts.zip",
+      "bytes": 549445,
+      "sha256": "492d48a8aad4e9b386d1d2041a4fd7cff67c44770c0dbc52ac1ba84960c97ebe",
+      "expires_at": "2027-02-25T02:28:04Z",
+      "hashes": 324,
+      "receipts": 145,
+      "expired": false,
+      "local_verified": true,
+      "permanent_git_archive": false
+    }
+  ],
+  "frozen_input": {
+    "path": "custody/iv146-am/am_cells.json",
+    "bytes": 148373,
+    "git_blob": "ba15f7c820fe5fd0a1a3ffb61f80554ef0659cb0",
+    "sha256": "2b149c79f469b594ce7c308e44c278da00e9e41fbd9da1436cad0b0dca9d294a",
+    "local_git_blob_matches_remote_tree": true
+  },
+  "upstream": {
+    "repo": "monocap-tech/canonical-return",
+    "commit": "ea81fd040e51bf0ffbe8fdab3b5c6282cf293a0f",
+    "archive": "CR-INT-T1D-AM-reproducibility.zip",
+    "part_blob": "937c7e8711be36d45125ec329f2012ed86c13a75",
+    "sha256": "52529ba3c21926ada5bbb1a97cb8175660b94a510c4e57b4d248f042c417aa2d",
+    "provenance": "RECONSTRUCTED_DIGEST_AGREES_BOTH",
+    "remote_blob_confirmed": true
+  },
+  "active_run": {
+    "run_id": 45930758374,
+    "job_id": 140282573491,
+    "status": "in_progress",
+    "step": 5,
+    "conclusion": null,
+    "preflight": "PASS",
+    "toolchain": "PASS",
+    "terminal": "unaccepted"
+  },
+  "historical_custody_branch": {
+    "branch": "staging/iv172-am-sector-zero-custody",
+    "head": "0547ff62474fd86cb35ca380ff542a356fa50c28",
+    "copied_original_blobs": [
+      "35f1606a9a38b600fb8d58c70a57237a49fe081c",
+      "87c308defc8e807ee053245c79002b8c4c9eaa96",
+      "3042a2368046d6aa6d2e6589a31a590704da90ab"
+    ]
+  },
+  "permanent_binary_custody": "OPEN: archives available locally and in expiring GitHub Actions artifact storage, not committed as bytes. No supported local binary-to-Git transfer verified in this turn."
+}

@@ -1,0 +1,29 @@
+{
+  "scope": "local cross-archive reconciliation of recorded proof objects and sources; no fresh Lean import or compilation",
+  "archives": [
+    15152936393,
+    15154901590
+  ],
+  "modules": 163,
+  "objects": 163,
+  "hashes": 550,
+  "named_receipts": 291,
+  "internal_import_edges": 160,
+  "missing_internal_imports": 0,
+  "duplicate_names": 0,
+  "symmetry_blocks": [
+    0,
+    128
+  ],
+  "row_blocks": [
+    0,
+    128
+  ],
+  "row_interval": [
+    0,
+    1024
+  ],
+  "original_shard_sources_byte_identical": 80,
+  "exact_audit_byte_identical": true,
+  "exact_audit_sha256": "57109c0a6475c0890dcae3c9dd5f3e2b68deb1aeb38c947f9376d58fc4d2c52f"
+}
