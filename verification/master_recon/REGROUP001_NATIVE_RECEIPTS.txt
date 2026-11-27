@@ -1,0 +1,520 @@
+REGROUP-001 MASTER-RECON | Selected original decoded job-log lines, prefixed by line number. Not complete logs or ZIP bytes. Successful named axiom audit summaries are required; individual prints from failed modules do not count.
+
+Run 45929425517, job 140278339762; decoded lines 1406
+390: 2026-11-27T02:39:12.7274081Z V10B33a: strict axiom audit PASS (4 declarations)
+413: 2026-11-27T02:39:17.0328331Z V10B33b: strict axiom audit PASS (4 declarations)
+434: 2026-11-27T02:39:22.3000275Z V10B34a: strict axiom audit PASS (5 declarations)
+436: 2026-11-27T02:39:32.5441898Z info: WeilDefect/MasterRecon/V10B45a.lean:62:0: 'WeilDefect.MasterRecon.V10B45a.bank_shape' does not depend on any axioms
+437: 2026-11-27T02:39:32.5442627Z info: WeilDefect/MasterRecon/V10B45a.lean:63:0: 'WeilDefect.MasterRecon.V10B45a.denom_pos' depends on axioms: [propext]
+438: 2026-11-27T02:39:32.5443136Z info: WeilDefect/MasterRecon/V10B45a.lean:64:0: 'WeilDefect.MasterRecon.V10B45a.leading_margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+439: 2026-11-27T02:39:32.5443709Z info: WeilDefect/MasterRecon/V10B45a.lean:65:0: 'WeilDefect.MasterRecon.V10B45a.high_leading_margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+440: 2026-11-27T02:39:32.5444276Z info: WeilDefect/MasterRecon/V10B45a.lean:66:0: 'WeilDefect.MasterRecon.V10B45a.high_mass_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+447: 2026-11-27T02:39:42.1739559Z V10B45a: strict axiom audit PASS (5 declarations)
+463: 2026-11-27T02:39:44.9168895Z info: WeilDefect/MasterRecon/V10B46a.lean:104:0: 'WeilDefect.MasterRecon.V10B46a.w_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+464: 2026-11-27T02:39:44.9169749Z info: WeilDefect/MasterRecon/V10B46a.lean:105:0: 'WeilDefect.MasterRecon.V10B46a.J_add_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+465: 2026-11-27T02:39:44.9170587Z info: WeilDefect/MasterRecon/V10B46a.lean:106:0: 'WeilDefect.MasterRecon.V10B46a.I_rodrigues' depends on axioms: [propext, Classical.choice, Quot.sound]
+466: 2026-11-27T02:39:44.9171572Z info: WeilDefect/MasterRecon/V10B46a.lean:107:0: 'WeilDefect.MasterRecon.V10B46a.I_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+467: 2026-11-27T02:39:44.9172380Z info: WeilDefect/MasterRecon/V10B46a.lean:108:0: 'WeilDefect.MasterRecon.V10B46a.J_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+468: 2026-11-27T02:39:44.9173201Z info: WeilDefect/MasterRecon/V10B46a.lean:109:0: 'WeilDefect.MasterRecon.V10B46a.I_add_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+469: 2026-11-27T02:39:44.9174041Z info: WeilDefect/MasterRecon/V10B46a.lean:110:0: 'WeilDefect.MasterRecon.V10B46a.small_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+470: 2026-11-27T02:39:44.9175013Z info: WeilDefect/MasterRecon/V10B46a.lean:111:0: 'WeilDefect.MasterRecon.V10B46a.high_pair_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+480: 2026-11-27T02:39:47.2684155Z V10B46a: strict axiom audit PASS (8 declarations)
+482: 2026-11-27T02:39:48.4487979Z info: WeilDefect/MasterRecon/V10B45a.lean:62:0: 'WeilDefect.MasterRecon.V10B45a.bank_shape' does not depend on any axioms
+483: 2026-11-27T02:39:48.4488814Z info: WeilDefect/MasterRecon/V10B45a.lean:63:0: 'WeilDefect.MasterRecon.V10B45a.denom_pos' depends on axioms: [propext]
+484: 2026-11-27T02:39:48.4489809Z info: WeilDefect/MasterRecon/V10B45a.lean:64:0: 'WeilDefect.MasterRecon.V10B45a.leading_margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+485: 2026-11-27T02:39:48.4490912Z info: WeilDefect/MasterRecon/V10B45a.lean:65:0: 'WeilDefect.MasterRecon.V10B45a.high_leading_margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+486: 2026-11-27T02:39:48.4491938Z info: WeilDefect/MasterRecon/V10B45a.lean:66:0: 'WeilDefect.MasterRecon.V10B45a.high_mass_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+500: 2026-11-27T02:39:50.0498696Z error: WeilDefect/MasterRecon/V10B46b.lean:18:43: unsolved goals
+501: 2026-11-27T02:39:50.0499012Z i j : Fin 16
+502: 2026-11-27T02:39:50.0499249Z ⊢ ↑|v j ↑i| = ↑(v j ↑i).natAbs
+503: 2026-11-27T02:39:50.0499520Z error: WeilDefect/MasterRecon/V10B46b.lean:62:70: unsolved goals
+504: 2026-11-27T02:39:50.0499709Z col : Fin 16
+505: 2026-11-27T02:39:50.0499833Z r : ℕ → ℝ
+506: 2026-11-27T02:39:50.0499973Z hr : ∀ k < 72, |r k| ≤ 1 / 256
+507: 2026-11-27T02:39:50.0500111Z k : ℕ
+508: 2026-11-27T02:39:50.0500242Z hk : k ∈ Finset.range 72
+509: 2026-11-27T02:39:50.0500430Z ⊢ ↑|v col (17 + 2 * k)| = ↑(v col (17 + 2 * k)).natAbs
+510: 2026-11-27T02:39:50.0500827Z info: WeilDefect/MasterRecon/V10B46b.lean:74:0: 'WeilDefect.MasterRecon.V10B46b.base_norm' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+511: 2026-11-27T02:39:50.0501420Z info: WeilDefect/MasterRecon/V10B46b.lean:75:0: 'WeilDefect.MasterRecon.V10B46b.base_margin' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+512: 2026-11-27T02:39:50.0502006Z info: WeilDefect/MasterRecon/V10B46b.lean:76:0: 'WeilDefect.MasterRecon.V10B46b.reserve_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+522: 2026-11-27T02:39:50.0946380Z V10B46c: BLOCKED by V10B46b
+557: 2026-11-27T02:39:52.9378025Z info: WeilDefect/MasterRecon/V10B36a.lean:101:0: 'WeilDefect.MasterRecon.V10B36a.odd_vanish' depends on axioms: [propext, Classical.choice, Quot.sound]
+558: 2026-11-27T02:39:52.9378568Z info: WeilDefect/MasterRecon/V10B36a.lean:102:0: 'WeilDefect.MasterRecon.V10B36a.B_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+559: 2026-11-27T02:39:52.9379100Z info: WeilDefect/MasterRecon/V10B36a.lean:103:0: 'WeilDefect.MasterRecon.V10B36a.B_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+560: 2026-11-27T02:39:52.9379621Z info: WeilDefect/MasterRecon/V10B36a.lean:104:0: 'WeilDefect.MasterRecon.V10B36a.B_m_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+561: 2026-11-27T02:39:52.9380144Z info: WeilDefect/MasterRecon/V10B36a.lean:105:0: 'WeilDefect.MasterRecon.V10B36a.B_j_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+562: 2026-11-27T02:39:52.9380656Z info: WeilDefect/MasterRecon/V10B36a.lean:106:0: 'WeilDefect.MasterRecon.V10B36a.B_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+603: 2026-11-27T02:39:55.4773139Z V10B36a: strict axiom audit PASS (6 declarations)
+638: 2026-11-27T02:39:56.7421931Z info: WeilDefect/MasterRecon/V10B36a.lean:101:0: 'WeilDefect.MasterRecon.V10B36a.odd_vanish' depends on axioms: [propext, Classical.choice, Quot.sound]
+639: 2026-11-27T02:39:56.7423555Z info: WeilDefect/MasterRecon/V10B36a.lean:102:0: 'WeilDefect.MasterRecon.V10B36a.B_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+640: 2026-11-27T02:39:56.7425892Z info: WeilDefect/MasterRecon/V10B36a.lean:103:0: 'WeilDefect.MasterRecon.V10B36a.B_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+641: 2026-11-27T02:39:56.7428396Z info: WeilDefect/MasterRecon/V10B36a.lean:104:0: 'WeilDefect.MasterRecon.V10B36a.B_m_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+642: 2026-11-27T02:39:56.7431119Z info: WeilDefect/MasterRecon/V10B36a.lean:105:0: 'WeilDefect.MasterRecon.V10B36a.B_j_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+643: 2026-11-27T02:39:56.7433856Z info: WeilDefect/MasterRecon/V10B36a.lean:106:0: 'WeilDefect.MasterRecon.V10B36a.B_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+651: 2026-11-27T02:39:58.3403141Z info: WeilDefect/MasterRecon/V10B37a.lean:61:0: 'WeilDefect.MasterRecon.V10B37a.F_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+652: 2026-11-27T02:39:58.3403678Z info: WeilDefect/MasterRecon/V10B37a.lean:62:0: 'WeilDefect.MasterRecon.V10B37a.F_j_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+653: 2026-11-27T02:39:58.3404187Z info: WeilDefect/MasterRecon/V10B37a.lean:63:0: 'WeilDefect.MasterRecon.V10B37a.F_m_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+654: 2026-11-27T02:39:58.3404708Z info: WeilDefect/MasterRecon/V10B37a.lean:64:0: 'WeilDefect.MasterRecon.V10B37a.B_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+666: 2026-11-27T02:40:00.6939999Z V10B37a: strict axiom audit PASS (4 declarations)
+715: 2026-11-27T02:40:01.8414501Z info: WeilDefect/MasterRecon/V10B36a.lean:101:0: 'WeilDefect.MasterRecon.V10B36a.odd_vanish' depends on axioms: [propext, Classical.choice, Quot.sound]
+716: 2026-11-27T02:40:01.8415775Z info: WeilDefect/MasterRecon/V10B36a.lean:102:0: 'WeilDefect.MasterRecon.V10B36a.B_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+717: 2026-11-27T02:40:01.8416808Z info: WeilDefect/MasterRecon/V10B36a.lean:103:0: 'WeilDefect.MasterRecon.V10B36a.B_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+718: 2026-11-27T02:40:01.8417798Z info: WeilDefect/MasterRecon/V10B36a.lean:104:0: 'WeilDefect.MasterRecon.V10B36a.B_m_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+719: 2026-11-27T02:40:01.8418805Z info: WeilDefect/MasterRecon/V10B36a.lean:105:0: 'WeilDefect.MasterRecon.V10B36a.B_j_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+720: 2026-11-27T02:40:01.8419880Z info: WeilDefect/MasterRecon/V10B36a.lean:106:0: 'WeilDefect.MasterRecon.V10B36a.B_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+728: 2026-11-27T02:40:01.8424508Z info: WeilDefect/MasterRecon/V10B37a.lean:61:0: 'WeilDefect.MasterRecon.V10B37a.F_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+729: 2026-11-27T02:40:01.8425665Z info: WeilDefect/MasterRecon/V10B37a.lean:62:0: 'WeilDefect.MasterRecon.V10B37a.F_j_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+730: 2026-11-27T02:40:01.8426702Z info: WeilDefect/MasterRecon/V10B37a.lean:63:0: 'WeilDefect.MasterRecon.V10B37a.F_m_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+731: 2026-11-27T02:40:01.8427746Z info: WeilDefect/MasterRecon/V10B37a.lean:64:0: 'WeilDefect.MasterRecon.V10B37a.B_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+746: 2026-11-27T02:40:03.7392983Z info: WeilDefect/MasterRecon/V10B38a.lean:131:0: 'WeilDefect.MasterRecon.V10B38a.polynomial_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+747: 2026-11-27T02:40:03.7393535Z info: WeilDefect/MasterRecon/V10B38a.lean:132:0: 'WeilDefect.MasterRecon.V10B38a.lower_degree_pairing_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+748: 2026-11-27T02:40:03.7394096Z info: WeilDefect/MasterRecon/V10B38a.lean:133:0: 'WeilDefect.MasterRecon.V10B38a.legendre_orthogonal_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+749: 2026-11-27T02:40:03.7394647Z info: WeilDefect/MasterRecon/V10B38a.lean:134:0: 'WeilDefect.MasterRecon.V10B38a.legendre_orthogonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+750: 2026-11-27T02:40:03.7395352Z info: WeilDefect/MasterRecon/V10B38a.lean:135:0: 'WeilDefect.MasterRecon.V10B38a.top_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+751: 2026-11-27T02:40:03.7395881Z info: WeilDefect/MasterRecon/V10B38a.lean:136:0: 'WeilDefect.MasterRecon.V10B38a.legendre_diagonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+772: 2026-11-27T02:40:06.2960536Z V10B38a: strict axiom audit PASS (6 declarations)
+1161: 2026-11-27T02:41:49.5188494Z error: WeilDefect/MasterRecon/V10B50a.lean:30:75: unsolved goals
+1162: 2026-11-27T02:41:49.5188711Z t a : ℝ
+1163: 2026-11-27T02:41:49.5188835Z ht : 0 ≤ t
+1164: 2026-11-27T02:41:49.5188963Z g : ↥(logCarrier t)
+1165: 2026-11-27T02:41:49.5189081Z x : ℝ
+1166: 2026-11-27T02:41:49.5189279Z hx : ↑↑(MemLp.toLp (V10B8c.expVector a) ⋯) x = V10B8c.expVector a x
+1167: 2026-11-27T02:41:49.5189597Z hy : ↑↑((restrictPhysical t) ((physicalInclusion t) g)) x = ↑↑((physicalInclusion t) g) x
+1168: 2026-11-27T02:41:49.5190113Z ⊢ (starRingEnd ℂ) (Complex.exp (↑a * ↑x)) = Complex.exp (↑a * ↑x) ∨ ↑↑((physicalInclusion t) g) x = 0
+1169: 2026-11-27T02:41:49.5190794Z warning: WeilDefect/MasterRecon/V10B50a.lean:47:6: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+1170: 2026-11-27T02:41:49.5191188Z 
+1179: 2026-11-27T02:41:49.5696942Z V10B50b: BLOCKED by V10B50a
+1214: 2026-11-27T02:41:52.2806876Z info: WeilDefect/MasterRecon/V10B47a.lean:75:0: 'WeilDefect.MasterRecon.V10B47a.beta_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+1215: 2026-11-27T02:41:52.2807378Z info: WeilDefect/MasterRecon/V10B47a.lean:76:0: 'WeilDefect.MasterRecon.V10B47a.beta_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+1216: 2026-11-27T02:41:52.2807877Z info: WeilDefect/MasterRecon/V10B47a.lean:77:0: 'WeilDefect.MasterRecon.V10B47a.beta_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+1240: 2026-11-27T02:41:54.6551100Z V10B47a: strict axiom audit PASS (3 declarations)
+1275: 2026-11-27T02:41:55.7784976Z info: WeilDefect/MasterRecon/V10B47a.lean:75:0: 'WeilDefect.MasterRecon.V10B47a.beta_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+1276: 2026-11-27T02:41:55.7785496Z info: WeilDefect/MasterRecon/V10B47a.lean:76:0: 'WeilDefect.MasterRecon.V10B47a.beta_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+1277: 2026-11-27T02:41:55.7786023Z info: WeilDefect/MasterRecon/V10B47a.lean:77:0: 'WeilDefect.MasterRecon.V10B47a.beta_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+1292: 2026-11-27T02:41:57.5793497Z info: WeilDefect/MasterRecon/V10B47b.lean:133:0: 'WeilDefect.MasterRecon.V10B47b.polynomial_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+1293: 2026-11-27T02:41:57.5794054Z info: WeilDefect/MasterRecon/V10B47b.lean:134:0: 'WeilDefect.MasterRecon.V10B47b.lower_degree_pairing_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+1294: 2026-11-27T02:41:57.5794610Z info: WeilDefect/MasterRecon/V10B47b.lean:135:0: 'WeilDefect.MasterRecon.V10B47b.legendre_orthogonal_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+1295: 2026-11-27T02:41:57.5795560Z info: WeilDefect/MasterRecon/V10B47b.lean:136:0: 'WeilDefect.MasterRecon.V10B47b.legendre_orthogonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+1296: 2026-11-27T02:41:57.5796217Z info: WeilDefect/MasterRecon/V10B47b.lean:137:0: 'WeilDefect.MasterRecon.V10B47b.top_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+1297: 2026-11-27T02:41:57.5796742Z info: WeilDefect/MasterRecon/V10B47b.lean:138:0: 'WeilDefect.MasterRecon.V10B47b.legendre_diagonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+1318: 2026-11-27T02:42:00.0403828Z V10B47b: strict axiom audit PASS (6 declarations)
+1333: 2026-11-27T02:42:02.7504688Z error: WeilDefect/MasterRecon/V10B39b.lean:54:44: unsolved goals
+1334: 2026-11-27T02:42:02.7505096Z p : ℕ → ℝ → ℝ
+1335: 2026-11-27T02:42:02.7505274Z d : ℕ → ℝ
+1336: 2026-11-27T02:42:02.7505478Z hp : ∀ (j : ℕ), Continuous (p j)
+1337: 2026-11-27T02:42:02.7505668Z n : ℕ
+1338: 2026-11-27T02:42:02.7505829Z f g : ℝ → ℝ
+1339: 2026-11-27T02:42:02.7505981Z hf : Continuous f
+1340: 2026-11-27T02:42:02.7506143Z hg : Continuous g
+1341: 2026-11-27T02:42:02.7506309Z x : ℝ
+1342: 2026-11-27T02:42:02.7506454Z j : ℕ
+1355: 2026-11-27T02:42:02.7944282Z V10B39c: BLOCKED by V10B39b
+1356: 2026-11-27T02:42:02.7968499Z V10B40a: BLOCKED by V10B39b
+1357: 2026-11-27T02:42:02.7990625Z V10B43a: BLOCKED by V10B40a
+1358: 2026-11-27T02:42:02.8012581Z V10B47c: BLOCKED by V10B46c
+1359: 2026-11-27T02:42:02.9992405Z Derived V10B29 digest reproduced: 1fea00167929e3f5312c16dcd680154a34ead4b8934a520c7a23fd60e79e8c5f
+1360: 2026-11-27T02:42:02.9993054Z Leading rows 16/16 PASS; coarse high-row reserve: 0.02374249016442964 high-row margin: 2.960027988079781
+1361: 2026-11-27T02:42:02.9993606Z 16 terms: tight dominance PASS 2.9837542236464984 minimum 1.0675083127611842
+1362: 2026-11-27T02:42:02.9994038Z 17 terms: tight dominance PASS 2.9837542236464984 minimum 1.0675083127611842
+1363: 2026-11-27T02:42:03.0354183Z 450 inverse entries, 225 physical pairings, 240 trial row transforms PASS
+1364: 2026-11-27T02:42:03.0354614Z 2560 symbolic pole-row coefficient cancellations PASS
+
+Run 45927665008, job 140272730332; decoded lines 472
+340: 2026-11-27T02:21:26.9614829Z info: WeilDefect/MasterRecon/V10B41a.lean:215:0: 'WeilDefect.MasterRecon.V10B41a.coefficient_check' depends on axioms: [propext, Classical.choice, Quot.sound]
+341: 2026-11-27T02:21:26.9615560Z info: WeilDefect/MasterRecon/V10B41a.lean:216:0: 'WeilDefect.MasterRecon.V10B41a.scale_pos' does not depend on any axioms
+342: 2026-11-27T02:21:26.9616251Z info: WeilDefect/MasterRecon/V10B41a.lean:217:0: 'WeilDefect.MasterRecon.V10B41a.TP_coeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+343: 2026-11-27T02:21:26.9617247Z info: WeilDefect/MasterRecon/V10B41a.lean:218:0: 'WeilDefect.MasterRecon.V10B41a.LP_coeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+344: 2026-11-27T02:21:26.9617973Z info: WeilDefect/MasterRecon/V10B41a.lean:219:0: 'WeilDefect.MasterRecon.V10B41a.dot_high_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+345: 2026-11-27T02:21:26.9618744Z info: WeilDefect/MasterRecon/V10B41a.lean:220:0: 'WeilDefect.MasterRecon.V10B41a.polynomial_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+357: 2026-11-27T02:21:31.9185903Z V10B41a: strict axiom audit PASS (6 declarations)
+363: 2026-11-27T02:21:32.8503833Z info: WeilDefect/MasterRecon/V10B41a.lean:215:0: 'WeilDefect.MasterRecon.V10B41a.coefficient_check' depends on axioms: [propext, Classical.choice, Quot.sound]
+364: 2026-11-27T02:21:32.8504663Z info: WeilDefect/MasterRecon/V10B41a.lean:216:0: 'WeilDefect.MasterRecon.V10B41a.scale_pos' does not depend on any axioms
+365: 2026-11-27T02:21:32.8505460Z info: WeilDefect/MasterRecon/V10B41a.lean:217:0: 'WeilDefect.MasterRecon.V10B41a.TP_coeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+366: 2026-11-27T02:21:32.8506316Z info: WeilDefect/MasterRecon/V10B41a.lean:218:0: 'WeilDefect.MasterRecon.V10B41a.LP_coeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+367: 2026-11-27T02:21:32.8507198Z info: WeilDefect/MasterRecon/V10B41a.lean:219:0: 'WeilDefect.MasterRecon.V10B41a.dot_high_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+368: 2026-11-27T02:21:32.8508118Z info: WeilDefect/MasterRecon/V10B41a.lean:220:0: 'WeilDefect.MasterRecon.V10B41a.polynomial_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+370: 2026-11-27T02:23:13.9327362Z info: WeilDefect/MasterRecon/V10B41b.lean:55:0: 'WeilDefect.MasterRecon.V10B41b.tFormula_check' depends on axioms: [propext, Classical.choice, Quot.sound]
+371: 2026-11-27T02:23:13.9328087Z info: WeilDefect/MasterRecon/V10B41b.lean:56:0: 'WeilDefect.MasterRecon.V10B41b.aFormula_check' depends on axioms: [propext, Classical.choice, Quot.sound]
+372: 2026-11-27T02:23:13.9329376Z info: WeilDefect/MasterRecon/V10B41b.lean:57:0: 'WeilDefect.MasterRecon.V10B41b.tFormula_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+373: 2026-11-27T02:23:13.9329902Z info: WeilDefect/MasterRecon/V10B41b.lean:58:0: 'WeilDefect.MasterRecon.V10B41b.aFormula_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+379: 2026-11-27T02:24:53.9525468Z V10B41b: strict axiom audit PASS (4 declarations)
+385: 2026-11-27T02:24:54.8717827Z info: WeilDefect/MasterRecon/V10B41a.lean:215:0: 'WeilDefect.MasterRecon.V10B41a.coefficient_check' depends on axioms: [propext, Classical.choice, Quot.sound]
+386: 2026-11-27T02:24:54.8718631Z info: WeilDefect/MasterRecon/V10B41a.lean:216:0: 'WeilDefect.MasterRecon.V10B41a.scale_pos' does not depend on any axioms
+387: 2026-11-27T02:24:54.8719430Z info: WeilDefect/MasterRecon/V10B41a.lean:217:0: 'WeilDefect.MasterRecon.V10B41a.TP_coeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+388: 2026-11-27T02:24:54.8720563Z info: WeilDefect/MasterRecon/V10B41a.lean:218:0: 'WeilDefect.MasterRecon.V10B41a.LP_coeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+389: 2026-11-27T02:24:54.8721458Z info: WeilDefect/MasterRecon/V10B41a.lean:219:0: 'WeilDefect.MasterRecon.V10B41a.dot_high_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+390: 2026-11-27T02:24:54.8722369Z info: WeilDefect/MasterRecon/V10B41a.lean:220:0: 'WeilDefect.MasterRecon.V10B41a.polynomial_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+392: 2026-11-27T02:24:54.8723789Z info: WeilDefect/MasterRecon/V10B41b.lean:55:0: 'WeilDefect.MasterRecon.V10B41b.tFormula_check' depends on axioms: [propext, Classical.choice, Quot.sound]
+393: 2026-11-27T02:24:54.8725513Z info: WeilDefect/MasterRecon/V10B41b.lean:56:0: 'WeilDefect.MasterRecon.V10B41b.aFormula_check' depends on axioms: [propext, Classical.choice, Quot.sound]
+394: 2026-11-27T02:24:54.8726467Z info: WeilDefect/MasterRecon/V10B41b.lean:57:0: 'WeilDefect.MasterRecon.V10B41b.tFormula_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+395: 2026-11-27T02:24:54.8727421Z info: WeilDefect/MasterRecon/V10B41b.lean:58:0: 'WeilDefect.MasterRecon.V10B41b.aFormula_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+400: 2026-11-27T02:27:37.5018439Z error: WeilDefect/MasterRecon/V10B41c.lean:59:2: 'change' tactic failed, pattern
+418: 2026-11-27T02:27:38.4614236Z info: WeilDefect/MasterRecon/V10B41a.lean:215:0: 'WeilDefect.MasterRecon.V10B41a.coefficient_check' depends on axioms: [propext, Classical.choice, Quot.sound]
+419: 2026-11-27T02:27:38.4615009Z info: WeilDefect/MasterRecon/V10B41a.lean:216:0: 'WeilDefect.MasterRecon.V10B41a.scale_pos' does not depend on any axioms
+420: 2026-11-27T02:27:38.4615727Z info: WeilDefect/MasterRecon/V10B41a.lean:217:0: 'WeilDefect.MasterRecon.V10B41a.TP_coeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+421: 2026-11-27T02:27:38.4616766Z info: WeilDefect/MasterRecon/V10B41a.lean:218:0: 'WeilDefect.MasterRecon.V10B41a.LP_coeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+422: 2026-11-27T02:27:38.4617574Z info: WeilDefect/MasterRecon/V10B41a.lean:219:0: 'WeilDefect.MasterRecon.V10B41a.dot_high_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+423: 2026-11-27T02:27:38.4618439Z info: WeilDefect/MasterRecon/V10B41a.lean:220:0: 'WeilDefect.MasterRecon.V10B41a.polynomial_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+425: 2026-11-27T02:27:38.4619740Z info: WeilDefect/MasterRecon/V10B41b.lean:55:0: 'WeilDefect.MasterRecon.V10B41b.tFormula_check' depends on axioms: [propext, Classical.choice, Quot.sound]
+426: 2026-11-27T02:27:38.4620568Z info: WeilDefect/MasterRecon/V10B41b.lean:56:0: 'WeilDefect.MasterRecon.V10B41b.aFormula_check' depends on axioms: [propext, Classical.choice, Quot.sound]
+427: 2026-11-27T02:27:38.4621391Z info: WeilDefect/MasterRecon/V10B41b.lean:57:0: 'WeilDefect.MasterRecon.V10B41b.tFormula_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+428: 2026-11-27T02:27:38.4622216Z info: WeilDefect/MasterRecon/V10B41b.lean:58:0: 'WeilDefect.MasterRecon.V10B41b.aFormula_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+429: 2026-11-27T02:49:58.6069244Z ##[error]The operation was canceled.
+
+Run 45928064611, job 140274003030; decoded lines 6795
+402: 2026-11-27T02:25:40.1418453Z info: WeilDefect/MasterRecon/V10B45a.lean:62:0: 'WeilDefect.MasterRecon.V10B45a.bank_shape' does not depend on any axioms
+403: 2026-11-27T02:25:40.1419819Z info: WeilDefect/MasterRecon/V10B45a.lean:63:0: 'WeilDefect.MasterRecon.V10B45a.denom_pos' depends on axioms: [propext]
+404: 2026-11-27T02:25:40.1422174Z info: WeilDefect/MasterRecon/V10B45a.lean:64:0: 'WeilDefect.MasterRecon.V10B45a.leading_margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+405: 2026-11-27T02:25:40.1423772Z info: WeilDefect/MasterRecon/V10B45a.lean:65:0: 'WeilDefect.MasterRecon.V10B45a.high_leading_margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+406: 2026-11-27T02:25:40.1425399Z info: WeilDefect/MasterRecon/V10B45a.lean:66:0: 'WeilDefect.MasterRecon.V10B45a.high_mass_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+413: 2026-11-27T02:25:53.4357158Z V10B45a: strict axiom audit PASS (5 declarations)
+430: 2026-11-27T02:25:59.0628273Z V10B33a: strict axiom audit PASS (4 declarations)
+453: 2026-11-27T02:26:03.7194775Z V10B33b: strict axiom audit PASS (4 declarations)
+456: 2026-11-27T02:26:06.4719842Z error: WeilDefect/MasterRecon/V10B32a.lean:36:2: linarith failed to find a contradiction
+504: 2026-11-27T02:26:11.2192119Z V10B32b: strict axiom audit PASS (5 declarations)
+525: 2026-11-27T02:26:17.0446578Z V10B34a: strict axiom audit PASS (5 declarations)
+574: 2026-11-27T02:26:20.6333868Z info: WeilDefect/MasterRecon/V10B34b.lean:103:0: 'WeilDefect.MasterRecon.V10B34b.skew_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+575: 2026-11-27T02:26:20.6335727Z info: WeilDefect/MasterRecon/V10B34b.lean:104:0: 'WeilDefect.MasterRecon.V10B34b.moment_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+626: 2026-11-27T02:26:23.5330641Z V10B34b: strict axiom audit PASS (2 declarations)
+689: 2026-11-27T02:26:24.8140795Z info: WeilDefect/MasterRecon/V10B34b.lean:103:0: 'WeilDefect.MasterRecon.V10B34b.skew_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+690: 2026-11-27T02:26:24.8142976Z info: WeilDefect/MasterRecon/V10B34b.lean:104:0: 'WeilDefect.MasterRecon.V10B34b.moment_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+711: 2026-11-27T02:26:27.3142767Z error: WeilDefect/MasterRecon/V10B35a.lean:91:17: Application type mismatch: The argument
+725: 2026-11-27T02:26:27.3151444Z error: WeilDefect/MasterRecon/V10B35a.lean:99:63: unsolved goals
+778: 2026-11-27T02:26:30.8279537Z info: WeilDefect/MasterRecon/V10B36a.lean:101:0: 'WeilDefect.MasterRecon.V10B36a.odd_vanish' depends on axioms: [propext, Classical.choice, Quot.sound]
+779: 2026-11-27T02:26:30.8280844Z info: WeilDefect/MasterRecon/V10B36a.lean:102:0: 'WeilDefect.MasterRecon.V10B36a.B_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+780: 2026-11-27T02:26:30.8282306Z info: WeilDefect/MasterRecon/V10B36a.lean:103:0: 'WeilDefect.MasterRecon.V10B36a.B_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+781: 2026-11-27T02:26:30.8283269Z info: WeilDefect/MasterRecon/V10B36a.lean:104:0: 'WeilDefect.MasterRecon.V10B36a.B_m_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+782: 2026-11-27T02:26:30.8284185Z info: WeilDefect/MasterRecon/V10B36a.lean:105:0: 'WeilDefect.MasterRecon.V10B36a.B_j_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+783: 2026-11-27T02:26:30.8285087Z info: WeilDefect/MasterRecon/V10B36a.lean:106:0: 'WeilDefect.MasterRecon.V10B36a.B_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+824: 2026-11-27T02:26:33.5866459Z V10B36a: strict axiom audit PASS (6 declarations)
+835: 2026-11-27T02:26:38.9473617Z V10B36b: strict axiom audit PASS (4 declarations)
+870: 2026-11-27T02:26:40.2129924Z info: WeilDefect/MasterRecon/V10B36a.lean:101:0: 'WeilDefect.MasterRecon.V10B36a.odd_vanish' depends on axioms: [propext, Classical.choice, Quot.sound]
+871: 2026-11-27T02:26:40.2132170Z info: WeilDefect/MasterRecon/V10B36a.lean:102:0: 'WeilDefect.MasterRecon.V10B36a.B_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+872: 2026-11-27T02:26:40.2133894Z info: WeilDefect/MasterRecon/V10B36a.lean:103:0: 'WeilDefect.MasterRecon.V10B36a.B_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+873: 2026-11-27T02:26:40.2135614Z info: WeilDefect/MasterRecon/V10B36a.lean:104:0: 'WeilDefect.MasterRecon.V10B36a.B_m_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+874: 2026-11-27T02:26:40.2137316Z info: WeilDefect/MasterRecon/V10B36a.lean:105:0: 'WeilDefect.MasterRecon.V10B36a.B_j_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+875: 2026-11-27T02:26:40.2139005Z info: WeilDefect/MasterRecon/V10B36a.lean:106:0: 'WeilDefect.MasterRecon.V10B36a.B_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+883: 2026-11-27T02:26:42.1116539Z info: WeilDefect/MasterRecon/V10B37a.lean:61:0: 'WeilDefect.MasterRecon.V10B37a.F_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+884: 2026-11-27T02:26:42.1117815Z info: WeilDefect/MasterRecon/V10B37a.lean:62:0: 'WeilDefect.MasterRecon.V10B37a.F_j_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+885: 2026-11-27T02:26:42.1119631Z info: WeilDefect/MasterRecon/V10B37a.lean:63:0: 'WeilDefect.MasterRecon.V10B37a.F_m_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+886: 2026-11-27T02:26:42.1121321Z info: WeilDefect/MasterRecon/V10B37a.lean:64:0: 'WeilDefect.MasterRecon.V10B37a.B_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+898: 2026-11-27T02:26:44.6403610Z V10B37a: strict axiom audit PASS (4 declarations)
+909: 2026-11-27T02:26:47.6111549Z error: WeilDefect/MasterRecon/V10B37b.lean:26:2: 'change' tactic failed, pattern
+1000: 2026-11-27T02:26:48.9163644Z info: WeilDefect/MasterRecon/V10B36a.lean:101:0: 'WeilDefect.MasterRecon.V10B36a.odd_vanish' depends on axioms: [propext, Classical.choice, Quot.sound]
+1001: 2026-11-27T02:26:48.9165700Z info: WeilDefect/MasterRecon/V10B36a.lean:102:0: 'WeilDefect.MasterRecon.V10B36a.B_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+1002: 2026-11-27T02:26:48.9167765Z info: WeilDefect/MasterRecon/V10B36a.lean:103:0: 'WeilDefect.MasterRecon.V10B36a.B_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+1003: 2026-11-27T02:26:48.9169831Z info: WeilDefect/MasterRecon/V10B36a.lean:104:0: 'WeilDefect.MasterRecon.V10B36a.B_m_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+1004: 2026-11-27T02:26:48.9172330Z info: WeilDefect/MasterRecon/V10B36a.lean:105:0: 'WeilDefect.MasterRecon.V10B36a.B_j_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+1005: 2026-11-27T02:26:48.9174407Z info: WeilDefect/MasterRecon/V10B36a.lean:106:0: 'WeilDefect.MasterRecon.V10B36a.B_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+1013: 2026-11-27T02:26:48.9182327Z info: WeilDefect/MasterRecon/V10B37a.lean:61:0: 'WeilDefect.MasterRecon.V10B37a.F_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+1014: 2026-11-27T02:26:48.9184323Z info: WeilDefect/MasterRecon/V10B37a.lean:62:0: 'WeilDefect.MasterRecon.V10B37a.F_j_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+1015: 2026-11-27T02:26:48.9186327Z info: WeilDefect/MasterRecon/V10B37a.lean:63:0: 'WeilDefect.MasterRecon.V10B37a.F_m_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+1016: 2026-11-27T02:26:48.9188333Z info: WeilDefect/MasterRecon/V10B37a.lean:64:0: 'WeilDefect.MasterRecon.V10B37a.B_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+1024: 2026-11-27T02:26:50.7179455Z error: WeilDefect/MasterRecon/V10B37d.lean:24:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+1035: 2026-11-27T02:26:50.7195544Z error: WeilDefect/MasterRecon/V10B37d.lean:54:10: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+1122: 2026-11-27T02:26:52.0361741Z info: WeilDefect/MasterRecon/V10B36a.lean:101:0: 'WeilDefect.MasterRecon.V10B36a.odd_vanish' depends on axioms: [propext, Classical.choice, Quot.sound]
+1123: 2026-11-27T02:26:52.0363256Z info: WeilDefect/MasterRecon/V10B36a.lean:102:0: 'WeilDefect.MasterRecon.V10B36a.B_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+1124: 2026-11-27T02:26:52.0364737Z info: WeilDefect/MasterRecon/V10B36a.lean:103:0: 'WeilDefect.MasterRecon.V10B36a.B_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+1125: 2026-11-27T02:26:52.0366270Z info: WeilDefect/MasterRecon/V10B36a.lean:104:0: 'WeilDefect.MasterRecon.V10B36a.B_m_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+1126: 2026-11-27T02:26:52.0367771Z info: WeilDefect/MasterRecon/V10B36a.lean:105:0: 'WeilDefect.MasterRecon.V10B36a.B_j_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+1127: 2026-11-27T02:26:52.0369262Z info: WeilDefect/MasterRecon/V10B36a.lean:106:0: 'WeilDefect.MasterRecon.V10B36a.B_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+1135: 2026-11-27T02:26:52.0375461Z info: WeilDefect/MasterRecon/V10B37a.lean:61:0: 'WeilDefect.MasterRecon.V10B37a.F_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+1136: 2026-11-27T02:26:52.0376976Z info: WeilDefect/MasterRecon/V10B37a.lean:62:0: 'WeilDefect.MasterRecon.V10B37a.F_j_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+1137: 2026-11-27T02:26:52.0378395Z info: WeilDefect/MasterRecon/V10B37a.lean:63:0: 'WeilDefect.MasterRecon.V10B37a.F_m_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+1138: 2026-11-27T02:26:52.0379864Z info: WeilDefect/MasterRecon/V10B37a.lean:64:0: 'WeilDefect.MasterRecon.V10B37a.B_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+1141: 2026-11-27T02:26:54.4370145Z error: WeilDefect/MasterRecon/V10B38a.lean:41:64: No goals to be solved
+1142: 2026-11-27T02:26:54.4370979Z error: WeilDefect/MasterRecon/V10B38a.lean:82:57: unsolved goals
+1157: 2026-11-27T02:26:54.4377523Z info: WeilDefect/MasterRecon/V10B38a.lean:131:0: 'WeilDefect.MasterRecon.V10B38a.polynomial_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+1158: 2026-11-27T02:26:54.4379025Z info: WeilDefect/MasterRecon/V10B38a.lean:132:0: 'WeilDefect.MasterRecon.V10B38a.lower_degree_pairing_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+1159: 2026-11-27T02:26:54.4380280Z info: WeilDefect/MasterRecon/V10B38a.lean:133:0: 'WeilDefect.MasterRecon.V10B38a.legendre_orthogonal_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+1160: 2026-11-27T02:26:54.4392802Z info: WeilDefect/MasterRecon/V10B38a.lean:134:0: 'WeilDefect.MasterRecon.V10B38a.legendre_orthogonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+1161: 2026-11-27T02:26:54.4394419Z info: WeilDefect/MasterRecon/V10B38a.lean:135:0: 'WeilDefect.MasterRecon.V10B38a.top_derivative' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+1162: 2026-11-27T02:26:54.4395478Z info: WeilDefect/MasterRecon/V10B38a.lean:136:0: 'WeilDefect.MasterRecon.V10B38a.legendre_diagonal' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+1168: 2026-11-27T02:26:57.4267585Z error: WeilDefect/MasterRecon/V10B38b.lean:44:16: unexpected token '|*'; expected '|' or '|ₘ'
+1169: 2026-11-27T02:26:57.4268244Z error: WeilDefect/MasterRecon/V10B38b.lean:35:13: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+1182: 2026-11-27T02:26:57.4272761Z error: WeilDefect/MasterRecon/V10B38b.lean:30:63: unsolved goals
+1201: 2026-11-27T02:26:57.4532348Z V10B38c: BLOCKED by V10B35a
+1212: 2026-11-27T02:27:00.3164430Z error: WeilDefect/MasterRecon/V10B39a.lean:27:2: unsolved goals
+1221: 2026-11-27T02:27:00.3168743Z error: WeilDefect/MasterRecon/V10B39a.lean:38:42: Application type mismatch: The argument
+1229: 2026-11-27T02:27:00.3175596Z error: WeilDefect/MasterRecon/V10B39a.lean:41:2: Invalid alternative name `zero`: Expected `bot` or `coe`
+1230: 2026-11-27T02:27:00.3176758Z error: WeilDefect/MasterRecon/V10B39a.lean:48:2: Invalid alternative name `succ`: Expected `bot` or `coe`
+1231: 2026-11-27T02:27:00.3177832Z error: WeilDefect/MasterRecon/V10B39a.lean:40:2: Alternative `bot` has not been provided
+1232: 2026-11-27T02:27:00.3178797Z error: WeilDefect/MasterRecon/V10B39a.lean:40:2: Alternative `coe` has not been provided
+1233: 2026-11-27T02:27:00.3179643Z error: WeilDefect/MasterRecon/V10B39a.lean:75:4: mod_cast has type
+1254: 2026-11-27T02:27:03.3078371Z error: WeilDefect/MasterRecon/V10B39b.lean:62:44: typeclass instance problem is stuck
+1267: 2026-11-27T02:27:03.3353444Z V10B39c: BLOCKED by V10B39b
+1268: 2026-11-27T02:27:03.3381876Z V10B40a: BLOCKED by V10B39b
+1269: 2026-11-27T02:27:03.3408868Z V10B40d: BLOCKED by V10B40a
+1270: 2026-11-27T02:27:03.3435153Z V10B43a: BLOCKED by V10B40a
+1278: 2026-11-27T02:27:06.2075880Z error: WeilDefect/MasterRecon/V10B30a.lean:96:9: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+1305: 2026-11-27T02:27:06.2353480Z V10B31b: BLOCKED by V10B30a
+1318: 2026-11-27T02:27:11.9995845Z V10B24a: strict axiom audit PASS (5 declarations)
+1391: 2026-11-27T02:27:17.7608299Z V10B24b: strict axiom audit PASS (8 declarations)
+1436: 2026-11-27T02:27:20.8384118Z error: WeilDefect/MasterRecon/V10B25a.lean:34:2: Type mismatch: After simplification, term
+1442: 2026-11-27T02:27:20.8385943Z error: WeilDefect/MasterRecon/V10B25a.lean:70:2: Type mismatch
+1508: 2026-11-27T02:27:26.2939774Z V10B25b: strict axiom audit PASS (4 declarations)
+1555: 2026-11-27T02:27:29.6744746Z error: WeilDefect/MasterRecon/V10B26a.lean:23:8: Unknown identifier `expSeries_div_hasSum_exp`
+1580: 2026-11-27T02:27:29.6762503Z error: WeilDefect/MasterRecon/V10B26a.lean:99:68: Invalid field `trans`: The environment does not contain `Function.trans`, so it is not possible to project the field `trans` from an expression
+1585: 2026-11-27T02:27:29.6766795Z error: WeilDefect/MasterRecon/V10B26a.lean:92:51: unsolved goals
+1601: 2026-11-27T02:27:29.7021196Z V10B26b: BLOCKED by V10B25a
+1602: 2026-11-27T02:27:29.7065625Z V10B26c: BLOCKED by V10B26a
+1603: 2026-11-27T02:27:29.7071168Z V10B27a: BLOCKED by V10B26c
+1604: 2026-11-27T02:27:29.7096093Z V10B27b: BLOCKED by V10B27a
+1616: 2026-11-27T02:27:33.3244819Z error: WeilDefect/MasterRecon/V10B20a.lean:93:33: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+1646: 2026-11-27T02:27:37.1401421Z error: WeilDefect/MasterRecon/V10B20b.lean:52:11: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+1682: 2026-11-27T02:27:37.1664790Z V10B20c: BLOCKED by V10B20b
+1683: 2026-11-27T02:27:37.1690550Z V10B20d: BLOCKED by V10B20c
+1684: 2026-11-27T02:27:37.1714806Z V10B21a: BLOCKED by V10B20b
+1685: 2026-11-27T02:27:37.1738261Z V10B31a: BLOCKED by V10B30a
+2129: 2026-11-27T02:30:09.6135637Z V10B8e: strict axiom audit PASS (11 declarations)
+2584: 2026-11-27T02:30:22.9971152Z V10B8f: strict axiom audit PASS (9 declarations)
+2657: 2026-11-27T02:30:30.8471881Z error: WeilDefect/MasterRecon/V10B12c.lean:97:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+3072: 2026-11-27T02:30:52.0637098Z V10B13b: strict axiom audit PASS (5 declarations)
+3171: 2026-11-27T02:31:02.2673889Z V10B14c: strict axiom audit PASS (3 declarations)
+3507: 2026-11-27T02:31:18.5058758Z V10B16a: strict axiom audit PASS (2 declarations)
+4161: 2026-11-27T02:32:09.0532056Z V10B5c: strict axiom audit PASS (7 declarations)
+4539: 2026-11-27T02:32:22.4083531Z V10B21b: strict axiom audit PASS (5 declarations)
+4914: 2026-11-27T02:32:32.0218468Z error: WeilDefect/MasterRecon/V10B21c.lean:48:2: linarith failed to find a contradiction
+4924: 2026-11-27T02:32:32.0222845Z error: WeilDefect/MasterRecon/V10B21c.lean:75:44: unsolved goals
+4939: 2026-11-27T02:32:32.0232218Z error: WeilDefect/MasterRecon/V10B21c.lean:119:4: linarith failed to find a contradiction
+4968: 2026-11-27T02:32:32.0510426Z V10B22a: BLOCKED by V10B21c
+4969: 2026-11-27T02:32:32.0540342Z V10B22b: BLOCKED by V10B22a
+4970: 2026-11-27T02:32:32.0569238Z V10B22c: BLOCKED by V10B22b
+4971: 2026-11-27T02:32:32.0596120Z V10B23a: BLOCKED by V10B20a
+4972: 2026-11-27T02:32:32.0623710Z V10B23b: BLOCKED by V10B23a
+4973: 2026-11-27T02:32:32.0650981Z V10B23c: BLOCKED by V10B23b
+4974: 2026-11-27T02:32:32.0676792Z V10B28a: BLOCKED by V10B27b
+4975: 2026-11-27T02:32:32.0703051Z V10B28b: BLOCKED by V10B28a
+4976: 2026-11-27T02:32:32.0727704Z V10B28c: BLOCKED by V10B28b
+4977: 2026-11-27T02:32:32.0751769Z V10B28d: BLOCKED by V10B28c
+4978: 2026-11-27T02:32:32.0774958Z V10B29a: BLOCKED by V10B28d
+4979: 2026-11-27T02:32:32.0797989Z V10B29b: BLOCKED by V10B29a
+4980: 2026-11-27T02:32:32.0820328Z V10B29c: BLOCKED by V10B29b
+4981: 2026-11-27T02:32:32.0842863Z V10B18a: BLOCKED by V10B12c
+5422: 2026-11-27T02:32:40.5773098Z error: WeilDefect/MasterRecon/V10B15a.lean:53:54: No goals to be solved
+5437: 2026-11-27T02:32:40.5778673Z error: WeilDefect/MasterRecon/V10B15a.lean:106:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+5468: 2026-11-27T02:32:40.6095432Z V10B16b: BLOCKED by V10B15a
+5847: 2026-11-27T02:32:54.9863403Z V10B16c: strict axiom audit PASS (4 declarations)
+5848: 2026-11-27T02:32:54.9932260Z V10B17a: BLOCKED by V10B16b
+6668: 2026-11-27T02:33:12.5148180Z error: WeilDefect/MasterRecon/V10B5d.lean:77:4: Type mismatch: After simplification, term
+6730: 2026-11-27T02:33:20.8600665Z V10B8h: BLOCKED by V10B8g
+6731: 2026-11-27T02:33:20.8636782Z V10B17b: BLOCKED by V10B17a
+6732: 2026-11-27T02:33:20.8666298Z V10B17c: BLOCKED by V10B17b
+6751: 2026-11-27T02:33:23.0785729Z Derived V10B29 digest reproduced: 1fea00167929e3f5312c16dcd680154a34ead4b8934a520c7a23fd60e79e8c5f
+6752: 2026-11-27T02:33:23.0786810Z Leading rows 16/16 PASS; coarse high-row reserve: 0.02374249016442964 high-row margin: 2.960027988079781
+6753: 2026-11-27T02:33:23.0787460Z 16 terms: tight dominance PASS 2.9837542236464984 minimum 1.0675083127611842
+6754: 2026-11-27T02:33:23.0787996Z 17 terms: tight dominance PASS 2.9837542236464984 minimum 1.0675083127611842
+
+Run 45927293904, job 140271589141; decoded lines 2257
+310: 2026-11-27T02:17:57.8923070Z info: WeilDefect/MasterRecon/V10B41a.lean:215:0: 'WeilDefect.MasterRecon.V10B41a.coefficient_check' depends on axioms: [propext, Classical.choice, Quot.sound]
+311: 2026-11-27T02:17:57.8923579Z info: WeilDefect/MasterRecon/V10B41a.lean:216:0: 'WeilDefect.MasterRecon.V10B41a.scale_pos' does not depend on any axioms
+312: 2026-11-27T02:17:57.8924190Z info: WeilDefect/MasterRecon/V10B41a.lean:217:0: 'WeilDefect.MasterRecon.V10B41a.TP_coeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+313: 2026-11-27T02:17:57.8925001Z info: WeilDefect/MasterRecon/V10B41a.lean:218:0: 'WeilDefect.MasterRecon.V10B41a.LP_coeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+314: 2026-11-27T02:17:57.8925530Z info: WeilDefect/MasterRecon/V10B41a.lean:219:0: 'WeilDefect.MasterRecon.V10B41a.dot_high_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+315: 2026-11-27T02:17:57.8926081Z info: WeilDefect/MasterRecon/V10B41a.lean:220:0: 'WeilDefect.MasterRecon.V10B41a.polynomial_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+327: 2026-11-27T02:18:03.1620242Z V10B41a: strict axiom audit PASS (6 declarations)
+333: 2026-11-27T02:18:04.2648486Z info: WeilDefect/MasterRecon/V10B41a.lean:215:0: 'WeilDefect.MasterRecon.V10B41a.coefficient_check' depends on axioms: [propext, Classical.choice, Quot.sound]
+334: 2026-11-27T02:18:04.2649372Z info: WeilDefect/MasterRecon/V10B41a.lean:216:0: 'WeilDefect.MasterRecon.V10B41a.scale_pos' does not depend on any axioms
+335: 2026-11-27T02:18:04.2650221Z info: WeilDefect/MasterRecon/V10B41a.lean:217:0: 'WeilDefect.MasterRecon.V10B41a.TP_coeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+336: 2026-11-27T02:18:04.2651155Z info: WeilDefect/MasterRecon/V10B41a.lean:218:0: 'WeilDefect.MasterRecon.V10B41a.LP_coeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+337: 2026-11-27T02:18:04.2652086Z info: WeilDefect/MasterRecon/V10B41a.lean:219:0: 'WeilDefect.MasterRecon.V10B41a.dot_high_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+338: 2026-11-27T02:18:04.2653072Z info: WeilDefect/MasterRecon/V10B41a.lean:220:0: 'WeilDefect.MasterRecon.V10B41a.polynomial_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+341: 2026-11-27T02:18:06.4662699Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+359: 2026-11-27T02:18:06.4667851Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+377: 2026-11-27T02:18:06.4673359Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+395: 2026-11-27T02:18:06.4695831Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+413: 2026-11-27T02:18:06.4700563Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+431: 2026-11-27T02:18:06.4704482Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+449: 2026-11-27T02:18:06.4708158Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+467: 2026-11-27T02:18:06.4711713Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+485: 2026-11-27T02:18:06.4715562Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+503: 2026-11-27T02:18:06.4719264Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+521: 2026-11-27T02:18:06.4722841Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+539: 2026-11-27T02:18:06.4726668Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+557: 2026-11-27T02:18:06.4730357Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+575: 2026-11-27T02:18:06.4733951Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+593: 2026-11-27T02:18:06.4737870Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+611: 2026-11-27T02:18:06.4741476Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+629: 2026-11-27T02:18:06.4745308Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+647: 2026-11-27T02:18:06.4748955Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+665: 2026-11-27T02:18:06.4752447Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+683: 2026-11-27T02:18:06.4756420Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+701: 2026-11-27T02:18:06.4760095Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+719: 2026-11-27T02:18:06.4763735Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+737: 2026-11-27T02:18:06.4767549Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+755: 2026-11-27T02:18:06.4771291Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+773: 2026-11-27T02:18:06.4775016Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+791: 2026-11-27T02:18:06.4778736Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+809: 2026-11-27T02:18:06.4782454Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+827: 2026-11-27T02:18:06.4786339Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+845: 2026-11-27T02:18:06.4789939Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+863: 2026-11-27T02:18:06.4793632Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+881: 2026-11-27T02:18:06.4797464Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+899: 2026-11-27T02:18:06.4801152Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+917: 2026-11-27T02:18:06.4805018Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+935: 2026-11-27T02:18:06.4808645Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+953: 2026-11-27T02:18:06.4812329Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+971: 2026-11-27T02:18:06.4816150Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+989: 2026-11-27T02:18:06.4819844Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1007: 2026-11-27T02:18:06.4823489Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1025: 2026-11-27T02:18:06.4827388Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1043: 2026-11-27T02:18:06.4831079Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1061: 2026-11-27T02:18:06.4836034Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1079: 2026-11-27T02:18:06.4847668Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1097: 2026-11-27T02:18:06.4851539Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1115: 2026-11-27T02:18:06.4855354Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1133: 2026-11-27T02:18:06.4859145Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1151: 2026-11-27T02:18:06.4862797Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1169: 2026-11-27T02:18:06.4866685Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1187: 2026-11-27T02:18:06.4870482Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1205: 2026-11-27T02:18:06.4874221Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1223: 2026-11-27T02:18:06.4877966Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1241: 2026-11-27T02:18:06.4881665Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1259: 2026-11-27T02:18:06.4885335Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1277: 2026-11-27T02:18:06.4889020Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1295: 2026-11-27T02:18:06.4892713Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1313: 2026-11-27T02:18:06.4896640Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1331: 2026-11-27T02:18:06.4900243Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1349: 2026-11-27T02:18:06.4903878Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1367: 2026-11-27T02:18:06.4907778Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1385: 2026-11-27T02:18:06.4911478Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1403: 2026-11-27T02:18:06.4915385Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1421: 2026-11-27T02:18:06.4919016Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1439: 2026-11-27T02:18:06.4921036Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1457: 2026-11-27T02:18:06.4922678Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1475: 2026-11-27T02:18:06.4924441Z error: WeilDefect/MasterRecon/V10B41b.lean:29:18: Tactic `decide` failed for proposition
+1493: 2026-11-27T02:18:06.4926026Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1513: 2026-11-27T02:18:06.4927982Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1533: 2026-11-27T02:18:06.4929892Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1553: 2026-11-27T02:18:06.4931708Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1573: 2026-11-27T02:18:06.4933604Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1593: 2026-11-27T02:18:06.4935642Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1613: 2026-11-27T02:18:06.4937612Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1633: 2026-11-27T02:18:06.4939408Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1653: 2026-11-27T02:18:06.4941267Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1673: 2026-11-27T02:18:06.4943128Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1693: 2026-11-27T02:18:06.4945044Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1713: 2026-11-27T02:18:06.4947090Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1733: 2026-11-27T02:18:06.4948943Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1753: 2026-11-27T02:18:06.4950840Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1773: 2026-11-27T02:18:06.4952736Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1793: 2026-11-27T02:18:06.4954630Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1813: 2026-11-27T02:18:06.4956658Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1833: 2026-11-27T02:18:06.4958504Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1853: 2026-11-27T02:18:06.4960441Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1873: 2026-11-27T02:18:06.4962253Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1893: 2026-11-27T02:18:06.4964200Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1913: 2026-11-27T02:18:06.4966172Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1933: 2026-11-27T02:18:06.4968053Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1953: 2026-11-27T02:18:06.4969919Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1973: 2026-11-27T02:18:06.4971757Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+1993: 2026-11-27T02:18:06.4973639Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+2013: 2026-11-27T02:18:06.4975631Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+2033: 2026-11-27T02:18:06.4977529Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+2053: 2026-11-27T02:18:06.4979398Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+2073: 2026-11-27T02:18:06.4981276Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+2093: 2026-11-27T02:18:06.4983176Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+2113: 2026-11-27T02:18:06.4991070Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+2133: 2026-11-27T02:18:06.4993049Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+2153: 2026-11-27T02:18:06.4995147Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+2173: 2026-11-27T02:18:06.4997185Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+2193: 2026-11-27T02:18:06.4999103Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: Tactic `decide` failed for proposition
+2213: 2026-11-27T02:18:06.5000986Z error: WeilDefect/MasterRecon/V10B41b.lean:35:18: maximum number of errors (100; from option `maxErrors`) reached, exiting
+
+Run 45926940051, job 140270345551; decoded lines 6374
+397: 2026-11-27T02:14:00.8986049Z V10B33a: strict axiom audit PASS (4 declarations)
+420: 2026-11-27T02:14:04.9434577Z V10B33b: strict axiom audit PASS (4 declarations)
+423: 2026-11-27T02:14:07.2512070Z error: WeilDefect/MasterRecon/V10B32a.lean:36:2: linarith failed to find a contradiction
+471: 2026-11-27T02:14:11.3105610Z V10B32b: strict axiom audit PASS (5 declarations)
+492: 2026-11-27T02:14:16.1498802Z V10B34a: strict axiom audit PASS (5 declarations)
+504: 2026-11-27T02:14:19.1483493Z error: WeilDefect/MasterRecon/V10B34b.lean:62:46: unsolved goals
+515: 2026-11-27T02:14:19.1487664Z error: WeilDefect/MasterRecon/V10B34b.lean:68:26: `simp` made no progress
+522: 2026-11-27T02:14:19.1491171Z error: WeilDefect/MasterRecon/V10B34b.lean:69:45: unsolved goals
+580: 2026-11-27T02:14:19.1517288Z info: WeilDefect/MasterRecon/V10B34b.lean:104:0: 'WeilDefect.MasterRecon.V10B34b.skew_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+581: 2026-11-27T02:14:19.1518646Z info: WeilDefect/MasterRecon/V10B34b.lean:105:0: 'WeilDefect.MasterRecon.V10B34b.moment_step' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+585: 2026-11-27T02:14:19.1730015Z V10B35a: BLOCKED by V10B34b
+597: 2026-11-27T02:14:21.8699946Z error: WeilDefect/MasterRecon/V10B36a.lean:51:40: unsolved goals
+604: 2026-11-27T02:14:21.8702226Z error: WeilDefect/MasterRecon/V10B36a.lean:56:26: `simp` made no progress
+619: 2026-11-27T02:14:21.8706249Z info: WeilDefect/MasterRecon/V10B36a.lean:101:0: 'WeilDefect.MasterRecon.V10B36a.odd_vanish' depends on axioms: [propext, Classical.choice, Quot.sound]
+620: 2026-11-27T02:14:21.8707026Z info: WeilDefect/MasterRecon/V10B36a.lean:102:0: 'WeilDefect.MasterRecon.V10B36a.B_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+621: 2026-11-27T02:14:21.8707943Z info: WeilDefect/MasterRecon/V10B36a.lean:103:0: 'WeilDefect.MasterRecon.V10B36a.B_boundary' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+622: 2026-11-27T02:14:21.8709466Z info: WeilDefect/MasterRecon/V10B36a.lean:104:0: 'WeilDefect.MasterRecon.V10B36a.B_m_step' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+623: 2026-11-27T02:14:21.8710534Z info: WeilDefect/MasterRecon/V10B36a.lean:105:0: 'WeilDefect.MasterRecon.V10B36a.B_j_step' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+624: 2026-11-27T02:14:21.8711489Z info: WeilDefect/MasterRecon/V10B36a.lean:106:0: 'WeilDefect.MasterRecon.V10B36a.B_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+638: 2026-11-27T02:14:26.5339171Z V10B36b: strict axiom audit PASS (4 declarations)
+639: 2026-11-27T02:14:26.5391928Z V10B37a: BLOCKED by V10B36a
+650: 2026-11-27T02:14:29.1373510Z error: WeilDefect/MasterRecon/V10B37b.lean:24:71: Unknown constant `Int.castRingHom_apply`
+651: 2026-11-27T02:14:29.1374188Z error: WeilDefect/MasterRecon/V10B37b.lean:29:6: Type mismatch: After simplification, term
+711: 2026-11-27T02:14:29.1609481Z V10B37d: BLOCKED by V10B37a
+712: 2026-11-27T02:14:29.1639462Z V10B38a: BLOCKED by V10B37a
+715: 2026-11-27T02:14:31.6710537Z error: WeilDefect/MasterRecon/V10B38b.lean:44:16: unexpected token '|*'; expected '|' or '|ₘ'
+716: 2026-11-27T02:14:31.6711463Z error: WeilDefect/MasterRecon/V10B38b.lean:35:13: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+729: 2026-11-27T02:14:31.6716255Z error: WeilDefect/MasterRecon/V10B38b.lean:30:63: unsolved goals
+748: 2026-11-27T02:14:31.6945808Z V10B38c: BLOCKED by V10B35a
+759: 2026-11-27T02:14:34.1012078Z error: WeilDefect/MasterRecon/V10B39a.lean:27:2: unsolved goals
+768: 2026-11-27T02:14:34.1015023Z error: WeilDefect/MasterRecon/V10B39a.lean:38:42: Application type mismatch: The argument
+776: 2026-11-27T02:14:34.1017628Z error: WeilDefect/MasterRecon/V10B39a.lean:41:2: Invalid alternative name `zero`: Expected `bot` or `coe`
+777: 2026-11-27T02:14:34.1018382Z error: WeilDefect/MasterRecon/V10B39a.lean:48:2: Invalid alternative name `succ`: Expected `bot` or `coe`
+778: 2026-11-27T02:14:34.1018961Z error: WeilDefect/MasterRecon/V10B39a.lean:40:2: Alternative `bot` has not been provided
+779: 2026-11-27T02:14:34.1019445Z error: WeilDefect/MasterRecon/V10B39a.lean:40:2: Alternative `coe` has not been provided
+780: 2026-11-27T02:14:34.1019855Z error: WeilDefect/MasterRecon/V10B39a.lean:75:4: mod_cast has type
+801: 2026-11-27T02:14:36.5262513Z error: WeilDefect/MasterRecon/V10B39b.lean:62:9: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+820: 2026-11-27T02:14:36.5269959Z error: WeilDefect/MasterRecon/V10B39b.lean:83:12: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+843: 2026-11-27T02:14:36.5275881Z error: WeilDefect/MasterRecon/V10B39b.lean:99:44: failed to prove positivity/nonnegativity/nonzeroness
+851: 2026-11-27T02:14:36.5484116Z V10B39c: BLOCKED by V10B39b
+852: 2026-11-27T02:14:36.5506780Z V10B40a: BLOCKED by V10B39b
+853: 2026-11-27T02:14:36.5526386Z V10B40d: BLOCKED by V10B40a
+861: 2026-11-27T02:14:38.9530905Z error: WeilDefect/MasterRecon/V10B30a.lean:96:9: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+888: 2026-11-27T02:14:38.9763934Z V10B31b: BLOCKED by V10B30a
+901: 2026-11-27T02:14:43.8286403Z V10B24a: strict axiom audit PASS (5 declarations)
+974: 2026-11-27T02:14:48.6535215Z V10B24b: strict axiom audit PASS (8 declarations)
+1019: 2026-11-27T02:14:51.1557194Z error: WeilDefect/MasterRecon/V10B25a.lean:34:2: Type mismatch: After simplification, term
+1025: 2026-11-27T02:14:51.1559633Z error: WeilDefect/MasterRecon/V10B25a.lean:70:2: Type mismatch
+1091: 2026-11-27T02:14:55.7910155Z V10B25b: strict axiom audit PASS (4 declarations)
+1138: 2026-11-27T02:14:58.5953498Z error: WeilDefect/MasterRecon/V10B26a.lean:23:8: Unknown identifier `expSeries_div_hasSum_exp`
+1163: 2026-11-27T02:14:58.5964261Z error: WeilDefect/MasterRecon/V10B26a.lean:99:68: Invalid field `trans`: The environment does not contain `Function.trans`, so it is not possible to project the field `trans` from an expression
+1168: 2026-11-27T02:14:58.5966954Z error: WeilDefect/MasterRecon/V10B26a.lean:92:51: unsolved goals
+1184: 2026-11-27T02:14:58.6203293Z V10B26b: BLOCKED by V10B25a
+1185: 2026-11-27T02:14:58.6230740Z V10B26c: BLOCKED by V10B26a
+1186: 2026-11-27T02:14:58.6246484Z V10B27a: BLOCKED by V10B26c
+1187: 2026-11-27T02:14:58.6268717Z V10B27b: BLOCKED by V10B27a
+1199: 2026-11-27T02:15:01.5309041Z error: WeilDefect/MasterRecon/V10B20a.lean:93:33: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+1229: 2026-11-27T02:15:04.6540937Z error: WeilDefect/MasterRecon/V10B20b.lean:52:11: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+1265: 2026-11-27T02:15:04.6797965Z V10B20c: BLOCKED by V10B20b
+1266: 2026-11-27T02:15:04.6820945Z V10B20d: BLOCKED by V10B20c
+1267: 2026-11-27T02:15:04.6839911Z V10B21a: BLOCKED by V10B20b
+1268: 2026-11-27T02:15:04.6858557Z V10B31a: BLOCKED by V10B30a
+1712: 2026-11-27T02:17:01.1509522Z V10B8e: strict axiom audit PASS (11 declarations)
+2167: 2026-11-27T02:17:11.7596186Z V10B8f: strict axiom audit PASS (9 declarations)
+2240: 2026-11-27T02:17:17.6747054Z error: WeilDefect/MasterRecon/V10B12c.lean:97:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+2655: 2026-11-27T02:17:34.3511749Z V10B13b: strict axiom audit PASS (5 declarations)
+2754: 2026-11-27T02:17:42.4094217Z V10B14c: strict axiom audit PASS (3 declarations)
+3090: 2026-11-27T02:17:55.4122721Z V10B16a: strict axiom audit PASS (2 declarations)
+3744: 2026-11-27T02:18:35.4022300Z V10B5c: strict axiom audit PASS (7 declarations)
+4122: 2026-11-27T02:18:46.0450393Z V10B21b: strict axiom audit PASS (5 declarations)
+4497: 2026-11-27T02:18:53.4629597Z error: WeilDefect/MasterRecon/V10B21c.lean:48:2: linarith failed to find a contradiction
+4507: 2026-11-27T02:18:53.4632367Z error: WeilDefect/MasterRecon/V10B21c.lean:75:44: unsolved goals
+4522: 2026-11-27T02:18:53.4637174Z error: WeilDefect/MasterRecon/V10B21c.lean:119:4: linarith failed to find a contradiction
+4551: 2026-11-27T02:18:53.4934147Z V10B22a: BLOCKED by V10B21c
+4552: 2026-11-27T02:18:53.4967538Z V10B22b: BLOCKED by V10B22a
+4553: 2026-11-27T02:18:53.4989595Z V10B22c: BLOCKED by V10B22b
+4554: 2026-11-27T02:18:53.5009111Z V10B23a: BLOCKED by V10B20a
+4555: 2026-11-27T02:18:53.5028934Z V10B23b: BLOCKED by V10B23a
+4556: 2026-11-27T02:18:53.5048207Z V10B23c: BLOCKED by V10B23b
+4557: 2026-11-27T02:18:53.5067704Z V10B28a: BLOCKED by V10B27b
+4558: 2026-11-27T02:18:53.5087313Z V10B28b: BLOCKED by V10B28a
+4559: 2026-11-27T02:18:53.5106554Z V10B28c: BLOCKED by V10B28b
+4560: 2026-11-27T02:18:53.5125785Z V10B28d: BLOCKED by V10B28c
+4561: 2026-11-27T02:18:53.5145110Z V10B29a: BLOCKED by V10B28d
+4562: 2026-11-27T02:18:53.5164387Z V10B29b: BLOCKED by V10B29a
+4563: 2026-11-27T02:18:53.5186963Z V10B29c: BLOCKED by V10B29b
+4564: 2026-11-27T02:18:53.5206502Z V10B18a: BLOCKED by V10B12c
+5005: 2026-11-27T02:19:00.2467059Z error: WeilDefect/MasterRecon/V10B15a.lean:53:54: No goals to be solved
+5020: 2026-11-27T02:19:00.2471382Z error: WeilDefect/MasterRecon/V10B15a.lean:106:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+5051: 2026-11-27T02:19:00.2723551Z V10B16b: BLOCKED by V10B15a
+5430: 2026-11-27T02:19:12.0213680Z V10B16c: strict axiom audit PASS (4 declarations)
+5431: 2026-11-27T02:19:12.0268905Z V10B17a: BLOCKED by V10B16b
+6251: 2026-11-27T02:19:25.0740646Z error: WeilDefect/MasterRecon/V10B5d.lean:77:4: Type mismatch: After simplification, term
+6313: 2026-11-27T02:19:33.0091021Z V10B8h: BLOCKED by V10B8g
+6314: 2026-11-27T02:19:33.0119762Z V10B17b: BLOCKED by V10B17a
+6315: 2026-11-27T02:19:33.0135184Z V10B17c: BLOCKED by V10B17b
