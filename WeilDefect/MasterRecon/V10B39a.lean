@@ -26,7 +26,7 @@ theorem graded_cancel (p q : ℝ[X]) (n : ℕ)
   by_cases he : k=n
   · subst k
     have hn := graded_top_nonzero q n hq
-    field_simp [hn]
+    field_simp [hn] <;> ring
   · have hk' : n+1 ≤ k := by omega
     have hz := (degree_lt_iff_coeff_zero p (n+1)).mp hp k hk'
     have hz' := (degree_lt_iff_coeff_zero q (n+1)).mp
@@ -34,7 +34,7 @@ theorem graded_cancel (p q : ℝ[X]) (n : ℕ)
     rw [hz,hz',mul_zero,sub_zero]
 
 theorem graded_span (q : ℕ → ℝ[X]) (hq : ∀ j, (q j).degree = j) :
-    ∀ n (p : ℝ[X]), p.degree < n →
+    ∀ (n : ℕ) (p : ℝ[X]), p.degree < (n:WithBot ℕ) →
       ∃ a : ℕ → ℝ, p = ∑ j ∈ Finset.range n, C (a j)*q j := by
   intro n
   induction n with
@@ -72,6 +72,7 @@ theorem shiftedReal_degree (j : ℕ) : (shiftedReal j).degree = j := by
   unfold shiftedReal
   have hi : Function.Injective (Int.castRingHom ℝ) := by
     intro a b h
+    change (a:ℝ)=(b:ℝ) at h
     exact_mod_cast h
   rw [Polynomial.degree_map_eq_of_injective hi,degree_shiftedLegendre]
 
