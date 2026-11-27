@@ -79,7 +79,7 @@ theorem tail_residual (hs : VerticalStirling) (u : ℝ)
   have hb : 5/v^2 ≤ 20 := (div_le_iff₀ (by linarith)).mpr (by linarith)
   have hψ := (hs v hv).trans hb
   have hlog := log_comparison v hv
-  rw [residual,gammaSymbol_reparam,weight_reparam]
+  rw [V10B8e.residual,gammaSymbol_reparam,weight_reparam]
   change |(Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re - Real.log Real.pi -
     Real.log (2+2*|v|)| ≤ _
   calc
