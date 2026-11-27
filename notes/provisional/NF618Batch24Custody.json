@@ -1,0 +1,57 @@
+{
+  "scope": "Finite native arithmetic; no universal dispatch or global positivity claim.",
+  "status": "Batches21-24 local verifier PASS; producer workflows PASS",
+  "report_sha256": "c962aa9e3f895cce259e3320a95ec80e8a4660d3df803d487fcae339eaa23c1e",
+  "ledger_parent_sha256": "6a396e811890b8d1df7d9fc23855a34cf0ec465a3092b795b2647ca9b949adfd",
+  "ledger_sha256": "40e54496bec49119e252079345147a97ec25db8bb54a640647dc9c9d2b8fd24d",
+  "verifier_sha256": "204a258fcde06f07181005690aebd981cc52d0474824781bcb7269b80216a44f",
+  "frozen_bank_sha256": "5c93d86fd9461aff82834cc264c522544f3b2205fc56171886de18623ca31b82",
+  "deployment_index_blob": "7104217aa045d5e9f7008745fb83c5c5452f23af",
+  "certified_tables": 6097,
+  "certified_rows": 29336,
+  "residual_tables": 1738,
+  "residual_rows": 8658,
+  "plans": [
+    {
+      "batch": 21,
+      "ref": "4027f91bbcfadc592de1d36f28ee093d326b4043",
+      "plan_blob": "67593afb015a76b0ac22b307318cb73e494e11d1",
+      "artifacts": {
+        "source": 15166791714,
+        "evidence": 15167770773,
+        "checkpoint": 15167656346
+      }
+    },
+    {
+      "batch": 22,
+      "ref": "4027f91bbcfadc592de1d36f28ee093d326b4043",
+      "plan_blob": "c04cf0acd7d8a29d0b57dcea122fcd9c7301dd8c",
+      "artifacts": {
+        "source": 15167686163,
+        "evidence": 15167473600,
+        "checkpoint": 15168125262
+      }
+    },
+    {
+      "batch": 23,
+      "ref": "1987fef500afe71272d3798d724145e6b473cf5d",
+      "plan_blob": "6164128ec9bc40bfe92021369a49cdc1655566d6",
+      "artifacts": {
+        "source": 15166214154,
+        "evidence": 15166584648,
+        "checkpoint": 15167530482
+      }
+    },
+    {
+      "batch": 24,
+      "ref": "1987fef500afe71272d3798d724145e6b473cf5d",
+      "plan_blob": "e2811464222cc410841c5d803c1765a67f9849ac",
+      "artifacts": {
+        "source": 15167620333,
+        "evidence": 15167052822,
+        "checkpoint": 15166978307
+      }
+    }
+  ],
+  "remaining": "Batches25-39; universal dispatch; global transport. Full ledger and frozen-bank ZIP not committed in this receipt."
+}
