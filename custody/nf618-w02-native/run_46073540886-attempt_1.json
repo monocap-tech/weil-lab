@@ -1,0 +1,20 @@
+{
+  "id": 15234760647,
+  "node_id": "MDg6QXJ0aWZhY3QxNTIzNDc2MDY0Nw==",
+  "name": "nf618-w02-native-evidence",
+  "size_in_bytes": 35315,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15234760647",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15234760647/zip",
+  "expired": false,
+  "digest": "sha256:acd29eca20951286d1ff675c940dca2b5f2100bf09c207ff794f69bac9ce1cc4",
+  "created_at": "2026-11-27T22:02:13Z",
+  "updated_at": "2026-11-27T22:02:13Z",
+  "expires_at": "2027-02-25T21:56:58Z",
+  "workflow_run": {
+    "id": 46073540886,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "formalization/nf618-w02-native-gate",
+    "head_sha": "ef84dca0daa15be38f09f347d6773e524c84f25f"
+  }
+}

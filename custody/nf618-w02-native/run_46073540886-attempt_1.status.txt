@@ -1,0 +1,7 @@
+native_result=success
+run_id=46073540886
+workflow_head=ef84dca0daa15be38f09f347d6773e524c84f25f
+artifact_id=15234760647
+sha256=acd29eca20951286d1ff675c940dca2b5f2100bf09c207ff794f69bac9ce1cc4
+mathematical_head=Batch24R1
+new_moment_admissions=0
