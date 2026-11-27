@@ -1,4 +1,5 @@
-import Mathlib.MeasureTheory.Integral.Bochner.Basic
+import Mathlib.MeasureTheory.Integral.Bochner.Set
+import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
 
 /-! V10B30a: independently auditable polynomial/logarithm Gram algebra.
