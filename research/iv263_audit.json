@@ -1,0 +1,12 @@
+{
+  "source_sign_receipt_sha256": "376be0f58ed823cb991f8cbd702ee884b5231d3f35aad63eb21ba89148f6738f",
+  "source_sign_matrices_sha256": "646195fa455187b3f89cfd3c39feed75a8dfaf569c5b4ee2f3c2530964687d20",
+  "rows_checked": 256,
+  "offdiagonal_pairs_checked": 32640,
+  "two_exact_dyadic_gram_invertibility_checks": true,
+  "minimum_original_row_numerator": "69632223999728",
+  "minimum_intersected_row_numerator": "69632223999728",
+  "scale": 281474976710656,
+  "strict_margin_gt_247_over_1000": true,
+  "scope": "exact integer audit of enclosing matrices; interval generation conditional on stated IEEE/BLAS semantics"
+}
