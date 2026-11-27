@@ -74,8 +74,7 @@ theorem J_eq_mellin (s : ℂ) : J s = mellin cutRemainder (-s) := by
     by_cases hx : x ∈ Ioi (1:ℝ) <;>
       simp [hx,show -s-1 = -(s+1) by ring]
   rw [he,setIntegral_indicator measurableSet_Ioi]
-  congr 1
-  exact (inter_eq_right.mpr (Ioi_subset_Ioi (by norm_num : (0:ℝ) ≤ 1))).symm
+  rw [inter_eq_right.mpr (Ioi_subset_Ioi (by norm_num : (0:ℝ) ≤ 1))]
 
 theorem J_differentiable (s : ℂ) (hs : 0 < s.re) :
     DifferentiableAt ℂ J s := by
@@ -98,9 +97,7 @@ theorem remainder_integrable (s : ℂ) (hs : 0 < s.re) :
     IntegrableOn (fun x : ℝ => (x:ℂ)^(-(s+1))*remainder x) (Ioi (1:ℝ)) := by
   have h := (power_integrable s hs).norm
   apply h.mono'
-  · exact ((continuousOn_of_forall_continuousAt (fun x hx =>
-      Complex.continuousAt_ofReal_cpow_const _ _ (Or.inr (by linarith [hx] : x ≠ 0))))
-      .aestronglyMeasurable measurableSet_Ioi).mul remainder_measurable.aestronglyMeasurable
+  · exact (power_integrable s hs).aestronglyMeasurable.mul remainder_measurable.aestronglyMeasurable
   · filter_upwards [ae_restrict_mem measurableSet_Ioi] with x hx
     rw [norm_mul]
     simpa using mul_le_mul_of_nonneg_left (remainder_bound x hx) (norm_nonneg ((x:ℂ)^(-(s+1))))
@@ -115,11 +112,11 @@ theorem J_bound (s : ℂ) (hs : 0 < s.re) : ‖J s‖ ≤ 1/s.re := by
     _ ≤ ∫ x in Ioi (1:ℝ), x ^ (-s.re-1) := by
       apply integral_mono_of_nonneg (Filter.Eventually.of_forall (fun _ => norm_nonneg _)) hpow
       filter_upwards [ae_restrict_mem measurableSet_Ioi] with x hx
-      rw [norm_mul,Complex.norm_cpow_eq_rpow_re_of_pos (by linarith [hx] : 0 < x)]
+      rw [norm_mul,Complex.norm_cpow_eq_rpow_re_of_pos (by linarith [show 1 < x from hx] : 0 < x)]
       simp only [Complex.neg_re,Complex.add_re,Complex.one_re,neg_add_rev]
       have he : -(s.re+1) = -s.re-1 := by ring
       rw [show -1 + -s.re = -s.re-1 by ring]
-      simpa using mul_le_mul_of_nonneg_left (remainder_bound x hx) (Real.rpow_nonneg (by linarith [hx]) _)
+      simpa using mul_le_mul_of_nonneg_left (remainder_bound x hx) (Real.rpow_nonneg (by linarith [show 1 < x from hx]) _)
     _ = _ := by
       rw [integral_Ioi_rpow_of_lt (by linarith : -s.re-1 < -1) (by norm_num : (0:ℝ) < 1),Real.one_rpow]
       ring
@@ -144,10 +141,11 @@ theorem floor_split (s : ℂ) (hs : 1 < s.re) :
   have hX : IntegrableOn (fun x : ℝ => (x:ℂ)^(-s)) (Ioi (1:ℝ)) :=
     integrableOn_Ioi_cpow_of_lt (by simp; linarith) (by norm_num)
   have hP := (power_integrable s (by linarith)).const_mul (1/2:ℂ)
-  rw [← integral_const_mul,← integral_sub (hJ.add hX) hP,← integral_add hJ hX]
+  unfold J
+  rw [← integral_const_mul,← integral_add hJ hX,← integral_sub (hJ.add hX) hP]
   apply setIntegral_congr_fun measurableSet_Ioi
   intro x hx
-  have hx0 : (x:ℂ) ≠ 0 := by exact_mod_cast (by linarith [hx] : x ≠ 0)
+  have hx0 : (x:ℂ) ≠ 0 := by exact_mod_cast (by linarith [show 1 < x from hx] : x ≠ 0)
   have he : (x:ℂ)^(-s) = (x:ℂ)^(-(s+1))*(x:ℂ) := by
     rw [← Complex.cpow_one (x:ℂ),← Complex.cpow_add _ _ hx0]
     congr 1
@@ -167,8 +165,10 @@ theorem euler_on_convergence (s : ℂ) (hs : 1 < s.re) :
     intro h
     simp [h] at hs
   simp only [Complex.ofReal_one,Complex.one_cpow]
-  field_simp
-  ring
+  have hs' : 1-s ≠ 0 := sub_ne_zero.mpr hs1.symm
+  have hs'' : s-1 ≠ 0 := sub_ne_zero.mpr hs1
+  field_simp [hs0,hs',hs'']
+  <;> ring
 
 def halfPlane : Set ℂ := {s | 0 < s.re}
 
@@ -195,8 +195,8 @@ theorem poleRemoved_eq (s : ℂ) (hs : 0 < s.re) :
     have hby : 0 ≤ b*y.re := mul_nonneg hb hy.le
     rcases eq_or_lt_of_le ha with h | h
     · have hb' : 0 < b := by linarith
-      linarith [mul_pos hb' hy]
-    · linarith [mul_pos h hx]
+      exact add_pos_of_nonneg_of_pos hax (mul_pos hb' (show 0 < y.re from hy))
+    · exact add_pos_of_pos_of_nonneg (mul_pos h (show 0 < x.re from hx)) hby
   have hnear : ∀ᶠ z : ℂ in 𝓝 (2:ℂ), 1 < z.re :=
     (isOpen_lt continuous_const Complex.continuous_re).mem_nhds (by norm_num)
   have he : poleRemovedEuler =ᶠ[𝓝 (2:ℂ)] riemannZeta₁ := by
@@ -206,9 +206,9 @@ theorem poleRemoved_eq (s : ℂ) (hs : 0 < s.re) :
     rw [euler_on_convergence z hz] at h
     unfold poleRemovedEuler
     field_simp at h ⊢
-    linear_combination -h
+    linear_combination 2*h
   exact (poleRemovedEuler_analytic.eqOn_of_preconnected_of_eventuallyEq
-    differentiable_riemannZeta₁.analyticOnNhd hconv.isPreconnected
+    (fun z _ => (differentiable_riemannZeta₁.analyticAt z)) hconv.isPreconnected
     (by norm_num [halfPlane] : (2:ℂ) ∈ halfPlane) he) hs
 
 theorem euler_halfPlane (s : ℂ) (hs : 0 < s.re) (h1 : s ≠ 1) :
@@ -224,7 +224,7 @@ theorem elementary_growth (s : ℂ) (hs : 0 < s.re) (h1 : s ≠ 1) :
   rw [euler_halfPlane s hs h1]
   calc
     _ ≤ ‖(1/2:ℂ)‖+‖1/(s-1)‖+‖s*J s‖ :=
-      (norm_add_le _ _).trans (add_le_add_right (norm_add_le _ _) _)
+      (norm_add_le _ _).trans (add_le_add_left (norm_add_le _ _) _)
     _ ≤ _ := by
       have hhalf : ‖(1/2:ℂ)‖ = (1/2:ℝ) := by
         rw [show (1/2:ℂ) = ((1/2:ℝ):ℂ) by norm_num,Complex.norm_real,Real.norm_eq_abs]
