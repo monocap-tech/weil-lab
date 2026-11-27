@@ -1,0 +1,172 @@
+{
+  "parent": "ee0bea558ab8f21a4dcff38fcc5dcabb53f3d8d9",
+  "inventory": [
+    {
+      "path": "research/IV238-AM-ground-state-energy.md",
+      "sha": "a5ff9c352f82ae88e461cbf1a8d02326c8a47607"
+    },
+    {
+      "path": "research/IV239-AM-translation-coercivity.md",
+      "sha": "6530c344ee6e932ac02921b6905c4bdacb4b1ca2"
+    },
+    {
+      "path": "research/IV240-AM-physical-log-regularity.md",
+      "sha": "3ab0f318d41ea9e480edacec1e071b7f717039a8"
+    },
+    {
+      "path": "research/IV241-AM-original-log-form-domain.md",
+      "sha": "75e843ad71d4005dd9f44282e1fa9e41d02f1188"
+    },
+    {
+      "path": "research/IV242-AM-neumann-resolvent.md",
+      "sha": "19724bfc0e211ff1a5e9b8d1ad9096273067b6ee"
+    },
+    {
+      "path": "research/IV243-AM-structured-receiver.md",
+      "sha": "a1ee2e4ef550d5c5f90c5ef12a39caa6d5bc7378"
+    },
+    {
+      "path": "research/IV244-AM-mixed-boundary-obstruction.md",
+      "sha": "45ca9f91fac9be3560259d9a15ada9de56b2553f"
+    },
+    {
+      "path": "research/IV245-AM-aggregate-boundary-tail.md",
+      "sha": "071ddae848d6b5afb895fa58949dcc152b93b8d4"
+    },
+    {
+      "path": "research/IV246-AM-weighted-complement.md",
+      "sha": "d3811e503e81b3e42c0bf03b6d6a294f5e00a06f"
+    },
+    {
+      "path": "research/IV247-AM-endpoint-cancellation.md",
+      "sha": "0d3c0ef2d196261aea802d896bb541d1264eb045"
+    },
+    {
+      "path": "research/IV248-AM-second-endpoint-channel.md",
+      "sha": "3b0aa4d9d77d7cb144c3490c1a02313da0727451"
+    },
+    {
+      "path": "research/IV249-AM-odd-channel-cutoff-obstruction.md",
+      "sha": "cc5287b5ae11f3fdc349790cf4de71db9b787d3d"
+    },
+    {
+      "path": "research/IV250-AM-aggregate-model-obstruction.md",
+      "sha": "ee9697d7fddc793075228203393c55b9892113f3"
+    },
+    {
+      "path": "research/IV251-AM-exact-channel-closure.md",
+      "sha": "0c6a48160f8c06dc320c77be59ecaabc027bf2ba"
+    },
+    {
+      "path": "research/iv238_am_ground_state.json",
+      "sha": "7675d2d46b5dca51d6136d2fb9c28ad0d7f915d9"
+    },
+    {
+      "path": "research/iv238_am_ground_state.mjs",
+      "sha": "6629cb961fecc4371d0cdd4a63ae0a4576519a9a"
+    },
+    {
+      "path": "research/iv239_am_circle_modes.json",
+      "sha": "d2ce58d28af3a8ffdcc684cf89cebbef70e3cb25"
+    },
+    {
+      "path": "research/iv239_am_circle_modes.mjs",
+      "sha": "54208e00b3e36f061f099aa7bed1c2d46719e7ef"
+    },
+    {
+      "path": "research/iv240_am_regular_tail.json",
+      "sha": "5959a58fa2c281a895f3bc85ccb1ecc45b1f558f"
+    },
+    {
+      "path": "research/iv240_am_regular_tail.mjs",
+      "sha": "ca99d9fd98471ed23bc5df507c0fca326a8d8ee4"
+    },
+    {
+      "path": "research/iv242_am_neumann_complement.json",
+      "sha": "4507b04b760fc1652c63766bc762e21cfc96ae04"
+    },
+    {
+      "path": "research/iv242_am_neumann_complement.mjs",
+      "sha": "4328bc2984edbf87078e31911956e545b46e66dc"
+    },
+    {
+      "path": "research/iv243_am_structured_receiver.json",
+      "sha": "f83acc6c0e2caf3e05815c3dea219c8ad1774ddb"
+    },
+    {
+      "path": "research/iv243_am_structured_receiver.mjs",
+      "sha": "d0ccdf2348a208f22859b99f33b65021f910b3ff"
+    },
+    {
+      "path": "research/iv244_am_mixed_witness.json",
+      "sha": "3906416100c3b468066607c92eb5ac99f858e657"
+    },
+    {
+      "path": "research/iv244_am_mixed_witness.mjs",
+      "sha": "7113c44f4bf2548cbcb020b5e6c1961ef62f2d04"
+    },
+    {
+      "path": "research/iv245_am_aggregate_tail.json",
+      "sha": "8c07b1db73dd2307016a41654bb573d2f4829066"
+    },
+    {
+      "path": "research/iv245_am_aggregate_tail.mjs",
+      "sha": "d5901a9963a6cf4f68c540c701ca5fc170f46716"
+    },
+    {
+      "path": "research/iv246_am_weighted_complement.json",
+      "sha": "a8250955db3553a92eeb763cb230276a37a7b3d5"
+    },
+    {
+      "path": "research/iv246_am_weighted_complement.mjs",
+      "sha": "904b1c105f68b690914e40b3e619002ffc758198"
+    },
+    {
+      "path": "research/iv247_am_endpoint_cancellation.json",
+      "sha": "e8d8f31825e1afb167ee3b7ed23867cb8e7757e8"
+    },
+    {
+      "path": "research/iv247_am_endpoint_cancellation.mjs",
+      "sha": "92d0615c0e0680d8c883322bc05cd1c7954e2969"
+    },
+    {
+      "path": "research/iv248_am_second_endpoint.json",
+      "sha": "1c5a2a520b2219d635ce8e21b71315107d280b60"
+    },
+    {
+      "path": "research/iv248_am_second_endpoint.mjs",
+      "sha": "bbde21f0037257c4fe13e85b3d4ff2f42cb3f679"
+    },
+    {
+      "path": "research/iv249_am_cutoff_obstruction.json",
+      "sha": "b307427c1723ff496d8ac1772d32948d2bc65ba3"
+    },
+    {
+      "path": "research/iv249_am_cutoff_obstruction.mjs",
+      "sha": "43c088a9a3ddfd849599478b2e8e3116dab5db79"
+    },
+    {
+      "path": "research/iv250_am_aggregate_obstruction.json",
+      "sha": "497e17990232f64f5629a5c1f91553ee4dddcf2e"
+    },
+    {
+      "path": "research/iv250_am_aggregate_obstruction.mjs",
+      "sha": "b544499465064739eeebbf79dbd3d4b79514b6d8"
+    },
+    {
+      "path": "research/iv251_am_exact_channel_closure.json",
+      "sha": "000f1544543bd5cd76abfff414f51b0b16e6200e"
+    },
+    {
+      "path": "research/iv251_am_exact_channel_closure.mjs",
+      "sha": "fda421b2c6c32628f374043592fdbf6feff52ecf"
+    }
+  ],
+  "exact_witness_blob": "497e17990232f64f5629a5c1f91553ee4dddcf2e",
+  "scale": "100000000000000000000000000000000000000000000000000000000000000000",
+  "q_upper": "803343065966208920251785792221344716047",
+  "norm_lower": "1320800310860773245371260410731311457480832724259371296669065087496",
+  "comparison": "q_upper * 10^27 < norm_lower",
+  "pass": true,
+  "classification": "analytical inventory and inherited exact sign bound; diagnostic floating values not certified"
+}
