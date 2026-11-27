@@ -38,7 +38,7 @@ theorem finite_indicator_integral (J : Finset ℤ) (F : ℝ → ℝ)
       hF.indicator measurableSet_Ioc
     simp only [Finset.sum_insert hn]
     refine ⟨hi.add ih.1, ?_⟩
-    rw [integral_add hi ih.1, integral_indicator measurableSet_Ioc, ih.2]
+    rw [integral_add hi ih.1, integral_indicator (show MeasurableSet (heightCell n) from measurableSet_Ioc), ih.2]
 
 theorem finite_cell_integral (J : Finset ℤ) (F : ℝ → ℝ)
     (hF : Integrable F) (h0 : ∀ y, 0 ≤ F y) :
@@ -48,6 +48,7 @@ theorem finite_cell_integral (J : Finset ℤ) (F : ℝ → ℝ)
   rw [← he]
   apply integral_mono hi hF
   intro y
+  change (∑ n ∈ J, (heightCell n).indicator F y) ≤ F y
   by_cases h : ∃ n ∈ J, y ∈ heightCell n
   · obtain ⟨n, hn, hy⟩ := h
     rw [Finset.sum_eq_single n]
@@ -77,10 +78,14 @@ theorem cell_energy_bound (F : ℝ → ℝ) (hF : Continuous F)
   have hr := (hc.mul hF).const_mul 2
   have hm := intervalIntegral.integral_mono_on ha
     (hl.intervalIntegrable a (a+1)) (hr.intervalIntegrable a (a+1))
-    (fun y hy => mul_le_mul_of_nonneg_right
-      (V10B3a.cell_weight a y hy.1 hy.2) (h0 y))
-  rw [intervalIntegral.integral_const_mul, intervalIntegral.integral_const_mul,
-    intervalIntegral.integral_of_le ha] at hm
+    (fun y hy => by
+      change Real.log (|a|+3) * F y ≤ 2 * (V10B3a.weight y * F y)
+      have h := mul_le_mul_of_nonneg_right (V10B3a.cell_weight a y hy.1 hy.2) (h0 y)
+      linarith only [h])
+  change (∫ y in a..a+1, Real.log (|a|+3) * F y) ≤
+    ∫ y in a..a+1, 2 * (V10B3a.weight y * F y) at hm
+  rw [intervalIntegral.integral_const_mul, intervalIntegral.integral_const_mul] at hm
+  rw [intervalIntegral.integral_of_le ha] at hm
   exact hm
 
 theorem finite_row_budget (J : Finset ℤ) (F : ℝ → ℝ)
@@ -152,7 +157,7 @@ theorem rectangle_budget (H X Y Z : ℝ → ℝ → ℂ) (a B : ℝ)
     _ ≤ ∫ x in a..a+1, (2*B) :=
       intervalIntegral.integral_mono_on (by linarith) hs
         (continuous_const.intervalIntegrable a (a+1)) hp
-    _ = 2*B := by simp [intervalIntegral.integral_const]; ring
+    _ = 2*B := by simp [intervalIntegral.integral_const]
 
 end WeilDefect.MasterRecon.V10B5b
 
