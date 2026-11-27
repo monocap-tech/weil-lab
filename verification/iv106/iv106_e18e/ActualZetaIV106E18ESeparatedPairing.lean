@@ -4,7 +4,7 @@ import WeilDefect.Morphology.NeutralGaussExteriorLimit
 namespace WeilDefect
 noncomputable section
 open MeasureTheory Filter FourierTransform
-open scoped FourierTransform SchwartzMap Topology BigOperators RealInnerProductSpace
+open scoped Convolution FourierTransform SchwartzMap Topology BigOperators RealInnerProductSpace
 
 /-- Fourier flip for L1 input and inverse Schwartz test, without a distribution. -/
 theorem neutralIV106E18EFlip (f : ℝ → ℂ) (hf : Integrable f)

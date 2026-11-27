@@ -28,8 +28,8 @@ jobs:
           test "$(git -C research rev-parse HEAD)" = 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
           test "$(git -C research rev-parse HEAD^{tree})" = f038d8ff25d8f18fbe56a641ab6abded0b6ec8e9
           test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
-          test "$(git -C candidate hash-object verification/iv106/iv106_e18d/ActualZetaIV106E18DDirectPairing.lean)" = 7ae31b9399277303650c017d1cfd4898ccba9f3f
-          test "$(git -C candidate hash-object verification/iv106/iv106_e18e/ActualZetaIV106E18ESeparatedPairing.lean)" = 26c315bff7afd0771d42dd33e6d03f8e381c8487
+          test "$(git -C candidate hash-object verification/iv106/iv106_e18d/ActualZetaIV106E18DDirectPairing.lean)" = 90bf0900ff4322f740088cf99f9afcd3b743cc56
+          test "$(git -C candidate hash-object verification/iv106/iv106_e18e/ActualZetaIV106E18ESeparatedPairing.lean)" = 3ab355ef39585c2d407f936a29015ca106cd54e7
           ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/iv106/iv106_e18d/ActualZetaIV106E18DDirectPairing.lean candidate/verification/iv106/iv106_e18e/ActualZetaIV106E18ESeparatedPairing.lean
           test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E18DDirectPairing.lean
           test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E18ESeparatedPairing.lean

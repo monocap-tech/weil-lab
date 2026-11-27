@@ -5,7 +5,7 @@ import Mathlib.MeasureTheory.Integral.DominatedConvergence
 namespace WeilDefect
 noncomputable section
 open MeasureTheory Filter FourierTransform
-open scoped FourierTransform SchwartzMap Topology BigOperators RealInnerProductSpace
+open scoped Convolution FourierTransform SchwartzMap Topology BigOperators RealInnerProductSpace
 
 /-- Center each finite reciprocal sum before taking its frequency limit. -/
 def neutralIV106E18DPartial (N : ℕ) (ξ : ℝ) : ℝ :=
@@ -102,7 +102,10 @@ theorem neutralIV106E18DDirect_limit (f : ℝ → ℂ) (hf : Integrable f)
   · intro N
     have hP : Continuous (neutralIV106E18DPartial N) := by
       unfold neutralIV106E18DPartial neutralGaussReciprocal
-      fun_prop (disch := positivity)
+      apply continuous_finset_sum
+      intro n hn
+      apply continuous_const.sub
+      exact continuous_const.div₀ (by fun_prop) (fun ξ => by positivity)
     exact (𝓕⁻ u).continuous.aestronglyMeasurable.mul
       (hF.aestronglyMeasurable.mul
         (Complex.continuous_ofReal.comp hP).aestronglyMeasurable)
