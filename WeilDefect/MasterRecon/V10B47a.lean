@@ -13,7 +13,7 @@ noncomputable def beta (n m : ℕ) : ℝ :=
 theorem beta_zero (n : ℕ) : beta n 0=1/((n:ℝ)+1) := by
   unfold beta
   simp only [pow_zero,mul_one]
-  rw [integral_pow] <;> simp
+  rw [intervalIntegral.integral_pow] <;> simp
 
 theorem beta_step (n m : ℕ) :
     ((n:ℝ)+1)*beta n (m+1)=((m:ℝ)+1)*beta (n+1) m := by
@@ -23,7 +23,7 @@ theorem beta_step (n m : ℕ) :
   let dv : ℝ → ℝ := fun x => ((n:ℝ)+1)*x^n
   have hu (x : ℝ) : HasDerivAt u (du x) x := by
     have h := ((hasDerivAt_const x (1:ℝ)).sub (hasDerivAt_id x)).fun_pow (m+1)
-    convert h using 1 <;> first | rfl | (simp [du] <;> ring)
+    convert h using 1 <;> first | rfl | (simp [du,u] <;> ring)
   have hv (x : ℝ) : HasDerivAt v (dv x) x := by
     simpa [v,dv] using hasDerivAt_pow (n+1) x
   have hdu : Continuous du := by unfold du; fun_prop
