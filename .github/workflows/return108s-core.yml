@@ -1,7 +1,7 @@
 name: RETURN108-S Mellin kernel banks
 on:
   push:
-    branches: [research/return108s-repair]
+    branches: [research/return108s-kernel-core]
     paths:
       - ".github/workflows/return108s-core.yml"
 permissions:
