@@ -3,11 +3,12 @@ import Mathlib.Analysis.Calculus.Deriv.Star
 import Mathlib.Analysis.Analytic.Order
 import Mathlib.Analysis.SpecialFunctions.Pow.Complex
 import Mathlib.NumberTheory.LSeries.ZetaZeros
+import Mathlib.NumberTheory.Harmonic.ZetaAsymp
 
 /-! V10B6g: zeta conjugation and analytic multiplicity.
 Independent of the multiplier, sampling and one-sub functional-equation
-modules. Conjugation is proved by the Dirichlet series and identity
-principle on the punctured complex plane, not assumed as an axiom. -/
+modules. Conjugation uses Mathlib's native theorem, which is proved by the
+Dirichlet series and identity principle, not assumed as an axiom. -/
 namespace WeilDefect.MasterRecon.V10B6g
 
 open Set Filter
@@ -55,45 +56,23 @@ theorem zeta_conjugate_analytic :
     (differentiableAt_riemannZeta (conj_ne_one z hz'))).differentiableWithinAt
 
 theorem zeta_conjugate_dirichlet (z : ℂ) (hz : 1 < z.re) :
-    riemannZeta (conj z) = conj (riemannZeta z) := by
-  have hz' : 1 < (conj z).re := by simpa only [Complex.conj_re] using hz
-  rw [zeta_eq_tsum_one_div_nat_cpow hz', zeta_eq_tsum_one_div_nat_cpow hz,
-    Complex.conj_tsum]
-  apply tsum_congr
-  intro n
-  have ha : (n : ℂ).arg ≠ Real.pi := by
-    rw [Complex.natCast_arg]
-    exact Real.pi_ne_zero.symm
-  rw [Complex.cpow_conj _ _ ha]
-  simp
+    riemannZeta (conj z) = conj (riemannZeta z) :=
+  riemannZeta_conj z
 
 theorem zeta_conjugateFunction_eqOn :
     EqOn (conjugateFunction riemannZeta) riemannZeta punctured := by
-  have hnear : ∀ᶠ z : ℂ in 𝓝 (2:ℂ), 1 < z.re :=
-    (isOpen_lt continuous_const Complex.continuous_re).mem_nhds (by norm_num)
-  have hEq : ∀ᶠ z : ℂ in 𝓝 (2:ℂ),
-      conjugateFunction riemannZeta z = riemannZeta z := by
-    filter_upwards [hnear] with z hz
-    change conj (riemannZeta (conj z)) = riemannZeta z
-    rw [zeta_conjugate_dirichlet z hz,conj_conj]
-  have hfreq : ∃ᶠ z : ℂ in 𝓝[≠] (2:ℂ),
-      conjugateFunction riemannZeta z = riemannZeta z :=
-    (hEq.filter_mono nhdsWithin_le_nhds).frequently
-  exact zeta_conjugate_analytic.eqOn_of_preconnected_of_frequently_eq
-    analyticOn_riemannZeta punctured_connected.isPreconnected
-    (by norm_num [punctured] : (2:ℂ) ∈ punctured) hfreq
+  intro z _
+  change conj (riemannZeta (conj z)) = riemannZeta z
+  rw [riemannZeta_conj,conj_conj]
 
 theorem zeta_conjugate_value (z : ℂ) (hz : z ≠ 1) :
-    riemannZeta (conj z) = conj (riemannZeta z) := by
-  have h := zeta_conjugateFunction_eqOn (show z ∈ punctured by simpa [punctured] using hz)
-  have he := congrArg (fun w : ℂ => conj w) h
-  simpa [conjugateFunction,Function.comp_def] using he
+    riemannZeta (conj z) = conj (riemannZeta z) :=
+  riemannZeta_conj z
 
 theorem conjugate_order (f : ℂ → ℂ) (z : ℂ)
-    (hf : AnalyticAt ℂ f (conj z)) :
+    (hf : AnalyticAt ℂ f (conj z))
+    (hfc : AnalyticAt ℂ (conjugateFunction f) z) :
     analyticOrderAt (conjugateFunction f) z = analyticOrderAt f (conj z) := by
-  have hfc : AnalyticAt ℂ (conjugateFunction f) z :=
-    (conjugate_differentiableAt f z hf.differentiableAt).analyticAt
   apply ENat.eq_of_forall_natCast_le_iff
   intro n
   rw [natCast_le_analyticOrderAt_iff_iteratedDeriv_eq_zero hfc,
@@ -104,6 +83,7 @@ theorem zeta_conjugate_order (z : ℂ) (hz : z ≠ 1) :
     analyticOrderAt riemannZeta (conj z) = analyticOrderAt riemannZeta z := by
   have hconj := conjugate_order riemannZeta z
     (analyticOn_riemannZeta (conj z) (by simpa using conj_ne_one z hz))
+    (zeta_conjugate_analytic z (by simpa [punctured] using hz))
   have he : conjugateFunction riemannZeta =ᶠ[𝓝 z] riemannZeta := by
     filter_upwards [punctured_open.mem_nhds (show z ∈ punctured by simpa [punctured] using hz)] with w hw
     exact zeta_conjugateFunction_eqOn hw
