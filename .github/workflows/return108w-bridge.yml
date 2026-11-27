@@ -1,4 +1,4 @@
-name: RETURN108-X1 quantitative continuous carrier equivalence (beta reduction repair)
+name: RETURN108-Y actual aperture-natural carrier inclusions
 on:
   push:
     branches: [research/return108s-kernel-core]
@@ -38,37 +38,38 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          lake build WeilDefect.MasterReturn.LogCarrierBridge 2>&1 | tee return108w-deps.log
+          lake build WeilDefect.MasterReturn.LogCarrierContinuous 2>&1 | tee return108w-deps.log
       - name: Compile and strict named axiom audit
         shell: bash
         run: |
           set -euo pipefail
-          lake env lean WeilDefect/MasterReturn/LogCarrierContinuous.lean 2>&1 | tee return108x-lean.log
+          lake env lean WeilDefect/MasterReturn/LogCarrierNatural.lean 2>&1 | tee return108y-lean.log
           python3 - <<'PY'
           import re
           from pathlib import Path
-          s = Path("return108x-lean.log").read_text()
-          names = ["boundRI_nonneg","boundIR_nonneg","carrierEquiv_norm_sq_le","carrierEquiv_symm_norm_sq_le","carrierEquiv_norm_le","carrierEquiv_symm_norm_le","carrierContinuousEquiv","carrierContinuousEquiv_physical"]
+          s = Path("return108y-lean.log").read_text()
+          names = ["iv_mem_of_le","recon_mem_of_le","ivIncl","reconIncl","ivIncl_norm","reconIncl_norm","ivIncl_physical","reconIncl_physical","carrier_natural","ivIncl_comp","reconIncl_comp"]
           allowed = {"propext","Classical.choice","Quot.sound"}
           for name in names:
-              q = "WeilDefect.MasterReturn.LogCarrierContinuous." + name
+              q = "WeilDefect.MasterReturn.LogCarrierNatural." + name
               m = re.search(r"'" + re.escape(q) + r"' depends on axioms: \[([^\]]*)\]", s)
               if m is None:
                   assert f"'{q}' does not depend on any axioms" in s, q
               else:
                   assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
               print("PASS", q)
-          print("RETURN108-X strict axiom audit PASS 8/8")
+          print("RETURN108-Y strict axiom audit PASS 11/11")
           PY
       - name: Preserve integration evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: return108x-integration
+          name: return108y-integration
           path: |
             return108w-closure.json
             return108w-closure.log
             return108w-deps.log
-            return108x-lean.log
+            return108y-lean.log
+            WeilDefect/MasterReturn/LogCarrierNatural.lean
             WeilDefect/MasterReturn/LogCarrierContinuous.lean
             lake-manifest.json
