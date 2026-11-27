@@ -21,8 +21,9 @@ theorem choose_bound (n k : ℕ) : (n.choose k:ℝ) ≤ (2:ℝ)^n := by
 theorem legendre_half_bound (j : ℕ) (z : ℝ) (hz : 0 ≤ z) (hz' : z ≤ 1/2) :
     |legendre j z| ≤ (4:ℝ)^j := by
   unfold legendre shiftedLegendre
-  simp only [map_sum,map_mul,map_pow,aeval_C,aeval_X,algebraMap_int_eq,Int.castRingHom_apply,Int.cast_mul,Int.cast_pow,
+  simp only [map_sum,map_mul,map_pow,aeval_C,aeval_X,algebraMap_int_eq,Int.cast_mul,Int.cast_pow,
     Int.cast_neg,Int.cast_one,Int.cast_natCast,abs_mul,abs_pow,abs_neg,abs_one,one_pow,one_mul]
+  change |∑ k ∈ Finset.range (j+1), (-1:ℝ)^k*(j.choose k:ℝ)*((j+k).choose j:ℝ)*z^k| ≤ (4:ℝ)^j
   calc
     _ ≤ ∑ k ∈ Finset.range (j+1),
         |(-1:ℝ)^k*(j.choose k:ℝ)*((j+k).choose j:ℝ)*z^k| := by
