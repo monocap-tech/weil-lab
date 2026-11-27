@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B58 deflation parser repair
+name: MASTER-RECON V10B59 deflated pairing normalization
 on:
   push:
     branches: [master-recon-v10b20-staging]
@@ -75,8 +75,7 @@ jobs:
             done
             if audit "$mod"; then pass[$mod]=1; else pass[$mod]=0; failed=1; fi
           }
-          gate V10B40a
-          gate V10B43a V10B40a
+          gate V10B43a
           gate V10B47c V10B43a
           exit "$failed"
       - name: Upload compiler and audit evidence

@@ -61,8 +61,11 @@ theorem odd_pair (p f : ℝ → ℝ) (s : ℝ) (hp : Continuous p) (hf : Continu
     unfold oddPart
     ring
   have hc : Continuous (fun t : ℝ => f (1-t)*p t) := by fun_prop
-  rw [he,intervalIntegral.integral_div,intervalIntegral.integral_sub
-    ((hf.mul hp).intervalIntegrable 0 1) (hc.intervalIntegrable 0 1),href]
+  have hi := intervalIntegral.integral_sub (μ := volume)
+    ((hf.mul hp).intervalIntegrable 0 1) (hc.intervalIntegrable 0 1)
+  change (∫ t in (0:ℝ)..1, f t*p t-f (1-t)*p t) =
+    (∫ t in (0:ℝ)..1, f t*p t) - (∫ t in (0:ℝ)..1, f (1-t)*p t) at hi
+  rw [he,intervalIntegral.integral_div,hi,href]
   ring
 
 theorem deflated_pair (p : ℕ → ℝ → ℝ) (d : ℕ → ℝ)
@@ -81,10 +84,13 @@ theorem deflated_pair (p : ℕ → ℝ → ℝ) (d : ℕ → ℝ)
     funext t
     unfold deflate
     ring
-  rw [he,intervalIntegral.integral_sub
+  have hi := intervalIntegral.integral_sub (μ := volume)
     (((oddPart_continuous f hf).mul (hp j)).intervalIntegrable 0 1)
-    ((hc.mul (hp j)).intervalIntegrable 0 1),
-    projection_pair p d hp hd ho n j (oddPart f)]
+    ((hc.mul (hp j)).intervalIntegrable 0 1)
+  change (∫ t in (0:ℝ)..1, oddPart f t*p j t-project p d n (oddPart f) t*p j t) =
+    (∫ t in (0:ℝ)..1, oddPart f t*p j t) -
+    (∫ t in (0:ℝ)..1, project p d n (oddPart f) t*p j t) at hi
+  rw [he,hi,projection_pair p d hp hd ho n j (oddPart f)]
   by_cases hj : j<n
   · simp [hj]
   · rw [if_neg hj,if_neg hj,sub_zero]
