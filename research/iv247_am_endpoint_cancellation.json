@@ -1,0 +1,66 @@
+{
+  "scale": "1000000000000000",
+  "coefficient_sum": "1944",
+  "coefficient_l1": "96596",
+  "weighted_l1": "1855086",
+  "weighted_l2_index_l1": "50353412",
+  "phase_min_numerator": "29",
+  "oscillation_bound_scaled": "1534904084814684687",
+  "lead_upper_scaled": "90495144335",
+  "remainder_upper_scaled": "9475638079",
+  "combined_penalty_upper_scaled": "160000000000",
+  "aggregate_lower_scaled": "509558195289",
+  "receiver_lower_scaled": "349558195289",
+  "bands": [
+    {
+      "b": 0,
+      "upper_scaled": "86335865447"
+    },
+    {
+      "b": 1,
+      "upper_scaled": "2972293468"
+    },
+    {
+      "b": 2,
+      "upper_scaled": "764825481"
+    },
+    {
+      "b": 3,
+      "upper_scaled": "257189503"
+    },
+    {
+      "b": 4,
+      "upper_scaled": "96875260"
+    },
+    {
+      "b": 5,
+      "upper_scaled": "38860650"
+    },
+    {
+      "b": 6,
+      "upper_scaled": "16225105"
+    },
+    {
+      "b": 7,
+      "upper_scaled": "6964440"
+    }
+  ],
+  "diagnostic": [
+    {
+      "b": 0,
+      "leading_penalty": 0.00007767786989287978
+    },
+    {
+      "b": 1,
+      "leading_penalty": 0.000002709363287419564
+    },
+    {
+      "b": 2,
+      "leading_penalty": 7.018921919156922e-7
+    },
+    {
+      "b": 3,
+      "leading_penalty": 2.3680982831431786e-7
+    }
+  ]
+}
