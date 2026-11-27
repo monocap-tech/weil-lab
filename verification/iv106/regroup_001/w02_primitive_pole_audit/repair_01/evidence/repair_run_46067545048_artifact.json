@@ -1,0 +1,20 @@
+{
+  "id": 15232356595,
+  "node_id": "MDg6QXJ0aWZhY3QxNTIzMjM1NjU5NQ==",
+  "name": "iv106-w02-primitive-pole-repair-01-evidence",
+  "size_in_bytes": 94024,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15232356595",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15232356595/zip",
+  "expired": false,
+  "digest": "sha256:67ff4955cd9b1bf5196d170147cd7d232218bf7cca08578d517d6dc11ab41be1",
+  "created_at": "2026-11-27T21:17:59Z",
+  "updated_at": "2026-11-27T21:17:59Z",
+  "expires_at": "2027-02-25T21:01:39Z",
+  "workflow_run": {
+    "id": 46067545048,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "formalization/iv106-w02-primitive-pole-audit",
+    "head_sha": "3452c5e697e5fd88da174a879161128f9eaf2d74"
+  }
+}
