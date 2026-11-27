@@ -1,0 +1,19 @@
+{
+  "run": 45984451322,
+  "job": 140456363255,
+  "source": "013317ec13364ebf837320baed1d5803ad679a87",
+  "blob": "d16619f95e0fc09ad2bd308cce622c747b1992ff",
+  "names": [
+    "WeilDefect.MasterRecon.V10B40a.oddPart_continuous",
+    "WeilDefect.MasterRecon.V10B40a.deflation_error",
+    "WeilDefect.MasterRecon.V10B40a.denominator_transport",
+    "WeilDefect.MasterRecon.V10B40a.coefficient_compare"
+  ],
+  "output": [
+    "2026-11-27T10:45:08.9574973Z 'WeilDefect.MasterRecon.V10B40a.oddPart_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T10:45:08.9576275Z 'WeilDefect.MasterRecon.V10B40a.deflation_error' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T10:45:08.9577573Z 'WeilDefect.MasterRecon.V10B40a.denominator_transport' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T10:45:08.9578940Z 'WeilDefect.MasterRecon.V10B40a.coefficient_compare' depends on axioms: [propext, Classical.choice, Quot.sound]"
+  ],
+  "overall": "failure"
+}
