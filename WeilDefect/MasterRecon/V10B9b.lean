@@ -69,7 +69,7 @@ theorem core_dense_of_old (hOld : OldApproximation) (t : ℝ) (ht : 0 < t) :
   rw [Metric.mem_closure_iff]
   intro ε hε
   obtain ⟨k,hk,he⟩ := fixed_support_approx hOld t ht g ε hε
-  exact ⟨k,hk,by simpa [dist_comm,dist_eq_norm] using he⟩
+  exact ⟨k,hk,by rw [dist_comm,dist_eq_norm]; exact he⟩
 
 end WeilDefect.MasterRecon.V10B9b
 
