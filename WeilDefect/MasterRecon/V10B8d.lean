@@ -29,7 +29,7 @@ theorem shift_inverse (a : ℝ) (f : FullL2) :
   have h := V06D.ae_translate (shift_ae a f) (-a)
   filter_upwards [shift_ae (-a) (shift a f),h] with x hx hy
   change shift (-a) (shift a f) x = f x
-  rw [hx,hy,neg_add_cancel_right]
+  rw [hx,hy,show x + -a + a = x by ring]
 
 theorem shift_adjoint (a : ℝ) : (shift a).adjoint = shift (-a) := by
   have h := (ContinuousLinearMap.norm_map_iff_adjoint_comp_self (shift a)).mp (shift_norm a)
