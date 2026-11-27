@@ -1,0 +1,10 @@
+# V10B66R1 scoped admission — direct endpoint-inclusive Fourier decay
+Run 46071827827 job 140750339038 source 9dbe2f5c24a56d6d513ed7e46cb10e3aa38f92bd; overall success. V10B66a blob 375bcb8c0cdd04a256e9831e412222e0e73feba8; full build and strict named audit completed. Independent theorem/print set comparison and named output check:
+2026-11-27T21:42:53.1449729Z 'WeilDefect.MasterRecon.V10B66a.phase_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T21:42:53.1450453Z 'WeilDefect.MasterRecon.V10B66a.phase_deriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T21:42:53.1451170Z 'WeilDefect.MasterRecon.V10B66a.fourier_parts' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T21:42:53.1451937Z 'WeilDefect.MasterRecon.V10B66a.fourier_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T21:42:53.1452665Z 'WeilDefect.MasterRecon.V10B66a.trialPoly_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T21:42:53.1453403Z 'WeilDefect.MasterRecon.V10B66a.trial_fourier_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T21:42:53.3082214Z V10B66a: strict axiom audit PASS (6 declarations)
+Six newly admitted declarations; +72 W02 incremental names, not full ledger deduplication. Exact recovered integer-numerator trial physical polynomial and endpoint-inclusive inverse-frequency bound certified for all real phase parameters. No digamma-series or residual-bound premise. This is not yet weighted Fourier integrability, carrier membership, physical constraint section or A/R identity. Original V10B19 generation and Taylor hold unchanged; no W consumption. Full decoded job transcript with source hashes, resolved manifest and toolchain preserved. Original Actions ZIP metadata [{"id":15233322370,"size":5647,"digest":"sha256:b6bdc496f8d633671e0df4181ec40373bad28c45215d3261ae325e6fca1cdfb5"}]; raw ZIP not claimed permanently custodied. Next eligible operation: use certified decay plus uniform bound and explicit Fourier normalization to prove logarithmic weighted energy finite on the actual supported trial.
