@@ -1,4 +1,4 @@
-name: IV219 sector five after sector four acceptance
+name: IV222 sector six after sector five acceptance
 on:
   push:
     branches: ['staging/iv147-am-kernel-pilot']
@@ -17,10 +17,10 @@ jobs:
       - name: Authenticate source and generate proof modules
         run: |
           set -euo pipefail
-          mkdir -p iv219/out
+          mkdir -p iv222/out
           grep -Fx 'leanprover/lean4:v4.34.0' lean-toolchain
-          python research/iv146_am_exp_audit.py custody/iv146-am/am_cells.json iv219/out/exact-audit.json
-          python research/iv165_am_sector_sources.py --sector 5
+          python research/iv146_am_exp_audit.py custody/iv146-am/am_cells.json iv222/out/exact-audit.json
+          python research/iv165_am_sector_sources.py --sector 6
           python - <<'PY'
           import re,json
           from pathlib import Path
@@ -47,25 +47,25 @@ jobs:
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
           export PATH="$HOME/.elan/bin:$PATH"
           lake exe cache get
-      - name: Verify new integer sector five
+      - name: Verify new integer sector six
         if: ${{ !cancelled() }}
         run: |
           set -euo pipefail
           lake build WeilDefect.Arithmetic.ActualZetaIV159AMRowReceiver
-          python research/iv165_am_build_sector.py --sector 5 --out iv219/out/sector5
+          python research/iv165_am_build_sector.py --sector 6 --out iv222/out/sector6
           python - <<'PY'
           import json
           from pathlib import Path
-          m=json.loads(Path('iv219/out/sector5/manifest.json').read_text())
-          assert m['plan']['block_interval']==[640,768]
-          assert m['plan']['row_interval']==[5120,6144]
+          m=json.loads(Path('iv222/out/sector6/manifest.json').read_text())
+          assert m['plan']['block_interval']==[768,896]
+          assert m['plan']['row_interval']==[6144,7168]
           assert len(m['records'])==81
           assert all(r['pass'] for r in m['records'])
           assert sum(len(r['names']) for r in m['records'])==145
-          print('Sector 5 complete: 1024 new rows, 145 strict named receipts')
+          print('Sector 6 complete: 1024 new rows, 145 strict named receipts')
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: iv219-am-sector-five-receipts
-          path: iv219/out/
+          name: iv222-am-sector-six-receipts
+          path: iv222/out/
