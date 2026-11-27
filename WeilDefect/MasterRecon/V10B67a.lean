@@ -133,7 +133,9 @@ theorem trial_weighted (col : Fin 16) :
     dsimp [D]
     have h := intervalIntegral.integral_nonneg (μ := volume) (by norm_num : (-1/4:ℝ) ≤ 1/4)
       (f := fun x => ‖(trialPoly col).derivative.eval x‖) (fun _ _ => norm_nonneg _)
-    exact add_nonneg (add_nonneg (norm_nonneg _) (norm_nonneg _)) h
+    exact add_nonneg
+      (add_nonneg (abs_nonneg ((trialPoly col).eval (1/4)))
+        (abs_nonneg ((trialPoly col).eval (-1/4)))) h
   apply weighted_of_decay _ (Lp.aestronglyMeasurable _) (B+D) (add_nonneg hB hD)
   filter_upwards [trial_fourier_literal col] with u hu
   rw [hu]

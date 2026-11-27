@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B67R1 weighted carrier elaboration repair
+name: MASTER-RECON V10B67R2 explicit real endpoint nonnegativity
 on:
   push:
     branches: [master-recon-v10b20-staging]
