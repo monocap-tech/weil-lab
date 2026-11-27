@@ -1,0 +1,514 @@
+{
+  "schema": "NF618-bank-chunks-v1",
+  "archive": "NF618ReflexiveDeploymentBank.zip",
+  "sha256": "5c93d86fd9461aff82834cc264c522544f3b2205fc56171886de18623ca31b82",
+  "bytes": 52877673,
+  "chunk_size": 524288,
+  "chunks": [
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part000.bin",
+      "git_blob": "fa701bd800208af56998859878ca6bb7bcb7535c",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part001.bin",
+      "git_blob": "14797c4833172fac4bef4b2c25ef54519c676b6f",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part002.bin",
+      "git_blob": "5f4a8439ebabdc81704fe51daf04a8d755349fa5",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part003.bin",
+      "git_blob": "4c1376b1e35d692e65bb58f288ce5249df000f77",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part004.bin",
+      "git_blob": "51d4c5ce3db51d31fa1bbf12b99a92af0c1f9369",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part005.bin",
+      "git_blob": "aea8f01d869315faf655a4ccd17c08ba402d3336",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part006.bin",
+      "git_blob": "5121a2b6c0f89119fa1e6f9f9456fddd09d1440f",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part007.bin",
+      "git_blob": "b1f532668f717f3c4292db7f2e1253b8b0fab102",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part008.bin",
+      "git_blob": "ff1e654f5f4e7dd7daed0c32f69a8df664bbbac5",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part009.bin",
+      "git_blob": "8daa4eed95f850f68f7e331fac0ddecdc0bfcf01",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part010.bin",
+      "git_blob": "8efc0affc843bdc1d3e6e5d78a2a0ae429183c49",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part011.bin",
+      "git_blob": "255e03a854c7f9f4d6d3badf4a36fa436897866f",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part012.bin",
+      "git_blob": "d3e1aabb4445f6b71d7a5910778baf8f7827b2ec",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part013.bin",
+      "git_blob": "0997f93cb1e022ee090c0c3b24e24b3effdb2311",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part014.bin",
+      "git_blob": "1af02c9805ab2da05628d0a3990c295a51fc26f2",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part015.bin",
+      "git_blob": "ef58cfd1a7c09faeae0c1c3ba76634b828022334",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part016.bin",
+      "git_blob": "06c043b636a280e253bea755035fdcb6ccf0499b",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part017.bin",
+      "git_blob": "a129cc7bacaf7a7004d37b5de876a2d35f5c5f1f",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part018.bin",
+      "git_blob": "1cfe6a5a8abd0f87b90b14f47eb2f3b275ad118f",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part019.bin",
+      "git_blob": "eb42a4a5aa3af8ef252825f41600c856c222937c",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part020.bin",
+      "git_blob": "1f2932eeb64a7ecaff9d53c0d1799108c6888309",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part021.bin",
+      "git_blob": "1892497d096fd6b3000906ba5b724f870a585d91",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part022.bin",
+      "git_blob": "141e931d0ef9ce4dfe668760af001c8425386545",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part023.bin",
+      "git_blob": "0e3a1fb90fc44ce348bb9ecfc2f292b0e320e7c9",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part024.bin",
+      "git_blob": "0892ee20e56ab0dd00af5cb86241afff6545efec",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part025.bin",
+      "git_blob": "d43c8a3f62a1f93c39daf62b4b51cd477222f254",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part026.bin",
+      "git_blob": "a4be80d5cfab1e4da29aa4a333a6938764bd99a1",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part027.bin",
+      "git_blob": "bb726747f3bf4ea81054dcc8d978ac5b9b6f5503",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part028.bin",
+      "git_blob": "201132638e1f6996b2b4cf24c9d96dea37bd7169",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part029.bin",
+      "git_blob": "fb4c1f682b2ceb6f84bed0c426d8e364bed6d272",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part030.bin",
+      "git_blob": "543525b67a7c2b8003b9da38b59c5884527a2042",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part031.bin",
+      "git_blob": "3e91ca14422b90708ee0a54384243285f01e881a",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part032.bin",
+      "git_blob": "ce5091034584e21c5b38fffea2b0363b5c64bbcf",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part033.bin",
+      "git_blob": "1c23bd3249a9f47c17a85ebe23bee76af61a7c1f",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part034.bin",
+      "git_blob": "e444021b6b765b8f98f3224170368fefc1f5e7ef",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part035.bin",
+      "git_blob": "489e2c6303ce14f057e2e8c0adee2fd06616fbe1",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part036.bin",
+      "git_blob": "9942c569c334689f93e9344e4aff9465bd18a4d8",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part037.bin",
+      "git_blob": "7f6d23c0315af41e0430365fc7e9f1c41756d07e",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part038.bin",
+      "git_blob": "a6dbc6477d04a1787c34825af83c7c82307f96e9",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part039.bin",
+      "git_blob": "1b629ddc127d693dfce9b0ce17fa7b5b08d31771",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part040.bin",
+      "git_blob": "f35fce40dbe63acb065d8ba804ebfa4398ec54e8",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part041.bin",
+      "git_blob": "4fe11a7fbcd1620747ac76d461e03c04b0e08e37",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part042.bin",
+      "git_blob": "a5ab8ce05305b8c002893df2e85367096044d36b",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part043.bin",
+      "git_blob": "43abb76fe4bc401ec7205d3d043aef4196c140af",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part044.bin",
+      "git_blob": "89abb8dc52754e5e9e0da87f0d48dc17f589f3ca",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part045.bin",
+      "git_blob": "8985e10eeadceb2fb3da3d7488e974210327262f",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part046.bin",
+      "git_blob": "d4138cb7b590d8b96dc444664f1df569ec7ca962",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part047.bin",
+      "git_blob": "437de92cdcbc6ad8e12902c724473e6e091ce196",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part048.bin",
+      "git_blob": "9853cca55f8d74f6c4642bd8fcde1434c5bd7e79",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part049.bin",
+      "git_blob": "a6944660c7ec9adff6db9713b79db951159edbab",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part050.bin",
+      "git_blob": "887982a2a582da4717ea9afafeca7720676e601d",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part051.bin",
+      "git_blob": "1f575641b2570543c77a18a9a8cc06cd5de094b7",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part052.bin",
+      "git_blob": "fdce3f540a90b5971f1e91900f99554629a3cfdf",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part053.bin",
+      "git_blob": "0a81f1ad07ecaf47bc4e23e61c1459fad6538f83",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part054.bin",
+      "git_blob": "408b8d2aa3b3b09b39b7f27cb7deb03be7056c70",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part055.bin",
+      "git_blob": "a334690d6b8eacb8aabf66b92aae9fc4fb60b2da",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part056.bin",
+      "git_blob": "1da9378ac6890485bcf4c9d6d156fc8e6a8e0069",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part057.bin",
+      "git_blob": "1e63de14dd935051b71b61264b7c9f07dc457f8e",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part058.bin",
+      "git_blob": "2f267402f13def3ab7f058b31bedeaa8e6a91aca",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part059.bin",
+      "git_blob": "9cc49550035dcd6740870cbb0a3d8f0b556b875d",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part060.bin",
+      "git_blob": "00eca37fa147df3bbf2a166d0f671ffa9f10daae",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part061.bin",
+      "git_blob": "bfc3a3c91347a18736cb7fc009370a26650fc748",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part062.bin",
+      "git_blob": "1eca882c69fb605759df41c429f05ad0c6131005",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part063.bin",
+      "git_blob": "56727839e45f925d304c01b142e95cb7fb56c2dc",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part064.bin",
+      "git_blob": "b14c569647716060c41f0772dbfda7e06631a7e7",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part065.bin",
+      "git_blob": "07ebf18d8afe7dfede2700e982b827e26d5158f5",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part066.bin",
+      "git_blob": "372f8d632e633d38eabb968f1757816279b7ba45",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part067.bin",
+      "git_blob": "a4f9dd0c137fe8c8c48aa2564e684ed555f3b082",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part068.bin",
+      "git_blob": "f4e9c81421528ac2e848794660d6211da3dbc26d",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part069.bin",
+      "git_blob": "50e749a4facfb44f84f4480f605f663f956aa32c",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part070.bin",
+      "git_blob": "02f69dfe4e278db4d511c663d487f82f915c2676",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part071.bin",
+      "git_blob": "9adb18366ca5fd53d87fc7cebe17f7384f6262de",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part072.bin",
+      "git_blob": "f61b59246ffa833af468dc97a45b16371a1cd593",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part073.bin",
+      "git_blob": "b1dacc929ff8461316d7559f2212c3280584bde5",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part074.bin",
+      "git_blob": "ae85bd698b111a9828c6913a2879386a94ab0348",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part075.bin",
+      "git_blob": "09d2951444d5b647d1cfe9ad5f6e1033031d9b99",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part076.bin",
+      "git_blob": "928ad62572a6d088f21a74b0d6981a83087586d5",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part077.bin",
+      "git_blob": "8b9ccbfe2fcda8f1bc818e5f34fe06682d74a79f",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part078.bin",
+      "git_blob": "c7676b0ce9d236f97b8bad44cc09dd04f21ca3e8",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part079.bin",
+      "git_blob": "551e46071cc85d059e4067fcfc57359ebc50481a",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part080.bin",
+      "git_blob": "d16a12cd214ab27a1f16d0f876ca0c2856f5c0e8",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part081.bin",
+      "git_blob": "9584cfa9de8a6a06bedc757ab918c7280078e231",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part082.bin",
+      "git_blob": "35de05ed68b8c5bfb68f6cf087e31d7adddff70a",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part083.bin",
+      "git_blob": "bca3c4c4a94d75592e1b68b1a06e0142dde8796f",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part084.bin",
+      "git_blob": "c2d7e53b47e341ec6ad04618e93f1927a7d65ac5",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part085.bin",
+      "git_blob": "6637cd4630a0b5680a2051f6ce6e2ddb3ea7f203",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part086.bin",
+      "git_blob": "e7865961f38dabd7a095362384451636a65e519d",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part087.bin",
+      "git_blob": "c1def70abdc59dfc557c07ad5cf3444ae5076784",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part088.bin",
+      "git_blob": "95239ce3a68dcb4aaaef1bb3c955061850e26c51",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part089.bin",
+      "git_blob": "eb95f119fafb2fc4b32280ebece15ab308bd515a",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part090.bin",
+      "git_blob": "e36624d1b1448c3ea08f798f236cffd5f94712a2",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part091.bin",
+      "git_blob": "65ce7c041b1f8aa57b7ec06413f679c6ed66dc9d",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part092.bin",
+      "git_blob": "71552831cd658439be2681db573db490c9ca7896",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part093.bin",
+      "git_blob": "e7b2093fab09149397e202e5e1befc1a42ea344d",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part094.bin",
+      "git_blob": "dc0dca2e06352498351c84ae1d947e3d36a63c0a",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part095.bin",
+      "git_blob": "9901e1d52bed42b0038ee7d00edd6812050d65f4",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part096.bin",
+      "git_blob": "487e47d2459eca27e7c2e2d4744464c3ee98eae9",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part097.bin",
+      "git_blob": "084c8cfdc52c8f052d7311cb2d2d34ad41c36ef7",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part098.bin",
+      "git_blob": "fb50731c51ccdb13e85958c69d05ee3e9c4115ca",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part099.bin",
+      "git_blob": "c78c38b21995bb454e8fffb0b44fff687c3eec8f",
+      "bytes": 524288
+    },
+    {
+      "path": "notes/provisional/NF618ReflexiveDeploymentBank/part100.bin",
+      "git_blob": "3e8bce7b748586bc023448f9fccb95619d91c60f",
+      "bytes": 448873
+    }
+  ]
+}
