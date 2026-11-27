@@ -1,0 +1,19 @@
+{
+  "run": 46029913041,
+  "job": 140610795862,
+  "source": "9f543c1aba822a9df224427e82abba5e3689925c",
+  "blob": "4438fe1f6720cf74e79054123f7163b096a095d5",
+  "names": [
+    "WeilDefect.MasterRecon.V10B43a.projection_pair",
+    "WeilDefect.MasterRecon.V10B43a.odd_pair",
+    "WeilDefect.MasterRecon.V10B43a.deflated_pair",
+    "WeilDefect.MasterRecon.V10B43a.normalized_pairings"
+  ],
+  "output": [
+    "2026-11-27T16:02:33.3548146Z 'WeilDefect.MasterRecon.V10B43a.projection_pair' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T16:02:33.3548692Z 'WeilDefect.MasterRecon.V10B43a.odd_pair' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T16:02:33.3549240Z 'WeilDefect.MasterRecon.V10B43a.deflated_pair' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T16:02:33.3549860Z 'WeilDefect.MasterRecon.V10B43a.normalized_pairings' depends on axioms: [propext, Classical.choice, Quot.sound]"
+  ],
+  "overall": "failure"
+}

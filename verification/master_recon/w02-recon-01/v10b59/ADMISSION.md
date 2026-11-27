@@ -1,0 +1,8 @@
+# V10B59 scoped admission
+Run 46029913041 job 140610795862 source 9f543c1aba822a9df224427e82abba5e3689925c; overall failure. V10B43a blob 4438fe1f6720cf74e79054123f7163b096a095d5; completed full build and strict named audit; independently matched source theorem and print sets and actual output:
+2026-11-27T16:02:33.3548146Z 'WeilDefect.MasterRecon.V10B43a.projection_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T16:02:33.3548692Z 'WeilDefect.MasterRecon.V10B43a.odd_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T16:02:33.3549240Z 'WeilDefect.MasterRecon.V10B43a.deflated_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T16:02:33.3549860Z 'WeilDefect.MasterRecon.V10B43a.normalized_pairings' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T16:02:33.4506868Z V10B43a: strict axiom audit PASS (4 declarations)
+Four newly admitted declarations; +45 W02 incremental names, not full ledger deduplication. V10B47c withheld: two unsolved goals in low_row (63:2; residual if True) and paired_blocks (123:14; range (1+n) after ring normalization), with sorryAx in failed output. New diagnostics eligible for bounded repair. Full decoded job transcript preserved including source hashes and resolved manifest. Original artifact 15214146965 (6744 bytes, SHA256 9844949a8becc692958bbbe9e6c2b75833ac7e8f37516ded111851da6498b072) expiring; no raw ZIP custody claimed. No literal physical pole, original retained-bank attachment, A/R, positivity or exclusion promoted. No W or original V10B19 consumption; Taylor hold unchanged.
