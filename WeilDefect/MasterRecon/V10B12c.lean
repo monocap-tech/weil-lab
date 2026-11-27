@@ -26,11 +26,17 @@ theorem matrixForm_gram (G : H →L[ℂ] H) (v : ι → H) (a : ι → ℂ) :
   unfold matrixForm gram synth
   simp only [map_sum,map_smul,sum_inner,inner_sum,inner_smul_left,inner_smul_right,
     Finset.mul_sum]
+  rw [Finset.sum_comm]
+  apply Finset.sum_congr rfl
+  intro j _
+  apply Finset.sum_congr rfl
+  intro i _
+  ring
 
 theorem synth_basis (S : Submodule ℂ H) (b : Module.Basis ι ℂ S) (x : S) :
     synth (fun i => (b i:H)) (fun i => b.repr x i) = (x:H) := by
   unfold synth
-  exact_mod_cast b.sum_repr x
+  simpa only [map_sum,map_smul] using congrArg S.subtype (b.sum_repr x)
 
 variable (S : Submodule ℂ H) [S.HasOrthogonalProjection]
 
@@ -87,7 +93,8 @@ theorem lowerMatrix_exact (G : H →L[ℂ] H) (c : ℝ) (b : Module.Basis ι ℂ
   rw [matrixForm_sub_scaled,matrixForm_gram,matrixForm_gram,synth_corrected,synth_residual,
     ContinuousLinearMap.one_apply,inner_self_eq_norm_sq_to_K,Complex.sub_re]
   simp only [energy,← Complex.ofReal_inv,← Complex.ofReal_mul,Complex.ofReal_re]
-  rw [mul_comm,← div_eq_mul_inv]
+  simp only [Complex.mul_re,Complex.ofReal_re,Complex.ofReal_im,Complex.ofReal_pow]
+  ring
 
 theorem matrix_certificate (G : H →L[ℂ] H)
     (hG : ∀ x y, inner ℂ (G x) y = inner ℂ x (G y))
