@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B41 independent kernel arithmetic
+name: MASTER-RECON V10B44 rational normalization repair
 on:
   push:
     branches: [master-recon-v10b20-staging]
