@@ -36,9 +36,9 @@ theorem residual_budget (n d np dp q an ad B R : ℝ)
   have had := (abs_nonneg _).trans hd
   have hq0 := abs_nonneg q
   calc
-    _ ≤ |(np-dp*q)+(n-np)|+|(d-dp)*q| := abs_sub_le _ _
+    _ ≤ |(np-dp*q)+(n-np)|+|(d-dp)*q| := by rw [sub_eq_add_neg]; simpa only [abs_neg] using abs_add_le ((np-dp*q)+(n-np)) (-((d-dp)*q))
     _ ≤ (|np-dp*q|+|n-np|)+|(d-dp)*q| :=
-      add_le_add_right (abs_add_le _ _) _
+      add_le_add_left (abs_add_le _ _) _
     _ ≤ R+an+ad*B := by
       rw [abs_mul]
       exact add_le_add (add_le_add hR hn) (mul_le_mul hd hq hq0 had)
@@ -49,7 +49,7 @@ theorem analytic_receiver (r q np dp an ad B R : ℝ)
     (hq : |q| ≤ B) (hR : |np-dp*q| ≤ R) :
     |N r/D r-q| ≤ R+an+ad*B :=
   quotient_residual _ _ _ _ (denominator_ge_one r hr)
-    (residual_budget _ _ _ _ _ _ _ _ hn hd hq hR)
+    (residual_budget _ _ _ _ _ _ _ _ _ hn hd hq hR)
 
 end WeilDefect.MasterRecon.V10B25b
 
