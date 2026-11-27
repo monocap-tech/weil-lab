@@ -109,7 +109,7 @@ theorem norm_summable (z : ℂ) (hz : 0 < z.re) :
 theorem scalar_series_integral (z : ℂ) (hz : 0 < z.re) (hs : PartialFraction z) :
     (∫ r in Ioi (0:ℝ), ∑' n : ℕ, term z n r) =
       Complex.digamma z+(Real.eulerMascheroniConstant:ℂ)+1/z := by
-  rw [integral_tsum_of_summable_integral_norm (term_integrable z hz) (norm_summable z hz)]
+  rw [← integral_tsum_of_summable_integral_norm (term_integrable z hz) (norm_summable z hz)]
   simp_rw [term_integral z hz]
   exact hs.tsum_eq
 
