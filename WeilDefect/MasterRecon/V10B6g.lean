@@ -63,7 +63,7 @@ theorem zeta_conjugateFunction_eqOn :
     EqOn (conjugateFunction riemannZeta) riemannZeta punctured := by
   intro z _
   change conj (riemannZeta (conj z)) = riemannZeta z
-  rw [riemannZeta_conj,conj_conj]
+  rw [riemannZeta_conj,Complex.conj_conj]
 
 theorem zeta_conjugate_value (z : ℂ) (hz : z ≠ 1) :
     riemannZeta (conj z) = conj (riemannZeta z) :=
@@ -77,6 +77,8 @@ theorem conjugate_order (f : ℂ → ℂ) (z : ℂ)
   intro n
   rw [natCast_le_analyticOrderAt_iff_iteratedDeriv_eq_zero hfc,
     natCast_le_analyticOrderAt_iff_iteratedDeriv_eq_zero hf]
+  change (∀ i < n, iteratedDeriv i (conjugateFunction f) z = 0) ↔
+    ∀ i < n, iteratedDeriv i f (conj z) = 0
   simp only [conjugate_iteratedDeriv,conjugateFunction,Function.comp_apply,map_eq_zero]
 
 theorem zeta_conjugate_order (z : ℂ) (hz : z ≠ 1) :
