@@ -1,0 +1,51 @@
+{
+  "matchedSlots": 7835,
+  "admitted": {
+    "tables": 6097,
+    "rows": 29336,
+    "phaseResidues": 860,
+    "rootPowers": 159,
+    "endpointPairs": 1102,
+    "realExponents": [
+      -2,
+      -1,
+      0,
+      1,
+      2
+    ],
+    "maxDegree": 21
+  },
+  "outstanding": {
+    "tables": 1738,
+    "rows": 8658,
+    "phaseResidues": 416,
+    "rootPowers": 127,
+    "endpointPairs": 436,
+    "realExponents": [
+      -1,
+      0,
+      1
+    ],
+    "maxDegree": 26
+  },
+  "foldedOutstanding": {
+    "tables": 1733,
+    "rows": 8646,
+    "phaseResidues": 416,
+    "rootPowers": 127,
+    "endpointPairs": 426,
+    "realExponents": [
+      -1,
+      0,
+      1
+    ],
+    "maxDegree": 26
+  },
+  "sharedPhases": 0,
+  "sharedEndpoints": 0,
+  "sharedRoots": 125,
+  "outstandingExclusiveRoots": [
+    72,
+    152
+  ]
+}
