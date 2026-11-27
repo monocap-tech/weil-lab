@@ -80,11 +80,11 @@ theorem band_error (t R : ℝ) (ht : 0 ≤ t) (hR : 0 ≤ R) (n : ℕ)
       rw [mul_comm,← integral_const_mul]
       apply integral_congr_ae
       filter_upwards with x
-      unfold V08E.frequencyMonomial
+      change ((-Complex.I*((u:ℝ):ℂ))^j/(j.factorial:ℂ))*((x:ℂ)^j*f x) = _
       ring
     · intro j hj
-      exact (V08E.moment_integrable (supportMeasure t) t
-        (V08K.supportMeasure_bound t) j f).const_mul _
+      simpa only [mul_assoc] using (V08E.moment_integrable (supportMeasure t) t
+        (V08K.supportMeasure_bound t) j f).const_mul ((-Complex.I*((u:ℝ):ℂ))^j/(j.factorial:ℂ))
   rw [hp]
   have hker : Integrable (fun x => V08D.fourierKernel (u:ℝ) x*f x) (supportMeasure t) := by
     apply hf.bdd_mul (by unfold V08D.fourierKernel; fun_prop) (c := 1)
