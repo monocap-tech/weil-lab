@@ -99,9 +99,9 @@ theorem num_tail (r : ℝ) (hr : 0 < r) (hrh : r ≤ 1/2) :
   have h := (abs_sub_le (Real.exp (r/2)-expPoly r) (D r-denPoly r)).trans (add_le_add he hd)
   refine h.trans ?_
   have hE : (r/2)^30 = r^30/(2:ℝ)^30 := by rw [div_pow]
-  rw [hE,pow_succ r 29,Nat.factorial_succ] 
-  norm_num [Nat.factorial] at *
-  nlinarith [show 0 ≤ r^29*r by positivity]
+  rw [hE,pow_succ r 29]
+  norm_num [Nat.factorial]
+  nlinarith only [show 0 ≤ r^29*r by positivity]
 
 end WeilDefect.MasterRecon.V10B26a
 
