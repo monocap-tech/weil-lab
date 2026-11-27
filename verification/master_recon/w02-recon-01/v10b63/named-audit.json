@@ -1,0 +1,30 @@
+{
+  "run": 46068558205,
+  "job": 140739702707,
+  "source": "5c6ca5ae684a9a79778f5eec3bef715f413ce77f",
+  "blob": "24a6d9883ba98b015526c3bcd50c3a1b67596a17",
+  "names": [
+    "WeilDefect.MasterRecon.V10B61a.projection_eval",
+    "WeilDefect.MasterRecon.V10B61a.projection_pair_zero",
+    "WeilDefect.MasterRecon.V10B61a.pointwise_load",
+    "WeilDefect.MasterRecon.V10B61a.exp_integrable",
+    "WeilDefect.MasterRecon.V10B61a.literal_pole_identity",
+    "WeilDefect.MasterRecon.V10B61a.literal_pole_zero_iff"
+  ],
+  "output": [
+    "2026-11-27T21:15:02.0764066Z 'WeilDefect.MasterRecon.V10B61a.projection_eval' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T21:15:02.0764636Z 'WeilDefect.MasterRecon.V10B61a.projection_pair_zero' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T21:15:02.0765203Z 'WeilDefect.MasterRecon.V10B61a.pointwise_load' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T21:15:02.0765785Z 'WeilDefect.MasterRecon.V10B61a.exp_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T21:15:02.0766350Z 'WeilDefect.MasterRecon.V10B61a.literal_pole_identity' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T21:15:02.0766917Z 'WeilDefect.MasterRecon.V10B61a.literal_pole_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]"
+  ],
+  "overall": "success",
+  "artifacts": [
+    {
+      "id": 15231723281,
+      "size": 10035,
+      "digest": "sha256:d08a34c3aea445be1b88279f8a0e5153a9739141aabdb701ce0484c65894cde0"
+    }
+  ]
+}

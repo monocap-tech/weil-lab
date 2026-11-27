@@ -1,0 +1,10 @@
+# V10B63 scoped admission — literal physical pole identity
+Run 46068558205 job 140739702707 source 5c6ca5ae684a9a79778f5eec3bef715f413ce77f; overall success. V10B61a blob 24a6d9883ba98b015526c3bcd50c3a1b67596a17; full build and strict named audit completed. Independent theorem/print set comparison and named output check:
+2026-11-27T21:15:02.0764066Z 'WeilDefect.MasterRecon.V10B61a.projection_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T21:15:02.0764636Z 'WeilDefect.MasterRecon.V10B61a.projection_pair_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T21:15:02.0765203Z 'WeilDefect.MasterRecon.V10B61a.pointwise_load' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T21:15:02.0765785Z 'WeilDefect.MasterRecon.V10B61a.exp_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T21:15:02.0766350Z 'WeilDefect.MasterRecon.V10B61a.literal_pole_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T21:15:02.0766917Z 'WeilDefect.MasterRecon.V10B61a.literal_pole_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T21:15:02.1378619Z V10B61a: strict axiom audit PASS (6 declarations)
+Six newly admitted declarations; +63 W02 incremental names, not full ledger deduplication. Exact original evaluation difference equals 62*I(15) times literal normalized load pairing on the actual original fifteen-moment kernel at t=1/4. Nonzero scale certified. No physical trial realization, original retained-space equality, physical A/R identity or positivity yet. Original V10B19 generation and Taylor hold unchanged; no W consumption. Full decoded job transcript with source hashes, resolved manifest and toolchain preserved. Original Actions ZIP metadata [{"id":15231723281,"size":10035,"digest":"sha256:d08a34c3aea445be1b88279f8a0e5153a9739141aabdb701ce0484c65894cde0"}]; raw ZIP not claimed permanently custodied. Next eligible operation: attach exact V10B17b retained definition to combined moment and pole kernel, without assuming the conditional tail estimate.
