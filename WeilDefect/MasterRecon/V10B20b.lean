@@ -23,13 +23,15 @@ theorem exp_neg_image : (fun r : ℝ => Real.exp (-r)) '' Ioi 0 = Ioo 0 1 := by
   · intro hx
     refine ⟨-Real.log x,?_ ,?_⟩
     · exact neg_pos.mpr (Real.log_neg hx.1 hx.2)
-    · rw [neg_neg,Real.exp_log hx.1]
+    · change Real.exp (-(-Real.log x)) = x
+      rw [neg_neg,Real.exp_log hx.1]
 
 theorem log_moment (k m : ℕ) :
     (∫ x in Ioo (0:ℝ) 1, x^k*(-Real.log x)^m) =
       (m.factorial:ℝ)/((k:ℝ)+1)^(m+1) := by
   rw [← exp_neg_image]
-  rw [integral_image_eq_integral_abs_deriv_smul measurableSet_Ioi
+  rw [integral_image_eq_integral_abs_deriv_smul (f := fun r : ℝ => Real.exp (-r))
+    (f' := fun r => Real.exp (-r)*(-1)) measurableSet_Ioi
     (fun r _ => ((Real.hasDerivAt_exp (-r)).comp r (hasDerivAt_neg r)).hasDerivWithinAt)
     (fun r _ s _ h => neg_injective (Real.exp_injective h))]
   have he : (fun r : ℝ => |Real.exp (-r)*(-1)| •
@@ -57,7 +59,7 @@ theorem log_left (k : ℕ) :
     (∫ x in Ioo (0:ℝ) 1, x^k*Real.log x) = -1/((k:ℝ)+1)^2 := by
   have h := log_moment k 1
   simp only [pow_one,Nat.factorial_one,Nat.cast_one,Nat.reduceAdd,mul_neg,integral_neg] at h
-  linarith
+  exact neg_eq_iff_eq_neg.mp h
 
 theorem log_left_sq (k : ℕ) :
     (∫ x in Ioo (0:ℝ) 1, x^k*Real.log x^2) = 2/((k:ℝ)+1)^3 := by
@@ -75,7 +77,8 @@ theorem mixed_term_integral (k j : ℕ) :
   simp only [pow_one,Nat.factorial_one,Nat.cast_one,Nat.reduceAdd] at h
   rw [h]
   push_cast
-  ring
+  field_simp [show (j:ℝ)+1 ≠ 0 by positivity,show (k:ℝ)+(j:ℝ)+2 ≠ 0 by positivity]
+  <;> ring
 
 theorem mixed_partial_fraction (n m : ℝ) (hn : 0 < n) (hm : 0 < m) :
     1/(m*(n+m)^2) = (1/n^2)*(1/m-1/(m+n))-(1/n)*(1/(m+n)^2) := by
@@ -87,13 +90,15 @@ theorem mixed_series_integral (k : ℕ) :
       ∑' j : ℕ, 1/(((j:ℝ)+1)*((k:ℝ)+(j:ℝ)+2)^2) := by
   have hi (j : ℕ) : IntegrableOn (mixedTerm k j) (Ioo (0:ℝ) 1) := by
     unfold mixedTerm
-    simpa [div_eq_mul_inv,mul_comm,pow_one] using
+    change Integrable _ (volume.restrict (Ioo (0:ℝ) 1))
+    simpa only [div_eq_mul_inv,pow_one,mul_comm] using
       (log_moment_integrable (k+j+1) 1).const_mul (((j:ℝ)+1)⁻¹)
   have hn (j : ℕ) : (∫ x in Ioo (0:ℝ) 1, ‖mixedTerm k j x‖) =
       1/(((j:ℝ)+1)*((k:ℝ)+(j:ℝ)+2)^2) := by
     rw [← mixed_term_integral k j]
     apply setIntegral_congr_fun measurableSet_Ioo
     intro x hx
+    change ‖mixedTerm k j x‖ = mixedTerm k j x
     rw [Real.norm_eq_abs,abs_of_nonneg]
     unfold mixedTerm
     have hl := Real.log_nonpos hx.1.le hx.2.le
@@ -107,7 +112,7 @@ theorem mixed_series_integral (k : ℕ) :
     apply (div_le_div_iff₀ (by positivity) (by positivity)).mpr
     have h1 : (j:ℝ)+1 ≤ (k:ℝ)+(j:ℝ)+2 := by linarith [Nat.cast_nonneg (α := ℝ) k]
     have h2 := pow_le_pow_left₀ (by positivity) h1 2
-    have h3 := mul_le_mul_of_nonneg_right (show (1:ℝ) ≤ (j:ℝ)+1 by positivity)
+    have h3 := mul_le_mul_of_nonneg_right (show (1:ℝ) ≤ (j:ℝ)+1 by linarith [Nat.cast_nonneg (α := ℝ) j])
       (sq_nonneg ((k:ℝ)+(j:ℝ)+2))
     nlinarith only [h2,h3]
   rw [← show (∑' j : ℕ, ∫ x in Ioo (0:ℝ) 1, mixedTerm k j x) =
@@ -115,13 +120,12 @@ theorem mixed_series_integral (k : ℕ) :
   rw [integral_tsum_of_summable_integral_norm hi hs]
   apply setIntegral_congr_fun measurableSet_Ioo
   intro x hx
-  have hh := Real.hasSum_pow_div_log_of_abs_lt_one (by rwa [abs_of_pos hx.1] : |x| < 1)
+  have hh := Real.hasSum_pow_div_log_of_abs_lt_one (by rw [abs_of_pos hx.1]; exact hx.2 : |x| < 1)
   have h := hh.mul_left (x^k*(-Real.log x))
   have he (j : ℕ) : x^k*(-Real.log x)*(x^(j+1)/((j:ℝ)+1)) = mixedTerm k j x := by
     unfold mixedTerm
     rw [show k+j+1 = k+(j+1) by omega,pow_add]
     ring
-  simp only [Nat.cast_add,Nat.cast_one] at h
   rw [show (fun j : ℕ => x^k*(-Real.log x)*(x^(j+1)/((j:ℝ)+1))) = (fun j => mixedTerm k j x) from funext (fun j => he j)] at h
   rw [h.tsum_eq]
   ring
