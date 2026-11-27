@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B53 bounded root repair audit
+name: MASTER-RECON V10B54 literal physical moment kernel
 on:
   push:
     branches: [master-recon-v10b20-staging]
@@ -30,7 +30,7 @@ jobs:
           set -euo pipefail
           mkdir -p recon-v10b48-evidence
           git rev-parse HEAD | tee recon-v10b48-evidence/head.txt
-          sha256sum WeilDefect/MasterRecon/V10B{33b,45a,46b,39b,50a,13a,8c,41a,41b,41c,41d}.lean lean-toolchain lakefile.toml lake-manifest.json | tee recon-v10b48-evidence/source.sha256
+          sha256sum WeilDefect/MasterRecon/V10B{33a,39a,50a,50b,52a,52b,13a,8c}.lean lean-toolchain lakefile.toml lake-manifest.json | tee recon-v10b48-evidence/source.sha256
           cat lake-manifest.json | tee recon-v10b48-evidence/lake-manifest.json
           lake env lean --version | tee recon-v10b48-evidence/lean-version.txt
           audit() {
@@ -75,11 +75,11 @@ jobs:
             done
             if audit "$mod"; then pass[$mod]=1; else pass[$mod]=0; failed=1; fi
           }
-          gate V10B46b
-          gate V10B39b
           gate V10B50a
-          gate V10B41c
-          gate V10B41d
+          gate V10B50b V10B50a
+          gate V10B39a
+          gate V10B52a V10B39a
+          gate V10B52b V10B52a V10B50a
           exit "$failed"
       - name: Upload compiler and audit evidence
         if: always()
