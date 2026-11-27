@@ -58,14 +58,14 @@ theorem exp_integrable (g : logCarrier (1/4)) (a : ℝ) :
   have h : Integrable (fun x : ℝ => r x) (supportMeasure (1/4)) :=
     memLp_one_iff_integrable.mp (V08F.physicalL1_mem _ r)
   have hc : Continuous (fun x : ℝ => (Real.exp (a*x):ℂ)) := by fun_prop
-  have hp := h.bdd_mul hc.aestronglyMeasurable (c := Real.exp (|a|*(1/4)))
+  have hp := h.bdd_mul hc.aestronglyMeasurable (c := Real.exp (|a| * (1/4)))
     (by
       filter_upwards [V08K.supportMeasure_bound (1/4)] with x hx
       rw [Complex.norm_real,Real.norm_eq_abs,abs_of_pos (Real.exp_pos _)]
       apply Real.exp_le_exp.mpr
       calc
         a*x ≤ |a*x| := le_abs_self _
-        _ = |a|*|x| := abs_mul _ _
+        _ = |a| * |x| := abs_mul _ _
         _ ≤ _ := mul_le_mul_of_nonneg_left hx (abs_nonneg _))
   apply hp.congr
   filter_upwards [V08K.restrictPhysical_ae (1/4) (physicalInclusion (1/4) g)] with x hx
@@ -100,8 +100,8 @@ theorem literal_pole_identity (g : logCarrier (1/4))
       apply integral_congr_ae
       filter_upwards with x
       have he := congrArg Complex.ofReal (pointwise_load x)
-      push_cast at he
       dsimp [u,v,p]
+      push_cast at he ⊢
       rw [← mul_assoc,he]
       ring
 
