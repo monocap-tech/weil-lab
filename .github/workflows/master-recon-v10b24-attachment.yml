@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B30 focused attachment audit
+name: MASTER-RECON V10B33 focused attachment audit
 on:
   push:
     branches: [master-recon-v10b20-staging]
@@ -71,7 +71,12 @@ jobs:
             if audit "$mod"; then pass[$mod]=1; else pass[$mod]=0; failed=1; fi
           }
           # Start independent analytic roots and current compiler blockers.
+          gate V10B33a
+          gate V10B33b
+          gate V10B32a
+          gate V10B32b
           gate V10B30a
+          gate V10B31b V10B30a
           gate V10B24a
           gate V10B24b V10B24a
           gate V10B25a V10B24b
@@ -86,6 +91,7 @@ jobs:
           gate V10B20c V10B20b
           gate V10B20d V10B20c
           gate V10B21a V10B20b
+          gate V10B31a V10B30a V10B20c V10B21a
           gate V10B8e
           gate V10B8f V10B8e
           gate V10B12c
@@ -120,6 +126,8 @@ jobs:
           python3 verification/master_recon/v10b19_terminal_congruence.py | tee recon-v10b24-evidence/conditional-terminal.txt
           python3 verification/master_recon/v10b21_reflected_moments.py | tee recon-v10b24-evidence/reflected-moments.txt
           python3 verification/master_recon/v10b25_kernel_residual.py | tee recon-v10b24-evidence/kernel-residual.txt
+          python3 verification/master_recon/v10b33_legendre_projection.py | tee recon-v10b24-evidence/legendre-projection.txt
+          cp verification/master_recon/legendre_projection_result.json recon-v10b24-evidence/
           exit "$failed"
       - name: Upload compiler and audit evidence
         if: always()
