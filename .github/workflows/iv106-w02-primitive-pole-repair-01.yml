@@ -1,0 +1,164 @@
+# W02-IV106: one bounded repair audit, gated on original failure ZIP custody.
+# Prior trigger audit at 54b9af8e; all 168 main definitions unchanged.
+# No PR, main edits, E18X activation, or unrelated workflow dispatch.
+name: IV106 W02 primitive-pole repair 01
+on:
+  push:
+    branches: [formalization/iv106-w02-primitive-pole-audit]
+    paths:
+      - '.github/workflows/iv106-w02-primitive-pole-repair-01.yml'
+permissions:
+  contents: read
+concurrency:
+  group: iv106-w02-primitive-pole-native-audit
+  cancel-in-progress: false
+jobs:
+  original-evidence-custody:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      actions: read
+    outputs:
+      custody_head: ${{ steps.archive.outputs.custody_head }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: formalization/iv106-w02-primitive-pole-audit
+          fetch-depth: 1
+      - name: Authenticate and preserve original failure archive
+        id: archive
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git hash-object verification/iv106/regroup_001/w02_primitive_pole_audit/repair_01/archive_failure.sh)" = 0e6611eb92f849ebe409fc1d721e23b691c8f647
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          bash verification/iv106/regroup_001/w02_primitive_pole_audit/repair_01/archive_failure.sh
+          printf 'custody_head=%s\n' "$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+  primitive-pole-repair:
+    needs: original-evidence-custody
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout exact repaired audit recipe
+        uses: actions/checkout@v4
+        with:
+          ref: 7125bff323281cabd84255f6806a467cac7a5487
+          path: candidate
+          persist-credentials: false
+      - name: Checkout exact research base
+        uses: actions/checkout@v4
+        with:
+          ref: 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          path: research
+          persist-credentials: true
+      - name: Verify repaired input pins and record environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p evidence
+          p=candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/repair_01
+          test "$(git -C candidate rev-parse HEAD)" = 7125bff323281cabd84255f6806a467cac7a5487
+          test "$(git hash-object "$p/source_manifest.json")" = 860530e5bb0f2dabac46eed3721e48fff51839d9
+          test "$(git hash-object "$p/preflight.py")" = 44eb97d58da6bb29d9d0ad5b56f9d954f0174c75
+          test "$(git hash-object "$p/run_audit.sh")" = c320fec259f4a0792441b9cb5ea5942944782e07
+          cp "$p/"*.lean "$p/"*.md "$p/"*.json "$p/"*.py "$p/"*.sh evidence/
+          {
+            printf 'workflow_head=%s\nrun_id=%s\nrun_attempt=%s\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT"
+            printf 'prior_failure_custody_head=%s\n' '${{ needs.original-evidence-custody.outputs.custody_head }}'
+            git -C candidate rev-parse HEAD HEAD^{tree}
+            git -C research rev-parse HEAD HEAD^{tree}
+            cat research/lean-toolchain
+            uname -a
+            python3 --version
+            git --version
+          } > evidence/environment.txt
+      - name: Install pinned Lean
+        working-directory: research
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            curl --fail --silent --show-error --location --retry 3 https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/iv106-w02-elan-init.sh
+            sh /tmp/iv106-w02-elan-init.sh -y --default-toolchain none
+            echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+            export PATH="$HOME/.elan/bin:$PATH"
+            lean --version
+            lake --version
+          } 2>&1 | tee ../evidence/toolchain-install.log
+      - name: Execute repaired 71-source preflight and 16-target native audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          p=candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/repair_01
+          bash "$p/run_audit.sh" research "$p/source_manifest.json" evidence 2>&1 | tee evidence/run.log
+      - name: Export native result and evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iv106-w02-primitive-pole-repair-01-evidence
+          path: |
+            evidence/
+            research/WeilDefect/Arithmetic/ActualZetaIV106W02PrimitivePole.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106W02PrimitivePole.olean
+            research/lake-manifest.json
+          if-no-files-found: error
+          include-hidden-files: true
+  repaired-evidence-custody:
+    needs: [original-evidence-custody, primitive-pole-repair]
+    if: always() && needs.original-evidence-custody.result == 'success' && needs.primitive-pole-repair.result != 'skipped' && needs.primitive-pole-repair.result != 'cancelled'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: formalization/iv106-w02-primitive-pole-audit
+          fetch-depth: 1
+      - name: Preserve exact repaired-run artifact regardless of compiler outcome
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_HEAD: ${{ needs.original-evidence-custody.outputs.custody_head }}
+          NATIVE_RESULT: ${{ needs.primitive-pole-repair.result }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          branch=formalization/iv106-w02-primitive-pole-audit
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test -z "$(git status --porcelain)"
+          git fetch --no-tags origin "$branch"
+          test "$(git rev-parse HEAD)" = "$(git rev-parse FETCH_HEAD)"
+          d="verification/iv106/regroup_001/w02_primitive_pole_audit/repair_01/evidence"
+          mkdir -p "$d"
+          meta="$d/repair_run_${GITHUB_RUN_ID}_artifact.json"
+          archive="$d/repair_run_${GITHUB_RUN_ID}.zip"
+          test ! -e "$meta" && test ! -e "$archive"
+          gh api "repos/monocap-tech/weil-lab/actions/runs/$GITHUB_RUN_ID/artifacts" | jq -e '[.artifacts[] | select(.name == "iv106-w02-primitive-pole-repair-01-evidence" and .expired == false)] | if length == 1 then .[0] else error("expected exactly one artifact") end' > "$meta"
+          id=$(jq -er .id "$meta")
+          size=$(jq -er .size_in_bytes "$meta")
+          digest=$(jq -er '.digest | select(startswith("sha256:")) | sub("^sha256:";"")' "$meta")
+          gh api "repos/monocap-tech/weil-lab/actions/artifacts/$id/zip" > "$archive"
+          test "$(wc -c < "$archive")" -eq "$size"
+          printf '%s  %s\n' "$digest" "$archive" | sha256sum -c -
+          python3 - "$archive" <<'PY'
+          import sys, zipfile
+          with zipfile.ZipFile(sys.argv[1]) as z:
+              assert z.namelist() and z.testzip() is None
+          PY
+          printf 'native_result=%s\nrun_id=%s\nworkflow_head=%s\nartifact_id=%s\nsha256=%s\n' "$NATIVE_RESULT" "$GITHUB_RUN_ID" "$GITHUB_SHA" "$id" "$digest" > "$d/repair_run_${GITHUB_RUN_ID}_status.txt"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$archive" "$meta" "$d/repair_run_${GITHUB_RUN_ID}_status.txt"
+          git commit -m "IV106 W02: preserve original repair 01 native evidence ZIP [skip ci]"
+          git push origin "HEAD:refs/heads/$branch"
+          git fetch --no-tags origin "$branch"
+          test "$(git rev-parse HEAD)" = "$(git rev-parse FETCH_HEAD)"
+          test "$(git show "FETCH_HEAD:$archive" | sha256sum | cut -d' ' -f1)" = "$digest"
