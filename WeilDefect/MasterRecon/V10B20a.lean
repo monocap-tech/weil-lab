@@ -23,12 +23,12 @@ noncomputable def term (z : ℂ) (n : ℕ) (r : ℝ) : ℂ :=
 theorem term_integrable (z : ℂ) (hz : 0 < z.re) (n : ℕ) :
     IntegrableOn (term z n) (Ioi (0:ℝ)) := by
   have h₁ := integrableOn_exp_mul_complex_Ioi
-    (a := -((n:ℂ)+1)) (by simp; positivity : (-((n:ℂ)+1)).re < 0) 0
+    (a := -((n:ℂ)+1)) (by simp <;> positivity : (-((n:ℂ)+1)).re < 0) 0
   have h₂ := integrableOn_exp_mul_complex_Ioi
     (a := -(z+(n:ℂ)+1)) (by simp; linarith [Nat.cast_nonneg (α := ℝ) n]) 0
   apply (h₁.sub h₂).congr
   filter_upwards with r
-  change _ = term z n r
+  change Complex.exp (-((n:ℂ)+1)*(r:ℂ))-Complex.exp (-(z+n+1)*(r:ℂ)) = term z n r
   unfold term
   rw [mul_sub,mul_one,← Complex.exp_add]
   congr 2
@@ -37,7 +37,7 @@ theorem term_integrable (z : ℂ) (hz : 0 < z.re) (n : ℕ) :
 theorem term_integral (z : ℂ) (hz : 0 < z.re) (n : ℕ) :
     (∫ r in Ioi (0:ℝ), term z n r) =
       1/((n:ℂ)+1)-1/(z+n+1) := by
-  have h₁ : (-((n:ℂ)+1)).re < 0 := by simp; positivity
+  have h₁ : (-((n:ℂ)+1)).re < 0 := by simp <;> positivity
   have h₂ : (-(z+(n:ℂ)+1)).re < 0 := by simp; linarith [Nat.cast_nonneg (α := ℝ) n]
   have he : term z n = fun r : ℝ =>
       Complex.exp (-((n:ℂ)+1)*(r:ℂ))-Complex.exp (-(z+n+1)*(r:ℂ)) := by
@@ -49,9 +49,8 @@ theorem term_integral (z : ℂ) (hz : 0 < z.re) (n : ℕ) :
   rw [he,integral_sub (integrableOn_exp_mul_complex_Ioi h₁ 0)
     (integrableOn_exp_mul_complex_Ioi h₂ 0),
     integral_exp_mul_complex_Ioi h₁ 0,integral_exp_mul_complex_Ioi h₂ 0]
-  simp
-
-theorem exp_difference (z : ℂ) (hz : 0 ≤ z.re) (r : ℝ) (hr : 0 ≤ r) :
+  simp only [Complex.ofReal_zero,mul_zero,Complex.exp_zero,neg_div,div_neg,neg_neg,one_div]
+  congr 1 <;> congr 1 <;> ring (z : ℂ) (hz : 0 ≤ z.re) (r : ℝ) (hr : 0 ≤ r) :
     ‖1-Complex.exp (-z*(r:ℂ))‖ ≤ 2*‖z‖*r := by
   let w := -z*(r:ℂ)
   have hw : ‖w‖ = ‖z‖*r := by
@@ -80,7 +79,7 @@ theorem term_norm_bound (z : ℂ) (hz : 0 ≤ z.re) (n : ℕ) (r : ℝ) (hr : 0 
   rw [norm_mul,Complex.norm_exp]
   have he : (-((n:ℂ)+1)*(r:ℂ)).re = -((n:ℝ)+1)*r := by simp
   rw [he]
-  have h := mul_le_mul_of_nonneg_left (exp_difference z hz r hr) (Real.exp_pos _).le
+  have h := mul_le_mul_of_nonneg_left (exp_difference z hz r hr) (Real.exp_pos (-((n:ℝ)+1)*r)).le
   nlinarith only [h]
 
 theorem exp_moment (a : ℝ) (ha : 0 < a) :
@@ -88,14 +87,15 @@ theorem exp_moment (a : ℝ) (ha : 0 < a) :
   have h := Real.integral_rpow_mul_exp_neg_mul_Ioi (a := (2:ℝ)) (by norm_num) ha
   have hg : Real.Gamma (2:ℝ) = 1 := by simpa using Real.Gamma_nat_eq_factorial 1
   rw [hg,mul_one] at h
-  convert h using 1 <;> norm_num [← Real.rpow_natCast,div_pow]
+  rw [show (2:ℝ)-1=1 by norm_num,Real.rpow_one,show (2:ℝ)=(↑(2:ℕ):ℝ) by norm_num,Real.rpow_natCast,div_pow,one_pow] at h
+  exact h
 
 theorem norm_summable (z : ℂ) (hz : 0 < z.re) :
     Summable (fun n : ℕ => ∫ r in Ioi (0:ℝ), ‖term z n r‖) := by
   have hs : Summable (fun n : ℕ => (1:ℝ)/((n:ℝ)+1)^2) := by
     simpa using ((hasSum_nat_add_iff' 1).mpr hasSum_zeta_two).summable
   apply Summable.of_nonneg_of_le (fun _ => integral_nonneg fun _ => norm_nonneg _)
-    (g := fun n : ℕ => (2*‖z‖)*(1/((n:ℝ)+1)^2)) _ (hs.mul_left _)
+    _ (show Summable (fun n : ℕ => (2*‖z‖)*(1/((n:ℝ)+1)^2)) from hs.mul_left _)
   intro n
   let a : ℝ := (n:ℝ)+1
   have ha : 0 < a := by dsimp [a]; positivity
