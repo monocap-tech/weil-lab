@@ -1,0 +1,118 @@
+{
+  "N": "32768",
+  "gamma_tail_loss_upper": "3/200000",
+  "pole_loss_upper": "1/10000000000",
+  "base_margin_lower_scaled": "56366849",
+  "denominator_scale": "1000000000",
+  "dyadic_bands": [
+    {
+      "b": 0,
+      "start": "32768",
+      "weight": {
+        "n": "60",
+        "d": "3"
+      },
+      "improvement": {
+        "n": "3",
+        "d": "3"
+      }
+    },
+    {
+      "b": 1,
+      "start": "65536",
+      "weight": {
+        "n": "60",
+        "d": "43"
+      },
+      "improvement": {
+        "n": "43",
+        "d": "3"
+      }
+    },
+    {
+      "b": 2,
+      "start": "131072",
+      "weight": {
+        "n": "60",
+        "d": "83"
+      },
+      "improvement": {
+        "n": "83",
+        "d": "3"
+      }
+    },
+    {
+      "b": 3,
+      "start": "262144",
+      "weight": {
+        "n": "60",
+        "d": "123"
+      },
+      "improvement": {
+        "n": "123",
+        "d": "3"
+      }
+    },
+    {
+      "b": 4,
+      "start": "524288",
+      "weight": {
+        "n": "60",
+        "d": "163"
+      },
+      "improvement": {
+        "n": "163",
+        "d": "3"
+      }
+    },
+    {
+      "b": 5,
+      "start": "1048576",
+      "weight": {
+        "n": "60",
+        "d": "203"
+      },
+      "improvement": {
+        "n": "203",
+        "d": "3"
+      }
+    },
+    {
+      "b": 6,
+      "start": "2097152",
+      "weight": {
+        "n": "60",
+        "d": "243"
+      },
+      "improvement": {
+        "n": "243",
+        "d": "3"
+      }
+    },
+    {
+      "b": 7,
+      "start": "4194304",
+      "weight": {
+        "n": "60",
+        "d": "283"
+      },
+      "improvement": {
+        "n": "283",
+        "d": "3"
+      }
+    },
+    {
+      "b": 8,
+      "start": "8388608",
+      "weight": {
+        "n": "60",
+        "d": "323"
+      },
+      "improvement": {
+        "n": "323",
+        "d": "3"
+      }
+    }
+  ],
+  "entry_tail_constant": 36
+}
