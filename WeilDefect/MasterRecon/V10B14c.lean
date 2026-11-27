@@ -31,7 +31,7 @@ theorem pullback_error (J P : H →L[ℂ] E) (B : E →L[ℂ] E)
     calc
       ‖P‖ = ‖J-(J-P)‖ := congrArg norm he
       _ ≤ ‖J‖+‖J-P‖ := norm_sub_le _ _
-      _ ≤ _ := add_le_add_left hε _
+      _ ≤ _ := add_le_add_right hε _
   rw [pullback_difference]
   have h1 := (ContinuousLinearMap.opNorm_comp_le (J-P).adjoint (B.comp J)).trans
     (mul_le_mul_of_nonneg_left (ContinuousLinearMap.opNorm_comp_le B J) (norm_nonneg _))
