@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B24 focused attachment audit
+name: MASTER-RECON V10B27 focused attachment audit
 on:
   push:
     branches: [master-recon-v10b20-staging]
@@ -73,6 +73,13 @@ jobs:
           # Start independent analytic roots and current compiler blockers.
           gate V10B24a
           gate V10B24b V10B24a
+          gate V10B25a V10B24b
+          gate V10B25b V10B24b
+          gate V10B26a V10B25b
+          gate V10B26b V10B25a
+          gate V10B26c V10B26a
+          gate V10B27a V10B26c
+          gate V10B27b V10B27a V10B26b
           gate V10B20a
           gate V10B20b
           gate V10B20c V10B20b
@@ -104,6 +111,7 @@ jobs:
           gate V10B17c V10B17b
           python3 verification/master_recon/v10b19_terminal_congruence.py | tee recon-v10b24-evidence/conditional-terminal.txt
           python3 verification/master_recon/v10b21_reflected_moments.py | tee recon-v10b24-evidence/reflected-moments.txt
+          python3 verification/master_recon/v10b25_kernel_residual.py | tee recon-v10b24-evidence/kernel-residual.txt
           exit "$failed"
       - name: Upload compiler and audit evidence
         if: always()
