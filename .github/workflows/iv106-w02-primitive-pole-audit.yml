@@ -1,0 +1,86 @@
+# W02-IV106-01: one authorized native execution, not mathematical promotion.
+# Isolation inspected at 54b9af8e9b8ea23ec62ce07b3f12f6e9f3b0ea08: 169 inherited trigger definitions,
+# including all 168 default-main definitions. Existing push triggers exclude this
+# branch or this unique path; no PR is opened. Three workflow_run listeners are
+# restricted to named F41 workflows on main. No existing workflow is modified.
+name: IV106 W02 primitive-pole native audit
+on:
+  push:
+    branches: [formalization/iv106-w02-primitive-pole-audit]
+    paths:
+      - '.github/workflows/iv106-w02-primitive-pole-audit.yml'
+permissions:
+  contents: read
+concurrency:
+  group: iv106-w02-primitive-pole-native-audit
+  cancel-in-progress: false
+jobs:
+  primitive-pole:
+    if: github.repository == 'monocap-tech/weil-lab' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout immutable audit preparation
+        uses: actions/checkout@v4
+        with:
+          ref: 54b9af8e9b8ea23ec62ce07b3f12f6e9f3b0ea08
+          path: candidate
+          persist-credentials: false
+      - name: Checkout exact research base
+        uses: actions/checkout@v4
+        with:
+          ref: 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          path: research
+          persist-credentials: true
+      - name: Record provenance and authenticate recipe
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p evidence
+          p=candidate/verification/iv106/regroup_001/w02_primitive_pole_audit
+          test "$(git -C candidate rev-parse HEAD)" = 54b9af8e9b8ea23ec62ce07b3f12f6e9f3b0ea08
+          test "$(git hash-object "$p/README.md")" = 3eadf8ea28d4bd4deec92b83ee9fab56c101cd47
+          test "$(git hash-object "$p/preflight.py")" = c0cf91daf54da6cdd48984393c3d88740fdb64f5
+          test "$(git hash-object "$p/run_audit.sh")" = c320fec259f4a0792441b9cb5ea5942944782e07
+          test "$(git hash-object "$p/source_manifest.json")" = 0ba2a28c9e0a5ef8aa4106d5d4f24f442c3371eb
+          cp "$p/"* evidence/
+          {
+            printf 'workflow_head=%s\nrun_id=%s\nrun_attempt=%s\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT"
+            git -C candidate rev-parse HEAD HEAD^{tree}
+            git -C research rev-parse HEAD HEAD^{tree}
+            cat research/lean-toolchain
+            uname -a
+            python3 --version
+            git --version
+          } > evidence/environment.txt
+      - name: Install exact Lean toolchain
+        working-directory: research
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            curl --fail --silent --show-error --location --retry 3 https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/iv106-w02-elan-init.sh
+            sh /tmp/iv106-w02-elan-init.sh -y --default-toolchain none
+            echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+            export PATH="$HOME/.elan/bin:$PATH"
+            lean --version
+            lake --version
+          } 2>&1 | tee ../evidence/toolchain-install.log
+      - name: Execute immutable preflight and fresh 16-target audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          p=candidate/verification/iv106/regroup_001/w02_primitive_pole_audit
+          bash "$p/run_audit.sh" research "$p/source_manifest.json" evidence 2>&1 | tee evidence/run.log
+      - name: Export native evidence including failure logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iv106-w02-primitive-pole-native-evidence
+          path: |
+            evidence/
+            research/WeilDefect/Arithmetic/ActualZetaIV106W02PrimitivePole.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106W02PrimitivePole.olean
+            research/lake-manifest.json
+          if-no-files-found: error
+          include-hidden-files: true
