@@ -76,7 +76,7 @@ theorem cell_energy_bound (F : ℝ → ℝ) (hF : Continuous F)
     linarith [abs_nonneg y]
   have hl := hF.const_mul (Real.log (|a|+3))
   have hr := (hc.mul hF).const_mul 2
-  have hm := intervalIntegral.integral_mono_on ha
+  have hm := intervalIntegral.integral_mono_on (μ := volume) ha
     (hl.intervalIntegrable a (a+1)) (hr.intervalIntegrable a (a+1))
     (fun y hy => by
       change Real.log (|a|+3) * F y ≤ 2 * (V10B3a.weight y * F y)
