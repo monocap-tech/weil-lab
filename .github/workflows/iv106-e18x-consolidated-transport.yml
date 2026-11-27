@@ -1,0 +1,182 @@
+name: IV106-E18X consolidated transport
+on:
+  push:
+    branches: [formalization/iv106-e18x-consolidated-transport]
+    paths:
+      - '.github/workflows/iv106-e18x-consolidated-transport.yml'
+      - 'verification/iv106/iv106_e18x/**'
+permissions:
+  contents: read
+jobs:
+  native-transport:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          path: research
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 509e75bb8ac736bca7591336e12aa8a2ab7816d6
+          path: pinned0
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 97d6a291c716a0f66ffa08f3ea898d9cbdb00bf8
+          path: pinned1
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 1822dcf8d26437366bb84afa93ee5977696ba00c
+          path: pinned2
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: a0cdd6c6b1e7ba5c9c5b15d2bf76335dc471604d
+          path: pinned3
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 150b05d1a6e592d8eee244f65f2c04779c4cd3af
+          path: pinned4
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: fcee1f35c111ab2a58f083ab082ebd52b4c986d0
+          path: pinned5
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 50923b04b82d0ea5cd1b4c835556065c6e375122
+          path: pinned6
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 56c14e642eb53b56ad9f7f7724b25ff2ac9cb5ec
+          path: pinned7
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 95343708d945744b61625df1ee91dd731e3adcc2
+          path: pinned8
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: c948f00e850c15cf151d2c0bb82475a78c9fa292
+          path: pinned9
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: d5a525ed8c3d47078f99ee3f94dce456562be74d
+          path: pinned10
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 71c0c25b29c0691f20dcd2ee3f4b023f330f2da9
+          path: pinned11
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: d228695bb70881d0cb2a9c38bd69373adc0d8200
+          path: pinned12
+          persist-credentials: false
+      - name: Immutable source and dependency preflight
+        run: |
+          set -euo pipefail
+          mkdir -p research/iv106-e18x/out
+          cp candidate/verification/iv106/iv106_e18x/source_manifest.json research/iv106-e18x/out/source_manifest.json
+          python3 - <<'PY' | tee research/iv106-e18x/out/preflight.log
+          import json, pathlib, subprocess, re, shutil
+          p=pathlib.Path
+          m=json.loads(p('research/iv106-e18x/out/source_manifest.json').read_text())
+          def git(root,*args):
+              return subprocess.check_output(['git','-C',str(root),*args],text=True).strip()
+          assert git('research','rev-parse','HEAD')==m['research']['ref']
+          assert git('research','rev-parse','HEAD^{tree}')==m['research']['tree']
+          assert p('research/lean-toolchain').read_text().strip()==m['research']['toolchain']
+          refs=list(dict.fromkeys(x['ref'] for x in m['files']))
+          assert len(m['files'])==35 and len(refs)==13
+          for i,ref in enumerate(refs):
+              assert git('pinned'+str(i),'rev-parse','HEAD')==ref
+          out=p('research/iv106-e18x/out')
+          modules=[]
+          names=[]
+          allnames=set()
+          for x in m['files']:
+              root=p('pinned'+str(refs.index(x['ref'])))
+              src=root/x['path']
+              assert git(root,'hash-object',x['path'])==x['sha']
+              dst=p('research/WeilDefect/Arithmetic')/src.name
+              assert not dst.exists(),dst
+              assert src.name not in allnames,src.name
+              allnames.add(src.name)
+              shutil.copyfile(src,dst)
+              assert src.read_bytes()==dst.read_bytes()
+              if any(('ActualZetaIV106'+s) in src.name for s in m['targetPrefix']):
+                  modules.append('WeilDefect.Arithmetic.'+src.stem)
+                  ns=re.findall(r'^#print axioms (\w+)\s*$',src.read_text(),re.M)
+                  names.extend(ns)
+              print(x['sha'],src,'->',dst)
+          for name in allnames:
+              src=p('research/WeilDefect/Arithmetic')/name
+              for imp in re.findall(r'^import (WeilDefect\.[\w.]+)',src.read_text(),re.M):
+                  assert (p('research')/(imp.replace('.','/')+'.lean')).exists(),(name,imp)
+          assert len(modules)==11
+          assert len(names)==m['expectedAudit']==45 and len(set(names))==45
+          (out/'modules.txt').write_text('\n'.join(modules)+'\n')
+          (out/'expected_names.json').write_text(json.dumps(names,indent=2)+'\n')
+          (out/'audit.lean').write_text('\n'.join(['import '+x for x in modules]+['#print axioms WeilDefect.'+x for x in names])+'\n')
+          print('PRECHECK PASS: 35 exact blobs, 11 target modules, 45 named declarations')
+          PY
+      - name: Install pinned Lean and Mathlib
+        working-directory: research
+        run: |
+          set -euo pipefail
+          curl -sSf https://raw.githubusercontent.com/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake exe cache get
+      - name: Native fresh build and strict named axiom audit
+        working-directory: research
+        run: |
+          set -euo pipefail
+          out=iv106-e18x/out
+          touch "$out/fresh.stamp"
+          while read -r mod; do rm -f ".lake/build/lib/lean/${mod//./\/}.olean"; done < "$out/modules.txt"
+          lake build $(cat "$out/modules.txt") 2>&1 | tee "$out/build.log"
+          while read -r mod; do
+            obj=".lake/build/lib/lean/${mod//./\/}.olean"
+            test -s "$obj"
+            test "$obj" -nt "$out/fresh.stamp"
+            sha256sum "${mod//./\/}.lean" "$obj" >> "$out/sha256.txt"
+          done < "$out/modules.txt"
+          lake env lean "$out/audit.lean" 2>&1 | tee "$out/axioms.log"
+          python3 - <<'PY'
+          import json,re,pathlib
+          out=pathlib.Path('iv106-e18x/out')
+          expected=json.loads((out/'expected_names.json').read_text())
+          s=(out/'axioms.log').read_text()
+          p=r"'WeilDefect\.(\w+)' depends on axioms: \[([^\]]*)\]"
+          ms=list(re.finditer(p,s,re.S))
+          assert len(ms)==len(expected)==45 and not re.sub(p,'',s,flags=re.S).strip()
+          assert {m[1] for m in ms}==set(expected)
+          assert all({x.strip() for x in m[2].split(',') if x.strip()} <= {'propext','Classical.choice','Quot.sound'} for m in ms)
+          print('IV106-E18X strict named axioms PASS 45/45')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iv106-e18x-consolidated-transport-evidence
+          path: |
+            research/iv106-e18x/out/
+            research/WeilDefect/Arithmetic/ActualZetaIV106E18[S-W]*.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106E18[S-W]*.olean
+          include-hidden-files: true
+          if-no-files-found: error
