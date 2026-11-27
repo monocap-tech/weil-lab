@@ -207,7 +207,11 @@ theorem angular_rectangle_budget (t : ℝ) (ht : 0 ≤ t) :
     rw [integral_add i₀ i₁, integral_add i₁ i₂]
     dsimp [B]
     have hh := add_le_add (add_le_add b₀ b₁) (add_le_add b₁ b₂)
-    exact hh.trans (le_of_eq (by ring))
+    exact hh.trans (le_of_eq (by
+      change C₀ * ‖(g : V08I.FullL2)‖^2 + C₁ * ‖(g : V08I.FullL2)‖^2 +
+        (C₁ * ‖(g : V08I.FullL2)‖^2 + C₂ * ‖(g : V08I.FullL2)‖^2) =
+        (C₀+2*C₁+C₂)*‖(g : V08I.FullL2)‖^2
+      ring))
   have h := V10B5b.rectangle_budget H X Y Z (-(1/2):ℝ) B J hh hx hi hj houter hb
   exact h.trans (le_of_eq (by dsimp [B]; ring))
 
