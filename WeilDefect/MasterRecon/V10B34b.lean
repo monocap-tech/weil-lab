@@ -1,5 +1,7 @@
 import Mathlib.MeasureTheory.Integral.IntervalIntegral.IntegrationByParts
 import Mathlib.Analysis.SpecialFunctions.ExpDeriv
+import Mathlib.Analysis.Calculus.Deriv.Pow
+import Mathlib.Analysis.Calculus.Deriv.Mul
 
 /-! V10B34b: direct beta-moment contraction for the exponential weight.
 This does not assume the infinite Legendre expansion or the spherical
@@ -37,13 +39,15 @@ theorem skew_nonneg (j : ℕ) (a b : ℝ) (ha : 0 ≤ a) :
       · apply sub_nonpos.mpr
         unfold e
         apply Real.exp_le_exp.mpr
-        exact add_le_add_right (mul_le_mul_of_nonneg_left (by linarith) ha) b
+        have hh : a*x ≤ a*(1-x) := mul_le_mul_of_nonneg_left (by linarith) ha
+        linarith
       · linarith
     · apply mul_nonneg
       · apply sub_nonneg.mpr
         unfold e
         apply Real.exp_le_exp.mpr
-        exact add_le_add_right (mul_le_mul_of_nonneg_left (by linarith) ha) b
+        have hh : a*(1-x) ≤ a*x := mul_le_mul_of_nonneg_left (by linarith) ha
+        linarith
       · linarith
   rw [intervalIntegral.integral_add (hc.intervalIntegrable 0 1)
     (hcr.intervalIntegrable 0 1),hr] at h
@@ -58,10 +62,10 @@ theorem moment_step (j : ℕ) (a b : ℝ) (ha : 0 ≤ a) :
   have hu (x : ℝ) : HasDerivAt u (a*u x) x := by
     have h := (Real.hasDerivAt_exp (a*x+b)).comp x
       (((hasDerivAt_id x).const_mul a).add_const b)
-    convert h using 1 <;> simp [u,e] <;> ring
+    convert h using 1 <;> simp [u,e,Function.comp_def] <;> ring
   have hw (x : ℝ) : HasDerivAt w (1-2*x) x := by
     have h := (hasDerivAt_id x).mul ((hasDerivAt_const x (1:ℝ)).sub (hasDerivAt_id x))
-    convert h using 1 <;> simp [w] <;> ring
+    convert h using 1 <;> simp [w,Pi.mul_apply] <;> ring
   have hv (x : ℝ) : HasDerivAt v (v' x) x := by
     have h := (((hasDerivAt_id x).const_mul 2).sub_const 1).mul ((hw x).pow (j+1))
     convert h using 1
