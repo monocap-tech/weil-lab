@@ -1,0 +1,31 @@
+{
+  "standing": "ZIP bytes recovered locally, SHA256 and CRC verified; exact E18P/M axiom logs committed. Full ZIPs and oleans not yet in Git; no claim of full custody.",
+  "artifacts": [
+    {
+      "run": 45919503303,
+      "id": 15164111513,
+      "bytes": 137723,
+      "sha256": "7b538e43bede13755f204dc19490263e506c3068cc045d0136922182512da1ca",
+      "expires": "2027-02-25T00:54:42Z",
+      "audit": "10 unique strict names",
+      "audit_blob": "7ba1981e3cc0bc82850c9f65af4f1e148860e070"
+    },
+    {
+      "run": 45918048633,
+      "id": 15163418166,
+      "bytes": 204344,
+      "sha256": "a444d4c290edf781d5c788ebb6ea5a53d94b6009e7ef985de98236139d9fb20d",
+      "expires": "2027-02-25T00:40:02Z",
+      "audit": "12 unique strict names",
+      "audit_blob": "ed15d2ef2c5184b141559005d880974dcb548860"
+    },
+    {
+      "run": 45928752861,
+      "id": 15168591466,
+      "bytes": 150932,
+      "sha256": "67d808a3be88325c87f6274dfd9122550429d44d9a84246bb0ca011a3abdbf24",
+      "expires": "2027-02-25T02:30:42Z",
+      "audit": "FAILED; E18K2 lines 21,82; sorryAx in downstream output"
+    }
+  ]
+}
