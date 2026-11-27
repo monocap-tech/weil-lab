@@ -19,7 +19,7 @@ theorem literal_kernel (r : ℝ) (hr : 0 < r) : h r = N r/D r := by
   have hk : k r = Real.exp (r/2)/(2*Real.sinh r) := by
     unfold k
     apply (div_eq_div_iff hd.ne' (by positivity : 2*Real.sinh r ≠ 0)).mpr
-    rw [← he,mul_left_comm (Real.exp (-r/2)) (den r),← mul_assoc,← Real.exp_add,show -r/2+r=r/2 by ring]
+    rw [← he,mul_left_comm (Real.exp (-r/2)) (den r),← Real.exp_add,show -r/2+r=r/2 by ring]
     ring
   unfold h N D
   rw [hk]
