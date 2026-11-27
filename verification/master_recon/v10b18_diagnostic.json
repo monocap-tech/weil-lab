@@ -1,0 +1,76 @@
+{
+  "status": "floating-point diagnostic only",
+  "support_radius": 0.25,
+  "tail_coercivity_target": 0.125,
+  "tail_coercivity_status": "conditional uncompiled V10B17 receiver",
+  "pole_load": "deflated Legendre expansion truncated at degree 33; literal load custody outstanding",
+  "sine_galerkin": [
+    {
+      "n": 32,
+      "U": 512,
+      "schur_min": 0.02037300032916129,
+      "tail_min": 0.5797324782036399
+    },
+    {
+      "n": 64,
+      "U": 1024,
+      "schur_min": 0.01983953340766001,
+      "tail_min": 0.5777204543927441
+    },
+    {
+      "n": 128,
+      "U": 2048,
+      "schur_min": 0.019556321855448505,
+      "tail_min": 0.5771695181881838
+    },
+    {
+      "n": 128,
+      "U": 4096,
+      "schur_min": 0.019556331951830375,
+      "tail_min": 0.5771695234086082
+    }
+  ],
+  "sine_full_support_lower_min": -13.444970804755851,
+  "unoptimized_legendre_real_space_lower_min": -0.4790300951042077,
+  "residual_minimized": [
+    {
+      "n": 96,
+      "order": 128,
+      "points": 1024,
+      "energy_min": 0.019270637041948382,
+      "residual_norm": 0.01087860411989475,
+      "lower_min": 0.019269008059122086,
+      "load_change": 3.393610691373461e-17
+    },
+    {
+      "n": 128,
+      "order": 160,
+      "points": 1024,
+      "energy_min": 0.019270813795461725,
+      "residual_norm": 0.00738238730872409,
+      "lower_min": 0.01927005968410016,
+      "load_change": 3.21991168930724e-17
+    },
+    {
+      "n": 160,
+      "order": 192,
+      "points": 1536,
+      "energy_min": 0.0192709070956913,
+      "residual_norm": 0.005516947581482111,
+      "lower_min": 0.019270485371870507,
+      "load_change": 2.3038803854953174e-17
+    }
+  ],
+  "final_reserve_operator_norm": 0.00035128713174288465,
+  "load_singular_min_approx": 0.29454675,
+  "load_singular_max_approx": 0.53985463,
+  "local_evidence_zip_sha256": "578ad9690789deef48acf5d849aeb20af577dcb68652edab290500ab394ee4c3",
+  "unresolved": [
+    "literal real-space digamma action",
+    "rigorous quadrature including endpoint logarithms",
+    "exact constraint matrix and pole deflation",
+    "native theorem audit",
+    "exact positive congruence",
+    "global support"
+  ]
+}
