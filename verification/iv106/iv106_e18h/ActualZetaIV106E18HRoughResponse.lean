@@ -19,8 +19,9 @@ theorem neutralIV106E18HColumn_memLp (a : ℝ) (u : 𝓢(ℝ,ℂ))
     {δ : ℝ} (hδ : 0 < δ) :
     MemLp ((Set.Icc (-a) a).indicator (neutralIV106E18EGap u δ)) 2 volume := by
   have hc := neutralIV106E18EGap_continuous u u.integrable hδ
-  have hm := hc.aestronglyMeasurable.indicator
-    (measurableSet_Icc : MeasurableSet (Set.Icc (-a) a))
+  have hm : AEStronglyMeasurable ((Set.Icc (-a) a).indicator
+      (neutralIV106E18EGap u δ)) volume :=
+    hc.aestronglyMeasurable.indicator measurableSet_Icc
   apply (memLp_two_iff_integrable_sq_norm hm).mpr
   have hi : IntegrableOn (fun x => ‖neutralIV106E18EGap u δ x‖^2)
       (Set.Icc (-a) a) volume :=
@@ -43,7 +44,7 @@ theorem neutralIV106E18HColumn_pair (a : ℝ) (u : 𝓢(ℝ,ℂ))
   filter_upwards [(neutralIV106E18HColumn_memLp a u hδ).coeFn_toLp] with y hy
   change inner ℂ ((neutralIV106E18HColumn_memLp a u hδ).toLp _ y) (v y) = _
   rw [hy]
-  by_cases hy' : y ∈ Set.Icc (-a) a <;> simp [hy', RCLike.inner_apply']
+  by_cases hy' : y ∈ Set.Icc (-a) a <;> simp [hy', RCLike.inner_apply', mul_comm]
 
 /-- Fubini is applied only to the bounded gap kernel and two L1 factors. -/
 theorem neutralIV106E18HFubini (u : 𝓢(ℝ,ℂ)) (v : ℝ → ℂ)
