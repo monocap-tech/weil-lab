@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B48 focused optimized coverage
+name: MASTER-RECON V10B51 repaired optimized coverage
 on:
   push:
     branches: [master-recon-v10b20-staging]
@@ -29,7 +29,7 @@ jobs:
           set -euo pipefail
           mkdir -p recon-v10b48-evidence
           git rev-parse HEAD | tee recon-v10b48-evidence/head.txt
-          sha256sum WeilDefect/MasterRecon/V10B{33a,33b,34a,39b,39c,40a,43a,45a,46a,46b,46c,47a,47b,47c}.lean verification/master_recon/v10b45_optimized_{coordinates.json,coverage.py} lean-toolchain lakefile.toml | tee recon-v10b48-evidence/source.sha256
+          sha256sum WeilDefect/MasterRecon/V10B{33a,33b,34a,36a,37a,38a,39b,39c,40a,43a,45a,46a,46b,46c,47a,47b,47c,50a,50b}.lean verification/master_recon/v10b45_optimized_{coordinates.json,coverage.py} lean-toolchain lakefile.toml | tee recon-v10b48-evidence/source.sha256
           audit() {
             local mod="$1"
             file="WeilDefect/MasterRecon/${mod}.lean"
@@ -79,6 +79,11 @@ jobs:
           gate V10B46a V10B34a
           gate V10B46b V10B45a V10B33b
           gate V10B46c V10B46a V10B46b
+          gate V10B36a
+          gate V10B37a V10B36a
+          gate V10B38a V10B34a V10B37a
+          gate V10B50a
+          gate V10B50b V10B50a
           gate V10B47a V10B34a
           gate V10B47b V10B47a
           gate V10B39b
@@ -87,6 +92,7 @@ jobs:
           gate V10B43a V10B40a
           gate V10B47c V10B47b V10B46c V10B43a
           python3 verification/master_recon/v10b45_optimized_coverage.py | tee recon-v10b48-evidence/optimized-coverage.txt
+          python3 verification/master_recon/v10b49_physical_rows.py | tee recon-v10b48-evidence/physical-rows.txt
           exit "$failed"
       - name: Upload compiler and audit evidence
         if: always()
