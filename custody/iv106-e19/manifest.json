@@ -1,0 +1,128 @@
+{
+  "schema": "custody-replay-v1",
+  "repository": "monocap-tech/weil-lab",
+  "base_commit": "f8c092035da67cfebbb8ce2cc40b8c4509913a98",
+  "archive_sha256": "8fdfe3275b99f0bd058a99abdfd00e9615a8dc976ca3b7a02763fcf53ee6b49d",
+  "archive_bytes": 4898496,
+  "parts": [
+    {
+      "path": "custody/iv106-e19/joint_replay_bundle.zip.part000",
+      "git_blob_sha": "7e9edbc5c5c6d7be6bce754474a9d2ce4a12c012"
+    },
+    {
+      "path": "custody/iv106-e19/joint_replay_bundle.zip.part001",
+      "git_blob_sha": "6c80edbba04e29d6248d15e2a90a41b7420a988e"
+    },
+    {
+      "path": "custody/iv106-e19/joint_replay_bundle.zip.part002",
+      "git_blob_sha": "8508d475dfa0e8c4e0ed7b19b5031e83602f7deb"
+    },
+    {
+      "path": "custody/iv106-e19/joint_replay_bundle.zip.part003",
+      "git_blob_sha": "d280387546282ade003e4f3c912ee3713852a1a5"
+    },
+    {
+      "path": "custody/iv106-e19/joint_replay_bundle.zip.part004",
+      "git_blob_sha": "1cef8bb7c927a9f22d8815c511b50318a6c9286d"
+    },
+    {
+      "path": "custody/iv106-e19/joint_replay_bundle.zip.part005",
+      "git_blob_sha": "0871cae9b660bec39ce24840a88124c8522f84f8"
+    },
+    {
+      "path": "custody/iv106-e19/joint_replay_bundle.zip.part006",
+      "git_blob_sha": "9c5a723e5bdb32f444e0225093de6de1cc5a9c68"
+    },
+    {
+      "path": "custody/iv106-e19/joint_replay_bundle.zip.part007",
+      "git_blob_sha": "f280d123240c3d8e845115e19a0ef761374387e7"
+    },
+    {
+      "path": "custody/iv106-e19/joint_replay_bundle.zip.part008",
+      "git_blob_sha": "6b7e4423a85984bf0781d129b2e500e8cc711cc9"
+    },
+    {
+      "path": "custody/iv106-e19/joint_replay_bundle.zip.part009",
+      "git_blob_sha": "15aaa26699d9ddeb253cbaaf830f59229a2ad016"
+    },
+    {
+      "path": "custody/iv106-e19/joint_replay_bundle.zip.part010",
+      "git_blob_sha": "6031003a781d60a3cea0eb44a14796a24122dc20"
+    },
+    {
+      "path": "custody/iv106-e19/joint_replay_bundle.zip.part011",
+      "git_blob_sha": "ba0fef9912b59426b97c363a78dc3ec313503083"
+    },
+    {
+      "path": "custody/iv106-e19/joint_replay_bundle.zip.part012",
+      "git_blob_sha": "2a91ae339d5d569dd6344b22ca44e71f10686b9f"
+    },
+    {
+      "path": "custody/iv106-e19/joint_replay_bundle.zip.part013",
+      "git_blob_sha": "ca6450dfd04b6741bf05120f780edef9ef032840"
+    },
+    {
+      "path": "custody/iv106-e19/joint_replay_bundle.zip.part014",
+      "git_blob_sha": "be13b8f12b412e3ec21d9c5f001f723fe385a04b"
+    },
+    {
+      "path": "custody/iv106-e19/joint_replay_bundle.zip.part015",
+      "git_blob_sha": "65d8fe88a6aea8267995b32c3e30d602e02cf7dc"
+    },
+    {
+      "path": "custody/iv106-e19/joint_replay_bundle.zip.part016",
+      "git_blob_sha": "86856cae2af5feb8f588dff164dbeced1b08627b"
+    },
+    {
+      "path": "custody/iv106-e19/joint_replay_bundle.zip.part017",
+      "git_blob_sha": "fd64cd4531ca5b1221ee3f4e3e10bf2aa2a9cc6b"
+    },
+    {
+      "path": "custody/iv106-e19/joint_replay_bundle.zip.part018",
+      "git_blob_sha": "204baa5cfd582552b918b41be1d295bf722369d9"
+    }
+  ],
+  "members": [
+    {
+      "name": "iv106_e19q/joint.py",
+      "bytes": 6732,
+      "sha256": "a17002d1987640b3f0efab0c5591ece79c2b15efc9a21c6600ea051ea3e566f1"
+    },
+    {
+      "name": "iv106_e19q/joint_certificate.json",
+      "bytes": 1015,
+      "sha256": "d61da378760ca11e21c7e828b46a717d810116d35dfc03d5ec325f1f6ddbb8c9"
+    },
+    {
+      "name": "iv106_e19q/joint_matrix.npz",
+      "bytes": 2689684,
+      "sha256": "24e37cd533c5efbc554c926695fc89f64d39d60aee90cb6643c5aa3a69da23e7"
+    },
+    {
+      "name": "iv106_e19p/certify_bank.py",
+      "bytes": 7111,
+      "sha256": "814bb90590a546c67bce52659e612657a3e880754957c3aff2d8553391cc1f2a"
+    },
+    {
+      "name": "iv106_e19p/row_bank.npz",
+      "bytes": 2238992,
+      "sha256": "e55b8992e769d09ee83fdd66a9d6a3cbaf592933f7d85d3ca0d8dd9a2e4d886e"
+    },
+    {
+      "name": "iv106_e19p/row_bank_receipt.json",
+      "bytes": 212443,
+      "sha256": "e1f9bf1a11194227e726a9172705a637ff13ebb15afb11fedb5821c8853f8fd1"
+    },
+    {
+      "name": "iv106_e19p/bank_certificate.json",
+      "bytes": 262710,
+      "sha256": "4c4940d86081e9a9d4e412fded7c57fcf5c85aa32824bbb933ab668835d683c4"
+    },
+    {
+      "name": "iv106_e19q/sha256.json",
+      "bytes": 713,
+      "sha256": "1a796b39b16d8dc32425eb27f39771d3a3fa89c37403edbcb153f6b051bc0e0c"
+    }
+  ],
+  "meaning": "Conditional analytic joint Loewner bound; integer replay not Lean. No global positivity or RH claim."
+}
