@@ -1,4 +1,4 @@
-name: RETURN108-W literal carrier integration
+name: RETURN108-X quantitative continuous carrier equivalence
 on:
   push:
     branches: [research/return108s-kernel-core]
@@ -27,42 +27,48 @@ jobs:
           curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
       - name: Resolve pinned dependencies
-        run: lake update
+        run: |
+          set -euo pipefail
+          lake update
+          cat lake-manifest.json
+          lean --version
       - name: Fetch mathlib cache
         run: lake exe cache get
       - name: Build literal bridge dependencies
         shell: bash
         run: |
           set -euo pipefail
-          lake build WeilDefect.MasterReturn.LogWeightComparison WeilDefect.MasterRecon.V08J WeilDefect.Morphology.NeutralLogHilbertCarrier 2>&1 | tee return108w-deps.log
+          lake build WeilDefect.MasterReturn.LogCarrierBridge 2>&1 | tee return108w-deps.log
       - name: Compile and strict named axiom audit
         shell: bash
         run: |
           set -euo pipefail
-          lake env lean WeilDefect/MasterReturn/LogCarrierBridge.lean 2>&1 | tee return108w-lean.log
+          lake env lean WeilDefect/MasterReturn/LogCarrierContinuous.lean 2>&1 | tee return108x-lean.log
           python3 - <<'PY'
           import re
           from pathlib import Path
-          s = Path("return108w-lean.log").read_text()
-          names = ["recon_le_scaled_iv","iv_le_scaled_recon","iv_energy_to_recon","recon_energy_to_iv","toRecon_physical","toIV_physical","iv_physical_injective","carrierEquiv","carrierEquiv_physical"]
+          s = Path("return108x-lean.log").read_text()
+          names = ["boundRI_nonneg","boundIR_nonneg","carrierEquiv_norm_sq_le","carrierEquiv_symm_norm_sq_le","carrierEquiv_norm_le","carrierEquiv_symm_norm_le","carrierContinuousEquiv","carrierContinuousEquiv_physical"]
           allowed = {"propext","Classical.choice","Quot.sound"}
           for name in names:
-              q = "WeilDefect.MasterReturn.LogCarrierBridge." + name
+              q = "WeilDefect.MasterReturn.LogCarrierContinuous." + name
               m = re.search(r"'" + re.escape(q) + r"' depends on axioms: \[([^\]]*)\]", s)
               if m is None:
                   assert f"'{q}' does not depend on any axioms" in s, q
               else:
                   assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
               print("PASS", q)
-          print("RETURN108-W strict axiom audit PASS 9/9")
+          print("RETURN108-X strict axiom audit PASS 8/8")
           PY
       - name: Preserve integration evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: return108w-integration
+          name: return108x-integration
           path: |
             return108w-closure.json
             return108w-closure.log
             return108w-deps.log
-            return108w-lean.log
+            return108x-lean.log
+            WeilDefect/MasterReturn/LogCarrierContinuous.lean
+            lake-manifest.json
