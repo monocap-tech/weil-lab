@@ -71,6 +71,14 @@ def visit(p, preferred):
                 visit(target, "IV" if p == ROOT and target == IV_ENTRY else side)
             else: external.add(module)
 visit(ROOT, "RECON")
+# Authenticated previously certified translation supplier, same R pin.
+base_paths = set(manifest)
+translation_root = "WeilDefect/MasterReturn/CarrierTranslation.lean"
+visit(translation_root, "RECON")
+expected_extra = {"WeilDefect/MasterReturn/CarrierTranslation.lean":"19f9587f886e71dc54e0a16d869b8140d0cfbf4a","WeilDefect/MasterRecon/V08K.lean":"ea07c9b41fbb01fe00c34886ab90dec357f9770f","WeilDefect/MasterRecon/V09A.lean":"2bec29f497f155e12e50fb316715b7a5a10a1b6a","WeilDefect/MasterRecon/V09B.lean":"a3ff3f377235e6e297c2753982a5f5cd951b3fde"}
+assert set(manifest) - base_paths == set(expected_extra), sorted(set(manifest) - base_paths)
+for p, sha in expected_extra.items():
+    assert manifest[p]["blob"] == sha and manifest[p]["required_by"] == ["RECON"], p
 # No source files are written until the entire selected closure passes.
 for p, e in sorted(manifest.items()):
     dst = pathlib.Path(p)
@@ -89,6 +97,7 @@ neutral = "WeilDefect/Morphology/Neutral.lean"
 assert manifest[neutral]["blob"] == "9c446407e5f9ecfada57d2dee5e1d85b7d8a5753"
 assert manifest[neutral]["required_by"] == ["IV"]
 result = {"IV":I,"RECON":R,"root":ROOT,"entries":manifest,"external_imports":sorted(external),"explicit_cross_edge":[ROOT,IV_ENTRY]}
+result["additional_roots"] = [translation_root]
 pathlib.Path("return108w-closure.json").write_text(json.dumps(result, indent=2, sort_keys=True)+"\n")
 print("Authenticated closure:", len(manifest), "modules;", sum(e["origin"]=="RECON" for e in manifest.values()), "overlay modules")
 print("No differing shared path required by both lineages; IV morphology retained.")
@@ -109,3 +118,11 @@ y_path = pathlib.Path('WeilDefect/MasterReturn/LogCarrierNatural.lean')
 assert not y_path.exists(), y_path
 y_path.write_bytes(Y.encode('utf-8'))
 print('RETURN108-Y source SHA256:', hashlib.sha256(y_path.read_bytes()).hexdigest())
+
+assert hashlib.sha256(x_path.read_bytes()).hexdigest() == "62632c37d5ab7c62d1861f15ae7132cf979d632eba030687797e44b363b7eb77"
+assert hashlib.sha256(y_path.read_bytes()).hexdigest() == "545514cb571a0912f17cac6a8c3074e117223f991cedea729db6677351e99103"
+Z = "import WeilDefect.MasterReturn.LogCarrierNatural\nimport WeilDefect.MasterReturn.CarrierTranslation\n\n/-! RETURN108-Z: transport the literal physical translation through the\ncertified continuous carrier equivalence. No signed-form claim. -/\nnamespace WeilDefect.MasterReturn.LogCarrierTranslation\nopen MeasureTheory\nopen scoped FourierTransform\nopen WeilDefect.MasterRecon\nopen LogCarrierContinuous LogCarrierNatural\nopen CarrierTranslation\n\nset_option maxHeartbeats 2000000\nset_option maxRecDepth 4096\n\nnoncomputable def shiftIV (a b s : ℝ) (hab : a + |s| ≤ b)\n    (g : NeutralLogHilbertCarrier a) : NeutralLogHilbertCarrier b :=\n  (carrierContinuousEquiv b).symm\n    (shiftCarrier a b s hab (carrierContinuousEquiv a g))\n\ntheorem shift_natural (a b s : ℝ) (hab : a + |s| ≤ b)\n    (g : NeutralLogHilbertCarrier a) :\n    carrierContinuousEquiv b (shiftIV a b s hab g) =\n      shiftCarrier a b s hab (carrierContinuousEquiv a g) := by\n  unfold shiftIV\n  exact (carrierContinuousEquiv b).apply_symm_apply _\n\ntheorem shiftIV_physical (a b s : ℝ) (hab : a + |s| ≤ b)\n    (g : NeutralLogHilbertCarrier a) :\n    neutralLogPhysical (shiftIV a b s hab g).val =\n      shiftPhysical s (neutralLogPhysical g.val) := by\n  rw [← carrierContinuousEquiv_physical b (shiftIV a b s hab g),\n    shift_natural, shiftCarrier_physical, carrierContinuousEquiv_physical]\n\ntheorem shiftIV_norm (a b s : ℝ) (hab : a + |s| ≤ b)\n    (g : NeutralLogHilbertCarrier a) :\n    ‖shiftIV a b s hab g‖ = ‖g‖ := by\n  have he : ‖shiftIV a b s hab g‖ ^ 2 = ‖g‖ ^ 2 := by\n    rw [neutralLogHilbertCarrier_norm_sq (shiftIV a b s hab g),\n      neutralLogHilbertCarrier_norm_sq g, shiftIV_physical,\n      ← carrierContinuousEquiv_physical a g]\n    apply integral_congr_ae\n    filter_upwards [shiftPhysical_fourier_norm_ae a b s hab\n      (carrierContinuousEquiv a g)] with x hx\n    change ‖(𝓕 (shiftPhysical s (V08I.physicalInclusion a\n      (carrierContinuousEquiv a g))) : RealComplexL2) x‖ =\n      ‖(𝓕 (V08I.physicalInclusion a (carrierContinuousEquiv a g)) :\n        RealComplexL2) x‖ at hx\n    rw [hx]\n  nlinarith [norm_nonneg (shiftIV a b s hab g), norm_nonneg g]\n\ntheorem shiftIV_mellin (a b s : ℝ) (hab : a + |s| ≤ b)\n    (g : NeutralLogHilbertCarrier a) (z : ℂ) :\n    V07A.mellin (neutralLogPhysical (shiftIV a b s hab g).val : ℝ → ℂ) z =\n      Complex.exp (z * (s : ℂ)) *\n        V07A.mellin (neutralLogPhysical g.val : ℝ → ℂ) z := by\n  rw [shiftIV_physical, shiftPhysical_mellin]\n\ntheorem shiftIV_target_natural (a b c s : ℝ) (hab : a + |s| ≤ b)\n    (hbc : b ≤ c) (g : NeutralLogHilbertCarrier a) :\n    ivIncl b c hbc (shiftIV a b s hab g) =\n      shiftIV a c s (hab.trans hbc) g := by\n  apply LogCarrierBridge.iv_physical_injective c\n  rw [ivIncl_physical, shiftIV_physical, shiftIV_physical]\n\nend WeilDefect.MasterReturn.LogCarrierTranslation\n\n#print axioms WeilDefect.MasterReturn.LogCarrierTranslation.shiftIV\n#print axioms WeilDefect.MasterReturn.LogCarrierTranslation.shift_natural\n#print axioms WeilDefect.MasterReturn.LogCarrierTranslation.shiftIV_physical\n#print axioms WeilDefect.MasterReturn.LogCarrierTranslation.shiftIV_norm\n#print axioms WeilDefect.MasterReturn.LogCarrierTranslation.shiftIV_mellin\n#print axioms WeilDefect.MasterReturn.LogCarrierTranslation.shiftIV_target_natural\n"
+z_path = pathlib.Path('WeilDefect/MasterReturn/LogCarrierTranslation.lean')
+assert not z_path.exists(), z_path
+z_path.write_bytes(Z.encode('utf-8'))
+print('RETURN108-Z source SHA256:', hashlib.sha256(z_path.read_bytes()).hexdigest())
