@@ -21,11 +21,12 @@ def ResidualEstimate : Prop :=
   Measurable residual ∧ ∃ C : ℝ, 0 ≤ C ∧ ∀ u, |residual u| ≤ C
 
 noncomputable def spectralPhysical (t : ℝ) : logCarrier t →L[ℂ] FullL2 :=
-  (Lp.fourierTransformₗᵢ ℝ ℂ).toContinuousLinearMap.comp (physicalInclusion t)
+  (Lp.fourierTransformₗᵢ ℝ ℂ).toContinuousLinearEquiv.toContinuousLinearMap.comp (physicalInclusion t)
 
 theorem spectralPhysical_norm (t : ℝ) (g : logCarrier t) :
-    ‖spectralPhysical t g‖ = ‖physicalInclusion t g‖ :=
-  (Lp.fourierTransformₗᵢ ℝ ℂ).norm_map _
+    ‖spectralPhysical t g‖ = ‖physicalInclusion t g‖ := by
+  change ‖(𝓕 (physicalInclusion t g) : FullL2)‖ = _
+  exact Lp.norm_fourier_eq _
 
 theorem spectralPhysical_compact (t : ℝ) (ht : 0 ≤ t) :
     IsCompactOperator (spectralPhysical t) :=
@@ -45,7 +46,8 @@ theorem realMultiplier_ae (d : ℝ → ℝ) (hd : Measurable d)
 theorem realMultiplier_bound (d : ℝ → ℝ) (hd : Measurable d)
     (C : ℝ) (hC : ∀ u, |d u| ≤ C) (f : FullL2) :
     ‖realMultiplier d hd C hC f‖ ≤ C*‖f‖ :=
-  V08I.mulValue_bound _ _ _ _ f
+  V08I.mulValue_bound (fun u => (d u:ℂ)) (Complex.continuous_ofReal.measurable.comp hd) C
+    (fun u => by simpa [Complex.norm_real,Real.norm_eq_abs] using hC u) f
 
 theorem realMultiplier_symmetric (d : ℝ → ℝ) (hd : Measurable d)
     (C : ℝ) (hC : ∀ u, |d u| ≤ C) (f g : FullL2) :
@@ -54,8 +56,7 @@ theorem realMultiplier_symmetric (d : ℝ → ℝ) (hd : Measurable d)
   rw [L2.inner_def,L2.inner_def]
   apply integral_congr_ae
   filter_upwards [realMultiplier_ae d hd C hC f,realMultiplier_ae d hd C hC g] with u hf hg
-  change conj (realMultiplier d hd C hC f u)*g u =
-    conj (f u)*realMultiplier d hd C hC g u
+  simp only [RCLike.inner_apply']
   rw [hf,hg,map_mul,Complex.conj_ofReal]
   ring
 
@@ -107,7 +108,13 @@ theorem arch_selfAdjoint (t : ℝ) (hd : Measurable residual)
     (C : ℝ) (hC : ∀ u, |residual u| ≤ C) :
     (archOperator t hd C hC).adjoint = archOperator t hd C hC := by
   unfold archOperator
-  simp [correction_selfAdjoint]
+  rw [map_add,correction_selfAdjoint]
+  congr 1
+  ext g : 1
+  apply ext_inner_right ℂ
+  intro h
+  rw [ContinuousLinearMap.adjoint_inner_left]
+  simp only [ContinuousLinearMap.one_apply]
 
 theorem arch_lower (t : ℝ) (hd : Measurable residual)
     (C : ℝ) (hC : ∀ u, |residual u| ≤ C) (g : logCarrier t) :
@@ -118,8 +125,9 @@ theorem arch_lower (t : ℝ) (hd : Measurable residual)
   have hl := neg_abs_le (inner ℂ (correction t hd C hC g) g).re
   unfold archOperator
   rw [ContinuousLinearMap.add_apply,ContinuousLinearMap.one_apply,inner_add_left,
-    Complex.add_re,inner_self_eq_norm_sq_to_K]
-  simp only [Complex.ofReal_re]
+    Complex.add_re]
+  have hn : (inner ℂ g g).re = ‖g‖^2 := inner_self_eq_norm_sq (𝕜 := ℂ) g
+  rw [hn]
   linarith
 
 end WeilDefect.MasterRecon.V10B8e
