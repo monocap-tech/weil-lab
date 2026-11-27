@@ -1,0 +1,137 @@
+{
+  "M": 16384,
+  "shift_count": 48,
+  "minimum_weight": "39499328",
+  "maximum_weight": "100000000",
+  "minimum_integer_slack": "18510382530000000",
+  "minimum_integer_slack_cell": 6572,
+  "maximum_row_ratio": {
+    "numerator": "31581430071841747",
+    "denominator": "3957747500000000",
+    "cell": 6572
+  },
+  "minimum_envelope_residual": {
+    "numerator": "1851038253",
+    "denominator": "3957747500000000",
+    "cell": 6572
+  },
+  "maximum_envelope_residual": {
+    "numerator": "8744285003",
+    "denominator": "12652525500000000",
+    "cell": 4418
+  },
+  "band_minima": [
+    {
+      "start_cell": 0,
+      "end_cell_exclusive": 1024,
+      "numerator": "43319938609",
+      "denominator": "77706026000000000",
+      "cell": 1011
+    },
+    {
+      "start_cell": 1024,
+      "end_cell_exclusive": 2048,
+      "numerator": "39993937439",
+      "denominator": "74411800000000000",
+      "cell": 1458
+    },
+    {
+      "start_cell": 2048,
+      "end_cell_exclusive": 3072,
+      "numerator": "32742820307",
+      "denominator": "63014356000000000",
+      "cell": 3015
+    },
+    {
+      "start_cell": 3072,
+      "end_cell_exclusive": 4096,
+      "numerator": "28621070973",
+      "denominator": "55850632000000000",
+      "cell": 3691
+    },
+    {
+      "start_cell": 4096,
+      "end_cell_exclusive": 5120,
+      "numerator": "6706206647",
+      "denominator": "14075449250000000",
+      "cell": 4147
+    },
+    {
+      "start_cell": 5120,
+      "end_cell_exclusive": 6144,
+      "numerator": "4517276929",
+      "denominator": "9410672200000000",
+      "cell": 5926
+    },
+    {
+      "start_cell": 6144,
+      "end_cell_exclusive": 7168,
+      "numerator": "1851038253",
+      "denominator": "3957747500000000",
+      "cell": 6572
+    },
+    {
+      "start_cell": 7168,
+      "end_cell_exclusive": 8192,
+      "numerator": "21482738501",
+      "denominator": "45069569000000000",
+      "cell": 7450
+    },
+    {
+      "start_cell": 8192,
+      "end_cell_exclusive": 9216,
+      "numerator": "21482738501",
+      "denominator": "45069569000000000",
+      "cell": 8933
+    },
+    {
+      "start_cell": 9216,
+      "end_cell_exclusive": 10240,
+      "numerator": "1851038253",
+      "denominator": "3957747500000000",
+      "cell": 9811
+    },
+    {
+      "start_cell": 10240,
+      "end_cell_exclusive": 11264,
+      "numerator": "4517276929",
+      "denominator": "9410672200000000",
+      "cell": 10457
+    },
+    {
+      "start_cell": 11264,
+      "end_cell_exclusive": 12288,
+      "numerator": "6706206647",
+      "denominator": "14075449250000000",
+      "cell": 12236
+    },
+    {
+      "start_cell": 12288,
+      "end_cell_exclusive": 13312,
+      "numerator": "28621070973",
+      "denominator": "55850632000000000",
+      "cell": 12692
+    },
+    {
+      "start_cell": 13312,
+      "end_cell_exclusive": 14336,
+      "numerator": "32742820307",
+      "denominator": "63014356000000000",
+      "cell": 13368
+    },
+    {
+      "start_cell": 14336,
+      "end_cell_exclusive": 15360,
+      "numerator": "39993937439",
+      "denominator": "74411800000000000",
+      "cell": 14925
+    },
+    {
+      "start_cell": 15360,
+      "end_cell_exclusive": 16384,
+      "numerator": "43319938609",
+      "denominator": "77706026000000000",
+      "cell": 15372
+    }
+  ]
+}
