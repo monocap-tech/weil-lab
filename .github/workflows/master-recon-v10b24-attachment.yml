@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B37 focused attachment audit
+name: MASTER-RECON V10B40 focused attachment audit
 on:
   push:
     branches: [master-recon-v10b20-staging]
@@ -83,6 +83,14 @@ jobs:
           gate V10B37a V10B36a
           gate V10B37b V10B33a
           gate V10B37d V10B37a V10B36b
+          gate V10B38a V10B34a V10B37a
+          gate V10B38b
+          gate V10B38c V10B35a V10B37b
+          gate V10B39a V10B33a
+          gate V10B39b
+          gate V10B39c V10B39b
+          gate V10B40a V10B39b V10B39c
+          gate V10B40d V10B40a
           gate V10B30a
           gate V10B31b V10B30a
           gate V10B24a
@@ -138,6 +146,9 @@ jobs:
           cp verification/master_recon/legendre_projection_result.json recon-v10b24-evidence/
           python3 verification/master_recon/v10b35_beta_enclosures.py | tee recon-v10b24-evidence/beta-enclosures.txt
           python3 verification/master_recon/v10b37_weighted_reserve.py | tee recon-v10b24-evidence/weighted-reserve.txt
+          python3 verification/master_recon/v10b39_finite_projection_budget.py | tee recon-v10b24-evidence/finite-projection-budget.txt
+          python3 verification/master_recon/v10b40_low_deflation.py | tee recon-v10b24-evidence/low-deflation.txt
+          python3 verification/master_recon/v10b40_finite_projection_replay.py | tee recon-v10b24-evidence/finite-projection-replay.txt
           exit "$failed"
       - name: Upload compiler and audit evidence
         if: always()
