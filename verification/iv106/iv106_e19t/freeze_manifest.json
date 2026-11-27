@@ -1,0 +1,61 @@
+{
+  "parent": "e3b182a6c0dbc72cc14e783bc4deb1648978a1bc",
+  "standing": "All seven regenerated raw arrays match original E19T hashes; files are exploratory, not interval certified.",
+  "environment": {
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "OPENBLAS_NUM_THREADS": "1"
+  },
+  "files": [
+    {
+      "path": "coeff_1330_128_0.npy",
+      "git_blob": "177faa4d6bd50b496126090d07a0f8f216825e7a",
+      "sha256": "91b580fd0f69ff5ced9accaf6ba2e58ac5e3955940f15b3cf74c4a3b6d05786a",
+      "raw_sha256": "5468d991d9087c61d6da0b976a19e1ed2122e099bbe4801fa007a068279e50c1",
+      "bytes": 12816
+    },
+    {
+      "path": "coeff_1330_128_1.npy",
+      "git_blob": "2142501d3f46eaf1734b512c6f7aa829b47a7c94",
+      "sha256": "af78ae74ad5e847a92514684370b14f737a91c4bc573ae608767a9e6ca56f676",
+      "raw_sha256": "76946aa296f5590174e5e5c7fc274763c790c9618ddfa9579d9df9ecab131b0b",
+      "bytes": 12808
+    },
+    {
+      "path": "coeff_1330_256_0.npy",
+      "git_blob": "f61f44de40bb145f1f22c1f5125fa04616bbb282",
+      "sha256": "172eccb0d1b37099574f9bb65789b0a328597a1d4c4f4a15fc34d427aa8fb542",
+      "raw_sha256": "88bdfa91a0b5ea335ac0cb6e56a5d8eea9affdce2e0fc32e7134bd08e06e58c0",
+      "bytes": 14864
+    },
+    {
+      "path": "coeff_1330_256_1.npy",
+      "git_blob": "0cb402e42cf352838d2928c0d47238a432d98219",
+      "sha256": "b623c73e33db88707529dad35d2bb34bbc5bda888e83ab6e8e94f99c7636863f",
+      "raw_sha256": "68c36d8790c888d975c87635cc62c4e7fa44e26fda61f924",
+      "bytes": 14856
+    },
+    {
+      "path": "coeff_2660_256_0.npy",
+      "git_blob": "2e2202b3f2d9ad2660f6fc8b88774b9f34dd47f8",
+      "sha256": "62e50d5a174388b5feec1734dd6c10dcbc4a4738d17d420f684792c238b5e7f2",
+      "raw_sha256": "a7f5560c1d706525c920bf5d590504db95922e052409e34a006e65a453423227",
+      "bytes": 25504
+    },
+    {
+      "path": "coeff_665_64_0.npy",
+      "git_blob": "5c21561365472f29b6e4c75838478579c80777c9",
+      "sha256": "8c99251763ae34b267cf549be15361de0f07930d3629e0ed1f229ca8e66ad54a",
+      "raw_sha256": "ed8e9250a81b1ec46f32035c4621499c86017831ce5aa00a4df586d19600d611",
+      "bytes": 6472
+    },
+    {
+      "path": "coeff_665_64_1.npy",
+      "git_blob": "f1d7f3cf44d0eabd6d5a6f25eae76059850b98ca",
+      "sha256": "af3fcece3e70e5c57de7b1499664d732979b1ef854c199a1419c6f6ca2d078c8",
+      "raw_sha256": "fe7f9bf76bd1cbb393c62ba6fe4294c2f0e2618e674bb0746dc748b7ec416a09",
+      "bytes": 6464
+    }
+  ]
+}
