@@ -13,8 +13,7 @@ noncomputable def beta (n m : ℕ) : ℝ :=
 theorem beta_zero (n : ℕ) : beta n 0=1/((n:ℝ)+1) := by
   unfold beta
   simp only [pow_zero,mul_one]
-  rw [integral_pow]
-  simp
+  rw [integral_pow] <;> simp
 
 theorem beta_step (n m : ℕ) :
     ((n:ℝ)+1)*beta n (m+1)=((m:ℝ)+1)*beta (n+1) m := by
@@ -56,7 +55,7 @@ theorem beta_closed (n m : ℕ) :
     rw [beta_zero]
     simp only [Nat.factorial_zero,Nat.cast_one,mul_one,add_zero,Nat.factorial_succ,Nat.cast_mul,Nat.cast_add]
     have hn : (n.factorial:ℝ) ≠ 0 := by exact_mod_cast Nat.factorial_ne_zero n
-    field_simp [hn]
+    field_simp [hn] <;> ring
   | succ m ih =>
     have h := beta_step n m
     rw [ih (n+1)] at h
