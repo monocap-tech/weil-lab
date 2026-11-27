@@ -4,7 +4,7 @@ import WeilDefect.Arithmetic.ActualZetaIV106E7PrimeCutoff
 namespace WeilDefect
 noncomputable section
 open MeasureTheory Set Metric InnerProductSpace
-open scoped SchwartzMap
+open scoped SchwartzMap ComplexConjugate
 
 /-- A smaller rational buffer suffices for every previously eligible cell. -/
 def neutralIV106E18LWidth : ℝ := 11/3325
@@ -36,15 +36,24 @@ theorem neutralIV106E18LLog_bounds :
   have e3 : Real.log 3 = Real.log 2 + Real.log (3/2) := by
     rw [← Real.log_mul (by norm_num) (by norm_num)]; norm_num
   have e5 : Real.log 5 = 2*Real.log 2 + Real.log (5/4) := by
-    rw [← Real.log_pow, ← Real.log_mul (by norm_num) (by norm_num)]; norm_num
+    calc
+      Real.log 5 = Real.log ((2:ℝ)^2*(5/4)) := by norm_num
+      _ = Real.log ((2:ℝ)^2) + Real.log (5/4) := Real.log_mul (by norm_num) (by norm_num)
+      _ = _ := by rw [Real.log_pow]; norm_num
   have e7 : Real.log 7 = 2*Real.log 2 + Real.log (7/4) := by
-    rw [← Real.log_pow, ← Real.log_mul (by norm_num) (by norm_num)]; norm_num
+    calc
+      Real.log 7 = Real.log ((2:ℝ)^2*(7/4)) := by norm_num
+      _ = Real.log ((2:ℝ)^2) + Real.log (7/4) := Real.log_mul (by norm_num) (by norm_num)
+      _ = _ := by rw [Real.log_pow]; norm_num
   have e4 : Real.log 4 = 2*Real.log 2 := by
-    rw [← Real.log_pow]; norm_num
+    rw [show (4:ℝ) = 2^2 by norm_num, Real.log_pow]
+    norm_num
   have e8 : Real.log 8 = 3*Real.log 2 := by
-    rw [← Real.log_pow]; norm_num
+    rw [show (8:ℝ) = 2^3 by norm_num, Real.log_pow]
+    norm_num
   have e9 : Real.log 9 = 2*Real.log 3 := by
-    rw [← Real.log_pow]; norm_num
+    rw [show (9:ℝ) = 3^2 by norm_num, Real.log_pow]
+    norm_num
   rw [e4,e8,e9,e3,e5,e7]
   refine ⟨?_,?_,?_,?_,?_,?_,?_,?_,?_,?_,?_,?_,?_,?_⟩ <;>
     linarith only [l2,u2,l3,u3,l5,u5,l7,u7]

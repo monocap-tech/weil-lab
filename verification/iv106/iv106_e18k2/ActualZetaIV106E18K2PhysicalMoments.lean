@@ -17,8 +17,8 @@ theorem neutralIV106E18K2Poly_eq (h t : ℝ) :
 retains arbitrary rates, including those needed for the Gauss-series rows. -/
 theorem neutralIV106E18K2Affine (l h s : ℝ) (hh : 0 < h) :
     (∫ x in l..l+h, neutralIV106E18ITrial l h x * (Real.exp (s*x) : ℂ)) =
-      (h*Real.exp (s*l) : ℝ) *
-        ((∫ t in (0:ℝ)..1, Real.exp ((s*h)*t)*neutralIV106E18K1Poly h t) : ℂ) := by
+      Complex.ofReal (h*Real.exp (s*l)) *
+        Complex.ofReal (∫ t in (0:ℝ)..1, Real.exp ((s*h)*t)*neutralIV106E18K1Poly h t) := by
   let F : ℝ → ℂ := fun x => neutralIV106E18ITrial l h x * (Real.exp (s*x) : ℂ)
   have hchange :
       (∫ x in l..l+h, F x) = h • (∫ t in (0:ℝ)..1, F (h*t+l)) := by
@@ -43,8 +43,7 @@ theorem neutralIV106E18K2Affine (l h s : ℝ) (hh : 0 < h) :
     ring
   change (∫ x in l..l+h, F x) = _
   rw [hchange, he, intervalIntegral.integral_const_mul, intervalIntegral.integral_ofReal]
-  rw [Complex.real_smul]
-  push_cast
+  rw [Complex.real_smul, Complex.ofReal_mul]
   ring
 
 /-- The whole physical trial has the literal cell integral as its window moment.
@@ -52,8 +51,8 @@ No approximate moment correction is used for the trial itself. -/
 theorem neutralIV106E18K2Window_moment (a l h s : ℝ) (hh : 0 < h)
     (hwin : Set.Icc l (l+h) ⊆ Set.Icc (-a) a) :
     sourceWindowMoment a s ((neutralIV106E18JTrial_memLp l h hh).toLp _) =
-      (h*Real.exp (s*l) : ℝ) *
-        ((∫ t in (0:ℝ)..1, Real.exp ((s*h)*t)*neutralIV106E18K1Poly h t) : ℂ) := by
+      Complex.ofReal (h*Real.exp (s*l)) *
+        Complex.ofReal (∫ t in (0:ℝ)..1, Real.exp ((s*h)*t)*neutralIV106E18K1Poly h t) := by
   let f := neutralIV106E18ITrial l h
   let F : ℝ → ℂ := fun x => f x * (Real.exp (s*x) : ℂ)
   have he : sourceWindowMoment a s ((neutralIV106E18JTrial_memLp l h hh).toLp _) =

@@ -52,9 +52,12 @@ theorem neutralIV106E18TMass_correct
     change q x-m*ρ x = 0
     rw [hqout x hx, hρout x hx, mul_zero, sub_zero]
   · change (∫ x in A..B, q x-m*ρ x) = 0
-    rw [intervalIntegral.integral_sub (q.continuous.intervalIntegrable A B)
-      ((continuous_const.mul ρ.continuous).intervalIntegrable A B),
-      intervalIntegral.integral_const_mul, hρmass, mul_one]
+    have hi : IntervalIntegrable (fun x : ℝ => m * ρ x) volume A B := by
+      exact (continuous_const.mul ρ.continuous).intervalIntegrable A B
+    have he := intervalIntegral.integral_sub (q.continuous.intervalIntegrable A B) hi
+    change (∫ x in A..B, q x - m * ρ x) =
+      (∫ x in A..B, q x) - (∫ x in A..B, m * ρ x) at he
+    rw [he, intervalIntegral.integral_const_mul, hρmass, mul_one]
     exact sub_self m
   · intro x
     change ‖q x-m*ρ x-df x‖ ≤ _
