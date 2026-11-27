@@ -38,11 +38,11 @@ theorem shift_adjoint (a : ℝ) : (shift a).adjoint = shift (-a) := by
     simpa only [ContinuousLinearMap.comp_apply,ContinuousLinearMap.one_apply,neg_neg]
       using shift_inverse (-a) f
   calc
-    (shift a).adjoint = (shift a).adjoint ∘L ((shift a) ∘L shift (-a)) := by rw [hi]; simp
+    (shift a).adjoint = (shift a).adjoint ∘L ((shift a) ∘L shift (-a)) := by rw [hi]; ext f : 1; rfl
     _ = ((shift a).adjoint ∘L shift a) ∘L shift (-a) := by
       ext f : 1
       rfl
-    _ = shift (-a) := by rw [h]; simp
+    _ = shift (-a) := by rw [h]; ext f : 1; rfl
 
 noncomputable def shiftPair (a : ℝ) : FullL2 →L[ℂ] FullL2 :=
   shift a + shift (-a)
@@ -82,7 +82,7 @@ theorem prime_selfAdjoint (t : ℝ) :
     induction primeBank t using Finset.induction_on with
     | empty => simp
     | @insert n S hn ih =>
-      simp [Finset.sum_insert hn,ih,shiftPair_selfAdjoint,Complex.conj_ofReal]
+      rw [Finset.sum_insert hn,map_add,ih,map_smulₛₗ,Complex.conj_ofReal,shiftPair_selfAdjoint]
   unfold primeOperator
   rw [ContinuousLinearMap.adjoint_comp,ContinuousLinearMap.adjoint_comp,
     ContinuousLinearMap.adjoint_adjoint,h]
@@ -97,6 +97,7 @@ theorem shift_autocorr (a : ℝ) (u : FullL2) (f : ℝ → ℂ)
   rw [convolution_def]
   apply integral_congr_ae
   filter_upwards [shift_ae a u,hae,V06D.ae_translate hae a] with x hx hy hz
+  rw [RCLike.inner_apply']
   change conj (shift a u x)*u x = f x*conj (f (-(-a-x)))
   rw [hx,hy,hz]
   rw [show -(-a-x) = x+a by ring,mul_comm]
