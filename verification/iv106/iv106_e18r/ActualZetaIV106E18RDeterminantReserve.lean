@@ -25,7 +25,7 @@ theorem neutralIV106E18RReserve (k : ℕ) (W X Y : ℕ → ℝ)
       (neutralIV106E18POrient k*(neutralIV106E18PPartial k N W X Y).det))
       atTop (𝓝 ((Nat.factorial k:ℝ)*(neutralIV106E18POrient k*A.det))) :=
     tendsto_const_nhds.mul (tendsto_const_nhds.mul hd)
-  exact le_of_tendsto hlim (eventually_atTop.mpr ⟨k+1,fun N hN =>
+  exact ge_of_tendsto hlim (eventually_atTop.mpr ⟨k+1,fun N hN =>
     neutralIV106E18PFixed_lower k N W X Y hw hx hy hN⟩)
 
 theorem neutralIV106E18RLiteral_reserve (k : ℕ) (hk : 0 < k) (hk34 : k ≤ 34) :
