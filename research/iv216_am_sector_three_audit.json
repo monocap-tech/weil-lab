@@ -1,0 +1,48 @@
+{
+  "artifact_id": 15165475218,
+  "run_id": 45919346558,
+  "archive_bytes": 569743,
+  "sha256": "214c93321db7b94e02f69b96d1cc32e660d3834333bf9e1a8b2b8010098bc697",
+  "zip_entries": 331,
+  "modules": 81,
+  "hashes_verified": 324,
+  "named_sector_receipts": 145,
+  "dictionary_receipts": [
+    "neutralIV162Exp_four_bounds",
+    "neutralIV162Prime_range",
+    "neutralIV162Census",
+    "neutralIV162Prime_bank",
+    "neutralIV162Prime_count",
+    "neutralIV191Correlation",
+    "neutralIV162Prime_literal",
+    "neutralIV157Dictionary",
+    "neutralIV157Mixed_identity",
+    "neutralIV157Original_prime_bound",
+    "neutralIV160Full_rows",
+    "neutralIV160Original_bound"
+  ],
+  "axiom_free_leaf_receipts": 128,
+  "internal_import_edges": 80,
+  "block_interval": [
+    384,
+    512
+  ],
+  "row_interval": [
+    3072,
+    4096
+  ],
+  "total_seconds": 870.9686528380012,
+  "median_leaf_seconds": 12.0522649374999,
+  "median_leaf_rss_gib": 7.540531158447266,
+  "max_leaf_rss_gib": 7.634944915771484,
+  "olean_bytes": 1200704,
+  "sector_object_sha256": "a293d58f7a63e0d40c40f88b27bff54d0d165d60e1a2c9ae8b22032bb6118b45",
+  "exact_audit_sha256": "57109c0a6475c0890dcae3c9dd5f3e2b68deb1aeb38c947f9376d58fc4d2c52f",
+  "exact_audit_byte_identical_to": [
+    "iv163-importable-receipts.zip",
+    "iv169-sector-zero-receipts.zip",
+    "iv171-sector-one-receipts.zip",
+    "iv191-sector-two-receipts.zip"
+  ],
+  "scope": "ZIP CRC, SHA256, manifest hashes, source coverage and import edges, recorded axiom outputs; no fresh kernel import or compilation"
+}
