@@ -29,8 +29,7 @@ def neutralIV106E18UGraphCore (A B : ℝ) :
     · change (_,_) =
         (SchwartzMap.toLpCLM ℂ ℂ 2 volume (s+t),
           SchwartzMap.toLpCLM ℂ ℂ 2 volume (SchwartzMap.derivCLM ℂ ℂ (s+t)))
-      simp only [map_add]
-      rfl
+      simp only [map_add] <;> rfl
   smul_mem' := by
     rintro z v ⟨s,hs,rfl⟩
     refine ⟨z • s, ?_, ?_⟩
@@ -40,8 +39,7 @@ def neutralIV106E18UGraphCore (A B : ℝ) :
     · change (_,_) =
         (SchwartzMap.toLpCLM ℂ ℂ 2 volume (z • s),
           SchwartzMap.toLpCLM ℂ ℂ 2 volume (SchwartzMap.derivCLM ℂ ℂ (z • s)))
-      simp only [map_smul]
-      rfl
+      simp only [map_smul] <;> rfl
 
 abbrev neutralIV106E18UGraphSpace (A B : ℝ) :=
   (neutralIV106E18UGraphCore A B).topologicalClosure
