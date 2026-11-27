@@ -1,0 +1,368 @@
+{
+  "date": "2026-11-26 Pacific",
+  "parent": "98174cc17783bd3096652f1a2aa3560677c712b9",
+  "tree_not_truncated": true,
+  "checked_inputs": {
+    "E19S": 18,
+    "E19T1": 7
+  },
+  "native_runs": [
+    {
+      "run": 45919503303,
+      "job": 140246592649,
+      "artifacts": [
+        {
+          "id": 15164111513,
+          "name": "iv106-e18p-determinant-transfer-evidence",
+          "size_in_bytes": 137723,
+          "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15164111513",
+          "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15164111513/zip",
+          "expired": false,
+          "created_at": "2026-11-27T00:56:52Z",
+          "expires_at": "2027-02-25T00:54:42Z",
+          "updated_at": "2026-11-27T00:56:52Z",
+          "digest": "sha256:7b538e43bede13755f204dc19490263e506c3068cc045d0136922182512da1ca",
+          "workflow_run": {
+            "id": 45919503303,
+            "repository_id": 1384322921,
+            "head_repository_id": 1384322921,
+            "head_branch": "formalization/iv106-e18p-determinant-transfer",
+            "head_sha": "95343708d945744b61625df1ee91dd731e3adcc2"
+          }
+        }
+      ],
+      "log_excerpt": [
+        "2026-11-27T00:56:47.2783342Z info: WeilDefect/Arithmetic/ActualZetaIV106E18PDeterminantTransfer.lean:225:0: 'WeilDefect.neutralIV106E18PPartial_formula' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:56:47.2785102Z info: WeilDefect/Arithmetic/ActualZetaIV106E18PDeterminantTransfer.lean:226:0: 'WeilDefect.neutralIV106E18PFixed_lower' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:56:47.2786814Z info: WeilDefect/Arithmetic/ActualZetaIV106E18PDeterminantTransfer.lean:227:0: 'WeilDefect.neutralIV106E18PInfinite' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:56:47.2788842Z info: WeilDefect/Arithmetic/ActualZetaIV106E18PDeterminantTransfer.lean:228:0: 'WeilDefect.neutralIV106E18PRank' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:56:47.2843274Z Build completed successfully (8924 jobs).",
+        "2026-11-27T00:56:51.4971412Z 'WeilDefect.neutralIV106E18PExpansion' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:56:51.4993683Z 'WeilDefect.neutralIV106E18PTuple' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:56:51.4994849Z 'WeilDefect.neutralIV106E18POrient_ne' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:56:51.4995972Z 'WeilDefect.neutralIV106E18PPair' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:56:51.4997129Z 'WeilDefect.neutralIV106E18PMinor_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:56:51.4998393Z 'WeilDefect.neutralIV106E18PMinor_pos' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:56:51.4999702Z 'WeilDefect.neutralIV106E18PPartial_formula' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:56:51.5000999Z 'WeilDefect.neutralIV106E18PFixed_lower' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:56:51.5002170Z 'WeilDefect.neutralIV106E18PInfinite' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:56:51.5003483Z 'WeilDefect.neutralIV106E18PRank' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:56:51.5713381Z IV106-E18P strict named axioms PASS 10/10"
+      ]
+    },
+    {
+      "run": 45918048633,
+      "job": 140241910755,
+      "artifacts": [
+        {
+          "id": 15163418166,
+          "name": "iv106-e18m-plateau-mass-evidence",
+          "size_in_bytes": 204344,
+          "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15163418166",
+          "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15163418166/zip",
+          "expired": false,
+          "created_at": "2026-11-27T00:56:00Z",
+          "expires_at": "2027-02-25T00:40:02Z",
+          "updated_at": "2026-11-27T00:56:00Z",
+          "digest": "sha256:a444d4c290edf781d5c788ebb6ea5a53d94b6009e7ef985de98236139d9fb20d",
+          "workflow_run": {
+            "id": 45918048633,
+            "repository_id": 1384322921,
+            "head_repository_id": 1384322921,
+            "head_branch": "formalization/iv106-e18m-plateau-mass",
+            "head_sha": "56c14e642eb53b56ad9f7f7724b25ff2ac9cb5ec"
+          }
+        }
+      ],
+      "log_excerpt": [
+        "2026-11-27T00:55:54.7302266Z info: WeilDefect/Arithmetic/ActualZetaIV106E18MPlateauMass.lean:168:0: 'WeilDefect.neutralIV106E18MProfile_weight_pos' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:55:54.7303576Z info: WeilDefect/Arithmetic/ActualZetaIV106E18MPlateauMass.lean:169:0: 'WeilDefect.neutralIV106E18MProfile_weight_translate' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:55:54.7367337Z Build completed successfully (9272 jobs).",
+        "2026-11-27T00:55:59.1342574Z 'WeilDefect.neutralIV106E18MBox_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:55:59.1366161Z 'WeilDefect.neutralIV106E18MBox_mass' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:55:59.1367046Z 'WeilDefect.neutralIV106E18MPlateau_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:55:59.1367982Z 'WeilDefect.neutralIV106E18MPlateau_convolution' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:55:59.1368886Z 'WeilDefect.neutralIV106E18MPlateau_mass' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:55:59.1369433Z 'WeilDefect.neutralIV106E18MCarrier_real' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:55:59.1369971Z 'WeilDefect.neutralIV106E18MProfile_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:55:59.1370504Z 'WeilDefect.neutralIV106E18MProfile_mass' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:55:59.1371031Z 'WeilDefect.neutralIV106E18MProfile_translate' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:55:59.1371579Z 'WeilDefect.neutralIV106E18MProfile_compact' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:55:59.1372123Z 'WeilDefect.neutralIV106E18MProfile_weight_pos' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:55:59.1372689Z 'WeilDefect.neutralIV106E18MProfile_weight_translate' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-27T00:55:59.3970666Z IV106-E18M strict named axioms PASS 12/12"
+      ]
+    },
+    {
+      "run": 45928752861,
+      "job": 140276215641,
+      "artifacts": [
+        {
+          "id": 15168591466,
+          "name": "iv106-e18x-consolidated-transport-evidence",
+          "size_in_bytes": 150932,
+          "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15168591466",
+          "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15168591466/zip",
+          "expired": false,
+          "created_at": "2026-11-27T02:47:52Z",
+          "expires_at": "2027-02-25T02:30:42Z",
+          "updated_at": "2026-11-27T02:47:52Z",
+          "digest": "sha256:67d808a3be88325c87f6274dfd9122550429d44d9a84246bb0ca011a3abdbf24",
+          "workflow_run": {
+            "id": 45928752861,
+            "repository_id": 1384322921,
+            "head_repository_id": 1384322921,
+            "head_branch": "formalization/iv106-e18x-consolidated-transport",
+            "head_sha": "d351854d66774bd72596b855c5117d50b2a85785"
+          }
+        }
+      ],
+      "log_excerpt": [
+        "2026-11-27T02:31:20.5666025Z \u001b[36;1mprint('PRECHECK PASS: 35 exact blobs, 11 target modules, 45 named declarations')\u001b[0m",
+        "2026-11-27T02:31:20.8704471Z PRECHECK PASS: 35 exact blobs, 11 target modules, 45 named declarations",
+        "2026-11-27T02:47:50.7213089Z error: WeilDefect/Arithmetic/ActualZetaIV106E18K2PhysicalMoments.lean:21:81: unsolved goals",
+        "2026-11-27T02:47:50.7220751Z error: WeilDefect/Arithmetic/ActualZetaIV106E18K2PhysicalMoments.lean:82:4: Tactic `rewrite` failed: Did not find an occurrence of the pattern",
+        "2026-11-27T02:47:50.7227300Z info: WeilDefect/Arithmetic/ActualZetaIV106E18K2PhysicalMoments.lean:121:0: 'WeilDefect.neutralIV106E18K2Affine' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+        "2026-11-27T02:47:50.7228943Z info: WeilDefect/Arithmetic/ActualZetaIV106E18K2PhysicalMoments.lean:122:0: 'WeilDefect.neutralIV106E18K2Window_moment' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+        "2026-11-27T02:47:50.7230684Z info: WeilDefect/Arithmetic/ActualZetaIV106E18K2PhysicalMoments.lean:123:0: 'WeilDefect.neutralIV106E18K2Moment_zero' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+        "2026-11-27T02:47:50.7232296Z info: WeilDefect/Arithmetic/ActualZetaIV106E18K2PhysicalMoments.lean:124:0: 'WeilDefect.neutralIV106E18K2Both_moments' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+        "2026-11-27T02:47:50.7233949Z info: WeilDefect/Arithmetic/ActualZetaIV106E18K2PhysicalMoments.lean:125:0: 'WeilDefect.neutralIV106E18K2Trial_response' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+        "2026-11-27T02:47:50.9202159Z error: build failed",
+        "2026-11-27T02:47:50.9717967Z ##[error]Process completed with exit code 1."
+      ]
+    }
+  ],
+  "note": "Selected raw log lines and artifact metadata; not full archives. Historical ledger not reconstructed.",
+  "files": [
+    {
+      "path": "verification/iv106/iv106_e19n/ActualZetaIV106E19NExteriorDensity.lean",
+      "sha": "693ed04fcd94954608731c38e61ef630f8eb3601",
+      "size": 1354
+    },
+    {
+      "path": "verification/iv106/iv106_e19n/pilot_receipt.json",
+      "sha": "d466177171d07111e82c19292df2ee6ff4d860e9",
+      "size": 661
+    },
+    {
+      "path": "verification/iv106/iv106_e19n/row_pilot.json",
+      "sha": "5ed4e8bc1993eb738b366adb6ac746b4d2a2bd36",
+      "size": 19745
+    },
+    {
+      "path": "verification/iv106/iv106_e19n/row_pilot.npz",
+      "sha": "a9a06f1f8893327f02a9db846307eb92f3994338",
+      "size": 8094
+    },
+    {
+      "path": "verification/iv106/iv106_e19n/row_pilot.py",
+      "sha": "27647d78e17dcfd2510586dbccbbb8bb3e3bebf9",
+      "size": 2696
+    },
+    {
+      "path": "verification/iv106/iv106_e19n/row_pilot_original.py",
+      "sha": "83b9e3f4624ee1c9dcdb4b0f973f5fcdc3d41c2f",
+      "size": 3580
+    },
+    {
+      "path": "verification/iv106/iv106_e19o/certificate.json",
+      "sha": "f278ca638046779a9879e1efbee99fef067f3903",
+      "size": 604
+    },
+    {
+      "path": "verification/iv106/iv106_e19o/certify_row.py",
+      "sha": "8c8808307f24bbea0bd52b8c6f61fb951f521cea",
+      "size": 6201
+    },
+    {
+      "path": "verification/iv106/iv106_e19o/finite_band_enclosure.md",
+      "sha": "0934f9ac39e9c82e815a95d1a22d33a9cfd54b20",
+      "size": 2973
+    },
+    {
+      "path": "verification/iv106/iv106_e19p/ActualZetaIV106E19PStepAdmission.lean",
+      "sha": "22ac6686a6156aa023efa950f83a12ecf3c62fbb",
+      "size": 4103
+    },
+    {
+      "path": "verification/iv106/iv106_e19p/bank_certificate.json",
+      "sha": "095853546e4b41c4267a4673267d7f7160178ffd",
+      "size": 262710
+    },
+    {
+      "path": "verification/iv106/iv106_e19p/certify_bank.py",
+      "sha": "dee83fd8ebe1b0496c35656de424907d01e0f4d6",
+      "size": 7111
+    },
+    {
+      "path": "verification/iv106/iv106_e19p/row_bank.npz",
+      "sha": "829f9bd348f51d6884e0d27cacdbad991b902a5b",
+      "size": 2238992
+    },
+    {
+      "path": "verification/iv106/iv106_e19p/row_bank_receipt.json",
+      "sha": "665dbd115fb35f289cc193f79e3451de5dbd767e",
+      "size": 212443
+    },
+    {
+      "path": "verification/iv106/iv106_e19p/scale_rows.py",
+      "sha": "ab451b55cea4908e00475ec206f34dee5519f806",
+      "size": 3050
+    },
+    {
+      "path": "verification/iv106/iv106_e19p/shared_contraction_receipt.md",
+      "sha": "ecac6981026e12939e71297676bf5b8b2124904a",
+      "size": 3406
+    },
+    {
+      "path": "verification/iv106/iv106_e19q/ActualZetaIV106E19QJointRowError.lean",
+      "sha": "ffca4c6ae3bf895375dda800ab03c638c1b93fa4",
+      "size": 2801
+    },
+    {
+      "path": "verification/iv106/iv106_e19q/joint.py",
+      "sha": "3c1fa0430129d962b866715ca7c13dcc0b66727e",
+      "size": 6732
+    },
+    {
+      "path": "verification/iv106/iv106_e19q/joint_certificate.json",
+      "sha": "91d099590ed63d7fbc1fdc32f1bed248cccf259f",
+      "size": 1015
+    },
+    {
+      "path": "verification/iv106/iv106_e19q/joint_contraction_receipt.md",
+      "sha": "12e5122c2217e7e631ee9b21e9382ecbe248f829",
+      "size": 2904
+    },
+    {
+      "path": "verification/iv106/iv106_e19q/joint_initial.py",
+      "sha": "dd71b228ecbc772cd621177125a1019f9457f1c2",
+      "size": 6419
+    },
+    {
+      "path": "verification/iv106/iv106_e19q/joint_matrix.npz",
+      "sha": "cdcb932d2044c6680ff7075c7c9dff5e883ff18c",
+      "size": 2689684
+    },
+    {
+      "path": "verification/iv106/iv106_e19q/run.log",
+      "sha": "24a3adb4a595f2bd3fbe33f7883d2c7b550af8a1",
+      "size": 1356
+    },
+    {
+      "path": "verification/iv106/iv106_e19q/sha256.json",
+      "sha": "3ec99680c00e976a963438c4d227e1a547d1d73f",
+      "size": 713
+    },
+    {
+      "path": "verification/iv106/iv106_e19r/ActualZetaIV106E19RPackedReserve.lean",
+      "sha": "b4cd955617b6e59a2ee32e0cf157e291f76d3066",
+      "size": 4195
+    },
+    {
+      "path": "verification/iv106/iv106_e19r/remaining_certificate.json",
+      "sha": "a39cc35decd56980a5c29119e8fd5a7fd508c74f",
+      "size": 50129
+    },
+    {
+      "path": "verification/iv106/iv106_e19r/remaining_reserve_receipt.md",
+      "sha": "2cf25d6c59c6e2787f9f7e0df954bfc4779cd2ca",
+      "size": 2968
+    },
+    {
+      "path": "verification/iv106/iv106_e19r/remaining_reserves.py",
+      "sha": "ce022d34270bb0c3d3bf283a8c7cd835ca2e2b8a",
+      "size": 5702
+    },
+    {
+      "path": "verification/iv106/iv106_e19s/custody_manifest.json",
+      "sha": "cbe8a6d9bc70697f120c97e000293cedc51372db",
+      "size": 4899
+    },
+    {
+      "path": "verification/iv106/iv106_e19s/replay_all.py",
+      "sha": "1a6730c2a7dab2aec3e5bd92e62f1e5c0ee70c84",
+      "size": 1444
+    },
+    {
+      "path": "verification/iv106/iv106_e19t/README.md",
+      "sha": "6e4e0390df863c6b3917230610ba21956b7a854f",
+      "size": 1603
+    },
+    {
+      "path": "verification/iv106/iv106_e19t/coeff_1330_128_0.npy",
+      "sha": "177faa4d6bd50b496126090d07a0f8f216825e7a",
+      "size": 12816
+    },
+    {
+      "path": "verification/iv106/iv106_e19t/coeff_1330_128_1.npy",
+      "sha": "2142501d3f46eaf1734b512c6f7aa829b47a7c94",
+      "size": 12808
+    },
+    {
+      "path": "verification/iv106/iv106_e19t/coeff_1330_256_0.npy",
+      "sha": "f61f44de40bb145f1f22c1f5125fa04616bbb282",
+      "size": 14864
+    },
+    {
+      "path": "verification/iv106/iv106_e19t/coeff_1330_256_1.npy",
+      "sha": "0cb402e42cf352838d2928c0d47238a432d98219",
+      "size": 14856
+    },
+    {
+      "path": "verification/iv106/iv106_e19t/coeff_2660_256_0.npy",
+      "sha": "2e2202b3f2d9ad2660f6fc8b88774b9f34dd47f8",
+      "size": 25504
+    },
+    {
+      "path": "verification/iv106/iv106_e19t/coeff_665_64_0.npy",
+      "sha": "5c21561365472f29b6e4c75838478579c80777c9",
+      "size": 6472
+    },
+    {
+      "path": "verification/iv106/iv106_e19t/coeff_665_64_1.npy",
+      "sha": "f1d7f3cf44d0eabd6d5a6f25eae76059850b98ca",
+      "size": 6464
+    },
+    {
+      "path": "verification/iv106/iv106_e19t/freeze_local.py",
+      "sha": "f888e4c567969ea6c776e99213d8edf250b0222e",
+      "size": 2270
+    },
+    {
+      "path": "verification/iv106/iv106_e19t/freeze_manifest.json",
+      "sha": "4c42fdc029c03be62842f8faa4b0276852061470",
+      "size": 2446
+    },
+    {
+      "path": "verification/iv106/iv106_e19t/pilot.py",
+      "sha": "634f8dfc2cb7c7f293621181fb9d12745f0853dc",
+      "size": 2198
+    },
+    {
+      "path": "verification/iv106/iv106_e19t/pilot_result.json",
+      "sha": "5cdbd41595a3af979800fedba806a7b3028cd0c2",
+      "size": 2704
+    },
+    {
+      "path": "verification/iv106/iv106_e19t/verify_freeze.py",
+      "sha": "686d2e4f72db52e1b937a80c8fc55b4a46d8ea4c",
+      "size": 776
+    },
+    {
+      "path": "verification/iv106/iv106_e19u/README.md",
+      "sha": "c9fe86169b6de5dc909750266ccbe06a9efdbea3",
+      "size": 2420
+    },
+    {
+      "path": "verification/iv106/iv106_e19u/certificate.json",
+      "sha": "d24557547db58aa8928c0c0c783804cc53df39aa",
+      "size": 1747
+    },
+    {
+      "path": "verification/iv106/iv106_e19u/certify.mjs",
+      "sha": "5166fc953e8c19f02358262596ac51c6689f7235",
+      "size": 7675
+    }
+  ]
+}
