@@ -142,7 +142,10 @@ theorem floor_split (s : ℂ) (hs : 1 < s.re) :
     integrableOn_Ioi_cpow_of_lt (by simp; linarith) (by norm_num)
   have hP := (power_integrable s (by linarith)).const_mul (1/2:ℂ)
   unfold J
-  rw [← integral_const_mul,← integral_add hJ hX,← integral_sub (hJ.add hX) hP]
+  rw [← integral_const_mul,← integral_add hJ hX]
+  have heq := integral_sub (hJ.add hX) hP
+  change (∫ x in Ioi (1:ℝ), ((x:ℂ)^(-(s+1))*remainder x+(x:ℂ)^(-s))-1/2*(x:ℂ)^(-(s+1))) = _ at heq
+  rw [← heq]
   apply setIntegral_congr_fun measurableSet_Ioi
   intro x hx
   have hx0 : (x:ℂ) ≠ 0 := by exact_mod_cast (by linarith [show 1 < x from hx] : x ≠ 0)
@@ -167,6 +170,8 @@ theorem euler_on_convergence (s : ℂ) (hs : 1 < s.re) :
   simp only [Complex.ofReal_one,Complex.one_cpow]
   have hs' : 1-s ≠ 0 := sub_ne_zero.mpr hs1.symm
   have hs'' : s-1 ≠ 0 := sub_ne_zero.mpr hs1
+  rw [show -s+1 = 1-s by ring,show -(s+1)+1 = -s by ring]
+  simp only [neg_div,inv_neg,div_neg]
   field_simp [hs0,hs',hs'']
   <;> ring
 
@@ -206,7 +211,7 @@ theorem poleRemoved_eq (s : ℂ) (hs : 0 < s.re) :
     rw [euler_on_convergence z hz] at h
     unfold poleRemovedEuler
     field_simp at h ⊢
-    linear_combination 2*h
+    linear_combination -h
   exact (poleRemovedEuler_analytic.eqOn_of_preconnected_of_eventuallyEq
     (fun z _ => (differentiable_riemannZeta₁.analyticAt z)) hconv.isPreconnected
     (by norm_num [halfPlane] : (2:ℂ) ∈ halfPlane) he) hs
