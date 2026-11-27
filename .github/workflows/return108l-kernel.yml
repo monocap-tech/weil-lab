@@ -1,0 +1,57 @@
+name: RETURN108-L kernel receivers
+on:
+  push:
+    branches: [research/return108k-abstract-kernel-staging]
+    paths:
+      - "WeilDefect/MasterReturn/KernelCompleteness.lean"
+      - ".github/workflows/return108l-kernel.yml"
+permissions:
+  contents: read
+jobs:
+  kernel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Source preflight
+        run: |
+          git rev-parse HEAD
+          git hash-object WeilDefect/MasterReturn/KernelCompleteness.lean
+          test "$(git hash-object WeilDefect/MasterReturn/KernelCompleteness.lean)" = 5661627b07544ca200aac74811292e8debb2dff3
+      - name: Install Elan
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned dependencies
+        run: lake update
+      - name: Fetch mathlib cache
+        run: lake exe cache get
+      - name: Compile and strict named axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/MasterReturn/KernelCompleteness.lean 2>&1 | tee return108l-lean.log
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          s = Path("return108l-lean.log").read_text()
+          names = ["finiteDimensional_of_compact_fixed","fullKernel_finite_of_compactSigned","independent_of_vandermonde_observations","zero_of_arbitrarily_large_kernel_banks","fullSample_zero_of_enlarged_compact"]
+          allowed = {"propext","Classical.choice","Quot.sound"}
+          for name in names:
+              q = "WeilDefect.MasterReturn.KernelCompleteness." + name
+              m = re.search(r"'" + re.escape(q) + r"' depends on axioms: \[([^\]]*)\]", s)
+              if m is None:
+                  if f"'{q}' does not depend on any axioms" not in s:
+                      raise SystemExit("Missing axiom audit: " + q)
+              else:
+                  axioms = {x.strip() for x in m.group(1).split(",") if x.strip()}
+                  if not axioms <= allowed:
+                      raise SystemExit(f"Unexpected axioms for {q}: {axioms - allowed}")
+              print("PASS", q)
+          print("RETURN108-L strict axiom audit PASS 5/5")
+          PY
+      - name: Preserve compiler evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: return108l-lean
+          path: return108l-lean.log
