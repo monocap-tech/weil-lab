@@ -1,0 +1,22 @@
+{
+  "matrix_checkpoint_sha256": "17a47731f466e099e58804466f18f164f1511e27200d025343e62f1aaa16711d",
+  "full_receipt_sha256": "2218181bd75b73d261447d9bbf96d6ee7fa5818802f1b809659cbbaff87e4c57",
+  "vector_denominator": "1099511627776",
+  "vector_norm_squared_numerator": "1208925819614246402103066",
+  "form_scale_denominator": "1393796574908163946345982392040522594123776",
+  "combined_center_numerator": "-13098955299112665266982154264537809083904702",
+  "combined_radius_numerator": "7771106975082205804686586138322387189660048",
+  "combined_upper_numerator": "-5327848324030459462295568126215421894244654",
+  "trial_center_numerator": "1389195297335605791862121663708154233627974",
+  "trial_radius_numerator": "308050461166987320666098268963802566461",
+  "finite_tail_center_numerator": "16009005103975661027188633939289236293951160",
+  "finite_tail_radius_numerator": "178866451586592305743432984259720220",
+  "variational_inverse_center_numerator": "12967296088920880972465049700450237362707908",
+  "variational_inverse_radius_numerator": "15541595817562628859254109954232699921403768",
+  "separate_receiver_upper_numerator": "-10655698500873915995441692418119553403146210",
+  "separate_receiver_denominator": "2787593149816327892691964784081045188247552",
+  "tail_only_receiver_upper_numerator": "-13229998229515663882230752671902015961842070",
+  "tail_only_receiver_denominator": "2787593149816327892691964784081045188247552",
+  "tail_only_upper_lt": "-237/50",
+  "classification": "Negative fixed three-channel sufficient receiver, not original Schur negativity. Full rational vector is in bundled witness audit."
+}

@@ -1,0 +1,53 @@
+{
+  "parent": "ae6dc2a67d7f7eb553cceef81207002e6d772e34",
+  "archive": {
+    "bytes": 47186,
+    "sha256": "377e3153195ea59302220a3fbd66a1ad547af334903fc6453e09a18ffa25ac57",
+    "git_blob": "dfa63d40d55355cd4bb7f2fae897440b385caa38",
+    "parts": [
+      {
+        "path": "iv261_execution_bundle.part00",
+        "bytes": 11000,
+        "git_blob": "448e14358700af5288f85d051e21562b540add4b",
+        "sha256": "1ee4f805d0020381a335fe1217ce5702668b8b16f8d4e233d478945897490c60"
+      },
+      {
+        "path": "iv261_execution_bundle.part01",
+        "bytes": 11000,
+        "git_blob": "62a6eadd3791b7086cd322efe33a27be3138c1ba",
+        "sha256": "d63c2dafbae7e0204449caa5047113d5d599bcbbbd85ded1878abf5206115827"
+      },
+      {
+        "path": "iv261_execution_bundle.part02",
+        "bytes": 11000,
+        "git_blob": "5b6ba3737daa7dd08365a5a5ac18eb5cc6ce6d46",
+        "sha256": "b3ba7dd4b2a4703d39b21ffbb8124ce2d9b0c89f724f0cb1a46f5e98d0ac69d9"
+      },
+      {
+        "path": "iv261_execution_bundle.part03",
+        "bytes": 11000,
+        "git_blob": "236da284fa4655c8c9bb93d72d7582ff5426bceb",
+        "sha256": "1777cf9a13b2beee26de28336abb655cfb8c96321da228907efafcd2a2e14ede"
+      },
+      {
+        "path": "iv261_execution_bundle.part04",
+        "bytes": 3186,
+        "git_blob": "851cd8c46a1b186221069904b854b821a80374e1",
+        "sha256": "4437ff0bf1ff8ee2a1601610d70fd36254dd47a5e240490ef72ffcca9c9758ce"
+      }
+    ]
+  },
+  "internal_manifest": "iv261_manifest.json",
+  "dependencies": {
+    "iv254_intermediate_py": "d2671f69193ef70515546a91fbb95cb6166cd2b7",
+    "iv256_factor_sha256": "aff3ad547832c8985e975577e70fbc114346b53c60c469bdabaa71751826a254",
+    "iv260_joint_checkpoint_sha256": "a5912611d98db8ea0c50a000e4497d5960257a567d55bfdabc9512a743a811a0",
+    "iv260_joint_json_git_blob": "93ded854f86f6d4067be11083bc7c14a2b6cf908",
+    "iv260_digest_json_git_blob": "ec811065bb376e7f7fe3ceeaa4077f95e6be1a5c"
+  },
+  "regenerable_checkpoints": {
+    "signed_channels_sha256": "690b55721ac715651c42b5762a838c60d92870488dd0a987a2cc4751c3ff1573",
+    "mixed_checkpoint_sha256": "3406a5aca9f4f23af962484b3f5123f0b0e06e12e0c451a32ea33f3b7bfc6393",
+    "inverse_matrices_sha256": "17a47731f466e099e58804466f18f164f1511e27200d025343e62f1aaa16711d"
+  }
+}
