@@ -59,8 +59,13 @@ theorem neutralIV106E18JIndicator_memLp (c R : ℝ) :
   have hm : MeasurableSet (closedBall c R) := measurableSet_closedBall
   apply (memLp_two_iff_integrable_sq_norm
     (aestronglyMeasurable_const.indicator hm)).mpr
-  have hi : IntegrableOn (fun _ : ℝ => (1:ℝ)) (closedBall c R) volume :=
-    continuous_const.integrableOn_isCompact (isCompact_closedBall _ _)
+  have he : closedBall c R = Icc (c-R) (c+R) := by
+    ext x
+    rw [mem_closedBall,Real.dist_eq,abs_le,mem_Icc]
+    constructor <;> intro h <;> constructor <;> linarith [h.1,h.2]
+  have hi : IntegrableOn (fun _ : ℝ => (1:ℝ)) (closedBall c R) volume := by
+    rw [he]
+    exact continuous_const.integrableOn_Icc
   apply (hi.integrable_indicator hm).congr
   filter_upwards [] with x
   by_cases hx : x ∈ closedBall c R <;> simp [hx]
@@ -181,15 +186,14 @@ theorem neutralIV106E18JResponse (k : ℕ) (hk : 0 < k) (i : Fin k)
     hf.integrable_of_hasCompactSupport
       (HasCompactSupport.intro (K := closedBall c r) (isCompact_closedBall _ _) hs)
   change inner ℂ (neutralIV105CResponse k hk i) (q : RealComplexL2) = _
-  apply neutralIV106E18HResponse_rough k hk i hδ
+  refine neutralIV106E18HResponse_rough k hk i hδ
     (neutralIV106E18JSpace c R) (neutralIV106E18JLocalCore c R)
-    (neutralIV106E18JLocal_dense c R) _ q hm f hfi hf2.coeFn_toLp
-  · intro v hv
+    (neutralIV106E18JLocal_dense c R) (fun v hv => ?_) q hm f hfi hf2.coeFn_toLp
+    (fun x hx => hfout x (fun h => hx (hwin h))) ?_
+  · change (v : RealComplexL2) ∈ neutralIV106E18JCore c R at hv
     obtain ⟨s,hs',he⟩ := hv
     obtain ⟨hw,ho,hg,hp⟩ := hgeom s hs'
     exact ⟨s,he,hw,ho,hg,hp⟩
-  · intro x hx
-    exact hfout x (fun h => hx (hwin h))
   · intro x y hx hy
     exact hgap x (by_contra fun h => hx (neutralIV106E18JCarrier_zero k hk i x h))
       y (by_contra fun h => hy (hfout y h))
