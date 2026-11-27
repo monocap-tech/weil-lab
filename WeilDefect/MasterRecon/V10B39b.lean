@@ -59,8 +59,10 @@ theorem project_sub (p : ℕ → ℝ → ℝ) (d : ℕ → ℝ)
   have he : (fun t => (f t-g t)*p j t) = fun t => f t*p j t-g t*p j t := by
     funext t
     ring
-  rw [he,intervalIntegral.integral_sub ((hf.mul (hp j)).intervalIntegrable 0 1)
-    ((hg.mul (hp j)).intervalIntegrable 0 1)]
+  have hi := intervalIntegral.integral_sub ((hf.mul (hp j)).intervalIntegrable 0 1)
+    ((hg.mul (hp j)).intervalIntegrable 0 1)
+  change (∫ t in (0:ℝ)..1, f t*p j t-g t*p j t) = _ at hi
+  rw [he,hi]
   ring
 
 theorem project_bound (p : ℕ → ℝ → ℝ) (d b : ℕ → ℝ)
@@ -80,6 +82,7 @@ theorem project_bound (p : ℕ → ℝ → ℝ) (d b : ℕ → ℝ)
           ((hf.mul (hp j)).abs.intervalIntegrable 0 1)
           (continuous_const.intervalIntegrable 0 1)
         intro t ht
+        change |f t*p j t| ≤ ε*b j
         rw [abs_mul]
         exact mul_le_mul (hfb t ht) (hpb j t ht) (abs_nonneg _) hε
       _ = _ := by simp
@@ -96,7 +99,7 @@ theorem project_bound (p : ℕ → ℝ → ℝ) (d b : ℕ → ℝ)
       calc
         _ ≤ (d j*(ε*b j))*b j :=
           mul_le_mul (mul_le_mul_of_nonneg_left (hi j) (hd j))
-            (hpb j x hx) (abs_nonneg _) (by positivity)
+            (hpb j x hx) (abs_nonneg _) (mul_nonneg (hd j) (mul_nonneg hε (hb j)))
         _ = _ := by ring
     _ = _ := by rw [Finset.mul_sum]
 
