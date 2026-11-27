@@ -64,21 +64,21 @@ theorem neutralIV106E18UTrial_graph
     filter_upwards [hw] with x hx
     rw [hx]
     by_cases hi : x ∈ I
-    · simpa [Set.indicator_of_mem hi] using hf x
+    · simpa [hi] using hf x
     · have hout : x ∉ Icc A B := by rwa [← hI]
       rw [hs x hout,neutralIV106E18ITrial_outside l h hh x
         (fun hm => hout (hsmall hm))]
-      simp [Set.indicator_of_notMem hi]
+      simp [hi]
   have hdb : ∀ᵐ x ∂volume,
       ‖SchwartzMap.derivCLM ℂ ℂ s x-neutralIV106E18SDTrial l h x‖ ≤ (η*C)*‖W x‖ := by
     filter_upwards [hw] with x hx
     rw [hx]
     by_cases hi : x ∈ I
-    · simpa [Set.indicator_of_mem hi] using hd x
+    · simpa [hi] using hd x
     · have hout : x ∉ Icc A B := by rwa [← hI]
       rw [neutralIV106E18UDeriv_outside s A B hs x hout,
         neutralIV106E18SDTrial_outside l h hh x (fun hm => hout (hsmall hm))]
-      simp [Set.indicator_of_notMem hi]
+      simp [hi]
   have hfn := neutralIV106E18IL2_error _ (neutralIV106E18JTrial_memLp l h hh)
     s W (η*C*L) hfb
   have hdn := neutralIV106E18IL2_error _ (neutralIV106E18SDTrial_memLp l h hh)
@@ -99,7 +99,8 @@ theorem neutralIV106E18UTrial_graph
     ⟨s,hs,rfl⟩,?_⟩
   rw [dist_comm]
   change max (dist (s.toLp 2 volume) _) (dist ((SchwartzMap.derivCLM ℂ ℂ s).toLp 2 volume) _) < δ
-  rw [max_lt_iff,dist_eq_norm,dist_eq_norm]
+  rw [max_lt_iff]
+  simp only [dist_eq_norm]
   exact ⟨hfn.trans_lt hstrictF,hdn.trans_lt hstrictD⟩
 
 #print axioms neutralIV106E18UDeriv_outside
