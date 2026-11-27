@@ -1,0 +1,61 @@
+name: MASTER-RECON V10B4b-B5e staged integration
+on:
+  push:
+    branches: [master-recon-v10b4e-staging]
+    paths:
+      - ".github/workflows/master-recon-v10b5-integration.yml"
+      - "WeilDefect/MasterRecon/V10B4*.lean"
+      - "WeilDefect/MasterRecon/V10B5*.lean"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Elan
+        run: |
+          curl --retry 3 --retry-delay 2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve dependencies
+        run: lake update
+      - name: Fetch mathlib cache
+        run: lake exe cache get
+      - name: Compile and audit staged chain
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p recon-v10b5-evidence
+          for mod in V10B4a V10B4b V10B4c V10B4d V10B4e V10B4f V10B5a V10B5b V10B5c V10B5d V10B5e; do
+            file="WeilDefect/MasterRecon/${mod}.lean"
+            lake build "WeilDefect.MasterRecon.${mod}" 2>&1 | tee "recon-v10b5-evidence/${mod}-build.log"
+            lake env lean "$file" 2>&1 | tee "recon-v10b5-evidence/${mod}-lean.log"
+            python3 - "$mod" <<'PY'
+          import re
+          import sys
+          from pathlib import Path
+          mod = sys.argv[1]
+          src = Path(f"WeilDefect/MasterRecon/{mod}.lean").read_text()
+          log = Path(f"recon-v10b5-evidence/{mod}-lean.log").read_text()
+          expected = re.findall(r"^#print axioms (\S+)", src, re.M)
+          declared = re.findall(r"^theorem (\w+)", src, re.M)
+          assert expected and len(expected) == len(set(expected))
+          assert set(expected) == {f"WeilDefect.MasterRecon.{mod}.{name}" for name in declared}
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for name in expected:
+              m = re.search(re.escape("'" + name + "' depends on axioms: [") + r"([^\]]*)\]", log)
+              if m is None:
+                  assert "'" + name + "' does not depend on any axioms" in log, name
+              else:
+                  assert {v.strip() for v in m.group(1).split(",") if v.strip()} <= allowed, name
+          print(f"{mod}: strict axiom audit PASS ({len(expected)} declarations)")
+          Path(f"recon-v10b5-evidence/{mod}-audit.txt").write_text(f"{mod}: PASS {len(expected)}\n")
+          PY
+          done
+      - name: Upload compiler and audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: master-recon-v10b5-integration
+          path: recon-v10b5-evidence/
