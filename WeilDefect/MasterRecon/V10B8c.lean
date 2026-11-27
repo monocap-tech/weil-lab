@@ -46,7 +46,7 @@ theorem evalRestricted_eq (t a : ℝ) (ht : 0 ≤ t) (f : FullL2)
         V08K.restrictPhysical_ae t f] with x hx hy
       change inner ℂ (vector t a ht x) (V08K.restrictPhysical t f x) = _
       rw [show vector t a ht x = expVector a x from hx,hy]
-      change conj (expVector a x) * f x = _
+      rw [RCLike.inner_apply']
       simp [expVector,← Complex.ofReal_mul,← Complex.ofReal_exp]
     _ = _ := by
       change (∫ x in Icc (-t) t, Complex.exp ((a:ℂ)*(x:ℂ))*f x) = _
@@ -83,7 +83,7 @@ theorem pole_pairing (t : ℝ) (ht : 0 ≤ t) (g h : logCarrier t) :
   unfold poleOperator
   rw [ContinuousLinearMap.add_apply,inner_add_left]
   simp only [ContinuousLinearMap.comp_apply,ContinuousLinearMap.adjoint_inner_left]
-  rfl
+  simp only [RCLike.inner_apply']
 
 theorem pole_compact (t : ℝ) (ht : 0 ≤ t) : IsCompactOperator (poleOperator t ht) := by
   have he (a : ℝ) : IsCompactOperator (eval t a ht) :=
