@@ -1,0 +1,40 @@
+{
+  "scope": "Three original E18 evidence ZIPs specified in W02-IV106-01; no historical ledger-wide custody claim",
+  "predecessor": "8c9f6b580896dee47dd8ce489570fe536aebafed",
+  "source": "Owner-supplied original archives; SHA-256 matches GitHub artifact metadata recorded in predecessor; CRC and member count checked locally; exact binary Git blobs created through Base64 bridge.",
+  "archives": [
+    {
+      "file": "iv106-e18m-evidence.zip",
+      "artifact": 15163418166,
+      "run": 45918048633,
+      "source": "56c14e642eb53b56ad9f7f7724b25ff2ac9cb5ec",
+      "bytes": 204344,
+      "sha256": "a444d4c290edf781d5c788ebb6ea5a53d94b6009e7ef985de98236139d9fb20d",
+      "git_blob": "91e2f8bdde11ea98002daeea2b6a874d05165fb8",
+      "members": 6,
+      "standing": "12/12 strict axiom audit"
+    },
+    {
+      "file": "iv106-e18p-evidence.zip",
+      "artifact": 15164111513,
+      "run": 45919503303,
+      "source": "95343708d945744b61625df1ee91dd731e3adcc2",
+      "bytes": 137723,
+      "sha256": "7b538e43bede13755f204dc19490263e506c3068cc045d0136922182512da1ca",
+      "git_blob": "038ea4e43d6f949d8075ffda237f5905b3d2dc88",
+      "members": 6,
+      "standing": "10/10 strict axiom audit"
+    },
+    {
+      "file": "iv106-e18x-failed-evidence.zip",
+      "artifact": 15168591466,
+      "run": 45928752861,
+      "source": "d351854d66774bd72596b855c5117d50b2a85785",
+      "bytes": 150932,
+      "sha256": "67d808a3be88325c87f6274dfd9122550429d44d9a84246bb0ca011a3abdbf24",
+      "git_blob": "224ac92b7c0f3cccf340df6e5393c4fcae33e381",
+      "members": 19,
+      "standing": "failed build; not certified"
+    }
+  ]
+}
