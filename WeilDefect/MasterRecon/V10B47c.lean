@@ -168,10 +168,9 @@ theorem unitMatrix_surjective : Function.Surjective unitMatrix.mulVec := by
   unfold unitMatrix base
   by_cases hi : i.val=15
   · simp only [hi,if_true,high_row]
-    push_cast
+    push_cast <;> rfl
   · simp only [hi,if_false,add_zero]
-    rw [low_row _ (by omega)]
-    push_cast
+    rw [low_row _ (by omega)] <;> push_cast <;> rfl
 
 end WeilDefect.MasterRecon.V10B47c
 
