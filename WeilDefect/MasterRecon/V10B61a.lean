@@ -99,11 +99,12 @@ theorem literal_pole_identity (g : logCarrier (1/4))
     _ = _ := by
       apply integral_congr_ae
       filter_upwards with x
-      have he := congrArg Complex.ofReal (pointwise_load x)
+      have he := congrArg
+        (fun y : ℝ => Complex.ofReal y * physicalInclusion (1/4) g x)
+        (pointwise_load x)
       dsimp [u,v,p]
       push_cast at he ⊢
-      rw [← mul_assoc,he]
-      ring
+      linear_combination -he
 
 theorem literal_pole_zero_iff (g : logCarrier (1/4))
     (h : ∀ j<15, V10B13a.moment (1/4) (by norm_num) j g=0) :
