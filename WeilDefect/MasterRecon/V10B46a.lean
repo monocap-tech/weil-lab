@@ -7,7 +7,7 @@ open MeasureTheory Set
 open WeilDefect.MasterRecon.V10B33a
 open WeilDefect.MasterRecon.V10B34a
 
-noncomputable def f (x : ℝ) := Real.exp ((1/4:ℝ)*x-1/8)
+noncomputable def f (x : ℝ) := Real.exp ((1/4:ℝ)*x+(-1:ℝ)/8)
 noncomputable def w (x : ℝ) := x*(1-x)
 noncomputable def J (j : ℕ) := ∫ x in (0:ℝ)..1, f x*w x^j
 noncomputable def I (j : ℕ) := ∫ x in (0:ℝ)..1, f x*legendre j x
@@ -34,7 +34,7 @@ theorem J_add_bound (j k : ℕ) : J (j+k) ≤ (1/4:ℝ)^k*J j := by
   obtain ⟨hw0,hw1⟩ := w_bounds x hx
   rw [pow_add]
   have h := mul_le_mul_of_nonneg_left (pow_le_pow_left₀ hw0 hw1 k)
-    (mul_nonneg (Real.exp_pos _).le (pow_nonneg hw0 j))
+    (mul_nonneg (show 0 ≤ f x from (Real.exp_pos _).le) (pow_nonneg hw0 j))
   calc
     f x*(w x^j*w x^k) = (f x*w x^j)*w x^k := by ring
     _ ≤ (f x*w x^j)*(1/4:ℝ)^k := h
