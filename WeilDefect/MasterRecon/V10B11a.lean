@@ -55,12 +55,15 @@ theorem compact_tail_quadratic (K : H →L[ℂ] H) (hK : IsCompactOperator K)
   have hr := (Complex.abs_re_le_norm (inner ℂ (K u) u)).trans (hn.trans huz.le)
   have hxrep : x = (‖x‖:ℂ) • u := by
     dsimp [u,a]
-    rw [smul_smul,← Complex.ofReal_mul,mul_inv_cancel₀ hp.ne',Complex.ofReal_one,one_smul]
+    rw [smul_smul]
+    have he : (‖x‖:ℂ)*((‖x‖⁻¹:ℝ):ℂ) = 1 := by
+      exact_mod_cast mul_inv_cancel₀ hp.ne'
+    rw [he,one_smul]
   calc
     |(inner ℂ (K x) x).re| = ‖x‖^2 * |(inner ℂ (K u) u).re| := by
       conv_lhs => rw [hxrep,K.map_smul,inner_smul_left,inner_smul_right]
       simp only [Complex.conj_ofReal,← mul_assoc,← Complex.ofReal_mul,Complex.re_ofReal_mul,abs_mul]
-      rw [abs_of_nonneg (by positivity : 0 ≤ ‖x‖*‖x‖)]
+      rw [abs_of_nonneg (norm_nonneg x)]
       ring
     _ ≤ ε*‖x‖^2 := by
       simpa only [mul_comm] using mul_le_mul_of_nonneg_left hr (sq_nonneg ‖x‖)
@@ -75,7 +78,7 @@ theorem finite_exceptional_sector (G K : H →L[ℂ] H) (hK : IsCompactOperator 
   have h := htail x hx
   have hl := (abs_le.mp h).1
   rw [hG,ContinuousLinearMap.add_apply,ContinuousLinearMap.one_apply,
-    inner_add_left,Complex.add_re,inner_self_eq_norm_sq_to_K,Complex.ofReal_re]
+    inner_add_left,Complex.add_re,inner_self_eq_norm_sq]
   linarith
 
 theorem finite_negative_subspace_injective (G : H →L[ℂ] H) (S W : Submodule ℂ H)
