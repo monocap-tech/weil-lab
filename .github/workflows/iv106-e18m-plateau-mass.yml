@@ -27,7 +27,7 @@ jobs:
           test "$(git -C research rev-parse HEAD)" = 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
           test "$(git -C research rev-parse HEAD^{tree})" = f038d8ff25d8f18fbe56a641ab6abded0b6ec8e9
           test "$(cat research/lean-toolchain)" = leanprover/lean4:v4.34.0
-          test "$(git -C candidate hash-object verification/iv106/iv106_e18m/ActualZetaIV106E18MPlateauMass.lean)" = b578bb62636493a471843fa5e296d23207a34fa1
+          test "$(git -C candidate hash-object verification/iv106/iv106_e18m/ActualZetaIV106E18MPlateauMass.lean)" = 2d2fd452befea68115d3b7e85f0c93d92d0dc586
           ! grep -Eq '\b(sorry|admit|unsafe)\b' candidate/verification/iv106/iv106_e18m/ActualZetaIV106E18MPlateauMass.lean
           test ! -e research/WeilDefect/Arithmetic/ActualZetaIV106E18MPlateauMass.lean
           cp candidate/verification/iv106/iv106_e18m/ActualZetaIV106E18MPlateauMass.lean research/WeilDefect/Arithmetic/ActualZetaIV106E18MPlateauMass.lean

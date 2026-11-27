@@ -44,11 +44,11 @@ theorem neutralIV106E18MPlateau_convolution (x : ℝ) :
   by_cases ht : t ∈ Icc (x-1099/1000-1/2000) (x-1099/1000+1/2000)
   · have hb : x-1099/1000-t ∈ Icc (-(1/2000:ℝ)) (1/2000) :=
       ⟨by linarith [ht.2],by linarith [ht.1]⟩
-    simp [ht,neutralIV106E18MBox,hb]
+    rw [Set.indicator_of_mem ht,neutralIV106E18MBox,Set.indicator_of_mem hb,mul_one]
   · have hb : x-1099/1000-t ∉ Icc (-(1/2000:ℝ)) (1/2000) := by
       intro hh
       exact ht ⟨by linarith [hh.2],by linarith [hh.1]⟩
-    simp [ht,neutralIV106E18MBox,hb]
+    rw [Set.indicator_of_notMem ht,neutralIV106E18MBox,Set.indicator_of_notMem hb,mul_zero]
 
 /-- Exact L1 mass, not L2 mass and not a numerical evaluation of the bump. -/
 theorem neutralIV106E18MPlateau_mass :
@@ -117,7 +117,7 @@ theorem neutralIV106E18MProfile_weight_pos (k : ℕ) (hk : 0 < k) (i : Fin k) (s
   have hcont : Continuous (fun x => neutralIV106E18MProfile k i x * Real.exp (s*x)) :=
     hc.mul (by fun_prop)
   have hcomp : HasCompactSupport (fun x => neutralIV106E18MProfile k i x * Real.exp (s*x)) :=
-    (neutralIV106E18MProfile_compact k hk i).mul_right _
+    (neutralIV106E18MProfile_compact k hk i).mul_right (f' := fun x => Real.exp (s*x))
   have hkr : (0:ℝ) < (k:ℝ) := by exact_mod_cast hk
   let x₀ := (1099/1000-neutralIV100PackShift k i.val)/(k:ℝ)
   have hx : neutralIV106E18MProfile k i x₀ = 1 := by
