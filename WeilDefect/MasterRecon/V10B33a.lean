@@ -18,7 +18,6 @@ theorem legendre_reflect (j : ℕ) (z : ℝ) :
     legendre j (1-z) = (-1:ℝ)^j * legendre j z := by
   unfold legendre
   rw [shiftedLegendre_eval_symm j (1-z),show 1-(1-z)=z by ring]
-  ring
 
 theorem rodrigues_eval (j : ℕ) (z : ℝ) :
     (j.factorial:ℝ)*legendre j z =
@@ -45,8 +44,8 @@ theorem repeated_parts (n : ℕ) (u v : ℕ → ℝ → ℝ)
     have hp := intervalIntegral.integral_mul_deriv_eq_deriv_mul
       (a := (0:ℝ)) (b := 1)
       (fun x _ => hdu 0 x) (fun x _ => hdv n x)
-      ((hu 1).intervalIntegrable volume 0 1)
-      ((hv (n+1)).intervalIntegrable volume 0 1)
+      ((hu 1).intervalIntegrable 0 1)
+      ((hv (n+1)).intervalIntegrable 0 1)
     have hrec := ih (fun k => u (k+1)) (fun k => hu (k+1))
       (fun k x => hdu (k+1) x) (fun k hk => hzero k (hk.trans (Nat.lt_succ_self n)))
     change (∫ x in (0:ℝ)..1, u 1 x*v n x) =
