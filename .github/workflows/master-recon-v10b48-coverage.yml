@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B69R1 lower-order elaboration repair
+name: MASTER-RECON V10B69R2 typed pointwise prime zero action
 on:
   push:
     branches: [master-recon-v10b20-staging]

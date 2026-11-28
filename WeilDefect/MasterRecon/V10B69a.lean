@@ -71,7 +71,10 @@ theorem prime_free : V10B8d.physicalPrime (1/4) = 0 := by
     omega
   subst n
   have hz : V10B8d.primeWeight 1 = 0 := by simp [V10B8d.primeWeight]
-  rw [hz,Complex.ofReal_zero,zero_smul]
+  rw [hz,Complex.ofReal_zero]
+  ext f : 1
+  change (0:ℂ) • (V10B8d.shiftPair (Real.log (1:ℝ)) f) = 0
+  exact zero_smul ℂ _
 
 theorem prime_operator_zero : V10B8d.primeOperator (1/4) = 0 := by
   unfold V10B8d.primeOperator
