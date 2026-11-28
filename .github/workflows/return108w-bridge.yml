@@ -1,4 +1,4 @@
-name: RETURN109-D converse actual graph lift
+name: RETURN109-E actual bounded analysis and graph receiver
 on:
   push:
     branches: [research/return108s-kernel-core]
@@ -38,38 +38,39 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          lake build WeilDefect.MasterReturn.LogCarrierGlobalEnergy 2>&1 | tee return108w-deps.log
+          lake build WeilDefect.MasterReturn.LogCarrierGraphLift WeilDefect.MasterRecon.V10B6d WeilDefect.External.Zeta23.Theorems.Thm_Zeta23_RvM_zeta_local_zero_count 2>&1 | tee return108w-deps.log
       - name: Compile and strict named axiom audit
         shell: bash
         run: |
           set -euo pipefail
-          lake env lean WeilDefect/MasterReturn/LogCarrierGraphLift.lean 2>&1 | tee return109d-lean.log
+          lake env lean WeilDefect/MasterReturn/LogCarrierBoundedAnalysis.lean 2>&1 | tee return109e-lean.log
           python3 - <<'PY'
           import re
           from pathlib import Path
-          s = Path("return109d-lean.log").read_text()
-          names = ["channel_summability","lift","lift_physical","graph_membership_iff","lift_signed","lift_coeff_coordinate"]
+          s = Path("return109e-lean.log").read_text()
+          names = ["count_dictionary","actual_count_bound","actual_bounded_analysis","literal_channel_summability","actual_graph_receiver"]
           allowed = {"propext","Classical.choice","Quot.sound"}
           for name in names:
-              q = "WeilDefect.MasterReturn.LogCarrierGraphLift." + name
+              q = "WeilDefect.MasterReturn.LogCarrierBoundedAnalysis." + name
               m = re.search(r"'" + re.escape(q) + r"' depends on axioms: \[([^\]]*)\]", s)
               if m is None:
                   assert f"'{q}' does not depend on any axioms" in s, q
               else:
                   assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
               print("PASS", q)
-          print("RETURN109-D strict axiom audit PASS 6/6")
+          print("RETURN109-E strict axiom audit PASS 5/5")
           PY
       - name: Preserve integration evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: return109d-integration
+          name: return109e-integration
           path: |
             return108w-closure.json
             return108w-closure.log
             return108w-deps.log
-            return109d-lean.log
+            return109e-lean.log
+            WeilDefect/MasterReturn/LogCarrierBoundedAnalysis.lean
             WeilDefect/MasterReturn/LogCarrierGraphLift.lean
             WeilDefect/MasterReturn/LogCarrierGlobalEnergy.lean
             WeilDefect/MasterReturn/LogCarrierOrbit.lean

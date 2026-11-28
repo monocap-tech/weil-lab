@@ -104,6 +104,21 @@ for p in set(manifest)-before_graph:
 graph_anchors = {graph_root:"76e24c6810241c153134c525f5ab75177015a53b","WeilDefect/Arithmetic/ActualZetaSourceGraph.lean":"5a19c9649315241b9e8cdf0dd3f10821cdd8db27"}
 for p, sha in graph_anchors.items():
     assert manifest[p]["blob"] == sha and manifest[p]["required_by"] == ["IV"], p
+# Actual local-count supplier and existing RECON literal bounded-analysis receiver.
+count_root = "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_RvM_zeta_local_zero_count.lean"
+sampling_root = "WeilDefect/MasterRecon/V10B6d.lean"
+before_count = set(manifest)
+visit(count_root, "IV")
+for p in set(manifest)-before_count:
+    assert manifest[p]["origin"] == "IV" and manifest[p]["required_by"] == ["IV"], p
+assert manifest[count_root]["blob"] == "8f3e95607c595445b925756ebf269d021f79ba02"
+before_sampling = set(manifest)
+visit(sampling_root, "RECON")
+for p in set(manifest)-before_sampling:
+    assert manifest[p]["origin"] == "RECON" and manifest[p]["required_by"] == ["RECON"], p
+sampling_anchors = {sampling_root:"f07239c16e3e340d91921a27634162ff29b3ade6","WeilDefect/MasterRecon/V10B6a.lean":"9b60b7ef82d421971f052b8946eabf6cf4d8ded4","WeilDefect/MasterRecon/V10B6b.lean":"5e8f142d7a86e7b7545606bc9c0e88c49cfe0fff","WeilDefect/MasterRecon/V10B6c.lean":"e539e480f3cde1ff224fed82985a78969e8d911f"}
+for p, sha in sampling_anchors.items():
+    assert manifest[p]["blob"] == sha and manifest[p]["required_by"] == ["RECON"], p
 # No source files are written until the entire selected closure passes.
 for p, e in sorted(manifest.items()):
     dst = pathlib.Path(p)
@@ -122,7 +137,7 @@ neutral = "WeilDefect/Morphology/Neutral.lean"
 assert manifest[neutral]["blob"] == "9c446407e5f9ecfada57d2dee5e1d85b7d8a5753"
 assert manifest[neutral]["required_by"] == ["IV"]
 result = {"IV":I,"RECON":R,"root":ROOT,"entries":manifest,"external_imports":sorted(external),"explicit_cross_edge":[ROOT,IV_ENTRY]}
-result["additional_roots"] = [translation_root, iv_root, recon_root, graph_root]
+result["additional_roots"] = [translation_root, iv_root, recon_root, graph_root, count_root, sampling_root]
 pathlib.Path("return108w-closure.json").write_text(json.dumps(result, indent=2, sort_keys=True)+"\n")
 print("Authenticated closure:", len(manifest), "modules;", sum(e["origin"]=="RECON" for e in manifest.values()), "overlay modules")
 print("No differing shared path required by both lineages; IV morphology retained.")
@@ -179,3 +194,10 @@ d109_path = pathlib.Path('WeilDefect/MasterReturn/LogCarrierGraphLift.lean')
 assert not d109_path.exists(), d109_path
 d109_path.write_bytes(D109.encode('utf-8'))
 print('RETURN109-D source SHA256:', hashlib.sha256(d109_path.read_bytes()).hexdigest())
+
+assert hashlib.sha256(d109_path.read_bytes()).hexdigest() == "a4d5f0256815216b2ed864f907ab63fa7a6e8fdfd53fc78a83132753db8a3c4a"
+E109 = "import WeilDefect.MasterReturn.LogCarrierGraphLift\nimport WeilDefect.MasterRecon.V10B6d\nimport WeilDefect.External.Zeta23.Theorems.Thm_Zeta23_RvM_zeta_local_zero_count\n\n/-! RETURN109-E: actual local count discharges the existing RECON sampling\nreceiver, then the admitted D graph lift attaches the original IV graph.\nNo new estimate, positivity, compactness, or explicit-formula assumption. -/\nnamespace WeilDefect.MasterReturn.LogCarrierBoundedAnalysis\nopen InnerProductSpace\nopen scoped InnerProduct ENNReal\nopen WeilDefect.MasterRecon\nopen LogCarrierContinuous LogCarrierGlobalEnergy LogCarrierGraphLift\n\nnoncomputable section\nset_option maxHeartbeats 3000000\nset_option maxRecDepth 4096\n\ntheorem count_dictionary (t u : ℝ) :\n    V09D.count t u = Zeta23.Ncount t u := rfl\n\ntheorem actual_count_bound :\n    ∃ A : ℝ, 0 ≤ A ∧ ∀ n : ℤ,\n      (V09D.count (n : ℝ) ((n : ℝ)+1) : ℝ) ≤\n        A * Real.log (|(n : ℝ)|+3) := by\n  obtain ⟨A,hA,h⟩ := Zeta23.RvM.zeta_local_zero_count\n  refine ⟨A,by linarith,fun n => ?_⟩\n  rw [count_dictionary]\n  exact h (n : ℝ)\n\ntheorem actual_bounded_analysis (a : ℝ) (ha : 0 ≤ a) :\n    ∃ T : V08I.logCarrier a →L[ℂ] V07C.Coeff V10A.Index,\n      V10B6d.LiteralCoordinates a T := by\n  obtain ⟨A,hA,h⟩ := actual_count_bound\n  exact V10B6b.bounded_arithmetic_analysis a ha A hA h\n\ntheorem literal_channel_summability (a : ℝ)\n    (T : V08I.logCarrier a →L[ℂ] V07C.Coeff V10A.Index)\n    (hT : V10B6d.LiteralCoordinates a T) (g : NeutralLogHilbertCarrier a) :\n    Summable (posSq a g) ∧ Summable (negSq a g) := by\n  constructor\n  · apply (V10B6d.channel_sq_summable true (T (carrierContinuousEquiv a g))).congr\n    intro i\n    rw [hT (carrierContinuousEquiv a g) i]\n    rfl\n  · apply (V10B6d.channel_sq_summable false (T (carrierContinuousEquiv a g))).congr\n    intro i\n    rw [hT (carrierContinuousEquiv a g) i]\n    rfl\n\ntheorem actual_graph_receiver (a : ℝ) (ha : 0 ≤ a) :\n    ∃ T : V08I.logCarrier a →L[ℂ] V07C.Coeff V10A.Index,\n      V10B6d.LiteralCoordinates a T ∧\n      ∀ g : NeutralLogHilbertCarrier a,\n        ∃ h : NeutralActualZetaSourceDomain a,\n          neutralActualZetaSourcePhysical a h = g ∧\n          graphCoeff a h = T (carrierContinuousEquiv a g) ∧\n          neutralActualZetaSourceQuadratic a h =\n            (inner ℂ (V10B6c.signedGram T (carrierContinuousEquiv a g))\n              (carrierContinuousEquiv a g)).re := by\n  obtain ⟨T,hT⟩ := actual_bounded_analysis a ha\n  refine ⟨T,hT,fun g => ?_⟩\n  obtain ⟨hp,hn⟩ := literal_channel_summability a T hT g\n  refine ⟨lift a g hp hn,lift_physical a g hp hn,?_,?_⟩\n  · apply lp.ext\n    funext i\n    rw [lift_coeff_coordinate, hT (carrierContinuousEquiv a g) i]\n    rfl\n  · rw [lift_signed, V10B6c.signedGram_diagonal]\n    rw [← V10B6d.signed_channel_tsum (T (carrierContinuousEquiv a g))]\n    apply tsum_congr\n    intro i\n    rw [hT (carrierContinuousEquiv a g) i]\n    rfl\n\nend\nend WeilDefect.MasterReturn.LogCarrierBoundedAnalysis\n\n#print axioms WeilDefect.MasterReturn.LogCarrierBoundedAnalysis.count_dictionary\n#print axioms WeilDefect.MasterReturn.LogCarrierBoundedAnalysis.actual_count_bound\n#print axioms WeilDefect.MasterReturn.LogCarrierBoundedAnalysis.actual_bounded_analysis\n#print axioms WeilDefect.MasterReturn.LogCarrierBoundedAnalysis.literal_channel_summability\n#print axioms WeilDefect.MasterReturn.LogCarrierBoundedAnalysis.actual_graph_receiver\n"
+e109_path = pathlib.Path('WeilDefect/MasterReturn/LogCarrierBoundedAnalysis.lean')
+assert not e109_path.exists(), e109_path
+e109_path.write_bytes(E109.encode('utf-8'))
+print('RETURN109-E source SHA256:', hashlib.sha256(e109_path.read_bytes()).hexdigest())
