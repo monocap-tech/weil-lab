@@ -1,0 +1,36 @@
+{
+  "run": 46085180456,
+  "job": 140792965241,
+  "source": "96b415c68c4cc58b7ce94a2355ebdfde99f2b34d",
+  "blob": "ba414a0c0f845cdd3c84d0bf3e5aabfd3a6ffd08",
+  "names": [
+    "WeilDefect.MasterRecon.V10B67a.weight_growth",
+    "WeilDefect.MasterRecon.V10B67a.weighted_of_decay",
+    "WeilDefect.MasterRecon.V10B67a.supported_mem",
+    "WeilDefect.MasterRecon.V10B67a.trialL2_ae",
+    "WeilDefect.MasterRecon.V10B67a.trialL2_support",
+    "WeilDefect.MasterRecon.V10B67a.trial_fourier_literal",
+    "WeilDefect.MasterRecon.V10B67a.trial_weighted",
+    "WeilDefect.MasterRecon.V10B67a.carrierTrial_physical",
+    "WeilDefect.MasterRecon.V10B67a.carrierTrial_ae"
+  ],
+  "output": [
+    "2026-11-27T23:59:31.3432990Z 'WeilDefect.MasterRecon.V10B67a.weight_growth' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T23:59:31.3433371Z 'WeilDefect.MasterRecon.V10B67a.weighted_of_decay' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T23:59:31.3433758Z 'WeilDefect.MasterRecon.V10B67a.supported_mem' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T23:59:31.3434126Z 'WeilDefect.MasterRecon.V10B67a.trialL2_ae' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T23:59:31.3434495Z 'WeilDefect.MasterRecon.V10B67a.trialL2_support' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T23:59:31.3435179Z 'WeilDefect.MasterRecon.V10B67a.trial_fourier_literal' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T23:59:31.3435810Z 'WeilDefect.MasterRecon.V10B67a.trial_weighted' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T23:59:31.3436197Z 'WeilDefect.MasterRecon.V10B67a.carrierTrial_physical' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-27T23:59:31.3436583Z 'WeilDefect.MasterRecon.V10B67a.carrierTrial_ae' depends on axioms: [propext, Classical.choice, Quot.sound]"
+  ],
+  "overall": "success",
+  "artifacts": [
+    {
+      "id": 15239095969,
+      "size": 9564,
+      "digest": "sha256:4738fed37c9ab13a6bb6a58596d0e135458bfaf83bbecc4cb6892e3f084c60eb"
+    }
+  ]
+}
