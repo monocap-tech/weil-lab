@@ -1,0 +1,16 @@
+{
+  "id": 15143077936,
+  "name": "nf701-source",
+  "sha256": "1caf836e6f929f301796471c13afbaa806104624a200c34a1093731b88c66563",
+  "producer_run": 45871395034,
+  "producer_conclusion": "success",
+  "bytes": 60281,
+  "status": "BYTE_PASS",
+  "chunks": [
+    {
+      "file": "part0000.bin",
+      "sha256": "1caf836e6f929f301796471c13afbaa806104624a200c34a1093731b88c66563",
+      "bytes": 60281
+    }
+  ]
+}
