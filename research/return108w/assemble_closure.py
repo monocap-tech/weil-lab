@@ -136,6 +136,24 @@ assert manifest[ROOT]["blob"] == "2d45c6dac5353906a0daf2b9d500541be3be3e46"
 neutral = "WeilDefect/Morphology/Neutral.lean"
 assert manifest[neutral]["blob"] == "9c446407e5f9ecfada57d2dee5e1d85b7d8a5753"
 assert manifest[neutral]["required_by"] == ["IV"]
+# RETURN109-E1: explicit local repair after authenticated supplier readback.
+repair_path = "WeilDefect/MasterRecon/V10B5d.lean"
+assert manifest[repair_path]["blob"] == "1a71cd96715ae2594b66b9e33745e81ba88c89c8"
+assert manifest[repair_path]["required_by"] == ["RECON"]
+repair_dst = pathlib.Path(repair_path)
+repair_original = repair_dst.read_bytes()
+assert digest(repair_original) == "1a71cd96715ae2594b66b9e33745e81ba88c89c8"
+repair_old = "    simpa only [one_mul] using ((hasDerivAt_id (y : ℂ)).mul_const Complex.I).const_add (s : ℂ)"
+repair_new = "    exact (hasDerivAt_mul_const (x := (y : ℂ)) Complex.I).const_add (s : ℂ)"
+repair_text = repair_original.decode("utf-8")
+assert repair_text.count(repair_old) == 1
+repair_text = repair_text.replace(repair_old, repair_new)
+repair_bytes = repair_text.encode("utf-8")
+assert digest(repair_bytes) == "d06756496539c38ccb0544bc614f2aa4407f9efc"
+repair_dst.write_bytes(repair_bytes)
+assert digest(repair_dst.read_bytes()) == "d06756496539c38ccb0544bc614f2aa4407f9efc"
+manifest[repair_path]["local_repair"] = {"original_blob":"1a71cd96715ae2594b66b9e33745e81ba88c89c8","compiled_blob":"d06756496539c38ccb0544bc614f2aa4407f9efc","proof":"angular_vertical_deriv: field-specialized hasDerivAt_mul_const"}
+print("RETURN109-E1 repaired V10B5d blob:", digest(repair_bytes))
 result = {"IV":I,"RECON":R,"root":ROOT,"entries":manifest,"external_imports":sorted(external),"explicit_cross_edge":[ROOT,IV_ENTRY]}
 result["additional_roots"] = [translation_root, iv_root, recon_root, graph_root, count_root, sampling_root]
 pathlib.Path("return108w-closure.json").write_text(json.dumps(result, indent=2, sort_keys=True)+"\n")
@@ -201,3 +219,5 @@ e109_path = pathlib.Path('WeilDefect/MasterReturn/LogCarrierBoundedAnalysis.lean
 assert not e109_path.exists(), e109_path
 e109_path.write_bytes(E109.encode('utf-8'))
 print('RETURN109-E source SHA256:', hashlib.sha256(e109_path.read_bytes()).hexdigest())
+
+assert hashlib.sha256(e109_path.read_bytes()).hexdigest() == "9dd1c3c0b82098416c87d17f9b98b8966da2b60c41e857711d091b8cb29d649d"

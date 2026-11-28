@@ -1,4 +1,4 @@
-name: RETURN109-E actual bounded analysis and graph receiver
+name: RETURN109-E1 actual bounded analysis (field derivative repair)
 on:
   push:
     branches: [research/return108s-kernel-core]
@@ -43,6 +43,22 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          lake env lean WeilDefect/MasterRecon/V10B5d.lean 2>&1 | tee return109e1-supplier.log
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          s = Path("return109e1-supplier.log").read_text()
+          allowed = {"propext","Classical.choice","Quot.sound"}
+          for name in ["continuous_unit_integral","row_continuous","moment_outer_integrable","angular_horizontal_deriv","angular_vertical_deriv","real_deriv_component","imag_deriv_component","angular_rectangle_eval","energy_nonnegative","global_energy_budget","bounded_strip_sampling"]:
+              q = "WeilDefect.MasterRecon.V10B5d." + name
+              m = re.search(r"'" + re.escape(q) + r"' depends on axioms: \[([^\]]*)\]", s)
+              if m is None:
+                  assert f"'{q}' does not depend on any axioms" in s, q
+              else:
+                  assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
+              print("PASS", q)
+          print("RETURN109-E1 repaired supplier strict axiom audit PASS 11/11")
+          PY
           lake env lean WeilDefect/MasterReturn/LogCarrierBoundedAnalysis.lean 2>&1 | tee return109e-lean.log
           python3 - <<'PY'
           import re
@@ -58,18 +74,20 @@ jobs:
               else:
                   assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
               print("PASS", q)
-          print("RETURN109-E strict axiom audit PASS 5/5")
+          print("RETURN109-E1 strict axiom audit PASS 5/5")
           PY
       - name: Preserve integration evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: return109e-integration
+          name: return109e1-integration
           path: |
             return108w-closure.json
             return108w-closure.log
             return108w-deps.log
             return109e-lean.log
+            return109e1-supplier.log
+            WeilDefect/MasterRecon/V10B5d.lean
             WeilDefect/MasterReturn/LogCarrierBoundedAnalysis.lean
             WeilDefect/MasterReturn/LogCarrierGraphLift.lean
             WeilDefect/MasterReturn/LogCarrierGlobalEnergy.lean
