@@ -1,1 +1,0 @@
-Prior run 46088867383 compiled all root segments and powers, but Pilot.lean reported reduction stuck, NOT isFalse; separate application error from passing Bool before amplitude hypotheses. This revision checks materialized cache equality, executable row booleans and four independent kernel gates. No row changes, no precision change, no new admissions. Existing hold remains.
