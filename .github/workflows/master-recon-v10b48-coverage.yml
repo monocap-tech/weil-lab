@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B76 residual receiver and corrected physical pairing
+name: MASTER-RECON V10B76a-R1 central residual supplier repair
 on:
   push:
     branches: [master-recon-v10b20-staging]
@@ -75,8 +75,8 @@ jobs:
             done
             if audit "$mod"; then pass[$mod]=1; else pass[$mod]=0; failed=1; fi
           }
-          gate V10B76a
-          gate V10B76b
+          gate V10B15a
+          gate V10B76a V10B15a
           exit "$failed"
       - name: Upload compiler and audit evidence
         if: always()

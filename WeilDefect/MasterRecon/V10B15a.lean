@@ -50,7 +50,7 @@ theorem reciprocal_square_budget :
 theorem central_digamma (hs : CentralSeries) (v : ℝ) (hv : |v| ≤ 1/2) :
     ‖Complex.digamma ((1/4:ℂ)+I*(v:ℂ))‖ ≤ 7 := by
   let z : ℂ := 1/4+I*(v:ℂ)
-  have hr : z.re = 1/4 := by simp [z,Complex.div_re]; norm_num
+  have hr : z.re = 1/4 := by simp [z]
   have hi : z.im = v := by simp [z,Complex.div_im]
   have hn : ‖z‖ ≤ 1 := by
     have h := Complex.norm_le_abs_re_add_abs_im z
@@ -100,10 +100,17 @@ theorem central_residual (hs : CentralSeries) (u : ℝ) (hu : |-Real.pi*u| ≤ 1
   have hlog0 : 0 ≤ Real.log (2+2*|v|) := Real.log_nonneg (by linarith [abs_nonneg v])
   rw [V10B8e.residual,V10B8f.gammaSymbol_reparam,V10B8f.weight_reparam]
   change |(Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re-Real.log Real.pi-Real.log (2+2*|v|)| ≤ _
-  have h := abs_sub_le ((Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re-Real.log Real.pi)
-    (Real.log (2+2*|v|))
-  have h' := abs_sub_le ((Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re) (Real.log Real.pi)
-  rw [abs_of_nonneg hlog0] at h
+  have h : |(Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re-Real.log Real.pi-
+      Real.log (2+2*|v|)| ≤
+      |(Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re-Real.log Real.pi| +
+        Real.log (2+2*|v|) := by
+    simpa only [sub_eq_add_neg,abs_neg,abs_of_nonneg hlog0] using
+      abs_add_le ((Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re-Real.log Real.pi)
+        (-Real.log (2+2*|v|))
+  have h' : |(Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re-Real.log Real.pi| ≤
+      |(Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re|+|Real.log Real.pi| := by
+    simpa only [sub_eq_add_neg,abs_neg] using
+      abs_add_le ((Complex.digamma ((1/4:ℂ)+I*(v:ℂ))).re) (-Real.log Real.pi)
   unfold globalBudget
   linarith
 
