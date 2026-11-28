@@ -1,0 +1,62 @@
+{
+  "Schur_absolute_mixed_upper_display": "0.000619709157",
+  "Schur_normalized_lower_ee_display": "0.039413190121",
+  "Schur_normalized_lower_pp_display": "0.000050217692",
+  "Schur_strict_positive_determinant_display": "0.000001595200",
+  "Schur_strict_positive_determinant_floor_1e12": "997/625000000",
+  "W_e_v_upper_display": "0.000537134405",
+  "W_v_lower_display": "0.000101657839",
+  "full_genuine_W_e_p_display": [
+    "0.000532920079",
+    "0.000536925405"
+  ],
+  "full_low_plus_high_coercivity_claim": "1/20000",
+  "full_support_space": "complex Schwartz tests with vector of all 100000 physical cell integrals in span of constant and parabolic cell-average patterns",
+  "genuine_mixed_gamma_D_over_sigma_display": [
+    "2.519677300607",
+    "2.519678571015"
+  ],
+  "genuine_mixed_poles_over_sigma_display": [
+    "4.766645571465",
+    "4.766645571465"
+  ],
+  "genuine_mixed_prime_P_over_sigma_display": [
+    "1.913553071776",
+    "1.913553071776"
+  ],
+  "high_compression_lower": "49/100",
+  "low_space": "span of normalized constant I indicator e and physical 100000-cell projection of normalized even parabola p",
+  "mixed_overlap_sigma_display": [
+    "0.912870929175",
+    "0.912870929175"
+  ],
+  "nonclaims": [
+    "any full fixed-window Weil positivity",
+    "global Weil positivity",
+    "RH",
+    "new Lean/olean acceptance",
+    "independent PI-CP operator equality"
+  ],
+  "original_W_parabola_display": [
+    "0.000639557839",
+    "0.000644792392"
+  ],
+  "schema": "IV053-original-even-two-low-profiles-and-entire-infinite-high-source-rational-v1",
+  "script_sha256": "7e06edf8723ce28abebe76c31394214b84b885d1d57dc90d8be6d9bfc2ed9604",
+  "short_independent_rational_schur_determinant": "73541319/48995000000000",
+  "short_rational_verified_inputs": {
+    "QW_e_norm_upper": "19/1000",
+    "QW_v_norm_upper": "84/100000",
+    "W_e_lower": "201/5000",
+    "W_e_v_absolute_upper": "56/100000",
+    "W_v_lower": "1/10000",
+    "high_compression_lower": "49/100",
+    "target_margin_mu": "1/20000"
+  },
+  "source_sha256_dependencies": {
+    "IV045_fixed_window_parity_trial_checker.py": "54d49affe407f3838015963b485975b885a5cde0c1c507dc318f9b33c64f86ac",
+    "IV051_equal_mean_schur_checker.py": "27559e26c5d6d7217664c216b04f42feb6df05eeb411e080cfac837f56e6443a",
+    "IV052_jump_gradient_and_parabolic_trial_checker.py": "336cc8bdb652b2e745be533e0af298105fd13f9e6f88ad7d34ef78bd0541c0e1"
+  },
+  "status": "exact Fraction PASS, continuum mathematical proof, NOT Lean certified"
+}
