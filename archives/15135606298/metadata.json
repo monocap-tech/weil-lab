@@ -1,0 +1,20 @@
+{
+  "id": 15135606298,
+  "node_id": "MDg6QXJ0aWZhY3QxNTEzNTYwNjI5OA==",
+  "name": "nf703-unified-receiver-source",
+  "size_in_bytes": 1264283,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15135606298",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15135606298/zip",
+  "expired": false,
+  "digest": "sha256:229863b6305a52a5c6bd10cf75e83f922898119cf9e7fbcaecd57b6e0e25e576",
+  "created_at": "2026-11-26T16:03:36Z",
+  "updated_at": "2026-11-26T16:03:36Z",
+  "expires_at": "2027-02-24T15:57:34Z",
+  "workflow_run": {
+    "id": 45854170594,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "research/nf703-unified-concrete-receiver",
+    "head_sha": "f3a143806f5e49d292b4005de306791d8f7e1389"
+  }
+}
