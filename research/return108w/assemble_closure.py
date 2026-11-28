@@ -203,6 +203,26 @@ manifest[repair3_path]["local_repair"]["intermediate_blob"] = "84c910d0c2aea256a
 manifest[repair3_path]["local_repair"]["compiled_blob"] = "e33cd9339536760ec9de32dd75881b34e9c4e7ad"
 manifest[repair3_path]["local_repair"]["proof"] = "real exponent two, explicit map application, direct inner_self_eq_norm_sq"
 print("RETURN109-E4 repaired V10B6c blob:", digest(repair4_bytes))
+# RETURN109-E5: bounded new signed-orbit supplier repair.
+repair5_path = "WeilDefect/MasterRecon/V10B6d.lean"
+assert manifest[repair5_path]["blob"] == "f07239c16e3e340d91921a27634162ff29b3ade6"
+assert manifest[repair5_path]["required_by"] == ["RECON"]
+repair5_dst = pathlib.Path(repair5_path)
+repair5_original = repair5_dst.read_bytes()
+assert digest(repair5_original) == "f07239c16e3e340d91921a27634162ff29b3ade6"
+repair5_text = repair5_original.decode("utf-8")
+assert repair5_text.count("Real.rpow_natCast") == 1
+repair5_text = repair5_text.replace("Real.rpow_natCast", "Real.rpow_two")
+repair5_old = "  exact abs_sub_le_add_of_nonneg (sq_nonneg _) (sq_nonneg _)"
+assert repair5_text.count(repair5_old) == 2
+repair5_text = repair5_text.replace(repair5_old, "  apply abs_le.mpr\n  constructor <;> linarith [sq_nonneg ‖channel true (x i)‖, sq_nonneg ‖channel false (x i)‖]", 1)
+repair5_text = repair5_text.replace(repair5_old, "  apply abs_le.mpr\n  constructor <;> linarith [sq_nonneg ‖(WithLp.ofLp (normalizedPair f i)).1‖,\n    sq_nonneg ‖(WithLp.ofLp (normalizedPair f i)).2‖]", 1)
+repair5_bytes = repair5_text.encode("utf-8")
+assert digest(repair5_bytes) == "f8e69526e37176afc2c652bd687f810000221d3e"
+repair5_dst.write_bytes(repair5_bytes)
+assert digest(repair5_dst.read_bytes()) == "f8e69526e37176afc2c652bd687f810000221d3e"
+manifest[repair5_path]["local_repair"] = {"original_blob":"f07239c16e3e340d91921a27634162ff29b3ade6","compiled_blob":"f8e69526e37176afc2c652bd687f810000221d3e","proof":"real exponent two; explicit absolute value inequalities"}
+print("RETURN109-E5 repaired V10B6d blob:", digest(repair5_bytes))
 result = {"IV":I,"RECON":R,"root":ROOT,"entries":manifest,"external_imports":sorted(external),"explicit_cross_edge":[ROOT,IV_ENTRY]}
 result["additional_roots"] = [translation_root, iv_root, recon_root, graph_root, count_root, sampling_root]
 pathlib.Path("return108w-closure.json").write_text(json.dumps(result, indent=2, sort_keys=True)+"\n")
