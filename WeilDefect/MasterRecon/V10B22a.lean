@@ -50,7 +50,9 @@ theorem shift_continuous (f : FullL2) (C : ℝ) (hC : 0 ≤ C)
   intro ε hε
   let δ := min 1 (ε/(C+1))^2
   have hden : 0 < C+1 := by linarith
-  have hδ : 0 < δ := lt_min (by norm_num) (sq_pos_of_pos (div_pos hε hden))
+  have hδ : 0 < δ := by
+    change (0:ℝ) < min 1 ((ε/(C+1))^2)
+    exact lt_min (by norm_num : (0:ℝ)<1) (pow_pos (div_pos hε hden) 2)
   refine ⟨δ,hδ,?_⟩
   intro r hr
   rw [Real.dist_eq] at hr
@@ -88,16 +90,19 @@ theorem near_envelope_integrable (f : FullL2) (C : ℝ) :
     (intervalIntegrable_iff_integrableOn_Ioc_of_le (by norm_num : (0:ℝ)≤1)).mp
       (intervalIntegral.intervalIntegrable_rpow' (by norm_num))
   have h := (integrableOn_const (C := (9/2:ℝ)*‖f‖)
-    (μ := volume) (s := Ioc (0:ℝ) 1)).add (hp.const_mul (3*C))
+    (μ := volume) (s := Ioc (0:ℝ) 1) (measure_Ioc_lt_top.ne)).add (hp.const_mul (3*C))
   apply h.congr_fun _ measurableSet_Ioc
   intro r hr
+  change (9/2:ℝ)*‖f‖+3*C*r^(-1/2:ℝ) =
+    (9/2:ℝ)*‖f‖+3*C*(Real.sqrt r)⁻¹
   rw [Real.sqrt_eq_rpow,← Real.rpow_neg (le_of_lt hr.1)]
   norm_num
 
 theorem action_integrable (f : FullL2) (C : ℝ) (hC : 0 ≤ C)
     (h : ∀ r : ℝ, 0 < r → r ≤ 1 → ‖shift r f-f‖ ≤ C*Real.sqrt r) :
     IntegrableOn (actionTerm f) (Ioi 0) := by
-  have hm := (action_continuousOn f C hC h).aestronglyMeasurable measurableSet_Ioi
+  have hm : AEStronglyMeasurable (actionTerm f) (volume.restrict (Ioi (0:ℝ))) :=
+    (action_continuousOn f C hC h).aestronglyMeasurable measurableSet_Ioi
   have hnear : IntegrableOn (actionTerm f) (Ioc 0 1) := by
     apply (near_envelope_integrable f C).mono' (hm.mono_measure (Measure.restrict_mono
       (fun _ hx => hx.1) le_rfl))

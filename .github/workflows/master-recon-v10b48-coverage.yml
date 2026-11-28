@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B71R2 targeted action root normalization
+name: MASTER-RECON V10B72 action integrability dependency audit
 on:
   push:
     branches: [master-recon-v10b20-staging]
@@ -75,9 +75,8 @@ jobs:
             done
             if audit "$mod"; then pass[$mod]=1; else pass[$mod]=0; failed=1; fi
           }
-          gate V10B20a
-          gate V10B21c
-          gate V10B71a V10B20a V10B21c
+          gate V10B22a
+          gate V10B71a V10B22a
           exit "$failed"
       - name: Upload compiler and audit evidence
         if: always()
