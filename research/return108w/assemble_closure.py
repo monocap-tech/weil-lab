@@ -154,6 +154,23 @@ repair_dst.write_bytes(repair_bytes)
 assert digest(repair_dst.read_bytes()) == "d06756496539c38ccb0544bc614f2aa4407f9efc"
 manifest[repair_path]["local_repair"] = {"original_blob":"1a71cd96715ae2594b66b9e33745e81ba88c89c8","compiled_blob":"d06756496539c38ccb0544bc614f2aa4407f9efc","proof":"angular_vertical_deriv: field-specialized hasDerivAt_mul_const"}
 print("RETURN109-E1 repaired V10B5d blob:", digest(repair_bytes))
+# RETURN109-E2: proof-only pair and lp compatibility repairs.
+repair2_path = "WeilDefect/MasterRecon/V10B6a.lean"
+assert manifest[repair2_path]["blob"] == "9b60b7ef82d421971f052b8946eabf6cf4d8ded4"
+assert manifest[repair2_path]["required_by"] == ["RECON"]
+repair2_dst = pathlib.Path(repair2_path)
+repair2_original = repair2_dst.read_bytes()
+assert digest(repair2_original) == "9b60b7ef82d421971f052b8946eabf6cf4d8ded4"
+repair2_text = repair2_original.decode("utf-8")
+for old, new, count in [["  rw [WithLp.prod_norm_eq_of_L2, Real.sq_sqrt (by positivity)]","  rw [WithLp.prod_norm_eq_of_L2, Real.sq_sqrt (by positivity)] <;> rfl",1],["  · rw [if_pos hi]\n    exact add_le_add_left (by positivity) _","  · rw [if_pos hi, add_zero]\n    exact le_add_of_nonneg_right (by positivity)",1],["ENNReal.toReal_ofNat, Real.rpow_natCast","ENNReal.toReal_ofNat, Real.rpow_two",3]]:
+    assert repair2_text.count(old) == count
+    repair2_text = repair2_text.replace(old, new)
+repair2_bytes = repair2_text.encode("utf-8")
+assert digest(repair2_bytes) == "748ced0b77421d539ce5d91b2a2013c2e8640751"
+repair2_dst.write_bytes(repair2_bytes)
+assert digest(repair2_dst.read_bytes()) == "748ced0b77421d539ce5d91b2a2013c2e8640751"
+manifest[repair2_path]["local_repair"] = {"original_blob":"9b60b7ef82d421971f052b8946eabf6cf4d8ded4","compiled_blob":"748ced0b77421d539ce5d91b2a2013c2e8640751","proof":"pair projections, nonnegative addition, real exponent two"}
+print("RETURN109-E2 repaired V10B6a blob:", digest(repair2_bytes))
 result = {"IV":I,"RECON":R,"root":ROOT,"entries":manifest,"external_imports":sorted(external),"explicit_cross_edge":[ROOT,IV_ENTRY]}
 result["additional_roots"] = [translation_root, iv_root, recon_root, graph_root, count_root, sampling_root]
 pathlib.Path("return108w-closure.json").write_text(json.dumps(result, indent=2, sort_keys=True)+"\n")
