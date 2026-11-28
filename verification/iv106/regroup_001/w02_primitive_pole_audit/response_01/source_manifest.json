@@ -1,0 +1,478 @@
+{
+  "status": "RESPONSE_01_STATIC_REVIEW_NATIVE_PENDING",
+  "research": {
+    "ref": "018f7e59f4129ce521cd3ae86d1afd59d3b64b5f",
+    "tree": "f038d8ff25d8f18fbe56a641ab6abded0b6ec8e9",
+    "toolchain": "leanprover/lean4:v4.34.0",
+    "base_pins": {
+      "WeilDefect/Arithmetic/ActualZetaIV103OriginalSchwartzSpectralAttachment.lean": "51a58fff565bb27453ab19fe276d49621b951563",
+      "WeilDefect/Arithmetic/ActualZetaCanonicalNativeEnergy.lean": "bda93aa61bc6580197649833f30394aae943d910",
+      "WeilDefect/Arithmetic/ActualZetaLogCarrierSchwartzCompact.lean": "bd794a56aa9a4b203ad52002d98f6737a27017b7"
+    }
+  },
+  "historical_recipe": {
+    "ref": "b78fc2288cad43766f7375faabd471ce5d178357",
+    "path": ".github/workflows/iv106-c3b-actual-core.yml",
+    "sha": "14b84bc38544850e1723a877ede0bfc755319cb7"
+  },
+  "files": [
+    {
+      "ref": "509e75bb8ac736bca7591336e12aa8a2ab7816d6",
+      "path": "verification/iv105/iv105_a/ActualZetaIV105AOriginalPhysicalActionSpectrum.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV105AOriginalPhysicalActionSpectrum.lean",
+      "sha": "7209b6f0d02dfb7e0890f45c56405f966d25847a"
+    },
+    {
+      "ref": "97d6a291c716a0f66ffa08f3ea898d9cbdb00bf8",
+      "path": "verification/iv105/iv105_b/ActualZetaIV105BOriginalPhysicalAction.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV105BOriginalPhysicalAction.lean",
+      "sha": "bccbbccb7882c4baa67ea0ffbf2d3fc6d9d4536d"
+    },
+    {
+      "ref": "d228695bb70881d0cb2a9c38bd69373adc0d8200",
+      "path": "WeilDefect/Arithmetic/ActualZetaIV104OriginalPackedMassProjection.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV104OriginalPackedMassProjection.lean",
+      "sha": "304117f92766ff73ae38da62d5f1e7595ae0492b"
+    },
+    {
+      "ref": "1822dcf8d26437366bb84afa93ee5977696ba00c",
+      "path": "verification/iv105/iv105_c/ActualZetaIV105COriginalProjectedPhysicalResponse.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV105COriginalProjectedPhysicalResponse.lean",
+      "sha": "49b108e6228684cec3c59d5564a60b7adf74df3f"
+    },
+    {
+      "ref": "89a5c82d6b4c7f17af1cf152e0c7425af56cbe30",
+      "path": "verification/iv105/iv105_d/ActualZetaIV105DOriginalSchurReceiver.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV105DOriginalSchurReceiver.lean",
+      "sha": "b6f518f62afb824f060432ea9394bea47ef522e9"
+    },
+    {
+      "ref": "ff95dd67a30e44fd68f26a066c2e0b71c7e3efe6",
+      "path": "verification/iv105/iv105_e1/ActualZetaIV105E1OriginalGramSolve.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV105E1OriginalGramSolve.lean",
+      "sha": "156834a7e1e0b547dbb89f53aa9031327e8f685d"
+    },
+    {
+      "ref": "0148ab4d13d7eff73914cf611cc20ef745e92eec",
+      "path": "verification/iv105/iv105_e2/ActualZetaIV105E2OriginalSolveAttachment.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV105E2OriginalSolveAttachment.lean",
+      "sha": "2f4ca53ab54a7aafac390e1a9b237a46477e18a2"
+    },
+    {
+      "ref": "fce1532dab371354d23c85f3bb75e69693b40529",
+      "path": "verification/iv105/iv105_f1/ActualZetaIV105F1OriginalTrialReceiver.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV105F1OriginalTrialReceiver.lean",
+      "sha": "7ce54d03359b582b114e928154787ced1f8c910f"
+    },
+    {
+      "ref": "ba294d3f0d8e1c0dd2fd38df960b973d20a633e0",
+      "path": "verification/iv105/iv105_f2/ActualZetaIV105F2OriginalResidualGram.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV105F2OriginalResidualGram.lean",
+      "sha": "d1add04a64edd3786dc2fd51bdab4e053ac8074e"
+    },
+    {
+      "ref": "a2d92973189a5e50461a9a0e47cac968566d69ae",
+      "path": "verification/iv106/iv106_c1/ActualZetaIV106C1OriginalResponseNull.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106C1OriginalResponseNull.lean",
+      "sha": "7d6abd702257715c9ddbebfd01b7f16f5a7aa1a0"
+    },
+    {
+      "ref": "b92e953846dd73919bd59e5d9264d1436bc08886",
+      "path": "verification/iv106/iv106_c2/ActualZetaIV106C2OriginalFormMargin.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106C2OriginalFormMargin.lean",
+      "sha": "4e8e383af48d643564548fac93dcf0483beb3c0d"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_027/F08NativeFrequencyScalingMeasure.lean",
+      "dest": "WeilDefect/Generated/F08/NativeFrequencyScalingMeasure.lean",
+      "sha": "eecfe2a849fa79aa13810ede85e9ba625eba7777"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_029/F08NativeL2PushforwardNorm.lean",
+      "dest": "WeilDefect/Generated/F08/NativeL2PushforwardNorm.lean",
+      "sha": "4da65f9b9df7cae6ea30a4a7f25d3e6c1606c294"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_030/F08NativeFrequencyDilation.lean",
+      "dest": "WeilDefect/Generated/F08/NativeFrequencyDilation.lean",
+      "sha": "5c260b69f464f5793e095f9b5448c90f7984617f"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_033/F08NativeFrequencyDilationIsometry.lean",
+      "dest": "WeilDefect/Generated/F08/NativeFrequencyDilationIsometry.lean",
+      "sha": "8b4055c065ab7987a01bf55143908d8cd77f0f23"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_035/F08NativeDilationLinearIsometry.lean",
+      "dest": "WeilDefect/Generated/F08/NativeDilationLinearIsometry.lean",
+      "sha": "7038c5d23cecdef6cc3f6bca1d12548246e65bd7"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_037/F08CompactSchwartzNativeL2Dense.lean",
+      "dest": "WeilDefect/Generated/F08/CompactSchwartzNativeL2Dense.lean",
+      "sha": "f6d8bc01053ff811a2a9ebc6b83837f714e8d90f"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_038/F08NativeL2ContinuityDenseTransfer.lean",
+      "dest": "WeilDefect/Generated/F08/NativeL2ContinuityDenseTransfer.lean",
+      "sha": "354922e7ed1727292f9ef41cf9b4f7d20f59a753"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_040/F08OriginalSchwartzDilationPointwise.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalSchwartzDilationPointwise.lean",
+      "sha": "f728a7fc3c5528c7311b7ed8dc27b2f60e445f81"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_042/F08CompactSchwartzSupportRadiusAndBound.lean",
+      "dest": "WeilDefect/Generated/F08/CompactSchwartzSupportRadiusAndBound.lean",
+      "sha": "f3ecfbf236898ca62baac18111595a06b2a9874f"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_045/F08CompactSchwartzCommonScaledSupport.lean",
+      "dest": "WeilDefect/Generated/F08/CompactSchwartzCommonScaledSupport.lean",
+      "sha": "6fd895d4ae3cfa550fa0ed08f194ce299ea051b6"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_046/F08OriginalSchwartzNormalizedDifferenceBounds.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalSchwartzNormalizedDifferenceBounds.lean",
+      "sha": "9212867e3c7594461d153777ad1c4db7c3693150"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_048/F08OriginalSchwartzIntegrableSquareEnvelope.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalSchwartzIntegrableSquareEnvelope.lean",
+      "sha": "08b60de243f59503f33be0970600861d62f92e0d"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_051/F08OriginalCompactSchwartzFilteredDCT.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalCompactSchwartzFilteredDCT.lean",
+      "sha": "e6d0da5a8e350e9f49bf4f10228f820492c5e83b"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_052/F08OriginalNativeL2SquareIntegral.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalNativeL2SquareIntegral.lean",
+      "sha": "16a7053b3a1ea6f0e0f91a89de6e40a91987cd92"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_055/F08OriginalNativeL2StrongContinuity.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalNativeL2StrongContinuity.lean",
+      "sha": "90ecd5258d1fa2fc843349e6fa4278ae20956062"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_001/F08LogWeightDilation.lean",
+      "dest": "WeilDefect/Generated/F08/LogWeightDilation.lean",
+      "sha": "5dce3a647223afbf75ef09f72d90c8afb331ee81"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_025/F08NativeLogDilationFactor.lean",
+      "dest": "WeilDefect/Generated/F08/NativeLogDilationFactor.lean",
+      "sha": "d208814f79f04a9926c2059d427419e73d6abb4b"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_057/F08LogDilationFixedVectorCorrection.lean",
+      "dest": "WeilDefect/Generated/F08/LogDilationFixedVectorCorrection.lean",
+      "sha": "d1c2d9241f58541e23b1975aec610c63eb84b92f"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_059/F08OriginalLogCorrectedDilationConvergence.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalLogCorrectedDilationConvergence.lean",
+      "sha": "5febf418b614e49a1e040a41b889b6b51fbc1a18"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_060/F08OriginalPhysicalDilationScaling.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalPhysicalDilationScaling.lean",
+      "sha": "fc488dea4d0fde809ece29e0fc863c6a35b2455b"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_062/F08OriginalNativePhysicalFourierIdentity.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalNativePhysicalFourierIdentity.lean",
+      "sha": "11c535117029f3ecb9d72af56d1671e94e9ba130"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_063/F08OriginalWeightedCoordinateIdentity.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalWeightedCoordinateIdentity.lean",
+      "sha": "34caef0d68578ac7c3fc15b5f839e148ad0e0a00"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_064/F08OriginalFormDomainEnergyReceiver.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalFormDomainEnergyReceiver.lean",
+      "sha": "9423bc10b0db9d07078299bdedbe60b585fede7d"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_067/F08TerminalOriginalWeightedDilation.lean",
+      "dest": "WeilDefect/Generated/F08/TerminalOriginalWeightedDilation.lean",
+      "sha": "985e467f8a284c7c5be5bf794062155c24e70bea"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_005/F08WeightedMollifierMultiplier.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalWeightedMollifierMultiplier.lean",
+      "sha": "2a8199ff817f59d1437fa173518a588cbbd467b9"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_007/F08OriginalWindowMollifierFourier.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalWindowMollifierFourier.lean",
+      "sha": "606d324ca9fcfd53d059efe1b57d1b0e30349476"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_009/F08OriginalWindowConvolutionSupport.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalWindowConvolutionSupport.lean",
+      "sha": "6badab7f17605d3131ee414282683d390c6f1964"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_011/F08OriginalNormalizedMollifier.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalNormalizedMollifier.lean",
+      "sha": "b1f53459762df682f6d1d358aae9c82b5396c5a7"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_013/F08OriginalMollifierFourierLimit.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalMollifierFourierLimit.lean",
+      "sha": "7b91eda87ce5a0d7691fdc643865e72fb153287c"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_015/F08ActualMollifierWeightedDCT.lean",
+      "dest": "WeilDefect/Generated/F08/ActualMollifierWeightedDCT.lean",
+      "sha": "f1969dede41f0d799788411420c0cb2a63c5e53a"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_017/F08ExplicitShrinkingPhysicalMollifier.lean",
+      "dest": "WeilDefect/Generated/F08/ExplicitShrinkingPhysicalMollifier.lean",
+      "sha": "b767da47b302734c9b1de0bd0fde38b727c84b20"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_019/F08OriginalSmoothedWindow.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalSmoothedWindow.lean",
+      "sha": "efe3260cbd8798ad7192142c1e656f31a6729d13"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_021/F08OriginalSmoothedWindowNativeFourier.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalSmoothedWindowNativeFourier.lean",
+      "sha": "f7f769dd120810645a6bed9fa3ef379c94986a77"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_023/F08OriginalWindowNativeWeightedSmoothing.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalWindowNativeWeightedSmoothing.lean",
+      "sha": "b0712d54ff2c5a3c3c5496f5c007559abf946bf3"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_068/F08OriginalSupportedSmoothingReceiver.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalSupportedSmoothingReceiver.lean",
+      "sha": "c30f57a1d581c9a8be44ecd9dfccd5ea2e9f6e43"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_069/F08OriginalFixedWindowAssemblyReceiver.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalFixedWindowAssemblyReceiver.lean",
+      "sha": "b8f15156f6fa2b45b934517e5277527aab074406"
+    },
+    {
+      "ref": "ca9e73b47ded1cb945d980f6f461d0a5669dbe2f",
+      "path": "verification/f08/f08_073/F08TerminalOriginalFixedSupportSmoothDensity.lean",
+      "dest": "WeilDefect/Generated/F08/TerminalOriginalFixedSupportSmoothDensity.lean",
+      "sha": "f1fb72ae584aa9de2e71ac5ee17fb46c4c7e9f36"
+    },
+    {
+      "ref": "5da3d10040919836dbf6b8cd248cc67185121e5a",
+      "path": "verification/f08/f08_075/F08OriginalSchwartzCarrierApprox.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalSchwartzCarrierApprox.lean",
+      "sha": "0d13864a380c2975ef3c6dfc985e1bebffe44365"
+    },
+    {
+      "ref": "329c6c6c44c1e3b5c6d896f9f0b0f52780eb5a37",
+      "path": "verification/f08/f08_076/F08OriginalDenseCoreTransfer.lean",
+      "dest": "WeilDefect/Generated/F08/OriginalDenseCoreTransfer.lean",
+      "sha": "08ae8410ef5f53b7b3c05fbb05b8b100750d122f"
+    },
+    {
+      "ref": "a0cdd6c6b1e7ba5c9c5b15d2bf76335dc471604d",
+      "path": "verification/iv106/iv106_c3a/ActualZetaIV106C3ConstraintDensity.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106C3ConstraintDensity.lean",
+      "sha": "6e0454f5ad28e88d934a9c86259bdf468d19994d"
+    },
+    {
+      "ref": "b78fc2288cad43766f7375faabd471ce5d178357",
+      "path": "verification/iv106/iv106_c3b/ActualZetaIV106C3ActualCore.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106C3ActualCore.lean",
+      "sha": "484fe9045e85138219b4709f05f3de3705bd2451"
+    },
+    {
+      "ref": "c613964eb4c2f1dd44196b3deb609ea07e3ca9ae",
+      "path": "verification/iv106/iv106_c3c/ActualZetaIV106C3ActualConstraints.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106C3ActualConstraints.lean",
+      "sha": "25d13ea5fb5fce899121fd61ab5ae54a5b954002"
+    },
+    {
+      "ref": "7ebeeda08c289e8f46d69bfce18064d652fb22aa",
+      "path": "verification/iv106/iv106_d1/ActualZetaIV106D1ReciprocalTangent.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106D1ReciprocalTangent.lean",
+      "sha": "2e5e4775e5e3895d0a4fcdaad8d20ea4c9cc5d49"
+    },
+    {
+      "ref": "6ad9786c84ac9b5aba188c23a51cf030f446fc82",
+      "path": "verification/iv106/iv106_d2/ActualZetaIV106D2ReciprocalFourier.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106D2ReciprocalFourier.lean",
+      "sha": "86f310ea80a70f5fcb1181d662f15c93e1e93569"
+    },
+    {
+      "ref": "a4acb6457b18aa23330da93188ad4465306cbb71",
+      "path": "verification/iv106/iv106_d3/ActualZetaIV106D3CompactPrimitive.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106D3CompactPrimitive.lean",
+      "sha": "c04150add40ce368b031578101a33afbc95637d1"
+    },
+    {
+      "ref": "5c5ae2b1763bfe18f07e61026b55f06c311633ba",
+      "path": "verification/iv106/iv106_d4/ActualZetaIV106D4CellEnergy.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106D4CellEnergy.lean",
+      "sha": "72fa49efb8090c2cec660da35ffc34a638d3370a"
+    },
+    {
+      "ref": "6da329d470b5dbac5ca90a7baffbb35b7add0dcc",
+      "path": "verification/iv106/iv106_d5/ActualZetaIV106D5PartitionEnergy.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106D5PartitionEnergy.lean",
+      "sha": "a9bdf14c3c7698e0593f0eff6d9ff1e4a1cd9165"
+    },
+    {
+      "ref": "31b09602d5753735a2fe9a46fb640bc27f3f275e",
+      "path": "verification/iv106/iv106_d6/ActualZetaIV106D6ActualPrimitive.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106D6ActualPrimitive.lean",
+      "sha": "bc6c04eac4840b5b6e3533a87e77a359c367657c"
+    },
+    {
+      "ref": "bcc35ba8eeea7d5be48c666ef91b7c99fa9478d7",
+      "path": "verification/iv106/iv106_e1/ActualZetaIV106E1ScalarBudget.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106E1ScalarBudget.lean",
+      "sha": "1b2186914d7b8ca8ff44041d058a435ac9293ba0"
+    },
+    {
+      "ref": "c5c190aa7955f9da9b430b2facfe7a84c96a09b6",
+      "path": "verification/iv106/iv106_e2/ActualZetaIV106E2GammaEnvelope.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106E2GammaEnvelope.lean",
+      "sha": "6bf91d7024ab6893500ed12ccc0de2fc769f5e41"
+    },
+    {
+      "ref": "c948f00e850c15cf151d2c0bb82475a78c9fa292",
+      "path": "verification/iv106/iv106_e3/ActualZetaIV106E3WeightedChains.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106E3WeightedChains.lean",
+      "sha": "9dfc0e96baf730f3c88c3869e88a39d427918f28"
+    },
+    {
+      "ref": "d5a525ed8c3d47078f99ee3f94dce456562be74d",
+      "path": "verification/iv106/iv106_e4/ActualZetaIV106E4PrimeCoefficients.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106E4PrimeCoefficients.lean",
+      "sha": "819c4bf61052e9d3957d051423cb859c5cd51b39"
+    },
+    {
+      "ref": "e5a84b835c0b3610c0fe9f77f88b892f6fa2432a",
+      "path": "verification/iv106/iv106_e5/ActualZetaIV106E5TranslationFibers.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106E5TranslationFibers.lean",
+      "sha": "fe7467e85a2b49d7012c868d938a4c44f71f8244"
+    },
+    {
+      "ref": "5a3fd99680a1e0f2056e3fdc44efc2d3822f1962",
+      "path": "verification/iv106/iv106_e6/ActualZetaIV106E6PairedLagMatrices.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106E6PairedLagMatrices.lean",
+      "sha": "338c4a5ae35d8314f30d21e36b30fa8778836465"
+    },
+    {
+      "ref": "71c0c25b29c0691f20dcd2ee3f4b023f330f2da9",
+      "path": "verification/iv106/iv106_e7/ActualZetaIV106E7PrimeCutoff.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106E7PrimeCutoff.lean",
+      "sha": "dd1fefe2a531cea862fb00c50cda0948c14a0f44"
+    },
+    {
+      "ref": "36b21fa1cf3097e49e4074cfb9313712df63ace8",
+      "path": "verification/iv106/iv106_e8/ActualZetaIV106E8OriginalCorrelation.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106E8OriginalCorrelation.lean",
+      "sha": "456b25b928aa9981bb5bd9da1d166b00623c47c2"
+    },
+    {
+      "ref": "4ce5d6a16fdc6c2c22ea80f8b14efdef28dd5ee7",
+      "path": "verification/iv106/iv106_e9/ActualZetaIV106E9GroupedPrimeEnergy.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106E9GroupedPrimeEnergy.lean",
+      "sha": "7d43337dd15bb720da38ce276e7d2416292c6b81"
+    },
+    {
+      "ref": "f3f92106fce0e14c0fa94f23bf247918186dd548",
+      "path": "verification/iv106/regroup_001/w02_primitive_pole_audit/repair_01/ActualZetaIV106E10IntegratedCoercivity.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106E10IntegratedCoercivity.lean",
+      "sha": "7480ba4fda8f25cbd0c2c81ad3a1504c1a23945b"
+    },
+    {
+      "ref": "0c93c44d5965d9890ea2745c4bdd0ccf6abaf1c1",
+      "path": "verification/iv106/iv106_e17a/ActualZetaIV106E17AExplicitShift.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106E17AExplicitShift.lean",
+      "sha": "ca8e33baee614db82dd70e448def9572c2e27919"
+    },
+    {
+      "ref": "1d16a0ef9fd3e2cdf571a891e07f741ee2bcc42e",
+      "path": "verification/iv106/regroup_001/w02_primitive_pole_audit/repair_02/ActualZetaIV106W02PrimitivePole.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106W02PrimitivePole.lean",
+      "sha": "9640e0f03f0837b9bf85c99b550ae2014abd5ead"
+    },
+    {
+      "ref": "f08baa078fdf683c0de3905fa5dcde188dae4643",
+      "path": "verification/iv106/regroup_001/w02_primitive_pole_audit/inverse_05/ActualZetaIV106W02ConstrainedInverse.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106W02ConstrainedInverse.lean",
+      "sha": "283658671169442ebda926602320fb8e1fdb59fa"
+    },
+    {
+      "ref": "cf270598df1a71e5cf08b7e865abf5d36fcc4d4a",
+      "path": "verification/iv106/regroup_001/w02_primitive_pole_audit/response_01/ActualZetaIV106W02ConstrainedResponse.lean",
+      "dest": "WeilDefect/Arithmetic/ActualZetaIV106W02ConstrainedResponse.lean",
+      "sha": "b037e7275ea8835f786b189805db15415611ad8d"
+    }
+  ],
+  "target": "WeilDefect/Arithmetic/ActualZetaIV106W02ConstrainedResponse.lean",
+  "audit": [
+    "neutralIV106W02R_symm_of_real",
+    "neutralIV106W02R_symm",
+    "neutralIV106W02R_pair",
+    "neutralIV106W02R_solve",
+    "neutralIV106W02R_test",
+    "neutralIV106W02R_correction"
+  ],
+  "counts": {
+    "files": 73,
+    "refs": 37,
+    "generated": 39
+  },
+  "static_checks": {
+    "inherited_certified_overlay_pins": 71,
+    "added_source_pins": 1,
+    "base_tree_verified_by_predecessor": true,
+    "scope": "Unchanged admitted primitive-pole overlay plus one inverse module; runtime graph and all blobs checked before build."
+  }
+}
