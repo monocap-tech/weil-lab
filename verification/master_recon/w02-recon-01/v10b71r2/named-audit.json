@@ -1,0 +1,71 @@
+{
+  "source": "282fbc807227b6b3b96ea4c1d460d2b849edfcf0",
+  "run": 46093467756,
+  "job": 140819462289,
+  "overall": "failure",
+  "audits": [
+    {
+      "module": "V10B20a",
+      "blob": "863f84a55d67896d188926e41710a26dfab3b684",
+      "names": [
+        "WeilDefect.MasterRecon.V10B20a.term_integrable",
+        "WeilDefect.MasterRecon.V10B20a.term_integral",
+        "WeilDefect.MasterRecon.V10B20a.exp_difference",
+        "WeilDefect.MasterRecon.V10B20a.term_norm_bound",
+        "WeilDefect.MasterRecon.V10B20a.exp_moment",
+        "WeilDefect.MasterRecon.V10B20a.norm_summable",
+        "WeilDefect.MasterRecon.V10B20a.scalar_series_integral",
+        "WeilDefect.MasterRecon.V10B20a.pointwise_geometric",
+        "WeilDefect.MasterRecon.V10B20a.scalar_integral_receiver"
+      ],
+      "output": [
+        "2026-11-28T01:32:34.8961132Z 'WeilDefect.MasterRecon.V10B20a.term_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T01:32:34.8961528Z 'WeilDefect.MasterRecon.V10B20a.term_integral' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T01:32:34.8961917Z 'WeilDefect.MasterRecon.V10B20a.exp_difference' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T01:32:34.8962303Z 'WeilDefect.MasterRecon.V10B20a.term_norm_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T01:32:34.8962678Z 'WeilDefect.MasterRecon.V10B20a.exp_moment' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T01:32:34.8963059Z 'WeilDefect.MasterRecon.V10B20a.norm_summable' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T01:32:34.8963453Z 'WeilDefect.MasterRecon.V10B20a.scalar_series_integral' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T01:32:34.8963867Z 'WeilDefect.MasterRecon.V10B20a.pointwise_geometric' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T01:32:34.8964287Z 'WeilDefect.MasterRecon.V10B20a.scalar_integral_receiver' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "pass": "2026-11-28T01:32:35.0546644Z V10B20a: strict axiom audit PASS (9 declarations)"
+    },
+    {
+      "module": "V10B21c",
+      "blob": "9685ef5abf71261185535a70953272ce7cda89a1",
+      "names": [
+        "WeilDefect.MasterRecon.V10B21c.denominator_lower",
+        "WeilDefect.MasterRecon.V10B21c.denominator_pos",
+        "WeilDefect.MasterRecon.V10B21c.denominator_near",
+        "WeilDefect.MasterRecon.V10B21c.denominator_far",
+        "WeilDefect.MasterRecon.V10B21c.coefficient_near",
+        "WeilDefect.MasterRecon.V10B21c.numerator_split",
+        "WeilDefect.MasterRecon.V10B21c.opposite_shift_norm",
+        "WeilDefect.MasterRecon.V10B21c.numerator_near",
+        "WeilDefect.MasterRecon.V10B21c.action_near",
+        "WeilDefect.MasterRecon.V10B21c.action_far"
+      ],
+      "output": [
+        "2026-11-28T01:34:29.1920517Z 'WeilDefect.MasterRecon.V10B21c.denominator_lower' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T01:34:29.1921122Z 'WeilDefect.MasterRecon.V10B21c.denominator_pos' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T01:34:29.1921977Z 'WeilDefect.MasterRecon.V10B21c.denominator_near' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T01:34:29.1922610Z 'WeilDefect.MasterRecon.V10B21c.denominator_far' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T01:34:29.1923192Z 'WeilDefect.MasterRecon.V10B21c.coefficient_near' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T01:34:29.1923783Z 'WeilDefect.MasterRecon.V10B21c.numerator_split' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T01:34:29.1924372Z 'WeilDefect.MasterRecon.V10B21c.opposite_shift_norm' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T01:34:29.1924966Z 'WeilDefect.MasterRecon.V10B21c.numerator_near' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T01:34:29.1925532Z 'WeilDefect.MasterRecon.V10B21c.action_near' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T01:34:29.1926077Z 'WeilDefect.MasterRecon.V10B21c.action_far' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "pass": "2026-11-28T01:34:29.4541176Z V10B21c: strict axiom audit PASS (10 declarations)"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 15242515968,
+      "digest": "sha256:c9a408d52576820cb0dbf121722d2cde033780c9bbb5f48a662d3bd093a9cfdb",
+      "size": 19721
+    }
+  ]
+}
