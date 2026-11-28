@@ -60,8 +60,8 @@ theorem neutralIV106W02R_test (q : neutralIV106W02IK) (v : neutralIV106W02IH) :
       inner ℂ (q : neutralIV106W02IH) (neutralIV106W02RA v) := by
   rw [neutralIV106W02R_solve, neutralIV106W02R_pair]
 
-/-- Nonnegative energy of the response, with the original quantitative constant. -/
 set_option maxHeartbeats 2000000 in
+/-- Nonnegative energy of the response, with the original quantitative constant. -/
 theorem neutralIV106W02R_correction (v : neutralIV106W02IH) :
     (1/17:ℝ)*‖neutralIV106W02RResponse v‖^2 ≤
       (inner ℂ (neutralIV106W02RB v) (neutralIV106W02RResponse v)).re := by
