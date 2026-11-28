@@ -1,0 +1,77 @@
+{
+  "classification": "Independent complete remote raw signed-bank and basis Git SHA1 byte verification; exact manifest checks, symmetry, pivot structure and transformed prefix trace; no Schur sign or correction solve.",
+  "parent": "73892af91c6a14d3f6b56902b27400e003ad6b8d",
+  "manifest_git_blob": "2e474178d131f872f648eca22e1b712f89a9b806",
+  "parts": [
+    {
+      "part": 0,
+      "bytes": 1578685,
+      "git_blob": "54dbb6a5c99c2e96cdcaf25db7dacb79ffb7c3f4"
+    },
+    {
+      "part": 1,
+      "bytes": 1581240,
+      "git_blob": "b15f1c141d72ac3e2204ff99691c9b7b72b8e5a1"
+    },
+    {
+      "part": 2,
+      "bytes": 1581596,
+      "git_blob": "ab9fe221d6e1f19be3fe34f9cf41e45affbd198f"
+    },
+    {
+      "part": 3,
+      "bytes": 1582804,
+      "git_blob": "1a705a2e2969c351256c72312ed57d9bf19e6fe7"
+    },
+    {
+      "part": 4,
+      "bytes": 1585514,
+      "git_blob": "f26075cc71432e09e0fcc29c82e91b7a51543d2f"
+    },
+    {
+      "part": 5,
+      "bytes": 1593904,
+      "git_blob": "6c94f4cb35878974da998518a3b390839ed87c64"
+    },
+    {
+      "part": 6,
+      "bytes": 1632862,
+      "git_blob": "5458e2244dadac410c24102ccde38b43145f54a1"
+    },
+    {
+      "part": 7,
+      "bytes": 1642059,
+      "git_blob": "28d296e665b8d2dbe784f2890934104616cbffdc"
+    }
+  ],
+  "rows": 256,
+  "basis_git_blob": "97928a1ce7b3a7752301146b25c92f1b23b78861",
+  "corrected_prefix_trace_numerator": "4368168862102285640401872236888",
+  "corrected_prefix_trace_scale": "1e48",
+  "max_model_radii": {
+    "M": "83235331525765287",
+    "N": "950731261642291110683"
+  },
+  "max_model_norms": {
+    "M": "74256314006995777600069504469536",
+    "N": "8997887623705901838921545456647326330"
+  },
+  "checks": {
+    "trace": true,
+    "postdropMerr": true,
+    "postdropNerr": true,
+    "postdropMnorm": true,
+    "postdropNnorm": true
+  },
+  "transformed": {
+    "basis_scale": "1000000000000000000000000000000000000",
+    "max_basis_row_l1_numerator": "128079368417194918349370946769632018789774",
+    "max_prefix_entry_radius_ceiling_at_Rscale": "658804370708940665",
+    "max_M_model_radius_ceiling_at_scale": "5884537789817773060815",
+    "max_N_model_radius_ceiling_at_scale": "67236658821652722800141806",
+    "prefix_trace_numerator": "255310946630393709689078781643789507189116153095624257451432815343206582578032761203383613120621015781132141598",
+    "prefix_trace_denominator": "1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "prefix_trace_upper_approx": 2.553109466303937e-10
+  },
+  "all_checks": true
+}
