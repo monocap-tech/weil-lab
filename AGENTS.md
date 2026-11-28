@@ -2,6 +2,8 @@
 
 This is a provider-neutral restart guide. Mathematical authority remains in this repository. Read [Theorem Ledger](docs/THEOREM_LEDGER.md), [Dependency Audit](docs/DEPENDENCY_AUDIT.md), [Imported Source Pins](docs/IMPORTED_SOURCE_PINS.md), [Proof Status](docs/PROOF_STATUS.md), and [Lean Status](docs/LEAN_STATUS.md) for their stated scopes. The default README summarizes Horizon 1; active NF, IV, F08, formalization, and other branches require separate live reconciliation.
 
+The dated [three-repository current situation](https://github.com/monocap-tech/provenance/blob/main/CURRENT_SITUATION.md) is a navigation index when private provenance access is available. Check its observation and reviewed-standing timestamps, then verify the exact native evidence here. If it is stale or inaccessible, record that and proceed from this repository's live refs and governing ledger.
+
 ## Start from live evidence
 
 1. Fetch all refs, inspect active PR lineages (including closed unmerged branches and descendants), and resolve the exact source commit for the named obligation. Read the relevant issue or branch's native status and acceptance rules. Do not choose a programme cursor from the newest PR title.
