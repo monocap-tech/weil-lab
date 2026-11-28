@@ -188,6 +188,21 @@ repair3_dst.write_bytes(repair3_bytes)
 assert digest(repair3_dst.read_bytes()) == "84c910d0c2aea256a9436ef2f1b1b55ea2916eee"
 manifest[repair3_path]["local_repair"] = {"original_blob":"e539e480f3cde1ff224fed82985a78969e8d911f","compiled_blob":"84c910d0c2aea256a9436ef2f1b1b55ea2916eee","proof":"real exponent two, explicit map application, complex real-part cast"}
 print("RETURN109-E3 repaired V10B6c blob:", digest(repair3_bytes))
+# RETURN109-E4: one renewed direct real-inner-product repair.
+repair4_original = repair3_dst.read_bytes()
+assert digest(repair4_original) == "84c910d0c2aea256a9436ef2f1b1b55ea2916eee"
+repair4_old = "  rw [signedGram_pairing, inner_self_eq_norm_sq_to_K, inner_self_eq_norm_sq_to_K]\n  simp only [Complex.sub_re, ← Complex.ofReal_pow, Complex.ofReal_re]"
+repair4_new = "  rw [signedGram_pairing, Complex.sub_re]\n  exact congrArg₂ (fun x y : ℝ => x - y)\n    (inner_self_eq_norm_sq (𝕜 := ℂ) (analysisChannel true T g))\n    (inner_self_eq_norm_sq (𝕜 := ℂ) (analysisChannel false T g))"
+repair4_text = repair4_original.decode("utf-8")
+assert repair4_text.count(repair4_old) == 1
+repair4_bytes = repair4_text.replace(repair4_old, repair4_new).encode("utf-8")
+assert digest(repair4_bytes) == "e33cd9339536760ec9de32dd75881b34e9c4e7ad"
+repair3_dst.write_bytes(repair4_bytes)
+assert digest(repair3_dst.read_bytes()) == "e33cd9339536760ec9de32dd75881b34e9c4e7ad"
+manifest[repair3_path]["local_repair"]["intermediate_blob"] = "84c910d0c2aea256a9436ef2f1b1b55ea2916eee"
+manifest[repair3_path]["local_repair"]["compiled_blob"] = "e33cd9339536760ec9de32dd75881b34e9c4e7ad"
+manifest[repair3_path]["local_repair"]["proof"] = "real exponent two, explicit map application, direct inner_self_eq_norm_sq"
+print("RETURN109-E4 repaired V10B6c blob:", digest(repair4_bytes))
 result = {"IV":I,"RECON":R,"root":ROOT,"entries":manifest,"external_imports":sorted(external),"explicit_cross_edge":[ROOT,IV_ENTRY]}
 result["additional_roots"] = [translation_root, iv_root, recon_root, graph_root, count_root, sampling_root]
 pathlib.Path("return108w-closure.json").write_text(json.dumps(result, indent=2, sort_keys=True)+"\n")
