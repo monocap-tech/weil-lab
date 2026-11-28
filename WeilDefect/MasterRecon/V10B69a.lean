@@ -55,32 +55,6 @@ theorem J_bound (g : logCarrier (1/4)) :
       exact V08I.mulValue_bound V08I.inverseWeight V08I.inverseWeight_measurable
         _ V08I.inverseWeight_bound (g:V08I.FullL2)
 
-theorem prime_free : V10B8d.physicalPrime (1/4) = 0 := by
-  have he : Real.exp (2*(1/4:ℝ)) < 2 := by
-    calc
-      _ < Real.exp (Real.log 2) := Real.exp_lt_exp.mpr (by linarith [Real.log_two_gt_d9])
-      _ = 2 := Real.exp_log (by norm_num)
-  have hn : ⌊Real.exp (2*(1/4:ℝ))⌋₊ < 2 :=
-    (Nat.floor_lt (Real.exp_pos _).le).mpr (by exact_mod_cast he)
-  unfold V10B8d.physicalPrime V10B8d.primeBank
-  apply Finset.sum_eq_zero
-  intro n hn'
-  have h := Finset.mem_Ioc.mp hn'
-  have hn'' : n = 1 := by
-    have hh : n ≤ ⌊Real.exp (2*(1/4:ℝ))⌋₊ := h.2
-    omega
-  subst n
-  have hz : V10B8d.primeWeight 1 = 0 := by simp [V10B8d.primeWeight]
-  rw [hz,Complex.ofReal_zero]
-  ext f : 1
-  change (0:ℂ) • (V10B8d.shiftPair (Real.log (1:ℝ)) f) = 0
-  exact zero_smul ℂ _
-
-theorem prime_operator_zero : V10B8d.primeOperator (1/4) = 0 := by
-  unfold V10B8d.primeOperator
-  rw [prime_free]
-  simp
-
 noncomputable def poleLoad (v : logCarrier (1/4)) :
     V08F.PhysicalL2 (supportMeasure (1/4)) :=
   (eval (1/4) (-1/2) (by norm_num) v) • vector (1/4) (1/2) (by norm_num) +
@@ -119,8 +93,6 @@ end WeilDefect.MasterRecon.V10B69a
 #print axioms WeilDefect.MasterRecon.V10B69a.divided_physical
 #print axioms WeilDefect.MasterRecon.V10B69a.divided_section
 #print axioms WeilDefect.MasterRecon.V10B69a.J_bound
-#print axioms WeilDefect.MasterRecon.V10B69a.prime_free
-#print axioms WeilDefect.MasterRecon.V10B69a.prime_operator_zero
 #print axioms WeilDefect.MasterRecon.V10B69a.pole_physical_pair
 #print axioms WeilDefect.MasterRecon.V10B69a.row_annihilates_tail
 #print axioms WeilDefect.MasterRecon.V10B69a.row_subtraction_invariant
