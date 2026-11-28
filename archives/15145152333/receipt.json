@@ -1,0 +1,16 @@
+{
+  "id": 15145152333,
+  "name": "pilot-audit",
+  "sha256": "497088ad7116da879b739c1e5cc75eb7ea944fc05b36e63cefa71b49e9f1cbf1",
+  "producer_run": 45874415463,
+  "producer_conclusion": "success",
+  "bytes": 11996,
+  "status": "BYTE_PASS",
+  "chunks": [
+    {
+      "file": "part0000.bin",
+      "sha256": "497088ad7116da879b739c1e5cc75eb7ea944fc05b36e63cefa71b49e9f1cbf1",
+      "bytes": 11996
+    }
+  ]
+}
