@@ -1,0 +1,16 @@
+[
+  {
+    "label": "historical direct control",
+    "table_pass": 114,
+    "row_pass": 594,
+    "max_ratio": 0.9999846379550046,
+    "failed_slots": []
+  },
+  {
+    "label": "shared root +4 digits",
+    "table_pass": 114,
+    "row_pass": 594,
+    "max_ratio": 0.32850252665349494,
+    "failed_slots": []
+  }
+]

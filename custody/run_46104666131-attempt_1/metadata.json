@@ -1,0 +1,20 @@
+{
+  "id": 15247280305,
+  "node_id": "MDg6QXJ0aWZhY3QxNTI0NzI4MDMwNQ==",
+  "name": "nf618-w02-batch27-qualification",
+  "size_in_bytes": 59444,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15247280305",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15247280305/zip",
+  "expired": false,
+  "digest": "sha256:f9277a21440bc27b08be24ecffde84b453dd1577063f3927ef6d9a782525c1b0",
+  "created_at": "2026-11-28T03:49:38Z",
+  "updated_at": "2026-11-28T03:49:38Z",
+  "expires_at": "2027-02-26T03:49:25Z",
+  "workflow_run": {
+    "id": 46104666131,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "research/nf618-w02-batch27-qualification",
+    "head_sha": "6e0ba420a92dba17cdee792d260abbe123f81397"
+  }
+}
