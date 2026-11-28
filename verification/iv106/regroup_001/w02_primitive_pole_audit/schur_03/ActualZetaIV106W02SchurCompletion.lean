@@ -78,11 +78,10 @@ theorem neutralIV106W02S_complete (v : neutralIV106W02IH) (q : neutralIV106W02IK
   unfold neutralIV106W02SS neutralIV106W02SQ
   simp only [map_add, inner_add_left, inner_add_right, Complex.add_re]
   rw [hcrossH, ← neutralIV106W02R_pair q v,
-    ← neutralIV106W02I_pair q q, neutralIV106W02R_solve v, hdiag]
-  simp only [Complex.conj_re]
-  -- Expand the remaining complementary polarization before transporting its cross term.
+    ← neutralIV106W02I_pair q q]
+  -- The complementary polarization has not yet been expanded at this point.
   simp only [map_add, inner_add_left, inner_add_right, Complex.add_re]
-  rw [hcrossE]
+  rw [hcrossE, neutralIV106W02R_solve v, hdiag]
   simp only [Complex.conj_re]
   ring
 
@@ -102,7 +101,8 @@ theorem neutralIV106W02S_attained (v : neutralIV106W02IH) :
   have h := neutralIV106W02S_complete v (-neutralIV106W02RResponse v)
   have hz : -neutralIV106W02RResponse v + neutralIV106W02RResponse v =
       (0 : neutralIV106W02IK) := by
-    exact neg_add_cancel (neutralIV106W02RResponse v)
+    apply Subtype.ext
+    simp only [Submodule.coe_add, Submodule.coe_neg, Submodule.coe_zero, neg_add_cancel]
   have hzero : (inner ℂ (0 : neutralIV106W02IK)
       (neutralIV106W02IC 0)).re = 0 := by
     rw [inner_zero_left, Complex.zero_re]
