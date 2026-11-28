@@ -48,7 +48,7 @@ theorem shift_continuous (f : FullL2) (C : ℝ) (hC : 0 ≤ C)
   intro s
   rw [Metric.continuousAt_iff]
   intro ε hε
-  let δ := min 1 (ε/(C+1))^2
+  let δ : ℝ := min 1 ((ε/(C+1))^2)
   have hden : 0 < C+1 := by linarith
   have hδ : 0 < δ := by
     change (0:ℝ) < min 1 ((ε/(C+1))^2)
@@ -112,7 +112,7 @@ theorem action_integrable (f : FullL2) (C : ℝ) (hC : 0 ≤ C)
   have hfar : IntegrableOn (actionTerm f) (Ioi 1) := by
     have hi := (integrableOn_exp_mul_Ioi (a := (-1/2:ℝ)) (by norm_num) 1).const_mul (6*‖f‖)
     apply hi.mono' (hm.mono_measure (Measure.restrict_mono
-      (fun r hr => by linarith [show 1<r from hr]) le_rfl))
+      (fun r hr => show 0 < r from lt_trans (by norm_num : (0:ℝ)<1) (show 1<r from hr)) le_rfl))
     rw [ae_restrict_iff' measurableSet_Ioi]
     exact Eventually.of_forall fun r hr => by
       simpa only [show -r/2=(-1/2:ℝ)*r by ring] using V10B21c.action_far f r hr.le

@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B72 action integrability dependency audit
+name: MASTER-RECON V10B72R1 explicit continuity radius and far-set inclusion
 on:
   push:
     branches: [master-recon-v10b20-staging]
