@@ -46,9 +46,9 @@ emit('Seed',f'''import WeilDefect.Arithmetic.NF618W02RootAttachmentCandidate
 import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalSegmentedExp
 import WeilDefect.Generated.NF618GuardPi.Pi
 {head}
-def nf618SegArg : NF591Rect := {rect(arg)}
-def nf618SegState0000 : NF633ExpState := {state(*states[0])}
-theorem nf618SegPrefix0000 : neutralNF633State nf618SegArg nf618GuardQ 0=nf618SegState0000 := by
+def nf618B26SegArg : NF591Rect := {rect(arg)}
+def nf618B26SegState0000 : NF633ExpState := {state(*states[0])}
+theorem nf618B26SegPrefix0000 : neutralNF633State nf618B26SegArg nf618GuardQ 0=nf618B26SegState0000 := by
   apply neutralNF633StateEq_sound
   decide +kernel
 '''+end)
@@ -57,36 +57,36 @@ for k in range(0,len(ks),6):
     file=f'Part{k//6:02d}';src=f'import {mod}.{prior}\n'+head
     for j in ks[k:k+6]:
         src+=f'''
-def nf618SegState{j:04d} : NF633ExpState := {state(*states[j])}
-theorem nf618SegGate{j:04d} : neutralNF633StateEq (neutralNF633Segment nf618SegArg nf618GuardQ {prev} nf618SegState{prev:04d} {j-prev}) nf618SegState{j:04d}=true := by
+def nf618B26SegState{j:04d} : NF633ExpState := {state(*states[j])}
+theorem nf618B26SegGate{j:04d} : neutralNF633StateEq (neutralNF633Segment nf618B26SegArg nf618GuardQ {prev} nf618B26SegState{prev:04d} {j-prev}) nf618B26SegState{j:04d}=true := by
   decide +kernel
-theorem nf618SegPrefix{j:04d} : neutralNF633State nf618SegArg nf618GuardQ {j}=nf618SegState{j:04d} :=
-  neutralNF633Prefix_extend nf618SegArg nf618GuardQ {prev} {j-prev} nf618SegState{prev:04d} nf618SegState{j:04d} nf618SegPrefix{prev:04d} nf618SegGate{j:04d}
+theorem nf618B26SegPrefix{j:04d} : neutralNF633State nf618B26SegArg nf618GuardQ {j}=nf618B26SegState{j:04d} :=
+  neutralNF633Prefix_extend nf618B26SegArg nf618GuardQ {prev} {j-prev} nf618B26SegState{prev:04d} nf618B26SegState{j:04d} nf618B26SegPrefix{prev:04d} nf618B26SegGate{j:04d}
 '''
         prev=j
     emit(file,src+end);prior=file
 emit('Root',f'''import {mod}.{prior}
 {head}
-def nf618SegSmall : NF591Rect := {rect(small)}
-def nf618SegPower01 : NF591Rect := {rect(val)}
-theorem nf618SegArgCheck : neutralNF633RectEq (neutralNF592PhaseArg nf618GuardPiPi (1/1408) nf618GuardQ) nf618SegArg=true := by
+def nf618B26SegSmall : NF591Rect := {rect(small)}
+def nf618B26SegPower01 : NF591Rect := {rect(val)}
+theorem nf618B26SegArgCheck : neutralNF633RectEq (neutralNF592PhaseArg nf618GuardPiPi (1/1408) nf618GuardQ) nf618B26SegArg=true := by
   decide +kernel
-theorem nf618SegSmallCheck : neutralNF633RectEq (nf618SegState1200.sumState.expand (1/(nf618GuardQ:ℚ))) nf618SegSmall=true := by
+theorem nf618B26SegSmallCheck : neutralNF633RectEq (nf618B26SegState1200.sumState.expand (1/(nf618GuardQ:ℚ))) nf618B26SegSmall=true := by
   decide +kernel
-theorem nf618SegRootCheck : neutralNF633RectEq ((nf618SegSmall.mulQ nf618SegSmall nf618GuardQ).mulQ (nf618SegSmall.mulQ nf618SegSmall nf618GuardQ) nf618GuardQ) nf618SegPower01=true := by
+theorem nf618B26SegRootCheck : neutralNF633RectEq ((nf618B26SegSmall.mulQ nf618B26SegSmall nf618GuardQ).mulQ (nf618B26SegSmall.mulQ nf618B26SegSmall nf618GuardQ) nf618GuardQ) nf618B26SegPower01=true := by
   decide +kernel
-theorem nf618SegRootEq : neutralNF593Phase nf618GuardPiPi (1/1408) nf618GuardQ nf618GuardExpN=nf618SegPower01 := by
-  apply neutralNF633Phase_of_small nf618GuardPiPi (1/1408) nf618GuardQ nf618GuardExpN nf618SegSmall nf618SegPower01
-  · rw [neutralNF633RectEq_sound _ _ nf618SegArgCheck]
-    exact neutralNF633SmallExp_of_state nf618SegArg nf618GuardQ nf618GuardExpN nf618SegState1200 nf618SegSmall nf618SegPrefix1200 nf618SegSmallCheck
-  · exact nf618SegRootCheck
-theorem nf618SegPower01_sound : nf618SegPower01.Contains (nf618HybridPhase (1/1408)^1) := by
-  rw [pow_one, ← nf618SegRootEq, neutralNF593Phase_eq]
+theorem nf618B26SegRootEq : neutralNF593Phase nf618GuardPiPi (1/1408) nf618GuardQ nf618GuardExpN=nf618B26SegPower01 := by
+  apply neutralNF633Phase_of_small nf618GuardPiPi (1/1408) nf618GuardQ nf618GuardExpN nf618B26SegSmall nf618B26SegPower01
+  · rw [neutralNF633RectEq_sound _ _ nf618B26SegArgCheck]
+    exact neutralNF633SmallExp_of_state nf618B26SegArg nf618GuardQ nf618GuardExpN nf618B26SegState1200 nf618B26SegSmall nf618B26SegPrefix1200 nf618B26SegSmallCheck
+  · exact nf618B26SegRootCheck
+theorem nf618B26SegPower01_sound : nf618B26SegPower01.Contains (nf618HybridPhase (1/1408)^1) := by
+  rw [pow_one, ← nf618B26SegRootEq, neutralNF593Phase_eq]
   exact neutralNF592PhaseBall_sound nf618GuardPiPi nf618GuardPiPiSound (1/1408) nf618GuardQ nf618GuardExpN nf618GuardQ_pos (by decide +kernel) nf618GuardExpFee
-#print axioms nf618SegRootEq
-#print axioms nf618SegPower01_sound
+#print axioms nf618B26SegRootEq
+#print axioms nf618B26SegPower01_sound
 '''+end)
-names.extend(['nf618SegRootEq','nf618SegPower01_sound'])
+names.extend(['nf618B26SegRootEq','nf618B26SegPower01_sound'])
 
 # Build a shared materialized high precision prefix, in bounded source modules.
 plan=json.loads((root/'notes/provisional/NF618Batch26Plan.json').read_text())
@@ -101,13 +101,13 @@ for start in range(2,max(abs(r) for _,r in pairs)+1,12):
     for j in range(start,min(start+12,max(abs(r) for _,r in pairs)+1)):
         a=zmul(a,val);powers[j]=a
         src+=f'''
-def nf618SegPower{j:02d} : NF591Rect := {rect(a)}
-theorem nf618SegPower{j:02d}_eq : (nf618SegPower{j-1:02d}.mulQ nf618SegPower01 nf618GuardQ)=nf618SegPower{j:02d} := by
+def nf618B26SegPower{j:02d} : NF591Rect := {rect(a)}
+theorem nf618B26SegPower{j:02d}_eq : (nf618B26SegPower{j-1:02d}.mulQ nf618B26SegPower01 nf618GuardQ)=nf618B26SegPower{j:02d} := by
   apply neutralNF633RectEq_sound
   decide +kernel
-theorem nf618SegPower{j:02d}_sound : nf618SegPower{j:02d}.Contains (nf618HybridPhase (1/1408)^{j}) := by
-  rw [← nf618SegPower{j:02d}_eq]
-  exact NF591Rect.contains_mulQ nf618SegPower{j-1:02d}_sound (by simpa only [pow_one] using nf618SegPower01_sound) nf618GuardQ nf618GuardQ_pos
+theorem nf618B26SegPower{j:02d}_sound : nf618B26SegPower{j:02d}.Contains (nf618HybridPhase (1/1408)^{j}) := by
+  rw [← nf618B26SegPower{j:02d}_eq]
+  exact NF591Rect.contains_mulQ nf618B26SegPower{j-1:02d}_sound (by simpa only [pow_one] using nf618B26SegPower01_sound) nf618GuardQ nf618GuardQ_pos
 '''
     emit(file,src+end);prev=file
 def rat(f):
@@ -123,7 +123,7 @@ for q,r in pairs:
     high=zmul(qp[q],a)
     lo=tuple((m//10**4,v.ceildiv(rad,10**4)+1) for m,rad in high)
     phasevals[q,r]=lo
-    pn=f'nf618SegPower{abs(r):02d}'
+    pn=f'nf618B26SegPower{abs(r):02d}'
     need(r!=0,'nonzero retained power')
     powerexpr=pn if r>=0 else f'(nf618HybridConj {pn})'
     proof=f'{pn}_sound' if r>=0 else f'(nf618HybridConj_sound _ _ {pn}_sound)'
