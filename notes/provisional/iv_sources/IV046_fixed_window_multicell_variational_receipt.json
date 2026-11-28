@@ -1,0 +1,198 @@
+{
+  "E(t)": "sum_{n>=0} exp(-2(n+1/4)t)/(n+1/4)^2; exact tail with geometric bound",
+  "barrier_C_outward": [
+    "12447188526925153/1000000000000000",
+    "622359582206607/50000000000000"
+  ],
+  "checker_sha256": "d2ae448c0c28981fed1ebc8d271a1370070a24cf88649f50acf7af18759e59ac",
+  "dirichlet_data": "D_ii=(E(0)-E(w))/2; D_ij=-[E(g)-E(g+w_i)-E(g+w_j)+E(g+w_i+w_j)]/4",
+  "gamma_data": "exact source quarter digamma and positive finite Fourier-atom interval formula",
+  "global_shift_dirichlet_identity": "T[f]=D[f]+sum_n kappa_n ||f-U_log(n)f||\u00b2 -(2 sum_n kappa_n - gamma(0))||f||\u00b2, for zero extended f supported in I",
+  "important_limit": "all are UPPER bounds from explicit trials; no whole-space lower or sign proof; smooth form-domain transfer is mathematical and not yet Lean source audited",
+  "no_new_ci": true,
+  "parity": "8 mirrored equal cells per half; 16 intervals total; each width 11/80",
+  "pole_data": "2 M_+(f) M_-(f); exact parity sign",
+  "prime_data": "P=2 sum_n (Lambda(n)/sqrt(n)) sum_{i,j} c_i*c_j |I_i intersect (I_j+log(n))|, n in {2,3,4,5,7,8,9}",
+  "regressions": {
+    "IV045_even_full_interval": [
+      0.04013929146797852,
+      0.0403669641006128
+    ],
+    "IV045_odd_sign_interval": [
+      0.20237545019749695,
+      0.2026031228301306
+    ]
+  },
+  "results": [
+    {
+      "Gamma_D": [
+        3546371.7623723913,
+        3546667.799711004
+      ],
+      "P_original": [
+        1840509.9846796247,
+        1840509.9846796258
+      ],
+      "constrained_T_affine_value": [
+        -0.9979309542499825,
+        -0.997873543684661
+      ],
+      "exact_bounds": {
+        "A_upper_outward_1e15": "-49893677184233/50000000000000",
+        "q_hi_outward_1e15": "8626095039893/1000000000000000",
+        "q_lo_outward_1e15": "4196602853487/500000000000000"
+      },
+      "mass": "25767907/20",
+      "normal_W_q": [
+        0.008393205706974707,
+        0.008626095039892276
+      ],
+      "parity": "even",
+      "pole_cross": [
+        5226451.471345298,
+        5226451.471345299
+      ],
+      "positive_half_cell_coefficients": [
+        189,
+        390,
+        574,
+        738,
+        846,
+        964,
+        1000,
+        989
+      ],
+      "tag": "even_low"
+    },
+    {
+      "Gamma_D": [
+        4714251.895264724,
+        4714496.786066071
+      ],
+      "P_original": [
+        -1629069.4751297848,
+        -1629069.4751297839
+      ],
+      "constrained_T_affine_value": [
+        1.097325085684021,
+        1.0979305757948028
+      ],
+      "exact_bounds": {
+        "A_upper_outward_1e15": "1097930575794803/1000000000000000",
+        "q_hi_outward_1e15": "36609843783073/1000000000000000",
+        "q_lo_outward_1e15": "36383490591661/1000000000000000"
+      },
+      "mass": "21940083/20",
+      "normal_W_q": [
+        0.0363834905916613,
+        0.036609843783072776
+      ],
+      "parity": "odd",
+      "pole_cross": [
+        -410098.1765391999,
+        -410098.1765391998
+      ],
+      "positive_half_cell_coefficients": [
+        447,
+        783,
+        1000,
+        983,
+        791,
+        634,
+        421,
+        71
+      ],
+      "tag": "odd_low"
+    },
+    {
+      "Gamma_D": [
+        3658886.9815072026,
+        3659195.5522779636
+      ],
+      "P_original": [
+        2028725.3985223882,
+        2028725.3985223894
+      ],
+      "constrained_T_affine_value": [
+        -0.997959646300161,
+        -0.9979037706689726
+      ],
+      "exact_bounds": {
+        "A_upper_outward_1e15": "-249475942667243/250000000000000",
+        "q_hi_outward_1e15": "2183791036459/250000000000000",
+        "q_lo_outward_1e15": "8502325685387/1000000000000000"
+      },
+      "mass": "53729599/40",
+      "normal_W_q": [
+        0.008502325685387323,
+        0.008735164145835628
+      ],
+      "parity": "even",
+      "pole_cross": [
+        5597394.090045678,
+        5597394.090045678
+      ],
+      "positive_half_cell_coefficients": [
+        226,
+        441,
+        621,
+        773,
+        863,
+        978,
+        1000,
+        977
+      ],
+      "tag": "even_constrained"
+    },
+    {
+      "Gamma_D": [
+        4300772.496574587,
+        4300994.134050237
+      ],
+      "P_original": [
+        -1512980.8752936397,
+        -1512980.875293639
+      ],
+      "constrained_T_affine_value": [
+        1.092763380693505,
+        1.0933175206943606
+      ],
+      "exact_bounds": {
+        "A_upper_outward_1e15": "1093317520694361/1000000000000000",
+        "q_hi_outward_1e15": "7572054503033/200000000000000",
+        "q_lo_outward_1e15": "37635449874273/1000000000000000"
+      },
+      "mass": "39987739/40",
+      "normal_W_q": [
+        0.03763544987427306,
+        0.03786027251516447
+      ],
+      "parity": "odd",
+      "pole_cross": [
+        -405590.15191901714,
+        -405590.1519190171
+      ],
+      "positive_half_cell_coefficients": [
+        540,
+        847,
+        1000,
+        903,
+        665,
+        514,
+        323,
+        9
+      ],
+      "tag": "odd_constrained"
+    }
+  ],
+  "rigorous_conclusions": [
+    "inf spectrum W_even <87/10000",
+    "inf spectrum W_odd <367/10000",
+    "A_e <-9979/10000",
+    "A_o <547/500"
+  ],
+  "source_window": "(-11/10,11/10)",
+  "stage": "IV046",
+  "status": "EXACT FRACTION PASS \u2014 four source-aligned 16-cell variational upper witnesses, not actual infinite-dimensional lower spectral bounds or Lean certificates",
+  "upstream_IV045_checker_sha256": "54d49affe407f3838015963b485975b885a5cde0c1c507dc318f9b33c64f86ac"
+}
