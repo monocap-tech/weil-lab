@@ -1,0 +1,16 @@
+{
+  "id": 15089991892,
+  "name": "prior-audit",
+  "sha256": "76ae7188e0e6938b00a43e50e23a137edaf115867ef240be9f3119d15c6ce794",
+  "producer_run": 45756287642,
+  "producer_conclusion": "success",
+  "bytes": 100805,
+  "status": "BYTE_PASS",
+  "chunks": [
+    {
+      "file": "part0000.bin",
+      "sha256": "76ae7188e0e6938b00a43e50e23a137edaf115867ef240be9f3119d15c6ce794",
+      "bytes": 100805
+    }
+  ]
+}
