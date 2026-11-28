@@ -43,10 +43,9 @@ theorem denominator_near (r : ℝ) (hr : 0 < r) (hr1 : r ≤ 1) :
 theorem denominator_far (r : ℝ) (hr : 1 ≤ r) : 2/3 ≤ denominator r := by
   have h : Real.exp (-2*r) ≤ Real.exp (-2*1) :=
     Real.exp_le_exp.mpr (by linarith)
-  have h' := denominator_near 1 (by norm_num) (by norm_num)
-  unfold denominator at *
-  norm_num at h h' ⊢
-  linarith
+  have h' : (2:ℝ)/3 ≤ denominator 1 := by
+    simpa only [mul_one] using denominator_near 1 (by norm_num) (by norm_num)
+  exact h'.trans (sub_le_sub_left h 1)
 
 theorem coefficient_near (r : ℝ) (hr : 0 ≤ r) :
     |2*Real.exp (-2*r)-2*Real.exp (-r/2)| ≤ 3*r := by

@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B71R1 inherited physical action roots
+name: MASTER-RECON V10B71R2 targeted action root normalization
 on:
   push:
     branches: [master-recon-v10b20-staging]
@@ -30,7 +30,7 @@ jobs:
           set -euo pipefail
           mkdir -p recon-v10b48-evidence
           git rev-parse HEAD | tee recon-v10b48-evidence/head.txt
-          sha256sum WeilDefect/MasterRecon/V10B{33a,33b,34a,39b,39c,40a,43a,45a,46a,46b,46c,47a,47b,47c,50a,52a,52b,17a,17b,17Defs,61a,64a,66a,67a,68a,69a,69Prime,71a,21b,21c,22a,22b,22c,23a,23b,23c}.lean lean-toolchain lakefile.toml lake-manifest.json | tee recon-v10b48-evidence/source.sha256
+          sha256sum WeilDefect/MasterRecon/V10B{33a,33b,34a,39b,39c,40a,43a,45a,46a,46b,46c,47a,47b,47c,50a,52a,52b,17a,17b,17Defs,61a,64a,66a,67a,68a,69a,69Prime,71a,20a,21b,21c,22a,22b,22c,23a,23b,23c}.lean lean-toolchain lakefile.toml lake-manifest.json | tee recon-v10b48-evidence/source.sha256
           cat lake-manifest.json | tee recon-v10b48-evidence/lake-manifest.json
           lake env lean --version | tee recon-v10b48-evidence/lean-version.txt
           audit() {
@@ -75,7 +75,9 @@ jobs:
             done
             if audit "$mod"; then pass[$mod]=1; else pass[$mod]=0; failed=1; fi
           }
-          gate V10B71a
+          gate V10B20a
+          gate V10B21c
+          gate V10B71a V10B20a V10B21c
           exit "$failed"
       - name: Upload compiler and audit evidence
         if: always()
