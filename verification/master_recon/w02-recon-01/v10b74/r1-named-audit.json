@@ -1,0 +1,30 @@
+{
+  "source": "dce0b546f16c70a8def88b45f6a3369ea1483f74",
+  "run": 46098593332,
+  "job": 140835602199,
+  "overall": "success",
+  "blob": "ebd418d437d2c49fc24183c559d77717ba1c0103",
+  "names": [
+    "WeilDefect.MasterRecon.V10B74b.gammaSpectrum_ae",
+    "WeilDefect.MasterRecon.V10B74b.actual_spectrum",
+    "WeilDefect.MasterRecon.V10B74b.physicalAction_fourier",
+    "WeilDefect.MasterRecon.V10B74b.physicalAction_fourier_ae"
+  ],
+  "output": [
+    "2026-11-28T02:37:44.1642650Z 'WeilDefect.MasterRecon.V10B74b.gammaSpectrum_ae' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T02:37:44.1665168Z 'WeilDefect.MasterRecon.V10B74b.actual_spectrum' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T02:37:44.1666068Z 'WeilDefect.MasterRecon.V10B74b.physicalAction_fourier' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T02:37:44.1666683Z 'WeilDefect.MasterRecon.V10B74b.physicalAction_fourier_ae' depends on axioms: [propext, Classical.choice, Quot.sound]"
+  ],
+  "pass": [
+    "2026-11-28T02:37:27.2698374Z V10B74a: strict axiom audit PASS (5 declarations)",
+    "2026-11-28T02:37:44.4044780Z V10B74b: strict axiom audit PASS (4 declarations)"
+  ],
+  "artifacts": [
+    {
+      "id": 15244697490,
+      "digest": "sha256:c6872e3ebdf4b504e380765a7438ab957bce06eca64268317d7454dc3c01ef15",
+      "size": 20469
+    }
+  ]
+}
