@@ -53,16 +53,16 @@
     "evidence": "Historical producer outputs, direct producer inputs and shared active executable dependency binding independently replayed within documented operation-specific scope; recursive historical closure not claimed."
   },
   "reported_certified": {
-    "tables": 6217,
-    "rows": 29890
+    "tables": 6337,
+    "rows": 30427
   },
   "release_rule": "Owner explicitly released the native Batch25–39 hold. Dependent universal dispatch remains held; each batch remains subject to strict admission and custody gates.",
-  "investigation_state": "BATCH25_ADMITTED_NATIVE_PRODUCTION_AUTHORIZED_UNIVERSAL_HOLD",
+  "investigation_state": "BATCH26_ADMITTED_NATIVE_PRODUCTION_AUTHORIZED_UNIVERSAL_HOLD",
   "permitted_activity": "Scoped native certification of Batches25–39 under W02 delegated continuation and existing admission rules; exact demand and bank attachment; no original ledger hunt, no dependent universal dispatch.",
   "release_record": "notes/provisional/NF618W02CustodyRelease.json",
   "current_ledger": {
-    "path": "notes/provisional/NF618CertifiedSlotLedgerBatch25.json",
-    "sha256": "65d3a7ca4aff2ad04ffab9f5a08d6f85160e4f7c34a5320ff5a1c20c2e7441ff",
-    "admission_record": "notes/provisional/NF618W02Batch25Admission.json"
+    "path": "notes/provisional/NF618CertifiedSlotLedgerBatch26.json",
+    "sha256": "52c53dae7339950755b094be4534f8d27e83ac6e80b79472dc53e9e994e01dee",
+    "admission_record": "notes/provisional/NF618W02Batch26Admission.json"
   }
 }
