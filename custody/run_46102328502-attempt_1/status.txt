@@ -1,0 +1,4 @@
+replay_result=success
+mathematical_head=Batch25
+new_admissions=0
+universal_hold=unchanged
