@@ -1,0 +1,43 @@
+{
+  "repository": "Zhaoyi-Tian/zeta-simple-zeros-lean",
+  "revision": "77f832c86fbb3e5336b949dae0fdcae26baea87c",
+  "toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "mathlib": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "files": [
+    {
+      "path": "Zeta23/GammaFacts/Series.lean",
+      "upstream": "zeta23/Zeta23/GammaFacts/Series.lean",
+      "blob": "2c6cf90050c2e6d5cbef0745d0445e3a8d02394a"
+    },
+    {
+      "path": "Zeta23/GammaFacts/StirlingVert.lean",
+      "upstream": "zeta23/Zeta23/GammaFacts/StirlingVert.lean",
+      "blob": "21a325dbb2d6adf4ffe058ef03674bd9c1b03cc5"
+    },
+    {
+      "path": "Zeta23/GammaFacts.lean",
+      "upstream": "zeta23/Zeta23/GammaFacts.lean",
+      "blob": "893f83b41d3989ec7d7ab68ec0f82819158a6bcc"
+    },
+    {
+      "path": "Zeta23/GammaFacts/Mu.lean",
+      "upstream": "zeta23/Zeta23/GammaFacts/Mu.lean",
+      "blob": "744e30031e69bfe25e10559ca71b12a53ccc1c14"
+    },
+    {
+      "path": "Zeta23/Defs.lean",
+      "upstream": "zeta23/Zeta23/Defs.lean",
+      "blob": "8024700cbfefb54d763b487afa84c03fef58a550"
+    },
+    {
+      "path": "Zeta23/Analytic/Stirling.lean",
+      "upstream": "zeta23/Zeta23/Analytic/Stirling.lean",
+      "blob": "6d8da4241ef2a5831e8cb120a4c195ee75c6297f"
+    },
+    {
+      "path": "Zeta23/LICENSE",
+      "upstream": "zeta23/LICENSE",
+      "blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64"
+    }
+  ]
+}

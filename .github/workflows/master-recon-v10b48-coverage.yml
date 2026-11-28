@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B76a-R2 isolated scalar receiver
+name: MASTER-RECON V10B77 pinned scalar supplier attachment
 on:
   push:
     branches: [master-recon-v10b20-staging]
@@ -30,7 +30,7 @@ jobs:
           set -euo pipefail
           mkdir -p recon-v10b48-evidence
           git rev-parse HEAD | tee recon-v10b48-evidence/head.txt
-          sha256sum WeilDefect/MasterRecon/V10B{76a,15a,8f,8e}.lean lean-toolchain lakefile.toml lake-manifest.json | tee recon-v10b48-evidence/source.sha256
+          sha256sum WeilDefect/MasterRecon/V10B{77a,77b,77c,76a,15a,8f,8e}.lean Zeta23/Defs.lean Zeta23/GammaFacts.lean Zeta23/GammaFacts/{Series,Mu,StirlingVert}.lean Zeta23/Analytic/Stirling.lean Zeta23/LICENSE lean-toolchain lakefile.toml lake-manifest.json | tee recon-v10b48-evidence/source.sha256
           cat lake-manifest.json | tee recon-v10b48-evidence/lake-manifest.json
           lake env lean --version | tee recon-v10b48-evidence/lean-version.txt
           audit() {
@@ -75,7 +75,9 @@ jobs:
             done
             if audit "$mod"; then pass[$mod]=1; else pass[$mod]=0; failed=1; fi
           }
-          gate V10B76a
+          gate V10B77a
+          gate V10B77b
+          gate V10B77c V10B77a V10B77b
           exit "$failed"
       - name: Upload compiler and audit evidence
         if: always()
