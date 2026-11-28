@@ -1,0 +1,143 @@
+# W02-IV106: one bounded Schur audit, gated on admitted response evidence.
+# Bounded Schur 05 repair; prior Schur 01 through 04 failure archives authenticated.
+# No PR, main edits, E18X activation, or unrelated workflow dispatch.
+name: IV106 W02 Schur completion 05
+on:
+  push:
+    branches: [formalization/iv106-w02-primitive-pole-audit]
+    paths:
+      - '.github/workflows/iv106-w02-schur-completion-05.yml'
+permissions:
+  contents: read
+concurrency:
+  group: iv106-w02-primitive-pole-native-audit
+  cancel-in-progress: false
+jobs:
+  schur-completion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout exact repaired audit recipe
+        uses: actions/checkout@v4
+        with:
+          ref: ef2023e5538fd0c042e08f8cf9749ca487511757
+          path: candidate
+          persist-credentials: false
+      - name: Checkout exact research base
+        uses: actions/checkout@v4
+        with:
+          ref: 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          path: research
+          persist-credentials: true
+      - name: Verify repaired input pins and record environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p evidence
+          p=candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/schur_05
+          test "$(git -C candidate rev-parse HEAD)" = ef2023e5538fd0c042e08f8cf9749ca487511757
+          test "$(git hash-object "$p/source_manifest.json")" = 7fd8760160a613ec86eb746e9af9158aa2887d07
+          test "$(git hash-object "$p/preflight.py")" = 3907f9679daad8882c250faf6b7995e2d403c306
+          test "$(git hash-object "$p/run_audit.sh")" = b96ef9f8a9c7d8bdbbdcd830b4b0785849faf8f6
+          test "$(git hash-object "$p/ActualZetaIV106W02SchurCompletion.lean")" = 20f316e9241a8c9919e3a7af45b03e378e3d4ce5
+          test "$(git hash-object "$p/RED_TEAM.md")" = 159fa6efbe31502ef9d7280c3c9e6e95f375d976
+          printf '%s  %s\n' 936b7e0311b88b96b9a46533380497629025b854e5d8c191d3379c569c434567 "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/repair_01/evidence/failed_run_45980919877.zip" 67ff4955cd9b1bf5196d170147cd7d232218bf7cca08578d517d6dc11ab41be1 "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/repair_01/evidence/repair_run_46067545048.zip" e3c84e492c8d3df642d1cea43cd38996c52678f6d42e859958e04a9458599ea5 "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/repair_02/evidence/repair_run_46071943354.zip" 0fc5481d00168c16c9b7d0cff47f3bfd6819aada34411a8e1ea9ef85ca426a3c "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/inverse_01/evidence/inverse_run_46087645956.zip" 8a9c6177abfbdeef3b649f2d1053bc0e7ce5de625ce5900e3702fea27a50a109 "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/inverse_02/evidence/inverse_run_46090382173.zip" cf2fcc7633d45687c059d25f0bff6a37082cce3a60f6ee2ae3156b59e4051894 "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/inverse_03/evidence/inverse_run_46092213336.zip" 7019c25e1def5049cad9b6d0c362ad54a76dcaf5d30f52f13c938384c3292573 "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/inverse_04/evidence/inverse_run_46094287829.zip" 79d089defe99b8df772924030070924a0b79f27be9bf7e615571b3aea79ada2e "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/inverse_05/evidence/inverse_run_46097289964.zip" 40ecea0a62d8dc1156732e62116408b4b6b70fbdaf2dd118a063ece6e6e12440 "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/response_01/evidence/response_run_46100023160.zip" f42ae724d4dde91e3a65753a38b5ba726a6cba9dd77d5baa9e626fa16e609a85 "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/response_02/evidence/response_run_46102682360.zip" d95757f321e4bd511e597ff1a35798dc426cab4b9940d763050f4e9d9985dcad "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/schur_01/evidence/schur_run_46104616002.zip" \
+            25fa99d85a0a68ec4cd2385dfa453aef37f13926a03a225f018e5d15b5f1a34d "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/schur_02/evidence/schur_run_46112537490.zip" \
+            9f16ba9f40f43b38169ffa0d8234378cd30dafcb2860ab97e249870a222fdc3c "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/schur_03/evidence/schur_run_46115565642.zip" \
+            182a65f4c2988fa89ee7bea504c6f96df70b8492baf383110851ef05f290632c "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/schur_04/evidence/schur_run_46118029735.zip" | sha256sum -c - | tee evidence/prior-custody-check.log
+          cp "$p/"*.lean "$p/"*.md "$p/"*.json "$p/"*.py "$p/"*.sh evidence/
+          {
+            printf 'workflow_head=%s\nrun_id=%s\nrun_attempt=%s\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT"
+            printf 'prior_native_custody_head=%s\n' '14c53d2fe006f0630f7b17b59ad2573f0c2dc34f'
+            git -C candidate rev-parse HEAD HEAD^{tree}
+            git -C research rev-parse HEAD HEAD^{tree}
+            cat research/lean-toolchain
+            uname -a
+            python3 --version
+            git --version
+          } > evidence/environment.txt
+      - name: Install pinned Lean
+        working-directory: research
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            curl --fail --silent --show-error --location --retry 3 https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/iv106-w02-elan-init.sh
+            sh /tmp/iv106-w02-elan-init.sh -y --default-toolchain none
+            echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+            export PATH="$HOME/.elan/bin:$PATH"
+            lean --version
+            lake --version
+          } 2>&1 | tee ../evidence/toolchain-install.log
+      - name: Execute 74-source preflight and 5-target Schur audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          p=candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/schur_05
+          bash "$p/run_audit.sh" research "$p/source_manifest.json" evidence 2>&1 | tee evidence/run.log
+      - name: Export native result and evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iv106-w02-schur-completion-05-evidence
+          path: |
+            evidence/
+            research/WeilDefect/Arithmetic/ActualZetaIV106W02SchurCompletion.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106W02SchurCompletion.olean
+            research/lake-manifest.json
+          if-no-files-found: error
+          include-hidden-files: true
+  schur-evidence-custody:
+    needs: schur-completion
+    if: always() && needs.schur-completion.result != 'skipped' && needs.schur-completion.result != 'cancelled'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: formalization/iv106-w02-primitive-pole-audit
+          fetch-depth: 1
+      - name: Preserve exact repaired-run artifact regardless of compiler outcome
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_HEAD: ${{ github.sha }}
+          NATIVE_RESULT: ${{ needs.schur-completion.result }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          branch=formalization/iv106-w02-primitive-pole-audit
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test -z "$(git status --porcelain)"
+          git fetch --no-tags origin "$branch"
+          test "$(git rev-parse HEAD)" = "$(git rev-parse FETCH_HEAD)"
+          d="verification/iv106/regroup_001/w02_primitive_pole_audit/schur_05/evidence"
+          mkdir -p "$d"
+          meta="$d/schur_run_${GITHUB_RUN_ID}_artifact.json"
+          archive="$d/schur_run_${GITHUB_RUN_ID}.zip"
+          test ! -e "$meta" && test ! -e "$archive"
+          gh api "repos/monocap-tech/weil-lab/actions/runs/$GITHUB_RUN_ID/artifacts" | jq -e '[.artifacts[] | select(.name == "iv106-w02-schur-completion-05-evidence" and .expired == false)] | if length == 1 then .[0] else error("expected exactly one artifact") end' > "$meta"
+          id=$(jq -er .id "$meta")
+          size=$(jq -er .size_in_bytes "$meta")
+          digest=$(jq -er '.digest | select(startswith("sha256:")) | sub("^sha256:";"")' "$meta")
+          gh api "repos/monocap-tech/weil-lab/actions/artifacts/$id/zip" > "$archive"
+          test "$(wc -c < "$archive")" -eq "$size"
+          printf '%s  %s\n' "$digest" "$archive" | sha256sum -c -
+          python3 - "$archive" <<'PY'
+          import sys, zipfile
+          with zipfile.ZipFile(sys.argv[1]) as z:
+              assert z.namelist() and z.testzip() is None
+          PY
+          printf 'native_result=%s\nrun_id=%s\nworkflow_head=%s\nartifact_id=%s\nsha256=%s\n' "$NATIVE_RESULT" "$GITHUB_RUN_ID" "$GITHUB_SHA" "$id" "$digest" > "$d/schur_run_${GITHUB_RUN_ID}_status.txt"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$archive" "$meta" "$d/schur_run_${GITHUB_RUN_ID}_status.txt"
+          git commit -m "IV106 W02: preserve original Schur 05 native evidence ZIP [skip ci]"
+          git push origin "HEAD:refs/heads/$branch"
+          git fetch --no-tags origin "$branch"
+          test "$(git rev-parse HEAD)" = "$(git rev-parse FETCH_HEAD)"
+          test "$(git show "FETCH_HEAD:$archive" | sha256sum | cut -d' ' -f1)" = "$digest"
