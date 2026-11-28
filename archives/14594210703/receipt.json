@@ -1,0 +1,16 @@
+{
+  "id": 14594210703,
+  "name": "nf705audit",
+  "sha256": "39bf39110ed79e0ea7daca68bc8367272305ccf64504a9ddfc1440c67da66f68",
+  "producer_run": 44631381788,
+  "producer_conclusion": "success",
+  "bytes": 20966,
+  "status": "BYTE_PASS",
+  "chunks": [
+    {
+      "file": "part0000.bin",
+      "sha256": "39bf39110ed79e0ea7daca68bc8367272305ccf64504a9ddfc1440c67da66f68",
+      "bytes": 20966
+    }
+  ]
+}
