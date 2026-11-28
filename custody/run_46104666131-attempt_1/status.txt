@@ -1,4 +1,0 @@
-diagnose_result=success
-head=Batch26
-new_admissions=0
-universal_hold=unchanged

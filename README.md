@@ -1,2 +1,2 @@
-# NF618 Batch27 exact qualification
-Batch26 admitted at b4bdb00d103f3473090c43e0a908b38edacce0b0. Authenticate parent ledger using executable transition replay; qualify 114 original tables, 594 rows, 26 signed phases, h=0, max degree 17. Historical direct control, then +4 guard digits, escalate to +6/+8 only if required. No native admission or universal dispatch.
+# NF618 Batch27 native production
+Batch26 admitted at b4bdb00d103f3473090c43e0a908b38edacce0b0. Batch27 qualified at 89ef72e0e8eb147862a91fd66c5f18e585edef0a. Transfer first-attempt successful Batch26 generator 78a2b73b2806bf3e7d9ed5434ab3eb1100a95519 with batch-specific module and declaration names. Four guard digits; 114 actual original bank attachments, 594 original rows, 26 signed phases, 1270 strict audit targets, 164 generated modules. Native evidence only; independent admission separate. Cross-batch import compatibility remains untested; universal dispatch held.
