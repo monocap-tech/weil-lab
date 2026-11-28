@@ -1,0 +1,16 @@
+{
+  "id": 15143843226,
+  "name": "pilot-source",
+  "sha256": "1f02d396083682ea0c56a8b2717a1e75bea24f34a0183d7d8e4561338b4508d3",
+  "producer_run": 45874415463,
+  "producer_conclusion": "success",
+  "bytes": 11097,
+  "status": "BYTE_PASS",
+  "chunks": [
+    {
+      "file": "part0000.bin",
+      "sha256": "1f02d396083682ea0c56a8b2717a1e75bea24f34a0183d7d8e4561338b4508d3",
+      "bytes": 11097
+    }
+  ]
+}
