@@ -1,0 +1,4 @@
+independent_replay=success
+head=Batch24R1
+new_admissions=0
+universal_hold=unchanged

@@ -1,0 +1,8 @@
+{
+  "source_regeneration": "PASS",
+  "generated_modules": 171,
+  "guard_pi_files": 128,
+  "manifest_sha256": "33fe1ce4ca47d947e51b535e1e2ea13264cc76815a65a2b79e2517ba0a21b913",
+  "scope": "deterministic source replay from original frozen inputs; not a fresh native build",
+  "new_admissions": 0
+}
