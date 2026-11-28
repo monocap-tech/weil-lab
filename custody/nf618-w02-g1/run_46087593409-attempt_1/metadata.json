@@ -1,0 +1,20 @@
+{
+  "id": 15239673488,
+  "node_id": "MDg6QXJ0aWZhY3QxNTIzOTY3MzQ4OA==",
+  "name": "nf618-w02-g1-receipt",
+  "size_in_bytes": 21698,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15239673488",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15239673488/zip",
+  "expired": false,
+  "digest": "sha256:285e57c2bf92ba37b5d4e8402ede5eba90c5a7fa730e5590bc15eed59231e2f2",
+  "created_at": "2026-11-28T00:27:35Z",
+  "updated_at": "2026-11-28T00:27:35Z",
+  "expires_at": "2027-02-26T00:23:09Z",
+  "workflow_run": {
+    "id": 46087593409,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "formalization/nf618-w02-native-gate",
+    "head_sha": "562df10338bbf2c4eb4e639c46c7c337c4175dee"
+  }
+}
