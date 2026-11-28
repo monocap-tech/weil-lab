@@ -1,0 +1,31 @@
+name: NF618 W02 G3 producer dependency byte custody
+on:
+  push:
+    branches: [custody/nf618-w02-producer-dependencies]
+    paths: ['.github/workflows/nf618-w02-producer-dependencies.yml']
+permissions:
+  contents: read
+concurrency:
+  group: nf618-w02-producer-dependencies
+  cancel-in-progress: false
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Recover exact direct producer inputs incrementally
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          python3 -m py_compile recover.py
+          python3 recover.py
