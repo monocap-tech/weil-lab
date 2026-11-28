@@ -1,0 +1,14 @@
+{
+  "rows": 256,
+  "triangular_basis_nonzero_diagonal": true,
+  "distinct_pivots": 256,
+  "exact_row_identity": true,
+  "margin_gt": "6276/10000",
+  "min_row": "627656515958357592887240982278202318178798865151342116287209201433292842666295336683264750231568524317185717",
+  "scale": "1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "odd_factor_sha256": "58ec1836be48df53cc52e3df32c4708fa1782184aa4531018432329476730c88",
+  "odd_mean_upper_lt": 4,
+  "odd_oscillation_upper_lt": 600,
+  "odd_surplus_plus_eta_gt": "8/1000",
+  "classification": "Independent receipt and basis audit; does not independently recompute matrix contractions"
+}
