@@ -1,0 +1,20 @@
+{
+  "id": 15244512607,
+  "node_id": "MDg6QXJ0aWZhY3QxNTI0NDUxMjYwNw==",
+  "name": "iv106-w02-constrained-inverse-05-evidence",
+  "size_in_bytes": 341329,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15244512607",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15244512607/zip",
+  "expired": false,
+  "digest": "sha256:79d089defe99b8df772924030070924a0b79f27be9bf7e615571b3aea79ada2e",
+  "created_at": "2026-11-28T02:35:24Z",
+  "updated_at": "2026-11-28T02:35:24Z",
+  "expires_at": "2027-02-26T02:17:00Z",
+  "workflow_run": {
+    "id": 46097289964,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "formalization/iv106-w02-primitive-pole-audit",
+    "head_sha": "383f234355128b8dc1c1e2843f6068396363230c"
+  }
+}
