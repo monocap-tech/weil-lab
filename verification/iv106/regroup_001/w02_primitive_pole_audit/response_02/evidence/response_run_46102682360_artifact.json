@@ -1,0 +1,20 @@
+{
+  "id": 15246404552,
+  "node_id": "MDg6QXJ0aWZhY3QxNTI0NjQwNDU1Mg==",
+  "name": "iv106-w02-constrained-response-02-evidence",
+  "size_in_bytes": 167943,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15246404552",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15246404552/zip",
+  "expired": false,
+  "digest": "sha256:f42ae724d4dde91e3a65753a38b5ba726a6cba9dd77d5baa9e626fa16e609a85",
+  "created_at": "2026-11-28T03:40:22Z",
+  "updated_at": "2026-11-28T03:40:22Z",
+  "expires_at": "2027-02-26T03:24:15Z",
+  "workflow_run": {
+    "id": 46102682360,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "formalization/iv106-w02-primitive-pole-audit",
+    "head_sha": "aaa3aab4bdf2a5a83e1cb2fc3deaf180935d14f9"
+  }
+}
