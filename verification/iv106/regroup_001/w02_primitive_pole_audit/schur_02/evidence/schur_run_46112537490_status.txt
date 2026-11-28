@@ -1,0 +1,5 @@
+native_result=failure
+run_id=46112537490
+workflow_head=822f4e37413095d9bee78421b436b064f9bee61d
+artifact_id=15250454320
+sha256=25fa99d85a0a68ec4cd2385dfa453aef37f13926a03a225f018e5d15b5f1a34d
