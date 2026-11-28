@@ -1,0 +1,20 @@
+{
+  "id": 15246910950,
+  "node_id": "MDg6QXJ0aWZhY3QxNTI0NjkxMDk1MA==",
+  "name": "nf618-w02-batch26-admission",
+  "size_in_bytes": 12640,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15246910950",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15246910950/zip",
+  "expired": false,
+  "digest": "sha256:28b39e3295f5c095af95ee93e43631891b03a318db273b2de186255b386c4292",
+  "created_at": "2026-11-28T03:43:19Z",
+  "updated_at": "2026-11-28T03:43:19Z",
+  "expires_at": "2027-02-26T03:43:04Z",
+  "workflow_run": {
+    "id": 46104178394,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "research/nf618-w02-batch26-admission",
+    "head_sha": "c76d87151c11a5233ec0b792ea7f8883524f755c"
+  }
+}
