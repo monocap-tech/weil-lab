@@ -1,8 +1,8 @@
 {
   "schema": "NF618-custody-hold-v1",
   "scope": "Custody only; no new mathematical or native certification claims",
-  "state": "HOLD",
-  "allow_native_batches_25_39": false,
+  "state": "PARTIAL_RELEASE_NATIVE_BATCHES_25_39",
+  "allow_native_batches_25_39": true,
   "allow_dependent_universal_dispatch": false,
   "verified": {
     "deployment_index_blob": "7104217aa045d5e9f7008745fb83c5c5452f23af",
@@ -50,13 +50,14 @@
       "replacement_path": "notes/provisional/NF618CertifiedSlotLedgerBatch24R1.json",
       "replacement_sha256": "7910b438110d0ecb1a2ab8caf14646d0ac62440c4893dc80bbcce077bf51ddcf"
     },
-    "evidence": "Batch24 source/evidence/checkpoint independently replayed; complete multi-batch evidence and dependency custody not yet independently replayed"
+    "evidence": "Historical producer outputs, direct producer inputs and shared active executable dependency binding independently replayed within documented operation-specific scope; recursive historical closure not claimed."
   },
   "reported_certified": {
     "tables": 6097,
     "rows": 29336
   },
-  "release_rule": "HOLD pending complete producer archive/dependency custody, independent replay and release review. Historical Batch24 digest match is no longer required. No new native batches 25–39.",
-  "investigation_state": "FUNCTIONAL_LEDGER_REGENERATED_EVIDENCE_HOLD",
-  "permitted_activity": "Evidence custody and independent replay only; no further original ledger search; no new native certification batches 25–39."
+  "release_rule": "Owner explicitly released the native Batch25–39 hold. Dependent universal dispatch remains held; each batch remains subject to strict admission and custody gates.",
+  "investigation_state": "BATCH24R1_NATIVE_PRODUCTION_AUTHORIZED_UNIVERSAL_HOLD",
+  "permitted_activity": "Scoped native certification of Batches25–39 under W02 delegated continuation and existing admission rules; exact demand and bank attachment; no original ledger hunt, no dependent universal dispatch.",
+  "release_record": "notes/provisional/NF618W02CustodyRelease.json"
 }

@@ -1,0 +1,90 @@
+{
+  "schema": "NF618-custody-hold-release-v1",
+  "authorization": {
+    "actor": "owner, explicit conversation instruction",
+    "literal": "Release hold",
+    "date_local": "2026-11-27",
+    "interpretation": "Release native Batch25–39 restriction only, as expressly recommended in the immediately preceding assistant response; dependent universal dispatch remains prohibited.",
+    "governing_amendment": "monocap-tech/canonical-return@d4e482f2f616112dca11f6d8fd803a3dffb5a80c:research/regroup-001/W02_CONTINUATION_AMENDMENT.md"
+  },
+  "prior": {
+    "commit": "0c3f31c531c4bfbf778b8cfd740f4cfe20ccc5ed",
+    "path": "notes/provisional/NF618CustodyHold.json",
+    "blob": "44ad420a7da2fa0d992adb9d9a9828973cfebf0c",
+    "state": "HOLD"
+  },
+  "decision": "PARTIAL_RELEASE_NATIVE_BATCHES_25_39",
+  "allow_native_batches_25_39": true,
+  "allow_dependent_universal_dispatch": false,
+  "mathematical_head": "Batch24R1",
+  "admitted": {
+    "tables": 6097,
+    "rows": 29336
+  },
+  "remaining": {
+    "tables": 1738,
+    "rows": 8658
+  },
+  "new_admissions": 0,
+  "evidence": [
+    {
+      "scope": "historical source/evidence and original payload recovery",
+      "commit": "dea274a9554f9705bea2202b82c72e144b15d159",
+      "path": "custody/run_46076027949-attempt_1/summary.json",
+      "blob": "ba19280a156b4623b861a5903e942686a6005ae8",
+      "run": 46076027949,
+      "result": "56/56 archives; 25/25 batch source/evidence replays"
+    },
+    {
+      "scope": "historical checkpoints and special certification groups",
+      "commit": "847140156d9604cfa696b65702c0910ad7217f42",
+      "path": "custody/checkpoints/summary.json",
+      "blob": "d4e9af5895aba9d5a15416830ca635130b",
+      "run": 46087692477,
+      "result": "21/21 checkpoints; 3/3 special groups; 28/28 groups total with preceding replay"
+    },
+    {
+      "scope": "additional direct producer inputs",
+      "commit": "37f58fe3cfdcb50e9d9afabdb02b1349ba7cf3c9",
+      "path": "archives/summary.json",
+      "blob": "7e94a90b048b3a4a8573f55cfee45c68c7cf7607",
+      "run": 46090500500,
+      "result": "37/37 additional archives; 38/38 direct inputs including previously preserved NF690 payload"
+    },
+    {
+      "scope": "shared executable dependency binding and native interface",
+      "commit": "bff0bd2a7c729b3cadb07e5088cb768698dca443",
+      "path": "custody/run_46091763283-attempt_1/status.txt",
+      "blob": "a4c5c2f93cba9cd5b9d92715969c9643b798367b",
+      "run": 46091763283,
+      "result": "PASS; original source/environment binding; 144 common sources, 1152 objects; five strict native interface audits"
+    },
+    {
+      "scope": "unchanged original-row shared-root pilot (not a production admission)",
+      "commit": "999a48cd7d074c6fd1785c294345bafcd82bea8f",
+      "path": "custody/nf618-w02-guard-digits/run_46093279417-attempt_1/status.txt",
+      "blob": "10c8cedc922c4e20e26f9e93eab27ba9a0d032d4",
+      "run": 46093279417,
+      "result": "PASS; 4/4 literal rows, 12/12 named axiom audits; no new admission"
+    },
+    {
+      "scope": "frozen residual production plan",
+      "commit": "82f947df9fc0200aa9e7057e9607c8d3845c9a92",
+      "path": "notes/provisional/NF618W02HeldPlanPreflight.json",
+      "result": "15/15 plans, 1738 distinct tables, 8658 rows; metadata only"
+    },
+    {
+      "scope": "assembly routing",
+      "commit": "0c3f31c531c4bfbf778b8cfd740f4cfe20ccc5ed",
+      "path": "notes/provisional/NF618W02AssemblyRoutingPreflight.json",
+      "result": "7835 slots reconciled; 43 groups; metadata only"
+    }
+  ],
+  "limitations": [
+    "Direct input census and operation-specific shared executable dependency replay are complete within their stated scope; not a recursive audit or fresh kernel rebuild of every historical producer dependency.",
+    "The four-row pilot proves local literal table soundness, not universal applicability or actual bank-read equality.",
+    "Each new production batch requires exact source/row identity, native verification, strict named axiom audit, independent admission replay, durable remote custody, and ledger reconciliation before head advancement.",
+    "No original ledger search, no dependent universal dispatch, no global merge or terminal mathematical promotion. No workflow activation by this release record."
+  ],
+  "status": "OWNER_AUTHORIZED_SCOPED_RELEASE"
+}
