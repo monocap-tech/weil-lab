@@ -1,0 +1,130 @@
+{
+  "D_atom_certificate": {
+    "early_exponential_correction_terms": 13,
+    "sum_rational_to_infty": "241.141629427830",
+    "tail_correction_bound": "80295496224911055413824783512380847427976474234078380986304677459054324182459763660888951217991223577994147869455139667563699942539836404172335349760000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000/837586146650464898114249923181212615693306644693246455144143077863770947202586404038728959610562788717296018990081393627710536887056899132332525936489538071075452421179388181231401563264762377840167345071067373987749247310968034991620978414761819044438610072788611246304814386657034697596716666723916210162356251773",
+    "tail_upper": "1519731146786781965059926395731901575558060071086143071882456865620858365037835518518687375890537712811586725684795176352384345211268901606932266889333032376292849281376655853822518086765815528164803686916314777568298131714621628525963058359203708398156424581469545298616164372611501287151131136176519494532801483838533715022749500/717752877093756656332157613804143844668368500957270738600825627925503886034225291203655186254274769291632010746782574163867195756587078326761638070442525748176259599510379468747390133139177002148635160190772359183078015089818790523957511705666242957236388829134644649917769497883792774363521316335550307791519170307506509105847855939211",
+    "terms": 350
+  },
+  "D_parabola_interval_display": [
+    "2.789367837189",
+    "2.789369954535"
+  ],
+  "H_kernel_antiderivative": "H(s)=atanh(exp(-s/2))+atan(exp(-s/2))",
+  "P_parabola_interval_display": [
+    "1.310880857251",
+    "1.310880857251"
+  ],
+  "block_majorant_coefficients": "2 for touching boundary/output cells, 1/(2*d)+w otherwise",
+  "complete_original_signed_W_parabolic_unit_L2_interval_display": [
+    "0.000639557839",
+    "0.000644792392"
+  ],
+  "finite_complex_jump_telescope_sanity": "PASS, rational discrete convolution (not original source inverse)",
+  "gamma0_interval_display": [
+    "-5.372186015600",
+    "-5.372182898393"
+  ],
+  "new_full_original_mixed_bound": "||QWv|| < 25 ||Delta a|| +(2*w/3)||v|| for M=100000 and 132000",
+  "nonclaims": [
+    "any new Lean acceptance",
+    "full fixed-window signed Weil positivity",
+    "positive Schur on first sine without a lower low diagonal",
+    "RH",
+    "PI/CP equivalence"
+  ],
+  "original_Gamma_jump_boundary_law": "Gamma v=gamma0 v+sum_r Delta(a)_r sign(x-x_r) H(|x-x_r|)/sqrt(w)",
+  "original_prime_seven_shift_checkpoints": [
+    {
+      "autocorrelation_approx": "0.656938552",
+      "n": 2,
+      "shift_approx": "0.693147181"
+    },
+    {
+      "autocorrelation_approx": "0.344736087",
+      "n": 3,
+      "shift_approx": "1.098612289"
+    },
+    {
+      "autocorrelation_approx": "0.166339631",
+      "n": 4,
+      "shift_approx": "1.386294361"
+    },
+    {
+      "autocorrelation_approx": "0.072147715",
+      "n": 5,
+      "shift_approx": "1.609437912"
+    },
+    {
+      "autocorrelation_approx": "0.006833953",
+      "n": 7,
+      "shift_approx": "1.945910149"
+    },
+    {
+      "autocorrelation_approx": "0.000778207",
+      "n": 8,
+      "shift_approx": "2.079441542"
+    },
+    {
+      "autocorrelation_approx": "0.000000010",
+      "n": 9,
+      "shift_approx": "2.197224577"
+    }
+  ],
+  "parabolic_equal_profile_infinite_dimensional_schur": {
+    "class_def": "C_c^infty(I) complex f with all cell integrals proportional to those of p(x)=normalize(1-(x/(11/10))\u00b2)",
+    "derivative_squared_norm_ratio": "250/121",
+    "discrete_gradient_squared_over_w_squared_upper": "200003/96800",
+    "new_infinite_dimensional_class_margin": "1/20000",
+    "nonclaim": "not all affine combinations of the constant and parabolic low directions",
+    "positive_margin_arithmetic": "23505097/2204775000000",
+    "projected_parabola_W_lower": "621/10000000",
+    "projected_parabola_full_mixed_norm_lt": "2519/3000000",
+    "projected_parabola_schur_cost_float_display": "0.000001439004",
+    "projected_parabola_schur_cost_lt": "6345361/4409550000000",
+    "source_full_W_operator_on_parabola_norm_lt": "489/20",
+    "source_parabola_W_lower": "6/10000",
+    "zero_mean_projection_error_norm_lt": "w/2"
+  },
+  "physical_window": "(-11/10,11/10)",
+  "pole_parabola_interval_display": [
+    "3.894338593501",
+    "3.894338593501"
+  ],
+  "rational_row_sum_bound": "107/5",
+  "schema": "IV052-authentic-original-gamma-jump-gradient-and-parabolic-even-source-trial-v1",
+  "script_sha256": "336cc8bdb652b2e745be533e0af298105fd13f9e6f88ad7d34ef78bd0541c0e1",
+  "sine_low_direction_shur_checks": [
+    {
+      "M": 100000,
+      "certified_high_Weil_lower_display": "0.493127272",
+      "energy_relative_cost_display": "0.000001307341",
+      "full_mixed_column_upper_display": "0.0008003731",
+      "high_margin_gt_49_over_100": true,
+      "jump_norm_upper_on_sine": "2/63637",
+      "w": "11/500000"
+    },
+    {
+      "M": 132000,
+      "certified_high_Weil_lower_display": "0.705260372",
+      "energy_relative_cost_display": "0.000000750314",
+      "full_mixed_column_upper_display": "0.0006063447",
+      "high_margin_gt_49_over_100": true,
+      "jump_norm_upper_on_sine": "22/924007",
+      "w": "1/60000"
+    }
+  ],
+  "source_dependencies": {
+    "IV045_fixed_window_parity_trial_checker.py": "54d49affe407f3838015963b485975b885a5cde0c1c507dc318f9b33c64f86ac",
+    "IV047_infinite_dim_high_mode_checker.py": "d64d8b08529e529a1be86923d25d2a76ce81aa42889eab97257c5f6aa0e083a5",
+    "IV050_dense_mode_schur_checker.py": "e1fc5cfdd8b17f40f7d028f3dd187e1e2e679e7e13ffc0de84cf1f6d45c4d889",
+    "IV051_equal_mean_schur_checker.py": "27559e26c5d6d7217664c216b04f42feb6df05eeb411e080cfac837f56e6443a"
+  },
+  "source_pole_smooth_bound": "2*w/3 times ||a||",
+  "source_prime_gradient_bound": "71/20 times ||Delta a||",
+  "standing": "exact Fraction preflight PASS; complete analytic source arguments, not Lean kernel",
+  "strict_source_trial_enclosure": [
+    "6/10000",
+    "7/10000"
+  ]
+}

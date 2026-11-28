@@ -1,0 +1,68 @@
+{
+  "K_antiderivative": "H(s)=atanh(exp(-s/2))+atan(exp(-s/2)); H_prime=-K",
+  "checker_SHA256": "30c34d3832199bba83fff87527ab8d42852ace0839d1d08dfe4ea1a02a72e3c6",
+  "finite_energy_upper": "D(q)<132 from dyadic harmonic envelope N=2^17, q=2 middle minus whole",
+  "log_lower": "log(27/16)>22/43",
+  "mathematical_not_machine_proved": [
+    "exact original Gamma physical kernel source attachment",
+    "classical Fourier atom/limit",
+    "K antiderivative derivative and inequalities",
+    "closed Gamma form domain and smoothing",
+    "IV047 high-mode positive form",
+    "source operator Schur completion"
+  ],
+  "mesh_certificates": {
+    "100000": {
+      "cell_width": "11/500000",
+      "chosen_cell_index_zero_based": 61363,
+      "chosen_physical_cell": [
+        "124993/500000",
+        "31251/125000"
+      ],
+      "cross_kernel_upper": "99/49",
+      "cross_reflection_sep_lower": "124993/250000",
+      "naive_cross_norm_budget_value_at_known_lower": "25/4",
+      "original_W_both_parity_mixed_magnitude_strict_lower": "5490067/21500000",
+      "original_W_local_mixed_magnitude_strict_lower": "549527/2150000",
+      "original_parity_high_test_energy_strict_upper": "265",
+      "original_single_high_test_energy_strict_upper": "133",
+      "reflected_index": 38636,
+      "source_Schur_loss_each_parity_strict_lower": "1/4240",
+      "source_Schur_loss_single_strict_lower": "1/2128",
+      "union_diameter_upper": "31251/62500"
+    },
+    "132000": {
+      "cell_width": "1/60000",
+      "chosen_cell_index_zero_based": 81000,
+      "chosen_physical_cell": [
+        "1/4",
+        "15001/60000"
+      ],
+      "cross_kernel_upper": "99/49",
+      "cross_reflection_sep_lower": "1/2",
+      "naive_cross_norm_budget_value_at_known_lower": "25/4",
+      "original_W_both_parity_mixed_magnitude_strict_lower": "219699/860000",
+      "original_W_local_mixed_magnitude_strict_lower": "65957/258000",
+      "original_parity_high_test_energy_strict_upper": "265",
+      "original_single_high_test_energy_strict_upper": "133",
+      "reflected_index": 50999,
+      "source_Schur_loss_each_parity_strict_lower": "1/4240",
+      "source_Schur_loss_single_strict_lower": "1/2128",
+      "union_diameter_upper": "15001/30000"
+    }
+  },
+  "no_new_CI": true,
+  "original_actual_prime_mixed": "exactly zero within chosen cell and its reflected pair; log(2)>2/3",
+  "original_source_gamma_mixed_limit": "-(1/2)*log(27/16) for normalized cell e and mean-zero central-edge q",
+  "original_two_poles": "|Pole(e,q)|<=8w; reflected cross <=8w; full source signs retained",
+  "predecessor_SHA256": {
+    "IV044_pole_parity_schur_checker.py": "b2142d08a295819bd27e554e23c91e7ba774e5fcfa29920c23f1c990ec5a5b1f",
+    "IV046_fixed_window_multicell_variational_checker.py": "d2ae448c0c28981fed1ebc8d271a1370070a24cf88649f50acf7af18759e59ac",
+    "IV047_infinite_dim_high_mode_checker.py": "d64d8b08529e529a1be86923d25d2a76ce81aa42889eab97257c5f6aa0e083a5"
+  },
+  "proof_scope": "mixing nonvanishing and strict nonzero Schur correction on two IV047 physical partitions; NOT whole W positivity or RH",
+  "source": "original signed Zeta23 W=Gamma - prime + both crossed poles on I=(-11/10,11/10)",
+  "stage": "IV048",
+  "status": "exact Fraction geometry and Schur inequalities PASS; classical continuum proofs, NOT Lean",
+  "valid_small_kernel_delta": "0<=K(s)-1/(2s)<=1 for 0<s<=1/10 (calculus proof in report)"
+}

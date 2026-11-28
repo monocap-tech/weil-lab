@@ -1,0 +1,86 @@
+{
+  "certified_conservative_gamma_cutoff": ">8 for |t|>=30000",
+  "checker_sha256": "d64d8b08529e529a1be86923d25d2a76ce81aa42889eab97257c5f6aa0e083a5",
+  "classical_math_not_verified_by_script": [
+    "Fourier projection duality",
+    "cellwise sharp Neumann Poincare",
+    "bandlimited Bernstein inequality",
+    "form-domain closure",
+    "original gamma-Fourier source attachment",
+    "finite Schur complement operators"
+  ],
+  "complete_original_signed_weil_high_mode_lower_coefficient": "19/450",
+  "conditional_subspace": "all L2 I-supported gamma-form-domain q with integral(q,I_j)=0 for every cell",
+  "explicit_negative_index_bound": "n_-(W) <= 132000; even and odd <=66000, under classical closed-form compact-resolvent construction",
+  "finite_low_mode_compression_and_offdiagonal_schur": "UNRESOLVED; no whole window positivity",
+  "fourier_convention": "unitary F(f)(xi)=integral f(x)*exp(-2*pi*i*x*xi) dx",
+  "fourier_low_band_halfwidth_xi": 5000,
+  "fourier_low_band_relative_mass_upper": "1/36",
+  "gamma_cutoff_abs_t": 30000,
+  "gamma_gain_floor_integer_sum": 136191112,
+  "gamma_gain_floor_scale": 10000000,
+  "gamma_gain_rational_lower": "17023889/1250000",
+  "gamma_high_mode_lower_coefficient": "343/45",
+  "gamma_nf599_gain_terms": 20000,
+  "gamma_symbol_at_cutoff_strict_rational_lower": "10023889/1250000",
+  "improved_finite_codimension_variant": {
+    "Fourier_low_band_R": 4334,
+    "Fourier_low_fraction": "568202569/15625000000",
+    "NF599_gain_integer_floor_scale": 100000000,
+    "NF599_gain_integer_floor_sum": 1369127830,
+    "NF599_gain_t": 26000,
+    "NF599_gain_terms": 100000,
+    "coarse_rational_positive_bound": ">1/100",
+    "complete_original_signed_W_high_mode_lower": "205113627821/15625000000000",
+    "conservative_gamma_high_cutoff": "8091/1000",
+    "even_odd_finite_codimension_each": 50000,
+    "original_gamma_symbol_strict_lower": "80912783/10000000",
+    "partition_cell_count": 100000,
+    "partition_width": "11/500000"
+  },
+  "negative_pole_bound_comparison": "<12/25",
+  "no_global_Weil_positivity_or_RH_claim": true,
+  "no_new_ci": true,
+  "optional_meshes": {
+    "176000": {
+      "full_weil_high_mode_lower": "83/400",
+      "low_band_fraction": "1/64",
+      "numerical_value": 0.2075,
+      "width": "1/80000"
+    },
+    "220000": {
+      "full_weil_high_mode_lower": "71/250",
+      "low_band_fraction": "1/100",
+      "numerical_value": 0.284,
+      "width": "1/100000"
+    }
+  },
+  "original_active_prime_indices": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    9
+  ],
+  "original_odd_negative_pole_norm_square_upper_float": 0.47129494024836205,
+  "original_prime_full_twosided_norm_upper_float": 7.0750056422392555,
+  "partition_cell_count": 132000,
+  "partition_width": "1/60000",
+  "positive_two_blocks_not_enough_schur_counterexample": {
+    "A": "1/100",
+    "B": "1/10",
+    "D": "19/450",
+    "det": "-431/45000"
+  },
+  "predecessor_source_checker_sha256": {
+    "IV040_gamma_cutoff_optimization_checker.py": "4da2cdfce4bca0a98479969a01cb93010304bf4289e0329032c4f037198db33f",
+    "IV044_pole_parity_schur_checker.py": "b2142d08a295819bd27e554e23c91e7ba774e5fcfa29920c23f1c990ec5a5b1f",
+    "IV046_fixed_window_multicell_variational_checker.py": "d2ae448c0c28981fed1ebc8d271a1370070a24cf88649f50acf7af18759e59ac"
+  },
+  "prime_bound_comparison": "<71/10",
+  "stage": "IV047",
+  "status": "original-source mathematical infinite-dimensional theorem, pure exact-rational local checker PASS; NOT Lean kernel",
+  "support_window": "(-11/10,11/10)"
+}

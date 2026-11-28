@@ -1,0 +1,70 @@
+{
+  "NF599_integer_gain_floor_scale": 1000000,
+  "NF599_integer_gain_floor_sum": 14608246,
+  "analytic_global_Gamma_test": "K(s)<=1/(2s)+1 all s>0; ||Q Gamma e_J||^2 <25/4 all w<=1/1000",
+  "asymptotic_form_statement": "c_M->infinity as w=11/(5M)->0, from source gamma(t)->infinity and (2Rw)^2 Fourier concentration. Hence sup_J b_M(e_J)->0. Does not show ||C_Q^-1/2 B||->0.",
+  "checker_SHA256": "2a2010172c9bda33c3c58477b8ada82ba850862ba96442e528425e342590144d",
+  "conditional_energy_relative_bound": "0<=b_M(e_J)=sup_{q in Q_M} |W(e_J,q)|\u00b2/W(q) < (49/5)^2/c_M, where c_M=inf_{q in Q_M, ||q||=1}W(q)>0",
+  "finite_N": 32768,
+  "formalization_gaps": [
+    "NF599 finite source inverse Fourier identity attached to IV011",
+    "closed Gamma form/operator domains and sharp-cell projections",
+    "high-mode source form closure and c_M growth",
+    "entire low-block Schur correction including dense cell combinations"
+  ],
+  "half_log_rational_bracket": [
+    "76584567330331695052/292727527933435152705",
+    "191155081264802835887377/730647909721854141151680"
+  ],
+  "half_log_source_argument": "atanh(11/43)=0.5 log(27/16)",
+  "log_integral_upper": "489/100 from ln2<7/10 and elementary integrals",
+  "mesh_cases": {
+    "100000": {
+      "absolute_original_W_low_high_coupling_upper": "119572389878088527374018981/456654943576158838219800000",
+      "absolute_original_W_parity_low_high_coupling_upper": "598414501872169789064340863/2283274717880794191099000000",
+      "decimal_Schur_upper_parity_illustration": "0.0083537440",
+      "decimal_Schur_upper_single_illustration": "0.0082903382",
+      "original_W_central_contrast_strict_lower": "4143587/500000",
+      "original_W_reflected_parity_contrast_strict_lower": "2071733/250000",
+      "reflected_parity_high_direction_Schur_loss_strict_interval": [
+        "1/4240",
+        "69169/8280000"
+      ],
+      "single_high_direction_Schur_loss_strict_interval": [
+        "1/2128",
+        "17161/2070000"
+      ],
+      "true_NF599_32768_gain_floor_lower": "7304123/500000",
+      "width": "11/500000"
+    },
+    "132000": {
+      "absolute_original_W_low_high_coupling_upper": "4781921397910578622772557/18266197743046353528792000",
+      "absolute_original_W_parity_low_high_coupling_upper": "23926351004150685604597511/91330988715231767643960000",
+      "decimal_Schur_upper_parity_illustration": "0.0083537440",
+      "decimal_Schur_upper_single_illustration": "0.0082903382",
+      "original_W_central_contrast_strict_lower": "12692969/1500000",
+      "original_W_reflected_parity_contrast_strict_lower": "2115449/250000",
+      "reflected_parity_high_direction_Schur_loss_strict_interval": [
+        "1/4240",
+        "69169/8280000"
+      ],
+      "single_high_direction_Schur_loss_strict_interval": [
+        "1/2128",
+        "17161/2070000"
+      ],
+      "true_NF599_32768_gain_floor_lower": "7304123/500000",
+      "width": "1/60000"
+    }
+  },
+  "no_new_CI": true,
+  "original_source_sign": "W=Gamma-P_original+|<h,f>|\u00b2-|<k,f>|\u00b2",
+  "pole_and_prime_test": "||Q pole e||<6sqrt(w)<1/5 and ||P||<71/10",
+  "predecessor_SHA256": {
+    "IV044_pole_parity_schur_checker.py": "b2142d08a295819bd27e554e23c91e7ba774e5fcfa29920c23f1c990ec5a5b1f",
+    "IV047_infinite_dim_high_mode_checker.py": "d64d8b08529e529a1be86923d25d2a76ce81aa42889eab97257c5f6aa0e083a5",
+    "IV048_mixed_block_nonvanishing_checker.py": "30c34d3832199bba83fff87527ab8d42852ace0839d1d08dfe4ea1a02a72e3c6"
+  },
+  "single_cell_full_mixed_operator_upper": "||Q W e_J||<49/5<10, uniformly in mesh location",
+  "stage": "IV049",
+  "status": "exact rational / Taylor / integer preflight PASS; continuum/operator statements mathematical NONKERNEL"
+}

@@ -1,0 +1,42 @@
+{
+  "Gamma_low_high_operator_bound": "<22 on all equal-cell grids width<=1/1000",
+  "absolute_scalar_block_row_col_bound": "22",
+  "assumptions": [
+    "IV043 source inverse Fourier Gamma form, not yet Lean certified",
+    "IV047 positive c_M and its diverging high-mode lower coefficient",
+    "Original IV011 prime and original two-pole source identities"
+  ],
+  "energy_relative_operator_squared_bound": "<1225/c_M",
+  "finite_scalar_majorant_rows": {
+    "100": "22805115630494211448772510964913855491428161/1200509604912164437250319703844955975120000",
+    "2": "4",
+    "3": "8",
+    "300": "70635422243482565536912572665909784616923420397681918618764673144361818093097629549731310736086893157388256588745020632218733/3697070681058228463542010357623296574240497486644013718839114916852155473951311000872430057871113393293427106087140384000000",
+    "32": "302340836593/16232416200",
+    "8": "148/9"
+  },
+  "fixed_M_100000_illustrative_bound": "<122500 (not useful for positivity)",
+  "kernel_derivative_bound": "|K_prime(s)| <= 4/s^2 for all s>0 (proof in report)",
+  "not_claimed": [
+    "uniform positivity of W",
+    "finite-M Schur positivity",
+    "independent spectral equivalence",
+    "Lean PASS",
+    "RH"
+  ],
+  "original_cross_poles_operator_bound": "<5",
+  "original_prime_operator_bound": "<71/10",
+  "original_signed_low_high_operator_bound": "<341/10<35",
+  "pass": true,
+  "schema": "IV050-dense-source-Gamma-Schur-preflight-v1",
+  "script_sha256": "e1fc5cfdd8b17f40f7d028f3dd187e1e2e679e7e13ffc0de84cf1f6d45c4d889",
+  "source_mesh_widths": {
+    "100000": "11/500000",
+    "132000": "1/60000"
+  },
+  "status": "analytical finite algebra; continuum/Lean still pending",
+  "upstream_sha256": {
+    "IV047_infinite_dim_high_mode_checker.py": "d64d8b08529e529a1be86923d25d2a76ce81aa42889eab97257c5f6aa0e083a5",
+    "IV049_energy_relative_cell_schur_checker.py": "2a2010172c9bda33c3c58477b8ada82ba850862ba96442e528425e342590144d"
+  }
+}
