@@ -1,0 +1,20 @@
+{
+  "id": 14571810925,
+  "node_id": "MDg6QXJ0aWZhY3QxNDU3MTgxMDkyNQ==",
+  "name": "nf697-audited-compiled-bank",
+  "size_in_bytes": 397037322,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/14571810925",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/14571810925/zip",
+  "expired": false,
+  "digest": "sha256:77111b4957562eac2d24f47ffea3b7028c530a165516cbba86852f86540408a5",
+  "created_at": "2026-11-19T20:26:54Z",
+  "updated_at": "2026-11-19T20:26:54Z",
+  "expires_at": "2027-02-17T19:26:50Z",
+  "workflow_run": {
+    "id": 44598398608,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "research/nf697-concrete-attachment-bank-cache",
+    "head_sha": "6222b83fbc68946cd195aca3a92c72d920a76ca2"
+  }
+}
