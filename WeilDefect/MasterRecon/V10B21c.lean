@@ -45,6 +45,7 @@ theorem denominator_far (r : ℝ) (hr : 1 ≤ r) : 2/3 ≤ denominator r := by
     Real.exp_le_exp.mpr (by linarith)
   have h' := denominator_near 1 (by norm_num) (by norm_num)
   unfold denominator at *
+  norm_num at h h' ⊢
   linarith
 
 theorem coefficient_near (r : ℝ) (hr : 0 ≤ r) :
@@ -74,7 +75,10 @@ theorem numerator_split (f : FullL2) (r : ℝ) :
       Real.exp (-r/2) • (shift r f-f) -
       Real.exp (-r/2) • (shift (-r) f-f) := by
   unfold numerator
-  rw [sub_smul,smul_sub,smul_sub,smul_add,two_mul,add_smul]
+  have he : (2*Real.exp (-r/2)) • f =
+      Real.exp (-r/2) • f + Real.exp (-r/2) • f := by
+    rw [show 2*Real.exp (-r/2) = Real.exp (-r/2)+Real.exp (-r/2) by ring,add_smul]
+  rw [sub_smul,smul_sub,smul_sub,smul_add,he]
   abel
 
 theorem opposite_shift_norm (r : ℝ) (f : FullL2) :
@@ -115,8 +119,15 @@ theorem action_near (f : FullL2) (C r : ℝ) (hC : 0 ≤ C)
   have hh := mul_le_mul_of_nonneg_left (denominator_near r hr hr1) he
   have hid : ((9/2:ℝ)*‖f‖+3*C*(Real.sqrt r)⁻¹)*(2*r/3) =
       3*r*‖f‖+2*C*Real.sqrt r := by
-    field_simp [hs.ne']
-    nlinarith only [Real.sq_sqrt hr.le]
+    have hsq : r = Real.sqrt r * Real.sqrt r := by
+      rw [← pow_two,Real.sq_sqrt hr.le]
+    have hi : (Real.sqrt r)⁻¹*r = Real.sqrt r := by
+      calc
+        _ = (Real.sqrt r)⁻¹*(Real.sqrt r*Real.sqrt r) := congrArg ((Real.sqrt r)⁻¹ * ·) hsq
+        _ = Real.sqrt r := by rw [← mul_assoc,inv_mul_cancel₀ hs.ne',one_mul]
+    calc
+      _ = 3*r*‖f‖+2*C*((Real.sqrt r)⁻¹*r) := by ring
+      _ = _ := by rw [hi]
   rw [hid] at hh
   exact h.trans hh
 

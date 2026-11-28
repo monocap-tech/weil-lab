@@ -90,8 +90,8 @@ theorem exp_moment (a : ℝ) (ha : 0 < a) :
   have h := Real.integral_rpow_mul_exp_neg_mul_Ioi (a := (2:ℝ)) (by norm_num) ha
   have hg : Real.Gamma (2:ℝ) = 1 := by simpa using Real.Gamma_nat_eq_factorial 1
   rw [hg,mul_one] at h
-  rw [show (2:ℝ)-1=1 by norm_num,Real.rpow_one,Real.rpow_two,div_pow,one_pow] at h
-  simpa only [neg_mul,mul_comm] using h
+  rw [show (2:ℝ)-1=1 by norm_num] at h
+  simpa only [Real.rpow_one,Real.rpow_two,div_pow,one_pow,neg_mul,mul_comm] using h
 
 theorem norm_summable (z : ℂ) (hz : 0 < z.re) :
     Summable (fun n : ℕ => ∫ r in Ioi (0:ℝ), ‖term z n r‖) := by

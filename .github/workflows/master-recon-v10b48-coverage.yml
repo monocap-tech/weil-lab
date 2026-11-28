@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B71 actual divided-trial Archimedean action
+name: MASTER-RECON V10B71R1 inherited physical action roots
 on:
   push:
     branches: [master-recon-v10b20-staging]
