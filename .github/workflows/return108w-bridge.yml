@@ -1,4 +1,4 @@
-name: RETURN109-E5 actual bounded analysis (signed orbit repair)
+name: RETURN109-E6 actual bounded analysis (terminal attachment repair)
 on:
   push:
     branches: [research/return108s-kernel-core]
@@ -128,13 +128,39 @@ jobs:
               else:
                   assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
               print("PASS", q)
-          print("RETURN109-E5 strict axiom audit PASS 5/5")
+          print("RETURN109-E6 strict axiom audit PASS 5/5")
+          PY
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          banks = [
+              ("WeilDefect/MasterRecon/V10B5d.lean", "return109e1-supplier.log", 11),
+              ("WeilDefect/MasterRecon/V10B6a.lean", "return109e2-supplier.log", 10),
+              ("WeilDefect/MasterRecon/V10B6c.lean", "return109e3-supplier.log", 14),
+              ("WeilDefect/MasterRecon/V10B6d.lean", "return109e5-supplier.log", 12),
+              ("WeilDefect/MasterReturn/LogCarrierBoundedAnalysis.lean", "return109e-lean.log", 5)]
+          seen = set()
+          for source, logfile, count in banks:
+              names = re.findall(r"^#print axioms (.+)$", Path(source).read_text(), re.M)
+              assert len(names) == count and len(set(names)) == count, source
+              log = Path(logfile).read_text()
+              for name in names:
+                  assert name not in seen, name
+                  seen.add(name)
+                  matches = re.findall(r"'" + re.escape(name) + r"' depends on axioms: \[([^\]]*)\]", log)
+                  noax = log.count(f"'{name}' does not depend on any axioms")
+                  assert len(matches) + noax == 1, (name, "missing or duplicate audit")
+                  axioms = {x.strip() for x in matches[0].split(",") if x.strip()} if matches else set()
+                  assert axioms <= allowed, (name, sorted(axioms-allowed))
+          assert len(seen) == 52
+          print("RETURN109-E6 aggregate strict axiom audit PASS 52/52")
           PY
       - name: Preserve integration evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: return109e5-integration
+          name: return109e6-integration
           path: |
             return108w-closure.json
             return108w-closure.log
