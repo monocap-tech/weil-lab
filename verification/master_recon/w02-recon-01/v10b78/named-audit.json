@@ -1,0 +1,30 @@
+{
+  "source": "62ea56979453d4b2cb99d61061237c8e39747e8f",
+  "run": 46105491180,
+  "job": 140857192184,
+  "overall": "success",
+  "module": "V10B78a",
+  "blob": "4ad6c05c80b8ba128f8db0d1ee2e75072c679888",
+  "names": [
+    "WeilDefect.MasterRecon.V10B78a.action_fourier_ae",
+    "WeilDefect.MasterRecon.V10B78a.arch_pair",
+    "WeilDefect.MasterRecon.V10B78a.full_pair",
+    "WeilDefect.MasterRecon.V10B78a.corrected_pair",
+    "WeilDefect.MasterRecon.V10B78a.trial_entry_pair"
+  ],
+  "output": [
+    "2026-11-28T04:05:47.8350957Z 'WeilDefect.MasterRecon.V10B78a.action_fourier_ae' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T04:05:47.8351846Z 'WeilDefect.MasterRecon.V10B78a.arch_pair' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T04:05:47.8352693Z 'WeilDefect.MasterRecon.V10B78a.full_pair' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T04:05:47.8353715Z 'WeilDefect.MasterRecon.V10B78a.corrected_pair' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T04:05:47.8354616Z 'WeilDefect.MasterRecon.V10B78a.trial_entry_pair' depends on axioms: [propext, Classical.choice, Quot.sound]"
+  ],
+  "pass": "2026-11-28T04:05:48.0781031Z V10B78a: strict axiom audit PASS (5 declarations)",
+  "artifacts": [
+    {
+      "id": 15247771065,
+      "digest": "sha256:9428545197c17dd68d8380c7a66c7d4c10c7699fec7612427dd8a8f5bf88a515",
+      "size": 12320
+    }
+  ]
+}
