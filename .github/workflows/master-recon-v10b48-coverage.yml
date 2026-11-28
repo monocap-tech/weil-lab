@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B74 normalized spectral action
+name: MASTER-RECON V10B74b-R1 normalized spectral action
 on:
   push:
     branches: [master-recon-v10b20-staging]
