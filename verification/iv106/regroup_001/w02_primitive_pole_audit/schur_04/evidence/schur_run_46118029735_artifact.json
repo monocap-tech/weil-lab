@@ -1,0 +1,20 @@
+{
+  "id": 15252599718,
+  "node_id": "MDg6QXJ0aWZhY3QxNTI1MjU5OTcxOA==",
+  "name": "iv106-w02-schur-completion-04-evidence",
+  "size_in_bytes": 83387,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15252599718",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15252599718/zip",
+  "expired": false,
+  "digest": "sha256:182a65f4c2988fa89ee7bea504c6f96df70b8492baf383110851ef05f290632c",
+  "created_at": "2026-11-28T07:05:59Z",
+  "updated_at": "2026-11-28T07:05:59Z",
+  "expires_at": "2027-02-26T06:44:49Z",
+  "workflow_run": {
+    "id": 46118029735,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "formalization/iv106-w02-primitive-pole-audit",
+    "head_sha": "22e6d7b75ace45c7f39ab28d52bf764ca432d311"
+  }
+}
