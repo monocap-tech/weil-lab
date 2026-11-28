@@ -1,0 +1,3 @@
+pilot_result=failure
+mathematical_head=Batch24R1
+new_admissions=0
