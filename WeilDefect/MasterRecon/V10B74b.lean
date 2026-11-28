@@ -27,7 +27,7 @@ theorem gammaSpectrum_ae (hd : Measurable residual) (C : ℝ)
   change (principalSpectrum j + realMultiplier residual hd C hC (F j)) u =
     principalSpectrum j u + realMultiplier residual hd C hC (F j) u at hs
   have hsym : logWeight u + residual u = gammaSymbol u := by
-    unfold residual
+    unfold V10B8e.residual
     ring
   rw [hs,hl,hr,← add_mul,← Complex.ofReal_add,hsym]
 
