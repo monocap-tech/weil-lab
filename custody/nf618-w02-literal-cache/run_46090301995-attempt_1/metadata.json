@@ -1,0 +1,20 @@
+{
+  "id": 15241346120,
+  "node_id": "MDg6QXJ0aWZhY3QxNTI0MTM0NjEyMA==",
+  "name": "nf618-w02-literal-cache-evidence",
+  "size_in_bytes": 14454664,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15241346120",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15241346120/zip",
+  "expired": false,
+  "digest": "sha256:f187a73319cbe14ddcec38d1ab6894e21a6a7d2e75f427ef20778b6eb4d8b529",
+  "created_at": "2026-11-28T01:03:35Z",
+  "updated_at": "2026-11-28T01:03:35Z",
+  "expires_at": "2027-02-26T00:53:33Z",
+  "workflow_run": {
+    "id": 46090301995,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "formalization/nf618-w02-native-gate",
+    "head_sha": "7eaf6188901fde7f8b4a682cabaf9ab569144cbc"
+  }
+}
