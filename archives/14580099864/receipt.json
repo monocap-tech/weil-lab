@@ -1,0 +1,16 @@
+{
+  "id": 14580099864,
+  "name": "phase",
+  "sha256": "fba35eada4a0614260109add6e3762b90447bf047541817c7529348121f33ab3",
+  "producer_run": 44627666452,
+  "producer_conclusion": "success",
+  "bytes": 14589841,
+  "status": "BYTE_PASS",
+  "chunks": [
+    {
+      "file": "part0000.bin",
+      "sha256": "fba35eada4a0614260109add6e3762b90447bf047541817c7529348121f33ab3",
+      "bytes": 14589841
+    }
+  ]
+}

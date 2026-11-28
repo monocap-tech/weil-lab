@@ -1,0 +1,20 @@
+{
+  "id": 14580099864,
+  "node_id": "MDg6QXJ0aWZhY3QxNDU4MDA5OTg2NA==",
+  "name": "nf703-shared-phase-proposals",
+  "size_in_bytes": 14589841,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/14580099864",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/14580099864/zip",
+  "expired": false,
+  "digest": "sha256:fba35eada4a0614260109add6e3762b90447bf047541817c7529348121f33ab3",
+  "created_at": "2026-11-19T22:36:15Z",
+  "updated_at": "2026-11-19T22:36:15Z",
+  "expires_at": "2027-02-17T22:20:22Z",
+  "workflow_run": {
+    "id": 44627666452,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "research/nf703-phase-and-original-cache",
+    "head_sha": "2ef65aac62e6bcbdad26765ca4713050a639465d"
+  }
+}
