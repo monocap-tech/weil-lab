@@ -1,0 +1,18 @@
+{
+  "scope": "exact full rotated signed coefficient and prefix interval inputs; original W-coordinate finite form; no actual-action certificate",
+  "source_git_blob": "8eebbe29de05bb5096468e24b219b1e38c119ed8",
+  "signed_source_sha256": "b8525c0ae10afa41ff0f01c64176d8240e64d8cc20e8ce8ccfc929f5a5a663d5",
+  "rotation_source_sha256": "8ab50d03d971b3f8949ce41330019ea994cd0cf37d0a8550c6a7e3c315780e8f",
+  "retained": 256,
+  "active": 456,
+  "prefix": 512,
+  "all_conversion_enclosures_checked": true,
+  "model_radius_M_max": 3.2395637110961203e-09,
+  "model_radius_N_max": 3.7015219719409886e-05,
+  "prefix_entry_radius_max": 3.6272865058659784e-07,
+  "finite_margin_numerator": "627656515958357592887240982278202318178798865151342116287209201433292842666295336683264750231568524317185717",
+  "finite_margin_denominator": "1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "input_bytes": 7412532,
+  "input_sha256": "37c681b19f538e5ac4ce3c332315746ce27b5a43bc79380ff82eb1f8cbc6d009",
+  "elapsed_seconds": 33.47011089324951
+}

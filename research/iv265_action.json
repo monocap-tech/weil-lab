@@ -1,0 +1,19 @@
+{
+  "scope": "independent odd actual action enclosure on all explicit rows for 32 correction columns; inherited FFT analytic and IEEE/BLAS assumptions; not residual or Schur certificate",
+  "source_git_blob": "35f042175d2d93015afd87b06dee05cbfca20125",
+  "proposal_sha256": "e5fef07256405685303b964afd035ca620c6be7da7468e2a8bfeb4c11c74b9d0",
+  "scalar_sha256": "8cde5b9305c4e73ba1ca692cb5ba6406799f9064c6d4b16e44f42db445299c9f",
+  "first": 513,
+  "last": 458751,
+  "rows": 229120,
+  "columns": 32,
+  "fft_length": 524288,
+  "fft_stages": 19,
+  "twiddle_step_error_scaled": "26",
+  "action_norm_error_fro_upper": 2.7720797641120425e-06,
+  "max_action_norm_error": 2.120590026476782e-06,
+  "entry_radius_fro_upper": 3.1880874227301065e-05,
+  "action_bytes": 117310434,
+  "action_sha256": "1eed174f4a7f26b689fcef5e6479eb6bff2d87166a4fb26e03efa348b62c9358",
+  "elapsed_seconds": 45.75254249572754
+}
