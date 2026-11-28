@@ -1,0 +1,11 @@
+2026-11-27T22:20:04.8937532Z info: WeilDefect/Arithmetic/NF618W02Seeds.lean:37:0: 'WeilDefect.nf618W02Pi_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T22:20:04.8938524Z info: WeilDefect/Arithmetic/NF618W02Seeds.lean:38:0: 'WeilDefect.nf618W02Seed_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T22:20:04.8939945Z info: WeilDefect/Arithmetic/NF618W02Seeds.lean:39:0: 'WeilDefect.nf618W02Quarter_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T22:20:04.8941215Z info: WeilDefect/Arithmetic/NF618W02Seeds.lean:40:0: 'WeilDefect.nf618W02Real_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T22:20:08.5390957Z 'WeilDefect.nf618W02Pi_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T22:20:08.5391905Z 'WeilDefect.nf618W02Seed_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T22:20:08.5392833Z 'WeilDefect.nf618W02Quarter_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T22:20:08.5393747Z 'WeilDefect.nf618W02Real_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-27T22:20:08.7470347Z Strict audit PASS ['nf618W02Pi_sound', 'nf618W02Quarter_sound', 'nf618W02Real_sound', 'nf618W02Seed_sound']
+2026-11-27T22:20:14.4391487Z Selected admitted pilot [1, 180, 7736, 99] 54
+2026-11-27T22:23:00.4580702Z ##[error]The runner has received a shutdown signal. This can happen when the runner service is stopped, or a manually started runner is canceled.
