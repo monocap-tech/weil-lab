@@ -1,4 +1,4 @@
-name: RETURN109-E6 actual bounded analysis (terminal attachment repair)
+name: RETURN109-F-A arithmetic receiver staged audit
 on:
   push:
     branches: [research/return108s-kernel-core]
@@ -13,174 +13,68 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
-      - name: Authenticated minimal closure
+      - name: Verify and generate transported closure
         shell: bash
         run: |
           set -euo pipefail
-          cp research/return108w/assemble_closure.py "$RUNNER_TEMP/return108w-assemble.py"
+          test "$(git hash-object research/return109f/transport.py)" = a2c58d11fbcc8862c36b62aa0eec25962184a1f9
+          cp -r research/return109f "$RUNNER_TEMP/return109f"
+          F="$RUNNER_TEMP/return109f"
+          python3 "$F/transport.py" research/return108w/assemble_closure.py "$F/assembled.py" "$F/plan.json" 2>&1 | tee "$F/transport.log"
+          python3 "$F/test_f6r.py" 2>&1 | tee "$F/fixture.log"
+      - name: Authenticated actual F closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          F="$RUNNER_TEMP/return109f"
           git fetch --no-tags --depth=1 origin f2e8ec89ae4bf8687a652b299b730d6d1baa43f7 d3067677cad7a0a583ef14b5466018dfad5f0afe
           git checkout --detach f2e8ec89ae4bf8687a652b299b730d6d1baa43f7
-          python3 "$RUNNER_TEMP/return108w-assemble.py" 2>&1 | tee return108w-closure.log
-          cat return108w-closure.json
+          python3 "$F/assembled.py" 2>&1 | tee return109f-assembly.log
+          cat return109f-closure.json
       - name: Install Elan
         run: |
           curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
       - name: Resolve pinned dependencies
+        shell: bash
         run: |
           set -euo pipefail
           lake update
           cat lake-manifest.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          packages = json.loads(Path("lake-manifest.json").read_text())["packages"]
+          assert [p["rev"] for p in packages if p["name"] == "mathlib"] == ["5ed2965256430c3649e86755f9576b54eca72435"]
+          PY
           lean --version
       - name: Fetch mathlib cache
         run: lake exe cache get
-      - name: Build repaired signed orbit supplier first
+      - name: Rebuild admitted E attachment
         shell: bash
         run: |
           set -euo pipefail
-          lake build WeilDefect.MasterRecon.V10B6d 2>&1 | tee return109e5-pilot.log
-      - name: Build literal bridge dependencies
+          lake build WeilDefect.MasterReturn.LogCarrierBoundedAnalysis 2>&1 | tee return109f-E-rebuild.log
+      - name: F-A arithmetic only strict named audit
         shell: bash
         run: |
           set -euo pipefail
-          lake build WeilDefect.MasterReturn.LogCarrierGraphLift WeilDefect.MasterRecon.V10B6d WeilDefect.External.Zeta23.Theorems.Thm_Zeta23_RvM_zeta_local_zero_count 2>&1 | tee return108w-deps.log
-      - name: Compile and strict named axiom audit
-        shell: bash
-        run: |
-          set -euo pipefail
-          lake env lean WeilDefect/MasterRecon/V10B5d.lean 2>&1 | tee return109e1-supplier.log
-          python3 - <<'PY'
-          import re
-          from pathlib import Path
-          s = Path("return109e1-supplier.log").read_text()
-          allowed = {"propext","Classical.choice","Quot.sound"}
-          for name in ["continuous_unit_integral","row_continuous","moment_outer_integrable","angular_horizontal_deriv","angular_vertical_deriv","real_deriv_component","imag_deriv_component","angular_rectangle_eval","energy_nonnegative","global_energy_budget","bounded_strip_sampling"]:
-              q = "WeilDefect.MasterRecon.V10B5d." + name
-              m = re.search(r"'" + re.escape(q) + r"' depends on axioms: \[([^\]]*)\]", s)
-              if m is None:
-                  assert f"'{q}' does not depend on any axioms" in s, q
-              else:
-                  assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
-              print("PASS", q)
-          print("RETURN109-E1 repaired supplier strict axiom audit PASS 11/11")
-          PY
-          lake env lean WeilDefect/MasterRecon/V10B6a.lean 2>&1 | tee return109e2-supplier.log
-          python3 - <<'PY'
-          import re
-          from pathlib import Path
-          s = Path("return109e2-supplier.log").read_text()
-          allowed = {"propext","Classical.choice","Quot.sound"}
-          names = ["pair_norm_sq","fixed_exponent","normalized_pair_energy","normalized_pair_energy_le","finite_of_ennreal_budget","pair_finite_budget","lp_two_mem_of_budget","lp_two_norm_sq","lp_two_norm_sq_le_of_budget","pair_mem"]
-          for name in names:
-              q = "WeilDefect.MasterRecon.V10B6a." + name
-              m = re.search(r"'" + re.escape(q) + r"' depends on axioms: \[([^\]]*)\]", s)
-              if m is None:
-                  assert f"'{q}' does not depend on any axioms" in s, q
-              else:
-                  assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
-              print("PASS", q)
-          print("RETURN109-E2 repaired supplier strict axiom audit PASS 10/10")
-          PY
-          lake env lean WeilDefect/MasterRecon/V10B6c.lean 2>&1 | tee return109e3-supplier.log
-          python3 - <<'PY'
-          import re
-          from pathlib import Path
-          s = Path("return109e3-supplier.log").read_text()
-          allowed = {"propext","Classical.choice","Quot.sound"}
-          for name in ["channel_sq_le","channel_add","channel_smul","channel_finite_budget","channelValue_apply","channelValue_bound","projection_apply","projection_norm_le","channel_energy_split","analysisChannel_apply","analysisChannel_norm_le","signedGram_pairing","signedGram_diagonal","signedGram_symmetric"]:
-              q = "WeilDefect.MasterRecon.V10B6c." + name
-              m = re.search(r"'" + re.escape(q) + r"' depends on axioms: \[([^\]]*)\]", s)
-              if m is None:
-                  assert f"'{q}' does not depend on any axioms" in s, q
-              else:
-                  assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
-              print("PASS", q)
-          print("RETURN109-E4 repaired supplier strict axiom audit PASS 14/14")
-          PY
-          lake env lean WeilDefect/MasterRecon/V10B6d.lean 2>&1 | tee return109e5-supplier.log
-          python3 - <<'PY'
-          import re
-          from pathlib import Path
-          s = Path("return109e5-supplier.log").read_text()
-          allowed = {"propext","Classical.choice","Quot.sound"}
-          for name in ["channel_sq_summable","signed_channel_abs_summable","signed_channel_tsum","orbitTerm_eq_channel","orbitTerm_abs_le","positive_coordinates","negative_coordinates","arithmetic_orbit_abs_summable","arithmetic_orbit_diagonal","arithmetic_positive_kernel","arithmetic_positive_coercivity","arithmetic_signed_receiver"]:
-              q = "WeilDefect.MasterRecon.V10B6d." + name
-              m = re.search(r"'" + re.escape(q) + r"' depends on axioms: \[([^\]]*)\]", s)
-              if m is None:
-                  assert f"'{q}' does not depend on any axioms" in s, q
-              else:
-                  assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
-              print("PASS", q)
-          print("RETURN109-E5 repaired supplier strict axiom audit PASS 12/12")
-          PY
-          lake env lean WeilDefect/MasterReturn/LogCarrierBoundedAnalysis.lean 2>&1 | tee return109e-lean.log
-          python3 - <<'PY'
-          import re
-          from pathlib import Path
-          s = Path("return109e-lean.log").read_text()
-          names = ["count_dictionary","actual_count_bound","actual_bounded_analysis","literal_channel_summability","actual_graph_receiver"]
-          allowed = {"propext","Classical.choice","Quot.sound"}
-          for name in names:
-              q = "WeilDefect.MasterReturn.LogCarrierBoundedAnalysis." + name
-              m = re.search(r"'" + re.escape(q) + r"' depends on axioms: \[([^\]]*)\]", s)
-              if m is None:
-                  assert f"'{q}' does not depend on any axioms" in s, q
-              else:
-                  assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
-              print("PASS", q)
-          print("RETURN109-E6 strict axiom audit PASS 5/5")
-          PY
-          python3 - <<'PY'
-          import re
-          from pathlib import Path
-          allowed = {"propext", "Classical.choice", "Quot.sound"}
-          banks = [
-              ("WeilDefect/MasterRecon/V10B5d.lean", "return109e1-supplier.log", 11),
-              ("WeilDefect/MasterRecon/V10B6a.lean", "return109e2-supplier.log", 10),
-              ("WeilDefect/MasterRecon/V10B6c.lean", "return109e3-supplier.log", 14),
-              ("WeilDefect/MasterRecon/V10B6d.lean", "return109e5-supplier.log", 12),
-              ("WeilDefect/MasterReturn/LogCarrierBoundedAnalysis.lean", "return109e-lean.log", 5)]
-          seen = set()
-          for source, logfile, count in banks:
-              names = re.findall(r"^#print axioms (.+)$", Path(source).read_text(), re.M)
-              assert len(names) == count and len(set(names)) == count, source
-              log = Path(logfile).read_text()
-              for name in names:
-                  assert name not in seen, name
-                  seen.add(name)
-                  matches = re.findall(r"'" + re.escape(name) + r"' depends on axioms: \[([^\]]*)\]", log)
-                  noax = log.count(f"'{name}' does not depend on any axioms")
-                  assert len(matches) + noax == 1, (name, "missing or duplicate audit")
-                  axioms = {x.strip() for x in matches[0].split(",") if x.strip()} if matches else set()
-                  assert axioms <= allowed, (name, sorted(axioms-allowed))
-          assert len(seen) == 52
-          print("RETURN109-E6 aggregate strict axiom audit PASS 52/52")
-          PY
-      - name: Preserve integration evidence
+          F="$RUNNER_TEMP/return109f"
+          python3 "$F/audit_f_stage.py" "$F/plan.json" F-A-arithmetic return109f-a-evidence 2>&1 | tee return109f-a-audit.log
+      - name: Preserve verification evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: return109e6-integration
+          name: return109f-a-integration
           path: |
+            ${{ runner.temp }}/return109f/transport.log
+            ${{ runner.temp }}/return109f/fixture.log
+            ${{ runner.temp }}/return109f/assembled.py
+            ${{ runner.temp }}/return109f/plan.json
             return108w-closure.json
-            return108w-closure.log
-            return108w-deps.log
-            return109e-lean.log
-            return109e1-supplier.log
-            return109e2-supplier.log
-            return109e3-supplier.log
-            return109e5-pilot.log
-            return109e5-supplier.log
-            WeilDefect/MasterRecon/V10B6d.lean
-            WeilDefect/MasterRecon/V10B6c.lean
-            WeilDefect/MasterRecon/V10B6a.lean
-            WeilDefect/MasterRecon/V10B5d.lean
-            WeilDefect/MasterReturn/LogCarrierBoundedAnalysis.lean
-            WeilDefect/MasterReturn/LogCarrierGraphLift.lean
-            WeilDefect/MasterReturn/LogCarrierGlobalEnergy.lean
-            WeilDefect/MasterReturn/LogCarrierOrbit.lean
-            WeilDefect/MasterReturn/LogCarrierDivisor.lean
-            WeilDefect/MasterReturn/LogCarrierTranslation.lean
-            WeilDefect/MasterReturn/LogCarrierNatural.lean
-            WeilDefect/MasterReturn/LogCarrierContinuous.lean
+            return109f-closure.json
+            return109f-assembly.log
+            return109f-E-rebuild.log
+            return109f-a-audit.log
+            return109f-a-evidence/
             lake-manifest.json
