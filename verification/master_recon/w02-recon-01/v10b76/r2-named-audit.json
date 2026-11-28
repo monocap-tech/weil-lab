@@ -1,0 +1,40 @@
+{
+  "source": "0b2dda93a4bd9812226f707cbd089bac48c16857",
+  "run": 46104262593,
+  "job": 140853366376,
+  "overall": "success",
+  "module": "V10B76a",
+  "blob": "f06deab46c2c742356e94c54ba7b87e163dd043e",
+  "names": [
+    "WeilDefect.MasterRecon.V10B76a.globalBudget_le_24",
+    "WeilDefect.MasterRecon.V10B76a.residual_measurable",
+    "WeilDefect.MasterRecon.V10B76a.residual_tail_24",
+    "WeilDefect.MasterRecon.V10B76a.residual_central_24",
+    "WeilDefect.MasterRecon.V10B76a.residual_uniform_24",
+    "WeilDefect.MasterRecon.V10B76a.residual_receiver"
+  ],
+  "output": [
+    "2026-11-28T03:48:31.7192357Z 'WeilDefect.MasterRecon.V10B76a.globalBudget_le_24' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T03:48:31.7227502Z 'WeilDefect.MasterRecon.V10B76a.residual_measurable' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T03:48:31.7228318Z 'WeilDefect.MasterRecon.V10B76a.residual_tail_24' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T03:48:31.7228889Z 'WeilDefect.MasterRecon.V10B76a.residual_central_24' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T03:48:31.7229787Z 'WeilDefect.MasterRecon.V10B76a.residual_uniform_24' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T03:48:31.7230360Z 'WeilDefect.MasterRecon.V10B76a.residual_receiver' depends on axioms: [propext, Classical.choice, Quot.sound]"
+  ],
+  "pass": "2026-11-28T03:48:31.9661350Z V10B76a: strict axiom audit PASS (6 declarations)",
+  "artifacts": [
+    {
+      "id": 15246368888,
+      "digest": "sha256:830e925f0fa1c225ef36aa677d2f33e6c945c5e7de74f8322af456c366435cfd",
+      "size": 7601
+    }
+  ],
+  "newAdmissions": [
+    "WeilDefect.MasterRecon.V10B76a.residual_measurable",
+    "WeilDefect.MasterRecon.V10B76a.residual_tail_24",
+    "WeilDefect.MasterRecon.V10B76a.residual_central_24",
+    "WeilDefect.MasterRecon.V10B76a.residual_uniform_24",
+    "WeilDefect.MasterRecon.V10B76a.residual_receiver"
+  ],
+  "historicalExtraction": "WeilDefect.MasterRecon.V10B76a.globalBudget_le_24"
+}
