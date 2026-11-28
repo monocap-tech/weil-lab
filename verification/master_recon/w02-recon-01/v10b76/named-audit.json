@@ -1,0 +1,28 @@
+{
+  "source": "09c9f763bb0f5f00c80a3131f35bd439064f4b55",
+  "run": 46101337897,
+  "job": 140844229250,
+  "overall": "failure",
+  "module": "V10B76b",
+  "blob": "8484762a31a81d6db5d98163c9b4fc6076f006d4",
+  "names": [
+    "WeilDefect.MasterRecon.V10B76b.full_physical_pair",
+    "WeilDefect.MasterRecon.V10B76b.corrected_physical_pair"
+  ],
+  "output": [
+    "2026-11-28T03:12:48.7674962Z 'WeilDefect.MasterRecon.V10B76b.full_physical_pair' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T03:12:48.7675586Z 'WeilDefect.MasterRecon.V10B76b.corrected_physical_pair' depends on axioms: [propext, Classical.choice, Quot.sound]"
+  ],
+  "pass": "2026-11-28T03:12:49.0162832Z V10B76b: strict axiom audit PASS (2 declarations)",
+  "root_errors": [
+    "2026-11-28T03:12:09.6811670Z error: WeilDefect/MasterRecon/V10B15a.lean:53:54: No goals to be solved",
+    "2026-11-28T03:12:09.6815198Z error: WeilDefect/MasterRecon/V10B15a.lean:106:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern"
+  ],
+  "artifacts": [
+    {
+      "id": 15245671272,
+      "digest": "sha256:10f22bf92a2f4790251b52874662779d5d617f86eac817d9a697ef2f246bd058",
+      "size": 21876
+    }
+  ]
+}
