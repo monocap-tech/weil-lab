@@ -1,0 +1,88 @@
+name: NF618 W02 Batch25 exact qualification
+on:
+  push:
+    branches: [research/nf618-w02-batch25-qualification]
+    paths: ['.github/workflows/nf618-w02-batch25-qualification.yml']
+permissions:
+  contents: read
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: 5801507d416e4a699c002920b2441f5aa0c19aef
+          path: research
+          sparse-checkout: |
+            scripts/verify_nf620_physical_key_tables.py
+            notes/provisional/NF618Batch25Plan.json
+            notes/provisional/NF618W02RootAttachment/FrequencyDecomposition.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/checkout@v4
+        with:
+          ref: dea274a9554f9705bea2202b82c72e144b15d159
+          path: historical
+          sparse-checkout: |
+            custody/run_46076027949-attempt_1/recovery.json
+            custody/run_46076027949-attempt_1/nf690-payload/
+          sparse-checkout-cone-mode: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 47d9f64021daab90244ba8eb39e3b6aad5dfbf5c
+          path: release
+          sparse-checkout: notes/provisional/NF618CustodyHold.json
+          sparse-checkout-cone-mode: false
+      - name: Exact external Batch25 qualification with historical evaluator control
+        run: |
+          set -euo pipefail
+          mkdir evidence
+          test "$(git hash-object research/notes/provisional/NF618Batch25Plan.json)" = 5cabe84fb612296bfa2fea913d84eaadfb1b4822
+          test "$(git hash-object research/notes/provisional/NF618W02RootAttachment/FrequencyDecomposition.json)" = 1558a62fe99f3a10e34eb75106cab6028b3997ad
+          test "$(git hash-object release/notes/provisional/NF618CustodyHold.json)" = 80ac715cc9fac21abb4ebc9f13c03f46bae25dc1
+          cp qualification.py evidence/
+          cp research/scripts/verify_nf620_physical_key_tables.py evidence/
+          python3 qualification.py 2>&1 | tee evidence/qualification.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf618-w02-batch25-qualification
+          path: evidence/
+          if-no-files-found: error
+  custody:
+    needs: diagnose
+    if: always() && needs.diagnose.result != 'cancelled'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf618-w02-batch25-qualification
+      - name: Preserve exact diagnostic receipt
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ needs.diagnose.result }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          d="custody/run_$GITHUB_RUN_ID-attempt_$GITHUB_RUN_ATTEMPT"
+          mkdir -p "$d"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" | jq -e '[.artifacts[] | select(.name=="nf618-w02-batch25-qualification" and .expired==false)] | if length==1 then .[0] else error("missing evidence") end' > "$d/metadata.json"
+          id=$(jq -er .id "$d/metadata.json")
+          hash=$(jq -er '.digest | sub("^sha256:";"")' "$d/metadata.json")
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" > "$d/evidence.zip"
+          echo "$hash  $d/evidence.zip" | sha256sum -c -
+          python3 -m zipfile -t "$d/evidence.zip"
+          printf 'diagnose_result=%s\nhead=Batch24R1\nnew_admissions=0\nuniversal_hold=unchanged\n' "$RESULT" > "$d/status.txt"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if python3 -m zipfile -l "$d/evidence.zip" | grep -q 'summary.json'; then unzip -p "$d/evidence.zip" summary.json > "$d/summary.json"; fi
+          git add "$d"
+          git commit -m 'NF618 preserve exact Batch25 qualification [skip ci]'
+          git push origin "HEAD:refs/heads/research/nf618-w02-batch25-qualification"
+          git fetch --no-tags origin "research/nf618-w02-batch25-qualification"
+          test "$(git rev-parse HEAD)" = "$(git rev-parse FETCH_HEAD)"
+          test "$(git show "FETCH_HEAD:$d/evidence.zip" | sha256sum | cut -d' ' -f1)" = "$hash"
