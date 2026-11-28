@@ -1,0 +1,20 @@
+{
+  "id": 15141543134,
+  "node_id": "MDg6QXJ0aWZhY3QxNTE0MTU0MzEzNA==",
+  "name": "nf703-unified-compiled-checkpoint",
+  "size_in_bytes": 1058514460,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15141543134",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15141543134/zip",
+  "expired": false,
+  "digest": "sha256:b79579f019af6cb40bdeff61b43223a7dbc6eb128fd7004b51ed7d51972a728a",
+  "created_at": "2026-11-26T17:43:27Z",
+  "updated_at": "2026-11-26T17:43:27Z",
+  "expires_at": "2027-02-24T15:57:34Z",
+  "workflow_run": {
+    "id": 45854170594,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "research/nf703-unified-concrete-receiver",
+    "head_sha": "f3a143806f5e49d292b4005de306791d8f7e1389"
+  }
+}
