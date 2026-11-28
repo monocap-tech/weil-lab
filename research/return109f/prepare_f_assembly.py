@@ -8,10 +8,10 @@ Rebase deliberately if E6 is superseded; never silently consume a later repair.
 import hashlib, json, pathlib, re, subprocess, sys
 
 BASE_BLOB = "b25ed55d1ab8511a784cf3863aa630db9bb84a55"
-CANONICAL = "3ffc6dfb7d3ec42a050fff2c1e2f858ff6c85c79"
+CANONICAL = "cd8d611e494e2e1e49a466603be3c2bc7b9b3f48"
 E_BLOB = "67fc9656ae64efc72b084634e5ecee10b54aa2c8"
 DIR = pathlib.Path("research/master-return-109f")
-MANIFEST_BLOB = "7aec239b26bf00aa6307b2ebfafb3b61c5d23020"
+MANIFEST_BLOB = "dbdd76a2b5b065549255e507852505f286a8c605"
 ROOTS_BLOB = "9ae4efda9bad8a024ef2db5ddff4e2299035d564"
 DISCOVERY_BLOB = "e3c3cf6237eb7cb2e9a23193efc80376ab04fc8e"
 
