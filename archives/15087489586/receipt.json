@@ -1,0 +1,16 @@
+{
+  "id": 15087489586,
+  "name": "prior-source",
+  "sha256": "a377f525f763dc09ace2402f705c773417d55e86eb42f0b6d054a3e7aff5bca0",
+  "producer_run": 45756287642,
+  "producer_conclusion": "success",
+  "bytes": 52254,
+  "status": "BYTE_PASS",
+  "chunks": [
+    {
+      "file": "part0000.bin",
+      "sha256": "a377f525f763dc09ace2402f705c773417d55e86eb42f0b6d054a3e7aff5bca0",
+      "bytes": 52254
+    }
+  ]
+}
