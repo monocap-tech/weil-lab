@@ -1,0 +1,20 @@
+{
+  "id": 15241323978,
+  "node_id": "MDg6QXJ0aWZhY3QxNTI0MTMyMzk3OA==",
+  "name": "nf618-w02-binding-replay",
+  "size_in_bytes": 133738,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15241323978",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15241323978/zip",
+  "expired": false,
+  "digest": "sha256:9ed1016a23f385c934582aab62a2143c52d63b233ff7b179bdfbe856672723e0",
+  "created_at": "2026-11-28T01:15:37Z",
+  "updated_at": "2026-11-28T01:15:37Z",
+  "expires_at": "2027-02-26T01:10:38Z",
+  "workflow_run": {
+    "id": 46091763283,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "custody/nf618-w02-binding-replay",
+    "head_sha": "0a1e4b72f7816e49b5fc535c889d797b27e3c38b"
+  }
+}
