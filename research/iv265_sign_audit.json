@@ -1,0 +1,15 @@
+{
+  "scope": "independent exact final interval row and all three basis invertibility checks; analytic inputs inherited",
+  "sign_sha256": "7ce54fe7e8aa56839327cec8266d13d3f94f6416067a85623a860315375048b1",
+  "dimension": 256,
+  "unordered_pairs": 32640,
+  "gram_denominator": "1208925819614629174706176",
+  "return_gram_margin": "1208925819508927319722627",
+  "final_gram_margin": "1208925819508418992923215",
+  "original_pivoted_basis_verified": true,
+  "gershgorin_scale": 281474976710656,
+  "min_numerator": "69150231992944",
+  "minimum_row": 0,
+  "strict_gt": "245/1000",
+  "certified": true
+}
