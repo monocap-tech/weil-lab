@@ -1,0 +1,36 @@
+{
+  "run": 46088415128,
+  "job": 140803343214,
+  "source": "c6679da9bfd12923badee280a4ffe2fd8a27c4b9",
+  "blob": "d21663696b5c2d10814f60d7ae4ad58db0a52515",
+  "names": [
+    "WeilDefect.MasterRecon.V10B68a.test_cont",
+    "WeilDefect.MasterRecon.V10B68a.factor_pos",
+    "WeilDefect.MasterRecon.V10B68a.row_mem",
+    "WeilDefect.MasterRecon.V10B68a.row_literal",
+    "WeilDefect.MasterRecon.V10B68a.trial_pair",
+    "WeilDefect.MasterRecon.V10B68a.physical_matrix",
+    "WeilDefect.MasterRecon.V10B68a.ker_retained",
+    "WeilDefect.MasterRecon.V10B68a.physical_surjective",
+    "WeilDefect.MasterRecon.V10B68a.physical_section"
+  ],
+  "output": [
+    "2026-11-28T00:36:31.4441659Z 'WeilDefect.MasterRecon.V10B68a.test_cont' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T00:36:31.4442257Z 'WeilDefect.MasterRecon.V10B68a.factor_pos' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T00:36:31.4442834Z 'WeilDefect.MasterRecon.V10B68a.row_mem' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T00:36:31.4443411Z 'WeilDefect.MasterRecon.V10B68a.row_literal' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T00:36:31.4443996Z 'WeilDefect.MasterRecon.V10B68a.trial_pair' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T00:36:31.4444592Z 'WeilDefect.MasterRecon.V10B68a.physical_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T00:36:31.4445367Z 'WeilDefect.MasterRecon.V10B68a.ker_retained' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T00:36:31.4446057Z 'WeilDefect.MasterRecon.V10B68a.physical_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T00:36:31.4446772Z 'WeilDefect.MasterRecon.V10B68a.physical_section' depends on axioms: [propext, Classical.choice, Quot.sound]"
+  ],
+  "overall": "success",
+  "artifacts": [
+    {
+      "id": 15240421448,
+      "size": 10904,
+      "digest": "sha256:25ee513b7d7b6744891358513d89e5fb0e45a646c443ba9c36a2e7a7c8d8963e"
+    }
+  ]
+}
