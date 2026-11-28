@@ -128,6 +128,8 @@ for q,r in pairs:
     powerexpr=pn if r>=0 else f'(nf618HybridConj {pn})'
     proof=f'{pn}_sound' if r>=0 else f'(nf618HybridConj_sound _ _ {pn}_sound)'
     boolstr=str(r>=0).lower()
+    # Specialize the actual Bool coercion proposition, not True/False.
+    branchproof='if_pos (rfl : (true : Bool) = true)' if r>=0 else 'if_neg (by decide : (false : Bool) ≠ true)'
     src=f'''import {mod}.{prev}
 import WeilDefect.Arithmetic.NF618W02Seeds
 import WeilDefect.Generated.NF632.Pi
@@ -139,7 +141,8 @@ theorem {n}HighEq :
   decide +kernel
 theorem {n}HighSound : {n}High.Contains (nf618HybridPhase {rat(rep)}) := by
   rw [← {n}HighEq, nf618W02Phase_decompose {rat(rep)} 0 {q} {abs(r)} {boolstr} (by norm_num)]
-  simpa only [if_true, if_false] using NF591Rect.contains_mulQ
+  rw [{branchproof}]
+  exact NF591Rect.contains_mulQ
     (nf618W02RectPow_sound nf618W02Quarter _ nf618GuardQ nf618GuardQ_pos nf618W02Quarter_sound {q})
     {proof} nf618GuardQ nf618GuardQ_pos
 '''
@@ -213,7 +216,10 @@ theorem {n}CacheSound : {n}Cache.SemanticSound {n}Table.key := by
     NF591Rect.one NF591Rect.one {pn}Phase
     (by simpa only [Rat.cast_zero] using nf618B25Unit)
     (by simpa only [neg_zero,Rat.cast_zero] using nf618B25Unit) true
-    (by rw [if_true,{n}PhaseIdentity]; exact {pn}PhaseSound)
+    (by
+      change {pn}Phase.Contains (nf618HybridPhase {rat(f)})
+      rw [{n}PhaseIdentity]
+      exact {pn}PhaseSound)
 theorem {n}Size : {n}Table.rows.size = {count} := by rfl
 theorem {n}Lower : {n}Table.key.lower = {rat(delta)} := by decide +kernel
 '''

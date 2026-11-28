@@ -1,0 +1,342 @@
+name: NF618 W02 Batch25 Boolean specialization repair
+on:
+  push:
+    branches: [formalization/nf618-w02-batch25]
+    paths: ['.github/workflows/nf618-w02-batch25-bool.yml']
+permissions:
+  contents: read
+concurrency:
+  group: nf618-w02-batch25
+  cancel-in-progress: false
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    defaults:
+      run:
+        working-directory: research
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: control
+      - uses: actions/checkout@v4
+        with:
+          ref: 1987fef500afe71272d3798d724145e6b473cf5d
+          path: research
+      - uses: actions/checkout@v4
+        with:
+          ref: 37f58fe3cfdcb50e9d9afabdb02b1349ba7cf3c9
+          path: direct
+          sparse-checkout: |
+            archives/14551493244
+            archives/14571810925
+            archives/15136694468
+            archives/14580099864
+            archives/15084125240
+            archives/15149930460
+            archives/15154802905
+      - uses: actions/checkout@v4
+        with:
+          ref: dea274a9554f9705bea2202b82c72e144b15d159
+          path: historical
+          sparse-checkout: |
+            custody/run_46076027949-attempt_1
+      - name: Reassemble authenticated inputs only from durable repository bytes
+        working-directory: .
+        run: |
+          set -euo pipefail
+          mkdir evidence
+          cp control/reassemble.py evidence/
+          cp control/README.md evidence/
+          cp control/BOOLEAN_REPAIR.md evidence/
+          echo '5bd92da8276409100a0f6481d530a4fb121bfff44d5b25e3b0dc16c35f686099  control/custody/run_46096420464-attempt_1/evidence.zip' | sha256sum -c -
+          python3 -m py_compile control/generate.py control/audit.py
+          python3 control/reassemble.py 2>&1 | tee evidence/reassemble.log
+      - name: Restore exact original full numeric payload and accepted compact coverage source
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p WeilDefect/Generated/NF690
+          fetch() {
+            local id="$1" name="$2" digest="$3" dest="$4"
+            cp "$RUNNER_TEMP/nf618-inputs/$id.zip" "$name.zip"
+            echo "$digest  $name.zip" | sha256sum -c -
+            unzip -q "$name.zip" -d "$dest"
+          }
+          fetch 14551493244 compact 37be910efa7d204c9db35f62bf9d5f818ece77c7026d94d9c84e4ddba0df41a5 WeilDefect/Generated
+          fetch 14558233793 payload 2327fbf952d4894c9f28f81cad9e94d226c93131d9ef2fafa14c35f482211b70 WeilDefect/Generated/NF690
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('WeilDefect/Generated')
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          d=root/'NF690'
+          m=json.loads((d/'manifest.json').read_text())
+          assert (m['keys'],m['rows'],m['chunks'],m['chunk_width'])==(7835,37994,490,16)
+          assert [r['index'] for r in m['slots']]==list(range(7835))
+          assert len({tuple(r['key']) for r in m['slots']})==7835
+          assert sum(r['rows'] for r in m['slots'])==37994
+          assert m['metadata_sha256']==sha(root/'NF679/Metadata.lean')
+          assert m['compact_manifest_sha256']==sha(root/'NF687/manifest.json')
+          for name in ('NF682','NF687','NF690'):
+              p=root/name
+              for f in json.loads((p/'manifest.json').read_text())['files']:
+                  assert sha(p/f['file'])==f['sha256']
+                  if 'bytes' in f: assert (p/f['file']).stat().st_size==f['bytes']
+          assert {f'Chunk{i:03d}.lean' for i in range(490)}|{'Bank.lean','Coverage.lean'} <= {f['file'] for f in m['files']}
+          out=root/'NF691'
+          out.mkdir(exist_ok=True)
+          (out/'OriginalLookup.lean').write_text("""import WeilDefect.Generated.NF690.Coverage
+          import WeilDefect.Arithmetic.ActualZetaOriginalPhysicalBlockLocalLookup
+
+          namespace WeilDefect
+
+          def nf691OriginalLookup : NF622Moments :=
+            neutralNF691Lookup nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalLookup_eq :
+              neutralNF624Lookup nf690OriginalBank (neutralNF624Index nf690OriginalBank) =
+                nf691OriginalLookup :=
+            neutralNF691Lookup_eq nf687Read nf687Size nf690Payload
+
+          theorem nf691OriginalCoverage :
+              neutralNF624CoverageCheck nf690OriginalBank (neutralNF624Index nf690OriginalBank)=true :=
+            nf690OriginalCoverage
+
+          #print axioms nf691OriginalLookup_eq
+          #print axioms nf691OriginalCoverage
+
+          end WeilDefect
+          """)
+          print('NF691 authenticated all 490 original chunks and exact coverage sources')
+          PY
+      - name: Install pinned Lean and Mathlib cache
+        run: |
+          set -euo pipefail
+          # Pin installer asset independently of the repository's Lean toolchain.
+          archive="$RUNNER_TEMP/nf703-elan.tar.gz"
+          digest=0e8250aa2be86c7af929ade68db617af9edc8b9ccf6eaf5ece228250d0d032e2
+          fetch_verified() {
+            rm -f "$archive"
+            curl -fsSL --retry 2 --retry-all-errors --connect-timeout 20 --max-time 180 "$@" -o "$archive" &&
+              printf '%s  %s\n' "$digest" "$archive" | sha256sum -c -
+          }
+          if ! fetch_verified https://github.com/leanprover/elan/releases/download/v4.4.0/elan-x86_64-unknown-linux-gnu.tar.gz; then
+            fetch_verified -H 'Accept: application/octet-stream' "https://api.github.com/repos/leanprover/elan/releases/assets/763468108?run=$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+          fi
+          mkdir -p "$RUNNER_TEMP/nf703-elan"
+          tar -xzf "$archive" -C "$RUNNER_TEMP/nf703-elan"
+          "$RUNNER_TEMP/nf703-elan/elan-init" -y --no-modify-path --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          elan --version
+          cat lean-toolchain
+          retry() {
+            local n
+            for n in 1 2 3; do
+              if "$@"; then return 0; fi
+              if [ "$n" -lt 3 ]; then sleep "$((15*n))"; fi
+            done
+            return 1
+          }
+          retry elan toolchain install "$(cat lean-toolchain)"
+          lean --version
+          lake --version
+          retry lake update
+          retry lake exe cache get
+      - name: Bind independently restored exact bank source and Lean environment
+        run: python scripts/nf697_compiled_bank_binding.py
+      - name: Extract authenticated historical compiled bank
+        run: |
+          set -euo pipefail
+          unzip -q "$RUNNER_TEMP/nf618-inputs/14571810925.zip" -d compiled-bank
+      - name: Verify producer binding and audit before restoring compiled objects
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          a=json.loads(Path('compiled-bank/nf697-bank-binding.json').read_text())
+          b=json.loads(Path('nf697-bank-binding.json').read_text())
+          for x in (a,b):
+              f=x.pop('fingerprint')
+              assert hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()==f
+          assert a['schema']==b['schema'] and a['environment']==b['environment']
+          assert all(b['files'].get(k)==v for k,v in a['files'].items())
+          extra=set(b['files'])-set(a['files'])
+          assert extra=={'WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularCacheAssembly.lean'},extra
+          # Existing source closure must not reference the newly added module.
+          assert all('ActualZetaOriginalPhysicalTriangularCacheAssembly' not in Path(p).read_text()
+                     for p in a['files'] if p.endswith('.lean'))
+          print('NF705 all producer sources unchanged; exactly one new independent theorem module')
+          PY
+          (cd compiled-bank && sha256sum -c nf697-project-build.sha256)
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('compiled-bank/nf691-complete-audit.json')
+          m=json.loads(p.read_text())
+          assert (m['keys'],m['rows'],m['chunks'])==(7835,37994,490)
+          assert len(m['theorems'])==14
+          assert {'nf691OriginalCoverage','nf691OriginalLookup_eq'}<=set(m['theorems'])
+          assert all(set(a)<={'propext','Classical.choice','Quot.sound'} for a in m['theorems'].values())
+          PY
+          tar -xzf compiled-bank/nf697-project-build.tar.gz
+          test ! -e .lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaOriginalPhysicalTriangularCacheAssembly.olean
+      - name: Preserve exact bank binding and audit records
+        run: |
+          set -euo pipefail
+          cp nf697-bank-binding.json ../evidence/recomputed-bank-binding.json
+          cp compiled-bank/nf697-bank-binding.json ../evidence/producer-bank-binding.json
+          cp compiled-bank/nf691-complete-audit.json ../evidence/
+          cp compiled-bank/nf697-project-build.sha256 ../evidence/
+          cp scripts/nf697_compiled_bank_binding.py ../evidence/
+          cp scripts/nf618_restore_common_checkpoint.py ../evidence/
+          echo BANK_BINDING_PASS > ../evidence/bank-status.txt
+      - name: Restore certified semantic adapter and pi source
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p nf618-input
+          fetch() {
+            cp "$RUNNER_TEMP/nf618-inputs/$2.zip" "nf618-input/$1.zip"
+            echo "$3  nf618-input/$1.zip" | sha256sum -c -
+          }
+          fetch semantic 15136694468 e324a64d4a1a8f6c537e3d8040a335333973a2df63dc5b1f39f3bb49b246811f
+          fetch phase 14580099864 fba35eada4a0614260109add6e3762b90447bf047541817c7529348121f33ab3
+          fetch prior 15084125240 5ecdd6e9cccf16359cdc1bdcffbe415256b3b03b5a3066009fa0a44fcffc2513
+          python - <<'PY'
+          import json,zipfile,hashlib
+          from pathlib import Path
+          sha=lambda b:hashlib.sha256(b).hexdigest()
+          p='WeilDefect/Arithmetic/ActualZetaOriginalPhysicalSemanticEndpointCache.lean'
+          with zipfile.ZipFile('nf618-input/semantic.zip') as z:
+              a=json.loads(z.read('nf618-semantic-audit.json'))
+              assert len(a['theorems'])==3 and all(set(v)<={'propext','Classical.choice','Quot.sound'} for v in a['theorems'].values())
+              b=z.read(p)
+              assert sha(b)==a['source_sha256']=='c28806932277661273bc6f48a34a4119fae242a9dbd88e296c7dfd83477e3d3f'
+              Path(p).write_bytes(b)
+          with zipfile.ZipFile('nf618-input/phase.zip') as z:
+              root=Path('WeilDefect/Generated/NF632');root.mkdir(parents=True,exist_ok=True)
+              b=z.read('NF632/manifest.json')
+              assert sha(b)=='b4d290d158af245635d17b58f1c8e9f8bfa5076f773c1a35aa7e789bf850b086'
+              (root/'manifest.json').write_bytes(b)
+              for f in json.loads(b)['files']:
+                  raw=z.read('NF632/'+f['file'])
+                  assert sha(raw)==f['sha256']
+                  (root/f['file']).write_bytes(raw)
+              root=Path('WeilDefect/Generated/NF703');root.mkdir(parents=True,exist_ok=True)
+              m=json.loads(z.read('NF703/manifest.json'))
+              count=0
+              for f in m['files']:
+                  if not f['file'].startswith(('Real0001','Real0003')):continue
+                  raw=z.read('NF703/'+f['file'])
+                  assert sha(raw)==f['sha256']
+                  (root/f['file']).write_bytes(raw)
+                  count+=1
+              assert count==14
+          PY
+      - name: Restore accepted generic hybrid receiver
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          cp "$RUNNER_TEMP/nf618-inputs/15149930460.zip" nf618-input/hybrid.zip
+          echo '96bd3e816d227a41ce60ee643fae020c05107384e770ff26043db521713b1918  nf618-input/hybrid.zip' | sha256sum -c -
+          python - <<'PY'
+          import zipfile,json,hashlib
+          from pathlib import Path
+          p='WeilDefect/Arithmetic/ActualZetaOriginalPhysicalHybridEndpoint.lean'
+          with zipfile.ZipFile('nf618-input/hybrid.zip') as z:
+              a=json.loads(z.read('nf618-hybrid-audit.json'))
+              assert len(a['theorems'])==5 and all(set(v)<={'propext','Classical.choice','Quot.sound'} for v in a['theorems'].values())
+              b=z.read(p)
+              assert hashlib.sha256(b).hexdigest()==a['source_sha256']=='4c37c0b40eacc78583aa0c74222446166f764d86c0fc53c4ff482c938730dc55'
+              Path(p).write_bytes(b)
+          PY
+      - name: Verify release and candidate inputs
+        run: |
+          set -euo pipefail
+          test "$(git hash-object ../control/release.json)" = 96419ef84f626700d708524f24a65aad4b8e824b
+          test "$(git hash-object ../control/Batch25Plan.json)" = 5cabe84fb612296bfa2fea913d84eaadfb1b4822
+          test "$(git hash-object ../control/FrequencyDecomposition.json)" = 1558a62fe99f3a10e34eb75106cab6028b3997ad
+          test "$(git hash-object ../control/RootAttachmentCandidate.lean)" = bed8b192f3741c88f27f877ce82a3e8952e82bf9
+          test "$(git hash-object ../control/NF618W02Seeds.lean)" = 7473827470835126492dea0f9353ae05dbcc76c9
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('../control/release.json').read_text())
+          assert r['allow_native_batches_25_39'] and not r['allow_dependent_universal_dispatch']
+          q=json.loads(Path('../control/qualification-summary.json').read_text())
+          p=[x for x in q if x['label']=='shared root +4 digits']
+          assert len(p)==1 and (p[0]['table_pass'],p[0]['row_pass'])==(120,554)
+          PY
+          mkdir -p notes/provisional/NF618W02RootAttachment
+          cp ../control/Batch25Plan.json notes/provisional/NF618Batch25Plan.json
+          cp ../control/FrequencyDecomposition.json notes/provisional/NF618W02RootAttachment/
+          cp ../control/RootAttachmentCandidate.lean WeilDefect/Arithmetic/NF618W02RootAttachmentCandidate.lean
+          cp ../control/NF618W02Seeds.lean WeilDefect/Arithmetic/
+          cp ../control/GuardParams.lean WeilDefect/Arithmetic/NF618W02GuardParams.lean
+          cp ../control/GuardPiBase.lean WeilDefect/Arithmetic/NF618W02GuardPiBase.lean
+          cp ../control/*.py ../control/*.lean ../control/*json ../evidence/
+          cp lean-toolchain lake-manifest.json ../evidence/
+          mkdir -p ../evidence/guard-pi
+          python3 ../control/emit_pi.py --output WeilDefect/Generated/NF618GuardPi --full
+          cp WeilDefect/Generated/NF618GuardPi/* ../evidence/guard-pi/
+          python3 ../control/generate.py "$RUNNER_TEMP/nf618-inputs/14580099864.zip" "$RUNNER_TEMP/nf618-inputs/14558233793.zip" ../evidence
+      - name: Build shared phases, original row gates and concrete bank attachments
+        timeout-minutes: 100
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.Generated.NF618W02Segmented.AuditBatch25 2>&1 | tee ../evidence/batch25-build.log
+      - name: Independently print and audit exact named declarations
+        timeout-minutes: 15
+        run: |
+          set -euo pipefail
+          lake env lean WeilDefect/Generated/NF618W02Segmented/AuditBatch25.lean 2>&1 | tee ../evidence/batch25-axioms.log
+          python3 ../control/audit.py ../evidence
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf618-w02-batch25-bool
+          path: evidence/
+          if-no-files-found: error
+  custody:
+    needs: replay
+    if: always() && needs.replay.result != 'cancelled'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: formalization/nf618-w02-batch25
+          fetch-depth: 1
+      - name: Preserve scoped binding replay evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ needs.replay.result }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          d="custody/run_$GITHUB_RUN_ID-attempt_$GITHUB_RUN_ATTEMPT"
+          mkdir -p "$d"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" | jq -e '[.artifacts[] | select(.name=="nf618-w02-batch25-bool" and .expired==false)] | if length==1 then .[0] else error("missing evidence") end' > "$d/metadata.json"
+          id=$(jq -er .id "$d/metadata.json")
+          hash=$(jq -er '.digest | sub("^sha256:";"")' "$d/metadata.json")
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" > "$d/evidence.zip"
+          echo "$hash  $d/evidence.zip" | sha256sum -c -
+          python3 -m zipfile -t "$d/evidence.zip"
+          printf 'replay_result=%s\nmathematical_head=Batch24R1\nnew_admissions=0\nuniversal_hold=unchanged\n' "$RESULT" > "$d/status.txt"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$d"
+          git commit -m 'NF618 preserve Batch25 production evidence [skip ci]'
+          git push origin "HEAD:refs/heads/formalization/nf618-w02-batch25"
+          git fetch --no-tags origin "formalization/nf618-w02-batch25"
+          test "$(git rev-parse HEAD)" = "$(git rev-parse FETCH_HEAD)"
+          test "$(git show "FETCH_HEAD:$d/evidence.zip" | sha256sum | cut -d' ' -f1)" = "$hash"
