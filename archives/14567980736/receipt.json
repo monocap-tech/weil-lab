@@ -1,0 +1,16 @@
+{
+  "id": 14567980736,
+  "name": "audit696",
+  "sha256": "f11ecfb1493e1990954f0dec8b3a129a50c985286014fb34abc0f43db84ef497",
+  "producer_run": 44593660541,
+  "producer_conclusion": "success",
+  "bytes": 5099,
+  "status": "BYTE_PASS",
+  "chunks": [
+    {
+      "file": "part0000.bin",
+      "sha256": "f11ecfb1493e1990954f0dec8b3a129a50c985286014fb34abc0f43db84ef497",
+      "bytes": 5099
+    }
+  ]
+}
