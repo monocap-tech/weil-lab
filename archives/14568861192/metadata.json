@@ -1,0 +1,20 @@
+{
+  "id": 14568861192,
+  "node_id": "MDg6QXJ0aWZhY3QxNDU2ODg2MTE5Mg==",
+  "name": "nf692-complete-local-slot-audit",
+  "size_in_bytes": 10117,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/14568861192",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/14568861192/zip",
+  "expired": false,
+  "digest": "sha256:e0b10f84227688ac39b143996a10cf31760d31dbc2cf3abce067856dbefb7048",
+  "created_at": "2026-11-19T19:51:29Z",
+  "updated_at": "2026-11-19T19:51:29Z",
+  "expires_at": "2027-02-17T18:07:36Z",
+  "workflow_run": {
+    "id": 44584455683,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "research/nf692-accepted-moment-slot-attachments",
+    "head_sha": "4212c76f42e2af252f7b85595943d74af83d49b3"
+  }
+}
