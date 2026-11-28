@@ -1,0 +1,152 @@
+{
+  "classification": "Byte-identical regeneration of already certified IV256 odd factor and target; existing seven-block certificate reused, not independently replayed. No actual-operator correction or Schur sign.",
+  "parent": "c917de8e503dc10981bfcd6bc06a5374869e31b1",
+  "source_blobs": {
+    "iv254_intermediate_py": "d2671f69193ef70515546a91fbb95cb6166cd2b7",
+    "iv256_taper_py": "43bab72e8f11a5cc8698b9c7452b7cee95b46eda",
+    "iv256_parity_1_json": "cb5147481c6036db0fa6a8375907a3db4322e778"
+  },
+  "local_source_git_hashes_match": true,
+  "command": "python iv256_taper.py 1 prepare",
+  "exit_code": 0,
+  "environment": {
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "cgroup_memory_bytes": 4294967296
+  },
+  "timings_seconds": {
+    "tail_gram": 12.26321816444397,
+    "built": 42.99605965614319,
+    "factored": 50.49382305145264,
+    "quantized": 53.03377437591553,
+    "completed": 64.39117932319641
+  },
+  "factor": {
+    "path": "/tmp/iv256_1_factor.npy",
+    "bytes": 792985728,
+    "shape": [
+      14080,
+      14080
+    ],
+    "dtype": "int32",
+    "fortran_order": true,
+    "sha256": "58ec1836be48df53cc52e3df32c4708fa1782184aa4531018432329476730c88",
+    "independent_local_sha256_matches": true
+  },
+  "target": {
+    "path": "/tmp/iv256_1_target.npz",
+    "bytes": 7774084,
+    "first_mode": 513,
+    "last_mode": 28671,
+    "sha256": "e10a74a20efccb701b44d0be4d91ddd3d69ba563732b1f1dd488d5b86312dac7",
+    "independent_local_sha256_matches": true
+  },
+  "stage_fields_against_original_receipt": [
+    {
+      "field": "parity",
+      "match": true
+    },
+    {
+      "field": "cutoff",
+      "match": true
+    },
+    {
+      "field": "dimension",
+      "match": true
+    },
+    {
+      "field": "rank",
+      "match": true
+    },
+    {
+      "field": "coercivity",
+      "match": true
+    },
+    {
+      "field": "scale",
+      "match": true
+    },
+    {
+      "field": "tail",
+      "match": true
+    },
+    {
+      "field": "mean_upper_scaled",
+      "match": true
+    },
+    {
+      "field": "oscillation_upper_scaled",
+      "match": true
+    },
+    {
+      "field": "series_remainder_squared",
+      "match": true
+    },
+    {
+      "field": "feature_penalty_loss",
+      "match": true
+    },
+    {
+      "field": "total_penalty_loss",
+      "match": true
+    },
+    {
+      "field": "Z_row_square_max",
+      "match": true
+    },
+    {
+      "field": "factor_row_square_max",
+      "match": true
+    },
+    {
+      "field": "entry_error",
+      "match": true
+    },
+    {
+      "field": "factor_sha256",
+      "match": true
+    },
+    {
+      "field": "target_sha256",
+      "match": true
+    }
+  ],
+  "log_sha256": "bdeec3d73f5d7b88067c279adae0f4e0fe7d45fc7ab73e9005bd2c49b19f239b",
+  "stage_receipt_transcribed": {
+    "parity": 1,
+    "cutoff": 28672,
+    "dimension": 14080,
+    "rank": 64,
+    "coercivity": "1/1000",
+    "scale": "70368744177664",
+    "tail": {
+      "tail_rows": 100352,
+      "d_error_scaled": "83624067917",
+      "H_column_square_max": "73124477644114",
+      "G_factor_dominance_scaled": "6736712452",
+      "G_factor_trace_scaled": "1306900391380012",
+      "far_mass": "42312772621393495305748480/868037856222262811053787973",
+      "far_oscillation": "73786976294838206464000/289345952074087603684595991"
+    },
+    "mean_upper_scaled": "4275437601373894107733551",
+    "oscillation_upper_scaled": "595646210022027193776067636",
+    "series_remainder_squared": "76018057840582293151485181647023843296248683107968855485018837842329772905988096000/26641271810026107744590318757624335313751455188102454604625219299639984167818146671216249",
+    "feature_penalty_loss": "3985118690019979156645/154742504910672534362390528",
+    "total_penalty_loss": "1294254323774342960886221635860600156816208219901604606476124418452062794432503757397358123121126456338063812605/4122537133889526735645485082462925992005985827954274476402180908774221870823550366482424048494921118968464877289472",
+    "Z_row_square_max": "11357234572",
+    "factor_row_square_max": "710832192565515",
+    "entry_error": "1884161/17592186044416",
+    "factor_sha256": "58ec1836be48df53cc52e3df32c4708fa1782184aa4531018432329476730c88",
+    "target_sha256": "e10a74a20efccb701b44d0be4d91ddd3d69ba563732b1f1dd488d5b86312dac7",
+    "stage": "factor prepared; NOT certified",
+    "elapsed_seconds": 64.39117932319641
+  },
+  "block_replay_executed": false,
+  "block_evidence": "Existing IV256 odd certified receipt bound to identical factor and target identities.",
+  "local_checkpoint_custody": "Regenerable large local files not uploaded; pinned executable inputs and replay receipt preserved.",
+  "failures": [
+    "Direct container raw.githubusercontent.com DNS failed; transferred exact source via connector transcription verified by git hash-object.",
+    "Streaming session rejected before execution; bounded local subprocess completed within turn."
+  ]
+}
