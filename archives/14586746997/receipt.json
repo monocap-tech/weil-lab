@@ -1,0 +1,16 @@
+{
+  "id": 14586746997,
+  "name": "audit",
+  "sha256": "bc7fb45daef3bda44b7469761960c17059a1da3a0ea3be4235429e38b154e6b0",
+  "producer_run": 44625069100,
+  "producer_conclusion": "success",
+  "bytes": 23843,
+  "status": "BYTE_PASS",
+  "chunks": [
+    {
+      "file": "part0000.bin",
+      "sha256": "bc7fb45daef3bda44b7469761960c17059a1da3a0ea3be4235429e38b154e6b0",
+      "bytes": 23843
+    }
+  ]
+}
