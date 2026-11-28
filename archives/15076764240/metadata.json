@@ -1,0 +1,20 @@
+{
+  "id": 15076764240,
+  "node_id": "MDg6QXJ0aWZhY3QxNTA3Njc2NDI0MA==",
+  "name": "nf698-tail-final-pair-9-audit",
+  "size_in_bytes": 6163,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15076764240",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15076764240/zip",
+  "expired": false,
+  "digest": "sha256:d7ae0f72fecf1d661d6540a068fc1442a615a0eda90d17afb81491add1e94342",
+  "created_at": "2026-11-26T01:00:48Z",
+  "updated_at": "2026-11-26T01:00:48Z",
+  "expires_at": "2027-02-23T23:19:45Z",
+  "workflow_run": {
+    "id": 45720496249,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "research/nf698-tail-pairs07-11",
+    "head_sha": "8856fdb7f2ffb6ff7733d2dfa64aef88c5ea92ec"
+  }
+}
