@@ -1,0 +1,26 @@
+{
+  "id": 14582778463,
+  "name": "nf705source",
+  "sha256": "9d68de97b0b0ce2bbef46239510c094b97a06f6301b7d769fc5a554d1f81d6cb",
+  "producer_run": 44631381788,
+  "producer_conclusion": "success",
+  "bytes": 41065722,
+  "status": "BYTE_PASS",
+  "chunks": [
+    {
+      "file": "part0000.bin",
+      "sha256": "fbbdd0781ed1bcdf0b23beb34afd7d7cfa36d3248440284994e67536fb10f581",
+      "bytes": 16777216
+    },
+    {
+      "file": "part0001.bin",
+      "sha256": "c2e3ffc705dcafd61f38ddeb07de4c9d874eaf368ac0121079373e4181c47145",
+      "bytes": 16777216
+    },
+    {
+      "file": "part0002.bin",
+      "sha256": "623fd98cbb4cdf5350b338d9faaeadaaed8b9508b96b945f5bef2cd6264562bc",
+      "bytes": 7511290
+    }
+  ]
+}

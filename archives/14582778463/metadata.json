@@ -1,0 +1,20 @@
+{
+  "id": 14582778463,
+  "node_id": "MDg6QXJ0aWZhY3QxNDU4Mjc3ODQ2Mw==",
+  "name": "nf705-original-slot-proposals",
+  "size_in_bytes": 41065722,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/14582778463",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/14582778463/zip",
+  "expired": false,
+  "digest": "sha256:9d68de97b0b0ce2bbef46239510c094b97a06f6301b7d769fc5a554d1f81d6cb",
+  "created_at": "2026-11-19T23:06:01Z",
+  "updated_at": "2026-11-19T23:06:01Z",
+  "expires_at": "2027-02-17T22:44:12Z",
+  "workflow_run": {
+    "id": 44631381788,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "research/nf705-nf698-attachments-and-global-reuse",
+    "head_sha": "7b10d6a7c585d4ca838dda1f1279c7439bec4b11"
+  }
+}
