@@ -1,4 +1,4 @@
-name: RETURN109-F-A1 arithmetic receiver namespace repair
+name: RETURN109-F-A2 arithmetic receiver scalar inequality repair
 on:
   push:
     branches: [research/return108s-kernel-core]
@@ -17,7 +17,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git hash-object research/return109f/transport.py)" = 48218b0c20366ad581eb6a2cc9fb8a6e2d56f098
+          test "$(git hash-object research/return109f/transport.py)" = 25c61cb15540dbabeeadb71eef6f6345a89b1903
           cp -r research/return109f "$RUNNER_TEMP/return109f"
           F="$RUNNER_TEMP/return109f"
           python3 "$F/transport.py" research/return108w/assemble_closure.py "$F/assembled.py" "$F/plan.json" 2>&1 | tee "$F/transport.log"
@@ -65,7 +65,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: return109f-a1-integration
+          name: return109f-a2-integration
           path: |
             ${{ runner.temp }}/return109f/transport.log
             ${{ runner.temp }}/return109f/fixture.log
