@@ -1,0 +1,16 @@
+{
+  "id": 15149930460,
+  "name": "hybrid",
+  "sha256": "96bd3e816d227a41ce60ee643fae020c05107384e770ff26043db521713b1918",
+  "producer_run": 45885474013,
+  "producer_conclusion": "success",
+  "bytes": 7630,
+  "status": "BYTE_PASS",
+  "chunks": [
+    {
+      "file": "part0000.bin",
+      "sha256": "96bd3e816d227a41ce60ee643fae020c05107384e770ff26043db521713b1918",
+      "bytes": 7630
+    }
+  ]
+}
