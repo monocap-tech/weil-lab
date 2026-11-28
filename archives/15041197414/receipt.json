@@ -1,0 +1,16 @@
+{
+  "id": 15041197414,
+  "name": "batch00",
+  "sha256": "a0c3ec2140a79ffc01cb7b98bc0d1bd5464461c3d39cb5d0b926ea50844e01c1",
+  "producer_run": 45650329673,
+  "producer_conclusion": "success",
+  "bytes": 27658,
+  "status": "BYTE_PASS",
+  "chunks": [
+    {
+      "file": "part0000.bin",
+      "sha256": "a0c3ec2140a79ffc01cb7b98bc0d1bd5464461c3d39cb5d0b926ea50844e01c1",
+      "bytes": 27658
+    }
+  ]
+}
