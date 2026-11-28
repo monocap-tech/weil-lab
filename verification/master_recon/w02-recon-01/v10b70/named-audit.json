@@ -1,0 +1,32 @@
+{
+  "run": 46091461981,
+  "job": 140813102405,
+  "source": "b173aea08a468e310d05f34f6003d4f74e6acd89",
+  "blob": "3330c6ccdab507ade9da00ffeb708aef893d7d41",
+  "names": [
+    "WeilDefect.MasterRecon.V10B69a.D_ne",
+    "WeilDefect.MasterRecon.V10B69a.divided_physical",
+    "WeilDefect.MasterRecon.V10B69a.divided_section",
+    "WeilDefect.MasterRecon.V10B69a.J_bound",
+    "WeilDefect.MasterRecon.V10B69a.pole_physical_pair",
+    "WeilDefect.MasterRecon.V10B69a.row_annihilates_tail",
+    "WeilDefect.MasterRecon.V10B69a.row_subtraction_invariant"
+  ],
+  "output": [
+    "2026-11-28T01:11:06.3253025Z 'WeilDefect.MasterRecon.V10B69a.D_ne' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T01:11:06.3253733Z 'WeilDefect.MasterRecon.V10B69a.divided_physical' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T01:11:06.3254620Z 'WeilDefect.MasterRecon.V10B69a.divided_section' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T01:11:06.3255213Z 'WeilDefect.MasterRecon.V10B69a.J_bound' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T01:11:06.3255829Z 'WeilDefect.MasterRecon.V10B69a.pole_physical_pair' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T01:11:06.3256684Z 'WeilDefect.MasterRecon.V10B69a.row_annihilates_tail' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T01:11:06.3257336Z 'WeilDefect.MasterRecon.V10B69a.row_subtraction_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]"
+  ],
+  "overall": "success",
+  "artifacts": [
+    {
+      "id": 15241376954,
+      "size": 11110,
+      "digest": "sha256:80e5b8c50f3d827c38e6a9fa76150be7b09f7f736c99bd04ecfdc9daff509535"
+    }
+  ]
+}

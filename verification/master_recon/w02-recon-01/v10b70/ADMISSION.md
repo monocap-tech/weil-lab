@@ -1,0 +1,11 @@
+# V10B70 scoped admission — independent lower-order A/R interface
+Run 46091461981 job 140813102405 source b173aea08a468e310d05f34f6003d4f74e6acd89; overall success. V10B69a blob 3330c6ccdab507ade9da00ffeb708aef893d7d41; full build and strict named audit completed. Exact theorem/print comparison and named output check:
+2026-11-28T01:11:06.3253025Z 'WeilDefect.MasterRecon.V10B69a.D_ne' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:11:06.3253733Z 'WeilDefect.MasterRecon.V10B69a.divided_physical' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:11:06.3254620Z 'WeilDefect.MasterRecon.V10B69a.divided_section' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:11:06.3255213Z 'WeilDefect.MasterRecon.V10B69a.J_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:11:06.3255829Z 'WeilDefect.MasterRecon.V10B69a.pole_physical_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:11:06.3256684Z 'WeilDefect.MasterRecon.V10B69a.row_annihilates_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:11:06.3257336Z 'WeilDefect.MasterRecon.V10B69a.row_subtraction_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:11:06.5041556Z V10B69a: strict axiom audit PASS (7 declarations)
+Seven newly admitted declarations; +97 W02 incremental names, not full ledger deduplication. Actual divided trial representative, coverage, restricted physical J bound, physical pole representer and row-subtraction invariance established. Prime-free and prime_operator_zero remain SUSPENDED in V10B69Prime (e08326d48602beb7084a81119a9a4a9767096c56), not in this audit. No dependent prime-free assertion admitted. No actual Archimedean physical action or A/R inequality established. V10B19 original generation provenance and Taylor holds unchanged; no W consumption. Full decoded transcript preserved. Actions ZIP metadata [{"id":15241376954,"size":11110,"digest":"sha256:80e5b8c50f3d827c38e6a9fa76150be7b09f7f736c99bd04ecfdc9daff509535"}]; raw ZIP not claimed durably preserved. Next eligible operation independent Archimedean action attachment with explicit analytic hypotheses, avoiding suspended prime root. No positivity/adoption.
