@@ -449,10 +449,10 @@
       "sha": "283658671169442ebda926602320fb8e1fdb59fa"
     },
     {
-      "ref": "cf270598df1a71e5cf08b7e865abf5d36fcc4d4a",
+      "ref": "41f3d5ef773e14e05a977cc03c5950a9c68f4bed",
       "path": "verification/iv106/regroup_001/w02_primitive_pole_audit/response_01/ActualZetaIV106W02ConstrainedResponse.lean",
       "dest": "WeilDefect/Arithmetic/ActualZetaIV106W02ConstrainedResponse.lean",
-      "sha": "b037e7275ea8835f786b189805db15415611ad8d"
+      "sha": "125bbfeb286884fe9fbbdb7c29c77274d7ffec1a"
     }
   ],
   "target": "WeilDefect/Arithmetic/ActualZetaIV106W02ConstrainedResponse.lean",
