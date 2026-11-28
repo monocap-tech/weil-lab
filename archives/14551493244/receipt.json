@@ -1,0 +1,16 @@
+{
+  "id": 14551493244,
+  "name": "compact",
+  "sha256": "37be910efa7d204c9db35f62bf9d5f818ece77c7026d94d9c84e4ddba0df41a5",
+  "producer_run": 44563616636,
+  "producer_conclusion": "cancelled",
+  "bytes": 217084,
+  "status": "BYTE_PASS",
+  "chunks": [
+    {
+      "file": "part0000.bin",
+      "sha256": "37be910efa7d204c9db35f62bf9d5f818ece77c7026d94d9c84e4ddba0df41a5",
+      "bytes": 217084
+    }
+  ]
+}
