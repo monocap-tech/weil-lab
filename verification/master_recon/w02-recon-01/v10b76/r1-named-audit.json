@@ -1,0 +1,36 @@
+{
+  "source": "f70b0b03c0be7c29d260119f85233f49de26b6f6",
+  "run": 46102292795,
+  "job": 140847215881,
+  "overall": "failure",
+  "module": "V10B15a",
+  "blob": "85c903efb6a3d5c6482edec95d675a8da8f5d940",
+  "names": [
+    "WeilDefect.MasterRecon.V10B15a.central_term",
+    "WeilDefect.MasterRecon.V10B15a.reciprocal_square_budget",
+    "WeilDefect.MasterRecon.V10B15a.central_digamma",
+    "WeilDefect.MasterRecon.V10B15a.central_residual",
+    "WeilDefect.MasterRecon.V10B15a.explicit_residual"
+  ],
+  "output": [
+    "2026-11-28T03:23:31.2670041Z 'WeilDefect.MasterRecon.V10B15a.central_term' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T03:23:31.2671262Z 'WeilDefect.MasterRecon.V10B15a.reciprocal_square_budget' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T03:23:31.2672968Z 'WeilDefect.MasterRecon.V10B15a.central_digamma' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T03:23:31.2673884Z 'WeilDefect.MasterRecon.V10B15a.central_residual' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T03:23:31.2674660Z 'WeilDefect.MasterRecon.V10B15a.explicit_residual' depends on axioms: [propext, Classical.choice, Quot.sound]"
+  ],
+  "pass": "2026-11-28T03:23:31.4568241Z V10B15a: strict axiom audit PASS (5 declarations)",
+  "root_errors": [
+    "2026-11-28T03:24:08.5492386Z error: WeilDefect/MasterRecon/V10B16b.lean:36:9: ambiguous term, use fully qualified name, possible interpretations [_root_.residual, V10B8e.residual]",
+    "2026-11-28T03:24:08.5493651Z error: WeilDefect/MasterRecon/V10B16b.lean:50:31: `fun_prop` was unable to prove `Measurable ?m.315`",
+    "2026-11-28T03:24:08.5494794Z error: WeilDefect/MasterRecon/V10B16b.lean:52:4: Type mismatch",
+    "2026-11-28T03:24:08.5497894Z error: WeilDefect/MasterRecon/V10B16b.lean:53:10: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce"
+  ],
+  "artifacts": [
+    {
+      "id": 15245877139,
+      "digest": "sha256:16b1b9767b003f040b30d27dfae310bdd7d8df3e285b5b018b259ce9c445981e",
+      "size": 18784
+    }
+  ]
+}
