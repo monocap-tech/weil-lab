@@ -5,7 +5,7 @@ Requires the admitted E6 attachment and pinned 314-supplier closure.
 """
 import hashlib, json, pathlib, re, subprocess, sys
 
-PLAN_BLOB = "b1f9b37e663fc01face78baa404b1ab1b97be5e9"
+PLAN_BLOB = "734de9581c2c23a37cdbd92895606d9681294911"
 
 E_BLOB = "67fc9656ae64efc72b084634e5ecee10b54aa2c8"
 BASE_BLOB = "b25ed55d1ab8511a784cf3863aa630db9bb84a55"
@@ -49,6 +49,13 @@ def main():
                 ("audit", ["lake", "env", "lean", str(source)])]:
                 with (output / (module + "." + suffix + ".log")).open("wb") as log:
                     p = subprocess.run(cmd, stdout=log, stderr=subprocess.STDOUT)
+                if p.returncode != 0:
+                    raw_log = (output / (module + "." + suffix + ".log")).read_text(errors="replace")
+                    diagnostics = [line for line in raw_log.splitlines()
+                                   if "error:" in line or "✖" in line]
+                    print("FAILED", module, suffix, p.returncode, flush=True)
+                    print("DIAGNOSTICS:", "\n".join(diagnostics[-40:])[-12000:], flush=True)
+                    print("LOG TAIL:", raw_log[-16000:], flush=True)
                 assert p.returncode == 0, (module, suffix, p.returncode)
             log = (output / (module + ".audit.log")).read_text()
             for name in names:
