@@ -171,6 +171,23 @@ repair2_dst.write_bytes(repair2_bytes)
 assert digest(repair2_dst.read_bytes()) == "748ced0b77421d539ce5d91b2a2013c2e8640751"
 manifest[repair2_path]["local_repair"] = {"original_blob":"9b60b7ef82d421971f052b8946eabf6cf4d8ded4","compiled_blob":"748ced0b77421d539ce5d91b2a2013c2e8640751","proof":"pair projections, nonnegative addition, real exponent two"}
 print("RETURN109-E2 repaired V10B6a blob:", digest(repair2_bytes))
+# RETURN109-E3: bounded channel projection proof repair.
+repair3_path = "WeilDefect/MasterRecon/V10B6c.lean"
+assert manifest[repair3_path]["blob"] == "e539e480f3cde1ff224fed82985a78969e8d911f"
+assert manifest[repair3_path]["required_by"] == ["RECON"]
+repair3_dst = pathlib.Path(repair3_path)
+repair3_original = repair3_dst.read_bytes()
+assert digest(repair3_original) == "e539e480f3cde1ff224fed82985a78969e8d911f"
+repair3_text = repair3_original.decode("utf-8")
+for old, new, count in [["ENNReal.toReal_ofNat, Real.rpow_natCast","ENNReal.toReal_ofNat, Real.rpow_two",3],["(fun x => by simpa only [one_mul] using channelValue_bound positive x)","(fun x => by\n         change ‖channelValue positive x‖ ≤ 1 * ‖x‖\n         simpa only [one_mul] using channelValue_bound positive x)",1],["  intro x\n  simpa only [one_mul] using channelValue_bound positive x","  intro x\n  change ‖channelValue positive x‖ ≤ 1 * ‖x‖\n  simpa only [one_mul] using channelValue_bound positive x",1],["  rw [signedGram_pairing, inner_self_eq_norm_sq_to_K, inner_self_eq_norm_sq_to_K]\n  simp","  rw [signedGram_pairing, inner_self_eq_norm_sq_to_K, inner_self_eq_norm_sq_to_K]\n  simp only [Complex.sub_re, ← Complex.ofReal_pow, Complex.ofReal_re]",1]]:
+    assert repair3_text.count(old) == count
+    repair3_text = repair3_text.replace(old, new)
+repair3_bytes = repair3_text.encode("utf-8")
+assert digest(repair3_bytes) == "84c910d0c2aea256a9436ef2f1b1b55ea2916eee"
+repair3_dst.write_bytes(repair3_bytes)
+assert digest(repair3_dst.read_bytes()) == "84c910d0c2aea256a9436ef2f1b1b55ea2916eee"
+manifest[repair3_path]["local_repair"] = {"original_blob":"e539e480f3cde1ff224fed82985a78969e8d911f","compiled_blob":"84c910d0c2aea256a9436ef2f1b1b55ea2916eee","proof":"real exponent two, explicit map application, complex real-part cast"}
+print("RETURN109-E3 repaired V10B6c blob:", digest(repair3_bytes))
 result = {"IV":I,"RECON":R,"root":ROOT,"entries":manifest,"external_imports":sorted(external),"explicit_cross_edge":[ROOT,IV_ENTRY]}
 result["additional_roots"] = [translation_root, iv_root, recon_root, graph_root, count_root, sampling_root]
 pathlib.Path("return108w-closure.json").write_text(json.dumps(result, indent=2, sort_keys=True)+"\n")
