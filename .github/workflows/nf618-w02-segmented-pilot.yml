@@ -1,0 +1,131 @@
+name: NF618 W02 G2 segmented literal arithmetic pilot
+on:
+  push:
+    branches: [formalization/nf618-w02-native-gate]
+    paths: ['.github/workflows/nf618-w02-segmented-pilot.yml']
+permissions:
+  contents: read
+concurrency:
+  group: nf618-w02-native-gate
+  cancel-in-progress: false
+jobs:
+  pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 5801507d416e4a699c002920b2441f5aa0c19aef
+          path: research
+          persist-credentials: false
+      - name: Authenticate next-gate inputs and G0 receipt
+        run: |
+          set -euo pipefail
+          mkdir -p evidence
+          test "$(git hash-object next/NF618W02Seeds.lean)" = 7473827470835126492dea0f9353ae05dbcc76c9
+          test "$(git hash-object next/generate.py)" = 1f37fb33247e99896ee64b2feb4eb14d205b9f2f
+          test "$(git hash-object next/run.sh)" = 570cd782a9efc096c39bffd13497de4c4735f47c
+          test "$(git hash-object next/audit.py)" = 8d64f2f244c0ebea20e7a497675f59cecbb6994d
+          echo 'acd29eca20951286d1ff675c940dca2b5f2100bf09c207ff794f69bac9ce1cc4  custody/nf618-w02-native/run_46073540886-attempt_1.zip' | sha256sum -c -
+          bash -n next/run.sh
+          python3 -m py_compile next/generate.py next/audit.py
+          cp next/*.{lean,py,sh,md} evidence/
+          printf 'workflow_head=%s\nrun_id=%s\nresearch_head=%s\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$(git -C research rev-parse HEAD)" > evidence/environment.txt
+      - name: Install pinned Elan
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            archive="$RUNNER_TEMP/elan.tar.gz"
+            digest=0e8250aa2be86c7af929ade68db617af9edc8b9ccf6eaf5ece228250d0d032e2
+            fetch_verified() {
+              rm -f "$archive"
+              curl -fsSL --retry 2 --retry-all-errors --connect-timeout 20 --max-time 180 "$@" -o "$archive" &&
+                printf '%s  %s\n' "$digest" "$archive" | sha256sum -c -
+            }
+            if ! fetch_verified https://github.com/leanprover/elan/releases/download/v4.4.0/elan-x86_64-unknown-linux-gnu.tar.gz; then
+              fetch_verified -H 'Accept: application/octet-stream' "https://api.github.com/repos/leanprover/elan/releases/assets/763468108?run=$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+            fi
+            mkdir -p "$RUNNER_TEMP/elan"
+            tar -xzf "$archive" -C "$RUNNER_TEMP/elan"
+            "$RUNNER_TEMP/elan/elan-init" -y --no-modify-path --default-toolchain none
+            echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+            "$HOME/.elan/bin/elan" --version
+          } 2>&1 | tee evidence/elan-install.log
+      - name: Preserve prior timeout and recover exact literal Pi archive
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/15240237445/zip" > evidence/prior-timeout.zip
+          echo '4a960cf8e4afee4bcdde3369133b077e2e98a210a5177a68ed1c2d0b2bc2ba28  evidence/prior-timeout.zip' | sha256sum -c -
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/14580099864/zip" > evidence/historical-phase.zip
+          echo 'fba35eada4a0614260109add6e3762b90447bf047541817c7529348121f33ab3  evidence/historical-phase.zip' | sha256sum -c -
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/14558233793/zip" > "$RUNNER_TEMP/nf690-payload.zip"
+          echo "2327fbf952d4894c9f28f81cad9e94d226c93131d9ef2fafa14c35f482211b70  $RUNNER_TEMP/nf690-payload.zip" | sha256sum -c -
+          cp segmented/* evidence/
+      - name: Prepare exact sources and segmented proof candidates
+        run: |
+          set -euo pipefail
+          bash segmented/setup.sh 2>&1 | tee evidence/setup.log
+          cd research
+          python3 ../segmented/generate.py ../evidence/historical-phase.zip "$RUNNER_TEMP/nf690-payload.zip" ../evidence
+      - name: Compile segmented seed, literal power chain and unchanged row gate
+        run: |
+          set -euo pipefail
+          cd research
+          timeout 900 lake build WeilDefect.Generated.NF618W02Segmented.Pilot 2>&1 | tee ../evidence/build.log
+          lake env lean WeilDefect/Generated/NF618W02Segmented/Root.lean 2>&1 | tee ../evidence/root-axioms.log
+          lake env lean WeilDefect/Generated/NF618W02Segmented/Pilot.lean 2>&1 | tee ../evidence/pilot-axioms.log
+          cat ../evidence/root-axioms.log ../evidence/pilot-axioms.log > ../evidence/audit.log
+          python3 ../next/audit.py ../evidence/audit.log $(cat ../evidence/targets.txt)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf618-w02-segmented-evidence
+          path: evidence/
+          if-no-files-found: error
+  custody:
+    needs: pilot
+    if: always() && needs.pilot.result != 'cancelled'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: formalization/nf618-w02-native-gate
+          fetch-depth: 1
+      - name: Preserve original timeout and new segmented result
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ needs.pilot.result }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          d="custody/nf618-w02-segmented/run_$GITHUB_RUN_ID-attempt_$GITHUB_RUN_ATTEMPT"
+          mkdir -p "$d"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" | jq -e '[.artifacts[] | select(.name=="nf618-w02-segmented-evidence" and .expired==false)] | if length==1 then .[0] else error("missing evidence") end' > "$d/metadata.json"
+          id=$(jq -er .id "$d/metadata.json")
+          hash=$(jq -er '.digest | sub("^sha256:";"")' "$d/metadata.json")
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" > "$d/evidence.zip"
+          echo "$hash  $d/evidence.zip" | sha256sum -c -
+          python3 -m zipfile -t "$d/evidence.zip"
+          printf 'pilot_result=%s\nmathematical_head=Batch24R1\nnew_admissions=0\n' "$RESULT" > "$d/status.txt"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$d"
+          git commit -m 'NF618 preserve segmented pilot and prior timeout evidence [skip ci]'
+          git push origin "HEAD:refs/heads/formalization/nf618-w02-native-gate"
+          git fetch --no-tags origin "formalization/nf618-w02-native-gate"
+          test "$(git rev-parse HEAD)" = "$(git rev-parse FETCH_HEAD)"
+          test "$(git show "FETCH_HEAD:$d/evidence.zip" | sha256sum | cut -d' ' -f1)" = "$hash"
