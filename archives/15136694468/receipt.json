@@ -1,0 +1,16 @@
+{
+  "id": 15136694468,
+  "name": "semantic",
+  "sha256": "e324a64d4a1a8f6c537e3d8040a335333973a2df63dc5b1f39f3bb49b246811f",
+  "producer_run": 45859779998,
+  "producer_conclusion": "success",
+  "bytes": 5960,
+  "status": "BYTE_PASS",
+  "chunks": [
+    {
+      "file": "part0000.bin",
+      "sha256": "e324a64d4a1a8f6c537e3d8040a335333973a2df63dc5b1f39f3bb49b246811f",
+      "bytes": 5960
+    }
+  ]
+}
