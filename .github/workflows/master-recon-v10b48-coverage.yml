@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B78 unconditional physical pairing
+name: MASTER-RECON V10B79 load error transfer
 on:
   push:
     branches: [master-recon-v10b20-staging]
@@ -30,7 +30,7 @@ jobs:
           set -euo pipefail
           mkdir -p recon-v10b48-evidence
           git rev-parse HEAD | tee recon-v10b48-evidence/head.txt
-          sha256sum WeilDefect/MasterRecon/V10B{78a,77a,77b,77c,76a,76b,75a,75b,74a,74b,69a,15a,8f,8e}.lean Zeta23/Defs.lean Zeta23/GammaFacts.lean Zeta23/GammaFacts/{Series,Mu,StirlingVert}.lean Zeta23/Analytic/Stirling.lean Zeta23/LICENSE lean-toolchain lakefile.toml lake-manifest.json | tee recon-v10b48-evidence/source.sha256
+          sha256sum WeilDefect/MasterRecon/V10B{79a,78a,77a,77b,77c,76a,76b,75a,75b,74a,74b,69a,15a,8f,8e}.lean Zeta23/Defs.lean Zeta23/GammaFacts.lean Zeta23/GammaFacts/{Series,Mu,StirlingVert}.lean Zeta23/Analytic/Stirling.lean Zeta23/LICENSE lean-toolchain lakefile.toml lake-manifest.json | tee recon-v10b48-evidence/source.sha256
           cat lake-manifest.json | tee recon-v10b48-evidence/lake-manifest.json
           lake env lean --version | tee recon-v10b48-evidence/lean-version.txt
           audit() {
@@ -75,7 +75,7 @@ jobs:
             done
             if audit "$mod"; then pass[$mod]=1; else pass[$mod]=0; failed=1; fi
           }
-          gate V10B78a
+          gate V10B79a
           exit "$failed"
       - name: Upload compiler and audit evidence
         if: always()
