@@ -1,4 +1,4 @@
-name: RETURN109-E4 actual bounded analysis (direct inner product repair)
+name: RETURN109-E5 actual bounded analysis (signed orbit repair)
 on:
   push:
     branches: [research/return108s-kernel-core]
@@ -34,11 +34,11 @@ jobs:
           lean --version
       - name: Fetch mathlib cache
         run: lake exe cache get
-      - name: Build repaired channel supplier first
+      - name: Build repaired signed orbit supplier first
         shell: bash
         run: |
           set -euo pipefail
-          lake build WeilDefect.MasterRecon.V10B6c 2>&1 | tee return109e4-pilot.log
+          lake build WeilDefect.MasterRecon.V10B6d 2>&1 | tee return109e5-pilot.log
       - name: Build literal bridge dependencies
         shell: bash
         run: |
@@ -97,6 +97,22 @@ jobs:
               print("PASS", q)
           print("RETURN109-E4 repaired supplier strict axiom audit PASS 14/14")
           PY
+          lake env lean WeilDefect/MasterRecon/V10B6d.lean 2>&1 | tee return109e5-supplier.log
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          s = Path("return109e5-supplier.log").read_text()
+          allowed = {"propext","Classical.choice","Quot.sound"}
+          for name in ["channel_sq_summable","signed_channel_abs_summable","signed_channel_tsum","orbitTerm_eq_channel","orbitTerm_abs_le","positive_coordinates","negative_coordinates","arithmetic_orbit_abs_summable","arithmetic_orbit_diagonal","arithmetic_positive_kernel","arithmetic_positive_coercivity","arithmetic_signed_receiver"]:
+              q = "WeilDefect.MasterRecon.V10B6d." + name
+              m = re.search(r"'" + re.escape(q) + r"' depends on axioms: \[([^\]]*)\]", s)
+              if m is None:
+                  assert f"'{q}' does not depend on any axioms" in s, q
+              else:
+                  assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
+              print("PASS", q)
+          print("RETURN109-E5 repaired supplier strict axiom audit PASS 12/12")
+          PY
           lake env lean WeilDefect/MasterReturn/LogCarrierBoundedAnalysis.lean 2>&1 | tee return109e-lean.log
           python3 - <<'PY'
           import re
@@ -112,13 +128,13 @@ jobs:
               else:
                   assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
               print("PASS", q)
-          print("RETURN109-E4 strict axiom audit PASS 5/5")
+          print("RETURN109-E5 strict axiom audit PASS 5/5")
           PY
       - name: Preserve integration evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: return109e4-integration
+          name: return109e5-integration
           path: |
             return108w-closure.json
             return108w-closure.log
@@ -127,7 +143,9 @@ jobs:
             return109e1-supplier.log
             return109e2-supplier.log
             return109e3-supplier.log
-            return109e4-pilot.log
+            return109e5-pilot.log
+            return109e5-supplier.log
+            WeilDefect/MasterRecon/V10B6d.lean
             WeilDefect/MasterRecon/V10B6c.lean
             WeilDefect/MasterRecon/V10B6a.lean
             WeilDefect/MasterRecon/V10B5d.lean
