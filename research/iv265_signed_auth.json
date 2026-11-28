@@ -1,0 +1,69 @@
+{
+  "scope": "full odd signed data and exact finite trial replay; no actual Schur claim",
+  "rows": 256,
+  "terms": 640,
+  "active": 456,
+  "parts": [
+    {
+      "part": 0,
+      "bytes": 1578685,
+      "git_blob": "54dbb6a5c99c2e96cdcaf25db7dacb79ffb7c3f4",
+      "sha256": "bf46755be4fa1c502bea81d04a753db12e52f905ff770578bceb8128b9588746"
+    },
+    {
+      "part": 1,
+      "bytes": 1581240,
+      "git_blob": "b15f1c141d72ac3e2204ff99691c9b7b72b8e5a1",
+      "sha256": "0cb2c429cfa14fda326633a283ca1d46bafc67e93046bd4c316608079077dd6d"
+    },
+    {
+      "part": 2,
+      "bytes": 1581596,
+      "git_blob": "ab9fe221d6e1f19be3fe34f9cf41e45affbd198f",
+      "sha256": "e5124dba896febb4ddef88f2313555ba72248bb96252e61cc6cc932c7219ce74"
+    },
+    {
+      "part": 3,
+      "bytes": 1582804,
+      "git_blob": "1a705a2e2969c351256c72312ed57d9bf19e6fe7",
+      "sha256": "60f690eafa10ebd71554d8fb21113bcfb9e0e72a6de503b32d2074d0089e1834"
+    },
+    {
+      "part": 4,
+      "bytes": 1585514,
+      "git_blob": "f26075cc71432e09e0fcc29c82e91b7a51543d2f",
+      "sha256": "388edecbebf9e6e6a012f7407f79582701c68448a6ef891b72852d8d14bd11a9"
+    },
+    {
+      "part": 5,
+      "bytes": 1593904,
+      "git_blob": "6c94f4cb35878974da998518a3b390839ed87c64",
+      "sha256": "bc274e39420bee14c93a5658457862b78c0146475cdb2b09c214c875c3e57a3b"
+    },
+    {
+      "part": 6,
+      "bytes": 1632862,
+      "git_blob": "5458e2244dadac410c24102ccde38b43145f54a1",
+      "sha256": "bc07121597ed1ce579a51304d82bf7af2ab94b6f0634277658e81330122504a8"
+    },
+    {
+      "part": 7,
+      "bytes": 1642059,
+      "git_blob": "28d296e665b8d2dbe784f2890934104616cbffdc",
+      "sha256": "6dd23149444c744ef0275661db02c491c2ff64322fdd69a8ac6c4fd22af54643"
+    }
+  ],
+  "source_git_blobs": {
+    "kernel": "b748429e9c9dff261014f9cb46f09bca9268c738",
+    "signed_export": "3b27ecf8f0012d391601252186d9aef48f210f60",
+    "finite_congruence": "1b010d7fb1eab5a563021f04714338fd7c1b87e8"
+  },
+  "signed_replay_sha256": "b8525c0ae10afa41ff0f01c64176d8240e64d8cc20e8ce8ccfc929f5a5a663d5",
+  "signed_replay_bytes": 17280843,
+  "finite_congruence_git_blob": "97928a1ce7b3a7752301146b25c92f1b23b78861",
+  "finite_congruence_sha256": "46cb4d41bfe4843866cadba112e7c53585050d8880472ecd12ac3c33228512b4",
+  "finite_congruence_bytes": 1923676,
+  "min_row": "627656515958357592887240982278202318178798865151342116287209201433292842666295336683264750231568524317185717",
+  "scale": "1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "elapsed_seconds": 4.468
+}
