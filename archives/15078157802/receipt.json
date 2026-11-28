@@ -1,0 +1,16 @@
+{
+  "id": 15078157802,
+  "name": "pair10source",
+  "sha256": "376ce4cef40175f70efc6b73ce263ccc4bf197b39cb80315a9a294f6dd1c2166",
+  "producer_run": 45720496249,
+  "producer_conclusion": "success",
+  "bytes": 77128,
+  "status": "BYTE_PASS",
+  "chunks": [
+    {
+      "file": "part0000.bin",
+      "sha256": "376ce4cef40175f70efc6b73ce263ccc4bf197b39cb80315a9a294f6dd1c2166",
+      "bytes": 77128
+    }
+  ]
+}
