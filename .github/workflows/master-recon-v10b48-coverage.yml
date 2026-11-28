@@ -1,4 +1,4 @@
-name: MASTER-RECON V10B69 normalized physical lower-order A R attachment
+name: MASTER-RECON V10B69R1 lower-order elaboration repair
 on:
   push:
     branches: [master-recon-v10b20-staging]

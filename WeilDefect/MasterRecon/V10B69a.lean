@@ -28,7 +28,7 @@ theorem divided_physical (j : Fin 16) :
   rw [map_smul]
   filter_upwards [Lp.coeFn_smul D⁻¹ (physicalInclusion (1/4) (carrierTrial j)),
     V10B67a.carrierTrial_ae j] with x hx hy
-  rw [hx,hy,smul_eq_mul]
+  rw [hx,Pi.smul_apply,hy,smul_eq_mul]
 
 theorem divided_section (g : logCarrier (1/4)) :
     ∃ a : Fin 16 → ℂ, g-(∑ j, a j • dividedTrial j) ∈ V10B17b.retainedᗮ := by
@@ -52,12 +52,14 @@ theorem J_bound (g : logCarrier (1/4)) :
     _ ≤ _ := by
       change ‖(Lp.fourierTransformₗᵢ ℝ ℂ).symm (V08I.unweight (g:V08I.FullL2))‖ ≤ _
       rw [(Lp.fourierTransformₗᵢ ℝ ℂ).symm.norm_map]
-      exact V08I.mulValue_bound _ _ _ _ (g:V08I.FullL2)
+      exact V08I.mulValue_bound V08I.inverseWeight V08I.inverseWeight_measurable
+        _ V08I.inverseWeight_bound (g:V08I.FullL2)
 
 theorem prime_free : V10B8d.physicalPrime (1/4) = 0 := by
   have he : Real.exp (2*(1/4:ℝ)) < 2 := by
-    rw [← Real.exp_log (by norm_num : (0:ℝ)<2)]
-    exact Real.exp_lt_exp.mpr (by linarith [Real.log_two_gt_d9])
+    calc
+      _ < Real.exp (Real.log 2) := Real.exp_lt_exp.mpr (by linarith [Real.log_two_gt_d9])
+      _ = 2 := Real.exp_log (by norm_num)
   have hn : ⌊Real.exp (2*(1/4:ℝ))⌋₊ < 2 :=
     (Nat.floor_lt (Real.exp_pos _).le).mpr (by exact_mod_cast he)
   unfold V10B8d.physicalPrime V10B8d.primeBank
@@ -68,7 +70,8 @@ theorem prime_free : V10B8d.physicalPrime (1/4) = 0 := by
     have hh : n ≤ ⌊Real.exp (2*(1/4:ℝ))⌋₊ := h.2
     omega
   subst n
-  simp [V10B8d.primeWeight]
+  have hz : V10B8d.primeWeight 1 = 0 := by simp [V10B8d.primeWeight]
+  rw [hz,Complex.ofReal_zero,zero_smul]
 
 theorem prime_operator_zero : V10B8d.primeOperator (1/4) = 0 := by
   unfold V10B8d.primeOperator
