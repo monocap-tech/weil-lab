@@ -1,0 +1,1373 @@
+﻿2026-11-28T01:17:22.1063358Z Current runner version: '2.338.2'
+2026-11-28T01:17:22.1088516Z ##[group]Runner Image Provisioner
+2026-11-28T01:17:22.1089291Z Hosted Compute Agent
+2026-11-28T01:17:22.1089908Z Version: 20261111.635
+2026-11-28T01:17:22.1090475Z Commit: b8a594ea514ff44cadb5342986c68b1eac6e22ed
+2026-11-28T01:17:22.1091163Z Build Date: 2026-11-11T01:49:01Z
+2026-11-28T01:17:22.1091798Z Worker ID: {c3e30854-9300-4676-a72e-b3fcb504a7f4}
+2026-11-28T01:17:22.1092430Z Region: westcentralus
+2026-11-28T01:17:22.1092954Z Cloud: Azure
+2026-11-28T01:17:22.1093429Z ##[endgroup]
+2026-11-28T01:17:22.1094828Z ##[group]Operating System
+2026-11-28T01:17:22.1095423Z Ubuntu
+2026-11-28T01:17:22.1095889Z 26.04.1
+2026-11-28T01:17:22.1096374Z LTS
+2026-11-28T01:17:22.1096835Z ##[endgroup]
+2026-11-28T01:17:22.1097542Z ##[group]Runner Image
+2026-11-28T01:17:22.1098350Z Image: ubuntu-26.04
+2026-11-28T01:17:22.1098864Z Version: 20261122.9.1
+2026-11-28T01:17:22.1100014Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261122.9/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-28T01:17:22.1101380Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261122.9
+2026-11-28T01:17:22.1102295Z ##[endgroup]
+2026-11-28T01:17:22.1103265Z ##[group]GITHUB_TOKEN Permissions
+2026-11-28T01:17:22.1105550Z Contents: read
+2026-11-28T01:17:22.1106072Z Metadata: read
+2026-11-28T01:17:22.1106684Z ##[endgroup]
+2026-11-28T01:17:22.1109320Z Secret source: Actions
+2026-11-28T01:17:22.1110233Z Cache mode: write
+2026-11-28T01:17:22.1110994Z Prepare workflow directory
+2026-11-28T01:17:22.1436861Z Prepare all required actions
+2026-11-28T01:17:22.1485160Z Getting action download info
+2026-11-28T01:17:22.4151230Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-28T01:17:22.5049393Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-28T01:17:22.6620768Z Complete job name: integration
+2026-11-28T01:17:22.7404945Z ##[group]Run actions/checkout@v4
+2026-11-28T01:17:22.7405920Z with:
+2026-11-28T01:17:22.7406439Z   repository: monocap-tech/weil-lab
+2026-11-28T01:17:22.7410221Z   token: ***
+2026-11-28T01:17:22.7410753Z   ssh-strict: true
+2026-11-28T01:17:22.7411225Z   ssh-user: git
+2026-11-28T01:17:22.7411714Z   persist-credentials: true
+2026-11-28T01:17:22.7412236Z   clean: true
+2026-11-28T01:17:22.7412722Z   sparse-checkout-cone-mode: true
+2026-11-28T01:17:22.7413315Z   fetch-depth: 1
+2026-11-28T01:17:22.7413792Z   fetch-tags: false
+2026-11-28T01:17:22.7414259Z   show-progress: true
+2026-11-28T01:17:22.7414804Z   lfs: false
+2026-11-28T01:17:22.7415250Z   submodules: false
+2026-11-28T01:17:22.7415762Z   set-safe-directory: true
+2026-11-28T01:17:22.7416291Z   allow-unsafe-pr-checkout: false
+2026-11-28T01:17:22.7417214Z ##[endgroup]
+2026-11-28T01:17:22.9909298Z Syncing repository: monocap-tech/weil-lab
+2026-11-28T01:17:22.9912171Z ##[group]Getting Git version info
+2026-11-28T01:17:22.9913489Z Working directory is '/home/runner/work/weil-lab/weil-lab'
+2026-11-28T01:17:22.9915280Z [command]/usr/bin/git version
+2026-11-28T01:17:22.9916127Z git version 2.56.1
+2026-11-28T01:17:22.9919005Z ##[endgroup]
+2026-11-28T01:17:22.9931406Z Temporarily overriding HOME='/home/runner/work/_temp/e15e9a09-987f-467c-a316-60c02f341af6' before making global git config changes
+2026-11-28T01:17:22.9934003Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-28T01:17:22.9936276Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/weil-lab/weil-lab
+2026-11-28T01:17:22.9995060Z Deleting the contents of '/home/runner/work/weil-lab/weil-lab'
+2026-11-28T01:17:22.9998191Z ##[group]Initializing the repository
+2026-11-28T01:17:23.0004286Z [command]/usr/bin/git init /home/runner/work/weil-lab/weil-lab
+2026-11-28T01:17:23.0096424Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-28T01:17:23.0098627Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-28T01:17:23.0100848Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-28T01:17:23.0102256Z hint: call:
+2026-11-28T01:17:23.0103000Z hint:
+2026-11-28T01:17:23.0103916Z hint: 	git config --global init.defaultBranch <name>
+2026-11-28T01:17:23.0105045Z hint:
+2026-11-28T01:17:23.0106150Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-28T01:17:23.0108037Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-28T01:17:23.0109465Z hint:
+2026-11-28T01:17:23.0110252Z hint: 	git branch -m <name>
+2026-11-28T01:17:23.0111152Z hint:
+2026-11-28T01:17:23.0112295Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-28T01:17:23.0114120Z Initialized empty Git repository in /home/runner/work/weil-lab/weil-lab/.git/
+2026-11-28T01:17:23.0117560Z [command]/usr/bin/git remote add origin https://github.com/monocap-tech/weil-lab
+2026-11-28T01:17:23.0162267Z ##[endgroup]
+2026-11-28T01:17:23.0163575Z ##[group]Disabling automatic garbage collection
+2026-11-28T01:17:23.0166186Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-28T01:17:23.0209505Z ##[endgroup]
+2026-11-28T01:17:23.0210730Z ##[group]Setting up auth
+2026-11-28T01:17:23.0216257Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-28T01:17:23.0253674Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-28T01:17:23.0672037Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-28T01:17:23.0720095Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-28T01:17:23.1034716Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-28T01:17:23.1065018Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-28T01:17:23.1284378Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-28T01:17:23.1319573Z ##[endgroup]
+2026-11-28T01:17:23.1320328Z ##[group]Fetching the repository
+2026-11-28T01:17:23.1328957Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +f08897dc7e8aefab71bb366ed749f433ba252d6f:refs/remotes/origin/master-recon-v10b20-staging
+2026-11-28T01:17:23.8651316Z From https://github.com/monocap-tech/weil-lab
+2026-11-28T01:17:23.8653473Z  * [new ref]         f08897dc7e8aefab71bb366ed749f433ba252d6f -> origin/master-recon-v10b20-staging
+2026-11-28T01:17:23.8660059Z ##[endgroup]
+2026-11-28T01:17:23.8661942Z ##[group]Determining the checkout info
+2026-11-28T01:17:23.8663995Z ##[endgroup]
+2026-11-28T01:17:23.8665496Z [command]/usr/bin/git sparse-checkout disable
+2026-11-28T01:17:23.8712478Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-28T01:17:23.8740472Z ##[group]Checking out the ref
+2026-11-28T01:17:23.8746483Z [command]/usr/bin/git checkout --progress --force -B master-recon-v10b20-staging refs/remotes/origin/master-recon-v10b20-staging
+2026-11-28T01:17:23.9242296Z Switched to a new branch 'master-recon-v10b20-staging'
+2026-11-28T01:17:23.9245447Z branch 'master-recon-v10b20-staging' set up to track 'origin/master-recon-v10b20-staging'.
+2026-11-28T01:17:23.9258789Z ##[endgroup]
+2026-11-28T01:17:23.9296211Z [command]/usr/bin/git log -1 --format=%H
+2026-11-28T01:17:23.9318956Z f08897dc7e8aefab71bb366ed749f433ba252d6f
+2026-11-28T01:17:23.9572678Z ##[group]Run curl --retry 3 --retry-delay 2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+2026-11-28T01:17:23.9576359Z [36;1mcurl --retry 3 --retry-delay 2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y[0m
+2026-11-28T01:17:23.9579363Z [36;1mecho "$HOME/.elan/bin" >> "$GITHUB_PATH"[0m
+2026-11-28T01:17:23.9605259Z shell: /usr/bin/bash -e {0}
+2026-11-28T01:17:23.9606438Z ##[endgroup]
+2026-11-28T01:17:24.1276343Z info: downloading installer
+2026-11-28T01:17:24.9863056Z info: default toolchain set to 'stable'
+2026-11-28T01:17:24.9975800Z ##[group]Run lake update
+2026-11-28T01:17:24.9976140Z [36;1mlake update[0m
+2026-11-28T01:17:25.0000979Z shell: /usr/bin/bash -e {0}
+2026-11-28T01:17:25.0001323Z ##[endgroup]
+2026-11-28T01:17:25.4730637Z info: downloading https://releases.lean-lang.org/lean4/v4.34.0/lean-4.34.0-linux.tar.zst
+2026-11-28T01:17:31.5233948Z info: installing /home/runner/.elan/toolchains/leanprover--lean4---v4.34.0
+2026-11-28T01:17:37.3950459Z info: weil_defect: no previous manifest, creating one from scratch
+2026-11-28T01:17:37.3952476Z info: mathlib: cloning https://github.com/leanprover-community/mathlib4.git
+2026-11-28T01:18:08.0212571Z info: mathlib: checking out revision '5ed2965256430c3649e86755f9576b54eca72435'
+2026-11-28T01:18:08.8401720Z info: toolchain not updated; already up-to-date
+2026-11-28T01:18:09.8257878Z info: plausible: cloning https://github.com/leanprover-community/plausible
+2026-11-28T01:18:10.3463214Z info: plausible: checking out revision '118aa17ee84656b8bd727fef7c458ee8c833385c'
+2026-11-28T01:18:10.3574856Z info: LeanSearchClient: cloning https://github.com/leanprover-community/LeanSearchClient
+2026-11-28T01:18:10.7467988Z info: LeanSearchClient: checking out revision 'ddf04cf3949fa556442341e87d47f9f6e6074707'
+2026-11-28T01:18:10.7585421Z info: importGraph: cloning https://github.com/leanprover-community/import-graph
+2026-11-28T01:18:11.3320573Z info: importGraph: checking out revision 'e928b72544873815af278d38681b31c0293588e3'
+2026-11-28T01:18:11.3500202Z info: proofwidgets: cloning https://github.com/leanprover-community/ProofWidgets4
+2026-11-28T01:18:12.0589177Z info: proofwidgets: checking out revision '106ff4fafc74ef4ac99d81dbf3ab399118f497a5'
+2026-11-28T01:18:12.6783674Z info: aesop: cloning https://github.com/leanprover-community/aesop
+2026-11-28T01:18:13.4246546Z info: aesop: checking out revision '355695d523e41d0554926416cba2a2b3544fbbc9'
+2026-11-28T01:18:13.4424724Z info: Qq: cloning https://github.com/leanprover-community/quote4
+2026-11-28T01:18:14.0032401Z info: Qq: checking out revision '6a489d9af5d0c47e5b259e2e8bcdfc1811b5a259'
+2026-11-28T01:18:14.0147807Z info: batteries: cloning https://github.com/leanprover-community/batteries
+2026-11-28T01:18:16.8632891Z info: batteries: checking out revision 'f2effa3d803fda822b1f97b806c47cf2adfbcbc2'
+2026-11-28T01:18:16.8937700Z info: Cli: cloning https://github.com/leanprover/lean4-cli
+2026-11-28T01:18:17.3379546Z info: Cli: checking out revision 'e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204'
+2026-11-28T01:18:17.3491925Z info: mathlib: running post-update hooks
+2026-11-28T01:18:17.7511682Z ✔ [1/5] Built Cache.Cli (312ms)
+2026-11-28T01:18:17.7512055Z ✔ [2/5] Built Cache.Lean (369ms)
+2026-11-28T01:18:19.6551738Z ✔ [7/42] Built Cache.Cli:c.o (167ms)
+2026-11-28T01:18:19.7553381Z ✔ [9/42] Built Cache.Lean:c.o (223ms)
+2026-11-28T01:18:19.9568766Z ✔ [10/42] Built Cache.Env (431ms)
+2026-11-28T01:18:20.1562628Z ✔ [11/42] Built Cache.Env:c.o (203ms)
+2026-11-28T01:18:20.4568884Z ✔ [12/42] Built Cache.Infra (471ms)
+2026-11-28T01:18:20.6564069Z ✔ [13/42] Built Cache.Infra:c.o (241ms)
+2026-11-28T01:18:20.9581080Z ✔ [14/42] Built Cache.IO (1.5s)
+2026-11-28T01:18:21.6587899Z ✔ [15/42] Built Cache.Hashing (695ms)
+2026-11-28T01:18:22.1603274Z ✔ [16/42] Built Cache.Hashing:c.o (469ms)
+2026-11-28T01:18:22.7623783Z ✔ [17/42] Built Cache.IO:c.o (1.7s)
+2026-11-28T01:18:23.5639106Z ✔ [18/42] Built Cache.Requests (1.9s)
+2026-11-28T01:18:24.0659386Z ✔ [19/42] Built Cache.Marker (461ms)
+2026-11-28T01:18:24.1639498Z ✔ [20/42] Built Cache.Marker:c.o (170ms)
+2026-11-28T01:18:24.7682142Z ✔ [21/42] Built Cache.Upload.Dest (692ms)
+2026-11-28T01:18:24.9680064Z ✔ [22/42] Built Cache.Upload.Dest:c.o (225ms)
+2026-11-28T01:18:25.0699810Z ✔ [23/42] Built Cache.Query (1.0s)
+2026-11-28T01:18:25.4708855Z ✔ [24/42] Built Cache.Query:c.o (429ms)
+2026-11-28T01:18:25.6738840Z ✔ [25/42] Built Cache.Upload.Rclone (906ms)
+2026-11-28T01:18:25.8702443Z ✔ [26/42] Built Cache.Upload.Curl (934ms)
+2026-11-28T01:18:25.8713868Z ✔ [27/42] Built Cache.Upload.Rclone:c.o (254ms)
+2026-11-28T01:18:26.1709339Z ✔ [28/42] Built Cache.Upload.Curl:c.o (255ms)
+2026-11-28T01:18:26.4728133Z ✔ [29/42] Built Cache.Warning (1.0s)
+2026-11-28T01:18:26.7738845Z ✔ [30/42] Built Cache.Upload.Azure (842ms)
+2026-11-28T01:18:26.8733221Z ✔ [31/42] Built Cache.Warning:c.o (376ms)
+2026-11-28T01:18:26.9734394Z ✔ [32/42] Built Cache.Upload.Azure:c.o (183ms)
+2026-11-28T01:18:27.0740675Z ✔ [33/42] Built Cache.Upload.S3 (908ms)
+2026-11-28T01:18:27.2743165Z ✔ [34/42] Built Cache.Requests:c.o (3.7s)
+2026-11-28T01:18:27.3744135Z ✔ [35/42] Built Cache.Upload.S3:c.o (378ms)
+2026-11-28T01:18:27.6747812Z ✔ [36/42] Built Cache.Upload.Defs (583ms)
+2026-11-28T01:18:27.7749487Z ✔ [37/42] Built Cache.Upload.Defs:c.o (138ms)
+2026-11-28T01:18:28.0742713Z ✔ [38/42] Built Cache.Upload (446ms)
+2026-11-28T01:18:28.1744325Z ✔ [39/42] Built Cache.Upload:c.o (108ms)
+2026-11-28T01:18:29.0753552Z ✔ [40/42] Built Cache.Main (1.0s)
+2026-11-28T01:18:29.9764191Z ✔ [41/42] Built Cache.Main:c.o (901ms)
+2026-11-28T01:18:30.5791926Z ✔ [42/42] Built cache:exe (643ms)
+2026-11-28T01:18:32.4151264Z Current branch: HEAD
+2026-11-28T01:18:32.4152212Z Using cache from origin: (some leanprover-community/mathlib4)
+2026-11-28T01:18:32.4153285Z Attempting to download 8908 file(s) from leanprover-community/mathlib4 cache at https://cache.mathlib.org/mathlib4-master
+2026-11-28T01:18:32.6034858Z 
+2026-11-28T01:18:32.7036167Z Downloaded: 1 file(s) [attempted 1/8908 = 0%, 466 KB/s], Decompressed: 0
+2026-11-28T01:18:32.8049147Z Downloaded: 103 file(s) [attempted 103/8908 = 1%, 3732 KB/s], Decompressed: 3
+2026-11-28T01:18:32.9041991Z Downloaded: 243 file(s) [attempted 243/8908 = 2%, 1295 KB/s], Decompressed: 27
+2026-11-28T01:18:33.0036279Z Downloaded: 399 file(s) [attempted 399/8908 = 4%, 395 KB/s], Decompressed: 27
+2026-11-28T01:18:33.1077931Z Downloaded: 538 file(s) [attempted 538/8908 = 6%, 352 KB/s], Decompressed: 106
+2026-11-28T01:18:33.2251309Z Downloaded: 591 file(s) [attempted 591/8908 = 6%, 1524 KB/s], Decompressed: 106
+2026-11-28T01:18:33.3340330Z Downloaded: 691 file(s) [attempted 691/8908 = 7%, 434 KB/s], Decompressed: 106
+2026-11-28T01:18:33.4350801Z Downloaded: 808 file(s) [attempted 808/8908 = 9%, 3731 KB/s], Decompressed: 106
+2026-11-28T01:18:33.5358785Z Downloaded: 948 file(s) [attempted 948/8908 = 10%, 523 KB/s], Decompressed: 106
+2026-11-28T01:18:33.6358913Z Downloaded: 1014 file(s) [attempted 1014/8908 = 11%, 640 KB/s], Decompressed: 106
+2026-11-28T01:18:33.7378892Z Downloaded: 1115 file(s) [attempted 1115/8908 = 12%, 858 KB/s], Decompressed: 106
+2026-11-28T01:18:33.8378800Z Downloaded: 1236 file(s) [attempted 1236/8908 = 13%, 912 KB/s], Decompressed: 106
+2026-11-28T01:18:33.9449052Z Downloaded: 1364 file(s) [attempted 1364/8908 = 15%, 2447 KB/s], Decompressed: 106
+2026-11-28T01:18:34.0744007Z Downloaded: 1492 file(s) [attempted 1492/8908 = 16%, 1125 KB/s], Decompressed: 106
+2026-11-28T01:18:34.1763545Z Downloaded: 1552 file(s) [attempted 1552/8908 = 17%, 3049 KB/s], Decompressed: 106
+2026-11-28T01:18:34.2788388Z Downloaded: 1684 file(s) [attempted 1684/8908 = 18%, 1557 KB/s], Decompressed: 106
+2026-11-28T01:18:34.3888493Z Downloaded: 1792 file(s) [attempted 1792/8908 = 20%, 4647 KB/s], Decompressed: 106
+2026-11-28T01:18:34.4929072Z Downloaded: 1892 file(s) [attempted 1892/8908 = 21%, 2392 KB/s], Decompressed: 106
+2026-11-28T01:18:34.6028036Z Downloaded: 1995 file(s) [attempted 1995/8908 = 22%, 1151 KB/s], Decompressed: 106
+2026-11-28T01:18:34.7353167Z Downloaded: 2098 file(s) [attempted 2098/8908 = 23%, 163 KB/s], Decompressed: 106
+2026-11-28T01:18:34.8376216Z Downloaded: 2201 file(s) [attempted 2201/8908 = 24%, 100 KB/s], Decompressed: 106
+2026-11-28T01:18:34.9448737Z Downloaded: 2345 file(s) [attempted 2345/8908 = 26%, 756 KB/s], Decompressed: 536
+2026-11-28T01:18:35.0488527Z Downloaded: 2457 file(s) [attempted 2457/8908 = 27%, 1718 KB/s], Decompressed: 536
+2026-11-28T01:18:35.1508641Z Downloaded: 2569 file(s) [attempted 2569/8908 = 28%, 1591 KB/s], Decompressed: 536
+2026-11-28T01:18:35.2549514Z Downloaded: 2667 file(s) [attempted 2667/8908 = 29%, 1379 KB/s], Decompressed: 536
+2026-11-28T01:18:35.3549889Z Downloaded: 2763 file(s) [attempted 2763/8908 = 31%, 1666 KB/s], Decompressed: 536
+2026-11-28T01:18:35.4548577Z Downloaded: 2887 file(s) [attempted 2887/8908 = 32%, 535 KB/s], Decompressed: 536
+2026-11-28T01:18:35.5571668Z Downloaded: 2986 file(s) [attempted 2986/8908 = 33%, 5419 KB/s], Decompressed: 536
+2026-11-28T01:18:35.6580339Z Downloaded: 3088 file(s) [attempted 3088/8908 = 34%, 708 KB/s], Decompressed: 536
+2026-11-28T01:18:35.7588532Z Downloaded: 3199 file(s) [attempted 3199/8908 = 35%, 3410 KB/s], Decompressed: 536
+2026-11-28T01:18:35.8618329Z Downloaded: 3307 file(s) [attempted 3307/8908 = 37%, 1852 KB/s], Decompressed: 536
+2026-11-28T01:18:35.9606913Z Downloaded: 3394 file(s) [attempted 3394/8908 = 38%, 643 KB/s], Decompressed: 536
+2026-11-28T01:18:36.0639205Z Downloaded: 3513 file(s) [attempted 3513/8908 = 39%, 3275 KB/s], Decompressed: 536
+2026-11-28T01:18:36.1654751Z Downloaded: 3648 file(s) [attempted 3648/8908 = 40%, 398 KB/s], Decompressed: 536
+2026-11-28T01:18:36.2695915Z Downloaded: 3772 file(s) [attempted 3772/8908 = 42%, 388 KB/s], Decompressed: 536
+2026-11-28T01:18:36.3778628Z Downloaded: 3909 file(s) [attempted 3909/8908 = 43%, 398 KB/s], Decompressed: 536
+2026-11-28T01:18:36.4760377Z Downloaded: 4016 file(s) [attempted 4016/8908 = 45%, 382 KB/s], Decompressed: 536
+2026-11-28T01:18:36.5788751Z Downloaded: 4151 file(s) [attempted 4151/8908 = 46%, 1401 KB/s], Decompressed: 536
+2026-11-28T01:18:36.7409070Z Downloaded: 4250 file(s) [attempted 4250/8908 = 47%, 1117 KB/s], Decompressed: 536
+2026-11-28T01:18:36.8481427Z Downloaded: 4295 file(s) [attempted 4295/8908 = 48%, 2107 KB/s], Decompressed: 536
+2026-11-28T01:18:36.9496330Z Downloaded: 4403 file(s) [attempted 4403/8908 = 49%, 2092 KB/s], Decompressed: 536
+2026-11-28T01:18:37.0831218Z Downloaded: 4531 file(s) [attempted 4531/8908 = 50%, 169 KB/s], Decompressed: 536
+2026-11-28T01:18:37.1904906Z Downloaded: 4626 file(s) [attempted 4626/8908 = 51%, 401 KB/s], Decompressed: 536
+2026-11-28T01:18:37.2928534Z Downloaded: 4766 file(s) [attempted 4766/8908 = 53%, 402 KB/s], Decompressed: 536
+2026-11-28T01:18:37.4028632Z Downloaded: 4888 file(s) [attempted 4888/8908 = 54%, 2002 KB/s], Decompressed: 536
+2026-11-28T01:18:37.5258729Z Downloaded: 4995 file(s) [attempted 4995/8908 = 56%, 755 KB/s], Decompressed: 536
+2026-11-28T01:18:37.6285654Z Downloaded: 5098 file(s) [attempted 5098/8908 = 57%, 9191 KB/s], Decompressed: 536
+2026-11-28T01:18:37.7442250Z Downloaded: 5201 file(s) [attempted 5201/8908 = 58%, 413 KB/s], Decompressed: 536
+2026-11-28T01:18:37.8471329Z Downloaded: 5308 file(s) [attempted 5308/8908 = 59%, 1431 KB/s], Decompressed: 536
+2026-11-28T01:18:37.9818439Z Downloaded: 5450 file(s) [attempted 5450/8908 = 61%, 1826 KB/s], Decompressed: 536
+2026-11-28T01:18:38.0885590Z Downloaded: 5553 file(s) [attempted 5553/8908 = 62%, 216 KB/s], Decompressed: 536
+2026-11-28T01:18:38.2024399Z Downloaded: 5606 file(s) [attempted 5606/8908 = 62%, 74 KB/s], Decompressed: 536
+2026-11-28T01:18:38.3268509Z Downloaded: 5708 file(s) [attempted 5708/8908 = 64%, 2099 KB/s], Decompressed: 536
+2026-11-28T01:18:38.4263229Z Downloaded: 5811 file(s) [attempted 5811/8908 = 65%, 1998 KB/s], Decompressed: 536
+2026-11-28T01:18:38.5261776Z Downloaded: 5929 file(s) [attempted 5929/8908 = 66%, 2405 KB/s], Decompressed: 536
+2026-11-28T01:18:38.6318114Z Downloaded: 6059 file(s) [attempted 6059/8908 = 68%, 152 KB/s], Decompressed: 536
+2026-11-28T01:18:38.7312107Z Downloaded: 6200 file(s) [attempted 6200/8908 = 69%, 238 KB/s], Decompressed: 536
+2026-11-28T01:18:38.8458805Z Downloaded: 6310 file(s) [attempted 6310/8908 = 70%, 1094 KB/s], Decompressed: 536
+2026-11-28T01:18:38.9628964Z Downloaded: 6463 file(s) [attempted 6463/8908 = 72%, 676 KB/s], Decompressed: 536
+2026-11-28T01:18:39.0638670Z Downloaded: 6564 file(s) [attempted 6564/8908 = 73%, 1246 KB/s], Decompressed: 536
+2026-11-28T01:18:39.1631303Z Downloaded: 6666 file(s) [attempted 6666/8908 = 74%, 1927 KB/s], Decompressed: 536
+2026-11-28T01:18:39.2728725Z Downloaded: 6798 file(s) [attempted 6798/8908 = 76%, 572 KB/s], Decompressed: 536
+2026-11-28T01:18:39.3779390Z Downloaded: 6913 file(s) [attempted 6913/8908 = 77%, 1311 KB/s], Decompressed: 536
+2026-11-28T01:18:39.4778565Z Downloaded: 7014 file(s) [attempted 7014/8908 = 78%, 1798 KB/s], Decompressed: 536
+2026-11-28T01:18:39.5826215Z Downloaded: 7089 file(s) [attempted 7089/8908 = 79%, 428 KB/s], Decompressed: 536
+2026-11-28T01:18:39.7250743Z Downloaded: 7229 file(s) [attempted 7229/8908 = 81%, 2188 KB/s], Decompressed: 536
+2026-11-28T01:18:39.8228550Z Downloaded: 7336 file(s) [attempted 7336/8908 = 82%, 1759 KB/s], Decompressed: 536
+2026-11-28T01:18:39.9283134Z Downloaded: 7442 file(s) [attempted 7442/8908 = 83%, 733 KB/s], Decompressed: 536
+2026-11-28T01:18:40.0308584Z Downloaded: 7535 file(s) [attempted 7535/8908 = 84%, 990 KB/s], Decompressed: 536
+2026-11-28T01:18:40.1428715Z Downloaded: 7650 file(s) [attempted 7650/8908 = 85%, 747 KB/s], Decompressed: 536
+2026-11-28T01:18:40.2459032Z Downloaded: 7775 file(s) [attempted 7775/8908 = 87%, 769 KB/s], Decompressed: 536
+2026-11-28T01:18:40.3449922Z Downloaded: 7860 file(s) [attempted 7860/8908 = 88%, 1351 KB/s], Decompressed: 536
+2026-11-28T01:18:40.4547586Z Downloaded: 8006 file(s) [attempted 8006/8908 = 89%, 856 KB/s], Decompressed: 536
+2026-11-28T01:18:40.5541869Z Downloaded: 8063 file(s) [attempted 8063/8908 = 90%, 616 KB/s], Decompressed: 536
+2026-11-28T01:18:40.6858579Z Downloaded: 8185 file(s) [attempted 8185/8908 = 91%, 578 KB/s], Decompressed: 536
+2026-11-28T01:18:40.7888517Z Downloaded: 8278 file(s) [attempted 8278/8908 = 92%, 2069 KB/s], Decompressed: 536
+2026-11-28T01:18:40.8903275Z Downloaded: 8404 file(s) [attempted 8404/8908 = 94%, 1022 KB/s], Decompressed: 536
+2026-11-28T01:18:40.9888964Z Downloaded: 8523 file(s) [attempted 8523/8908 = 95%, 661 KB/s], Decompressed: 536
+2026-11-28T01:18:41.0908616Z Downloaded: 8658 file(s) [attempted 8658/8908 = 97%, 349 KB/s], Decompressed: 536
+2026-11-28T01:18:41.2248543Z Downloaded: 8802 file(s) [attempted 8802/8908 = 98%, 549 KB/s], Decompressed: 536
+2026-11-28T01:18:41.2281304Z Downloaded: 8907 file(s) [attempted 8907/8908 = 99%, 1353 KB/s], Decompressed: 536
+2026-11-28T01:18:41.2318892Z Downloaded: 8908 file(s) [attempted 8908/8908 = 100%, 1353 KB/s], Decompressed: 536
+2026-11-28T01:19:01.2635820Z Decompressed 8908 file(s)
+2026-11-28T01:19:01.2636624Z Already decompressed 8908 file(s)
+2026-11-28T01:19:01.3071922Z ##[group]Run lake exe cache get
+2026-11-28T01:19:01.3072203Z [36;1mlake exe cache get[0m
+2026-11-28T01:19:01.3092397Z shell: /usr/bin/bash -e {0}
+2026-11-28T01:19:01.3092648Z ##[endgroup]
+2026-11-28T01:19:04.8579052Z Current branch: HEAD
+2026-11-28T01:19:04.8579690Z Using cache from origin: (some leanprover-community/mathlib4)
+2026-11-28T01:19:04.8580221Z No files to download
+2026-11-28T01:19:04.8580546Z Already decompressed 8908 file(s)
+2026-11-28T01:19:04.8852090Z ##[group]Run set -euo pipefail
+2026-11-28T01:19:04.8852498Z [36;1mset -euo pipefail[0m
+2026-11-28T01:19:04.8852759Z [36;1mmkdir -p recon-v10b48-evidence[0m
+2026-11-28T01:19:04.8853094Z [36;1mgit rev-parse HEAD | tee recon-v10b48-evidence/head.txt[0m
+2026-11-28T01:19:04.8854138Z [36;1msha256sum WeilDefect/MasterRecon/V10B{33a,33b,34a,39b,39c,40a,43a,45a,46a,46b,46c,47a,47b,47c,50a,52a,52b,17a,17b,17Defs,61a,64a,66a,67a,68a,69a,69Prime,71a,21b,21c,22a,22b,22c,23a,23b,23c}.lean lean-toolchain lakefile.toml lake-manifest.json | tee recon-v10b48-evidence/source.sha256[0m
+2026-11-28T01:19:04.8855234Z [36;1mcat lake-manifest.json | tee recon-v10b48-evidence/lake-manifest.json[0m
+2026-11-28T01:19:04.8855702Z [36;1mlake env lean --version | tee recon-v10b48-evidence/lean-version.txt[0m
+2026-11-28T01:19:04.8856045Z [36;1maudit() {[0m
+2026-11-28T01:19:04.8856385Z [36;1m  local mod="$1"[0m
+2026-11-28T01:19:04.8856637Z [36;1m  file="WeilDefect/MasterRecon/${mod}.lean"[0m
+2026-11-28T01:19:04.8857166Z [36;1m  lake build "WeilDefect.MasterRecon.${mod}" 2>&1 | tee "recon-v10b48-evidence/${mod}-build.log" || return 1[0m
+2026-11-28T01:19:04.8858029Z [36;1m  lake env lean "$file" 2>&1 | tee "recon-v10b48-evidence/${mod}-lean.log" || return 1[0m
+2026-11-28T01:19:04.8858437Z [36;1m  python3 - "$mod" <<'PY' || return 1[0m
+2026-11-28T01:19:04.8858709Z [36;1mimport re[0m
+2026-11-28T01:19:04.8858916Z [36;1mimport sys[0m
+2026-11-28T01:19:04.8859137Z [36;1mfrom pathlib import Path[0m
+2026-11-28T01:19:04.8859390Z [36;1mmod = sys.argv[1][0m
+2026-11-28T01:19:04.8859707Z [36;1msrc = Path(f"WeilDefect/MasterRecon/{mod}.lean").read_text()[0m
+2026-11-28T01:19:04.8860116Z [36;1mlog = Path(f"recon-v10b48-evidence/{mod}-lean.log").read_text()[0m
+2026-11-28T01:19:04.8860514Z [36;1mexpected = re.findall(r"^#print axioms (\S+)", src, re.M)[0m
+2026-11-28T01:19:04.8860952Z [36;1mdeclared = re.findall(r"^theorem (\w+)", src, re.M)[0m
+2026-11-28T01:19:04.8861325Z [36;1massert expected and len(expected) == len(set(expected))[0m
+2026-11-28T01:19:04.8861785Z [36;1massert set(expected) == {f"WeilDefect.MasterRecon.{mod}.{name}" for name in declared}[0m
+2026-11-28T01:19:04.8862260Z [36;1mallowed = {"propext", "Classical.choice", "Quot.sound"}[0m
+2026-11-28T01:19:04.8862584Z [36;1mfor name in expected:[0m
+2026-11-28T01:19:04.8862936Z [36;1m    m = re.search(re.escape("'" + name + "' depends on axioms: [") + r"([^\]]*)\]", log)[0m
+2026-11-28T01:19:04.8863307Z [36;1m    if m is None:[0m
+2026-11-28T01:19:04.8863612Z [36;1m        assert "'" + name + "' does not depend on any axioms" in log, name[0m
+2026-11-28T01:19:04.8863937Z [36;1m    else:[0m
+2026-11-28T01:19:04.8864260Z [36;1m        assert {v.strip() for v in m.group(1).split(",") if v.strip()} <= allowed, name[0m
+2026-11-28T01:19:04.8864750Z [36;1mprint(f"{mod}: strict axiom audit PASS ({len(expected)} declarations)")[0m
+2026-11-28T01:19:04.8865280Z [36;1mPath(f"recon-v10b48-evidence/{mod}-audit.txt").write_text(f"{mod}: PASS {len(expected)}\n")[0m
+2026-11-28T01:19:04.8865700Z [36;1mPY[0m
+2026-11-28T01:19:04.8865876Z [36;1m}[0m
+2026-11-28T01:19:04.8866050Z [36;1mfailed=0[0m
+2026-11-28T01:19:04.8866272Z [36;1mdeclare -A pass[0m
+2026-11-28T01:19:04.8866481Z [36;1mgate() {[0m
+2026-11-28T01:19:04.8866678Z [36;1m  local mod="$1"; shift[0m
+2026-11-28T01:19:04.8866906Z [36;1m  local dep[0m
+2026-11-28T01:19:04.8867112Z [36;1m  for dep in "$@"; do[0m
+2026-11-28T01:19:04.8867539Z [36;1m    if [[ "${pass[$dep]:-0}" != 1 ]]; then[0m
+2026-11-28T01:19:04.8868043Z [36;1m      echo "$mod: BLOCKED by $dep" | tee "recon-v10b48-evidence/$mod-blocked.txt"[0m
+2026-11-28T01:19:04.8868429Z [36;1m      pass[$mod]=0[0m
+2026-11-28T01:19:04.8868657Z [36;1m      failed=1[0m
+2026-11-28T01:19:04.8868870Z [36;1m      return 0[0m
+2026-11-28T01:19:04.8869074Z [36;1m    fi[0m
+2026-11-28T01:19:04.8869265Z [36;1m  done[0m
+2026-11-28T01:19:04.8869549Z [36;1m  if audit "$mod"; then pass[$mod]=1; else pass[$mod]=0; failed=1; fi[0m
+2026-11-28T01:19:04.8870048Z [36;1m}[0m
+2026-11-28T01:19:04.8870236Z [36;1mgate V10B71a[0m
+2026-11-28T01:19:04.8870449Z [36;1mexit "$failed"[0m
+2026-11-28T01:19:04.8893819Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-28T01:19:04.8894157Z ##[endgroup]
+2026-11-28T01:19:04.8982228Z f08897dc7e8aefab71bb366ed749f433ba252d6f
+2026-11-28T01:19:04.9006278Z fdbe53938ddbe894a1ac10cc439c1623e99a9ff65c43ba5cdf5414a9d40a5c86  WeilDefect/MasterRecon/V10B33a.lean
+2026-11-28T01:19:04.9007675Z 308c404c59f972f80cd85b9e0f150daae6ea012789b4b4461ea56a4852af5556  WeilDefect/MasterRecon/V10B33b.lean
+2026-11-28T01:19:04.9008886Z ee1d944260a9484c350e1d3c6af47048b1d464817657c943a29ff8f429fa4593  WeilDefect/MasterRecon/V10B34a.lean
+2026-11-28T01:19:04.9010111Z 7a5477567ccd366c9b7123fa9e0a421a9599371fe0294fc5fc9295f1cff2b3ac  WeilDefect/MasterRecon/V10B39b.lean
+2026-11-28T01:19:04.9011627Z b2a01bcee7d96796ab2918f49f22830f3664ad8d3e0fbc33c5d286fcbf2a605f  WeilDefect/MasterRecon/V10B39c.lean
+2026-11-28T01:19:04.9012884Z 6a6419639ac4b68e5b8e4fd7cc7a6d2e1fe6c698f6b54beb3c8ea9d76a0dafbc  WeilDefect/MasterRecon/V10B40a.lean
+2026-11-28T01:19:04.9014139Z 662310079ee62a3fd01dfcc806e4a858428d22fbb534005dc5dd9560972c272b  WeilDefect/MasterRecon/V10B43a.lean
+2026-11-28T01:19:04.9015451Z b7c61406705529d0af2a3a18678bb8ac64e1bc4d370b97b941f8f7bb482dfd67  WeilDefect/MasterRecon/V10B45a.lean
+2026-11-28T01:19:04.9016852Z c42a84790dbe7e7092b5488acab7c8857d0e59fa21ff20657f23a6a5b6ac855d  WeilDefect/MasterRecon/V10B46a.lean
+2026-11-28T01:19:04.9018179Z c7b22c7d0ba80f7ffbd8917d23e190feb10a72be029149757f836139a9848fe2  WeilDefect/MasterRecon/V10B46b.lean
+2026-11-28T01:19:04.9019025Z 94402ade555d9edc099fa62d6c21732f0808fd999c146d199915faaa2294f4b3  WeilDefect/MasterRecon/V10B46c.lean
+2026-11-28T01:19:04.9019661Z ceafa6d863bd4b4ea613368404726b0db552426a0faf87556f9d9c3b10f927f4  WeilDefect/MasterRecon/V10B47a.lean
+2026-11-28T01:19:04.9020326Z 8c6ad70a12d2915ed872cab1f51ef0303f463dc96474f30f4ba31c64fbebc075  WeilDefect/MasterRecon/V10B47b.lean
+2026-11-28T01:19:04.9020967Z 3420d2ee7cefa665c516792eaf71b785c626abb763163d057cfc086b1c773ecf  WeilDefect/MasterRecon/V10B47c.lean
+2026-11-28T01:19:04.9021979Z b58ceb977a84e14f81dbeeb8e7122ccfbd44cc91176f77fb35570c809f340d8f  WeilDefect/MasterRecon/V10B50a.lean
+2026-11-28T01:19:04.9023124Z a72ec7abc67ec4be1285e2d383dfadc91930cf7ee441ed37812b133c0b4164b0  WeilDefect/MasterRecon/V10B52a.lean
+2026-11-28T01:19:04.9024147Z f3c748631381e2694c3eb7c362cff282f65273f3143e85a59c504e7650af65bf  WeilDefect/MasterRecon/V10B52b.lean
+2026-11-28T01:19:04.9025274Z 3107c0219d011faf8c43aa5b020ea4a6a268a4cc36824d0b52a2ca57b6f5f07a  WeilDefect/MasterRecon/V10B17a.lean
+2026-11-28T01:19:04.9026464Z 96b5105924dfdd29a8094fa6e633fbcdd2e36b3b9abc93aa93ad2c8becf9fc5f  WeilDefect/MasterRecon/V10B17b.lean
+2026-11-28T01:19:04.9027804Z 883b474177f035c6f96befd1d7e05181e7cf907dfe21ded2df79e9722311ca80  WeilDefect/MasterRecon/V10B17Defs.lean
+2026-11-28T01:19:04.9029084Z a7723c3b9dbf61bd2b594a324eb61a5c7ecae25bb7f2eb2dc86515b2c20198b5  WeilDefect/MasterRecon/V10B61a.lean
+2026-11-28T01:19:04.9030299Z a70691c35b00f48ccdce9df952bb4bdb6ef5cf6032a5f361082212e112a138d8  WeilDefect/MasterRecon/V10B64a.lean
+2026-11-28T01:19:04.9031554Z f9010fe1797a98dcdead92e4f3a03895473f4568256aa3eb8c8aa675cc5f4f06  WeilDefect/MasterRecon/V10B66a.lean
+2026-11-28T01:19:04.9032701Z 836588514e04750651568798e8ea615b80c5ce946e402257e365eb84eb3e5ca0  WeilDefect/MasterRecon/V10B67a.lean
+2026-11-28T01:19:04.9033819Z 98b75c5826bea50be803566790c72fd39052c97f87a3c160aae509bfe4943d8e  WeilDefect/MasterRecon/V10B68a.lean
+2026-11-28T01:19:04.9034985Z 372d0976ee17dcf1ce7a920c47210accb6c0240fb6a920ad68ac900da98a6ad7  WeilDefect/MasterRecon/V10B69a.lean
+2026-11-28T01:19:04.9036194Z ed131bc242770c777146d75dff4acf6ee667f9e4ffbb827674280e671b831070  WeilDefect/MasterRecon/V10B69Prime.lean
+2026-11-28T01:19:04.9037594Z c89eaa2936065a0213eb61ea0a59fc788784f5ee50afc42d9f561fe31ea82679  WeilDefect/MasterRecon/V10B71a.lean
+2026-11-28T01:19:04.9039092Z fb35bffe0be6f6ec2fba91e078c40d084b62feaf72d63603feb4ecbcdfcdd9c6  WeilDefect/MasterRecon/V10B21b.lean
+2026-11-28T01:19:04.9040243Z f0e11c789ef48d0863218a3a8459dd0dffa051c444b4fa04dc90ffbe42a18ca1  WeilDefect/MasterRecon/V10B21c.lean
+2026-11-28T01:19:04.9041341Z 826582669de203affad9041feade86b0b4fcf246fdd8e0803eede50410864d81  WeilDefect/MasterRecon/V10B22a.lean
+2026-11-28T01:19:04.9042592Z 3835e73037eb8ea6aae5a5d20ed6072115afc84db30d26ac1833aa94692941d6  WeilDefect/MasterRecon/V10B22b.lean
+2026-11-28T01:19:04.9043727Z 2e3fff74bd4c8d2253373e5f42594da287950e2959ed7cf785d5eddff719a937  WeilDefect/MasterRecon/V10B22c.lean
+2026-11-28T01:19:04.9044948Z 427b1e88145bdf7157a73019a1d9709a2373200e7b89bf95a25f189c6947944b  WeilDefect/MasterRecon/V10B23a.lean
+2026-11-28T01:19:04.9046056Z 3860e20f0f1e8d160a76b239967daa83aaee4f95bcff1b137de63e221342f3d4  WeilDefect/MasterRecon/V10B23b.lean
+2026-11-28T01:19:04.9047118Z 9fe8780306e3e52cd33f348d7aa38b4c44c7317ebb31955dd3c778d660544ee0  WeilDefect/MasterRecon/V10B23c.lean
+2026-11-28T01:19:04.9048595Z 3f9803cfd3bce5e50120efa5412d1c92f58adbe802154353d29ac98e5722269e  lean-toolchain
+2026-11-28T01:19:04.9049559Z 762e8cc1f9653882347e21607c33301cdc10af538dd22016bb4337bf613d173a  lakefile.toml
+2026-11-28T01:19:04.9050365Z ee1f46bbaccddd653470cc9659d27375ed2d8a50ac0f4aee632820ab42d15bf2  lake-manifest.json
+2026-11-28T01:19:04.9050825Z {"version": "1.2.0",
+2026-11-28T01:19:04.9051068Z  "packagesDir": ".lake/packages",
+2026-11-28T01:19:04.9051313Z  "packages":
+2026-11-28T01:19:04.9051608Z  [{"url": "https://github.com/leanprover-community/mathlib4.git",
+2026-11-28T01:19:04.9051929Z    "type": "git",
+2026-11-28T01:19:04.9052127Z    "subDir": null,
+2026-11-28T01:19:04.9052326Z    "scope": "",
+2026-11-28T01:19:04.9052640Z    "rev": "5ed2965256430c3649e86755f9576b54eca72435",
+2026-11-28T01:19:04.9053063Z    "name": "mathlib",
+2026-11-28T01:19:04.9053407Z    "manifestFile": "lake-manifest.json",
+2026-11-28T01:19:04.9053833Z    "inputRev": "v4.34.0",
+2026-11-28T01:19:04.9054180Z    "inherited": false,
+2026-11-28T01:19:04.9054533Z    "configFile": "lakefile.lean"},
+2026-11-28T01:19:04.9055036Z   {"url": "https://github.com/leanprover-community/plausible",
+2026-11-28T01:19:04.9055493Z    "type": "git",
+2026-11-28T01:19:04.9055799Z    "subDir": null,
+2026-11-28T01:19:04.9056145Z    "scope": "leanprover-community",
+2026-11-28T01:19:04.9056594Z    "rev": "118aa17ee84656b8bd727fef7c458ee8c833385c",
+2026-11-28T01:19:04.9057058Z    "name": "plausible",
+2026-11-28T01:19:04.9057594Z    "manifestFile": "lake-manifest.json",
+2026-11-28T01:19:04.9058035Z    "inputRev": "main",
+2026-11-28T01:19:04.9058370Z    "inherited": true,
+2026-11-28T01:19:04.9058723Z    "configFile": "lakefile.toml"},
+2026-11-28T01:19:04.9059286Z   {"url": "https://github.com/leanprover-community/LeanSearchClient",
+2026-11-28T01:19:04.9059884Z    "type": "git",
+2026-11-28T01:19:04.9060215Z    "subDir": null,
+2026-11-28T01:19:04.9060575Z    "scope": "leanprover-community",
+2026-11-28T01:19:04.9061485Z    "rev": "ddf04cf3949fa556442341e87d47f9f6e6074707",
+2026-11-28T01:19:04.9062044Z    "name": "LeanSearchClient",
+2026-11-28T01:19:04.9062552Z    "manifestFile": "lake-manifest.json",
+2026-11-28T01:19:04.9063242Z    "inputRev": "main",
+2026-11-28T01:19:04.9063582Z    "inherited": true,
+2026-11-28T01:19:04.9063937Z    "configFile": "lakefile.toml"},
+2026-11-28T01:19:04.9064463Z   {"url": "https://github.com/leanprover-community/import-graph",
+2026-11-28T01:19:04.9065009Z    "type": "git",
+2026-11-28T01:19:04.9065323Z    "subDir": null,
+2026-11-28T01:19:04.9065671Z    "scope": "leanprover-community",
+2026-11-28T01:19:04.9066126Z    "rev": "e928b72544873815af278d38681b31c0293588e3",
+2026-11-28T01:19:04.9066588Z    "name": "importGraph",
+2026-11-28T01:19:04.9066990Z    "manifestFile": "lake-manifest.json",
+2026-11-28T01:19:04.9067636Z    "inputRev": "main",
+2026-11-28T01:19:04.9067986Z    "inherited": true,
+2026-11-28T01:19:04.9068381Z    "configFile": "lakefile.toml"},
+2026-11-28T01:19:04.9068939Z   {"url": "https://github.com/leanprover-community/ProofWidgets4",
+2026-11-28T01:19:04.9069699Z    "type": "git",
+2026-11-28T01:19:04.9070035Z    "subDir": null,
+2026-11-28T01:19:04.9070396Z    "scope": "leanprover-community",
+2026-11-28T01:19:04.9070857Z    "rev": "106ff4fafc74ef4ac99d81dbf3ab399118f497a5",
+2026-11-28T01:19:04.9071314Z    "name": "proofwidgets",
+2026-11-28T01:19:04.9071686Z    "manifestFile": "lake-manifest.json",
+2026-11-28T01:19:04.9072096Z    "inputRev": "main",
+2026-11-28T01:19:04.9072432Z    "inherited": true,
+2026-11-28T01:19:04.9072813Z    "configFile": "lakefile.lean"},
+2026-11-28T01:19:04.9073383Z   {"url": "https://github.com/leanprover-community/aesop",
+2026-11-28T01:19:04.9073869Z    "type": "git",
+2026-11-28T01:19:04.9074171Z    "subDir": null,
+2026-11-28T01:19:04.9074502Z    "scope": "leanprover-community",
+2026-11-28T01:19:04.9074966Z    "rev": "355695d523e41d0554926416cba2a2b3544fbbc9",
+2026-11-28T01:19:04.9075422Z    "name": "aesop",
+2026-11-28T01:19:04.9075992Z    "manifestFile": "lake-manifest.json",
+2026-11-28T01:19:04.9076441Z    "inputRev": "master",
+2026-11-28T01:19:04.9076773Z    "inherited": true,
+2026-11-28T01:19:04.9077109Z    "configFile": "lakefile.toml"},
+2026-11-28T01:19:04.9077765Z   {"url": "https://github.com/leanprover-community/quote4",
+2026-11-28T01:19:04.9078226Z    "type": "git",
+2026-11-28T01:19:04.9078414Z    "subDir": null,
+2026-11-28T01:19:04.9078621Z    "scope": "leanprover-community",
+2026-11-28T01:19:04.9078896Z    "rev": "6a489d9af5d0c47e5b259e2e8bcdfc1811b5a259",
+2026-11-28T01:19:04.9079162Z    "name": "Qq",
+2026-11-28T01:19:04.9079371Z    "manifestFile": "lake-manifest.json",
+2026-11-28T01:19:04.9079625Z    "inputRev": "master",
+2026-11-28T01:19:04.9079832Z    "inherited": true,
+2026-11-28T01:19:04.9080037Z    "configFile": "lakefile.toml"},
+2026-11-28T01:19:04.9080335Z   {"url": "https://github.com/leanprover-community/batteries",
+2026-11-28T01:19:04.9080641Z    "type": "git",
+2026-11-28T01:19:04.9080832Z    "subDir": null,
+2026-11-28T01:19:04.9081047Z    "scope": "leanprover-community",
+2026-11-28T01:19:04.9081322Z    "rev": "f2effa3d803fda822b1f97b806c47cf2adfbcbc2",
+2026-11-28T01:19:04.9081597Z    "name": "batteries",
+2026-11-28T01:19:04.9081816Z    "manifestFile": "lake-manifest.json",
+2026-11-28T01:19:04.9082058Z    "inputRev": "main",
+2026-11-28T01:19:04.9082258Z    "inherited": true,
+2026-11-28T01:19:04.9082463Z    "configFile": "lakefile.toml"},
+2026-11-28T01:19:04.9082738Z   {"url": "https://github.com/leanprover/lean4-cli",
+2026-11-28T01:19:04.9083006Z    "type": "git",
+2026-11-28T01:19:04.9083199Z    "subDir": null,
+2026-11-28T01:19:04.9083391Z    "scope": "leanprover",
+2026-11-28T01:19:04.9083640Z    "rev": "e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204",
+2026-11-28T01:19:04.9083912Z    "name": "Cli",
+2026-11-28T01:19:04.9084119Z    "manifestFile": "lake-manifest.json",
+2026-11-28T01:19:04.9084368Z    "inputRev": "v4.34.0",
+2026-11-28T01:19:04.9084574Z    "inherited": true,
+2026-11-28T01:19:04.9084779Z    "configFile": "lakefile.toml"}],
+2026-11-28T01:19:04.9085015Z  "name": "weil_defect",
+2026-11-28T01:19:04.9085216Z  "lakeDir": ".lake",
+2026-11-28T01:19:04.9085419Z  "fixedToolchain": false}
+2026-11-28T01:19:05.7942855Z Lean (version 4.34.0, x86_64-unknown-linux-gnu, commit 293d5d0c0c3f3dded4688b3ccd6a33939ac5102b, Release)
+2026-11-28T01:19:12.3295853Z ⚠ [8923/8971] Built WeilDefect.MasterRecon.V10B33b (2.6s)
+2026-11-28T01:19:12.3309532Z warning: WeilDefect/MasterRecon/V10B33b.lean:79:0: automatically included section variable(s) unused in theorem `WeilDefect.MasterRecon.V10B33b.constraint_section`:
+2026-11-28T01:19:12.3311186Z   [DecidableEq ι]
+2026-11-28T01:19:12.3322893Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-11-28T01:19:12.3324143Z   omit [DecidableEq ι] in theorem ...
+2026-11-28T01:19:12.3324586Z 
+2026-11-28T01:19:12.3325106Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-11-28T01:19:12.3327073Z info: WeilDefect/MasterRecon/V10B33b.lean:99:0: 'WeilDefect.MasterRecon.V10B33b.dominant_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:12.3386525Z info: WeilDefect/MasterRecon/V10B33b.lean:100:0: 'WeilDefect.MasterRecon.V10B33b.dominant_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:12.3419081Z info: WeilDefect/MasterRecon/V10B33b.lean:101:0: 'WeilDefect.MasterRecon.V10B33b.dominance_from_reserves' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:12.3448943Z info: WeilDefect/MasterRecon/V10B33b.lean:102:0: 'WeilDefect.MasterRecon.V10B33b.constraint_section' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:13.0254740Z ⚠ [8924/8973] Built WeilDefect.MasterRecon.V10B33a (3.3s)
+2026-11-28T01:19:13.0278875Z warning: WeilDefect/MasterRecon/V10B33a.lean:68:60: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+2026-11-28T01:19:13.0307758Z 
+2026-11-28T01:19:13.0328521Z Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+2026-11-28T01:19:13.0338935Z info: WeilDefect/MasterRecon/V10B33a.lean:80:0: 'WeilDefect.MasterRecon.V10B33a.legendre_reflect' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:13.0368735Z info: WeilDefect/MasterRecon/V10B33a.lean:81:0: 'WeilDefect.MasterRecon.V10B33a.rodrigues_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:13.0398697Z info: WeilDefect/MasterRecon/V10B33a.lean:82:0: 'WeilDefect.MasterRecon.V10B33a.repeated_parts' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:13.0418576Z info: WeilDefect/MasterRecon/V10B33a.lean:83:0: 'WeilDefect.MasterRecon.V10B33a.exp_parts' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:15.2298861Z ⚠ [8925/8973] Built WeilDefect.MasterRecon.V10B39b (2.9s)
+2026-11-28T01:19:15.2318799Z warning: WeilDefect/MasterRecon/V10B39b.lean:14:34: Variable name `hd` is not explicitly referenced.
+2026-11-28T01:19:15.2347701Z 
+2026-11-28T01:19:15.2379109Z Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+2026-11-28T01:19:15.2408025Z   [apply] _hd
+2026-11-28T01:19:15.2437692Z 
+2026-11-28T01:19:15.2468425Z Note: This linter can be disabled with `set_option linter.unusedVariables false`
+2026-11-28T01:19:15.2498631Z info: WeilDefect/MasterRecon/V10B39b.lean:109:0: 'WeilDefect.MasterRecon.V10B39b.finite_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:15.2528601Z info: WeilDefect/MasterRecon/V10B39b.lean:110:0: 'WeilDefect.MasterRecon.V10B39b.project_reproduces' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:15.2558751Z info: WeilDefect/MasterRecon/V10B39b.lean:111:0: 'WeilDefect.MasterRecon.V10B39b.project_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:15.2588672Z info: WeilDefect/MasterRecon/V10B39b.lean:112:0: 'WeilDefect.MasterRecon.V10B39b.project_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:17.3322371Z ℹ [8926/8977] Built WeilDefect.MasterRecon.V10B34a (4.3s)
+2026-11-28T01:19:17.3348993Z info: WeilDefect/MasterRecon/V10B34a.lean:94:0: 'WeilDefect.MasterRecon.V10B34a.power_root_iterate_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:17.3409358Z info: WeilDefect/MasterRecon/V10B34a.lean:95:0: 'WeilDefect.MasterRecon.V10B34a.rodrigues_endpoints' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:17.3438892Z info: WeilDefect/MasterRecon/V10B34a.lean:96:0: 'WeilDefect.MasterRecon.V10B34a.exp_projection_scaled' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:17.3489029Z info: WeilDefect/MasterRecon/V10B34a.lean:97:0: 'WeilDefect.MasterRecon.V10B34a.exp_projection' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:17.3528903Z info: WeilDefect/MasterRecon/V10B34a.lean:98:0: 'WeilDefect.MasterRecon.V10B34a.exp_projection_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:19.5522670Z ⚠ [8927/8977] Built WeilDefect.MasterRecon.V10B39a (4.2s)
+2026-11-28T01:19:19.5568835Z warning: WeilDefect/MasterRecon/V10B39a.lean:29:20: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+2026-11-28T01:19:19.5569995Z 
+2026-11-28T01:19:19.5598474Z Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+2026-11-28T01:19:19.5608553Z warning: WeilDefect/MasterRecon/V10B39a.lean:64:17: `if_pos` has been deprecated: Use `ite_eq_left` instead
+2026-11-28T01:19:19.5628805Z info: WeilDefect/MasterRecon/V10B39a.lean:85:0: 'WeilDefect.MasterRecon.V10B39a.graded_top_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:19.5658704Z info: WeilDefect/MasterRecon/V10B39a.lean:86:0: 'WeilDefect.MasterRecon.V10B39a.graded_cancel' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:19.5688538Z info: WeilDefect/MasterRecon/V10B39a.lean:87:0: 'WeilDefect.MasterRecon.V10B39a.graded_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:19.5698628Z info: WeilDefect/MasterRecon/V10B39a.lean:88:0: 'WeilDefect.MasterRecon.V10B39a.shiftedReal_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:19.5722783Z info: WeilDefect/MasterRecon/V10B39a.lean:89:0: 'WeilDefect.MasterRecon.V10B39a.shiftedReal_span' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:20.8548670Z ⚠ [8928/8977] Built WeilDefect.MasterRecon.V04 (9.8s)
+2026-11-28T01:19:20.8568798Z warning: WeilDefect/MasterRecon/V04.lean:16:0: automatically included section variable(s) unused in theorem `WeilDefect.MasterRecon.V04.shifted_energy_lower`:
+2026-11-28T01:19:20.8598217Z   [CompleteSpace H]
+2026-11-28T01:19:20.8628374Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-11-28T01:19:20.8657861Z   omit [CompleteSpace H] in theorem ...
+2026-11-28T01:19:20.8687626Z 
+2026-11-28T01:19:20.8718183Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-11-28T01:19:20.8749055Z info: WeilDefect/MasterRecon/V04.lean:107:0: 'WeilDefect.MasterRecon.V04.shifted_energy_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:20.8778457Z info: WeilDefect/MasterRecon/V04.lean:108:0: 'WeilDefect.MasterRecon.V04.positive_shift_isUnit' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:20.8808528Z info: WeilDefect/MasterRecon/V04.lean:109:0: 'WeilDefect.MasterRecon.V04.scaled_inverse_contraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:20.8838458Z info: WeilDefect/MasterRecon/V04.lean:110:0: 'WeilDefect.MasterRecon.V04.gram_range_closure' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:20.8868467Z info: WeilDefect/MasterRecon/V04.lean:112:0: 'WeilDefect.MasterRecon.V04.positive_shift_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:20.8898501Z info: WeilDefect/MasterRecon/V04.lean:113:0: 'WeilDefect.MasterRecon.V04.gram_range_approximation' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:21.1548643Z ℹ [8929/8977] Built WeilDefect.MasterRecon.V10B39c (3.8s)
+2026-11-28T01:19:21.1578867Z info: WeilDefect/MasterRecon/V10B39c.lean:57:0: 'WeilDefect.MasterRecon.V10B39c.finite_projection_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:21.1608828Z info: WeilDefect/MasterRecon/V10B39c.lean:58:0: 'WeilDefect.MasterRecon.V10B39c.reflected_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:21.1610722Z info: WeilDefect/MasterRecon/V10B39c.lean:59:0: 'WeilDefect.MasterRecon.V10B39c.normalized_transfer' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:22.8598763Z ℹ [8930/8977] Built WeilDefect.MasterRecon.V10B46a (3.4s)
+2026-11-28T01:19:22.8649193Z info: WeilDefect/MasterRecon/V10B46a.lean:104:0: 'WeilDefect.MasterRecon.V10B46a.w_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:22.8650767Z info: WeilDefect/MasterRecon/V10B46a.lean:105:0: 'WeilDefect.MasterRecon.V10B46a.J_add_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:22.8652276Z info: WeilDefect/MasterRecon/V10B46a.lean:106:0: 'WeilDefect.MasterRecon.V10B46a.I_rodrigues' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:22.8653742Z info: WeilDefect/MasterRecon/V10B46a.lean:107:0: 'WeilDefect.MasterRecon.V10B46a.I_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:22.8655194Z info: WeilDefect/MasterRecon/V10B46a.lean:108:0: 'WeilDefect.MasterRecon.V10B46a.J_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:22.8656728Z info: WeilDefect/MasterRecon/V10B46a.lean:109:0: 'WeilDefect.MasterRecon.V10B46a.I_add_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:22.8658658Z info: WeilDefect/MasterRecon/V10B46a.lean:110:0: 'WeilDefect.MasterRecon.V10B46a.small_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:22.8660198Z info: WeilDefect/MasterRecon/V10B46a.lean:111:0: 'WeilDefect.MasterRecon.V10B46a.high_pair_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:24.3615413Z ℹ [8931/8977] Built WeilDefect.MasterRecon.V10B52a (3.3s)
+2026-11-28T01:19:24.3649457Z info: WeilDefect/MasterRecon/V10B52a.lean:64:0: 'WeilDefect.MasterRecon.V10B52a.affine_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:24.3678826Z info: WeilDefect/MasterRecon/V10B52a.lean:65:0: 'WeilDefect.MasterRecon.V10B52a.physicalRow_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:24.3681076Z info: WeilDefect/MasterRecon/V10B52a.lean:66:0: 'WeilDefect.MasterRecon.V10B52a.physicalRow_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:24.3709692Z info: WeilDefect/MasterRecon/V10B52a.lean:67:0: 'WeilDefect.MasterRecon.V10B52a.functional_zero_of_graded' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:24.3728908Z info: WeilDefect/MasterRecon/V10B52a.lean:68:0: 'WeilDefect.MasterRecon.V10B52a.physical_moment_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:24.5629304Z ⚠ [8932/8978] Built WeilDefect.MasterRecon.V10B47a (3.7s)
+2026-11-28T01:19:24.5858268Z warning: WeilDefect/MasterRecon/V10B47a.lean:16:20: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+2026-11-28T01:19:24.5867806Z 
+2026-11-28T01:19:24.5888503Z Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+2026-11-28T01:19:24.5908261Z warning: WeilDefect/MasterRecon/V10B47a.lean:26:50: This simp argument is unused:
+2026-11-28T01:19:24.5947910Z   u
+2026-11-28T01:19:24.5977540Z 
+2026-11-28T01:19:24.5978483Z Hint: Omit it from the simp argument list.
+2026-11-28T01:19:24.5979147Z   [apply] simp [du]
+2026-11-28T01:19:24.5979362Z 
+2026-11-28T01:19:24.5979751Z Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+2026-11-28T01:19:24.5980723Z warning: WeilDefect/MasterRecon/V10B47a.lean:26:53: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+2026-11-28T01:19:24.5981397Z 
+2026-11-28T01:19:24.5981773Z Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+2026-11-28T01:19:24.5982548Z warning: WeilDefect/MasterRecon/V10B47a.lean:58:24: this tactic is never executed
+2026-11-28T01:19:24.5982996Z 
+2026-11-28T01:19:24.5983310Z Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+2026-11-28T01:19:24.5984224Z warning: WeilDefect/MasterRecon/V10B47a.lean:58:24: Unused tactic linter: `ring` does nothing
+2026-11-28T01:19:24.5984809Z 
+2026-11-28T01:19:24.5985159Z Note: This linter can be disabled with `set_option linter.unusedTactic false`
+2026-11-28T01:19:24.5986286Z info: WeilDefect/MasterRecon/V10B47a.lean:75:0: 'WeilDefect.MasterRecon.V10B47a.beta_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:24.6018876Z info: WeilDefect/MasterRecon/V10B47a.lean:76:0: 'WeilDefect.MasterRecon.V10B47a.beta_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:24.6020425Z info: WeilDefect/MasterRecon/V10B47a.lean:77:0: 'WeilDefect.MasterRecon.V10B47a.beta_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:27.2748728Z ⚠ [8933/8978] Built WeilDefect.MasterRecon.V10B40a (2.9s)
+2026-11-28T01:19:27.2808546Z warning: WeilDefect/MasterRecon/V10B40a.lean:58:31: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+2026-11-28T01:19:27.2837699Z 
+2026-11-28T01:19:27.2838280Z Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+2026-11-28T01:19:27.2839474Z info: WeilDefect/MasterRecon/V10B40a.lean:82:0: 'WeilDefect.MasterRecon.V10B40a.oddPart_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:27.2841419Z info: WeilDefect/MasterRecon/V10B40a.lean:83:0: 'WeilDefect.MasterRecon.V10B40a.deflation_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:27.2843049Z info: WeilDefect/MasterRecon/V10B40a.lean:84:0: 'WeilDefect.MasterRecon.V10B40a.denominator_transport' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:27.2844634Z info: WeilDefect/MasterRecon/V10B40a.lean:85:0: 'WeilDefect.MasterRecon.V10B40a.coefficient_compare' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:28.8794628Z ⚠ [8934/8978] Built WeilDefect.MasterRecon.V10B47b (4.4s)
+2026-11-28T01:19:28.8808535Z warning: WeilDefect/MasterRecon/V10B47b.lean:90:8: This simp argument is unused:
+2026-11-28T01:19:28.8867995Z   nsmul_eq_mul
+2026-11-28T01:19:28.8897606Z 
+2026-11-28T01:19:28.8918037Z Hint: Omit it from the simp argument list.
+2026-11-28T01:19:28.8947925Z   [apply] simp
+2026-11-28T01:19:28.8957563Z 
+2026-11-28T01:19:28.8988038Z Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+2026-11-28T01:19:28.9008260Z warning: WeilDefect/MasterRecon/V10B47b.lean:90:22: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+2026-11-28T01:19:28.9015447Z 
+2026-11-28T01:19:28.9068028Z Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+2026-11-28T01:19:28.9098103Z warning: WeilDefect/MasterRecon/V10B47b.lean:129:57: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+2026-11-28T01:19:28.9098645Z 
+2026-11-28T01:19:28.9098999Z Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+2026-11-28T01:19:28.9129639Z info: WeilDefect/MasterRecon/V10B47b.lean:133:0: 'WeilDefect.MasterRecon.V10B47b.polynomial_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:28.9159186Z info: WeilDefect/MasterRecon/V10B47b.lean:134:0: 'WeilDefect.MasterRecon.V10B47b.lower_degree_pairing_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:28.9218534Z info: WeilDefect/MasterRecon/V10B47b.lean:135:0: 'WeilDefect.MasterRecon.V10B47b.legendre_orthogonal_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:28.9220095Z info: WeilDefect/MasterRecon/V10B47b.lean:136:0: 'WeilDefect.MasterRecon.V10B47b.legendre_orthogonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:28.9248474Z info: WeilDefect/MasterRecon/V10B47b.lean:137:0: 'WeilDefect.MasterRecon.V10B47b.top_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:28.9278684Z info: WeilDefect/MasterRecon/V10B47b.lean:138:0: 'WeilDefect.MasterRecon.V10B47b.legendre_diagonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:32.8929302Z ✖ [8936/8989] Building WeilDefect.MasterRecon.V10B20a (5.5s)
+2026-11-28T01:19:32.8956057Z trace: .> LEAN_PATH=/home/runner/work/weil-lab/weil-lab/.lake/packages/Cli/.lake/build/lib/lean:/home/runner/work/weil-lab/weil-lab/.lake/packages/batteries/.lake/build/lib/lean:/home/runner/work/weil-lab/weil-lab/.lake/packages/Qq/.lake/build/lib/lean:/home/runner/work/weil-lab/weil-lab/.lake/packages/aesop/.lake/build/lib/lean:/home/runner/work/weil-lab/weil-lab/.lake/packages/proofwidgets/.lake/build/lib/lean:/home/runner/work/weil-lab/weil-lab/.lake/packages/importGraph/.lake/build/lib/lean:/home/runner/work/weil-lab/weil-lab/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/runner/work/weil-lab/weil-lab/.lake/packages/plausible/.lake/build/lib/lean:/home/runner/work/weil-lab/weil-lab/.lake/packages/mathlib/.lake/build/lib/lean:/home/runner/work/weil-lab/weil-lab/.lake/build/lib/lean /home/runner/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean /home/runner/work/weil-lab/weil-lab/WeilDefect/MasterRecon/V10B20a.lean -o /home/runner/work/weil-lab/weil-lab/.lake/build/lib/lean/WeilDefect/MasterRecon/V10B20a.olean -i /home/runner/work/weil-lab/weil-lab/.lake/build/lib/lean/WeilDefect/MasterRecon/V10B20a.ilean -c /home/runner/work/weil-lab/weil-lab/.lake/build/ir/WeilDefect/MasterRecon/V10B20a.c --setup /home/runner/work/weil-lab/weil-lab/.lake/build/ir/WeilDefect/MasterRecon/V10B20a.setup.json --json
+2026-11-28T01:19:32.8966162Z warning: WeilDefect/MasterRecon/V10B20a.lean:54:96: Unused tactic linter: `ring` does nothing
+2026-11-28T01:19:32.8977882Z 
+2026-11-28T01:19:32.8980484Z Note: This linter can be disabled with `set_option linter.unusedTactic false`
+2026-11-28T01:19:32.8981299Z warning: WeilDefect/MasterRecon/V10B20a.lean:54:96: this tactic is never executed
+2026-11-28T01:19:32.8981915Z 
+2026-11-28T01:19:32.8982398Z Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+2026-11-28T01:19:32.8983413Z warning: WeilDefect/MasterRecon/V10B20a.lean:91:39: try 'simp' instead of 'simpa'
+2026-11-28T01:19:32.8984035Z 
+2026-11-28T01:19:32.8984506Z Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+2026-11-28T01:19:32.8985509Z error: WeilDefect/MasterRecon/V10B20a.lean:93:33: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+2026-11-28T01:19:32.8986329Z   ?x ^ 1
+2026-11-28T01:19:32.8986768Z in the target expression
+2026-11-28T01:19:32.8987738Z   ∫ (t : ℝ) in Ioi 0, t ^ 1 * Real.exp (-(a * t)) = (1 / a) ^ 2
+2026-11-28T01:19:32.8988246Z 
+2026-11-28T01:19:32.8988510Z a : ℝ
+2026-11-28T01:19:32.8988921Z ha : 0 < a
+2026-11-28T01:19:32.8989511Z h : ∫ (t : ℝ) in Ioi 0, t ^ 1 * Real.exp (-(a * t)) = (1 / a) ^ 2
+2026-11-28T01:19:32.8990131Z hg : Real.Gamma 2 = 1
+2026-11-28T01:19:32.8990734Z ⊢ ∫ (r : ℝ) in Ioi 0, r * Real.exp (-a * r) = 1 / a ^ 2
+2026-11-28T01:19:32.8991846Z info: WeilDefect/MasterRecon/V10B20a.lean:151:0: 'WeilDefect.MasterRecon.V10B20a.term_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:32.8993381Z info: WeilDefect/MasterRecon/V10B20a.lean:152:0: 'WeilDefect.MasterRecon.V10B20a.term_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:32.8995108Z info: WeilDefect/MasterRecon/V10B20a.lean:153:0: 'WeilDefect.MasterRecon.V10B20a.exp_difference' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:32.8996739Z info: WeilDefect/MasterRecon/V10B20a.lean:154:0: 'WeilDefect.MasterRecon.V10B20a.term_norm_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:32.8998471Z info: WeilDefect/MasterRecon/V10B20a.lean:155:0: 'WeilDefect.MasterRecon.V10B20a.exp_moment' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+2026-11-28T01:19:32.9000099Z info: WeilDefect/MasterRecon/V10B20a.lean:156:0: 'WeilDefect.MasterRecon.V10B20a.norm_summable' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+2026-11-28T01:19:32.9001583Z info: WeilDefect/MasterRecon/V10B20a.lean:157:0: 'WeilDefect.MasterRecon.V10B20a.scalar_series_integral' depends on axioms: [propext,
+2026-11-28T01:19:32.9002529Z  sorryAx,
+2026-11-28T01:19:32.9002904Z  Classical.choice,
+2026-11-28T01:19:32.9003302Z  Quot.sound]
+2026-11-28T01:19:32.9004532Z info: WeilDefect/MasterRecon/V10B20a.lean:158:0: 'WeilDefect.MasterRecon.V10B20a.pointwise_geometric' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:32.9006085Z info: WeilDefect/MasterRecon/V10B20a.lean:159:0: 'WeilDefect.MasterRecon.V10B20a.scalar_integral_receiver' depends on axioms: [propext,
+2026-11-28T01:19:32.9006988Z  sorryAx,
+2026-11-28T01:19:32.9007473Z  Classical.choice,
+2026-11-28T01:19:32.9007914Z  Quot.sound]
+2026-11-28T01:19:32.9923449Z ℹ [8937/8989] Built WeilDefect.MasterRecon.V06A (10s)
+2026-11-28T01:19:32.9924933Z info: WeilDefect/MasterRecon/V06A.lean:101:0: 'WeilDefect.MasterRecon.V06A.translatedBlock_analytic' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:32.9926839Z info: WeilDefect/MasterRecon/V06A.lean:102:0: 'WeilDefect.MasterRecon.V06A.translatedForm_analytic' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:32.9928966Z info: WeilDefect/MasterRecon/V06A.lean:103:0: 'WeilDefect.MasterRecon.V06A.translatedForm_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:32.9931143Z info: WeilDefect/MasterRecon/V06A.lean:104:0: 'WeilDefect.MasterRecon.V06A.local_analytic_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:32.9932979Z info: WeilDefect/MasterRecon/V06A.lean:105:0: 'WeilDefect.MasterRecon.V06A.coercive_translated_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:33.1950623Z ⚠ [8938/8989] Built WeilDefect.MasterRecon.V10B43a (4.2s)
+2026-11-28T01:19:33.1951185Z warning: WeilDefect/MasterRecon/V10B43a.lean:21:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+2026-11-28T01:19:33.1951814Z warning: WeilDefect/MasterRecon/V10B43a.lean:24:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+2026-11-28T01:19:33.1952446Z warning: WeilDefect/MasterRecon/V10B43a.lean:38:49: `if_neg` has been deprecated: Use `ite_eq_right` instead
+2026-11-28T01:19:33.1953006Z warning: WeilDefect/MasterRecon/V10B43a.lean:48:4: try 'simp' instead of 'simpa'
+2026-11-28T01:19:33.1953335Z 
+2026-11-28T01:19:33.1953556Z Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+2026-11-28T01:19:33.1954123Z warning: WeilDefect/MasterRecon/V10B43a.lean:96:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+2026-11-28T01:19:33.1954739Z warning: WeilDefect/MasterRecon/V10B43a.lean:96:18: `if_neg` has been deprecated: Use `ite_eq_right` instead
+2026-11-28T01:19:33.1955541Z info: WeilDefect/MasterRecon/V10B43a.lean:139:0: 'WeilDefect.MasterRecon.V10B43a.projection_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:33.1956475Z info: WeilDefect/MasterRecon/V10B43a.lean:140:0: 'WeilDefect.MasterRecon.V10B43a.odd_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:33.1957593Z info: WeilDefect/MasterRecon/V10B43a.lean:141:0: 'WeilDefect.MasterRecon.V10B43a.deflated_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:33.1958567Z info: WeilDefect/MasterRecon/V10B43a.lean:142:0: 'WeilDefect.MasterRecon.V10B43a.normalized_pairings' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:34.6989331Z ℹ [8939/8989] Built WeilDefect.MasterRecon.V10B45a (24s)
+2026-11-28T01:19:34.6990731Z info: WeilDefect/MasterRecon/V10B45a.lean:62:0: 'WeilDefect.MasterRecon.V10B45a.bank_shape' does not depend on any axioms
+2026-11-28T01:19:34.6992063Z info: WeilDefect/MasterRecon/V10B45a.lean:63:0: 'WeilDefect.MasterRecon.V10B45a.denom_pos' depends on axioms: [propext]
+2026-11-28T01:19:34.6993462Z info: WeilDefect/MasterRecon/V10B45a.lean:64:0: 'WeilDefect.MasterRecon.V10B45a.leading_margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:34.6995271Z info: WeilDefect/MasterRecon/V10B45a.lean:65:0: 'WeilDefect.MasterRecon.V10B45a.high_leading_margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:34.6996533Z info: WeilDefect/MasterRecon/V10B45a.lean:66:0: 'WeilDefect.MasterRecon.V10B45a.high_mass_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:36.7039275Z ℹ [8940/8989] Built WeilDefect.MasterRecon.V10B46b (2.1s)
+2026-11-28T01:19:36.7044563Z info: WeilDefect/MasterRecon/V10B46b.lean:82:0: 'WeilDefect.MasterRecon.V10B46b.base_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:36.7068868Z info: WeilDefect/MasterRecon/V10B46b.lean:83:0: 'WeilDefect.MasterRecon.V10B46b.base_margin' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:36.7098730Z info: WeilDefect/MasterRecon/V10B46b.lean:84:0: 'WeilDefect.MasterRecon.V10B46b.reserve_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:36.7100560Z info: WeilDefect/MasterRecon/V10B46b.lean:85:0: 'WeilDefect.MasterRecon.V10B46b.total_reserve' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:36.7102345Z info: WeilDefect/MasterRecon/V10B46b.lean:86:0: 'WeilDefect.MasterRecon.V10B46b.optimized_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:36.7104554Z info: WeilDefect/MasterRecon/V10B46b.lean:87:0: 'WeilDefect.MasterRecon.V10B46b.higher_mode_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:38.8067266Z ℹ [8941/8989] Built WeilDefect.MasterRecon.V06B (5.7s)
+2026-11-28T01:19:38.8069400Z info: WeilDefect/MasterRecon/V06B.lean:105:0: 'WeilDefect.MasterRecon.V06B.analytic_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:38.8071077Z info: WeilDefect/MasterRecon/V06B.lean:106:0: 'WeilDefect.MasterRecon.V06B.selectedForcing_analytic' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:38.8072692Z info: WeilDefect/MasterRecon/V06B.lean:107:0: 'WeilDefect.MasterRecon.V06B.selectedForcing_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:38.8074250Z info: WeilDefect/MasterRecon/V06B.lean:108:0: 'WeilDefect.MasterRecon.V06B.analytic_solution_orbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:38.8075881Z info: WeilDefect/MasterRecon/V06B.lean:109:0: 'WeilDefect.MasterRecon.V06B.coercive_selected_orbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:38.8077214Z ⚠ [8942/8989] Built WeilDefect.MasterRecon.V10B46c (2.0s)
+2026-11-28T01:19:38.8078295Z warning: WeilDefect/MasterRecon/V10B46c.lean:34:8: `if_pos` has been deprecated: Use `ite_eq_left` instead
+2026-11-28T01:19:38.8079384Z warning: WeilDefect/MasterRecon/V10B46c.lean:36:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+2026-11-28T01:19:38.8080713Z info: WeilDefect/MasterRecon/V10B46c.lean:50:0: 'WeilDefect.MasterRecon.V10B46c.highCorrection_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:38.8082338Z info: WeilDefect/MasterRecon/V10B46c.lean:51:0: 'WeilDefect.MasterRecon.V10B46c.row_identity_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:38.8083962Z info: WeilDefect/MasterRecon/V10B46c.lean:52:0: 'WeilDefect.MasterRecon.V10B46c.optimized_section' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:41.3132962Z ⚠ [8943/8989] Built WeilDefect.MasterRecon.V10B47c (2.6s)
+2026-11-28T01:19:41.3133914Z warning: WeilDefect/MasterRecon/V10B47c.lean:37:8: `if_neg` has been deprecated: Use `ite_eq_right` instead
+2026-11-28T01:19:41.3134982Z warning: WeilDefect/MasterRecon/V10B47c.lean:63:15: `if_pos` has been deprecated: Use `ite_eq_left` instead
+2026-11-28T01:19:41.3135930Z warning: WeilDefect/MasterRecon/V10B47c.lean:63:15: This simp argument is unused:
+2026-11-28T01:19:41.3136536Z   if_pos rfl
+2026-11-28T01:19:41.3136713Z 
+2026-11-28T01:19:41.3136877Z Hint: Omit it from the simp argument list.
+2026-11-28T01:19:41.3137477Z   [apply] simp only [ite_true]
+2026-11-28T01:19:41.3137739Z 
+2026-11-28T01:19:41.3138078Z Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+2026-11-28T01:19:41.3138893Z warning: WeilDefect/MasterRecon/V10B47c.lean:65:24: this tactic is never executed
+2026-11-28T01:19:41.3139416Z 
+2026-11-28T01:19:41.3140028Z Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+2026-11-28T01:19:41.3140910Z warning: WeilDefect/MasterRecon/V10B47c.lean:65:24: Unused tactic linter: `ring` does nothing
+2026-11-28T01:19:41.3141458Z 
+2026-11-28T01:19:41.3141761Z Note: This linter can be disabled with `set_option linter.unusedTactic false`
+2026-11-28T01:19:41.3142645Z warning: WeilDefect/MasterRecon/V10B47c.lean:93:44: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+2026-11-28T01:19:41.3143247Z 
+2026-11-28T01:19:41.3143601Z Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+2026-11-28T01:19:41.3144550Z warning: WeilDefect/MasterRecon/V10B47c.lean:108:16: `if_neg` has been deprecated: Use `ite_eq_right` instead
+2026-11-28T01:19:41.3145619Z warning: WeilDefect/MasterRecon/V10B47c.lean:114:16: `if_neg` has been deprecated: Use `ite_eq_right` instead
+2026-11-28T01:19:41.3146864Z warning: WeilDefect/MasterRecon/V10B47c.lean:180:18: `if_true` has been deprecated: Use `ite_true` instead
+2026-11-28T01:19:41.3148061Z warning: WeilDefect/MasterRecon/V10B47c.lean:182:18: `if_false` has been deprecated: Use `ite_false` instead
+2026-11-28T01:19:41.3149104Z warning: WeilDefect/MasterRecon/V10B47c.lean:181:14: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+2026-11-28T01:19:41.3149703Z 
+2026-11-28T01:19:41.3150046Z Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+2026-11-28T01:19:41.3150999Z warning: WeilDefect/MasterRecon/V10B47c.lean:183:30: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+2026-11-28T01:19:41.3151594Z 
+2026-11-28T01:19:41.3151949Z Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+2026-11-28T01:19:41.3152888Z warning: WeilDefect/MasterRecon/V10B47c.lean:183:44: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+2026-11-28T01:19:41.3153487Z 
+2026-11-28T01:19:41.3153825Z Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+2026-11-28T01:19:41.3155065Z info: WeilDefect/MasterRecon/V10B47c.lean:187:0: 'WeilDefect.MasterRecon.V10B47c.legendre_cont' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:41.3156665Z info: WeilDefect/MasterRecon/V10B47c.lean:188:0: 'WeilDefect.MasterRecon.V10B47c.orth_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:41.3158418Z info: WeilDefect/MasterRecon/V10B47c.lean:189:0: 'WeilDefect.MasterRecon.V10B47c.trial_pair_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:41.3159971Z info: WeilDefect/MasterRecon/V10B47c.lean:190:0: 'WeilDefect.MasterRecon.V10B47c.low_row' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:41.3161491Z info: WeilDefect/MasterRecon/V10B47c.lean:191:0: 'WeilDefect.MasterRecon.V10B47c.load_cont' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:41.3163107Z info: WeilDefect/MasterRecon/V10B47c.lean:192:0: 'WeilDefect.MasterRecon.V10B47c.load_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:41.3164683Z info: WeilDefect/MasterRecon/V10B47c.lean:193:0: 'WeilDefect.MasterRecon.V10B47c.load_pair_low' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:41.3166260Z info: WeilDefect/MasterRecon/V10B47c.lean:194:0: 'WeilDefect.MasterRecon.V10B47c.load_pair_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:41.3167972Z info: WeilDefect/MasterRecon/V10B47c.lean:195:0: 'WeilDefect.MasterRecon.V10B47c.load_pair_odd' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:41.3169567Z info: WeilDefect/MasterRecon/V10B47c.lean:196:0: 'WeilDefect.MasterRecon.V10B47c.paired_blocks' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:41.3171131Z info: WeilDefect/MasterRecon/V10B47c.lean:197:0: 'WeilDefect.MasterRecon.V10B47c.high_row' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:41.3172933Z info: WeilDefect/MasterRecon/V10B47c.lean:198:0: 'WeilDefect.MasterRecon.V10B47c.unitMatrix_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:42.7169200Z ℹ [8944/8989] Built WeilDefect.MasterRecon.V06C (3.0s)
+2026-11-28T01:19:42.7170474Z info: WeilDefect/MasterRecon/V06C.lean:73:0: 'WeilDefect.MasterRecon.V06C.negative_radius_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:42.7172205Z info: WeilDefect/MasterRecon/V06C.lean:74:0: 'WeilDefect.MasterRecon.V06C.observed_orbit_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:42.7173944Z info: WeilDefect/MasterRecon/V06C.lean:75:0: 'WeilDefect.MasterRecon.V06C.positive_radius_observation' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:43.5180475Z ⚠ [8945/8989] Built WeilDefect.MasterRecon.V10B66a (2.1s)
+2026-11-28T01:19:43.5181434Z warning: WeilDefect/MasterRecon/V10B66a.lean:29:38: Variable name `hp` is not explicitly referenced.
+2026-11-28T01:19:43.5182578Z 
+2026-11-28T01:19:43.5183266Z Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+2026-11-28T01:19:43.5184219Z   [apply] _hp
+2026-11-28T01:19:43.5184412Z 
+2026-11-28T01:19:43.5184765Z Note: This linter can be disabled with `set_option linter.unusedVariables false`
+2026-11-28T01:19:43.5186035Z info: WeilDefect/MasterRecon/V10B66a.lean:93:0: 'WeilDefect.MasterRecon.V10B66a.phase_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:43.5187938Z info: WeilDefect/MasterRecon/V10B66a.lean:94:0: 'WeilDefect.MasterRecon.V10B66a.phase_deriv' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:43.5189623Z info: WeilDefect/MasterRecon/V10B66a.lean:95:0: 'WeilDefect.MasterRecon.V10B66a.fourier_parts' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:43.5191347Z info: WeilDefect/MasterRecon/V10B66a.lean:96:0: 'WeilDefect.MasterRecon.V10B66a.fourier_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:43.5193033Z info: WeilDefect/MasterRecon/V10B66a.lean:97:0: 'WeilDefect.MasterRecon.V10B66a.trialPoly_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:43.5194767Z info: WeilDefect/MasterRecon/V10B66a.lean:98:0: 'WeilDefect.MasterRecon.V10B66a.trial_fourier_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:47.8236498Z ℹ [8946/8989] Built WeilDefect.MasterRecon.V06D (5.1s)
+2026-11-28T01:19:47.8237966Z info: WeilDefect/MasterRecon/V06D.lean:142:0: 'WeilDefect.MasterRecon.V06D.realTailRestriction_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:47.8239700Z info: WeilDefect/MasterRecon/V06D.lean:143:0: 'WeilDefect.MasterRecon.V06D.tailRestriction_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:47.8241465Z info: WeilDefect/MasterRecon/V06D.lean:144:0: 'WeilDefect.MasterRecon.V06D.tailRestriction_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:47.8243157Z info: WeilDefect/MasterRecon/V06D.lean:145:0: 'WeilDefect.MasterRecon.V06D.ae_translate' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:47.8244772Z info: WeilDefect/MasterRecon/V06D.lean:146:0: 'WeilDefect.MasterRecon.V06D.analytic_tail_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:47.8246404Z info: WeilDefect/MasterRecon/V06D.lean:147:0: 'WeilDefect.MasterRecon.V06D.analytic_translation_right_tail_rigidity' depends on axioms: [propext,
+2026-11-28T01:19:47.8247546Z  Classical.choice,
+2026-11-28T01:19:47.8247878Z  Quot.sound]
+2026-11-28T01:19:51.3265153Z ℹ [8947/8989] Built WeilDefect.MasterRecon.V07A (3.5s)
+2026-11-28T01:19:51.3266506Z info: WeilDefect/MasterRecon/V07A.lean:111:0: 'WeilDefect.MasterRecon.V07A.mellin_translate' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:51.3268799Z info: WeilDefect/MasterRecon/V07A.lean:112:0: 'WeilDefect.MasterRecon.V07A.reflected_pair_mix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:51.3270627Z info: WeilDefect/MasterRecon/V07A.lean:113:0: 'WeilDefect.MasterRecon.V07A.weighted_mellin_translate' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:51.3272467Z info: WeilDefect/MasterRecon/V07A.lean:114:0: 'WeilDefect.MasterRecon.V07A.reflected_exponential_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:51.3274321Z info: WeilDefect/MasterRecon/V07A.lean:115:0: 'WeilDefect.MasterRecon.V07A.reflected_mellin_translation' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:55.9336522Z ℹ [8948/8989] Built WeilDefect.MasterRecon.V10B8a (4.6s)
+2026-11-28T01:19:55.9337940Z info: WeilDefect/MasterRecon/V10B8a.lean:165:0: 'WeilDefect.MasterRecon.V10B8a.cintegral_const_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:55.9340000Z info: WeilDefect/MasterRecon/V10B8a.lean:166:0: 'WeilDefect.MasterRecon.V10B8a.cintegral_mul_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:55.9341449Z info: WeilDefect/MasterRecon/V10B8a.lean:167:0: 'WeilDefect.MasterRecon.V10B8a.cintegral_conj' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:55.9342827Z info: WeilDefect/MasterRecon/V10B8a.lean:168:0: 'WeilDefect.MasterRecon.V10B8a.continuous_tilde' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:55.9344280Z info: WeilDefect/MasterRecon/V10B8a.lean:169:0: 'WeilDefect.MasterRecon.V10B8a.hasCompactSupport_tilde' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:55.9345747Z info: WeilDefect/MasterRecon/V10B8a.lean:170:0: 'WeilDefect.MasterRecon.V10B8a.support_tilde_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:55.9347278Z info: WeilDefect/MasterRecon/V10B8a.lean:171:0: 'WeilDefect.MasterRecon.V10B8a.tsupport_tilde_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:55.9348937Z info: WeilDefect/MasterRecon/V10B8a.lean:172:0: 'WeilDefect.MasterRecon.V10B8a.paperFT_tilde' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:55.9350328Z info: WeilDefect/MasterRecon/V10B8a.lean:173:0: 'WeilDefect.MasterRecon.V10B8a.paperFT_weilTest' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:55.9351712Z info: WeilDefect/MasterRecon/V10B8a.lean:174:0: 'WeilDefect.MasterRecon.V10B8a.weilTest_contDiff' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:55.9353161Z info: WeilDefect/MasterRecon/V10B8a.lean:175:0: 'WeilDefect.MasterRecon.V10B8a.weilTest_hasCompactSupport' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:55.9354705Z info: WeilDefect/MasterRecon/V10B8a.lean:176:0: 'WeilDefect.MasterRecon.V10B8a.tsupport_weilTest_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:55.9356174Z info: WeilDefect/MasterRecon/V10B8a.lean:177:0: 'WeilDefect.MasterRecon.V10B8a.paperFT_mellin' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:55.9357739Z info: WeilDefect/MasterRecon/V10B8a.lean:178:0: 'WeilDefect.MasterRecon.V10B8a.mellin_congr_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:55.9359127Z info: WeilDefect/MasterRecon/V10B8a.lean:179:0: 'WeilDefect.MasterRecon.V10B8a.autocorr_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:56.2339281Z ℹ [8949/8989] Built WeilDefect.MasterRecon.V07B (4.9s)
+2026-11-28T01:19:56.2340142Z info: WeilDefect/MasterRecon/V07B.lean:115:0: 'WeilDefect.MasterRecon.V07B.block_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:56.2341201Z info: WeilDefect/MasterRecon/V07B.lean:116:0: 'WeilDefect.MasterRecon.V07B.blockLift_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:56.2342383Z info: WeilDefect/MasterRecon/V07B.lean:117:0: 'WeilDefect.MasterRecon.V07B.blockLift_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:56.2343323Z info: WeilDefect/MasterRecon/V07B.lean:118:0: 'WeilDefect.MasterRecon.V07B.block_pairing_transfer' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:19:56.2344265Z info: WeilDefect/MasterRecon/V07B.lean:119:0: 'WeilDefect.MasterRecon.V07B.blockLift_symmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:00.8401579Z ⚠ [8950/8989] Built WeilDefect.MasterRecon.V07C (4.6s)
+2026-11-28T01:20:00.8402362Z warning: WeilDefect/MasterRecon/V07C.lean:37:55: This simp argument is unused:
+2026-11-28T01:20:00.8403102Z   WithLp.ofLp_toLp
+2026-11-28T01:20:00.8403318Z 
+2026-11-28T01:20:00.8403522Z Hint: Omit it from the simp argument list.
+2026-11-28T01:20:00.8404116Z   [apply] simp only [swapBlock_apply, WithLp.prod_inner_apply]
+2026-11-28T01:20:00.8404976Z 
+2026-11-28T01:20:00.8405416Z Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+2026-11-28T01:20:00.8406621Z warning: WeilDefect/MasterRecon/V07C.lean:109:9: Variable name `i` is not explicitly referenced.
+2026-11-28T01:20:00.8407537Z 
+2026-11-28T01:20:00.8408079Z Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+2026-11-28T01:20:00.8408715Z   [apply] _i
+2026-11-28T01:20:00.8408858Z 
+2026-11-28T01:20:00.8409107Z Note: This linter can be disabled with `set_option linter.unusedVariables false`
+2026-11-28T01:20:00.8409956Z info: WeilDefect/MasterRecon/V07C.lean:121:0: 'WeilDefect.MasterRecon.V07C.swapBlock_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:00.8411058Z info: WeilDefect/MasterRecon/V07C.lean:122:0: 'WeilDefect.MasterRecon.V07C.swapBlock_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:00.8412161Z info: WeilDefect/MasterRecon/V07C.lean:123:0: 'WeilDefect.MasterRecon.V07C.swapBlock_symmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:00.8413331Z info: WeilDefect/MasterRecon/V07C.lean:124:0: 'WeilDefect.MasterRecon.V07C.displacementBlock_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:00.8414522Z info: WeilDefect/MasterRecon/V07C.lean:125:0: 'WeilDefect.MasterRecon.V07C.displacementBlock_symmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:00.8415692Z info: WeilDefect/MasterRecon/V07C.lean:126:0: 'WeilDefect.MasterRecon.V07C.displacement_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:00.8416812Z info: WeilDefect/MasterRecon/V07C.lean:127:0: 'WeilDefect.MasterRecon.V07C.displacement_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:00.8418120Z info: WeilDefect/MasterRecon/V07C.lean:128:0: 'WeilDefect.MasterRecon.V07C.displacement_selfAdjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:00.8419277Z info: WeilDefect/MasterRecon/V07C.lean:129:0: 'WeilDefect.MasterRecon.V07C.ordinatePhase_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:00.8420388Z info: WeilDefect/MasterRecon/V07C.lean:130:0: 'WeilDefect.MasterRecon.V07C.phaseBlock_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:00.8421501Z info: WeilDefect/MasterRecon/V07C.lean:131:0: 'WeilDefect.MasterRecon.V07C.phaseBlock_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:00.8422609Z info: WeilDefect/MasterRecon/V07C.lean:132:0: 'WeilDefect.MasterRecon.V07C.phaseBlock_cancel' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:00.8423693Z info: WeilDefect/MasterRecon/V07C.lean:133:0: 'WeilDefect.MasterRecon.V07C.phase_cancel' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:07.8495848Z ⚠ [8951/8989] Built WeilDefect.MasterRecon.V07D (7.0s)
+2026-11-28T01:20:07.8497584Z warning: WeilDefect/MasterRecon/V07D.lean:17:0: automatically included section variable(s) unused in theorem `WeilDefect.MasterRecon.V07D.power_intertwine`:
+2026-11-28T01:20:07.8498287Z   [CompleteSpace H]
+2026-11-28T01:20:07.8498484Z   [CompleteSpace K]
+2026-11-28T01:20:07.8498914Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-11-28T01:20:07.8499446Z   omit [CompleteSpace H] [CompleteSpace K] in theorem ...
+2026-11-28T01:20:07.8499674Z 
+2026-11-28T01:20:07.8499887Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-11-28T01:20:07.8500613Z info: WeilDefect/MasterRecon/V07D.lean:129:0: 'WeilDefect.MasterRecon.V07D.power_intertwine' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:07.8501529Z info: WeilDefect/MasterRecon/V07D.lean:130:0: 'WeilDefect.MasterRecon.V07D.exp_intertwine' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:07.8502724Z info: WeilDefect/MasterRecon/V07D.lean:131:0: 'WeilDefect.MasterRecon.V07D.global_exp_coordinate' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:07.8503642Z info: WeilDefect/MasterRecon/V07D.lean:132:0: 'WeilDefect.MasterRecon.V07D.scalar_exp_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:07.8504534Z info: WeilDefect/MasterRecon/V07D.lean:133:0: 'WeilDefect.MasterRecon.V07D.local_exp_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:07.8505407Z info: WeilDefect/MasterRecon/V07D.lean:134:0: 'WeilDefect.MasterRecon.V07D.local_exp_diff' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:07.8506278Z info: WeilDefect/MasterRecon/V07D.lean:135:0: 'WeilDefect.MasterRecon.V07D.local_exp_mix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:07.8507164Z info: WeilDefect/MasterRecon/V07D.lean:136:0: 'WeilDefect.MasterRecon.V07D.global_exp_mix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:14.6576027Z ℹ [8952/8989] Built WeilDefect.MasterRecon.V07E (6.8s)
+2026-11-28T01:20:14.6577885Z info: WeilDefect/MasterRecon/V07E.lean:102:0: 'WeilDefect.MasterRecon.V07E.phase_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:14.6579402Z info: WeilDefect/MasterRecon/V07E.lean:103:0: 'WeilDefect.MasterRecon.V07E.samplePair_translate' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:14.6580362Z info: WeilDefect/MasterRecon/V07E.lean:104:0: 'WeilDefect.MasterRecon.V07E.sampled_translation' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:14.6581290Z info: WeilDefect/MasterRecon/V07E.lean:105:0: 'WeilDefect.MasterRecon.V07E.real_exp_selfAdjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:14.6582257Z info: WeilDefect/MasterRecon/V07E.lean:106:0: 'WeilDefect.MasterRecon.V07E.translated_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:14.6583205Z info: WeilDefect/MasterRecon/V07E.lean:107:0: 'WeilDefect.MasterRecon.V07E.translated_form_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:21.6647780Z ⚠ [8953/8989] Built WeilDefect.MasterRecon.V07F (7.0s)
+2026-11-28T01:20:21.6649002Z warning: WeilDefect/MasterRecon/V07F.lean:19:0: automatically included section variable(s) unused in theorem `WeilDefect.MasterRecon.V07F.packetBound_nonneg`:
+2026-11-28T01:20:21.6650079Z   [DecidableEq ι]
+2026-11-28T01:20:21.6650777Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-11-28T01:20:21.6651643Z   omit [DecidableEq ι] in theorem ...
+2026-11-28T01:20:21.6651916Z 
+2026-11-28T01:20:21.6652255Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-11-28T01:20:21.6653161Z warning: WeilDefect/MasterRecon/V07F.lean:27:17: `if_pos` has been deprecated: Use `ite_eq_left` instead
+2026-11-28T01:20:21.6654516Z warning: WeilDefect/MasterRecon/V07F.lean:29:17: `if_neg` has been deprecated: Use `ite_eq_right` instead
+2026-11-28T01:20:21.6655520Z warning: WeilDefect/MasterRecon/V07F.lean:86:17: `if_pos` has been deprecated: Use `ite_eq_left` instead
+2026-11-28T01:20:21.6656846Z warning: WeilDefect/MasterRecon/V07F.lean:93:0: automatically included section variable(s) unused in theorem `WeilDefect.MasterRecon.V07F.phase_adjoint_pairing`:
+2026-11-28T01:20:21.6658110Z   [DecidableEq ι]
+2026-11-28T01:20:21.6658821Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-11-28T01:20:21.6659678Z   omit [DecidableEq ι] in theorem ...
+2026-11-28T01:20:21.6659951Z 
+2026-11-28T01:20:21.6660280Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-11-28T01:20:21.6661488Z info: WeilDefect/MasterRecon/V07F.lean:133:0: 'WeilDefect.MasterRecon.V07F.packetBound_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:21.6663263Z info: WeilDefect/MasterRecon/V07F.lean:134:0: 'WeilDefect.MasterRecon.V07F.clipped_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:21.6664816Z info: WeilDefect/MasterRecon/V07F.lean:135:0: 'WeilDefect.MasterRecon.V07F.scalarBlock_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:21.6666426Z info: WeilDefect/MasterRecon/V07F.lean:136:0: 'WeilDefect.MasterRecon.V07F.selectedGenerator_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:21.6668273Z info: WeilDefect/MasterRecon/V07F.lean:137:0: 'WeilDefect.MasterRecon.V07F.selectedGenerator_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:21.6669861Z info: WeilDefect/MasterRecon/V07F.lean:138:0: 'WeilDefect.MasterRecon.V07F.pair_scalar_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:21.6671438Z info: WeilDefect/MasterRecon/V07F.lean:139:0: 'WeilDefect.MasterRecon.V07F.selected_exp_coordinate' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:21.6673045Z info: WeilDefect/MasterRecon/V07F.lean:140:0: 'WeilDefect.MasterRecon.V07F.selected_phase' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:21.6674613Z info: WeilDefect/MasterRecon/V07F.lean:141:0: 'WeilDefect.MasterRecon.V07F.phase_adjoint_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:21.6676248Z info: WeilDefect/MasterRecon/V07F.lean:142:0: 'WeilDefect.MasterRecon.V07F.selected_forcing_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:27.6695854Z ℹ [8954/8989] Built WeilDefect.MasterRecon.V08A (6.0s)
+2026-11-28T01:20:27.6697003Z info: WeilDefect/MasterRecon/V08A.lean:118:0: 'WeilDefect.MasterRecon.V08A.mellin_congr_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:27.6698817Z info: WeilDefect/MasterRecon/V08A.lean:119:0: 'WeilDefect.MasterRecon.V08A.samplePair_congr_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:27.6700498Z info: WeilDefect/MasterRecon/V08A.lean:120:0: 'WeilDefect.MasterRecon.V08A.conditional_neutral_rigidity' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:32.2753397Z ⚠ [8955/8989] Built WeilDefect.MasterRecon.V08B (4.7s)
+2026-11-28T01:20:32.2754628Z warning: WeilDefect/MasterRecon/V08B.lean:19:0: automatically included section variable(s) unused in theorem `WeilDefect.MasterRecon.V08B.compact_defect_linear`:
+2026-11-28T01:20:32.2755747Z   [CompleteSpace H]
+2026-11-28T01:20:32.2756503Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-11-28T01:20:32.2757521Z   omit [CompleteSpace H] in theorem ...
+2026-11-28T01:20:32.2757817Z 
+2026-11-28T01:20:32.2758174Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-11-28T01:20:32.2759423Z info: WeilDefect/MasterRecon/V08B.lean:127:0: 'WeilDefect.MasterRecon.V08B.compact_defect_linear' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:32.2761449Z info: WeilDefect/MasterRecon/V08B.lean:128:0: 'WeilDefect.MasterRecon.V08B.compact_defect_unit_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:32.2763881Z info: WeilDefect/MasterRecon/V08B.lean:129:0: 'WeilDefect.MasterRecon.V08B.compact_defect_coercivity' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:36.5791954Z ℹ [8956/8989] Built WeilDefect.MasterRecon.V08C (4.3s)
+2026-11-28T01:20:36.5793116Z info: WeilDefect/MasterRecon/V08C.lean:120:0: 'WeilDefect.MasterRecon.V08C.log_tail_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:36.5794652Z info: WeilDefect/MasterRecon/V08C.lean:121:0: 'WeilDefect.MasterRecon.V08C.exp_cutoff_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:36.5796273Z info: WeilDefect/MasterRecon/V08C.lean:122:0: 'WeilDefect.MasterRecon.V08C.compact_of_squared_cutoff_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:36.5798417Z info: WeilDefect/MasterRecon/V08C.lean:123:0: 'WeilDefect.MasterRecon.V08C.compact_of_log_frequency_cutoffs' depends on axioms: [propext,
+2026-11-28T01:20:36.5799348Z  Classical.choice,
+2026-11-28T01:20:36.5799671Z  Quot.sound]
+2026-11-28T01:20:41.6839712Z ⚠ [8957/8989] Built WeilDefect.MasterRecon.V08D (5.1s)
+2026-11-28T01:20:41.6840507Z warning: WeilDefect/MasterRecon/V08D.lean:40:15: This simp argument is unused:
+2026-11-28T01:20:41.6841167Z   norm_mul
+2026-11-28T01:20:41.6841346Z 
+2026-11-28T01:20:41.6841517Z Hint: Omit it from the simp argument list.
+2026-11-28T01:20:41.6842028Z   [apply] simp [z, Complex.norm_real, Real.norm_eq_abs]
+2026-11-28T01:20:41.6842390Z 
+2026-11-28T01:20:41.6842725Z Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+2026-11-28T01:20:41.6844016Z warning: WeilDefect/MasterRecon/V08D.lean:58:0: automatically included section variable(s) unused in theorem `WeilDefect.MasterRecon.V08D.moment_rank_one_compact`:
+2026-11-28T01:20:41.6845139Z   [CompleteSpace L]
+2026-11-28T01:20:41.6845863Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-11-28T01:20:41.6846718Z   omit [CompleteSpace L] in theorem ...
+2026-11-28T01:20:41.6847013Z 
+2026-11-28T01:20:41.6847510Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-11-28T01:20:41.6848791Z warning: WeilDefect/MasterRecon/V08D.lean:68:0: automatically included section variable(s) unused in theorem `WeilDefect.MasterRecon.V08D.moment_rank_one_norm`:
+2026-11-28T01:20:41.6849852Z   [CompleteSpace L]
+2026-11-28T01:20:41.6850567Z consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+2026-11-28T01:20:41.6851395Z   omit [CompleteSpace L] in theorem ...
+2026-11-28T01:20:41.6851690Z 
+2026-11-28T01:20:41.6852046Z Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+2026-11-28T01:20:41.6852997Z warning: WeilDefect/MasterRecon/V08D.lean:105:5: Variable name `hB` is not explicitly referenced.
+2026-11-28T01:20:41.6853596Z 
+2026-11-28T01:20:41.6854236Z Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+2026-11-28T01:20:41.6855152Z   [apply] _hB
+2026-11-28T01:20:41.6855321Z 
+2026-11-28T01:20:41.6855654Z Note: This linter can be disabled with `set_option linter.unusedVariables false`
+2026-11-28T01:20:41.6856963Z info: WeilDefect/MasterRecon/V08D.lean:123:0: 'WeilDefect.MasterRecon.V08D.kernelPolynomial_separated' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:41.6858907Z info: WeilDefect/MasterRecon/V08D.lean:124:0: 'WeilDefect.MasterRecon.V08D.kernel_remainder' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:41.6860561Z info: WeilDefect/MasterRecon/V08D.lean:125:0: 'WeilDefect.MasterRecon.V08D.moment_rank_one_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:41.6862579Z info: WeilDefect/MasterRecon/V08D.lean:126:0: 'WeilDefect.MasterRecon.V08D.moment_rank_one_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:41.6864279Z info: WeilDefect/MasterRecon/V08D.lean:127:0: 'WeilDefect.MasterRecon.V08D.moment_partial_sum_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:41.6865952Z info: WeilDefect/MasterRecon/V08D.lean:128:0: 'WeilDefect.MasterRecon.V08D.moment_series_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:41.6867858Z info: WeilDefect/MasterRecon/V08D.lean:129:0: 'WeilDefect.MasterRecon.V08D.factorial_moment_series_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:47.3861483Z ⚠ [8958/8989] Built WeilDefect.MasterRecon.V08E (5.7s)
+2026-11-28T01:20:47.3862204Z warning: WeilDefect/MasterRecon/V08E.lean:41:50: Variable name `ht0` is not explicitly referenced.
+2026-11-28T01:20:47.3862859Z 
+2026-11-28T01:20:47.3863321Z Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+2026-11-28T01:20:47.3863937Z   [apply] _ht0
+2026-11-28T01:20:47.3864074Z 
+2026-11-28T01:20:47.3864314Z Note: This linter can be disabled with `set_option linter.unusedVariables false`
+2026-11-28T01:20:47.3865074Z warning: WeilDefect/MasterRecon/V08E.lean:51:10: Unused tactic linter: `change (x : ℂ) ^ j * (f + g) x = _` does nothing
+2026-11-28T01:20:47.3865474Z 
+2026-11-28T01:20:47.3865675Z Note: This linter can be disabled with `set_option linter.unusedTactic false`
+2026-11-28T01:20:47.3866384Z info: WeilDefect/MasterRecon/V08E.lean:185:0: 'WeilDefect.MasterRecon.V08E.moment_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:47.3867505Z info: WeilDefect/MasterRecon/V08E.lean:186:0: 'WeilDefect.MasterRecon.V08E.moment_integral_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:47.3868473Z info: WeilDefect/MasterRecon/V08E.lean:187:0: 'WeilDefect.MasterRecon.V08E.moment_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:47.3869349Z info: WeilDefect/MasterRecon/V08E.lean:188:0: 'WeilDefect.MasterRecon.V08E.moment_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:47.3870262Z info: WeilDefect/MasterRecon/V08E.lean:189:0: 'WeilDefect.MasterRecon.V08E.frequencyMonomial_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:47.3871205Z info: WeilDefect/MasterRecon/V08E.lean:190:0: 'WeilDefect.MasterRecon.V08E.moment_series_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:47.3872136Z info: WeilDefect/MasterRecon/V08E.lean:191:0: 'WeilDefect.MasterRecon.V08E.boundedFourier_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:47.3873103Z info: WeilDefect/MasterRecon/V08E.lean:192:0: 'WeilDefect.MasterRecon.V08E.boundedFourier_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:51.9910104Z ℹ [8959/8989] Built WeilDefect.MasterRecon.V08F (4.6s)
+2026-11-28T01:20:51.9911645Z info: WeilDefect/MasterRecon/V08F.lean:125:0: 'WeilDefect.MasterRecon.V08F.physicalL1_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:51.9913487Z info: WeilDefect/MasterRecon/V08F.lean:126:0: 'WeilDefect.MasterRecon.V08F.physicalL1Value_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:51.9915313Z info: WeilDefect/MasterRecon/V08F.lean:127:0: 'WeilDefect.MasterRecon.V08F.physicalL1Value_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:51.9917181Z info: WeilDefect/MasterRecon/V08F.lean:128:0: 'WeilDefect.MasterRecon.V08F.physicalL1Inclusion_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:51.9919614Z info: WeilDefect/MasterRecon/V08F.lean:129:0: 'WeilDefect.MasterRecon.V08F.physicalL1Inclusion_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:51.9921987Z info: WeilDefect/MasterRecon/V08F.lean:130:0: 'WeilDefect.MasterRecon.V08F.bandFourierL2_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:51.9923832Z info: WeilDefect/MasterRecon/V08F.lean:131:0: 'WeilDefect.MasterRecon.V08F.bandFourierL2_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:56.8932510Z ⚠ [8960/8989] Built WeilDefect.MasterRecon.V08G (4.9s)
+2026-11-28T01:20:56.8933350Z warning: WeilDefect/MasterRecon/V08G.lean:38:2: Try this: 
+2026-11-28T01:20:56.8933947Z   letI̵
+2026-11-28T01:20:56.8934135Z 
+2026-11-28T01:20:56.8934402Z The goal is a proposition, so `let` is preferred over `letI`.
+2026-11-28T01:20:56.8934888Z The difference between `let` and `letI` is that `letI` inlines the value.
+2026-11-28T01:20:56.8935305Z But this is not relevant for proofs because of proof irrelevance.
+2026-11-28T01:20:56.8935821Z 
+2026-11-28T01:20:56.8936043Z Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+2026-11-28T01:20:56.8936534Z warning: WeilDefect/MasterRecon/V08G.lean:75:27: This simp argument is unused:
+2026-11-28T01:20:56.8936908Z   Real.norm_eq_abs
+2026-11-28T01:20:56.8937027Z 
+2026-11-28T01:20:56.8937135Z Hint: Omit it from the simp argument list.
+2026-11-28T01:20:56.8937746Z   [apply] simp [Complex.norm_real, abs_of_nonneg (norm_nonneg g), mul_comm]
+2026-11-28T01:20:56.8938016Z 
+2026-11-28T01:20:56.8938211Z Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+2026-11-28T01:20:56.8938683Z warning: WeilDefect/MasterRecon/V08G.lean:75:45: This simp argument is unused:
+2026-11-28T01:20:56.8939065Z   abs_of_nonneg (norm_nonneg g)
+2026-11-28T01:20:56.8939212Z 
+2026-11-28T01:20:56.8939319Z Hint: Omit it from the simp argument list.
+2026-11-28T01:20:56.8939640Z   [apply] simp [Complex.norm_real, Real.norm_eq_abs, mul_comm]
+2026-11-28T01:20:56.8939869Z 
+2026-11-28T01:20:56.8940069Z Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+2026-11-28T01:20:56.8940676Z warning: WeilDefect/MasterRecon/V08G.lean:139:4: Unused tactic linter: `change V08D.fourierKernel u x * g x = _` does nothing
+2026-11-28T01:20:56.8941096Z 
+2026-11-28T01:20:56.8941282Z Note: This linter can be disabled with `set_option linter.unusedTactic false`
+2026-11-28T01:20:56.8941960Z warning: WeilDefect/MasterRecon/V08G.lean:159:2: Unused tactic linter: `change ‖(a - b) u‖ ^ 2 = _` does nothing
+2026-11-28T01:20:56.8942336Z 
+2026-11-28T01:20:56.8942520Z Note: This linter can be disabled with `set_option linter.unusedTactic false`
+2026-11-28T01:20:56.8943233Z info: WeilDefect/MasterRecon/V08G.lean:172:0: 'WeilDefect.MasterRecon.V08G.clampBand_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:56.8944164Z info: WeilDefect/MasterRecon/V08G.lean:173:0: 'WeilDefect.MasterRecon.V08G.clampBand_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:56.8945077Z info: WeilDefect/MasterRecon/V08G.lean:174:0: 'WeilDefect.MasterRecon.V08G.zeroBand_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:56.8945978Z info: WeilDefect/MasterRecon/V08G.lean:175:0: 'WeilDefect.MasterRecon.V08G.zeroBandValue_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:56.8946901Z info: WeilDefect/MasterRecon/V08G.lean:176:0: 'WeilDefect.MasterRecon.V08G.zeroBandValue_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:56.8947938Z info: WeilDefect/MasterRecon/V08G.lean:177:0: 'WeilDefect.MasterRecon.V08G.fullBandFourier_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:56.8948883Z info: WeilDefect/MasterRecon/V08G.lean:178:0: 'WeilDefect.MasterRecon.V08G.fullBandFourier_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:56.8949798Z info: WeilDefect/MasterRecon/V08G.lean:179:0: 'WeilDefect.MasterRecon.V08G.l2_norm_sq_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:20:56.8950857Z info: WeilDefect/MasterRecon/V08G.lean:180:0: 'WeilDefect.MasterRecon.V08G.spectral_tail_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:00.6985552Z ℹ [8961/8989] Built WeilDefect.MasterRecon.V08H (3.8s)
+2026-11-28T01:21:00.6986092Z info: WeilDefect/MasterRecon/V08H.lean:77:2: Try this:
+2026-11-28T01:21:00.6986378Z   [apply] ring_nf
+2026-11-28T01:21:00.6986570Z   
+2026-11-28T01:21:00.6986871Z   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+2026-11-28T01:21:00.6987230Z     
+2026-11-28T01:21:00.6989889Z   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+2026-11-28T01:21:00.6991501Z info: WeilDefect/MasterRecon/V08H.lean:98:0: 'WeilDefect.MasterRecon.V08H.classical_fourier_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:00.6993443Z info: WeilDefect/MasterRecon/V08H.lean:99:0: 'WeilDefect.MasterRecon.V08H.classical_fourier_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:00.6995059Z info: WeilDefect/MasterRecon/V08H.lean:100:0: 'WeilDefect.MasterRecon.V08H.l2_fourier_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:00.6996616Z info: WeilDefect/MasterRecon/V08H.lean:101:0: 'WeilDefect.MasterRecon.V08H.l2_fourier_integral_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:00.6998342Z info: WeilDefect/MasterRecon/V08H.lean:102:0: 'WeilDefect.MasterRecon.V08H.angularFourier_scaled' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:00.6999907Z info: WeilDefect/MasterRecon/V08H.lean:103:0: 'WeilDefect.MasterRecon.V08H.angularFourier_plancherel' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:05.9031353Z ℹ [8962/8989] Built WeilDefect.MasterRecon.V08I (5.2s)
+2026-11-28T01:21:05.9033181Z info: WeilDefect/MasterRecon/V08I.lean:185:0: 'WeilDefect.MasterRecon.V08I.multiplier_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:05.9034198Z info: WeilDefect/MasterRecon/V08I.lean:186:0: 'WeilDefect.MasterRecon.V08I.mulValue_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:05.9035094Z info: WeilDefect/MasterRecon/V08I.lean:187:0: 'WeilDefect.MasterRecon.V08I.mulValue_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:05.9036677Z info: WeilDefect/MasterRecon/V08I.lean:188:0: 'WeilDefect.MasterRecon.V08I.multiplier_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:05.9038403Z info: WeilDefect/MasterRecon/V08I.lean:189:0: 'WeilDefect.MasterRecon.V08I.logWeight_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:05.9039308Z info: WeilDefect/MasterRecon/V08I.lean:190:0: 'WeilDefect.MasterRecon.V08I.logWeight_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:05.9040254Z info: WeilDefect/MasterRecon/V08I.lean:191:0: 'WeilDefect.MasterRecon.V08I.logWeight_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:05.9041209Z info: WeilDefect/MasterRecon/V08I.lean:192:0: 'WeilDefect.MasterRecon.V08I.inverseWeight_measurable' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:05.9042170Z info: WeilDefect/MasterRecon/V08I.lean:193:0: 'WeilDefect.MasterRecon.V08I.inverseWeight_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:05.9043402Z info: WeilDefect/MasterRecon/V08I.lean:194:0: 'WeilDefect.MasterRecon.V08I.outsideMask_measurable' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:05.9044338Z info: WeilDefect/MasterRecon/V08I.lean:195:0: 'WeilDefect.MasterRecon.V08I.outsideMask_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:05.9045552Z info: WeilDefect/MasterRecon/V08I.lean:196:0: 'WeilDefect.MasterRecon.V08I.logCarrier_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:05.9046596Z info: WeilDefect/MasterRecon/V08I.lean:197:0: 'WeilDefect.MasterRecon.V08I.logCarrier_complete' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:05.9047761Z info: WeilDefect/MasterRecon/V08I.lean:198:0: 'WeilDefect.MasterRecon.V08I.physicalInclusion_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:05.9048759Z info: WeilDefect/MasterRecon/V08I.lean:199:0: 'WeilDefect.MasterRecon.V08I.physicalInclusion_fourier_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:05.9049736Z info: WeilDefect/MasterRecon/V08I.lean:200:0: 'WeilDefect.MasterRecon.V08I.logCarrier_energy_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:05.9050653Z info: WeilDefect/MasterRecon/V08I.lean:201:0: 'WeilDefect.MasterRecon.V08I.logCarrier_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:05.9051736Z info: WeilDefect/MasterRecon/V08I.lean:202:0: 'WeilDefect.MasterRecon.V08I.logCarrier_energy_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:11.4070684Z ⚠ [8963/8989] Built WeilDefect.MasterRecon.V08J (5.5s)
+2026-11-28T01:21:11.4071829Z warning: WeilDefect/MasterRecon/V08J.lean:39:10: This simp argument is unused:
+2026-11-28T01:21:11.4072734Z   hu
+2026-11-28T01:21:11.4072971Z 
+2026-11-28T01:21:11.4073218Z Hint: Omit it from the simp argument list.
+2026-11-28T01:21:11.4073840Z   [apply] simp
+2026-11-28T01:21:11.4074116Z 
+2026-11-28T01:21:11.4074573Z Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+2026-11-28T01:21:11.4075518Z warning: WeilDefect/MasterRecon/V08J.lean:75:2: Unused tactic linter: `change unweight (weightedSpectrum f hf) u = _` does nothing
+2026-11-28T01:21:11.4076073Z 
+2026-11-28T01:21:11.4076311Z Note: This linter can be disabled with `set_option linter.unusedTactic false`
+2026-11-28T01:21:11.4077196Z info: WeilDefect/MasterRecon/V08J.lean:129:0: 'WeilDefect.MasterRecon.V08J.weightRoot_measurable' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:11.4078670Z info: WeilDefect/MasterRecon/V08J.lean:130:0: 'WeilDefect.MasterRecon.V08J.inverseWeight_weightRoot' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:11.4079880Z info: WeilDefect/MasterRecon/V08J.lean:131:0: 'WeilDefect.MasterRecon.V08J.physicalInclusion_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:11.4081093Z info: WeilDefect/MasterRecon/V08J.lean:132:0: 'WeilDefect.MasterRecon.V08J.weightedSpectrum_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:11.4082246Z info: WeilDefect/MasterRecon/V08J.lean:133:0: 'WeilDefect.MasterRecon.V08J.weightedSpectrum_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:11.4083420Z info: WeilDefect/MasterRecon/V08J.lean:134:0: 'WeilDefect.MasterRecon.V08J.unweight_weightedSpectrum' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:11.4084818Z info: WeilDefect/MasterRecon/V08J.lean:135:0: 'WeilDefect.MasterRecon.V08J.physicalMap_weightedSpectrum' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:11.4086029Z info: WeilDefect/MasterRecon/V08J.lean:136:0: 'WeilDefect.MasterRecon.V08J.weightedSpectrum_supported' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:11.4087202Z info: WeilDefect/MasterRecon/V08J.lean:137:0: 'WeilDefect.MasterRecon.V08J.physicalInclusion_lift' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:11.4088581Z info: WeilDefect/MasterRecon/V08J.lean:138:0: 'WeilDefect.MasterRecon.V08J.physicalInclusion_range_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:17.0168935Z ℹ [8964/8989] Built WeilDefect.MasterRecon.V08K (5.7s)
+2026-11-28T01:21:17.0170830Z info: WeilDefect/MasterRecon/V08K.lean:190:0: 'WeilDefect.MasterRecon.V08K.supportMeasure_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:17.0198747Z info: WeilDefect/MasterRecon/V08K.lean:191:0: 'WeilDefect.MasterRecon.V08K.restrictPhysical_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:17.0228551Z info: WeilDefect/MasterRecon/V08K.lean:192:0: 'WeilDefect.MasterRecon.V08K.supported_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:17.0258625Z info: WeilDefect/MasterRecon/V08K.lean:193:0: 'WeilDefect.MasterRecon.V08K.restricted_angular_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:17.0260370Z info: WeilDefect/MasterRecon/V08K.lean:194:0: 'WeilDefect.MasterRecon.V08K.spectralCutoff_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:17.0288579Z info: WeilDefect/MasterRecon/V08K.lean:195:0: 'WeilDefect.MasterRecon.V08K.spectralCutoff_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:17.0318507Z info: WeilDefect/MasterRecon/V08K.lean:196:0: 'WeilDefect.MasterRecon.V08K.physicalCutoff_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:17.0320165Z info: WeilDefect/MasterRecon/V08K.lean:197:0: 'WeilDefect.MasterRecon.V08K.physicalCutoff_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:17.0321782Z info: WeilDefect/MasterRecon/V08K.lean:198:0: 'WeilDefect.MasterRecon.V08K.logWeight_dominates' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:17.0323419Z info: WeilDefect/MasterRecon/V08K.lean:199:0: 'WeilDefect.MasterRecon.V08K.physicalInclusion_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:24.7368820Z ⚠ [8965/8989] Built WeilDefect.MasterRecon.V09A (7.7s)
+2026-11-28T01:21:24.7428634Z warning: WeilDefect/MasterRecon/V09A.lean:95:21: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+2026-11-28T01:21:24.7487787Z 
+2026-11-28T01:21:24.7548560Z Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+2026-11-28T01:21:24.7608917Z info: WeilDefect/MasterRecon/V09A.lean:118:0: 'WeilDefect.MasterRecon.V09A.divisor_one_le_at_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:24.7668905Z info: WeilDefect/MasterRecon/V09A.lean:119:0: 'WeilDefect.MasterRecon.V09A.distinct_zeros_le_divisor_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:24.7698847Z info: WeilDefect/MasterRecon/V09A.lean:120:0: 'WeilDefect.MasterRecon.V09A.distinct_zeros_jensen' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:24.7728835Z info: WeilDefect/MasterRecon/V09A.lean:121:0: 'WeilDefect.MasterRecon.V09A.exponential_type_linear_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:24.7788755Z info: WeilDefect/MasterRecon/V09A.lean:122:0: 'WeilDefect.MasterRecon.V09A.exponential_type_unique_of_superlinear_zeros' depends on axioms: [propext,
+2026-11-28T01:21:24.7848168Z  Classical.choice,
+2026-11-28T01:21:24.7908243Z  Quot.sound]
+2026-11-28T01:21:25.4358725Z ⚠ [8966/8989] Built WeilDefect.MasterRecon.V10B67a (8.4s)
+2026-11-28T01:21:25.4408762Z warning: WeilDefect/MasterRecon/V10B67a.lean:41:13: Variable name `hC` is not explicitly referenced.
+2026-11-28T01:21:25.4427758Z 
+2026-11-28T01:21:25.4458834Z Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+2026-11-28T01:21:25.4488045Z   [apply] _hC
+2026-11-28T01:21:25.4488286Z 
+2026-11-28T01:21:25.4488737Z Note: This linter can be disabled with `set_option linter.unusedVariables false`
+2026-11-28T01:21:25.4489598Z warning: WeilDefect/MasterRecon/V10B67a.lean:65:54: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+2026-11-28T01:21:25.4490172Z 
+2026-11-28T01:21:25.4490513Z Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+2026-11-28T01:21:25.4492536Z warning: WeilDefect/MasterRecon/V10B67a.lean:57:2: Unused tactic linter: `change logWeight u * ‖F u‖ ^ 2 ≤ 6 * C ^ 2 * r ^ (-(3 / 2) : ℝ)` does nothing
+2026-11-28T01:21:25.4493307Z 
+2026-11-28T01:21:25.4493618Z Note: This linter can be disabled with `set_option linter.unusedTactic false`
+2026-11-28T01:21:25.4494300Z info: WeilDefect/MasterRecon/V10B67a.lean:122:8: Try this:
+2026-11-28T01:21:25.4494807Z   [apply] ring_nf
+2026-11-28T01:21:25.4495122Z   
+2026-11-28T01:21:25.4495587Z   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+2026-11-28T01:21:25.4496160Z     
+2026-11-28T01:21:25.4497123Z   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+2026-11-28T01:21:25.4498940Z info: WeilDefect/MasterRecon/V10B67a.lean:176:0: 'WeilDefect.MasterRecon.V10B67a.weight_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:25.4500872Z info: WeilDefect/MasterRecon/V10B67a.lean:177:0: 'WeilDefect.MasterRecon.V10B67a.weighted_of_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:25.4502452Z info: WeilDefect/MasterRecon/V10B67a.lean:178:0: 'WeilDefect.MasterRecon.V10B67a.supported_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:25.4504017Z info: WeilDefect/MasterRecon/V10B67a.lean:179:0: 'WeilDefect.MasterRecon.V10B67a.trialL2_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:25.4505617Z info: WeilDefect/MasterRecon/V10B67a.lean:180:0: 'WeilDefect.MasterRecon.V10B67a.trialL2_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:25.4507669Z info: WeilDefect/MasterRecon/V10B67a.lean:181:0: 'WeilDefect.MasterRecon.V10B67a.trial_fourier_literal' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:25.4538652Z info: WeilDefect/MasterRecon/V10B67a.lean:182:0: 'WeilDefect.MasterRecon.V10B67a.trial_weighted' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:25.4568641Z info: WeilDefect/MasterRecon/V10B67a.lean:183:0: 'WeilDefect.MasterRecon.V10B67a.carrierTrial_physical' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:25.4598520Z info: WeilDefect/MasterRecon/V10B67a.lean:184:0: 'WeilDefect.MasterRecon.V10B67a.carrierTrial_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:29.9433521Z ⚠ [8967/8989] Built WeilDefect.MasterRecon.V10B13a (12s)
+2026-11-28T01:21:29.9434869Z warning: WeilDefect/MasterRecon/V10B13a.lean:41:37: `ContinuousLinearMap.sum_apply` has been deprecated: Use `sum_apply` instead
+2026-11-28T01:21:29.9435821Z 
+2026-11-28T01:21:29.9436637Z Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sum_apply` to `sum_apply x`).
+2026-11-28T01:21:29.9438339Z warning: WeilDefect/MasterRecon/V10B13a.lean:67:15: `ContinuousLinearMap.sum_apply` has been deprecated: Use `sum_apply` instead
+2026-11-28T01:21:29.9439358Z 
+2026-11-28T01:21:29.9440155Z Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sum_apply` to `sum_apply x`).
+2026-11-28T01:21:29.9441779Z warning: WeilDefect/MasterRecon/V10B13a.lean:75:8: `MeasureTheory.integral_finset_sum` has been deprecated: Use `MeasureTheory.integral_finsetSum` instead
+2026-11-28T01:21:29.9443624Z warning: WeilDefect/MasterRecon/V10B13a.lean:96:10: `MeasureTheory.integrable_finset_sum` has been deprecated: Use `MeasureTheory.integrable_finsetSum` instead
+2026-11-28T01:21:29.9445333Z warning: WeilDefect/MasterRecon/V10B13a.lean:142:63: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+2026-11-28T01:21:29.9446221Z 
+2026-11-28T01:21:29.9446975Z Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sub_apply` to `sub_apply x`).
+2026-11-28T01:21:29.9449252Z info: WeilDefect/MasterRecon/V10B13a.lean:159:0: 'WeilDefect.MasterRecon.V10B13a.approximation_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:29.9451078Z info: WeilDefect/MasterRecon/V10B13a.lean:160:0: 'WeilDefect.MasterRecon.V10B13a.band_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:29.9452823Z info: WeilDefect/MasterRecon/V10B13a.lean:161:0: 'WeilDefect.MasterRecon.V10B13a.cutoff_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:29.9454703Z info: WeilDefect/MasterRecon/V10B13a.lean:162:0: 'WeilDefect.MasterRecon.V10B13a.approximation_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.0522331Z ⚠ [8968/8989] Built WeilDefect.MasterRecon.V09B (7.3s)
+2026-11-28T01:21:32.0523175Z warning: WeilDefect/MasterRecon/V09B.lean:15:35: Variable name `ht` is not explicitly referenced.
+2026-11-28T01:21:32.0523758Z 
+2026-11-28T01:21:32.0524695Z Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+2026-11-28T01:21:32.0525576Z   [apply] _ht
+2026-11-28T01:21:32.0525747Z 
+2026-11-28T01:21:32.0526083Z Note: This linter can be disabled with `set_option linter.unusedVariables false`
+2026-11-28T01:21:32.0527273Z info: WeilDefect/MasterRecon/V09B.lean:145:0: 'WeilDefect.MasterRecon.V09B.kernel_norm_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.0530574Z info: WeilDefect/MasterRecon/V09B.lean:146:0: 'WeilDefect.MasterRecon.V09B.mellin_integrand_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.0532232Z info: WeilDefect/MasterRecon/V09B.lean:147:0: 'WeilDefect.MasterRecon.V09B.mellin_integrand_measurable' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.0533951Z info: WeilDefect/MasterRecon/V09B.lean:148:0: 'WeilDefect.MasterRecon.V09B.mellin_integrand_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.0535658Z info: WeilDefect/MasterRecon/V09B.lean:149:0: 'WeilDefect.MasterRecon.V09B.mellin_derivative_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.0537236Z info: WeilDefect/MasterRecon/V09B.lean:150:0: 'WeilDefect.MasterRecon.V09B.mellin_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.0538925Z info: WeilDefect/MasterRecon/V09B.lean:151:0: 'WeilDefect.MasterRecon.V09B.mellin_entire' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.0540484Z info: WeilDefect/MasterRecon/V09B.lean:152:0: 'WeilDefect.MasterRecon.V09B.mellin_exponential_type' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.0542102Z info: WeilDefect/MasterRecon/V09B.lean:153:0: 'WeilDefect.MasterRecon.V09B.mellin_imaginary_axis' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.0543768Z info: WeilDefect/MasterRecon/V09B.lean:154:0: 'WeilDefect.MasterRecon.V09B.physical_zero_of_mellin_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.0545459Z info: WeilDefect/MasterRecon/V09B.lean:155:0: 'WeilDefect.MasterRecon.V09B.carrier_zero_of_mellin_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.2530788Z ⚠ [8969/8989] Built WeilDefect.MasterRecon.V10B8d (15s)
+2026-11-28T01:21:32.2532040Z warning: WeilDefect/MasterRecon/V10B8d.lean:31:2: Unused tactic linter: `change shift (-a) (shift a f) x = f x` does nothing
+2026-11-28T01:21:32.2532949Z 
+2026-11-28T01:21:32.2533614Z Note: This linter can be disabled with `set_option linter.unusedTactic false`
+2026-11-28T01:21:32.2535036Z warning: WeilDefect/MasterRecon/V10B8d.lean:38:47: `ContinuousLinearMap.one_apply` has been deprecated: Use `one_apply_eq_self` instead
+2026-11-28T01:21:32.2536028Z 
+2026-11-28T01:21:32.2536875Z Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.one_apply` to `one_apply_eq_self x`).
+2026-11-28T01:21:32.2539114Z warning: WeilDefect/MasterRecon/V10B8d.lean:56:6: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+2026-11-28T01:21:32.2540204Z 
+2026-11-28T01:21:32.2540901Z Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+2026-11-28T01:21:32.2542444Z warning: WeilDefect/MasterRecon/V10B8d.lean:113:6: `ContinuousLinearMap.sum_apply` has been deprecated: Use `sum_apply` instead
+2026-11-28T01:21:32.2543331Z 
+2026-11-28T01:21:32.2544152Z Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sum_apply` to `sum_apply x`).
+2026-11-28T01:21:32.2545576Z warning: WeilDefect/MasterRecon/V10B8d.lean:116:13: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+2026-11-28T01:21:32.2546425Z 
+2026-11-28T01:21:32.2547104Z Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+2026-11-28T01:21:32.2549003Z warning: WeilDefect/MasterRecon/V10B8d.lean:117:14: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+2026-11-28T01:21:32.2549819Z 
+2026-11-28T01:21:32.2550496Z Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+2026-11-28T01:21:32.2552019Z info: WeilDefect/MasterRecon/V10B8d.lean:157:0: 'WeilDefect.MasterRecon.V10B8d.shift_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.2553613Z info: WeilDefect/MasterRecon/V10B8d.lean:158:0: 'WeilDefect.MasterRecon.V10B8d.shift_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.2555516Z info: WeilDefect/MasterRecon/V10B8d.lean:159:0: 'WeilDefect.MasterRecon.V10B8d.shift_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.2557235Z info: WeilDefect/MasterRecon/V10B8d.lean:160:0: 'WeilDefect.MasterRecon.V10B8d.shift_adjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.2559070Z info: WeilDefect/MasterRecon/V10B8d.lean:161:0: 'WeilDefect.MasterRecon.V10B8d.shiftPair_selfAdjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.2560826Z info: WeilDefect/MasterRecon/V10B8d.lean:162:0: 'WeilDefect.MasterRecon.V10B8d.shiftPair_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.2562584Z info: WeilDefect/MasterRecon/V10B8d.lean:163:0: 'WeilDefect.MasterRecon.V10B8d.prime_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.2564305Z info: WeilDefect/MasterRecon/V10B8d.lean:164:0: 'WeilDefect.MasterRecon.V10B8d.prime_selfAdjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.2566017Z info: WeilDefect/MasterRecon/V10B8d.lean:165:0: 'WeilDefect.MasterRecon.V10B8d.shift_autocorr' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.2567960Z info: WeilDefect/MasterRecon/V10B8d.lean:166:0: 'WeilDefect.MasterRecon.V10B8d.prime_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.2569852Z info: WeilDefect/MasterRecon/V10B8d.lean:167:0: 'WeilDefect.MasterRecon.V10B8d.prime_outside' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:32.2571571Z info: WeilDefect/MasterRecon/V10B8d.lean:168:0: 'WeilDefect.MasterRecon.V10B8d.prime_literal' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:36.7631573Z ⚠ [8970/8989] Built WeilDefect.MasterRecon.V10B21b (4.5s)
+2026-11-28T01:21:36.7658755Z warning: WeilDefect/MasterRecon/V10B21b.lean:100:4: Unused tactic linter: `change ‖d x‖ ^ 2 ≤ _` does nothing
+2026-11-28T01:21:36.7667722Z 
+2026-11-28T01:21:36.7708157Z Note: This linter can be disabled with `set_option linter.unusedTactic false`
+2026-11-28T01:21:36.7718675Z info: WeilDefect/MasterRecon/V10B21b.lean:124:0: 'WeilDefect.MasterRecon.V10B21b.pointwise_translation' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:36.7748894Z info: WeilDefect/MasterRecon/V10B21b.lean:125:0: 'WeilDefect.MasterRecon.V10B21b.interval_indicator_integrable' depends on axioms: [propext,
+2026-11-28T01:21:36.7767825Z  Classical.choice,
+2026-11-28T01:21:36.7797851Z  Quot.sound]
+2026-11-28T01:21:36.7808546Z info: WeilDefect/MasterRecon/V10B21b.lean:126:0: 'WeilDefect.MasterRecon.V10B21b.majorant_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:36.7838521Z info: WeilDefect/MasterRecon/V10B21b.lean:127:0: 'WeilDefect.MasterRecon.V10B21b.translation_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:36.7858597Z info: WeilDefect/MasterRecon/V10B21b.lean:128:0: 'WeilDefect.MasterRecon.V10B21b.translation_sqrt' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:41.9778955Z ⚠ [8971/8989] Built WeilDefect.MasterRecon.V10B8c (9.9s)
+2026-11-28T01:21:41.9828450Z warning: WeilDefect/MasterRecon/V10B8c.lean:17:33: Variable name `ht` is not explicitly referenced.
+2026-11-28T01:21:41.9829118Z 
+2026-11-28T01:21:41.9829806Z Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+2026-11-28T01:21:41.9830768Z   [apply] _ht
+2026-11-28T01:21:41.9830969Z 
+2026-11-28T01:21:41.9831343Z Note: This linter can be disabled with `set_option linter.unusedVariables false`
+2026-11-28T01:21:41.9832495Z warning: WeilDefect/MasterRecon/V10B8c.lean:84:6: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+2026-11-28T01:21:41.9833272Z 
+2026-11-28T01:21:41.9833918Z Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+2026-11-28T01:21:41.9835492Z info: WeilDefect/MasterRecon/V10B8c.lean:114:0: 'WeilDefect.MasterRecon.V10B8c.expVector_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:41.9837278Z info: WeilDefect/MasterRecon/V10B8c.lean:115:0: 'WeilDefect.MasterRecon.V10B8c.evalRestricted_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:41.9839065Z info: WeilDefect/MasterRecon/V10B8c.lean:116:0: 'WeilDefect.MasterRecon.V10B8c.eval_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:41.9840667Z info: WeilDefect/MasterRecon/V10B8c.lean:117:0: 'WeilDefect.MasterRecon.V10B8c.pole_selfAdjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:41.9842311Z info: WeilDefect/MasterRecon/V10B8c.lean:118:0: 'WeilDefect.MasterRecon.V10B8c.pole_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:41.9843927Z info: WeilDefect/MasterRecon/V10B8c.lean:119:0: 'WeilDefect.MasterRecon.V10B8c.pole_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:41.9845551Z info: WeilDefect/MasterRecon/V10B8c.lean:120:0: 'WeilDefect.MasterRecon.V10B8c.pole_autocorr' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:42.9781356Z ✖ [8972/8989] Building WeilDefect.MasterRecon.V10B21c (6.3s)
+2026-11-28T01:21:42.9815674Z trace: .> LEAN_PATH=/home/runner/work/weil-lab/weil-lab/.lake/packages/Cli/.lake/build/lib/lean:/home/runner/work/weil-lab/weil-lab/.lake/packages/batteries/.lake/build/lib/lean:/home/runner/work/weil-lab/weil-lab/.lake/packages/Qq/.lake/build/lib/lean:/home/runner/work/weil-lab/weil-lab/.lake/packages/aesop/.lake/build/lib/lean:/home/runner/work/weil-lab/weil-lab/.lake/packages/proofwidgets/.lake/build/lib/lean:/home/runner/work/weil-lab/weil-lab/.lake/packages/importGraph/.lake/build/lib/lean:/home/runner/work/weil-lab/weil-lab/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/runner/work/weil-lab/weil-lab/.lake/packages/plausible/.lake/build/lib/lean:/home/runner/work/weil-lab/weil-lab/.lake/packages/mathlib/.lake/build/lib/lean:/home/runner/work/weil-lab/weil-lab/.lake/build/lib/lean /home/runner/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean /home/runner/work/weil-lab/weil-lab/WeilDefect/MasterRecon/V10B21c.lean -o /home/runner/work/weil-lab/weil-lab/.lake/build/lib/lean/WeilDefect/MasterRecon/V10B21c.olean -i /home/runner/work/weil-lab/weil-lab/.lake/build/lib/lean/WeilDefect/MasterRecon/V10B21c.ilean -c /home/runner/work/weil-lab/weil-lab/.lake/build/ir/WeilDefect/MasterRecon/V10B21c.c --setup /home/runner/work/weil-lab/weil-lab/.lake/build/ir/WeilDefect/MasterRecon/V10B21c.setup.json --json
+2026-11-28T01:21:42.9837179Z warning: WeilDefect/MasterRecon/V10B21c.lean:22:35: Variable name `hr` is not explicitly referenced.
+2026-11-28T01:21:42.9867608Z 
+2026-11-28T01:21:42.9916443Z Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+2026-11-28T01:21:42.9937737Z   [apply] _hr
+2026-11-28T01:21:42.9977556Z 
+2026-11-28T01:21:43.0008054Z Note: This linter can be disabled with `set_option linter.unusedVariables false`
+2026-11-28T01:21:43.0039622Z error: WeilDefect/MasterRecon/V10B21c.lean:48:2: linarith failed to find a contradiction
+2026-11-28T01:21:43.0048015Z r : ℝ
+2026-11-28T01:21:43.0068377Z hr : 1 ≤ r
+2026-11-28T01:21:43.0097872Z h : Real.exp (-2 * r) ≤ Real.exp (-2 * 1)
+2026-11-28T01:21:43.0107986Z h' : 2 * 1 / 3 ≤ 1 - Real.exp (-2 * 1)
+2026-11-28T01:21:43.0137982Z a✝ : 1 - Real.exp (-2 * r) < 2 / 3
+2026-11-28T01:21:43.0158545Z ⊢ False
+2026-11-28T01:21:43.0187693Z failed
+2026-11-28T01:21:43.0198605Z info: WeilDefect/MasterRecon/V10B21c.lean:78:2: Try this:
+2026-11-28T01:21:43.0217689Z   [apply] abel_nf
+2026-11-28T01:21:43.0247870Z error: WeilDefect/MasterRecon/V10B21c.lean:75:44: unsolved goals
+2026-11-28T01:21:43.0257939Z f : ↥FullL2
+2026-11-28T01:21:43.0287865Z r : ℝ
+2026-11-28T01:21:43.0307836Z ⊢ 2 • Real.exp (-1 • 2 * r) • f +
+2026-11-28T01:21:43.0338112Z       (-1 • Real.exp (-1 • r / 2) • (shift r) f + -1 • Real.exp (-1 • r / 2) • (shift (-1 • r)) f) =
+2026-11-28T01:21:43.0347994Z     2 • Real.exp (-1 • 2 * r) • f +
+2026-11-28T01:21:43.0367905Z       (-1 • Real.exp (-1 • r / 2) • (shift r) f +
+2026-11-28T01:21:43.0397951Z         (-1 • Real.exp (-1 • r / 2) • (shift (-1 • r)) f +
+2026-11-28T01:21:43.0408153Z           (-1 • (2 * Real.exp (-1 • r / 2)) • f + 2 • Real.exp (-1 • r / 2) • f)))
+2026-11-28T01:21:43.0438138Z warning: WeilDefect/MasterRecon/V10B21c.lean:87:47: Variable name `hC` is not explicitly referenced.
+2026-11-28T01:21:43.0487515Z 
+2026-11-28T01:21:43.0518255Z Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+2026-11-28T01:21:43.0547717Z   [apply] _hC
+2026-11-28T01:21:43.0577516Z 
+2026-11-28T01:21:43.0607961Z Note: This linter can be disabled with `set_option linter.unusedVariables false`
+2026-11-28T01:21:43.0638001Z error: WeilDefect/MasterRecon/V10B21c.lean:119:4: linarith failed to find a contradiction
+2026-11-28T01:21:43.0667702Z case h1
+2026-11-28T01:21:43.0697832Z f : ↥FullL2
+2026-11-28T01:21:43.0727857Z C r : ℝ
+2026-11-28T01:21:43.0757845Z hC : 0 ≤ C
+2026-11-28T01:21:43.0780580Z hr : 0 < r
+2026-11-28T01:21:43.0817999Z hr1 : r ≤ 1
+2026-11-28T01:21:43.0838331Z hshift : ‖(shift r) f - f‖ ≤ C * √r
+2026-11-28T01:21:43.0877764Z hd : 0 < denominator r
+2026-11-28T01:21:43.0897828Z hs : 0 < √r
+2026-11-28T01:21:43.0898252Z h : ‖numerator f r‖ ≤ 3 * r * ‖f‖ + 2 * C * √r
+2026-11-28T01:21:43.0898744Z he : 9 / 2 * ‖f‖ + 3 * C * (√r)⁻¹ ≥ 0
+2026-11-28T01:21:43.0899640Z hh : (9 / 2 * ‖f‖ + 3 * C * (√r)⁻¹) * (2 * r / 3) ≤ (9 / 2 * ‖f‖ + 3 * C * (√r)⁻¹) * denominator r
+2026-11-28T01:21:43.0900458Z a✝ : (9 * ‖f‖ * √r + 2 * 3 * C) * r < 3 * √r * (‖f‖ * 3 * r + 2 * C * √r)
+2026-11-28T01:21:43.0900992Z ⊢ False
+2026-11-28T01:21:43.0901251Z failed
+2026-11-28T01:21:43.0902219Z info: WeilDefect/MasterRecon/V10B21c.lean:145:0: 'WeilDefect.MasterRecon.V10B21c.denominator_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:43.0938530Z info: WeilDefect/MasterRecon/V10B21c.lean:146:0: 'WeilDefect.MasterRecon.V10B21c.denominator_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:43.0968806Z info: WeilDefect/MasterRecon/V10B21c.lean:147:0: 'WeilDefect.MasterRecon.V10B21c.denominator_near' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:43.0989608Z info: WeilDefect/MasterRecon/V10B21c.lean:148:0: 'WeilDefect.MasterRecon.V10B21c.denominator_far' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+2026-11-28T01:21:43.1028491Z info: WeilDefect/MasterRecon/V10B21c.lean:149:0: 'WeilDefect.MasterRecon.V10B21c.coefficient_near' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:43.1058500Z info: WeilDefect/MasterRecon/V10B21c.lean:150:0: 'WeilDefect.MasterRecon.V10B21c.numerator_split' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+2026-11-28T01:21:43.1088673Z info: WeilDefect/MasterRecon/V10B21c.lean:151:0: 'WeilDefect.MasterRecon.V10B21c.opposite_shift_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:43.1110258Z info: WeilDefect/MasterRecon/V10B21c.lean:152:0: 'WeilDefect.MasterRecon.V10B21c.numerator_near' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+2026-11-28T01:21:43.1148504Z info: WeilDefect/MasterRecon/V10B21c.lean:153:0: 'WeilDefect.MasterRecon.V10B21c.action_near' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+2026-11-28T01:21:43.1168541Z info: WeilDefect/MasterRecon/V10B21c.lean:154:0: 'WeilDefect.MasterRecon.V10B21c.action_far' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+2026-11-28T01:21:46.1842191Z ✔ [8976/8989] Built WeilDefect.MasterRecon.V10B17Defs (4.2s)
+2026-11-28T01:21:48.3958889Z ⚠ [8977/8989] Built WeilDefect.MasterRecon.V10B50a (6.4s)
+2026-11-28T01:21:48.3988777Z warning: WeilDefect/MasterRecon/V10B50a.lean:49:6: `ContinuousLinearMap.sub_apply` has been deprecated: Use `sub_apply` instead
+2026-11-28T01:21:48.4045471Z 
+2026-11-28T01:21:48.4068802Z Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.sub_apply` to `sub_apply x`).
+2026-11-28T01:21:48.4128641Z info: WeilDefect/MasterRecon/V10B50a.lean:75:0: 'WeilDefect.MasterRecon.V10B50a.moment_literal' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:48.4158728Z info: WeilDefect/MasterRecon/V10B50a.lean:76:0: 'WeilDefect.MasterRecon.V10B50a.eval_literal' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:48.4248516Z info: WeilDefect/MasterRecon/V10B50a.lean:77:0: 'WeilDefect.MasterRecon.V10B50a.pole_literal' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:48.4308634Z info: WeilDefect/MasterRecon/V10B50a.lean:78:0: 'WeilDefect.MasterRecon.V10B50a.adjoint_span_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:52.2042996Z ⚠ [8978/8989] Built WeilDefect.MasterRecon.V10B8e (10s)
+2026-11-28T01:21:52.2049099Z warning: WeilDefect/MasterRecon/V10B8e.lean:117:13: `ContinuousLinearMap.one_apply` has been deprecated: Use `one_apply_eq_self` instead
+2026-11-28T01:21:52.2050270Z 
+2026-11-28T01:21:52.2051422Z Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.one_apply` to `one_apply_eq_self x`).
+2026-11-28T01:21:52.2053220Z warning: WeilDefect/MasterRecon/V10B8e.lean:127:6: `ContinuousLinearMap.add_apply` has been deprecated: Use `add_apply` instead
+2026-11-28T01:21:52.2054269Z 
+2026-11-28T01:21:52.2055116Z Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.add_apply` to `add_apply x`).
+2026-11-28T01:21:52.2056906Z warning: WeilDefect/MasterRecon/V10B8e.lean:127:36: `ContinuousLinearMap.one_apply` has been deprecated: Use `one_apply_eq_self` instead
+2026-11-28T01:21:52.2058129Z 
+2026-11-28T01:21:52.2059014Z Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.one_apply` to `one_apply_eq_self x`).
+2026-11-28T01:21:52.2061377Z info: WeilDefect/MasterRecon/V10B8e.lean:135:0: 'WeilDefect.MasterRecon.V10B8e.spectralPhysical_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:52.2063708Z info: WeilDefect/MasterRecon/V10B8e.lean:136:0: 'WeilDefect.MasterRecon.V10B8e.spectralPhysical_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:52.2065959Z info: WeilDefect/MasterRecon/V10B8e.lean:137:0: 'WeilDefect.MasterRecon.V10B8e.realMultiplier_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:52.2068243Z info: WeilDefect/MasterRecon/V10B8e.lean:138:0: 'WeilDefect.MasterRecon.V10B8e.realMultiplier_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:52.2070482Z info: WeilDefect/MasterRecon/V10B8e.lean:139:0: 'WeilDefect.MasterRecon.V10B8e.realMultiplier_symmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:52.2072795Z info: WeilDefect/MasterRecon/V10B8e.lean:140:0: 'WeilDefect.MasterRecon.V10B8e.realMultiplier_selfAdjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:52.2075251Z info: WeilDefect/MasterRecon/V10B8e.lean:141:0: 'WeilDefect.MasterRecon.V10B8e.correction_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:52.2077547Z info: WeilDefect/MasterRecon/V10B8e.lean:142:0: 'WeilDefect.MasterRecon.V10B8e.correction_selfAdjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:52.2079726Z info: WeilDefect/MasterRecon/V10B8e.lean:143:0: 'WeilDefect.MasterRecon.V10B8e.correction_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:52.2081812Z info: WeilDefect/MasterRecon/V10B8e.lean:144:0: 'WeilDefect.MasterRecon.V10B8e.arch_selfAdjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:52.2083863Z info: WeilDefect/MasterRecon/V10B8e.lean:145:0: 'WeilDefect.MasterRecon.V10B8e.arch_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:53.4076045Z ℹ [8979/8989] Built WeilDefect.MasterRecon.V10B50b (5.0s)
+2026-11-28T01:21:53.4077580Z info: WeilDefect/MasterRecon/V10B50b.lean:48:0: 'WeilDefect.MasterRecon.V10B50b.affine_support_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:53.4079384Z info: WeilDefect/MasterRecon/V10B50b.lean:49:0: 'WeilDefect.MasterRecon.V10B50b.reversible_rows' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:53.7079134Z ⚠ [8980/8989] Built WeilDefect.MasterRecon.V10B52b (5.4s)
+2026-11-28T01:21:53.7079718Z warning: WeilDefect/MasterRecon/V10B52b.lean:14:37: Variable name `ht` is not explicitly referenced.
+2026-11-28T01:21:53.7080079Z 
+2026-11-28T01:21:53.7080491Z Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+2026-11-28T01:21:53.7081033Z   [apply] _ht
+2026-11-28T01:21:53.7081148Z 
+2026-11-28T01:21:53.7081349Z Note: This linter can be disabled with `set_option linter.unusedVariables false`
+2026-11-28T01:21:53.7082130Z info: WeilDefect/MasterRecon/V10B52b.lean:81:0: 'WeilDefect.MasterRecon.V10B52b.monomial_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:53.7083128Z info: WeilDefect/MasterRecon/V10B52b.lean:82:0: 'WeilDefect.MasterRecon.V10B52b.polynomial_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:53.7084102Z info: WeilDefect/MasterRecon/V10B52b.lean:83:0: 'WeilDefect.MasterRecon.V10B52b.pairing_monomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:53.7085044Z info: WeilDefect/MasterRecon/V10B52b.lean:84:0: 'WeilDefect.MasterRecon.V10B52b.pairing_legendre' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:53.7086003Z info: WeilDefect/MasterRecon/V10B52b.lean:85:0: 'WeilDefect.MasterRecon.V10B52b.original_moment_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:57.0199083Z ℹ [8981/8989] Built WeilDefect.MasterRecon.V10B8f (4.8s)
+2026-11-28T01:21:57.0208610Z info: WeilDefect/MasterRecon/V10B8f.lean:51:2: Try this:
+2026-11-28T01:21:57.0228040Z   [apply] ring_nf
+2026-11-28T01:21:57.0257921Z   
+2026-11-28T01:21:57.0288145Z   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+2026-11-28T01:21:57.0288818Z     
+2026-11-28T01:21:57.0297068Z   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+2026-11-28T01:21:57.0303812Z info: WeilDefect/MasterRecon/V10B8f.lean:116:0: 'WeilDefect.MasterRecon.V10B8f.gamma_ne_neg_nat' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:57.0310332Z info: WeilDefect/MasterRecon/V10B8f.lean:117:0: 'WeilDefect.MasterRecon.V10B8f.digamma_analytic' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:57.0312407Z info: WeilDefect/MasterRecon/V10B8f.lean:118:0: 'WeilDefect.MasterRecon.V10B8f.gammaSymbol_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:57.0314797Z info: WeilDefect/MasterRecon/V10B8f.lean:119:0: 'WeilDefect.MasterRecon.V10B8f.residual_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:57.0316762Z info: WeilDefect/MasterRecon/V10B8f.lean:120:0: 'WeilDefect.MasterRecon.V10B8f.gammaSymbol_reparam' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:57.0348642Z info: WeilDefect/MasterRecon/V10B8f.lean:121:0: 'WeilDefect.MasterRecon.V10B8f.weight_reparam' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:57.0378495Z info: WeilDefect/MasterRecon/V10B8f.lean:122:0: 'WeilDefect.MasterRecon.V10B8f.log_comparison' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:57.0408570Z info: WeilDefect/MasterRecon/V10B8f.lean:123:0: 'WeilDefect.MasterRecon.V10B8f.tail_residual' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:57.0410625Z info: WeilDefect/MasterRecon/V10B8f.lean:124:0: 'WeilDefect.MasterRecon.V10B8f.residual_of_stirling' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:58.0200221Z ⚠ [8985/8989] Built WeilDefect.MasterRecon.V10B61a (4.2s)
+2026-11-28T01:21:58.0200788Z info: WeilDefect/MasterRecon/V10B61a.lean:52:34: Try this:
+2026-11-28T01:21:58.0201191Z   [apply] ring_nf
+2026-11-28T01:21:58.0201447Z   
+2026-11-28T01:21:58.0201856Z   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+2026-11-28T01:21:58.0202344Z     
+2026-11-28T01:21:58.0202945Z   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+2026-11-28T01:21:58.0203759Z warning: WeilDefect/MasterRecon/V10B61a.lean:52:30: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+2026-11-28T01:21:58.0204119Z 
+2026-11-28T01:21:58.0204362Z Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+2026-11-28T01:21:58.0205123Z info: WeilDefect/MasterRecon/V10B61a.lean:122:0: 'WeilDefect.MasterRecon.V10B61a.projection_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:58.0206113Z info: WeilDefect/MasterRecon/V10B61a.lean:123:0: 'WeilDefect.MasterRecon.V10B61a.projection_pair_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:58.0207090Z info: WeilDefect/MasterRecon/V10B61a.lean:124:0: 'WeilDefect.MasterRecon.V10B61a.pointwise_load' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:58.0208266Z info: WeilDefect/MasterRecon/V10B61a.lean:125:0: 'WeilDefect.MasterRecon.V10B61a.exp_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:58.0209235Z info: WeilDefect/MasterRecon/V10B61a.lean:126:0: 'WeilDefect.MasterRecon.V10B61a.literal_pole_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:21:58.0210444Z info: WeilDefect/MasterRecon/V10B61a.lean:127:0: 'WeilDefect.MasterRecon.V10B61a.literal_pole_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:01.9231220Z ℹ [8986/8989] Built WeilDefect.MasterRecon.V10B64a (3.9s)
+2026-11-28T01:22:01.9231962Z info: WeilDefect/MasterRecon/V10B64a.lean:57:0: 'WeilDefect.MasterRecon.V10B64a.bank_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:01.9232946Z info: WeilDefect/MasterRecon/V10B64a.lean:58:0: 'WeilDefect.MasterRecon.V10B64a.retained_original_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:01.9234116Z info: WeilDefect/MasterRecon/V10B64a.lean:59:0: 'WeilDefect.MasterRecon.V10B64a.retained_literal_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:06.9283190Z ⚠ [8987/8989] Built WeilDefect.MasterRecon.V10B68a (5.0s)
+2026-11-28T01:22:06.9284125Z warning: WeilDefect/MasterRecon/V10B68a.lean:26:18: `if_true` has been deprecated: Use `ite_true` instead
+2026-11-28T01:22:06.9285536Z warning: WeilDefect/MasterRecon/V10B68a.lean:28:18: `if_false` has been deprecated: Use `ite_false` instead
+2026-11-28T01:22:06.9286724Z warning: WeilDefect/MasterRecon/V10B68a.lean:61:6: `ContinuousLinearMap.smul_apply` has been deprecated: Use `smul_apply` instead
+2026-11-28T01:22:06.9287656Z 
+2026-11-28T01:22:06.9288251Z Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.smul_apply` to `smul_apply x`).
+2026-11-28T01:22:06.9289435Z warning: WeilDefect/MasterRecon/V10B68a.lean:109:18: `if_true` has been deprecated: Use `ite_true` instead
+2026-11-28T01:22:06.9290469Z warning: WeilDefect/MasterRecon/V10B68a.lean:110:18: `if_false` has been deprecated: Use `ite_false` instead
+2026-11-28T01:22:06.9291527Z warning: WeilDefect/MasterRecon/V10B68a.lean:131:23: `if_neg` has been deprecated: Use `ite_eq_right` instead
+2026-11-28T01:22:06.9292564Z warning: WeilDefect/MasterRecon/V10B68a.lean:134:23: `if_pos` has been deprecated: Use `ite_eq_left` instead
+2026-11-28T01:22:06.9293617Z warning: WeilDefect/MasterRecon/V10B68a.lean:140:22: `if_pos` has been deprecated: Use `ite_eq_left` instead
+2026-11-28T01:22:06.9294671Z warning: WeilDefect/MasterRecon/V10B68a.lean:141:22: `if_neg` has been deprecated: Use `ite_eq_right` instead
+2026-11-28T01:22:06.9295969Z info: WeilDefect/MasterRecon/V10B68a.lean:164:0: 'WeilDefect.MasterRecon.V10B68a.test_cont' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:06.9297677Z info: WeilDefect/MasterRecon/V10B68a.lean:165:0: 'WeilDefect.MasterRecon.V10B68a.factor_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:06.9299211Z info: WeilDefect/MasterRecon/V10B68a.lean:166:0: 'WeilDefect.MasterRecon.V10B68a.row_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:06.9300741Z info: WeilDefect/MasterRecon/V10B68a.lean:167:0: 'WeilDefect.MasterRecon.V10B68a.row_literal' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:06.9302308Z info: WeilDefect/MasterRecon/V10B68a.lean:168:0: 'WeilDefect.MasterRecon.V10B68a.trial_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:06.9303889Z info: WeilDefect/MasterRecon/V10B68a.lean:169:0: 'WeilDefect.MasterRecon.V10B68a.physical_matrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:06.9305474Z info: WeilDefect/MasterRecon/V10B68a.lean:170:0: 'WeilDefect.MasterRecon.V10B68a.ker_retained' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:06.9307094Z info: WeilDefect/MasterRecon/V10B68a.lean:171:0: 'WeilDefect.MasterRecon.V10B68a.physical_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:06.9309066Z info: WeilDefect/MasterRecon/V10B68a.lean:172:0: 'WeilDefect.MasterRecon.V10B68a.physical_section' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:11.8335124Z ℹ [8988/8989] Built WeilDefect.MasterRecon.V10B69a (4.9s)
+2026-11-28T01:22:11.8338834Z info: WeilDefect/MasterRecon/V10B69a.lean:92:0: 'WeilDefect.MasterRecon.V10B69a.D_ne' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:11.8340346Z info: WeilDefect/MasterRecon/V10B69a.lean:93:0: 'WeilDefect.MasterRecon.V10B69a.divided_physical' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:11.8341922Z info: WeilDefect/MasterRecon/V10B69a.lean:94:0: 'WeilDefect.MasterRecon.V10B69a.divided_section' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:11.8343387Z info: WeilDefect/MasterRecon/V10B69a.lean:95:0: 'WeilDefect.MasterRecon.V10B69a.J_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:11.8344852Z info: WeilDefect/MasterRecon/V10B69a.lean:96:0: 'WeilDefect.MasterRecon.V10B69a.pole_physical_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:11.8346406Z info: WeilDefect/MasterRecon/V10B69a.lean:97:0: 'WeilDefect.MasterRecon.V10B69a.row_annihilates_tail' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:11.8348345Z info: WeilDefect/MasterRecon/V10B69a.lean:98:0: 'WeilDefect.MasterRecon.V10B69a.row_subtraction_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+2026-11-28T01:22:12.0335809Z Some required targets logged failures:
+2026-11-28T01:22:12.0336375Z - WeilDefect.MasterRecon.V10B20a
+2026-11-28T01:22:12.0336803Z - WeilDefect.MasterRecon.V10B21c
+2026-11-28T01:22:12.0340707Z error: build failed
+2026-11-28T01:22:12.0676133Z ##[error]Process completed with exit code 1.
+2026-11-28T01:22:12.0764277Z ##[group]Run actions/upload-artifact@v4
+2026-11-28T01:22:12.0764552Z with:
+2026-11-28T01:22:12.0764768Z   name: master-recon-v10b48-coverage
+2026-11-28T01:22:12.0765039Z   path: recon-v10b48-evidence/
+2026-11-28T01:22:12.0765287Z   if-no-files-found: warn
+2026-11-28T01:22:12.0765514Z   compression-level: 6
+2026-11-28T01:22:12.0765724Z   overwrite: false
+2026-11-28T01:22:12.0765944Z   include-hidden-files: false
+2026-11-28T01:22:12.0766171Z ##[endgroup]
+2026-11-28T01:22:12.2453442Z (node:3922) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-28T01:22:12.2454777Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-28T01:22:12.2541878Z With the provided path, there will be 5 files uploaded
+2026-11-28T01:22:12.2548189Z Artifact name is valid!
+2026-11-28T01:22:12.2548977Z Root directory input is valid!
+2026-11-28T01:22:12.5729496Z Beginning upload of artifact content to blob storage
+2026-11-28T01:22:12.6086871Z (node:3922) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-28T01:22:12.8178181Z Uploaded bytes 12987
+2026-11-28T01:22:12.8799830Z Finished uploading artifact content to blob storage!
+2026-11-28T01:22:12.8801270Z SHA256 digest of uploaded artifact zip is 00903d6160e6b35dc7c66d5b0455dbefad904213df9bbfbd0cd05501d8d80e39
+2026-11-28T01:22:12.8802414Z Finalizing artifact upload
+2026-11-28T01:22:13.2525608Z Artifact master-recon-v10b48-coverage.zip successfully finalized. Artifact ID 15242042862
+2026-11-28T01:22:13.2527099Z Artifact master-recon-v10b48-coverage has been successfully uploaded! Final size is 12987 bytes. Artifact ID is 15242042862
+2026-11-28T01:22:13.2534231Z Artifact download URL: https://github.com/monocap-tech/weil-lab/actions/runs/46092336263/artifacts/15242042862
+2026-11-28T01:22:13.2743655Z Post job cleanup.
+2026-11-28T01:22:13.3621952Z [command]/usr/bin/git version
+2026-11-28T01:22:13.3664352Z git version 2.56.1
+2026-11-28T01:22:13.3702561Z Temporarily overriding HOME='/home/runner/work/_temp/6cc97bae-9f9b-4449-9d3c-1558e79ed64d' before making global git config changes
+2026-11-28T01:22:13.3704083Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-28T01:22:13.3709076Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/weil-lab/weil-lab
+2026-11-28T01:22:13.3750597Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-28T01:22:13.3785205Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-28T01:22:13.4088283Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-28T01:22:13.4111825Z http.https://github.com/.extraheader
+2026-11-28T01:22:13.4123146Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-28T01:22:13.4172742Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-28T01:22:13.4448966Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-28T01:22:13.4492448Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-28T01:22:13.4911191Z Cleaning up orphan processes
+2026-11-28T01:22:13.5280670Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
