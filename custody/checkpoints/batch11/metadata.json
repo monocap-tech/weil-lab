@@ -1,0 +1,20 @@
+{
+  "id": 15162945518,
+  "node_id": "MDg6QXJ0aWZhY3QxNTE2Mjk0NTUxOA==",
+  "name": "nf618-native-batch11-checkpoint",
+  "size_in_bytes": 76198618,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15162945518",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15162945518/zip",
+  "expired": false,
+  "digest": "sha256:1c89e4d11753faaedd07a61a6f4384b8825012c37ece4170a707c85758f39f44",
+  "created_at": "2026-11-27T00:24:05Z",
+  "updated_at": "2026-11-27T00:24:05Z",
+  "expires_at": "2027-02-25T00:12:24Z",
+  "workflow_run": {
+    "id": 45915373829,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "research/nf618-native-session11-12",
+    "head_sha": "1e15231763508882c69180aae5a47614f3021409"
+  }
+}
