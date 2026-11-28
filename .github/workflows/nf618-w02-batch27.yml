@@ -1,4 +1,4 @@
-name: NF618 W02 Batch27 native production
+name: NF618 W02 Batch27 phase identity repair
 on:
   push:
     branches: [formalization/nf618-w02-batch27]

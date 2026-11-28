@@ -182,7 +182,7 @@ with archive(sys.argv[2],'2327fbf952d4894c9f28f81cad9e94d226c93131d9ef2fafa14c35
         need(literal==',\n    '.join('⟨'+','.join(f'({x}:ℚ)/(neutralNF616Q:ℚ)' for x in row)+'⟩' for row in rows),'literal roundtrip')
         a=phasevals[q,r];pos=zmul(real(1),a);negend=zmul(real(1),conj(a));z=(ZERO,mul(pi(),exact(2*f)))
         n=f'nf618B27Slot{i:05d}';pn='nf618B27'+tag(q,r);file=f'Slot{i:05d}';delta=6*abs(f)
-        src=f'''import {mod}.Phase{tag(q,r)}
+        phase_identity = 'by rfl' if turn == 0 else f'''by\n  unfold nf618HybridPhase\n  rw [neutralNF592Phase_identity,neutralNF592Phase_identity]\n  rw [show neutralNF592Reduced {rat(f)}=neutralNF592Reduced {rat(rep)} from by decide +kernel]'''\n        src=f'''import {mod}.Phase{tag(q,r)}
 import {mod}.Unit
 import WeilDefect.Generated.NF690.Bank
 {head}
@@ -191,10 +191,7 @@ def {n}LiteralZ : NF591Rect := {rect(z)}
 def {n}LiteralPos : NF591Rect := {rect(pos)}
 def {n}LiteralNeg : NF591Rect := {rect(negend)}
 def {n}Cache : NF617MomentCache := ⟨{n}LiteralZ,{n}LiteralPos,{n}LiteralNeg⟩
-theorem {n}PhaseIdentity : nf618HybridPhase {rat(f)} = nf618HybridPhase {rat(rep)} := by
-  unfold nf618HybridPhase
-  rw [neutralNF592Phase_identity,neutralNF592Phase_identity]
-  rw [show neutralNF592Reduced {rat(f)}=neutralNF592Reduced {rat(rep)} from by decide +kernel]
+theorem {n}PhaseIdentity : nf618HybridPhase {rat(f)} = nf618HybridPhase {rat(rep)} := {phase_identity}
 theorem {n}ZEq : neutralNF615LambdaRect nf632Pi 0 {rat(f)} neutralNF616Q = {n}LiteralZ := by
   apply neutralNF633RectEq_sound
   decide +kernel
