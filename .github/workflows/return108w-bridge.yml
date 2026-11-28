@@ -1,4 +1,4 @@
-name: RETURN109-E3 actual bounded analysis (channel projection repair)
+name: RETURN109-E4 actual bounded analysis (direct inner product repair)
 on:
   push:
     branches: [research/return108s-kernel-core]
@@ -34,6 +34,11 @@ jobs:
           lean --version
       - name: Fetch mathlib cache
         run: lake exe cache get
+      - name: Build repaired channel supplier first
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake build WeilDefect.MasterRecon.V10B6c 2>&1 | tee return109e4-pilot.log
       - name: Build literal bridge dependencies
         shell: bash
         run: |
@@ -90,7 +95,7 @@ jobs:
               else:
                   assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
               print("PASS", q)
-          print("RETURN109-E3 repaired supplier strict axiom audit PASS 14/14")
+          print("RETURN109-E4 repaired supplier strict axiom audit PASS 14/14")
           PY
           lake env lean WeilDefect/MasterReturn/LogCarrierBoundedAnalysis.lean 2>&1 | tee return109e-lean.log
           python3 - <<'PY'
@@ -107,13 +112,13 @@ jobs:
               else:
                   assert {x.strip() for x in m.group(1).split(",") if x.strip()} <= allowed, q
               print("PASS", q)
-          print("RETURN109-E3 strict axiom audit PASS 5/5")
+          print("RETURN109-E4 strict axiom audit PASS 5/5")
           PY
       - name: Preserve integration evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: return109e3-integration
+          name: return109e4-integration
           path: |
             return108w-closure.json
             return108w-closure.log
@@ -122,6 +127,7 @@ jobs:
             return109e1-supplier.log
             return109e2-supplier.log
             return109e3-supplier.log
+            return109e4-pilot.log
             WeilDefect/MasterRecon/V10B6c.lean
             WeilDefect/MasterRecon/V10B6a.lean
             WeilDefect/MasterRecon/V10B5d.lean
