@@ -1,0 +1,16 @@
+{
+  "id": 14565840709,
+  "name": "source696",
+  "sha256": "ccfdfabd15e85e5564c7c5bf7c88de6a9f270174dd3e16f490f50c750173c81e",
+  "producer_run": 44593660541,
+  "producer_conclusion": "success",
+  "bytes": 15841822,
+  "status": "BYTE_PASS",
+  "chunks": [
+    {
+      "file": "part0000.bin",
+      "sha256": "ccfdfabd15e85e5564c7c5bf7c88de6a9f270174dd3e16f490f50c750173c81e",
+      "bytes": 15841822
+    }
+  ]
+}
