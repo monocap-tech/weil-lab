@@ -1,5 +1,7 @@
 # Weil Defect
 
+For a provider-neutral restart, begin with [AGENTS.md](AGENTS.md). It points to the native governing ledgers and exact evidence checks; this README does not replace a live branch/run reconciliation.
+
 A public research repository for a defect-theoretic analysis of **Weil's quadratic
 form**, its finite negative-index structure, spectral screening, persistent
 negative directions, and compact-window neutral modes.
