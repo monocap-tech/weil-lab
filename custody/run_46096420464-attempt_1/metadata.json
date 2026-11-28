@@ -1,0 +1,20 @@
+{
+  "id": 15244535323,
+  "node_id": "MDg6QXJ0aWZhY3QxNTI0NDUzNTMyMw==",
+  "name": "nf618-w02-batch25",
+  "size_in_bytes": 1759405,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15244535323",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15244535323/zip",
+  "expired": false,
+  "digest": "sha256:5bd92da8276409100a0f6481d530a4fb121bfff44d5b25e3b0dc16c35f686099",
+  "created_at": "2026-11-28T02:21:34Z",
+  "updated_at": "2026-11-28T02:21:34Z",
+  "expires_at": "2027-02-26T02:06:29Z",
+  "workflow_run": {
+    "id": 46096420464,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "formalization/nf618-w02-batch25",
+    "head_sha": "93b4c78ee91fd6824156b95cba4214e2ef5d1fac"
+  }
+}
