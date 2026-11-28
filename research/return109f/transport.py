@@ -2,15 +2,15 @@
 """Authenticated transport adapter for the unchanged F6R generator."""
 import hashlib, importlib.util, json, pathlib, sys
 ROOT = pathlib.Path(__file__).resolve().parent
-CANONICAL = "3ffc6dfb7d3ec42a050fff2c1e2f858ff6c85c79"
+CANONICAL = "cd8d611e494e2e1e49a466603be3c2bc7b9b3f48"
 BUNDLES = {
-    "bundle-1.json": "639ca7ae719c6f01465528979f79af530c85b5b0",
-    "bundle-2.json": "5b7e22a0f392530ebc253042b23a791e1a171344",
-    "bundle-3.json": "51890d2f9ac650571f562ccebd82bebc1b6160af",
+    "bundle-1.json": "14a7cfad34be79b497dba88c677cfa4f58518fc9",
+    "bundle-2.json": "17e815554ac56dc379819c805151398c2877bc2f",
+    "bundle-3.json": "081f23f01e52dae734ef696ca49817509e1f9d8e",
 }
 SCRIPTS = {
-    "prepare_f_assembly.py": "62febd704f73cb842c184ed2eb1b6588b8725631",
-    "audit_f_stage.py": "d0a36b619ca4fb77dfcbfcb024b56ae05e836936",
+    "prepare_f_assembly.py": "695f04e1bf24d812f55eab4dd62ec703646667f2",
+    "audit_f_stage.py": "2b545942dab479d7c3cec0f774ec16c0abd39ea9",
     "test_f6r.py": "73fe3934d514f970380b364c0086d5dc6945ea8b",
 }
 def digest(b):
@@ -53,7 +53,7 @@ def main():
         return b
     gen.read = read
     plan_key = "research/master-return-109f/F6_STAGED_AUDIT.json"
-    plan_bytes = read(ROOT, plan_key, "734de9581c2c23a37cdbd92895606d9681294911")
+    plan_bytes = read(ROOT, plan_key, "49ba17ce959659f8ac458865346ff2a0340f3df9")
     sys.argv = ["prepare_f_assembly.py", str(base), str(ROOT), str(out)]
     gen.main()
     assert used == set(files), sorted(set(files)-used)
