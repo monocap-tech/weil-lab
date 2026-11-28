@@ -1,0 +1,20 @@
+{
+  "id": 15242965311,
+  "node_id": "MDg6QXJ0aWZhY3QxNTI0Mjk2NTMxMQ==",
+  "name": "nf618-w02-guard-digits-evidence",
+  "size_in_bytes": 14744139,
+  "url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15242965311",
+  "archive_download_url": "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/15242965311/zip",
+  "expired": false,
+  "digest": "sha256:0efe486565c98233412fcf867ef0f0539997b009a627addfa2581a26d32df290",
+  "created_at": "2026-11-28T01:37:34Z",
+  "updated_at": "2026-11-28T01:37:34Z",
+  "expires_at": "2027-02-26T01:28:29Z",
+  "workflow_run": {
+    "id": 46093279417,
+    "repository_id": 1384322921,
+    "head_repository_id": 1384322921,
+    "head_branch": "formalization/nf618-w02-native-gate",
+    "head_sha": "25d87d198d2a4a6258561cdeb6a64c1a310b388a"
+  }
+}
