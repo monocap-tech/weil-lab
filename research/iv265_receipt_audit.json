@@ -1,0 +1,49 @@
+{
+  "parent": "6e3f76a62371328fc626d3a49ea3baccd23b8253",
+  "classification": "Executed exact BigInt receipt audit; Python replay wrapper supplied but not independently executed; no new factor, correction, or Schur sign.",
+  "results": [
+    {
+      "parity": 0,
+      "source_blob": "d129e96bd82e57260c1280d8f0ea76d3d1e5600b",
+      "surplus": "6322444572833/879609302220800",
+      "surplus_plus_eta_numerator": "7202053875053800",
+      "surplus_plus_eta_denominator": "879609302220800000",
+      "factor_sha256": "aff3ad547832c8985e975577e70fbc114346b53c60c469bdabaa71751826a254",
+      "target_sha256": "9fb6016685f25165096adfa1194f2c61517991116035c9c226b22297b659064e",
+      "checks": {
+        "receipt_identity": true,
+        "contiguous": true,
+        "mean_lt4": true,
+        "osc_lt600": true,
+        "gt008": true,
+        "gt0082": false,
+        "inverse_lt122": false
+      }
+    },
+    {
+      "parity": 1,
+      "source_blob": "cb5147481c6036db0fa6a8375907a3db4322e778",
+      "surplus": "3170453539029/439804651110400",
+      "surplus_plus_eta_numerator": "3610258190139400",
+      "surplus_plus_eta_denominator": "439804651110400000",
+      "factor_sha256": "58ec1836be48df53cc52e3df32c4708fa1782184aa4531018432329476730c88",
+      "target_sha256": "e10a74a20efccb701b44d0be4d91ddd3d69ba563732b1f1dd488d5b86312dac7",
+      "checks": {
+        "receipt_identity": true,
+        "contiguous": true,
+        "mean_lt4": true,
+        "osc_lt600": true,
+        "gt008": true,
+        "gt0082": true,
+        "inverse_lt122": true
+      }
+    }
+  ],
+  "local_scalar_kernel": {
+    "git_blob": "d2671f69193ef70515546a91fbb95cb6166cd2b7",
+    "bytes": 6831,
+    "local_git_hash_verified": true
+  },
+  "taper_source_blob": "43bab72e8f11a5cc8698b9c7452b7cee95b46eda",
+  "factor_regenerated": false
+}

@@ -1,0 +1,109 @@
+{
+  "revision": "6c6f6e43c3e64ea474e8aa5c9a43a378b00c39bf",
+  "sources": [
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalGramCoercivityLemmas.lean",
+      "git_blob": "b96b88cc7a0790c8a840ecc51ad57e6fff983eae",
+      "retained": [
+        "neutralNF658CrossTerm_lower",
+        "neutralNF658Bilinear_enclosure"
+      ]
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalGramCongruenceInterval.lean",
+      "git_blob": "de37c001b9951d67f7336b5669ed668eff83d0f3",
+      "retained": [
+        "neutralNF659WeightedSum_bound",
+        "neutralNF659DoubleSum_bound",
+        "neutralNF659CongruenceEntry_bound"
+      ]
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalGramDiagonalDominance.lean",
+      "git_blob": "dd79ca33cc053a96810966325d4457c0d42a5d89",
+      "retained": [
+        "neutralNF659OffDiagonalEnergy_nonneg",
+        "neutralNF659OffDiagonalAbs_swap"
+      ]
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalGramDominanceTransfer.lean",
+      "git_blob": "7064189b187d53e11c9bb73bc2313eabd7939847",
+      "retained": [
+        "neutralNF660SymmetricRowPayment_bound",
+        "neutralNF660Dominance_coercivity",
+        "neutralNF660Interval_rowMargin",
+        "neutralNF660Interval_coercivity"
+      ]
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalGramCoercivityClosure.lean",
+      "git_blob": "9796960dd019e11c4091fa9d0ecbdd5a19654086",
+      "retained": [
+        "neutralNF661Quadratic",
+        "neutralNF661SqNorm",
+        "neutralNF661SqNorm_nonneg",
+        "neutralNF661Coercivity_of_preconditioned"
+      ]
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalGramRealIntervalTransport.lean",
+      "git_blob": "e9bc2f05b80611139223cf1e70ad3a6404c70a67",
+      "retained": [
+        "neutralNF662SymmetricLower_to_full",
+        "neutralNF662Congruence",
+        "neutralNF662Center",
+        "neutralNF662Radius",
+        "neutralNF662ActualCongruence_enclosed"
+      ]
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalGramIntegerRealScale.lean",
+      "git_blob": "0b6a558b9fe970a735ad494ae52acd3ea71d91a7",
+      "retained": [
+        "neutralNF663CenterInteger",
+        "neutralNF663RadiusInteger",
+        "neutralNF663CenterInteger_cast",
+        "neutralNF663RadiusInteger_cast",
+        "neutralNF663Center_scale",
+        "neutralNF663Radius_scale",
+        "neutralNF663ActualIntegerCongruence_enclosed"
+      ]
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalGramTransformedDominance.lean",
+      "git_blob": "e8c84c23da4949b9a48868fc7f864b192908fcd4",
+      "retained": [
+        "neutralNF664Congruence_symm",
+        "neutralNF664ScaledRowMargin"
+      ]
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaOriginalPhysicalGramPreconditionerFrame.lean",
+      "git_blob": "b9c2133a6234ffa336e6db77979e1e56b49b2ddb",
+      "retained": [
+        "neutralNF665TransposeAction",
+        "neutralNF665FrobeniusNorm_bound",
+        "neutralNF665FourSum_exchange",
+        "neutralNF665Quadratic_congruence",
+        "neutralNF665Transpose_surjective_of_lower"
+      ]
+    }
+  ],
+  "excluded": [
+    "neutralNF661PhysicalH",
+    "neutralNF661PhysicalH_symm",
+    "neutralNF661Source",
+    "neutralNF662OriginalPhysicalCongruence_enclosed",
+    "neutralNF662OriginalPhysicalLower_to_full",
+    "neutralNF664ActualPhysicalB",
+    "neutralNF664ActualPhysicalB_symm",
+    "neutralNF664PhysicalTransformed_coercivity"
+  ],
+  "declarations": 34,
+  "body_lines": 612,
+  "unresolved_project_references": 0,
+  "forward_project_references": 0,
+  "candidate_git_blob": "138cdf5a118714a4d8734cf0ba7fcd0d611c1904",
+  "classification": "Static extraction in connector runtime; no native build or axiom audit; standalone candidate only, duplicate names if imported with legacy declarations."
+}
