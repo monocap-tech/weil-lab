@@ -455,10 +455,10 @@
       "sha": "b164b329ba68b7ba6dfc24e261f0600631124ab9"
     },
     {
-      "ref": "b903843efd350ac386a33c16e9b77b94ae2d84a2",
+      "ref": "f45ad473149e539bc3da471f47e53b1e1b25f718",
       "path": "verification/iv106/regroup_001/w02_primitive_pole_audit/schur_03/ActualZetaIV106W02SchurCompletion.lean",
       "dest": "WeilDefect/Arithmetic/ActualZetaIV106W02SchurCompletion.lean",
-      "sha": "420ef671aacc79cc5505688a47f97af3428d2609"
+      "sha": "c0ea5e65ab266a1c3638b1b7629a443d6002a0fd"
     }
   ],
   "target": "WeilDefect/Arithmetic/ActualZetaIV106W02SchurCompletion.lean",
