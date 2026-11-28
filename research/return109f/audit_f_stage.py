@@ -5,7 +5,7 @@ Requires the admitted E6 attachment and pinned 314-supplier closure.
 """
 import hashlib, json, pathlib, re, subprocess, sys
 
-PLAN_BLOB = "734de9581c2c23a37cdbd92895606d9681294911"
+PLAN_BLOB = "49ba17ce959659f8ac458865346ff2a0340f3df9"
 
 E_BLOB = "67fc9656ae64efc72b084634e5ecee10b54aa2c8"
 BASE_BLOB = "b25ed55d1ab8511a784cf3863aa630db9bb84a55"
