@@ -290,3 +290,17 @@ e109_path.write_bytes(E109.encode('utf-8'))
 print('RETURN109-E source SHA256:', hashlib.sha256(e109_path.read_bytes()).hexdigest())
 
 assert hashlib.sha256(e109_path.read_bytes()).hexdigest() == "9dd1c3c0b82098416c87d17f9b98b8966da2b60c41e857711d091b8cb29d649d"
+
+# RETURN109-E6: terminal attachment proof-only repair after original E authentication.
+assert digest(e109_path.read_bytes()) == "bd45287dd9b1ff60fb4673a096489253138be27f"
+e6_old = "  · rw [lift_signed, V10B6c.signedGram_diagonal]\n    rw [← V10B6d.signed_channel_tsum (T (carrierContinuousEquiv a g))]\n    apply tsum_congr\n    intro i\n    rw [hT (carrierContinuousEquiv a g) i]\n    rfl"
+e6_new = "  · rw [lift_signed, V10B6c.signedGram_diagonal]\n    change (∑' i : V10A.Index, (posSq a g i - negSq a g i)) =\n      ‖V10B6c.projection true (T (carrierContinuousEquiv a g))‖^2 -\n        ‖V10B6c.projection false (T (carrierContinuousEquiv a g))‖^2\n    rw [← V10B6d.signed_channel_tsum (T (carrierContinuousEquiv a g))]\n    apply tsum_congr\n    intro i\n    rw [hT (carrierContinuousEquiv a g) i] <;> rfl"
+e6_text = e109_path.read_text(encoding="utf-8")
+assert e6_text.count(e6_old) == 1
+e6_bytes = e6_text.replace(e6_old, e6_new).encode("utf-8")
+assert digest(e6_bytes) == "67fc9656ae64efc72b084634e5ecee10b54aa2c8"
+e109_path.write_bytes(e6_bytes)
+assert digest(e109_path.read_bytes()) == "67fc9656ae64efc72b084634e5ecee10b54aa2c8"
+result["terminal_attachment_repair"] = {"original_blob":"bd45287dd9b1ff60fb4673a096489253138be27f","compiled_blob":"67fc9656ae64efc72b084634e5ecee10b54aa2c8","proof":"explicit analysisChannel projection reduction"}
+pathlib.Path("return108w-closure.json").write_text(json.dumps(result, indent=2, sort_keys=True)+"\n")
+print("RETURN109-E6 repaired attachment blob:", digest(e6_bytes))
