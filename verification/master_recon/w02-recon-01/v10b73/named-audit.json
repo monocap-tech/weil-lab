@@ -1,0 +1,26 @@
+{
+  "source": "864a26751ed5648a31b05fe33cb4a24891115996",
+  "run": 46096432875,
+  "job": 140828716216,
+  "blob": "a02dcce19dc625ca04cf1919515c478d1d0dc6f4",
+  "names": [
+    "WeilDefect.MasterRecon.V10B73a.square_weight_growth",
+    "WeilDefect.MasterRecon.V10B73a.square_weighted_of_decay",
+    "WeilDefect.MasterRecon.V10B73a.trial_decay",
+    "WeilDefect.MasterRecon.V10B73a.trial_square_weighted"
+  ],
+  "output": [
+    "2026-11-28T02:11:06.1584490Z 'WeilDefect.MasterRecon.V10B73a.square_weight_growth' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T02:11:06.1585321Z 'WeilDefect.MasterRecon.V10B73a.square_weighted_of_decay' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T02:11:06.1586152Z 'WeilDefect.MasterRecon.V10B73a.trial_decay' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T02:11:06.1587496Z 'WeilDefect.MasterRecon.V10B73a.trial_square_weighted' depends on axioms: [propext, Classical.choice, Quot.sound]"
+  ],
+  "pass": "2026-11-28T02:11:06.3813487Z V10B73a: strict axiom audit PASS (4 declarations)",
+  "artifacts": [
+    {
+      "id": 15243795947,
+      "digest": "sha256:1cf1e6dbc96dddd173f15c5f385717a408239a780483deff575a72b3b8c60feb",
+      "size": 9634
+    }
+  ]
+}
