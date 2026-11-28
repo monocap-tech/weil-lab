@@ -1,0 +1,30 @@
+{
+  "source": "f8d9c7a40f57b41374d4f282c81c3a08b0341aee",
+  "run": 46097676421,
+  "job": 140832685712,
+  "overall": "failure",
+  "module": "V10B74a",
+  "blob": "2890d33dcfecf60703a36d0e74c3c15ef452ad2d",
+  "names": [
+    "WeilDefect.MasterRecon.V10B74a.divided_spectrum",
+    "WeilDefect.MasterRecon.V10B74a.divided_spectrum_ae",
+    "WeilDefect.MasterRecon.V10B74a.divided_square_weighted",
+    "WeilDefect.MasterRecon.V10B74a.logSpectrum_mem",
+    "WeilDefect.MasterRecon.V10B74a.principalSpectrum_ae"
+  ],
+  "output": [
+    "2026-11-28T02:26:18.3790159Z 'WeilDefect.MasterRecon.V10B74a.divided_spectrum' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T02:26:18.3790619Z 'WeilDefect.MasterRecon.V10B74a.divided_spectrum_ae' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T02:26:18.3791068Z 'WeilDefect.MasterRecon.V10B74a.divided_square_weighted' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T02:26:18.3791516Z 'WeilDefect.MasterRecon.V10B74a.logSpectrum_mem' depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "2026-11-28T02:26:18.3792315Z 'WeilDefect.MasterRecon.V10B74a.principalSpectrum_ae' depends on axioms: [propext, Classical.choice, Quot.sound]"
+  ],
+  "pass": "2026-11-28T02:26:18.6774456Z V10B74a: strict axiom audit PASS (5 declarations)",
+  "artifacts": [
+    {
+      "id": 15243753690,
+      "digest": "sha256:d27f104b1b871f72bedd836bcc966bddd052ec28c2b41610f296944aeb519b57",
+      "size": 20389
+    }
+  ]
+}
