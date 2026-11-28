@@ -1,0 +1,3 @@
+# V10B75 submission — exact restricted physical pairing
+
+Predecessor admitted V10B74b-R1 at 732ef4e81bee112e210c98c44d1825aaca813e38. Scope: 3 candidate theorems in V10B75a (principal pairing via inverse sqrt weight, original archOperator spectral pairing, full physical pairing by Plancherel); 2 candidate theorems in V10B75b (support restriction, restricted archLoad pairing). The generic test w is the original logCarrier at 1/4; trial j is the actual dividedTrial bank. Explicit residual premise retained. Strict named audit with separate ordered gates. No prime-zero, Bochner, Taylor, V10B19 provenance, literal matrix/convolution, positivity or W consumption. Candidate only, no declarations admitted until native pass and durable evidence. Phase IV adoption 0.
