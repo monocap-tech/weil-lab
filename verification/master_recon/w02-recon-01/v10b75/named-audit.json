@@ -1,0 +1,43 @@
+{
+  "source": "b46f4a35ea13447e715f7c2ac1100cf6f996dd9b",
+  "run": 46099969696,
+  "job": 140839957794,
+  "overall": "success",
+  "audits": [
+    {
+      "module": "V10B75a",
+      "blob": "57106a4c62526f87b31900489ce9562245edfe0a",
+      "names": [
+        "WeilDefect.MasterRecon.V10B75a.principal_pair",
+        "WeilDefect.MasterRecon.V10B75a.arch_spectral_pair",
+        "WeilDefect.MasterRecon.V10B75a.arch_physical_pair"
+      ],
+      "output": [
+        "2026-11-28T02:55:27.4672584Z 'WeilDefect.MasterRecon.V10B75a.principal_pair' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T02:55:27.4673650Z 'WeilDefect.MasterRecon.V10B75a.arch_spectral_pair' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T02:55:27.4674676Z 'WeilDefect.MasterRecon.V10B75a.arch_physical_pair' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "pass": "2026-11-28T02:55:27.6957304Z V10B75a: strict axiom audit PASS (3 declarations)"
+    },
+    {
+      "module": "V10B75b",
+      "blob": "d3cd8ed8804a962841cff7b33f6c7526d2935b33",
+      "names": [
+        "WeilDefect.MasterRecon.V10B75b.supported_pair",
+        "WeilDefect.MasterRecon.V10B75b.arch_restricted_pair"
+      ],
+      "output": [
+        "2026-11-28T02:55:39.9899447Z 'WeilDefect.MasterRecon.V10B75b.supported_pair' depends on axioms: [propext, Classical.choice, Quot.sound]",
+        "2026-11-28T02:55:39.9900291Z 'WeilDefect.MasterRecon.V10B75b.arch_restricted_pair' depends on axioms: [propext, Classical.choice, Quot.sound]"
+      ],
+      "pass": "2026-11-28T02:55:40.2096680Z V10B75b: strict axiom audit PASS (2 declarations)"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 15244449041,
+      "digest": "sha256:ff5b9de88ccc8ce059b336180f40d9116688172a62f7f8efb11aae17fa5d14ae",
+      "size": 21251
+    }
+  ]
+}
