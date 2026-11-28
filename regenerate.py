@@ -14,6 +14,7 @@ assert H(phase.read_bytes())=='fba35eada4a0614260109add6e3762b90447bf047541817c7
 p=Path('producer/custody/run_46102328502-attempt_1/evidence.zip')
 md=json.loads(p.with_name('metadata.json').read_bytes())
 assert md['workflow_run']['id']==46102328502 and md['workflow_run']['head_sha']=='78a2b73b2806bf3e7d9ed5434ab3eb1100a95519' and md['name']=='nf618-w02-batch26'
+assert md['digest']=='sha256:00e5112731e9e3096318416bf96c27783476d1e1a97fb0d2e8da378e9b4c580f'
 assert H(p.read_bytes())==md['digest'].removeprefix('sha256:') and p.stat().st_size==md['size_in_bytes']
 with zipfile.ZipFile(p) as z:
     assert z.testzip() is None

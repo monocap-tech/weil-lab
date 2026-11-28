@@ -1,0 +1,120 @@
+name: NF618 W02 independent Batch26 admission replay
+on:
+  push:
+    branches: [research/nf618-w02-batch26-admission]
+    paths: ['.github/workflows/nf618-w02-batch26-admission.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: 2b6ddd95a7720df705cdb5070466b26457c68f3f
+          path: producer
+          sparse-checkout: custody/run_46102328502-attempt_1
+      - uses: actions/checkout@v4
+        with:
+          ref: 78a2b73b2806bf3e7d9ed5434ab3eb1100a95519
+          path: candidate
+          sparse-checkout: |
+            generate.py
+            emit_pi.py
+            GuardParams.lean
+            GuardPiBase.lean
+            NF618W02Seeds.lean
+            RootAttachmentCandidate.lean
+            audit.py
+            release.json
+            parent-admission.json
+            Batch26Plan.json
+            FrequencyDecomposition.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 6450fff605d60ac3e9fef1a9ff774ed98281a01b
+          path: research
+          sparse-checkout: |
+            notes/provisional/NF618CertifiedSlotLedgerBatch25.json
+            notes/provisional/NF618Batch26Plan.json
+            notes/provisional/NF618W02RootAttachment/FrequencyDecomposition.json
+            scripts/verify_nf620_physical_key_tables.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/checkout@v4
+        with:
+          ref: dea274a9554f9705bea2202b82c72e144b15d159
+          path: historical
+          sparse-checkout: |
+            custody/run_46076027949-attempt_1/recovery.json
+            custody/run_46076027949-attempt_1/nf690-payload
+          sparse-checkout-cone-mode: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 37f58fe3cfdcb50e9d9afabdb02b1349ba7cf3c9
+          path: direct
+          sparse-checkout: archives/14580099864
+      - name: Authenticate producer and replay exact source generation
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir evidence
+          cp preflight.py regenerate.py README.md evidence/
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/46102328502" > evidence/run.json
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/46102328502/jobs" > evidence/jobs.json
+          cp producer/custody/run_46102328502-attempt_1/metadata.json evidence/metadata.json
+          cp producer/custody/run_46102328502-attempt_1/status.txt evidence/producer-status.txt
+          python3 regenerate.py 2>&1 | tee evidence/regeneration.log
+      - name: Independently verify actual bank attachments and strict audit
+        run: |
+          set -euo pipefail
+          python3 preflight.py --evidence producer/custody/run_46102328502-attempt_1/evidence.zip --payload payload.zip --ledger research/notes/provisional/NF618CertifiedSlotLedgerBatch25.json --plan research/notes/provisional/NF618Batch26Plan.json --release candidate/release.json --run evidence/run.json --jobs evidence/jobs.json --metadata evidence/metadata.json --generator candidate/generate.py --out evidence/admission-preflight.json 2>&1 | tee evidence/admission.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf618-w02-batch26-admission
+          path: evidence/
+          if-no-files-found: error
+  custody:
+    needs: verify
+    if: always() && needs.verify.result != 'cancelled'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf618-w02-batch26-admission
+      - name: Preserve independent replay
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESULT: ${{ needs.verify.result }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          d="custody/run_$GITHUB_RUN_ID-attempt_$GITHUB_RUN_ATTEMPT"
+          mkdir -p "$d"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" | jq -e '[.artifacts[] | select(.name=="nf618-w02-batch26-admission" and .expired==false)] | if length==1 then .[0] else error("missing evidence") end' > "$d/metadata.json"
+          id=$(jq -er .id "$d/metadata.json")
+          hash=$(jq -er '.digest | sub("^sha256:";"")' "$d/metadata.json")
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$id/zip" > "$d/evidence.zip"
+          echo "$hash  $d/evidence.zip" | sha256sum -c -
+          python3 -m zipfile -t "$d/evidence.zip"
+          if [ "$RESULT" = success ]; then
+            unzip -p "$d/evidence.zip" admission-preflight.json > "$d/admission-preflight.json"
+            unzip -p "$d/evidence.zip" regeneration.json > "$d/regeneration.json"
+          fi
+          printf 'independent_replay=%s\nhead=Batch25\nnew_admissions=0\nuniversal_hold=unchanged\n' "$RESULT" > "$d/status.txt"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$d"
+          git commit -m 'NF618 preserve independent Batch26 admission replay [skip ci]'
+          git push origin "HEAD:refs/heads/research/nf618-w02-batch26-admission"
+          git fetch --no-tags origin "research/nf618-w02-batch26-admission"
+          test "$(git rev-parse HEAD)" = "$(git rev-parse FETCH_HEAD)"
+          test "$(git show "FETCH_HEAD:$d/evidence.zip" | sha256sum | cut -d' ' -f1)" = "$hash"
