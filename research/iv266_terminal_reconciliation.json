@@ -1,0 +1,67 @@
+{
+  "scope": "IV266 read-only terminal reconciliation of IV263/265 sign evidence and IV241/251/256/259 interfaces; no new numerical sign generation or native compilation",
+  "parent": "4f4d37ce1484f8f16ce84950df7243dc224b42fc",
+  "source_pins": {
+    "original": "12da3689018ed2c6e7e3965f1386cb44f0f0f8a0",
+    "IV241": "75e843ad71d4005dd9f44282e1fa9e41d02f1188",
+    "IV251": "0c6a48160f8c06dc320c77be59ecaabc027bf2ba",
+    "IV256": "27e24514566b823ef0f92e7d610ae7051a84673a",
+    "IV259": "8e9f08e5bb525d9c182431bb4e9d843ab58b298c",
+    "IV263": "a6ab5bf0ad61e485b64c7d840fc86679bb340eb9",
+    "IV265": "cc260fe34570db30eb42cd61f30a58df1c883492"
+  },
+  "even": {
+    "archive_parts": 7,
+    "parts_sha256_and_bytes_checked": true,
+    "archive_bytes": 13728,
+    "archive_sha256": "ec20593c4bc38d0ad65d656105157346d5968c799312674036263f0e1bad975f",
+    "gzip_crc_and_size_pass": true,
+    "inner_files": 12,
+    "inner_file_sha256_and_bytes_match": true,
+    "sign_receipt_sha256": "376be0f58ed823cb991f8cbd702ee884b5231d3f35aad63eb21ba89148f6738f",
+    "row_numerators_recounted": 256,
+    "min_numerator": "69632223999728",
+    "scale": "281474976710656",
+    "threshold": "247/1000",
+    "fresh_matrix_replay": false
+  },
+  "odd": {
+    "archive_bytes": 12176,
+    "archive_sha256": "31bde1d8f91f6c28f02e93eb86a33e9d6b61c961a2d3fa10dbb3af2aaed1b86d",
+    "gzip_crc_and_size_pass": true,
+    "inner_files": 11,
+    "inner_file_sha256_and_bytes_match": true,
+    "local_archive_manifest_sha256_and_git_checks": true,
+    "local_checkpoint_sha256_checks": 10,
+    "local_integer_audit_reexecuted": true,
+    "rows": 256,
+    "pairs": 32640,
+    "min_numerator": "69150231992944",
+    "scale": "281474976710656",
+    "threshold": "245/1000",
+    "sign_audit_blob": "6933ea358af27e3fc0bdb84c92293dab19e8bb53",
+    "fresh_numerical_enclosure_replay": false
+  },
+  "formal_source_pins": {
+    "literatureRHS": "0034976fe2f1e5fa9d411108736160542eb94293",
+    "pole": "511a7c1b6319a5af12ba235d64006fbaa9852e09",
+    "prime": "e75aeb9043f65a7d3f1762f48881bfa4cbecf553",
+    "literal_bank": "27e13eeb38c1132be4be135412b05d63871ba68a",
+    "prime_norm_terminal": "26c4f78accfc8913c7b103391bdd0a213cf1ce9a"
+  },
+  "status": {
+    "conditional_radius_two_arithmetic_sign": "PASS (inherited analytic and numerical enclosure contracts)",
+    "independent_analytic_numerical_end_to_end_audit": "outstanding; this operation is source/interface reconciliation",
+    "native_full_form_attachment": "outstanding",
+    "phase_IV_adoption": 0,
+    "global_Weil_positivity": "unresolved",
+    "RH": "unresolved"
+  },
+  "limitations": [
+    "No fresh even operand matrix replay; even row minimum recomputed from archived receipt only.",
+    "Odd independent integer operand audit repeated against local verified sign.npz; no fresh generation of numerical enclosures.",
+    "Archives contain executed code, receipts and regeneration identities; large checkpoints not raw uploaded.",
+    "No Lean or Lake available in local runtime; no native acceptance inferred from source presence.",
+    "Original historical IV215 theorem bounds prime norm only; this review neither accepts nor reopens its integrated build gate."
+  ]
+}
