@@ -1,0 +1,140 @@
+# W02-IV106: one bounded response audit, gated on admitted inverse evidence.
+# Prior trigger audit at 54b9af8e; all 168 main definitions unchanged.
+# No PR, main edits, E18X activation, or unrelated workflow dispatch.
+name: IV106 W02 constrained response 02
+on:
+  push:
+    branches: [formalization/iv106-w02-primitive-pole-audit]
+    paths:
+      - '.github/workflows/iv106-w02-constrained-response-02.yml'
+permissions:
+  contents: read
+concurrency:
+  group: iv106-w02-primitive-pole-native-audit
+  cancel-in-progress: false
+jobs:
+  constrained-response:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout exact repaired audit recipe
+        uses: actions/checkout@v4
+        with:
+          ref: 2d817dc566f24ee20838227cffec44cff1e4fe17
+          path: candidate
+          persist-credentials: false
+      - name: Checkout exact research base
+        uses: actions/checkout@v4
+        with:
+          ref: 018f7e59f4129ce521cd3ae86d1afd59d3b64b5f
+          path: research
+          persist-credentials: true
+      - name: Verify repaired input pins and record environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p evidence
+          p=candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/response_02
+          test "$(git -C candidate rev-parse HEAD)" = 2d817dc566f24ee20838227cffec44cff1e4fe17
+          test "$(git hash-object "$p/source_manifest.json")" = 3f5423509ad9dddc875d69890bc51c4d9ab57098
+          test "$(git hash-object "$p/preflight.py")" = 2c4e8b62052a9a2f048be61863d93f217e1d4f9e
+          test "$(git hash-object "$p/run_audit.sh")" = 00f201315f1a071865ac5455ae986ee554501338
+          test "$(git hash-object "$p/ActualZetaIV106W02ConstrainedResponse.lean")" = b164b329ba68b7ba6dfc24e261f0600631124ab9
+          test "$(git hash-object "$p/RED_TEAM.md")" = a85e95b628d26fb8cd8d85ee522ebbd79fefcebc
+          printf '%s  %s\n' 936b7e0311b88b96b9a46533380497629025b854e5d8c191d3379c569c434567 "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/repair_01/evidence/failed_run_45980919877.zip" 67ff4955cd9b1bf5196d170147cd7d232218bf7cca08578d517d6dc11ab41be1 "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/repair_01/evidence/repair_run_46067545048.zip" e3c84e492c8d3df642d1cea43cd38996c52678f6d42e859958e04a9458599ea5 "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/repair_02/evidence/repair_run_46071943354.zip" 0fc5481d00168c16c9b7d0cff47f3bfd6819aada34411a8e1ea9ef85ca426a3c "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/inverse_01/evidence/inverse_run_46087645956.zip" 8a9c6177abfbdeef3b649f2d1053bc0e7ce5de625ce5900e3702fea27a50a109 "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/inverse_02/evidence/inverse_run_46090382173.zip" cf2fcc7633d45687c059d25f0bff6a37082cce3a60f6ee2ae3156b59e4051894 "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/inverse_03/evidence/inverse_run_46092213336.zip" 7019c25e1def5049cad9b6d0c362ad54a76dcaf5d30f52f13c938384c3292573 "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/inverse_04/evidence/inverse_run_46094287829.zip" 79d089defe99b8df772924030070924a0b79f27be9bf7e615571b3aea79ada2e "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/inverse_05/evidence/inverse_run_46097289964.zip" 40ecea0a62d8dc1156732e62116408b4b6b70fbdaf2dd118a063ece6e6e12440 "candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/response_01/evidence/response_run_46100023160.zip" | sha256sum -c - | tee evidence/prior-custody-check.log
+          cp "$p/"*.lean "$p/"*.md "$p/"*.json "$p/"*.py "$p/"*.sh evidence/
+          {
+            printf 'workflow_head=%s\nrun_id=%s\nrun_attempt=%s\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT"
+            printf 'prior_native_custody_head=%s\n' '0e5525771080dc3422c1851914fc6c54a647be8f'
+            git -C candidate rev-parse HEAD HEAD^{tree}
+            git -C research rev-parse HEAD HEAD^{tree}
+            cat research/lean-toolchain
+            uname -a
+            python3 --version
+            git --version
+          } > evidence/environment.txt
+      - name: Install pinned Lean
+        working-directory: research
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            curl --fail --silent --show-error --location --retry 3 https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/iv106-w02-elan-init.sh
+            sh /tmp/iv106-w02-elan-init.sh -y --default-toolchain none
+            echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+            export PATH="$HOME/.elan/bin:$PATH"
+            lean --version
+            lake --version
+          } 2>&1 | tee ../evidence/toolchain-install.log
+      - name: Execute 73-source preflight and 6-target response audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          p=candidate/verification/iv106/regroup_001/w02_primitive_pole_audit/response_02
+          bash "$p/run_audit.sh" research "$p/source_manifest.json" evidence 2>&1 | tee evidence/run.log
+      - name: Export native result and evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iv106-w02-constrained-response-02-evidence
+          path: |
+            evidence/
+            research/WeilDefect/Arithmetic/ActualZetaIV106W02ConstrainedResponse.lean
+            research/.lake/build/lib/lean/WeilDefect/Arithmetic/ActualZetaIV106W02ConstrainedResponse.olean
+            research/lake-manifest.json
+          if-no-files-found: error
+          include-hidden-files: true
+  response-evidence-custody:
+    needs: constrained-response
+    if: always() && needs.constrained-response.result != 'skipped' && needs.constrained-response.result != 'cancelled'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: formalization/iv106-w02-primitive-pole-audit
+          fetch-depth: 1
+      - name: Preserve exact repaired-run artifact regardless of compiler outcome
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_HEAD: ${{ github.sha }}
+          NATIVE_RESULT: ${{ needs.constrained-response.result }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          branch=formalization/iv106-w02-primitive-pole-audit
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test -z "$(git status --porcelain)"
+          git fetch --no-tags origin "$branch"
+          test "$(git rev-parse HEAD)" = "$(git rev-parse FETCH_HEAD)"
+          d="verification/iv106/regroup_001/w02_primitive_pole_audit/response_02/evidence"
+          mkdir -p "$d"
+          meta="$d/response_run_${GITHUB_RUN_ID}_artifact.json"
+          archive="$d/response_run_${GITHUB_RUN_ID}.zip"
+          test ! -e "$meta" && test ! -e "$archive"
+          gh api "repos/monocap-tech/weil-lab/actions/runs/$GITHUB_RUN_ID/artifacts" | jq -e '[.artifacts[] | select(.name == "iv106-w02-constrained-response-02-evidence" and .expired == false)] | if length == 1 then .[0] else error("expected exactly one artifact") end' > "$meta"
+          id=$(jq -er .id "$meta")
+          size=$(jq -er .size_in_bytes "$meta")
+          digest=$(jq -er '.digest | select(startswith("sha256:")) | sub("^sha256:";"")' "$meta")
+          gh api "repos/monocap-tech/weil-lab/actions/artifacts/$id/zip" > "$archive"
+          test "$(wc -c < "$archive")" -eq "$size"
+          printf '%s  %s\n' "$digest" "$archive" | sha256sum -c -
+          python3 - "$archive" <<'PY'
+          import sys, zipfile
+          with zipfile.ZipFile(sys.argv[1]) as z:
+              assert z.namelist() and z.testzip() is None
+          PY
+          printf 'native_result=%s\nrun_id=%s\nworkflow_head=%s\nartifact_id=%s\nsha256=%s\n' "$NATIVE_RESULT" "$GITHUB_RUN_ID" "$GITHUB_SHA" "$id" "$digest" > "$d/response_run_${GITHUB_RUN_ID}_status.txt"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$archive" "$meta" "$d/response_run_${GITHUB_RUN_ID}_status.txt"
+          git commit -m "IV106 W02: preserve original response 02 native evidence ZIP [skip ci]"
+          git push origin "HEAD:refs/heads/$branch"
+          git fetch --no-tags origin "$branch"
+          test "$(git rev-parse HEAD)" = "$(git rev-parse FETCH_HEAD)"
+          test "$(git show "FETCH_HEAD:$archive" | sha256sum | cut -d' ' -f1)" = "$digest"
